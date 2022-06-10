@@ -1,0 +1,26 @@
+using Maple2.Model.Enum;
+using Maple2.Script.Npc;
+
+/// <summary>
+/// 11004212: Muky
+/// </summary>
+public class _11004212 : NpcScript {
+    internal _11004212(INpcScriptContext context) : base(context) {
+        Id = 10;
+    }
+
+    public override bool Next(int selection = 0) {
+        switch (Id) {
+            case 0:
+                // $script:0806052107010679$ 
+                // - What is it? 
+                return true;
+            case 10:
+                // $script:0806052107010680$ 
+                // - It's my goal in life to one day be as shroomy as the $npcName:11004213[gender:0]$. Or failing that, at least to mush it up with the best of them. 
+                return true;
+            default:
+                return true;
+        }
+    }
+}
