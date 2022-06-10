@@ -13,11 +13,11 @@ public class _11001373 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217144507005348$ 
-                // - Wah! You startled me! 
+                // - Wah! You startled me!
                 return true;
             case 30:
                 // $script:1217144507005351$ 
-                // - Sigh... I haven't been back home since I moved to Minar with my husband. I was so looking forward to this trip, and now the train has broken down... 
+                // - Sigh... I haven't been back home since I moved to Minar with my husband. I was so looking forward to this trip, and now the train has broken down...
                 return true;
             default:
                 return true;

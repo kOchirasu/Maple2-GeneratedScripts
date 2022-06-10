@@ -13,11 +13,11 @@ public class _11001838 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1111015907007375$ 
-                // - Ah... What should I do? 
+                // - Ah... What should I do?
                 return true;
             case 30:
                 // $script:1111015907007378$ 
-                // - I thought everything'd work out if I could just get into the army. Now I'm not sure I'm cut out for this... 
+                // - I thought everything'd work out if I could just get into the army. Now I'm not sure I'm cut out for this...
                 switch (selection) {
                     // $script:1111015907007379$
                     // - I believe in you.
@@ -33,11 +33,11 @@ public class _11001838 : NpcScript {
                 return true;
             case 31:
                 // $script:1111015907007381$ 
-                // - Th-thank you! I'll do my best.  
+                // - Th-thank you! I'll do my best. 
                 return true;
             case 32:
                 // $script:1111015907007382$ 
-                // - T-train harder... Yeah, that'll help... 
+                // - T-train harder... Yeah, that'll help...
                 return true;
             default:
                 return true;

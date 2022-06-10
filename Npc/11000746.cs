@@ -13,11 +13,11 @@ public class _11000746 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002938$ 
-                // - <b>Chomp! Snarf!</b> 
+                // - <b>Chomp! Snarf!</b>
                 return true;
             case 30:
                 // $script:0831180407002941$ 
-                // - Not all witches are greedy and evil. I've been studying useful spells to help $map:02000023$. 
+                // - Not all witches are greedy and evil. I've been studying useful spells to help $map:02000023$.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001666 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0617211107006381$ 
-                // - I look forward to hearing more stories of your heroism. 
+                // - I look forward to hearing more stories of your heroism.
                 return true;
             case 10:
                 // $script:0617211107006382$ 
-                // - Please remain steadfast in your efforts to protect peace and justice. 
+                // - Please remain steadfast in your efforts to protect peace and justice.
                 return true;
             default:
                 return true;

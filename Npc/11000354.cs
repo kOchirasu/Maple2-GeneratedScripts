@@ -13,19 +13,19 @@ public class _11000354 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001472$ 
-                // - Grr... 
+                // - Grr...
                 return true;
             case 30:
                 // $script:0831180407001475$ 
-                // - Ah, I'm finally safe! You're my savior. 
+                // - Ah, I'm finally safe! You're my savior.
                 return true;
             case 40:
                 // $script:0831180407001476$ 
-                // - I thought I was going to die. I used to think I was untouchable. But after they took me so easily... 
+                // - I thought I was going to die. I used to think I was untouchable. But after they took me so easily...
                 return true;
             case 50:
                 // $script:0831180407001477$ 
-                // - I can't believe you came to save me... Thank you. I'll live an honest life from now on. I'll donate to charities, pay all my taxes, and volunteer at the soup kitchens. 
+                // - I can't believe you came to save me... Thank you. I'll live an honest life from now on. I'll donate to charities, pay all my taxes, and volunteer at the soup kitchens.
                 return true;
             default:
                 return true;

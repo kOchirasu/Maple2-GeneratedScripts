@@ -13,15 +13,15 @@ public class _11004315 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0928133807011356$ 
-                // - Would you like to take on a mission for Green Hoods? 
+                // - Would you like to take on a mission for Green Hoods?
                 return true;
             case 10:
                 // $script:0928133807011357$ 
-                // - Our survey teams encountered some mechanical trees during their exploration of Kritias. Just hearing about it gives me the creeps. Who would build such a thing? 
+                // - Our survey teams encountered some mechanical trees during their exploration of Kritias. Just hearing about it gives me the creeps. Who would build such a thing?
                 return true;
             case 20:
                 // $script:0116153807012735$ 
-                // - Sorry, but I don't have any missions just yet. 
+                // - Sorry, but I don't have any missions just yet.
                 return true;
             default:
                 return true;

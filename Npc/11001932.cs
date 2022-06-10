@@ -13,11 +13,11 @@ public class _11001932 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1122150407007455$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 30:
                 // $script:1122214707007475$ 
-                // - Handicrafts are so fun that I often lose track of the time. I just wish I had someone to actually give this stuff to...  
+                // - Handicrafts are so fun that I often lose track of the time. I just wish I had someone to actually give this stuff to... 
                 return true;
             default:
                 return true;

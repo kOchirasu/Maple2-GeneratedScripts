@@ -13,11 +13,11 @@ public class _11000115 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000483$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 40:
                 // $script:0831180407000487$ 
-                // - Hmph! Just as well. I hope the road stays destroyed forever. 
+                // - Hmph! Just as well. I hope the road stays destroyed forever.
                 switch (selection) {
                     // $script:0831180407000488$
                     // - Why's that?
@@ -28,7 +28,7 @@ public class _11000115 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407000489$ 
-                // - Smith left for $map:02000001$ to see the court instead of staying with me for my birthday. I don't need a boyfriend who cares more about the empress than me. I hope he'll never come back. Hmph! 
+                // - Smith left for $map:02000001$ to see the court instead of staying with me for my birthday. I don't need a boyfriend who cares more about the empress than me. I hope he'll never come back. Hmph!
                 return true;
             default:
                 return true;

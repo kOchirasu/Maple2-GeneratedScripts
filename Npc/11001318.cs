@@ -13,15 +13,15 @@ public class _11001318 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005037$ 
-                // - Do you need help? 
+                // - Do you need help?
                 return true;
             case 40:
                 // $script:1227194507005704$ 
-                // - The greatest threat is the one we do not see. We need divine guidance to find our path. 
+                // - The greatest threat is the one we do not see. We need divine guidance to find our path.
                 // $script:1227194507005705$ 
-                // - We humans are weak and hopeless, but we have a will that is stronger than steel. 
+                // - We humans are weak and hopeless, but we have a will that is stronger than steel.
                 // $script:1227194507005706$ 
-                // - The divine recognizes this and guides our hand. Remember that, and you will never know fear. 
+                // - The divine recognizes this and guides our hand. Remember that, and you will never know fear.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001074 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003663$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003666$ 
-                // - Every single picture here is drawn by a child. Amazing, right? 
+                // - Every single picture here is drawn by a child. Amazing, right?
                 return true;
             default:
                 return true;

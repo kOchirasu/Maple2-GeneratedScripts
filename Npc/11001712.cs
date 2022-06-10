@@ -13,11 +13,11 @@ public class _11001712 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006964$ 
-                // - Mm? Yes? 
+                // - Mm? Yes?
                 return true;
             case 30:
                 // $script:0728024507006998$ 
-                // - The artifact must be hidden somewhere nearby. Or something related to it, at the very least. 
+                // - The artifact must be hidden somewhere nearby. Or something related to it, at the very least.
                 return true;
             default:
                 return true;

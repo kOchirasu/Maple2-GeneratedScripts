@@ -13,12 +13,12 @@ public class _11001480 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0106111607005767$ 
-                // - What? 
+                // - What?
                 return true;
             case 10:
                 // $script:0106111607005768$ 
                 // - Light and darkness... The war between the Lumarigons and the Kargons isn't over yet.
-All hope lies on $npcName:11001472[gender:1]$ recovering soon. She alone can save the Lumarigons. 
+                //   All hope lies on $npcName:11001472[gender:1]$ recovering soon. She alone can save the Lumarigons.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001032 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003529$ 
-                // - This is bad, really bad! 
+                // - This is bad, really bad!
                 return true;
             case 30:
                 // $script:0831180407003532$ 
-                // - I'm the head of this robot development center, and even I don't know how to get these robots under control. What should I do to contain this problem? 
+                // - I'm the head of this robot development center, and even I don't know how to get these robots under control. What should I do to contain this problem?
                 return true;
             default:
                 return true;

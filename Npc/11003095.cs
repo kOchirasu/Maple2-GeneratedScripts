@@ -13,11 +13,11 @@ public class _11003095 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0207122607007942$ 
-                // - $MyPCName$, you came. 
+                // - $MyPCName$, you came.
                 return true;
             case 10:
                 // $script:0207122607007943$ 
-                // - The Green Hood will always protect you. 
+                // - The Green Hood will always protect you.
                 return true;
             default:
                 return true;

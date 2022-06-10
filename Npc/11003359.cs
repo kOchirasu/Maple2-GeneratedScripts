@@ -13,11 +13,11 @@ public class _11003359 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0517164307008512$ 
-                // - You better prepare yourself. 
+                // - You better prepare yourself.
                 return true;
             case 20:
                 // $script:0517164307008514$ 
-                // - You better be ready this time. You'll see what I mean when you go inside. Heheheh... 
+                // - You better be ready this time. You'll see what I mean when you go inside. Heheheh...
                 return true;
             default:
                 return true;

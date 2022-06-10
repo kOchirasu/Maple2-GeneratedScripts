@@ -13,11 +13,11 @@ public class _11004509 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228182607012451$ 
-                // - Look what we have here. It's about time they sent us some reinforcements. 
+                // - Look what we have here. It's about time they sent us some reinforcements.
                 return true;
             case 10:
                 // $script:1228182607012452$ 
-                // - Look what we have here. It's about time they sent us some reinforcements. 
+                // - Look what we have here. It's about time they sent us some reinforcements.
                 switch (selection) {
                     // $script:1228182607012453$
                     // - I'm not your reinforcements.
@@ -28,7 +28,7 @@ public class _11004509 : NpcScript {
                 return true;
             case 11:
                 // $script:1228182607012454$ 
-                // - Tch... Figures. We don't have the numbers to hold this position for right now. Y'know, give a leshy a gun and I'd let it stand guard. That's how desperate we are! 
+                // - Tch... Figures. We don't have the numbers to hold this position for right now. Y'know, give a leshy a gun and I'd let it stand guard. That's how desperate we are!
                 return true;
             default:
                 return true;

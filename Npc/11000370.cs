@@ -13,11 +13,11 @@ public class _11000370 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001522$ 
-                // - Beep! 
+                // - Beep!
                 return true;
             case 10:
                 // $script:0831180407001523$ 
-                // - Beep! Unauthorized access. 
+                // - Beep! Unauthorized access.
                 return true;
             default:
                 return true;

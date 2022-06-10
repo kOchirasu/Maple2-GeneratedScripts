@@ -13,11 +13,11 @@ public class _11000958 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003319$ 
-                // - Aww, my poor scaredy-cats! 
+                // - Aww, my poor scaredy-cats!
                 return true;
             case 20:
                 // $script:0831180407003321$ 
-                // - My babies are as precious as children to me. Hee hee. 
+                // - My babies are as precious as children to me. Hee hee.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001021 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003468$ 
-                // - Did the boss send you? 
+                // - Did the boss send you?
                 return true;
             case 30:
                 // $script:0831180407003471$ 
-                // - I don't have time for chitchat. I'm on a very important mission right now. 
+                // - I don't have time for chitchat. I'm on a very important mission right now.
                 return true;
             default:
                 return true;

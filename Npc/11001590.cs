@@ -13,15 +13,15 @@ public class _11001590 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006078$ 
-                // - Ah, $MyPCName$! 
+                // - Ah, $MyPCName$!
                 return true;
             case 10:
                 // $script:0515180307006129$ 
-                // - No words can express my gratitude. I only hope that I can repay the empire one day. 
+                // - No words can express my gratitude. I only hope that I can repay the empire one day.
                 return true;
             case 20:
                 // $script:0517210007006145$ 
-                // - Why are you staring at me? 
+                // - Why are you staring at me?
                 switch (selection) {
                     // $script:0517210007006146$
                     // - I just wanted to see you.
@@ -47,23 +47,23 @@ public class _11001590 : NpcScript {
                 return true;
             case 21:
                 // $script:0517210007006150$ 
-                // - Ha... You're a strange one...  
+                // - Ha... You're a strange one... 
                 return true;
             case 22:
                 // $script:0517210007006151$ 
-                // - Y-you did? So did I. Ahem. 
+                // - Y-you did? So did I. Ahem.
                 return true;
             case 23:
                 // $script:0517210007006152$ 
-                // - Now is <i>not</i> the time for such things! 
+                // - Now is <i>not</i> the time for such things!
                 return true;
             case 24:
                 // $script:0517210007006153$ 
-                // - I'm a little busy right now. 
+                // - I'm a little busy right now.
                 return true;
             case 30:
                 // $script:0524142307006220$ 
-                // - No words can express my gratitude. I only hope that I can repay the empire one day. 
+                // - No words can express my gratitude. I only hope that I can repay the empire one day.
                 return true;
             default:
                 return true;

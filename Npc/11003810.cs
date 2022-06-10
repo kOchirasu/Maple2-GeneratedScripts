@@ -13,11 +13,11 @@ public class _11003810 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228105615009081$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:1228105615009084$ 
-                // - Don't you want the power of the Devil Tree? 
+                // - Don't you want the power of the Devil Tree?
                 return true;
             default:
                 return true;

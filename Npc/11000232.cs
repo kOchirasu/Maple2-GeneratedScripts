@@ -13,13 +13,13 @@ public class _11000232 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000983$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407000985$ 
-                // - Dark Wind has changed since $npcName:11000044[gender:0]$ took charge. Now its members are more interested in getting ahead than protecting $map:02000100$ like they used to. 
+                // - Dark Wind has changed since $npcName:11000044[gender:0]$ took charge. Now its members are more interested in getting ahead than protecting $map:02000100$ like they used to.
                 // $script:0831180407000986$ 
-                // - And the people of $map:02000100$ are walking on eggshells around them. 
+                // - And the people of $map:02000100$ are walking on eggshells around them.
                 return true;
             default:
                 return true;

@@ -13,15 +13,15 @@ public class _11004312 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0928133807011350$ 
-                // - The future is in our hands. 
+                // - The future is in our hands.
                 return true;
             case 10:
                 // $script:0928133807011351$ 
-                // - We're on alien soil. Don't let your guard down. 
+                // - We're on alien soil. Don't let your guard down.
                 return true;
             case 20:
                 // $script:0116153807012734$ 
-                // - I have no missions for you right now. 
+                // - I have no missions for you right now.
                 return true;
             default:
                 return true;

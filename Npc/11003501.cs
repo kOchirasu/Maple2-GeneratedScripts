@@ -13,15 +13,15 @@ public class _11003501 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816160115008978$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0816160115008979$ 
-                // - If I'm going to get into Team Mushroom, I've got to study hard! 
+                // - If I'm going to get into Team Mushroom, I've got to study hard!
                 return true;
             case 50:
                 // $script:0816160115008981$ 
-                // - I want to be best friends with all kinds of monsters. That's what Team Mushroom is all about, right? 
+                // - I want to be best friends with all kinds of monsters. That's what Team Mushroom is all about, right?
                 return true;
             default:
                 return true;

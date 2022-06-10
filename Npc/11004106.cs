@@ -13,11 +13,11 @@ public class _11004106 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010453$ 
-                // - Welcome, $MyPCName$, my soulbond. 
+                // - Welcome, $MyPCName$, my soulbond.
                 return true;
             case 10:
                 // $script:0720125407010454$ 
-                // - $MyPCName$, my kin, you've come. 
+                // - $MyPCName$, my kin, you've come.
                 return true;
             default:
                 return true;

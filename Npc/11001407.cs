@@ -13,11 +13,11 @@ public class _11001407 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217205907005404$ 
-                // - ... 
+                // - ...
                 return true;
             case 40:
                 // $script:1230100207005748$ 
-                // - ... 
+                // - ...
                 switch (selection) {
                     // $script:1230100907005749$
                     // - What's with the quiet act?
@@ -28,7 +28,7 @@ public class _11001407 : NpcScript {
                 return true;
             case 41:
                 // $script:1230100907005750$ 
-                // - <font color="#909090">($npcName:11001407[gender:0]$ stares at you without saying a word.)</font> 
+                // - <font color="#909090">($npcName:11001407[gender:0]$ stares at you without saying a word.)</font>
                 return true;
             default:
                 return true;

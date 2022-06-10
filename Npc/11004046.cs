@@ -13,11 +13,11 @@ public class _11004046 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010065$ 
-                // - The king will come back... He just has to! 
+                // - The king will come back... He just has to!
                 return true;
             case 10:
                 // $script:0614185307010066$ 
-                // - The king will come back... He just has to! 
+                // - The king will come back... He just has to!
                 return true;
             default:
                 return true;

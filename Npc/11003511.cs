@@ -13,11 +13,11 @@ public class _11003511 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0809174410001880$ 
-                // - Welcome! Pay 1 $item:30000875$ to spin the $npcName:11003511$! 
+                // - Welcome! Pay 1 $item:30000875$ to spin the $npcName:11003511$!
                 return true;
             case 30:
                 // $script:0809174410001881$ functionID=1 
-                // - Welcome! Pay me 5 $itemPlural:30000875$ and I'll let you spin the $npc:11003511$! How about it? Feeling lucky? 
+                // - Welcome! Pay me 5 $itemPlural:30000875$ and I'll let you spin the $npc:11003511$! How about it? Feeling lucky?
                 switch (selection) {
                     // $script:0809174410001882$
                     // - Pay 5 $itemPlural:30000875$ to spin once.
@@ -38,31 +38,31 @@ public class _11003511 : NpcScript {
                 return true;
             case 31:
                 // $script:0809174410001885$ functionID=1 buttonSet=16 
-                // - Spin the roulette for a chance to win great prizes! Come on, you know you want to! 
+                // - Spin the roulette for a chance to win great prizes! Come on, you know you want to!
                 // $script:0809174410001886$ buttonSet=1 
-                // - May Lady Luck blow you a kiss, $MyPCName$! 
+                // - May Lady Luck blow you a kiss, $MyPCName$!
                 return true;
             case 32:
                 // $script:0809174410001887$ functionID=1 
-                // - You don't have enough coins. You need 5 $itemPlural:30000875$ to spin the $npc:11003511$ once. 
+                // - You don't have enough coins. You need 5 $itemPlural:30000875$ to spin the $npc:11003511$ once.
                 return true;
             case 40:
                 // $script:0809174410001888$ functionID=1 
-                // - To spin the $npc:11003511$, you need 5 $itemPlural:30000875$. Clear a premium dungeon to get $itemPlural:30000875$. 
+                // - To spin the $npc:11003511$, you need 5 $itemPlural:30000875$. Clear a premium dungeon to get $itemPlural:30000875$.
                 // $script:0809174410001889$ 
-                // - If you have $itemPlural:30000875$ to burn, be sure to come to $map:02000064$! 
+                // - If you have $itemPlural:30000875$ to burn, be sure to come to $map:02000064$!
                 return true;
             case 10:
                 // $script:0809174410001890$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0809174410001891$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             case 100:
                 // $script:0809174410001892$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0809174410001893$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             default:
                 return true;

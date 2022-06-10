@@ -13,11 +13,11 @@ public class _11004483 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012249$ 
-                // - Hello! I'll be helping you explore Kritias. Nice to meet you. 
+                // - Hello! I'll be helping you explore Kritias. Nice to meet you.
                 return true;
             case 10:
                 // $script:1227192907012250$ 
-                // - Hello! I'll be helping you explore Kritias. Nice to meet you. 
+                // - Hello! I'll be helping you explore Kritias. Nice to meet you.
                 switch (selection) {
                     // $script:1227192907012251$
                     // - When do you start?
@@ -28,9 +28,9 @@ public class _11004483 : NpcScript {
                 return true;
             case 11:
                 // $script:1227192907012252$ 
-                // - St-st-st-start? Soon! Really soon! Yeah... 
+                // - St-st-st-start? Soon! Really soon! Yeah...
                 // $script:1227192907012253$ 
-                // - There's lots and lots of preparation to do. So that's what I'm doing... Preparing! Yep. Gotta prepare before you can go out into the wilderness... 
+                // - There's lots and lots of preparation to do. So that's what I'm doing... Preparing! Yep. Gotta prepare before you can go out into the wilderness...
                 switch (selection) {
                     // $script:1227192907012254$
                     // - It's okay to be scared.
@@ -41,7 +41,7 @@ public class _11004483 : NpcScript {
                 return true;
             case 12:
                 // $script:1227192907012255$ 
-                // - I'm not scared! I'm c-cautious, okay? This is an important j-j-j-job. I'm <i>definitely</i> not stalling! 
+                // - I'm not scared! I'm c-cautious, okay? This is an important j-j-j-job. I'm <i>definitely</i> not stalling!
                 return true;
             default:
                 return true;

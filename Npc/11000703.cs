@@ -13,11 +13,11 @@ public class _11000703 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002830$ 
-                // - Ugh...  
+                // - Ugh... 
                 return true;
             case 20:
                 // $script:0831180407002832$ 
-                // - Time is of the essence. We must request backup right away. 
+                // - Time is of the essence. We must request backup right away.
                 return true;
             default:
                 return true;

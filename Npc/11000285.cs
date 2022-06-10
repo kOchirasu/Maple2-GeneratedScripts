@@ -13,11 +13,11 @@ public class _11000285 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001114$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0831180407001117$ 
-                // - Is there someone you love? 
+                // - Is there someone you love?
                 switch (selection) {
                     // $script:0831180407001118$
                     // - Yes.
@@ -33,7 +33,7 @@ public class _11000285 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407001120$ 
-                // - Good for you. Cherish them while you can. Have you ever lost someone you love? 
+                // - Good for you. Cherish them while you can. Have you ever lost someone you love?
                 switch (selection) {
                     // $script:0831180407001121$
                     // - Yes.
@@ -49,15 +49,15 @@ public class _11000285 : NpcScript {
                 return true;
             case 32:
                 // $script:0831180407001123$ 
-                // - I see. Sometimes love begets tragedy, but it's worth more than the pain.  
+                // - I see. Sometimes love begets tragedy, but it's worth more than the pain. 
                 return true;
             case 33:
                 // $script:0831180407001124$ 
-                // - I see. I daresay I understand your pain.  
+                // - I see. I daresay I understand your pain. 
                 return true;
             case 34:
                 // $script:0831180407001125$ 
-                // - I see. Let me give you some advice. Never take the ones you love for granted.  
+                // - I see. Let me give you some advice. Never take the ones you love for granted. 
                 return true;
             default:
                 return true;

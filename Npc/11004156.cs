@@ -13,11 +13,11 @@ public class _11004156 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010583$ 
-                // - Wahhh... 
+                // - Wahhh...
                 return true;
             case 10:
                 // $script:0806025707010584$ 
-                // - Yawn... Boooring. I think I liked working in $map:82000000$ better, even with the occasional beatings. 
+                // - Yawn... Boooring. I think I liked working in $map:82000000$ better, even with the occasional beatings.
                 return true;
             default:
                 return true;

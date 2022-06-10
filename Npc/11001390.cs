@@ -13,11 +13,11 @@ public class _11001390 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217193307005390$ 
-                // - Sigh... 
+                // - Sigh...
                 return true;
             case 30:
                 // $script:1223165107005568$ 
-                // - My daughter, $npcName:11001396[gender:1]$, is always lost in thought. What could keep her so preoccupied all day long? 
+                // - My daughter, $npcName:11001396[gender:1]$, is always lost in thought. What could keep her so preoccupied all day long?
                 switch (selection) {
                     // $script:1226235907005589$
                     // - Tell me about her.
@@ -28,9 +28,9 @@ public class _11001390 : NpcScript {
                 return true;
             case 31:
                 // $script:1223165107005569$ 
-                // - She used to be such a clever girl. Even the people in $map:02010002$ heard about her genius. 
+                // - She used to be such a clever girl. Even the people in $map:02010002$ heard about her genius.
                 // $script:1223165107005570$ 
-                // - But instead of going out and making something of herself, she came back to this small town. I'm happy to have her here, but I can't help but feel that she's wasting her talent... 
+                // - But instead of going out and making something of herself, she came back to this small town. I'm happy to have her here, but I can't help but feel that she's wasting her talent...
                 return true;
             default:
                 return true;

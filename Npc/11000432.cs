@@ -13,15 +13,15 @@ public class _11000432 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001803$ 
-                // - ... 
+                // - ...
                 return true;
             case 30:
                 // $script:0831180407001804$ 
-                // - I came here to rest. Stop bothering me. 
+                // - I came here to rest. Stop bothering me.
                 return true;
             case 40:
                 // $script:0831180407001805$ 
-                // - ... 
+                // - ...
                 switch (selection) {
                     // $script:0831180407001806$
                     // - $npcName:11000362[gender:0]$'s special...
@@ -32,7 +32,7 @@ public class _11000432 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407001807$ 
-                // - ... 
+                // - ...
                 return true;
             default:
                 return true;

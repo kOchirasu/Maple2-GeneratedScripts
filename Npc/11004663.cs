@@ -13,11 +13,11 @@ public class _11004663 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0603204607014946$ 
-                // - SCRIPTNPCNAM_0603204607014946_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0603204607014946_NAME:[F]Event
                 return true;
             case 30:
                 // $script:0603204607014947$ 
-                // - SCRIPTNPCNAM_0603204607014947_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0603204607014947_NAME:[F]Event
                 switch (selection) {
                     // $script:0613033007014979$
                     // - SCRIPTNPCNAM_0613033007014979_NAME:[F]Event
@@ -33,25 +33,25 @@ public class _11004663 : NpcScript {
                 return true;
             case 31:
                 // $script:0613033007014981$ 
-                // - SCRIPTNPCNAM_0613033007014981_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014981_NAME:[F]Event
                 // $script:0613033007014982$ 
-                // - SCRIPTNPCNAM_0613033007014982_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014982_NAME:[F]Event
                 // $script:0613033007014983$ 
-                // - SCRIPTNPCNAM_0613033007014983_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014983_NAME:[F]Event
                 // $script:0613033007014984$ 
-                // - SCRIPTNPCNAM_0613033007014984_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014984_NAME:[F]Event
                 // $script:0613033007014985$ 
-                // - SCRIPTNPCNAM_0613033007014985_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014985_NAME:[F]Event
                 // $script:0613033007014986$ 
-                // - SCRIPTNPCNAM_0613033007014986_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014986_NAME:[F]Event
                 return true;
             case 32:
                 // $script:0613033007014987$ 
-                // - SCRIPTNPCNAM_0613033007014987_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014987_NAME:[F]Event
                 // $script:0613033007014988$ 
-                // - SCRIPTNPCNAM_0613033007014988_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014988_NAME:[F]Event
                 // $script:0613033007014989$ 
-                // - SCRIPTNPCNAM_0613033007014989_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007014989_NAME:[F]Event
                 return true;
             default:
                 return true;

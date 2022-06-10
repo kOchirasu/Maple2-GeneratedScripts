@@ -13,11 +13,11 @@ public class _11001599 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006087$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 10:
                 // $script:0515180307006136$ 
-                // - Everyone seems to be a little heated. Don't forget, this is official Expedition business. 
+                // - Everyone seems to be a little heated. Don't forget, this is official Expedition business.
                 return true;
             default:
                 return true;

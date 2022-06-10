@@ -13,15 +13,15 @@ public class _11000529 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002267$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0831180407002270$ 
-                // - Dark Wind has changed too much. Now it's crushing the citizens under authoritarian rule instead of protecting them like they used to. I can't let this continue. 
+                // - Dark Wind has changed too much. Now it's crushing the citizens under authoritarian rule instead of protecting them like they used to. I can't let this continue.
                 return true;
             case 40:
                 // $script:0831180407002271$ 
-                // - $MyPCName$, do the people in this city look happy to you? 
+                // - $MyPCName$, do the people in this city look happy to you?
                 switch (selection) {
                     // $script:0831180407002272$
                     // - Yep!
@@ -37,11 +37,11 @@ public class _11000529 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407002274$ 
-                // - Then you're a fool. There's no point in discussing this further. Leave. 
+                // - Then you're a fool. There's no point in discussing this further. Leave.
                 return true;
             case 42:
                 // $script:0831180407002275$ 
-                // - Try to see through their deceptions. It's not hard to find the rotting heart of this city. 
+                // - Try to see through their deceptions. It's not hard to find the rotting heart of this city.
                 return true;
             default:
                 return true;

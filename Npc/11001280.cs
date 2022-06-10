@@ -13,11 +13,11 @@ public class _11001280 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1208234507004843$ 
-                // - I-I'm not... strong enough... 
+                // - I-I'm not... strong enough...
                 return true;
             case 30:
                 // $script:1208234507004846$ 
-                // - Gah! I failed to avenge Master Arazaad. Again! 
+                // - Gah! I failed to avenge Master Arazaad. Again!
                 switch (selection) {
                     // $script:1208234507004847$
                     // - You'll get your chance.
@@ -28,7 +28,7 @@ public class _11001280 : NpcScript {
                 return true;
             case 31:
                 // $script:1208234507004848$ 
-                // - Just wait. Perhaps I'm not strong enough now, but I'll keep training. And someday, I'll rend $npcName:11001231[gender:0]$ asunder! 
+                // - Just wait. Perhaps I'm not strong enough now, but I'll keep training. And someday, I'll rend $npcName:11001231[gender:0]$ asunder!
                 return true;
             default:
                 return true;

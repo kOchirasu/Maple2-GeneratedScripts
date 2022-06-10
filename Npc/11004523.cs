@@ -13,13 +13,13 @@ public class _11004523 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0103163407012500$ 
-                // - Beeep... Beeep... 
+                // - Beeep... Beeep...
                 return true;
             case 10:
                 // $script:0103163407012501$ 
-                // - Mathematical query: why was six afraid of seven? 
+                // - Mathematical query: why was six afraid of seven?
                 // $script:0103163407012502$ 
-                // - Answer: because seven ate nine. Ha! Ha! Ha! Ha! 
+                // - Answer: because seven ate nine. Ha! Ha! Ha! Ha!
                 return true;
             default:
                 return true;

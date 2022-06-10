@@ -13,11 +13,11 @@ public class _11004289 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0921211107011340$ 
-                // - For such an old hotel, I suppose this place has its charm. 
+                // - For such an old hotel, I suppose this place has its charm.
                 return true;
             case 10:
                 // $script:0921211107011341$ 
-                // - My cousin certainly devoted enough time and money to this place. He passed the hotel to me when he died, but I simply have no interest in running it. 
+                // - My cousin certainly devoted enough time and money to this place. He passed the hotel to me when he died, but I simply have no interest in running it.
                 return true;
             default:
                 return true;

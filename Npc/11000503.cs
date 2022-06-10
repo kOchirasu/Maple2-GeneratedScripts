@@ -13,13 +13,13 @@ public class _11000503 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002184$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 10:
                 // $script:0831180407002185$ 
-                // - Ah, $MyPCName$! Good to see you again. I made it home safely, all thanks to you. I thought Dad would be mad, but he let me in without saying a word.  
+                // - Ah, $MyPCName$! Good to see you again. I made it home safely, all thanks to you. I thought Dad would be mad, but he let me in without saying a word. 
                 // $script:0831180407002186$ 
-                // - I've decided to stay out of trouble and be good. Come back and visit, will you? 
+                // - I've decided to stay out of trouble and be good. Come back and visit, will you?
                 return true;
             default:
                 return true;

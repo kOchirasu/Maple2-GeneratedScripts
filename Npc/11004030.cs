@@ -13,11 +13,11 @@ public class _11004030 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010047$ 
-                // - Are lapenshards really the cause of all this? Just what are they? 
+                // - Are lapenshards really the cause of all this? Just what are they?
                 return true;
             case 20:
                 // $script:0614185307010048$ 
-                // - Are lapenshards really the cause of all this? Just what are they? 
+                // - Are lapenshards really the cause of all this? Just what are they?
                 return true;
             default:
                 return true;

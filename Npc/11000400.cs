@@ -13,15 +13,15 @@ public class _11000400 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001619$ 
-                // - How can I help you? 
+                // - How can I help you?
                 return true;
             case 20:
                 // $script:0831180407001621$ 
-                // - Dark Wind told me to take some time off, so I thought I'd take a vacation to the dam. Then I noticed that... thing... under the water. How am I supposed to rest now? 
+                // - Dark Wind told me to take some time off, so I thought I'd take a vacation to the dam. Then I noticed that... thing... under the water. How am I supposed to rest now?
                 return true;
             case 30:
                 // $script:0831180407001622$ 
-                // - Dark Wind told me to take some time off, so I thought I'd take a vacation to the dam. Then I noticed that... thing... under the water. How am I supposed to rest now? 
+                // - Dark Wind told me to take some time off, so I thought I'd take a vacation to the dam. Then I noticed that... thing... under the water. How am I supposed to rest now?
                 return true;
             default:
                 return true;

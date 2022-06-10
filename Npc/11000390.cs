@@ -13,15 +13,15 @@ public class _11000390 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001585$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 20:
                 // $script:0831180407001587$ 
-                // - We've been busy. People are still checking in, with no idea the empress's gathering has been canceled. 
+                // - We've been busy. People are still checking in, with no idea the empress's gathering has been canceled.
                 return true;
             case 30:
                 // $script:0831180407001588$ 
-                // - The empress is no longer holding court, but we're still booked up. I don't think most people have heard the news yet. 
+                // - The empress is no longer holding court, but we're still booked up. I don't think most people have heard the news yet.
                 return true;
             default:
                 return true;

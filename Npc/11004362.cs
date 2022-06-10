@@ -13,13 +13,13 @@ public class _11004362 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011773$ 
-                // - I never would have imagined that thing was real... 
+                // - I never would have imagined that thing was real...
                 return true;
             case 10:
                 // $script:1109213607011774$ 
-                // - Life is full of surprises. Case in point, that creature in our living room, celebrating with us... 
+                // - Life is full of surprises. Case in point, that creature in our living room, celebrating with us...
                 // $script:1120173007011851$ 
-                // - ...I guess I could get used to this. 
+                // - ...I guess I could get used to this.
                 return true;
             default:
                 return true;

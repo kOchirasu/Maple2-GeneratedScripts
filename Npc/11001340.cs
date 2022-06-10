@@ -13,11 +13,11 @@ public class _11001340 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005279$ 
-                // - Delicious food here! Get your delicious food! 
+                // - Delicious food here! Get your delicious food!
                 return true;
             case 40:
                 // $script:1217012607005283$ 
-                // - All my food is made with 100% love, guaranteed. You'll like 'em so much, you won't even notice if someone drops dead right next to you! They'll change your whole outlook on life! 
+                // - All my food is made with 100% love, guaranteed. You'll like 'em so much, you won't even notice if someone drops dead right next to you! They'll change your whole outlook on life!
                 return true;
             default:
                 return true;

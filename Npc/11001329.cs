@@ -13,13 +13,13 @@ public class _11001329 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005235$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 30:
                 // $script:1217012607005238$ 
-                // - Yesterday, 2895 guests passed on their way to $map:02010002$. Today, you are the 3527th guest. 
+                // - Yesterday, 2895 guests passed on their way to $map:02010002$. Today, you are the 3527th guest.
                 // $script:1227194507005707$ 
-                // - Ah... Why can't I simply forget my useless memories? Being able to remember everything is a curse! 
+                // - Ah... Why can't I simply forget my useless memories? Being able to remember everything is a curse!
                 return true;
             default:
                 return true;

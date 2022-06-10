@@ -13,11 +13,11 @@ public class _11000245 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001043$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 20:
                 // $script:0831180407001045$ 
-                // - Safety is the primary concern for folks who work in places like this. 
+                // - Safety is the primary concern for folks who work in places like this.
                 return true;
             default:
                 return true;

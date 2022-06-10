@@ -15,16 +15,16 @@ public class _11000612 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000870$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 20:
                 // $script:0831180610000872$ 
                 // - I hope you enjoyed your stay.
-Would you like to leave the Guild Lounge now? 
+                //   Would you like to leave the Guild Lounge now?
                 return true;
             case 10:
                 // $script:0831180610000871$ 
-                // - Only members can use the Guild Lounge. 
+                // - Only members can use the Guild Lounge.
                 return true;
             default:
                 return true;

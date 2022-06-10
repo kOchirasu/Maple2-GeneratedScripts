@@ -13,11 +13,11 @@ public class _11004297 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011375$ 
-                // - I said I wanted the best. <i>The best!</i> 
+                // - I said I wanted the best. <i>The best!</i>
                 return true;
             case 30:
                 // $script:1002141907011378$ 
-                // - I told my son to book me a room in the empire's finest hotel, and he put me up in <i>this</i> dump. Lo and behold, a picture frame dropped on my head while I slept, and now I'm dead! The other ghosts will laugh me out of town when they hear about this... 
+                // - I told my son to book me a room in the empire's finest hotel, and he put me up in <i>this</i> dump. Lo and behold, a picture frame dropped on my head while I slept, and now I'm dead! The other ghosts will laugh me out of town when they hear about this...
                 switch (selection) {
                     // $script:1002141907011379$
                     // - There, there. It's okay.
@@ -28,7 +28,7 @@ public class _11004297 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011380$ 
-                // - Just be careful around anything that hangs on a wall, okay? You never know when it'll fall! 
+                // - Just be careful around anything that hangs on a wall, okay? You never know when it'll fall!
                 return true;
             default:
                 return true;

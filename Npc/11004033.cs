@@ -13,11 +13,11 @@ public class _11004033 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010051$ 
-                // - Ugh, I hate field duty... 
+                // - Ugh, I hate field duty...
                 return true;
             case 20:
                 // $script:0614185307010052$ 
-                // - It's dangerous outside the blanket, $MyPCName$. 
+                // - It's dangerous outside the blanket, $MyPCName$.
                 return true;
             default:
                 return true;

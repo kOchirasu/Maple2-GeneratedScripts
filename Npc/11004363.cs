@@ -13,13 +13,13 @@ public class _11004363 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011775$ 
-                // - So much commotion here... What's the big deal about a tree and some presents? Chill already! 
+                // - So much commotion here... What's the big deal about a tree and some presents? Chill already!
                 return true;
             case 10:
                 // $script:1109213607011776$ 
-                // - What's so exciting about snow? It's just ice crystals. Nobody gets excited about an ice machine. 
+                // - What's so exciting about snow? It's just ice crystals. Nobody gets excited about an ice machine.
                 // $script:1120223207011901$ 
-                // - ...Though I admit, it's kinda pretty out here. 
+                // - ...Though I admit, it's kinda pretty out here.
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11004069 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0619202207010143$ 
-                // - It's breezy up here! 
+                // - It's breezy up here!
                 return true;
             case 10:
                 // $script:0619202207010144$ 
-                // - It's breezy up here! 
+                // - It's breezy up here!
                 // $script:0619202207010145$ 
-                // - Huh? What do <i>you</i> want? 
+                // - Huh? What do <i>you</i> want?
                 switch (selection) {
                     // $script:0619202207010146$
                     // - $npcName:11000367$'s owner is worried...
@@ -30,7 +30,7 @@ public class _11004069 : NpcScript {
                 return true;
             case 31:
                 // $script:0619202207010147$ 
-                // - That's too bad. $npcName:11000367$ and I were meant for each other. It was fate. 
+                // - That's too bad. $npcName:11000367$ and I were meant for each other. It was fate.
                 switch (selection) {
                     // $script:0619202207010148$
                     // - How'd you two meet, anyway?
@@ -41,9 +41,9 @@ public class _11004069 : NpcScript {
                 return true;
             case 32:
                 // $script:0619202207010149$ 
-                // - How is that any of your business? Let's just say that Skittle saved me from a really tough situation. 
+                // - How is that any of your business? Let's just say that Skittle saved me from a really tough situation.
                 // $script:0619202207010150$ 
-                // - You should just wish us happiness, okay? 
+                // - You should just wish us happiness, okay?
                 return true;
             default:
                 return true;

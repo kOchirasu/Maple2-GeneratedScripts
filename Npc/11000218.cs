@@ -13,11 +13,11 @@ public class _11000218 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000951$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 40:
                 // $script:0831180407000955$ 
-                // - People should be good to each other. You reap what you sow, as they say... 
+                // - People should be good to each other. You reap what you sow, as they say...
                 return true;
             default:
                 return true;

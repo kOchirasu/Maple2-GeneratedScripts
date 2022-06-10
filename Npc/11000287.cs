@@ -13,11 +13,11 @@ public class _11000287 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001127$ 
-                // - Check the altar. 
+                // - Check the altar.
                 return true;
             case 10:
                 // $script:0831180407001128$ 
-                // - This altar is covered in layers of dust, the result of ages of neglect. 
+                // - This altar is covered in layers of dust, the result of ages of neglect.
                 return true;
             default:
                 return true;

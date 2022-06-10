@@ -13,11 +13,11 @@ public class _11003220 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404083307008245$ 
-                // - And now we're fighting literal devils... 
+                // - And now we're fighting literal devils...
                 return true;
             case 10:
                 // $script:0404083307008246$ 
-                // - I never thought I'd miss my drill sergeant... 
+                // - I never thought I'd miss my drill sergeant...
                 return true;
             default:
                 return true;

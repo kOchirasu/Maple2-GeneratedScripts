@@ -13,11 +13,11 @@ public class _11003847 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0117175907009809$ 
-                // - I am the shadow that evil fears. 
+                // - I am the shadow that evil fears.
                 return true;
             case 10:
                 // $script:0117175907009810$ 
-                // - Hey there. Did you miss me? 
+                // - Hey there. Did you miss me?
                 return true;
             default:
                 return true;

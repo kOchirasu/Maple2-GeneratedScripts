@@ -13,11 +13,11 @@ public class _11001868 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1213150207007549$ 
-                // - Ah, nice to see you! 
+                // - Ah, nice to see you!
                 return true;
             case 20:
                 // $script:1213150207007551$ 
-                // - This mine is run by the Nerman Guild. We've got all the materials a blacksmith might need. 
+                // - This mine is run by the Nerman Guild. We've got all the materials a blacksmith might need.
                 return true;
             default:
                 return true;

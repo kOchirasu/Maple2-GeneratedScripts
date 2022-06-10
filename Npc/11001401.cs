@@ -13,11 +13,11 @@ public class _11001401 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217193307005401$ 
-                // - Th-this is too high up... 
+                // - Th-this is too high up...
                 return true;
             case 30:
                 // $script:1228164407005741$ 
-                // - I need to climb down sooner or later, but I'm worried that <i>they</i> are still down there. 
+                // - I need to climb down sooner or later, but I'm worried that <i>they</i> are still down there.
                 switch (selection) {
                     // $script:1228164407005742$
                     // - Who's they?
@@ -28,7 +28,7 @@ public class _11001401 : NpcScript {
                 return true;
             case 31:
                 // $script:1228164407005743$ 
-                // - Those robots! They were supposed to help us develop the desert, but they all went crazy! 
+                // - Those robots! They were supposed to help us develop the desert, but they all went crazy!
                 return true;
             default:
                 return true;

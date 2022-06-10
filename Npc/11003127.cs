@@ -13,11 +13,11 @@ public class _11003127 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0131174207007912$ 
-                // - The Lumiknights are watching you. 
+                // - The Lumiknights are watching you.
                 return true;
             case 10:
                 // $script:0207122607007946$ 
-                // - I don't know how big the Lumiknights' organization is, but our numbers in Tria are just a fraction of the whole. 
+                // - I don't know how big the Lumiknights' organization is, but our numbers in Tria are just a fraction of the whole.
                 return true;
             default:
                 return true;

@@ -13,23 +13,23 @@ public class _11004441 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1221144207012027$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 21:
                 // $script:1221144207012054$ functionID=1 
-                // - Absolutely! Hand it over, and I'll take a look at your $item:30001025$! Since you're paying, you can rest assured that the key will be useful. 
+                // - Absolutely! Hand it over, and I'll take a look at your $item:30001025$! Since you're paying, you can rest assured that the key will be useful.
                 return true;
             case 22:
                 // $script:1221144207012055$ functionID=1 
-                // - Sure! I provide 10 free analyses per day, out of the goodness of my heart. Even if the key is too old to be useful, you'll still get a little something. 
+                // - Sure! I provide 10 free analyses per day, out of the goodness of my heart. Even if the key is too old to be useful, you'll still get a little something.
                 return true;
             case 60:
                 // $script:1221144207012042$ 
-                // - I get excited thinking about the story behind all these old objects. 
+                // - I get excited thinking about the story behind all these old objects.
                 return true;
             case 90:
                 // $script:1221144207012051$ 
-                // - How can I help you? 
+                // - How can I help you?
                 switch (selection) {
                     // $script:1221144207012052$
                     // - Analyze my $item:30001025$, please.

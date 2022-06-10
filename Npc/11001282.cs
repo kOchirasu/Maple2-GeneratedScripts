@@ -13,11 +13,11 @@ public class _11001282 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1209020507004852$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:1209020507004855$ 
-                // - You're $npcName:11001267[gender:0]$'s student, aren't you? So the rumors were wrong... 
+                // - You're $npcName:11001267[gender:0]$'s student, aren't you? So the rumors were wrong...
                 switch (selection) {
                     // $script:1209020507004856$
                     // - Rumors? What rumors?
@@ -28,7 +28,7 @@ public class _11001282 : NpcScript {
                 return true;
             case 31:
                 // $script:1209020507004857$ 
-                // - W-well... No, I shouldn't. I don't want to upset you. 
+                // - W-well... No, I shouldn't. I don't want to upset you.
                 switch (selection) {
                     // $script:1209020507004858$
                     // - Don't tell me and see how upset I get!
@@ -39,9 +39,9 @@ public class _11001282 : NpcScript {
                 return true;
             case 32:
                 // $script:1209020507004859$ 
-                // - Fair enough. They say $npcName:11001267[gender:0]$ has one critical weakness: his student. 
+                // - Fair enough. They say $npcName:11001267[gender:0]$ has one critical weakness: his student.
                 // $script:1209020507004860$ 
-                // - They say his student is stubborn, arrogant, and too reckless to be trusted with any important task. 
+                // - They say his student is stubborn, arrogant, and too reckless to be trusted with any important task.
                 switch (selection) {
                     // $script:1209020507004861$
                     // - Well, I don't care <i>what</i> they say!
@@ -52,7 +52,7 @@ public class _11001282 : NpcScript {
                 return true;
             case 33:
                 // $script:1209020507004862$ 
-                // - Good. You shouldn't. You're definitely a worthy student to a man of his stature. 
+                // - Good. You shouldn't. You're definitely a worthy student to a man of his stature.
                 return true;
             default:
                 return true;

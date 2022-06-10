@@ -13,11 +13,11 @@ public class _11001274 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1207123607004816$ 
-                // - Barabung! Chochakka! 
+                // - Barabung! Chochakka!
                 return true;
             case 30:
                 // $script:1207123607004819$ 
-                // - Won't do it. 
+                // - Won't do it.
                 switch (selection) {
                     // $script:1207123607004820$
                     // - What won't you do?
@@ -28,7 +28,7 @@ public class _11001274 : NpcScript {
                 return true;
             case 31:
                 // $script:1207123607004821$ 
-                // - No talk. Stranger danger. 
+                // - No talk. Stranger danger.
                 switch (selection) {
                     // $script:1207123607004822$
                     // - I'm not a stranger. I'm $MyPCName$.
@@ -39,7 +39,7 @@ public class _11001274 : NpcScript {
                 return true;
             case 32:
                 // $script:1207123607004823$ 
-                // - $MyPCName$ stranger! No talk. 
+                // - $MyPCName$ stranger! No talk.
                 return true;
             default:
                 return true;

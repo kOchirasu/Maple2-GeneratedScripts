@@ -13,11 +13,11 @@ public class _11004038 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010061$ 
-                // - Ah, you're here. It's thanks to you that we were all able to find common ground and work as one. Terrun Calibre will do whatever it can to help you with the matter of Madrakan. 
+                // - Ah, you're here. It's thanks to you that we were all able to find common ground and work as one. Terrun Calibre will do whatever it can to help you with the matter of Madrakan.
                 return true;
             case 20:
                 // $script:0614185307010062$ 
-                // - Ah, you're here. It's thanks to you that we were all able to find common ground and work as one. Terrun Calibre will do whatever it can to help you with the matter of Madrakan. 
+                // - Ah, you're here. It's thanks to you that we were all able to find common ground and work as one. Terrun Calibre will do whatever it can to help you with the matter of Madrakan.
                 return true;
             default:
                 return true;

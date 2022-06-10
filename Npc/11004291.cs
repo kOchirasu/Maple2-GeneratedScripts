@@ -13,11 +13,11 @@ public class _11004291 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0921211107011344$ 
-                // - Say the word, and I'll get it done. 
+                // - Say the word, and I'll get it done.
                 return true;
             case 10:
                 // $script:0921211107011345$ 
-                // - Shall I take your bags? 
+                // - Shall I take your bags?
                 return true;
             default:
                 return true;

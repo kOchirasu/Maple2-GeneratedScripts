@@ -13,11 +13,11 @@ public class _11000393 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001596$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 40:
                 // $script:0831180407001599$ 
-                // - When my manager is angry, he screams at the top of his lungs and throws anything he can get his hands on. No one can stop him. All you can do is avoid him. 
+                // - When my manager is angry, he screams at the top of his lungs and throws anything he can get his hands on. No one can stop him. All you can do is avoid him.
                 return true;
             default:
                 return true;

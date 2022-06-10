@@ -13,15 +13,15 @@ public class _11004477 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012173$ 
-                // - Eee! It's him! It's really him! 
+                // - Eee! It's him! It's really him!
                 return true;
             case 10:
                 // $script:1227192907012174$ 
-                // - Eee! It's him! It's really him! 
+                // - Eee! It's him! It's really him!
                 // $script:1227192907012175$ 
-                // - Ugh! What are you? 
+                // - Ugh! What are you?
                 // $script:1227192907012176$ 
-                // - Don't jump out at me like that. When I saw your ugly mug, I thought you were some kind of freaky monster. 
+                // - Don't jump out at me like that. When I saw your ugly mug, I thought you were some kind of freaky monster.
                 switch (selection) {
                     // $script:1227192907012177$
                     // - Rude!
@@ -32,7 +32,7 @@ public class _11004477 : NpcScript {
                 return true;
             case 11:
                 // $script:1227192907012178$ 
-                // - Don't take it personally, uggo. Everyone is hideous compared to Blake! 
+                // - Don't take it personally, uggo. Everyone is hideous compared to Blake!
                 switch (selection) {
                     // $script:1227192907012179$
                     // - You need to get your eyes checked.
@@ -43,9 +43,9 @@ public class _11004477 : NpcScript {
                 return true;
             case 12:
                 // $script:1227192907012180$ 
-                // - A normie like you will never understand! Blake is beauty. Blake is the future! 
+                // - A normie like you will never understand! Blake is beauty. Blake is the future!
                 // $script:1227192907012181$ 
-                // - Just wait. Soon, everyone in Kritias will bow before Blake's handsomeness! 
+                // - Just wait. Soon, everyone in Kritias will bow before Blake's handsomeness!
                 return true;
             default:
                 return true;

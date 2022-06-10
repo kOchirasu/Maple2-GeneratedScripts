@@ -13,11 +13,11 @@ public class _11004377 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011791$ 
-                // - Happy holidays! 
+                // - Happy holidays!
                 return true;
             case 10:
                 // $script:1109213607011792$ 
-                // - Happy holidays! 
+                // - Happy holidays!
                 return true;
             default:
                 return true;

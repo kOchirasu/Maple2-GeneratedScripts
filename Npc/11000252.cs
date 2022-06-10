@@ -13,11 +13,11 @@ public class _11000252 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001053$ 
-                // - What do <i>you</i> want? 
+                // - What do <i>you</i> want?
                 return true;
             case 30:
                 // $script:0831180407001055$ 
-                // - Goldus never stops moving toward the future. There's nothing we can't make or sell. 
+                // - Goldus never stops moving toward the future. There's nothing we can't make or sell.
                 return true;
             default:
                 return true;

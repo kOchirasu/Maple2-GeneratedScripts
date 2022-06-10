@@ -13,13 +13,13 @@ public class _11000284 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001109$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407001112$ 
-                // - Getting along with humans is difficult. They're just so different! 
+                // - Getting along with humans is difficult. They're just so different!
                 // $script:0831180407001113$ 
-                // - I know there are many good humans out there... but it's not easy to find them. 
+                // - I know there are many good humans out there... but it's not easy to find them.
                 return true;
             default:
                 return true;

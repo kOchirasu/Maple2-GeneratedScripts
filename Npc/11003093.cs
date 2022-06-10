@@ -13,11 +13,11 @@ public class _11003093 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0207122607007938$ 
-                // - The Lumiknights are always watching, $MyPCName$. 
+                // - The Lumiknights are always watching, $MyPCName$.
                 return true;
             case 10:
                 // $script:0207122607007939$ 
-                // - I'll tell you more of the Lumiknights when the time is right. 
+                // - I'll tell you more of the Lumiknights when the time is right.
                 return true;
             default:
                 return true;

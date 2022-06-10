@@ -13,11 +13,11 @@ public class _11001732 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006977$ 
-                // - Accessing system. Confirming credentials... 
+                // - Accessing system. Confirming credentials...
                 return true;
             case 30:
                 // $script:0728024607006978$ 
-                // - Security systems will be put online if you do not verify your credentials. Failure to connect will require you to re-verify your credentials at the front gate. 
+                // - Security systems will be put online if you do not verify your credentials. Failure to connect will require you to re-verify your credentials at the front gate.
                 return true;
             default:
                 return true;

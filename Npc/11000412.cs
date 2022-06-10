@@ -13,11 +13,11 @@ public class _11000412 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001737$ 
-                // - Wassup? 
+                // - Wassup?
                 return true;
             case 20:
                 // $script:0831180407001739$ 
-                // - Sup, man? You wanna talk art? What do you think is the soul of art? 
+                // - Sup, man? You wanna talk art? What do you think is the soul of art?
                 switch (selection) {
                     // $script:0831180407001740$
                     // - I don't... know?
@@ -43,19 +43,19 @@ public class _11000412 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407001744$ 
-                // - Then lemme educate you, man! A real artist uses their tools to show the world their heart. That's the whole point, yo! 
+                // - Then lemme educate you, man! A real artist uses their tools to show the world their heart. That's the whole point, yo!
                 return true;
             case 22:
                 // $script:0831180407001745$ 
-                // - That's right! You're on point today! 
+                // - That's right! You're on point today!
                 return true;
             case 23:
                 // $script:0831180407001746$ 
-                // - Talent? Man, anyone can train up talent. That's not what's important.  
+                // - Talent? Man, anyone can train up talent. That's not what's important. 
                 return true;
             case 24:
                 // $script:0831180407001747$ 
-                // - Seriously? Man, I don't want to talk to you anymore. 
+                // - Seriously? Man, I don't want to talk to you anymore.
                 return true;
             default:
                 return true;

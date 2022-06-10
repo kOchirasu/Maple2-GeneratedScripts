@@ -13,11 +13,11 @@ public class _11000406 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001642$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407001644$ 
-                // - Sometimes I'm afraid to look in the mirror. 
+                // - Sometimes I'm afraid to look in the mirror.
                 switch (selection) {
                     // $script:0831180407001645$
                     // - Why?
@@ -28,7 +28,7 @@ public class _11000406 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407001646$ 
-                // - I might fall in love with myself! 
+                // - I might fall in love with myself!
                 switch (selection) {
                     // $script:0831180407001647$
                     // - But I'm already in love with you!
@@ -44,11 +44,11 @@ public class _11000406 : NpcScript {
                 return true;
             case 22:
                 // $script:0831180407001649$ 
-                // - I know how difficult it is to resist my incredible charms. Don't hate me because I can't love you in return. 
+                // - I know how difficult it is to resist my incredible charms. Don't hate me because I can't love you in return.
                 return true;
             case 23:
                 // $script:0831180407001650$ 
-                // - Hey, hey! What are you looking at? Look at me! Hello! Hey, can't you hear me? 
+                // - Hey, hey! What are you looking at? Look at me! Hello! Hey, can't you hear me?
                 return true;
             default:
                 return true;

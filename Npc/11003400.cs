@@ -13,11 +13,11 @@ public class _11003400 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0621181107008568$ 
-                // - Focus on your training. 
+                // - Focus on your training.
                 return true;
             case 10:
                 // $script:0621181107008569$ 
-                // - Willpower alone does not make you a knight. 
+                // - Willpower alone does not make you a knight.
                 return true;
             default:
                 return true;

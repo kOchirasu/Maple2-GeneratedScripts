@@ -13,13 +13,13 @@ public class _11000485 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002129$ 
-                // - What's up? 
+                // - What's up?
                 return true;
             case 30:
                 // $script:0831180407002132$ 
-                // - Down below, $npcName:22000321$ has claimed all of the $map:2000202$ for herself! 
+                // - Down below, $npcName:22000321$ has claimed all of the $map:2000202$ for herself!
                 // $script:0831180407002133$ 
-                // - She's bad, but... so cool! I want to be a monster mushroom like her! 
+                // - She's bad, but... so cool! I want to be a monster mushroom like her!
                 return true;
             default:
                 return true;

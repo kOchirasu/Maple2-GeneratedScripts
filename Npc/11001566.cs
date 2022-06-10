@@ -13,11 +13,11 @@ public class _11001566 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006054$ 
-                // - Impossible...  
+                // - Impossible... 
                 return true;
             case 10:
                 // $script:0515180307006109$ 
-                // - Wake up, $npcName:11001233[gender:1]$. We still need to avenge Arazaad...  
+                // - Wake up, $npcName:11001233[gender:1]$. We still need to avenge Arazaad... 
                 return true;
             default:
                 return true;

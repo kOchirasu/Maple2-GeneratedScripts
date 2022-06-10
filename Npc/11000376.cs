@@ -13,11 +13,11 @@ public class _11000376 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001544$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407001547$ 
-                // - Do you believe in aliens? I do! There has to be loads of intelligent creatures out there, the universe is huge! You should stop by some night and watch the stars with me. 
+                // - Do you believe in aliens? I do! There has to be loads of intelligent creatures out there, the universe is huge! You should stop by some night and watch the stars with me.
                 return true;
             default:
                 return true;

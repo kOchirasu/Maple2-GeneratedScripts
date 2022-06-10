@@ -13,11 +13,11 @@ public class _11000207 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000889$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407000891$ 
-                // - Big cargo ships come through here all the time. Sometimes I think the Barrota Trading Company is more successful than Goldus. 
+                // - Big cargo ships come through here all the time. Sometimes I think the Barrota Trading Company is more successful than Goldus.
                 return true;
             default:
                 return true;

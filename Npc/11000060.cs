@@ -13,11 +13,11 @@ public class _11000060 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000269$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000272$ 
-                // - $MyPCName$, are you also going to the mainland? 
+                // - $MyPCName$, are you also going to the mainland?
                 switch (selection) {
                     // $script:0831180407000273$
                     // - That's right.
@@ -33,13 +33,13 @@ public class _11000060 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000275$ 
-                // - You've made a good decision. I've stayed on this small island my whole life, but I want you to go see more of the this world. 
+                // - You've made a good decision. I've stayed on this small island my whole life, but I want you to go see more of the this world.
                 // $script:0831180407000276$ 
-                // - While you're there at the court, you might as well explore the rest of the mainland. I'd love for you to come back with tales of the things you saw. 
+                // - While you're there at the court, you might as well explore the rest of the mainland. I'd love for you to come back with tales of the things you saw.
                 return true;
             case 32:
                 // $script:0831180407000277$ 
-                // - Cross the sea to the mainland to experience more of what this world can offer.Go on, don't be afraid. 
+                // - Cross the sea to the mainland to experience more of what this world can offer.Go on, don't be afraid.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001479 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0106111607005765$ 
-                // - Do you have something to say to me? 
+                // - Do you have something to say to me?
                 return true;
             case 10:
                 // $script:0106111607005766$ 
-                // - I'm glad we've retrieved the Lumenstone, but the war with the Kargons is far from over. 
+                // - I'm glad we've retrieved the Lumenstone, but the war with the Kargons is far from over.
                 return true;
             default:
                 return true;

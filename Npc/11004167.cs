@@ -13,11 +13,11 @@ public class _11004167 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010589$ 
-                // - Is there something I can help you with? 
+                // - Is there something I can help you with?
                 return true;
             case 10:
                 // $script:0806025707010590$ 
-                // - The Royal Guard protects the Empress and all of $map:02000001$. That is why we must never allow our skills to dull. So long as there are threats to peace in this world, we will not rest. 
+                // - The Royal Guard protects the Empress and all of $map:02000001$. That is why we must never allow our skills to dull. So long as there are threats to peace in this world, we will not rest.
                 return true;
             default:
                 return true;

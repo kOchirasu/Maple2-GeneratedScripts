@@ -13,11 +13,11 @@ public class _11004169 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010593$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 10:
                 // $script:0806025707010594$ 
-                // - Guarding the armory is important work, but I'm glad Captain $npcName:11000119$ asked me to tag along. 
+                // - Guarding the armory is important work, but I'm glad Captain $npcName:11000119$ asked me to tag along.
                 switch (selection) {
                     // $script:0806025707010595$
                     // - Are you on duty?
@@ -28,7 +28,7 @@ public class _11004169 : NpcScript {
                 return true;
             case 11:
                 // $script:0806025707010596$ 
-                // - Actually, I'm on leave at the moment. The captain asked me to be in his squad for Mushking Royale! 
+                // - Actually, I'm on leave at the moment. The captain asked me to be in his squad for Mushking Royale!
                 return true;
             default:
                 return true;

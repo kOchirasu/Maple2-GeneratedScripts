@@ -13,11 +13,11 @@ public class _11000391 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001589$ 
-                // - What? 
+                // - What?
                 return true;
             case 20:
                 // $script:0831180407001591$ 
-                // - Have you just arrived in $map:02000001$? I came here three days ago and I'm already sick of this city. What a waste. 
+                // - Have you just arrived in $map:02000001$? I came here three days ago and I'm already sick of this city. What a waste.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000178 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000734$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000737$ 
-                // - My son is doing very important work at $map:02000001$ Palace. I couldn't provide for him when he was young, but he still grew into such a great man. I'm so proud of him.  
+                // - My son is doing very important work at $map:02000001$ Palace. I couldn't provide for him when he was young, but he still grew into such a great man. I'm so proud of him. 
                 return true;
             default:
                 return true;

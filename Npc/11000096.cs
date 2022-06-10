@@ -13,11 +13,11 @@ public class _11000096 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000375$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000378$ 
-                // - I sailed here with my girlfriend, $npc:11000151[gender:1]$. We're going to check out the Empress's court. 
+                // - I sailed here with my girlfriend, $npc:11000151[gender:1]$. We're going to check out the Empress's court.
                 switch (selection) {
                     // $script:0831180407000379$
                     // - So where is she?
@@ -28,15 +28,15 @@ public class _11000096 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000380$ 
-                // - I'm sure she's around here somewhere. She got off before I did. Man, she was so excited, she pushed through the crowd and ran ashore. Guess she didn't notice she left me behind! Ha, ha... 
+                // - I'm sure she's around here somewhere. She got off before I did. Man, she was so excited, she pushed through the crowd and ran ashore. Guess she didn't notice she left me behind! Ha, ha...
                 return true;
             case 40:
                 // $script:1219181807005430$ 
-                // - We finally made it to $map:02000062$! My lady and I are gonna have so much fun! 
+                // - We finally made it to $map:02000062$! My lady and I are gonna have so much fun!
                 return true;
             case 50:
                 // $script:0809153207007162$ 
-                // - We finally made it to $map:02000062$! My lady and I are gonna have so much fun! 
+                // - We finally made it to $map:02000062$! My lady and I are gonna have so much fun!
                 return true;
             default:
                 return true;

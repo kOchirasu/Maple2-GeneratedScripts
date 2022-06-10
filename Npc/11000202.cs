@@ -13,11 +13,11 @@ public class _11000202 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000880$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000883$ 
-                // - My arms are killing me! Why is it always me who gets punished? 
+                // - My arms are killing me! Why is it always me who gets punished?
                 return true;
             default:
                 return true;

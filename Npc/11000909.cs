@@ -13,15 +13,15 @@ public class _11000909 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003269$ 
-                // - If you can read this directive, follow the instructions in secret. 
+                // - If you can read this directive, follow the instructions in secret.
                 return true;
             case 10:
                 // $script:0831180407003270$ 
-                // - Access denied. Unauthorized personnel. 
+                // - Access denied. Unauthorized personnel.
                 return true;
             case 20:
                 // $script:0831180407003271$ 
-                // - Unauthorized personnel cannot view this directive. 
+                // - Unauthorized personnel cannot view this directive.
                 return true;
             default:
                 return true;

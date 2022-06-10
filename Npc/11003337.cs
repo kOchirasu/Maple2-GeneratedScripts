@@ -13,11 +13,11 @@ public class _11003337 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0510143807008461$ 
-                // - I will protect the lives of my men... No matter what... 
+                // - I will protect the lives of my men... No matter what...
                 return true;
             case 10:
                 // $script:0510145607008465$ 
-                // - Dark Wind doesn't give up so easily! 
+                // - Dark Wind doesn't give up so easily!
                 return true;
             default:
                 return true;

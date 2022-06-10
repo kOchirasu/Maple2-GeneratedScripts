@@ -13,11 +13,11 @@ public class _11003468 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008673$ 
-                // - <font color="#909090">(You can feel a breeze from beyond the wall. Is there a secret passage?)</font> 
+                // - <font color="#909090">(You can feel a breeze from beyond the wall. Is there a secret passage?)</font>
                 return true;
             case 10:
                 // $script:0706160807008674$ 
-                // - <font color="#909090">(You can feel a breeze from beyond the wall. Is there a secret passage?)</font> 
+                // - <font color="#909090">(You can feel a breeze from beyond the wall. Is there a secret passage?)</font>
                 return true;
             default:
                 return true;

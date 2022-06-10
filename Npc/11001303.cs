@@ -13,11 +13,11 @@ public class _11001303 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005022$ 
-                // - How may I help you look your best? 
+                // - How may I help you look your best?
                 return true;
             case 10:
                 // $script:1228224607005747$ 
-                // - The empress has great faith in you, $MyPCName$. Do not disappoint her. 
+                // - The empress has great faith in you, $MyPCName$. Do not disappoint her.
                 return true;
             default:
                 return true;

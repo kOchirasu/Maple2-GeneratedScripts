@@ -13,11 +13,11 @@ public class _11004037 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010059$ 
-                // - Even though everything's going crazy right now, it's reassuring to have you around. 
+                // - Even though everything's going crazy right now, it's reassuring to have you around.
                 return true;
             case 20:
                 // $script:0614185307010060$ 
-                // - Even though everything's going crazy right now, it's reassuring to have you around. 
+                // - Even though everything's going crazy right now, it's reassuring to have you around.
                 return true;
             default:
                 return true;

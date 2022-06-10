@@ -13,11 +13,11 @@ public class _11001717 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006968$ 
-                // - You'd better have a good reason for interrupting my training. 
+                // - You'd better have a good reason for interrupting my training.
                 return true;
             case 30:
                 // $script:0805021607007093$ 
-                // - I've given it some thought, but I still don't understand why some of us would leave the master's guidance to live in human cities like $map:02000001$. $MyPCName$, do you like this place? 
+                // - I've given it some thought, but I still don't understand why some of us would leave the master's guidance to live in human cities like $map:02000001$. $MyPCName$, do you like this place?
                 switch (selection) {
                     // $script:0805021607007094$
                     // - It's not too bad. 
@@ -33,7 +33,7 @@ public class _11001717 : NpcScript {
                 return true;
             case 31:
                 // $script:0805021607007096$ 
-                // - Hmph. If you have time to enjoy the sights, then you have time to train! 
+                // - Hmph. If you have time to enjoy the sights, then you have time to train!
                 switch (selection) {
                     // $script:0805021607007097$
                     // - Let's talk about something else.
@@ -44,7 +44,7 @@ public class _11001717 : NpcScript {
                 return true;
             case 40:
                 // $script:0805021607007098$ 
-                // - Yes... Yes, it is, isn't it? It hasn't escaped my notice that you've been training hard lately. Don't strain yourself. 
+                // - Yes... Yes, it is, isn't it? It hasn't escaped my notice that you've been training hard lately. Don't strain yourself.
                 switch (selection) {
                     // $script:0805021607007099$
                     // - Let's talk about something else.

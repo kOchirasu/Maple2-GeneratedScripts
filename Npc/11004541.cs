@@ -13,13 +13,13 @@ public class _11004541 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0110183907012675$ 
-                // - Ugh... I hate deadlines... 
+                // - Ugh... I hate deadlines...
                 return true;
             case 10:
                 // $script:0110183907012676$ 
-                // - Ugh... I hate deadlines... 
+                // - Ugh... I hate deadlines...
                 // $script:0110183907012677$ 
-                // - Here to gawk at the soldierettos? Get a good look and then be on your way. I can't concentrate with all you... all you tourists hanging about! 
+                // - Here to gawk at the soldierettos? Get a good look and then be on your way. I can't concentrate with all you... all you tourists hanging about!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003649 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009206$ 
-                // - Eh heh heh. 
+                // - Eh heh heh.
                 return true;
             case 10:
                 // $script:1109121007009207$ 
-                // - And what brings a youngster like you here, hm? 
+                // - And what brings a youngster like you here, hm?
                 switch (selection) {
                     // $script:1109121007009208$
                     // - I'm looking for someone.
@@ -28,7 +28,7 @@ public class _11003649 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009209$ 
-                // - Looking for someone, eh? Well, you're in luck! I know everybody here. So, who is it you're after, hm? 
+                // - Looking for someone, eh? Well, you're in luck! I know everybody here. So, who is it you're after, hm?
                 switch (selection) {
                     // $script:1109121007009210$
                     // - Oh, I think I can find them on my own.
@@ -39,7 +39,7 @@ public class _11003649 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009211$ 
-                // - Being tight-lipped about it, are you? $npcName:11003535[gender:1]$ trains her people well. 
+                // - Being tight-lipped about it, are you? $npcName:11003535[gender:1]$ trains her people well.
                 switch (selection) {
                     // $script:1109121007009212$
                     // - You're with Dark Wind?
@@ -50,7 +50,7 @@ public class _11003649 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009213$ 
-                // - Eh heh heh! Surprised? Even us old timers can help out sometimes. Anyway, you run along and tell her, "Eyes. Alpha. Blonde hair." 
+                // - Eh heh heh! Surprised? Even us old timers can help out sometimes. Anyway, you run along and tell her, "Eyes. Alpha. Blonde hair."
                 switch (selection) {
                     // $script:1109121007009214$
                     // - Will do!
@@ -61,7 +61,7 @@ public class _11003649 : NpcScript {
                 return true;
             case 14:
                 // $script:1109121007009215$ 
-                // - Eh heh heh! 
+                // - Eh heh heh!
                 return true;
             default:
                 return true;

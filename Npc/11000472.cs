@@ -13,15 +13,15 @@ public class _11000472 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002065$ 
-                // - Hmph. WHAT? 
+                // - Hmph. WHAT?
                 return true;
             case 20:
                 // $script:0831180407002067$ 
-                // - Real men aren't scared of spiders! They squash them flat as soon as they see them! 
+                // - Real men aren't scared of spiders! They squash them flat as soon as they see them!
                 return true;
             case 30:
                 // $script:0831180407002068$ 
-                // - This place behind me is loaded with spiders. If you're in a hurry, you can squash them yourself. 
+                // - This place behind me is loaded with spiders. If you're in a hurry, you can squash them yourself.
                 return true;
             default:
                 return true;

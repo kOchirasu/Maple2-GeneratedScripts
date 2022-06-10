@@ -13,11 +13,11 @@ public class _11001053 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003596$ 
-                // - My emotions got the best of me.  
+                // - My emotions got the best of me. 
                 return true;
             case 30:
                 // $script:0831180407003599$ 
-                // - The greatest martial artists aren't always the strongest ones. They're the ones who are humble and always put other people first.  
+                // - The greatest martial artists aren't always the strongest ones. They're the ones who are humble and always put other people first. 
                 return true;
             default:
                 return true;

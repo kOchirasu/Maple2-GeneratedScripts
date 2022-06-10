@@ -13,11 +13,11 @@ public class _11000225 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000979$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407000982$ 
-                // - Love isn't just about being with someone. Sometimes it's about their memory, too... 
+                // - Love isn't just about being with someone. Sometimes it's about their memory, too...
                 return true;
             default:
                 return true;

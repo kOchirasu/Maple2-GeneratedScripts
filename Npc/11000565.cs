@@ -13,11 +13,11 @@ public class _11000565 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002339$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 20:
                 // $script:0831180407002341$ 
-                // - I have the ability to meld with the darkness. What can you do? 
+                // - I have the ability to meld with the darkness. What can you do?
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001333 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005252$ 
-                // - Sigh... May I help you? 
+                // - Sigh... May I help you?
                 return true;
             case 30:
                 // $script:1217012607005255$ 
-                // - Judith is usually a good girl, but she can throw a tantrum like nobody's business. All because I refused to buy her a can of her favorite drink... 
+                // - Judith is usually a good girl, but she can throw a tantrum like nobody's business. All because I refused to buy her a can of her favorite drink...
                 return true;
             default:
                 return true;

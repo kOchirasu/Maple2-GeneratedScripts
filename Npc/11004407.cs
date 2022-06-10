@@ -13,11 +13,11 @@ public class _11004407 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1113161307011831$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 10:
                 // $script:1113161307011832$ 
-                // - The alliance needs Dark Wind now more than ever. 
+                // - The alliance needs Dark Wind now more than ever.
                 return true;
             default:
                 return true;

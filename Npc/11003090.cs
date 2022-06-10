@@ -13,11 +13,11 @@ public class _11003090 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0207122607007934$ 
-                // - I guess field duty isn't that bad... 
+                // - I guess field duty isn't that bad...
                 return true;
             case 10:
                 // $script:0207122607007935$ 
-                // - It's hard to keep the Shadow Gate staffed with enough soldiers. If any more rifts like this open up, Maple World could be in serious trouble. 
+                // - It's hard to keep the Shadow Gate staffed with enough soldiers. If any more rifts like this open up, Maple World could be in serious trouble.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001900 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1122193107007458$ 
-                // - Eve was right... 
+                // - Eve was right...
                 return true;
             case 30:
                 // $script:1122193107007461$ 
-                // - We've got to hold out long enough for Eve to get reinforcements. 
+                // - We've got to hold out long enough for Eve to get reinforcements.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000669 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002718$ 
-                // - WHAT?! 
+                // - WHAT?!
                 return true;
             case 30:
                 // $script:0831180407002721$ 
-                // - What are you doing here? How did you even GET here? 
+                // - What are you doing here? How did you even GET here?
                 switch (selection) {
                     // $script:0831180407002722$
                     // - Easily.
@@ -28,7 +28,7 @@ public class _11000669 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407002723$ 
-                // - Kid, I'm impressed. You made it this far, but it's time for you to go. Leave before something bad happens to you.  
+                // - Kid, I'm impressed. You made it this far, but it's time for you to go. Leave before something bad happens to you. 
                 switch (selection) {
                     // $script:0831180407002724$
                     // - Why?
@@ -39,11 +39,11 @@ public class _11000669 : NpcScript {
                 return true;
             case 32:
                 // $script:0831180407002725$ 
-                // - I stay well away from the basement levels. And I live here! 
+                // - I stay well away from the basement levels. And I live here!
                 // $script:0831180407002726$ 
-                // - I had to come down here today, but believe me... I can't WAIT to get back upstairs. 
+                // - I had to come down here today, but believe me... I can't WAIT to get back upstairs.
                 // $script:0831180407002727$ 
-                // - Don't try anything stupid. Just get out of here! 
+                // - Don't try anything stupid. Just get out of here!
                 return true;
             default:
                 return true;

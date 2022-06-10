@@ -13,11 +13,11 @@ public class _11004436 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1213154907011976$ 
-                // - I am the shadow that evil fears. 
+                // - I am the shadow that evil fears.
                 return true;
             case 10:
                 // $script:1213154907011977$ 
-                // - Hey there, $male:handsome,female:gorgeous$. After I've racked up some shore leave, what say we take a tour of Kritias's inns and test out their bed springs? 
+                // - Hey there, $male:handsome,female:gorgeous$. After I've racked up some shore leave, what say we take a tour of Kritias's inns and test out their bed springs?
                 return true;
             default:
                 return true;

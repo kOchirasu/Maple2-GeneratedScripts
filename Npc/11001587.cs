@@ -13,11 +13,11 @@ public class _11001587 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006075$ 
-                // - Ah, $MyPCName$! 
+                // - Ah, $MyPCName$!
                 return true;
             case 10:
                 // $script:0515180307006123$ 
-                // - There must be something about the power $npcName:11001231[gender:0]$  seeks in our ancestors' records. 
+                // - There must be something about the power $npcName:11001231[gender:0]$  seeks in our ancestors' records.
                 switch (selection) {
                     // $script:0515180307006124$
                     // - Why are you so sure?
@@ -28,13 +28,13 @@ public class _11001587 : NpcScript {
                 return true;
             case 11:
                 // $script:0515180307006125$ 
-                // - I encountered Holstatt in the Land of Darkness once. He said that Arazaad had kept a secret from us. That the real legacy of our ancestors was elsewhere.  
+                // - I encountered Holstatt in the Land of Darkness once. He said that Arazaad had kept a secret from us. That the real legacy of our ancestors was elsewhere. 
                 // $script:0515180307006126$ 
-                // - I don't know if he was lying or not. But if he wasn't, then the old records, which only Arazaad could read, must hold clue about the secret. Something to point us towards this so-called legacy.  
+                // - I don't know if he was lying or not. But if he wasn't, then the old records, which only Arazaad could read, must hold clue about the secret. Something to point us towards this so-called legacy. 
                 return true;
             case 20:
                 // $script:0517210007006136$ 
-                // - Why are you staring at me? 
+                // - Why are you staring at me?
                 switch (selection) {
                     // $script:0517210007006137$
                     // - I just wanted to see you.
@@ -60,23 +60,23 @@ public class _11001587 : NpcScript {
                 return true;
             case 21:
                 // $script:0517210007006141$ 
-                // - Ha... Weirdo...  
+                // - Ha... Weirdo... 
                 return true;
             case 22:
                 // $script:0517210007006142$ 
-                // - Y-you did? So did I. Ahem. 
+                // - Y-you did? So did I. Ahem.
                 return true;
             case 23:
                 // $script:0517210007006143$ 
-                // - Now is <i>not</i> the time for such things! 
+                // - Now is <i>not</i> the time for such things!
                 return true;
             case 24:
                 // $script:0517210007006144$ 
-                // - I'm a little busy right now. 
+                // - I'm a little busy right now.
                 return true;
             case 30:
                 // $script:0524142307006216$ 
-                // - There must be something about the power $npcName:11001231[gender:0]$ seeks in our ancestors' records. 
+                // - There must be something about the power $npcName:11001231[gender:0]$ seeks in our ancestors' records.
                 switch (selection) {
                     // $script:0524142307006217$
                     // - Why are you so sure?
@@ -87,11 +87,11 @@ public class _11001587 : NpcScript {
                 return true;
             case 31:
                 // $script:0524142307006218$ 
-                // - I encountered Holstatt in the Land of Darkness once. He said that Arazaad had kept a secret from us. That the real legacy of our ancestors was elsewhere.  
+                // - I encountered Holstatt in the Land of Darkness once. He said that Arazaad had kept a secret from us. That the real legacy of our ancestors was elsewhere. 
                 return true;
             case 32:
                 // $script:0524142307006219$ 
-                // - I don't know if he was lying or not. But if he wasn't, then the old records, which only Arazaad could read, must hold some clue about the secret. Something to point us towards this so-called legacy.  
+                // - I don't know if he was lying or not. But if he wasn't, then the old records, which only Arazaad could read, must hold some clue about the secret. Something to point us towards this so-called legacy. 
                 return true;
             default:
                 return true;

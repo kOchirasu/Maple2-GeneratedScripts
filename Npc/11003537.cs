@@ -13,11 +13,11 @@ public class _11003537 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1126150707011943$ 
-                // - It is time my order stood with the rest of the empire. 
+                // - It is time my order stood with the rest of the empire.
                 return true;
             case 20:
                 // $script:1126150707011944$ 
-                // - I'm listening. 
+                // - I'm listening.
                 switch (selection) {
                     // $script:1126150707011945$
                     // - What are the Lumiknights, exactly?
@@ -28,7 +28,7 @@ public class _11003537 : NpcScript {
                 return true;
             case 31:
                 // $script:1126150707011946$ 
-                // - The existence of the Lumiknights may no longer be a secret, but that doesn't mean I may speak freely of what we do. In accordance to the Pact of Dantalion, my tongue is bound. 
+                // - The existence of the Lumiknights may no longer be a secret, but that doesn't mean I may speak freely of what we do. In accordance to the Pact of Dantalion, my tongue is bound.
                 switch (selection) {
                     // $script:1126150707011947$
                     // - Your what is huh?
@@ -39,7 +39,7 @@ public class _11003537 : NpcScript {
                 return true;
             case 32:
                 // $script:1126150707011948$ 
-                // - Of course, if you apply the Third Law of the Equinox, I suppose it wouldn't hurt to let slip a word or two. So long as you remember your Rites of Obfuscation, of course. 
+                // - Of course, if you apply the Third Law of the Equinox, I suppose it wouldn't hurt to let slip a word or two. So long as you remember your Rites of Obfuscation, of course.
                 switch (selection) {
                     // $script:1126150707011949$
                     // - Of... of course...
@@ -50,7 +50,7 @@ public class _11003537 : NpcScript {
                 return true;
             case 33:
                 // $script:1126150707011950$ 
-                // - You can't take these things too lightly. I once spoke the Three Devastating Truths to an insuitably prepared koborc, and it inverted into a quasi-nonsubstantiated autoform. Ha-ha! 
+                // - You can't take these things too lightly. I once spoke the Three Devastating Truths to an insuitably prepared koborc, and it inverted into a quasi-nonsubstantiated autoform. Ha-ha!
                 switch (selection) {
                     // $script:1126150707011951$
                     // - Is that... funny...?
@@ -61,7 +61,7 @@ public class _11003537 : NpcScript {
                 return true;
             case 34:
                 // $script:1126150707011952$ 
-                // - You don't think so? I suppose my sense of humor is more sophisticated than most. 
+                // - You don't think so? I suppose my sense of humor is more sophisticated than most.
                 switch (selection) {
                     // $script:1126150707011953$
                     // - Anyway, about the Lumiknights?
@@ -72,7 +72,7 @@ public class _11003537 : NpcScript {
                 return true;
             case 35:
                 // $script:1126150707011954$ 
-                // - Before you can even begin to comprehend the Lumiknights, you must open your mind to the myriad possibilities of the universe. It can take years of study. Shall we begin with a light reading of the Tome of Bombastic Insensations? 
+                // - Before you can even begin to comprehend the Lumiknights, you must open your mind to the myriad possibilities of the universe. It can take years of study. Shall we begin with a light reading of the Tome of Bombastic Insensations?
                 switch (selection) {
                     // $script:1126150707011955$
                     // - You know what? Never mind.
@@ -83,11 +83,11 @@ public class _11003537 : NpcScript {
                 return true;
             case 36:
                 // $script:1126150707011956$ 
-                // - How unfortunate. Well, if you change your mind, you know where to find me. 
+                // - How unfortunate. Well, if you change your mind, you know where to find me.
                 return true;
             case 40:
                 // $script:1126150707011957$ 
-                // - You are not prepared. 
+                // - You are not prepared.
                 return true;
             default:
                 return true;

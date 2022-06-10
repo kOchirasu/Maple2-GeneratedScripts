@@ -13,11 +13,11 @@ public class _11001040 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003552$ 
-                // - The wind is so cold. 
+                // - The wind is so cold.
                 return true;
             case 30:
                 // $script:0831180407003555$ 
-                // - Maritime Leaguers are atmospheric, oceanic, and geologic specialists gathered to observe and collect information about the oceans and everything in it. 
+                // - Maritime Leaguers are atmospheric, oceanic, and geologic specialists gathered to observe and collect information about the oceans and everything in it.
                 return true;
             default:
                 return true;

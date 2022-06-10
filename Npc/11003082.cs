@@ -13,11 +13,11 @@ public class _11003082 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0113143107007764$ 
-                // - Sniff, sniff... Chorrie is scared... Too many evil people out there. 
+                // - Sniff, sniff... Chorrie is scared... Too many evil people out there.
                 return true;
             case 30:
                 // $script:0113143107007767$ 
-                // - No, no. Don't. I don't know anything. I really don't. 
+                // - No, no. Don't. I don't know anything. I really don't.
                 switch (selection) {
                     // $script:0113143107007768$
                     // - Aww, it's okay. Take it easy.
@@ -28,7 +28,7 @@ public class _11003082 : NpcScript {
                 return true;
             case 31:
                 // $script:0113143107007769$ 
-                // - Sob... No one knows how I feel. Why can't I be left alone? Sob... 
+                // - Sob... No one knows how I feel. Why can't I be left alone? Sob...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001556 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0617105607006360$ 
-                // - Our minds and bodies follow each other in harmony. Consider, the truly wise speak with wisdom, and also act with wisdom. 
+                // - Our minds and bodies follow each other in harmony. Consider, the truly wise speak with wisdom, and also act with wisdom.
                 return true;
             case 30:
                 // $script:0727223007006790$ 
-                // - Finally, you have arrived. 
+                // - Finally, you have arrived.
                 switch (selection) {
                     // $script:0727223007006791$
                     // - You summoned me?
@@ -28,9 +28,9 @@ public class _11001556 : NpcScript {
                 return true;
             case 40:
                 // $script:0727223007006792$ 
-                // - Indeed. Your training has brought you to an important crossroad. According to our traditions, it is time for you to set out on a journey to test your skills in the outside world. 
+                // - Indeed. Your training has brought you to an important crossroad. According to our traditions, it is time for you to set out on a journey to test your skills in the outside world.
                 // $script:0727223007006793$ 
-                // - However, the presence of this terrible darkness must be dealt with first. We can discuss your training later. 
+                // - However, the presence of this terrible darkness must be dealt with first. We can discuss your training later.
                 return true;
             default:
                 return true;

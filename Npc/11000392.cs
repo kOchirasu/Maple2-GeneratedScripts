@@ -13,13 +13,13 @@ public class _11000392 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001592$ 
-                // - Huh? 
+                // - Huh?
                 return true;
             case 20:
                 // $script:0831180407001594$ 
-                // - Did you hear the court was canceled? I thought it would be a big to-do, so I arrived two weeks ago. 
+                // - Did you hear the court was canceled? I thought it would be a big to-do, so I arrived two weeks ago.
                 // $script:0831180407001595$ 
-                // - And now it's canceled! Argh, I stayed at the hotel for two weeks for nothing! 
+                // - And now it's canceled! Argh, I stayed at the hotel for two weeks for nothing!
                 return true;
             default:
                 return true;

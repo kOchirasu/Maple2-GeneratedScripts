@@ -13,11 +13,11 @@ public class _11001342 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005288$ 
-                // - Sigh... This is getting tiring... 
+                // - Sigh... This is getting tiring...
                 return true;
             case 30:
                 // $script:1217012607005291$ 
-                // - You can't swat a bug in the water, but you can still spray it. 
+                // - You can't swat a bug in the water, but you can still spray it.
                 return true;
             default:
                 return true;

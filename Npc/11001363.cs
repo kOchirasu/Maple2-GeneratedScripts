@@ -13,11 +13,11 @@ public class _11001363 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215222907005046$ 
-                // - It's been too long since we gathered like this. 
+                // - It's been too long since we gathered like this.
                 return true;
             case 10:
                 // $script:1230171207005753$ 
-                // - You can return the necklace... later, and in person! 
+                // - You can return the necklace... later, and in person!
                 return true;
             default:
                 return true;

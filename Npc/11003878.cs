@@ -13,15 +13,15 @@ public class _11003878 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009872$ 
-                // - Welcome to $map:02000425$, the beautiful island of alchemy. 
+                // - Welcome to $map:02000425$, the beautiful island of alchemy.
                 return true;
             case 10:
                 // $script:0417135107009873$ 
-                // - Welcome to $map:02000425$, the beautiful island of alchemy. 
+                // - Welcome to $map:02000425$, the beautiful island of alchemy.
                 return true;
             case 20:
                 // $script:0419172107009857$ 
-                // - Welcome to $map:02000425$, the beautiful island of alchemy. 
+                // - Welcome to $map:02000425$, the beautiful island of alchemy.
                 return true;
             default:
                 return true;

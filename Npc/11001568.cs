@@ -13,15 +13,15 @@ public class _11001568 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006056$ 
-                // - Ah, $MyPCName$! 
+                // - Ah, $MyPCName$!
                 return true;
             case 10:
                 // $script:0515180307006111$ 
-                // - We can't give up yet. There's still so much to do! 
+                // - We can't give up yet. There's still so much to do!
                 return true;
             case 20:
                 // $script:0524142307006212$ 
-                // - We can't give up yet. There's still too much to do! 
+                // - We can't give up yet. There's still too much to do!
                 return true;
             default:
                 return true;

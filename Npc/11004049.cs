@@ -13,11 +13,11 @@ public class _11004049 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010071$ 
-                // - Would you like a carriage back to Tria? 
+                // - Would you like a carriage back to Tria?
                 return true;
             case 10:
                 // $script:0614185307010072$ 
-                // - Would you like a carriage back to Tria? 
+                // - Would you like a carriage back to Tria?
                 return true;
             default:
                 return true;

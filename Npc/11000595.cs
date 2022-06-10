@@ -13,11 +13,11 @@ public class _11000595 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002385$ 
-                // - Hm... That's...  
+                // - Hm... That's... 
                 return true;
             case 50:
                 // $script:0831180407002389$ 
-                // - Mm? Are you a traveler? 
+                // - Mm? Are you a traveler?
                 switch (selection) {
                     // $script:0831180407002390$
                     // - What are you doing here?
@@ -28,7 +28,7 @@ public class _11000595 : NpcScript {
                 return true;
             case 51:
                 // $script:0831180407002391$ 
-                // - Oh, me? I'm studying these creatures we call the fairfolk. All kinds of fairfolk inhabit forests like this. 
+                // - Oh, me? I'm studying these creatures we call the fairfolk. All kinds of fairfolk inhabit forests like this.
                 return true;
             default:
                 return true;

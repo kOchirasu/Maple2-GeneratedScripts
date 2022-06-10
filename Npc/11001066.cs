@@ -13,11 +13,11 @@ public class _11001066 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003630$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003633$ 
-                // - Waiting for the $map:02000184$ tour train? We're sorry, but it won't be operating for a while. 
+                // - Waiting for the $map:02000184$ tour train? We're sorry, but it won't be operating for a while.
                 return true;
             default:
                 return true;

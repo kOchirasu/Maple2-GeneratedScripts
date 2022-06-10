@@ -13,11 +13,11 @@ public class _11001060 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180306000373$ 
-                // - Do you have business with me? 
+                // - Do you have business with me?
                 return true;
             case 60:
                 // $script:0831180306000376$ 
-                // - I don't think I'll do business with you, $MyPCName$. I prefer to work with those who have $achieve:23200015$ Trophies. I apologize for any inconvenience. 
+                // - I don't think I'll do business with you, $MyPCName$. I prefer to work with those who have $achieve:23200015$ Trophies. I apologize for any inconvenience.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003160 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0306155707008063$ 
-                // - Oh, hello. 
+                // - Oh, hello.
                 return true;
             case 30:
                 // $script:0306155707008066$ 
-                // - I don't think anyone hates flowers, right? Everyone has to have a favorite flower or two. 
+                // - I don't think anyone hates flowers, right? Everyone has to have a favorite flower or two.
                 return true;
             default:
                 return true;

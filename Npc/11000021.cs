@@ -13,15 +13,15 @@ public class _11000021 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000106$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407000107$ 
-                // - My grandson is so rebellious that he's going to give me a heart attack. I miss the days when he would just listen. 
+                // - My grandson is so rebellious that he's going to give me a heart attack. I miss the days when he would just listen.
                 return true;
             case 40:
                 // $script:0831180407000110$ 
-                // - $npcName:11000054[gender:0]$ is as stubborn as a mule. Please find him before he leaves $map:63000001$. 
+                // - $npcName:11000054[gender:0]$ is as stubborn as a mule. Please find him before he leaves $map:63000001$.
                 return true;
             default:
                 return true;

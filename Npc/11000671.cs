@@ -13,15 +13,15 @@ public class _11000671 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002735$ 
-                // - Yes, here! 
+                // - Yes, here!
                 return true;
             case 10:
                 // $script:0831180407002736$ 
-                // - It's locked! You need a key! 
+                // - It's locked! You need a key!
                 return true;
             case 20:
                 // $script:0831180407002737$ 
-                // - Make sure to return books to where they belong! 
+                // - Make sure to return books to where they belong!
                 return true;
             default:
                 return true;

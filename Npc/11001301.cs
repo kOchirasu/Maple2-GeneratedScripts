@@ -13,11 +13,11 @@ public class _11001301 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005018$ 
-                // - $MyPCName$, what brings you to me? 
+                // - $MyPCName$, what brings you to me?
                 return true;
             case 10:
                 // $script:1215203907005019$ 
-                // - Were it not for the lumarigons, we would not have defeated the Demon King. We must go to Drachenheim's aid. 
+                // - Were it not for the lumarigons, we would not have defeated the Demon King. We must go to Drachenheim's aid.
                 return true;
             default:
                 return true;

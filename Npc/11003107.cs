@@ -13,11 +13,11 @@ public class _11003107 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0119135307007855$ 
-                // - There's nothing like a glass of something sweet to drink away your stress. 
+                // - There's nothing like a glass of something sweet to drink away your stress.
                 return true;
             case 30:
                 // $script:0119135307007858$ 
-                // - Are you stressed out? I formed the QuietMinds guild to help people escape from the many stresses of life. 
+                // - Are you stressed out? I formed the QuietMinds guild to help people escape from the many stresses of life.
                 switch (selection) {
                     // $script:0119135307007859$
                     // - I totally want to join your guild!
@@ -33,11 +33,11 @@ public class _11003107 : NpcScript {
                 return true;
             case 31:
                 // $script:0119135307007861$ 
-                // - Oh! I'm sorry, but my guild is already full. Hm... Well, I'm sure I'm not the only one who formed a guild to relax. There has to be another chill guild somewhere. Or you could start your own. 
+                // - Oh! I'm sorry, but my guild is already full. Hm... Well, I'm sure I'm not the only one who formed a guild to relax. There has to be another chill guild somewhere. Or you could start your own.
                 return true;
             case 32:
                 // $script:0119135307007862$ 
-                // - Ah, you must be quite content with your life. You're always welcome to visit if you need a place to rest and escape from reality. 
+                // - Ah, you must be quite content with your life. You're always welcome to visit if you need a place to rest and escape from reality.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004369 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011781$ 
-                // - I grow my own trees to decorate, you know. My commitment to the holidays cannot be questioned. 
+                // - I grow my own trees to decorate, you know. My commitment to the holidays cannot be questioned.
                 return true;
             case 10:
                 // $script:1109213607011782$ 
-                // - My favorite memory from my childhood is decorating our tree every year. Now that I tend the garden myself, it can be even grander. 
+                // - My favorite memory from my childhood is decorating our tree every year. Now that I tend the garden myself, it can be even grander.
                 return true;
             default:
                 return true;

@@ -13,16 +13,16 @@ public class _11000674 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000464$ 
-                // - <font color="#909090">(The altar has faded letters written on it.)</font> 
+                // - <font color="#909090">(The altar has faded letters written on it.)</font>
                 return true;
             case 10:
                 // $script:0831180610000465$ 
-                // - <font color="#909090">(Read the message.)</font> 
+                // - <font color="#909090">(Read the message.)</font>
                 // $script:0831180610000466$ 
                 // - <i>Shadow World is an angry land...
-Where no blessing upon anyone can make any difference.</i> 
+                //   Where no blessing upon anyone can make any difference.</i>
                 // $script:0831180610000467$ 
-                // - <i>Lo, if you are one who thirsts for blood, will you absorb the wrathful energy and rid yourself of $skill:70000029$?</i> 
+                // - <i>Lo, if you are one who thirsts for blood, will you absorb the wrathful energy and rid yourself of $skill:70000029$?</i>
                 switch (selection) {
                     // $script:0831180610000468$
                     // - Lose $skill:70000029$.
@@ -39,15 +39,15 @@ Where no blessing upon anyone can make any difference.</i>
             case 11:
                 // $script:0831180610000470$ functionID=1 
                 // - <i>The wrathful shadows have devoured every one of your blessings and taken over your mind.
-Now, you see that friendship is a myth, and everyone is your enemy!</i> 
+                //   Now, you see that friendship is a myth, and everyone is your enemy!</i>
                 return true;
             case 12:
                 // $script:0831180610000471$ 
-                // - <i>In the end, nothing can truly shield you from reality.</i> 
+                // - <i>In the end, nothing can truly shield you from reality.</i>
                 return true;
             case 20:
                 // $script:0831180610000472$ 
-                // - <font color="#909090">(Reading the words on the altar, Turka's anger is almost palpable.)</font> 
+                // - <font color="#909090">(Reading the words on the altar, Turka's anger is almost palpable.)</font>
                 return true;
             default:
                 return true;

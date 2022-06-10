@@ -13,11 +13,11 @@ public class _11000833 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003047$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003050$ 
-                // - Ooh, I hate wolves more than anything. They chew up our fences and take our sheep. I wish I could just move away... me and the sheep...  
+                // - Ooh, I hate wolves more than anything. They chew up our fences and take our sheep. I wish I could just move away... me and the sheep... 
                 return true;
             default:
                 return true;

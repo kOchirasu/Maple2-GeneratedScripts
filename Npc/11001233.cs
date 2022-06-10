@@ -13,11 +13,11 @@ public class _11001233 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1125194807004478$ 
-                // - Ugh... 
+                // - Ugh...
                 return true;
             case 30:
                 // $script:1125194807004481$ 
-                // - Ugh... I was injured by a trap, and $npc:11001244[gender:0]$ ran on ahead on his own. 
+                // - Ugh... I was injured by a trap, and $npc:11001244[gender:0]$ ran on ahead on his own.
                 switch (selection) {
                     // $script:1205222707004732$
                     // - What happened?
@@ -28,7 +28,7 @@ public class _11001233 : NpcScript {
                 return true;
             case 31:
                 // $script:1205222707004733$ 
-                // - We tracked $npcName:11001231[gender:0]$ and his Jibricia followers here, but they had already filled the passage with traps. I'm worried $npcName:11001244[gender:0]$ might be in danger. 
+                // - We tracked $npcName:11001231[gender:0]$ and his Jibricia followers here, but they had already filled the passage with traps. I'm worried $npcName:11001244[gender:0]$ might be in danger.
                 return true;
             default:
                 return true;

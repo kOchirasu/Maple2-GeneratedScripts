@@ -15,16 +15,16 @@ public class _11001091 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610001025$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 1:
                 // $script:0831180610001028$ 
                 // - You look a right mess! How about I treat you? It'll only be a measly $paneltyPrice$ mesos.
-Don't worry, I'm a real doctor! 
+                //   Don't worry, I'm a real doctor!
                 return true;
             case 10:
                 // $script:0831180610001029$ 
-                // - You don't look like you need my help right now, but you will eventually. Oh yes, trust me on this one. Bad things happen around here all the time.  
+                // - You don't look like you need my help right now, but you will eventually. Oh yes, trust me on this one. Bad things happen around here all the time. 
                 return true;
             default:
                 return true;

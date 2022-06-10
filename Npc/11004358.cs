@@ -13,11 +13,11 @@ public class _11004358 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011769$ 
-                // - Oh look, $MyPCName$. Snow! 
+                // - Oh look, $MyPCName$. Snow!
                 return true;
             case 10:
                 // $script:1109213607011770$ 
-                // - I always love snow for the holidays. 
+                // - I always love snow for the holidays.
                 return true;
             default:
                 return true;

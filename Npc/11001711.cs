@@ -13,11 +13,11 @@ public class _11001711 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006963$ 
-                // - Mm? What is it? 
+                // - Mm? What is it?
                 return true;
             case 30:
                 // $script:0728024507006995$ 
-                // - The more I look at this place, the more mystified I am. Almost as if... it yearns for something... 
+                // - The more I look at this place, the more mystified I am. Almost as if... it yearns for something...
                 return true;
             default:
                 return true;

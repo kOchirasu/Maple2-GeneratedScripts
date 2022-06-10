@@ -13,11 +13,11 @@ public class _11000615 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002514$ 
-                // - Huh? 
+                // - Huh?
                 return true;
             case 20:
                 // $script:0831180407002516$ 
-                // - The empire turned its back on these people when they needed it the most. Someone had to step in and protect them. And the empire will get what it deserves. 
+                // - The empire turned its back on these people when they needed it the most. Someone had to step in and protect them. And the empire will get what it deserves.
                 return true;
             default:
                 return true;

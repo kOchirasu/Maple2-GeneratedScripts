@@ -13,12 +13,12 @@ public class _11004157 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010585$ 
-                // - Meow! 
+                // - Meow!
                 return true;
             case 10:
                 // $script:0806025707010586$ 
                 // - Nom nom nom nom!
-<font color="#909090">(He flops his ears joyfully.)</font> 
+                //   <font color="#909090">(He flops his ears joyfully.)</font>
                 return true;
             default:
                 return true;

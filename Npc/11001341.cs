@@ -13,11 +13,11 @@ public class _11001341 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005284$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:1217012607005287$ 
-                // - Where are all these bugs coming from? They'll take over the skate park at this rate. Then Ludari City... and then, the world! 
+                // - Where are all these bugs coming from? They'll take over the skate park at this rate. Then Ludari City... and then, the world!
                 return true;
             default:
                 return true;

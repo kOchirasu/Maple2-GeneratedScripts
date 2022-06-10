@@ -13,11 +13,11 @@ public class _11003140 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0222124707007951$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 20:
                 // $script:0224093607007961$ 
-                // - Don't you just love the smell of my garden? My greatest joy is when I manage to reproduce extinct medicinal flowers. Heh...  
+                // - Don't you just love the smell of my garden? My greatest joy is when I manage to reproduce extinct medicinal flowers. Heh... 
                 return true;
             default:
                 return true;

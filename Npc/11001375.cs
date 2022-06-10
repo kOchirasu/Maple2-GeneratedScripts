@@ -13,13 +13,13 @@ public class _11001375 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217144507005356$ 
-                // - Wah! You startled me! 
+                // - Wah! You startled me!
                 return true;
             case 30:
                 // $script:1217144507005359$ 
-                // - Welcome! L-look, just ignore them and keep your eyes on me, okay? Eheheh... 
+                // - Welcome! L-look, just ignore them and keep your eyes on me, okay? Eheheh...
                 // $script:1217144507005360$ 
-                // - Eager to get out of here? Try the latest model sports car from Tuning Motors. Just start the engine and leave this dump in the dust! 
+                // - Eager to get out of here? Try the latest model sports car from Tuning Motors. Just start the engine and leave this dump in the dust!
                 return true;
             default:
                 return true;

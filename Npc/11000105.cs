@@ -13,11 +13,11 @@ public class _11000105 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000429$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000432$ 
-                // - Honey, if you're looking to make a splash in $map:02000001$'s social scene, you're gonna need to do something about that outfit. 
+                // - Honey, if you're looking to make a splash in $map:02000001$'s social scene, you're gonna need to do something about that outfit.
                 return true;
             default:
                 return true;

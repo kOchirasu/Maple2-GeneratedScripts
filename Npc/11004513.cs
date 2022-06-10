@@ -13,11 +13,11 @@ public class _11004513 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228182607012469$ 
-                // - My bullets always hit their mark! 
+                // - My bullets always hit their mark!
                 return true;
             case 10:
                 // $script:1228182607012470$ 
-                // - My bullets always hit their mark! 
+                // - My bullets always hit their mark!
                 return true;
             default:
                 return true;

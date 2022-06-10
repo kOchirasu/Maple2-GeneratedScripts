@@ -13,11 +13,11 @@ public class _11001950 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1123165007007496$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 10:
                 // $script:1208184307007548$ 
-                // - First, I'll learn how to play the harp. Then I'll let my hair down, and wear a flowing white gown, and spend all day plucking on the strings. I'll look so pretty! 
+                // - First, I'll learn how to play the harp. Then I'll let my hair down, and wear a flowing white gown, and spend all day plucking on the strings. I'll look so pretty!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000977 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003379$ 
-                // - What's a human doing in a place like this? 
+                // - What's a human doing in a place like this?
                 return true;
             case 20:
                 // $script:0831180407003381$ 
-                // - Only we kunkun can feel the flow of nature and foretell the weather.  
+                // - Only we kunkun can feel the flow of nature and foretell the weather. 
                 return true;
             default:
                 return true;

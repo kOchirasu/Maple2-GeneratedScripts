@@ -13,13 +13,12 @@ public class _11000405 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001640$ 
-                // - This is the Dark Wind Bulletin Board. 
+                // - This is the Dark Wind Bulletin Board.
                 return true;
             case 10:
                 // $script:0831180407001641$ 
                 // - Eliminate $npcName:29000023$ and bring me proof for your reward.
-
-- Captain $npcName:11000044[gender:0]$ 
+                //   - Captain $npcName:11000044[gender:0]$
                 return true;
             default:
                 return true;

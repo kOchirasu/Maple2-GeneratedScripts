@@ -13,11 +13,11 @@ public class _11003472 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0710202510001866$ 
-                // - Welcome! Pay 1 $item:30000869$ to spin $npc:11003472$! 
+                // - Welcome! Pay 1 $item:30000869$ to spin $npc:11003472$!
                 return true;
             case 30:
                 // $script:0710202510001867$ functionID=1 
-                // - Welcome! Pay me 5 $itemPlural:30000869$, and I'll let you spin the $npc:11003472$. How about it? Feeling lucky? 
+                // - Welcome! Pay me 5 $itemPlural:30000869$, and I'll let you spin the $npc:11003472$. How about it? Feeling lucky?
                 switch (selection) {
                     // $script:0710202510001868$
                     // - Pay 5 $itemPlural:30000869$ to spin once.
@@ -39,32 +39,32 @@ public class _11003472 : NpcScript {
             case 31:
                 // $script:0710202510001871$ functionID=1 buttonSet=16 
                 // - Spin the roulette for a chance to win great prizes!
-Come on, you know you want to! 
+                //   Come on, you know you want to!
                 // $script:0710202510001872$ buttonSet=1 
-                // - May Lady Luck blow you a kiss, $MyPCName$! 
+                // - May Lady Luck blow you a kiss, $MyPCName$!
                 return true;
             case 32:
                 // $script:0710202510001873$ functionID=1 
                 // - You don't have enough coins.
-Therefore, you need 5 <font color="#ffd200">$itemPlural:30000869$</font> to spin $npc:11003472$ once. 
+                //   Therefore, you need 5 <font color="#ffd200">$itemPlural:30000869$</font> to spin $npc:11003472$ once.
                 return true;
             case 40:
                 // $script:0710202510001874$ functionID=1 
-                // - To take a spin on the $npc:11003472$, you need 5 <font color="#ffd200">$itemPlural:30000869$</font>. Clear the event dungeon to get $itemPlural:30000869$! 
+                // - To take a spin on the $npc:11003472$, you need 5 <font color="#ffd200">$itemPlural:30000869$</font>. Clear the event dungeon to get $itemPlural:30000869$!
                 // $script:0710202510001875$ 
-                // - If you have $itemPlural:30000869$ to burn, be sure to come to $map:02000064$! 
+                // - If you have $itemPlural:30000869$ to burn, be sure to come to $map:02000064$!
                 return true;
             case 10:
                 // $script:0710202510001876$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0710202510001877$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             case 100:
                 // $script:0710202510001878$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0710202510001879$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             default:
                 return true;

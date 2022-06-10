@@ -13,11 +13,11 @@ public class _11003141 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0222124707007953$ 
-                // - What's the matter, dear? 
+                // - What's the matter, dear?
                 return true;
             case 20:
                 // $script:0224093607007962$ 
-                // - Cooking in the kitchen is fine, but I'll always prefer cooking outdoors for how liberating it feels. 
+                // - Cooking in the kitchen is fine, but I'll always prefer cooking outdoors for how liberating it feels.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001478 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0106111607005759$ 
-                // - $MyPCName$, what brings you to me? 
+                // - $MyPCName$, what brings you to me?
                 return true;
             case 30:
                 // $script:0106111607005762$ 
-                // - This $map:52010007$ has opened by the power of the Lumenstone in the Sanctuary of Light, somewhere in Nazkar Temple. 
+                // - This $map:52010007$ has opened by the power of the Lumenstone in the Sanctuary of Light, somewhere in Nazkar Temple.
                 switch (selection) {
                     // $script:0106111607005763$
                     // - What should I do now?
@@ -28,7 +28,7 @@ public class _11001478 : NpcScript {
                 return true;
             case 31:
                 // $script:0106111607005764$ 
-                // - There's only one thing to do. You must retrieve the Lumenstone before its chaotic light is consumed by darkness. 
+                // - There's only one thing to do. You must retrieve the Lumenstone before its chaotic light is consumed by darkness.
                 return true;
             default:
                 return true;

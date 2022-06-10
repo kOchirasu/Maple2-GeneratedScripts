@@ -13,13 +13,13 @@ public class _11004360 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011771$ 
-                // - Is it so much to ask that we have a normal celebration this year? 
+                // - Is it so much to ask that we have a normal celebration this year?
                 return true;
             case 10:
                 // $script:1109213607011772$ 
-                // - I've got a reputation as a know-it-all, but I can't imagine why anyone would do this to our family... 
+                // - I've got a reputation as a know-it-all, but I can't imagine why anyone would do this to our family...
                 // $script:1120173007011848$ 
-                // - I rely on science to explain things... but how can it explain <i>this</i>... 
+                // - I rely on science to explain things... but how can it explain <i>this</i>...
                 switch (selection) {
                     // $script:1120173007011849$
                     // - You should focus on helping $npcName:11004345[gender:1]$ out here.
@@ -30,7 +30,7 @@ public class _11004360 : NpcScript {
                 return true;
             case 11:
                 // $script:1120173007011850$ 
-                // - I'm not so sure about that, honestly. 
+                // - I'm not so sure about that, honestly.
                 return true;
             default:
                 return true;

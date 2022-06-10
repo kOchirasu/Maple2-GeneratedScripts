@@ -13,11 +13,11 @@ public class _11004468 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012113$ 
-                // - This is a placeholder line. 
+                // - This is a placeholder line.
                 return true;
             case 10:
                 // $script:1227192907012114$ 
-                // - This is a placeholder line. 
+                // - This is a placeholder line.
                 return true;
             default:
                 return true;

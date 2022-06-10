@@ -13,11 +13,11 @@ public class _11001339 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005275$ 
-                // - Skateboarding is harder than it looks. 
+                // - Skateboarding is harder than it looks.
                 return true;
             case 30:
                 // $script:1217012607005278$ 
-                // - Why is this so hard?! I can <i>visualize</i> myself doing these tricks, so why can't I actually <i>do</i> them?! 
+                // - Why is this so hard?! I can <i>visualize</i> myself doing these tricks, so why can't I actually <i>do</i> them?!
                 return true;
             default:
                 return true;

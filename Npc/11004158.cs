@@ -13,11 +13,11 @@ public class _11004158 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010587$ 
-                // - It's so close, but I can't reach it. It comes to me in the night and vanishes at dawn. 
+                // - It's so close, but I can't reach it. It comes to me in the night and vanishes at dawn.
                 return true;
             case 10:
                 // $script:0806025707010588$ 
-                // - Many things shine, not all of them valuable. 
+                // - Many things shine, not all of them valuable.
                 return true;
             default:
                 return true;

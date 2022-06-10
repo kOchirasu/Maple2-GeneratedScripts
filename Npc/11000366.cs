@@ -13,11 +13,11 @@ public class _11000366 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001511$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 20:
                 // $script:0831180407001513$ 
-                // - Do you know what makes cats so appealing? It's how independent they are! Though... it's possible for them to be too independent. Like $npcName:11000367$, for example. 
+                // - Do you know what makes cats so appealing? It's how independent they are! Though... it's possible for them to be too independent. Like $npcName:11000367$, for example.
                 return true;
             default:
                 return true;

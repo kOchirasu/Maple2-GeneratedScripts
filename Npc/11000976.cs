@@ -13,11 +13,11 @@ public class _11000976 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003376$ 
-                // - Wa-tcha! Hyoo! <i>That</i> is the sound of a master martial artist! 
+                // - Wa-tcha! Hyoo! <i>That</i> is the sound of a master martial artist!
                 return true;
             case 20:
                 // $script:0831180407003378$ 
-                // - Nothing is impossible for true martial artists. Do you want to become strong? It won't be easy.  
+                // - Nothing is impossible for true martial artists. Do you want to become strong? It won't be easy. 
                 return true;
             default:
                 return true;

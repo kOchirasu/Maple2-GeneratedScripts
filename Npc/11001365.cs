@@ -13,11 +13,11 @@ public class _11001365 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215222907005048$ 
-                // - Sigh... I'm so glad that everyone's safe. 
+                // - Sigh... I'm so glad that everyone's safe.
                 return true;
             case 10:
                 // $script:1230171207005755$ 
-                // - I hope the Blackstars leave me alone this time... I don't want a rematch with Vasara Chen... 
+                // - I hope the Blackstars leave me alone this time... I don't want a rematch with Vasara Chen...
                 return true;
             default:
                 return true;

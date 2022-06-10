@@ -13,11 +13,11 @@ public class _11001062 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180306000378$ 
-                // - You must be here to see me. 
+                // - You must be here to see me.
                 return true;
             case 40:
                 // $script:1208032606000568$ 
-                // - Mm? Is there something you'd like to trade? 
+                // - Mm? Is there something you'd like to trade?
                 switch (selection) {
                     // $script:1208032606000569$
                     // - I heard you collect $itemPlural:40100024$.
@@ -28,7 +28,7 @@ public class _11001062 : NpcScript {
                 return true;
             case 41:
                 // $script:1208032606000570$ 
-                // - You're pretty lucky if you find $itemPlural:40100024$, but I can't help you. I'm actually out of business. If you want to buy items, you'll have to shop elsewhere. 
+                // - You're pretty lucky if you find $itemPlural:40100024$, but I can't help you. I'm actually out of business. If you want to buy items, you'll have to shop elsewhere.
                 switch (selection) {
                     // $script:1208032606000571$
                     // - You're out of business?!
@@ -39,9 +39,9 @@ public class _11001062 : NpcScript {
                 return true;
             case 42:
                 // $script:1208032606000572$ 
-                // - Why does any businessman go out of business? I'm not making enough profit. 
+                // - Why does any businessman go out of business? I'm not making enough profit.
                 // $script:1208032606000573$ 
-                // - I'll either have to start selling different products or stop selling altogether... 
+                // - I'll either have to start selling different products or stop selling altogether...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004121 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010485$ 
-                // - I'll let you know if I detect any unusual movement inside the blast radius. 
+                // - I'll let you know if I detect any unusual movement inside the blast radius.
                 return true;
             case 10:
                 // $script:0720125407010486$ 
-                // - See something, say something! 
+                // - See something, say something!
                 return true;
             default:
                 return true;

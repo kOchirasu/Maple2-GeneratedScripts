@@ -13,11 +13,11 @@ public class _11004412 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1113161307011841$ 
-                // - It is time my order stood with the rest of the empire. 
+                // - It is time my order stood with the rest of the empire.
                 return true;
             case 10:
                 // $script:1113161307011842$ 
-                // - Whatever challenges this new land has in store for us, let them come. I will show them my true power. 
+                // - Whatever challenges this new land has in store for us, let them come. I will show them my true power.
                 return true;
             default:
                 return true;

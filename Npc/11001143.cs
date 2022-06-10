@@ -13,11 +13,11 @@ public class _11001143 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0915171007003945$ 
-                // - Hello! 
+                // - Hello!
                 return true;
             case 30:
                 // $script:0915171007003948$ 
-                // - Plenty of archaeologists would kill for the chance to see Ellin Ruins with their own eyes. Are you here to see the ruins yourself? 
+                // - Plenty of archaeologists would kill for the chance to see Ellin Ruins with their own eyes. Are you here to see the ruins yourself?
                 switch (selection) {
                     // $script:0915171007003949$
                     // - I'm not that interested in this old junk.
@@ -38,15 +38,15 @@ public class _11001143 : NpcScript {
                 return true;
             case 31:
                 // $script:0915171007003952$ 
-                // - Really? Not interested in all this history? Oh... Then maybe you've come to hunt monsters? Just look around, this place is teeming with them. 
+                // - Really? Not interested in all this history? Oh... Then maybe you've come to hunt monsters? Just look around, this place is teeming with them.
                 return true;
             case 32:
                 // $script:0915171007003953$ 
-                // - Really? You don't look like an archaeologist. Well, it's just nice to see someone interested in history. Stay as long as you like! 
+                // - Really? You don't look like an archaeologist. Well, it's just nice to see someone interested in history. Stay as long as you like!
                 return true;
             case 33:
                 // $script:0915171007003954$ 
-                // - Ah! A classic case of wanderlust, have we? Well, regardless, please be careful not to damage the ruins... And also, try not to get horribly mauled by monsters. 
+                // - Ah! A classic case of wanderlust, have we? Well, regardless, please be careful not to damage the ruins... And also, try not to get horribly mauled by monsters.
                 return true;
             default:
                 return true;

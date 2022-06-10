@@ -13,11 +13,11 @@ public class _11004182 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010626$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 10:
                 // $script:0806025707010627$ 
-                // - Simply hiding is no strategy for victory. Especially up against the likes of an expert tracker like Arazaad. 
+                // - Simply hiding is no strategy for victory. Especially up against the likes of an expert tracker like Arazaad.
                 return true;
             default:
                 return true;

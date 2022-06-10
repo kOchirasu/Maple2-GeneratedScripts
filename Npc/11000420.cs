@@ -13,15 +13,15 @@ public class _11000420 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001748$ 
-                // - You got something to say?  
+                // - You got something to say? 
                 return true;
             case 90:
                 // $script:0831180407001754$ 
-                // - Are you sightseeing? Head north to the condominium complex. The staff is nice, and it's really pretty around there. Just sayin'. 
+                // - Are you sightseeing? Head north to the condominium complex. The staff is nice, and it's really pretty around there. Just sayin'.
                 return true;
             case 100:
                 // $script:0831180407001755$ 
-                // - $MyPCName$, do you like fish? 
+                // - $MyPCName$, do you like fish?
                 switch (selection) {
                     // $script:0831180407001756$
                     // - Yep.
@@ -37,11 +37,11 @@ public class _11000420 : NpcScript {
                 return true;
             case 101:
                 // $script:0831180407001758$ 
-                // - Well $MyPCName$, you're more health-conscious than I thought. Fish is an excellent source of protein and other essential nutrients. 
+                // - Well $MyPCName$, you're more health-conscious than I thought. Fish is an excellent source of protein and other essential nutrients.
                 return true;
             case 102:
                 // $script:0831180407001759$ 
-                // - Oh, you should eat fish regularly. I thought you knew that, $MyPCName$. Do you only eat red meat? It's too fatty. Eating fish helps you lose weight. 
+                // - Oh, you should eat fish regularly. I thought you knew that, $MyPCName$. Do you only eat red meat? It's too fatty. Eating fish helps you lose weight.
                 return true;
             default:
                 return true;

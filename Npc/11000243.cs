@@ -13,11 +13,11 @@ public class _11000243 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001028$ 
-                // - Oh, can I help you? 
+                // - Oh, can I help you?
                 return true;
             case 20:
                 // $script:0831180407001031$ 
-                // - I don't know what to do... I think he's interested in me! 
+                // - I don't know what to do... I think he's interested in me!
                 switch (selection) {
                     // $script:0831180407001032$
                     // - I'm not really interested in you, sorry.
@@ -33,13 +33,13 @@ public class _11000243 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407001034$ 
-                // - Well... good! I'm not interested in you either, $MyPCName$. 
+                // - Well... good! I'm not interested in you either, $MyPCName$.
                 return true;
             case 22:
                 // $script:0831180407001035$ 
-                // - That guy over there, the tired one... Do you know that feeling you get when you make eye contact with someone special? 
+                // - That guy over there, the tired one... Do you know that feeling you get when you make eye contact with someone special?
                 // $script:0831180407001036$ 
-                // - Eeeee! What do I do? 
+                // - Eeeee! What do I do?
                 return true;
             default:
                 return true;

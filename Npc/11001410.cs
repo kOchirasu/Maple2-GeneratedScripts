@@ -13,11 +13,11 @@ public class _11001410 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217205907005407$ 
-                // - You came to gawk at the Meerkat Patrols?  
+                // - You came to gawk at the Meerkat Patrols? 
                 return true;
             case 40:
                 // $script:1222203907005494$ 
-                // - We all trust and rely on each other in the Meerkat Patrol. You could say we're a big happy family. 
+                // - We all trust and rely on each other in the Meerkat Patrol. You could say we're a big happy family.
                 switch (selection) {
                     // $script:1222203907005495$
                     // - What's the secret to your camaraderie?
@@ -28,9 +28,9 @@ public class _11001410 : NpcScript {
                 return true;
             case 41:
                 // $script:1222203907005496$ 
-                // - It's all thanks to our hardworking captain. We all look up to good old Captain $npcName:11001408[gender:0]$!  
+                // - It's all thanks to our hardworking captain. We all look up to good old Captain $npcName:11001408[gender:0]$! 
                 // $script:1222203907005497$ 
-                // - Since you're here, you should say hi to him. I bet he'll have some good advice for you. 
+                // - Since you're here, you should say hi to him. I bet he'll have some good advice for you.
                 return true;
             default:
                 return true;

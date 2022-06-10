@@ -13,11 +13,11 @@ public class _11001392 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217193307005392$ 
-                // - Brother, you look out of it. 
+                // - Brother, you look out of it.
                 return true;
             case 30:
                 // $script:1223165107005579$ 
-                // - I think brother is sick. He tries to keep me safe, but he's... 
+                // - I think brother is sick. He tries to keep me safe, but he's...
                 switch (selection) {
                     // $script:1223165107005580$
                     // - Where are your parents?
@@ -28,15 +28,15 @@ public class _11001392 : NpcScript {
                 return true;
             case 31:
                 // $script:1223165107005581$ 
-                // - I don't know where mom and dad are. Brother knows, but he won't tell me.  
+                // - I don't know where mom and dad are. Brother knows, but he won't tell me. 
                 return true;
             case 40:
                 // $script:1227015507005607$ 
-                // - <font color="#909090">($npcName:11001392[gender:1]$ opens and closes her mouth slowly, a blank look in her eyes.)</font> 
+                // - <font color="#909090">($npcName:11001392[gender:1]$ opens and closes her mouth slowly, a blank look in her eyes.)</font>
                 return true;
             case 50:
                 // $script:0201104007005865$ 
-                // - Thank you, $MyPCName$. 
+                // - Thank you, $MyPCName$.
                 return true;
             default:
                 return true;

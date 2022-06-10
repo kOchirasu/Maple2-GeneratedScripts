@@ -13,15 +13,15 @@ public class _11000188 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000826$ 
-                // - Cough, cough... Yes? 
+                // - Cough, cough... Yes?
                 return true;
             case 20:
                 // $script:0831180407000828$ 
-                // - I'm still cold... But I have to get better soon. My grandma is worried about me... Cough, cough...  
+                // - I'm still cold... But I have to get better soon. My grandma is worried about me... Cough, cough... 
                 return true;
             case 30:
                 // $script:0831180407000829$ 
-                // - I wonder what happened to my parents... Cough... I hope they're still out there... 
+                // - I wonder what happened to my parents... Cough... I hope they're still out there...
                 return true;
             default:
                 return true;

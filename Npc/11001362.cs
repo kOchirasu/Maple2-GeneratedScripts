@@ -13,13 +13,13 @@ public class _11001362 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215222907005045$ 
-                // - No one toys with my people and gets away with it. 
+                // - No one toys with my people and gets away with it.
                 return true;
             case 40:
                 // $script:1227194507005711$ 
-                // - You saved us all, but I'm not going to thank you twice. 
+                // - You saved us all, but I'm not going to thank you twice.
                 // $script:1227194507005712$ 
-                // - <i>Maybe</i> I'll treat you to a meal. 
+                // - <i>Maybe</i> I'll treat you to a meal.
                 return true;
             default:
                 return true;

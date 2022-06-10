@@ -13,7 +13,7 @@ public class _11003416 : NpcScript {
         switch (Id) {
             case 10:
                 // $script:0706142810001862$ functionID=1 
-                // - Do you want to empower your gear and become even stronger? Then trust me with your choicest items! I only accept armor at level 50 or above! 
+                // - Do you want to empower your gear and become even stronger? Then trust me with your choicest items! I only accept armor at level 50 or above!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003097 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0119135307007815$ 
-                // - Yo, what's up? 
+                // - Yo, what's up?
                 return true;
             case 30:
                 // $script:0119135307007818$ 
-                // - Yo, you looking for a guild? This is the Swag Wagon, a crew of hip-hop dancers. 
+                // - Yo, you looking for a guild? This is the Swag Wagon, a crew of hip-hop dancers.
                 switch (selection) {
                     // $script:0119135307007819$
                     // - I totally want to join your guild!
@@ -33,11 +33,11 @@ public class _11003097 : NpcScript {
                 return true;
             case 31:
                 // $script:0119135307007821$ 
-                // - I bet you do, but we're full up. You might be able to find another crew, or start your own. Don't expect to compete with us though, heh.  
+                // - I bet you do, but we're full up. You might be able to find another crew, or start your own. Don't expect to compete with us though, heh. 
                 return true;
             case 32:
                 // $script:0119135307007822$ 
-                // - I wasn't... Uhh, okay, whatever.  
+                // - I wasn't... Uhh, okay, whatever. 
                 return true;
             default:
                 return true;

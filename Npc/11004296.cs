@@ -13,11 +13,11 @@ public class _11004296 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011366$ 
-                // - How lovely! 
+                // - How lovely!
                 return true;
             case 30:
                 // $script:1002141907011369$ 
-                // - Tell me, what's the one thing you must never, ever forget when you travel? 
+                // - Tell me, what's the one thing you must never, ever forget when you travel?
                 switch (selection) {
                     // $script:1002141907011370$
                     // - Your wallet, of course.
@@ -33,7 +33,7 @@ public class _11004296 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011372$ 
-                // - Oh! I suppose your wallet <i>is</i> important. But is it the most important? Think harder! 
+                // - Oh! I suppose your wallet <i>is</i> important. But is it the most important? Think harder!
                 switch (selection) {
                     // $script:1002141907011373$
                     // - You can't travel without a suitcase.
@@ -44,7 +44,7 @@ public class _11004296 : NpcScript {
                 return true;
             case 32:
                 // $script:1002141907011374$ 
-                // - That's right! All of your most important things go in your suitcase, after all. If you're looking for something, you should always check your suitcase first. 
+                // - That's right! All of your most important things go in your suitcase, after all. If you're looking for something, you should always check your suitcase first.
                 return true;
             default:
                 return true;

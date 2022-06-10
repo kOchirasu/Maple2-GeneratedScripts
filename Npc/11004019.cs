@@ -13,11 +13,11 @@ public class _11004019 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010025$ 
-                // - Something's wrong... My fur's standing on end. 
+                // - Something's wrong... My fur's standing on end.
                 return true;
             case 20:
                 // $script:0614185307010026$ 
-                // - Something's wrong... My fur's standing on end. 
+                // - Something's wrong... My fur's standing on end.
                 return true;
             default:
                 return true;

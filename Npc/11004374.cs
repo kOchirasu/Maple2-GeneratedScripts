@@ -13,11 +13,11 @@ public class _11004374 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011785$ 
-                // - You want presents? Hee hee. 
+                // - You want presents? Hee hee.
                 return true;
             case 10:
                 // $script:1109213607011786$ 
-                // - You want presents? Hee hee. 
+                // - You want presents? Hee hee.
                 switch (selection) {
                     // $script:1120173007011859$
                     // - Never mind, I don't want it.
@@ -33,11 +33,11 @@ public class _11004374 : NpcScript {
                 return true;
             case 11:
                 // $script:1120173007011861$ 
-                // - $npcName:11004349[gender:0]$ do better now. $npcName:11004349[gender:0]$ is sad. 
+                // - $npcName:11004349[gender:0]$ do better now. $npcName:11004349[gender:0]$ is sad.
                 return true;
             case 12:
                 // $script:1120173007011862$ 
-                // - What want? $npcName:11004349[gender:0]$ do best! 
+                // - What want? $npcName:11004349[gender:0]$ do best!
                 switch (selection) {
                     // $script:1120173007011863$
                     // - $npcName:11004349[gender:0]$'s big heart is enough.
@@ -53,11 +53,11 @@ public class _11004374 : NpcScript {
                 return true;
             case 13:
                 // $script:1120173007011865$ 
-                // - $MyPCName$... better than Santa! $npcName:11004349[gender:0]$ happy! 
+                // - $MyPCName$... better than Santa! $npcName:11004349[gender:0]$ happy!
                 return true;
             case 14:
                 // $script:1120173007011866$ 
-                // - Sorry... $npcName:11004349[gender:0]$ no money. Sniff... Sorry. Very sorry. 
+                // - Sorry... $npcName:11004349[gender:0]$ no money. Sniff... Sorry. Very sorry.
                 switch (selection) {
                     // $script:1120173007011867$
                     // - $npcName:11004349[gender:0]$'s big heart is enough.

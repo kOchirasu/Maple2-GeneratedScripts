@@ -13,11 +13,11 @@ public class _11001058 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003613$ 
-                // - Will we ever see light again?  
+                // - Will we ever see light again? 
                 return true;
             case 30:
                 // $script:0831180407003616$ 
-                // - Everything in this world has light within it. I can see your light. It's warm. 
+                // - Everything in this world has light within it. I can see your light. It's warm.
                 return true;
             default:
                 return true;

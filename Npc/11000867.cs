@@ -13,13 +13,13 @@ public class _11000867 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003133$ 
-                // - Feel free to take a look around. 
+                // - Feel free to take a look around.
                 return true;
             case 40:
                 // $script:0831180407003137$ 
-                // - Bugs love delicious fruit. Just look at all these flies in my shop! That should tell you how sweet my fruit is. 
+                // - Bugs love delicious fruit. Just look at all these flies in my shop! That should tell you how sweet my fruit is.
                 // $script:0831180407003138$ 
-                // - My prices are lower than any supermarket's. Here, come try some samples. 
+                // - My prices are lower than any supermarket's. Here, come try some samples.
                 return true;
             default:
                 return true;

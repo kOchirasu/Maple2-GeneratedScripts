@@ -13,11 +13,11 @@ public class _11000652 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002677$ 
-                // - When can I get out of here? 
+                // - When can I get out of here?
                 return true;
             case 40:
                 // $script:0831180407002681$ 
-                // - Nine thousand nine hundred fifty-five... Nine thousand nine hundred fifty-six... 
+                // - Nine thousand nine hundred fifty-five... Nine thousand nine hundred fifty-six...
                 switch (selection) {
                     // $script:0831180407002682$
                     // - What are you doing?
@@ -28,11 +28,11 @@ public class _11000652 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407002683$ 
-                // - Are you blind? I'm working! I have to pull a million weeds to have my sentence reduced. Argh, and now you've made me lose count! 
+                // - Are you blind? I'm working! I have to pull a million weeds to have my sentence reduced. Argh, and now you've made me lose count!
                 return true;
             case 50:
                 // $script:1210061907004926$ 
-                // - Nine thousand nine hundred fifty-five... Nine thousand nine hundred fifty-six... 
+                // - Nine thousand nine hundred fifty-five... Nine thousand nine hundred fifty-six...
                 switch (selection) {
                     // $script:1210061907004927$
                     // - Do you know someone named $npcName:11001231[gender:0]$?
@@ -43,7 +43,7 @@ public class _11000652 : NpcScript {
                 return true;
             case 51:
                 // $script:1210061907004928$ 
-                // - ...Nine thousand nine hundred six... Drat! You made me lose count! 
+                // - ...Nine thousand nine hundred six... Drat! You made me lose count!
                 return true;
             default:
                 return true;

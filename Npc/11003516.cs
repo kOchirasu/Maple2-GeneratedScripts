@@ -13,11 +13,11 @@ public class _11003516 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008840$ 
-                // - What? 
+                // - What?
                 return true;
             case 30:
                 // $script:0817044507008843$ 
-                // - What? 
+                // - What?
                 switch (selection) {
                     // $script:0817044507008844$
                     // - Tell me about the five auras.
@@ -28,7 +28,7 @@ public class _11003516 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008845$ 
-                // - Lycaos live in the wastelands to the southwest. You can capture them to get their Enduring Health. 
+                // - Lycaos live in the wastelands to the southwest. You can capture them to get their Enduring Health.
                 switch (selection) {
                     // $script:0817044507008846$
                     // - Tell me about lycaos.
@@ -39,7 +39,7 @@ public class _11003516 : NpcScript {
                 return true;
             case 32:
                 // $script:0817044507008847$ 
-                // - They're not easy to capture. If you don't tie them up or stun them, they'll slip away. 
+                // - They're not easy to capture. If you don't tie them up or stun them, they'll slip away.
                 return true;
             default:
                 return true;

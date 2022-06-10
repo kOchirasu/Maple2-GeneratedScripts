@@ -13,11 +13,11 @@ public class _11001467 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1223035407005528$ 
-                // - Let's get to work. 
+                // - Let's get to work.
                 return true;
             case 30:
                 // $script:1223035407005531$ 
-                // - We have a saying in the construction industry: safety first. That means that it's none of my business if you do something stupid and get hurt! 
+                // - We have a saying in the construction industry: safety first. That means that it's none of my business if you do something stupid and get hurt!
                 return true;
             default:
                 return true;

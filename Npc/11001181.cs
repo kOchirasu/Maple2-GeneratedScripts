@@ -13,13 +13,13 @@ public class _11001181 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1014150507004129$ 
-                // - Ah, I should update my travel journal! 
+                // - Ah, I should update my travel journal!
                 return true;
             case 30:
                 // $script:1014150507004132$ 
-                // - Ah, a local! <font color="#ffd200">Yalario!</font> It always been my dream to explore strange new worlds, and seek out new life and new civilizations! Traveling this land has been an awesome experience. 
+                // - Ah, a local! <font color="#ffd200">Yalario!</font> It always been my dream to explore strange new worlds, and seek out new life and new civilizations! Traveling this land has been an awesome experience.
                 // $script:1014150507004133$ 
-                // - ...Ah, but I'm sure these sights seem so plain to you. Well, I hope I'll get to keep visiting new places and writing about them in my travel journal. 
+                // - ...Ah, but I'm sure these sights seem so plain to you. Well, I hope I'll get to keep visiting new places and writing about them in my travel journal.
                 switch (selection) {
                     // $script:1014150507004134$
                     // - Yala-what-io?
@@ -40,19 +40,19 @@ public class _11001181 : NpcScript {
                 return true;
             case 31:
                 // $script:1014150507004137$ 
-                // - New friend! This is how we greet strangers who we want to be our friends. $npcName:11001179[gender:0]$ shouted it out when we first arrived in $map:02000064$, so I guess it can also be used for villages. Well, at least it can be by our captain. 
+                // - New friend! This is how we greet strangers who we want to be our friends. $npcName:11001179[gender:0]$ shouted it out when we first arrived in $map:02000064$, so I guess it can also be used for villages. Well, at least it can be by our captain.
                 return true;
             case 32:
                 // $script:1014150507004138$ 
-                // - Of course! Setting foot in a new land, leaving proof of your journey... There's nothing more exciting! I bet everyone in the <b>Allicari Merchant Society</b> would agree. 
+                // - Of course! Setting foot in a new land, leaving proof of your journey... There's nothing more exciting! I bet everyone in the <b>Allicari Merchant Society</b> would agree.
                 return true;
             case 33:
                 // $script:1014150507004139$ 
-                // - I'm from a place far, far away! On the other side of the sea. To get there from here you have to go north... no wait, south... Err, east? We sort of stumbled upon this land by accident. My homeland is beautiful, although it's much different than here. 
+                // - I'm from a place far, far away! On the other side of the sea. To get there from here you have to go north... no wait, south... Err, east? We sort of stumbled upon this land by accident. My homeland is beautiful, although it's much different than here.
                 return true;
             case 40:
                 // $script:1026143107004294$ 
-                // - Ah, yalario! What can I do for you? 
+                // - Ah, yalario! What can I do for you?
                 switch (selection) {
                     // $script:1026143107004295$
                     // - I'm looking for some $item:30000421$.
@@ -63,7 +63,7 @@ public class _11001181 : NpcScript {
                 return true;
             case 41:
                 // $script:1026143107004296$ 
-                // - Ah, those. The smuggler called $npcName:11001212[gender:0]$ sells them, but I wouldn't do business with him if I were you. 
+                // - Ah, those. The smuggler called $npcName:11001212[gender:0]$ sells them, but I wouldn't do business with him if I were you.
                 switch (selection) {
                     // $script:1026143107004297$
                     // - Why do you say that?
@@ -74,7 +74,7 @@ public class _11001181 : NpcScript {
                 return true;
             case 42:
                 // $script:1026143107004298$ 
-                // - He snuck onto our vessel because he did not want to pay a simple fare. No one who does such a thing could be considered trustworthy. 
+                // - He snuck onto our vessel because he did not want to pay a simple fare. No one who does such a thing could be considered trustworthy.
                 switch (selection) {
                     // $script:1026143107004299$
                     // - Where can I find $npcName:11001212[gender:0]$ now?
@@ -85,7 +85,7 @@ public class _11001181 : NpcScript {
                 return true;
             case 43:
                 // $script:1026143107004300$ 
-                // - Captain $npcName:11001179[gender:0]$ kicked him off the ship. Last I saw, he was running off toward $map:03000014$. 
+                // - Captain $npcName:11001179[gender:0]$ kicked him off the ship. Last I saw, he was running off toward $map:03000014$.
                 return true;
             default:
                 return true;

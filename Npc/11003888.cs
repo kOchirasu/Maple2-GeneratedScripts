@@ -13,15 +13,15 @@ public class _11003888 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0515102507009930$ 
-                // - Listen closely to the waves. Can you hear the voice of the ocean? 
+                // - Listen closely to the waves. Can you hear the voice of the ocean?
                 return true;
             case 20:
                 // $script:0515102507009931$ 
-                // - Listen closely to the waves. Can you hear the voice of the ocean? 
+                // - Listen closely to the waves. Can you hear the voice of the ocean?
                 return true;
             case 30:
                 // $script:0515102507009932$ 
-                // - I'm sure you can quiet the angry seas. 
+                // - I'm sure you can quiet the angry seas.
                 return true;
             default:
                 return true;

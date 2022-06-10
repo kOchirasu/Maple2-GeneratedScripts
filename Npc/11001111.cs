@@ -13,11 +13,11 @@ public class _11001111 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0908154107003736$ 
-                // - Hmm...  
+                // - Hmm... 
                 return true;
             case 30:
                 // $script:0908154107003737$ 
-                // - The soul inside this orb... If it's left alone for too long, it'll be swallowed by the enormous darkness that is the Shadow World. 
+                // - The soul inside this orb... If it's left alone for too long, it'll be swallowed by the enormous darkness that is the Shadow World.
                 return true;
             default:
                 return true;

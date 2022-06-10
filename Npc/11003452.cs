@@ -13,11 +13,11 @@ public class _11003452 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008659$ 
-                // - It's a family name. 
+                // - It's a family name.
                 return true;
             case 10:
                 // $script:0706160807008660$ 
-                // - You didn't think I'd actually be a pig, did you? 
+                // - You didn't think I'd actually be a pig, did you?
                 return true;
             default:
                 return true;

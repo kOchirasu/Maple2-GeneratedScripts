@@ -13,11 +13,11 @@ public class _11004314 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0928133807011354$ 
-                // - I am the shadow that evil fears. 
+                // - I am the shadow that evil fears.
                 return true;
             case 10:
                 // $script:0928133807011355$ 
-                // - My agents can't get past the insane AI that's controlling most of Kritias! I feel so... frustrated. 
+                // - My agents can't get past the insane AI that's controlling most of Kritias! I feel so... frustrated.
                 return true;
             default:
                 return true;

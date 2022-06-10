@@ -13,11 +13,11 @@ public class _11000986 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003398$ 
-                // - That was the only way to show my gratitude... Sniff...  
+                // - That was the only way to show my gratitude... Sniff... 
                 return true;
             case 20:
                 // $script:0831180407003400$ 
-                // - There are many stones yet unknown to the world. The ones that shine aren't the only beautiful ones.  
+                // - There are many stones yet unknown to the world. The ones that shine aren't the only beautiful ones. 
                 return true;
             default:
                 return true;

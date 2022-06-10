@@ -13,13 +13,13 @@ public class _11004233 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0809223207010916$ 
-                // - You've protected the lady from harm once again. I'm in your debt. 
+                // - You've protected the lady from harm once again. I'm in your debt.
                 return true;
             case 10:
                 // $script:0809223207010917$ 
-                // - You've protected the lady from harm once again. I'm in your debt. 
+                // - You've protected the lady from harm once again. I'm in your debt.
                 // $script:0809223207010918$ 
-                // - The lady's happiness is my happiness. Please accept my thanks on her behalf. 
+                // - The lady's happiness is my happiness. Please accept my thanks on her behalf.
                 return true;
             default:
                 return true;

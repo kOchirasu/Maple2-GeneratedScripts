@@ -13,11 +13,11 @@ public class _11001133 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911192907003875$ 
-                // - Do you have business with me? 
+                // - Do you have business with me?
                 return true;
             case 30:
                 // $script:0911192907003878$ 
-                // - I'm trapped here! There are monsters everywhere. I knew this place was dangerous, but... 
+                // - I'm trapped here! There are monsters everywhere. I knew this place was dangerous, but...
                 switch (selection) {
                     // $script:0911192907003879$
                     // - Then why did you come here?
@@ -28,7 +28,7 @@ public class _11001133 : NpcScript {
                 return true;
             case 31:
                 // $script:0911192907003880$ 
-                // - I have my reasons. 
+                // - I have my reasons.
                 return true;
             default:
                 return true;

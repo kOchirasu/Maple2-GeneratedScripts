@@ -13,11 +13,11 @@ public class _11001520 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0515211707006107$ 
-                // - Nice to meet you! 
+                // - Nice to meet you!
                 return true;
             case 10:
                 // $script:0515211707006108$ 
-                // - I'm honored to join the Starlight Expedition. The captain of the guard sent me to help $npc:11000076[gender:0]$. I intend to win glory for the guard! 
+                // - I'm honored to join the Starlight Expedition. The captain of the guard sent me to help $npc:11000076[gender:0]$. I intend to win glory for the guard!
                 return true;
             default:
                 return true;

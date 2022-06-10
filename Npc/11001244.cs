@@ -13,11 +13,11 @@ public class _11001244 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1203181207004687$ 
-                // - There's a lingering aura of runic magic... I must be close. 
+                // - There's a lingering aura of runic magic... I must be close.
                 return true;
             case 30:
                 // $script:1203181207004690$ 
-                // - $MyPCName$?! What are you doing here? You  were a fool to come!  
+                // - $MyPCName$?! What are you doing here? You  were a fool to come! 
                 return true;
             default:
                 return true;

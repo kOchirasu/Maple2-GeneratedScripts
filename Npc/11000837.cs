@@ -13,11 +13,11 @@ public class _11000837 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003064$ 
-                // - Shush, I'm on a mission right now. Please don't interrupt me. 
+                // - Shush, I'm on a mission right now. Please don't interrupt me.
                 return true;
             case 30:
                 // $script:0831180407003067$ 
-                // - Even the slipperiest suspect can't escape from me once I set my sights on them. 
+                // - Even the slipperiest suspect can't escape from me once I set my sights on them.
                 return true;
             default:
                 return true;

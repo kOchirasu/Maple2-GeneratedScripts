@@ -13,11 +13,11 @@ public class _11000848 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003103$ 
-                // - What is it? I'm doing something really important. Please don't distract me. 
+                // - What is it? I'm doing something really important. Please don't distract me.
                 return true;
             case 30:
                 // $script:0831180407003106$ 
-                // - The world keeps changing, and our technology and science leads the way. Mark my words, I'll usher in a new era with my work.  
+                // - The world keeps changing, and our technology and science leads the way. Mark my words, I'll usher in a new era with my work. 
                 return true;
             default:
                 return true;

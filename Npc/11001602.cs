@@ -13,11 +13,11 @@ public class _11001602 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006090$ 
-                // - ...What? 
+                // - ...What?
                 return true;
             case 10:
                 // $script:0515180307006139$ 
-                // - Enough with the preamble. It's time for the main event. 
+                // - Enough with the preamble. It's time for the main event.
                 return true;
             default:
                 return true;

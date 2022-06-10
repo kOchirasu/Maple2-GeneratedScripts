@@ -13,11 +13,11 @@ public class _11000462 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002052$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 50:
                 // $script:0831180407002056$ 
-                // - What brings you to $map:02000107$? Since you're here, I was thinking about changing up my skin tone again. Do you think I should do it? 
+                // - What brings you to $map:02000107$? Since you're here, I was thinking about changing up my skin tone again. Do you think I should do it?
                 return true;
             default:
                 return true;

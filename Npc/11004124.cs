@@ -13,11 +13,11 @@ public class _11004124 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010491$ 
-                // - The road to victory is paved with good intel. 
+                // - The road to victory is paved with good intel.
                 return true;
             case 10:
                 // $script:0720125407010492$ 
-                // - I've never seen anything so spooky. 
+                // - I've never seen anything so spooky.
                 return true;
             default:
                 return true;

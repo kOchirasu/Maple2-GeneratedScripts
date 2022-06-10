@@ -13,11 +13,11 @@ public class _11200005 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0518100907008515$ 
-                // - The guild could use your help. You will be compensated! 
+                // - The guild could use your help. You will be compensated!
                 return true;
             case 30:
                 // $script:0518100907008518$ 
-                // - Complete this simple task, and you will get guild experience, funds, and some experience for yourself, too! Note that you can't start daily quests until you've been in the guild for a day, and you can't start weekly quests until you've been in the guild for a week. 
+                // - Complete this simple task, and you will get guild experience, funds, and some experience for yourself, too! Note that you can't start daily quests until you've been in the guild for a day, and you can't start weekly quests until you've been in the guild for a week.
                 return true;
             default:
                 return true;

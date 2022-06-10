@@ -13,11 +13,11 @@ public class _11004466 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012101$ 
-                // - All's we—Huh?! You're an outlander! 
+                // - All's we—Huh?! You're an outlander!
                 return true;
             case 10:
                 // $script:1227192907012102$ 
-                // - All's we—Huh?! You're an outlander! 
+                // - All's we—Huh?! You're an outlander!
                 return true;
             default:
                 return true;

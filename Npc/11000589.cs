@@ -13,11 +13,11 @@ public class _11000589 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1121222006000847$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 10:
                 // $script:1121222006000848$ 
-                // - $map:02000023$-style buildings are really cool on the inside. 
+                // - $map:02000023$-style buildings are really cool on the inside.
                 return true;
             default:
                 return true;

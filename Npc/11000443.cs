@@ -13,15 +13,15 @@ public class _11000443 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001863$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 20:
                 // $script:0831180407001865$ 
-                // - If we don't get that money back, it's coming out of <i>my</i> paycheck... 
+                // - If we don't get that money back, it's coming out of <i>my</i> paycheck...
                 return true;
             case 30:
                 // $script:0831180407001866$ 
-                // - I don't know who's worse, the boss or the robbers. 
+                // - I don't know who's worse, the boss or the robbers.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004052 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010077$ 
-                // - The full might of the empire stands behind the Frontier Foundation. We too will stand against the darkness. 
+                // - The full might of the empire stands behind the Frontier Foundation. We too will stand against the darkness.
                 return true;
             case 10:
                 // $script:0614185307010078$ 
-                // - The full might of the empire stands behind the Frontier Foundation. We too will stand against the darkness. 
+                // - The full might of the empire stands behind the Frontier Foundation. We too will stand against the darkness.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001720 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006971$ 
-                // - You have something to say to me? 
+                // - You have something to say to me?
                 return true;
             case 30:
                 // $script:0728024507007019$ 
-                // - Lava and ice... an unlikely, but breathtaking, view. It reminds me of you, $npcName:11001711[gender:1]$, and myself. 
+                // - Lava and ice... an unlikely, but breathtaking, view. It reminds me of you, $npcName:11001711[gender:1]$, and myself.
                 return true;
             default:
                 return true;

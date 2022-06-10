@@ -13,11 +13,11 @@ public class _11000149 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000635$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407000637$ 
-                // - Have you seen a puppy around here? 
+                // - Have you seen a puppy around here?
                 switch (selection) {
                     // $script:0831180407000638$
                     // - Nope.
@@ -28,7 +28,7 @@ public class _11000149 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407000639$ 
-                // - Ahhh... Whitey, where are you? I should never have taken him outside.  
+                // - Ahhh... Whitey, where are you? I should never have taken him outside. 
                 return true;
             default:
                 return true;

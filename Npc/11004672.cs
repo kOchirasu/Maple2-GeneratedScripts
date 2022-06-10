@@ -13,11 +13,11 @@ public class _11004672 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0603204607014973$ 
-                // - SCRIPTNPCNAM_0603204607014973_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0603204607014973_NAME:[F]Event
                 return true;
             case 30:
                 // $script:0613034407015027$ 
-                // - SCRIPTNPCNAM_0613034407015027_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613034407015027_NAME:[F]Event
                 switch (selection) {
                     // $script:0613034407015028$
                     // - SCRIPTNPCNAM_0613034407015028_NAME:[F]Event
@@ -28,7 +28,7 @@ public class _11004672 : NpcScript {
                 return true;
             case 31:
                 // $script:0613033007015015$ 
-                // - SCRIPTNPCNAM_0613033007015015_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007015015_NAME:[F]Event
                 switch (selection) {
                     // $script:0613034407015029$
                     // - SCRIPTNPCNAM_0613034407015029_NAME:[F]Event
@@ -44,11 +44,11 @@ public class _11004672 : NpcScript {
                 return true;
             case 32:
                 // $script:0613033007015018$ 
-                // - SCRIPTNPCNAM_0613033007015018_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007015018_NAME:[F]Event
                 return true;
             case 33:
                 // $script:0613033007015019$ 
-                // - SCRIPTNPCNAM_0613033007015019_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0613033007015019_NAME:[F]Event
                 return true;
             default:
                 return true;

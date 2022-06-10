@@ -13,15 +13,15 @@ public class _11003886 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0515102507009924$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 20:
                 // $script:0515102507009925$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0515102507009926$ 
-                // - You seem pretty handy, considering how you handled those tasks. If only Terrun Calibre had more people like you. 
+                // - You seem pretty handy, considering how you handled those tasks. If only Terrun Calibre had more people like you.
                 return true;
             default:
                 return true;

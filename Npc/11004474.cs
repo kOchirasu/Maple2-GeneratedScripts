@@ -13,13 +13,13 @@ public class _11004474 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012151$ 
-                // - Hey, do you see that huge ship? I'm not imagining it, am I? 
+                // - Hey, do you see that huge ship? I'm not imagining it, am I?
                 return true;
             case 10:
                 // $script:1227192907012152$ 
-                // - Hey, do you see that huge ship? I'm not imagining it, am I? 
+                // - Hey, do you see that huge ship? I'm not imagining it, am I?
                 // $script:1227192907012153$ 
-                // - It's so big... How can something that big float up in the sky like that? 
+                // - It's so big... How can something that big float up in the sky like that?
                 switch (selection) {
                     // $script:1227192907012154$
                     // - Didn't you ride Sky Fortress to get here?
@@ -30,9 +30,9 @@ public class _11004474 : NpcScript {
                 return true;
             case 11:
                 // $script:1227192907012155$ 
-                // - Sure, but I couldn't exactly tell how big it is from the inside. Seeing it now, away from the buildings in Tria... It's unreal! 
+                // - Sure, but I couldn't exactly tell how big it is from the inside. Seeing it now, away from the buildings in Tria... It's unreal!
                 // $script:1227192907012156$ 
-                // - Do you know? How does it fly like that? 
+                // - Do you know? How does it fly like that?
                 switch (selection) {
                     // $script:1227192907012157$
                     // - $npcName:24100101$ would tell you it's the power of science.
@@ -43,7 +43,7 @@ public class _11004474 : NpcScript {
                 return true;
             case 12:
                 // $script:1227192907012158$ 
-                // - $npcName:24100101$? Is that the name of one of the Sky Fortress big wigs? She sounds intimidating... 
+                // - $npcName:24100101$? Is that the name of one of the Sky Fortress big wigs? She sounds intimidating...
                 return true;
             default:
                 return true;

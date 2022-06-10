@@ -13,11 +13,11 @@ public class _11004112 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010467$ 
-                // - Focus on the task ahead. 
+                // - Focus on the task ahead.
                 return true;
             case 10:
                 // $script:0720125407010468$ 
-                // - If you have something to say to me, say it now. 
+                // - If you have something to say to me, say it now.
                 return true;
             default:
                 return true;

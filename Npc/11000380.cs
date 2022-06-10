@@ -13,12 +13,12 @@ public class _11000380 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001553$ 
-                // - What's up? 
+                // - What's up?
                 return true;
             case 20:
                 // $script:0831180407001555$ 
                 // - Well hey. My name's $npcName:11000380[gender:0]$, and I'm a member of the Wall Climbers. 
-We're a group of free-climbing enthusiasts who support each other on our quest to surmount the greatest of heights. Anyone with a passion for climbing is welcome. 
+                //   We're a group of free-climbing enthusiasts who support each other on our quest to surmount the greatest of heights. Anyone with a passion for climbing is welcome.
                 return true;
             default:
                 return true;

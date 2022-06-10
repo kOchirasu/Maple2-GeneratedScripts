@@ -13,11 +13,11 @@ public class _11004024 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010035$ 
-                // - I haven't given up yet. 
+                // - I haven't given up yet.
                 return true;
             case 20:
                 // $script:0614185307010036$ 
-                // - I will restore my kingdom. 
+                // - I will restore my kingdom.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000014 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000067$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407000069$ 
-                // - W-who are you? You better not be here to steal anything. This is my spot! 
+                // - W-who are you? You better not be here to steal anything. This is my spot!
                 switch (selection) {
                     // $script:0831180407000070$
                     // - That's right.
@@ -33,11 +33,11 @@ public class _11000014 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407000072$ 
-                // - Hey, no! Get out! If we take too much stuff, they'll notice for sure! 
+                // - Hey, no! Get out! If we take too much stuff, they'll notice for sure!
                 return true;
             case 22:
                 // $script:0831180407000073$ 
-                // - Oh, okay. Good. You'd better get out of here then, before someone sees you. And don't tell anyone you saw me in here! 
+                // - Oh, okay. Good. You'd better get out of here then, before someone sees you. And don't tell anyone you saw me in here!
                 return true;
             default:
                 return true;

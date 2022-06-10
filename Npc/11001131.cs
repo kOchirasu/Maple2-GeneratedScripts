@@ -13,11 +13,11 @@ public class _11001131 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911192907003866$ 
-                // - Hmm? What do you want? 
+                // - Hmm? What do you want?
                 return true;
             case 30:
                 // $script:0911192907003869$ 
-                // - Hah. Cold, are we? Maybe you should've worn thicker clothes. 
+                // - Hah. Cold, are we? Maybe you should've worn thicker clothes.
                 switch (selection) {
                     // $script:0911192907003870$
                     // - I'm not c-c-cold.
@@ -33,11 +33,11 @@ public class _11001131 : NpcScript {
                 return true;
             case 31:
                 // $script:0911192907003872$ 
-                // - Bahaha. A real tough cookie, aren't you?  I'm a professional explorer, and even I get a little cold at times like this. Maybe you belong in my line of work. 
+                // - Bahaha. A real tough cookie, aren't you?  I'm a professional explorer, and even I get a little cold at times like this. Maybe you belong in my line of work.
                 return true;
             case 32:
                 // $script:0911192907003873$ 
-                // - You look like seasoned adventurer. I'm sure you've seen worse weather than this. So suck it up! Bahaha. 
+                // - You look like seasoned adventurer. I'm sure you've seen worse weather than this. So suck it up! Bahaha.
                 return true;
             default:
                 return true;

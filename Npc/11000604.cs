@@ -13,11 +13,11 @@ public class _11000604 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002485$ 
-                // - ...  
+                // - ... 
                 return true;
             case 10:
                 // $script:0831180407002486$ 
-                // - Keep it down out there, I'm trying to read! 
+                // - Keep it down out there, I'm trying to read!
                 return true;
             default:
                 return true;

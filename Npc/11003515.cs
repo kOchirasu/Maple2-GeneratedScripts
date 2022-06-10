@@ -13,11 +13,11 @@ public class _11003515 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008831$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0817044507008834$ 
-                // - Can I help you? 
+                // - Can I help you?
                 switch (selection) {
                     // $script:0817044507008835$
                     // - Tell me about the five auras.
@@ -28,7 +28,7 @@ public class _11003515 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008836$ 
-                // - The placas live in the desert to the southeast. If you defeat them while they're dancing, you can obtain their Essences of Dance. 
+                // - The placas live in the desert to the southeast. If you defeat them while they're dancing, you can obtain their Essences of Dance.
                 switch (selection) {
                     // $script:0817044507008837$
                     // - Tell me about placas.
@@ -39,9 +39,9 @@ public class _11003515 : NpcScript {
                 return true;
             case 32:
                 // $script:0817044507008838$ 
-                // - They look gentle, but I wouldn't touch them. Their thorns are sharp!  
+                // - They look gentle, but I wouldn't touch them. Their thorns are sharp! 
                 // $script:0817044507008839$ 
-                // - They're supposed to be good dancers, but I haven't seen it myself. They're not dancing all the time, you see. Do you think they prefer upbeat music? 
+                // - They're supposed to be good dancers, but I haven't seen it myself. They're not dancing all the time, you see. Do you think they prefer upbeat music?
                 return true;
             default:
                 return true;

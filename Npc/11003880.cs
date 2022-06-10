@@ -13,11 +13,11 @@ public class _11003880 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009876$ 
-                // - Doesn't this flower look like me? 
+                // - Doesn't this flower look like me?
                 return true;
             case 10:
                 // $script:0417135107009877$ 
-                // - Doesn't this flower look like me? 
+                // - Doesn't this flower look like me?
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000542 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002311$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407002313$ 
-                // - If you're not happy with your life, you should dance. When your body's happy, your mind will be too! 
+                // - If you're not happy with your life, you should dance. When your body's happy, your mind will be too!
                 return true;
             default:
                 return true;

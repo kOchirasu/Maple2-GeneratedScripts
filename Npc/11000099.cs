@@ -13,13 +13,13 @@ public class _11000099 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000388$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000391$ 
-                // - Hey, $MyPCName$! Have you heard about the hero who collected over 1,000 mesos just by hunting monsters? That's me! 
+                // - Hey, $MyPCName$! Have you heard about the hero who collected over 1,000 mesos just by hunting monsters? That's me!
                 // $script:0831180407000392$ 
-                // - I think I was born to be a hunter. You should find something that you can be good at and have fun doing. 
+                // - I think I was born to be a hunter. You should find something that you can be good at and have fun doing.
                 return true;
             default:
                 return true;

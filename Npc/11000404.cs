@@ -13,15 +13,15 @@ public class _11000404 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001634$ 
-                // - May I help you? 
+                // - May I help you?
                 return true;
             case 40:
                 // $script:0831180407001638$ 
-                // - $npcName:23000024[gender:1]$ carries a dark power. Try not to get poisoned. 
+                // - $npcName:23000024[gender:1]$ carries a dark power. Try not to get poisoned.
                 return true;
             case 60:
                 // $script:0831180407001639$ 
-                // - Some folks think I must be a blacksmith. But not all yetis are smiths, you know! So stop trying to buy my stuff. 
+                // - Some folks think I must be a blacksmith. But not all yetis are smiths, you know! So stop trying to buy my stuff.
                 return true;
             default:
                 return true;

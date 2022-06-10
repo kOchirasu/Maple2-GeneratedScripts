@@ -13,11 +13,11 @@ public class _11000645 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002633$ 
-                // - Get me out of here...  
+                // - Get me out of here... 
                 return true;
             case 40:
                 // $script:0831180407002637$ 
-                // - I know all the guards, and you ain't one of them. 
+                // - I know all the guards, and you ain't one of them.
                 switch (selection) {
                     // $script:0831180407002638$
                     // - How did you end up in here?
@@ -28,7 +28,7 @@ public class _11000645 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407002639$ 
-                // - I used some swear words for my character's name. That's how I want to express myself! Why should I care about other people's feelings? 
+                // - I used some swear words for my character's name. That's how I want to express myself! Why should I care about other people's feelings?
                 switch (selection) {
                     // $script:0831180407002640$
                     // - You've got a problem in how you think.
@@ -39,11 +39,11 @@ public class _11000645 : NpcScript {
                 return true;
             case 42:
                 // $script:0831180407002641$ 
-                // - Shut up!  I don't need your lecturing! Go away! 
+                // - Shut up!  I don't need your lecturing! Go away!
                 return true;
             case 50:
                 // $script:1210061907004917$ 
-                // - I know all the guards, and you ain't one of them. 
+                // - I know all the guards, and you ain't one of them.
                 switch (selection) {
                     // $script:1210061907004918$
                     // - Do you know someone named $npcName:11001231[gender:0]$?
@@ -54,7 +54,7 @@ public class _11000645 : NpcScript {
                 return true;
             case 51:
                 // $script:1210061907004919$ 
-                // - No, I don't. And I don't wanna. 
+                // - No, I don't. And I don't wanna.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004434 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1213154907011972$ 
-                // - The future is in our hands. 
+                // - The future is in our hands.
                 return true;
             case 10:
                 // $script:1213154907011973$ 
-                // - Stay alert. We're in uncharted territory. 
+                // - Stay alert. We're in uncharted territory.
                 return true;
             default:
                 return true;

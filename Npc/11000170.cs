@@ -13,19 +13,19 @@ public class _11000170 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000710$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 20:
                 // $script:0831180407000712$ 
-                // - $npcName:11000174[gender:1]$ and I grew up together in the same neighborhood. I started to notice my heart racing and my mood brightening whenever I thought about $npcName:11000174[gender:1]$. I've honestly never felt like this about anyone else before. 
+                // - $npcName:11000174[gender:1]$ and I grew up together in the same neighborhood. I started to notice my heart racing and my mood brightening whenever I thought about $npcName:11000174[gender:1]$. I've honestly never felt like this about anyone else before.
                 return true;
             case 30:
                 // $script:0831180407000713$ 
-                // - $npcName:11000174[gender:1]$ and I grew up together in the same neighborhood. I started to notice my heart racing and my mood brightening whenever I thought about $npcName:11000174[gender:1]$. I've honestly never felt like this about anyone else before. 
+                // - $npcName:11000174[gender:1]$ and I grew up together in the same neighborhood. I started to notice my heart racing and my mood brightening whenever I thought about $npcName:11000174[gender:1]$. I've honestly never felt like this about anyone else before.
                 return true;
             case 40:
                 // $script:0317164707008110$ 
-                // - How may I help you? 
+                // - How may I help you?
                 switch (selection) {
                     // $script:0317164707008111$
                     // - Have you seen anyone in a mask go through here?
@@ -36,7 +36,7 @@ public class _11000170 : NpcScript {
                 return true;
             case 41:
                 // $script:0317164707008112$ 
-                // - I sure did! Hard not to notice someone that odd. He ran off toward the Kerning Interchange. 
+                // - I sure did! Hard not to notice someone that odd. He ran off toward the Kerning Interchange.
                 return true;
             default:
                 return true;

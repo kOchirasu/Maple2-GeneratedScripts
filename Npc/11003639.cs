@@ -13,11 +13,11 @@ public class _11003639 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009103$ 
-                // - Retiring here is the best choice I ever made! 
+                // - Retiring here is the best choice I ever made!
                 return true;
             case 10:
                 // $script:1109121007009104$ 
-                // - You here to see the fight? I never miss a match. I even brought my own binoculars so I can see every drop of sweat and every knocked-out tooth! 
+                // - You here to see the fight? I never miss a match. I even brought my own binoculars so I can see every drop of sweat and every knocked-out tooth!
                 switch (selection) {
                     // $script:1109121007009105$
                     // - Nah, I'm not into blood sports.
@@ -33,7 +33,7 @@ public class _11003639 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009107$ 
-                // - Really? Huh. Never thought $npcName:11003535[gender:1]$ would recruit an agent with such a weak stomach. 
+                // - Really? Huh. Never thought $npcName:11003535[gender:1]$ would recruit an agent with such a weak stomach.
                 switch (selection) {
                     // $script:1109121007009108$
                     // - Ah, so you're with Dark Wind.
@@ -44,7 +44,7 @@ public class _11003639 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009109$ 
-                // - I knew I liked you the moment I saw you! $npcName:11003535[gender:1]$'s got great taste in agents. 
+                // - I knew I liked you the moment I saw you! $npcName:11003535[gender:1]$'s got great taste in agents.
                 switch (selection) {
                     // $script:1109121007009110$
                     // - Ah, so you're with Dark Wind.
@@ -55,7 +55,7 @@ public class _11003639 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009111$ 
-                // - Anyway, you're here for my special message, right? "Mask. Duck butt. Beast." 
+                // - Anyway, you're here for my special message, right? "Mask. Duck butt. Beast."
                 switch (selection) {
                     // $script:1109121007009112$
                     // - I'll pass that along.
@@ -66,7 +66,7 @@ public class _11003639 : NpcScript {
                 return true;
             case 14:
                 // $script:1109121007009113$ 
-                // - Shush! The fight's about to start! 
+                // - Shush! The fight's about to start!
                 return true;
             default:
                 return true;

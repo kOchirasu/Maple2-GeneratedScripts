@@ -13,13 +13,13 @@ public class _11000118 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000503$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 30:
                 // $script:0831180407000506$ 
-                // - Usually this place is not so crowded. I didn't expect so many people to be so eager to make money.  
+                // - Usually this place is not so crowded. I didn't expect so many people to be so eager to make money. 
                 // $script:0831180407000507$ 
-                // - $MyPCName$, you looking to scare up some cash too? It's not as dangerous as I expected. Give it a try! 
+                // - $MyPCName$, you looking to scare up some cash too? It's not as dangerous as I expected. Give it a try!
                 return true;
             default:
                 return true;

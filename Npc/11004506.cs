@@ -13,11 +13,11 @@ public class _11004506 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228182607012436$ 
-                // - I know your face. Road in on that primitive flying boat, didn't you? 
+                // - I know your face. Road in on that primitive flying boat, didn't you?
                 return true;
             case 10:
                 // $script:1228182607012437$ 
-                // - I know your face. Road in on that primitive flying boat, didn't you? 
+                // - I know your face. Road in on that primitive flying boat, didn't you?
                 switch (selection) {
                     // $script:1228182607012438$
                     // - That's right.
@@ -28,7 +28,7 @@ public class _11004506 : NpcScript {
                 return true;
             case 11:
                 // $script:1228182607012439$ 
-                // - Hmph. You did good work in Richmonde, I'll give you that. 
+                // - Hmph. You did good work in Richmonde, I'll give you that.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000234 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000993$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 20:
                 // $script:0831180407000995$ 
-                // - Did you come from the rich neighborhood? What are you doing here? 
+                // - Did you come from the rich neighborhood? What are you doing here?
                 switch (selection) {
                     // $script:0831180407000996$
                     // - Do you know $npcName:11000064[gender:0]$?
@@ -28,13 +28,13 @@ public class _11000234 : NpcScript {
                 return true;
             case 21:
                 // $script:0831180407000997$ 
-                // - $npcName:11000064[gender:0]$? Who's that? Is he famous? 
+                // - $npcName:11000064[gender:0]$? Who's that? Is he famous?
                 return true;
             case 30:
                 // $script:0831180407000998$ 
-                // - The people living in the rich neighborhood think we're smelly and dirty. But Mr. $npcName:11000006[gender:0]$ said they're smellier and dirtier on the inside for thinking that. 
+                // - The people living in the rich neighborhood think we're smelly and dirty. But Mr. $npcName:11000006[gender:0]$ said they're smellier and dirtier on the inside for thinking that.
                 // $script:0831180407000999$ 
-                // - Mr. $npcName:11000006[gender:0]$ said he'd change the world, so everyone could be equal and happy together. 
+                // - Mr. $npcName:11000006[gender:0]$ said he'd change the world, so everyone could be equal and happy together.
                 return true;
             default:
                 return true;

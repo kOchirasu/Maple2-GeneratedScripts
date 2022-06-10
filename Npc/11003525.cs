@@ -13,11 +13,11 @@ public class _11003525 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816160115009030$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 30:
                 // $script:0816213215009068$ 
-                // - We aren't open yet. Can you please come back later? 
+                // - We aren't open yet. Can you please come back later?
                 switch (selection) {
                     // $script:0816213215009069$
                     // - Of course.
@@ -43,21 +43,21 @@ public class _11003525 : NpcScript {
                 return true;
             case 31:
                 // $script:0816213215009073$ 
-                // - We... don't have a date yet, actually. The boss wants to redecorate and... and hire more people. 
+                // - We... don't have a date yet, actually. The boss wants to redecorate and... and hire more people.
                 return true;
             case 32:
                 // $script:0816213215009074$ 
-                // - Watch your step. It's slippery over there. 
+                // - Watch your step. It's slippery over there.
                 return true;
             case 33:
                 // $script:0816213215009075$ 
-                // - It seems the boss has strange tastes. He asked me to wear this outfit, even though we aren't open yet. It's so uncomfortable... 
+                // - It seems the boss has strange tastes. He asked me to wear this outfit, even though we aren't open yet. It's so uncomfortable...
                 return true;
             case 34:
                 // $script:0816213215009076$ 
-                // - Isn't it cool? It's the $map:61000008$ theme song! The boss doesn't like it, but it's pretty popular these days. 
+                // - Isn't it cool? It's the $map:61000008$ theme song! The boss doesn't like it, but it's pretty popular these days.
                 // $script:0816225215009078$ 
-                // - Come to think of it, didn't the boss lose a game of $map:61000008$ the other day...? 
+                // - Come to think of it, didn't the boss lose a game of $map:61000008$ the other day...?
                 return true;
             default:
                 return true;

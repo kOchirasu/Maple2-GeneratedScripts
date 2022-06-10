@@ -13,11 +13,11 @@ public class _11003456 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008667$ 
-                // - I am prepared to dedicate my life to the peace of $map:02000051$. 
+                // - I am prepared to dedicate my life to the peace of $map:02000051$.
                 return true;
             case 10:
                 // $script:0706160807008668$ 
-                // - I am prepared to dedicate my life to the peace of $map:02000051$. 
+                // - I am prepared to dedicate my life to the peace of $map:02000051$.
                 return true;
             default:
                 return true;

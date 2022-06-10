@@ -13,11 +13,11 @@ public class _11003517 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008848$ 
-                // - What? 
+                // - What?
                 return true;
             case 30:
                 // $script:0817044507008851$ 
-                // - What? 
+                // - What?
                 switch (selection) {
                     // $script:0817044507008852$
                     // - Tell me about the five auras.
@@ -28,7 +28,7 @@ public class _11003517 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008853$ 
-                // - Aur-what? Look, I just want to finish my exam and grab some grub. 
+                // - Aur-what? Look, I just want to finish my exam and grab some grub.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000169 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000700$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 50:
                 // $script:0831180407000704$ 
-                // - $MyPCName$, do I look timid to you? 
+                // - $MyPCName$, do I look timid to you?
                 switch (selection) {
                     // $script:0831180407000705$
                     // - Maybe... a little?
@@ -33,15 +33,15 @@ public class _11000169 : NpcScript {
                 return true;
             case 51:
                 // $script:0831180407000707$ 
-                // - I do, huh? Ahh, no wonder! Miss $npcName:11000160[gender:1]$ said she doesn't like timid men. What should I do? 
+                // - I do, huh? Ahh, no wonder! Miss $npcName:11000160[gender:1]$ said she doesn't like timid men. What should I do?
                 return true;
             case 52:
                 // $script:0831180407000708$ 
-                // - Are you sure? I do hope Miss $npcName:11000160[gender:1]$ thinks the same of me, $MyPCName$. If that's the case, I might actually have a shot. 
+                // - Are you sure? I do hope Miss $npcName:11000160[gender:1]$ thinks the same of me, $MyPCName$. If that's the case, I might actually have a shot.
                 return true;
             case 70:
                 // $script:0831180407000709$ 
-                // - It's not easy to stand in one spot all day guarding the arsenal, but someone has to do it. I'm proud of my job, too. 
+                // - It's not easy to stand in one spot all day guarding the arsenal, but someone has to do it. I'm proud of my job, too.
                 return true;
             default:
                 return true;

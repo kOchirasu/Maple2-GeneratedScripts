@@ -13,11 +13,11 @@ public class _11000795 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002960$ 
-                // - Welcome to Cathy Mart. 
+                // - Welcome to Cathy Mart.
                 return true;
             case 10:
                 // $script:0831180407002961$ 
-                // - Is there something you're looking for? You can find everything at Cathy Mart. If we don't have it, it doesn't exist! 
+                // - Is there something you're looking for? You can find everything at Cathy Mart. If we don't have it, it doesn't exist!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003165 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0314104907008094$ 
-                // - How do you fare? 
+                // - How do you fare?
                 return true;
             case 30:
                 // $script:0314104907008097$ 
-                // - $npc:11001853[gender:0]$ says there's nothing wrong with you, but I need to be sure. How do you feel? 
+                // - $npc:11001853[gender:0]$ says there's nothing wrong with you, but I need to be sure. How do you feel?
                 switch (selection) {
                     // $script:0314104907008098$
                     // - I'm fine.
@@ -33,11 +33,11 @@ public class _11003165 : NpcScript {
                 return true;
             case 31:
                 // $script:0314104907008100$ 
-                // - Good. 
+                // - Good.
                 return true;
             case 32:
                 // $script:0314104907008101$ 
-                // - Really? We should look into that. I'll have $npc:11001853[gender:0]$ schedule you for some exploratory surgery. 
+                // - Really? We should look into that. I'll have $npc:11001853[gender:0]$ schedule you for some exploratory surgery.
                 switch (selection) {
                     // $script:0314104907008102$
                     // - Th-that really isn't necessary!
@@ -48,11 +48,11 @@ public class _11003165 : NpcScript {
                 return true;
             case 33:
                 // $script:0314104907008103$ 
-                // - It's no trouble. After all you did out on the field, this is the least we can do. 
+                // - It's no trouble. After all you did out on the field, this is the least we can do.
                 return true;
             case 40:
                 // $script:0314104907008104$ 
-                // - You were glowing when we found you. How did you do that? 
+                // - You were glowing when we found you. How did you do that?
                 switch (selection) {
                     // $script:0314104907008105$
                     // - I really don't remember.
@@ -63,7 +63,7 @@ public class _11003165 : NpcScript {
                 return true;
             case 41:
                 // $script:0314104907008106$ 
-                // - I see. So it wasn't intentional. 
+                // - I see. So it wasn't intentional.
                 return true;
             default:
                 return true;

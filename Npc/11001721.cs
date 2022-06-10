@@ -13,11 +13,11 @@ public class _11001721 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006972$ 
-                // - You have something to say to me? 
+                // - You have something to say to me?
                 return true;
             case 30:
                 // $script:0728024507007022$ 
-                // - Enough talk. We must focus on finding the artifact. 
+                // - Enough talk. We must focus on finding the artifact.
                 return true;
             default:
                 return true;

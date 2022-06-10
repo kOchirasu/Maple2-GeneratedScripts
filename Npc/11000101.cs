@@ -13,11 +13,11 @@ public class _11000101 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000396$ 
-                // - Yo, man! Wassup! 
+                // - Yo, man! Wassup!
                 return true;
             case 20:
                 // $script:0831180407000398$ 
-                // - Hey yo, do you know what hip-hop represents? 
+                // - Hey yo, do you know what hip-hop represents?
                 return true;
             default:
                 return true;

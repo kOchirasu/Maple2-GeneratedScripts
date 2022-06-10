@@ -13,11 +13,11 @@ public class _11000996 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003421$ 
-                // - Speak up. I can't hear you over the alarm. Cluck! 
+                // - Speak up. I can't hear you over the alarm. Cluck!
                 return true;
             case 30:
                 // $script:0831180407003424$ 
-                // - Someone, please turn off that alarm clock. Cluck! 
+                // - Someone, please turn off that alarm clock. Cluck!
                 return true;
             default:
                 return true;

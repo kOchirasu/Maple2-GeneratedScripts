@@ -13,11 +13,11 @@ public class _11001041 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003556$ 
-                // - How did you find this place? 
+                // - How did you find this place?
                 return true;
             case 30:
                 // $script:0831180407003559$ 
-                // - When I close my eyes and listen carefully, I can hear everything... Everything in the entire world. 
+                // - When I close my eyes and listen carefully, I can hear everything... Everything in the entire world.
                 return true;
             default:
                 return true;

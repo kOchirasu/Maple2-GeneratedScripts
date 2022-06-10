@@ -13,11 +13,11 @@ public class _11000428 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001782$ 
-                // - Why are you bothering me? 
+                // - Why are you bothering me?
                 return true;
             case 20:
                 // $script:0831180407001784$ 
-                // - A true adventurer dives head-first into trouble! He's not afraid of jumping off a cliff into a sea of lava or fighting giant, rampaging monsters! 
+                // - A true adventurer dives head-first into trouble! He's not afraid of jumping off a cliff into a sea of lava or fighting giant, rampaging monsters!
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11004237 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0809223207010929$ 
-                // - Good work, $MyPCName$. 
+                // - Good work, $MyPCName$.
                 return true;
             case 10:
                 // $script:0809223207010930$ 
-                // - Good work, $MyPCName$. I'd better head back to $map:02000001$ now. 
+                // - Good work, $MyPCName$. I'd better head back to $map:02000001$ now.
                 // $script:0809223207010931$ 
-                // - I haven't seen his face in some time. 
+                // - I haven't seen his face in some time.
                 return true;
             default:
                 return true;

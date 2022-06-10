@@ -13,11 +13,11 @@ public class _11004220 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010785$ 
-                // - Can't talk. Important mission. 
+                // - Can't talk. Important mission.
                 return true;
             case 10:
                 // $script:0806222707010786$ 
-                // - Sorry, I don't have time for games... I'm here on a special mission. My partner said to meet him at the tables on the dock over by the balloons, but he's nowhere in sight. 
+                // - Sorry, I don't have time for games... I'm here on a special mission. My partner said to meet him at the tables on the dock over by the balloons, but he's nowhere in sight.
                 return true;
             default:
                 return true;

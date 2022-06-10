@@ -13,11 +13,11 @@ public class _11004666 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0603204607014955$ 
-                // - SCRIPTNPCNAM_0603204607014955_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0603204607014955_NAME:[F]Event
                 return true;
             case 30:
                 // $script:0603204607014956$ 
-                // - SCRIPTNPCNAM_0603204607014956_NAME:[F]Event 
+                // - SCRIPTNPCNAM_0603204607014956_NAME:[F]Event
                 return true;
             default:
                 return true;

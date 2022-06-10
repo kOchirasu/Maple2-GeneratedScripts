@@ -13,11 +13,11 @@ public class _11004346 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011749$ 
-                // - Why must the holidays always be so stressful... 
+                // - Why must the holidays always be so stressful...
                 return true;
             case 10:
                 // $script:1109213607011750$ 
-                // - Why must the holidays always be so stressful... 
+                // - Why must the holidays always be so stressful...
                 return true;
             default:
                 return true;

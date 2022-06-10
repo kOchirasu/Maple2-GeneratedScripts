@@ -13,13 +13,13 @@ public class _11004084 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0622133907010284$ 
-                // - Shh! You'll wake up the other fireflies. No loud noises allowed. 
+                // - Shh! You'll wake up the other fireflies. No loud noises allowed.
                 return true;
             case 10:
                 // $script:0622133907010285$ 
-                // - Shh! You'll wake up the other fireflies. No loud noises allowed. 
+                // - Shh! You'll wake up the other fireflies. No loud noises allowed.
                 // $script:0622133907010286$ 
-                // - Quietly, now... You're here looking for a quiet place to rest, aren't you? 
+                // - Quietly, now... You're here looking for a quiet place to rest, aren't you?
                 switch (selection) {
                     // $script:0622133907010287$
                     // - What makes you think that?
@@ -30,9 +30,9 @@ public class _11004084 : NpcScript {
                 return true;
             case 31:
                 // $script:0622133907010288$ 
-                // - Humans always come here when something's on their mind. Our pretty light helps them feel better! I figured you might be the same. 
+                // - Humans always come here when something's on their mind. Our pretty light helps them feel better! I figured you might be the same.
                 // $script:0622133907010289$ 
-                // - I can't do a danged thing to actually help you. But hey, if staring at our sparkly heinies brings you peace, then stare away! 
+                // - I can't do a danged thing to actually help you. But hey, if staring at our sparkly heinies brings you peace, then stare away!
                 return true;
             default:
                 return true;

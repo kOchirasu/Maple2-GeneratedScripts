@@ -13,11 +13,11 @@ public class _11000022 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000111$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000114$ 
-                // - Are you heading to $map:02000001$. You know that the way is blocked, right? 
+                // - Are you heading to $map:02000001$. You know that the way is blocked, right?
                 switch (selection) {
                     // $script:0831180407000115$
                     // - Yeah, I heard.
@@ -33,7 +33,7 @@ public class _11000022 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000117$ 
-                // - Good, I don't have to explain it to you. So... if you can't get to $map:02000001$, what are you going to do? 
+                // - Good, I don't have to explain it to you. So... if you can't get to $map:02000001$, what are you going to do?
                 switch (selection) {
                     // $script:0831180407000118$
                     // - I'll find another way!
@@ -49,19 +49,19 @@ public class _11000022 : NpcScript {
                 return true;
             case 32:
                 // $script:0831180407000120$ 
-                // - What are you gonna do, fly? The road is gone! It has ceased to be! You need to be realistic about this. 
+                // - What are you gonna do, fly? The road is gone! It has ceased to be! You need to be realistic about this.
                 // $script:0831180407000121$ 
-                // - Seriously, have a look at $map:02000115$. Let me know what you think of the terrible, yawning chasm of doom in your way. I'll wait. 
+                // - Seriously, have a look at $map:02000115$. Let me know what you think of the terrible, yawning chasm of doom in your way. I'll wait.
                 return true;
             case 33:
                 // $script:0831180407000122$ 
-                // - That's understandable. $map:02000001$ has it all, and all we've got is... fish. Might as well head home once you've got your fill of fish, huh? 
+                // - That's understandable. $map:02000001$ has it all, and all we've got is... fish. Might as well head home once you've got your fill of fish, huh?
                 return true;
             case 34:
                 // $script:0831180407000123$ 
-                // - It sure is. The Royal Road is the main route from this harbor to $map:02000001$, and it was cracked open by the earthquake that happened the other day. Now no one can get to $map:02000001$. 
+                // - It sure is. The Royal Road is the main route from this harbor to $map:02000001$, and it was cracked open by the earthquake that happened the other day. Now no one can get to $map:02000001$.
                 // $script:0831180407000124$ 
-                // - If you don't believe me, go to $map:02000115$ and see for yourself. 
+                // - If you don't believe me, go to $map:02000115$ and see for yourself.
                 return true;
             default:
                 return true;

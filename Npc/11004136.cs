@@ -13,11 +13,11 @@ public class _11004136 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0730132107010537$ 
-                // - Your aura is one of virtue. 
+                // - Your aura is one of virtue.
                 return true;
             case 10:
                 // $script:0730132107010538$ 
-                // - All that lifeforce... will you give it to me? 
+                // - All that lifeforce... will you give it to me?
                 return true;
             default:
                 return true;

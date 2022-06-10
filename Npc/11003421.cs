@@ -13,11 +13,11 @@ public class _11003421 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008629$ 
-                // - Don't waste my time. $map:02000051$ doesn't need the likes of you. 
+                // - Don't waste my time. $map:02000051$ doesn't need the likes of you.
                 return true;
             case 10:
                 // $script:0706160807008630$ 
-                // - You want to stay here? You gotta take the warrior's test. 
+                // - You want to stay here? You gotta take the warrior's test.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003199 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404083307008226$ 
-                // - A fight between siblings can be even more fearsome than a duel between sworn enemies. I wouldn't stand a chance if $npcName:11000069[gender:1]$ were my sister. 
+                // - A fight between siblings can be even more fearsome than a duel between sworn enemies. I wouldn't stand a chance if $npcName:11000069[gender:1]$ were my sister.
                 return true;
             case 10:
                 // $script:0404083307008227$ 
-                // - A fight between siblings can be even more fearsome than a duel between sworn enemies. I wouldn't stand a chance if $npcName:11000069[gender:1]$ were my sister. 
+                // - A fight between siblings can be even more fearsome than a duel between sworn enemies. I wouldn't stand a chance if $npcName:11000069[gender:1]$ were my sister.
                 return true;
             default:
                 return true;

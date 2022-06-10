@@ -13,11 +13,11 @@ public class _11003102 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0119135307007835$ 
-                // - Hm, you look like you could use some exercise. 
+                // - Hm, you look like you could use some exercise.
                 return true;
             case 30:
                 // $script:0119135307007838$ 
-                // - Isn't it time you got buff? I'd invite you to my SwolePatrol guild but we don't have any openings.  
+                // - Isn't it time you got buff? I'd invite you to my SwolePatrol guild but we don't have any openings. 
                 switch (selection) {
                     // $script:0119135307007839$
                     // - I totally want to join your guild!
@@ -33,11 +33,11 @@ public class _11003102 : NpcScript {
                 return true;
             case 31:
                 // $script:0119135307007841$ 
-                // - What's wrong, got fries in your ears? Just kidding, but for real we're full. You're gonna have to find another guild to pump you up. 
+                // - What's wrong, got fries in your ears? Just kidding, but for real we're full. You're gonna have to find another guild to pump you up.
                 return true;
             case 32:
                 // $script:0119135307007842$ 
-                // - Oh, really? I have a feeling you'll be changing your mind sometime soon.  
+                // - Oh, really? I have a feeling you'll be changing your mind sometime soon. 
                 return true;
             default:
                 return true;

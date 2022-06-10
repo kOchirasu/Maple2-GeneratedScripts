@@ -13,15 +13,15 @@ public class _11003889 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0515102507009933$ 
-                // - Those looking to harm the ocean, or my $npc:11003888[gender:1]$, have another thing coming! 
+                // - Those looking to harm the ocean, or my $npc:11003888[gender:1]$, have another thing coming!
                 return true;
             case 20:
                 // $script:0515102507009934$ 
-                // - Those looking to harm the ocean, or my $npc:11003888[gender:1]$, have another thing coming! 
+                // - Those looking to harm the ocean, or my $npc:11003888[gender:1]$, have another thing coming!
                 return true;
             case 30:
                 // $script:0515102507009935$ 
-                // - I'll punish any who threaten the seas. Even you. 
+                // - I'll punish any who threaten the seas. Even you.
                 return true;
             default:
                 return true;

@@ -13,15 +13,15 @@ public class _11003885 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0515102507009921$ 
-                // - Our investigation continues. 
+                // - Our investigation continues.
                 return true;
             case 20:
                 // $script:0515102507009922$ 
-                // - Our investigation continues. 
+                // - Our investigation continues.
                 return true;
             case 30:
                 // $script:0515102507009923$ 
-                // - Thank you. I think I've started to unravel the truth. 
+                // - Thank you. I think I've started to unravel the truth.
                 return true;
             default:
                 return true;

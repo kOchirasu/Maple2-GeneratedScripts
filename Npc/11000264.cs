@@ -13,15 +13,15 @@ public class _11000264 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001077$ 
-                // - Need something? 
+                // - Need something?
                 return true;
             case 30:
                 // $script:0831180407001080$ 
-                // - After the Blue Lapenta broke, top scholars from across the world descended on the $map:02000026$. Ultimately, I am confident that it will be an alchemist to uncover the secrets of the Land of Darkness and the Shadow World. 
+                // - After the Blue Lapenta broke, top scholars from across the world descended on the $map:02000026$. Ultimately, I am confident that it will be an alchemist to uncover the secrets of the Land of Darkness and the Shadow World.
                 return true;
             case 40:
                 // $script:0831180407001081$ 
-                // - Can't you see I'm trying to focus? 
+                // - Can't you see I'm trying to focus?
                 return true;
             default:
                 return true;

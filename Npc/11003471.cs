@@ -13,7 +13,7 @@ public class _11003471 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817152010001894$ 
-                // - Greetings. 
+                // - Greetings.
                 switch (selection) {
                     // $script:0829173610001911$
                     // - I want to go to $map:63000057$.
@@ -29,15 +29,15 @@ public class _11003471 : NpcScript {
                 return true;
             case 31:
                 // $script:0817152010001901$ functionID=1 
-                // - No problem, no problem! I'll send it to you right away. Have a great time! 
+                // - No problem, no problem! I'll send it to you right away. Have a great time!
                 return true;
             case 32:
                 // $script:0817152010001902$ functionID=1 
-                // - Looking for some fun at $map:02000405$? Then off you go! 
+                // - Looking for some fun at $map:02000405$? Then off you go!
                 return true;
             case 33:
                 // $script:0817152010001903$ functionID=1 
-                // - I give you all these things because I care so dang much! 
+                // - I give you all these things because I care so dang much!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001069 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003643$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003646$ 
-                // - I like groupies, so long as they don't steal my things. 
+                // - I like groupies, so long as they don't steal my things.
                 return true;
             default:
                 return true;

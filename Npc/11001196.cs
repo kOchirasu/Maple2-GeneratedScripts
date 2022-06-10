@@ -13,12 +13,12 @@ public class _11001196 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1016202007004202$ 
-                // - Let's have a look at the requisition form... <i>Are you kidding me?</i> I'm not dealing with this right now. 
+                // - Let's have a look at the requisition form... <i>Are you kidding me?</i> I'm not dealing with this right now.
                 return true;
             case 30:
                 // $script:1016202007004205$ 
                 // - Mm.. What? 
-Is there something you need? 
+                //   Is there something you need?
                 switch (selection) {
                     // $script:1016202007004206$
                     // - Show me what you have to sell.
@@ -29,9 +29,9 @@ Is there something you need?
                 return true;
             case 31:
                 // $script:1016202007004207$ 
-                // - All right, have a looksie in my bag... 
+                // - All right, have a looksie in my bag...
                 // $script:1016202007004208$ 
-                // - ...Wait, what am I doing? I'm not some blasted shopkeep! I support the employees of the broadcasting station. Coffee, snacks, transportation, unsolicited advice. I get them whatever they need. I'm a key member of the team, so don't you forget it! 
+                // - ...Wait, what am I doing? I'm not some blasted shopkeep! I support the employees of the broadcasting station. Coffee, snacks, transportation, unsolicited advice. I get them whatever they need. I'm a key member of the team, so don't you forget it!
                 return true;
             default:
                 return true;

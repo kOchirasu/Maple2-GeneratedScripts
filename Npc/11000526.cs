@@ -13,11 +13,11 @@ public class _11000526 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002247$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0831180407002250$ 
-                // - I need to find a better place to hide. The Dark Wind would have no trouble finding me here. 
+                // - I need to find a better place to hide. The Dark Wind would have no trouble finding me here.
                 return true;
             default:
                 return true;

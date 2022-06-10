@@ -13,11 +13,11 @@ public class _11001839 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1020165907007297$ 
-                // - Ah... What should I do? 
+                // - Ah... What should I do?
                 return true;
             case 30:
                 // $script:1020165907007300$ 
-                // - I can't wait to become a full-fledged guard. 
+                // - I can't wait to become a full-fledged guard.
                 switch (selection) {
                     // $script:1020165907007301$
                     // - Did you run into any mushrooms on the way here?
@@ -29,7 +29,7 @@ public class _11001839 : NpcScript {
             case 31:
                 // $script:1020165907007302$ 
                 // - M-mushrooms? Are there mushrooms here? Oh no... 
-<font color="#909090">(All the color drains from $npcName:11001839[gender:0]$'s face. What terrible happening has made him so afraid of something as innocuous as mushrooms?)</font> 
+                //   <font color="#909090">(All the color drains from $npcName:11001839[gender:0]$'s face. What terrible happening has made him so afraid of something as innocuous as mushrooms?)</font>
                 switch (selection) {
                     // $script:1020165907007303$
                     // - Relax, I was only kidding.
@@ -41,7 +41,7 @@ public class _11001839 : NpcScript {
             case 32:
                 // $script:1020165907007304$ 
                 // - H-how could you do that to me, $MyPCName$? I... I thought we were friends. Have you just been pretending to like me all this time?
-<font color="#909090">($npcName:11001839[gender:0]$'s eyes begin to water.)</font> 
+                //   <font color="#909090">($npcName:11001839[gender:0]$'s eyes begin to water.)</font>
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11004235 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0809223207010923$ 
-                // - I cannot fathom how much more powerful you'll grow. 
+                // - I cannot fathom how much more powerful you'll grow.
                 return true;
             case 10:
                 // $script:0809223207010924$ 
-                // - I cannot fathom how much more powerful you'll grow. 
+                // - I cannot fathom how much more powerful you'll grow.
                 // $script:0809223207010925$ 
-                // - It's an honor to be working by your side once more, friend. 
+                // - It's an honor to be working by your side once more, friend.
                 return true;
             default:
                 return true;

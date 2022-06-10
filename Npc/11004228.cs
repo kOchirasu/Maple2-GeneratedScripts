@@ -13,11 +13,11 @@ public class _11004228 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010807$ 
-                // - Hmm... 
+                // - Hmm...
                 return true;
             case 10:
                 // $script:0806222707010808$ 
-                // - I despise the noise and brutishness that permeates society. On this topic, it seems that I and this vision of elegance are of one mind. 
+                // - I despise the noise and brutishness that permeates society. On this topic, it seems that I and this vision of elegance are of one mind.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004198 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010644$ 
-                // - May I help you? 
+                // - May I help you?
                 return true;
             case 10:
                 // $script:0806025707010645$ 
-                // - Our yearly pilgrimage through the Vayar Mountains has made the warriors of Murpagoth mighty. Perhaps you will join us on our next journey? That is of course, after we have proven ourselves on the fields of Mushtopia. 
+                // - Our yearly pilgrimage through the Vayar Mountains has made the warriors of Murpagoth mighty. Perhaps you will join us on our next journey? That is of course, after we have proven ourselves on the fields of Mushtopia.
                 return true;
             default:
                 return true;

@@ -13,15 +13,15 @@ public class _11004539 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0104170807012621$ 
-                // - Ah! You startled me! 
+                // - Ah! You startled me!
                 return true;
             case 10:
                 // $script:0104170807012622$ 
-                // - Ah! You startled me! 
+                // - Ah! You startled me!
                 // $script:0104170807012623$ 
-                // - You better watch out who you sneak up on. I was two seconds away from tombstoning you! 
+                // - You better watch out who you sneak up on. I was two seconds away from tombstoning you!
                 // $script:0104170807012624$ 
-                // - If you have time to chat, you have time to fight! 
+                // - If you have time to chat, you have time to fight!
                 return true;
             default:
                 return true;

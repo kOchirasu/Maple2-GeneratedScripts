@@ -13,11 +13,11 @@ public class _11003269 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008220$ 
-                // - What's wrong? 
+                // - What's wrong?
                 return true;
             case 30:
                 // $script:0403155707008221$ 
-                // - Platoon leader of the Green Hoods, at your service. $npcName:11000015[gender:1]$ sent me here to watch over $map:02000146$. 
+                // - Platoon leader of the Green Hoods, at your service. $npcName:11000015[gender:1]$ sent me here to watch over $map:02000146$.
                 return true;
             default:
                 return true;

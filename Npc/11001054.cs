@@ -13,11 +13,11 @@ public class _11001054 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003600$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407003603$ 
-                // - People say that sometimes dreams, do come true. I hope they're right. 
+                // - People say that sometimes dreams, do come true. I hope they're right.
                 switch (selection) {
                     // $script:0831180407003604$
                     // - What's your dream?
@@ -28,7 +28,7 @@ public class _11001054 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407003605$ 
-                // - My dream isn't much. I just want to be a successful businessman. I may be delivering pizzas now, but I know I can make it big if I work hard enough. 
+                // - My dream isn't much. I just want to be a successful businessman. I may be delivering pizzas now, but I know I can make it big if I work hard enough.
                 return true;
             default:
                 return true;

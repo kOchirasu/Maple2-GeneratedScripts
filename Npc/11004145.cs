@@ -13,11 +13,11 @@ public class _11004145 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010561$ 
-                // - Wait! 
+                // - Wait!
                 return true;
             case 10:
                 // $script:0806025707010562$ 
-                // - An all-expenses paid trip to Mushtopia? Count me in!  I feel like dancing! 
+                // - An all-expenses paid trip to Mushtopia? Count me in!  I feel like dancing!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000930 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003302$ 
-                // - I don't trust you humans. Caw! 
+                // - I don't trust you humans. Caw!
                 return true;
             case 20:
                 // $script:0831180407003304$ 
-                // - Humans are bad. Caw! 
+                // - Humans are bad. Caw!
                 return true;
             default:
                 return true;

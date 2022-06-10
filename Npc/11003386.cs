@@ -13,11 +13,11 @@ public class _11003386 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0622191110001844$ 
-                // - Welcome! Pay 1 $item:30000782$ to spin $npc:11003386$! 
+                // - Welcome! Pay 1 $item:30000782$ to spin $npc:11003386$!
                 return true;
             case 30:
                 // $script:0622191110001845$ functionID=1 
-                // - Welcome! Pay me 5 $itemPlural:30000782$, and I'll let you spin the $npcName:11003386$. How about it? Feeling lucky? 
+                // - Welcome! Pay me 5 $itemPlural:30000782$, and I'll let you spin the $npcName:11003386$. How about it? Feeling lucky?
                 switch (selection) {
                     // $script:0622191110001846$
                     // - Pay 5 $itemPlural:30000782$ to spin once.
@@ -39,32 +39,32 @@ public class _11003386 : NpcScript {
             case 31:
                 // $script:0622191110001849$ functionID=1 buttonSet=16 
                 // - Spin the roulette for a chance to win great prizes!
-Come on, you know you want to! 
+                //   Come on, you know you want to!
                 // $script:0622191110001850$ buttonSet=1 
-                // - May Lady Luck blow you a kiss, $MyPCName$! 
+                // - May Lady Luck blow you a kiss, $MyPCName$!
                 return true;
             case 32:
                 // $script:0622191110001851$ functionID=1 
                 // - You don't have enough coins.
-Therefore, you need 5 <font color="#ffd200">$itemPlural:30000782$</font> to spin $npc:11003386$ once. 
+                //   Therefore, you need 5 <font color="#ffd200">$itemPlural:30000782$</font> to spin $npc:11003386$ once.
                 return true;
             case 40:
                 // $script:0622191110001852$ functionID=1 
-                // - For one spin of $npcName:11003386$, you need 5 $itemPlural:30000782$. And guess what? You get $itemPlural:30000782$ in your mailbox every day just for logging in! You also get bonus coins as you spend more time in Maple World. And let's not forget that many of our events also give away coins just for participating! 
+                // - For one spin of $npcName:11003386$, you need 5 $itemPlural:30000782$. And guess what? You get $itemPlural:30000782$ in your mailbox every day just for logging in! You also get bonus coins as you spend more time in Maple World. And let's not forget that many of our events also give away coins just for participating!
                 // $script:0622191110001853$ 
-                // - If you have $itemPlural:30000782$ to burn, be sure to come to $map:63000055$! 
+                // - If you have $itemPlural:30000782$ to burn, be sure to come to $map:63000055$!
                 return true;
             case 10:
                 // $script:0622191110001854$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 10 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0622191110001855$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             case 100:
                 // $script:0622191110001856$ functionID=1 buttonSet=16 
-                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$! 
+                // - All right, let's spin it 100 times in a row! Keep your fingers crossed, $MyPCName$!
                 // $script:0622191110001857$ buttonSet=17 
-                // - Roulette spin number $rouletteCurrent$! Good luck! 
+                // - Roulette spin number $rouletteCurrent$! Good luck!
                 return true;
             default:
                 return true;

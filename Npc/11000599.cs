@@ -13,11 +13,11 @@ public class _11000599 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002398$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407002401$ 
-                // - There are treasure chests hidden all over the world, and they're highly sought after by adventurers. 
+                // - There are treasure chests hidden all over the world, and they're highly sought after by adventurers.
                 return true;
             default:
                 return true;

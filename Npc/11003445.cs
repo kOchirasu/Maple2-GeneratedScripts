@@ -13,11 +13,11 @@ public class _11003445 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0721140007008693$ 
-                // - I sense change in the wind. 
+                // - I sense change in the wind.
                 return true;
             case 10:
                 // $script:0721142007008711$ 
-                // - I sense change in the wind. 
+                // - I sense change in the wind.
                 return true;
             default:
                 return true;

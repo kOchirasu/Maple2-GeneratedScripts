@@ -13,11 +13,11 @@ public class _11001123 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0910171307003837$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 30:
                 // $script:0915135007003943$ 
-                // - The scientists in $map:2000270$ are known for their constant innovation. They're the reason I lug these heavy, expensive components everywhere I go. 
+                // - The scientists in $map:2000270$ are known for their constant innovation. They're the reason I lug these heavy, expensive components everywhere I go.
                 return true;
             default:
                 return true;

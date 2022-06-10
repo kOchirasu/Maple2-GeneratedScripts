@@ -13,11 +13,11 @@ public class _11004113 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010469$ 
-                // - I am ready to leave at a moments notice. 
+                // - I am ready to leave at a moments notice.
                 return true;
             case 10:
                 // $script:0720125407010470$ 
-                // - Guidance has been retasked toward the recovery of Lapenshards. 
+                // - Guidance has been retasked toward the recovery of Lapenshards.
                 return true;
             default:
                 return true;

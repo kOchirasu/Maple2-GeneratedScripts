@@ -13,11 +13,11 @@ public class _11003528 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816165015009054$ 
-                // - (It's locked.) 
+                // - (It's locked.)
                 return true;
             case 30:
                 // $script:0816165015009055$ 
-                // - (It's locked.) 
+                // - (It's locked.)
                 return true;
             default:
                 return true;

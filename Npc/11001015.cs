@@ -13,11 +13,11 @@ public class _11001015 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003459$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003462$ 
-                // - Each magic-user has their own spell. I haven't chosen mine yet. Alio olio! Hoi, hoi! Chacharachat! Which one sounds the best to you? 
+                // - Each magic-user has their own spell. I haven't chosen mine yet. Alio olio! Hoi, hoi! Chacharachat! Which one sounds the best to you?
                 return true;
             default:
                 return true;

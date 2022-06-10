@@ -13,13 +13,13 @@ public class _11004415 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1120173007011889$ 
-                // - The fairfolk's cake is so, so sweet! 
+                // - The fairfolk's cake is so, so sweet!
                 return true;
             case 10:
                 // $script:1120173007011892$ 
-                // - The fairfolk's cake is so, so sweet! 
+                // - The fairfolk's cake is so, so sweet!
                 // $script:1120173007011894$ 
-                // - Eat all you want, and it never never runs out! It's <i>magic cake</i>. That's the best part! Hee hee! 
+                // - Eat all you want, and it never never runs out! It's <i>magic cake</i>. That's the best part! Hee hee!
                 return true;
             default:
                 return true;

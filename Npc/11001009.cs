@@ -13,11 +13,11 @@ public class _11001009 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003442$ 
-                // - Wah! Geez! 
+                // - Wah! Geez!
                 return true;
             case 30:
                 // $script:0831180407003445$ 
-                // - Are you also here because of that beanstalk rumor? 
+                // - Are you also here because of that beanstalk rumor?
                 return true;
             default:
                 return true;

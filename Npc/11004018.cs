@@ -13,11 +13,11 @@ public class _11004018 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010023$ 
-                // - Hey! I've seen you around Tria! 
+                // - Hey! I've seen you around Tria!
                 return true;
             case 20:
                 // $script:0614185307010024$ 
-                // - I'm Surnuny, Tria's best weapons merchant. I came here to trade. 
+                // - I'm Surnuny, Tria's best weapons merchant. I came here to trade.
                 return true;
             default:
                 return true;

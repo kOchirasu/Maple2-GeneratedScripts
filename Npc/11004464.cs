@@ -13,11 +13,11 @@ public class _11004464 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012087$ 
-                // - Huh? You don't look like a refugee. 
+                // - Huh? You don't look like a refugee.
                 return true;
             case 10:
                 // $script:1227192907012088$ 
-                // - Huh? You don't look like a refugee. 
+                // - Huh? You don't look like a refugee.
                 switch (selection) {
                     // $script:1227192907012089$
                     // - I have come from the distant land of Maple World.
@@ -28,7 +28,7 @@ public class _11004464 : NpcScript {
                 return true;
             case 11:
                 // $script:1227192907012090$ 
-                // - Never heard of it. Look, just keep your head down and try not to get caught in the crossfire. 
+                // - Never heard of it. Look, just keep your head down and try not to get caught in the crossfire.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000015 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000074$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407000077$ 
-                // - What brings you to this place? 
+                // - What brings you to this place?
                 switch (selection) {
                     // $script:0831180407000078$
                     // - I came to see you.
@@ -43,7 +43,7 @@ public class _11000015 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000082$ 
-                // - Do you have a reason for coming to see me? 
+                // - Do you have a reason for coming to see me?
                 switch (selection) {
                     // $script:0831180407000083$
                     // - I just thought I'd say hi.
@@ -59,23 +59,23 @@ public class _11000015 : NpcScript {
                 return true;
             case 32:
                 // $script:0831180407000085$ 
-                // - Oh. Well. Hi. 
+                // - Oh. Well. Hi.
                 return true;
             case 33:
                 // $script:0831180407000086$ 
-                // - Well, you're just being ridiculous. I've no time for that. Excuse me.  
+                // - Well, you're just being ridiculous. I've no time for that. Excuse me. 
                 return true;
             case 41:
                 // $script:0831180407000087$ 
-                // - $npcName:11000001[gender:0]$'s house is on the hill behind the clock tower in the center of the village. He's always there, keeping an eye on everyone. 
+                // - $npcName:11000001[gender:0]$'s house is on the hill behind the clock tower in the center of the village. He's always there, keeping an eye on everyone.
                 return true;
             case 51:
                 // $script:0831180407000088$ 
-                // - I see. All I'll say then is that if you need help, the militia is always here. 
+                // - I see. All I'll say then is that if you need help, the militia is always here.
                 return true;
             case 61:
                 // $script:0831180407000089$ 
-                // - I hope I didn't upset you. You certainly don't have to explain yourself. But if you do, the rest of the militia and I may be able to help. 
+                // - I hope I didn't upset you. You certainly don't have to explain yourself. But if you do, the rest of the militia and I may be able to help.
                 return true;
             default:
                 return true;

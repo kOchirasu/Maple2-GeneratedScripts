@@ -13,11 +13,11 @@ public class _11001106 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0908154107003715$ 
-                // - W-what? 
+                // - W-what?
                 return true;
             case 30:
                 // $script:0908154107003718$ 
-                // - I'm not completely healed, but I'm in much better shape than I was when I first arrived. I should be able to go back to my family soon.  
+                // - I'm not completely healed, but I'm in much better shape than I was when I first arrived. I should be able to go back to my family soon. 
                 return true;
             default:
                 return true;

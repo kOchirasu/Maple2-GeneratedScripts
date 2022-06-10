@@ -13,11 +13,11 @@ public class _11004205 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0813101707010958$ 
-                // - Be on your guard. 
+                // - Be on your guard.
                 return true;
             case 10:
                 // $script:0813101707010959$ 
-                // - There's no time to relax. 
+                // - There's no time to relax.
                 return true;
             default:
                 return true;

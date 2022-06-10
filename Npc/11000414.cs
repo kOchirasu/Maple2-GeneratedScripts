@@ -13,15 +13,15 @@ public class _11000414 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180306000158$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 10:
                 // $script:1121222006000831$ 
-                // - Spooky houses are kind of charming, really. 
+                // - Spooky houses are kind of charming, really.
                 return true;
             case 20:
                 // $script:1121222006000832$ 
-                // - How would you like to create a haunted house? 
+                // - How would you like to create a haunted house?
                 return true;
             default:
                 return true;

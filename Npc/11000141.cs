@@ -13,11 +13,11 @@ public class _11000141 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000571$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 30:
                 // $script:0831180407000574$ 
-                // - Whoever you are, please help me! My... My boss was taken by them. Please save him! 
+                // - Whoever you are, please help me! My... My boss was taken by them. Please save him!
                 switch (selection) {
                     // $script:0831180407000575$
                     // - Don't worry, I'll save him.
@@ -28,13 +28,13 @@ public class _11000141 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000576$ 
-                // - Thank you so much! I'm here alone and I didn't know what to do until you came along. I've been watching them, and there's a few things you need to know. 
+                // - Thank you so much! I'm here alone and I didn't know what to do until you came along. I've been watching them, and there's a few things you need to know.
                 // $script:0831180407000577$ 
-                // - First, don't step on the floor sensors marked red. They'll trip the alarm and you'll be in a world of hurt. I think if I hack into their security system, I should be able to turn off the alarm. Hm...  
+                // - First, don't step on the floor sensors marked red. They'll trip the alarm and you'll be in a world of hurt. I think if I hack into their security system, I should be able to turn off the alarm. Hm... 
                 // $script:0831180407000578$ 
-                // - If you beat up a Blackdrake gang foot soldier, they're sure to call a superior for help. I suggest tossing an Energy Bomb at them, and then finishing them off quickly while they're stunned. 
+                // - If you beat up a Blackdrake gang foot soldier, they're sure to call a superior for help. I suggest tossing an Energy Bomb at them, and then finishing them off quickly while they're stunned.
                 // $script:0831180407000579$ 
-                // - Please, save my boss! 
+                // - Please, save my boss!
                 return true;
             default:
                 return true;

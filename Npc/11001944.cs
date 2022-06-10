@@ -13,11 +13,11 @@ public class _11001944 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1123165007007490$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 30:
                 // $script:1208184307007530$ 
-                // - I hear there's a lot of top talent here for the audition. I'm a little worried... 
+                // - I hear there's a lot of top talent here for the audition. I'm a little worried...
                 return true;
             default:
                 return true;

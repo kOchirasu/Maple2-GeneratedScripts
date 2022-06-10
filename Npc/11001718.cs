@@ -13,11 +13,11 @@ public class _11001718 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006969$ 
-                // - You have something to say to me? 
+                // - You have something to say to me?
                 return true;
             case 30:
                 // $script:0805021607007100$ 
-                // - Not all questions require an answer. Some mysteries are better left unsolved. But even I have trouble when to seek the truth, and when to let an issue lie... 
+                // - Not all questions require an answer. Some mysteries are better left unsolved. But even I have trouble when to seek the truth, and when to let an issue lie...
                 switch (selection) {
                     // $script:0805021607007101$
                     // - What are you talking about?
@@ -28,7 +28,7 @@ public class _11001718 : NpcScript {
                 return true;
             case 31:
                 // $script:0805021607007102$ 
-                // - Never mind. I've just had much on my mind lately... 
+                // - Never mind. I've just had much on my mind lately...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001468 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1223035407005532$ 
-                // - Stop bothering me. 
+                // - Stop bothering me.
                 return true;
             case 30:
                 // $script:1223035407005535$ 
-                // - You like my safety helmet? Two stripes from front to back is the latest fashion. 
+                // - You like my safety helmet? Two stripes from front to back is the latest fashion.
                 return true;
             default:
                 return true;

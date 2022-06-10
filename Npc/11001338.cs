@@ -13,11 +13,11 @@ public class _11001338 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005271$ 
-                // - And what business do you have with a pro skater like me, hm? 
+                // - And what business do you have with a pro skater like me, hm?
                 return true;
             case 30:
                 // $script:1217012607005274$ 
-                // - Hey, you want to take some pro skateboarding lessons? I teach... for a small fee. 
+                // - Hey, you want to take some pro skateboarding lessons? I teach... for a small fee.
                 return true;
             default:
                 return true;

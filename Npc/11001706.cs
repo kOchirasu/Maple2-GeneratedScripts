@@ -13,11 +13,11 @@ public class _11001706 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006958$ 
-                // - Mm? Yes? 
+                // - Mm? Yes?
                 return true;
             case 30:
                 // $script:0728024507006980$ 
-                // - It's good to see you, $MyPCName$. Is there something I can get for you? 
+                // - It's good to see you, $MyPCName$. Is there something I can get for you?
                 switch (selection) {
                     // $script:0804030507007003$
                     // - What is this artifact we're after?
@@ -33,14 +33,14 @@ public class _11001706 : NpcScript {
                 return true;
             case 40:
                 // $script:0804030507007005$ 
-                // - I don't know exactly what it is, but supposedly Lone Spirit, the founder of Guidance, left behind a treasure that would grant enlightenment to his true heir. It was passed down through generations... until the eleventh Munakra vanished with it. 
+                // - I don't know exactly what it is, but supposedly Lone Spirit, the founder of Guidance, left behind a treasure that would grant enlightenment to his true heir. It was passed down through generations... until the eleventh Munakra vanished with it.
                 // $script:0804030507007006$ 
-                // - Some people think it was destroyed. Others think that all of its power was drained, and it's been placed in hiding until it can recharge. Others say that Lone Spirit reincarnated and claimed it for himself. Who knows which theory, if any, is true? 
+                // - Some people think it was destroyed. Others think that all of its power was drained, and it's been placed in hiding until it can recharge. Others say that Lone Spirit reincarnated and claimed it for himself. Who knows which theory, if any, is true?
                 // $script:0804030507007007$ 
-                // - The only reliable information on the artifact is told through word-of-mouth, so the only one who would really know is the master. What if... what if $npcName:11001559[gender:0]$ came to Halo Mountain for the artifact? 
+                // - The only reliable information on the artifact is told through word-of-mouth, so the only one who would really know is the master. What if... what if $npcName:11001559[gender:0]$ came to Halo Mountain for the artifact?
                 // $script:0804030507007008$ 
                 // - That must be it. I'm sure he said something about an artifact when he attacked us...
-<font color="#909090">($npcName:11001706[gender:1]$ is lost in thought.)</font> 
+                //   <font color="#909090">($npcName:11001706[gender:1]$ is lost in thought.)</font>
                 switch (selection) {
                     // $script:0804030507007009$
                     // - Let's talk about something else.
@@ -52,7 +52,7 @@ public class _11001706 : NpcScript {
             case 50:
                 // $script:0804030507007010$ 
                 // - The master can fend for himself. Don't worry, all right?
-<font color="#909090">(Even as she comforts you, worry is etched in her face.)</font> 
+                //   <font color="#909090">(Even as she comforts you, worry is etched in her face.)</font>
                 switch (selection) {
                     // $script:0804030507007011$
                     // - Let's talk about something else.

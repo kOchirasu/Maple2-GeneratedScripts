@@ -13,11 +13,11 @@ public class _11004054 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010081$ 
-                // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will. 
+                // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
                 return true;
             case 10:
                 // $script:0614185307010082$ 
-                // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will. 
+                // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
                 return true;
             default:
                 return true;

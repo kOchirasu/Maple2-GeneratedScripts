@@ -13,11 +13,11 @@ public class _11001044 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003565$ 
-                // - I'm the messenger of hopes and dreams! Why is this happening to me?  
+                // - I'm the messenger of hopes and dreams! Why is this happening to me? 
                 return true;
             case 30:
                 // $script:0831180407003568$ 
-                // - I like being a Santa. How could I not? I'm giving people joy! 
+                // - I like being a Santa. How could I not? I'm giving people joy!
                 return true;
             default:
                 return true;

@@ -13,12 +13,12 @@ public class _11001189 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1015162707004153$ 
-                // - Betrayal is the quickest path to death. 
+                // - Betrayal is the quickest path to death.
                 return true;
             case 30:
                 // $script:1015162707004156$ 
                 // - So what, they stole one of our trains? Quit whining.
-I haven't survived the criminal underworld this long by panicking every time someone came after me! 
+                //   I haven't survived the criminal underworld this long by panicking every time someone came after me!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004060 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010093$ 
-                // - The lady is heartbroken. She needs to pull herself together quickly... 
+                // - The lady is heartbroken. She needs to pull herself together quickly...
                 return true;
             case 10:
                 // $script:0614185307010094$ 
-                // - As the current crisis threatens all of Maple World, the Alemani family will spare no expense in addressing it. 
+                // - As the current crisis threatens all of Maple World, the Alemani family will spare no expense in addressing it.
                 return true;
             default:
                 return true;

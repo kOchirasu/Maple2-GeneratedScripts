@@ -13,11 +13,11 @@ public class _11001719 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006970$ 
-                // - You have something to say to me? 
+                // - You have something to say to me?
                 return true;
             case 30:
                 // $script:0728024507007016$ 
-                // - If things are to return to normal, then we must stay united. Don't forget that. 
+                // - If things are to return to normal, then we must stay united. Don't forget that.
                 return true;
             default:
                 return true;

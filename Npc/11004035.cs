@@ -13,11 +13,11 @@ public class _11004035 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010055$ 
-                // - It's not like I want to be here. But I've got a debt to repay. 
+                // - It's not like I want to be here. But I've got a debt to repay.
                 return true;
             case 20:
                 // $script:0614185307010056$ 
-                // - It's not like I want to be here. But I've got a debt to repay. 
+                // - It's not like I want to be here. But I've got a debt to repay.
                 return true;
             default:
                 return true;

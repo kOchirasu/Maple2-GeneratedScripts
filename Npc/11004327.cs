@@ -13,11 +13,11 @@ public class _11004327 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1010140307011517$ 
-                // - Hm... 
+                // - Hm...
                 return true;
             case 10:
                 // $script:1010140307011518$ 
-                // - This place is... strange. 
+                // - This place is... strange.
                 switch (selection) {
                     // $script:1010140307011519$
                     // - I didn't expect to see you here.
@@ -28,7 +28,7 @@ public class _11004327 : NpcScript {
                 return true;
             case 20:
                 // $script:1010140307011520$ 
-                // - Hey! Didn't see you there. I'm here to represent $map:02000051$. 
+                // - Hey! Didn't see you there. I'm here to represent $map:02000051$.
                 switch (selection) {
                     // $script:1010140307011521$
                     // - Couldn't you have sent a diplomat?
@@ -39,13 +39,13 @@ public class _11004327 : NpcScript {
                 return true;
             case 30:
                 // $script:1010140307011522$ 
-                // - ...There were things I had to see for myself. 
+                // - ...There were things I had to see for myself.
                 // $script:1010140307011523$ 
-                // - My father appeared to me in a dream. He said that $map:02000051$ would soon face a grave danger... 
+                // - My father appeared to me in a dream. He said that $map:02000051$ would soon face a grave danger...
                 // $script:1010140307011524$ 
-                // - And then this place showed up. It couldn't be a coincidence, right? 
+                // - And then this place showed up. It couldn't be a coincidence, right?
                 // $script:1010140307011525$ 
-                // - More importantly, $npcName:11004328[gender:1]$ has a bad feeling about all this, and I trust her instincts. 
+                // - More importantly, $npcName:11004328[gender:1]$ has a bad feeling about all this, and I trust her instincts.
                 return true;
             default:
                 return true;

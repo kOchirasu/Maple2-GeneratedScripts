@@ -13,11 +13,11 @@ public class _11001055 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003606$ 
-                // - Welcome. 
+                // - Welcome.
                 return true;
             case 30:
                 // $script:0831180407003607$ 
-                // - No pizza can match Maggiore pizza. Chewy dough with simple toppings, just like Mom used to make!  
+                // - No pizza can match Maggiore pizza. Chewy dough with simple toppings, just like Mom used to make! 
                 return true;
             default:
                 return true;

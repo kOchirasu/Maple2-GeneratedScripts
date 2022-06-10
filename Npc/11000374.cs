@@ -13,11 +13,11 @@ public class _11000374 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001534$ 
-                // - What? 
+                // - What?
                 return true;
             case 30:
                 // $script:0831180407001537$ 
-                // - What? 
+                // - What?
                 switch (selection) {
                     // $script:0831180407001538$
                     // - So uh... are you a dude or a lady?
@@ -28,11 +28,11 @@ public class _11000374 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407001539$ 
-                // - Think what you like! 
+                // - Think what you like!
                 return true;
             case 60:
                 // $script:0831180407001540$ 
-                // - There are treasure chests hidden all over the world. How did they get there? Who knows and who cares! Just remember the golden rule: finders keepers! 
+                // - There are treasure chests hidden all over the world. How did they get there? Who knows and who cares! Just remember the golden rule: finders keepers!
                 return true;
             default:
                 return true;

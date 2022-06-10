@@ -13,13 +13,13 @@ public class _11003258 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008191$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0403155707008192$ 
-                // - This is why I don't like kids. They want to be heroes, but they can't even tie their shoes on their own. 
+                // - This is why I don't like kids. They want to be heroes, but they can't even tie their shoes on their own.
                 // $script:0403155707008193$ 
-                // - But don't you think Professor $npcName:11003251[gender:0]$ is looking especially good lately? His skin has taken on a beautiful pasty sheen from all his hard work. I could stare at him all day... 
+                // - But don't you think Professor $npcName:11003251[gender:0]$ is looking especially good lately? His skin has taken on a beautiful pasty sheen from all his hard work. I could stare at him all day...
                 return true;
             default:
                 return true;

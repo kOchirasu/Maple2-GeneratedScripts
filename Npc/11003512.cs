@@ -13,11 +13,11 @@ public class _11003512 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008802$ 
-                // - Need something? 
+                // - Need something?
                 return true;
             case 30:
                 // $script:0817044507008803$ 
-                // - The boss's word is good. What more do you need? 
+                // - The boss's word is good. What more do you need?
                 switch (selection) {
                     // $script:0817044507008804$
                     // - Tell me about the exam.
@@ -28,7 +28,7 @@ public class _11003512 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008805$ 
-                // - Humans can't do anything alone. If you can't figure it out, ask someone to help you. 
+                // - Humans can't do anything alone. If you can't figure it out, ask someone to help you.
                 return true;
             default:
                 return true;

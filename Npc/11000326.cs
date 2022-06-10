@@ -13,11 +13,11 @@ public class _11000326 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1121222006000827$ 
-                // - You can buy Souvenirs in Furnish inside your house. 
+                // - You can buy Souvenirs in Furnish inside your house.
                 return true;
             case 10:
                 // $script:1121222006000828$ 
-                // - Ahhh, what a wonderful world this is! 
+                // - Ahhh, what a wonderful world this is!
                 return true;
             default:
                 return true;

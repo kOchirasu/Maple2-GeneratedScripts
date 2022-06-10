@@ -13,11 +13,11 @@ public class _11000111 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000456$ 
-                // - What's up? 
+                // - What's up?
                 return true;
             case 10:
                 // $script:0831180407000457$ 
-                // - Aww, I really don't think I can enter $map:02000116$. 
+                // - Aww, I really don't think I can enter $map:02000116$.
                 switch (selection) {
                     // $script:0831180407000458$
                     // - Why?
@@ -28,7 +28,7 @@ public class _11000111 : NpcScript {
                 return true;
             case 11:
                 // $script:0831180407000459$ 
-                // - A while back, I followed my uncle who works as a royal porter to the entrance of the forest. I couldn't see more than a few feet in front of me, the underbrush was so thick. Plus it was raining... I never want to go through that again.  
+                // - A while back, I followed my uncle who works as a royal porter to the entrance of the forest. I couldn't see more than a few feet in front of me, the underbrush was so thick. Plus it was raining... I never want to go through that again. 
                 return true;
             default:
                 return true;

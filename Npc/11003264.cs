@@ -13,11 +13,11 @@ public class _11003264 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008208$ 
-                // - I can't believe this happened to $map:02000023$.  
+                // - I can't believe this happened to $map:02000023$. 
                 return true;
             case 30:
                 // $script:0403155707008209$ 
-                // - We should have been ready for this. It was naive to think Ellinel was safe... 
+                // - We should have been ready for this. It was naive to think Ellinel was safe...
                 return true;
             default:
                 return true;

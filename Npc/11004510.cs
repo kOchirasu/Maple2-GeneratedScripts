@@ -13,11 +13,11 @@ public class _11004510 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228182607012457$ 
-                // - What're you, a tourist? You wanna get tombstoned? This is a warzone! Not that $map:02020030$ is any better... 
+                // - What're you, a tourist? You wanna get tombstoned? This is a warzone! Not that $map:02020030$ is any better...
                 return true;
             case 10:
                 // $script:1228182607012458$ 
-                // - What're you, a tourist? You wanna get tombstoned? This is a warzone! Not that $map:02020030$ is any better... 
+                // - What're you, a tourist? You wanna get tombstoned? This is a warzone! Not that $map:02020030$ is any better...
                 return true;
             default:
                 return true;

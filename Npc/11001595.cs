@@ -13,11 +13,11 @@ public class _11001595 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006083$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0515180307006132$ 
-                // - $npcName:11001229[gender:0]$'s body may be asleep, but I don't think his mind is. He'll return to us soon.  
+                // - $npcName:11001229[gender:0]$'s body may be asleep, but I don't think his mind is. He'll return to us soon. 
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000411 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001734$ 
-                // - Yo! 
+                // - Yo!
                 return true;
             case 20:
                 // $script:0831180407001736$ 
-                // - You ask me, tagging is just as much art as sick beats and hot moves. Some people say I'm just some punk, but they don't know what they're talking about. 
+                // - You ask me, tagging is just as much art as sick beats and hot moves. Some people say I'm just some punk, but they don't know what they're talking about.
                 return true;
             default:
                 return true;

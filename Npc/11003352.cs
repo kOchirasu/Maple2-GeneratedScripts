@@ -13,11 +13,11 @@ public class _11003352 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0517164307008503$ 
-                // - Get away! 
+                // - Get away!
                 return true;
             case 20:
                 // $script:0517164307008505$ 
-                // - This time, the big guy'll mop the floor with you! No way he'll lose twice. 
+                // - This time, the big guy'll mop the floor with you! No way he'll lose twice.
                 return true;
             default:
                 return true;

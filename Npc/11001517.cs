@@ -13,11 +13,11 @@ public class _11001517 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0204150510001434$ 
-                // - Welcome, welcome! 
+                // - Welcome, welcome!
                 return true;
             case 30:
                 // $script:0217184010001441$ 
-                // - Would you like to spin the $npcName:11001517$? 
+                // - Would you like to spin the $npcName:11001517$?
                 switch (selection) {
                     // $script:0217184010001442$
                     // - (Pay 50,000 mesos for 1 spin.)
@@ -33,23 +33,23 @@ public class _11001517 : NpcScript {
                 return true;
             case 31:
                 // $script:0217184010001444$ functionID=1 buttonSet=16 
-                // - Spin the wheel for a chance at great prizes! You know you want to. 
+                // - Spin the wheel for a chance at great prizes! You know you want to.
                 // $script:0217184010001445$ buttonSet=1 
-                // - Here's hoping Lady Luck's on your side! 
+                // - Here's hoping Lady Luck's on your side!
                 return true;
             case 32:
                 // $script:0217184010001446$ 
-                // - It costs 50,000 mesos for a spin. If you don't have enough mesos, you can always use $itemPlural:30000522$ instead. 
+                // - It costs 50,000 mesos for a spin. If you don't have enough mesos, you can always use $itemPlural:30000522$ instead.
                 return true;
             case 33:
                 // $script:0217184010001447$ functionID=1 buttonSet=16 
-                // - Spin the wheel for a chance at great prizes! You know you want to. 
+                // - Spin the wheel for a chance at great prizes! You know you want to.
                 // $script:0217184010001448$ buttonSet=1 
-                // - Here's hoping Lady Luck's on your side! 
+                // - Here's hoping Lady Luck's on your side!
                 return true;
             case 34:
                 // $script:0217184010001449$ 
-                // - Spinning the roulette costs $itemPlural:30000522$. But don't fret! You can get 1 $item:30000522$ in your mailbox on weekdays and 5 of them on Saturdays and Sundays! 
+                // - Spinning the roulette costs $itemPlural:30000522$. But don't fret! You can get 1 $item:30000522$ in your mailbox on weekdays and 5 of them on Saturdays and Sundays!
                 return true;
             default:
                 return true;

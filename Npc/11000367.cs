@@ -13,11 +13,11 @@ public class _11000367 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001514$ 
-                // - What is it, meow? 
+                // - What is it, meow?
                 return true;
             case 20:
                 // $script:0831180407001516$ 
-                // - Do you believe in love at first sight, meow? I do! Look at the cat next to me. Isn't she beautiful? Me-ow! 
+                // - Do you believe in love at first sight, meow? I do! Look at the cat next to me. Isn't she beautiful? Me-ow!
                 return true;
             default:
                 return true;

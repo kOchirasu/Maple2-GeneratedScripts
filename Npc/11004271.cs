@@ -13,15 +13,15 @@ public class _11004271 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011241$ 
-                // - <font color="#909090">(This squat desert plant drips with a brilliant red sap.)</font> 
+                // - <font color="#909090">(This squat desert plant drips with a brilliant red sap.)</font>
                 return true;
             case 10:
                 // $script:0911203207011242$ 
-                // - <font color="#909090">(This squat desert plant drips with a brilliant red sap.)</font> 
+                // - <font color="#909090">(This squat desert plant drips with a brilliant red sap.)</font>
                 // $script:0911203207011243$ 
-                // - <font color="#909090">(You're pretty sure you've seen this shade of red in the clothes and makeup worn by the people of Karkar.)</font> 
+                // - <font color="#909090">(You're pretty sure you've seen this shade of red in the clothes and makeup worn by the people of Karkar.)</font>
                 // $script:0911203207011244$ 
-                // - <font color="#909090">(You've seen plants like this all over Karkar, but they're especially plentiful here.)</font> 
+                // - <font color="#909090">(You've seen plants like this all over Karkar, but they're especially plentiful here.)</font>
                 return true;
             default:
                 return true;

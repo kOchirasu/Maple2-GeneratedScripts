@@ -13,11 +13,11 @@ public class _11001178 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1012113807004098$ 
-                // - You rotten swine, I won't let you get away with this! 
+                // - You rotten swine, I won't let you get away with this!
                 return true;
             case 30:
                 // $script:1012113807004101$ 
-                // - Do you know what it's like to see your life's work destroyed in a single day? Well I do! <b>I've lost my farm<b>! Gah! I'm so mad I can't even sleep at night. 
+                // - Do you know what it's like to see your life's work destroyed in a single day? Well I do! <b>I've lost my farm<b>! Gah! I'm so mad I can't even sleep at night.
                 switch (selection) {
                     // $script:1012113807004102$
                     // - What happened?
@@ -28,7 +28,7 @@ public class _11001178 : NpcScript {
                 return true;
             case 31:
                 // $script:1012113807004103$ 
-                // - At first I saw them in the distance, like a tidal wave. Before I knew it, my farm was blanketed by a horde of pigs! They crashed through my farm, trampling everything, leaving only ruin! I couldn't believe my eyes... 
+                // - At first I saw them in the distance, like a tidal wave. Before I knew it, my farm was blanketed by a horde of pigs! They crashed through my farm, trampling everything, leaving only ruin! I couldn't believe my eyes...
                 return true;
             default:
                 return true;

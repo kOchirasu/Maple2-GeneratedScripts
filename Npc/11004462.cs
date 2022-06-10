@@ -13,13 +13,13 @@ public class _11004462 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012077$ 
-                // - All clear! 
+                // - All clear!
                 return true;
             case 10:
                 // $script:1227192907012078$ 
-                // - All clear! 
+                // - All clear!
                 // $script:1227192907012079$ 
-                // - We're doing our best to keep $map:02020041$ safe! 
+                // - We're doing our best to keep $map:02020041$ safe!
                 return true;
             default:
                 return true;

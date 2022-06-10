@@ -13,11 +13,11 @@ public class _11004183 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010628$ 
-                // - Life is such a chore. 
+                // - Life is such a chore.
                 return true;
             case 10:
                 // $script:0806025707010629$ 
-                // - Arazaad, Arazaad, Arazaad. Hmph. $npcName:11004182[gender:0]$'s always going on and on about the old man. 
+                // - Arazaad, Arazaad, Arazaad. Hmph. $npcName:11004182[gender:0]$'s always going on and on about the old man.
                 return true;
             default:
                 return true;

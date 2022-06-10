@@ -13,13 +13,13 @@ public class _11004303 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011426$ 
-                // - This place is nice... 
+                // - This place is nice...
                 return true;
             case 30:
                 // $script:1002141907011429$ 
-                // - This room's really comfy. That's why all us ghosts are here.  
+                // - This room's really comfy. That's why all us ghosts are here. 
                 // $script:1002141907011430$ 
-                // - We don't wanna bug the living folks, though. We just wanna watch them live their lives. 
+                // - We don't wanna bug the living folks, though. We just wanna watch them live their lives.
                 switch (selection) {
                     // $script:1002141907011431$
                     // - Did you see what happened here?
@@ -30,7 +30,7 @@ public class _11004303 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011432$ 
-                // - I-I was scared, so I hid behind the chair! That guy was real busy. I bet he dropped a bunch of his stuff all over the place. 
+                // - I-I was scared, so I hid behind the chair! That guy was real busy. I bet he dropped a bunch of his stuff all over the place.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000616 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002517$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 20:
                 // $script:0831180407002519$ 
-                // - Don't compare us to the empire. They care more about their hierarchy than the safety of their charges. Their hypocrisy is disgusting. 
+                // - Don't compare us to the empire. They care more about their hierarchy than the safety of their charges. Their hypocrisy is disgusting.
                 return true;
             default:
                 return true;

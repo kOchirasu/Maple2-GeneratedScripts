@@ -13,15 +13,15 @@ public class _11000843 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003084$ 
-                // - Oh, no...  
+                // - Oh, no... 
                 return true;
             case 30:
                 // $script:0831180407003087$ 
-                // - This is beyond bad! $npcName:22400062$ is trying to manipulate the timeline to his own ends! If he succeeds, the resulting temporal cascade will wipe away all of history as we know it! 
+                // - This is beyond bad! $npcName:22400062$ is trying to manipulate the timeline to his own ends! If he succeeds, the resulting temporal cascade will wipe away all of history as we know it!
                 return true;
             case 40:
                 // $script:0831180407003088$ 
-                // - This place exists upon the central axis of time for our universe. It is a road to all things. Here all possible timelines coexist simultaneously. $npcName:22400062$ plans to collapse them all into a single eventuality, one where he reigns supreme! 
+                // - This place exists upon the central axis of time for our universe. It is a road to all things. Here all possible timelines coexist simultaneously. $npcName:22400062$ plans to collapse them all into a single eventuality, one where he reigns supreme!
                 return true;
             default:
                 return true;

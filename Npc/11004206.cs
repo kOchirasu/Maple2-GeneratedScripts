@@ -13,11 +13,11 @@ public class _11004206 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0803202415009085$ 
-                // - Mushrooms make mistakes, too... 
+                // - Mushrooms make mistakes, too...
                 return true;
             case 10:
                 // $script:0803202415009086$ 
-                // - I don't feel like chatting today... 
+                // - I don't feel like chatting today...
                 return true;
             default:
                 return true;

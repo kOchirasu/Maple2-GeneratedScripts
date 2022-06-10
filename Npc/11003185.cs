@@ -13,11 +13,11 @@ public class _11003185 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0510143807008458$ 
-                // - The shadows see all. 
+                // - The shadows see all.
                 return true;
             case 10:
                 // $script:0510145607008462$ 
-                // - Tremble before the way of the shadow. 
+                // - Tremble before the way of the shadow.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000372 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001526$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407001529$ 
-                // - As scientists, we must always look toward the future. We must not abandon our research because we aren't happy with the immediate results, or out of fear of perceived consequences. Science requires persistence and dedication! 
+                // - As scientists, we must always look toward the future. We must not abandon our research because we aren't happy with the immediate results, or out of fear of perceived consequences. Science requires persistence and dedication!
                 return true;
             default:
                 return true;

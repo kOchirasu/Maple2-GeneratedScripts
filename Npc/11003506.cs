@@ -13,11 +13,11 @@ public class _11003506 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816160115009005$ 
-                // - Do you need more candy packs? 
+                // - Do you need more candy packs?
                 return true;
             case 30:
                 // $script:0816160115009006$ 
-                // - Ever since those hungry $itemPlural:61000002$ showed up, this place has been overflowing with tourists. I actually ran into a childhood friend the other day! 
+                // - Ever since those hungry $itemPlural:61000002$ showed up, this place has been overflowing with tourists. I actually ran into a childhood friend the other day!
                 return true;
             default:
                 return true;

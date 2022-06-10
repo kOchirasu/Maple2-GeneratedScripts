@@ -13,15 +13,15 @@ public class _11000054 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000232$ 
-                // - What? 
+                // - What?
                 return true;
             case 30:
                 // $script:0831180407000235$ 
-                // - Bah! $npcName:11000062[gender:1]$ said she would go attend the court with her dad. Why isn't my gramps saying anything? I want to go to see the empress too! 
+                // - Bah! $npcName:11000062[gender:1]$ said she would go attend the court with her dad. Why isn't my gramps saying anything? I want to go to see the empress too!
                 return true;
             case 40:
                 // $script:0831180407000236$ 
-                // - $npcName:11000056[gender:0]$ knows about a lot of things. If you have questions, you should ask him! 
+                // - $npcName:11000056[gender:0]$ knows about a lot of things. If you have questions, you should ask him!
                 return true;
             default:
                 return true;

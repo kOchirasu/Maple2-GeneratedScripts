@@ -13,15 +13,15 @@ public class _11004325 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1010140307011499$ 
-                // - Breathtaking! 
+                // - Breathtaking!
                 return true;
             case 10:
                 // $script:1010140307011500$ 
-                // - Ahh... It's too beautiful. 
+                // - Ahh... It's too beautiful.
                 // $script:1010140307011501$ 
-                // - Can't you feel it? The stunning aurora in the sky... The alien wildlife... This place is filling me with creative energy! 
+                // - Can't you feel it? The stunning aurora in the sky... The alien wildlife... This place is filling me with creative energy!
                 // $script:1010140307011502$ 
-                // - I feel it brewing inside. I'm ready to write a smash hit song! 
+                // - I feel it brewing inside. I'm ready to write a smash hit song!
                 switch (selection) {
                     // $script:1010140307011503$
                     // - Since when do you write your own songs?
@@ -32,9 +32,9 @@ public class _11004325 : NpcScript {
                 return true;
             case 20:
                 // $script:1010140307011504$ 
-                // - Forget the $npcName:11004325[gender:0]$ you used to know. From this day on, I'm reborn as a guy who totally writes his own songs! 
+                // - Forget the $npcName:11004325[gender:0]$ you used to know. From this day on, I'm reborn as a guy who totally writes his own songs!
                 // $script:1010140307011505$ 
-                // - You just wait. The new and improved $npcName:11004325[gender:0]$ is going to take the world by storm! 
+                // - You just wait. The new and improved $npcName:11004325[gender:0]$ is going to take the world by storm!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000224 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000976$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407000978$ 
-                // - My boyfriend and I came here for a picnic, and we ended up fighting because he kept looking at other girls. The nerve! 
+                // - My boyfriend and I came here for a picnic, and we ended up fighting because he kept looking at other girls. The nerve!
                 return true;
             default:
                 return true;

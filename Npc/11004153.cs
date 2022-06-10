@@ -13,11 +13,11 @@ public class _11004153 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010577$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 10:
                 // $script:0806025707010578$ 
-                // - There are chests hidden all over Maple World, but the ones in $map:02000499$ are... different. Hehe, you'll see! 
+                // - There are chests hidden all over Maple World, but the ones in $map:02000499$ are... different. Hehe, you'll see!
                 return true;
             default:
                 return true;

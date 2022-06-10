@@ -13,11 +13,11 @@ public class _11000039 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000204$ 
-                // - Who will protect $map:02000051$? 
+                // - Who will protect $map:02000051$?
                 return true;
             case 40:
                 // $script:0831180407000208$ 
-                // - Sometimes you get what you want. Sometimes you must settle. 
+                // - Sometimes you get what you want. Sometimes you must settle.
                 return true;
             default:
                 return true;

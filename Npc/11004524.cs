@@ -13,13 +13,13 @@ public class _11004524 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0103163407012503$ 
-                // - Beeep... Beeep... 
+                // - Beeep... Beeep...
                 return true;
             case 10:
                 // $script:0103163407012504$ 
-                // - You appear malnourished. 
+                // - You appear malnourished.
                 // $script:0103163407012505$ 
-                // - Feel free to refuel at our aetherine station. 
+                // - Feel free to refuel at our aetherine station.
                 return true;
             default:
                 return true;

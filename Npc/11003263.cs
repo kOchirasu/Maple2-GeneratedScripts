@@ -13,11 +13,11 @@ public class _11003263 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008206$ 
-                // - $MyPCName$... You did everything you could. 
+                // - $MyPCName$... You did everything you could.
                 return true;
             case 30:
                 // $script:0403155707008207$ 
-                // - The path to Ellinel is still blocked, but we'll find a way back. 
+                // - The path to Ellinel is still blocked, but we'll find a way back.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004292 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011360$ 
-                // - Welcome, welcome, to Mon Bloody Chouchou Hotel! 
+                // - Welcome, welcome, to Mon Bloody Chouchou Hotel!
                 return true;
             case 30:
                 // $script:1002141907011363$ 
-                // - Do you have a thirst for adventure? Then come to the Mon Bloody Chouchou Hotel and celebrate Halloween with us! 
+                // - Do you have a thirst for adventure? Then come to the Mon Bloody Chouchou Hotel and celebrate Halloween with us!
                 switch (selection) {
                     // $script:1002141907011364$
                     // - Sounds fun!
@@ -28,7 +28,7 @@ public class _11004292 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011365$ 
-                // - Please take the portal here to the $map:63000065$. And enjoy your stay... Mwahahaha!  
+                // - Please take the portal here to the $map:63000065$. And enjoy your stay... Mwahahaha! 
                 return true;
             default:
                 return true;

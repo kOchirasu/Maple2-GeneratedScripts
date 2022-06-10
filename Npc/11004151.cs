@@ -13,11 +13,11 @@ public class _11004151 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010573$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0806025707010574$ 
-                // - $npcName:11004150$, $npcName:11004148$, $npcName:11004149$, and I are here in $map:02000499$ on vacation! Since we all grew up together, we've got some real synergy on the battlefield. 
+                // - $npcName:11004150$, $npcName:11004148$, $npcName:11004149$, and I are here in $map:02000499$ on vacation! Since we all grew up together, we've got some real synergy on the battlefield.
                 return true;
             default:
                 return true;

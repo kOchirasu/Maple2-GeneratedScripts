@@ -13,11 +13,11 @@ public class _11001167 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1008163207004079$ 
-                // - Where in the world is he? 
+                // - Where in the world is he?
                 return true;
             case 30:
                 // $script:1008163207004082$ 
-                // - Have you seen my brother? He must be somewhere around here. 
+                // - Have you seen my brother? He must be somewhere around here.
                 return true;
             default:
                 return true;

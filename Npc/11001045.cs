@@ -13,11 +13,11 @@ public class _11001045 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003569$ 
-                // - What just passed by? It was shining. 
+                // - What just passed by? It was shining.
                 return true;
             case 30:
                 // $script:0831180407003572$ 
-                // - Experience really is the best teacher. I've worked at this research center for so long that now I know scientific terms better than slang. 
+                // - Experience really is the best teacher. I've worked at this research center for so long that now I know scientific terms better than slang.
                 return true;
             default:
                 return true;

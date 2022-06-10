@@ -13,11 +13,11 @@ public class _11003066 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0102155907007650$ 
-                // - $MyPCName$, I'll always remember you. 
+                // - $MyPCName$, I'll always remember you.
                 return true;
             case 30:
                 // $script:0102155907007651$ 
-                // - I was told humans were selfish, foul creatures... but in the end, a human saved me. 
+                // - I was told humans were selfish, foul creatures... but in the end, a human saved me.
                 switch (selection) {
                     // $script:0102155907007652$
                     // - How do you feel?
@@ -28,7 +28,7 @@ public class _11003066 : NpcScript {
                 return true;
             case 31:
                 // $script:0102155907007653$ 
-                // - I'll live, thanks to you. We snowcubs are strong. That's all. 
+                // - I'll live, thanks to you. We snowcubs are strong. That's all.
                 return true;
             default:
                 return true;

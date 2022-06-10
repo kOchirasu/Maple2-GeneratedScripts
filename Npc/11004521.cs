@@ -13,13 +13,13 @@ public class _11004521 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0102174210002228$ 
-                // - If you need a lift back to $map:02000001$, I'm your gal! 
+                // - If you need a lift back to $map:02000001$, I'm your gal!
                 return true;
             case 10:
                 // $script:0102174210002229$ 
-                // - If you need a lift back to $map:02000001$, I'm your gal! 
+                // - If you need a lift back to $map:02000001$, I'm your gal!
                 // $script:0102174210002230$ 
-                // - We're heading out straight away. If you miss this place, you can always use the <i>Lumiwind</i> to come back. Are you ready to return to $map:02000001$? 
+                // - We're heading out straight away. If you miss this place, you can always use the <i>Lumiwind</i> to come back. Are you ready to return to $map:02000001$?
                 switch (selection) {
                     // $script:0102174210002231$
                     // - Take me to $map:02000001$!
@@ -30,7 +30,7 @@ public class _11004521 : NpcScript {
                 return true;
             case 11:
                 // $script:0102174210002232$ functionID=1 
-                // - All right. Away we go! 
+                // - All right. Away we go!
                 return true;
             default:
                 return true;

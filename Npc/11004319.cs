@@ -13,21 +13,21 @@ public class _11004319 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1102172107011621$ 
-                // - I've got a bad feeling... 
+                // - I've got a bad feeling...
                 return true;
             case 20:
                 // $script:1010140307011441$ 
-                // - I've got a bad feeling... 
+                // - I've got a bad feeling...
                 return true;
             case 10:
                 // $script:1102172107011622$ 
-                // - I sense draconic power... Did I finally find them? 
+                // - I sense draconic power... Did I finally find them?
                 return true;
             case 30:
                 // $script:1010140307011442$ 
-                // - Oh, it's you! 
+                // - Oh, it's you!
                 // $script:1010140307011443$ 
-                // - It's been a while! What're you doing here? 
+                // - It's been a while! What're you doing here?
                 switch (selection) {
                     // $script:1010140307011444$
                     // - What are you doing here?
@@ -38,7 +38,7 @@ public class _11004319 : NpcScript {
                 return true;
             case 40:
                 // $script:1010140307011445$ 
-                // - A few days ago I sensed an unusual energy coming from this place, so I came to investigate. 
+                // - A few days ago I sensed an unusual energy coming from this place, so I came to investigate.
                 switch (selection) {
                     // $script:1010140307011446$
                     // - Did you find anything?
@@ -49,11 +49,11 @@ public class _11004319 : NpcScript {
                 return true;
             case 50:
                 // $script:1010140307011447$ 
-                // - Did I ever! As soon as I arrived, I felt it—that familiar aura... The traces of dragons! 
+                // - Did I ever! As soon as I arrived, I felt it—that familiar aura... The traces of dragons!
                 // $script:1010140307011448$ 
-                // - There's no question about it, dragons once lived in this land! I got to thinking that maybe they were related to the dark dragons that Biset told me about. 
+                // - There's no question about it, dragons once lived in this land! I got to thinking that maybe they were related to the dark dragons that Biset told me about.
                 // $script:1010141507011602$ 
-                // - Now I'm just waiting for my next big clue. 
+                // - Now I'm just waiting for my next big clue.
                 switch (selection) {
                     // $script:0111224807012687$
                     // - Well, good luck!
@@ -64,7 +64,7 @@ public class _11004319 : NpcScript {
                 return true;
             case 60:
                 // $script:0111224807012688$ 
-                // - Thank you! 
+                // - Thank you!
                 return true;
             default:
                 return true;

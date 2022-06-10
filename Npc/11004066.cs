@@ -13,13 +13,13 @@ public class _11004066 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0619202207010127$ 
-                // - ... 
+                // - ...
                 return true;
             case 10:
                 // $script:0619202207010128$ 
-                // - ... 
+                // - ...
                 // $script:0619202207010129$ 
-                // - Tch! Don't tell me I got caught... Your senses are sharp, I'll give you that. 
+                // - Tch! Don't tell me I got caught... Your senses are sharp, I'll give you that.
                 switch (selection) {
                     // $script:0619202207010130$
                     // - Why are you hiding here?
@@ -30,11 +30,11 @@ public class _11004066 : NpcScript {
                 return true;
             case 31:
                 // $script:0619202207010131$ 
-                // - This place, the $map:02000262$, was created by us, the luditionists. I'm taking a quick peek to ensure everything is running smoothly. And by smoothly, I mean with lots of exciting incidents. 
+                // - This place, the $map:02000262$, was created by us, the luditionists. I'm taking a quick peek to ensure everything is running smoothly. And by smoothly, I mean with lots of exciting incidents.
                 return true;
             case 32:
                 // $script:0619202207010132$ 
-                // - A world without incidents is boring, hmm? We don't want a boring world. 
+                // - A world without incidents is boring, hmm? We don't want a boring world.
                 switch (selection) {
                     // $script:0619202207010133$
                     // - What does a luditionist do?
@@ -45,7 +45,7 @@ public class _11004066 : NpcScript {
                 return true;
             case 33:
                 // $script:0619202207010134$ 
-                // - Hush, now. Don't ask too many questions or you'll get hurt. Let's just say that we're trying to make things more fun. 
+                // - Hush, now. Don't ask too many questions or you'll get hurt. Let's just say that we're trying to make things more fun.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003638 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009095$ 
-                // - Wow! This place is amazing. 
+                // - Wow! This place is amazing.
                 return true;
             case 10:
                 // $script:1109121007009096$ 
-                // - Excuse me! Would you mind taking my picture? 
+                // - Excuse me! Would you mind taking my picture?
                 switch (selection) {
                     // $script:1109121007009097$
                     // - Sure, I'll take one for you.
@@ -28,7 +28,7 @@ public class _11003638 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009098$ 
-                // - Okay, great! Now, I'll just pose like this and you pretend you're taking a snapshot like that... And let $npcName:11003535[gender:1]$ know that I say, "Nya-nyah-nya-nya-nyah!" 
+                // - Okay, great! Now, I'll just pose like this and you pretend you're taking a snapshot like that... And let $npcName:11003535[gender:1]$ know that I say, "Nya-nyah-nya-nya-nyah!"
                 switch (selection) {
                     // $script:1109121007009099$
                     // - Uh...
@@ -39,7 +39,7 @@ public class _11003638 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009100$ 
-                // - Act natural! And be sure to let $npcName:11003535[gender:1]$ know my exact words. Mess this up and the whole operation is done for. 
+                // - Act natural! And be sure to let $npcName:11003535[gender:1]$ know my exact words. Mess this up and the whole operation is done for.
                 switch (selection) {
                     // $script:1109121007009101$
                     // - Understood.
@@ -50,7 +50,7 @@ public class _11003638 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009102$ 
-                // - Wow! The picture came out great. Thank you. 
+                // - Wow! The picture came out great. Thank you.
                 return true;
             default:
                 return true;

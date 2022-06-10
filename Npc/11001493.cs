@@ -13,11 +13,11 @@ public class _11001493 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0118150907005809$ 
-                // - I think I'd like to talk today. 
+                // - I think I'd like to talk today.
                 return true;
             case 30:
                 // $script:0118150907005812$ 
-                // - Everything happens for a reason. 
+                // - Everything happens for a reason.
                 switch (selection) {
                     // $script:0120154307005850$
                     // - Tell me about your past.
@@ -28,15 +28,15 @@ public class _11001493 : NpcScript {
                 return true;
             case 31:
                 // $script:0120154307005851$ functionID=1 
-                // - Ah, you want to know what happened back then. 
+                // - Ah, you want to know what happened back then.
                 return true;
             case 32:
                 // $script:0120154307005852$ 
-                // - I can't remember. 
+                // - I can't remember.
                 return true;
             case 40:
                 // $script:0127102807005856$ 
-                // - Everything happens for a reason. 
+                // - Everything happens for a reason.
                 return true;
             default:
                 return true;

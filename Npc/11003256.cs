@@ -13,11 +13,11 @@ public class _11003256 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008182$ 
-                // - <font color="#909090">($npcName:11003254[gender:1]$'s name is signed on this note.)</font> 
+                // - <font color="#909090">($npcName:11003254[gender:1]$'s name is signed on this note.)</font>
                 return true;
             case 30:
                 // $script:0403155707008183$ 
-                // - <font color="#909090">($npcName:11003254[gender:1]$ has left this scrawled note in a hurry.)</font> 
+                // - <font color="#909090">($npcName:11003254[gender:1]$ has left this scrawled note in a hurry.)</font>
                 return true;
             default:
                 return true;

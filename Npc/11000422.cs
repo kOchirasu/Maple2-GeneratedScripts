@@ -13,15 +13,15 @@ public class _11000422 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001763$ 
-                // - <font color="#909090">(The headstone is old and worn, and there is an epitaph inscribed upon it.)</font> 
+                // - <font color="#909090">(The headstone is old and worn, and there is an epitaph inscribed upon it.)</font>
                 return true;
             case 10:
                 // $script:0831180407001764$ 
-                // - <i>Here lies Roanna Levematri. She leaves behind her lover Alberto, whose heart will never heal.</i> 
+                // - <i>Here lies Roanna Levematri. She leaves behind her lover Alberto, whose heart will never heal.</i>
                 return true;
             case 20:
                 // $script:0831180407001765$ 
-                // - <i>Here lies Roanna Levematri. She leaves behind her lover Alberto, whose heart will never heal.</i> 
+                // - <i>Here lies Roanna Levematri. She leaves behind her lover Alberto, whose heart will never heal.</i>
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000873 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003155$ 
-                // - Sigh... 
+                // - Sigh...
                 return true;
             case 30:
                 // $script:0831180407003158$ 
-                // - I've got this awful, creeping feeling that something bad is coming. I really hope I'm wrong. 
+                // - I've got this awful, creeping feeling that something bad is coming. I really hope I'm wrong.
                 return true;
             default:
                 return true;

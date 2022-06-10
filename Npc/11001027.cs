@@ -13,11 +13,11 @@ public class _11001027 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003503$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 30:
                 // $script:0831180407003506$ 
-                // - Criminals are held here while waiting for sentencing. Once sentenced, they're sent to $map:02000124$. 
+                // - Criminals are held here while waiting for sentencing. Once sentenced, they're sent to $map:02000124$.
                 return true;
             default:
                 return true;

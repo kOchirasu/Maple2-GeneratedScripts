@@ -13,15 +13,15 @@ public class _11004081 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0619202207010249$ 
-                // - <font color="#909090">(You faintly make out the cries of a woman. She somehow sounds far away and close at the same time.)</font> 
+                // - <font color="#909090">(You faintly make out the cries of a woman. She somehow sounds far away and close at the same time.)</font>
                 return true;
             case 10:
                 // $script:0619202207010250$ 
-                // - <font color="#909090">(You faintly make out the cries of a woman. She somehow sounds far away and close at the same time.)</font> 
+                // - <font color="#909090">(You faintly make out the cries of a woman. She somehow sounds far away and close at the same time.)</font>
                 // $script:0619202207010251$ 
-                // - My child... My child... Where are you...? 
+                // - My child... My child... Where are you...?
                 // $script:0619202207010252$ 
-                // - Come back to me... Come out of the cold... Your mama is waiting... 
+                // - Come back to me... Come out of the cold... Your mama is waiting...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000424 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001767$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 60:
                 // $script:0831180407001771$ 
-                // - Have you seen a lost, crying girl on the street? She's carrying a doll in her arms like it's a real baby. 
+                // - Have you seen a lost, crying girl on the street? She's carrying a doll in her arms like it's a real baby.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004230 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010810$ 
-                // - ... 
+                // - ...
                 return true;
             case 10:
                 // $script:0806222707010811$ 
-                // - <font color='#909090'>(The fox tilts its head inquisitively.)</font> 
+                // - <font color='#909090'>(The fox tilts its head inquisitively.)</font>
                 return true;
             default:
                 return true;

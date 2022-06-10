@@ -13,19 +13,19 @@ public class _11000058 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000255$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000258$ 
-                // - If I had stayed with Bella that day...  
+                // - If I had stayed with Bella that day... 
                 return true;
             case 40:
                 // $script:0831180407000259$ 
-                // - I used to live here with my family, but... I'm the only one living in this house now. I miss them so much... 
+                // - I used to live here with my family, but... I'm the only one living in this house now. I miss them so much...
                 return true;
             case 50:
                 // $script:0831180407000260$ 
-                // - Sometimes I sit by the window, watching the stars fade away one by one, reminiscing about the good old days. I try not to recall the sad memories, but only the good, happy ones. 
+                // - Sometimes I sit by the window, watching the stars fade away one by one, reminiscing about the good old days. I try not to recall the sad memories, but only the good, happy ones.
                 return true;
             default:
                 return true;

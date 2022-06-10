@@ -13,11 +13,11 @@ public class _11003518 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008854$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0817044507008857$ 
-                // - What is it? 
+                // - What is it?
                 switch (selection) {
                     // $script:0817044507008858$
                     // - Tell me about the five auras.
@@ -28,7 +28,7 @@ public class _11003518 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008859$ 
-                // - Kiyos live in Zulu Canyon to the northwest. If you capture a kiyo, you can take its Free Spirit. 
+                // - Kiyos live in Zulu Canyon to the northwest. If you capture a kiyo, you can take its Free Spirit.
                 switch (selection) {
                     // $script:0817044507008860$
                     // - Tell me about Zulu Canyon.
@@ -44,7 +44,7 @@ public class _11003518 : NpcScript {
                 return true;
             case 32:
                 // $script:0817044507008862$ 
-                // - There are peaks upon peaks at Zulu Canyon. If you don't have wings, you won't be able to cross it. 
+                // - There are peaks upon peaks at Zulu Canyon. If you don't have wings, you won't be able to cross it.
                 switch (selection) {
                     // $script:0817044507008863$
                     // - I need to ask something else.
@@ -55,7 +55,7 @@ public class _11003518 : NpcScript {
                 return true;
             case 33:
                 // $script:0817044507008864$ 
-                // - The kiyos are agile. They don't like it when anyone gets close. 
+                // - The kiyos are agile. They don't like it when anyone gets close.
                 switch (selection) {
                     // $script:0817044507008865$
                     // - I need to ask something else.
@@ -66,7 +66,7 @@ public class _11003518 : NpcScript {
                 return true;
             case 34:
                 // $script:0817044507008866$ 
-                // - W-what? 
+                // - W-what?
                 switch (selection) {
                     // $script:0817044507008867$
                     // - Tell me about Zulu Canyon.

@@ -13,11 +13,11 @@ public class _11001672 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0711210007006722$ 
-                // - You have something to say to me? 
+                // - You have something to say to me?
                 return true;
             case 30:
                 // $script:0727223007006893$ 
-                // - They've pushed us all the way back to $map:63000029$... 
+                // - They've pushed us all the way back to $map:63000029$...
                 switch (selection) {
                     // $script:0727223007006894$
                     // - What's our next move?
@@ -28,7 +28,7 @@ public class _11001672 : NpcScript {
                 return true;
             case 40:
                 // $script:0727223007006895$ 
-                // - I thought we could handle this on our own, but there are too many of them. We have no choice but to report the situation to the master. He will know what to do. 
+                // - I thought we could handle this on our own, but there are too many of them. We have no choice but to report the situation to the master. He will know what to do.
                 return true;
             default:
                 return true;

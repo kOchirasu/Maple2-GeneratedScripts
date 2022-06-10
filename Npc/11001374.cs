@@ -13,11 +13,11 @@ public class _11001374 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217144507005352$ 
-                // - Hm... 
+                // - Hm...
                 return true;
             case 30:
                 // $script:1217144507005355$ 
-                // - I don't care <i>why</i> this place is in shambles. I care that these noisy hooligans are preventing me from doing my job! 
+                // - I don't care <i>why</i> this place is in shambles. I care that these noisy hooligans are preventing me from doing my job!
                 return true;
             default:
                 return true;

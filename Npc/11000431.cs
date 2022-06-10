@@ -13,15 +13,15 @@ public class _11000431 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001797$ 
-                // - I'd better rest while I can! 
+                // - I'd better rest while I can!
                 return true;
             case 30:
                 // $script:0831180407001799$ 
-                // - I've heard stories of treasure chests under the sea, but I've never seen one. How about you, $MyPCName$? 
+                // - I've heard stories of treasure chests under the sea, but I've never seen one. How about you, $MyPCName$?
                 return true;
             case 40:
                 // $script:0831180407001800$ 
-                // - Yes? 
+                // - Yes?
                 switch (selection) {
                     // $script:0831180407001801$
                     // - $npcName:11000362[gender:0]$'s special...
@@ -32,7 +32,7 @@ public class _11000431 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407001802$ 
-                // - Go away. 
+                // - Go away.
                 return true;
             default:
                 return true;

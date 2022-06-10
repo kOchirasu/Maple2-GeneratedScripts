@@ -13,11 +13,11 @@ public class _11000219 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000956$ 
-                // - Wah! Geez! 
+                // - Wah! Geez!
                 return true;
             case 30:
                 // $script:0831180407000959$ 
-                // - Argh, what? 
+                // - Argh, what?
                 switch (selection) {
                     // $script:0831180407000960$
                     // - What are you doing?
@@ -28,7 +28,7 @@ public class _11000219 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000961$ 
-                // - Sheesh, I don't know. I can't talk. Doing this is tough as it is. My limbs are so numb I can't feel them anymore.  
+                // - Sheesh, I don't know. I can't talk. Doing this is tough as it is. My limbs are so numb I can't feel them anymore. 
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11004559 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220211107014487$ 
-                // - Aaaah. 
+                // - Aaaah.
                 return true;
             case 10:
                 // $script:0220211107014488$ 
-                // - Aaaah. 
+                // - Aaaah.
                 // $script:0220211107014489$ 
-                // - Oh, hello! I remember you. 
+                // - Oh, hello! I remember you.
                 switch (selection) {
                     // $script:0220211107014490$
                     // - Yeah, and I've seen you around.
@@ -30,9 +30,9 @@ public class _11004559 : NpcScript {
                 return true;
             case 20:
                 // $script:0220211107014491$ 
-                // - I suppose it would be weird if you <i>didn't</i> know who I am. 
+                // - I suppose it would be weird if you <i>didn't</i> know who I am.
                 // $script:0220211107014492$ 
-                // - So, you're here for the Queen Bean Rumble, right? Are you sure you're up to fighting me? 
+                // - So, you're here for the Queen Bean Rumble, right? Are you sure you're up to fighting me?
                 switch (selection) {
                     // $script:0220211107014493$
                     // - I was about to ask you the same.
@@ -43,7 +43,7 @@ public class _11004559 : NpcScript {
                 return true;
             case 30:
                 // $script:0220211107014494$ 
-                // - Oh, you think you can take me on just because I dance all day? Well, I have news for you, $male:buddy,female:lady$. Dancing is fantastic exercise. I'm going to crush you like a teeny tiny bug! 
+                // - Oh, you think you can take me on just because I dance all day? Well, I have news for you, $male:buddy,female:lady$. Dancing is fantastic exercise. I'm going to crush you like a teeny tiny bug!
                 return true;
             default:
                 return true;

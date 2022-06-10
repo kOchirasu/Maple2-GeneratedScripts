@@ -13,15 +13,15 @@ public class _11004097 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0622171707010341$ 
-                // - Welcome, my other half. 
+                // - Welcome, my other half.
                 return true;
             case 20:
                 // $script:0622171707010342$ 
-                // - My kin... you've come. 
+                // - My kin... you've come.
                 return true;
             case 30:
                 // $script:0622171707010343$ 
-                // - Prove that I made the right decision, $MyPCName$. 
+                // - Prove that I made the right decision, $MyPCName$.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001731 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0728022507006976$ 
-                // - Did you find me? 
+                // - Did you find me?
                 return true;
             case 30:
                 // $script:0804172907007069$ 
-                // - You see me? You have exceptionally sharp senses. 
+                // - You see me? You have exceptionally sharp senses.
                 switch (selection) {
                     // $script:0804172907007070$
                     // - What are you doing here?
@@ -28,7 +28,7 @@ public class _11001731 : NpcScript {
                 return true;
             case 40:
                 // $script:0804172907007071$ 
-                // - Where's it written I've got to tell you anything? 
+                // - Where's it written I've got to tell you anything?
                 switch (selection) {
                     // $script:0804172907007072$
                     // - Just curious.
@@ -44,11 +44,11 @@ public class _11001731 : NpcScript {
                 return true;
             case 41:
                 // $script:0804172907007074$ 
-                // - You may have enough free time to bug strangers, but I don't. Scram. 
+                // - You may have enough free time to bug strangers, but I don't. Scram.
                 return true;
             case 42:
                 // $script:0804172907007075$ 
-                // - Let me think... No. 
+                // - Let me think... No.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004551 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0109163907012668$ 
-                // - You! Outlander! You better not be here to bother $npcName:11004401[gender:1]$. 
+                // - You! Outlander! You better not be here to bother $npcName:11004401[gender:1]$.
                 return true;
             case 10:
                 // $script:0109163907012669$ 
-                // - You! Outlander! You better not be here to bother $npcName:11004401[gender:1]$. 
+                // - You! Outlander! You better not be here to bother $npcName:11004401[gender:1]$.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001292 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005006$ 
-                // - Cooking requires focus. Understand? 
+                // - Cooking requires focus. Understand?
                 return true;
             case 10:
                 // $script:1230171207005752$ 
-                // - Order now or get a face full of burning oil. Your choice.  
+                // - Order now or get a face full of burning oil. Your choice. 
                 return true;
             default:
                 return true;

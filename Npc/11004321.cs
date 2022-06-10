@@ -13,21 +13,21 @@ public class _11004321 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1102172107011625$ 
-                // - This won't do... 
+                // - This won't do...
                 return true;
             case 20:
                 // $script:1010140307011458$ 
-                // - This won't do... 
+                // - This won't do...
                 return true;
             case 10:
                 // $script:1102172107011626$ 
-                // - It's hard to get my bearings in a weird place like this. 
+                // - It's hard to get my bearings in a weird place like this.
                 return true;
             case 30:
                 // $script:1010140307011459$ 
-                // - Huh? 
+                // - Huh?
                 // $script:1010140307011460$ 
-                // - Ah! It's you! How have you been? 
+                // - Ah! It's you! How have you been?
                 switch (selection) {
                     // $script:1010140307011461$
                     // - I'm doing pretty well, thanks.
@@ -38,7 +38,7 @@ public class _11004321 : NpcScript {
                 return true;
             case 40:
                 // $script:1010140307011462$ 
-                // - That's good to hear. So what brings you here? 
+                // - That's good to hear. So what brings you here?
                 switch (selection) {
                     // $script:1010140307011463$
                     // - I came here on an investigation.
@@ -49,9 +49,9 @@ public class _11004321 : NpcScript {
                 return true;
             case 50:
                 // $script:1010140307011464$ 
-                // - I see, you too... Sigh. 
+                // - I see, you too... Sigh.
                 // $script:1010140307011465$ 
-                // - We're here researching the dark dragons that Biset used to talk about. 
+                // - We're here researching the dark dragons that Biset used to talk about.
                 switch (selection) {
                     // $script:1010140307011466$
                     // - How did you get here?
@@ -62,9 +62,9 @@ public class _11004321 : NpcScript {
                 return true;
             case 60:
                 // $script:1010140307011467$ 
-                // - $npcName:11004319[gender:1]$ brought us here with her dragon power. It seems she's come a long way. 
+                // - $npcName:11004319[gender:1]$ brought us here with her dragon power. It seems she's come a long way.
                 // $script:1010140307011468$ 
-                // - So far this new land seems like an amazing place, but some of us are having a harder time adjusting than others. $npcName:11004320[gender:0]$'s not acting like himself. Do you think you could offer him some words of encouragement? 
+                // - So far this new land seems like an amazing place, but some of us are having a harder time adjusting than others. $npcName:11004320[gender:0]$'s not acting like himself. Do you think you could offer him some words of encouragement?
                 switch (selection) {
                     // $script:1010140307011469$
                     // - I'll see what I can do.
@@ -75,7 +75,7 @@ public class _11004321 : NpcScript {
                 return true;
             case 70:
                 // $script:1010140307011470$ 
-                // - Thanks! I'm counting on you! 
+                // - Thanks! I'm counting on you!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004347 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011751$ 
-                // - I must remain calm... I can resolve this... All things in their proper place... 
+                // - I must remain calm... I can resolve this... All things in their proper place...
                 return true;
             case 10:
                 // $script:1109213607011752$ 
-                // - If there's a problem, solve it! Blaming and complaining won't fix anything! 
+                // - If there's a problem, solve it! Blaming and complaining won't fix anything!
                 switch (selection) {
                     // $script:1109213607011753$
                     // - Things aren't looking so good right now... are you okay?
@@ -28,7 +28,7 @@ public class _11004347 : NpcScript {
                 return true;
             case 11:
                 // $script:1109213607011754$ 
-                // - Yes, of course! Obviously we just need to remain calm and composed. CALM AND COMPOSED! 
+                // - Yes, of course! Obviously we just need to remain calm and composed. CALM AND COMPOSED!
                 return true;
             default:
                 return true;

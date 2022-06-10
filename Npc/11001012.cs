@@ -13,11 +13,11 @@ public class _11001012 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003454$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 30:
                 // $script:0831180407003457$ 
-                // - I'm sure you heard that time stopped here in Ludibrium. Now I don't have to worry about getting old, as long as I stay here. 
+                // - I'm sure you heard that time stopped here in Ludibrium. Now I don't have to worry about getting old, as long as I stay here.
                 return true;
             default:
                 return true;

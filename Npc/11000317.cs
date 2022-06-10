@@ -13,11 +13,11 @@ public class _11000317 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001205$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 40:
                 // $script:0831180407001209$ 
-                // - Ah, are you an adventurer? So am I! 
+                // - Ah, are you an adventurer? So am I!
                 switch (selection) {
                     // $script:0831180407001210$
                     // - Don't you lie to me!
@@ -33,7 +33,7 @@ public class _11000317 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407001212$ 
-                // - I-I'm not lying! I mean it! 
+                // - I-I'm not lying! I mean it!
                 switch (selection) {
                     // $script:0831180407001213$
                     // - What do you think an adventurer is?
@@ -44,7 +44,7 @@ public class _11000317 : NpcScript {
                 return true;
             case 42:
                 // $script:0831180407001214$ 
-                // - An adventurer is someone who embarks on adventures around the world! I've even been to $map:02000023$, you know. My next destination is $map:02000051$! 
+                // - An adventurer is someone who embarks on adventures around the world! I've even been to $map:02000023$, you know. My next destination is $map:02000051$!
                 return true;
             default:
                 return true;

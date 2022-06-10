@@ -13,11 +13,11 @@ public class _11004465 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227192907012093$ 
-                // - Who goes there? Enemy?! 
+                // - Who goes there? Enemy?!
                 return true;
             case 10:
                 // $script:1227192907012095$ 
-                // - Who goes there? Enemy?! 
+                // - Who goes there? Enemy?!
                 switch (selection) {
                     // $script:0111125107012684$
                     // - Hey, I'm on your side.
@@ -28,7 +28,7 @@ public class _11004465 : NpcScript {
                 return true;
             case 11:
                 // $script:1227192907012096$ 
-                // - Hm? Your clothes are strange, but you look like you can hold your own. You ever consider a career in freedom fighting? 
+                // - Hm? Your clothes are strange, but you look like you can hold your own. You ever consider a career in freedom fighting?
                 switch (selection) {
                     // $script:1227192907012097$
                     // - Sorry, but I've got other obligations.
@@ -39,7 +39,7 @@ public class _11004465 : NpcScript {
                 return true;
             case 12:
                 // $script:1227192907012098$ 
-                // - Tch... What a waste of talent. Well, if you change your mind, it's not like we can afford to be picky... 
+                // - Tch... What a waste of talent. Well, if you change your mind, it's not like we can afford to be picky...
                 return true;
             default:
                 return true;

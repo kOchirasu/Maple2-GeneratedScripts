@@ -13,11 +13,11 @@ public class _11003253 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404104807008253$ 
-                // - $MyPCName$, you're amazing! 
+                // - $MyPCName$, you're amazing!
                 return true;
             case 30:
                 // $script:0404104807008254$ 
-                // - I'm gonna be just as awesome as you when I grow up! 
+                // - I'm gonna be just as awesome as you when I grow up!
                 return true;
             default:
                 return true;

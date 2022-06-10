@@ -13,11 +13,11 @@ public class _11000875 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003181$ 
-                // - I'm going to be rich soon. 
+                // - I'm going to be rich soon.
                 return true;
             case 20:
                 // $script:0831180407003183$ 
-                // - What am I going to do when I become rich? Well... I want a nice-looking house, a nice-looking car, nice-looking clothes, nice-looking shoes... Basically, everything I have should look nice. Right? 
+                // - What am I going to do when I become rich? Well... I want a nice-looking house, a nice-looking car, nice-looking clothes, nice-looking shoes... Basically, everything I have should look nice. Right?
                 return true;
             default:
                 return true;

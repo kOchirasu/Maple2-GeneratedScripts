@@ -13,11 +13,11 @@ public class _11001607 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006095$ 
-                // - You're here. 
+                // - You're here.
                 return true;
             case 10:
                 // $script:0515180307006144$ 
-                // - We've joined forces under the banner of the Starlight Expedition. I only hope we can achieve what we've set out to do.  
+                // - We've joined forces under the banner of the Starlight Expedition. I only hope we can achieve what we've set out to do. 
                 return true;
             default:
                 return true;

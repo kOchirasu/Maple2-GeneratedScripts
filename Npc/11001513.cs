@@ -13,11 +13,11 @@ public class _11001513 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0419105410001487$ 
-                // - How may I help you look amazing? 
+                // - How may I help you look amazing?
                 return true;
             case 1:
                 // $script:0420153110001493$ functionID=1 
-                // - Looking for some head-turning hair? Then you came to the right place, $MyPCName$. My special hairstyles are unmatched! 
+                // - Looking for some head-turning hair? Then you came to the right place, $MyPCName$. My special hairstyles are unmatched!
                 switch (selection) {
                     // $script:0420153110001494$
                     // - I leave my special hairstyle to you, maestro.

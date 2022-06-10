@@ -13,11 +13,11 @@ public class _11000594 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002382$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407002384$ 
-                // - Everything in this world has energy, and lava has the most potent energy of all! 
+                // - Everything in this world has energy, and lava has the most potent energy of all!
                 return true;
             default:
                 return true;

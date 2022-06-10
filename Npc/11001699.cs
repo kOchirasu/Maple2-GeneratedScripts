@@ -13,11 +13,11 @@ public class _11001699 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0711210007006724$ 
-                // - Mm? Yes? 
+                // - Mm? Yes?
                 return true;
             case 30:
                 // $script:0727223007006903$ 
-                // - How can I help you? 
+                // - How can I help you?
                 switch (selection) {
                     // $script:0727223007006904$
                     // - $npcName:11001557[gender:0]$ is a tough teacher.
@@ -28,13 +28,13 @@ public class _11001699 : NpcScript {
                 return true;
             case 40:
                 // $script:0727223007006905$ 
-                // - You don't need to tell <i>me</i> that. He's the reason some of our old students left! 
+                // - You don't need to tell <i>me</i> that. He's the reason some of our old students left!
                 // $script:0727223007006906$ 
-                // - $npcName:11001557[gender:0]$ cares about only one thing, and that's training. He expects everyone to keep up with him, and the problem with that should be obvious. 
+                // - $npcName:11001557[gender:0]$ cares about only one thing, and that's training. He expects everyone to keep up with him, and the problem with that should be obvious.
                 // $script:0727223007006907$ 
-                // - I will say, he has a talent for crushing confidence, and that's important when you get arrogant students. His heart's in the right place, it's just... cold and unfeeling, you know? 
+                // - I will say, he has a talent for crushing confidence, and that's important when you get arrogant students. His heart's in the right place, it's just... cold and unfeeling, you know?
                 // $script:0727223007006908$ 
-                // - If you ask him why all those students left, he'd tell you they were too soft. Even if he's right, he's not helping them by driving them away! 
+                // - If you ask him why all those students left, he'd tell you they were too soft. Even if he's right, he's not helping them by driving them away!
                 return true;
             default:
                 return true;

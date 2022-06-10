@@ -13,15 +13,15 @@ public class _11004280 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011291$ 
-                // - <font color="#909090">(A bright light shines through a crack in the wall.)</font> 
+                // - <font color="#909090">(A bright light shines through a crack in the wall.)</font>
                 return true;
             case 10:
                 // $script:0911203207011292$ 
-                // - <font color="#909090">(A bright light shines through a crack in the wall.)</font> 
+                // - <font color="#909090">(A bright light shines through a crack in the wall.)</font>
                 // $script:0911203207011293$ 
-                // - <font color="#909090">(This passageway was blocked off long ago, but something on the other side still shines brilliantly.)</font> 
+                // - <font color="#909090">(This passageway was blocked off long ago, but something on the other side still shines brilliantly.)</font>
                 // $script:0913151207011306$ 
-                // - <font color="#909090">(You can sense a different sort of power beyond the crack in the wall.)</font> 
+                // - <font color="#909090">(You can sense a different sort of power beyond the crack in the wall.)</font>
                 return true;
             default:
                 return true;

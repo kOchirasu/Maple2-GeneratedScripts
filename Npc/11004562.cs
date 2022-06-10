@@ -13,11 +13,11 @@ public class _11004562 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220211107014515$ 
-                // - Hey! 
+                // - Hey!
                 return true;
             case 10:
                 // $script:0220211107014516$ 
-                // - Ha! I should've known you'd be here. Someone like you can't resist a good rumble. 
+                // - Ha! I should've known you'd be here. Someone like you can't resist a good rumble.
                 switch (selection) {
                     // $script:0220211107014517$
                     // - You've got me there.
@@ -28,9 +28,9 @@ public class _11004562 : NpcScript {
                 return true;
             case 20:
                 // $script:0220211107014518$ 
-                // - That's the $MyPCName$ I remember! Hold on... This means we might have to fight each other. 
+                // - That's the $MyPCName$ I remember! Hold on... This means we might have to fight each other.
                 // $script:0220211107014519$ 
-                // - Well, well. Now I've got some real competition! Let's do our best, okay? 
+                // - Well, well. Now I've got some real competition! Let's do our best, okay?
                 return true;
             default:
                 return true;

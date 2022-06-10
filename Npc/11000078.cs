@@ -13,11 +13,11 @@ public class _11000078 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000366$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407000367$ 
-                // - The wolves of the Vayar Mountains protect the tribes that worship the wolf god. We gray wolves are the guardians of the Murpagoths. The red wolves are the guardians of the Yamarchas. 
+                // - The wolves of the Vayar Mountains protect the tribes that worship the wolf god. We gray wolves are the guardians of the Murpagoths. The red wolves are the guardians of the Yamarchas.
                 return true;
             default:
                 return true;

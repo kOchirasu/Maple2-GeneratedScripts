@@ -13,11 +13,11 @@ public class _11000549 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002328$ 
-                // - What? 
+                // - What?
                 return true;
             case 30:
                 // $script:0831180407002331$ 
-                // - Is today some kind of holiday? Why is everyone so busy? I think I've met more people today than in my entire life. 
+                // - Is today some kind of holiday? Why is everyone so busy? I think I've met more people today than in my entire life.
                 return true;
             default:
                 return true;

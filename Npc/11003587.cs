@@ -13,11 +13,11 @@ public class _11003587 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1102131310001928$ 
-                // - Happy birthday! 
+                // - Happy birthday!
                 return true;
             case 10:
                 // $script:1102131310001929$ 
-                // - Come see me on the month of your birthday—that is, the anniversy of the month you created your account. You'll get a special birthday blessing and gift! 
+                // - Come see me on the month of your birthday—that is, the anniversy of the month you created your account. You'll get a special birthday blessing and gift!
                 return true;
             default:
                 return true;

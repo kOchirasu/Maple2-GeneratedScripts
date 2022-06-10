@@ -13,11 +13,11 @@ public class _11001063 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003621$ 
-                // - Brrr... 
+                // - Brrr...
                 return true;
             case 30:
                 // $script:0831180407003624$ 
-                // - Shush! Keep your voice down! I can't give my position away. 
+                // - Shush! Keep your voice down! I can't give my position away.
                 return true;
             default:
                 return true;

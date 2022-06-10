@@ -13,11 +13,11 @@ public class _11003882 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0430025106000990$ 
-                // - Empress's blessing be with you! 
+                // - Empress's blessing be with you!
                 return true;
             case 30:
                 // $script:0601171006000994$ 
-                // - SCRIPTNPCSHOP_0601171006000994_NAME 
+                // - SCRIPTNPCSHOP_0601171006000994_NAME
                 return true;
             default:
                 return true;

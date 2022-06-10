@@ -13,11 +13,11 @@ public class _11000426 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001775$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407001778$ 
-                // - What have I gotten myself into? I should never have followed $npcName:11000425[gender:0]$ here. What's going on? And why's it snowing? 
+                // - What have I gotten myself into? I should never have followed $npcName:11000425[gender:0]$ here. What's going on? And why's it snowing?
                 return true;
             default:
                 return true;

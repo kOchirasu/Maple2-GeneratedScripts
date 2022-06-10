@@ -13,15 +13,15 @@ public class _11001316 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005035$ 
-                // - What brings you to this place? 
+                // - What brings you to this place?
                 return true;
             case 40:
                 // $script:1227194507005698$ 
-                // - I cannot see you, but I know you by voice, scent, and soul. 
+                // - I cannot see you, but I know you by voice, scent, and soul.
                 // $script:1227194507005699$ 
-                // - Your soul is pure. Maybe you can do it... 
+                // - Your soul is pure. Maybe you can do it...
                 // $script:1227194507005700$ 
-                // - May you be blessed with good vibes. 
+                // - May you be blessed with good vibes.
                 return true;
             default:
                 return true;

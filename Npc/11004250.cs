@@ -13,11 +13,11 @@ public class _11004250 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0829171107010960$ 
-                // - It's been a while since I last met a stranger. Hey, adventurer, does darkness still exist in the world? 
+                // - It's been a while since I last met a stranger. Hey, adventurer, does darkness still exist in the world?
                 return true;
             case 10:
                 // $script:0829171107010961$ 
-                // - It's been a while since I last met a stranger. Hey, adventurer, does darkness still exist in the world? 
+                // - It's been a while since I last met a stranger. Hey, adventurer, does darkness still exist in the world?
                 switch (selection) {
                     // $script:0830160907010980$
                     // - You realize this IS the land of darkness, right?
@@ -28,7 +28,7 @@ public class _11004250 : NpcScript {
                 return true;
             case 11:
                 // $script:0830160907010981$ 
-                // - I see... I guess our efforts haven't paid off yet... 
+                // - I see... I guess our efforts haven't paid off yet...
                 switch (selection) {
                     // $script:0830160907010982$
                     // - What do you mean?
@@ -39,7 +39,7 @@ public class _11004250 : NpcScript {
                 return true;
             case 12:
                 // $script:0830160907010983$ 
-                // - After this world was created, my kind studied magic here for a long time. We sought to stand against the darkness that everyone else thought had disappeared. 
+                // - After this world was created, my kind studied magic here for a long time. We sought to stand against the darkness that everyone else thought had disappeared.
                 switch (selection) {
                     // $script:0830160907010984$
                     // - What kind of magic did you study?
@@ -50,7 +50,7 @@ public class _11004250 : NpcScript {
                 return true;
             case 13:
                 // $script:0830160907010985$ 
-                // - Powerful magic! Magic that could drive away darkness! Magic of light, hot and bright! Magic that is not easily accessible, not even to us... 
+                // - Powerful magic! Magic that could drive away darkness! Magic of light, hot and bright! Magic that is not easily accessible, not even to us...
                 switch (selection) {
                     // $script:0830160907010986$
                     // - Wow. You're really passionate about this, huh?
@@ -61,13 +61,13 @@ public class _11004250 : NpcScript {
                 return true;
             case 14:
                 // $script:0830160907010987$ 
-                // - We are oathbound to banish the darkness. It is our mortal enemy, and it has tried to destroy us again and again, ever since learning of our existence. 
+                // - We are oathbound to banish the darkness. It is our mortal enemy, and it has tried to destroy us again and again, ever since learning of our existence.
                 // $script:0830160907010988$ 
-                // - We pushed and pushed to master ever more powerful magic as our enemy, the darkness, grew stronger. But we grew too greedy. Our effort to put the darkness to sleep before the power of the goddess of light ran out... wasted! 
+                // - We pushed and pushed to master ever more powerful magic as our enemy, the darkness, grew stronger. But we grew too greedy. Our effort to put the darkness to sleep before the power of the goddess of light ran out... wasted!
                 // $script:0830160907010989$ 
-                // - Though we failed, we watch over this world still, ever mindful of our pledge to drive out the darkness. 
+                // - Though we failed, we watch over this world still, ever mindful of our pledge to drive out the darkness.
                 // $script:0830160907010990$ 
-                // - Only when the darkness disappears from this world will I be able to rest in peace... 
+                // - Only when the darkness disappears from this world will I be able to rest in peace...
                 return true;
             default:
                 return true;

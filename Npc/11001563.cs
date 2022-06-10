@@ -13,13 +13,13 @@ public class _11001563 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006051$ 
-                // - You're here. 
+                // - You're here.
                 return true;
             case 10:
                 // $script:0515180307006106$ 
-                // - $MyPCName$, $npcName:11001232[gender:1]$ says she misses you.  
+                // - $MyPCName$, $npcName:11001232[gender:1]$ says she misses you. 
                 // $script:0515180307006107$ 
-                // - I'm sorry I didn't stay in touch. I couldn't find the time. Still, it seems you did well enough without me. 
+                // - I'm sorry I didn't stay in touch. I couldn't find the time. Still, it seems you did well enough without me.
                 return true;
             default:
                 return true;

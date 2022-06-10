@@ -13,15 +13,15 @@ public class _11003202 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404083307008230$ 
-                // - Jeez, who knew being a guard would be so tough? 
+                // - Jeez, who knew being a guard would be so tough?
                 return true;
             case 10:
                 // $script:0404083307008231$ 
-                // - I'm learning so much just from standing in the same room as you, $MyPCName$. 
+                // - I'm learning so much just from standing in the same room as you, $MyPCName$.
                 return true;
             case 20:
                 // $script:0518141907008519$ 
-                // - $MyPCName$! Something terrible has happened! 
+                // - $MyPCName$! Something terrible has happened!
                 return true;
             default:
                 return true;

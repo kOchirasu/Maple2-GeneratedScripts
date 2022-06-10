@@ -13,15 +13,15 @@ public class _11003870 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009856$ 
-                // - Welcome to $map:02000424$. Enjoy your stay! 
+                // - Welcome to $map:02000424$. Enjoy your stay!
                 return true;
             case 10:
                 // $script:0417135107009857$ 
-                // - Beautiful day, isn't it? 
+                // - Beautiful day, isn't it?
                 return true;
             case 20:
                 // $script:0419172107009856$ 
-                // - Welcome to $map:02000424$. Enjoy your stay! 
+                // - Welcome to $map:02000424$. Enjoy your stay!
                 return true;
             default:
                 return true;

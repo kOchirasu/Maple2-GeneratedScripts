@@ -13,11 +13,11 @@ public class _11003513 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0817044507008806$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0817044507008809$ 
-                // - What brings you here? 
+                // - What brings you here?
                 switch (selection) {
                     // $script:0817044507008810$
                     // - Tell me about the five auras.
@@ -28,7 +28,7 @@ public class _11003513 : NpcScript {
                 return true;
             case 31:
                 // $script:0817044507008811$ 
-                // - The Vayar live in the mountains to the northeast. Break a Vayar apart, and you'll get some Steadfast Will. It isn't easy... 
+                // - The Vayar live in the mountains to the northeast. Break a Vayar apart, and you'll get some Steadfast Will. It isn't easy...
                 switch (selection) {
                     // $script:0817044507008812$
                     // - Tell me about the Vayar.
@@ -39,7 +39,7 @@ public class _11003513 : NpcScript {
                 return true;
             case 32:
                 // $script:0817044507008813$ 
-                // - They're solid. And tough. Magic doesn't work on them, either. You've got to fight them up close! 
+                // - They're solid. And tough. Magic doesn't work on them, either. You've got to fight them up close!
                 return true;
             default:
                 return true;

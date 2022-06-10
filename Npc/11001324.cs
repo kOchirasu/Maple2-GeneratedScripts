@@ -15,15 +15,15 @@ public class _11001324 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1216202410001343$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 1:
                 // $script:1216202410001346$ 
-                // - Oh dear, you're barely clinging to life! Would you like to pay $paneltyPrice$ mesos to get treated now? 
+                // - Oh dear, you're barely clinging to life! Would you like to pay $paneltyPrice$ mesos to get treated now?
                 return true;
             case 10:
                 // $script:1216202410001347$ 
-                // - You're looking pretty healthy to me, $MyPCName$, but if you're ever sick or wounded, I can help. 
+                // - You're looking pretty healthy to me, $MyPCName$, but if you're ever sick or wounded, I can help.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000125 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000540$ 
-                // - How did it come to this? 
+                // - How did it come to this?
                 return true;
             case 20:
                 // $script:0831180407000542$ 
-                // - I've got to determine whether the mutated DNA strand was an outside contaminant, or was somehow mistakenly synthesized inside our test subjects... 
+                // - I've got to determine whether the mutated DNA strand was an outside contaminant, or was somehow mistakenly synthesized inside our test subjects...
                 return true;
             default:
                 return true;

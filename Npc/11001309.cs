@@ -13,15 +13,15 @@ public class _11001309 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005028$ 
-                // - Ugh, my head... 
+                // - Ugh, my head...
                 return true;
             case 40:
                 // $script:1227194507005659$ 
-                // - I've got more cases on my plate than I could ever solve in a single lifetime. 
+                // - I've got more cases on my plate than I could ever solve in a single lifetime.
                 // $script:1227194507005660$ 
-                // - Sure, I'm happy that $map:02010002$ is growing. But does the crime have to grow with it? Our prison is bursting at the seams! 
+                // - Sure, I'm happy that $map:02010002$ is growing. But does the crime have to grow with it? Our prison is bursting at the seams!
                 // $script:1227194507005661$ 
-                // - This isn't police work. It's war! But somebody's got to protect the city, right? 
+                // - This isn't police work. It's war! But somebody's got to protect the city, right?
                 return true;
             default:
                 return true;

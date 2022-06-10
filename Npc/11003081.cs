@@ -13,11 +13,11 @@ public class _11003081 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0113143107007762$ 
-                // - <font color="#909090">(You see a wooden cabin weathered by wind and sea.)</font> 
+                // - <font color="#909090">(You see a wooden cabin weathered by wind and sea.)</font>
                 return true;
             case 30:
                 // $script:0113143107007763$ 
-                // - <font color="#909090">(Is someone inside this cabin? You can hear voices.)</font> 
+                // - <font color="#909090">(Is someone inside this cabin? You can hear voices.)</font>
                 return true;
             default:
                 return true;

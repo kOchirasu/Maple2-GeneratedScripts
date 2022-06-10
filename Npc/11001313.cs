@@ -13,13 +13,13 @@ public class _11001313 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005032$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 40:
                 // $script:1227194507005676$ 
-                // - Yeah? You never see a meerkat before? 
+                // - Yeah? You never see a meerkat before?
                 // $script:1227194507005677$ 
-                // - I don't know what you want, but I'm not telling you anything unless <i>you</i> speak, first! 
+                // - I don't know what you want, but I'm not telling you anything unless <i>you</i> speak, first!
                 switch (selection) {
                     // $script:1227194507005678$
                     // - Why does it matter who goes first?
@@ -30,7 +30,7 @@ public class _11001313 : NpcScript {
                 return true;
             case 41:
                 // $script:1227194507005679$ 
-                // - It's one of the rules of Meerkat Patrol. So there! 
+                // - It's one of the rules of Meerkat Patrol. So there!
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000030 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000178$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 20:
                 // $script:0831180407000180$ 
-                // - Bullies are the worst. How can anyone pick on someone weaker than themselves? 
+                // - Bullies are the worst. How can anyone pick on someone weaker than themselves?
                 return true;
             default:
                 return true;

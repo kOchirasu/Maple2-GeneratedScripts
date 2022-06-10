@@ -13,11 +13,11 @@ public class _11004222 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010791$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 10:
                 // $script:0806222707010792$ 
-                // - In my line of work, discretion and poise are vital. That makes this dapper fellow a very hot commodity... 
+                // - In my line of work, discretion and poise are vital. That makes this dapper fellow a very hot commodity...
                 return true;
             default:
                 return true;

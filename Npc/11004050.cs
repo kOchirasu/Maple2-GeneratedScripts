@@ -13,11 +13,11 @@ public class _11004050 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010073$ 
-                // - Since none of Terrun Calibre elders are in a position to leave the island, I decided to come and help out. 
+                // - Since none of Terrun Calibre elders are in a position to leave the island, I decided to come and help out.
                 return true;
             case 10:
                 // $script:0614185307010074$ 
-                // - Since none of Terrun Calibre elders are in a position to leave the island, I decided to come and help out. 
+                // - Since none of Terrun Calibre elders are in a position to leave the island, I decided to come and help out.
                 return true;
             default:
                 return true;

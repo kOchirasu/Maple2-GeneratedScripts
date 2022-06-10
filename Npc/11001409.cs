@@ -13,11 +13,11 @@ public class _11001409 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217205907005406$ 
-                // - No exceptions. Not even for humans! 
+                // - No exceptions. Not even for humans!
                 return true;
             case 40:
                 // $script:1222203907005486$ 
-                // - You want to be strong, like the Meerkat Patrol? Then join our training! 
+                // - You want to be strong, like the Meerkat Patrol? Then join our training!
                 switch (selection) {
                     // $script:1222203907005487$
                     // - That sounds <i>adorable</i>. Sign me up!
@@ -28,7 +28,7 @@ public class _11001409 : NpcScript {
                 return true;
             case 41:
                 // $script:1222203907005488$ 
-                // - Don't underestimate us. If you cry and give up halfway through, you'll never live it down! 
+                // - Don't underestimate us. If you cry and give up halfway through, you'll never live it down!
                 switch (selection) {
                     // $script:1222203907005489$
                     // - I can handle anything you throw at me!
@@ -39,7 +39,7 @@ public class _11001409 : NpcScript {
                 return true;
             case 42:
                 // $script:1222203907005490$ 
-                // - Heh... I'll see to it that you run away with your tail between your legs! 
+                // - Heh... I'll see to it that you run away with your tail between your legs!
                 return true;
             default:
                 return true;

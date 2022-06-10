@@ -13,11 +13,11 @@ public class _11003351 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0517164307008499$ 
-                // - Taking down the boss... You're something else, you know that? 
+                // - Taking down the boss... You're something else, you know that?
                 return true;
             case 30:
                 // $script:0517164307008502$ 
-                // - The big guy's been training hard for days now. You really lit a fire under his butt, I'll tell you that. 
+                // - The big guy's been training hard for days now. You really lit a fire under his butt, I'll tell you that.
                 return true;
             default:
                 return true;

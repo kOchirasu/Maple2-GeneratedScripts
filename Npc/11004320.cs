@@ -13,19 +13,19 @@ public class _11004320 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1102172107011623$ 
-                // - This place is super weird... 
+                // - This place is super weird...
                 return true;
             case 20:
                 // $script:1010140307011449$ 
-                // - This place is super weird... 
+                // - This place is super weird...
                 return true;
             case 10:
                 // $script:1102172107011624$ 
-                // - I don't like this place... It's new and scary... 
+                // - I don't like this place... It's new and scary...
                 return true;
             case 30:
                 // $script:1010140307011450$ 
-                // - Ahh! You scared me! 
+                // - Ahh! You scared me!
                 switch (selection) {
                     // $script:1010140307011451$
                     // - What's gotten into you?
@@ -36,13 +36,13 @@ public class _11004320 : NpcScript {
                 return true;
             case 40:
                 // $script:1010140307011452$ 
-                // - Oh... It's only you. Phew. 
+                // - Oh... It's only you. Phew.
                 // $script:1010140307011453$ 
-                // - This place has me on edge. Everything's so different. 
+                // - This place has me on edge. Everything's so different.
                 // $script:1010140307011454$ 
-                // - It seems like I'm the only one having any trouble fitting in. $npcName:11004322[gender:0]$ is so absorbed in his search for new ingredients. And it seems like $npcName:11004321[gender:1]$ has run out of all patience for me... Sniff. 
+                // - It seems like I'm the only one having any trouble fitting in. $npcName:11004322[gender:0]$ is so absorbed in his search for new ingredients. And it seems like $npcName:11004321[gender:1]$ has run out of all patience for me... Sniff.
                 // $script:1010140307011455$ 
-                // - I want to be of help tracking down traces of the dragons, but I'm just so anxious. I should've just stayed home. 
+                // - I want to be of help tracking down traces of the dragons, but I'm just so anxious. I should've just stayed home.
                 switch (selection) {
                     // $script:1010140307011456$
                     // - That's crazy! I'm sure your friends are glad to have you here.
@@ -53,7 +53,7 @@ public class _11004320 : NpcScript {
                 return true;
             case 50:
                 // $script:1010140307011457$ 
-                // - You really think so? Thanks... That means a lot. I'm sure I can muster up the courage to keep going. 
+                // - You really think so? Thanks... That means a lot. I'm sure I can muster up the courage to keep going.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003215 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404083307008241$ 
-                // - You've been following me. Why? 
+                // - You've been following me. Why?
                 return true;
             case 10:
                 // $script:0404083307008242$ 
-                // - I can tell you aren't one of $npcName:11000044$'s men. 
+                // - I can tell you aren't one of $npcName:11000044$'s men.
                 return true;
             default:
                 return true;

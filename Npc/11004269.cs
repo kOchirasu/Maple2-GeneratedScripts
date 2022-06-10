@@ -13,16 +13,15 @@ public class _11004269 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011226$ 
-                // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font> 
+                // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font>
                 return true;
             case 10:
                 // $script:0911203207011227$ 
-                // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font> 
+                // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font>
                 // $script:0911203207011228$ 
-                // - <font color="#909090">(This wonderful bridge was designed by the genius architect brother Opath and Oparts. The older brother, Opath, was in charge of the eastern exchange.)</font> 
+                // - <font color="#909090">(This wonderful bridge was designed by the genius architect brother Opath and Oparts. The older brother, Opath, was in charge of the eastern exchange.)</font>
                 // $script:0911203207011229$ 
                 // - <font color="#909090">(He added intriguing detail and a touch of mischief to the design, including hidden magic portals and shortcuts.)</font>
- 
                 return true;
             default:
                 return true;

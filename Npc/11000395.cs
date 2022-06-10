@@ -13,11 +13,11 @@ public class _11000395 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001603$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 20:
                 // $script:0831180407001605$ 
-                // - Everyone here works hard, including me, but we can't ever seem to get ahead. It's sad, and I've heard $map:02000100$'s mayor is responsible for keeping us all poor.  
+                // - Everyone here works hard, including me, but we can't ever seem to get ahead. It's sad, and I've heard $map:02000100$'s mayor is responsible for keeping us all poor. 
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11000499 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002172$ 
-                // - Did... Did you come to see me? 
+                // - Did... Did you come to see me?
                 return true;
             case 30:
                 // $script:0831180407002175$ 
-                // - I thought that if we went deeper into the forest, we could keep $npcName:11000751[gender:1]$ safer... 
+                // - I thought that if we went deeper into the forest, we could keep $npcName:11000751[gender:1]$ safer...
                 // $script:0831180407002176$ 
-                // - Others pointed their fingers and called us cowards, but we didn't care. We just wanted to keep our charge safe...  
+                // - Others pointed their fingers and called us cowards, but we didn't care. We just wanted to keep our charge safe... 
                 return true;
             default:
                 return true;

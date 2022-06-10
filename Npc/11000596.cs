@@ -13,11 +13,11 @@ public class _11000596 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002392$ 
-                // - I'm busy, so busy! 
+                // - I'm busy, so busy!
                 return true;
             case 30:
                 // $script:0831180407002395$ 
-                // - I have to do homework, and I have to study...  
+                // - I have to do homework, and I have to study... 
                 return true;
             default:
                 return true;

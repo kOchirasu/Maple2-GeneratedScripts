@@ -13,11 +13,11 @@ public class _11000471 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002062$ 
-                // - Ah, what is it? 
+                // - Ah, what is it?
                 return true;
             case 20:
                 // $script:0831180407002064$ 
-                // - I know height isn't everything, but I really don't like being shorter than most people...  
+                // - I know height isn't everything, but I really don't like being shorter than most people... 
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003089 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0207122607007932$ 
-                // - It's hot! Too hot! Even the air-conditioning spell isn't helping. 
+                // - It's hot! Too hot! Even the air-conditioning spell isn't helping.
                 return true;
             case 10:
                 // $script:0207122607007933$ 
-                // - Going from cold to hot so quick is not good for your health. Messes up your skin! And our skin is important for mages... helps us sense mana better. 
+                // - Going from cold to hot so quick is not good for your health. Messes up your skin! And our skin is important for mages... helps us sense mana better.
                 return true;
             default:
                 return true;

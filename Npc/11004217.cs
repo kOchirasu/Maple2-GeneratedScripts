@@ -13,15 +13,15 @@ public class _11004217 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010773$ 
-                // - Do you have business with me? 
+                // - Do you have business with me?
                 return true;
             case 10:
                 // $script:0806222707010774$ 
-                // - Haha, let's get this party started! Pew pew! That's the sound of me blowing everyone away with the power of my cannon! 
+                // - Haha, let's get this party started! Pew pew! That's the sound of me blowing everyone away with the power of my cannon!
                 return true;
             case 20:
                 // $script:0806222707010775$ 
-                // - If you want to be happy, there's one rule to live by: figure out what you wanna do, and do it! In my case, that's listening my cannon purr as it pumps out hundreds of rounds a minute. 
+                // - If you want to be happy, there's one rule to live by: figure out what you wanna do, and do it! In my case, that's listening my cannon purr as it pumps out hundreds of rounds a minute.
                 return true;
             default:
                 return true;

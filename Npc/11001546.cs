@@ -13,11 +13,11 @@ public class _11001546 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0516130207006114$ 
-                // - What're you looking at? You got something to say? 
+                // - What're you looking at? You got something to say?
                 return true;
             case 10:
                 // $script:0531170907006244$ 
-                // - <font color="#909090">($npc:11001546[gender:0]$ scowls at you.)</font> 
+                // - <font color="#909090">($npc:11001546[gender:0]$ scowls at you.)</font>
                 switch (selection) {
                     // $script:0531170907006245$
                     // - Um... Can I help you?
@@ -28,7 +28,7 @@ public class _11001546 : NpcScript {
                 return true;
             case 20:
                 // $script:0531170907006246$ 
-                // - Go back to your corner and practice. I'm busy. 
+                // - Go back to your corner and practice. I'm busy.
                 return true;
             default:
                 return true;

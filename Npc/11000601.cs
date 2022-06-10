@@ -13,15 +13,15 @@ public class _11000601 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002468$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407002473$ 
-                // - The world is relying on your strength. May the empress's blessing be with you. 
+                // - The world is relying on your strength. May the empress's blessing be with you.
                 return true;
             case 40:
                 // $script:1215105907009721$ 
-                // - Empress's blessings, $MyPCName$! What brings you here? 
+                // - Empress's blessings, $MyPCName$! What brings you here?
                 switch (selection) {
                     // $script:1215105907009722$
                     // - I've heard a lot of rumors circulating through town.
@@ -32,7 +32,7 @@ public class _11000601 : NpcScript {
                 return true;
             case 41:
                 // $script:1215105907009723$ 
-                // - Ah, yes, as have we. A dark aura begins to spread over Maple World once more. 
+                // - Ah, yes, as have we. A dark aura begins to spread over Maple World once more.
                 switch (selection) {
                     // $script:1215105907009724$
                     // - Tell me what you know.
@@ -43,9 +43,9 @@ public class _11000601 : NpcScript {
                 return true;
             case 42:
                 // $script:1215105907009725$ 
-                // - I'm afraid I have no more information than anyone else. However... I sense that the strange occurrences of late are harbingers of a greater darkness. A threat unlike any we have faced. 
+                // - I'm afraid I have no more information than anyone else. However... I sense that the strange occurrences of late are harbingers of a greater darkness. A threat unlike any we have faced.
                 // $script:1215105907009726$ 
-                // - Please... be careful. 
+                // - Please... be careful.
                 return true;
             default:
                 return true;

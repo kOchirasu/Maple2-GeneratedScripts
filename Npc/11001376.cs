@@ -13,11 +13,11 @@ public class _11001376 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217144507005361$ 
-                // - You called? 
+                // - You called?
                 return true;
             case 30:
                 // $script:1217144507005364$ 
-                // - Mwahaha! This scene is... perfect! The height of drama, eclipsing any movie or show I've ever seen! And <i>I'm</i> the guy who gets to film it. This is probably going to be the greatest film of my entire career! 
+                // - Mwahaha! This scene is... perfect! The height of drama, eclipsing any movie or show I've ever seen! And <i>I'm</i> the guy who gets to film it. This is probably going to be the greatest film of my entire career!
                 return true;
             default:
                 return true;

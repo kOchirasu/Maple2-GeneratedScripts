@@ -13,11 +13,11 @@ public class _11004194 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0813101707010956$ 
-                // - ... 
+                // - ...
                 return true;
             case 10:
                 // $script:0813101707010957$ 
-                // - The Green Lapenta... The flow of life... All these memories... 
+                // - The Green Lapenta... The flow of life... All these memories...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003453 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008661$ 
-                // - <font color="#909090">($npcName:11003391[gender:0]$'s belongings are a mess.)</font> 
+                // - <font color="#909090">($npcName:11003391[gender:0]$'s belongings are a mess.)</font>
                 return true;
             case 10:
                 // $script:0706160807008662$ 
-                // - <font color="#909090">($npcName:11003391[gender:0]$'s belongings are a mess.)</font> 
+                // - <font color="#909090">($npcName:11003391[gender:0]$'s belongings are a mess.)</font>
                 return true;
             default:
                 return true;

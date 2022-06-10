@@ -13,13 +13,13 @@ public class _11001057 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003608$ 
-                // - Oh, no...  
+                // - Oh, no... 
                 return true;
             case 30:
                 // $script:0831180407003611$ 
-                // - I look older than $npcName:11001028[gender:0]$. Well, thanks, I guess. 
+                // - I look older than $npcName:11001028[gender:0]$. Well, thanks, I guess.
                 // $script:0831180407003612$ 
-                // - $npcName:11001028[gender:0]$ looks young because he's bald, but he's the same age I am. Maybe I should shave my head, too.  
+                // - $npcName:11001028[gender:0]$ looks young because he's bald, but he's the same age I am. Maybe I should shave my head, too. 
                 return true;
             default:
                 return true;

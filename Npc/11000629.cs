@@ -13,11 +13,11 @@ public class _11000629 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002530$ 
-                // - Screeeeech! 
+                // - Screeeeech!
                 return true;
             case 20:
                 // $script:0831180407002532$ 
-                // - $map:02000051$ is a great place to raise a family like mine. Its highlands are safe from monsters on the ground, and my children can practice flying! 
+                // - $map:02000051$ is a great place to raise a family like mine. Its highlands are safe from monsters on the ground, and my children can practice flying!
                 return true;
             default:
                 return true;

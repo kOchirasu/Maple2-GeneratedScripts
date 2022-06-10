@@ -13,11 +13,11 @@ public class _11001695 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0702184010001573$ 
-                // - Welcome, welcome! 
+                // - Welcome, welcome!
                 return true;
             case 30:
                 // $script:0702184010001574$ 
-                // - Would you like to spin $npc:11001695$? 
+                // - Would you like to spin $npc:11001695$?
                 switch (selection) {
                     // $script:0702184010001575$
                     // - Pay 50,000 mesos, then spin!
@@ -34,25 +34,25 @@ public class _11001695 : NpcScript {
             case 31:
                 // $script:0702184010001577$ functionID=1 buttonSet=16 
                 // - Spin the roulette for a chance to win great prizes!
-Come on, you know you want to! 
+                //   Come on, you know you want to!
                 // $script:0702184010001578$ buttonSet=1 
-                // - May Lady Luck blow you a kiss, $MyPCName$! 
+                // - May Lady Luck blow you a kiss, $MyPCName$!
                 return true;
             case 32:
                 // $script:0702184010001579$ 
                 // - A roulette spin costs 50,000 mesos.
-If you don't have enough mesos, you can always use $itemPlural:30000557$ instead. 
+                //   If you don't have enough mesos, you can always use $itemPlural:30000557$ instead.
                 return true;
             case 33:
                 // $script:0702184010001580$ functionID=1 buttonSet=16 
                 // - Spin the roulette for a chance to win great prizes!
-Come on, you know you want to! 
+                //   Come on, you know you want to!
                 // $script:0702184010001581$ buttonSet=1 
-                // - May Lady Luck blow you a kiss, $MyPCName$! 
+                // - May Lady Luck blow you a kiss, $MyPCName$!
                 return true;
             case 34:
                 // $script:0702184010001582$ 
-                // - Spinning the roulette costs $itemPlural:30000557$. But don't fret! You can get 2 $itemPlural:30000557$ in your mailbox on weekdays, and 4 of them on Saturdays and Sundays! 
+                // - Spinning the roulette costs $itemPlural:30000557$. But don't fret! You can get 2 $itemPlural:30000557$ in your mailbox on weekdays, and 4 of them on Saturdays and Sundays!
                 return true;
             default:
                 return true;

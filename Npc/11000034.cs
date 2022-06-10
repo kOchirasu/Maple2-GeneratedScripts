@@ -13,11 +13,11 @@ public class _11000034 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000189$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 20:
                 // $script:0831180407000191$ 
-                // - Nothing's more important than peace of mind. I find mine snuggled up safe in bed. 
+                // - Nothing's more important than peace of mind. I find mine snuggled up safe in bed.
                 return true;
             default:
                 return true;

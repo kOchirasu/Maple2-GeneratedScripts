@@ -13,11 +13,11 @@ public class _11001043 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003561$ 
-                // - This is an emergency. Whatever business you have, it can wait.  
+                // - This is an emergency. Whatever business you have, it can wait. 
                 return true;
             case 30:
                 // $script:0831180407003564$ 
-                // - Real pros always know what to do, no matter how dire the situation is. 
+                // - Real pros always know what to do, no matter how dire the situation is.
                 return true;
             default:
                 return true;

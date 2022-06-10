@@ -13,11 +13,11 @@ public class _11000360 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001496$ 
-                // - What's wrong? 
+                // - What's wrong?
                 return true;
             case 30:
                 // $script:0831180407001498$ 
-                // - Whew, it sure is hot here! I told my mom that I could make it on my own. Maybe I should've taken $npcName:11000420[gender:1]$'s advice and settled down in $map:02000111$ instead...  
+                // - Whew, it sure is hot here! I told my mom that I could make it on my own. Maybe I should've taken $npcName:11000420[gender:1]$'s advice and settled down in $map:02000111$ instead... 
                 return true;
             default:
                 return true;

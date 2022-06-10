@@ -13,11 +13,11 @@ public class _11000301 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001194$ 
-                // - What brings you? 
+                // - What brings you?
                 return true;
             case 20:
                 // $script:0831180407001196$ 
-                // - This place is dangerous. Be careful, especially if you want to use skills while on the Bone Bridge. Things can get scary there pretty quickly. 
+                // - This place is dangerous. Be careful, especially if you want to use skills while on the Bone Bridge. Things can get scary there pretty quickly.
                 return true;
             default:
                 return true;

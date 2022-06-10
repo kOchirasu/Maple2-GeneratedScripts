@@ -13,14 +13,14 @@ public class _11001192 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1016202007004172$ 
-                // - Grah! Writer's block, my mortal enemy! 
+                // - Grah! Writer's block, my mortal enemy!
                 return true;
             case 30:
                 // $script:1016202007004175$ 
                 // - <font color="#909090"> (He sighs.)</font>
-Am I really qualified to be a TV writer...? Hey, you there! Can I ask you a question? 
+                //   Am I really qualified to be a TV writer...? Hey, you there! Can I ask you a question?
                 // $script:1016210507004209$ 
-                // - Do you think people should pursue jobs they <i>want</i> to do, or just ones they're good at? 
+                // - Do you think people should pursue jobs they <i>want</i> to do, or just ones they're good at?
                 switch (selection) {
                     // $script:1016210507004210$
                     // - I'm not sure... What do you think?
@@ -36,12 +36,12 @@ Am I really qualified to be a TV writer...? Hey, you there! Can I ask you a ques
                 return true;
             case 31:
                 // $script:1016202007004178$ 
-                // - What I want to do, of course! I would give anything to be good at what I <i>want</i> to be doing... 
+                // - What I want to do, of course! I would give anything to be good at what I <i>want</i> to be doing...
                 return true;
             case 32:
                 // $script:1016202007004179$ 
                 // - That's not it. This has been my dream job for as long as I can remember. It's just... not the job I expected.
-<font color="#909090">(He sighs.)</font> 
+                //   <font color="#909090">(He sighs.)</font>
                 return true;
             default:
                 return true;

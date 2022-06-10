@@ -13,15 +13,15 @@ public class _11000212 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000900$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 20:
                 // $script:0831180407000902$ 
-                // - You look like you're still wet behind the ears. Stay out of trouble until you learn the ropes. 
+                // - You look like you're still wet behind the ears. Stay out of trouble until you learn the ropes.
                 return true;
             case 40:
                 // $script:0831180407000903$ 
-                // - When you get out of here, move ten cells southeast, and then ten more cells northeast. You'll arrive at a small iron gate. That gate leads to $map:02000156$, where the godfather of Blackstar, $npcName:11000251[gender:0]$, resides. 
+                // - When you get out of here, move ten cells southeast, and then ten more cells northeast. You'll arrive at a small iron gate. That gate leads to $map:02000156$, where the godfather of Blackstar, $npcName:11000251[gender:0]$, resides.
                 return true;
             default:
                 return true;

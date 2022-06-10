@@ -13,11 +13,11 @@ public class _11004051 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010075$ 
-                // - The Green Hoods will do their part to purge the forces of darkness from Maple World. 
+                // - The Green Hoods will do their part to purge the forces of darkness from Maple World.
                 return true;
             case 10:
                 // $script:0614185307010076$ 
-                // - The Green Hoods will do their part to purge the forces of darkness from Maple World. 
+                // - The Green Hoods will do their part to purge the forces of darkness from Maple World.
                 return true;
             default:
                 return true;

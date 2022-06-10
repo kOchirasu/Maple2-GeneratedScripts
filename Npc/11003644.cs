@@ -13,11 +13,11 @@ public class _11003644 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009150$ 
-                // - This data just doesn't add up... 
+                // - This data just doesn't add up...
                 return true;
             case 10:
                 // $script:1109121007009151$ 
-                // - Intern? You the intern? I've been waiting! 
+                // - Intern? You the intern? I've been waiting!
                 switch (selection) {
                     // $script:1109121007009152$
                     // - I think you've got the wrong person.
@@ -28,7 +28,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009153$ 
-                // - The heck I do! I'm too busy trying to making sense of this data to deal with your shenanigans. 
+                // - The heck I do! I'm too busy trying to making sense of this data to deal with your shenanigans.
                 switch (selection) {
                     // $script:1109121007009154$
                     // - If you say so...
@@ -39,7 +39,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009155$ 
-                // - I do, indeed! Now, <i>intern</i>, the first thing you'll want to do is memorize a very special phrase. 
+                // - I do, indeed! Now, <i>intern</i>, the first thing you'll want to do is memorize a very special phrase.
                 switch (selection) {
                     // $script:1109121007009156$
                     // - Oh? Oh! Yes. I'm listening.
@@ -50,7 +50,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009157$ 
-                // - Listen up! "Bolt. Driver. Scale." 
+                // - Listen up! "Bolt. Driver. Scale."
                 switch (selection) {
                     // $script:1109121007009158$
                     // - Noted.
@@ -61,7 +61,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 14:
                 // $script:1109121007009159$ 
-                // - That's all for now, intern. But before you go... 
+                // - That's all for now, intern. But before you go...
                 switch (selection) {
                     // $script:1109121007009160$
                     // - Yes?
@@ -72,7 +72,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 15:
                 // $script:1109121007009161$ 
-                // - Would you tell our mutual friend that I need a new assignment? This place is driving me mad. 
+                // - Would you tell our mutual friend that I need a new assignment? This place is driving me mad.
                 switch (selection) {
                     // $script:1109121007009162$
                     // - I'll let her know.
@@ -83,7 +83,7 @@ public class _11003644 : NpcScript {
                 return true;
             case 16:
                 // $script:1109121007009163$ 
-                // - No more data... No more... 
+                // - No more data... No more...
                 return true;
             default:
                 return true;

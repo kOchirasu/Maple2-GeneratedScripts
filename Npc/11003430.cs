@@ -13,11 +13,11 @@ public class _11003430 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008647$ 
-                // - <font color="#909090">(There appears to be an empty space under the altar.)</font> 
+                // - <font color="#909090">(There appears to be an empty space under the altar.)</font>
                 return true;
             case 10:
                 // $script:0706160807008648$ 
-                // - <font color="#909090">(There appears to be an empty space under the altar.)</font> 
+                // - <font color="#909090">(There appears to be an empty space under the altar.)</font>
                 return true;
             default:
                 return true;

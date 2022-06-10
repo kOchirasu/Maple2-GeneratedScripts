@@ -13,11 +13,11 @@ public class _11001574 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006062$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 10:
                 // $script:0515180307006116$ 
-                // - The life force will protect everyone. 
+                // - The life force will protect everyone.
                 return true;
             default:
                 return true;

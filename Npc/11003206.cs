@@ -13,11 +13,11 @@ public class _11003206 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0404083307008235$ 
-                // - If it weren't for you, those thugs would have got me. I owe you. 
+                // - If it weren't for you, those thugs would have got me. I owe you.
                 return true;
             case 10:
                 // $script:0404083307008236$ 
-                // - I'd be a goner if you hadn't shown up. 
+                // - I'd be a goner if you hadn't shown up.
                 return true;
             default:
                 return true;

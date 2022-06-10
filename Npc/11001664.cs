@@ -13,11 +13,11 @@ public class _11001664 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0617211107006376$ 
-                // - May the empress favor you always. 
+                // - May the empress favor you always.
                 return true;
             case 10:
                 // $script:0617211107006377$ 
-                // - Do not betray our empress's trust.  
+                // - Do not betray our empress's trust. 
                 return true;
             default:
                 return true;

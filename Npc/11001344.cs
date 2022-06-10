@@ -13,11 +13,11 @@ public class _11001344 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217012607005298$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 30:
                 // $script:1217012607005301$ 
-                // - The impossible happened. Some prisoners escaped! No one has ever escaped from Alikar before! If I don't catch them, I'm through as an officer! 
+                // - The impossible happened. Some prisoners escaped! No one has ever escaped from Alikar before! If I don't catch them, I'm through as an officer!
                 return true;
             default:
                 return true;

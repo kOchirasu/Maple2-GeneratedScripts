@@ -13,11 +13,11 @@ public class _11003356 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0517164307008509$ 
-                // - Get away from me. I <i>really</i> don't want to talk to you. 
+                // - Get away from me. I <i>really</i> don't want to talk to you.
                 return true;
             case 20:
                 // $script:0517164307008511$ 
-                // - There's no way the big guy will lose to such a weakling. 
+                // - There's no way the big guy will lose to such a weakling.
                 return true;
             default:
                 return true;

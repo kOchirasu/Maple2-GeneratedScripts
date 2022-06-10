@@ -13,11 +13,11 @@ public class _11004056 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010085$ 
-                // - Losing the leadership of Terrun Calibre was too great a loss. 
+                // - Losing the leadership of Terrun Calibre was too great a loss.
                 return true;
             case 10:
                 // $script:0614185307010086$ 
-                // - Losing the leadership of Terrun Calibre was too great a loss. 
+                // - Losing the leadership of Terrun Calibre was too great a loss.
                 return true;
             default:
                 return true;

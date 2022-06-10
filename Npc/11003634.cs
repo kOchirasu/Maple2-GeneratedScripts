@@ -13,11 +13,11 @@ public class _11003634 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009034$ 
-                // - I'm a man on a mission. 
+                // - I'm a man on a mission.
                 return true;
             case 10:
                 // $script:1109121007009035$ 
-                // - Let's get to business. 
+                // - Let's get to business.
                 switch (selection) {
                     // $script:1109121007009036$
                     // - $npcName:11003535[gender:1]$ sent me.
@@ -28,7 +28,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009037$ 
-                // - Yeah, likely story. How do I know I can trust you? 
+                // - Yeah, likely story. How do I know I can trust you?
                 switch (selection) {
                     // $script:1109121007009038$
                     // - There's got to be a way to prove myself.
@@ -39,7 +39,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009039$ 
-                // - If $npcName:11003535[gender:1]$ really sent you, then you should know Dark Wind's motto. 
+                // - If $npcName:11003535[gender:1]$ really sent you, then you should know Dark Wind's motto.
                 switch (selection) {
                     // $script:1109121007009040$
                     // - All hail $npcName:11000006[gender:0]$!
@@ -60,7 +60,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009043$ 
-                // - You are a fool. 
+                // - You are a fool.
                 switch (selection) {
                     // $script:1109121007009044$
                     // - Give me another chance!
@@ -71,7 +71,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 14:
                 // $script:1109121007009045$ 
-                // - You think I'm stupid? There's no way $npcName:11003535[gender:1]$ would send an idiot like you. 
+                // - You think I'm stupid? There's no way $npcName:11003535[gender:1]$ would send an idiot like you.
                 switch (selection) {
                     // $script:1109121007009046$
                     // - Give me another chance!
@@ -82,7 +82,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 15:
                 // $script:1109121007009047$ 
-                // - Ah, so $npcName:11003535[gender:1]$ did send you, after all. Good. Tell her, "Ducky. Purple slime. Cerbe." 
+                // - Ah, so $npcName:11003535[gender:1]$ did send you, after all. Good. Tell her, "Ducky. Purple slime. Cerbe."
                 switch (selection) {
                     // $script:1109121007009048$
                     // - Really?
@@ -93,7 +93,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 16:
                 // $script:1109121007009049$ 
-                // - What's Dark Wind's slogan? 
+                // - What's Dark Wind's slogan?
                 switch (selection) {
                     // $script:1109121007009050$
                     // - All hail $npcName:11000006[gender:0]$!
@@ -114,7 +114,7 @@ public class _11003634 : NpcScript {
                 return true;
             case 17:
                 // $script:1109121007009053$ 
-                // - Don't leave anything out! Tell her <i>exactly</i> what I said! 
+                // - Don't leave anything out! Tell her <i>exactly</i> what I said!
                 return true;
             default:
                 return true;

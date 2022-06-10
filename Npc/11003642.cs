@@ -13,11 +13,11 @@ public class _11003642 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109121007009134$ 
-                // - I feel like a diamond in a toilet... 
+                // - I feel like a diamond in a toilet...
                 return true;
             case 10:
                 // $script:1109121007009135$ 
-                // - Who are you? 
+                // - Who are you?
                 switch (selection) {
                     // $script:1109121007009136$
                     // - Um... What are you doing up here?
@@ -28,7 +28,7 @@ public class _11003642 : NpcScript {
                 return true;
             case 11:
                 // $script:1109121007009137$ 
-                // - Yes, yes, I know. A beauty like mine doesn't belong in a disgusting place like this. 
+                // - Yes, yes, I know. A beauty like mine doesn't belong in a disgusting place like this.
                 switch (selection) {
                     // $script:1109121007009138$
                     // - That's not quite what I meant...
@@ -39,7 +39,7 @@ public class _11003642 : NpcScript {
                 return true;
             case 12:
                 // $script:1109121007009139$ 
-                // - Still, I have a job to do. Tell the boss that I said, "Twinkle, twinkle, little star." 
+                // - Still, I have a job to do. Tell the boss that I said, "Twinkle, twinkle, little star."
                 switch (selection) {
                     // $script:1109121007009140$
                     // - Oh, you're one of ours?
@@ -50,7 +50,7 @@ public class _11003642 : NpcScript {
                 return true;
             case 13:
                 // $script:1109121007009141$ 
-                // - I understand why you're so confused. I'm way too gorgeous for this kind of work! I should've become a model or an actress. Even waitressing would be better than this. 
+                // - I understand why you're so confused. I'm way too gorgeous for this kind of work! I should've become a model or an actress. Even waitressing would be better than this.
                 return true;
             default:
                 return true;

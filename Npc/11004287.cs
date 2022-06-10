@@ -13,13 +13,13 @@ public class _11004287 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220212507014570$ 
-                // - Nice to meet you. 
+                // - Nice to meet you.
                 return true;
             case 10:
                 // $script:0220212507014571$ 
-                // - You just might be up to the Queen Bean Rumble. 
+                // - You just might be up to the Queen Bean Rumble.
                 // $script:0220212507014572$ 
-                // - I do think you shall be an amusement for Her Highness. 
+                // - I do think you shall be an amusement for Her Highness.
                 return true;
             default:
                 return true;

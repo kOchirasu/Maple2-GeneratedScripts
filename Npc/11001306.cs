@@ -13,14 +13,14 @@ public class _11001306 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005025$ 
-                // - Are you here for my father?  
+                // - Are you here for my father? 
                 return true;
             case 40:
                 // $script:1227194507005647$ 
-                // - Dad's a thoughtful and affection man, if you get to know him. 
+                // - Dad's a thoughtful and affection man, if you get to know him.
                 // $script:1227194507005648$ 
                 // - There's more to him than he lets on.
-<font color="#909090">(There are tears in her eyes.)</font> 
+                //   <font color="#909090">(There are tears in her eyes.)</font>
                 switch (selection) {
                     // $script:1227194507005649$
                     // - Are you okay?
@@ -31,7 +31,7 @@ public class _11001306 : NpcScript {
                 return true;
             case 41:
                 // $script:1227194507005650$ 
-                // - I'll be okay... 
+                // - I'll be okay...
                 return true;
             default:
                 return true;

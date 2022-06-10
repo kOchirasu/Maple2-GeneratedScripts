@@ -13,11 +13,11 @@ public class _11000036 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000196$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000199$ 
-                // - Love the flowers and trees as you love yourself. Without them, you wouldn't exist. 
+                // - Love the flowers and trees as you love yourself. Without them, you wouldn't exist.
                 return true;
             default:
                 return true;

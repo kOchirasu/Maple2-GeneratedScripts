@@ -13,13 +13,13 @@ public class _11001484 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0201104307005858$ 
-                // - Did you come to see me? 
+                // - Did you come to see me?
                 return true;
             case 30:
                 // $script:0201104307005861$ 
-                // - Do you want to know about the events we're running right now? Feel free to ask me all about 'em! 
+                // - Do you want to know about the events we're running right now? Feel free to ask me all about 'em!
                 // $script:0201104607005858$ 
-                // - If I have any info to share about events, I'll let you know. 
+                // - If I have any info to share about events, I'll let you know.
                 return true;
             default:
                 return true;

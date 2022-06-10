@@ -13,11 +13,11 @@ public class _11003446 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0721140007008694$ 
-                // - $male:Sir,female:Ma'am$! 
+                // - $male:Sir,female:Ma'am$!
                 return true;
             case 10:
                 // $script:0721142007008712$ 
-                // - You mess with Dark Wind, you mess with me. 
+                // - You mess with Dark Wind, you mess with me.
                 return true;
             default:
                 return true;

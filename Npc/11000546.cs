@@ -13,11 +13,11 @@ public class _11000546 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002318$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 10:
                 // $script:0831180407002319$ 
-                // - Want to see what I've got inside this bundle? Then show me your wallet first! Ha, just kidding... 
+                // - Want to see what I've got inside this bundle? Then show me your wallet first! Ha, just kidding...
                 return true;
             default:
                 return true;

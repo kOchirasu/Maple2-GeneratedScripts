@@ -13,11 +13,11 @@ public class _11004160 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0730132107010545$ 
-                // - I am dutybound to protect the young mistress. 
+                // - I am dutybound to protect the young mistress.
                 return true;
             case 10:
                 // $script:0730132107010546$ 
-                // - For the lady, I would sacrifice anything. 
+                // - For the lady, I would sacrifice anything.
                 return true;
             default:
                 return true;

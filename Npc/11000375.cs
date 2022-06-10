@@ -13,11 +13,11 @@ public class _11000375 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001541$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 20:
                 // $script:0831180407001543$ 
-                // - Enoki mushrooms grow here. They require clean, undisturbed areas to flourish. I suppose no one ever comes to this valley, then. 
+                // - Enoki mushrooms grow here. They require clean, undisturbed areas to flourish. I suppose no one ever comes to this valley, then.
                 return true;
             default:
                 return true;

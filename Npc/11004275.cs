@@ -13,11 +13,11 @@ public class _11004275 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011264$ 
-                // - Ugh, this sucks. When can I get out of here? 
+                // - Ugh, this sucks. When can I get out of here?
                 return true;
             case 10:
                 // $script:0911203207011265$ 
-                // - Ugh, this sucks. When can I get out of here? 
+                // - Ugh, this sucks. When can I get out of here?
                 switch (selection) {
                     // $script:0911203207011266$
                     // - What's wrong?
@@ -28,7 +28,7 @@ public class _11004275 : NpcScript {
                 return true;
             case 11:
                 // $script:0911203207011267$ 
-                // - Who are you, and why is that any of your business? 
+                // - Who are you, and why is that any of your business?
                 switch (selection) {
                     // $script:0911203207011268$
                     // - C'mon. Just tell me what's bothering you.
@@ -39,7 +39,7 @@ public class _11004275 : NpcScript {
                 return true;
             case 12:
                 // $script:0911203207011269$ 
-                // - If you must know, I'm upset because I'm trapped here. There's no way out, and... 
+                // - If you must know, I'm upset because I'm trapped here. There's no way out, and...
                 switch (selection) {
                     // $script:0913151207011304$
                     // - Maybe I can help you get free!
@@ -50,9 +50,9 @@ public class _11004275 : NpcScript {
                 return true;
             case 13:
                 // $script:0913151207011305$ 
-                // - What?  
+                // - What? 
                 // $script:0911203207011270$ 
-                // - Never mind. It's not worth explaining to you. Just move along. 
+                // - Never mind. It's not worth explaining to you. Just move along.
                 return true;
             default:
                 return true;

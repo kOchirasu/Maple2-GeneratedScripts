@@ -13,11 +13,11 @@ public class _11001888 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1027193507007340$ 
-                // - Good, very good! 
+                // - Good, very good!
                 return true;
             case 30:
                 // $script:1027193507007341$ 
-                // - The filming went smoothly, thanks to you. Anyway, it's getting late, so I'm heading back to the station. I'll see you in $map:02000164$. 
+                // - The filming went smoothly, thanks to you. Anyway, it's getting late, so I'm heading back to the station. I'll see you in $map:02000164$.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004209 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806045807010664$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 10:
                 // $script:0806045807010665$ 
-                // - Hmm? Is that really the $npc:11004213[gender:0]$, you ask? Yep! Except this one is bigger. Otherwise, they're identical in every way! The real $npc:11004213[gender:0]$ is full of hot air, too, heh heh heh! 
+                // - Hmm? Is that really the $npc:11004213[gender:0]$, you ask? Yep! Except this one is bigger. Otherwise, they're identical in every way! The real $npc:11004213[gender:0]$ is full of hot air, too, heh heh heh!
                 return true;
             default:
                 return true;

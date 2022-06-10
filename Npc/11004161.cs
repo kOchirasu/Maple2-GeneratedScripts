@@ -13,11 +13,11 @@ public class _11004161 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0730132107010547$ 
-                // - Are you here to see the doctor? Do you have an appointment? 
+                // - Are you here to see the doctor? Do you have an appointment?
                 return true;
             case 10:
                 // $script:0730132107010548$ 
-                // - Sigh, no time to rest. Too many patients to get to. 
+                // - Sigh, no time to rest. Too many patients to get to.
                 return true;
             default:
                 return true;

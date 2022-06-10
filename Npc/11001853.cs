@@ -13,11 +13,11 @@ public class _11001853 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1020165907007321$ 
-                // - I'm glad you're all right. 
+                // - I'm glad you're all right.
                 return true;
             case 30:
                 // $script:1020165907007322$ 
-                // - I'm glad you've made a quick recovery.  Come and see me whenever you're hurt. You can pop in for a checkup in the hospital lobby, just outside the patient rooms.  
+                // - I'm glad you've made a quick recovery.  Come and see me whenever you're hurt. You can pop in for a checkup in the hospital lobby, just outside the patient rooms. 
                 return true;
             default:
                 return true;

@@ -13,13 +13,13 @@ public class _11004075 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0619202207010200$ 
-                // - Uh... Um... 
+                // - Uh... Um...
                 return true;
             case 10:
                 // $script:0619202207010201$ 
-                // - Uh... Um... 
+                // - Uh... Um...
                 // $script:0619202207010202$ 
-                // - Okay, I'm just gonna do it. I'm going to ask. Hey, human! Tell me something... 
+                // - Okay, I'm just gonna do it. I'm going to ask. Hey, human! Tell me something...
                 switch (selection) {
                     // $script:0619202207010203$
                     // - Know what?
@@ -30,7 +30,7 @@ public class _11004075 : NpcScript {
                 return true;
             case 31:
                 // $script:0619202207010204$ 
-                // - What am I? I mean, what do you think I'm gonna be when I grow up? 
+                // - What am I? I mean, what do you think I'm gonna be when I grow up?
                 switch (selection) {
                     // $script:0619202207010205$
                     // - What do you mean?
@@ -41,7 +41,7 @@ public class _11004075 : NpcScript {
                 return true;
             case 32:
                 // $script:0619202207010206$ 
-                // - Am I gonna be a moth? A butterfly? Maybe a beetle? 
+                // - Am I gonna be a moth? A butterfly? Maybe a beetle?
                 switch (selection) {
                     // $script:0619202207010207$
                     // - You're a beetle, for sure.
@@ -62,15 +62,15 @@ public class _11004075 : NpcScript {
                 return true;
             case 40:
                 // $script:0619202207010210$ 
-                // - R-really? I guess beetles are pretty cool... 
+                // - R-really? I guess beetles are pretty cool...
                 return true;
             case 41:
                 // $script:0619202207010211$ 
-                // - Wow... A moth? So the butterflies were telling the truth... I might as well just end it now. Sniff... 
+                // - Wow... A moth? So the butterflies were telling the truth... I might as well just end it now. Sniff...
                 return true;
             case 42:
                 // $script:0619202207010212$ 
-                // - That's a relief! The butterflies said I was a moth, but I want to become a beautiful butterfly! 
+                // - That's a relief! The butterflies said I was a moth, but I want to become a beautiful butterfly!
                 return true;
             default:
                 return true;

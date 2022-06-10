@@ -13,15 +13,15 @@ public class _11000251 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001049$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 20:
                 // $script:0831180407001051$ 
-                // - My organization is using $map:02000216$ as a foothold to expand its business to other areas. You didn't think we'd stay in the shadows forever, did you? Don't be ridiculous.   
+                // - My organization is using $map:02000216$ as a foothold to expand its business to other areas. You didn't think we'd stay in the shadows forever, did you? Don't be ridiculous.  
                 return true;
             case 30:
                 // $script:0831180407001052$ 
-                // - ...Get lost. 
+                // - ...Get lost.
                 return true;
             default:
                 return true;

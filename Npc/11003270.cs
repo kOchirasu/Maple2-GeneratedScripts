@@ -13,11 +13,11 @@ public class _11003270 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008222$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0403155707008223$ 
-                // - If only Captain Stilton were still alive...  
+                // - If only Captain Stilton were still alive... 
                 return true;
             default:
                 return true;

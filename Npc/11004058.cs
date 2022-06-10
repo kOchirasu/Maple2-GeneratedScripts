@@ -13,11 +13,11 @@ public class _11004058 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010089$ 
-                // - I'm... sorry about what happened to the leaders of Terrun Calibre. 
+                // - I'm... sorry about what happened to the leaders of Terrun Calibre.
                 return true;
             case 10:
                 // $script:0614185307010090$ 
-                // - I'm... sorry about what happened to the leaders of Terrun Calibre. 
+                // - I'm... sorry about what happened to the leaders of Terrun Calibre.
                 return true;
             default:
                 return true;

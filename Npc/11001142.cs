@@ -13,11 +13,11 @@ public class _11001142 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0914192507003920$ 
-                // - Uh. Hi. 
+                // - Uh. Hi.
                 return true;
             case 30:
                 // $script:0914192507003923$ 
-                // - First the monsters start taking over the forest, and now my friends are all leaving in droves... Hmph. What do I care? I like being alone, anyway! 
+                // - First the monsters start taking over the forest, and now my friends are all leaving in droves... Hmph. What do I care? I like being alone, anyway!
                 return true;
             default:
                 return true;

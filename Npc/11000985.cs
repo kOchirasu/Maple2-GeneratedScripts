@@ -13,11 +13,11 @@ public class _11000985 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003395$ 
-                // - Please, please leave me alone! I can make it work this time! 
+                // - Please, please leave me alone! I can make it work this time!
                 return true;
             case 20:
                 // $script:0831180407003397$ 
-                // - Research is no simple matter. One can't produce results on a normal schedule.  
+                // - Research is no simple matter. One can't produce results on a normal schedule. 
                 return true;
             default:
                 return true;

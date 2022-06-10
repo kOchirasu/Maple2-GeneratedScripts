@@ -13,13 +13,13 @@ public class _11004560 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220211107014495$ 
-                // - Hm. 
+                // - Hm.
                 return true;
             case 10:
                 // $script:0220211107014496$ 
-                // - And who might you be? 
+                // - And who might you be?
                 // $script:0220211107014497$ 
-                // - I haven't seen you before, but you seem like a formidable opponent. 
+                // - I haven't seen you before, but you seem like a formidable opponent.
                 switch (selection) {
                     // $script:0220211107014498$
                     // - And you are?
@@ -30,17 +30,17 @@ public class _11004560 : NpcScript {
                 return true;
             case 11:
                 // $script:0220211107014499$ 
-                // - Ahem! I am Rovey, drillmaster for the Royal Knights. 
+                // - Ahem! I am Rovey, drillmaster for the Royal Knights.
                 // $script:0220211107014500$ 
-                // - I've trained many knights around your age. In fact, you remind me of one particular fool whom I once taught... 
+                // - I've trained many knights around your age. In fact, you remind me of one particular fool whom I once taught...
                 // $script:0220211107014501$ 
-                // - Well, I shan't waste any more words on you. I will see you in the rumble. 
+                // - Well, I shan't waste any more words on you. I will see you in the rumble.
                 return true;
             case 20:
                 // $script:0220211107014502$ 
-                // - !! 
+                // - !!
                 // $script:0220211107014503$ 
-                // - You... 
+                // - You...
                 switch (selection) {
                     // $script:0220211107014504$
                     // - $npcName:11004560[gender:0]$?!
@@ -51,7 +51,7 @@ public class _11004560 : NpcScript {
                 return true;
             case 21:
                 // $script:0220211107014505$ 
-                // - I'm surprised that foolish sense of justice hasn't gotten you killed. Why did you come here? 
+                // - I'm surprised that foolish sense of justice hasn't gotten you killed. Why did you come here?
                 switch (selection) {
                     // $script:0220211107014506$
                     // - I'm here to fight.
@@ -62,7 +62,7 @@ public class _11004560 : NpcScript {
                 return true;
             case 22:
                 // $script:0220211107014507$ 
-                // - It's been some time since we last sparred. I'm curious to see how you've grown. 
+                // - It's been some time since we last sparred. I'm curious to see how you've grown.
                 return true;
             default:
                 return true;

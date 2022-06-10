@@ -13,11 +13,11 @@ public class _11000253 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000391$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 1:
                 // $script:0831180610000395$ functionID=1 
-                // - Prepare your hair for the <i>unimaginable</i>. The wild beast in my soul will <i>possess</i> these scissors and summon your desired hairstyle from your memories. 
+                // - Prepare your hair for the <i>unimaginable</i>. The wild beast in my soul will <i>possess</i> these scissors and summon your desired hairstyle from your memories.
                 switch (selection) {
                     // $script:0831180610000396$
                     // - Do it! I'm ready!

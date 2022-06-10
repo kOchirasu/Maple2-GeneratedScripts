@@ -13,11 +13,11 @@ public class _11000685 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002778$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407002779$ 
-                // - $map:02000227$ is the border between the mortal and spirit realms. 
+                // - $map:02000227$ is the border between the mortal and spirit realms.
                 return true;
             default:
                 return true;

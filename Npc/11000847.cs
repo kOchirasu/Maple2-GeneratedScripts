@@ -13,11 +13,11 @@ public class _11000847 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003099$ 
-                // - What an interesting place. 
+                // - What an interesting place.
                 return true;
             case 30:
                 // $script:0831180407003102$ 
-                // - I believe more than one timeline exists in Ludibrium at this moment. 
+                // - I believe more than one timeline exists in Ludibrium at this moment.
                 return true;
             default:
                 return true;

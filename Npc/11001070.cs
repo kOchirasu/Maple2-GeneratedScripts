@@ -13,11 +13,11 @@ public class _11001070 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003647$ 
-                // - Nice to meet you. 
+                // - Nice to meet you.
                 return true;
             case 30:
                 // $script:0831180407003650$ 
-                // - Do you know how rewarding it is to see the seeds you've sown grow into beautiful flowers? 
+                // - Do you know how rewarding it is to see the seeds you've sown grow into beautiful flowers?
                 return true;
             default:
                 return true;

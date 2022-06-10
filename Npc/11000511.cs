@@ -13,11 +13,11 @@ public class _11000511 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000580$ 
-                // - What do you want? 
+                // - What do you want?
                 return true;
             case 10:
                 // $script:0624180010002188$ functionID=1 
-                // - Do you have old enchanted equipment you don't need anymore? I'll turn it into a scroll so you can transfer the enchantment to your new gear! 
+                // - Do you have old enchanted equipment you don't need anymore? I'll turn it into a scroll so you can transfer the enchantment to your new gear!
                 return true;
             default:
                 return true;

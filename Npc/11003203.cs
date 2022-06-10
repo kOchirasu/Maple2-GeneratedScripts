@@ -13,11 +13,11 @@ public class _11003203 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0518141907008520$ 
-                // - Training to be a guard is tough. 
+                // - Training to be a guard is tough.
                 return true;
             case 10:
                 // $script:0518141907008521$ 
-                // - Huh...? Who is this small friend? 
+                // - Huh...? Who is this small friend?
                 return true;
             default:
                 return true;

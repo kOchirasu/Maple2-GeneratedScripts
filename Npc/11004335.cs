@@ -13,17 +13,17 @@ public class _11004335 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1010140307011590$ 
-                // - Now, isn't this something? 
+                // - Now, isn't this something?
                 return true;
             case 10:
                 // $script:1010140307011591$ 
-                // - I've gotta admit, I'm impressed. 
+                // - I've gotta admit, I'm impressed.
                 // $script:1010140307011592$ 
-                // - This whole place is, like, the opposite of Maple World. No wonder the boss was so eager to check it out. 
+                // - This whole place is, like, the opposite of Maple World. No wonder the boss was so eager to check it out.
                 // $script:1010140307011593$ 
-                // - I didn't believe a word of it, of course. But $npcName:11004334[gender:1]$ insisted, and... Wow. Just wow. 
+                // - I didn't believe a word of it, of course. But $npcName:11004334[gender:1]$ insisted, and... Wow. Just wow.
                 // $script:1010140307011594$ 
-                // - $npcName:11003191[gender:0]$ doesn't know what he's missing! 
+                // - $npcName:11003191[gender:0]$ doesn't know what he's missing!
                 return true;
             default:
                 return true;

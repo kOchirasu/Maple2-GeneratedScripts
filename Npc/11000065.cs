@@ -13,11 +13,11 @@ public class _11000065 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000336$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407000338$ 
-                // - As the mayor, I have a serious dilemma. Should I make the city great again, or is it already great? 
+                // - As the mayor, I have a serious dilemma. Should I make the city great again, or is it already great?
                 return true;
             default:
                 return true;

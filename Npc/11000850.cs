@@ -13,11 +13,11 @@ public class _11000850 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003111$ 
-                // - I can think. I can assess. 
+                // - I can think. I can assess.
                 return true;
             case 30:
                 // $script:0831180407003114$ 
-                // - Robots are no longer tools. We are capable of much more than our creators. 
+                // - Robots are no longer tools. We are capable of much more than our creators.
                 return true;
             default:
                 return true;

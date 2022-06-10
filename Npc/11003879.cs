@@ -13,15 +13,15 @@ public class _11003879 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009874$ 
-                // - Hm. Those weeds are an eyesore... 
+                // - Hm. Those weeds are an eyesore...
                 return true;
             case 10:
                 // $script:0417135107009875$ 
-                // - Hm. Those weeds are an eyesore... 
+                // - Hm. Those weeds are an eyesore...
                 return true;
             case 20:
                 // $script:0419172107009858$ 
-                // - I think you forgot to take the lunch box. Here is an empty one. 
+                // - I think you forgot to take the lunch box. Here is an empty one.
                 return true;
             default:
                 return true;

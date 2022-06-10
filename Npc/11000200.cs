@@ -13,15 +13,15 @@ public class _11000200 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000869$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000872$ 
-                // - $npcName:11000202[gender:0]$ is really dumb. Did you see him standing there? He's punishing himself!  
+                // - $npcName:11000202[gender:0]$ is really dumb. Did you see him standing there? He's punishing himself! 
                 return true;
             case 40:
                 // $script:0831180407000873$ 
-                // - $npcName:11000201[gender:0]$ is my friend from $map:02000023$. He's an elf. Isn't that awesome?  
+                // - $npcName:11000201[gender:0]$ is my friend from $map:02000023$. He's an elf. Isn't that awesome? 
                 return true;
             default:
                 return true;

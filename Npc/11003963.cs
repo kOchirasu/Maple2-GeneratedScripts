@@ -13,11 +13,11 @@ public class _11003963 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614143707010017$ 
-                // - Are you versed in the way of the blade? 
+                // - Are you versed in the way of the blade?
                 return true;
             case 20:
                 // $script:0614143707010018$ 
-                // - I'd be grateful for the opportunity to speak with a peer... 
+                // - I'd be grateful for the opportunity to speak with a peer...
                 return true;
             default:
                 return true;

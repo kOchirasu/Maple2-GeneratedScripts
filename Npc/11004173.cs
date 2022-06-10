@@ -13,11 +13,11 @@ public class _11004173 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010608$ 
-                // - Mm? 
+                // - Mm?
                 return true;
             case 10:
                 // $script:0806025707010609$ 
-                // - Sorry, I've already got a squad. See? There's the guy selling churros, the girl strutting around over there, and that guy shooting finger-guns.  I couldn't ask for better teammates. 
+                // - Sorry, I've already got a squad. See? There's the guy selling churros, the girl strutting around over there, and that guy shooting finger-guns.  I couldn't ask for better teammates.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000885 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003245$ 
-                // - Where am I right now? Sniff, sniff... 
+                // - Where am I right now? Sniff, sniff...
                 return true;
             case 30:
                 // $script:0831180407003248$ 
-                // - Sniff... Human, have you been to the moon? There are no stars or moon here... 
+                // - Sniff... Human, have you been to the moon? There are no stars or moon here...
                 return true;
             default:
                 return true;

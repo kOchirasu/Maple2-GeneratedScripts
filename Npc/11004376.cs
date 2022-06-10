@@ -13,11 +13,11 @@ public class _11004376 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011789$ 
-                // - Wouldn't it be something if pure white snow tasted like candy? 
+                // - Wouldn't it be something if pure white snow tasted like candy?
                 return true;
             case 10:
                 // $script:1109213607011790$ 
-                // - Wouldn't it be something if pure white snow tasted like candy? 
+                // - Wouldn't it be something if pure white snow tasted like candy?
                 return true;
             default:
                 return true;

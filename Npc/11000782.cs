@@ -13,11 +13,11 @@ public class _11000782 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002948$ 
-                // - I can see a light shining in your eyes. What can I do for you? 
+                // - I can see a light shining in your eyes. What can I do for you?
                 return true;
             case 30:
                 // $script:0831180407002951$ 
-                // - Hey there, young $male:fellow,female:lady$. You look like a traveler. I hope you're making the most of your youth and seeing the world.  
+                // - Hey there, young $male:fellow,female:lady$. You look like a traveler. I hope you're making the most of your youth and seeing the world. 
                 return true;
             default:
                 return true;

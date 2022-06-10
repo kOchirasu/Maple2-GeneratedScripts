@@ -13,11 +13,11 @@ public class _11000134 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000557$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407000558$ 
-                // - Once a year, the Murpagoth warriors go on a pilgrimage through the Vayar Mountains. By the time they return, they've grown much stronger than they were before. 
+                // - Once a year, the Murpagoth warriors go on a pilgrimage through the Vayar Mountains. By the time they return, they've grown much stronger than they were before.
                 return true;
             default:
                 return true;

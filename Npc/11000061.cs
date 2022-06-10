@@ -13,11 +13,11 @@ public class _11000061 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000279$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000282$ 
-                // - If you came to see $npcName:11000016[gender:0]$, you can find him in $map:63000003$. The chief called him to talk about the ship for the court. 
+                // - If you came to see $npcName:11000016[gender:0]$, you can find him in $map:63000003$. The chief called him to talk about the ship for the court.
                 return true;
             default:
                 return true;

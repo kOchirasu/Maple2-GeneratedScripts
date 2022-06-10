@@ -13,11 +13,11 @@ public class _11003162 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0306155707008070$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0306155707008073$ 
-                // - Everyone likes flowers because they're pretty. I don't care about that, because I use them to make supplements, scented candles, and potions. 
+                // - Everyone likes flowers because they're pretty. I don't care about that, because I use them to make supplements, scented candles, and potions.
                 return true;
             default:
                 return true;

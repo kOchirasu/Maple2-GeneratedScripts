@@ -13,11 +13,11 @@ public class _11004185 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010632$ 
-                // - Can I help you? 
+                // - Can I help you?
                 return true;
             case 10:
                 // $script:0806025707010633$ 
-                // - To reclaim all I have lost, I must find a champion in the greatest of games! 
+                // - To reclaim all I have lost, I must find a champion in the greatest of games!
                 return true;
             default:
                 return true;

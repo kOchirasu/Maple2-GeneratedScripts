@@ -14,12 +14,12 @@ public class _11001194 : NpcScript {
             case 0:
                 // $script:1016202007004188$ 
                 // - Sigh...
-I want to go home... 
+                //   I want to go home...
                 return true;
             case 30:
                 // $script:1016202007004191$ 
                 // - This is no good. I can't get a good shot!
-What should I do?  
+                //   What should I do? 
                 switch (selection) {
                     // $script:1016202007004192$
                     // - What's wrong?
@@ -31,7 +31,7 @@ What should I do?
             case 31:
                 // $script:1016202007004193$ 
                 // - It's may be bright out here, but our cameras our set up inside that cave, where it's much darker. I doubt we can get any usable footage as it stands.
-I should've brought $npcName:11001193[gender:1]$, my supervisor...  
+                //   I should've brought $npcName:11001193[gender:1]$, my supervisor... 
                 return true;
             default:
                 return true;

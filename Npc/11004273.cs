@@ -13,13 +13,13 @@ public class _11004273 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011253$ 
-                // - The moonlight is nice tonight. Very beautiful, very beautiful! 
+                // - The moonlight is nice tonight. Very beautiful, very beautiful!
                 return true;
             case 10:
                 // $script:0911203207011254$ 
-                // - The moonlight is nice tonight. Very beautiful, very beautiful! 
+                // - The moonlight is nice tonight. Very beautiful, very beautiful!
                 // $script:0911203207011255$ 
-                // - And what brings you here tonight, human? 
+                // - And what brings you here tonight, human?
                 switch (selection) {
                     // $script:0911203207011256$
                     // - I'm just passing through.
@@ -30,9 +30,9 @@ public class _11004273 : NpcScript {
                 return true;
             case 11:
                 // $script:0911203207011257$ 
-                // - Then you must visit our camp in the $map:02010033$! I'm sure they won't mind you dropping by. Probably. 
+                // - Then you must visit our camp in the $map:02010033$! I'm sure they won't mind you dropping by. Probably.
                 // $script:0911203207011258$ 
-                // - The moonlight in our city is different from the moonlight out here, but no matter what, the moonlight is always beautiful! 
+                // - The moonlight in our city is different from the moonlight out here, but no matter what, the moonlight is always beautiful!
                 return true;
             default:
                 return true;

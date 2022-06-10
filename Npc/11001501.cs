@@ -13,11 +13,11 @@ public class _11001501 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0118150907005840$ 
-                // - You know I outrank you, right? Hah hah! 
+                // - You know I outrank you, right? Hah hah!
                 return true;
             case 30:
                 // $script:0118150907005843$ 
-                // - Don't just stare at your food, eat it! So rude. 
+                // - Don't just stare at your food, eat it! So rude.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003457 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008669$ 
-                // - Someday, I will live up to my father's legacy. 
+                // - Someday, I will live up to my father's legacy.
                 return true;
             case 10:
                 // $script:0706160807008670$ 
-                // - The people of $map:02000051$ look up to me now. I hope I live up to their expectations. 
+                // - The people of $map:02000051$ look up to me now. I hope I live up to their expectations.
                 return true;
             default:
                 return true;

@@ -13,15 +13,15 @@ public class _11004257 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0829171107010974$ 
-                // - <font color="#909090">(Hot steam rises from deep underground.)</font> 
+                // - <font color="#909090">(Hot steam rises from deep underground.)</font>
                 return true;
             case 10:
                 // $script:0829171107010975$ 
-                // - <font color="#909090">(Hot steam rises from deep underground.)</font> 
+                // - <font color="#909090">(Hot steam rises from deep underground.)</font>
                 // $script:0831140807011026$ 
-                // - <font color="#909090">(Steam rises up from what appears to be a bottomless chasm. It's quite hot, and you think you smell sulfur.)</font> 
+                // - <font color="#909090">(Steam rises up from what appears to be a bottomless chasm. It's quite hot, and you think you smell sulfur.)</font>
                 // $script:0831140807011027$ 
-                // - <font color="#909090">(Rumor has it that $npcNamePlural:21000053$ make their den below. The steam that rises from deep underground is said to be toxic to humans.)</font> 
+                // - <font color="#909090">(Rumor has it that $npcNamePlural:21000053$ make their den below. The steam that rises from deep underground is said to be toxic to humans.)</font>
                 return true;
             default:
                 return true;

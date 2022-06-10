@@ -13,15 +13,15 @@ public class _11004281 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011294$ 
-                // - <font color="#909090">(This sarcophagus has no name engraved upon it. Does an ancient lumarigon slumber within?)</font> 
+                // - <font color="#909090">(This sarcophagus has no name engraved upon it. Does an ancient lumarigon slumber within?)</font>
                 return true;
             case 10:
                 // $script:0911203207011295$ 
-                // - <font color="#909090">(This sarcophagus has no name engraved upon it. Does an ancient lumarigon slumber within?)</font> 
+                // - <font color="#909090">(This sarcophagus has no name engraved upon it. Does an ancient lumarigon slumber within?)</font>
                 // $script:0913151207011307$ 
-                // - <font color="#909090">(It's covered in a thick layer of dust. Still, the elaborate carvings are the work of a master artisan.)</font> 
+                // - <font color="#909090">(It's covered in a thick layer of dust. Still, the elaborate carvings are the work of a master artisan.)</font>
                 // $script:0913151207011308$ 
-                // - <font color="#909090">(As you gaze upon the sarcophagus, you're overcome by a sudden feeling of melancholy.)</font> 
+                // - <font color="#909090">(As you gaze upon the sarcophagus, you're overcome by a sudden feeling of melancholy.)</font>
                 return true;
             default:
                 return true;

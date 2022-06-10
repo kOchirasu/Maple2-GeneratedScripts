@@ -13,15 +13,15 @@ public class _11004278 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0911203207011283$ 
-                // - <font color="#909090">(You feel an ominous chill as you gaze upon the dragon statue.)</font> 
+                // - <font color="#909090">(You feel an ominous chill as you gaze upon the dragon statue.)</font>
                 return true;
             case 10:
                 // $script:0911203207011284$ 
-                // - <font color="#909090">(You feel an ominous chill as you gaze upon the dragon statue.)</font> 
+                // - <font color="#909090">(You feel an ominous chill as you gaze upon the dragon statue.)</font>
                 // $script:0911203207011285$ 
-                // - <font color="#909090">(This statue was once a grand piece of architecture, proudly displaying the spirit of the dragons. However, it's been altered by darkness.)</font> 
+                // - <font color="#909090">(This statue was once a grand piece of architecture, proudly displaying the spirit of the dragons. However, it's been altered by darkness.)</font>
                 // $script:0911203207011286$ 
-                // - <font color="#909090">(The power of the dragons of light which once protected Nazkar is completely gone. Now, all avoid this once-sacred area.)</font> 
+                // - <font color="#909090">(The power of the dragons of light which once protected Nazkar is completely gone. Now, all avoid this once-sacred area.)</font>
                 return true;
             default:
                 return true;

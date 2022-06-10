@@ -13,11 +13,11 @@ public class _11003180 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0316101907008107$ 
-                // - All's well! 
+                // - All's well!
                 return true;
             case 30:
                 // $script:0323170507008126$ 
-                // - You don't look like the usual beach bums we get around here. What do you want? 
+                // - You don't look like the usual beach bums we get around here. What do you want?
                 switch (selection) {
                     // $script:0426090007008442$
                     // - I'm part of the caravan escort.
@@ -33,11 +33,11 @@ public class _11003180 : NpcScript {
                 return true;
             case 31:
                 // $script:0426090007008444$ 
-                // - You're just in time! Check in with the others in the $map:52000116$ behind me. 
+                // - You're just in time! Check in with the others in the $map:52000116$ behind me.
                 return true;
             case 32:
                 // $script:0426090007008445$ 
-                // - You're a tourist? Oh, okay. In that case, enjoy your stay. I'm new to this whole guardsman thing, so I wasn't sure what you were up to. Now I know you're cool, so... cool! 
+                // - You're a tourist? Oh, okay. In that case, enjoy your stay. I'm new to this whole guardsman thing, so I wasn't sure what you were up to. Now I know you're cool, so... cool!
                 switch (selection) {
                     // $script:0426090007008446$
                     // - Thank you.
@@ -48,7 +48,7 @@ public class _11003180 : NpcScript {
                 return true;
             case 33:
                 // $script:0426090007008447$ 
-                // - Just doing my job, $male:sir,female:ma'am$! But it does feel good to be thanked. I wish more folk were like you. 
+                // - Just doing my job, $male:sir,female:ma'am$! But it does feel good to be thanked. I wish more folk were like you.
                 return true;
             default:
                 return true;

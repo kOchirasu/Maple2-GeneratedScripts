@@ -13,11 +13,11 @@ public class _11003881 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009878$ 
-                // - Whenever a new herb is discovered, I plant it here. 
+                // - Whenever a new herb is discovered, I plant it here.
                 return true;
             case 10:
                 // $script:0417135107009879$ 
-                // - Whenever a new herb is discovered, I plant it here. 
+                // - Whenever a new herb is discovered, I plant it here.
                 return true;
             default:
                 return true;

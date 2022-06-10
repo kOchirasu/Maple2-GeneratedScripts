@@ -13,11 +13,11 @@ public class _11001588 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006076$ 
-                // - I miss Calibre...  
+                // - I miss Calibre... 
                 return true;
             case 10:
                 // $script:0515180307006127$ 
-                // - Can we ever go back to Calibre Island? 
+                // - Can we ever go back to Calibre Island?
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001591 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006079$ 
-                // - Hello. 
+                // - Hello.
                 return true;
             case 10:
                 // $script:0515180307006130$ 
-                // - $npcName:11001229[gender:0]$ is strong. He'll recover. Until then, the Life Lapenta will protect him. 
+                // - $npcName:11001229[gender:0]$ is strong. He'll recover. Until then, the Life Lapenta will protect him.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003504 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816160115008990$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0816160115008993$ 
-                // - There are lots of hungry $itemPlural:61000002$ here. I'm here to capture one as a pet. 
+                // - There are lots of hungry $itemPlural:61000002$ here. I'm here to capture one as a pet.
                 switch (selection) {
                     // $script:0816160115008994$
                     // - Who's your little friend?
@@ -33,7 +33,7 @@ public class _11003504 : NpcScript {
                 return true;
             case 31:
                 // $script:0816160115008996$ 
-                // - This is my $item:61000005$. We're traveling together. Say hello, $item:61000005$. 
+                // - This is my $item:61000005$. We're traveling together. Say hello, $item:61000005$.
                 switch (selection) {
                     // $script:0816160115008997$
                     // - Hello, Duckling.
@@ -49,15 +49,15 @@ public class _11003504 : NpcScript {
                 return true;
             case 32:
                 // $script:0816160115008999$ 
-                // - No, it's just me and my $item:61000005$ on the open road! Though I did bump into my childhood friend $npcName:11003506[gender:1]$. Small world, isn't it? 
+                // - No, it's just me and my $item:61000005$ on the open road! Though I did bump into my childhood friend $npcName:11003506[gender:1]$. Small world, isn't it?
                 return true;
             case 34:
                 // $script:0816160115009000$ 
-                // - I guess my little $item:61000005$ is feeling shy. 
+                // - I guess my little $item:61000005$ is feeling shy.
                 return true;
             case 35:
                 // $script:0816160115009001$ 
-                // - $item:61000005$ and I are training. I'm going to be a great pet master someday! 
+                // - $item:61000005$ and I are training. I'm going to be a great pet master someday!
                 return true;
             default:
                 return true;

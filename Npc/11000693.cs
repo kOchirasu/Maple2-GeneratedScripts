@@ -13,13 +13,13 @@ public class _11000693 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002796$ 
-                // - $MyPCName$, welcome. 
+                // - $MyPCName$, welcome.
                 return true;
             case 30:
                 // $script:0831180407002799$ 
-                // - $npcName:11000032[gender:0]$ is the only one who stayed with me when everyone else turned their backs. 
+                // - $npcName:11000032[gender:0]$ is the only one who stayed with me when everyone else turned their backs.
                 // $script:0831180407002800$ 
-                // - So I'm going to stand by him, no matter what happens. 
+                // - So I'm going to stand by him, no matter what happens.
                 return true;
             default:
                 return true;

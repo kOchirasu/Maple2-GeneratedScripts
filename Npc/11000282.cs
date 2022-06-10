@@ -13,11 +13,11 @@ public class _11000282 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001098$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:0831180407001101$ 
-                // - If you want something, then you'll have to pay the price.That's the way of the world. 
+                // - If you want something, then you'll have to pay the price.That's the way of the world.
                 return true;
             default:
                 return true;

@@ -13,17 +13,17 @@ public class _11001029 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003519$ 
-                // - Aaahh... No... 
+                // - Aaahh... No...
                 return true;
             case 30:
                 // $script:0831180407003522$ 
-                // - I was in $map:02000309$ looking for Director $npcName:11000843[gender:0]$, when $npcName:24000615$ captured me and dragged me all the way here.  
+                // - I was in $map:02000309$ looking for Director $npcName:11000843[gender:0]$, when $npcName:24000615$ captured me and dragged me all the way here. 
                 return true;
             case 40:
                 // $script:0831180407003523$ 
-                // - There's no time to chat! We have to shut down the Chronometric Computer before our timeline collapses in a temporal cascade. 
+                // - There's no time to chat! We have to shut down the Chronometric Computer before our timeline collapses in a temporal cascade.
                 // $script:0831180407003524$ 
-                // - If that happens, there'll be no saving $npcName:11000057[gender:1]$. 
+                // - If that happens, there'll be no saving $npcName:11000057[gender:1]$.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000744 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002888$ 
-                // - I may be old, but I'm young at heart.  
+                // - I may be old, but I'm young at heart. 
                 return true;
             case 20:
                 // $script:0831180407002890$ 
-                // - Don't judge a book by its cover. I may be old, but I'm still a girl on the inside.   
+                // - Don't judge a book by its cover. I may be old, but I'm still a girl on the inside.  
                 return true;
             default:
                 return true;

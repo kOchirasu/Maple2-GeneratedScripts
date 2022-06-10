@@ -13,11 +13,11 @@ public class _11000454 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002006$ 
-                // - I'm a seasoned sailor! 
+                // - I'm a seasoned sailor!
                 return true;
             case 30:
                 // $script:0831180407002009$ 
-                // - Ahoy there! Have you ever seen a whale? 
+                // - Ahoy there! Have you ever seen a whale?
                 switch (selection) {
                     // $script:0831180407002010$
                     // - Yes.
@@ -33,11 +33,11 @@ public class _11000454 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407002012$ 
-                // - Bah, nonsense! I've been a fisherman my whole life, and only seen a whale once. And it was a teeny one at that! Me dream is to see the great blue whale just once before the sea takes me. 
+                // - Bah, nonsense! I've been a fisherman my whole life, and only seen a whale once. And it was a teeny one at that! Me dream is to see the great blue whale just once before the sea takes me.
                 return true;
             case 32:
                 // $script:0831180407002013$ 
-                // - Aye, they're an elusive catch. I've always wanted to see a blue whale myself. 
+                // - Aye, they're an elusive catch. I've always wanted to see a blue whale myself.
                 return true;
             default:
                 return true;

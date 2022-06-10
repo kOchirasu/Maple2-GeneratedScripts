@@ -13,11 +13,11 @@ public class _11001396 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217193307005396$ 
-                // - What's wrong? 
+                // - What's wrong?
                 return true;
             case 30:
                 // $script:1226235907005592$ 
-                // - The ruins... These diseases... They all broke out around... No, the timeline doesn't fit. 
+                // - The ruins... These diseases... They all broke out around... No, the timeline doesn't fit.
                 switch (selection) {
                     // $script:1226235907005593$
                     // - What are you mumbling about?
@@ -28,7 +28,7 @@ public class _11001396 : NpcScript {
                 return true;
             case 31:
                 // $script:1226235907005594$ 
-                // - Ah, yes? Can I help you? 
+                // - Ah, yes? Can I help you?
                 switch (selection) {
                     // $script:1226235907005595$
                     // - You look like you've got a lot on your mind.
@@ -39,7 +39,7 @@ public class _11001396 : NpcScript {
                 return true;
             case 32:
                 // $script:1226235907005596$ 
-                // - Yes, you're right. I'm trying to figure some things out. And you're interrupting me. 
+                // - Yes, you're right. I'm trying to figure some things out. And you're interrupting me.
                 switch (selection) {
                     // $script:1226235907005597$
                     // - Oops! I didn't mean to.
@@ -50,15 +50,15 @@ public class _11001396 : NpcScript {
                 return true;
             case 33:
                 // $script:1226235907005598$ 
-                // - Good. 
+                // - Good.
                 return true;
             case 40:
                 // $script:1227015507005608$ 
-                // - This is all my fault... 
+                // - This is all my fault...
                 return true;
             case 50:
                 // $script:0201104007005866$ 
-                // - I won't be so arrogant or impatient ever again. I'll try to be careful from now on. Thank you for your help, $MyPCName$. 
+                // - I won't be so arrogant or impatient ever again. I'll try to be careful from now on. Thank you for your help, $MyPCName$.
                 return true;
             default:
                 return true;

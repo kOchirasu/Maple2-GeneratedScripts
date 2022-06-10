@@ -13,11 +13,11 @@ public class _11004313 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0928133807011352$ 
-                // - Back in my day, we knew a thing or two about duty! 
+                // - Back in my day, we knew a thing or two about duty!
                 return true;
             case 10:
                 // $script:0928133807011353$ 
-                // - I'm here, but most of my men are tied up defending Victoria Island. I hate being benched! 
+                // - I'm here, but most of my men are tied up defending Victoria Island. I hate being benched!
                 return true;
             default:
                 return true;

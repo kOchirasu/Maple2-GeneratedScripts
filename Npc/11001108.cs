@@ -13,11 +13,11 @@ public class _11001108 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0908154107003723$ 
-                // - How did you get here? 
+                // - How did you get here?
                 return true;
             case 30:
                 // $script:0908154107003726$ 
-                // - $npcName:11000614[gender:0]$ and I met in Katramus. I can't believe we were able to meet again here. I'm also glad that his sister is safe! 
+                // - $npcName:11000614[gender:0]$ and I met in Katramus. I can't believe we were able to meet again here. I'm also glad that his sister is safe!
                 return true;
             default:
                 return true;

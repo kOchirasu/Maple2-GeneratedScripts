@@ -13,11 +13,11 @@ public class _11004355 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011765$ 
-                // - Why can't we just have a normal celebration? This is ridiculous! 
+                // - Why can't we just have a normal celebration? This is ridiculous!
                 return true;
             case 10:
                 // $script:1109213607011766$ 
-                // - This isn't... It's not at all what I wanted... 
+                // - This isn't... It's not at all what I wanted...
                 return true;
             default:
                 return true;

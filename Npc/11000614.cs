@@ -13,11 +13,11 @@ public class _11000614 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002511$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 20:
                 // $script:0831180407002513$ 
-                // - I can't return to Maple World until I save these people. I'll never be able to forgive myself if I leave them behind. 
+                // - I can't return to Maple World until I save these people. I'll never be able to forgive myself if I leave them behind.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003429 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0719173007008675$ 
-                // - I sense the war chief at the top of the hourglass. And yet... something is amiss. 
+                // - I sense the war chief at the top of the hourglass. And yet... something is amiss.
                 return true;
             case 10:
                 // $script:0719173007008676$ 
-                // - I sense the war chief at the top of the hourglass. And yet... something is amiss. 
+                // - I sense the war chief at the top of the hourglass. And yet... something is amiss.
                 return true;
             default:
                 return true;

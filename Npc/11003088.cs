@@ -13,11 +13,11 @@ public class _11003088 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0207122607007930$ 
-                // - Who would have thought places like this would still exist in Maple World? 
+                // - Who would have thought places like this would still exist in Maple World?
                 return true;
             case 10:
                 // $script:0207122607007931$ 
-                // - I'd love to jump into that hot spring... just not when you're watching me, $MyPCName$. 
+                // - I'd love to jump into that hot spring... just not when you're watching me, $MyPCName$.
                 return true;
             default:
                 return true;

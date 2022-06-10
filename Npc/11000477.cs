@@ -13,11 +13,11 @@ public class _11000477 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002078$ 
-                // - There's a name on it: $npcName:11000477$. 
+                // - There's a name on it: $npcName:11000477$.
                 return true;
             case 20:
                 // $script:0831180407002079$ 
-                // - The Goldus way! Put your back into it! Pinch a penny, make a penny! 
+                // - The Goldus way! Put your back into it! Pinch a penny, make a penny!
                 return true;
             default:
                 return true;

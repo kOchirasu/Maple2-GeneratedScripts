@@ -13,15 +13,15 @@ public class _11000150 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000640$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000643$ 
-                // - People spend their days scrambling around, trying to have it all. That's no way to live. Just enjoy the moment. 
+                // - People spend their days scrambling around, trying to have it all. That's no way to live. Just enjoy the moment.
                 return true;
             case 40:
                 // $script:0321130807008115$ 
-                // - Unless this is extremely important, I'm in no mood to chat. 
+                // - Unless this is extremely important, I'm in no mood to chat.
                 switch (selection) {
                     // $script:0321130807008116$
                     // - Did you see a guard get dragged away?
@@ -32,7 +32,7 @@ public class _11000150 : NpcScript {
                 return true;
             case 41:
                 // $script:0321130807008117$ 
-                // - Now that you mention it, there was an especially pitiful-looking soldier... He was dragged off in the direction of $map:52000119$, to the northeast. 
+                // - Now that you mention it, there was an especially pitiful-looking soldier... He was dragged off in the direction of $map:52000119$, to the northeast.
                 return true;
             default:
                 return true;

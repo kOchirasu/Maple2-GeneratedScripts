@@ -13,11 +13,11 @@ public class _11004409 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1113161307011835$ 
-                // - Back in my day, we knew a thing or two about duty! 
+                // - Back in my day, we knew a thing or two about duty!
                 return true;
             case 10:
                 // $script:1113161307011836$ 
-                // - Flying continents appearing from nowhere? Ha! This is nothing. You should've seen the crazy things that happened back in <i>my</i> day! 
+                // - Flying continents appearing from nowhere? Ha! This is nothing. You should've seen the crazy things that happened back in <i>my</i> day!
                 return true;
             default:
                 return true;

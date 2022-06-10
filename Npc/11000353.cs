@@ -13,13 +13,13 @@ public class _11000353 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001467$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0831180407001470$ 
-                // - Our fuel needs are growing by the day. I think more excavation sites will be needed soon. 
+                // - Our fuel needs are growing by the day. I think more excavation sites will be needed soon.
                 // $script:0831180407001471$ 
-                // - We're pumping oil every day. It's still kind of surprising how much we need to get by. 
+                // - We're pumping oil every day. It's still kind of surprising how much we need to get by.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000520 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002227$ 
-                // - If you're not here for the job, please leave. 
+                // - If you're not here for the job, please leave.
                 return true;
             case 20:
                 // $script:0831180407002229$ 
-                // - Industrialization, urban development... I don't know who'll really benefit from all that. 
+                // - Industrialization, urban development... I don't know who'll really benefit from all that.
                 return true;
             default:
                 return true;

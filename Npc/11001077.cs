@@ -13,11 +13,11 @@ public class _11001077 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003675$ 
-                // - A full moon... The Kakas... Aw, please help me. Hah hah, hah hah hah! 
+                // - A full moon... The Kakas... Aw, please help me. Hah hah, hah hah hah!
                 return true;
             case 30:
                 // $script:0831180407003678$ 
-                // - D-don't come near me. No! I need a friend. No, no... L-let's start again... Ha! 
+                // - D-don't come near me. No! I need a friend. No, no... L-let's start again... Ha!
                 return true;
             default:
                 return true;

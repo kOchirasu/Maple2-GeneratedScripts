@@ -13,15 +13,15 @@ public class _11004316 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0928133807011358$ 
-                // - It is time my order stood with the rest of the empire. 
+                // - It is time my order stood with the rest of the empire.
                 return true;
             case 10:
                 // $script:0928133807011359$ 
-                // - A strange power hangs over this place. A dark power...  
+                // - A strange power hangs over this place. A dark power... 
                 return true;
             case 20:
                 // $script:0116153807012736$ 
-                // - Return to me when the time is right. 
+                // - Return to me when the time is right.
                 return true;
             default:
                 return true;

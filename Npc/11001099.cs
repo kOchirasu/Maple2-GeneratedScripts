@@ -13,11 +13,11 @@ public class _11001099 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003697$ 
-                // - Hmm...  
+                // - Hmm... 
                 return true;
             case 30:
                 // $script:0831180407003698$ 
-                // - This place is $map:52000011$. It channels the power of the Red Lapenta to maintain order among the timelines. 
+                // - This place is $map:52000011$. It channels the power of the Red Lapenta to maintain order among the timelines.
                 return true;
             default:
                 return true;

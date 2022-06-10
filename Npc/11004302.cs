@@ -13,13 +13,13 @@ public class _11004302 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011418$ 
-                // - I'mma scratch <i>everything!</i> 
+                // - I'mma scratch <i>everything!</i>
                 return true;
             case 30:
                 // $script:1002141907011422$ 
-                // - Now I'mma ghost, I can talk to people! How fun! 
+                // - Now I'mma ghost, I can talk to people! How fun!
                 // $script:1002141907011423$ 
-                // - 'Cause I'm inna good mood, I'mma tell you a secret! Watch the floors around here, or you're gonna fall! 
+                // - 'Cause I'm inna good mood, I'mma tell you a secret! Watch the floors around here, or you're gonna fall!
                 switch (selection) {
                     // $script:1002141907011424$
                     // - What's that supposed to mean?
@@ -30,7 +30,7 @@ public class _11004302 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011425$ 
-                // - Your foot's gonna fall! Watch the floors! Got it? 
+                // - Your foot's gonna fall! Watch the floors! Got it?
                 return true;
             default:
                 return true;

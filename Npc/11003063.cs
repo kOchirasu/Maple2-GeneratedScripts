@@ -13,15 +13,15 @@ public class _11003063 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0102155907007646$ 
-                // - What do you want? 
+                // - What do you want?
                 return true;
             case 30:
                 // $script:0102155907007647$ 
-                // - You must conserve your energy in the cold. That's why I don't talk much. Just so you know.  
+                // - You must conserve your energy in the cold. That's why I don't talk much. Just so you know. 
                 return true;
             case 40:
                 // $script:0207083707007919$ 
-                // - Oh look, it's $MyPCName$ the worrywart. What do you want? 
+                // - Oh look, it's $MyPCName$ the worrywart. What do you want?
                 switch (selection) {
                     // $script:0207083707007920$
                     // - I need burning breaths!
@@ -37,13 +37,12 @@ public class _11003063 : NpcScript {
                 return true;
             case 41:
                 // $script:0207083707007922$ functionID=1 
-                // - There you go. This is because you got those materials for me, you know. Helping others pays off! 
+                // - There you go. This is because you got those materials for me, you know. Helping others pays off!
                 return true;
             case 42:
                 // $script:0207083707007923$ 
                 // - Excuse me? Hey, that's none of your business! And I'm not small... the others are just really big!
-
-<font color="#909090">(He's gotten sulky. I don't think he'll want to talk to me anymore.)</font> 
+                //   <font color="#909090">(He's gotten sulky. I don't think he'll want to talk to me anymore.)</font>
                 return true;
             default:
                 return true;

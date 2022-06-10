@@ -13,11 +13,11 @@ public class _11000961 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003339$ 
-                // - Why can't I shake this bad feeling...? 
+                // - Why can't I shake this bad feeling...?
                 return true;
             case 20:
                 // $script:0831180407003341$ 
-                // - One day, I want to follow in $npcName:11000015[gender:1]$'s footsteps and become the leader of the Green Hoods. I want to earn the same respect that she did. 
+                // - One day, I want to follow in $npcName:11000015[gender:1]$'s footsteps and become the leader of the Green Hoods. I want to earn the same respect that she did.
                 return true;
             default:
                 return true;

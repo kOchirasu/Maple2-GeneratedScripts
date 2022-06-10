@@ -13,15 +13,15 @@ public class _11000409 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001728$ 
-                // - Welcome, $MyPCName$! 
+                // - Welcome, $MyPCName$!
                 return true;
             case 10:
                 // $script:0831180407001729$ 
-                // - The forest trail is too dangerous. We have to make it safe again, as soon as possible. 
+                // - The forest trail is too dangerous. We have to make it safe again, as soon as possible.
                 return true;
             case 20:
                 // $script:0831180407001730$ 
-                // - $npcName:99000041$ are making this trail too dangerous to travel. 
+                // - $npcName:99000041$ are making this trail too dangerous to travel.
                 return true;
             default:
                 return true;

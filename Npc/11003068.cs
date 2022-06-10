@@ -13,11 +13,11 @@ public class _11003068 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0102155907007655$ 
-                // - Your Majesty... 
+                // - Your Majesty...
                 return true;
             case 30:
                 // $script:0102155907007656$ 
-                // - There are a great many things left to do. We should leave, for our next destination will be challenging. 
+                // - There are a great many things left to do. We should leave, for our next destination will be challenging.
                 return true;
             default:
                 return true;

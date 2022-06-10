@@ -13,11 +13,11 @@ public class _11004298 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1002141907011381$ 
-                // - Clean clean clean...  
+                // - Clean clean clean... 
                 return true;
             case 30:
                 // $script:1002141907011384$ 
-                // - It's my job to keep this hotel clean, and I'm darn good at it! Except... there's this one thing I can't seem to tidy up! 
+                // - It's my job to keep this hotel clean, and I'm darn good at it! Except... there's this one thing I can't seem to tidy up!
                 switch (selection) {
                     // $script:1002141907011385$
                     // - What might that be?
@@ -28,7 +28,7 @@ public class _11004298 : NpcScript {
                 return true;
             case 31:
                 // $script:1002141907011386$ 
-                // - Over there, in the sofa by the window. There are papers stuck in there that I can't seem to get loose. Did someone put those there on purpose?  
+                // - Over there, in the sofa by the window. There are papers stuck in there that I can't seem to get loose. Did someone put those there on purpose? 
                 return true;
             default:
                 return true;

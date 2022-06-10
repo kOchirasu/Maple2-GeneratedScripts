@@ -13,11 +13,11 @@ public class _11004195 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806025707010638$ 
-                // - $MyPCName$, what brings you to me? 
+                // - $MyPCName$, what brings you to me?
                 return true;
             case 10:
                 // $script:0806025707010639$ 
-                // - You must always believe in yourself. Though the road is long and difficult, it is our duty to bring peace to this world. 
+                // - You must always believe in yourself. Though the road is long and difficult, it is our duty to bring peace to this world.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004120 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010483$ 
-                // - I'm helping $npcName:11004108[gender:0]$ research the blackshard. 
+                // - I'm helping $npcName:11004108[gender:0]$ research the blackshard.
                 return true;
             case 10:
                 // $script:0720125407010484$ 
-                // - I'd say you yourself are worth studying, after surviving an explosion of this magnitude. 
+                // - I'd say you yourself are worth studying, after surviving an explosion of this magnitude.
                 return true;
             default:
                 return true;

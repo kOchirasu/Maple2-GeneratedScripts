@@ -13,11 +13,11 @@ public class _11001115 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0908154107003742$ 
-                // - Would you be so kind as to help me? 
+                // - Would you be so kind as to help me?
                 return true;
             case 30:
                 // $script:0908154107003745$ 
-                // - Valle, where have you been? Ah... I don't think I know you. I'm sorry, I haven't been myself lately. I thought you were my daughter when I heard your footsteps.  
+                // - Valle, where have you been? Ah... I don't think I know you. I'm sorry, I haven't been myself lately. I thought you were my daughter when I heard your footsteps. 
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001473 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1224110207005582$ 
-                // - What brings you? 
+                // - What brings you?
                 return true;
             case 30:
                 // $script:1228134707005720$ 
-                // - Nothing is more precious than the ruins and artifacts that our ancestors have left behind. Today, I'm especially proud to be an archaeologist! 
+                // - Nothing is more precious than the ruins and artifacts that our ancestors have left behind. Today, I'm especially proud to be an archaeologist!
                 return true;
             default:
                 return true;

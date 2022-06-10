@@ -13,11 +13,11 @@ public class _11004248 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0905135907011041$ 
-                // - I come from a long line of proud moon bunnies. I'm here to give you the blessings of the moon! 
+                // - I come from a long line of proud moon bunnies. I'm here to give you the blessings of the moon!
                 return true;
             case 90:
                 // $script:0823163507015094$ 
-                // - Are you enjoying the anniversary party? 
+                // - Are you enjoying the anniversary party?
                 switch (selection) {
                     // $script:0823163507015095$
                     // - I sure am!
@@ -33,7 +33,7 @@ public class _11004248 : NpcScript {
                 return true;
             case 91:
                 // $script:0823163507015097$ 
-                // - You know how to have fun! Did you find the special treasure chests at the top of $map:63000089$? 
+                // - You know how to have fun! Did you find the special treasure chests at the top of $map:63000089$?
                 switch (selection) {
                     // $script:0823163507015098$
                     // - How do I get to them?
@@ -44,13 +44,13 @@ public class _11004248 : NpcScript {
                 return true;
             case 92:
                 // $script:0823163507015099$ 
-                // - Climb all the way up the cliff to the north of $map:63000089$ and you'll find a whole heap of golden treasure chests! 
+                // - Climb all the way up the cliff to the north of $map:63000089$ and you'll find a whole heap of golden treasure chests!
                 // $script:0823163507015100$ 
-                // - It'll be a piece of cake for an adventurer like you. Anyway, good luck! 
+                // - It'll be a piece of cake for an adventurer like you. Anyway, good luck!
                 return true;
             case 93:
                 // $script:0823163507015101$ 
-                // - R-really? Maybe... maybe you just need to find something fun to do? Like... did you know about the treasure chests at the highest point in $map:63000089$? 
+                // - R-really? Maybe... maybe you just need to find something fun to do? Like... did you know about the treasure chests at the highest point in $map:63000089$?
                 switch (selection) {
                     // $script:0823163507015102$
                     // - I don't! How do you get to them?
@@ -66,9 +66,9 @@ public class _11004248 : NpcScript {
                 return true;
             case 94:
                 // $script:0823163507015104$ 
-                // - Waaaaah...  
+                // - Waaaaah... 
                 // $script:0823163507015105$ 
-                // - Can't you... can't you just <i>pretend</i> to care? I worked sooo hard to put this party together... Waaah...  
+                // - Can't you... can't you just <i>pretend</i> to care? I worked sooo hard to put this party together... Waaah... 
                 switch (selection) {
                     // $script:0823163507015106$
                     // - Oh, just tell me, already.

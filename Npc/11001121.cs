@@ -13,11 +13,11 @@ public class _11001121 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0910171307003826$ 
-                // - What brings you? 
+                // - What brings you?
                 return true;
             case 30:
                 // $script:0915113107003927$ 
-                // - Those on the cutting edge of technological research often complain about lack of funds, resources, and other material things. The only thing I lack is time... Say, how old do you think I am? 
+                // - Those on the cutting edge of technological research often complain about lack of funds, resources, and other material things. The only thing I lack is time... Say, how old do you think I am?
                 switch (selection) {
                     // $script:0915113107003928$
                     // - You look young-ish to me.
@@ -33,11 +33,11 @@ public class _11001121 : NpcScript {
                 return true;
             case 31:
                 // $script:0915113107003930$ 
-                // - Hmph! Flattery will get you nowhere with me. Or perhaps you need to see an eye doctor. 
+                // - Hmph! Flattery will get you nowhere with me. Or perhaps you need to see an eye doctor.
                 return true;
             case 32:
                 // $script:0915113107003931$ 
-                // - Close enough! There's so much I want to study, but I'm past my prime. <i>If only there were more time...!</i> Wait... That gives me an idea... 
+                // - Close enough! There's so much I want to study, but I'm past my prime. <i>If only there were more time...!</i> Wait... That gives me an idea...
                 return true;
             default:
                 return true;

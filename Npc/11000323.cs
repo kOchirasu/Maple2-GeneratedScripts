@@ -13,23 +13,23 @@ public class _11000323 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001300$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 40:
                 // $script:0831180407001303$ 
-                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot warrior?  
+                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot warrior? 
                 return true;
             case 50:
                 // $script:0831180407001304$ 
-                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot mage?  
+                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot mage? 
                 return true;
             case 60:
                 // $script:0831180407001305$ 
-                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot archer?  
+                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot archer? 
                 return true;
             case 70:
                 // $script:0831180407001306$ 
-                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot thief?  
+                // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot thief? 
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001399 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217193307005399$ 
-                // - What brings you here? 
+                // - What brings you here?
                 return true;
             case 30:
                 // $script:1228164407005733$ 
-                // - After that red sandstorm, a weird ruin popped out from the dunes. I can't wait to see what kind of secrets it holds! 
+                // - After that red sandstorm, a weird ruin popped out from the dunes. I can't wait to see what kind of secrets it holds!
                 return true;
             default:
                 return true;

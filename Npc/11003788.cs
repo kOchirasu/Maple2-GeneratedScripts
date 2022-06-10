@@ -13,11 +13,11 @@ public class _11003788 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1213192607009646$ 
-                // - All systems are operational! 
+                // - All systems are operational!
                 return true;
             case 10:
                 // $script:1213192607009647$ 
-                // - How may I help you today, $male:Sir,female:Ma'am$? 
+                // - How may I help you today, $male:Sir,female:Ma'am$?
                 return true;
             default:
                 return true;

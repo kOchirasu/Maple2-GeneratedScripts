@@ -13,11 +13,11 @@ public class _11003262 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008202$ 
-                // - Professor $npcName:11003251[gender:0]$...  
+                // - Professor $npcName:11003251[gender:0]$... 
                 return true;
             case 30:
                 // $script:0403155707008203$ 
-                // - Where is he? I have to find him. He isn't himself! 
+                // - Where is he? I have to find him. He isn't himself!
                 switch (selection) {
                     // $script:0403155707008204$
                     // - What do you know about this?
@@ -29,7 +29,7 @@ public class _11003262 : NpcScript {
             case 31:
                 // $script:0403155707008205$ 
                 // - N-nothing! I... I don't know anything...
-<font color="#909090">($npcName:11003146[gender:1]$ shakes her head in frustration.)</font> 
+                //   <font color="#909090">($npcName:11003146[gender:1]$ shakes her head in frustration.)</font>
                 return true;
             default:
                 return true;

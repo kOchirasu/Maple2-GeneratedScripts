@@ -13,7 +13,7 @@ public class _11000351 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000437$ functionID=1 
-                // - Just look at that gorgeous reflection! Can you believe that's you? 
+                // - Just look at that gorgeous reflection! Can you believe that's you?
                 return true;
             default:
                 return true;

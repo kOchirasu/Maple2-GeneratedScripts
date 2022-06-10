@@ -13,11 +13,11 @@ public class _11004118 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0720125407010479$ 
-                // - If I see anything unusual, I'll report in right away! 
+                // - If I see anything unusual, I'll report in right away!
                 return true;
             case 10:
                 // $script:0720125407010480$ 
-                // - The blast area was pretty big... 
+                // - The blast area was pretty big...
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001002 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0406144907006007$ 
-                // - Good to see you, $MyPCName$! 
+                // - Good to see you, $MyPCName$!
                 return true;
             case 90:
                 // $script:0913145407011302$ 
-                // - Hello, $MyPCName$! I'm $npcName:11001002[gender:1]$, and I'm here to talk to you about events. What would you like to know?  
+                // - Hello, $MyPCName$! I'm $npcName:11001002[gender:1]$, and I'm here to talk to you about events. What would you like to know? 
                 switch (selection) {
                     // $script:0913145407011303$
                     // - Who's the guy in the matching outfit?
@@ -28,7 +28,7 @@ public class _11001002 : NpcScript {
                 return true;
             case 91:
                 // $script:0913145407011304$ 
-                // - That's my twin brother and fellow event guide. Come find us anytime you want to know about current events in Maple World. That's why we're here! 
+                // - That's my twin brother and fellow event guide. Come find us anytime you want to know about current events in Maple World. That's why we're here!
                 return true;
             default:
                 return true;

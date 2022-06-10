@@ -13,13 +13,13 @@ public class _11000129 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000552$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 40:
                 // $script:0831180407000555$ 
-                // - I took the Royal Road for granted. I've never been on a path so dangerous before.  
+                // - I took the Royal Road for granted. I've never been on a path so dangerous before. 
                 // $script:0831180407000556$ 
-                // - And even if you get through this awful forest, there's a treacherous valley to cross. The cliffs of $map:02000051$ are nothing compared to what's ahead! Ahh, I'm never getting out of here alive... 
+                // - And even if you get through this awful forest, there's a treacherous valley to cross. The cliffs of $map:02000051$ are nothing compared to what's ahead! Ahh, I'm never getting out of here alive...
                 return true;
             default:
                 return true;

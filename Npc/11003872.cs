@@ -13,11 +13,11 @@ public class _11003872 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009860$ 
-                // - What's more important? The process? Or the results? 
+                // - What's more important? The process? Or the results?
                 return true;
             case 10:
                 // $script:0417135107009861$ 
-                // - I guess you need good process <i>and</i> solid results. 
+                // - I guess you need good process <i>and</i> solid results.
                 return true;
             default:
                 return true;

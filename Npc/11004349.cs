@@ -13,11 +13,11 @@ public class _11004349 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011761$ 
-                // - Ha, you like Bobo's red nose? Remind you of someone? 
+                // - Ha, you like Bobo's red nose? Remind you of someone?
                 return true;
             case 10:
                 // $script:1109213607011762$ 
-                // - Ha, you like Bobo's red nose? Remind you of someone? 
+                // - Ha, you like Bobo's red nose? Remind you of someone?
                 return true;
             default:
                 return true;

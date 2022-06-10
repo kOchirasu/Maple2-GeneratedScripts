@@ -13,11 +13,11 @@ public class _11003249 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0403155707008165$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:0403155707008166$ 
-                // - We must uncover the secret of darkness before it claims any more lives. 
+                // - We must uncover the secret of darkness before it claims any more lives.
                 return true;
             default:
                 return true;

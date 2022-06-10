@@ -13,13 +13,13 @@ public class _11004568 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220211107014560$ 
-                // - Aaaah. 
+                // - Aaaah.
                 return true;
             case 10:
                 // $script:0220211107014561$ 
-                // - Hmm hm hummm! 
+                // - Hmm hm hummm!
                 // $script:0220211107014562$ 
-                // - Huh? Did you say something? 
+                // - Huh? Did you say something?
                 switch (selection) {
                     // $script:0220211107014563$
                     // - Take off your headphones!
@@ -30,9 +30,9 @@ public class _11004568 : NpcScript {
                 return true;
             case 20:
                 // $script:0220211107014564$ 
-                // - Good idea! There we go. You're here for the Queen Bean Rumble? 
+                // - Good idea! There we go. You're here for the Queen Bean Rumble?
                 // $script:0220211107014565$ 
-                // - Me too! I bet you didn't know I could fight. 
+                // - Me too! I bet you didn't know I could fight.
                 switch (selection) {
                     // $script:0220211107014566$
                     // - I haven't thought about it.
@@ -43,11 +43,11 @@ public class _11004568 : NpcScript {
                 return true;
             case 30:
                 // $script:0220211107014567$ 
-                // - Well, I can, and I'm really good at it, too. 
+                // - Well, I can, and I'm really good at it, too.
                 // $script:0220211107014568$ 
-                // - In fact, I'm the very first fighter the Pink Beans invited. It wasn't easy for them, either. Karkar isn't exactly in their backyard. 
+                // - In fact, I'm the very first fighter the Pink Beans invited. It wasn't easy for them, either. Karkar isn't exactly in their backyard.
                 // $script:0220211107014569$ 
-                // - Anyway, I'll see you in the fight! 
+                // - Anyway, I'll see you in the fight!
                 return true;
             default:
                 return true;

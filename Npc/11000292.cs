@@ -13,11 +13,11 @@ public class _11000292 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407001163$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 30:
                 // $script:0831180407001166$ 
-                // - If only she loved me... I would do anything for her...  
+                // - If only she loved me... I would do anything for her... 
                 return true;
             default:
                 return true;

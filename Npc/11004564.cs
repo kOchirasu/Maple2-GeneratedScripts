@@ -13,11 +13,11 @@ public class _11004564 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0220211107014526$ 
-                // - Hm... 
+                // - Hm...
                 return true;
             case 10:
                 // $script:0220211107014527$ 
-                // - Sigh... 
+                // - Sigh...
                 switch (selection) {
                     // $script:0220211107014528$
                     // - You doing okay?
@@ -28,15 +28,15 @@ public class _11004564 : NpcScript {
                 return true;
             case 20:
                 // $script:0220211107014529$ 
-                // - Uh? Whuh? 
+                // - Uh? Whuh?
                 // $script:0220211107014530$ 
-                // - What are <i>you</i> doing here?! Oh, no. Don't tell me we're fighting, too... 
+                // - What are <i>you</i> doing here?! Oh, no. Don't tell me we're fighting, too...
                 // $script:0220211107014531$ 
-                // - Listen up. The Pink Beans told me something. They said... they said if I win... 
+                // - Listen up. The Pink Beans told me something. They said... they said if I win...
                 // $script:0220211107014532$ 
-                // - ...then I'll get to interview $npcName:11004568[gender:1]$ herself! Could you imagine? That girl is practically a dragon, thanks to her adopted father! 
+                // - ...then I'll get to interview $npcName:11004568[gender:1]$ herself! Could you imagine? That girl is practically a dragon, thanks to her adopted father!
                 // $script:0220211107014533$ 
-                // - So if you get matched against me, throw the fight, okay? 
+                // - So if you get matched against me, throw the fight, okay?
                 switch (selection) {
                     // $script:0220211107014534$
                     // - Well...
@@ -47,7 +47,7 @@ public class _11004564 : NpcScript {
                 return true;
             case 30:
                 // $script:0220211107014535$ 
-                // - Fine, <i>don't</i> throw the fight. But I warn you, I'll give it everything I've got! 
+                // - Fine, <i>don't</i> throw the fight. But I warn you, I'll give it everything I've got!
                 return true;
             default:
                 return true;

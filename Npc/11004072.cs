@@ -13,13 +13,13 @@ public class _11004072 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0619202207010170$ 
-                // - ... 
+                // - ...
                 return true;
             case 10:
                 // $script:0619202207010171$ 
-                // - ... 
+                // - ...
                 // $script:0619202207010172$ 
-                // - ... 
+                // - ...
                 switch (selection) {
                     // $script:0619202207010173$
                     // - ...
@@ -30,7 +30,7 @@ public class _11004072 : NpcScript {
                 return true;
             case 31:
                 // $script:0619202207010174$ 
-                // - ... 
+                // - ...
                 switch (selection) {
                     // $script:0619202207010175$
                     // - ...
@@ -41,7 +41,7 @@ public class _11004072 : NpcScript {
                 return true;
             case 32:
                 // $script:0619202207010176$ 
-                // - ... 
+                // - ...
                 switch (selection) {
                     // $script:0619202207010177$
                     // - Huh. I didn't know trees could scream.
@@ -52,7 +52,7 @@ public class _11004072 : NpcScript {
                 return true;
             case 33:
                 // $script:0619202207010178$ 
-                // - Well obviously I'm not a tree! How did you even spot me? I'm here on a secret mission! 
+                // - Well obviously I'm not a tree! How did you even spot me? I'm here on a secret mission!
                 switch (selection) {
                     // $script:0619202207010179$
                     // - You one of Frey's men?
@@ -73,15 +73,15 @@ public class _11004072 : NpcScript {
                 return true;
             case 40:
                 // $script:0619202207010182$ 
-                // - I'm trying to keep a low profile here. Can't you pretend you didn't see me and just move along? 
+                // - I'm trying to keep a low profile here. Can't you pretend you didn't see me and just move along?
                 return true;
             case 50:
                 // $script:0619202207010183$ 
-                // - You aren't worthy to even speak of her! 
+                // - You aren't worthy to even speak of her!
                 return true;
             case 60:
                 // $script:0619202207010184$ 
-                // - Stop blathering. I'm on duty. Get out of here now, before you regret it. 
+                // - Stop blathering. I'm on duty. Get out of here now, before you regret it.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004087 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0622133907010298$ 
-                // - Ribbit ribbit! 
+                // - Ribbit ribbit!
                 return true;
             case 10:
                 // $script:0622133907010299$ 
-                // - Ribbit ribbit! 
+                // - Ribbit ribbit!
                 return true;
             default:
                 return true;

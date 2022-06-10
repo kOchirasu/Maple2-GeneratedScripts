@@ -13,11 +13,11 @@ public class _11000807 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002975$ 
-                // - Erm... Erm...  
+                // - Erm... Erm... 
                 return true;
             case 20:
                 // $script:0831180407002977$ 
-                // - The Cruel Tower is like a living hell. I don't even want to think about it. I'm lucky to have gotten out of there alive. 
+                // - The Cruel Tower is like a living hell. I don't even want to think about it. I'm lucky to have gotten out of there alive.
                 return true;
             default:
                 return true;

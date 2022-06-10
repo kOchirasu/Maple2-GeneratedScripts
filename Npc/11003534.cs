@@ -13,11 +13,11 @@ public class _11003534 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1126150707011919$ 
-                // - Back in my day, we knew a thing or two about duty! 
+                // - Back in my day, we knew a thing or two about duty!
                 return true;
             case 20:
                 // $script:1126150707011920$ 
-                // - What's the matter? Don't have enough to do? 
+                // - What's the matter? Don't have enough to do?
                 switch (selection) {
                     // $script:1126150707011921$
                     // - Uh...
@@ -28,11 +28,11 @@ public class _11003534 : NpcScript {
                 return true;
             case 31:
                 // $script:1126150707011922$ 
-                // - If you've got time for chit-chat, you've got time for a mission! 
+                // - If you've got time for chit-chat, you've got time for a mission!
                 return true;
             case 40:
                 // $script:1126150707011923$ 
-                // - If you think you've got what it takes to serve the Imperial Vanguard, then prove it. 
+                // - If you think you've got what it takes to serve the Imperial Vanguard, then prove it.
                 return true;
             default:
                 return true;

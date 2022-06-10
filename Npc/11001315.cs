@@ -13,13 +13,13 @@ public class _11001315 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005034$ 
-                // - It's a beautiful day, isn't it?  
+                // - It's a beautiful day, isn't it? 
                 return true;
             case 40:
                 // $script:1227194507005691$ 
-                // - People are always asking me if I'm okay living with my gramps. Well, I am! 
+                // - People are always asking me if I'm okay living with my gramps. Well, I am!
                 // $script:1227194507005692$ 
-                // - I don't care if you think he's a screaming old fart. If you ask me, he's a great man! 
+                // - I don't care if you think he's a screaming old fart. If you ask me, he's a great man!
                 switch (selection) {
                     // $script:1227194507005693$
                     // - Your grandpa isn't popular, is he?
@@ -30,7 +30,7 @@ public class _11001315 : NpcScript {
                 return true;
             case 41:
                 // $script:1227194507005694$ 
-                // - They're just jealous of how great he is! Gramps talks loud so people can hear him clearly. Isn't that nice?  
+                // - They're just jealous of how great he is! Gramps talks loud so people can hear him clearly. Isn't that nice? 
                 return true;
             default:
                 return true;

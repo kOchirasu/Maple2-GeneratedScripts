@@ -13,13 +13,12 @@ public class _11000120 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000519$ 
-                // - Select a thread. 
+                // - Select a thread.
                 return true;
             case 10:
                 // $script:0831180407000520$ 
                 // - This road is fraught with danger. You will need to make a detour.
-
-- Voice of experience 
+                //   - Voice of experience
                 return true;
             default:
                 return true;

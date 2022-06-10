@@ -13,11 +13,11 @@ public class _11000148 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000631$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000634$ 
-                // - If I wasn't charged with $map:63000004$, I could've joined the delegation. I hate that no one else can fill in for me!  
+                // - If I wasn't charged with $map:63000004$, I could've joined the delegation. I hate that no one else can fill in for me! 
                 return true;
             default:
                 return true;

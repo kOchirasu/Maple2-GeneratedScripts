@@ -13,11 +13,11 @@ public class _11001476 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1228113207005714$ 
-                // - Betrayal is the quickest path to death. 
+                // - Betrayal is the quickest path to death.
                 return true;
             case 20:
                 // $script:1228113207005716$ 
-                // - You're better than I thought. I never forget a debt... or a grudge. $MyPCName$... 
+                // - You're better than I thought. I never forget a debt... or a grudge. $MyPCName$...
                 return true;
             default:
                 return true;

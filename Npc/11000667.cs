@@ -13,11 +13,11 @@ public class _11000667 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002704$ 
-                // - WHAT?! 
+                // - WHAT?!
                 return true;
             case 30:
                 // $script:0831180407002707$ 
-                // - Mm? What?  
+                // - Mm? What? 
                 switch (selection) {
                     // $script:0831180407002708$
                     // - What are you doing?
@@ -28,9 +28,9 @@ public class _11000667 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407002709$ 
-                // - You're a curious sort, aren't you? As the old saying goes, ignorance is bliss. 
+                // - You're a curious sort, aren't you? As the old saying goes, ignorance is bliss.
                 // $script:0831180407002710$ 
-                // - Don't stick your nose where it doesn't belong. 
+                // - Don't stick your nose where it doesn't belong.
                 return true;
             default:
                 return true;

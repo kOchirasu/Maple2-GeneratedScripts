@@ -13,11 +13,11 @@ public class _11000650 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002663$ 
-                // - When can I get out of here? 
+                // - When can I get out of here?
                 return true;
             case 40:
                 // $script:0831180407002667$ 
-                // - Huh? You don't look like an inmate. 
+                // - Huh? You don't look like an inmate.
                 switch (selection) {
                     // $script:0831180407002668$
                     // - What are you doing?
@@ -28,11 +28,11 @@ public class _11000650 : NpcScript {
                 return true;
             case 41:
                 // $script:0831180407002669$ 
-                // - Are you blind? I'm working! I have to pull a million weeds to have my sentence reduced. Ugh, I'll grow old before I can pull that many weeds. 
+                // - Are you blind? I'm working! I have to pull a million weeds to have my sentence reduced. Ugh, I'll grow old before I can pull that many weeds.
                 return true;
             case 50:
                 // $script:1210061907004920$ 
-                // - Huh? You don't look like an inmate. 
+                // - Huh? You don't look like an inmate.
                 switch (selection) {
                     // $script:1210061907004921$
                     // - Do you know someone named $npcName:11001231[gender:0]$?
@@ -43,7 +43,7 @@ public class _11000650 : NpcScript {
                 return true;
             case 51:
                 // $script:1214232707004979$ 
-                // - How do you know <i>that man</i>? 
+                // - How do you know <i>that man</i>?
                 switch (selection) {
                     // $script:1214232707004980$
                     // - I'm working with him.
@@ -54,7 +54,7 @@ public class _11000650 : NpcScript {
                 return true;
             case 52:
                 // $script:1214232707004981$ 
-                // - Hm... Yes, there is something special about you. What brings you here, then? 
+                // - Hm... Yes, there is something special about you. What brings you here, then?
                 switch (selection) {
                     // $script:1214232707004982$
                     // - I'm here on $npcName:11001231[gender:0]$'s behalf.
@@ -65,7 +65,7 @@ public class _11000650 : NpcScript {
                 return true;
             case 53:
                 // $script:1214232707004983$ 
-                // - He's just as impatient as the supervisor, eh? Well, if you're here on business, you better talk to him. 
+                // - He's just as impatient as the supervisor, eh? Well, if you're here on business, you better talk to him.
                 switch (selection) {
                     // $script:1214232707004984$
                     // - Who is this supervisor?
@@ -76,7 +76,7 @@ public class _11000650 : NpcScript {
                 return true;
             case 54:
                 // $script:1214232707004985$ 
-                // - $npcName:11000651[gender:0]$. But he doesn't talk to nobody without the password. That's the rule. And, to keep things nice and secure, we change it every three days. 
+                // - $npcName:11000651[gender:0]$. But he doesn't talk to nobody without the password. That's the rule. And, to keep things nice and secure, we change it every three days.
                 switch (selection) {
                     // $script:1214232707004986$
                     // - What's the password?
@@ -87,9 +87,9 @@ public class _11000650 : NpcScript {
                 return true;
             case 55:
                 // $script:1214232707004987$ 
-                // - I wrote it down somewhere. Ahem. "In the middle of the shadows..." Drat! The rest got erased. 
+                // - I wrote it down somewhere. Ahem. "In the middle of the shadows..." Drat! The rest got erased.
                 // $script:1214232707004988$ 
-                // - Sorry, that's all I know. You'll have to ask someone else for the rest of the password. 
+                // - Sorry, that's all I know. You'll have to ask someone else for the rest of the password.
                 return true;
             default:
                 return true;

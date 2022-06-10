@@ -13,15 +13,15 @@ public class _11004328 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1010140307011526$ 
-                // - I've never heard such a call... 
+                // - I've never heard such a call...
                 return true;
             case 10:
                 // $script:1010140307011527$ 
-                // - I've never heard such a call... 
+                // - I've never heard such a call...
                 // $script:1010140307011528$ 
-                // - Hey! Fancy meeting you there. 
+                // - Hey! Fancy meeting you there.
                 // $script:1010140307011529$ 
-                // - Quick question. You hear that noise? 
+                // - Quick question. You hear that noise?
                 switch (selection) {
                     // $script:1010140307011530$
                     // - What noise?
@@ -32,13 +32,13 @@ public class _11004328 : NpcScript {
                 return true;
             case 20:
                 // $script:1010140307011531$ 
-                // - So, you can't hear it, either. That figures. 
+                // - So, you can't hear it, either. That figures.
                 // $script:1010140307011532$ 
-                // - I keep hearing this crying sound. It's like a hurt animal... but it's no animal I've ever seen. 
+                // - I keep hearing this crying sound. It's like a hurt animal... but it's no animal I've ever seen.
                 // $script:1010140307011533$ 
-                // - $npcName:11004327[gender:0]$ and I are new to this land, but I'm sure the crying isn't from a monster. 
+                // - $npcName:11004327[gender:0]$ and I are new to this land, but I'm sure the crying isn't from a monster.
                 // $script:1010140307011534$ 
-                // - What could it be? There are so many secrets here. 
+                // - What could it be? There are so many secrets here.
                 return true;
             default:
                 return true;

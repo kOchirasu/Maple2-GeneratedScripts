@@ -13,11 +13,11 @@ public class _11003061 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0102155907007643$ 
-                // - <font color="#909090">(A chilling wind blows through the gap in the ice wall behind the frozen tree.)</font> 
+                // - <font color="#909090">(A chilling wind blows through the gap in the ice wall behind the frozen tree.)</font>
                 return true;
             case 30:
                 // $script:0102155907007644$ 
-                // - <font color="#909090">(Something must be hidden behind this tree.)</font> 
+                // - <font color="#909090">(Something must be hidden behind this tree.)</font>
                 return true;
             default:
                 return true;

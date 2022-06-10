@@ -13,13 +13,13 @@ public class _11004470 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1227195007012417$ 
-                // - I was playing hide-and-seek with my friends, but I just can't find them! 
+                // - I was playing hide-and-seek with my friends, but I just can't find them!
                 return true;
             case 10:
                 // $script:1227195007012418$ 
-                // - I was playing hide-and-seek with my friends, but I just can't find them! 
+                // - I was playing hide-and-seek with my friends, but I just can't find them!
                 // $script:1227195007012419$ 
-                // - Where did you go?! I give up! Please come out! 
+                // - Where did you go?! I give up! Please come out!
                 return true;
             default:
                 return true;

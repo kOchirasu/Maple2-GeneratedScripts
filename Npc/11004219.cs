@@ -13,11 +13,11 @@ public class _11004219 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0806222707010782$ 
-                // - Was there something you needed? 
+                // - Was there something you needed?
                 return true;
             case 10:
                 // $script:0806222707010783$ 
-                // - There is power in anger, but you must never lose yourself in the heat of battle. When all that's left is devastation, there are no winners. 
+                // - There is power in anger, but you must never lose yourself in the heat of battle. When all that's left is devastation, there are no winners.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003415 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0623153207008576$ 
-                // - <i>Here lies Red Fox, courageous warrior of $map:02000051$. He laid down his life while defending our people from the forces of darkness, and for that he will always be remembered.</i> 
+                // - <i>Here lies Red Fox, courageous warrior of $map:02000051$. He laid down his life while defending our people from the forces of darkness, and for that he will always be remembered.</i>
                 return true;
             case 10:
                 // $script:0623180607008578$ 
-                // - <i>Here lies Red Fox, courageous warrior of $map:02000051$. He laid down his life while defending our people from the forces of darkness, and for that he will always be remembered.</i> 
+                // - <i>Here lies Red Fox, courageous warrior of $map:02000051$. He laid down his life while defending our people from the forces of darkness, and for that he will always be remembered.</i>
                 return true;
             default:
                 return true;

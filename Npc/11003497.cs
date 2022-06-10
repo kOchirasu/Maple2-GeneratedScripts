@@ -13,11 +13,11 @@ public class _11003497 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0727033607008730$ 
-                // - A temporary portal for you, lost soul! Courtesy of $npcName:11003257$, genius mage! 
+                // - A temporary portal for you, lost soul! Courtesy of $npcName:11003257$, genius mage!
                 return true;
             case 10:
                 // $script:0727033607008731$ 
-                // - A temporary portal for you, lost soul! Now servicing the $map:52000134$ and the $map:52000149$. 
+                // - A temporary portal for you, lost soul! Now servicing the $map:52000134$ and the $map:52000149$.
                 switch (selection) {
                     // $script:0727033607008732$
                     // - (Go to the $map:52000134$.)
@@ -33,11 +33,11 @@ public class _11003497 : NpcScript {
                 return true;
             case 11:
                 // $script:0727033607008734$ functionID=1 
-                // - You're on your way! 
+                // - You're on your way!
                 return true;
             case 12:
                 // $script:0727033607008735$ 
-                // - Come find me if you change your mind. 
+                // - Come find me if you change your mind.
                 return true;
             default:
                 return true;

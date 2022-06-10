@@ -13,11 +13,11 @@ public class _11000257 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000408$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 1:
                 // $script:0831180610000413$ functionID=1 
-                // - Being strong is important, but looking fabulous while you fight is the true key to happiness, y'know. So... wanna spruce up your gear? 
+                // - Being strong is important, but looking fabulous while you fight is the true key to happiness, y'know. So... wanna spruce up your gear?
                 switch (selection) {
                     // $script:0831180610000414$
                     // - Yes! I need more color in my life!

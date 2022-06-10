@@ -13,11 +13,11 @@ public class _11000056 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000241$ 
-                // - What is it? 
+                // - What is it?
                 return true;
             case 30:
                 // $script:0831180407000244$ 
-                // - Hmph, the oarsman at $map:63000002$ is so greedy. He charges a huge fee just to take you to $map:02000062$. Isn't that crazy? 
+                // - Hmph, the oarsman at $map:63000002$ is so greedy. He charges a huge fee just to take you to $map:02000062$. Isn't that crazy?
                 switch (selection) {
                     // $script:0831180407000245$
                     // - It really is.
@@ -33,7 +33,7 @@ public class _11000056 : NpcScript {
                 return true;
             case 31:
                 // $script:0831180407000247$ 
-                // - Seriously! Some people stay in $map:63000002$ for ages just to make enough money to get on his boat! 
+                // - Seriously! Some people stay in $map:63000002$ for ages just to make enough money to get on his boat!
                 switch (selection) {
                     // $script:0831180407000248$
                     // - What do people do to make money?
@@ -44,7 +44,7 @@ public class _11000056 : NpcScript {
                 return true;
             case 32:
                 // $script:0831180407000251$ 
-                // - Really? Well, I guess the fare would be nothing if I could win $npcName:11000441[gender:0]$'s prize money. 
+                // - Really? Well, I guess the fare would be nothing if I could win $npcName:11000441[gender:0]$'s prize money.
                 switch (selection) {
                     // $script:0831180407000252$
                     // - Wait, what's this about $npc:11000441[gender:0]$'s prize money?
@@ -55,13 +55,13 @@ public class _11000056 : NpcScript {
                 return true;
             case 33:
                 // $script:0831180407000249$ 
-                // - Oh, they hunt monsters or pick up junk that washes up on the shore. Some of it is pretty valuable. 
+                // - Oh, they hunt monsters or pick up junk that washes up on the shore. Some of it is pretty valuable.
                 // $script:0831180407000250$ 
-                // - But I'll never go there. I don't want to be trampled by $npcName:22300149$ before I get to the mainland. 
+                // - But I'll never go there. I don't want to be trampled by $npcName:22300149$ before I get to the mainland.
                 return true;
             case 34:
                 // $script:0831180407000253$ 
-                // - I told you. Enter $map:61000005$ behind me and survive until the end, and $npc:11000441[gender:0]$ will shower you with money. 
+                // - I told you. Enter $map:61000005$ behind me and survive until the end, and $npc:11000441[gender:0]$ will shower you with money.
                 return true;
             default:
                 return true;

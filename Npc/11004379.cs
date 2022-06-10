@@ -13,15 +13,15 @@ public class _11004379 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1109213607011793$ 
-                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up. 
+                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up.
                 return true;
             case 10:
                 // $script:1109213607011794$ 
-                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up. 
+                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up.
                 return true;
             case 40:
                 // $script:1120173007011868$ 
-                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up. 
+                // - I'll be honest, I didn't think this place was so merry until <i>you</i> showed up.
                 switch (selection) {
                     // $script:1120173007011869$
                     // - Did you see $npcName:11004345[gender:1]$'s family?
@@ -32,7 +32,7 @@ public class _11004379 : NpcScript {
                 return true;
             case 41:
                 // $script:1120173007011870$ 
-                // - $npcName:11004345[gender:1]$? That's $npcName:11004347[gender:1]$'s daughter. She's my boss, but she's off today. You sure she's not at home? 
+                // - $npcName:11004345[gender:1]$? That's $npcName:11004347[gender:1]$'s daughter. She's my boss, but she's off today. You sure she's not at home?
                 return true;
             default:
                 return true;

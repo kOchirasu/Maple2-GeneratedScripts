@@ -13,11 +13,11 @@ public class _11001406 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1217205907005403$ 
-                // - You've got guts, walking around a place like this. 
+                // - You've got guts, walking around a place like this.
                 return true;
             case 40:
                 // $script:1222203907005471$ 
-                // - Go away! We're on a mission!! 
+                // - Go away! We're on a mission!!
                 switch (selection) {
                     // $script:1222203907005472$
                     // - You're awfully excited for someone on a mission.
@@ -28,7 +28,7 @@ public class _11001406 : NpcScript {
                 return true;
             case 41:
                 // $script:1222203907005473$ 
-                // - We aren't playing, if that's what you're trying to say! We don't get to play all day like you! We're on a very, very important <i>training</i> mission!! 
+                // - We aren't playing, if that's what you're trying to say! We don't get to play all day like you! We're on a very, very important <i>training</i> mission!!
                 return true;
             default:
                 return true;

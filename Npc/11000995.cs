@@ -13,13 +13,13 @@ public class _11000995 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407003416$ 
-                // - Ah, what is it? 
+                // - Ah, what is it?
                 return true;
             case 30:
                 // $script:0831180407003419$ 
-                // - Some people say I don't look like an adventurer. They think I would look more relaxed sitting behind a desk, reading and daydreaming. 
+                // - Some people say I don't look like an adventurer. They think I would look more relaxed sitting behind a desk, reading and daydreaming.
                 // $script:0831180407003420$ 
-                // - That means they don't know me. I prefer seeing things for myself rather than reading them from books. That's why I'm so happy about this job with the Adventurer's Guild. 
+                // - That means they don't know me. I prefer seeing things for myself rather than reading them from books. That's why I'm so happy about this job with the Adventurer's Guild.
                 return true;
             default:
                 return true;

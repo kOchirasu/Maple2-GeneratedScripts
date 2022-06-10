@@ -13,11 +13,11 @@ public class _11003956 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614143707010003$ 
-                // - Do you believe in the power of the light? 
+                // - Do you believe in the power of the light?
                 return true;
             case 20:
                 // $script:0614143707010004$ 
-                // - This Frontier Foundation is a beautiful place. I look forward to working with such capable individuals. 
+                // - This Frontier Foundation is a beautiful place. I look forward to working with such capable individuals.
                 return true;
             default:
                 return true;

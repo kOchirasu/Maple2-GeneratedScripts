@@ -13,12 +13,12 @@ public class _11001125 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0910171307003844$ 
-                // - Entering data...  
+                // - Entering data... 
                 return true;
             case 30:
                 // $script:0915135007003944$ 
                 // - Running database query on $MyPCName$... 
-Zero entries found in $map:2000270$ personnel list... Creating new entry. 
+                //   Zero entries found in $map:2000270$ personnel list... Creating new entry.
                 return true;
             default:
                 return true;

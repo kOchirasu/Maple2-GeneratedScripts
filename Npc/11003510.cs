@@ -13,23 +13,23 @@ public class _11003510 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0816160115009016$ 
-                // - Let's get to business. 
+                // - Let's get to business.
                 return true;
             case 30:
                 // $script:0816160115009017$ 
-                // - It's great having friends to hang out with. 
+                // - It's great having friends to hang out with.
                 return true;
             case 40:
                 // $script:0816160115009018$ 
-                // - I used to work with a friend who loved monsters. I helped my friend's dream come true... 
+                // - I used to work with a friend who loved monsters. I helped my friend's dream come true...
                 return true;
             case 50:
                 // $script:0816160115009019$ 
-                // - There are no bad monsters. 
+                // - There are no bad monsters.
                 return true;
             case 60:
                 // $script:0816160115009020$ 
-                // - Why not take a stroll with a little friend? 
+                // - Why not take a stroll with a little friend?
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11001300 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005014$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 30:
                 // $script:1215203907005017$ 
-                // - I command the Royal Knights of Empress $npcName:11000075[gender:1]$. Her safety is our duty. 
+                // - I command the Royal Knights of Empress $npcName:11000075[gender:1]$. Her safety is our duty.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11004055 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0614185307010083$ 
-                // - The siege on Madrakan was successful, but it cost us a great deal. 
+                // - The siege on Madrakan was successful, but it cost us a great deal.
                 return true;
             case 10:
                 // $script:0614185307010084$ 
-                // - The siege on Madrakan was successful, but it cost us a great deal. 
+                // - The siege on Madrakan was successful, but it cost us a great deal.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000071 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180610000379$ 
-                // - What seems to be the problem? 
+                // - What seems to be the problem?
                 return true;
             case 1:
                 // $script:0831180610000383$ functionID=1 
-                // - Oooh, $MyPCName$, I'm so glad you found me. I can work miracles! Everyone says so. Now, what did you have in mind? 
+                // - Oooh, $MyPCName$, I'm so glad you found me. I can work miracles! Everyone says so. Now, what did you have in mind?
                 switch (selection) {
                     // $script:0831180610000384$
                     // - Show me the possibilities.

@@ -13,15 +13,15 @@ public class _11001308 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1215203907005027$ 
-                // - Hello! 
+                // - Hello!
                 return true;
             case 30:
                 // $script:1227194507005653$ 
-                // - Do you need something? 
+                // - Do you need something?
                 // $script:1227194507005654$ 
-                // - If I don't have it, then it probably doesn't exist. I'm also interested in buying rare and unusual pieces. 
+                // - If I don't have it, then it probably doesn't exist. I'm also interested in buying rare and unusual pieces.
                 // $script:1227194507005655$ 
-                // - Take a look! I'm sure something will catch your fancy. 
+                // - Take a look! I'm sure something will catch your fancy.
                 return true;
             default:
                 return true;

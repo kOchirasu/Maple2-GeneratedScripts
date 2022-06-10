@@ -13,11 +13,11 @@ public class _11004437 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:1213154907011978$ 
-                // - Would you like to take on a mission for Green Hoods? 
+                // - Would you like to take on a mission for Green Hoods?
                 return true;
             case 10:
                 // $script:1213154907011979$ 
-                // - Where should I start? Local ecology? Demographics? There's so much data to collate! 
+                // - Where should I start? Local ecology? Demographics? There's so much data to collate!
                 return true;
             default:
                 return true;

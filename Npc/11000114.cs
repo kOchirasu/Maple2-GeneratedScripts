@@ -13,11 +13,11 @@ public class _11000114 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000477$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407000478$ 
-                // - What if $map:02000062$ and $map:02000001$ and everything else in the world collapses? 
+                // - What if $map:02000062$ and $map:02000001$ and everything else in the world collapses?
                 switch (selection) {
                     // $script:0831180407000479$
                     // - Don't worry.
@@ -28,7 +28,7 @@ public class _11000114 : NpcScript {
                 return true;
             case 11:
                 // $script:0831180407000480$ 
-                // - Really, $MyPCName$? Looking into this giant pit of doom doesn't fill you with the least little bit of doubt? 
+                // - Really, $MyPCName$? Looking into this giant pit of doom doesn't fill you with the least little bit of doubt?
                 return true;
             default:
                 return true;

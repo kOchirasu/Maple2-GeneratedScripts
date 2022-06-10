@@ -13,11 +13,11 @@ public class _11003874 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0417135107009864$ 
-                // - All this hard work is for my lovely wife and kid! Just wait a little longer, family! 
+                // - All this hard work is for my lovely wife and kid! Just wait a little longer, family!
                 return true;
             case 10:
                 // $script:0417135107009865$ 
-                // - Daddy's got to put food on the table. 
+                // - Daddy's got to put food on the table.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11003448 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0706160807008651$ 
-                // - The people need a reason to raise their heads up high. 
+                // - The people need a reason to raise their heads up high.
                 return true;
             case 10:
                 // $script:0706160807008652$ 
-                // - We're all in this together. 
+                // - We're all in this together.
                 return true;
             default:
                 return true;

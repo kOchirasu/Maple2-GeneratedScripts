@@ -13,15 +13,15 @@ public class _11001596 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0504151707006084$ 
-                // - Sigh...  
+                // - Sigh... 
                 return true;
             case 10:
                 // $script:0515180307006133$ 
-                // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up! 
+                // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up!
                 return true;
             case 20:
                 // $script:0524142307006222$ 
-                // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up! 
+                // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up!
                 return true;
             default:
                 return true;

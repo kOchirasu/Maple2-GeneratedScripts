@@ -13,11 +13,11 @@ public class _11001972 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0625222407010369$ 
-                // - We must harden our resolve. 
+                // - We must harden our resolve.
                 return true;
             case 10:
                 // $script:0625222407010370$ 
-                // - We must harden our resolve. 
+                // - We must harden our resolve.
                 return true;
             default:
                 return true;

@@ -13,11 +13,11 @@ public class _11000622 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407002527$ 
-                // - We need more people to handle the damage. 
+                // - We need more people to handle the damage.
                 return true;
             case 10:
                 // $script:0831180407002528$ 
-                // - Mushrooms want wooden ladders. Just wooden ones! 
+                // - Mushrooms want wooden ladders. Just wooden ones!
                 return true;
             default:
                 return true;

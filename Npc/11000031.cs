@@ -13,11 +13,11 @@ public class _11000031 : NpcScript {
         switch (Id) {
             case 0:
                 // $script:0831180407000181$ 
-                // - How may I help you? 
+                // - How may I help you?
                 return true;
             case 10:
                 // $script:0831180407000182$ 
-                // - The power of the Green Lapenta is especially strong here in $map:02000023$. That vital force protects this place from darkness. 
+                // - The power of the Green Lapenta is especially strong here in $map:02000023$. That vital force protects this place from darkness.
                 return true;
             default:
                 return true;
