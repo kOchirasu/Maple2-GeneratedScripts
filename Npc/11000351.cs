@@ -7,6 +7,7 @@ using Maple2.Script.Npc;
 public class _11000351 : NpcScript {
     internal _11000351(INpcScriptContext context) : base(context) {
         Id = 0;
+        // TODO: Job 0
     }
 
     public override bool Next(int selection = 0) {

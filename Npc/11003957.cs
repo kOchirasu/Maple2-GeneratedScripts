@@ -7,6 +7,7 @@ using Maple2.Script.Npc;
 public class _11003957 : NpcScript {
     internal _11003957(INpcScriptContext context) : base(context) {
         Id = 20;
+        // TODO: RandomPick 20
     }
 
     public override bool Next(int selection = 0) {
