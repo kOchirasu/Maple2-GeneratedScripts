@@ -6,8 +6,7 @@ using Maple2.Script.Npc;
 /// </summary>
 public class _11001668 : NpcScript {
     internal _11001668(INpcScriptContext context) : base(context) {
-        // TODO: Condition $script:0620185010001571$
-        // Id = 1;
+        // TODO: Job 1
         // TODO: RandomPick 10
     }
 
