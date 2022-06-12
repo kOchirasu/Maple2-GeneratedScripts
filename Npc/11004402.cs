@@ -21,7 +21,7 @@ public class _11004402 : NpcScript {
                 // - Keep your guard up.
                 return -1;
         }
-        
+
         return default;
     }
 

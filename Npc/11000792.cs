@@ -954,7 +954,7 @@ public class _11000792 : NpcScript {
                 // - Perhaps if we were friends, I would, but we've just met. Don't you think you're being a bit impolite?
                 return -1;
         }
-        
+
         return default;
     }
 

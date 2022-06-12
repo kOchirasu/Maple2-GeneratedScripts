@@ -51,7 +51,7 @@ public class _11004565 : NpcScript {
                 // - I know you're trying to cheer me up, but I feel oddly insulted...
                 return -1;
         }
-        
+
         return default;
     }
 

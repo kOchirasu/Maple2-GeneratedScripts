@@ -21,7 +21,7 @@ public class _11001574 : NpcScript {
                 // - The life force will protect everyone.
                 return -1;
         }
-        
+
         return default;
     }
 

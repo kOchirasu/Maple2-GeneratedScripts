@@ -21,7 +21,7 @@ public class _11001009 : NpcScript {
                 // - Are you also here because of that beanstalk rumor?
                 return -1;
         }
-        
+
         return default;
     }
 

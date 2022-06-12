@@ -77,7 +77,7 @@ public class _11000106 : NpcScript {
                 // - Don't act like we're friends now.
                 return -1;
         }
-        
+
         return default;
     }
 

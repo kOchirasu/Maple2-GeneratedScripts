@@ -21,7 +21,7 @@ public class _11003788 : NpcScript {
                 // - How may I help you today, $male:Sir,female:Ma'am$?
                 return -1;
         }
-        
+
         return default;
     }
 

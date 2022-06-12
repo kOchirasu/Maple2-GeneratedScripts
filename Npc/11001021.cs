@@ -21,7 +21,7 @@ public class _11001021 : NpcScript {
                 // - I don't have time for chitchat. I'm on a very important mission right now.
                 return -1;
         }
-        
+
         return default;
     }
 

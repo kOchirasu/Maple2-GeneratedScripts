@@ -21,7 +21,7 @@ public class _11001564 : NpcScript {
                 // - No matter $npcName:11001231[gender:0]$'s reasons or excuses, I will never forgive him for murdering Arazaad.
                 return -1;
         }
-        
+
         return default;
     }
 

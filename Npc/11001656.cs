@@ -32,7 +32,7 @@ public class _11001656 : NpcScript {
                 //   The master is fine. He... he has to be...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -51,7 +51,7 @@ public class _11003334 : NpcScript {
                 // - Why would I ever want to see you again?!
                 return -1;
         }
-        
+
         return default;
     }
 

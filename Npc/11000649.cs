@@ -45,7 +45,7 @@ public class _11000649 : NpcScript {
                 // - No. Get lost.
                 return -1;
         }
-        
+
         return default;
     }
 

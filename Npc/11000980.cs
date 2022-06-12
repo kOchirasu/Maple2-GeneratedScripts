@@ -21,7 +21,7 @@ public class _11000980 : NpcScript {
                 // - Got a spare umbrella?
                 return -1;
         }
-        
+
         return default;
     }
 

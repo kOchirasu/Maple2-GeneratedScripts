@@ -45,7 +45,7 @@ public class _11004478 : NpcScript {
                 // - Really? Shoot... Well, come back soon, before we fill up!
                 return -1;
         }
-        
+
         return default;
     }
 

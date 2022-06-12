@@ -21,7 +21,7 @@ public class _11000224 : NpcScript {
                 // - My boyfriend and I came here for a picnic, and we ended up fighting because he kept looking at other girls. The nerve!
                 return -1;
         }
-        
+
         return default;
     }
 

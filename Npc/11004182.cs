@@ -21,7 +21,7 @@ public class _11004182 : NpcScript {
                 // - Simply hiding is no strategy for victory. Especially up against the likes of an expert tracker like Arazaad.
                 return -1;
         }
-        
+
         return default;
     }
 

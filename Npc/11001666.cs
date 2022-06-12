@@ -21,7 +21,7 @@ public class _11001666 : NpcScript {
                 // - Please remain steadfast in your efforts to protect peace and justice.
                 return -1;
         }
-        
+
         return default;
     }
 

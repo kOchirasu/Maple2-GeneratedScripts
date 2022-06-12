@@ -25,7 +25,7 @@ public class _11000259 : NpcScript {
                 // - It's going to be tough, but we have to comb through the records for clues. We can't let them catch us off guard again.
                 return -1;
         }
-        
+
         return default;
     }
 

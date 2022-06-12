@@ -25,7 +25,7 @@ public class _11000054 : NpcScript {
                 // - $npcName:11000056[gender:0]$ knows about a lot of things. If you have questions, you should ask him!
                 return -1;
         }
-        
+
         return default;
     }
 

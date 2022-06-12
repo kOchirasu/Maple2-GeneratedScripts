@@ -1143,7 +1143,7 @@ public class _11000758 : NpcScript {
                 // - It's all right. $OwnerName$ won't get upset over something so trivial.
                 return -1;
         }
-        
+
         return default;
     }
 

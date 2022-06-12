@@ -61,7 +61,7 @@ public class _11004326 : NpcScript {
                 // - I can't exactly say. Confidentiality, you see. But between you and me, she's pretty high up in the Sky Fortress food chain, if you catch my drift.
                 return -1;
         }
-        
+
         return default;
     }
 

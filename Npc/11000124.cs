@@ -21,7 +21,7 @@ public class _11000124 : NpcScript {
                 // - I didn't know this would happen. I thought I would be set once I created the new drug... Then they came after me... Ugh... 
                 return -1;
         }
-        
+
         return default;
     }
 

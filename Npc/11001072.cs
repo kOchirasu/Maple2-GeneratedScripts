@@ -21,7 +21,7 @@ public class _11001072 : NpcScript {
                 // - You're from the outside world, aren't you? What are you going to change here this time?
                 return -1;
         }
-        
+
         return default;
     }
 

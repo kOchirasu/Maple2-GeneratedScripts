@@ -35,7 +35,7 @@ public class _11003534 : NpcScript {
                 // - If you think you've got what it takes to serve the Imperial Vanguard, then prove it.
                 return -1;
         }
-        
+
         return default;
     }
 

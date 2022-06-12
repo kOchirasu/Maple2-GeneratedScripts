@@ -21,7 +21,7 @@ public class _11000734 : NpcScript {
                 // - How do you like my hairstyle?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000299 : NpcScript {
                 // - Things around here have never been THIS bad. Maybe it's time for a change of career.
                 return -1;
         }
-        
+
         return default;
     }
 

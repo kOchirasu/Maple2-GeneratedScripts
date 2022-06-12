@@ -21,7 +21,7 @@ public class _11001606 : NpcScript {
                 // - Has the time finally come time to avenge Arazaad? $npcName:11001231[gender:0]$... I'll make you pay!
                 return -1;
         }
-        
+
         return default;
     }
 

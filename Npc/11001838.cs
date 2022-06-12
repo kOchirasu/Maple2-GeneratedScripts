@@ -39,7 +39,7 @@ public class _11001838 : NpcScript {
                 // - T-train harder... Yeah, that'll help...
                 return -1;
         }
-        
+
         return default;
     }
 

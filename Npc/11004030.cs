@@ -21,7 +21,7 @@ public class _11004030 : NpcScript {
                 // - Are lapenshards really the cause of all this? Just what are they?
                 return -1;
         }
-        
+
         return default;
     }
 

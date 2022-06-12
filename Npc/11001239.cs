@@ -41,7 +41,7 @@ public class _11001239 : NpcScript {
                 // - Then maybe there's... there's just groves and groves of sweet fruit! There's got to be <i>something</i> out there! And I wanna see it!
                 return -1;
         }
-        
+
         return default;
     }
 

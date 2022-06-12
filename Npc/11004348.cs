@@ -21,7 +21,7 @@ public class _11004348 : NpcScript {
                 // - Is my family safe? What a stressful season this has been.
                 return -1;
         }
-        
+
         return default;
     }
 

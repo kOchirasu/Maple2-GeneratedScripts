@@ -21,7 +21,7 @@ public class _11000648 : NpcScript {
                 // - I can't wait to get out of here. How much longer? 
                 return -1;
         }
-        
+
         return default;
     }
 

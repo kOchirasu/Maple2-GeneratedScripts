@@ -29,7 +29,7 @@ public class _11000283 : NpcScript {
                 // - Want to know your destiny? Want to see your future? Then ask me! I can tell you anything you want. For a price, of course.
                 return -1;
         }
-        
+
         return default;
     }
 

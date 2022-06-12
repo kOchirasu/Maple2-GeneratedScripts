@@ -123,7 +123,7 @@ public class _11000510 : NpcScript {
                 // - I'd love to help you, but for now I have to focus on this special order I've got. I'll take especially good care of you if you come back later, I promise.
                 return -1;
         }
-        
+
         return default;
     }
 

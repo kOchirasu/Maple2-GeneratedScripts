@@ -21,7 +21,7 @@ public class _11004469 : NpcScript {
                 // - That little cretin wants to go out and play...
                 return -1;
         }
-        
+
         return default;
     }
 

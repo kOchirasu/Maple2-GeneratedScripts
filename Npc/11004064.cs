@@ -45,7 +45,7 @@ public class _11004064 : NpcScript {
                 // - <i>There's a lost temple that was used as a tomb for the great chieftains in ages past. Could this actually be the site of that temple? And how does one get inside...?</i>
                 return -1;
         }
-        
+
         return default;
     }
 

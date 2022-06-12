@@ -59,7 +59,7 @@ public class _11000145 : NpcScript {
                 // - I'm sorry, but there's nothing more I can tell you about $npcName:22000322[gender:0]$ or the strange man wearing a $item:11300119$. Or, wait, have you asked yet?
                 return -1;
         }
-        
+
         return default;
     }
 

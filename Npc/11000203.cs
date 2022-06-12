@@ -29,7 +29,7 @@ public class _11000203 : NpcScript {
                 // - The loggers left, one after another, and this place became a wasteland. After the closing of the Shadow Gate, the last remaining loggers dug out the rotting tree roots and planted new saplings. Now this land is recovering, all thanks to them.
                 return -1;
         }
-        
+
         return default;
     }
 

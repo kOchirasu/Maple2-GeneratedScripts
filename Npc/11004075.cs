@@ -71,7 +71,7 @@ public class _11004075 : NpcScript {
                 // - That's a relief! The butterflies said I was a moth, but I want to become a beautiful butterfly!
                 return -1;
         }
-        
+
         return default;
     }
 

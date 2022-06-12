@@ -33,7 +33,7 @@ public class _11000323 : NpcScript {
                 // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot thief? 
                 return -1;
         }
-        
+
         return default;
     }
 

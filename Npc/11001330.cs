@@ -21,7 +21,7 @@ public class _11001330 : NpcScript {
                 // - She's been shopping all day. You'd think all that running around would be decent exercise...
                 return -1;
         }
-        
+
         return default;
     }
 

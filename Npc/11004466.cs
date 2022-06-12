@@ -21,7 +21,7 @@ public class _11004466 : NpcScript {
                 // - All's we—Huh?! You're an outlander!
                 return -1;
         }
-        
+
         return default;
     }
 

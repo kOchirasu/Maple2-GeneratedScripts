@@ -25,7 +25,7 @@ public class _11003202 : NpcScript {
                 // - $MyPCName$! Something terrible has happened!
                 return -1;
         }
-        
+
         return default;
     }
 

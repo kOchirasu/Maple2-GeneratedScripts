@@ -31,7 +31,7 @@ public class _11001003 : NpcScript {
                 // - You mean $npcName:11001002[gender:1]$? That's my twin sister. She's also a dang good event guide, if you don't mind my saying. Whenever you're curious about any events in Maple World, we're the folks to talk to!
                 return -1;
         }
-        
+
         return default;
     }
 

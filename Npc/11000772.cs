@@ -1139,7 +1139,7 @@ public class _11000772 : NpcScript {
                 // - Beep. I am not obligated to answer your questions.
                 return -1;
         }
-        
+
         return default;
     }
 

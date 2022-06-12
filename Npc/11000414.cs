@@ -25,7 +25,7 @@ public class _11000414 : NpcScript {
                 // - How would you like to create a haunted house?
                 return -1;
         }
-        
+
         return default;
     }
 

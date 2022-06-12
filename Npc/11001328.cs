@@ -21,7 +21,7 @@ public class _11001328 : NpcScript {
                 // - Just keep walking. I don't have time for wimps like you!
                 return -1;
         }
-        
+
         return default;
     }
 

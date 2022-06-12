@@ -25,7 +25,7 @@ public class _11003890 : NpcScript {
                 // - I would give my life for the $npc:11003891[gender:0]$. He is the only reason I still live.
                 return -1;
         }
-        
+
         return default;
     }
 

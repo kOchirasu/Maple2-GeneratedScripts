@@ -25,7 +25,7 @@ public class _11000053 : NpcScript {
                 // - The priciest thing to come out of all this is $itemPlural:20000013$, and you can only get them from Turtle Hill, where $npcName:22300149$ is.
                 return -1;
         }
-        
+
         return default;
     }
 

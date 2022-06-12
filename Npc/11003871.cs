@@ -21,7 +21,7 @@ public class _11003871 : NpcScript {
                 // - I hate, hate, <i>hate</i> managing people!
                 return -1;
         }
-        
+
         return default;
     }
 

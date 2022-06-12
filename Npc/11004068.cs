@@ -29,7 +29,7 @@ public class _11004068 : NpcScript {
                 // - <i>The people of Perion know that nothing is better after a long day of hunting than a dip on the springs. And best of all, it's free to use!</i>
                 return -1;
         }
-        
+
         return default;
     }
 

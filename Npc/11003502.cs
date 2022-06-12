@@ -25,7 +25,7 @@ public class _11003502 : NpcScript {
                 // - The Team Mushroom is a huge organization, you know!
                 return -1;
         }
-        
+
         return default;
     }
 

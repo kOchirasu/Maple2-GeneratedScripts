@@ -21,7 +21,7 @@ public class _11000534 : NpcScript {
                 // - I handle corpses for a living. There's not much that can rattle me anymore.
                 return -1;
         }
-        
+
         return default;
     }
 

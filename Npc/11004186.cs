@@ -21,7 +21,7 @@ public class _11004186 : NpcScript {
                 // - I came here to get t-t-tougher, so I can chase off the w-wolves plaguing our farm.
                 return -1;
         }
-        
+
         return default;
     }
 

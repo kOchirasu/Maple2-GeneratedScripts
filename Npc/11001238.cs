@@ -175,7 +175,7 @@ public class _11001238 : NpcScript {
                 // - Blind little child! Lovely is in the eye of the beholder.
                 return -1;
         }
-        
+
         return default;
     }
 

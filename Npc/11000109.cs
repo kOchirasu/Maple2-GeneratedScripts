@@ -21,7 +21,7 @@ public class _11000109 : NpcScript {
                 // - Aren't you scared to be here? It's too high up for my liking...
                 return -1;
         }
-        
+
         return default;
     }
 

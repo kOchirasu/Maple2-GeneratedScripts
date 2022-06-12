@@ -21,7 +21,7 @@ public class _11004144 : NpcScript {
                 // - Hey $male:mister,female:lady$, want to play hide-and-seek?
                 return -1;
         }
-        
+
         return default;
     }
 

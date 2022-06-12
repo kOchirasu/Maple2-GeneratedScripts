@@ -21,7 +21,7 @@ public class _11004173 : NpcScript {
                 // - Sorry, I've already got a squad. See? There's the guy selling churros, the girl strutting around over there, and that guy shooting finger-guns.  I couldn't ask for better teammates.
                 return -1;
         }
-        
+
         return default;
     }
 

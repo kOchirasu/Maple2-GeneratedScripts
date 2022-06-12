@@ -25,7 +25,7 @@ public class _11000867 : NpcScript {
                 // - My prices are lower than any supermarket's. Here, come try some samples.
                 return -1;
         }
-        
+
         return default;
     }
 

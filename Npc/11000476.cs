@@ -21,7 +21,7 @@ public class _11000476 : NpcScript {
                 // - $map:02000100$ would never have been developed without the help of $npcName:11000252[gender:0]$!
                 return -1;
         }
-        
+
         return default;
     }
 

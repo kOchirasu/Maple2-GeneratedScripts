@@ -37,7 +37,7 @@ public class _11000186 : NpcScript {
                 // - That's because red maple trees are born from the energy of the fire elementals that fell in that terrible battle. I don't know if that's true.
                 return -1;
         }
-        
+
         return default;
     }
 

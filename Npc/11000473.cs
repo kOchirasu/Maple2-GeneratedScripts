@@ -25,7 +25,7 @@ public class _11000473 : NpcScript {
                 // - You've been staring at me. Interested?
                 return -1;
         }
-        
+
         return default;
     }
 

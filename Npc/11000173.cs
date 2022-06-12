@@ -25,7 +25,7 @@ public class _11000173 : NpcScript {
                 // - Your youthful recklessness will be your undoing. Search $map:02000141$ if you can. I very much doubt you'll return alive. 
                 return -1;
         }
-        
+
         return default;
     }
 

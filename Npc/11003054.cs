@@ -25,7 +25,7 @@ public class _11003054 : NpcScript {
                 // - This place is cold... desolate.
                 return -1;
         }
-        
+
         return default;
     }
 

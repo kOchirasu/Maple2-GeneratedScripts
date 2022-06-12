@@ -75,7 +75,7 @@ public class _11004332 : NpcScript {
                 // - Oh, you don't have to worry about me.
                 return -1;
         }
-        
+
         return default;
     }
 

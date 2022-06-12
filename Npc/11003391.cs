@@ -21,7 +21,7 @@ public class _11003391 : NpcScript {
                 // - You should stay put, stranger.
                 return -1;
         }
-        
+
         return default;
     }
 

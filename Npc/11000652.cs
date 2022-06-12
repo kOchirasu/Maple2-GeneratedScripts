@@ -45,7 +45,7 @@ public class _11000652 : NpcScript {
                 // - ...Nine thousand nine hundred six... Drat! You made me lose count!
                 return -1;
         }
-        
+
         return default;
     }
 

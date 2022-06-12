@@ -21,7 +21,7 @@ public class _11001106 : NpcScript {
                 // - I'm not completely healed, but I'm in much better shape than I was when I first arrived. I should be able to go back to my family soon. 
                 return -1;
         }
-        
+
         return default;
     }
 

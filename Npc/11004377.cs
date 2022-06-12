@@ -21,7 +21,7 @@ public class _11004377 : NpcScript {
                 // - Happy holidays!
                 return -1;
         }
-        
+
         return default;
     }
 

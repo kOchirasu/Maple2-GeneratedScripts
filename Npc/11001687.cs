@@ -31,7 +31,7 @@ public class _11001687 : NpcScript {
                 // - Wh-who's worried? Stop talking nonsense, or I'll beat the stuffing outta you!
                 return -1;
         }
-        
+
         return default;
     }
 

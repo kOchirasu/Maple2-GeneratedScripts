@@ -22,7 +22,7 @@ public class _11000511 : NpcScript {
                 // - Do you have old enchanted equipment you don't need anymore? I'll turn it into a scroll so you can transfer the enchantment to your new gear!
                 return -1;
         }
-        
+
         return default;
     }
 

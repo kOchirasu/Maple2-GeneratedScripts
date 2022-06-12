@@ -21,7 +21,7 @@ public class _11004191 : NpcScript {
                 // - I am sorry for misleading you. But surely you must see that I had no choice.
                 return -1;
         }
-        
+
         return default;
     }
 

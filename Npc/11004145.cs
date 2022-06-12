@@ -21,7 +21,7 @@ public class _11004145 : NpcScript {
                 // - An all-expenses paid trip to Mushtopia? Count me in!  I feel like dancing!
                 return -1;
         }
-        
+
         return default;
     }
 

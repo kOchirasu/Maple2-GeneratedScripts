@@ -29,7 +29,7 @@ public class _11000806 : NpcScript {
                 // - When ingested, this chemical heightens one's mood, relaxes their mind, and also gives an energy boost. The empire prohibited its use simply because it's produced in the Land of Darkness. All that did was drive the trade underground!
                 return -1;
         }
-        
+
         return default;
     }
 

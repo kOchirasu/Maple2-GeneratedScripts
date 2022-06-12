@@ -21,7 +21,7 @@ public class _11001069 : NpcScript {
                 // - I like groupies, so long as they don't steal my things.
                 return -1;
         }
-        
+
         return default;
     }
 

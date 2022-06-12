@@ -21,7 +21,7 @@ public class _11000614 : NpcScript {
                 // - I can't return to Maple World until I save these people. I'll never be able to forgive myself if I leave them behind.
                 return -1;
         }
-        
+
         return default;
     }
 

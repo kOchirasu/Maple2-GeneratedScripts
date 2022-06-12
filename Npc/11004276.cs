@@ -29,7 +29,7 @@ public class _11004276 : NpcScript {
                 // - <font color="#909090">(Then again, these statues look pretty old. Wouldn't the snake habitats have moved over time? Better be careful, just in case.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

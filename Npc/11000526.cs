@@ -21,7 +21,7 @@ public class _11000526 : NpcScript {
                 // - I need to find a better place to hide. The Dark Wind would have no trouble finding me here.
                 return -1;
         }
-        
+
         return default;
     }
 

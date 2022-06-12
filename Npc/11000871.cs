@@ -21,7 +21,7 @@ public class _11000871 : NpcScript {
                 // - $MyPCName$, would you like to know what's going on here? You look a little... bewildered.
                 return -1;
         }
-        
+
         return default;
     }
 

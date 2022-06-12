@@ -21,7 +21,7 @@ public class _11000461 : NpcScript {
                 // - Others say Chief Hairdresser $npcName:11000255[gender:1]$ is the best, but I like $npcName:11000253[gender:0]$'s style.
                 return -1;
         }
-        
+
         return default;
     }
 

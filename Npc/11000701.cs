@@ -22,7 +22,7 @@ public class _11000701 : NpcScript {
                 //   $MyPCName$, please follow $npc:11000057[gender:1]$. 
                 return -1;
         }
-        
+
         return default;
     }
 

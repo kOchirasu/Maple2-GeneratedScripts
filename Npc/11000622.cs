@@ -21,7 +21,7 @@ public class _11000622 : NpcScript {
                 // - Mushrooms want wooden ladders. Just wooden ones!
                 return -1;
         }
-        
+
         return default;
     }
 

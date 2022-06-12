@@ -21,7 +21,7 @@ public class _11004411 : NpcScript {
                 // - A brand new world, chock full of new data to analyze!
                 return -1;
         }
-        
+
         return default;
     }
 

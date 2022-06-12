@@ -39,7 +39,7 @@ public class _11000474 : NpcScript {
                 // - This might sound crazy, but if you come across a hat in a field, don't hesitate to throw yourself inside of it! You heard me!
                 return -1;
         }
-        
+
         return default;
     }
 

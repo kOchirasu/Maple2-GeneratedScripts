@@ -35,7 +35,7 @@ public class _11001631 : NpcScript {
                 // - You better be careful. We're watching you.
                 return -1;
         }
-        
+
         return default;
     }
 

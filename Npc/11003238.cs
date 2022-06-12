@@ -21,7 +21,7 @@ public class _11003238 : NpcScript {
                 // - One strange occurrence after another...
                 return -1;
         }
-        
+
         return default;
     }
 

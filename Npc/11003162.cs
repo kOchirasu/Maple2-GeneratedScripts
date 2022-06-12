@@ -21,7 +21,7 @@ public class _11003162 : NpcScript {
                 // - Everyone likes flowers because they're pretty. I don't care about that, because I use them to make supplements, scented candles, and potions.
                 return -1;
         }
-        
+
         return default;
     }
 

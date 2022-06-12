@@ -21,7 +21,7 @@ public class _11000741 : NpcScript {
                 // - Sigh... Do you even know the pain of creation? Bah, there's no soul in this music. If there was, I'd be able to feel it!
                 return -1;
         }
-        
+
         return default;
     }
 

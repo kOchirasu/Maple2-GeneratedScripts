@@ -21,7 +21,7 @@ public class _11000309 : NpcScript {
                 // - I dream of developing tall buildings or landmark packages.
                 return -1;
         }
-        
+
         return default;
     }
 

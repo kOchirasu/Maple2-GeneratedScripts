@@ -21,7 +21,7 @@ public class _11001554 : NpcScript {
                 // - I should've worn a wide-brimmed hat today. This sun is killing me.
                 return -1;
         }
-        
+
         return default;
     }
 

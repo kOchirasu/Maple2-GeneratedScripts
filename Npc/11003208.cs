@@ -21,7 +21,7 @@ public class _11003208 : NpcScript {
                 // - I thought my bro was a goner... until you came along, that is.
                 return -1;
         }
-        
+
         return default;
     }
 

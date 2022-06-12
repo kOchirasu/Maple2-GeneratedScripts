@@ -25,7 +25,7 @@ public class _11000472 : NpcScript {
                 // - This place behind me is loaded with spiders. If you're in a hurry, you can squash them yourself.
                 return -1;
         }
-        
+
         return default;
     }
 

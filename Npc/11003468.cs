@@ -21,7 +21,7 @@ public class _11003468 : NpcScript {
                 // - <font color="#909090">(You can feel a breeze from beyond the wall. Is there a secret passage?)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

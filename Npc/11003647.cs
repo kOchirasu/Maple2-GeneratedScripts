@@ -51,7 +51,7 @@ public class _11003647 : NpcScript {
                 // - Please remind her that us agents get lonely sometimes, would you?
                 return -1;
         }
-        
+
         return default;
     }
 

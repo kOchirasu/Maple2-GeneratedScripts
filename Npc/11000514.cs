@@ -98,7 +98,7 @@ public class _11000514 : NpcScript {
                 // - Only two kinds of people come to $map:2000124$: tourists and convicts. Since he's not rotting in one of our cells, I suppose he must have been a tourist.
                 return -1;
         }
-        
+
         return default;
     }
 

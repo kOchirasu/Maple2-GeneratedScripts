@@ -1207,7 +1207,7 @@ public class _11000767 : NpcScript {
                 // - I'm $MaidName$. Haven't you seen a male servant before?
                 return -1;
         }
-        
+
         return default;
     }
 

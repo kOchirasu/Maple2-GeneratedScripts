@@ -25,7 +25,7 @@ public class _11003878 : NpcScript {
                 // - Welcome to $map:02000425$, the beautiful island of alchemy.
                 return -1;
         }
-        
+
         return default;
     }
 

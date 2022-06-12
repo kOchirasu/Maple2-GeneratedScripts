@@ -21,7 +21,7 @@ public class _11003089 : NpcScript {
                 // - Going from cold to hot so quick is not good for your health. Messes up your skin! And our skin is important for mages... helps us sense mana better.
                 return -1;
         }
-        
+
         return default;
     }
 

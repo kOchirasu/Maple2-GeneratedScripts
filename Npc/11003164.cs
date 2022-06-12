@@ -63,7 +63,7 @@ public class _11003164 : NpcScript {
                 // - Yeah, a real, live hero! One day I'll be just like you. Just you wait!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -30,7 +30,7 @@ public class _11003255 : NpcScript {
                 //   <font size='20'>I wish he wore glasses. He's so intelligent and sensitive... It would be perfect...</font>
                 return -1;
         }
-        
+
         return default;
     }
 

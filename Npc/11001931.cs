@@ -21,7 +21,7 @@ public class _11001931 : NpcScript {
                 // - I can't afford these materials. I'll just have to get some on my own... 
                 return -1;
         }
-        
+
         return default;
     }
 

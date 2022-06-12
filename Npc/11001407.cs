@@ -31,7 +31,7 @@ public class _11001407 : NpcScript {
                 // - <font color="#909090">($npcName:11001407[gender:0]$ stares at you without saying a word.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

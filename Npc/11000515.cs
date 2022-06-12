@@ -125,7 +125,7 @@ public class _11000515 : NpcScript {
                 // - The people of $map:2000100$ are thankful for what we've done for the community. So I suggest you keep your opinions about Blackstar to yourself while you're here.
                 return -1;
         }
-        
+
         return default;
     }
 

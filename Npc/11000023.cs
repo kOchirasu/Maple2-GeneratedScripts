@@ -35,7 +35,7 @@ public class _11000023 : NpcScript {
                 // - I wouldn't try it if I were you, though. A few folks have faced the forest... but none have returned from $map:02000116$.
                 return -1;
         }
-        
+
         return default;
     }
 

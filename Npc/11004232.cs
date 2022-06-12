@@ -25,7 +25,7 @@ public class _11004232 : NpcScript {
                 // - I know you are powerful, but you still need to look after yourself.
                 return -1;
         }
-        
+
         return default;
     }
 

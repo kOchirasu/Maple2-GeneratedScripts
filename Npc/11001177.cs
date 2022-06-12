@@ -31,7 +31,7 @@ public class _11001177 : NpcScript {
                 // - Well, I've learned a lot of things. Like how being a guard means learning how to think on your feet. I'm not so great at that now, but I try hard.
                 return -1;
         }
-        
+
         return default;
     }
 

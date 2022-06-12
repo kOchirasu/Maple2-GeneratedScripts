@@ -43,7 +43,7 @@ public class _11000187 : NpcScript {
                 // - My son and his wife could be still alive somewhere on the other side of the Shadow Gate. If it is closed, I'll never see them again.
                 return -1;
         }
-        
+
         return default;
     }
 

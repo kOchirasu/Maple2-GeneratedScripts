@@ -41,7 +41,7 @@ public class _11004370 : NpcScript {
                 // - It grows on Mount Halla, and it's simply divine. A shame they're becoming harder to find these days. Climate change, you know.
                 return -1;
         }
-        
+
         return default;
     }
 

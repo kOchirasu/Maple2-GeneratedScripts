@@ -117,7 +117,7 @@ public class _11000025 : NpcScript {
                 // - Uhh. Good? Now are you sure you don't want any fish?
                 return -1;
         }
-        
+
         return default;
     }
 

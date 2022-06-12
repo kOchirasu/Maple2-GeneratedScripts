@@ -21,7 +21,7 @@ public class _11004403 : NpcScript {
                 // - I pray this is a good omen.
                 return -1;
         }
-        
+
         return default;
     }
 

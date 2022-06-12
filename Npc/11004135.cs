@@ -21,7 +21,7 @@ public class _11004135 : NpcScript {
                 // - All this power... I want to test it on something...
                 return -1;
         }
-        
+
         return default;
     }
 

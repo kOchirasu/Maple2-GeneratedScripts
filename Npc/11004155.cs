@@ -21,7 +21,7 @@ public class _11004155 : NpcScript {
                 // - Ugh! I'm all stiff from standing around all day. I can't wait to get off work.
                 return -1;
         }
-        
+
         return default;
     }
 

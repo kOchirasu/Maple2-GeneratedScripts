@@ -21,7 +21,7 @@ public class _11000172 : NpcScript {
                 // - This is my first job. That might not seem like a big deal, but I'm proud to be a $map:02000064$ guard. I take my responsibility to the people of $map:02000064$ very seriously.
                 return -1;
         }
-        
+
         return default;
     }
 

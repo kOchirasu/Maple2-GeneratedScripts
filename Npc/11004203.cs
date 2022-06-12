@@ -21,7 +21,7 @@ public class _11004203 : NpcScript {
                 // - It's a bit hot out here, but spectating is such fun!
                 return -1;
         }
-        
+
         return default;
     }
 

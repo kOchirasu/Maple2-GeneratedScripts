@@ -73,7 +73,7 @@ public class _11004250 : NpcScript {
                 // - Only when the darkness disappears from this world will I be able to rest in peace...
                 return -1;
         }
-        
+
         return default;
     }
 

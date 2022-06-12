@@ -21,7 +21,7 @@ public class _11001500 : NpcScript {
                 // - Could you stop bothering me? I'm eating!
                 return -1;
         }
-        
+
         return default;
     }
 

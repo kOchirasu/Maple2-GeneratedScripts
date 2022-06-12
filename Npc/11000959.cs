@@ -21,7 +21,7 @@ public class _11000959 : NpcScript {
                 // - It's hard enough to keep black market dealers from slipping in from $map:02000100$. Now we have to deal with these stupid monsters!
                 return -1;
         }
-        
+
         return default;
     }
 

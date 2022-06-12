@@ -35,7 +35,7 @@ public class _11000189 : NpcScript {
                 // - $MyPCName$, if you haven't bought a house, you should consider one in $map:02000076$.
                 return -1;
         }
-        
+
         return default;
     }
 

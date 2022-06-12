@@ -21,7 +21,7 @@ public class _11004047 : NpcScript {
                 // - I'll do my best to help the queen.
                 return -1;
         }
-        
+
         return default;
     }
 

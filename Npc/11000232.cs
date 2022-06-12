@@ -25,7 +25,7 @@ public class _11000232 : NpcScript {
                 // - And the people of $map:02000100$ are walking on eggshells around them.
                 return -1;
         }
-        
+
         return default;
     }
 

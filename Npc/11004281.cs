@@ -29,7 +29,7 @@ public class _11004281 : NpcScript {
                 // - <font color="#909090">(As you gaze upon the sarcophagus, you're overcome by a sudden feeling of melancholy.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

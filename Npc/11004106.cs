@@ -21,7 +21,7 @@ public class _11004106 : NpcScript {
                 // - $MyPCName$, my kin, you've come.
                 return -1;
         }
-        
+
         return default;
     }
 

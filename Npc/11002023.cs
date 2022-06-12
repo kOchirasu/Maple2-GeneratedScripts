@@ -21,7 +21,7 @@ public class _11002023 : NpcScript {
                 // - You don't live here, do you? This shop is locals only. Please shop elsewhere.
                 return -1;
         }
-        
+
         return default;
     }
 

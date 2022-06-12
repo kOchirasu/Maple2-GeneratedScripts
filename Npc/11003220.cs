@@ -21,7 +21,7 @@ public class _11003220 : NpcScript {
                 // - I never thought I'd miss my drill sergeant...
                 return -1;
         }
-        
+
         return default;
     }
 

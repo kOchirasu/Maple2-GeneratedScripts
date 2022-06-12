@@ -25,7 +25,7 @@ public class _11000188 : NpcScript {
                 // - I wonder what happened to my parents... Cough... I hope they're still out there...
                 return -1;
         }
-        
+
         return default;
     }
 

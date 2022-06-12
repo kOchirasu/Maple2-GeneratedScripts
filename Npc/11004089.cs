@@ -65,7 +65,7 @@ public class _11004089 : NpcScript {
                 // - You, too! I bet you could use the break even more than I could. Everybody needs some rest now and then.
                 return -1;
         }
-        
+
         return default;
     }
 

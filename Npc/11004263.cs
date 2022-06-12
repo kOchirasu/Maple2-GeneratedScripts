@@ -37,7 +37,7 @@ public class _11004263 : NpcScript {
                 // - <font color="#909090">(Could some terrible creature of the seas have caused all this mayhem and destruction?)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

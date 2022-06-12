@@ -21,7 +21,7 @@ public class _11000230 : NpcScript {
                 // - Isn't there some kind of cure-all for my brother?
                 return -1;
         }
-        
+
         return default;
     }
 

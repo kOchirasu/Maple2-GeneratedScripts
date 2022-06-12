@@ -59,7 +59,7 @@ public class _11004258 : NpcScript {
                 // - That's my theory, at least. Anyway, if you find anything, let me know. I kind of want to go home now.
                 return -1;
         }
-        
+
         return default;
     }
 

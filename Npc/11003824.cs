@@ -35,7 +35,7 @@ public class _11003824 : NpcScript {
                 // - <font color="#909090">(This might be a clue. You take a picture of the markings to show them to $npcName:11003536[gender:0]$.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

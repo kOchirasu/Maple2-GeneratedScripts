@@ -43,7 +43,7 @@ public class _11000169 : NpcScript {
                 // - It's not easy to stand in one spot all day guarding the arsenal, but someone has to do it. I'm proud of my job, too.
                 return -1;
         }
-        
+
         return default;
     }
 

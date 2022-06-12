@@ -25,7 +25,7 @@ public class _11004512 : NpcScript {
                 // - This is the hub of all of our mobile forces, by land and air. But ever since the enemy pushed to our doorstep, we haven't been able to secure a supply line for the life of us.
                 return -1;
         }
-        
+
         return default;
     }
 

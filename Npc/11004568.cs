@@ -57,7 +57,7 @@ public class _11004568 : NpcScript {
                 // - Anyway, I'll see you in the fight!
                 return -1;
         }
-        
+
         return default;
     }
 

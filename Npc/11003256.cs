@@ -21,7 +21,7 @@ public class _11003256 : NpcScript {
                 // - <font color="#909090">($npcName:11003254[gender:1]$ has left this scrawled note in a hurry.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000294 : NpcScript {
                 // - Croak, croak, croak. Croaaaaakkk...
                 return -1;
         }
-        
+
         return default;
     }
 

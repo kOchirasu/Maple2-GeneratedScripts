@@ -51,7 +51,7 @@ public class _11004328 : NpcScript {
                 // - What could it be? There are so many secrets here.
                 return -1;
         }
-        
+
         return default;
     }
 

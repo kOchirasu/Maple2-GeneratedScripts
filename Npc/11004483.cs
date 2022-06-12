@@ -45,7 +45,7 @@ public class _11004483 : NpcScript {
                 // - I'm not scared! I'm c-cautious, okay? This is an important j-j-j-job. I'm <i>definitely</i> not stalling!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -40,7 +40,7 @@ public class _11001148 : NpcScript {
                 // - No kidding. Why do you think I haven't gone inside? I wish someone would take care of them for me...
                 return -1;
         }
-        
+
         return default;
     }
 

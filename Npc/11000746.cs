@@ -21,7 +21,7 @@ public class _11000746 : NpcScript {
                 // - Not all witches are greedy and evil. I've been studying useful spells to help $map:02000023$.
                 return -1;
         }
-        
+
         return default;
     }
 

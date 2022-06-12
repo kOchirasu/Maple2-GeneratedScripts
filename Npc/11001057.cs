@@ -25,7 +25,7 @@ public class _11001057 : NpcScript {
                 // - $npcName:11001028[gender:0]$ looks young because he's bald, but he's the same age I am. Maybe I should shave my head, too. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -958,7 +958,7 @@ public class _11000771 : NpcScript {
                 // - I'm thinking about launching a bed and breakfast business. Of course, I'll have to talk to get permission first. Teehee!
                 return -1;
         }
-        
+
         return default;
     }
 

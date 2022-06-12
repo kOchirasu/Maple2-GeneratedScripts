@@ -57,7 +57,7 @@ public class _11000285 : NpcScript {
                 // - I see. Let me give you some advice. Never take the ones you love for granted. 
                 return -1;
         }
-        
+
         return default;
     }
 

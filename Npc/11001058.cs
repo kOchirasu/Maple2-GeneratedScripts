@@ -21,7 +21,7 @@ public class _11001058 : NpcScript {
                 // - Everything in this world has light within it. I can see your light. It's warm.
                 return -1;
         }
-        
+
         return default;
     }
 

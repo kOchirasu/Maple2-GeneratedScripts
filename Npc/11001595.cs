@@ -21,7 +21,7 @@ public class _11001595 : NpcScript {
                 // - $npcName:11001229[gender:0]$'s body may be asleep, but I don't think his mind is. He'll return to us soon. 
                 return -1;
         }
-        
+
         return default;
     }
 

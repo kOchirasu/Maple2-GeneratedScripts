@@ -44,7 +44,7 @@ public class _11003503 : NpcScript {
                 // - Not right now. But... maybe later.
                 return -1;
         }
-        
+
         return default;
     }
 

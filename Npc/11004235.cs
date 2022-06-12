@@ -25,7 +25,7 @@ public class _11004235 : NpcScript {
                 // - It's an honor to be working by your side once more, friend.
                 return -1;
         }
-        
+
         return default;
     }
 

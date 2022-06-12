@@ -35,7 +35,7 @@ public class _11000668 : NpcScript {
                 // - It's just as well, I don't feel like dealing with you myself. Go on, go to the basement. And don't say I didn't warn you. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000039 : NpcScript {
                 // - Sometimes you get what you want. Sometimes you must settle.
                 return -1;
         }
-        
+
         return default;
     }
 

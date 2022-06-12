@@ -90,7 +90,7 @@ public class _11000994 : NpcScript {
                 // - Thank you... I'd like a—Hnrgh! Hnrgh!—glass of $item:20000087$, please. $npcName:11000445[gender:1]$ mixes wonderful drinks over there on the beach. Hnrghh! Huuurrgh! 
                 return -1;
         }
-        
+
         return default;
     }
 

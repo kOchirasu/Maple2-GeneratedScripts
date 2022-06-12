@@ -21,7 +21,7 @@ public class _11000552 : NpcScript {
                 // - If you've got business here, talk to a broker. Keep your hands to yourself. I'll be watching.
                 return -1;
         }
-        
+
         return default;
     }
 

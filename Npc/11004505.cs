@@ -35,7 +35,7 @@ public class _11004505 : NpcScript {
                 // - Sorry if I seem on edge. Not all of the outlanders have been as... helpful as you.
                 return -1;
         }
-        
+
         return default;
     }
 

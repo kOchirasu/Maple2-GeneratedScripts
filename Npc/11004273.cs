@@ -39,7 +39,7 @@ public class _11004273 : NpcScript {
                 // - The moonlight in our city is different from the moonlight out here, but no matter what, the moonlight is always beautiful!
                 return -1;
         }
-        
+
         return default;
     }
 

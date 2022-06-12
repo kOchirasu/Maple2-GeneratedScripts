@@ -21,7 +21,7 @@ public class _11004158 : NpcScript {
                 // - Many things shine, not all of them valuable.
                 return -1;
         }
-        
+
         return default;
     }
 

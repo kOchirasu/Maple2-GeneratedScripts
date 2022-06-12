@@ -93,7 +93,7 @@ public class _11000373 : NpcScript {
                 // - Sure, if it means you believe me! Take it. I don't know what I'd do if my own friend didn't believe me.
                 return -1;
         }
-        
+
         return default;
     }
 

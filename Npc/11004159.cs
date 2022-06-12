@@ -21,7 +21,7 @@ public class _11004159 : NpcScript {
                 // - Please don't overexert yourself.
                 return -1;
         }
-        
+
         return default;
     }
 

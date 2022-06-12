@@ -45,7 +45,7 @@ public class _11004301 : NpcScript {
                 // - The other ghosts say she's mean, but I think she's better than the empress herself! A woman like that makes a guy wish he'd died young, so he'd have a handsomer ghost.
                 return -1;
         }
-        
+
         return default;
     }
 

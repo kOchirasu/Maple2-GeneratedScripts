@@ -39,7 +39,7 @@ public class _11001191 : NpcScript {
                 // - I soldier on and cover what they tell me, acting like there's nothing wrong. But every day I die a little inside. Someone's got to stand up to them, I know that! But if I do, they'll just replace me with another yes-man...
                 return -1;
         }
-        
+
         return default;
     }
 

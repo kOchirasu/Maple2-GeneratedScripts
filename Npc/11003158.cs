@@ -21,7 +21,7 @@ public class _11003158 : NpcScript {
                 // - This is my favorite place. It's beautiful and smells even better. And, you might not know this, but I can also eat delicious food here!
                 return -1;
         }
-        
+
         return default;
     }
 

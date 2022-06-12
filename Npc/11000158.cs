@@ -81,7 +81,7 @@ public class _11000158 : NpcScript {
                 // - It was my pleasure! Please tell $npcName:11003534[gender:0]$ I said hello.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -77,7 +77,7 @@ public class _11004088 : NpcScript {
                 // - Thank you, traveler. I like to think that he's out there, somewhere, still listening to me. Come see me again whenever you want to hear me sing.
                 return -1;
         }
-        
+
         return default;
     }
 

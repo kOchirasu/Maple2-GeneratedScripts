@@ -31,7 +31,7 @@ public class _11001672 : NpcScript {
                 // - I thought we could handle this on our own, but there are too many of them. We have no choice but to report the situation to the master. He will know what to do.
                 return -1;
         }
-        
+
         return default;
     }
 

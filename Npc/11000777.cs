@@ -1179,7 +1179,7 @@ public class _11000777 : NpcScript {
                 // - ...Huh? 
                 return -1;
         }
-        
+
         return default;
     }
 

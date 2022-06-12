@@ -21,7 +21,7 @@ public class _11003127 : NpcScript {
                 // - I don't know how big the Lumiknights' organization is, but our numbers in Tria are just a fraction of the whole.
                 return -1;
         }
-        
+
         return default;
     }
 

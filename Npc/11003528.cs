@@ -21,7 +21,7 @@ public class _11003528 : NpcScript {
                 // - (It's locked.)
                 return -1;
         }
-        
+
         return default;
     }
 

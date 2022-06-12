@@ -21,7 +21,7 @@ public class _11004051 : NpcScript {
                 // - The Green Hoods will do their part to purge the forces of darkness from Maple World.
                 return -1;
         }
-        
+
         return default;
     }
 

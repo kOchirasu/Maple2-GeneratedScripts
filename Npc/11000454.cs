@@ -39,7 +39,7 @@ public class _11000454 : NpcScript {
                 // - Aye, they're an elusive catch. I've always wanted to see a blue whale myself.
                 return -1;
         }
-        
+
         return default;
     }
 

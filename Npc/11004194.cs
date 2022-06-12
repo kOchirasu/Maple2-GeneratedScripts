@@ -21,7 +21,7 @@ public class _11004194 : NpcScript {
                 // - The Green Lapenta... The flow of life... All these memories...
                 return -1;
         }
-        
+
         return default;
     }
 

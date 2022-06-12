@@ -41,7 +41,7 @@ public class _11003513 : NpcScript {
                 // - They're solid. And tough. Magic doesn't work on them, either. You've got to fight them up close!
                 return -1;
         }
-        
+
         return default;
     }
 

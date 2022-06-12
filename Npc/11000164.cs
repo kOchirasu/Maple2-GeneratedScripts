@@ -29,7 +29,7 @@ public class _11000164 : NpcScript {
                 // - Actually, if the supplies for the court weren't stolen to begin with, the palace wouldn't have needed the replacements in such a hurry. This is a mess.
                 return -1;
         }
-        
+
         return default;
     }
 

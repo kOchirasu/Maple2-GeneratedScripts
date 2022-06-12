@@ -85,7 +85,7 @@ public class _11004071 : NpcScript {
                 // - Where, oh where will I find someone to break my curse? Woe is me!
                 return -1;
         }
-        
+
         return default;
     }
 

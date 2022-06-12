@@ -21,7 +21,7 @@ public class _11004291 : NpcScript {
                 // - Shall I take your bags?
                 return -1;
         }
-        
+
         return default;
     }
 

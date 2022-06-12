@@ -21,7 +21,7 @@ public class _11001142 : NpcScript {
                 // - First the monsters start taking over the forest, and now my friends are all leaving in droves... Hmph. What do I care? I like being alone, anyway!
                 return -1;
         }
-        
+
         return default;
     }
 

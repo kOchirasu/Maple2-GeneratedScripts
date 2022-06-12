@@ -21,7 +21,7 @@ public class _11001047 : NpcScript {
                 // - Everyone at  Goldus Industries is a real smooth talker. They say they care about us workers, but if they did we wouldn't be having any problems, would we?
                 return -1;
         }
-        
+
         return default;
     }
 

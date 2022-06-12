@@ -21,7 +21,7 @@ public class _11000078 : NpcScript {
                 // - The wolves of the Vayar Mountains protect the tribes that worship the wolf god. We gray wolves are the guardians of the Murpagoths. The red wolves are the guardians of the Yamarchas.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11001362 : NpcScript {
                 // - <i>Maybe</i> I'll treat you to a meal.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -39,7 +39,7 @@ public class _11004134 : NpcScript {
                 // - There's nothing more to talk about.
                 return -1;
         }
-        
+
         return default;
     }
 

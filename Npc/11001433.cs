@@ -45,7 +45,7 @@ public class _11001433 : NpcScript {
                 // - The others say I was just dreaming, but I know it was real. One day, I'll meet them.
                 return -1;
         }
-        
+
         return default;
     }
 

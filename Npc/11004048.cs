@@ -21,7 +21,7 @@ public class _11004048 : NpcScript {
                 // - It's a long walk to the Frontier Foundation. Why not take a carriage?
                 return -1;
         }
-        
+
         return default;
     }
 

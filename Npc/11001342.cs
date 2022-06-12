@@ -21,7 +21,7 @@ public class _11001342 : NpcScript {
                 // - You can't swat a bug in the water, but you can still spray it.
                 return -1;
         }
-        
+
         return default;
     }
 

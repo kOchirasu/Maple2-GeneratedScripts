@@ -61,7 +61,7 @@ public class _11001517 : NpcScript {
                 // - Spinning the roulette costs $itemPlural:30000522$. But don't fret! You can get 1 $item:30000522$ in your mailbox on weekdays and 5 of them on Saturdays and Sundays!
                 return -1;
         }
-        
+
         return default;
     }
 

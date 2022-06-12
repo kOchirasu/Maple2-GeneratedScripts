@@ -22,7 +22,7 @@ public class _11001538 : NpcScript {
                 //   <font color="#909090">She sighs.</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003263 : NpcScript {
                 // - The path to Ellinel is still blocked, but we'll find a way back.
                 return -1;
         }
-        
+
         return default;
     }
 

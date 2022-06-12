@@ -21,7 +21,7 @@ public class _11004404 : NpcScript {
                 // - Worry not. The Green Hoods watch over this place.
                 return -1;
         }
-        
+
         return default;
     }
 

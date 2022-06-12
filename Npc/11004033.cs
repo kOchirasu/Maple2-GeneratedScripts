@@ -21,7 +21,7 @@ public class _11004033 : NpcScript {
                 // - It's dangerous outside the blanket, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

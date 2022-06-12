@@ -71,7 +71,7 @@ public class _11004459 : NpcScript {
                 // - Of course it is. Why, it's astonishing, even!
                 return -1;
         }
-        
+
         return default;
     }
 

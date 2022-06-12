@@ -21,7 +21,7 @@ public class _11000411 : NpcScript {
                 // - You ask me, tagging is just as much art as sick beats and hot moves. Some people say I'm just some punk, but they don't know what they're talking about.
                 return -1;
         }
-        
+
         return default;
     }
 

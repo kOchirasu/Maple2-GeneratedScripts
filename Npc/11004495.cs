@@ -45,7 +45,7 @@ public class _11004495 : NpcScript {
                 // - And that's why we've got to learn everything we can about aetherine.
                 return -1;
         }
-        
+
         return default;
     }
 

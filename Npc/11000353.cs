@@ -25,7 +25,7 @@ public class _11000353 : NpcScript {
                 // - We're pumping oil every day. It's still kind of surprising how much we need to get by.
                 return -1;
         }
-        
+
         return default;
     }
 

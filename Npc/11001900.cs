@@ -21,7 +21,7 @@ public class _11001900 : NpcScript {
                 // - We've got to hold out long enough for Eve to get reinforcements.
                 return -1;
         }
-        
+
         return default;
     }
 

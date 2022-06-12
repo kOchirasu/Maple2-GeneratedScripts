@@ -21,7 +21,7 @@ public class _11000394 : NpcScript {
                 // - They say that old miser, $npcName:11000252[gender:0]$, is the worst... but they haven't met $npcName:11000491[gender:1]$!
                 return -1;
         }
-        
+
         return default;
     }
 

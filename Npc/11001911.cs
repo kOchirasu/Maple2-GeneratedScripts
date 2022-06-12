@@ -109,7 +109,7 @@ public class _11001911 : NpcScript {
                 // - If you have any more questions, you know where to find me.
                 return -1;
         }
-        
+
         return default;
     }
 

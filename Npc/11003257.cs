@@ -90,7 +90,7 @@ public class _11003257 : NpcScript {
                 // - You look worried. Go ahead, put your feet up and tell me your troubles.
                 return -1;
         }
-        
+
         return default;
     }
 

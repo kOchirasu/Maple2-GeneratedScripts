@@ -37,7 +37,7 @@ public class _11004077 : NpcScript {
                 // - <font color="#f45342">You <b>what?!</b> Chen's gonna smash my head in when he sees we messed up Haren's birthday bash!</font>
                 return -1;
         }
-        
+
         return default;
     }
 

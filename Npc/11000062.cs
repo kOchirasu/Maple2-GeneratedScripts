@@ -53,7 +53,7 @@ public class _11000062 : NpcScript {
                 // - Go to the dock and talk to the oarsman. Come to think of it, I haven't seen him lately. I wonder where he is...
                 return -1;
         }
-        
+
         return default;
     }
 

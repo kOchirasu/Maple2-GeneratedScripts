@@ -21,7 +21,7 @@ public class _11001236 : NpcScript {
                 // - I have to stop him.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003267 : NpcScript {
                 // - I am captain of the Royal Guard. Each and every one of my men would lay down his life in service to Empress $npcName:11000075[gender:1]$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11000220 : NpcScript {
                 // - When it's complete, people will flock from all over to see Fellowstone Tower. It'll be the crown jewel of Victoria Island!
                 return -1;
         }
-        
+
         return default;
     }
 

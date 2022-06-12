@@ -21,7 +21,7 @@ public class _11003260 : NpcScript {
                 // - Everyone's safe, thanks to you. I hope you won't mind if we call on your help again in the future.
                 return -1;
         }
-        
+
         return default;
     }
 

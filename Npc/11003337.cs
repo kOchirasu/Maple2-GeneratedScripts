@@ -21,7 +21,7 @@ public class _11003337 : NpcScript {
                 // - Dark Wind doesn't give up so easily!
                 return -1;
         }
-        
+
         return default;
     }
 

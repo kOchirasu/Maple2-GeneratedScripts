@@ -29,7 +29,7 @@ public class _11001297 : NpcScript {
                 // - Otherwise, it all becomes a vicious cycle. People like us need to act or nothing will ever change.
                 return -1;
         }
-        
+
         return default;
     }
 

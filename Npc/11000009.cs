@@ -35,7 +35,7 @@ public class _11000009 : NpcScript {
                 // - Oh, don't worry. You'll know him when you see him.
                 return -1;
         }
-        
+
         return default;
     }
 

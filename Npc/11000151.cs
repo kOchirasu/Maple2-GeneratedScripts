@@ -25,7 +25,7 @@ public class _11000151 : NpcScript {
                 // - Go ask yourself.
                 return -1;
         }
-        
+
         return default;
     }
 

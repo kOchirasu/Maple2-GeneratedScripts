@@ -21,7 +21,7 @@ public class _11004438 : NpcScript {
                 // - So many fantastic riddles await us in Kritias... It's exhilarating.
                 return -1;
         }
-        
+
         return default;
     }
 

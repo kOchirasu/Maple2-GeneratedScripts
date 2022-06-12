@@ -35,7 +35,7 @@ public class _11001556 : NpcScript {
                 // - However, the presence of this terrible darkness must be dealt with first. We can discuss your training later.
                 return -1;
         }
-        
+
         return default;
     }
 

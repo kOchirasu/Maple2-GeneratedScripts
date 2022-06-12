@@ -21,7 +21,7 @@ public class _11000705 : NpcScript {
                 // - What? Do you have business with me?
                 return -1;
         }
-        
+
         return default;
     }
 

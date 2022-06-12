@@ -21,7 +21,7 @@ public class _11000615 : NpcScript {
                 // - The empire turned its back on these people when they needed it the most. Someone had to step in and protect them. And the empire will get what it deserves.
                 return -1;
         }
-        
+
         return default;
     }
 

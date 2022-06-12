@@ -49,7 +49,7 @@ public class _11003180 : NpcScript {
                 // - Just doing my job, $male:sir,female:ma'am$! But it does feel good to be thanked. I wish more folk were like you.
                 return -1;
         }
-        
+
         return default;
     }
 

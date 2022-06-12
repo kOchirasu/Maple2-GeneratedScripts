@@ -67,7 +67,7 @@ public class _11000322 : NpcScript {
                 // - Mm, I don't know exactly. $MyPCName$, do you think you could find it? I'd give anything to see it!
                 return -1;
         }
-        
+
         return default;
     }
 

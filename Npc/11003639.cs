@@ -65,7 +65,7 @@ public class _11003639 : NpcScript {
                 // - Shush! The fight's about to start!
                 return -1;
         }
-        
+
         return default;
     }
 

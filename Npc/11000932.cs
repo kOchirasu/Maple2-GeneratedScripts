@@ -21,7 +21,7 @@ public class _11000932 : NpcScript {
                 // - My body my be gone, but my soul still burns.
                 return -1;
         }
-        
+
         return default;
     }
 

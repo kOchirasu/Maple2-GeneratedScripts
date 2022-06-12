@@ -21,7 +21,7 @@ public class _11004551 : NpcScript {
                 // - You! Outlander! You better not be here to bother $npcName:11004401[gender:1]$.
                 return -1;
         }
-        
+
         return default;
     }
 

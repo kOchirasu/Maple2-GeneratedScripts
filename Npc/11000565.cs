@@ -21,7 +21,7 @@ public class _11000565 : NpcScript {
                 // - I have the ability to meld with the darkness. What can you do?
                 return -1;
         }
-        
+
         return default;
     }
 

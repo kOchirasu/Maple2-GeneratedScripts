@@ -36,7 +36,7 @@ public class _11004521 : NpcScript {
                 // - All right. Away we go!
                 return -1;
         }
-        
+
         return default;
     }
 

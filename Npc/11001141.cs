@@ -21,7 +21,7 @@ public class _11001141 : NpcScript {
                 // - Hello, and welcome to the Andrea Family estate. As its caretaker I would love to give you a tour, but I'm afraid I have some eggs to collect.
                 return -1;
         }
-        
+
         return default;
     }
 

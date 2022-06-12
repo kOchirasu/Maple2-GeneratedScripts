@@ -25,7 +25,7 @@ public class _11003501 : NpcScript {
                 // - I want to be best friends with all kinds of monsters. That's what Team Mushroom is all about, right?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000876 : NpcScript {
                 // - Forests are the cradle of life for woodland creatures like us fairfolk. If they get cut down, we'll fall with them.
                 return -1;
         }
-        
+
         return default;
     }
 

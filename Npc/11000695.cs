@@ -33,7 +33,7 @@ public class _11000695 : NpcScript {
                 // - When you're making a potion, however, you must add the ingredients in the correct order, at the correct time. You can't take your eyes off the cauldron.
                 return -1;
         }
-        
+
         return default;
     }
 

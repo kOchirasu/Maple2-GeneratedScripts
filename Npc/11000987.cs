@@ -21,7 +21,7 @@ public class _11000987 : NpcScript {
                 // - It's coming, and we don't have much time left. We must find shelter quickly. 
                 return -1;
         }
-        
+
         return default;
     }
 

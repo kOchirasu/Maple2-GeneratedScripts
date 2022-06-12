@@ -25,7 +25,7 @@ public class _11004535 : NpcScript {
                 // - This is the biggest road to and from $map:02020041$. Maybe that's why the enemy keeps hammering us here.
                 return -1;
         }
-        
+
         return default;
     }
 

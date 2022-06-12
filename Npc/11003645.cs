@@ -71,7 +71,7 @@ public class _11003645 : NpcScript {
                 // - According to my research, you will indeed see me again. But it will be sooner than you think...
                 return -1;
         }
-        
+
         return default;
     }
 

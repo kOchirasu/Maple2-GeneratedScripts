@@ -21,7 +21,7 @@ public class _11001304 : NpcScript {
                 // - I haven't been in $map:02000001$ for a long, long time. The air is... dustier than I remember. 
                 return -1;
         }
-        
+
         return default;
     }
 

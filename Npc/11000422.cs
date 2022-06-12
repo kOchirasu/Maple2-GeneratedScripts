@@ -25,7 +25,7 @@ public class _11000422 : NpcScript {
                 // - <i>Here lies Roanna Levematri. She leaves behind her lover Alberto, whose heart will never heal.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

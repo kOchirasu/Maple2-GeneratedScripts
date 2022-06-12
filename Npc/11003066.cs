@@ -31,7 +31,7 @@ public class _11003066 : NpcScript {
                 // - I'll live, thanks to you. We snowcubs are strong. That's all.
                 return -1;
         }
-        
+
         return default;
     }
 

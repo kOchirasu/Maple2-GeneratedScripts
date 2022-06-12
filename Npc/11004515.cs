@@ -25,7 +25,7 @@ public class _11004515 : NpcScript {
                 // - Hey, you aren't carrying any aetherine on you, are you? Ugh, as if it'd just fall into our laps like that...
                 return -1;
         }
-        
+
         return default;
     }
 

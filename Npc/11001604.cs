@@ -21,7 +21,7 @@ public class _11001604 : NpcScript {
                 // - We've agreed to accept each other as comrades. That means we must trust and respect one another.
                 return -1;
         }
-        
+
         return default;
     }
 

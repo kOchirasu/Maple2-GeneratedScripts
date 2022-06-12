@@ -119,7 +119,7 @@ public class _11001652 : NpcScript {
                 // - Ha... Ha ha... Ahem. You're a pretty intense $male:guy,female:gal$, you know that? I hope we meet again.
                 return -1;
         }
-        
+
         return default;
     }
 

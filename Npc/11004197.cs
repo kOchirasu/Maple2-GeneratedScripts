@@ -21,7 +21,7 @@ public class _11004197 : NpcScript {
                 // - I'm wise enough to admit I've gotten too old to keep up with the youth of today. When you reach a certain age, you've just got to step out of the way and leave things to the next generation.
                 return -1;
         }
-        
+
         return default;
     }
 

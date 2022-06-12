@@ -21,7 +21,7 @@ public class _11004121 : NpcScript {
                 // - See something, say something!
                 return -1;
         }
-        
+
         return default;
     }
 

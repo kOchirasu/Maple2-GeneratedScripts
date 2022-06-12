@@ -21,7 +21,7 @@ public class _11004401 : NpcScript {
                 // - You have my full support.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11000340 : NpcScript {
                 // - T-that's... Ah, let's not stir up old, painful memories.
                 return -1;
         }
-        
+
         return default;
     }
 

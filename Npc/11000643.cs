@@ -21,7 +21,7 @@ public class _11000643 : NpcScript {
                 // - Argh, this place is a sty! I hate prison! 
                 return -1;
         }
-        
+
         return default;
     }
 

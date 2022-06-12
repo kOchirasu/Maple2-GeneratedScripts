@@ -25,7 +25,7 @@ public class _11000159 : NpcScript {
                 // - The others must be quite anxious, since they don't know what's going on.
                 return -1;
         }
-        
+
         return default;
     }
 

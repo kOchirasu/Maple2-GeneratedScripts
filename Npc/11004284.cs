@@ -47,7 +47,7 @@ public class _11004284 : NpcScript {
                 // - Isn't it so cool? I was thinking of heading over there tonight and treating myself to a new hat!
                 return -1;
         }
-        
+
         return default;
     }
 

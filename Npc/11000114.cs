@@ -31,7 +31,7 @@ public class _11000114 : NpcScript {
                 // - Really, $MyPCName$? Looking into this giant pit of doom doesn't fill you with the least little bit of doubt?
                 return -1;
         }
-        
+
         return default;
     }
 

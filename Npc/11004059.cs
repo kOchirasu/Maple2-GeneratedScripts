@@ -21,7 +21,7 @@ public class _11004059 : NpcScript {
                 // - My other half... You have forged a blood oath. I expect you to aid me til the very end.
                 return -1;
         }
-        
+
         return default;
     }
 

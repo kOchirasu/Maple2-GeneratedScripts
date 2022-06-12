@@ -21,7 +21,7 @@ public class _11001520 : NpcScript {
                 // - I'm honored to join the Starlight Expedition. The captain of the guard sent me to help $npc:11000076[gender:0]$. I intend to win glory for the guard!
                 return -1;
         }
-        
+
         return default;
     }
 

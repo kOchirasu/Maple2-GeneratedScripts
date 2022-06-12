@@ -21,7 +21,7 @@ public class _11004082 : NpcScript {
                 // - Sigh... Will I ever get to leave this house again?
                 return -1;
         }
-        
+
         return default;
     }
 

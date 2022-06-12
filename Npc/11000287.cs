@@ -20,7 +20,7 @@ public class _11000287 : NpcScript {
                 // - This altar is covered in layers of dust, the result of ages of neglect.
                 return -1;
         }
-        
+
         return default;
     }
 

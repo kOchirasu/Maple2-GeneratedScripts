@@ -200,7 +200,7 @@ public class _11000215 : NpcScript {
                 // - Dark Wind gradually grows more stable, but the world is in chaos, as always.
                 return -1;
         }
-        
+
         return default;
     }
 

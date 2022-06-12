@@ -63,7 +63,7 @@ public class _11004270 : NpcScript {
                 // - Now that I've answered your question, can you run along? I haven't moved from this spot for a week, and the last thing I want is for you to ruin my research!
                 return -1;
         }
-        
+
         return default;
     }
 

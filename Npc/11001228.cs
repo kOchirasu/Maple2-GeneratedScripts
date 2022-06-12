@@ -51,7 +51,7 @@ public class _11001228 : NpcScript {
                 // - Sure! No treasure is worth more than a life. My friends were hurt while protecting our forest, so I'll do whatever it takes to make them better!
                 return -1;
         }
-        
+
         return default;
     }
 

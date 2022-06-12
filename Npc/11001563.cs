@@ -25,7 +25,7 @@ public class _11001563 : NpcScript {
                 // - I'm sorry I didn't stay in touch. I couldn't find the time. Still, it seems you did well enough without me.
                 return -1;
         }
-        
+
         return default;
     }
 

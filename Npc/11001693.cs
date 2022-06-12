@@ -25,7 +25,7 @@ public class _11001693 : NpcScript {
                 // - Remember, that guy's all talk and no action. I can beat him with one hand tied behind my back.
                 return -1;
         }
-        
+
         return default;
     }
 

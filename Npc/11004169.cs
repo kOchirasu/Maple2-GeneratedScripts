@@ -31,7 +31,7 @@ public class _11004169 : NpcScript {
                 // - Actually, I'm on leave at the moment. The captain asked me to be in his squad for Mushking Royale!
                 return -1;
         }
-        
+
         return default;
     }
 

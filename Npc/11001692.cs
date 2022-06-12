@@ -215,7 +215,7 @@ public class _11001692 : NpcScript {
                 // - Code 1 Support Proposal: Move Dr. Rokel's project. Given current situation, highly likely that Code 2 will be terminated.
                 return -1;
         }
-        
+
         return default;
     }
 

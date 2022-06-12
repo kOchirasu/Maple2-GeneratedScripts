@@ -21,7 +21,7 @@ public class _11001349 : NpcScript {
                 // - Why would Mademoiselle Rue want to go into business with Cathy Catalina? They're polar opposites of each other. There's no way this partnership will last!
                 return -1;
         }
-        
+
         return default;
     }
 

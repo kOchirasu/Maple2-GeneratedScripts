@@ -29,7 +29,7 @@ public class _11000673 : NpcScript {
                 // - "But at the other end of the passageway, an endless abyss awaited me. Is it really impossible to escape from this misery?"
                 return -1;
         }
-        
+
         return default;
     }
 

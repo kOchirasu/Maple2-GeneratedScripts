@@ -21,7 +21,7 @@ public class _11004183 : NpcScript {
                 // - Arazaad, Arazaad, Arazaad. Hmph. $npcName:11004182[gender:0]$'s always going on and on about the old man.
                 return -1;
         }
-        
+
         return default;
     }
 

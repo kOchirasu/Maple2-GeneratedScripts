@@ -21,7 +21,7 @@ public class _11003157 : NpcScript {
                 // - You want to know the secret to a beautiful garden? Take care of your plants with love, and they'll repay you by growing.
                 return -1;
         }
-        
+
         return default;
     }
 

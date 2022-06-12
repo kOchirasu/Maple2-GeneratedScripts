@@ -21,7 +21,7 @@ public class _11000471 : NpcScript {
                 // - I know height isn't everything, but I really don't like being shorter than most people... 
                 return -1;
         }
-        
+
         return default;
     }
 

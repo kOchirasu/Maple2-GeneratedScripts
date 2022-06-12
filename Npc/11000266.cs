@@ -29,7 +29,7 @@ public class _11000266 : NpcScript {
                 // - I can't believe $npcName:11000044[gender:0]$ ended Captain Stilton's life. That brazen coward fooled us all!
                 return -1;
         }
-        
+
         return default;
     }
 

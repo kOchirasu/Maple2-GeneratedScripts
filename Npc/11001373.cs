@@ -21,7 +21,7 @@ public class _11001373 : NpcScript {
                 // - Sigh... I haven't been back home since I moved to Minar with my husband. I was so looking forward to this trip, and now the train has broken down...
                 return -1;
         }
-        
+
         return default;
     }
 

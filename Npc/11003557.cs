@@ -76,7 +76,7 @@ public class _11003557 : NpcScript {
                 // - Ah, but there's one important thing to be aware of. The slimes come in three different sizes. <b>The larger the slime you squash, the faster the gauge fills up!</b> Good luck achieving the perfect color ratio!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -88,7 +88,7 @@ public class _11003552 : NpcScript {
                 // - You can go there after you finish the fishing quest in the Maple Guide. Every fisher should visit that place at least once in their life.
                 return -1;
         }
-        
+
         return default;
     }
 

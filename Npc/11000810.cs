@@ -21,7 +21,7 @@ public class _11000810 : NpcScript {
                 // - $MyPCName$, I don't know how to repay you and the Lumina Liberation Army for this. Thank you so much.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -31,7 +31,7 @@ public class _11004298 : NpcScript {
                 // - Over there, in the sofa by the window. There are papers stuck in there that I can't seem to get loose. Did someone put those there on purpose? 
                 return -1;
         }
-        
+
         return default;
     }
 

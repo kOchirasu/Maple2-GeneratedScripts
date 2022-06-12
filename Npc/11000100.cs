@@ -21,7 +21,7 @@ public class _11000100 : NpcScript {
                 // - Can't touch this! Na na na... Um, is that one still popular?
                 return -1;
         }
-        
+
         return default;
     }
 

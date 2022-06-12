@@ -81,7 +81,7 @@ public class _11004072 : NpcScript {
                 // - Stop blathering. I'm on duty. Get out of here now, before you regret it.
                 return -1;
         }
-        
+
         return default;
     }
 

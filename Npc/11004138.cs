@@ -21,7 +21,7 @@ public class _11004138 : NpcScript {
                 // - And just who's going to treat <i>my</i> injuries?
                 return -1;
         }
-        
+
         return default;
     }
 

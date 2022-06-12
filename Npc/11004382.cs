@@ -41,7 +41,7 @@ public class _11004382 : NpcScript {
                 // - You listen to me, find your true love before the year ends!
                 return -1;
         }
-        
+
         return default;
     }
 

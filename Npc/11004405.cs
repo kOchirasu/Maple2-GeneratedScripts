@@ -21,7 +21,7 @@ public class _11004405 : NpcScript {
                 // - This whole situation is unreal.
                 return -1;
         }
-        
+
         return default;
     }
 

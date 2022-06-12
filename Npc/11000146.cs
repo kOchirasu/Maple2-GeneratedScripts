@@ -29,7 +29,7 @@ public class _11000146 : NpcScript {
                 // - Sigh, I'm tired of traveling through time. I always end up in places that I don't want to be
                 return -1;
         }
-        
+
         return default;
     }
 

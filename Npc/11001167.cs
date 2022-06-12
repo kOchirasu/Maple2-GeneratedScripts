@@ -21,7 +21,7 @@ public class _11001167 : NpcScript {
                 // - Have you seen my brother? He must be somewhere around here.
                 return -1;
         }
-        
+
         return default;
     }
 

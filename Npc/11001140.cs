@@ -31,7 +31,7 @@ public class _11001140 : NpcScript {
                 // - I know, right? But nobody else seems to get it! I see people come to work without their hard hats or work boots every day. Your goal should be to earn a living without killing yourself in the process!
                 return -1;
         }
-        
+
         return default;
     }
 

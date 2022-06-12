@@ -21,7 +21,7 @@ public class _11000744 : NpcScript {
                 // - Don't judge a book by its cover. I may be old, but I'm still a girl on the inside.  
                 return -1;
         }
-        
+
         return default;
     }
 

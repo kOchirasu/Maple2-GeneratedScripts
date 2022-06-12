@@ -21,7 +21,7 @@ public class _11000061 : NpcScript {
                 // - If you came to see $npcName:11000016[gender:0]$, you can find him in $map:63000003$. The chief called him to talk about the ship for the court.
                 return -1;
         }
-        
+
         return default;
     }
 

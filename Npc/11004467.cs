@@ -59,7 +59,7 @@ public class _11004467 : NpcScript {
                 // - Hmph. You don't look like it. Oh well! I'd probably get in trouble if I left him with a stranger, anyway.
                 return -1;
         }
-        
+
         return default;
     }
 

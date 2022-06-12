@@ -21,7 +21,7 @@ public class _11001444 : NpcScript {
                 // - There's nothing like a quick swim to beat the heat.
                 return -1;
         }
-        
+
         return default;
     }
 

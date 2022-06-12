@@ -31,7 +31,7 @@ public class _11001841 : NpcScript {
                 // - Jeez, you think so? See, here I was thinking I gotta train harder. Otherwise, I'll never get strong enough to help you...
                 return -1;
         }
-        
+
         return default;
     }
 

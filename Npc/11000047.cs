@@ -25,7 +25,7 @@ public class _11000047 : NpcScript {
                 // - He was $npcName:11000007[gender:1]$'s father. It's a shame an illness took him so early, but he would surely approve of the woman his daughter grew to be.
                 return -1;
         }
-        
+
         return default;
     }
 

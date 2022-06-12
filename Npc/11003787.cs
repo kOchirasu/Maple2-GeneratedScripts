@@ -21,7 +21,7 @@ public class _11003787 : NpcScript {
                 // - What can <i>I</i> do for <i>you</i>?
                 return -1;
         }
-        
+
         return default;
     }
 

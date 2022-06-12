@@ -21,7 +21,7 @@ public class _11004223 : NpcScript {
                 // - <font color="#909090">(He glares at you, then down at the clarinet in his mouth, then back at you.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

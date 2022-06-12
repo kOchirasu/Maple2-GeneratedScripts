@@ -43,7 +43,7 @@ public class _11001699 : NpcScript {
                 // - If you ask him why all those students left, he'd tell you they were too soft. Even if he's right, he's not helping them by driving them away!
                 return -1;
         }
-        
+
         return default;
     }
 

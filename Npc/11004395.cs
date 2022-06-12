@@ -59,7 +59,7 @@ public class _11004395 : NpcScript {
                 // - We've only had some injuries, thank goodness. I'm more concerned about the ground we've lost; We need those supplies. Your mission is to secure $map:02020004$. Can I count on you?
                 return -1;
         }
-        
+
         return default;
     }
 

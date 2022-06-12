@@ -21,7 +21,7 @@ public class _11001020 : NpcScript {
                 // - I can feel time being restored to order. This means there isn't much of it left for us to spend together.
                 return -1;
         }
-        
+
         return default;
     }
 

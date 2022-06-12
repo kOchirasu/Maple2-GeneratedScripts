@@ -29,7 +29,7 @@ public class _11001316 : NpcScript {
                 // - May you be blessed with good vibes.
                 return -1;
         }
-        
+
         return default;
     }
 

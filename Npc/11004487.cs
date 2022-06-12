@@ -43,7 +43,7 @@ public class _11004487 : NpcScript {
                 // - I think <i>we</i> ought to put our hat in the ring, so I sent a request for reinforcements. I'm trying to estimate the size of the aetherine deposit before they get here...
                 return -1;
         }
-        
+
         return default;
     }
 

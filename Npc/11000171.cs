@@ -43,7 +43,7 @@ public class _11000171 : NpcScript {
                 // - My business is in sorry shape thanks to them.
                 return -1;
         }
-        
+
         return default;
     }
 

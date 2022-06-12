@@ -22,7 +22,7 @@ public class _11001945 : NpcScript {
                 //   <font color="#909090">(He mumbles something into his clarinet.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

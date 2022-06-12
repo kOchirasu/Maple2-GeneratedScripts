@@ -25,7 +25,7 @@ public class _11001375 : NpcScript {
                 // - Eager to get out of here? Try the latest model sports car from Tuning Motors. Just start the engine and leave this dump in the dust!
                 return -1;
         }
-        
+
         return default;
     }
 

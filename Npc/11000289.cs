@@ -99,7 +99,7 @@ public class _11000289 : NpcScript {
                 // - The Arena Shop sells equipment that will make you more powerful in the arena. If you're trying the arena for the first time, then the arena equipment sold for mesos is pretty useful, too. If you want the good stuff, though, you'll need $itemPlural:90000006$.
                 return -1;
         }
-        
+
         return default;
     }
 

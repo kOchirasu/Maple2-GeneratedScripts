@@ -91,7 +91,7 @@ public class _11001026 : NpcScript {
                 // - You know darn well how that went. Now $npcName:11000492[gender:0]$ is gone and my life is ruined...
                 return -1;
         }
-        
+
         return default;
     }
 

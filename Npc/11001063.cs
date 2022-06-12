@@ -21,7 +21,7 @@ public class _11001063 : NpcScript {
                 // - Shush! Keep your voice down! I can't give my position away.
                 return -1;
         }
-        
+
         return default;
     }
 

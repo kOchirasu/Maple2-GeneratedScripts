@@ -135,7 +135,7 @@ public class _11001246 : NpcScript {
                 // - Simply reaching the island requires massive amounts of rune mana, and there isn't much to be found in a place like this. Our only hope of returning is in finding all the pieces of the Wisdom of the Baaz.
                 return -1;
         }
-        
+
         return default;
     }
 

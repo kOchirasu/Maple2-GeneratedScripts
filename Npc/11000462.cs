@@ -21,7 +21,7 @@ public class _11000462 : NpcScript {
                 // - What brings you to $map:02000107$? Since you're here, I was thinking about changing up my skin tone again. Do you think I should do it?
                 return -1;
         }
-        
+
         return default;
     }
 

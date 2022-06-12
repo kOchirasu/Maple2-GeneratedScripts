@@ -21,7 +21,7 @@ public class _11003154 : NpcScript {
                 // - If you're troubled, come look at these flowers. It helps. Really!
                 return -1;
         }
-        
+
         return default;
     }
 

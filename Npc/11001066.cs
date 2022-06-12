@@ -21,7 +21,7 @@ public class _11001066 : NpcScript {
                 // - Waiting for the $map:02000184$ tour train? We're sorry, but it won't be operating for a while.
                 return -1;
         }
-        
+
         return default;
     }
 

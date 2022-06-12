@@ -25,7 +25,7 @@ public class _11001663 : NpcScript {
                 // - We hope our faith in you is well deserved.
                 return -1;
         }
-        
+
         return default;
     }
 

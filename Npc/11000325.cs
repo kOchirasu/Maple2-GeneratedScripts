@@ -175,7 +175,7 @@ public class _11000325 : NpcScript {
                 // - While you're here, why don't you peruse the vehicles on display?
                 return -1;
         }
-        
+
         return default;
     }
 

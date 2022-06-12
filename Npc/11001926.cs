@@ -21,7 +21,7 @@ public class _11001926 : NpcScript {
                 // - Another one got away...! This is ticking me off!
                 return -1;
         }
-        
+
         return default;
     }
 

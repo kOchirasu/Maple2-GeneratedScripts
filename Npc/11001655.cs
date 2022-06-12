@@ -31,7 +31,7 @@ public class _11001655 : NpcScript {
                 // - Well, I know I saw something! And he has to be around here somewhere.
                 return -1;
         }
-        
+
         return default;
     }
 

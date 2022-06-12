@@ -29,7 +29,7 @@ public class _11000191 : NpcScript {
                 // - Sometimes I wonder... I wonder if I should take the kids to $map:02000002$ for a fresh start. There's more to being a good husband than just putting food on the table. 
                 return -1;
         }
-        
+
         return default;
     }
 

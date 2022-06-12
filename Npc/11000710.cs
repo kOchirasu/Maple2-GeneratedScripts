@@ -21,7 +21,7 @@ public class _11000710 : NpcScript {
                 // - I think I can cross this bridge if I don't look down. But... what if I lose my footing because I can't see where I'm going?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -63,7 +63,7 @@ public class _11004320 : NpcScript {
                 // - You really think so? Thanks... That means a lot. I'm sure I can muster up the courage to keep going.
                 return -1;
         }
-        
+
         return default;
     }
 

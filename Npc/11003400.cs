@@ -21,7 +21,7 @@ public class _11003400 : NpcScript {
                 // - Willpower alone does not make you a knight.
                 return -1;
         }
-        
+
         return default;
     }
 

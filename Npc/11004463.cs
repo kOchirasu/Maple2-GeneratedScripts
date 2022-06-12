@@ -35,7 +35,7 @@ public class _11004463 : NpcScript {
                 // - Hearing those words from your mouth fills me with hope. Thank you, $MyPCName$! I'll fight my hardest!
                 return -1;
         }
-        
+
         return default;
     }
 

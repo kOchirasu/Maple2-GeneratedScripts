@@ -21,7 +21,7 @@ public class _11000869 : NpcScript {
                 // - Please don't be too loud. I can't afford any distractions from my research.
                 return -1;
         }
-        
+
         return default;
     }
 

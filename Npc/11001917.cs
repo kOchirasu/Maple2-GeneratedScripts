@@ -21,7 +21,7 @@ public class _11001917 : NpcScript {
                 // - Tria is under attack!
                 return -1;
         }
-        
+
         return default;
     }
 

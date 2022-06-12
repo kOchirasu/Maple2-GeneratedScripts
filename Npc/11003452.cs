@@ -21,7 +21,7 @@ public class _11003452 : NpcScript {
                 // - You didn't think I'd actually be a pig, did you?
                 return -1;
         }
-        
+
         return default;
     }
 

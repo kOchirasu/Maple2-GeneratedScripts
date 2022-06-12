@@ -21,7 +21,7 @@ public class _11000977 : NpcScript {
                 // - Only we kunkun can feel the flow of nature and foretell the weather. 
                 return -1;
         }
-        
+
         return default;
     }
 

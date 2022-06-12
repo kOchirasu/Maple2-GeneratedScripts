@@ -21,7 +21,7 @@ public class _11003090 : NpcScript {
                 // - It's hard to keep the Shadow Gate staffed with enough soldiers. If any more rifts like this open up, Maple World could be in serious trouble.
                 return -1;
         }
-        
+
         return default;
     }
 

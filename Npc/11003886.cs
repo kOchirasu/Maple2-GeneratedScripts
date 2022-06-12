@@ -25,7 +25,7 @@ public class _11003886 : NpcScript {
                 // - You seem pretty handy, considering how you handled those tasks. If only Terrun Calibre had more people like you.
                 return -1;
         }
-        
+
         return default;
     }
 

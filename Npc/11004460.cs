@@ -25,7 +25,7 @@ public class _11004460 : NpcScript {
                 // - I'm a little nervous about this place, but this is a chance to set myself apart from the other guards!
                 return -1;
         }
-        
+
         return default;
     }
 

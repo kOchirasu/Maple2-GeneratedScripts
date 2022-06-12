@@ -21,7 +21,7 @@ public class _11003446 : NpcScript {
                 // - You mess with Dark Wind, you mess with me.
                 return -1;
         }
-        
+
         return default;
     }
 

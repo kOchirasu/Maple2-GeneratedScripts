@@ -25,7 +25,7 @@ public class _11003520 : NpcScript {
                 // - Quack...?
                 return -1;
         }
-        
+
         return default;
     }
 

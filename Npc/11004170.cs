@@ -21,7 +21,7 @@ public class _11004170 : NpcScript {
                 // - It's been too long since we've been together like this. Time to warm up!
                 return -1;
         }
-        
+
         return default;
     }
 

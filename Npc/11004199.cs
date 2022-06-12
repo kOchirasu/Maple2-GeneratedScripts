@@ -21,7 +21,7 @@ public class _11004199 : NpcScript {
                 // - I'm delighted to be visiting $map:02000499$ with my mother. Of course, I won't be engaging in the tourney myself. Mother and I will be quite happy to cheer the contestants on from the sidelines.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001022 : NpcScript {
                 // - Y-yes, I'm $npcName:11000526[gender:0]$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -26,7 +26,7 @@ public class _11003887 : NpcScript {
                 //   On behalf of Terrun Calibre, please accept my thanks.
                 return -1;
         }
-        
+
         return default;
     }
 

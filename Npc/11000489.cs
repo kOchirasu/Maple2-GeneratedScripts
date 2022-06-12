@@ -21,7 +21,7 @@ public class _11000489 : NpcScript {
                 // - He's so hot, and his voice is amaaazing. When I hear him sing, I can hardly control myself!
                 return -1;
         }
-        
+
         return default;
     }
 

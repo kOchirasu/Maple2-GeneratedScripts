@@ -25,7 +25,7 @@ public class _11000264 : NpcScript {
                 // - Can't you see I'm trying to focus?
                 return -1;
         }
-        
+
         return default;
     }
 

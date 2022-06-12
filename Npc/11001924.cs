@@ -21,7 +21,7 @@ public class _11001924 : NpcScript {
                 // - <b>AHH!</b> I had a fish on the line, and it got away... thanks to you!
                 return -1;
         }
-        
+
         return default;
     }
 

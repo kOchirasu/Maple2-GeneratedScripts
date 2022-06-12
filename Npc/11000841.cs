@@ -21,7 +21,7 @@ public class _11000841 : NpcScript {
                 // - I think that doctor is a quack. The more he treats me, the worse I feel. Sigh... 
                 return -1;
         }
-        
+
         return default;
     }
 

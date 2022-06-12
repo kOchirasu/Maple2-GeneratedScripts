@@ -41,7 +41,7 @@ public class _11001232 : NpcScript {
                 // - You don't know? Your teacher, $npc:11001246[gender:0]$, is one of the Eight Blades, the most magnificent warriors in all of Terrun Calibre. Learning from him is an honor, yet your approach to your studies have been a bit... unconventional. It's no wonder why there are many Runeblades who are jealous and resentful of you.
                 return -1;
         }
-        
+
         return default;
     }
 

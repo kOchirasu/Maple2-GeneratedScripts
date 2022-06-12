@@ -73,7 +73,7 @@ public class _11004567 : NpcScript {
                 // - I hope you haven't slacked off in your training. I haven't.
                 return -1;
         }
-        
+
         return default;
     }
 

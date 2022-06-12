@@ -107,7 +107,7 @@ public class _11003634 : NpcScript {
                 // - Don't leave anything out! Tell her <i>exactly</i> what I said!
                 return -1;
         }
-        
+
         return default;
     }
 

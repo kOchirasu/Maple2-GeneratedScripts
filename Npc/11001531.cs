@@ -113,7 +113,7 @@ public class _11001531 : NpcScript {
                 // - The best way to know how someone really feels is to watch him dance. I learn so much about human emotion by studying the dancers here. 
                 return -1;
         }
-        
+
         return default;
     }
 

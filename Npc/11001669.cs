@@ -25,7 +25,7 @@ public class _11001669 : NpcScript {
                 // - If you have $itemPlural:30000554$ to burn, be sure to come to $map:63000032$!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003348 : NpcScript {
                 // - We're all serious now. You just wait and see. The boss'll make you pay!
                 return -1;
         }
-        
+
         return default;
     }
 

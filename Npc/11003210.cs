@@ -21,7 +21,7 @@ public class _11003210 : NpcScript {
                 // - Don't say I never did nothing for you.
                 return -1;
         }
-        
+
         return default;
     }
 

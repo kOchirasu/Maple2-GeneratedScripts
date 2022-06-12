@@ -21,7 +21,7 @@ public class _11000281 : NpcScript {
                 // - You see that guard over there? I'm telling you, no respect for scholars or history. He keeps harassing me for researching instead of sticking to his own tasks. He has no idea... 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -39,7 +39,7 @@ public class _11000170 : NpcScript {
                 // - I sure did! Hard not to notice someone that odd. He ran off toward the Kerning Interchange.
                 return -1;
         }
-        
+
         return default;
     }
 

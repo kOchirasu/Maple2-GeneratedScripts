@@ -21,7 +21,7 @@ public class _11000887 : NpcScript {
                 // - Did you know Ten was a Kaka? So am I. Heh heh.
                 return -1;
         }
-        
+
         return default;
     }
 

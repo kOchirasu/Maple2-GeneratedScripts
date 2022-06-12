@@ -21,7 +21,7 @@ public class _11001476 : NpcScript {
                 // - You're better than I thought. I never forget a debt... or a grudge. $MyPCName$...
                 return -1;
         }
-        
+
         return default;
     }
 

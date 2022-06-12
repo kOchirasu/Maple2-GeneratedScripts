@@ -47,7 +47,7 @@ public class _11004083 : NpcScript {
                 // - Anyway, since this place is basically abandoned, we decided to take things over. If you want to lend a hand, we can always use another strong back or two!
                 return -1;
         }
-        
+
         return default;
     }
 

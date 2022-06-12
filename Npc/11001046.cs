@@ -21,7 +21,7 @@ public class _11001046 : NpcScript {
                 // - I came all the way here to clear my head and focus on my training. I don't know how so many people have heard about my lava-reading skill. I would send them away, but I respect their determination to come all the way out here.
                 return -1;
         }
-        
+
         return default;
     }
 

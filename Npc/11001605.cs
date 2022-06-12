@@ -21,7 +21,7 @@ public class _11001605 : NpcScript {
                 // - The sooner this is over with, the sooner I can go back to Calibre Island.
                 return -1;
         }
-        
+
         return default;
     }
 

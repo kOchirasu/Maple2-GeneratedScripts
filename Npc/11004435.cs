@@ -21,7 +21,7 @@ public class _11004435 : NpcScript {
                 // - Don't look so glum, Cadet. We're in a new land full of new and exciting things to eat!
                 return -1;
         }
-        
+
         return default;
     }
 

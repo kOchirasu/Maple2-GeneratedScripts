@@ -21,7 +21,7 @@ public class _11003155 : NpcScript {
                 // - My sisters say I'm prettier than any flower. I agree.
                 return -1;
         }
-        
+
         return default;
     }
 

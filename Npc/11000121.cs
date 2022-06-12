@@ -21,7 +21,7 @@ public class _11000121 : NpcScript {
                 // - Each of the monsters from the Land of Darkness has unique genetic material. By analyzing a wide range of material, I'm hoping to determine the rules that differentiate them from Maple World's monsters.
                 return -1;
         }
-        
+
         return default;
     }
 

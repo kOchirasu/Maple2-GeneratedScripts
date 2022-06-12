@@ -21,7 +21,7 @@ public class _11004050 : NpcScript {
                 // - Since none of Terrun Calibre elders are in a position to leave the island, I decided to come and help out.
                 return -1;
         }
-        
+
         return default;
     }
 

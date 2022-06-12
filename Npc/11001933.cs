@@ -21,7 +21,7 @@ public class _11001933 : NpcScript {
                 // - I'm <i>trying</i> to focus here!
                 return -1;
         }
-        
+
         return default;
     }
 

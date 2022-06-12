@@ -21,7 +21,7 @@ public class _11000524 : NpcScript {
                 // - Don't sweat it. Crime is pretty bad around here. That's just how it is.
                 return -1;
         }
-        
+
         return default;
     }
 

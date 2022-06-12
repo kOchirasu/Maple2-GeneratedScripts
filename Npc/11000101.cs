@@ -21,7 +21,7 @@ public class _11000101 : NpcScript {
                 // - Hey yo, do you know what hip-hop represents?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001108 : NpcScript {
                 // - $npcName:11000614[gender:0]$ and I met in Katramus. I can't believe we were able to meet again here. I'm also glad that his sister is safe!
                 return -1;
         }
-        
+
         return default;
     }
 

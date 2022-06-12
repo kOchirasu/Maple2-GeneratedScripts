@@ -21,7 +21,7 @@ public class _11001948 : NpcScript {
                 // - My darling children are practically virtuosos. That's why I think it's time they learned how to play.
                 return -1;
         }
-        
+
         return default;
     }
 

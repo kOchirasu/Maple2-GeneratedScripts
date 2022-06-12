@@ -57,7 +57,7 @@ public class _11001680 : NpcScript {
                 // - Beats me. I never saw it before. This is a messed up thought, but could you imagine having 100 $npcNamePlural:11001688[gender:0]$ running around? Ugh, just having one of him is too much.
                 return -1;
         }
-        
+
         return default;
     }
 

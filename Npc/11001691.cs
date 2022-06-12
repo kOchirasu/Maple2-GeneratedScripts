@@ -44,7 +44,7 @@ public class _11001691 : NpcScript {
                 //   Your code key has expired.
                 return -1;
         }
-        
+
         return default;
     }
 

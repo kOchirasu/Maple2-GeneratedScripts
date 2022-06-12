@@ -49,7 +49,7 @@ public class _11000669 : NpcScript {
                 // - Don't try anything stupid. Just get out of here!
                 return -1;
         }
-        
+
         return default;
     }
 

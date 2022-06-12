@@ -21,7 +21,7 @@ public class _11001115 : NpcScript {
                 // - Valle, where have you been? Ah... I don't think I know you. I'm sorry, I haven't been myself lately. I thought you were my daughter when I heard your footsteps. 
                 return -1;
         }
-        
+
         return default;
     }
 

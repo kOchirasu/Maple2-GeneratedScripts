@@ -980,7 +980,7 @@ public class _11000793 : NpcScript {
                 // - My name is $MaidName$, and I'm in charge. If you don't have business here, please leave.
                 return -1;
         }
-        
+
         return default;
     }
 

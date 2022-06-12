@@ -21,7 +21,7 @@ public class _11000148 : NpcScript {
                 // - If I wasn't charged with $map:63000004$, I could've joined the delegation. I hate that no one else can fill in for me! 
                 return -1;
         }
-        
+
         return default;
     }
 

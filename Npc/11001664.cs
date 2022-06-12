@@ -21,7 +21,7 @@ public class _11001664 : NpcScript {
                 // - Do not betray our empress's trust. 
                 return -1;
         }
-        
+
         return default;
     }
 

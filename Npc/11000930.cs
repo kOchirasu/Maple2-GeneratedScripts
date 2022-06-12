@@ -21,7 +21,7 @@ public class _11000930 : NpcScript {
                 // - Humans are bad. Caw!
                 return -1;
         }
-        
+
         return default;
     }
 

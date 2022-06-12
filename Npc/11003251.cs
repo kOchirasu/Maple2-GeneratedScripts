@@ -52,7 +52,7 @@ public class _11003251 : NpcScript {
                 // - We must uncover the secret of darkness before it claims any more lives.
                 return -1;
         }
-        
+
         return default;
     }
 

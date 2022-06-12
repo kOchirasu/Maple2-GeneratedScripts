@@ -25,7 +25,7 @@ public class _11003891 : NpcScript {
                 // - Even though the request came from the $npc:11003894[gender:0]$, I'm not interested.
                 return -1;
         }
-        
+
         return default;
     }
 

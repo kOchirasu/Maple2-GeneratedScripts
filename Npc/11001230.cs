@@ -41,7 +41,7 @@ public class _11001230 : NpcScript {
                 // - W-what? No way. He was just a mean old man looking for an easy mark to pick on. Trust me, his favorite student was that jerk $npcName:11001231[gender:0]$, and boy did that one come back to bite him.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -45,7 +45,7 @@ public class _11000317 : NpcScript {
                 // - An adventurer is someone who embarks on adventures around the world! I've even been to $map:02000023$, you know. My next destination is $map:02000051$!
                 return -1;
         }
-        
+
         return default;
     }
 

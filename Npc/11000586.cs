@@ -33,7 +33,7 @@ public class _11000586 : NpcScript {
                 // - I can't... die like this... 
                 return -1;
         }
-        
+
         return default;
     }
 

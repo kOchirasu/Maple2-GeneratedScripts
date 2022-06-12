@@ -25,7 +25,7 @@ public class _11000443 : NpcScript {
                 // - I don't know who's worse, the boss or the robbers.
                 return -1;
         }
-        
+
         return default;
     }
 

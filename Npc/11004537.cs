@@ -29,7 +29,7 @@ public class _11004537 : NpcScript {
                 // - Umm... Would you mind taking a few of them out while you're here? N-not that I can't take them myself, of course!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001577 : NpcScript {
                 // - We just need to pray for a miracle... 
                 return -1;
         }
-        
+
         return default;
     }
 

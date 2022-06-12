@@ -21,7 +21,7 @@ public class _11001457 : NpcScript {
                 // - Coming here for my research is probably one of the best decisions I've ever made. I bet my wife and kid are happy, too.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11001410 : NpcScript {
                 // - Since you're here, you should say hi to him. I bet he'll have some good advice for you.
                 return -1;
         }
-        
+
         return default;
     }
 

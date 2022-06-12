@@ -21,7 +21,7 @@ public class _11004021 : NpcScript {
                 // - I really hope Brother Junta and the expedition members get better soon.
                 return -1;
         }
-        
+
         return default;
     }
 

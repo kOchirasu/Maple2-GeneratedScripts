@@ -21,7 +21,7 @@ public class _11004049 : NpcScript {
                 // - Would you like a carriage back to Tria?
                 return -1;
         }
-        
+
         return default;
     }
 

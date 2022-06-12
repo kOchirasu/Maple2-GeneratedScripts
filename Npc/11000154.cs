@@ -21,7 +21,7 @@ public class _11000154 : NpcScript {
                 // - Goodness, just LOOK at those clothes! Did you dig them out of some ancient ruins? Might be nice to wear something made in the last decade.
                 return -1;
         }
-        
+
         return default;
     }
 

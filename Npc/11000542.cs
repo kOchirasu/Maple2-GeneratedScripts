@@ -21,7 +21,7 @@ public class _11000542 : NpcScript {
                 // - If you're not happy with your life, you should dance. When your body's happy, your mind will be too!
                 return -1;
         }
-        
+
         return default;
     }
 

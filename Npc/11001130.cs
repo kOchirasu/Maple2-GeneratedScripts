@@ -41,7 +41,7 @@ public class _11001130 : NpcScript {
                 // - Y-you think so? You'll protect me if it's something scary though, right? Hngg... Now my heart is p-pounding.
                 return -1;
         }
-        
+
         return default;
     }
 

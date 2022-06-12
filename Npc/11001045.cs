@@ -21,7 +21,7 @@ public class _11001045 : NpcScript {
                 // - Experience really is the best teacher. I've worked at this research center for so long that now I know scientific terms better than slang.
                 return -1;
         }
-        
+
         return default;
     }
 

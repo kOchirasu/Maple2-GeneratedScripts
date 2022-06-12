@@ -59,7 +59,7 @@ public class _11004266 : NpcScript {
                 // - Come to my next concert, and you'll see for yourself that I've been transformed by the sea.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -39,7 +39,7 @@ public class _11003112 : NpcScript {
                 // - Oh, I see. Well, to each their own, right? Just try not to harm any trees in your journeys. Or flowers. Or grass.
                 return -1;
         }
-        
+
         return default;
     }
 

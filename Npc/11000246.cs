@@ -21,7 +21,7 @@ public class _11000246 : NpcScript {
                 // - My dream is to live in a bigger and nicer house with $npcName:11000401[gender:0]$.
                 return -1;
         }
-        
+
         return default;
     }
 

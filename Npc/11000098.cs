@@ -30,7 +30,7 @@ public class _11000098 : NpcScript {
                 // - I'm finding way more $itemPlural:30000011$ here than I did in town. I've almost reached my goal!
                 return -1;
         }
-        
+
         return default;
     }
 

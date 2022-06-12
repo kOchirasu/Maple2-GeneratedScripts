@@ -21,7 +21,7 @@ public class _11000629 : NpcScript {
                 // - $map:02000051$ is a great place to raise a family like mine. Its highlands are safe from monsters on the ground, and my children can practice flying!
                 return -1;
         }
-        
+
         return default;
     }
 

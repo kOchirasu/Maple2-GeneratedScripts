@@ -21,7 +21,7 @@ public class _11001501 : NpcScript {
                 // - Don't just stare at your food, eat it! So rude.
                 return -1;
         }
-        
+
         return default;
     }
 

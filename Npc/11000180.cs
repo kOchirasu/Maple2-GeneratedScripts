@@ -35,7 +35,7 @@ public class _11000180 : NpcScript {
                 // - A lot of time and effort went into making those weapons. Why not stockpile them? They'd be more useful than melting them down, surely.
                 return -1;
         }
-        
+
         return default;
     }
 

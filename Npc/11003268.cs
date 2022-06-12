@@ -21,7 +21,7 @@ public class _11003268 : NpcScript {
                 // - After the Blue Lapenta broke, top scholars from across the world descended on $map:02000026$. Ultimately, I am confident that it will be an alchemist to uncover the secrets of the Land of Darkness and the Shadow World.
                 return -1;
         }
-        
+
         return default;
     }
 

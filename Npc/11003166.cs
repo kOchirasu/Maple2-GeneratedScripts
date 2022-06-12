@@ -41,7 +41,7 @@ public class _11003166 : NpcScript {
                 // - If my mom and dad saw me the way I am now, they'd die of shame. Gotta prove myself, first!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003264 : NpcScript {
                 // - We should have been ready for this. It was naive to think Ellinel was safe...
                 return -1;
         }
-        
+
         return default;
     }
 

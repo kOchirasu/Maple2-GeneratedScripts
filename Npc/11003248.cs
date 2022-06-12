@@ -21,7 +21,7 @@ public class _11003248 : NpcScript {
                 // - <font color="#909090">(Maybe there's something there... or maybe not.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

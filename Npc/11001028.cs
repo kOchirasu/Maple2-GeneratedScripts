@@ -53,7 +53,7 @@ public class _11001028 : NpcScript {
                 // - Please add the $item:30000322$ back to the delta chrono-controller over there to reactivate it.
                 return -1;
         }
-        
+
         return default;
     }
 

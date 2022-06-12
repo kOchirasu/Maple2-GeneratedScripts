@@ -21,7 +21,7 @@ public class _11004152 : NpcScript {
                 // - The scenery here is breathtaking, but if you want the best view in $map:02000499$, you should try hanging from $npcName:11004165$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000647 : NpcScript {
                 // - What are you lookin' at? This ain't no zoo, and I ain't no animal! Ahhh, I hate alla you!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000549 : NpcScript {
                 // - Is today some kind of holiday? Why is everyone so busy? I think I've met more people today than in my entire life.
                 return -1;
         }
-        
+
         return default;
     }
 

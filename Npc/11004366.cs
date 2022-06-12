@@ -31,7 +31,7 @@ public class _11004366 : NpcScript {
                 // - What a ridiculous question. I <i>love</i> cake. And I love it so much that I cannot tolerate cakes that disappoint me.
                 return -1;
         }
-        
+
         return default;
     }
 

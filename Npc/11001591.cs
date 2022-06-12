@@ -21,7 +21,7 @@ public class _11001591 : NpcScript {
                 // - $npcName:11001229[gender:0]$ is strong. He'll recover. Until then, the Life Lapenta will protect him.
                 return -1;
         }
-        
+
         return default;
     }
 

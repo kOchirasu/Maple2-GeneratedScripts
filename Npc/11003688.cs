@@ -83,7 +83,7 @@ public class _11003688 : NpcScript {
                 // - Spin number $rouletteCurrent$! Good luck!
                 return -1;
         }
-        
+
         return default;
     }
 

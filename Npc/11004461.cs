@@ -43,7 +43,7 @@ public class _11004461 : NpcScript {
                 // - Don't tell Condor about this, by the way. If he hears I've been talking like this, I'm done for!
                 return -1;
         }
-        
+
         return default;
     }
 

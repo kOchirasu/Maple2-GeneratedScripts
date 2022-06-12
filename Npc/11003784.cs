@@ -39,7 +39,7 @@ public class _11003784 : NpcScript {
                 // - The future is in our hands.
                 return -1;
         }
-        
+
         return default;
     }
 

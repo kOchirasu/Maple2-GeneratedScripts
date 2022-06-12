@@ -61,7 +61,7 @@ public class _11004324 : NpcScript {
                 // - How can I get $npcName:11004323[gender:1]$ to change her mind? We should be in Victoria Island, not here!
                 return -1;
         }
-        
+
         return default;
     }
 

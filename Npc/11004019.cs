@@ -21,7 +21,7 @@ public class _11004019 : NpcScript {
                 // - Something's wrong... My fur's standing on end.
                 return -1;
         }
-        
+
         return default;
     }
 

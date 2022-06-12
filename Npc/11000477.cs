@@ -21,7 +21,7 @@ public class _11000477 : NpcScript {
                 // - The Goldus way! Put your back into it! Pinch a penny, make a penny!
                 return -1;
         }
-        
+
         return default;
     }
 

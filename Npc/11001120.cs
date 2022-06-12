@@ -39,7 +39,7 @@ public class _11001120 : NpcScript {
                 // - If you get a $item:30000406$, don't forget to come to $map:02000064$!
                 return -1;
         }
-        
+
         return default;
     }
 

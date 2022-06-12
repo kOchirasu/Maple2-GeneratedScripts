@@ -52,7 +52,7 @@ public class _11001145 : NpcScript {
                 // - Not like my mom! When I grow up, I'm going to be a culinary wizard, and make snacks just as good as hers. 
                 return -1;
         }
-        
+
         return default;
     }
 

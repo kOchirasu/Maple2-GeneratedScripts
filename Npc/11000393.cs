@@ -21,7 +21,7 @@ public class _11000393 : NpcScript {
                 // - When my manager is angry, he screams at the top of his lungs and throws anything he can get his hands on. No one can stop him. All you can do is avoid him.
                 return -1;
         }
-        
+
         return default;
     }
 

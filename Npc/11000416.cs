@@ -21,7 +21,7 @@ public class _11000416 : NpcScript {
                 // - I shall reclaim my empire! 
                 return -1;
         }
-        
+
         return default;
     }
 

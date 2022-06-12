@@ -63,7 +63,7 @@ public class _11003165 : NpcScript {
                 // - I see. So it wasn't intentional.
                 return -1;
         }
-        
+
         return default;
     }
 

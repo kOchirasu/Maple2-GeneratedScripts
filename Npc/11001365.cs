@@ -21,7 +21,7 @@ public class _11001365 : NpcScript {
                 // - I hope the Blackstars leave me alone this time... I don't want a rematch with Vasara Chen...
                 return -1;
         }
-        
+
         return default;
     }
 

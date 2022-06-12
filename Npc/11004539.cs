@@ -29,7 +29,7 @@ public class _11004539 : NpcScript {
                 // - If you have time to chat, you have time to fight!
                 return -1;
         }
-        
+
         return default;
     }
 

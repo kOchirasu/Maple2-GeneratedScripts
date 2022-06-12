@@ -21,7 +21,7 @@ public class _11001458 : NpcScript {
                 // - We aren't some fly-by-night operation. We're the Blackstars!
                 return -1;
         }
-        
+
         return default;
     }
 

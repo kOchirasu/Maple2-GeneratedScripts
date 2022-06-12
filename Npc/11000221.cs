@@ -21,7 +21,7 @@ public class _11000221 : NpcScript {
                 // - I love my dad more than anything else in the world. I just want to stay with him. 
                 return -1;
         }
-        
+
         return default;
     }
 

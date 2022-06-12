@@ -152,7 +152,7 @@ public class _11001397 : NpcScript {
                 // - Good, good. You may leave.
                 return -1;
         }
-        
+
         return default;
     }
 

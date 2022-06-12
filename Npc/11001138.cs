@@ -21,7 +21,7 @@ public class _11001138 : NpcScript {
                 // - As long as I don't give up hope, all this will be behind me one day... I really wish I could believe that...
                 return -1;
         }
-        
+
         return default;
     }
 

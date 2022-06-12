@@ -89,7 +89,7 @@ public class _11000650 : NpcScript {
                 // - Sorry, that's all I know. You'll have to ask someone else for the rest of the password.
                 return -1;
         }
-        
+
         return default;
     }
 

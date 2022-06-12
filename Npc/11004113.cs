@@ -21,7 +21,7 @@ public class _11004113 : NpcScript {
                 // - Guidance has been retasked toward the recovery of Lapenshards.
                 return -1;
         }
-        
+
         return default;
     }
 

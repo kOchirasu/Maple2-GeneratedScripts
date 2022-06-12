@@ -58,7 +58,7 @@ public class _11001276 : NpcScript {
                 // - Here to gawk at an old genius? You're silly, you know that?
                 return -1;
         }
-        
+
         return default;
     }
 

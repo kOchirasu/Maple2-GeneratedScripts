@@ -39,7 +39,7 @@ public class _11000342 : NpcScript {
                 // - I paid for that house and the land under it, it belongs to me! This is completely unfair!
                 return -1;
         }
-        
+
         return default;
     }
 

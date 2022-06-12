@@ -21,7 +21,7 @@ public class _11004148 : NpcScript {
                 // - Ever since we were little, it's always been me, $npcName:11004149$ and the sea, hehe!
                 return -1;
         }
-        
+
         return default;
     }
 

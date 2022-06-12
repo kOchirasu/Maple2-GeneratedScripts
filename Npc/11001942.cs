@@ -21,7 +21,7 @@ public class _11001942 : NpcScript {
                 // - I don't know if I can afford to shop here. Can you?
                 return -1;
         }
-        
+
         return default;
     }
 

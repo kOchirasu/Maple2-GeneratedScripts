@@ -25,7 +25,7 @@ public class _11004233 : NpcScript {
                 // - The lady's happiness is my happiness. Please accept my thanks on her behalf.
                 return -1;
         }
-        
+
         return default;
     }
 

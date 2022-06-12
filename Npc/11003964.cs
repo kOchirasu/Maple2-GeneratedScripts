@@ -21,7 +21,7 @@ public class _11003964 : NpcScript {
                 // - You ever heard of the Gray Wolf? Well you're looking at him! The man, the myth, the legend! What do you mean you've never heard of me...
                 return -1;
         }
-        
+
         return default;
     }
 

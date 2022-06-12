@@ -25,7 +25,7 @@ public class _11000541 : NpcScript {
                 // - An eye for an eye... I'm going to teach them what it feels like to have your life shaken to its roots.
                 return -1;
         }
-        
+
         return default;
     }
 

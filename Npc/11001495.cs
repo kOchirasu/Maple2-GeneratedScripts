@@ -21,7 +21,7 @@ public class _11001495 : NpcScript {
                 // - I've got a bad feeling... like something bad's about to happen.
                 return -1;
         }
-        
+
         return default;
     }
 

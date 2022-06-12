@@ -21,7 +21,7 @@ public class _11004053 : NpcScript {
                 // - We are ready to head out at a moment's notice.
                 return -1;
         }
-        
+
         return default;
     }
 

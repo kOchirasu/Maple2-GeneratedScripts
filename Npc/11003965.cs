@@ -21,7 +21,7 @@ public class _11003965 : NpcScript {
                 // - This place is beautiful. Don't you agree?
                 return -1;
         }
-        
+
         return default;
     }
 

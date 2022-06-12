@@ -25,7 +25,7 @@ public class _11000396 : NpcScript {
                 // - So hungry...
                 return -1;
         }
-        
+
         return default;
     }
 

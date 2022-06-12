@@ -21,7 +21,7 @@ public class _11000566 : NpcScript {
                 // - Stay out of trouble. You don't want to end up like Dark Wind.
                 return -1;
         }
-        
+
         return default;
     }
 

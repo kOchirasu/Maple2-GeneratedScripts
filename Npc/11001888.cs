@@ -21,7 +21,7 @@ public class _11001888 : NpcScript {
                 // - The filming went smoothly, thanks to you. Anyway, it's getting late, so I'm heading back to the station. I'll see you in $map:02000164$.
                 return -1;
         }
-        
+
         return default;
     }
 

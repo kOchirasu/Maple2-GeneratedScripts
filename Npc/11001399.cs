@@ -21,7 +21,7 @@ public class _11001399 : NpcScript {
                 // - After that red sandstorm, a weird ruin popped out from the dunes. I can't wait to see what kind of secrets it holds!
                 return -1;
         }
-        
+
         return default;
     }
 

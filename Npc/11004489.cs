@@ -69,7 +69,7 @@ public class _11004489 : NpcScript {
                 // - That's why I'm needed. If I can analyze the contamination, we may be able to counteract it—or, at the very least, predict where Gigantica will go next.
                 return -1;
         }
-        
+
         return default;
     }
 

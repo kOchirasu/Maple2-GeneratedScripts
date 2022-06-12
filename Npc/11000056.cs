@@ -63,7 +63,7 @@ public class _11000056 : NpcScript {
                 // - I told you. Enter $map:61000005$ behind me and survive until the end, and $npc:11000441[gender:0]$ will shower you with money.
                 return -1;
         }
-        
+
         return default;
     }
 

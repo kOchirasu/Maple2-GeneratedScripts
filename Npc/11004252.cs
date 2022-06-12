@@ -61,7 +61,7 @@ public class _11004252 : NpcScript {
                 // - No need to thank me. I'm happy if my family is happy. You should keep it up, too.
                 return -1;
         }
-        
+
         return default;
     }
 

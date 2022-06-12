@@ -21,7 +21,7 @@ public class _11001912 : NpcScript {
                 // - We need to track down Katvan's accomplices before they do any more damage.
                 return -1;
         }
-        
+
         return default;
     }
 

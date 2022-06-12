@@ -21,7 +21,7 @@ public class _11001363 : NpcScript {
                 // - You can return the necklace... later, and in person!
                 return -1;
         }
-        
+
         return default;
     }
 

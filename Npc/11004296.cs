@@ -45,7 +45,7 @@ public class _11004296 : NpcScript {
                 // - That's right! All of your most important things go in your suitcase, after all. If you're looking for something, you should always check your suitcase first.
                 return -1;
         }
-        
+
         return default;
     }
 

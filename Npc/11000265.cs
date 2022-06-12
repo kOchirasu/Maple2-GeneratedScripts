@@ -21,7 +21,7 @@ public class _11000265 : NpcScript {
                 // - The secrets of the Land of Darkness and Shadow Word cannot be explained by logic. Nature was not created by mathematics or science. They have a life all their own, which must be understood. 
                 return -1;
         }
-        
+
         return default;
     }
 

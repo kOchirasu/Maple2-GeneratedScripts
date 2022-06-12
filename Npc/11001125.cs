@@ -22,7 +22,7 @@ public class _11001125 : NpcScript {
                 //   Zero entries found in $map:2000270$ personnel list... Creating new entry.
                 return -1;
         }
-        
+
         return default;
     }
 

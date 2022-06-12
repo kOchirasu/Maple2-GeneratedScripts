@@ -40,7 +40,7 @@ public class _11000475 : NpcScript {
                 //   Have a lucky journey!
                 return -1;
         }
-        
+
         return default;
     }
 

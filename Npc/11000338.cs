@@ -21,7 +21,7 @@ public class _11000338 : NpcScript {
                 // - How do you think the hotel was built on this cliff? Aren't you curious? 
                 return -1;
         }
-        
+
         return default;
     }
 

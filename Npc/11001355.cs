@@ -31,7 +31,7 @@ public class _11001355 : NpcScript {
                 // - Beat it! I'm not gonna get in trouble again!
                 return -1;
         }
-        
+
         return default;
     }
 

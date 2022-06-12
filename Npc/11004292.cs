@@ -31,7 +31,7 @@ public class _11004292 : NpcScript {
                 // - Please take the portal here to the $map:63000065$. And enjoy your stay... Mwahahaha! 
                 return -1;
         }
-        
+
         return default;
     }
 

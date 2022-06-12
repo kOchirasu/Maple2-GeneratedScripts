@@ -21,7 +21,7 @@ public class _11001941 : NpcScript {
                 // - This season's fashions are so uninspired, don't you think?
                 return -1;
         }
-        
+
         return default;
     }
 

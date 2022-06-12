@@ -35,7 +35,7 @@ public class _11004381 : NpcScript {
                 // - I saw $npcName:11004346[gender:0]$ heading for $map:63000073$ early this morning. He goes there every day, you know. He's always got his face stuffed in a book, ignoring his adorable little sister $npcName:11004345[gender:1]$. I'd never let her get bored... So what's his problem?
                 return -1;
         }
-        
+
         return default;
     }
 

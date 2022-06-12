@@ -21,7 +21,7 @@ public class _11003822 : NpcScript {
                 // - Those slimeballs...
                 return -1;
         }
-        
+
         return default;
     }
 

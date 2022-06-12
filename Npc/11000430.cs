@@ -35,7 +35,7 @@ public class _11000430 : NpcScript {
                 // - Not interested.
                 return -1;
         }
-        
+
         return default;
     }
 

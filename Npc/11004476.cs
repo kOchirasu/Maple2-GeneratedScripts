@@ -29,7 +29,7 @@ public class _11004476 : NpcScript {
                 // - Ugh, talking about it just makes it worse! I'm going to be too hungry to sleep tonight...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004198 : NpcScript {
                 // - Our yearly pilgrimage through the Vayar Mountains has made the warriors of Murpagoth mighty. Perhaps you will join us on our next journey? That is of course, after we have proven ourselves on the fields of Mushtopia.
                 return -1;
         }
-        
+
         return default;
     }
 

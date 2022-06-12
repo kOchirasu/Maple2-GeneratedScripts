@@ -49,7 +49,7 @@ public class _11004253 : NpcScript {
                 // - Compared to before, this is nothing! I admit it's still a work in progress, but one day soon we'll be rid of all those monsters!
                 return -1;
         }
-        
+
         return default;
     }
 

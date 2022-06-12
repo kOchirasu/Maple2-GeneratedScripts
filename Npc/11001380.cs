@@ -21,7 +21,7 @@ public class _11001380 : NpcScript {
                 // - Who are these guys? Get them out of here! The match would already be over by now if they didn't ruin everything!
                 return -1;
         }
-        
+
         return default;
     }
 

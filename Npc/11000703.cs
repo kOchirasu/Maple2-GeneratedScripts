@@ -21,7 +21,7 @@ public class _11000703 : NpcScript {
                 // - Time is of the essence. We must request backup right away.
                 return -1;
         }
-        
+
         return default;
     }
 

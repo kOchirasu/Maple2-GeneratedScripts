@@ -21,7 +21,7 @@ public class _11000248 : NpcScript {
                 // - I'd like to get flowers too.
                 return -1;
         }
-        
+
         return default;
     }
 

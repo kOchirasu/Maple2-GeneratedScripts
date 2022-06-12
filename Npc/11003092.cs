@@ -115,7 +115,7 @@ public class _11003092 : NpcScript {
                 // - Great! Come on back if you have any more questions about performing in $map:02000064$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11004566 : NpcScript {
                 // - I have nothing to say to you. We can work out our differences in the ring.
                 return -1;
         }
-        
+
         return default;
     }
 

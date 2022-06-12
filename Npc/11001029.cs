@@ -29,7 +29,7 @@ public class _11001029 : NpcScript {
                 // - If that happens, there'll be no saving $npcName:11000057[gender:1]$.
                 return -1;
         }
-        
+
         return default;
     }
 

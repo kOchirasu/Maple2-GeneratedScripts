@@ -21,7 +21,7 @@ public class _11000613 : NpcScript {
                 // - No one knows what it's like to toil in this place. Only another captive could understand. 
                 return -1;
         }
-        
+
         return default;
     }
 

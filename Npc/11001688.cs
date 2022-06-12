@@ -31,7 +31,7 @@ public class _11001688 : NpcScript {
                 // - I don't know if it was a clone or just someone who really looks like $npcName:11001680[gender:0]$. And I don't want to know. Now stop making me think about it.
                 return -1;
         }
-        
+
         return default;
     }
 

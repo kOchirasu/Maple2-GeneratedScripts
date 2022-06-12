@@ -21,7 +21,7 @@ public class _11000055 : NpcScript {
                 // - $MyPCName$, if you're hungry you should come inside. This is my house right here, and my mom is baking cookies.
                 return -1;
         }
-        
+
         return default;
     }
 

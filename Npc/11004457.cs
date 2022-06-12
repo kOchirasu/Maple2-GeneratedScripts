@@ -21,7 +21,7 @@ public class _11004457 : NpcScript {
                 // - Our first steps in a new world. I should be excited, but all I feel is nervous...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -45,7 +45,7 @@ public class _11004685 : NpcScript {
                 // - SCRIPTNPCNAM_0617095907015038_NAME:[F]Event
                 return -1;
         }
-        
+
         return default;
     }
 

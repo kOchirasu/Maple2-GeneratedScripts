@@ -21,7 +21,7 @@ public class _11004056 : NpcScript {
                 // - Losing the leadership of Terrun Calibre was too great a loss.
                 return -1;
         }
-        
+
         return default;
     }
 

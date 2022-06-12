@@ -46,7 +46,7 @@ public class _11000670 : NpcScript {
                 // - <font color="#909090">(You always remember to put books back where you found them... right?)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

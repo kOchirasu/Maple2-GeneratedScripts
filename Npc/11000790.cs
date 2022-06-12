@@ -1015,7 +1015,7 @@ public class _11000790 : NpcScript {
                 // - Tsk. What is this world coming to? Pathetic.
                 return -1;
         }
-        
+
         return default;
     }
 

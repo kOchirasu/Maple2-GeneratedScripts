@@ -29,7 +29,7 @@ public class _11000044 : NpcScript {
                 // - The others may not be on board yet, but they'll come around. Eventually.
                 return -1;
         }
-        
+
         return default;
     }
 

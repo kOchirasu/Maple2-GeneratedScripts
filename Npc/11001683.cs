@@ -21,7 +21,7 @@ public class _11001683 : NpcScript {
                 // - 
                 return -1;
         }
-        
+
         return default;
     }
 

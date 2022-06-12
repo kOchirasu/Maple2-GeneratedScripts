@@ -22,7 +22,7 @@ public class _11003244 : NpcScript {
                 //   <font color="#909090">($npcName:11003240[gender:0]$ lowers his head, his shoulders trembling ever so slightly.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

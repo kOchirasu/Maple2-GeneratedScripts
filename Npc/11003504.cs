@@ -57,7 +57,7 @@ public class _11003504 : NpcScript {
                 // - $item:61000005$ and I are training. I'm going to be a great pet master someday!
                 return -1;
         }
-        
+
         return default;
     }
 

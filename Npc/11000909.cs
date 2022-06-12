@@ -25,7 +25,7 @@ public class _11000909 : NpcScript {
                 // - Unauthorized personnel cannot view this directive.
                 return -1;
         }
-        
+
         return default;
     }
 

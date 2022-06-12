@@ -21,7 +21,7 @@ public class _11004437 : NpcScript {
                 // - Where should I start? Local ecology? Demographics? There's so much data to collate!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004038 : NpcScript {
                 // - Ah, you're here. It's thanks to you that we were all able to find common ground and work as one. Terrun Calibre will do whatever it can to help you with the matter of Madrakan.
                 return -1;
         }
-        
+
         return default;
     }
 

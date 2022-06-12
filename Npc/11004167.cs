@@ -21,7 +21,7 @@ public class _11004167 : NpcScript {
                 // - The Royal Guard protects the Empress and all of $map:02000001$. That is why we must never allow our skills to dull. So long as there are threats to peace in this world, we will not rest.
                 return -1;
         }
-        
+
         return default;
     }
 

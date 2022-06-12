@@ -31,7 +31,7 @@ public class _11001178 : NpcScript {
                 // - At first I saw them in the distance, like a tidal wave. Before I knew it, my farm was blanketed by a horde of pigs! They crashed through my farm, trampling everything, leaving only ruin! I couldn't believe my eyes...
                 return -1;
         }
-        
+
         return default;
     }
 

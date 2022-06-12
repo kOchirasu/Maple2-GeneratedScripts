@@ -25,7 +25,7 @@ public class _11000444 : NpcScript {
                 // - The sea may look calm from here, but it can destroy you in an instant.
                 return -1;
         }
-        
+
         return default;
     }
 

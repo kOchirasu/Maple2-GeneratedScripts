@@ -54,7 +54,7 @@ public class _11000674 : NpcScript {
                 // - <font color="#909090">(Reading the words on the altar, Turka's anger is almost palpable.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

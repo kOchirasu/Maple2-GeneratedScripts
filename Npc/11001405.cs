@@ -21,7 +21,7 @@ public class _11001405 : NpcScript {
                 // - P-please don't talk to me. I d-don't know anything!
                 return -1;
         }
-        
+
         return default;
     }
 

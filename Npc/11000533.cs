@@ -21,7 +21,7 @@ public class _11000533 : NpcScript {
                 // - Unless you've worked a day here, you can't truly appreciate what we're doing.
                 return -1;
         }
-        
+
         return default;
     }
 

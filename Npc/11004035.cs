@@ -21,7 +21,7 @@ public class _11004035 : NpcScript {
                 // - It's not like I want to be here. But I've got a debt to repay.
                 return -1;
         }
-        
+
         return default;
     }
 

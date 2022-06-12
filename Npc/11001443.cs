@@ -26,7 +26,7 @@ public class _11001443 : NpcScript {
                 // - You're looking pretty healthy to me, $MyPCName$, but if you're ever sick or wounded, I can help.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000872 : NpcScript {
                 // - Don't rely on Fairy Dew too much. This place is teeming with monsters that are stronger than you.
                 return -1;
         }
-        
+
         return default;
     }
 

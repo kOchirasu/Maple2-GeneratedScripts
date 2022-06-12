@@ -31,7 +31,7 @@ public class _11001277 : NpcScript {
                 // - I'm collecting special materials. I'm a specialist in restoring old documents, antiques, and what have you. The secretions of the $npcNamePlural:21000074$ are important in my line of work. 
                 return -1;
         }
-        
+
         return default;
     }
 

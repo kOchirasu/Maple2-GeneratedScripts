@@ -21,7 +21,7 @@ public class _11000298 : NpcScript {
                 // - What are you doing here? Traveling? I wish I could go on adventures too.
                 return -1;
         }
-        
+
         return default;
     }
 

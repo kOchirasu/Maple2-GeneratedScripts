@@ -25,7 +25,7 @@ public class _11003892 : NpcScript {
                 // - Who are you to give me orders?
                 return -1;
         }
-        
+
         return default;
     }
 

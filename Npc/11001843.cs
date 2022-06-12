@@ -21,7 +21,7 @@ public class _11001843 : NpcScript {
                 // - The room's spinning. Who knows when I'll be ready for active duty?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003414 : NpcScript {
                 // - <i>Here lies Sharp Claw, the war chief who rebuilt $map:02000051$. His kind heart and dedicated work uplifted our people during our time of need, and for that he will always be remembered.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -61,7 +61,7 @@ public class _11003641 : NpcScript {
                 // - Cheer up. You probably just had a frog in your throat, friend.
                 return -1;
         }
-        
+
         return default;
     }
 

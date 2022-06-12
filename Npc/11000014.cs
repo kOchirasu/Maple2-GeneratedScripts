@@ -39,7 +39,7 @@ public class _11000014 : NpcScript {
                 // - Oh, okay. Good. You'd better get out of here then, before someone sees you. And don't tell anyone you saw me in here!
                 return -1;
         }
-        
+
         return default;
     }
 

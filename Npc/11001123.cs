@@ -21,7 +21,7 @@ public class _11001123 : NpcScript {
                 // - The scientists in $map:2000270$ are known for their constant innovation. They're the reason I lug these heavy, expensive components everywhere I go.
                 return -1;
         }
-        
+
         return default;
     }
 

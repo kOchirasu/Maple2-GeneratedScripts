@@ -21,7 +21,7 @@ public class _11001129 : NpcScript {
                 // - What? Can't you see I'm working? Leave me alone.
                 return -1;
         }
-        
+
         return default;
     }
 

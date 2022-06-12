@@ -51,7 +51,7 @@ public class _11003636 : NpcScript {
                 // - Resuming normal operations. Have a nice day.
                 return -1;
         }
-        
+
         return default;
     }
 

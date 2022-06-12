@@ -51,7 +51,7 @@ public class _11003638 : NpcScript {
                 // - Wow! The picture came out great. Thank you.
                 return -1;
         }
-        
+
         return default;
     }
 

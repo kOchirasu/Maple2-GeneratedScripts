@@ -22,7 +22,7 @@ public class _11001480 : NpcScript {
                 //   All hope lies on $npcName:11001472[gender:1]$ recovering soon. She alone can save the Lumarigons.
                 return -1;
         }
-        
+
         return default;
     }
 

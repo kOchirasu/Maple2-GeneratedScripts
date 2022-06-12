@@ -55,7 +55,7 @@ public class _11000651 : NpcScript {
                 // - Haw! You don't know the password? Then we got nothing to talk about.
                 return -1;
         }
-        
+
         return default;
     }
 

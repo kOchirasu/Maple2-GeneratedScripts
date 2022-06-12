@@ -21,7 +21,7 @@ public class _11001943 : NpcScript {
                 // - Lazy designers! These are the exact same clothes they had here yesterday. Where are the new designs?
                 return -1;
         }
-        
+
         return default;
     }
 

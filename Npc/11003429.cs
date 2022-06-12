@@ -21,7 +21,7 @@ public class _11003429 : NpcScript {
                 // - I sense the war chief at the top of the hourglass. And yet... something is amiss.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000885 : NpcScript {
                 // - Sniff... Human, have you been to the moon? There are no stars or moon here...
                 return -1;
         }
-        
+
         return default;
     }
 

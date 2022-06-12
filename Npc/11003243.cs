@@ -21,7 +21,7 @@ public class _11003243 : NpcScript {
                 // - I understand what $npcName:11003240[gender:0]$ is going through, but it's past time for him to grow up.
                 return -1;
         }
-        
+
         return default;
     }
 

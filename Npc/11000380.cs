@@ -22,7 +22,7 @@ public class _11000380 : NpcScript {
                 //   We're a group of free-climbing enthusiasts who support each other on our quest to surmount the greatest of heights. Anyone with a passion for climbing is welcome.
                 return -1;
         }
-        
+
         return default;
     }
 

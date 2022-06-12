@@ -21,7 +21,7 @@ public class _11000893 : NpcScript {
                 // - May the light bless you.
                 return -1;
         }
-        
+
         return default;
     }
 

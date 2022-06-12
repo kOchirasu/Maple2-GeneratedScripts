@@ -47,7 +47,7 @@ public class _11003536 : NpcScript {
                 // - Of course, you know firsthand how good we are in a fight. Even though I'm stationed up here on the bridge, I'm just as good with my bow as Eka!
                 return -1;
         }
-        
+
         return default;
     }
 

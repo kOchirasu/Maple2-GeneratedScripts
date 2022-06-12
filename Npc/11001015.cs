@@ -21,7 +21,7 @@ public class _11001015 : NpcScript {
                 // - Each magic-user has their own spell. I haven't chosen mine yet. Alio olio! Hoi, hoi! Chacharachat! Which one sounds the best to you?
                 return -1;
         }
-        
+
         return default;
     }
 

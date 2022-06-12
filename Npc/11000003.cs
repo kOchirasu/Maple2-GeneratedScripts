@@ -63,7 +63,7 @@ public class _11000003 : NpcScript {
                 // - Err... No. I'm just telling you what I heard!
                 return -1;
         }
-        
+
         return default;
     }
 

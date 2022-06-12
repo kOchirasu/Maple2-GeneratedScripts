@@ -21,7 +21,7 @@ public class _11003451 : NpcScript {
                 // - Who will protect $map:02000051$?
                 return -1;
         }
-        
+
         return default;
     }
 

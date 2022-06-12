@@ -21,7 +21,7 @@ public class _11000260 : NpcScript {
                 // - I hope we nab $npcName:11000064[gender:0]$. He's caused so many people so much pain.
                 return -1;
         }
-        
+
         return default;
     }
 

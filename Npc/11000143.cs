@@ -29,7 +29,7 @@ public class _11000143 : NpcScript {
                 // - Boen is easy to remember and rolls off the tongue beautifully. Go to the top of that cliff and shout my name. It'll echo for a long time.
                 return -1;
         }
-        
+
         return default;
     }
 

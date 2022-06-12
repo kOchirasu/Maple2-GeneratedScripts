@@ -21,7 +21,7 @@ public class _11000136 : NpcScript {
                 // - This wolf's name is Buka. He's my friend.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000352 : NpcScript {
                 // - You can't step on flowers like that! Don't lie to me, I saw you!
                 return -1;
         }
-        
+
         return default;
     }
 

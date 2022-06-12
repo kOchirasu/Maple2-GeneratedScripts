@@ -21,7 +21,7 @@ public class _11004412 : NpcScript {
                 // - Whatever challenges this new land has in store for us, let them come. I will show them my true power.
                 return -1;
         }
-        
+
         return default;
     }
 

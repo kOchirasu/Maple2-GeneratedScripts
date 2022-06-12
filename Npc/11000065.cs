@@ -21,7 +21,7 @@ public class _11000065 : NpcScript {
                 // - As the mayor, I have a serious dilemma. Should I make the city great again, or is it already great?
                 return -1;
         }
-        
+
         return default;
     }
 

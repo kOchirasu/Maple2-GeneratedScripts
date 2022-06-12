@@ -25,7 +25,7 @@ public class _11000485 : NpcScript {
                 // - She's bad, but... so cool! I want to be a monster mushroom like her!
                 return -1;
         }
-        
+
         return default;
     }
 

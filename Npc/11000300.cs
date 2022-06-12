@@ -21,7 +21,7 @@ public class _11000300 : NpcScript {
                 // - Do you know what's living down below? $npcNamePlural:22000005$! They're so big and dreadful... Just looking at them leaves me petrified. How could I possibly get one of their tails?
                 return -1;
         }
-        
+
         return default;
     }
 

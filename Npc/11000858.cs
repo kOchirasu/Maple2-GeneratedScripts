@@ -25,7 +25,7 @@ public class _11000858 : NpcScript {
                 // - But an $npcName:24000702$ carried off $npcName:11001013[gender:1]$'s $item:30000328$ in its jaws... 
                 return -1;
         }
-        
+
         return default;
     }
 

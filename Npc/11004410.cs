@@ -21,7 +21,7 @@ public class _11004410 : NpcScript {
                 // - I get the feeling things are gonna get worse before they get better.
                 return -1;
         }
-        
+
         return default;
     }
 

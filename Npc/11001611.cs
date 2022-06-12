@@ -25,7 +25,7 @@ public class _11001611 : NpcScript {
                 // - $npcName:11001229[gender:0]$... Will he ever wake up?
                 return -1;
         }
-        
+
         return default;
     }
 

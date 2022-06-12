@@ -21,7 +21,7 @@ public class _11004226 : NpcScript {
                 // - Meoow!
                 return -1;
         }
-        
+
         return default;
     }
 

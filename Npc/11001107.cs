@@ -21,7 +21,7 @@ public class _11001107 : NpcScript {
                 // - Mom was right. She said anything can come true if I pray hard enough. I've prayed every day to be able to go back to her. Now I can!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000252 : NpcScript {
                 // - Goldus never stops moving toward the future. There's nothing we can't make or sell.
                 return -1;
         }
-        
+
         return default;
     }
 

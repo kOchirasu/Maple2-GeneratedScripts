@@ -305,7 +305,7 @@ public class _11000600 : NpcScript {
                 // - Ah, I'm afraid the transaction didn't go through. Please make sure you have enough money and free space in your bag for the item.
                 return -1;
         }
-        
+
         return default;
     }
 

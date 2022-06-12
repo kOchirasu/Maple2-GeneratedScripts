@@ -69,7 +69,7 @@ public class _11000960 : NpcScript {
                 // - Ah, I was about to leave...
                 return -1;
         }
-        
+
         return default;
     }
 

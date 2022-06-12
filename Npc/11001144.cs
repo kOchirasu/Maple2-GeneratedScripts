@@ -25,7 +25,7 @@ public class _11001144 : NpcScript {
                 // - For an accurate reading, I must focus my mind and keep disruptive thoughts at bay.
                 return -1;
         }
-        
+
         return default;
     }
 

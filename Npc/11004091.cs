@@ -33,7 +33,7 @@ public class _11004091 : NpcScript {
                 // - <font color="#909090">(Some people assume that this whale's name is Coco, given the name of the island. However, the creator of the whale insists that it isn't true.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

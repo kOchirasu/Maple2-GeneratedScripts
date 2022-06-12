@@ -21,7 +21,7 @@ public class _11004110 : NpcScript {
                 // - The Green Hoods are always ready.
                 return -1;
         }
-        
+
         return default;
     }
 

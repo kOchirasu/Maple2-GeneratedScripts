@@ -21,7 +21,7 @@ public class _11000097 : NpcScript {
                 // - The Barrota Trading Company is Maple World's biggest mercantile organization. Its hawkers go everywhere in the world, no matter how steep or dangerous.
                 return -1;
         }
-        
+
         return default;
     }
 

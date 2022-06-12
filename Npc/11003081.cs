@@ -21,7 +21,7 @@ public class _11003081 : NpcScript {
                 // - <font color="#909090">(Is someone inside this cabin? You can hear voices.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

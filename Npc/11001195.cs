@@ -41,7 +41,7 @@ public class _11001195 : NpcScript {
                 // - Owls are smart. It's just a cute nickname, honey. Get over yourself. 
                 return -1;
         }
-        
+
         return default;
     }
 

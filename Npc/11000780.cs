@@ -1161,7 +1161,7 @@ public class _11000780 : NpcScript {
                 // - Excuse me?! You... don't know? Do you live under a rock or something? Hmph.
                 return -1;
         }
-        
+
         return default;
     }
 

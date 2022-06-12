@@ -67,7 +67,7 @@ public class _11001388 : NpcScript {
                 // - Oh, not at all. If anyone's generous here it's you, $MyPCName$. You went out on a limb to help people that you really didn't know. Being so compassionate and talented, you're bound to be successful in whatever you do. 
                 return -1;
         }
-        
+
         return default;
     }
 

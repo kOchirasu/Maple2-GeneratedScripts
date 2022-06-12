@@ -31,7 +31,7 @@ public class _11004464 : NpcScript {
                 // - Never heard of it. Look, just keep your head down and try not to get caught in the crossfire.
                 return -1;
         }
-        
+
         return default;
     }
 

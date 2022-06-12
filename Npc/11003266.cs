@@ -21,7 +21,7 @@ public class _11003266 : NpcScript {
                 // - My head is throbbing. Shoulder, knees, and toes, too. Mark my words, there's a storm brewing. 
                 return -1;
         }
-        
+
         return default;
     }
 

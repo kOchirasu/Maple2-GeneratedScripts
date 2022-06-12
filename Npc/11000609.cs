@@ -21,7 +21,7 @@ public class _11000609 : NpcScript {
                 // - What do I do if $npcName:11000526[gender:0]$'s creditors come after me? How could he hang me out to dry like this?
                 return -1;
         }
-        
+
         return default;
     }
 

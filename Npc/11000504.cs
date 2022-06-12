@@ -21,7 +21,7 @@ public class _11000504 : NpcScript {
                 // - This place is... How do I say? Full of contradictions. A rich, gorgeous facade that hides a lingering melancholy. This hotel is luxurious, but it's not for the regular people who live around it. Those people belong to a different world.
                 return -1;
         }
-        
+
         return default;
     }
 

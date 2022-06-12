@@ -69,7 +69,7 @@ public class _11004063 : NpcScript {
                 // - <i>From that day forth, Round Eye and its fellow lava eyes lived happily on the $map:02000039$, working together to lift each other up.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

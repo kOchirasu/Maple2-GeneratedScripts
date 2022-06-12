@@ -57,7 +57,7 @@ public class _11000585 : NpcScript {
                 // - $map:02000124$ is where the worst criminals of all get locked up. We run tours to show the free, law-abiding citizens why they should stay law-abiding.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004127 : NpcScript {
                 // - So... tired... When's the next shift change?
                 return -1;
         }
-        
+
         return default;
     }
 

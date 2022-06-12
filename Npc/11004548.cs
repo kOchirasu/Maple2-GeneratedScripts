@@ -21,7 +21,7 @@ public class _11004548 : NpcScript {
                 // - <font color="#909090">(The rafflesia is highly toxic. This one seems to be slumbering. Try not to wake it up.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001946 : NpcScript {
                 // - Finally, I'm in my element. Don't bother me while I'm in the zone.
                 return -1;
         }
-        
+
         return default;
     }
 

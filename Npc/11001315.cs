@@ -35,7 +35,7 @@ public class _11001315 : NpcScript {
                 // - They're just jealous of how great he is! Gramps talks loud so people can hear him clearly. Isn't that nice? 
                 return -1;
         }
-        
+
         return default;
     }
 

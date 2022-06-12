@@ -55,7 +55,7 @@ public class _11000645 : NpcScript {
                 // - No, I don't. And I don't wanna.
                 return -1;
         }
-        
+
         return default;
     }
 

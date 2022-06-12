@@ -55,7 +55,7 @@ public class _11001139 : NpcScript {
                 // - Hahaha! You say that now, but you'll find no finer leatherwork around. Return to me once you've changed your mind.
                 return -1;
         }
-        
+
         return default;
     }
 

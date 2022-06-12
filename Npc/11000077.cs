@@ -21,7 +21,7 @@ public class _11000077 : NpcScript {
                 // - How are your journeys treating you? Deployments can be exciting, but I get homesick if I'm away for too long.
                 return -1;
         }
-        
+
         return default;
     }
 

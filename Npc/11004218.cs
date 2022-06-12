@@ -25,7 +25,7 @@ public class _11004218 : NpcScript {
                 // - If you wanna survive, you've got to win, and there's no right or wrong when it comes to winning. Somebody's got to go, you or them.
                 return -1;
         }
-        
+
         return default;
     }
 

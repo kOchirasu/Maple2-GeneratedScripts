@@ -21,7 +21,7 @@ public class _11003218 : NpcScript {
                 // - How're you feeling?
                 return -1;
         }
-        
+
         return default;
     }
 

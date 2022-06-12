@@ -35,7 +35,7 @@ public class _11001387 : NpcScript {
                 // - Never mind. I shouldn't have mentioned it to an outsider in the first place. If you'll excuse me, I need to gather herbs for my arthritis.
                 return -1;
         }
-        
+
         return default;
     }
 

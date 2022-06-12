@@ -21,7 +21,7 @@ public class _11000594 : NpcScript {
                 // - Everything in this world has energy, and lava has the most potent energy of all!
                 return -1;
         }
-        
+
         return default;
     }
 

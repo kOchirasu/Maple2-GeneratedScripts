@@ -21,7 +21,7 @@ public class _11004022 : NpcScript {
                 // - Go away, you bother me.
                 return -1;
         }
-        
+
         return default;
     }
 

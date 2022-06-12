@@ -65,7 +65,7 @@ public class _11000022 : NpcScript {
                 // - If you don't believe me, go to $map:02000115$ and see for yourself.
                 return -1;
         }
-        
+
         return default;
     }
 

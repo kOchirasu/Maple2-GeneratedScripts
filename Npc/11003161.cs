@@ -21,7 +21,7 @@ public class _11003161 : NpcScript {
                 // - If you love flowers so much, then go pick them yourself. These aren't for you.
                 return -1;
         }
-        
+
         return default;
     }
 

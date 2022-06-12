@@ -1010,7 +1010,7 @@ public class _11000785 : NpcScript {
                 // - I'm the man in charge of keeping the house secure! Who are you?
                 return -1;
         }
-        
+
         return default;
     }
 

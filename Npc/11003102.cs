@@ -39,7 +39,7 @@ public class _11003102 : NpcScript {
                 // - Oh, really? I have a feeling you'll be changing your mind sometime soon. 
                 return -1;
         }
-        
+
         return default;
     }
 

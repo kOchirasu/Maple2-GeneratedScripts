@@ -21,7 +21,7 @@ public class _11000223 : NpcScript {
                 // - I don't understand women. It feels like they're always changing their minds. 
                 return -1;
         }
-        
+
         return default;
     }
 

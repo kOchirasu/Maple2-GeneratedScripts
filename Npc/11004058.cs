@@ -21,7 +21,7 @@ public class _11004058 : NpcScript {
                 // - I'm... sorry about what happened to the leaders of Terrun Calibre.
                 return -1;
         }
-        
+
         return default;
     }
 

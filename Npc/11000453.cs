@@ -43,7 +43,7 @@ public class _11000453 : NpcScript {
                 // - ...And if you can wait an hour or three, I can make some for you. The storms have fouled up the fishermen, so I'm still waiting on today's catch. What a life, huh?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001382 : NpcScript {
                 // - If you're thinking of investing in $map:02010036$, you're too late... friend. I was here first.
                 return -1;
         }
-        
+
         return default;
     }
 

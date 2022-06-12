@@ -21,7 +21,7 @@ public class _11003206 : NpcScript {
                 // - I'd be a goner if you hadn't shown up.
                 return -1;
         }
-        
+
         return default;
     }
 

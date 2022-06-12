@@ -21,7 +21,7 @@ public class _11004185 : NpcScript {
                 // - To reclaim all I have lost, I must find a champion in the greatest of games!
                 return -1;
         }
-        
+
         return default;
     }
 

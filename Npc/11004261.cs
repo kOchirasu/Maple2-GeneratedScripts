@@ -31,7 +31,7 @@ public class _11004261 : NpcScript {
                 // - <i>For a time, it became a popular tourist destination, with a cafe on the first floor and the terrace opened to the public. However, due to fans swarming the building anytime $npc:11000406[gender:0]$ visited for some much-deserved rest and relaxation, the house has now been closed to the public.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

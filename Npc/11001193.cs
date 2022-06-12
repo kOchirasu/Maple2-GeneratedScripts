@@ -47,7 +47,7 @@ public class _11001193 : NpcScript {
                 //   <font color="#C66455" size="22">Good, good.</font>
                 return -1;
         }
-        
+
         return default;
     }
 

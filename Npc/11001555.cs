@@ -25,7 +25,7 @@ public class _11001555 : NpcScript {
                 // - This one time, somebody climbed the hill in the middle of the night to get up close to the whale. Or he tried to, but he lost his grip halfway up and fell. It was a total disaster.
                 return -1;
         }
-        
+
         return default;
     }
 

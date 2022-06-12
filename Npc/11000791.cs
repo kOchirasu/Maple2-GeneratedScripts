@@ -1009,7 +1009,7 @@ public class _11000791 : NpcScript {
                 // - Yeah? Then why didn't you knock before barging in?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -101,7 +101,7 @@ public class _11001985 : NpcScript {
                 // - For your own sake, let's hope that doesn't happen.
                 return -1;
         }
-        
+
         return default;
     }
 

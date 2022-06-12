@@ -21,7 +21,7 @@ public class _11004124 : NpcScript {
                 // - I've never seen anything so spooky.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -29,7 +29,7 @@ public class _11000007 : NpcScript {
                 // - I'll do my best to become a good militia member, so I can believe my father would be proud of me.
                 return -1;
         }
-        
+
         return default;
     }
 

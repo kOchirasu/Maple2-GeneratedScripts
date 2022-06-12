@@ -1030,7 +1030,7 @@ public class _11000773 : NpcScript {
                 // - Do you not see the ketchup stains on my gown? I'm a doctor. Hah hah hah!
                 return -1;
         }
-        
+
         return default;
     }
 

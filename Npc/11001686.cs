@@ -35,7 +35,7 @@ public class _11001686 : NpcScript {
                 // - Boss. Lackey. It doesn't matter. All that matters is how strong you are. $npcName:11001678[gender:0]$ can try to rise as much as he wants, but he's got a glass jaw. A weakling like him just ain't officer material.
                 return -1;
         }
-        
+
         return default;
     }
 

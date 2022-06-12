@@ -31,7 +31,7 @@ public class _11004297 : NpcScript {
                 // - Just be careful around anything that hangs on a wall, okay? You never know when it'll fall!
                 return -1;
         }
-        
+
         return default;
     }
 

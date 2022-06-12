@@ -41,7 +41,7 @@ public class _11004208 : NpcScript {
                 // - I know, right? You can touch him, if you want. Just don't pop him. These things are expensive.
                 return -1;
         }
-        
+
         return default;
     }
 

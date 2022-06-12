@@ -21,7 +21,7 @@ public class _11000399 : NpcScript {
                 // - The more I think about it, the angrier I get! How could they stop me from going on vacation, and one that I've had planned for months? Maybe I should just leave and let them deal with the water.
                 return -1;
         }
-        
+
         return default;
     }
 

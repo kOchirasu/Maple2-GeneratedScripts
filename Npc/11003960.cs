@@ -21,7 +21,7 @@ public class _11003960 : NpcScript {
                 // - Hey... Do you have more Orange Mushroom cookies...? I ate all of mine, hehe.
                 return -1;
         }
-        
+
         return default;
     }
 

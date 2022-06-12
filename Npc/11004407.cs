@@ -21,7 +21,7 @@ public class _11004407 : NpcScript {
                 // - The alliance needs Dark Wind now more than ever.
                 return -1;
         }
-        
+
         return default;
     }
 

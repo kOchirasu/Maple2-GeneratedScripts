@@ -21,7 +21,7 @@ public class _11001044 : NpcScript {
                 // - I like being a Santa. How could I not? I'm giving people joy!
                 return -1;
         }
-        
+
         return default;
     }
 

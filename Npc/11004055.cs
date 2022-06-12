@@ -21,7 +21,7 @@ public class _11004055 : NpcScript {
                 // - The siege on Madrakan was successful, but it cost us a great deal.
                 return -1;
         }
-        
+
         return default;
     }
 

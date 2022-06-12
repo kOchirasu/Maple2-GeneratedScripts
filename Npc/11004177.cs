@@ -21,7 +21,7 @@ public class _11004177 : NpcScript {
                 // - You want to join our squad? Listen, you seem nice, but I've already got two reliable partners. I don't think we need anyone else.
                 return -1;
         }
-        
+
         return default;
     }
 

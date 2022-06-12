@@ -21,7 +21,7 @@ public class _11000832 : NpcScript {
                 // - There's no better medicine than hope. Stop being a crybaby and come over here.
                 return -1;
         }
-        
+
         return default;
     }
 

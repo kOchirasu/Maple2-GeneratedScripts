@@ -255,7 +255,7 @@ public class _11000745 : NpcScript {
                 // - Do you know how to play rock-paper-scissors? It's a little more complex than making funny shapes with your hand.
                 return -1;
         }
-        
+
         return default;
     }
 

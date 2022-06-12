@@ -21,7 +21,7 @@ public class _11004313 : NpcScript {
                 // - I'm here, but most of my men are tied up defending Victoria Island. I hate being benched!
                 return -1;
         }
-        
+
         return default;
     }
 

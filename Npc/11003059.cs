@@ -63,7 +63,7 @@ public class _11003059 : NpcScript {
                 // - Hey, this is all completely grounded in fact! That's what my gut tells me, anyway. You look like you can handle a little adventure. If you come across the shrine, you gotta let me know!
                 return -1;
         }
-        
+
         return default;
     }
 

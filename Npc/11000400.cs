@@ -25,7 +25,7 @@ public class _11000400 : NpcScript {
                 // - Dark Wind told me to take some time off, so I thought I'd take a vacation to the dam. Then I noticed that... thing... under the water. How am I supposed to rest now?
                 return -1;
         }
-        
+
         return default;
     }
 

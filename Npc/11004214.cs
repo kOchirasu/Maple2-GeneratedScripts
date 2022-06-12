@@ -21,7 +21,7 @@ public class _11004214 : NpcScript {
                 // - I've got just what you need to continue the search.
                 return -1;
         }
-        
+
         return default;
     }
 

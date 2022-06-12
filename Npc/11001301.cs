@@ -21,7 +21,7 @@ public class _11001301 : NpcScript {
                 // - Were it not for the lumarigons, we would not have defeated the Demon King. We must go to Drachenheim's aid.
                 return -1;
         }
-        
+
         return default;
     }
 

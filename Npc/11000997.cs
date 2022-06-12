@@ -21,7 +21,7 @@ public class _11000997 : NpcScript {
                 // - Whew, that was close. You almost startled me right off the clock!
                 return -1;
         }
-        
+
         return default;
     }
 

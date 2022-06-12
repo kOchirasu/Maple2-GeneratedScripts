@@ -87,7 +87,7 @@ public class _11000008 : NpcScript {
                 // - If you already have a house, hiring a maid is a good next step. $npcName:11000700[gender:1]$ in $map:02000001$ is an expert on assistants and can definitely help you out. Maybe you should look for a house around $map:02000076$ first.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001337 : NpcScript {
                 // - You here to talk, or you here to skate? Heh... Good luck.
                 return -1;
         }
-        
+
         return default;
     }
 

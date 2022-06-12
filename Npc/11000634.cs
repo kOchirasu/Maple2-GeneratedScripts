@@ -65,7 +65,7 @@ public class _11000634 : NpcScript {
                 // - You were testing me? Get outta here, you rat! If you ain't gonna help me, just leave me alone!
                 return -1;
         }
-        
+
         return default;
     }
 

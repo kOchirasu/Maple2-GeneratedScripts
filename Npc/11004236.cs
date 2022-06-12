@@ -25,7 +25,7 @@ public class _11004236 : NpcScript {
                 // - I wish everybody was more like you.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -33,7 +33,7 @@ public class _11004262 : NpcScript {
                 // - <font color="#909090">(Maybe it's time you got some fish of your own.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

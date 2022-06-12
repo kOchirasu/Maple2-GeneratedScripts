@@ -50,7 +50,7 @@ public class _11000254 : NpcScript {
                 // - Sure! I love nothing more than helping match people with the hair of their dreams. Let's chat and find something that's totally you!
                 return -1;
         }
-        
+
         return default;
     }
 

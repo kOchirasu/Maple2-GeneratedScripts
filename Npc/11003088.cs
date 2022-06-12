@@ -21,7 +21,7 @@ public class _11003088 : NpcScript {
                 // - I'd love to jump into that hot spring... just not when you're watching me, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

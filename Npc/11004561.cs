@@ -43,7 +43,7 @@ public class _11004561 : NpcScript {
                 // - If we end up facing off in the ring, I'll have to show you a thing or two.
                 return -1;
         }
-        
+
         return default;
     }
 

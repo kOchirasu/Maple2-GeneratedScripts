@@ -21,7 +21,7 @@ public class _11000480 : NpcScript {
                 // - $npcName:11000328[gender:0]$ has asked us to gather $itemPlural:30000055$ from the quarry in this work cart. I have no idea why he wants useless junk like this.
                 return -1;
         }
-        
+
         return default;
     }
 

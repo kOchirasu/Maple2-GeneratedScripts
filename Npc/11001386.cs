@@ -21,7 +21,7 @@ public class _11001386 : NpcScript {
                 // - If the development project is a success, it'll bring wealth and fame to $map:02010063$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000012 : NpcScript {
                 // - If I keep working like this, exhaustion's going to get me. And what's worse is that $npcName:11000252[gender:0]$ still won't appreciate all my hard work! You know, it's so hard to take care of $map:02000001$ by myself.
                 return -1;
         }
-        
+
         return default;
     }
 

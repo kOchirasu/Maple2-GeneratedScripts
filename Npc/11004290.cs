@@ -21,7 +21,7 @@ public class _11004290 : NpcScript {
                 // - Welcome to our fine hotel.
                 return -1;
         }
-        
+
         return default;
     }
 

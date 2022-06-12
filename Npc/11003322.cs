@@ -21,7 +21,7 @@ public class _11003322 : NpcScript {
                 // - The enemy is up to something.
                 return -1;
         }
-        
+
         return default;
     }
 

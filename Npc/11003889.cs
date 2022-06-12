@@ -25,7 +25,7 @@ public class _11003889 : NpcScript {
                 // - I'll punish any who threaten the seas. Even you.
                 return -1;
         }
-        
+
         return default;
     }
 

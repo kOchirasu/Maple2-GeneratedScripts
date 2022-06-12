@@ -25,7 +25,7 @@ public class _11003080 : NpcScript {
                 // - $MyPCName$, thank you for telling me about your adventures! I hope I can get better so I can have my own adventures, too.
                 return -1;
         }
-        
+
         return default;
     }
 

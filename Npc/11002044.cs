@@ -30,7 +30,7 @@ public class _11002044 : NpcScript {
                 // - I'm sorry, I can't treat you. You're not a resident here, and I can only make time for locals right now.
                 return -1;
         }
-        
+
         return default;
     }
 

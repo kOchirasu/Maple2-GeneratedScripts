@@ -21,7 +21,7 @@ public class _11000804 : NpcScript {
                 // - $MyPCName$, never let your guard down. Not for an instant. You're a long way from Maple World.
                 return -1;
         }
-        
+
         return default;
     }
 

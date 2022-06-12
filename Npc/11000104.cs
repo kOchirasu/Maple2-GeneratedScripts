@@ -21,7 +21,7 @@ public class _11000104 : NpcScript {
                 // - Well aren't you a sight for sore eyes. It's been a while since I've seen anybody that wasn't a skeleton or an angry octo-thing looking to bludgeon me to death.
                 return -1;
         }
-        
+
         return default;
     }
 

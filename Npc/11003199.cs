@@ -21,7 +21,7 @@ public class _11003199 : NpcScript {
                 // - A fight between siblings can be even more fearsome than a duel between sworn enemies. I wouldn't stand a chance if $npcName:11000069[gender:1]$ were my sister.
                 return -1;
         }
-        
+
         return default;
     }
 

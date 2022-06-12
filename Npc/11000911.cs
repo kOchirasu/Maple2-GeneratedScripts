@@ -21,7 +21,7 @@ public class _11000911 : NpcScript {
                 // - Please don't talk to me. I'm in the middle of doing the worst thing I can imagine.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -19,7 +19,7 @@ public class _11000351 : NpcScript {
                 // - Just look at that gorgeous reflection! Can you believe that's you?
                 return -1;
         }
-        
+
         return default;
     }
 

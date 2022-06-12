@@ -55,7 +55,7 @@ public class _11000482 : NpcScript {
                 // - Do you want a reward? Then join up and complete the game!
                 return -1;
         }
-        
+
         return default;
     }
 

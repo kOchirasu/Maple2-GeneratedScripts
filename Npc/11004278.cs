@@ -29,7 +29,7 @@ public class _11004278 : NpcScript {
                 // - <font color="#909090">(The power of the dragons of light which once protected Nazkar is completely gone. Now, all avoid this once-sacred area.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -26,7 +26,7 @@ public class _11003254 : NpcScript {
                 //   <font size='20'>This is all for Professor $npc:11003148[gender:0]$...</font>
                 return -1;
         }
-        
+
         return default;
     }
 

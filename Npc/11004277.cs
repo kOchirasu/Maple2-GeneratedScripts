@@ -49,7 +49,7 @@ public class _11004277 : NpcScript {
                 // - Sssimple human, you ssstill think I'm just another sssnake... I will give you one warning: beware up ahead!
                 return -1;
         }
-        
+
         return default;
     }
 

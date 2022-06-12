@@ -1005,7 +1005,7 @@ public class _11000779 : NpcScript {
                 // - I am the secretary of the owner of this house. Now, care to explain why you barged in uninvited?
                 return -1;
         }
-        
+
         return default;
     }
 

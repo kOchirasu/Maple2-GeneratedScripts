@@ -31,7 +31,7 @@ public class _11001546 : NpcScript {
                 // - Go back to your corner and practice. I'm busy.
                 return -1;
         }
-        
+
         return default;
     }
 

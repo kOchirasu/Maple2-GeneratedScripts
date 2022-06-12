@@ -117,7 +117,7 @@ public class _11000324 : NpcScript {
                 // - Don't think too hard, dawg. Just express yourself!
                 return -1;
         }
-        
+
         return default;
     }
 

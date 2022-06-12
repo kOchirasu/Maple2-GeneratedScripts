@@ -21,7 +21,7 @@ public class _11000912 : NpcScript {
                 // - Justice always prevails!
                 return -1;
         }
-        
+
         return default;
     }
 

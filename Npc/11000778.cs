@@ -1090,7 +1090,7 @@ public class _11000778 : NpcScript {
                 // - My name is $MaidName$! Nice to meet —what am I saying? Wh-who are you?!
                 return -1;
         }
-        
+
         return default;
     }
 

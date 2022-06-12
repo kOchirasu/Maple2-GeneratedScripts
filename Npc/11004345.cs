@@ -21,7 +21,7 @@ public class _11004345 : NpcScript {
                 // - Have you seen my family? I... really miss them right now.
                 return -1;
         }
-        
+
         return default;
     }
 

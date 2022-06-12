@@ -33,7 +33,7 @@ public class _11000075 : NpcScript {
                 // - It was $npcName:11000044[gender:0]$ who suggested I hold an open court for the people. I suppose it was part of his plan all along...
                 return -1;
         }
-        
+
         return default;
     }
 

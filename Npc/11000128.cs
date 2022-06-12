@@ -21,7 +21,7 @@ public class _11000128 : NpcScript {
                 // - I heard this path was dangerous. I didn't know it was this bad. You'd better be careful. 
                 return -1;
         }
-        
+
         return default;
     }
 

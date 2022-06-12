@@ -21,7 +21,7 @@ public class _11001074 : NpcScript {
                 // - Every single picture here is drawn by a child. Amazing, right?
                 return -1;
         }
-        
+
         return default;
     }
 

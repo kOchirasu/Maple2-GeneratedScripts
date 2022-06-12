@@ -42,7 +42,7 @@ public class _11001493 : NpcScript {
                 // - Everything happens for a reason.
                 return -1;
         }
-        
+
         return default;
     }
 

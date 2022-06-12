@@ -21,7 +21,7 @@ public class _11001949 : NpcScript {
                 // - But I don't <i>want</i> to be a musician! 
                 return -1;
         }
-        
+
         return default;
     }
 

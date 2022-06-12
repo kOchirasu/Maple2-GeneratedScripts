@@ -33,7 +33,7 @@ public class _11004085 : NpcScript {
                 // - <i>Someday, we believe that our goddess will return to us in mortal form. Until then, we wait and stand watch against the shadows.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

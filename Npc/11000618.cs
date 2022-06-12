@@ -21,7 +21,7 @@ public class _11000618 : NpcScript {
                 // - How on the world am I supposed to fix these wagons? I can't carry them back to town!
                 return -1;
         }
-        
+
         return default;
     }
 

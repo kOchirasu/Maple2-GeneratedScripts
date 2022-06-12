@@ -21,7 +21,7 @@ public class _11000972 : NpcScript {
                 // - I'll do anything for the safety and peace of $map:02000076$. I'll fight as long as I can, for the honor of the Green Hoods.
                 return -1;
         }
-        
+
         return default;
     }
 

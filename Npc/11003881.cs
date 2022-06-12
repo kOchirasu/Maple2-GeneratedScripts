@@ -21,7 +21,7 @@ public class _11003881 : NpcScript {
                 // - Whenever a new herb is discovered, I plant it here.
                 return -1;
         }
-        
+
         return default;
     }
 

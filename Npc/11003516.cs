@@ -41,7 +41,7 @@ public class _11003516 : NpcScript {
                 // - They're not easy to capture. If you don't tie them up or stun them, they'll slip away.
                 return -1;
         }
-        
+
         return default;
     }
 

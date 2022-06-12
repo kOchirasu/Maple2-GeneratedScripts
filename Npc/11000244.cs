@@ -25,7 +25,7 @@ public class _11000244 : NpcScript {
                 // - People say that the richer you get, the pickier you get. Makes sense, since you can have whatever you want with enough money.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -95,7 +95,7 @@ public class _11000064 : NpcScript {
                 // - He had me on the ropes before, but things are different now. And I know I can count on you to help me take him out.
                 return -1;
         }
-        
+
         return default;
     }
 

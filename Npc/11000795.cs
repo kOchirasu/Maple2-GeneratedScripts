@@ -21,7 +21,7 @@ public class _11000795 : NpcScript {
                 // - Is there something you're looking for? You can find everything at Cathy Mart. If we don't have it, it doesn't exist!
                 return -1;
         }
-        
+
         return default;
     }
 

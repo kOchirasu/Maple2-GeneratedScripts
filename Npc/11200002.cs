@@ -45,7 +45,7 @@ public class _11200002 : NpcScript {
                 // - No matter where you are, music is there! Take a look at the items I have for you, and give music a try!
                 return -1;
         }
-        
+
         return default;
     }
 

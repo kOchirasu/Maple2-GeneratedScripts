@@ -71,7 +71,7 @@ public class _11004530 : NpcScript {
                 // - I'm going to get a lung disease from my time in this place. Hopefully it's all just in my head...
                 return -1;
         }
-        
+
         return default;
     }
 

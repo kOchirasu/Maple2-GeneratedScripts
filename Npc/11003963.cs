@@ -21,7 +21,7 @@ public class _11003963 : NpcScript {
                 // - I'd be grateful for the opportunity to speak with a peer...
                 return -1;
         }
-        
+
         return default;
     }
 

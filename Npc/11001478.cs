@@ -31,7 +31,7 @@ public class _11001478 : NpcScript {
                 // - There's only one thing to do. You must retrieve the Lumenstone before its chaotic light is consumed by darkness.
                 return -1;
         }
-        
+
         return default;
     }
 

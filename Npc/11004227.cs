@@ -21,7 +21,7 @@ public class _11004227 : NpcScript {
                 // - Sigh... I can't go in there without my squad, but my friends are all no-shows and I'm starting to get pretty bored.
                 return -1;
         }
-        
+
         return default;
     }
 

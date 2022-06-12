@@ -21,7 +21,7 @@ public class _11001607 : NpcScript {
                 // - We've joined forces under the banner of the Starlight Expedition. I only hope we can achieve what we've set out to do. 
                 return -1;
         }
-        
+
         return default;
     }
 

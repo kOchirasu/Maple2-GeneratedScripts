@@ -25,7 +25,7 @@ public class _11000328 : NpcScript {
                 // - Antique items are precious relics of the past. You can trade antiques, but you can't bring the past back.
                 return -1;
         }
-        
+
         return default;
     }
 

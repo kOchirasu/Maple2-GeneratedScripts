@@ -21,7 +21,7 @@ public class _11000974 : NpcScript {
                 // - It gives me tremendous pleasure to watch people enjoying my food. Ho, ho!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -55,7 +55,7 @@ public class _11001247 : NpcScript {
                 // - The man that $npcName:11001231[gender:0]$ killed was both the leader of the Pelgia sect and Terrun Calibre as a whole. While not all of the Jibricia have turned against us entirely turned against us, his actions have us teetering on the edge of civil war.
                 return -1;
         }
-        
+
         return default;
     }
 

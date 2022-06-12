@@ -21,7 +21,7 @@ public class _11003093 : NpcScript {
                 // - I'll tell you more of the Lumiknights when the time is right.
                 return -1;
         }
-        
+
         return default;
     }
 

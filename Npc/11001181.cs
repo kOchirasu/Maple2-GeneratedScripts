@@ -85,7 +85,7 @@ public class _11001181 : NpcScript {
                 // - Captain $npcName:11001179[gender:0]$ kicked him off the ship. Last I saw, he was running off toward $map:03000014$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -39,7 +39,7 @@ public class _11000052 : NpcScript {
                 // - That's right. The people of this place take care of each other like their own family. It's a wonderful place to live, and I want the rest of the world to know that. That's why I'm sending a special envoy to $map:02000001$ for the court.
                 return -1;
         }
-        
+
         return default;
     }
 

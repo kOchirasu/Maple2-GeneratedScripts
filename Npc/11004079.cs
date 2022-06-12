@@ -139,7 +139,7 @@ public class _11004079 : NpcScript {
                 // - Oh, you don't get to my age without learning how to keep your ears open.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004154 : NpcScript {
                 // - Wow, just look at that ocean! This place is so different from $map:02000051$. It really is nice to get out and explore the world once in a while.
                 return -1;
         }
-        
+
         return default;
     }
 

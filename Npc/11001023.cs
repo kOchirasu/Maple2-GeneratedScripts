@@ -21,7 +21,7 @@ public class _11001023 : NpcScript {
                 // - To let him slip through my fingers... After everything he put me through...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -39,7 +39,7 @@ public class _11004563 : NpcScript {
                 // - I look forward to our match.
                 return -1;
         }
-        
+
         return default;
     }
 

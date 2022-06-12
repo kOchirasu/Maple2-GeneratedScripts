@@ -21,7 +21,7 @@ public class _11001331 : NpcScript {
                 // - One moment, I'm shopping on cloud nine. The next moment... I don't know if I ever want to go shopping again!
                 return -1;
         }
-        
+
         return default;
     }
 

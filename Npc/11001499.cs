@@ -41,7 +41,7 @@ public class _11001499 : NpcScript {
                 // - Aw man, the escaltor is out. I didn't sign up for <i>stairs</i>...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001381 : NpcScript {
                 // - I'm thinking up ways to bring prosperity to $map:02010036$. If you want to chat, talk to someone else.
                 return -1;
         }
-        
+
         return default;
     }
 

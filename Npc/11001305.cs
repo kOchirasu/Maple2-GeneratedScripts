@@ -21,7 +21,7 @@ public class _11001305 : NpcScript {
                 // - No wonder the empress was in such a hurry to see me. It's always something... 
                 return -1;
         }
-        
+
         return default;
     }
 

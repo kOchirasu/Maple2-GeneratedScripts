@@ -29,7 +29,7 @@ public class _11004081 : NpcScript {
                 // - Come back to me... Come out of the cold... Your mama is waiting...
                 return -1;
         }
-        
+
         return default;
     }
 

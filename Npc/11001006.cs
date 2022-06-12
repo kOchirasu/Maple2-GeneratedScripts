@@ -21,7 +21,7 @@ public class _11001006 : NpcScript {
                 // - Most people steer clear of this place because of the monsters.
                 return -1;
         }
-        
+
         return default;
     }
 

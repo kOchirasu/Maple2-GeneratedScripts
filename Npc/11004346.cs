@@ -21,7 +21,7 @@ public class _11004346 : NpcScript {
                 // - Why must the holidays always be so stressful...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -49,7 +49,7 @@ public class _11000406 : NpcScript {
                 // - Hey, hey! What are you looking at? Look at me! Hello! Hey, can't you hear me?
                 return -1;
         }
-        
+
         return default;
     }
 

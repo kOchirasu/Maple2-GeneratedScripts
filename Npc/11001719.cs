@@ -21,7 +21,7 @@ public class _11001719 : NpcScript {
                 // - If things are to return to normal, then we must stay united. Don't forget that.
                 return -1;
         }
-        
+
         return default;
     }
 

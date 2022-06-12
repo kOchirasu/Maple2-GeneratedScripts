@@ -21,7 +21,7 @@ public class _11000182 : NpcScript {
                 // - Scram, I got work to do.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001350 : NpcScript {
                 // - Yeeees? It's rude to barge in on someone's summer home, you know. Please remove yourself from the premises.
                 return -1;
         }
-        
+
         return default;
     }
 

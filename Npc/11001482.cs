@@ -31,7 +31,7 @@ public class _11001482 : NpcScript {
                 // - If $npcName:23000068[gender:0]$ finds out we lost the Lumenstone, he'll come after us. Could you hold off $npcName:23000068[gender:0]$ until we get the Lumenstone back?
                 return -1;
         }
-        
+
         return default;
     }
 

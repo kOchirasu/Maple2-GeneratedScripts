@@ -25,7 +25,7 @@ public class _11000843 : NpcScript {
                 // - This place exists upon the central axis of time for our universe. It is a road to all things. Here all possible timelines coexist simultaneously. $npcName:22400062$ plans to collapse them all into a single eventuality, one where he reigns supreme!
                 return -1;
         }
-        
+
         return default;
     }
 

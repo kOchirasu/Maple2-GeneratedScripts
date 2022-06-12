@@ -21,7 +21,7 @@ public class _11001712 : NpcScript {
                 // - The artifact must be hidden somewhere nearby. Or something related to it, at the very least.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000784 : NpcScript {
                 // - Strange... I see cake everywhere, but I smell nothing.
                 return -1;
         }
-        
+
         return default;
     }
 

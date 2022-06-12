@@ -31,7 +31,7 @@ public class _11001673 : NpcScript {
                 // - Whatever they are, they aren't good. Let's focus less on what they are and more on how to stop them.
                 return -1;
         }
-        
+
         return default;
     }
 

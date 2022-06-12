@@ -25,7 +25,7 @@ public class _11004315 : NpcScript {
                 // - Sorry, but I don't have any missions just yet.
                 return -1;
         }
-        
+
         return default;
     }
 

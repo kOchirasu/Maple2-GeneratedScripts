@@ -25,7 +25,7 @@ public class _11004544 : NpcScript {
                 // - If you do not have any particular business with us, leave. Humans who come here tend to give us more work.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -29,7 +29,7 @@ public class _11004280 : NpcScript {
                 // - <font color="#909090">(You can sense a different sort of power beyond the crack in the wall.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

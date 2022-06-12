@@ -73,7 +73,7 @@ public class _11001197 : NpcScript {
                 // - Hmpf! I suppose I'll forgive you this time. Not everyone understands the true beauty of Trophies, after all. But don't let it happen again! Trophy experts demand respect, I tell you!
                 return -1;
         }
-        
+
         return default;
     }
 

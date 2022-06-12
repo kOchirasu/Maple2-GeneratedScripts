@@ -43,7 +43,7 @@ public class _11004076 : NpcScript {
                 // - Yeah, exactly. Yet that poor creature actually think it's gonna be a butterfly. Can you believe that?
                 return -1;
         }
-        
+
         return default;
     }
 

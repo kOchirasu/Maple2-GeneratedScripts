@@ -21,7 +21,7 @@ public class _11000892 : NpcScript {
                 // - May the light of the forest be with you.
                 return -1;
         }
-        
+
         return default;
     }
 

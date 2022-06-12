@@ -53,7 +53,7 @@ public class _11004499 : NpcScript {
                 // - It's worth researching. This could revolutionize building techniques all over the empire.
                 return -1;
         }
-        
+
         return default;
     }
 

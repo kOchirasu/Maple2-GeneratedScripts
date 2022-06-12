@@ -31,7 +31,7 @@ public class _11001724 : NpcScript {
                 // - These are my companions. Don't worry, they aren't nearly as violent or nasty as they look. 
                 return -1;
         }
-        
+
         return default;
     }
 

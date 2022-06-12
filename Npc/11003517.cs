@@ -31,7 +31,7 @@ public class _11003517 : NpcScript {
                 // - Aur-what? Look, I just want to finish my exam and grab some grub.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000365 : NpcScript {
                 // - Shush! Please leave quietly. I'm done for if they find out I'm here. 
                 return -1;
         }
-        
+
         return default;
     }
 

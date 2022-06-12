@@ -21,7 +21,7 @@ public class _11004777 : NpcScript {
                 // - Click on the <font color="#00a2ed">Go to Event Map</font> button to go to <font color="#ffd200">$map:63000072$</font>.
                 return -1;
         }
-        
+
         return default;
     }
 

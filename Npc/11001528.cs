@@ -113,7 +113,7 @@ public class _11001528 : NpcScript {
                 // - My soul mate, $npcName:11001527[gender:0]$, has become a DJ. I'm here to support $npcName:11001527[gender:0]$ and rock it 'til the wheels fall off! Get on this, $MyPCName$! 
                 return -1;
         }
-        
+
         return default;
     }
 

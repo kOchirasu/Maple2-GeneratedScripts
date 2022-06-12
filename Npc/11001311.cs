@@ -29,7 +29,7 @@ public class _11001311 : NpcScript {
                 // - You're amazing, you know that? You've been far from home even longer than I have, and it doesn't show. I've got to work to be as strong as you someday!
                 return -1;
         }
-        
+
         return default;
     }
 

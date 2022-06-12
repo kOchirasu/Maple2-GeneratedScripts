@@ -21,7 +21,7 @@ public class _11001077 : NpcScript {
                 // - D-don't come near me. No! I need a friend. No, no... L-let's start again... Ha!
                 return -1;
         }
-        
+
         return default;
     }
 

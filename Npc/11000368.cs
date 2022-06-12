@@ -21,7 +21,7 @@ public class _11000368 : NpcScript {
                 // - $MyPCName$, you of all people should help protect the forest!
                 return -1;
         }
-        
+
         return default;
     }
 

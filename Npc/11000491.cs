@@ -37,7 +37,7 @@ public class _11000491 : NpcScript {
                 // - I don't sell anything on credit. I trust money more than I trust people.
                 return -1;
         }
-        
+
         return default;
     }
 

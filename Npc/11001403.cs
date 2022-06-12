@@ -58,7 +58,7 @@ public class _11001403 : NpcScript {
                 // - Let me know if I can help.
                 return -1;
         }
-        
+
         return default;
     }
 

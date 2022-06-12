@@ -21,7 +21,7 @@ public class _11001537 : NpcScript {
                 // - How did you find me...?
                 return -1;
         }
-        
+
         return default;
     }
 

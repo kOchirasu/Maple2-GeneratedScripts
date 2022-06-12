@@ -21,7 +21,7 @@ public class _11003261 : NpcScript {
                 // - I've never seen Professor $npc:11003251[gender:0]$ in such a state before. I can't believe this has happened... 
                 return -1;
         }
-        
+
         return default;
     }
 

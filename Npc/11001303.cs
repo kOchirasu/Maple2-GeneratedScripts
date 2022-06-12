@@ -21,7 +21,7 @@ public class _11001303 : NpcScript {
                 // - The empress has great faith in you, $MyPCName$. Do not disappoint her.
                 return -1;
         }
-        
+
         return default;
     }
 

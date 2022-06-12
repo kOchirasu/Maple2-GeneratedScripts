@@ -21,7 +21,7 @@ public class _11001553 : NpcScript {
                 // - Are you here to fish? This place is wonderful. I came here with my sister, Bory, and we're having a blast!
                 return -1;
         }
-        
+
         return default;
     }
 

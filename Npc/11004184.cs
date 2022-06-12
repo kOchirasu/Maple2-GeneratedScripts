@@ -21,7 +21,7 @@ public class _11004184 : NpcScript {
                 // - It's certainly reassuring to have these two at my side, but we have a lot of work ahead of us if we intend to come out on top.
                 return -1;
         }
-        
+
         return default;
     }
 

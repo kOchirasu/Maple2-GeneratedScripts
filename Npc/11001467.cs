@@ -21,7 +21,7 @@ public class _11001467 : NpcScript {
                 // - We have a saying in the construction industry: safety first. That means that it's none of my business if you do something stupid and get hurt!
                 return -1;
         }
-        
+
         return default;
     }
 

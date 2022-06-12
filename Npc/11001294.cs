@@ -45,7 +45,7 @@ public class _11001294 : NpcScript {
                 // - It ended with my utter defeat, as you can see. He said he had fun and that the Blackstars wouldn't bother me if I stayed down. Well, all it took was a single punch and I was done. I don't deserve to be the champion of Ludari Arena.
                 return -1;
         }
-        
+
         return default;
     }
 

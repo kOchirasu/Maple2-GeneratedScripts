@@ -103,7 +103,7 @@ public class _11001707 : NpcScript {
                 // - N-no need to dwell on the past, I guess! Let's talk about something else.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001934 : NpcScript {
                 // - Sorry, but I'm not in the mood to chat. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000292 : NpcScript {
                 // - If only she loved me... I would do anything for her... 
                 return -1;
         }
-        
+
         return default;
     }
 

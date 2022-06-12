@@ -29,7 +29,7 @@ public class _11000354 : NpcScript {
                 // - I can't believe you came to save me... Thank you. I'll live an honest life from now on. I'll donate to charities, pay all my taxes, and volunteer at the soup kitchens.
                 return -1;
         }
-        
+
         return default;
     }
 

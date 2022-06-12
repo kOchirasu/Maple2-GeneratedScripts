@@ -21,7 +21,7 @@ public class _11004024 : NpcScript {
                 // - I will restore my kingdom.
                 return -1;
         }
-        
+
         return default;
     }
 

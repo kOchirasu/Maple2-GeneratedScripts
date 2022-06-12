@@ -65,7 +65,7 @@ public class _11004074 : NpcScript {
                 // - You're just like all those people napping down there. No help. No help at all...
                 return -1;
         }
-        
+
         return default;
     }
 

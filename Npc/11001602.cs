@@ -21,7 +21,7 @@ public class _11001602 : NpcScript {
                 // - Enough with the preamble. It's time for the main event.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003467 : NpcScript {
                 // - Don't start any trouble.
                 return -1;
         }
-        
+
         return default;
     }
 

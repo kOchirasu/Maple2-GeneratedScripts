@@ -33,7 +33,7 @@ public class _11003163 : NpcScript {
                 // - Once my work here is done, I'll go and visit her first thing! I've been sending her letters, it's just... she can't see. A disease took her eyesight. Sigh... 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004172 : NpcScript {
                 // - Blam, blam! Oh, hey. I'm just practicing my aim. I don't want to let my squad down.
                 return -1;
         }
-        
+
         return default;
     }
 

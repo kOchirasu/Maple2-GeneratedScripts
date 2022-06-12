@@ -21,7 +21,7 @@ public class _11000105 : NpcScript {
                 // - Honey, if you're looking to make a splash in $map:02000001$'s social scene, you're gonna need to do something about that outfit.
                 return -1;
         }
-        
+
         return default;
     }
 

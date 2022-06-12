@@ -21,7 +21,7 @@ public class _11000372 : NpcScript {
                 // - As scientists, we must always look toward the future. We must not abandon our research because we aren't happy with the immediate results, or out of fear of perceived consequences. Science requires persistence and dedication!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -33,7 +33,7 @@ public class _11004259 : NpcScript {
                 // - <font color="#909090">(Will everything eventually become ludibrified?)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

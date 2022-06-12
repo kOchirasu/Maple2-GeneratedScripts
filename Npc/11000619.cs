@@ -21,7 +21,7 @@ public class _11000619 : NpcScript {
                 // - It's nice to be outside sometimes.
                 return -1;
         }
-        
+
         return default;
     }
 

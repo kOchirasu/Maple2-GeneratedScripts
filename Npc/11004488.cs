@@ -49,7 +49,7 @@ public class _11004488 : NpcScript {
                 // - I think this terminal is connected somehow. I haven't managed to get it to do anything yet, though.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11004415 : NpcScript {
                 // - Eat all you want, and it never never runs out! It's <i>magic cake</i>. That's the best part! Hee hee!
                 return -1;
         }
-        
+
         return default;
     }
 

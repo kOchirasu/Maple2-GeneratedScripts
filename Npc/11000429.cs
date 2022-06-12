@@ -35,7 +35,7 @@ public class _11000429 : NpcScript {
                 // - $itemPlural:30000140$? That sounds delicious! I'll be back for those.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -49,7 +49,7 @@ public class _11004066 : NpcScript {
                 // - Hush, now. Don't ask too many questions or you'll get hurt. Let's just say that we're trying to make things more fun.
                 return -1;
         }
-        
+
         return default;
     }
 

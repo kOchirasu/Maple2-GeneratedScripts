@@ -21,7 +21,7 @@ public class _11001732 : NpcScript {
                 // - Security systems will be put online if you do not verify your credentials. Failure to connect will require you to re-verify your credentials at the front gate.
                 return -1;
         }
-        
+
         return default;
     }
 

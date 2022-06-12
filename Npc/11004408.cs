@@ -21,7 +21,7 @@ public class _11004408 : NpcScript {
                 // - Especially at times like these, we must maintain our composure.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -63,7 +63,7 @@ public class _11004329 : NpcScript {
                 // - Indeed!
                 return -1;
         }
-        
+
         return default;
     }
 

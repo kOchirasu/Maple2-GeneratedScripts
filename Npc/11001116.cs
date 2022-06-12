@@ -21,7 +21,7 @@ public class _11001116 : NpcScript {
                 // - Did Mom send you to bring me home? I feel bad saying this, but I can't leave yet. Not until the garden is back to normal.
                 return -1;
         }
-        
+
         return default;
     }
 

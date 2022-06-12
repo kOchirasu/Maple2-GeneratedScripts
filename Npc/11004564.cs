@@ -57,7 +57,7 @@ public class _11004564 : NpcScript {
                 // - Fine, <i>don't</i> throw the fight. But I warn you, I'll give it everything I've got!
                 return -1;
         }
-        
+
         return default;
     }
 

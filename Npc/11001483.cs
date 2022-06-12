@@ -25,7 +25,7 @@ public class _11001483 : NpcScript {
                 // - D-do you see the door over there? I think something awful happened on the other side... I'm scared...
                 return -1;
         }
-        
+
         return default;
     }
 

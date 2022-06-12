@@ -33,7 +33,7 @@ public class _11004098 : NpcScript {
                 // - <font color="#909090">(In fact, rumor has it the empire's vaults are full of the stuff...)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001944 : NpcScript {
                 // - I hear there's a lot of top talent here for the audition. I'm a little worried...
                 return -1;
         }
-        
+
         return default;
     }
 

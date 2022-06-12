@@ -37,7 +37,7 @@ public class _11000530 : NpcScript {
                 // - Picking up a brush was as natural to me as picking up a spoon. I was born to paint. I don't need to know exactly when I started doing it.
                 return -1;
         }
-        
+
         return default;
     }
 

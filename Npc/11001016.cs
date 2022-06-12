@@ -21,7 +21,7 @@ public class _11001016 : NpcScript {
                 // - Ahem, excuse me. Do you know how expensive these clothes I'm wearing are? 
                 return -1;
         }
-        
+
         return default;
     }
 

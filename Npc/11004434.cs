@@ -21,7 +21,7 @@ public class _11004434 : NpcScript {
                 // - Stay alert. We're in uncharted territory.
                 return -1;
         }
-        
+
         return default;
     }
 

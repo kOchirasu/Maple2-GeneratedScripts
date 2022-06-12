@@ -21,7 +21,7 @@ public class _11000646 : NpcScript {
                 // - It's been three days since the toilet overflowed...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11004507 : NpcScript {
                 // - Anyway, watch yourself out there. Our enemy won't hesitate to shoot you down.
                 return -1;
         }
-        
+
         return default;
     }
 

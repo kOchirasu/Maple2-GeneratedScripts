@@ -25,7 +25,7 @@ public class _11000505 : NpcScript {
                 // - Who are you? Stop bothering me.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -31,7 +31,7 @@ public class _11001054 : NpcScript {
                 // - My dream isn't much. I just want to be a successful businessman. I may be delivering pizzas now, but I know I can make it big if I work hard enough.
                 return -1;
         }
-        
+
         return default;
     }
 

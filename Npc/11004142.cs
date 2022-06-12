@@ -21,7 +21,7 @@ public class _11004142 : NpcScript {
                 // - My favorite game is hide-and-seek!
                 return -1;
         }
-        
+
         return default;
     }
 

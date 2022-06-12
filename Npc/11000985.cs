@@ -21,7 +21,7 @@ public class _11000985 : NpcScript {
                 // - Research is no simple matter. One can't produce results on a normal schedule. 
                 return -1;
         }
-        
+
         return default;
     }
 

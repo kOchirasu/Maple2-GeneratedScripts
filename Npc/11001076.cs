@@ -21,7 +21,7 @@ public class _11001076 : NpcScript {
                 // - One day, I'm going to become as great a weaponsmith as my big brother!
                 return -1;
         }
-        
+
         return default;
     }
 

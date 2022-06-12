@@ -21,7 +21,7 @@ public class _11003877 : NpcScript {
                 // - The waves are calm today! It's a nice day to go sailing.
                 return -1;
         }
-        
+
         return default;
     }
 

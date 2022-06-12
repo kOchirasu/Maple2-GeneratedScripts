@@ -45,7 +45,7 @@ public class _11003063 : NpcScript {
                 //   <font color="#909090">(He's gotten sulky. I don't think he'll want to talk to me anymore.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

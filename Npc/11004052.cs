@@ -21,7 +21,7 @@ public class _11004052 : NpcScript {
                 // - The full might of the empire stands behind the Frontier Foundation. We too will stand against the darkness.
                 return -1;
         }
-        
+
         return default;
     }
 

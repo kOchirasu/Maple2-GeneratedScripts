@@ -21,7 +21,7 @@ public class _11003269 : NpcScript {
                 // - Platoon leader of the Green Hoods, at your service. $npcName:11000015[gender:1]$ sent me here to watch over $map:02000146$.
                 return -1;
         }
-        
+
         return default;
     }
 

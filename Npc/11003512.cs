@@ -31,7 +31,7 @@ public class _11003512 : NpcScript {
                 // - Humans can't do anything alone. If you can't figure it out, ask someone to help you.
                 return -1;
         }
-        
+
         return default;
     }
 

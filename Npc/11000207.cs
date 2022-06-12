@@ -21,7 +21,7 @@ public class _11000207 : NpcScript {
                 // - Big cargo ships come through here all the time. Sometimes I think the Barrota Trading Company is more successful than Goldus.
                 return -1;
         }
-        
+
         return default;
     }
 

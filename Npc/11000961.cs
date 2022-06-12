@@ -21,7 +21,7 @@ public class _11000961 : NpcScript {
                 // - One day, I want to follow in $npcName:11000015[gender:1]$'s footsteps and become the leader of the Green Hoods. I want to earn the same respect that she did.
                 return -1;
         }
-        
+
         return default;
     }
 

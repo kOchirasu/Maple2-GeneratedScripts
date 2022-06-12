@@ -25,7 +25,7 @@ public class _11000241 : NpcScript {
                 // - Our cable cars are made to last. They won't break, no matter how hard you jump! Please note that we won't be liable for injuries if you jump yourself right out of the car.
                 return -1;
         }
-        
+
         return default;
     }
 

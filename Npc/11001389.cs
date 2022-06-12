@@ -29,7 +29,7 @@ public class _11001389 : NpcScript {
                 // - She's always talking about ruins and secrets. Why does she let such silly nonsense weigh her down? She tried to tell me about it, but honestly, it's so boring I forgot it already...
                 return -1;
         }
-        
+
         return default;
     }
 

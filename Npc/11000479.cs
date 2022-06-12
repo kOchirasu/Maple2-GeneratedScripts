@@ -21,7 +21,7 @@ public class _11000479 : NpcScript {
                 // - As a musician, I want to make music from the most beautiful tones of nature. That's my dream.
                 return -1;
         }
-        
+
         return default;
     }
 

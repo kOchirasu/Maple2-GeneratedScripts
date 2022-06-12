@@ -65,7 +65,7 @@ public class _11003535 : NpcScript {
                 // - Hey there, kitten. Looking to run missions for Dark Wind? I don't think you're ready to handle my business <i>just</i> yet. 
                 return -1;
         }
-        
+
         return default;
     }
 

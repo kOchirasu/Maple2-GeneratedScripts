@@ -59,7 +59,7 @@ public class _11004492 : NpcScript {
                 // - Astonishing, too!
                 return -1;
         }
-        
+
         return default;
     }
 

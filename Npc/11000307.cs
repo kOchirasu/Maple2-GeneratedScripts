@@ -21,7 +21,7 @@ public class _11000307 : NpcScript {
                 // - Everyone needs a place to call home.
                 return -1;
         }
-        
+
         return default;
     }
 

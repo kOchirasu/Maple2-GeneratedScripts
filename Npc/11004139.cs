@@ -21,7 +21,7 @@ public class _11004139 : NpcScript {
                 // - It is all well and good to forget one's troubles in a cheerful place such as this, but we cannot lose sight of what's real. A dark storm gathers over Maple World. Now more than ever, we need heroes. Will you answer the call?
                 return -1;
         }
-        
+
         return default;
     }
 

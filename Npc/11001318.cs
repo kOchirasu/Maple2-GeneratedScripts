@@ -29,7 +29,7 @@ public class _11001318 : NpcScript {
                 // - The divine recognizes this and guides our hand. Remember that, and you will never know fear.
                 return -1;
         }
-        
+
         return default;
     }
 

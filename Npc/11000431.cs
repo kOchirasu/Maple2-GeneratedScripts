@@ -35,7 +35,7 @@ public class _11000431 : NpcScript {
                 // - Go away.
                 return -1;
         }
-        
+
         return default;
     }
 

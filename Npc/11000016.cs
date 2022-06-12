@@ -31,7 +31,7 @@ public class _11000016 : NpcScript {
                 // - You sail to $map:02000001$ by first going to $map:02000062$, and right now the water's too choppy for this boat. Besides, when conditions are like that, only the Chief can authorize the departure of a large ship.
                 return -1;
         }
-        
+
         return default;
     }
 

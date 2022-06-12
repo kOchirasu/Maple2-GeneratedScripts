@@ -21,7 +21,7 @@ public class _11001922 : NpcScript {
                 // - Do you mind? I'm trying to enjoy some "me" time.
                 return -1;
         }
-        
+
         return default;
     }
 

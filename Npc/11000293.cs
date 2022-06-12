@@ -21,7 +21,7 @@ public class _11000293 : NpcScript {
                 // - Want to know how I keep my fur so shiny?
                 return -1;
         }
-        
+
         return default;
     }
 

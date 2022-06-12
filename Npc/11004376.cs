@@ -21,7 +21,7 @@ public class _11004376 : NpcScript {
                 // - Wouldn't it be something if pure white snow tasted like candy?
                 return -1;
         }
-        
+
         return default;
     }
 

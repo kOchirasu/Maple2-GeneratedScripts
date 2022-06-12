@@ -21,7 +21,7 @@ public class _11004149 : NpcScript {
                 // - I've loved $npcName:11000444[gender:0]$'s books and the sea ever since I was a boy—probably a side-effect of growing up by the ocean. And now I'm on a voyage of my own, alongside my childhood friends.
                 return -1;
         }
-        
+
         return default;
     }
 

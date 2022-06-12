@@ -25,7 +25,7 @@ public class _11000118 : NpcScript {
                 // - $MyPCName$, you looking to scare up some cash too? It's not as dangerous as I expected. Give it a try!
                 return -1;
         }
-        
+
         return default;
     }
 

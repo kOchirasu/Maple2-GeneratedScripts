@@ -21,7 +21,7 @@ public class _11000425 : NpcScript {
                 // - These vultures are not tamed. What if they fly me to some unfamiliar place or drop me in midair?
                 return -1;
         }
-        
+
         return default;
     }
 

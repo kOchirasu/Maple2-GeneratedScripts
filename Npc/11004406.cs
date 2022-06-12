@@ -21,7 +21,7 @@ public class _11004406 : NpcScript {
                 // - This turn of events bodes ill. I think it's time my cadets redoubled their training.
                 return -1;
         }
-        
+
         return default;
     }
 

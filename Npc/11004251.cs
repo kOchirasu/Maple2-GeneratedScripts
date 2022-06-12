@@ -53,7 +53,7 @@ public class _11004251 : NpcScript {
                 // - <font color="#909090">(Strange letters appear beneath that. You can't decipher them, but they send a chill down your spine.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

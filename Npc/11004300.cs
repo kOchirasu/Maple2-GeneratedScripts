@@ -69,7 +69,7 @@ public class _11004300 : NpcScript {
                 // - Come to think of it, there were some real important-looking papers in one of the books I read the other day. Weird, huh?
                 return -1;
         }
-        
+
         return default;
     }
 

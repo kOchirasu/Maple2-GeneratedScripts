@@ -21,7 +21,7 @@ public class _11004143 : NpcScript {
                 // - $npcName:11001167[gender:0]$ likes to frighten us with scary stories, but now that I know better, I don't believe a word he says!
                 return -1;
         }
-        
+
         return default;
     }
 

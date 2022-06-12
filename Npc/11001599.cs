@@ -21,7 +21,7 @@ public class _11001599 : NpcScript {
                 // - Everyone seems to be a little heated. Don't forget, this is official Expedition business.
                 return -1;
         }
-        
+
         return default;
     }
 

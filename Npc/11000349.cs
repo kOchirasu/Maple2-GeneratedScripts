@@ -170,7 +170,7 @@ public class _11000349 : NpcScript {
                 // - Not many people know this, but there's a sect of animal people who live in the mountains and practice mysterious martial arts. I've heard legends that they can even bring the dead back to life...
                 return -1;
         }
-        
+
         return default;
     }
 

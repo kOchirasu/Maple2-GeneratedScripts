@@ -32,7 +32,7 @@ public class _11001056 : NpcScript {
                 // - You do not have enough money to use this experimental teleportation device. It costs 5,000 mesos to use.
                 return -1;
         }
-        
+
         return default;
     }
 

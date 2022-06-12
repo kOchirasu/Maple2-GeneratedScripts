@@ -21,7 +21,7 @@ public class _11000178 : NpcScript {
                 // - My son is doing very important work at $map:02000001$ Palace. I couldn't provide for him when he was young, but he still grew into such a great man. I'm so proud of him. 
                 return -1;
         }
-        
+
         return default;
     }
 

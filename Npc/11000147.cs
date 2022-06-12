@@ -21,7 +21,7 @@ public class _11000147 : NpcScript {
                 // - When will I ever have another chance to see the empress in person? I really want to go see the court!
                 return -1;
         }
-        
+
         return default;
     }
 

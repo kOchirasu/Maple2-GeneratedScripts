@@ -25,7 +25,7 @@ public class _11004542 : NpcScript {
                 // - This place is <i>amazing</i>! Just this morning alone, I discovered three new molecules and a new kind of superconductor!
                 return -1;
         }
-        
+
         return default;
     }
 

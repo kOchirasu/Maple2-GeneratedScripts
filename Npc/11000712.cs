@@ -21,7 +21,7 @@ public class _11000712 : NpcScript {
                 // - Dad doesn't want to play with me. $MyPCName$, could you play with me?
                 return -1;
         }
-        
+
         return default;
     }
 

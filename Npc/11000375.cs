@@ -21,7 +21,7 @@ public class _11000375 : NpcScript {
                 // - Enoki mushrooms grow here. They require clean, undisturbed areas to flourish. I suppose no one ever comes to this valley, then.
                 return -1;
         }
-        
+
         return default;
     }
 

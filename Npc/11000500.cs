@@ -25,7 +25,7 @@ public class _11000500 : NpcScript {
                 // - You better leave while I'm still in a good mood. I'm no ordinary rock.
                 return -1;
         }
-        
+
         return default;
     }
 

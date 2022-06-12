@@ -35,7 +35,7 @@ public class _11000667 : NpcScript {
                 // - Don't stick your nose where it doesn't belong.
                 return -1;
         }
-        
+
         return default;
     }
 

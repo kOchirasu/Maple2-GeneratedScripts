@@ -25,7 +25,7 @@ public class _11000020 : NpcScript {
                 // - The open court of the empress is just around the corner, and yet bad things are happening constantly around here. First the supply carriage was robbed, and then the earthquake happened. All I wanted was for all this to go smoothly.
                 return -1;
         }
-        
+
         return default;
     }
 

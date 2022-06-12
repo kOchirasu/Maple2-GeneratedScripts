@@ -21,7 +21,7 @@ public class _11000426 : NpcScript {
                 // - What have I gotten myself into? I should never have followed $npcName:11000425[gender:0]$ here. What's going on? And why's it snowing?
                 return -1;
         }
-        
+
         return default;
     }
 

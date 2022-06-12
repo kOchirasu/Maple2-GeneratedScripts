@@ -21,7 +21,7 @@ public class _11001166 : NpcScript {
                 // - Shh! Please, keep your voice down! <i>That mage</i> can't know I'm here!
                 return -1;
         }
-        
+
         return default;
     }
 

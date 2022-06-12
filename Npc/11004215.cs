@@ -93,7 +93,7 @@ public class _11004215 : NpcScript {
                 // - <font color="#909090">(After you reach level 50, you can use $itemPlural:30001187$ and $itemPlural:30001188$ on this chest to make materials for upgrading gemstones.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000302 : NpcScript {
                 // - $MyPCName$, it must be an act of the divine that you and I met. My name is $npcName:11000302[gender:1]$, and I'm currently studying under $npcName:11000039[gender:1]$.
                 return -1;
         }
-        
+
         return default;
     }
 

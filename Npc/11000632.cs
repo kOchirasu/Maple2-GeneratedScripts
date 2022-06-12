@@ -56,7 +56,7 @@ public class _11000632 : NpcScript {
                 // - You already have a $item:39000009$. I hope it'll help guide you around $map:02000124$.
                 return -1;
         }
-        
+
         return default;
     }
 

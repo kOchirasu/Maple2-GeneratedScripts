@@ -65,7 +65,7 @@ public class _11004255 : NpcScript {
                 // - Where are you going? Have a taste!
                 return -1;
         }
-        
+
         return default;
     }
 

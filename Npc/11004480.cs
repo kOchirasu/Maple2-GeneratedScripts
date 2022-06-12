@@ -43,7 +43,7 @@ public class _11004480 : NpcScript {
                 // - I just want to lose myself in my research!
                 return -1;
         }
-        
+
         return default;
     }
 

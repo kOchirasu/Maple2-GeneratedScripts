@@ -90,7 +90,7 @@ public class _11001179 : NpcScript {
                 // - Hmm... I'm sorry, but they aren't something we carry. Come to think of it, $npcName:11001180[gender:1]$ or $npcName:11001181[gender:0]$ might know where to find some. Why don't you try speaking with them?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -29,7 +29,7 @@ public class _11004268 : NpcScript {
                 // - <font color="#909090">(There are over 100 lights in use on the West Auto Bridge, and they symbolize the glamor and promise of the big city.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

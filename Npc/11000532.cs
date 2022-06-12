@@ -21,7 +21,7 @@ public class _11000532 : NpcScript {
                 // - Ah, we haven't had many guests lately. Do you know why?
                 return -1;
         }
-        
+
         return default;
     }
 

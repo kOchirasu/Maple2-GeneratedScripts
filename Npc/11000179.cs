@@ -25,7 +25,7 @@ public class _11000179 : NpcScript {
                 // - Ah, we meet again. Thank you for taking care of things last time. I was able to score the contract thanks to you!
                 return -1;
         }
-        
+
         return default;
     }
 

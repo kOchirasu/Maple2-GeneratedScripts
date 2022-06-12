@@ -21,7 +21,7 @@ public class _11001437 : NpcScript {
                 // - We built the village around the stream. It keeps us alive in the inhospitable desert.
                 return -1;
         }
-        
+
         return default;
     }
 

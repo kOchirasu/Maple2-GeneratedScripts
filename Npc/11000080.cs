@@ -21,7 +21,7 @@ public class _11000080 : NpcScript {
                 // - This place is connected to $map:02000001$ by the great Royal Road. Just stay on it, and you'll be there in no time.
                 return -1;
         }
-        
+
         return default;
     }
 

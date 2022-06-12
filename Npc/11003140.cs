@@ -21,7 +21,7 @@ public class _11003140 : NpcScript {
                 // - Don't you just love the smell of my garden? My greatest joy is when I manage to reproduce extinct medicinal flowers. Heh... 
                 return -1;
         }
-        
+
         return default;
     }
 

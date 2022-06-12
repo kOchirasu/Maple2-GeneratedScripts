@@ -25,7 +25,7 @@ public class _11000995 : NpcScript {
                 // - That means they don't know me. I prefer seeing things for myself rather than reading them from books. That's why I'm so happy about this job with the Adventurer's Guild.
                 return -1;
         }
-        
+
         return default;
     }
 

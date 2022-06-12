@@ -21,7 +21,7 @@ public class _11000361 : NpcScript {
                 // - $npc:11000065[gender:0]$ is really amazing. When he sets his mind on something, nothing can stop him!
                 return -1;
         }
-        
+
         return default;
     }
 

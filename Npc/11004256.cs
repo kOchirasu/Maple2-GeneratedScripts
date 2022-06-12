@@ -42,7 +42,7 @@ public class _11004256 : NpcScript {
                 //   Slows down or reverses the ludibrification process. NOT TO BE USED ON HUMANS. For inanimate object only. Ingredients extremely toxic.
                 return -1;
         }
-        
+
         return default;
     }
 

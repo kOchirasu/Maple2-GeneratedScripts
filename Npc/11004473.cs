@@ -35,7 +35,7 @@ public class _11004473 : NpcScript {
                 // - What, afraid of a little fame? How lame. This must be why they say you should never meet your heroes.
                 return -1;
         }
-        
+
         return default;
     }
 

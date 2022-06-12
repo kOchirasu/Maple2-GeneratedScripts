@@ -35,7 +35,7 @@ public class _11004302 : NpcScript {
                 // - Your foot's gonna fall! Watch the floors! Got it?
                 return -1;
         }
-        
+
         return default;
     }
 

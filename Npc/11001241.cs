@@ -45,7 +45,7 @@ public class _11001241 : NpcScript {
                 // - The fairies have kept the darkness from touching Maple World since before you were in diapers. We never ask for anything in return, either. And what do we get for our troubles? The disdain of humans. Pah!
                 return -1;
         }
-        
+
         return default;
     }
 

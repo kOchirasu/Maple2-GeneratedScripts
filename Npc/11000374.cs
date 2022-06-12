@@ -35,7 +35,7 @@ public class _11000374 : NpcScript {
                 // - There are treasure chests hidden all over the world. How did they get there? Who knows and who cares! Just remember the golden rule: finders keepers!
                 return -1;
         }
-        
+
         return default;
     }
 

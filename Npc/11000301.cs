@@ -21,7 +21,7 @@ public class _11000301 : NpcScript {
                 // - This place is dangerous. Be careful, especially if you want to use skills while on the Bone Bridge. Things can get scary there pretty quickly.
                 return -1;
         }
-        
+
         return default;
     }
 

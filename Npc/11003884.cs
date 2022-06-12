@@ -26,7 +26,7 @@ public class _11003884 : NpcScript {
                 // - This is the first time I've seen $npcName:11003883[gender:0]$ so active. Whether or not this goes on depends on $MyPCName$'s role.
                 return -1;
         }
-        
+
         return default;
     }
 

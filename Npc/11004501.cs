@@ -45,7 +45,7 @@ public class _11004501 : NpcScript {
                 // - Whenever and wherever, we're ready!
                 return -1;
         }
-        
+
         return default;
     }
 

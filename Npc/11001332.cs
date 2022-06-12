@@ -21,7 +21,7 @@ public class _11001332 : NpcScript {
                 // - Those knuckleheads! Why do they have to fight in here? They'll scare away the customers!
                 return -1;
         }
-        
+
         return default;
     }
 

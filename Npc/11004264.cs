@@ -59,7 +59,7 @@ public class _11004264 : NpcScript {
                 //   From toys to fashion, everything a kid could want. Don't forget to check out the premium restaurants, perfect for any palette.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

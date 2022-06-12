@@ -21,7 +21,7 @@ public class _11000807 : NpcScript {
                 // - The Cruel Tower is like a living hell. I don't even want to think about it. I'm lucky to have gotten out of there alive.
                 return -1;
         }
-        
+
         return default;
     }
 

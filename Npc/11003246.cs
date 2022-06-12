@@ -21,7 +21,7 @@ public class _11003246 : NpcScript {
                 // - In times like this, you need to keep your wits about you.
                 return -1;
         }
-        
+
         return default;
     }
 

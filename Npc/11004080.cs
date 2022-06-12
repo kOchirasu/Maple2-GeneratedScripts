@@ -33,7 +33,7 @@ public class _11004080 : NpcScript {
                 // - <font color='#909090'>(Is the enchanting business not working out? What a strange turn of events...)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

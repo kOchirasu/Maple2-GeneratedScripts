@@ -21,7 +21,7 @@ public class _11001302 : NpcScript {
                 // - $MyPCName$, please don't disappoint me. I know it's difficult, but keep up your efforts to save our world.
                 return -1;
         }
-        
+
         return default;
     }
 

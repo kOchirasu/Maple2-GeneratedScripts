@@ -90,7 +90,7 @@ public class _11001547 : NpcScript {
                 // - That's the plan... Can't wait.
                 return -1;
         }
-        
+
         return default;
     }
 

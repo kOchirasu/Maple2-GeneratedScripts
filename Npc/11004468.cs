@@ -21,7 +21,7 @@ public class _11004468 : NpcScript {
                 // - This is a placeholder line.
                 return -1;
         }
-        
+
         return default;
     }
 

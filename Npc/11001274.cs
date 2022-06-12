@@ -41,7 +41,7 @@ public class _11001274 : NpcScript {
                 // - $MyPCName$ stranger! No talk.
                 return -1;
         }
-        
+
         return default;
     }
 

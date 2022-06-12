@@ -21,7 +21,7 @@ public class _11004209 : NpcScript {
                 // - Hmm? Is that really the $npc:11004213[gender:0]$, you ask? Yep! Except this one is bigger. Otherwise, they're identical in every way! The real $npc:11004213[gender:0]$ is full of hot air, too, heh heh heh!
                 return -1;
         }
-        
+
         return default;
     }
 

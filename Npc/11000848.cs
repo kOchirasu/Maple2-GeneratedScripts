@@ -21,7 +21,7 @@ public class _11000848 : NpcScript {
                 // - The world keeps changing, and our technology and science leads the way. Mark my words, I'll usher in a new era with my work. 
                 return -1;
         }
-        
+
         return default;
     }
 

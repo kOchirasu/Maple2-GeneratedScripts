@@ -21,7 +21,7 @@ public class _11000326 : NpcScript {
                 // - Ahhh, what a wonderful world this is!
                 return -1;
         }
-        
+
         return default;
     }
 

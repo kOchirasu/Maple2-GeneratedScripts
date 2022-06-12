@@ -21,7 +21,7 @@ public class _11001566 : NpcScript {
                 // - Wake up, $npcName:11001233[gender:1]$. We still need to avenge Arazaad... 
                 return -1;
         }
-        
+
         return default;
     }
 

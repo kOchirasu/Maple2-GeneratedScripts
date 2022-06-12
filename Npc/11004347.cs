@@ -31,7 +31,7 @@ public class _11004347 : NpcScript {
                 // - Yes, of course! Obviously we just need to remain calm and composed. CALM AND COMPOSED!
                 return -1;
         }
-        
+
         return default;
     }
 

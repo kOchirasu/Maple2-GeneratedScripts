@@ -94,7 +94,7 @@ public class _11000642 : NpcScript {
                 // - Listen, the supervisor won't even talk to <i>me</i> without the password. You don't stand a chance without it.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003482 : NpcScript {
                 // - I sense change in the wind.
                 return -1;
         }
-        
+
         return default;
     }
 

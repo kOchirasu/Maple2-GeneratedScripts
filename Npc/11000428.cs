@@ -21,7 +21,7 @@ public class _11000428 : NpcScript {
                 // - A true adventurer dives head-first into trouble! He's not afraid of jumping off a cliff into a sea of lava or fighting giant, rampaging monsters!
                 return -1;
         }
-        
+
         return default;
     }
 

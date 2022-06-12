@@ -37,7 +37,7 @@ public class _11004073 : NpcScript {
                 // - <font color="#909090">(As you examine the snout of the skull, you note a lack of flame canals present in the dragons of today. While it was obviously flame resistant, this dragon did not actually breathe fire.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

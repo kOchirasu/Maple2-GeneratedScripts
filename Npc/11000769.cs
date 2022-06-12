@@ -1171,7 +1171,7 @@ public class _11000769 : NpcScript {
                 // - I am the housekeeper. Now, may I ask who you are?
                 return -1;
         }
-        
+
         return default;
     }
 

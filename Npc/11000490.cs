@@ -21,7 +21,7 @@ public class _11000490 : NpcScript {
                 // - Eww, you're ugly! Get out of the way!
                 return -1;
         }
-        
+
         return default;
     }
 

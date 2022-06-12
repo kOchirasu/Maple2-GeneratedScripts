@@ -21,7 +21,7 @@ public class _11001588 : NpcScript {
                 // - Can we ever go back to Calibre Island?
                 return -1;
         }
-        
+
         return default;
     }
 

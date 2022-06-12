@@ -29,7 +29,7 @@ public class _11001308 : NpcScript {
                 // - Take a look! I'm sure something will catch your fancy.
                 return -1;
         }
-        
+
         return default;
     }
 

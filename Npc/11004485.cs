@@ -129,7 +129,7 @@ public class _11004485 : NpcScript {
                 // - There's no shortage of amazing things in Kritias. That's why I'm so busy with research!
                 return -1;
         }
-        
+
         return default;
     }
 

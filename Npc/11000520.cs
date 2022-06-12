@@ -21,7 +21,7 @@ public class _11000520 : NpcScript {
                 // - Industrialization, urban development... I don't know who'll really benefit from all that.
                 return -1;
         }
-        
+
         return default;
     }
 

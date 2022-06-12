@@ -93,7 +93,7 @@ public class _11000063 : NpcScript {
                 // - Oh $MyPCName$, you don't understand me.
                 return -1;
         }
-        
+
         return default;
     }
 

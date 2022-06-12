@@ -29,7 +29,7 @@ public class _11004254 : NpcScript {
                 // - <font color="#909090">(Nevertheless, it's probably best not to let the liquid touch you.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

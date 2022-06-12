@@ -25,7 +25,7 @@ public class _11001567 : NpcScript {
                 // - Don't worry about me... I'll be back on my feet in no time... 
                 return -1;
         }
-        
+
         return default;
     }
 

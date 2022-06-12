@@ -21,7 +21,7 @@ public class _11001379 : NpcScript {
                 // - Where in the world did they come from? Of course they chose <i>today</i> to cause a mess. When the dust clears, it'll be us security guards who take the fall for this.
                 return -1;
         }
-        
+
         return default;
     }
 

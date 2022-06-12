@@ -21,7 +21,7 @@ public class _11000385 : NpcScript {
                 // - If you see trash on the street, by all means pick it up! Everyone has to do their part to keep their homes clean.
                 return -1;
         }
-        
+
         return default;
     }
 

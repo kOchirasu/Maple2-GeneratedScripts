@@ -1006,7 +1006,7 @@ public class _11000794 : NpcScript {
                 // - A fairfolk can stay in a human's house.  There's nothing wrong with that!
                 return -1;
         }
-        
+
         return default;
     }
 

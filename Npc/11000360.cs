@@ -21,7 +21,7 @@ public class _11000360 : NpcScript {
                 // - Whew, it sure is hot here! I told my mom that I could make it on my own. Maybe I should've taken $npcName:11000420[gender:1]$'s advice and settled down in $map:02000111$ instead... 
                 return -1;
         }
-        
+
         return default;
     }
 

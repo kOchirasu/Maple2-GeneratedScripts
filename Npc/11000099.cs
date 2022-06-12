@@ -25,7 +25,7 @@ public class _11000099 : NpcScript {
                 // - I think I was born to be a hunter. You should find something that you can be good at and have fun doing.
                 return -1;
         }
-        
+
         return default;
     }
 

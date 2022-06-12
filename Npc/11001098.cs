@@ -21,7 +21,7 @@ public class _11001098 : NpcScript {
                 // - Hey, hey! This place is dangerous. Get out of here! We don't need you fouling up any of the valves.
                 return -1;
         }
-        
+
         return default;
     }
 

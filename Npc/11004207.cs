@@ -21,7 +21,7 @@ public class _11004207 : NpcScript {
                 // - Heheheh... I've got something real fun cooked up for those humans. 
                 return -1;
         }
-        
+
         return default;
     }
 

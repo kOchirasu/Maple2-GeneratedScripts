@@ -21,7 +21,7 @@ public class _11004174 : NpcScript {
                 // - You're lucky to have run into me. I'm not sticking around, I've just popped in for a photo shoot. I can't really have a relaxing vacation with so many frenzied fans around.
                 return -1;
         }
-        
+
         return default;
     }
 

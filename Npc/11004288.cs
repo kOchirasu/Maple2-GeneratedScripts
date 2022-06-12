@@ -69,7 +69,7 @@ public class _11004288 : NpcScript {
                 // - Here's your first challenge. Good luck!
                 return -1;
         }
-        
+
         return default;
     }
 

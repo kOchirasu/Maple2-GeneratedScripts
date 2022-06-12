@@ -21,7 +21,7 @@ public class _11001923 : NpcScript {
                 // - Hey! Find your own spot!
                 return -1;
         }
-        
+
         return default;
     }
 

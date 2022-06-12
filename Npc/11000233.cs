@@ -35,7 +35,7 @@ public class _11000233 : NpcScript {
                 // - As you can see, $map:02000100$ suffers from a huge gap between the rich and the poor. It's all because of $npcName:11000065[gender:0]$ and $npcName:11000252[gender:0]$.
                 return -1;
         }
-        
+
         return default;
     }
 

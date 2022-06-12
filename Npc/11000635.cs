@@ -35,7 +35,7 @@ public class _11000635 : NpcScript {
                 // - For swearing. Why? Don't say you never swear. Everyone does it! So why is it such a crime??
                 return -1;
         }
-        
+
         return default;
     }
 

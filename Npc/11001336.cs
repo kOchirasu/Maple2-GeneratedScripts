@@ -21,7 +21,7 @@ public class _11001336 : NpcScript {
                 // - Back in my day, we'd explore the whole world on our skateboards. I even shredded over the hot desert sands... Ah, those were good times.
                 return -1;
         }
-        
+
         return default;
     }
 

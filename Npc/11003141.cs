@@ -21,7 +21,7 @@ public class _11003141 : NpcScript {
                 // - Cooking in the kitchen is fine, but I'll always prefer cooking outdoors for how liberating it feels.
                 return -1;
         }
-        
+
         return default;
     }
 

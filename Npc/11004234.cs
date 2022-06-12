@@ -29,7 +29,7 @@ public class _11004234 : NpcScript {
                 // - But if you happen to find anything interesting, you'd better bring it to me instead of $npcName:11004103[gender:1]$! Promise.
                 return -1;
         }
-        
+
         return default;
     }
 

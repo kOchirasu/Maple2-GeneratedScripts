@@ -21,7 +21,7 @@ public class _11003398 : NpcScript {
                 // - Is this how I die...? From... training...?
                 return -1;
         }
-        
+
         return default;
     }
 

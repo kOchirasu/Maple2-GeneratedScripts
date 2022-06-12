@@ -29,7 +29,7 @@ public class _11000058 : NpcScript {
                 // - Sometimes I sit by the window, watching the stars fade away one by one, reminiscing about the good old days. I try not to recall the sad memories, but only the good, happy ones.
                 return -1;
         }
-        
+
         return default;
     }
 

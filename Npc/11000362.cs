@@ -21,7 +21,7 @@ public class _11000362 : NpcScript {
                 // - Not many people know this, but cooked $npcName:21000059$ can be incredible. I'm getting ready to sell $npcName:21000059$ dishes made from my own secret recipe.
                 return -1;
         }
-        
+
         return default;
     }
 

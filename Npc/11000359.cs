@@ -37,7 +37,7 @@ public class _11000359 : NpcScript {
                 // - My son, $npcName:11000360[gender:0]$ is on the other side of all that lava. I wanted to visit him, but I'm just too scared to cross it myself.
                 return -1;
         }
-        
+
         return default;
     }
 

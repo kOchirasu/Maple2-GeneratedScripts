@@ -21,7 +21,7 @@ public class _11003387 : NpcScript {
                 // - We've got to act fast!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -49,7 +49,7 @@ public class _11004272 : NpcScript {
                 // - Forget the treasure chests... I'll be happy to get out of here alive! My vacation is ruined!!
                 return -1;
         }
-        
+
         return default;
     }
 

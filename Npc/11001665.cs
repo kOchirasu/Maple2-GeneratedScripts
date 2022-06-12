@@ -29,7 +29,7 @@ public class _11001665 : NpcScript {
                 // - What does Her Highness see in this stranger...?
                 return -1;
         }
-        
+
         return default;
     }
 

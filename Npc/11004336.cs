@@ -123,7 +123,7 @@ public class _11004336 : NpcScript {
                 // - ...
                 return -1;
         }
-        
+
         return default;
     }
 

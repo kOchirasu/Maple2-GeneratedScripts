@@ -31,7 +31,7 @@ public class _11000149 : NpcScript {
                 // - Ahhh... Whitey, where are you? I should never have taken him outside. 
                 return -1;
         }
-        
+
         return default;
     }
 

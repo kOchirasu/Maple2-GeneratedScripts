@@ -21,7 +21,7 @@ public class _11003061 : NpcScript {
                 // - <font color="#909090">(Something must be hidden behind this tree.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

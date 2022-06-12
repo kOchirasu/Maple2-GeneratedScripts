@@ -21,7 +21,7 @@ public class _11003959 : NpcScript {
                 // - You look pretty tough! Up for a sparring match?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000424 : NpcScript {
                 // - Have you seen a lost, crying girl on the street? She's carrying a doll in her arms like it's a real baby.
                 return -1;
         }
-        
+
         return default;
     }
 

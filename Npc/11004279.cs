@@ -29,7 +29,7 @@ public class _11004279 : NpcScript {
                 // - <font color="#909090">(In spite of the spreading darkness, there's still a glimmer of the light in this statue's eyes...)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

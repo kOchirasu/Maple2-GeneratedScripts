@@ -21,7 +21,7 @@ public class _11000599 : NpcScript {
                 // - There are treasure chests hidden all over the world, and they're highly sought after by adventurers.
                 return -1;
         }
-        
+
         return default;
     }
 

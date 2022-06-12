@@ -43,7 +43,7 @@ public class _11000141 : NpcScript {
                 // - Please, save my boss!
                 return -1;
         }
-        
+
         return default;
     }
 

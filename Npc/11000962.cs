@@ -21,7 +21,7 @@ public class _11000962 : NpcScript {
                 // - The Green Hoods never surrender, no matter how bad the situation is. 
                 return -1;
         }
-        
+
         return default;
     }
 

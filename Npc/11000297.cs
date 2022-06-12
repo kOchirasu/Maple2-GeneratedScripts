@@ -21,7 +21,7 @@ public class _11000297 : NpcScript {
                 // - I like $map:02000023$. All the trees and fairies are so pretty.
                 return -1;
         }
-        
+
         return default;
     }
 

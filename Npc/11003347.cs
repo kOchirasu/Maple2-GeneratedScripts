@@ -32,7 +32,7 @@ public class _11003347 : NpcScript {
                 // - Sure thing. Right this way.
                 return -1;
         }
-        
+
         return default;
     }
 

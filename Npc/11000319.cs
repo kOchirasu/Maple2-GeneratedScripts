@@ -49,7 +49,7 @@ public class _11000319 : NpcScript {
                 // - It's a secret. Ho, ho!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003457 : NpcScript {
                 // - The people of $map:02000051$ look up to me now. I hope I live up to their expectations.
                 return -1;
         }
-        
+
         return default;
     }
 

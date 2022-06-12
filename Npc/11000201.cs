@@ -29,7 +29,7 @@ public class _11000201 : NpcScript {
                 // - $map:02000023$ is nice and shady. Neal's going to come over to my house later. $male:Mister,female:Lady$, do you want to come?
                 return -1;
         }
-        
+
         return default;
     }
 

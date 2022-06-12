@@ -21,7 +21,7 @@ public class _11000296 : NpcScript {
                 // - Oh! I's so happy to see another human being here!
                 return -1;
         }
-        
+
         return default;
     }
 

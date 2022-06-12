@@ -59,7 +59,7 @@ public class _11001396 : NpcScript {
                 // - I won't be so arrogant or impatient ever again. I'll try to be careful from now on. Thank you for your help, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

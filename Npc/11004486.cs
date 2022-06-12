@@ -45,7 +45,7 @@ public class _11004486 : NpcScript {
                 // - I hadn't thought of it that way. Thank you. You cheer up, too!
                 return -1;
         }
-        
+
         return default;
     }
 

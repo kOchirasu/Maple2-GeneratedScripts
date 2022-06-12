@@ -56,7 +56,7 @@ public class _11003722 : NpcScript {
                 // - Hey there! It's me, Little Zakum. You know, Zakum, but little. I have a gift for you, and... Hey, I already gave you a gift! You cheeky hero, you.
                 return -1;
         }
-        
+
         return default;
     }
 

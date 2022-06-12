@@ -21,7 +21,7 @@ public class _11001059 : NpcScript {
                 // - No one understands the burning passion of this lonely man... Sigh... 
                 return -1;
         }
-        
+
         return default;
     }
 

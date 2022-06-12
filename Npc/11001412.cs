@@ -41,7 +41,7 @@ public class _11001412 : NpcScript {
                 // - G-go away... I don't want... your help... 
                 return -1;
         }
-        
+
         return default;
     }
 

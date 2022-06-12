@@ -21,7 +21,7 @@ public class _11001040 : NpcScript {
                 // - Maritime Leaguers are atmospheric, oceanic, and geologic specialists gathered to observe and collect information about the oceans and everything in it.
                 return -1;
         }
-        
+
         return default;
     }
 

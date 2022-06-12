@@ -21,7 +21,7 @@ public class _11004212 : NpcScript {
                 // - It's my goal in life to one day be as shroomy as the $npcName:11004213[gender:0]$. Or failing that, at least to mush it up with the best of them.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000589 : NpcScript {
                 // - $map:02000023$-style buildings are really cool on the inside.
                 return -1;
         }
-        
+
         return default;
     }
 

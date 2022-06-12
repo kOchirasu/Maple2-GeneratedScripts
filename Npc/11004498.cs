@@ -45,7 +45,7 @@ public class _11004498 : NpcScript {
                 // - It begs the question: do our cultures share the same root? Of course, the higher-ups will only accept evidence that our culture came first, and that Kritias copied us...
                 return -1;
         }
-        
+
         return default;
     }
 

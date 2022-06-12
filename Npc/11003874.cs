@@ -21,7 +21,7 @@ public class _11003874 : NpcScript {
                 // - Daddy's got to put food on the table.
                 return -1;
         }
-        
+
         return default;
     }
 

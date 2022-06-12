@@ -25,7 +25,7 @@ public class _11001329 : NpcScript {
                 // - Ah... Why can't I simply forget my useless memories? Being able to remember everything is a curse!
                 return -1;
         }
-        
+
         return default;
     }
 

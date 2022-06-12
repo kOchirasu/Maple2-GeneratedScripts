@@ -61,7 +61,7 @@ public class _11004333 : NpcScript {
                 // - A lack his cutting insight...
                 return -1;
         }
-        
+
         return default;
     }
 

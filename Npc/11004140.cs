@@ -21,7 +21,7 @@ public class _11004140 : NpcScript {
                 // - Sometimes I wish I wasn't so amazing at everything...
                 return -1;
         }
-        
+
         return default;
     }
 

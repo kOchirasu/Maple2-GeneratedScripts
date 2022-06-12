@@ -21,7 +21,7 @@ public class _11004176 : NpcScript {
                 // - When things get dicey, it's good to have somebody who's got your back.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -59,7 +59,7 @@ public class _11003525 : NpcScript {
                 // - Come to think of it, didn't the boss lose a game of $map:61000008$ the other day...?
                 return -1;
         }
-        
+
         return default;
     }
 

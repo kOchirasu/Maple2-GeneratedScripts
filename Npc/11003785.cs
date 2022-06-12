@@ -21,7 +21,7 @@ public class _11003785 : NpcScript {
                 // - In my day, we protected the world just fine without these fancy gadgets.
                 return -1;
         }
-        
+
         return default;
     }
 

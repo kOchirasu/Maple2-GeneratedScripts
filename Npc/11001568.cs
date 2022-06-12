@@ -25,7 +25,7 @@ public class _11001568 : NpcScript {
                 // - We can't give up yet. There's still too much to do!
                 return -1;
         }
-        
+
         return default;
     }
 

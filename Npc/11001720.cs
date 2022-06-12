@@ -21,7 +21,7 @@ public class _11001720 : NpcScript {
                 // - Lava and ice... an unlikely, but breathtaking, view. It reminds me of you, $npcName:11001711[gender:1]$, and myself.
                 return -1;
         }
-        
+
         return default;
     }
 

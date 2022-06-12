@@ -21,7 +21,7 @@ public class _11000984 : NpcScript {
                 // - I wasn't always so forgetful. On that note... where am I? I don't know what went wrong this time... 
                 return -1;
         }
-        
+
         return default;
     }
 

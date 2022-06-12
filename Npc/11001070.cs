@@ -21,7 +21,7 @@ public class _11001070 : NpcScript {
                 // - Do you know how rewarding it is to see the seeds you've sown grow into beautiful flowers?
                 return -1;
         }
-        
+
         return default;
     }
 

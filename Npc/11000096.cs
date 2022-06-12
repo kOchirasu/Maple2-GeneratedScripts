@@ -39,7 +39,7 @@ public class _11000096 : NpcScript {
                 // - We finally made it to $map:02000062$! My lady and I are gonna have so much fun!
                 return -1;
         }
-        
+
         return default;
     }
 

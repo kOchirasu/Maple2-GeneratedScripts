@@ -25,7 +25,7 @@ public class _11000280 : NpcScript {
                 // - That guy does nothing but read books all day. He's supposed to be investigating the scene.
                 return -1;
         }
-        
+
         return default;
     }
 

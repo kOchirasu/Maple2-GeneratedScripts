@@ -21,7 +21,7 @@ public class _11000355 : NpcScript {
                 // - Woof! One day, a meteor fell from the sky. Be careful, it might have friends.
                 return -1;
         }
-        
+
         return default;
     }
 

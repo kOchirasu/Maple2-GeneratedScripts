@@ -21,7 +21,7 @@ public class _11001052 : NpcScript {
                 // - No one can imagine how exciting time travel is without trying it.
                 return -1;
         }
-        
+
         return default;
     }
 

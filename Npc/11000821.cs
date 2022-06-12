@@ -21,7 +21,7 @@ public class _11000821 : NpcScript {
                 // - My skin is still crawling... Can I ever go back home?
                 return -1;
         }
-        
+
         return default;
     }
 

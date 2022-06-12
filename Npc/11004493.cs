@@ -45,7 +45,7 @@ public class _11004493 : NpcScript {
                 // - So do I, my friend. So do I.
                 return -1;
         }
-        
+
         return default;
     }
 

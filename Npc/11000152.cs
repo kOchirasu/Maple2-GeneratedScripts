@@ -21,7 +21,7 @@ public class _11000152 : NpcScript {
                 // - Everyone's in a festive mood because of the court, and they're not even on the mainland where the court is being held. I wonder how excited the mainlanders must be!
                 return -1;
         }
-        
+
         return default;
     }
 

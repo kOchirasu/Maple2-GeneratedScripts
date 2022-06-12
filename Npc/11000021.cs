@@ -25,7 +25,7 @@ public class _11000021 : NpcScript {
                 // - $npcName:11000054[gender:0]$ is as stubborn as a mule. Please find him before he leaves $map:63000001$.
                 return -1;
         }
-        
+
         return default;
     }
 

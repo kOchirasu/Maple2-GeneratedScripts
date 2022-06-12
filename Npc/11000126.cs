@@ -21,7 +21,7 @@ public class _11000126 : NpcScript {
                 // - I mustered up the courage to come here, but now I'm too scared to move. I have to hunt monsters, or get the treasure from the cliff. I need the money...
                 return -1;
         }
-        
+
         return default;
     }
 

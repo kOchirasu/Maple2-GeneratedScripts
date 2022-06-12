@@ -21,7 +21,7 @@ public class _11003509 : NpcScript {
                 // - Ah... Hello...? I want to make some monster friends...
                 return -1;
         }
-        
+
         return default;
     }
 

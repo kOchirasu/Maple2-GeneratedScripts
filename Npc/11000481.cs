@@ -21,7 +21,7 @@ public class _11000481 : NpcScript {
                 // - I'm busy. If you're not going to help, then at least don't get in my way.
                 return -1;
         }
-        
+
         return default;
     }
 

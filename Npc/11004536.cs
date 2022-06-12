@@ -25,7 +25,7 @@ public class _11004536 : NpcScript {
                 // - There are no signs of an enemy attack, but that can change in an instant. That's why we can't slack off on our patrols!
                 return -1;
         }
-        
+
         return default;
     }
 

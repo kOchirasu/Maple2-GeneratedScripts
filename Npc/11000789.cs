@@ -993,7 +993,7 @@ public class _11000789 : NpcScript {
                 // - H-hey, that doesn't matter. If you have business with <font color="#ffd200">$OwnerName$</font>, you don't need to talk to me.
                 return -1;
         }
-        
+
         return default;
     }
 

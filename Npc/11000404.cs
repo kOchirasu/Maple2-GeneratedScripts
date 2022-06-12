@@ -25,7 +25,7 @@ public class _11000404 : NpcScript {
                 // - Some folks think I must be a blacksmith. But not all yetis are smiths, you know! So stop trying to buy my stuff.
                 return -1;
         }
-        
+
         return default;
     }
 

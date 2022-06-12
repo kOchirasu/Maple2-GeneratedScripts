@@ -22,7 +22,7 @@ public class _11004211 : NpcScript {
                 //   Bouncin' around on those stalks!♬
                 return -1;
         }
-        
+
         return default;
     }
 

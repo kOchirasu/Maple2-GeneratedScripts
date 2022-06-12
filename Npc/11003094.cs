@@ -21,7 +21,7 @@ public class _11003094 : NpcScript {
                 // - Dark Wind is changing. It's not the same organization you once knew.
                 return -1;
         }
-        
+
         return default;
     }
 

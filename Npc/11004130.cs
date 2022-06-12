@@ -21,7 +21,7 @@ public class _11004130 : NpcScript {
                 // - Just what did we see in the darkness...?
                 return -1;
         }
-        
+
         return default;
     }
 

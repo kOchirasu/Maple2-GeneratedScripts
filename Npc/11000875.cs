@@ -21,7 +21,7 @@ public class _11000875 : NpcScript {
                 // - What am I going to do when I become rich? Well... I want a nice-looking house, a nice-looking car, nice-looking clothes, nice-looking shoes... Basically, everything I have should look nice. Right?
                 return -1;
         }
-        
+
         return default;
     }
 

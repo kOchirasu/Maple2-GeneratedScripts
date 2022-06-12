@@ -21,7 +21,7 @@ public class _11000782 : NpcScript {
                 // - Hey there, young $male:fellow,female:lady$. You look like a traveler. I hope you're making the most of your youth and seeing the world. 
                 return -1;
         }
-        
+
         return default;
     }
 

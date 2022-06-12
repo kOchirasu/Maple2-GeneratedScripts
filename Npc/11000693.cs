@@ -25,7 +25,7 @@ public class _11000693 : NpcScript {
                 // - So I'm going to stand by him, no matter what happens.
                 return -1;
         }
-        
+
         return default;
     }
 

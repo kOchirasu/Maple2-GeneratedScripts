@@ -113,7 +113,7 @@ public class _11001529 : NpcScript {
                 // - Mushroom art isn't the only thing I love, yo. Listening to great jams and partying with my people are high on the list.
                 return -1;
         }
-        
+
         return default;
     }
 

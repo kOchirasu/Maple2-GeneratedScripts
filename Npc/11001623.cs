@@ -41,7 +41,7 @@ public class _11001623 : NpcScript {
                 // - Is that so? Okay. Let's see if your fists can back up your words.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11003870 : NpcScript {
                 // - Welcome to $map:02000424$. Enjoy your stay!
                 return -1;
         }
-        
+
         return default;
     }
 

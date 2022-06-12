@@ -21,7 +21,7 @@ public class _11001338 : NpcScript {
                 // - Hey, you want to take some pro skateboarding lessons? I teach... for a small fee.
                 return -1;
         }
-        
+
         return default;
     }
 

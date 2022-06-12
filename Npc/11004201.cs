@@ -21,7 +21,7 @@ public class _11004201 : NpcScript {
                 // - Out of the way, buddy, you're in my shot.
                 return -1;
         }
-        
+
         return default;
     }
 

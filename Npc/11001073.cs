@@ -21,7 +21,7 @@ public class _11001073 : NpcScript {
                 // - I don't talk to those who do not practice martial arts.
                 return -1;
         }
-        
+
         return default;
     }
 

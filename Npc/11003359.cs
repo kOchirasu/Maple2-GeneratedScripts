@@ -21,7 +21,7 @@ public class _11003359 : NpcScript {
                 // - You better be ready this time. You'll see what I mean when you go inside. Heheheh...
                 return -1;
         }
-        
+
         return default;
     }
 

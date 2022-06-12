@@ -21,7 +21,7 @@ public class _11003421 : NpcScript {
                 // - You want to stay here? You gotta take the warrior's test.
                 return -1;
         }
-        
+
         return default;
     }
 

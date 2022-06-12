@@ -25,7 +25,7 @@ public class _11000503 : NpcScript {
                 // - I've decided to stay out of trouble and be good. Come back and visit, will you?
                 return -1;
         }
-        
+
         return default;
     }
 

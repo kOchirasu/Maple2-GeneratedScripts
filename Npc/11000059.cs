@@ -39,7 +39,7 @@ public class _11000059 : NpcScript {
                 // - Oh, no. You look so pale, I-I thought you lived here. I've never been to such a big place before, and everything is so amazing here. And I think I've seen more people today than I've ever seen in my hometown.
                 return -1;
         }
-        
+
         return default;
     }
 

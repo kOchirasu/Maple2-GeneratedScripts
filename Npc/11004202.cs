@@ -21,7 +21,7 @@ public class _11004202 : NpcScript {
                 // - Y'know, I wasn't so sure about those mushfolk when I got the brochure, but I've gotta say this place is pretty great!
                 return -1;
         }
-        
+
         return default;
     }
 

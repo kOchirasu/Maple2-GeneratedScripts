@@ -21,7 +21,7 @@ public class _11000107 : NpcScript {
                 // - The Royal Road is blocked, and the forest path is too dangerous. I can't even go back home since the sea routes are messed up now too. I don't know what to do.
                 return -1;
         }
-        
+
         return default;
     }
 

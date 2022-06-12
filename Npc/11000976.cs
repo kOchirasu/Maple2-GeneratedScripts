@@ -21,7 +21,7 @@ public class _11000976 : NpcScript {
                 // - Nothing is impossible for true martial artists. Do you want to become strong? It won't be easy. 
                 return -1;
         }
-        
+
         return default;
     }
 

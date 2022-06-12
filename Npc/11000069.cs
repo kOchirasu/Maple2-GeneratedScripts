@@ -21,7 +21,7 @@ public class _11000069 : NpcScript {
                 // - I'd like to be alone.
                 return -1;
         }
-        
+
         return default;
     }
 

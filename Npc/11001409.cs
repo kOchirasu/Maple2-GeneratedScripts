@@ -41,7 +41,7 @@ public class _11001409 : NpcScript {
                 // - Heh... I'll see to it that you run away with your tail between your legs!
                 return -1;
         }
-        
+
         return default;
     }
 

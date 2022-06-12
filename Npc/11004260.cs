@@ -55,7 +55,7 @@ public class _11004260 : NpcScript {
                 // - Ugh, fine, I'll give him <b>one</b> more day. I mean, he is, like, super hot.
                 return -1;
         }
-        
+
         return default;
     }
 

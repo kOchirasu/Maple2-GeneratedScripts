@@ -25,7 +25,7 @@ public class _11004367 : NpcScript {
                 // - $MyPCName$, take care of yourself this season. Happy holidays!
                 return -1;
         }
-        
+
         return default;
     }
 

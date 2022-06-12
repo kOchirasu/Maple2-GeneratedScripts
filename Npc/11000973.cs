@@ -21,7 +21,7 @@ public class _11000973 : NpcScript {
                 // - Sniff... Name's $npcName:11000973[gender:1]$, and I'm the prettiest little thing you're going to find in $map:02000186$.
                 return -1;
         }
-        
+
         return default;
     }
 

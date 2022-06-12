@@ -25,7 +25,7 @@ public class _11004097 : NpcScript {
                 // - Prove that I made the right decision, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

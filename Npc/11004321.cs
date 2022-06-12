@@ -83,7 +83,7 @@ public class _11004321 : NpcScript {
                 // - Thanks! I'm counting on you!
                 return -1;
         }
-        
+
         return default;
     }
 

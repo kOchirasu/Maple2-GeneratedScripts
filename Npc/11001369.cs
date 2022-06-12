@@ -21,7 +21,7 @@ public class _11001369 : NpcScript {
                 // - Amazing that such a glorious city can thrive here, don't you think?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004200 : NpcScript {
                 // - My son is always thinking of me, and it makes me so very happy. He's such a good boy! I don't know how I'd get along without him.
                 return -1;
         }
-        
+
         return default;
     }
 

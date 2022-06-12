@@ -21,7 +21,7 @@ public class _11001348 : NpcScript {
                 // -  I came here to expand my business, but my partner is being completely impossible. And on top of that, the weather's too hot here and the people are too stubborn. What a terrible day...
                 return -1;
         }
-        
+
         return default;
     }
 

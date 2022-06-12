@@ -29,7 +29,7 @@ public class _11004282 : NpcScript {
                 // - <font color="#909090">(For a brief moment, you swear you see something moving through the crack in the floor. Surely you imagined it...)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

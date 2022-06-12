@@ -55,7 +55,7 @@ public class _11003633 : NpcScript {
                 // - Ahem! Pardon me, $male:sir,female:ma'am$, but if you're not buying anything, please make way for paying customers.
                 return -1;
         }
-        
+
         return default;
     }
 

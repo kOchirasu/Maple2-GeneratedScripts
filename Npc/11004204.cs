@@ -21,7 +21,7 @@ public class _11004204 : NpcScript {
                 // - Are you looking for friends, too?
                 return -1;
         }
-        
+
         return default;
     }
 

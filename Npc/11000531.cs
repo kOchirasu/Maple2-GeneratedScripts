@@ -57,7 +57,7 @@ public class _11000531 : NpcScript {
                 // - You don't? Ha, you're just like me. I've owned this store for over thirty years, but reading always puts me right to sleep. It's so boring. Just between you and me, I've never finished a single book in my whole life.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003351 : NpcScript {
                 // - The big guy's been training hard for days now. You really lit a fire under his butt, I'll tell you that.
                 return -1;
         }
-        
+
         return default;
     }
 

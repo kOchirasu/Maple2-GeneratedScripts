@@ -21,7 +21,7 @@ public class _11001711 : NpcScript {
                 // - The more I look at this place, the more mystified I am. Almost as if... it yearns for something...
                 return -1;
         }
-        
+
         return default;
     }
 

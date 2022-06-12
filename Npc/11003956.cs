@@ -21,7 +21,7 @@ public class _11003956 : NpcScript {
                 // - This Frontier Foundation is a beautiful place. I look forward to working with such capable individuals.
                 return -1;
         }
-        
+
         return default;
     }
 

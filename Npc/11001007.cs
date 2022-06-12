@@ -21,7 +21,7 @@ public class _11001007 : NpcScript {
                 // - Can anyone tell me of the world beyond the rainbow?
                 return -1;
         }
-        
+
         return default;
     }
 

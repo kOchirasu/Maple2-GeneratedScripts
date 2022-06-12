@@ -21,7 +21,7 @@ public class _11001041 : NpcScript {
                 // - When I close my eyes and listen carefully, I can hear everything... Everything in the entire world.
                 return -1;
         }
-        
+
         return default;
     }
 

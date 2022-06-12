@@ -21,7 +21,7 @@ public class _11004314 : NpcScript {
                 // - My agents can't get past the insane AI that's controlling most of Kritias! I feel so... frustrated.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -45,7 +45,7 @@ public class _11001062 : NpcScript {
                 // - I'll either have to start selling different products or stop selling altogether...
                 return -1;
         }
-        
+
         return default;
     }
 

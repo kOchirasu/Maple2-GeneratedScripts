@@ -21,7 +21,7 @@ public class _11000849 : NpcScript {
                 // - It's snowing here. How amazing! You understand why, right?
                 return -1;
         }
-        
+
         return default;
     }
 

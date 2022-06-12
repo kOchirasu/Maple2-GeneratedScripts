@@ -25,7 +25,7 @@ public class _11000129 : NpcScript {
                 // - And even if you get through this awful forest, there's a treacherous valley to cross. The cliffs of $map:02000051$ are nothing compared to what's ahead! Ahh, I'm never getting out of here alive...
                 return -1;
         }
-        
+
         return default;
     }
 

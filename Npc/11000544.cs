@@ -1055,7 +1055,7 @@ public class _11000544 : NpcScript {
                 // - It does, doesn't it? Such fine tea can be recognized by scent alone. I just brewed my last scoop of English Breakfast tea. I don't know when I'll be able to get tea that fine again.
                 return -1;
         }
-        
+
         return default;
     }
 

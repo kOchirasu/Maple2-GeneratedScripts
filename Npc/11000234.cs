@@ -39,7 +39,7 @@ public class _11000234 : NpcScript {
                 // - Mr. $npcName:11000006[gender:0]$ said he'd change the world, so everyone could be equal and happy together.
                 return -1;
         }
-        
+
         return default;
     }
 

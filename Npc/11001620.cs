@@ -63,7 +63,7 @@ public class _11001620 : NpcScript {
                 // - Ah, that's right! The challenger's name was Junta. And that's everything I know about him.
                 return -1;
         }
-        
+
         return default;
     }
 

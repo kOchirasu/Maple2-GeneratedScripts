@@ -29,7 +29,7 @@ public class _11004269 : NpcScript {
                 // - <font color="#909090">(He added intriguing detail and a touch of mischief to the design, including hidden magic portals and shortcuts.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

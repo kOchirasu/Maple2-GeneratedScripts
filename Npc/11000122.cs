@@ -25,7 +25,7 @@ public class _11000122 : NpcScript {
                 // - I tried everything reagent I could get my hands on to cure it, and the one that did it was the $item:20000045$, growing right here at the $map:02000146$. It took time to perfect the compounding process, but now my $itemPlural:20000016$ are key to the struggle against the darkness.
                 return -1;
         }
-        
+
         return default;
     }
 

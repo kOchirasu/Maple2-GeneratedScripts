@@ -21,7 +21,7 @@ public class _11000389 : NpcScript {
                 // - Since the big split, $map:2000115$ has been attracting all kinds of lookie-loos. And a true businessman never wastes a good opportunity like this!
                 return -1;
         }
-        
+
         return default;
     }
 

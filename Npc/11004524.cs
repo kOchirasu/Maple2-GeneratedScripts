@@ -25,7 +25,7 @@ public class _11004524 : NpcScript {
                 // - Feel free to refuel at our aetherine station.
                 return -1;
         }
-        
+
         return default;
     }
 

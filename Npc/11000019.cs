@@ -63,7 +63,7 @@ public class _11000019 : NpcScript {
                 // - It's through a mountain path northwest of $map:02000062$. The path's been closed for ages, though. Too treacherous for most folks. I'd forget about it if I were you.
                 return -1;
         }
-        
+
         return default;
     }
 

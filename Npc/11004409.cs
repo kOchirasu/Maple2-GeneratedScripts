@@ -21,7 +21,7 @@ public class _11004409 : NpcScript {
                 // - Flying continents appearing from nowhere? Ha! This is nothing. You should've seen the crazy things that happened back in <i>my</i> day!
                 return -1;
         }
-        
+
         return default;
     }
 

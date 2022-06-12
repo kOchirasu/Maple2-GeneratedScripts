@@ -21,7 +21,7 @@ public class _11001027 : NpcScript {
                 // - Criminals are held here while waiting for sentencing. Once sentenced, they're sent to $map:02000124$.
                 return -1;
         }
-        
+
         return default;
     }
 

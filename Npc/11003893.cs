@@ -25,7 +25,7 @@ public class _11003893 : NpcScript {
                 // - Gah, I'm so bored. I want to head back to the castle soon.
                 return -1;
         }
-        
+
         return default;
     }
 

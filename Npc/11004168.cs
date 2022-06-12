@@ -21,7 +21,7 @@ public class _11004168 : NpcScript {
                 // - Ohh gee, oh man... I don't know about this royale thing.
                 return -1;
         }
-        
+
         return default;
     }
 

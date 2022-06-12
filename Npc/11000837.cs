@@ -21,7 +21,7 @@ public class _11000837 : NpcScript {
                 // - Even the slipperiest suspect can't escape from me once I set my sights on them.
                 return -1;
         }
-        
+
         return default;
     }
 

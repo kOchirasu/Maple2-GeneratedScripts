@@ -103,7 +103,7 @@ public class _11000157 : NpcScript {
                 // - I can't believe <i>I</i> am getting to talk to <i>you</i> about real important official business! Don't worry, $male:sir,female:ma'am$, I'll do my best to keep $map:02000001$ safe, too!
                 return -1;
         }
-        
+
         return default;
     }
 

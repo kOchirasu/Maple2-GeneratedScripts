@@ -29,7 +29,7 @@ public class _11000839 : NpcScript {
                 // - We promised that we'd stick together like we did during our time in prison. That was the most difficult time of our lives.
                 return -1;
         }
-        
+
         return default;
     }
 

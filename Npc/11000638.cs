@@ -21,7 +21,7 @@ public class _11000638 : NpcScript {
                 // - I really want to get out of here. Please help me. I'm sorry for what I did. I really am. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -73,7 +73,7 @@ public class _11004265 : NpcScript {
                 // - My paradise! Give me back my joy!
                 return -1;
         }
-        
+
         return default;
     }
 

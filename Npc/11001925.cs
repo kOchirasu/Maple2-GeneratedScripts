@@ -21,7 +21,7 @@ public class _11001925 : NpcScript {
                 // - I coated my hook with chocolate. Who doesn't like chocolate?
                 return -1;
         }
-        
+
         return default;
     }
 

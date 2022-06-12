@@ -51,7 +51,7 @@ public class _11000982 : NpcScript {
                 // - The operation of the Marco is mostly paid by the $map:02000068$, so the passengers only pay a small fare of 4,000 mesos. If you want to board, that's your price.
                 return -1;
         }
-        
+
         return default;
     }
 

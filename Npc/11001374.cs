@@ -21,7 +21,7 @@ public class _11001374 : NpcScript {
                 // - I don't care <i>why</i> this place is in shambles. I care that these noisy hooligans are preventing me from doing my job!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000696 : NpcScript {
                 // - I keep having nightmares. They wake me up all night... 
                 return -1;
         }
-        
+
         return default;
     }
 

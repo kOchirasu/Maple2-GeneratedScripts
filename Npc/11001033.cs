@@ -21,7 +21,7 @@ public class _11001033 : NpcScript {
                 // - Ugh... I've been holed up in here so long. My head is killing me.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000027 : NpcScript {
                 // - I messed up. I messed it all up. Woe is meee!
                 return -1;
         }
-        
+
         return default;
     }
 

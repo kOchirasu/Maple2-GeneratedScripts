@@ -79,7 +79,7 @@ public class _11004231 : NpcScript {
                 // - The empress has declared that all experienced adventurers shall have access to this enchanted chest here! Not you, though. I'm afraid you're not quite experienced enough. Would you be so kind as to come back when you're level 50?
                 return -1;
         }
-        
+
         return default;
     }
 

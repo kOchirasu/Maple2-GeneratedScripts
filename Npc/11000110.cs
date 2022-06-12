@@ -29,7 +29,7 @@ public class _11000110 : NpcScript {
                 // - Anything that reminds me of my hometown makes me happy. Like that $npcName:22300149$... I guess this is what it's like to be homesick. 
                 return -1;
         }
-        
+
         return default;
     }
 

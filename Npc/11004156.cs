@@ -21,7 +21,7 @@ public class _11004156 : NpcScript {
                 // - Yawn... Boooring. I think I liked working in $map:82000000$ better, even with the occasional beatings.
                 return -1;
         }
-        
+
         return default;
     }
 

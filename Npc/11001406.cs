@@ -31,7 +31,7 @@ public class _11001406 : NpcScript {
                 // - We aren't playing, if that's what you're trying to say! We don't get to play all day like you! We're on a very, very important <i>training</i> mission!!
                 return -1;
         }
-        
+
         return default;
     }
 

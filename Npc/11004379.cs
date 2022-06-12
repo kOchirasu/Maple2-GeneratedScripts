@@ -35,7 +35,7 @@ public class _11004379 : NpcScript {
                 // - $npcName:11004345[gender:1]$? That's $npcName:11004347[gender:1]$'s daughter. She's my boss, but she's off today. You sure she's not at home?
                 return -1;
         }
-        
+
         return default;
     }
 

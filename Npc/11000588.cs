@@ -21,7 +21,7 @@ public class _11000588 : NpcScript {
                 // - People with long tails are so... unusual.
                 return -1;
         }
-        
+
         return default;
     }
 

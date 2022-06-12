@@ -49,7 +49,7 @@ public class _11004484 : NpcScript {
                 // - I leave it to you!
                 return -1;
         }
-        
+
         return default;
     }
 

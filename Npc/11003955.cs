@@ -21,7 +21,7 @@ public class _11003955 : NpcScript {
                 // - So you're an adventurer? You seem pretty strong. Nice to meet you.
                 return -1;
         }
-        
+
         return default;
     }
 

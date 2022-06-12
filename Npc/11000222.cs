@@ -21,7 +21,7 @@ public class _11000222 : NpcScript {
                 // - I've got a daughter. She's the apple of my eye. Her name is $npcName:11000221[gender:1]$. She was the last gift my wife gave me before she passed away.
                 return -1;
         }
-        
+
         return default;
     }
 

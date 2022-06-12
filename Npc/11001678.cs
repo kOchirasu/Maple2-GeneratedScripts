@@ -65,7 +65,7 @@ public class _11001678 : NpcScript {
                 // - Isn't it obvious? There's a reason I'm always picked for the best missions. The boss trusts me. I'll be an officer in no time, and then idiots like $npcName:11001686[gender:0]$ will have to do whatever I say.
                 return -1;
         }
-        
+
         return default;
     }
 

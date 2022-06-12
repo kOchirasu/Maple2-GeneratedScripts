@@ -31,7 +31,7 @@ public class _11001343 : NpcScript {
                 // - Ahem! Why do you care? I'm old enough, thank you very much.
                 return -1;
         }
-        
+
         return default;
     }
 

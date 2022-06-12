@@ -25,7 +25,7 @@ public class _11004217 : NpcScript {
                 // - If you want to be happy, there's one rule to live by: figure out what you wanna do, and do it! In my case, that's listening my cannon purr as it pumps out hundreds of rounds a minute.
                 return -1;
         }
-        
+
         return default;
     }
 

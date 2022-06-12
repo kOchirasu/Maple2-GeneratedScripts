@@ -21,7 +21,7 @@ public class _11000929 : NpcScript {
                 // - The saga of a thousand-year-old turtle writer. That's got to be a story worth telling!
                 return -1;
         }
-        
+
         return default;
     }
 

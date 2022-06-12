@@ -31,7 +31,7 @@ public class _11000111 : NpcScript {
                 // - A while back, I followed my uncle who works as a royal porter to the entrance of the forest. I couldn't see more than a few feet in front of me, the underbrush was so thick. Plus it was raining... I never want to go through that again. 
                 return -1;
         }
-        
+
         return default;
     }
 

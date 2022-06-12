@@ -31,7 +31,7 @@ public class _11004506 : NpcScript {
                 // - Hmph. You did good work in Richmonde, I'll give you that.
                 return -1;
         }
-        
+
         return default;
     }
 

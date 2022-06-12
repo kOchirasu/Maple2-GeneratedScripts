@@ -21,7 +21,7 @@ public class _11001025 : NpcScript {
                 // - It's not over until we catch $npcName:11000044[gender:0]$. 
                 return -1;
         }
-        
+
         return default;
     }
 

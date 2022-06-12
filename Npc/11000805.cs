@@ -21,7 +21,7 @@ public class _11000805 : NpcScript {
                 // - I don't care who you are. Just stop talking to me. They'll beat me up if they see me talking to you.
                 return -1;
         }
-        
+
         return default;
     }
 

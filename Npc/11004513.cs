@@ -21,7 +21,7 @@ public class _11004513 : NpcScript {
                 // - My bullets always hit their mark!
                 return -1;
         }
-        
+
         return default;
     }
 

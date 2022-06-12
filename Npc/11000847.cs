@@ -21,7 +21,7 @@ public class _11000847 : NpcScript {
                 // - I believe more than one timeline exists in Ludibrium at this moment.
                 return -1;
         }
-        
+
         return default;
     }
 

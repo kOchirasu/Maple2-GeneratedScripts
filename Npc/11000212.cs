@@ -25,7 +25,7 @@ public class _11000212 : NpcScript {
                 // - When you get out of here, move ten cells southeast, and then ten more cells northeast. You'll arrive at a small iron gate. That gate leads to $map:02000156$, where the godfather of Blackstar, $npcName:11000251[gender:0]$, resides.
                 return -1;
         }
-        
+
         return default;
     }
 

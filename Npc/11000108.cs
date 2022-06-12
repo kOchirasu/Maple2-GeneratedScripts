@@ -21,7 +21,7 @@ public class _11000108 : NpcScript {
                 // - I heard $map:02000001$ is filled with beautiful ladies, so I came here, all decked out. What a waste of time. And now I'm stuck here!
                 return -1;
         }
-        
+
         return default;
     }
 

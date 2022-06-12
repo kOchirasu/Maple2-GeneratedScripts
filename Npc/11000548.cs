@@ -21,7 +21,7 @@ public class _11000548 : NpcScript {
                 // - The militia will do everything we can to help you. We have to join forces to protect our world.
                 return -1;
         }
-        
+
         return default;
     }
 

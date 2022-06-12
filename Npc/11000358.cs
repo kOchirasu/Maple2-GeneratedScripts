@@ -21,7 +21,7 @@ public class _11000358 : NpcScript {
                 // - I'm a new man. From now on, I'm going to live an honest life. I'm leaving my days of being a thug behind.
                 return -1;
         }
-        
+
         return default;
     }
 

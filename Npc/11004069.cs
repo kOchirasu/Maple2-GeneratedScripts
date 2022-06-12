@@ -49,7 +49,7 @@ public class _11004069 : NpcScript {
                 // - You should just wish us happiness, okay?
                 return -1;
         }
-        
+
         return default;
     }
 

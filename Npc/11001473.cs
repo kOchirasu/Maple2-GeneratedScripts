@@ -21,7 +21,7 @@ public class _11001473 : NpcScript {
                 // - Nothing is more precious than the ruins and artifacts that our ancestors have left behind. Today, I'm especially proud to be an archaeologist!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001300 : NpcScript {
                 // - I command the Royal Knights of Empress $npcName:11000075[gender:1]$. Her safety is our duty.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004150 : NpcScript {
                 // - Are you here to participate in Mushking Royale too? I'm afraid we've already got a squad of four. I'll see you on the battlefield!
                 return -1;
         }
-        
+
         return default;
     }
 

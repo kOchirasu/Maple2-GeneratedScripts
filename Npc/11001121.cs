@@ -39,7 +39,7 @@ public class _11001121 : NpcScript {
                 // - Close enough! There's so much I want to study, but I'm past my prime. <i>If only there were more time...!</i> Wait... That gives me an idea...
                 return -1;
         }
-        
+
         return default;
     }
 

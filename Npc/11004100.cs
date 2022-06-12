@@ -81,7 +81,7 @@ public class _11004100 : NpcScript {
                 // - SCRIPTNPCNAM_0705145607010420_NAME
                 return -1;
         }
-        
+
         return default;
     }
 

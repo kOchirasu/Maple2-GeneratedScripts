@@ -21,7 +21,7 @@ public class _11004369 : NpcScript {
                 // - My favorite memory from my childhood is decorating our tree every year. Now that I tend the garden myself, it can be even grander.
                 return -1;
         }
-        
+
         return default;
     }
 

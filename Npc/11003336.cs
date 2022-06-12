@@ -21,7 +21,7 @@ public class _11003336 : NpcScript {
                 // - Who told them...?
                 return -1;
         }
-        
+
         return default;
     }
 

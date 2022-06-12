@@ -25,7 +25,7 @@ public class _11004237 : NpcScript {
                 // - I haven't seen his face in some time.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003456 : NpcScript {
                 // - I am prepared to dedicate my life to the peace of $map:02000051$.
                 return -1;
         }
-        
+
         return default;
     }
 

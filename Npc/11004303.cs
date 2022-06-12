@@ -35,7 +35,7 @@ public class _11004303 : NpcScript {
                 // - I-I was scared, so I hid behind the chair! That guy was real busy. I bet he dropped a bunch of his stuff all over the place.
                 return -1;
         }
-        
+
         return default;
     }
 

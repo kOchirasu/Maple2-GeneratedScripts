@@ -25,7 +25,7 @@ public class _11000390 : NpcScript {
                 // - The empress is no longer holding court, but we're still booked up. I don't think most people have heard the news yet.
                 return -1;
         }
-        
+
         return default;
     }
 

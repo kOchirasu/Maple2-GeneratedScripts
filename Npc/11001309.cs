@@ -29,7 +29,7 @@ public class _11001309 : NpcScript {
                 // - This isn't police work. It's war! But somebody's got to protect the city, right?
                 return -1;
         }
-        
+
         return default;
     }
 

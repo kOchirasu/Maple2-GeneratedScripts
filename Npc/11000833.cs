@@ -21,7 +21,7 @@ public class _11000833 : NpcScript {
                 // - Ooh, I hate wolves more than anything. They chew up our fences and take our sheep. I wish I could just move away... me and the sheep... 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -71,7 +71,7 @@ public class _11004560 : NpcScript {
                 // - It's been some time since we last sparred. I'm curious to see how you've grown.
                 return -1;
         }
-        
+
         return default;
     }
 

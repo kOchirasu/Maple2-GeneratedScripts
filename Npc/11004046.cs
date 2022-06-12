@@ -21,7 +21,7 @@ public class _11004046 : NpcScript {
                 // - The king will come back... He just has to!
                 return -1;
         }
-        
+
         return default;
     }
 

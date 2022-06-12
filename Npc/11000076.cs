@@ -33,7 +33,7 @@ public class _11000076 : NpcScript {
                 // - I lead the Lumiknights, the defenders of the empress, and yet I was completely oblivious of $npcName:11000044[gender:0]$'s true nature. It's disgraceful.
                 return -1;
         }
-        
+
         return default;
     }
 

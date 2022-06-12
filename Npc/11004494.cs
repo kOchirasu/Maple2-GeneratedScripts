@@ -49,7 +49,7 @@ public class _11004494 : NpcScript {
                 // - We need to stop them before they spread any further.
                 return -1;
         }
-        
+
         return default;
     }
 

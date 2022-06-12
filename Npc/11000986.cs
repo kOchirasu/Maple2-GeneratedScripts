@@ -21,7 +21,7 @@ public class _11000986 : NpcScript {
                 // - There are many stones yet unknown to the world. The ones that shine aren't the only beautiful ones. 
                 return -1;
         }
-        
+
         return default;
     }
 

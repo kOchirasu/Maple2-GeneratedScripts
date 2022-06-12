@@ -25,7 +25,7 @@ public class _11000139 : NpcScript {
                 // - Well, I'm not fighting those monsters. It's not that they're too scary... I just don't want to be bothered.
                 return -1;
         }
-        
+
         return default;
     }
 

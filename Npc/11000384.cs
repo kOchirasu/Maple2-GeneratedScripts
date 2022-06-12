@@ -21,7 +21,7 @@ public class _11000384 : NpcScript {
                 // - S-stop talking to me... Ughhh... 
                 return -1;
         }
-        
+
         return default;
     }
 

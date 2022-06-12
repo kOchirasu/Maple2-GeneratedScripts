@@ -81,7 +81,7 @@ public class _11001630 : NpcScript {
                 // - Count on it.
                 return -1;
         }
-        
+
         return default;
     }
 

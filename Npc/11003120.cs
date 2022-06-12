@@ -21,7 +21,7 @@ public class _11003120 : NpcScript {
                 // - I don't know you, so I'll warn you once: Don't cross me.
                 return -1;
         }
-        
+
         return default;
     }
 

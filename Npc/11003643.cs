@@ -51,7 +51,7 @@ public class _11003643 : NpcScript {
                 // - I really need to take some leave when this is all over.
                 return -1;
         }
-        
+
         return default;
     }
 

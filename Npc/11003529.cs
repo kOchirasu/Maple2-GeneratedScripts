@@ -215,7 +215,7 @@ public class _11003529 : NpcScript {
                 // - There's no need to be nervous. Nothing in this simulation can inflict any <i>permanent</i> harm. That said, the study will be meaningless unless you take the scenario seriously!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001010 : NpcScript {
                 // - Do you think the pirates will pay their tab if I ask nicely?
                 return -1;
         }
-        
+
         return default;
     }
 

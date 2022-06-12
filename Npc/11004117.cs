@@ -21,7 +21,7 @@ public class _11004117 : NpcScript {
                 // - To suddenly appear in a place like this...
                 return -1;
         }
-        
+
         return default;
     }
 

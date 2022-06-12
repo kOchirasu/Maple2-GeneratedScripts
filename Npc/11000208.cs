@@ -29,7 +29,7 @@ public class _11000208 : NpcScript {
                 // - Follow this road southward to find the Barrota Trading Company's warehouse at the end. Start your search there, and you should find $item:20000046$.
                 return -1;
         }
-        
+
         return default;
     }
 

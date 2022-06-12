@@ -21,7 +21,7 @@ public class _11004036 : NpcScript {
                 // - Don't worry, I'll protect you.
                 return -1;
         }
-        
+
         return default;
     }
 

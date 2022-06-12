@@ -69,7 +69,7 @@ public class _11004527 : NpcScript {
                 // - I can't help it if I have resting "relaxed" face. Trust me when I say that we're working hard over here.
                 return -1;
         }
-        
+
         return default;
     }
 

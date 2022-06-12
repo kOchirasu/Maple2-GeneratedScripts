@@ -29,7 +29,7 @@ public class _11004271 : NpcScript {
                 // - <font color="#909090">(You've seen plants like this all over Karkar, but they're especially plentiful here.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

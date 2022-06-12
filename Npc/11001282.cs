@@ -55,7 +55,7 @@ public class _11001282 : NpcScript {
                 // - Good. You shouldn't. You're definitely a worthy student to a man of his stature.
                 return -1;
         }
-        
+
         return default;
     }
 

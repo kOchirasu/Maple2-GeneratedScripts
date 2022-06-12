@@ -39,7 +39,7 @@ public class _11000037 : NpcScript {
                 // - Even if I can't cast neat purifying spells, at least I can collect $itemPlural:30000435$ from adventurers like you. If I get enough flowers, maybe $npc:11000031[gender:0]$ will finally let me do the fun stuff. When he does, bring me more flowers, okay?
                 return -1;
         }
-        
+
         return default;
     }
 

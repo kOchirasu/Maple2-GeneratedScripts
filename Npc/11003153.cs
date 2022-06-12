@@ -21,7 +21,7 @@ public class _11003153 : NpcScript {
                 // - $MyPCName$, did you come to enjoy the flowers? So did I!
                 return -1;
         }
-        
+
         return default;
     }
 

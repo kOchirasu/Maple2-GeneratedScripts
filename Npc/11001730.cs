@@ -59,7 +59,7 @@ public class _11001730 : NpcScript {
                 // - $male:Lessee...,female:Nuh-uh!$ $npcName:11000515[gender:1]$. You know her? You better steer clear. She's pretty, but she's got thorns!
                 return -1;
         }
-        
+
         return default;
     }
 

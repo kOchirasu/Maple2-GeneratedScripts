@@ -21,7 +21,7 @@ public class _11000112 : NpcScript {
                 // - Look at this. Terrible, isn't it? Geez, I've never seen such a big fissure.
                 return -1;
         }
-        
+
         return default;
     }
 

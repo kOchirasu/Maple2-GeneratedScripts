@@ -21,7 +21,7 @@ public class _11001244 : NpcScript {
                 // - $MyPCName$?! What are you doing here? You  were a fool to come! 
                 return -1;
         }
-        
+
         return default;
     }
 

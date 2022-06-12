@@ -48,7 +48,7 @@ public class _11000033 : NpcScript {
                 // - The ancient records of our history must be handled with care. They teach us many important lessons.
                 return -1;
         }
-        
+
         return default;
     }
 

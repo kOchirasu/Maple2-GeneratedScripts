@@ -43,7 +43,7 @@ public class _11000529 : NpcScript {
                 // - Try to see through their deceptions. It's not hard to find the rotting heart of this city.
                 return -1;
         }
-        
+
         return default;
     }
 

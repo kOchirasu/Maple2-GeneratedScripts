@@ -21,7 +21,7 @@ public class _11004032 : NpcScript {
                 // - What is it, kid? You want to know about lapenshards?
                 return -1;
         }
-        
+
         return default;
     }
 

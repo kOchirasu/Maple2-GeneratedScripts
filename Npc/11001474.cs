@@ -39,7 +39,7 @@ public class _11001474 : NpcScript {
                 // - How did the temple of the divine lumarigons come to house such frightening creatures? It's enough to make a man quake in his boots.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003880 : NpcScript {
                 // - Doesn't this flower look like me?
                 return -1;
         }
-        
+
         return default;
     }
 

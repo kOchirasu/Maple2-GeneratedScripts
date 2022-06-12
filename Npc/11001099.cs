@@ -21,7 +21,7 @@ public class _11001099 : NpcScript {
                 // - This place is $map:52000011$. It channels the power of the Red Lapenta to maintain order among the timelines.
                 return -1;
         }
-        
+
         return default;
     }
 

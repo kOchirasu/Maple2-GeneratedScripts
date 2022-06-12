@@ -59,7 +59,7 @@ public class _11000675 : NpcScript {
                 // - I should know. I've done it countless times. Now... Do you still want to challenge me?
                 return -1;
         }
-        
+
         return default;
     }
 

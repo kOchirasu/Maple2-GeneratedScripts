@@ -22,7 +22,7 @@ public class _11001189 : NpcScript {
                 //   I haven't survived the criminal underworld this long by panicking every time someone came after me!
                 return -1;
         }
-        
+
         return default;
     }
 

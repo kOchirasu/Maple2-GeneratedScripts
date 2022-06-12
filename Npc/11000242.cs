@@ -25,7 +25,7 @@ public class _11000242 : NpcScript {
                 // - Have a seat. I hope you don't feel out of place. We do get singles up here once in awhile. Sometimes they even find someone to leave with!
                 return -1;
         }
-        
+
         return default;
     }
 

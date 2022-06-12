@@ -21,7 +21,7 @@ public class _11000030 : NpcScript {
                 // - Bullies are the worst. How can anyone pick on someone weaker than themselves?
                 return -1;
         }
-        
+
         return default;
     }
 

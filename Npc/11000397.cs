@@ -21,7 +21,7 @@ public class _11000397 : NpcScript {
                 // - It may not look it, but my house is the most expensive in the neighborhood. There's nothing quite like living up so high. I hope my daughter appreciates how hard it was for me to get this place for us.
                 return -1;
         }
-        
+
         return default;
     }
 

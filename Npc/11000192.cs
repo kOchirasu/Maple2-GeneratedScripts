@@ -25,7 +25,7 @@ public class _11000192 : NpcScript {
                 // - Thus, "$map:02000059$." Just look around and you'll see all the empty cabins that were once occupied by loggers.
                 return -1;
         }
-        
+
         return default;
     }
 

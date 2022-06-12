@@ -21,7 +21,7 @@ public class _11001456 : NpcScript {
                 // - We haven't even finished unpacking, and my baby is already hurt. How dreadful!
                 return -1;
         }
-        
+
         return default;
     }
 

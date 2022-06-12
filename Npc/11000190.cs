@@ -95,7 +95,7 @@ public class _11000190 : NpcScript {
                 // - My sons never listen. They run wild all the time, screaming and fighting. And my wife nags at me all day long. At home, I can't rest for even a moment.
                 return -1;
         }
-        
+
         return default;
     }
 

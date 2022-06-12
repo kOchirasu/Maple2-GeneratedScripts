@@ -21,7 +21,7 @@ public class _11000218 : NpcScript {
                 // - People should be good to each other. You reap what you sow, as they say...
                 return -1;
         }
-        
+
         return default;
     }
 

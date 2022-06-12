@@ -39,7 +39,7 @@ public class _11004084 : NpcScript {
                 // - I can't do a danged thing to actually help you. But hey, if staring at our sparkly heinies brings you peace, then stare away!
                 return -1;
         }
-        
+
         return default;
     }
 

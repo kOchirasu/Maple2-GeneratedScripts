@@ -21,7 +21,7 @@ public class _11000183 : NpcScript {
                 // - Honey izz very preciouz to uzz honeybeezz! We won't let anyone take it away!
                 return -1;
         }
-        
+
         return default;
     }
 

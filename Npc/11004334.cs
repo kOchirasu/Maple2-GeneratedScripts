@@ -37,7 +37,7 @@ public class _11004334 : NpcScript {
                 // - Soon, the Resistance will dominate Maple World using the technology of Kritias!
                 return -1;
         }
-        
+
         return default;
     }
 

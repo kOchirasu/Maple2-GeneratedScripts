@@ -21,7 +21,7 @@ public class _11001404 : NpcScript {
                 // - You've been on the road a long time. I can tell. Come in and have a glass of water. It's on the house!
                 return -1;
         }
-        
+
         return default;
     }
 

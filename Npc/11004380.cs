@@ -55,7 +55,7 @@ public class _11004380 : NpcScript {
                 // - I know $npcName:11004348[gender:0]$, he's $npcName:11004345[gender:1]$'s father. I saw him last night at the gardening club meeting. But I didn't see him today. I bet he's just at home... He mentioned wanting to decorate his holiday tree.
                 return -1;
         }
-        
+
         return default;
     }
 

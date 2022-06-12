@@ -21,7 +21,7 @@ public class _11000387 : NpcScript {
                 // - Have you seen $npcName:11000406[gender:0]$? He's right over there... and he's sooooooo handsome. Ah, I wish I could get close to him...
                 return -1;
         }
-        
+
         return default;
     }
 

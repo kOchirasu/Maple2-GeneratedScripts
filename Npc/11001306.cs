@@ -36,7 +36,7 @@ public class _11001306 : NpcScript {
                 // - I'll be okay...
                 return -1;
         }
-        
+
         return default;
     }
 

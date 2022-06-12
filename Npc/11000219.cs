@@ -31,7 +31,7 @@ public class _11000219 : NpcScript {
                 // - Sheesh, I don't know. I can't talk. Doing this is tough as it is. My limbs are so numb I can't feel them anymore. 
                 return -1;
         }
-        
+
         return default;
     }
 

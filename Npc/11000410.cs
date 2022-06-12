@@ -23,7 +23,7 @@ public class _11000410 : NpcScript {
                 // - This forest trail is the only path connecting us to $npcName:11000407[gender:0]$, and the monsters are making it unusable. $npcName:11000409[gender:0]$ and I are working to clear them out.
                 return -1;
         }
-        
+
         return default;
     }
 

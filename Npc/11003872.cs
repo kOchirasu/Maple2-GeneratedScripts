@@ -21,7 +21,7 @@ public class _11003872 : NpcScript {
                 // - I guess you need good process <i>and</i> solid results.
                 return -1;
         }
-        
+
         return default;
     }
 

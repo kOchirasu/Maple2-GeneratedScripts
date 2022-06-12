@@ -62,7 +62,7 @@ public class _11000116 : NpcScript {
                 // - I was told that those who dare enter the Land of Darkness would have both their bodies and souls devoured by demons. However, that sounds like something made up to keep people from exploring. My plan is to find a shadow gate and travel to the Land of Darkness myself, so don't tell anyone.
                 return -1;
         }
-        
+
         return default;
     }
 

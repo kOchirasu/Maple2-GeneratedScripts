@@ -39,7 +39,7 @@ public class _11004274 : NpcScript {
                 // - Stay positive, and good fortune will follow! Never forget that, human!
                 return -1;
         }
-        
+
         return default;
     }
 

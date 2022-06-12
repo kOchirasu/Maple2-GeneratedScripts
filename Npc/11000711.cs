@@ -105,7 +105,7 @@ public class _11000711 : NpcScript {
                 // - Let's talk about something else, shall we? Keep your head in the present, I always say! Eyes on the prize!
                 return -1;
         }
-        
+
         return default;
     }
 

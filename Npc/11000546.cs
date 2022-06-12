@@ -21,7 +21,7 @@ public class _11000546 : NpcScript {
                 // - Want to see what I've got inside this bundle? Then show me your wallet first! Ha, just kidding...
                 return -1;
         }
-        
+
         return default;
     }
 

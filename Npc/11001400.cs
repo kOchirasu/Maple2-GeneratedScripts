@@ -31,7 +31,7 @@ public class _11001400 : NpcScript {
                 // - Where do I begin?! How about the fact that I can't get out of this death trap!
                 return -1;
         }
-        
+
         return default;
     }
 

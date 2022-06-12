@@ -21,7 +21,7 @@ public class _11004510 : NpcScript {
                 // - What're you, a tourist? You wanna get tombstoned? This is a warzone! Not that $map:02020030$ is any better...
                 return -1;
         }
-        
+
         return default;
     }
 

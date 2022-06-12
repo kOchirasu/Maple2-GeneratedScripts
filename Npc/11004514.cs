@@ -25,7 +25,7 @@ public class _11004514 : NpcScript {
                 // - With all the land routes cut off, we've been relying on air drops for supplies. We don't have the spare planes to keep that up forever, though. If something doesn't happen soon, the fortress will fall.
                 return -1;
         }
-        
+
         return default;
     }
 

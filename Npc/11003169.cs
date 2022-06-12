@@ -65,7 +65,7 @@ public class _11003169 : NpcScript {
                 // - It's all natural talent? Oh man. I guess there's no hope for me...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004178 : NpcScript {
                 // - If we want to win the next match, the two of you need to be more pragmatic.
                 return -1;
         }
-        
+
         return default;
     }
 

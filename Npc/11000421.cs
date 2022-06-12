@@ -21,7 +21,7 @@ public class _11000421 : NpcScript {
                 // - I came here with my daughter $npcName:11000420[gender:1]$ to start a new life. But if those turtles don't stop showing up, we'll have to move again.
                 return -1;
         }
-        
+
         return default;
     }
 

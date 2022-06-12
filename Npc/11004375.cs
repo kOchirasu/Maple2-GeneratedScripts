@@ -21,7 +21,7 @@ public class _11004375 : NpcScript {
                 // - Did you know? The fairfolk love sweet things. LOVE them.
                 return -1;
         }
-        
+
         return default;
     }
 

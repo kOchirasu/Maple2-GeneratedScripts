@@ -21,7 +21,7 @@ public class _11000258 : NpcScript {
                 // - Please keep your voice down. I'm not supposed to be talking with anyone right now.
                 return -1;
         }
-        
+
         return default;
     }
 

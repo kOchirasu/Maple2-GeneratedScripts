@@ -47,7 +47,7 @@ public class _11000113 : NpcScript {
                 // - Be careful, though. Monsters are milling about the beach. I'd rather make money slowly than be beaten up by those things.
                 return -1;
         }
-        
+
         return default;
     }
 

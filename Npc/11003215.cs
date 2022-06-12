@@ -21,7 +21,7 @@ public class _11003215 : NpcScript {
                 // - I can tell you aren't one of $npcName:11000044$'s men.
                 return -1;
         }
-        
+
         return default;
     }
 

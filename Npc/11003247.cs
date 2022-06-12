@@ -43,7 +43,7 @@ public class _11003247 : NpcScript {
                 // - C'mon! I'm not afraid of dogs or mushrooms anymore. I'm a real guard, almost!
                 return -1;
         }
-        
+
         return default;
     }
 

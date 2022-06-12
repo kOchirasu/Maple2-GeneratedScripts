@@ -39,7 +39,7 @@ public class _11001392 : NpcScript {
                 // - Thank you, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

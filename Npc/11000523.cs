@@ -43,7 +43,7 @@ public class _11000523 : NpcScript {
                 // - It's one of those pies topped with walnuts, almonds, and blueberries. When $npcName:11000064[gender:0]$ and I first made it, it was so bumpy and ugly that it looked like a gorilla. Why? What did you <i>think</i> it was?
                 return -1;
         }
-        
+
         return default;
     }
 

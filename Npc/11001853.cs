@@ -21,7 +21,7 @@ public class _11001853 : NpcScript {
                 // - I'm glad you've made a quick recovery.  Come and see me whenever you're hurt. You can pop in for a checkup in the hospital lobby, just outside the patient rooms. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004230 : NpcScript {
                 // - <font color='#909090'>(The fox tilts its head inquisitively.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

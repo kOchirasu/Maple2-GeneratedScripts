@@ -63,7 +63,7 @@ public class _11000185 : NpcScript {
                 // - I'm sorry... I got carried away for a moment. Now, if you'll excuse me, I have developments to inspect.
                 return -1;
         }
-        
+
         return default;
     }
 

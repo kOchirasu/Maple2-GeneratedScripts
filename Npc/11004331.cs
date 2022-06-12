@@ -85,7 +85,7 @@ public class _11004331 : NpcScript {
                 // - Hey, you know them don't you? Do you think you could introduce me? Please? Hey, where are you going?!
                 return -1;
         }
-        
+
         return default;
     }
 

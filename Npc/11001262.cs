@@ -124,7 +124,7 @@ public class _11001262 : NpcScript {
                 //   <font color="#909090">(He looks a bit crestfallen.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

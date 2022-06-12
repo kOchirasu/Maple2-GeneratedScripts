@@ -59,7 +59,7 @@ public class _11003533 : NpcScript {
                 // - Prove yourself to my officers, and I'll consider entrusting you with a mission for the Maple Alliance.
                 return -1;
         }
-        
+
         return default;
     }
 

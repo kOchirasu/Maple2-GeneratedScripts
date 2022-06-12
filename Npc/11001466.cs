@@ -21,7 +21,7 @@ public class _11001466 : NpcScript {
                 // - Don't you know who my brother is?
                 return -1;
         }
-        
+
         return default;
     }
 

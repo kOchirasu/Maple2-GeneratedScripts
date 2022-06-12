@@ -21,7 +21,7 @@ public class _11001972 : NpcScript {
                 // - We must harden our resolve.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000339 : NpcScript {
                 // - Ah, I want to be a great hotelier someday!
                 return -1;
         }
-        
+
         return default;
     }
 

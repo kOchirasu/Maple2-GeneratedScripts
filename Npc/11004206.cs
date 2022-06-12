@@ -21,7 +21,7 @@ public class _11004206 : NpcScript {
                 // - I don't feel like chatting today...
                 return -1;
         }
-        
+
         return default;
     }
 

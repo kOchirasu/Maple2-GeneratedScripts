@@ -123,7 +123,7 @@ public class _11004482 : NpcScript {
                 // - I'm sure it means <i>something</i>. The captain isn't the sort to name things all willy-nilly.
                 return -1;
         }
-        
+
         return default;
     }
 

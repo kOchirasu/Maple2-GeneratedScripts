@@ -21,7 +21,7 @@ public class _11004120 : NpcScript {
                 // - I'd say you yourself are worth studying, after surviving an explosion of this magnitude.
                 return -1;
         }
-        
+
         return default;
     }
 

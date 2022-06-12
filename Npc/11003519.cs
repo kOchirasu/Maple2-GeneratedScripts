@@ -35,7 +35,7 @@ public class _11003519 : NpcScript {
                 // - When you focus one gathering one type of aura, you'll feel it build up. Once it's full, it can be placed in a bowl, like water.
                 return -1;
         }
-        
+
         return default;
     }
 

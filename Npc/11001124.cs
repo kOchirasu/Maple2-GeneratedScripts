@@ -65,7 +65,7 @@ public class _11001124 : NpcScript {
                 // - What? Hmph. I really thought you had something of value to say on the topic. Next time someone asks for your opinion, you should just be honest with them.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -53,7 +53,7 @@ public class _11004477 : NpcScript {
                 // - Just wait. Soon, everyone in Kritias will bow before Blake's handsomeness!
                 return -1;
         }
-        
+
         return default;
     }
 

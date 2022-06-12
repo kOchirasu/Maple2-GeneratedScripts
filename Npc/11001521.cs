@@ -21,7 +21,7 @@ public class _11001521 : NpcScript {
                 // - I didn't expect $map:02000023$ to be quite this beautiful. When the boss told me the Green Hoods were joining this mission, I didn't know what to think. I've never been so far from home before... But I promise I won't let you down!
                 return -1;
         }
-        
+
         return default;
     }
 

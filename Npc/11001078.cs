@@ -21,7 +21,7 @@ public class _11001078 : NpcScript {
                 // - How did I never know about this place?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000596 : NpcScript {
                 // - I have to do homework, and I have to study... 
                 return -1;
         }
-        
+
         return default;
     }
 

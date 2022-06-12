@@ -21,7 +21,7 @@ public class _11000456 : NpcScript {
                 // - My girlfriend keeps bugging me to go out, even though it's a great day to relax inside. You get that, right? Make her see reason. If she always insists on doing... things, I worry about our future.
                 return -1;
         }
-        
+
         return default;
     }
 

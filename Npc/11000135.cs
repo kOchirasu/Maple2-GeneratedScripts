@@ -21,7 +21,7 @@ public class _11000135 : NpcScript {
                 // - Shush! Lower your voice.
                 return -1;
         }
-        
+
         return default;
     }
 

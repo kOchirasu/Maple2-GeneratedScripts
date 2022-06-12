@@ -25,7 +25,7 @@ public class _11004523 : NpcScript {
                 // - Answer: because seven ate nine. Ha! Ha! Ha! Ha!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -31,7 +31,7 @@ public class _11004508 : NpcScript {
                 // - <b>Aaaah!</b> Don't hurt me! I-I mean... I'm awake. I'm awake!
                 return -1;
         }
-        
+
         return default;
     }
 

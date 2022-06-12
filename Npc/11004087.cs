@@ -21,7 +21,7 @@ public class _11004087 : NpcScript {
                 // - Ribbit ribbit!
                 return -1;
         }
-        
+
         return default;
     }
 

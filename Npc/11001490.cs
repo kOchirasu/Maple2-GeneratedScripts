@@ -21,7 +21,7 @@ public class _11001490 : NpcScript {
                 // - It was no small task to recover the power of light. I pray it will never be overshadowed by darkness.
                 return -1;
         }
-        
+
         return default;
     }
 

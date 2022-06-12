@@ -113,7 +113,7 @@ public class _11000160 : NpcScript {
                 // - Really? Thanks, $MyPCName$.
                 return -1;
         }
-        
+
         return default;
     }
 

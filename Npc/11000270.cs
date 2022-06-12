@@ -21,7 +21,7 @@ public class _11000270 : NpcScript {
                 // - Plants will liven up your house.
                 return -1;
         }
-        
+
         return default;
     }
 

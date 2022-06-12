@@ -25,7 +25,7 @@ public class _11000402 : NpcScript {
                 // - This toxin... stronger than I thought... 
                 return -1;
         }
-        
+
         return default;
     }
 

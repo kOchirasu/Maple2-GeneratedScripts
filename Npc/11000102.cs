@@ -91,7 +91,7 @@ public class _11000102 : NpcScript {
                 // - Oh, right. When you join $map:61000001$ or $map:61000002$ games, keep an eye out for the merchants who sell interesting items! That should make your time in $map:02000064$ even more worthwhile!
                 return -1;
         }
-        
+
         return default;
     }
 

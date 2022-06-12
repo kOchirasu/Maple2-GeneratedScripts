@@ -29,7 +29,7 @@ public class _11004241 : NpcScript {
                 // - You better not tell anyone else about this! Especially not $npcName:11004054[gender:1]$!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11200005 : NpcScript {
                 // - Complete this simple task, and you will get guild experience, funds, and some experience for yourself, too! Note that you can't start daily quests until you've been in the guild for a day, and you can't start weekly quests until you've been in the guild for a week.
                 return -1;
         }
-        
+
         return default;
     }
 

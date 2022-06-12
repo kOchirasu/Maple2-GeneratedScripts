@@ -21,7 +21,7 @@ public class _11004136 : NpcScript {
                 // - All that lifeforce... will you give it to me?
                 return -1;
         }
-        
+
         return default;
     }
 

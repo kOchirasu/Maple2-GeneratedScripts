@@ -21,7 +21,7 @@ public class _11000369 : NpcScript {
                 // - Beep! Unauthorized access.
                 return -1;
         }
-        
+
         return default;
     }
 

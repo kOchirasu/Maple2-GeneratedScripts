@@ -21,7 +21,7 @@ public class _11003352 : NpcScript {
                 // - This time, the big guy'll mop the floor with you! No way he'll lose twice.
                 return -1;
         }
-        
+
         return default;
     }
 

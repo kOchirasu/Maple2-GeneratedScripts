@@ -89,7 +89,7 @@ public class _11000653 : NpcScript {
                 // - Now get outta here, before the warden notices we been talking.
                 return -1;
         }
-        
+
         return default;
     }
 

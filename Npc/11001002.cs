@@ -31,7 +31,7 @@ public class _11001002 : NpcScript {
                 // - That's my twin brother and fellow event guide. Come find us anytime you want to know about current events in Maple World. That's why we're here!
                 return -1;
         }
-        
+
         return default;
     }
 

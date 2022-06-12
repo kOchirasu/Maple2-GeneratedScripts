@@ -29,7 +29,7 @@ public class _11004257 : NpcScript {
                 // - <font color="#909090">(Rumor has it that $npcNamePlural:21000053$ make their den below. The steam that rises from deep underground is said to be toxic to humans.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

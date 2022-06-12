@@ -21,7 +21,7 @@ public class _11000036 : NpcScript {
                 // - Love the flowers and trees as you love yourself. Without them, you wouldn't exist.
                 return -1;
         }
-        
+
         return default;
     }
 

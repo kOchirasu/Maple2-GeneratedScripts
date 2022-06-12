@@ -21,7 +21,7 @@ public class _11000870 : NpcScript {
                 // - Isn't this incredible? Frozen in time...
                 return -1;
         }
-        
+
         return default;
     }
 

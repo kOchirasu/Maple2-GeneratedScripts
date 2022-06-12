@@ -246,7 +246,7 @@ public class _11001265 : NpcScript {
                 // - Hmm? Well, come back when you need my help.
                 return -1;
         }
-        
+
         return default;
     }
 

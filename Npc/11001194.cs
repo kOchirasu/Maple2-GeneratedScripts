@@ -34,7 +34,7 @@ public class _11001194 : NpcScript {
                 //   I should've brought $npcName:11001193[gender:1]$, my supervisor... 
                 return -1;
         }
-        
+
         return default;
     }
 

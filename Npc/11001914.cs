@@ -21,7 +21,7 @@ public class _11001914 : NpcScript {
                 // - Katvan and I will meet again. 
                 return -1;
         }
-        
+
         return default;
     }
 

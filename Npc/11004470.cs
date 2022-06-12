@@ -25,7 +25,7 @@ public class _11004470 : NpcScript {
                 // - Where did you go?! I give up! Please come out!
                 return -1;
         }
-        
+
         return default;
     }
 

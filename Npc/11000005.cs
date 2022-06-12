@@ -97,7 +97,7 @@ public class _11000005 : NpcScript {
                 // - Is there nothing you can't learn from a book?
                 return -1;
         }
-        
+
         return default;
     }
 

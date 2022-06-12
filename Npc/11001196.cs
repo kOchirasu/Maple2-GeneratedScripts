@@ -36,7 +36,7 @@ public class _11001196 : NpcScript {
                 // - ...Wait, what am I doing? I'm not some blasted shopkeep! I support the employees of the broadcasting station. Coffee, snacks, transportation, unsolicited advice. I get them whatever they need. I'm a key member of the team, so don't you forget it!
                 return -1;
         }
-        
+
         return default;
     }
 

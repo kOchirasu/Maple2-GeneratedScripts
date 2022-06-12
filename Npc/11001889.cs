@@ -21,7 +21,7 @@ public class _11001889 : NpcScript {
                 // - Thanks for all the hard work, $MyPCName$. 
                 return -1;
         }
-        
+
         return default;
     }
 

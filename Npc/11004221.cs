@@ -21,7 +21,7 @@ public class _11004221 : NpcScript {
                 // - Can't talk, secret mission. I told $npc:11004220[gender:0]$ to meet right here by the balloons. Where is he? You don't think <i>they</i> got to him first, do you...?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11001390 : NpcScript {
                 // - But instead of going out and making something of herself, she came back to this small town. I'm happy to have her here, but I can't help but feel that she's wasting her talent...
                 return -1;
         }
-        
+
         return default;
     }
 

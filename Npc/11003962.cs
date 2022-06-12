@@ -21,7 +21,7 @@ public class _11003962 : NpcScript {
                 // - Hey. Are you any good at tracking people down?
                 return -1;
         }
-        
+
         return default;
     }
 

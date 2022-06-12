@@ -21,7 +21,7 @@ public class _11001333 : NpcScript {
                 // - Judith is usually a good girl, but she can throw a tantrum like nobody's business. All because I refused to buy her a can of her favorite drink...
                 return -1;
         }
-        
+
         return default;
     }
 

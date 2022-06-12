@@ -21,7 +21,7 @@ public class _11003356 : NpcScript {
                 // - There's no way the big guy will lose to such a weakling.
                 return -1;
         }
-        
+
         return default;
     }
 

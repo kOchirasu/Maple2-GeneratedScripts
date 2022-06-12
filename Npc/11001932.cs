@@ -21,7 +21,7 @@ public class _11001932 : NpcScript {
                 // - Handicrafts are so fun that I often lose track of the time. I just wish I had someone to actually give this stuff to... 
                 return -1;
         }
-        
+
         return default;
     }
 

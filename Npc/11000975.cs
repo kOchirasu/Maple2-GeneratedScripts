@@ -21,7 +21,7 @@ public class _11000975 : NpcScript {
                 // - I believe if I work hard now, I'll be able to retire and spend time with my daughter someday.
                 return -1;
         }
-        
+
         return default;
     }
 

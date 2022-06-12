@@ -21,7 +21,7 @@ public class _11004349 : NpcScript {
                 // - Ha, you like Bobo's red nose? Remind you of someone?
                 return -1;
         }
-        
+
         return default;
     }
 

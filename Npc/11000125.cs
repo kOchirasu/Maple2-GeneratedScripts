@@ -21,7 +21,7 @@ public class _11000125 : NpcScript {
                 // - I've got to determine whether the mutated DNA strand was an outside contaminant, or was somehow mistakenly synthesized inside our test subjects...
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000305 : NpcScript {
                 // - Pretty homes are nice to live in.
                 return -1;
         }
-        
+
         return default;
     }
 

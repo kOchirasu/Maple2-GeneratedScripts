@@ -21,7 +21,7 @@ public class _11000700 : NpcScript {
                 // - Helping each other out is always so rewarding!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -57,7 +57,7 @@ public class _11004717 : NpcScript {
                 // - It's a long story. And an ugly one! Instead of nosing into my painful memories, why don't you help me with this cauldron?
                 return -1;
         }
-        
+
         return default;
     }
 

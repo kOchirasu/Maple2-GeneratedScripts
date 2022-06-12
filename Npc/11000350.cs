@@ -21,7 +21,7 @@ public class _11000350 : NpcScript {
                 // - I've been traveling all my life, and the greatest lesson I've learned is to never waste anything. $npcName:21000029$, for example, has hundreds of practical uses. It's amazing stuff!
                 return -1;
         }
-        
+
         return default;
     }
 

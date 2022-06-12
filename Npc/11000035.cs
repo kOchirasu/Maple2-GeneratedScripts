@@ -21,7 +21,7 @@ public class _11000035 : NpcScript {
                 // - The world is so scary sometimes. Be careful, $MyPCName$!
                 return -1;
         }
-        
+
         return default;
     }
 

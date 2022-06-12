@@ -91,7 +91,7 @@ public class _11000439 : NpcScript {
                 // - Captain $npcName:11000044[gender:0]$... No, he's not my captain anymore. This is all too much. What's going to happen to Dark Wind now?
                 return -1;
         }
-        
+
         return default;
     }
 

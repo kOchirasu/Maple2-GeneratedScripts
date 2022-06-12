@@ -45,7 +45,7 @@ public class _11003515 : NpcScript {
                 // - They're supposed to be good dancers, but I haven't seen it myself. They're not dancing all the time, you see. Do you think they prefer upbeat music?
                 return -1;
         }
-        
+
         return default;
     }
 

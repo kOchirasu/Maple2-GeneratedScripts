@@ -21,7 +21,7 @@ public class _11001055 : NpcScript {
                 // - No pizza can match Maggiore pizza. Chewy dough with simple toppings, just like Mom used to make! 
                 return -1;
         }
-        
+
         return default;
     }
 

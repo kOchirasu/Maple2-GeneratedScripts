@@ -35,7 +35,7 @@ public class _11001545 : NpcScript {
                 // - Well what're you staring at? Did'ja have something to tell me, or do you just like the view?
                 return -1;
         }
-        
+
         return default;
     }
 

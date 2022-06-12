@@ -21,7 +21,7 @@ public class _11000366 : NpcScript {
                 // - Do you know what makes cats so appealing? It's how independent they are! Though... it's possible for them to be too independent. Like $npcName:11000367$, for example.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -36,7 +36,7 @@ public class _11001312 : NpcScript {
                 // - Please don't ask. I... I don't want to get into it.
                 return -1;
         }
-        
+
         return default;
     }
 

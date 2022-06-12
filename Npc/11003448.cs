@@ -21,7 +21,7 @@ public class _11003448 : NpcScript {
                 // - We're all in this together.
                 return -1;
         }
-        
+
         return default;
     }
 

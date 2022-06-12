@@ -49,7 +49,7 @@ public class _11004474 : NpcScript {
                 // - $npcName:24100101$? Is that the name of one of the Sky Fortress big wigs? She sounds intimidating...
                 return -1;
         }
-        
+
         return default;
     }
 

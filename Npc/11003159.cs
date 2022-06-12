@@ -21,7 +21,7 @@ public class _11003159 : NpcScript {
                 // - I filled my backpack with flowers, and now I can smell them all the time! Oh, don't worry. They're not heavy at all.
                 return -1;
         }
-        
+
         return default;
     }
 

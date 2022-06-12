@@ -21,7 +21,7 @@ public class _11003253 : NpcScript {
                 // - I'm gonna be just as awesome as you when I grow up!
                 return -1;
         }
-        
+
         return default;
     }
 

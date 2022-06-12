@@ -21,7 +21,7 @@ public class _11004111 : NpcScript {
                 // - Our knights always do their utmost.
                 return -1;
         }
-        
+
         return default;
     }
 

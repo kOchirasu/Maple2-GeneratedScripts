@@ -959,7 +959,7 @@ public class _11000759 : NpcScript {
                 //   Sorry, $male:pal,female:lady$, you're not my type.
                 return -1;
         }
-        
+
         return default;
     }
 

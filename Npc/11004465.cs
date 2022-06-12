@@ -41,7 +41,7 @@ public class _11004465 : NpcScript {
                 // - Tch... What a waste of talent. Well, if you change your mind, it's not like we can afford to be picky...
                 return -1;
         }
-        
+
         return default;
     }
 

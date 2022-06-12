@@ -25,7 +25,7 @@ public class _11000200 : NpcScript {
                 // - $npcName:11000201[gender:0]$ is my friend from $map:02000023$. He's an elf. Isn't that awesome? 
                 return -1;
         }
-        
+
         return default;
     }
 

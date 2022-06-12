@@ -21,7 +21,7 @@ public class _11004054 : NpcScript {
                 // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
                 return -1;
         }
-        
+
         return default;
     }
 

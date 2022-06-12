@@ -994,7 +994,7 @@ public class _11000786 : NpcScript {
                 // - My name is $MaidName$, and I keep watch over this house. How may I help you?
                 return -1;
         }
-        
+
         return default;
     }
 

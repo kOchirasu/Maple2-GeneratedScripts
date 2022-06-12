@@ -63,7 +63,7 @@ public class _11001590 : NpcScript {
                 // - No words can express my gratitude. I only hope that I can repay the empire one day.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -49,7 +49,7 @@ public class _11000601 : NpcScript {
                 // - Please... be careful.
                 return -1;
         }
-        
+
         return default;
     }
 

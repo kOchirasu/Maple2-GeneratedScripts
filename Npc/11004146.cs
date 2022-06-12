@@ -21,7 +21,7 @@ public class _11004146 : NpcScript {
                 // - Hello! It's another beautiful day in Royale Park, wouldn't you say?
                 return -1;
         }
-        
+
         return default;
     }
 

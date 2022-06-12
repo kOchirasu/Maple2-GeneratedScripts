@@ -21,7 +21,7 @@ public class _11000603 : NpcScript {
                 // - I'll see you soon... my friend...
                 return -1;
         }
-        
+
         return default;
     }
 

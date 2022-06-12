@@ -38,7 +38,7 @@ public class _11004067 : NpcScript {
                 // - <font color='#909090'>(This could be trouble for the empress...)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

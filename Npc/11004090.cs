@@ -29,7 +29,7 @@ public class _11004090 : NpcScript {
                 // - <font color='#909090'>(They say that the snow crystal is a reflection of the goodness and kindness that lives in the hearts of Santas everywhere.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

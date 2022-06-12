@@ -21,7 +21,7 @@ public class _11004196 : NpcScript {
                 // - The world relies on the strength of heroes like you. May the empress's blessing be with you.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -29,7 +29,7 @@ public class _11000834 : NpcScript {
                 // - Cathy Mart sells only the highest-quality products. If you find any items that don't seem to meet our standards, please don't hesitate to let me know.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000156 : NpcScript {
                 // - What do I do? I've got piles of packages, and the Royal Road to $map:02000001$ is all busted up.
                 return -1;
         }
-        
+
         return default;
     }
 

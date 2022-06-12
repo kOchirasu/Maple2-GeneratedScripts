@@ -29,7 +29,7 @@ public class _11001408 : NpcScript {
                 // - Anyway, now that you've seen our base, you have to promise never to tell anyone about it. Only you and your closest friends are welcome here.
                 return -1;
         }
-        
+
         return default;
     }
 

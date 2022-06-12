@@ -21,7 +21,7 @@ public class _11004114 : NpcScript {
                 // - Sounds like you've got an important mission! I'm sure you'll succeed!
                 return -1;
         }
-        
+
         return default;
     }
 

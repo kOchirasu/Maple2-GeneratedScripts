@@ -39,7 +39,7 @@ public class _11003107 : NpcScript {
                 // - Ah, you must be quite content with your life. You're always welcome to visit if you need a place to rest and escape from reality.
                 return -1;
         }
-        
+
         return default;
     }
 

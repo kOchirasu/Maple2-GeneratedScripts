@@ -25,7 +25,7 @@ public class _11004541 : NpcScript {
                 // - Here to gawk at the soldierettos? Get a good look and then be on your way. I can't concentrate with all you... all you tourists hanging about!
                 return -1;
         }
-        
+
         return default;
     }
 

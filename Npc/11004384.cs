@@ -41,7 +41,7 @@ public class _11004384 : NpcScript {
                 // - Agreed! Happy holidays! Remind everyone that this is a season for joy!
                 return -1;
         }
-        
+
         return default;
     }
 

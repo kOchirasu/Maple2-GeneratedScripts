@@ -21,7 +21,7 @@ public class _11000386 : NpcScript {
                 // - Hello. I am $npcName:11000386$. You seem surprised that I can talk. Don't be. Maple World is full of surprises after all.
                 return -1;
         }
-        
+
         return default;
     }
 

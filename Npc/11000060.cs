@@ -43,7 +43,7 @@ public class _11000060 : NpcScript {
                 // - Cross the sea to the mainland to experience more of what this world can offer.Go on, don't be afraid.
                 return -1;
         }
-        
+
         return default;
     }
 

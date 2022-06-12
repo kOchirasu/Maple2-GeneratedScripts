@@ -51,7 +51,7 @@ public class _11001434 : NpcScript {
                 // - I caught a glimpse of one once. Of course, most folks think I dreamed it, but I know that's not true. I'm determined to uncover the secret of the snow leopards. 
                 return -1;
         }
-        
+
         return default;
     }
 

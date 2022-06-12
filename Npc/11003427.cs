@@ -21,7 +21,7 @@ public class _11003427 : NpcScript {
                 // - Nipa Nipa!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001377 : NpcScript {
                 // - What, you think a woman can't be a fight manager? Just watch. I'm going to turn Boh and every other one of my clients into world champions.
                 return -1;
         }
-        
+
         return default;
     }
 

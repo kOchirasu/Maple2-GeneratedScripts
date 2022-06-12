@@ -21,7 +21,7 @@ public class _11001370 : NpcScript {
                 // - Please check the schedule on the monorail platform.
                 return -1;
         }
-        
+
         return default;
     }
 

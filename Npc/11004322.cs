@@ -79,7 +79,7 @@ public class _11004322 : NpcScript {
                 // - Cool.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000081 : NpcScript {
                 // - I like making shoes for my friends. Be my friend, and I'll give you a pair of shoes.
                 return -1;
         }
-        
+
         return default;
     }
 

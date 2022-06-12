@@ -103,7 +103,7 @@ public class _11003556 : NpcScript {
                 // - The volcano's summit is their breeding ground. Your task is to reach it, and collect five eggs. Good luck up there!
                 return -1;
         }
-        
+
         return default;
     }
 

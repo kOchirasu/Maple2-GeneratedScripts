@@ -29,7 +29,7 @@ public class _11004475 : NpcScript {
                 // - Sure, it seems like a shaky investment <i>now</i>, but just you wait! Any land you buy here today will be worth ten times as much a year from now!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -31,7 +31,7 @@ public class _11000236 : NpcScript {
                 // - I said go. Geez, this is such a mess! 
                 return -1;
         }
-        
+
         return default;
     }
 

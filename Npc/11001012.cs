@@ -21,7 +21,7 @@ public class _11001012 : NpcScript {
                 // - I'm sure you heard that time stopped here in Ludibrium. Now I don't have to worry about getting old, as long as I stay here.
                 return -1;
         }
-        
+
         return default;
     }
 

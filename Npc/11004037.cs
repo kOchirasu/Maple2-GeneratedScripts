@@ -21,7 +21,7 @@ public class _11004037 : NpcScript {
                 // - Even though everything's going crazy right now, it's reassuring to have you around.
                 return -1;
         }
-        
+
         return default;
     }
 

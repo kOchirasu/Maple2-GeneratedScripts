@@ -29,7 +29,7 @@ public class _11004414 : NpcScript {
                 // - In any event, try some! Go on, eat it up!
                 return -1;
         }
-        
+
         return default;
     }
 

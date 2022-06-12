@@ -31,7 +31,7 @@ public class _11000595 : NpcScript {
                 // - Oh, me? I'm studying these creatures we call the fairfolk. All kinds of fairfolk inhabit forests like this.
                 return -1;
         }
-        
+
         return default;
     }
 

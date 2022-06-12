@@ -111,7 +111,7 @@ public class _11000144 : NpcScript {
                 // - If $item:30000419$ is what you're after, you should talk to $npcName:11001210[gender:0]$ in $map:02000023$. I'm sure he can help you.
                 return -1;
         }
-        
+
         return default;
     }
 

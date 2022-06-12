@@ -21,7 +21,7 @@ public class _11001068 : NpcScript {
                 // - Did you come to enjoy Oil and Water's concert? Head up to the front of the stage if you did.
                 return -1;
         }
-        
+
         return default;
     }
 

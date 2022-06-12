@@ -21,7 +21,7 @@ public class _11004224 : NpcScript {
                 // - Hey, thanks for listening! We're Riot at the Danceclub. We all met during an audition and decided to form a band, kindred spirits and all that. We picked stage names to riff off the band name.
                 return -1;
         }
-        
+
         return default;
     }
 

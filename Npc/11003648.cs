@@ -71,7 +71,7 @@ public class _11003648 : NpcScript {
                 // - I would advise you leave this place as soon as you can. It's most eerie here...
                 return -1;
         }
-        
+
         return default;
     }
 

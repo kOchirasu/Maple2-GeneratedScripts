@@ -41,7 +41,7 @@ public class _11001122 : NpcScript {
                 // - ...Sheesh, can't you just let it go? If you're going to keep asking stupid questions, I don't want to talk to you.
                 return -1;
         }
-        
+
         return default;
     }
 

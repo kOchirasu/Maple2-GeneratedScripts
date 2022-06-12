@@ -25,7 +25,7 @@ public class _11004525 : NpcScript {
                 // - Beep... Beep... Beeep! Bee...
                 return -1;
         }
-        
+
         return default;
     }
 

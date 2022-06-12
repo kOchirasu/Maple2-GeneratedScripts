@@ -34,7 +34,7 @@ public class _11001008 : NpcScript {
                 // - <font color="#909090">(After a moment of hesitation, you return the picture to its place.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

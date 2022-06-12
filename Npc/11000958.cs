@@ -21,7 +21,7 @@ public class _11000958 : NpcScript {
                 // - My babies are as precious as children to me. Hee hee.
                 return -1;
         }
-        
+
         return default;
     }
 

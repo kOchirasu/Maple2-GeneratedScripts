@@ -22,7 +22,7 @@ public class _11004157 : NpcScript {
                 //   <font color="#909090">(He flops his ears joyfully.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

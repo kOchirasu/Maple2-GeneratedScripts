@@ -31,7 +31,7 @@ public class _11000115 : NpcScript {
                 // - Smith left for $map:02000001$ to see the court instead of staying with me for my birthday. I don't need a boyfriend who cares more about the empress than me. I hope he'll never come back. Hmph!
                 return -1;
         }
-        
+
         return default;
     }
 

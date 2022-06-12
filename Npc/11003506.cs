@@ -21,7 +21,7 @@ public class _11003506 : NpcScript {
                 // - Ever since those hungry $itemPlural:61000002$ showed up, this place has been overflowing with tourists. I actually ran into a childhood friend the other day!
                 return -1;
         }
-        
+
         return default;
     }
 

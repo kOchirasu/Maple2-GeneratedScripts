@@ -47,7 +47,7 @@ public class _11000001 : NpcScript {
                 // - The only wish I have now is for peace. $MyPCName$, I'm relying on you for that.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -63,7 +63,7 @@ public class _11004330 : NpcScript {
                 // - Ahem! W-well I'm not going to make any progress sitting around talking to you! Excuse me.
                 return -1;
         }
-        
+
         return default;
     }
 

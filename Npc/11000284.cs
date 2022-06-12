@@ -25,7 +25,7 @@ public class _11000284 : NpcScript {
                 // - I know there are many good humans out there... but it's not easy to find them.
                 return -1;
         }
-        
+
         return default;
     }
 

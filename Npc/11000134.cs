@@ -21,7 +21,7 @@ public class _11000134 : NpcScript {
                 // - Once a year, the Murpagoth warriors go on a pilgrimage through the Vayar Mountains. By the time they return, they've grown much stronger than they were before.
                 return -1;
         }
-        
+
         return default;
     }
 

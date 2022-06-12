@@ -25,7 +25,7 @@ public class _11001097 : NpcScript {
                 // - People think the blacksmiths of the Nerman Forge came up with it, but I was brought in to design it for them. I was compensated for my services, of course, but if I knew it'd become so popular I would've asked for more royalties!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000996 : NpcScript {
                 // - Someone, please turn off that alarm clock. Cluck!
                 return -1;
         }
-        
+
         return default;
     }
 

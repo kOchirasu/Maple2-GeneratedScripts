@@ -21,7 +21,7 @@ public class _11001335 : NpcScript {
                 // - I forgot to return the board I rented and road it all the way home. I don't want to go all the way back to the rental place... Maybe I should just buy one for myself.
                 return -1;
         }
-        
+
         return default;
     }
 

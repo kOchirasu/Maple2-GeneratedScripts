@@ -1031,7 +1031,7 @@ public class _11000788 : NpcScript {
                 // - I am $MaidName$, first mate of this house! Hah hah hah! Doesn't that sound awesome?
                 return -1;
         }
-        
+
         return default;
     }
 

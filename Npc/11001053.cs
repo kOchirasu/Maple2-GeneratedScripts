@@ -21,7 +21,7 @@ public class _11001053 : NpcScript {
                 // - The greatest martial artists aren't always the strongest ones. They're the ones who are humble and always put other people first. 
                 return -1;
         }
-        
+
         return default;
     }
 

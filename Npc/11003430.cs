@@ -21,7 +21,7 @@ public class _11003430 : NpcScript {
                 // - <font color="#909090">(There appears to be an empty space under the altar.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -29,7 +29,7 @@ public class _11004538 : NpcScript {
                 // - Here I figured I'd spend my last years of my service in the capital, then retire and spend the rest of my days on a little farm out by Evansville. But nooo, they had to ship me out to this light-forsaken place... 
                 return -1;
         }
-        
+
         return default;
     }
 

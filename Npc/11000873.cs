@@ -21,7 +21,7 @@ public class _11000873 : NpcScript {
                 // - I've got this awful, creeping feeling that something bad is coming. I really hope I'm wrong.
                 return -1;
         }
-        
+
         return default;
     }
 

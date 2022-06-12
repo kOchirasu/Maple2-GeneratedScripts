@@ -40,7 +40,7 @@ public class _11001257 : NpcScript {
                 // - Hmm. You still have things left to do here anyway, don't you? Maybe you should take care of those. I'm not stalling!
                 return -1;
         }
-        
+
         return default;
     }
 

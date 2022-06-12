@@ -21,7 +21,7 @@ public class _11000590 : NpcScript {
                 // - When can I build my own house? 
                 return -1;
         }
-        
+
         return default;
     }
 

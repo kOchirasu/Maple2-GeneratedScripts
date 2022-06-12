@@ -25,7 +25,7 @@ public class _11003508 : NpcScript {
                 // - The cafe's being remodeled right now. You should swing by when it reopens!
                 return -1;
         }
-        
+
         return default;
     }
 

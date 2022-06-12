@@ -25,7 +25,7 @@ public class _11004462 : NpcScript {
                 // - We're doing our best to keep $map:02020041$ safe!
                 return -1;
         }
-        
+
         return default;
     }
 

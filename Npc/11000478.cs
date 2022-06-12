@@ -65,7 +65,7 @@ public class _11000478 : NpcScript {
                 // - Oh, $MyPCName$... You must not have many friends...
                 return -1;
         }
-        
+
         return default;
     }
 

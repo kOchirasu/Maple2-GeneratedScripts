@@ -21,7 +21,7 @@ public class _11000455 : NpcScript {
                 // - Everyone's all freaked out about the storm and the earthquake, but so what? We need some excitement around here!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -43,7 +43,7 @@ public class _11004171 : NpcScript {
                 // - They're not done yet. Come back later.
                 return -1;
         }
-        
+
         return default;
     }
 

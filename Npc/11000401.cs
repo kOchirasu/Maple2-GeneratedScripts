@@ -25,7 +25,7 @@ public class _11000401 : NpcScript {
                 // - $male:Mister,female:Lady$, do you like comic books? They're my favorite thing in the world. I want to be an illustrator when I grow up.
                 return -1;
         }
-        
+
         return default;
     }
 

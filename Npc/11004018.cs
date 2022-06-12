@@ -21,7 +21,7 @@ public class _11004018 : NpcScript {
                 // - I'm Surnuny, Tria's best weapons merchant. I came here to trade.
                 return -1;
         }
-        
+
         return default;
     }
 

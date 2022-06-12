@@ -21,7 +21,7 @@ public class _11000484 : NpcScript {
                 // - Yeesh, I don't know if they'll have room for me. I've been out all day. I really need to put my feet up. 
                 return -1;
         }
-        
+
         return default;
     }
 

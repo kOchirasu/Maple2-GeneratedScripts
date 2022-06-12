@@ -29,7 +29,7 @@ public class _11004070 : NpcScript {
                 // - <i>Oh, brave warrior of Perion! Death is not the end. Though you are no longer in this world, your heart will be with the tribes always.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

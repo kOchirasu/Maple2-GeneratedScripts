@@ -21,7 +21,7 @@ public class _11003095 : NpcScript {
                 // - The Green Hood will always protect you.
                 return -1;
         }
-        
+
         return default;
     }
 

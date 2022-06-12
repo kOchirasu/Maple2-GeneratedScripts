@@ -40,7 +40,7 @@ public class _11003060 : NpcScript {
                 //   <font color="#909090">(He does his best to hide his despair, but it runs too deep.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

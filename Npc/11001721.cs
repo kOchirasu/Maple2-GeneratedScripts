@@ -21,7 +21,7 @@ public class _11001721 : NpcScript {
                 // - Enough talk. We must focus on finding the artifact.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000034 : NpcScript {
                 // - Nothing's more important than peace of mind. I find mine snuggled up safe in bed.
                 return -1;
         }
-        
+
         return default;
     }
 

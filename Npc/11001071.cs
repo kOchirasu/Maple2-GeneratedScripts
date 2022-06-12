@@ -21,7 +21,7 @@ public class _11001071 : NpcScript {
                 // - The streets here look like a jungle.
                 return -1;
         }
-        
+
         return default;
     }
 

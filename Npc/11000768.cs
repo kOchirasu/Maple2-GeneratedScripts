@@ -1167,7 +1167,7 @@ public class _11000768 : NpcScript {
                 // - Why don't you tell me who you are first? Sheesh.
                 return -1;
         }
-        
+
         return default;
     }
 

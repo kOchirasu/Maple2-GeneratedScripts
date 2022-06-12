@@ -21,7 +21,7 @@ public class _11004228 : NpcScript {
                 // - I despise the noise and brutishness that permeates society. On this topic, it seems that I and this vision of elegance are of one mind.
                 return -1;
         }
-        
+
         return default;
     }
 

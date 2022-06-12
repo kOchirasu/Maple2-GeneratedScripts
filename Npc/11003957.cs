@@ -21,7 +21,7 @@ public class _11003957 : NpcScript {
                 // - Are you here casing the joint? I've got dibs, alright?!
                 return -1;
         }
-        
+
         return default;
     }
 

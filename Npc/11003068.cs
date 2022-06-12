@@ -21,7 +21,7 @@ public class _11003068 : NpcScript {
                 // - There are a great many things left to do. We should leave, for our next destination will be challenging.
                 return -1;
         }
-        
+
         return default;
     }
 

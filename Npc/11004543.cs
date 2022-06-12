@@ -25,7 +25,7 @@ public class _11004543 : NpcScript {
                 // - Can't you see I'm on edge? Leave me alone!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000639 : NpcScript {
                 // - When will I be let out? Is it soon? Please? 
                 return -1;
         }
-        
+
         return default;
     }
 

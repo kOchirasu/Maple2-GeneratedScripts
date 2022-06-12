@@ -25,7 +25,7 @@ public class _11004471 : NpcScript {
                 // - This is no time to play. There's a war going on out there! Ugh, what would our parents say?
                 return -1;
         }
-        
+
         return default;
     }
 

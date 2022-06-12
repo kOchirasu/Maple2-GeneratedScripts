@@ -29,7 +29,7 @@ public class _11000857 : NpcScript {
                 // - S-stop staring!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004195 : NpcScript {
                 // - You must always believe in yourself. Though the road is long and difficult, it is our duty to bring peace to this world.
                 return -1;
         }
-        
+
         return default;
     }
 

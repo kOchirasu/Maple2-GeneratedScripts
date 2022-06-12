@@ -21,7 +21,7 @@ public class _11001075 : NpcScript {
                 // - Ah, I came here on a tour...
                 return -1;
         }
-        
+
         return default;
     }
 

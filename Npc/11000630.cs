@@ -21,7 +21,7 @@ public class _11000630 : NpcScript {
                 // - Have you heard how some people coddle their children? It's ridiculous to me! You've got to toughen up your kids, so they can fend for themselves in any situation!
                 return -1;
         }
-        
+
         return default;
     }
 

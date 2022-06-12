@@ -59,7 +59,7 @@ public class _11004522 : NpcScript {
                 // - Initiating excitement protocols! Oh, I have uncovered records about Vanheim. Archiving now.
                 return -1;
         }
-        
+
         return default;
     }
 

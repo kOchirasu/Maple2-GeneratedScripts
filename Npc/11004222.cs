@@ -21,7 +21,7 @@ public class _11004222 : NpcScript {
                 // - In my line of work, discretion and poise are vital. That makes this dapper fellow a very hot commodity...
                 return -1;
         }
-        
+
         return default;
     }
 

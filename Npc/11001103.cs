@@ -21,7 +21,7 @@ public class _11001103 : NpcScript {
                 // - The stuff's not ready yet. Come back later.
                 return -1;
         }
-        
+
         return default;
     }
 

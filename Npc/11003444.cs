@@ -21,7 +21,7 @@ public class _11003444 : NpcScript {
                 // - If you want something, you'll have to pay the price.
                 return -1;
         }
-        
+
         return default;
     }
 

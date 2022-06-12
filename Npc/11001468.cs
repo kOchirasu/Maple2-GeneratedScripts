@@ -21,7 +21,7 @@ public class _11001468 : NpcScript {
                 // - You like my safety helmet? Two stripes from front to back is the latest fashion.
                 return -1;
         }
-        
+
         return default;
     }
 

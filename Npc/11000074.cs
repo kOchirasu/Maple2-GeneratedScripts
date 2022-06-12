@@ -87,7 +87,7 @@ public class _11000074 : NpcScript {
                 // - I've told you all I know. Hopefully I've answered your question. Now, if you don't mind, I have matters of state to attend to.
                 return -1;
         }
-        
+
         return default;
     }
 

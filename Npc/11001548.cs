@@ -21,7 +21,7 @@ public class _11001548 : NpcScript {
                 // - I've got nothing to say to you.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -46,7 +46,7 @@ public class _11001679 : NpcScript {
                 //   <font color="#909090">(He's blushing.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

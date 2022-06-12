@@ -85,7 +85,7 @@ public class _11000636 : NpcScript {
                 // - The latest password is... Shoot, what was it? Thick shadows... something. Ask one of the other guys.
                 return -1;
         }
-        
+
         return default;
     }
 

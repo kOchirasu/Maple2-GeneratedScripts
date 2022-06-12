@@ -21,7 +21,7 @@ public class _11000842 : NpcScript {
                 // - Ah, I don't care about justice or world peace. I just don't like it when people bully the weak. No one has the right to make others suffer, no matter how strong they are. 
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11004304 : NpcScript {
                 // - N-no! I don't want <i>that woman</i> coming after me, so the answer is no!
                 return -1;
         }
-        
+
         return default;
     }
 

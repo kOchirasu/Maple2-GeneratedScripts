@@ -25,7 +25,7 @@ public class _11003888 : NpcScript {
                 // - I'm sure you can quiet the angry seas.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -55,7 +55,7 @@ public class _11001180 : NpcScript {
                 // - Mm... It is a distant land. You probably haven't heard of it. We traveled a great distance by ship to get here. Our village was not at all like this Town of Queens.
                 return -1;
         }
-        
+
         return default;
     }
 

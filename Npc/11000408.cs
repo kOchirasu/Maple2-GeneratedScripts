@@ -25,7 +25,7 @@ public class _11000408 : NpcScript {
                 // - Please... I need to stop... ah-choo! I need to stop sneezing... Bring me $item:30000125$... ah-choo! The wildflowers over there. Sniff... You can pick up $item:30000125$ with the Z key.
                 return -1;
         }
-        
+
         return default;
     }
 

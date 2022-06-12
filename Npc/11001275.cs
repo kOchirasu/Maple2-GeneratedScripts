@@ -41,7 +41,7 @@ public class _11001275 : NpcScript {
                 // - I knew it! Some people just can't open their mouths without letting a stupid question slip out.
                 return -1;
         }
-        
+
         return default;
     }
 

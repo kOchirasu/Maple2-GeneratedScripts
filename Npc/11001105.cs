@@ -21,7 +21,7 @@ public class _11001105 : NpcScript {
                 // - If $npcName:11000064[gender:0]$ hadn't come to Katramus to save me, I could've been here with these people for treatment.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -91,7 +91,7 @@ public class _11001587 : NpcScript {
                 // - I don't know if he was lying or not. But if he wasn't, then the old records, which only Arazaad could read, must hold some clue about the secret. Something to point us towards this so-called legacy. 
                 return -1;
         }
-        
+
         return default;
     }
 

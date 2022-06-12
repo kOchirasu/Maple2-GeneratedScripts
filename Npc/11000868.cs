@@ -21,7 +21,7 @@ public class _11000868 : NpcScript {
                 // - Are they doing this to me because I'm an intern? I didn't become a researcher to run errands!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001947 : NpcScript {
                 // - Are you here for the audition? You better grab your instrument and start practicing while you still can. 
                 return -1;
         }
-        
+
         return default;
     }
 

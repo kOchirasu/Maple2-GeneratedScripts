@@ -21,7 +21,7 @@ public class _11003185 : NpcScript {
                 // - Tremble before the way of the shadow.
                 return -1;
         }
-        
+
         return default;
     }
 

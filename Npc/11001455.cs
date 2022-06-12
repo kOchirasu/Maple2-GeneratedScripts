@@ -21,7 +21,7 @@ public class _11001455 : NpcScript {
                 // - On $map:02010022$, hard work is considered a sin. Got nothing to do? Then soak in the majesty that surrounds us!
                 return -1;
         }
-        
+
         return default;
     }
 

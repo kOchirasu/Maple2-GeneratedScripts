@@ -21,7 +21,7 @@ public class _11000269 : NpcScript {
                 // - Helping others is a wonderful thing.
                 return -1;
         }
-        
+
         return default;
     }
 

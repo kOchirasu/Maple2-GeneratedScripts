@@ -61,7 +61,7 @@ public class _11003635 : NpcScript {
                 // - That <i>is</i> the message. Now, about those theories...
                 return -1;
         }
-        
+
         return default;
     }
 

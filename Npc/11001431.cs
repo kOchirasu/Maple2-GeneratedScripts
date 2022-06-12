@@ -42,7 +42,7 @@ public class _11001431 : NpcScript {
                 //   <font color="#909090">(Did $npcName:11001431[gender:0]$ just giggle...?)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

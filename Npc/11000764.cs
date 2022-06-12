@@ -1089,7 +1089,7 @@ public class _11000764 : NpcScript {
                 // - I'm too popular for my own good. Not a day goes by without someone wanting my attention. So what do you want? My autograph?
                 return -1;
         }
-        
+
         return default;
     }
 

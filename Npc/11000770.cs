@@ -1166,7 +1166,7 @@ public class _11000770 : NpcScript {
                 // - My name is $MaidName$, and I'm help with the housework. If you're going to $map:2000001$, could you tell my son that I want him to come over for some pudding? His name is $npcName:11000055[gender:0]$.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001868 : NpcScript {
                 // - This mine is run by the Nerman Guild. We've got all the materials a blacksmith might need.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11000931 : NpcScript {
                 // - Sometimes I hate being able to see things that others can't.
                 return -1;
         }
-        
+
         return default;
     }
 

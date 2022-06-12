@@ -21,7 +21,7 @@ public class _11000202 : NpcScript {
                 // - My arms are killing me! Why is it always me who gets punished?
                 return -1;
         }
-        
+
         return default;
     }
 

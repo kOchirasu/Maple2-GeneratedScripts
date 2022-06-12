@@ -35,7 +35,7 @@ public class _11000320 : NpcScript {
                 // - Dust thou art, and to dust shalt thou return. Come empty, return empty. In the end, there's nothing in this world that is truly yours.
                 return -1;
         }
-        
+
         return default;
     }
 

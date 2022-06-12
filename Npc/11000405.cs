@@ -22,7 +22,7 @@ public class _11000405 : NpcScript {
                 //   - Captain $npcName:11000044[gender:0]$
                 return -1;
         }
-        
+
         return default;
     }
 

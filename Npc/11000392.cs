@@ -25,7 +25,7 @@ public class _11000392 : NpcScript {
                 // - And now it's canceled! Argh, I stayed at the hotel for two weeks for nothing!
                 return -1;
         }
-        
+
         return default;
     }
 

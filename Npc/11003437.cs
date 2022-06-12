@@ -21,7 +21,7 @@ public class _11003437 : NpcScript {
                 // - The work never ends.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001470 : NpcScript {
                 // - Nice place, right? If <i>you</i> lived here, you'd never have to worry about getting caught out in the rain or snow. I was going to keep it for myself, but make your best offer and this house could be yours!
                 return -1;
         }
-        
+
         return default;
     }
 

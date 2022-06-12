@@ -47,7 +47,7 @@ public class _11001143 : NpcScript {
                 // - Ah! A classic case of wanderlust, have we? Well, regardless, please be careful not to damage the ruins... And also, try not to get horribly mauled by monsters.
                 return -1;
         }
-        
+
         return default;
     }
 

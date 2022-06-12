@@ -105,7 +105,7 @@ public class _11000119 : NpcScript {
                 // - Some people are curious about my relationship with $npcName:11000076[gender:0]$. It's... quite complicated. I'd rather not get into it.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -41,7 +41,7 @@ public class _11004383 : NpcScript {
                 // - Hey, I know the truth, but if I admit it I might get fewer presents. So yeah, go Santa!
                 return -1;
         }
-        
+
         return default;
     }
 

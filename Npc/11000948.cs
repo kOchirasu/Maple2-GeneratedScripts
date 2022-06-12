@@ -27,7 +27,7 @@ public class _11000948 : NpcScript {
                 // - You don't look like you need my help right now, but you will eventually. Oh yes, trust me on this one. Bad things happen around here all the time. 
                 return -1;
         }
-        
+
         return default;
     }
 

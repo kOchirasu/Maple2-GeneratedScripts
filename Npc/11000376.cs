@@ -21,7 +21,7 @@ public class _11000376 : NpcScript {
                 // - Do you believe in aliens? I do! There has to be loads of intelligent creatures out there, the universe is huge! You should stop by some night and watch the stars with me.
                 return -1;
         }
-        
+
         return default;
     }
 

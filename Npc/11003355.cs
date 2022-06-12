@@ -21,7 +21,7 @@ public class _11003355 : NpcScript {
                 // - You better get ready. The big guy'll knock your teeth out!
                 return -1;
         }
-        
+
         return default;
     }
 

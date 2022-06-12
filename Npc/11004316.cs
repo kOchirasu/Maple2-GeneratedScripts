@@ -25,7 +25,7 @@ public class _11004316 : NpcScript {
                 // - Return to me when the time is right.
                 return -1;
         }
-        
+
         return default;
     }
 

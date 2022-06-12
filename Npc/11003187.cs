@@ -21,7 +21,7 @@ public class _11003187 : NpcScript {
                 // - I call the shots here.
                 return -1;
         }
-        
+
         return default;
     }
 

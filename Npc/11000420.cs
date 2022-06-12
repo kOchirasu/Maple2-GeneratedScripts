@@ -43,7 +43,7 @@ public class _11000420 : NpcScript {
                 // - Oh, you should eat fish regularly. I thought you knew that, $MyPCName$. Do you only eat red meat? It's too fatty. Eating fish helps you lose weight.
                 return -1;
         }
-        
+
         return default;
     }
 

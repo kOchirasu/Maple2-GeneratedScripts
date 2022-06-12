@@ -25,7 +25,7 @@ public class _11003505 : NpcScript {
                 // - Tamed monsters are called 'combat pets.' Don't forget that, 'cause it might be on the test!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11004562 : NpcScript {
                 // - Well, well. Now I've got some real competition! Let's do our best, okay?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -46,7 +46,7 @@ public class _11004552 : NpcScript {
                 // - $MyPCName$! Do you feel it? Love is in the air!
                 return -1;
         }
-        
+
         return default;
     }
 

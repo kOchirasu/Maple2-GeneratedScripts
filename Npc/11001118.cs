@@ -29,7 +29,7 @@ public class _11001118 : NpcScript {
                 // - Oh good, you have a $item:30000406$! You can use $itemPlural:30000406$ to spin this here $npcName:11001120$ next to me for a chance to win great prizes. Come on, why not try it?
                 return -1;
         }
-        
+
         return default;
     }
 

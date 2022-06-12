@@ -21,7 +21,7 @@ public class _11003160 : NpcScript {
                 // - I don't think anyone hates flowers, right? Everyone has to have a favorite flower or two.
                 return -1;
         }
-        
+
         return default;
     }
 

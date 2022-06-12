@@ -21,7 +21,7 @@ public class _11000894 : NpcScript {
                 // - May the winds bring you comfort.
                 return -1;
         }
-        
+
         return default;
     }
 

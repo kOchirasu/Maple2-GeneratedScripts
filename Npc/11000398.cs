@@ -22,7 +22,7 @@ public class _11000398 : NpcScript {
                 //   I'm going to make it out of here one day! *Cough Cough*
                 return -1;
         }
-        
+
         return default;
     }
 

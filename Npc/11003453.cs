@@ -21,7 +21,7 @@ public class _11003453 : NpcScript {
                 // - <font color="#909090">($npcName:11003391[gender:0]$'s belongings are a mess.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

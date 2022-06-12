@@ -173,7 +173,7 @@ public class _11001278 : NpcScript {
                 // - May the Baaz guide you.
                 return -1;
         }
-        
+
         return default;
     }
 

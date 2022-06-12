@@ -31,7 +31,7 @@ public class _11001401 : NpcScript {
                 // - Those robots! They were supposed to help us develop the desert, but they all went crazy!
                 return -1;
         }
-        
+
         return default;
     }
 

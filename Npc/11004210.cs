@@ -41,7 +41,7 @@ public class _11004210 : NpcScript {
                 // - No stranger than the voices in my head that tell me to burn things!
                 return -1;
         }
-        
+
         return default;
     }
 

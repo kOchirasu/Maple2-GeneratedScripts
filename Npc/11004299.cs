@@ -41,7 +41,7 @@ public class _11004299 : NpcScript {
                 // - Yes, the lady of the hotel. There were evil thoughts in her mind when she met the gentleman. A ghost has a sixth sense about these things, you know.
                 return -1;
         }
-        
+
         return default;
     }
 

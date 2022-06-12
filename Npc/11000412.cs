@@ -55,7 +55,7 @@ public class _11000412 : NpcScript {
                 // - Seriously? Man, I don't want to talk to you anymore.
                 return -1;
         }
-        
+
         return default;
     }
 

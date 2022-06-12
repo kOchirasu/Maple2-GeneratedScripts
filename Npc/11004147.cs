@@ -21,7 +21,7 @@ public class _11004147 : NpcScript {
                 // - This place is gonna make me rich! I've just gotta figure out how, first...
                 return -1;
         }
-        
+
         return default;
     }
 

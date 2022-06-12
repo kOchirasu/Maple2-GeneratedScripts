@@ -21,7 +21,7 @@ public class _11003270 : NpcScript {
                 // - If only Captain Stilton were still alive... 
                 return -1;
         }
-        
+
         return default;
     }
 

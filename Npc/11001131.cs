@@ -39,7 +39,7 @@ public class _11001131 : NpcScript {
                 // - You look like seasoned adventurer. I'm sure you've seen worse weather than this. So suck it up! Bahaha.
                 return -1;
         }
-        
+
         return default;
     }
 

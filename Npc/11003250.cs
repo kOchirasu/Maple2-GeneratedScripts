@@ -21,7 +21,7 @@ public class _11003250 : NpcScript {
                 // - I've been waiting for you. 
                 return -1;
         }
-        
+
         return default;
     }
 

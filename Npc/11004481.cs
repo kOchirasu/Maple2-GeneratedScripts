@@ -57,7 +57,7 @@ public class _11004481 : NpcScript {
                 // - What kind of people live here, that they can make all this wild technology?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -43,7 +43,7 @@ public class _11001839 : NpcScript {
                 //   <font color="#909090">($npcName:11001839[gender:0]$'s eyes begin to water.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001477 : NpcScript {
                 // - Those weren't ordinary train robbers.
                 return -1;
         }
-        
+
         return default;
     }
 

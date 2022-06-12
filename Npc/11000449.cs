@@ -21,7 +21,7 @@ public class _11000449 : NpcScript {
                 // - Get out of the way, I can't see $npcName:11000406[gender:0]$!
                 return -1;
         }
-        
+
         return default;
     }
 

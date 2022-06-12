@@ -21,7 +21,7 @@ public class _11000388 : NpcScript {
                 // - The crowd's already whipped themselves into a frenzy. It's like this wherever we go. <i>Hey you!</i> Back up, buddy.
                 return -1;
         }
-        
+
         return default;
     }
 

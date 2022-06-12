@@ -60,7 +60,7 @@ public class _11001618 : NpcScript {
                 // - You're one of those hero-types. That's fine with me. Go off and get yourself killed. One less idiot to get in my way.
                 return -1;
         }
-        
+
         return default;
     }
 

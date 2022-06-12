@@ -40,7 +40,7 @@ public class _11003500 : NpcScript {
                 // - Come find me if you change your mind.
                 return -1;
         }
-        
+
         return default;
     }
 

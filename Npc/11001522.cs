@@ -21,7 +21,7 @@ public class _11001522 : NpcScript {
                 // - If it weren't for the Archmage and $npcName:11000032[gender:0]$, I'd be back home working on my research. I'm still not convinced this mission is worthwhile. At least the name "Starlight Expedition" has a nice ring to it.
                 return -1;
         }
-        
+
         return default;
     }
 

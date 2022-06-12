@@ -21,7 +21,7 @@ public class _11001378 : NpcScript {
                 // - My head is spinning like a top... Or is it the world that's spinning? I feel like... I'm gonna die...
                 return -1;
         }
-        
+
         return default;
     }
 

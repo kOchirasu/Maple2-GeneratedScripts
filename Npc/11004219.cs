@@ -21,7 +21,7 @@ public class _11004219 : NpcScript {
                 // - There is power in anger, but you must never lose yourself in the heat of battle. When all that's left is devastation, there are no winners.
                 return -1;
         }
-        
+
         return default;
     }
 

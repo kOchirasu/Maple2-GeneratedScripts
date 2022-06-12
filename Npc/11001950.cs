@@ -21,7 +21,7 @@ public class _11001950 : NpcScript {
                 // - First, I'll learn how to play the harp. Then I'll let my hair down, and wear a flowing white gown, and spend all day plucking on the strings. I'll look so pretty!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11003265 : NpcScript {
                 // - <font color="#909090">(It looks like this was abandoned, and yet it's suspiciously free of dust.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

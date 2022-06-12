@@ -21,7 +21,7 @@ public class _11001341 : NpcScript {
                 // - Where are all these bugs coming from? They'll take over the skate park at this rate. Then Ludari City... and then, the world!
                 return -1;
         }
-        
+
         return default;
     }
 

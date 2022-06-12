@@ -21,7 +21,7 @@ public class _11000730 : NpcScript {
                 // - <font color="#909090">(There's dark energy billowing and swirling all around this tombstone! It's making it impossible to read the message.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

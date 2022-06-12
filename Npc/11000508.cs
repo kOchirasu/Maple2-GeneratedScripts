@@ -129,7 +129,7 @@ public class _11000508 : NpcScript {
                 //   You wouldn't want me to stop your order to work on someone else's, so why would you expect me to do that to the palace?
                 return -1;
         }
-        
+
         return default;
     }
 

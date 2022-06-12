@@ -59,7 +59,7 @@ public class _11001485 : NpcScript {
                 // - What a shame! I can tell by your aura that you're strong enough to handle demons. But if you're not interested, it hardly matters. Remember, there are always demons around us.
                 return -1;
         }
-        
+
         return default;
     }
 

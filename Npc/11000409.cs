@@ -25,7 +25,7 @@ public class _11000409 : NpcScript {
                 // - $npcName:99000041$ are making this trail too dangerous to travel.
                 return -1;
         }
-        
+
         return default;
     }
 

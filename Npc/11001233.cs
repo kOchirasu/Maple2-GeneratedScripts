@@ -31,7 +31,7 @@ public class _11001233 : NpcScript {
                 // - We tracked $npcName:11001231[gender:0]$ and his Jibricia followers here, but they had already filled the passage with traps. I'm worried $npcName:11001244[gender:0]$ might be in danger.
                 return -1;
         }
-        
+
         return default;
     }
 

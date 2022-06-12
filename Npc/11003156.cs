@@ -21,7 +21,7 @@ public class _11003156 : NpcScript {
                 // - I know, right? All three of us are pretty, but the prettiest one is... oh, you were talking about the flowers. Sure, they're pretty too! Ah, forget what I said earlier.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -25,7 +25,7 @@ public class _11003879 : NpcScript {
                 // - I think you forgot to take the lunch box. Here is an empty one.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -1000,7 +1000,7 @@ public class _11000787 : NpcScript {
                 // - Please! Even if you're busy, spare me an hour—no, thirty minutes!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -71,7 +71,7 @@ public class _11004472 : NpcScript {
                 // - And where are you from? A butt?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -35,7 +35,7 @@ public class _11004267 : NpcScript {
                 // - But honestly, they tell me I have the job, so shouldn't they open so I can start working? I already spent a fortune promoting myself... Anyway, remember my name, and watch as I become the best model in all Karkar!
                 return -1;
         }
-        
+
         return default;
     }
 

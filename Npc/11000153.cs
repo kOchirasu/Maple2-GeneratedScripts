@@ -21,7 +21,7 @@ public class _11000153 : NpcScript {
                 // - Not right now, I'm power-walking.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001376 : NpcScript {
                 // - Mwahaha! This scene is... perfect! The height of drama, eclipsing any movie or show I've ever seen! And <i>I'm</i> the guy who gets to film it. This is probably going to be the greatest film of my entire career!
                 return -1;
         }
-        
+
         return default;
     }
 

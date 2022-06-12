@@ -31,7 +31,7 @@ public class _11001084 : NpcScript {
                 // - I'm not falling for that. Shoo!
                 return -1;
         }
-        
+
         return default;
     }
 

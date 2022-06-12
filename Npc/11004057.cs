@@ -21,7 +21,7 @@ public class _11004057 : NpcScript {
                 // - Talk to me whenever you need assistance.
                 return -1;
         }
-        
+
         return default;
     }
 

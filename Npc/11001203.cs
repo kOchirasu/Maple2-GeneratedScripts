@@ -88,7 +88,7 @@ public class _11001203 : NpcScript {
                 // - $npcName:11001201$ was devastated to learn of the evil done in the name of Myuteka Rabo's faith. And thus began our pilgrimage. We may unable to confront our kin, but we hope by atoning for their sins to one day redeem ourselves in the eyes of the world.
                 return -1;
         }
-        
+
         return default;
     }
 

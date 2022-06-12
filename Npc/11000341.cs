@@ -25,7 +25,7 @@ public class _11000341 : NpcScript {
                 // - $npcName:11000340[gender:0]$ had been the butler for my family as long as I could remember. When my family fell, he stayed behind when everyone else left. Now he's the hotelier of my hotel. I owe him so much.
                 return -1;
         }
-        
+
         return default;
     }
 

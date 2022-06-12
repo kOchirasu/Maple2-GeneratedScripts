@@ -55,7 +55,7 @@ public class _11001536 : NpcScript {
                 // - Doesn't matter what I think, of course. $npcName:11000167[gender:0]$ agreed to stop hunting and go into business in $map:02000036$. He seems awful miserable to me, but what do I know? I'm just his sister. 
                 return -1;
         }
-        
+
         return default;
     }
 

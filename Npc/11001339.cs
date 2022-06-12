@@ -21,7 +21,7 @@ public class _11001339 : NpcScript {
                 // - Why is this so hard?! I can <i>visualize</i> myself doing these tricks, so why can't I actually <i>do</i> them?!
                 return -1;
         }
-        
+
         return default;
     }
 

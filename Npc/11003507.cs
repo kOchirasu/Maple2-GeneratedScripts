@@ -53,7 +53,7 @@ public class _11003507 : NpcScript {
                 // - I don't really know much, myself. It's a tech giant with lots of next-gen products. Rumor has it one of the founders of Dryad Co. recently retired, but nobody really knows much about them, or even what they look like.
                 return -1;
         }
-        
+
         return default;
     }
 

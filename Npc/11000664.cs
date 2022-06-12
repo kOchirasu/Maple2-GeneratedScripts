@@ -21,7 +21,7 @@ public class _11000664 : NpcScript {
                 // - Do you believe in love at first sight? I do. I fell in love with $npcName:11000151[gender:1]$...
                 return -1;
         }
-        
+
         return default;
     }
 

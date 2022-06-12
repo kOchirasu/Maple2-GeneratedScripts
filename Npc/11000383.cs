@@ -21,7 +21,7 @@ public class _11000383 : NpcScript {
                 // - You're lucky I found you and that I'm a doctor. You could've been in big trouble. Stop being stupid, and listen to your parents!
                 return -1;
         }
-        
+
         return default;
     }
 

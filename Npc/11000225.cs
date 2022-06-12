@@ -21,7 +21,7 @@ public class _11000225 : NpcScript {
                 // - Love isn't just about being with someone. Sometimes it's about their memory, too...
                 return -1;
         }
-        
+
         return default;
     }
 

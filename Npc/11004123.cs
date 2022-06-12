@@ -21,7 +21,7 @@ public class _11004123 : NpcScript {
                 // - Just how big was the explosion?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -58,7 +58,7 @@ public class _11000168 : NpcScript {
                 // - I-I won't! Sorry. I just wasn't expecting anyone to congratulate me. I'll do my best not to let you down as a host, $MyPCName$!
                 return -1;
         }
-        
+
         return default;
     }
 

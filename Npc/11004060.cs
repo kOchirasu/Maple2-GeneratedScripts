@@ -21,7 +21,7 @@ public class _11004060 : NpcScript {
                 // - As the current crisis threatens all of Maple World, the Alemani family will spare no expense in addressing it.
                 return -1;
         }
-        
+
         return default;
     }
 

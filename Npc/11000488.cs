@@ -21,7 +21,7 @@ public class _11000488 : NpcScript {
                 // - Rumor has it $npcName:11000406[gender:0]$ likes bad girls. I'd better become one, and quick!
                 return -1;
         }
-        
+
         return default;
     }
 

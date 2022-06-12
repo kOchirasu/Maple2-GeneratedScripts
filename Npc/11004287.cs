@@ -25,7 +25,7 @@ public class _11004287 : NpcScript {
                 // - I do think you shall be an amusement for Her Highness.
                 return -1;
         }
-        
+
         return default;
     }
 

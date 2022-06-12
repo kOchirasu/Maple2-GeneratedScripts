@@ -21,7 +21,7 @@ public class _11000501 : NpcScript {
                 // - As long as you know who you are and what you believe, what others think of you doesn't matter. That's the way we Boroboros live.
                 return -1;
         }
-        
+
         return default;
     }
 

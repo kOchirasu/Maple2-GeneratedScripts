@@ -31,7 +31,7 @@ public class _11004509 : NpcScript {
                 // - Tch... Figures. We don't have the numbers to hold this position for right now. Y'know, give a leshy a gun and I'd let it stand guard. That's how desperate we are!
                 return -1;
         }
-        
+
         return default;
     }
 

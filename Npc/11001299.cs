@@ -21,7 +21,7 @@ public class _11001299 : NpcScript {
                 // - Remember what the empress told you!
                 return -1;
         }
-        
+
         return default;
     }
 

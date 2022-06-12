@@ -25,7 +25,7 @@ public class _11000671 : NpcScript {
                 // - Make sure to return books to where they belong!
                 return -1;
         }
-        
+
         return default;
     }
 

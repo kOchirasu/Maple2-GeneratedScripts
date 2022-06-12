@@ -25,7 +25,7 @@ public class _11001484 : NpcScript {
                 // - If I have any info to share about events, I'll let you know.
                 return -1;
         }
-        
+
         return default;
     }
 

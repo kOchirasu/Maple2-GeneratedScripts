@@ -42,7 +42,7 @@ public class _11001708 : NpcScript {
                 //   <font color="#909090">(She gives a cheerful laugh.)</font>
                 return -1;
         }
-        
+
         return default;
     }
 

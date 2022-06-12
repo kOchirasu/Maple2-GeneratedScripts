@@ -31,7 +31,7 @@ public class _11003082 : NpcScript {
                 // - Sob... No one knows how I feel. Why can't I be left alone? Sob...
                 return -1;
         }
-        
+
         return default;
     }
 

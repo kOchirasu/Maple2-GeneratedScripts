@@ -21,7 +21,7 @@ public class _11000713 : NpcScript {
                 // - I have terrapin cousins living in the sea, and one of the most famous terrapins in history is called Byeljubu. Have you heard of him?
                 return -1;
         }
-        
+
         return default;
     }
 

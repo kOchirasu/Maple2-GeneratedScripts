@@ -21,7 +21,7 @@ public class _11004141 : NpcScript {
                 // - I wish he wore glasses. He's so intelligent and sensitive... It would be perfect... 
                 return -1;
         }
-        
+
         return default;
     }
 

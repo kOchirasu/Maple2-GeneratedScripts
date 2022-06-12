@@ -25,7 +25,7 @@ public class _11000251 : NpcScript {
                 // - ...Get lost.
                 return -1;
         }
-        
+
         return default;
     }
 

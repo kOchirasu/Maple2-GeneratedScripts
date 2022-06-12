@@ -21,7 +21,7 @@ public class _11001344 : NpcScript {
                 // - The impossible happened. Some prisoners escaped! No one has ever escaped from Alikar before! If I don't catch them, I'm through as an officer!
                 return -1;
         }
-        
+
         return default;
     }
 

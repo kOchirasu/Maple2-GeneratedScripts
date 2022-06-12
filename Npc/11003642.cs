@@ -51,7 +51,7 @@ public class _11003642 : NpcScript {
                 // - I understand why you're so confused. I'm way too gorgeous for this kind of work! I should've become a model or an actress. Even waitressing would be better than this.
                 return -1;
         }
-        
+
         return default;
     }
 

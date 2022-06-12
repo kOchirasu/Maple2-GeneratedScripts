@@ -21,7 +21,7 @@ public class _11000850 : NpcScript {
                 // - Robots are no longer tools. We are capable of much more than our creators.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -37,7 +37,7 @@ public class _11004065 : NpcScript {
                 // - <i>Whether you find this portal or not, we hope you enjoy the beautiful scenery here on the Rainbow Bridge.</i>
                 return -1;
         }
-        
+
         return default;
     }
 

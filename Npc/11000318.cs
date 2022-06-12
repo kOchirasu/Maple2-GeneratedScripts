@@ -97,7 +97,7 @@ public class _11000318 : NpcScript {
                 // - Oh, come on, are you just going to leave?
                 return -1;
         }
-        
+
         return default;
     }
 

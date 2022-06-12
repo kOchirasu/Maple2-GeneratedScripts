@@ -21,7 +21,7 @@ public class _11001479 : NpcScript {
                 // - I'm glad we've retrieved the Lumenstone, but the war with the Kargons is far from over.
                 return -1;
         }
-        
+
         return default;
     }
 

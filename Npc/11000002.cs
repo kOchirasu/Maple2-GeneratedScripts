@@ -25,7 +25,7 @@ public class _11000002 : NpcScript {
                 // - Welcome, $MyPCName$. I was just about done with this batch of cookies. Would you like to wait for them? My fresh-baked cookies are famous here in $map:02000001$, you know.
                 return -1;
         }
-        
+
         return default;
     }
 

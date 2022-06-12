@@ -21,7 +21,7 @@ public class _11000032 : NpcScript {
                 // - We should let $npcName:11000031[gender:0]$ know his identity and ask for advice. Meet me in $map:02000035$.
                 return -1;
         }
-        
+
         return default;
     }
 

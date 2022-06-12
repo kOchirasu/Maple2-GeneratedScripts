@@ -25,7 +25,7 @@ public class _11000442 : NpcScript {
                 // - Do you want to know what the owner of Cathy Mart is like? The worst, that's what! 
                 return -1;
         }
-        
+
         return default;
     }
 

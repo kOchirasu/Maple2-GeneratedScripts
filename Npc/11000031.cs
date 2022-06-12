@@ -21,7 +21,7 @@ public class _11000031 : NpcScript {
                 // - The power of the Green Lapenta is especially strong here in $map:02000023$. That vital force protects this place from darkness.
                 return -1;
         }
-        
+
         return default;
     }
 

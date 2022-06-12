@@ -61,7 +61,7 @@ public class _11003646 : NpcScript {
                 // - Hop hop!
                 return -1;
         }
-        
+
         return default;
     }
 

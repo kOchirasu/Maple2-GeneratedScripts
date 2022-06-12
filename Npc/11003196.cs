@@ -25,7 +25,7 @@ public class _11003196 : NpcScript {
                 // - I told you! As long as $npcName:11003216[gender:0]$ is alive, $npcName:11000069[gender:1]$ isn't safe.
                 return -1;
         }
-        
+
         return default;
     }
 

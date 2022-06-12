@@ -21,7 +21,7 @@ public class _11003276 : NpcScript {
                 // - Who goes there? My eyes aren't what they used to be.
                 return -1;
         }
-        
+
         return default;
     }
 

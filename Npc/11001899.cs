@@ -21,7 +21,7 @@ public class _11001899 : NpcScript {
                 // - Are you joining today's race? Good luck!
                 return -1;
         }
-        
+
         return default;
     }
 

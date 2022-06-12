@@ -21,7 +21,7 @@ public class _11004358 : NpcScript {
                 // - I always love snow for the holidays.
                 return -1;
         }
-        
+
         return default;
     }
 

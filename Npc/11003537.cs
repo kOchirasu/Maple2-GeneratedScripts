@@ -85,7 +85,7 @@ public class _11003537 : NpcScript {
                 // - You are not prepared.
                 return -1;
         }
-        
+
         return default;
     }
 

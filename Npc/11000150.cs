@@ -35,7 +35,7 @@ public class _11000150 : NpcScript {
                 // - Now that you mention it, there was an especially pitiful-looking soldier... He was dragged off in the direction of $map:52000119$, to the northeast.
                 return -1;
         }
-        
+
         return default;
     }
 

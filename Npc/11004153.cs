@@ -21,7 +21,7 @@ public class _11004153 : NpcScript {
                 // - There are chests hidden all over Maple World, but the ones in $map:02000499$ are... different. Hehe, you'll see!
                 return -1;
         }
-        
+
         return default;
     }
 

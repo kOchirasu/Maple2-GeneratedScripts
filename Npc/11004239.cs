@@ -33,7 +33,7 @@ public class _11004239 : NpcScript {
                 // - Next time, Guidance will be there to help! Just say the word.
                 return -1;
         }
-        
+
         return default;
     }
 

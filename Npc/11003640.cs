@@ -61,7 +61,7 @@ public class _11003640 : NpcScript {
                 // - Oh, please. Anyway, I need some space, so shoo. This heat is killing me...
                 return -1;
         }
-        
+
         return default;
     }
 

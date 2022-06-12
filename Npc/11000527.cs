@@ -73,7 +73,7 @@ public class _11000527 : NpcScript {
                 // - Every age needs a hero.
                 return -1;
         }
-        
+
         return default;
     }
 

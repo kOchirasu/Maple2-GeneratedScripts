@@ -35,7 +35,7 @@ public class _11001313 : NpcScript {
                 // - It's one of the rules of Meerkat Patrol. So there!
                 return -1;
         }
-        
+
         return default;
     }
 

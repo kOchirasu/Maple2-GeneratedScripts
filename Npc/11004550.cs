@@ -21,7 +21,7 @@ public class _11004550 : NpcScript {
                 // - This is $npcName:11004401[gender:1]$'s office. I don't know what your business is, but you watch yourself around $npcName:11004401[gender:1]$.
                 return -1;
         }
-        
+
         return default;
     }
 

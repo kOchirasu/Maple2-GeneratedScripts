@@ -29,7 +29,7 @@ public class _11000331 : NpcScript {
                 // - She's my sister. She went to do her hair and never came back. Does it take women a long time to do their hair? Huh... maybe she was getting it dyed.
                 return -1;
         }
-        
+
         return default;
     }
 

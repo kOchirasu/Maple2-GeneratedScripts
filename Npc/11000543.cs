@@ -21,7 +21,7 @@ public class _11000543 : NpcScript {
                 // - Safety is the primary concern for folks who work in places like this.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11001469 : NpcScript {
                 // - Shhh! Don't tell my mom I'm here!
                 return -1;
         }
-        
+
         return default;
     }
 

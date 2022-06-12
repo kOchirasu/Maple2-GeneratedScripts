@@ -73,7 +73,7 @@ public class _11000015 : NpcScript {
                 // - I hope I didn't upset you. You certainly don't have to explain yourself. But if you do, the rest of the militia and I may be able to help.
                 return -1;
         }
-        
+
         return default;
     }
 

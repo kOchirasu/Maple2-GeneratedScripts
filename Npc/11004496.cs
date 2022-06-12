@@ -45,7 +45,7 @@ public class _11004496 : NpcScript {
                 // - Is there some connection between aetherine and life energy? I'll have to do more science to know for sure.
                 return -1;
         }
-        
+
         return default;
     }
 

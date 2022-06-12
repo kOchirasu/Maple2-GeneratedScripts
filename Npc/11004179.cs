@@ -21,7 +21,7 @@ public class _11004179 : NpcScript {
                 // - My greatest joy is seeing my daughter smile. I would have visited this place sooner if I had known it would make $npcName:11004180[gender:1]$ so happy.
                 return -1;
         }
-        
+
         return default;
     }
 

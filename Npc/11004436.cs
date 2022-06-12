@@ -21,7 +21,7 @@ public class _11004436 : NpcScript {
                 // - Hey there, $male:handsome,female:gorgeous$. After I've racked up some shore leave, what say we take a tour of Kritias's inns and test out their bed springs?
                 return -1;
         }
-        
+
         return default;
     }
 

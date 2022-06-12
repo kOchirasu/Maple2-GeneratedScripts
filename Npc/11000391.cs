@@ -21,7 +21,7 @@ public class _11000391 : NpcScript {
                 // - Have you just arrived in $map:02000001$? I came here three days ago and I'm already sick of this city. What a waste.
                 return -1;
         }
-        
+
         return default;
     }
 

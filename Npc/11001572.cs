@@ -29,7 +29,7 @@ public class _11001572 : NpcScript {
                 // - The bond between our ancestors makes us strong. I couldn't be more grateful. 
                 return -1;
         }
-        
+
         return default;
     }
 

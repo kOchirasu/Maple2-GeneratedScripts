@@ -25,7 +25,7 @@ public class _11000217 : NpcScript {
                 // - All I had to do was look after some rich guy's son. Man was that a mistake. This kid I'm looking after treats me worse than his cat.
                 return -1;
         }
-        
+
         return default;
     }
 

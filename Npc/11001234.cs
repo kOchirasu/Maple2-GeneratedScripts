@@ -21,7 +21,7 @@ public class _11001234 : NpcScript {
                 // - $npc:11001231[gender:0]$ hurt dozens of us when he escaped last night. We all knew we didn't stand a chance, but what else could we do? I'm in no shape to help bring him in, but at least I can keep a lookout.
                 return -1;
         }
-        
+
         return default;
     }
 

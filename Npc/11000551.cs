@@ -21,7 +21,7 @@ public class _11000551 : NpcScript {
                 // - My fellow scouts have been scattered... we're on the brink... 
                 return -1;
         }
-        
+
         return default;
     }
 

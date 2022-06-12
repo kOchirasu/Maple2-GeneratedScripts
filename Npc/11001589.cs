@@ -21,7 +21,7 @@ public class _11001589 : NpcScript {
                 // - We have gathered here for one cause. Together, we can do anything.
                 return -1;
         }
-        
+
         return default;
     }
 

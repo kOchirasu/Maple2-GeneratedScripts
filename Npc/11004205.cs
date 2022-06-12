@@ -21,7 +21,7 @@ public class _11004205 : NpcScript {
                 // - There's no time to relax.
                 return -1;
         }
-        
+
         return default;
     }
 

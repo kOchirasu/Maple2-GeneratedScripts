@@ -21,7 +21,7 @@ public class _11001292 : NpcScript {
                 // - Order now or get a face full of burning oil. Your choice. 
                 return -1;
         }
-        
+
         return default;
     }
 

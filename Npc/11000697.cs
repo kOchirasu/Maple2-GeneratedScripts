@@ -63,7 +63,7 @@ public class _11000697 : NpcScript {
                 // - It's always good to test your strength, but be careful not to let your excitement get the best of you. That's all I have to tell you. Be on your way.
                 return -1;
         }
-        
+
         return default;
     }
 

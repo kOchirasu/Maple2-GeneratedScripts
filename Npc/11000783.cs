@@ -21,7 +21,7 @@ public class _11000783 : NpcScript {
                 // - What if time never starts flowing again?
                 return -1;
         }
-        
+
         return default;
     }
 

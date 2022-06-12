@@ -31,7 +31,7 @@ public class _11001080 : NpcScript {
                 // - I wouldn't get too curious about it if I were you. In fact, keep your distance unless you have some good info for me. I don't have time to answer questions for ignoramuses.
                 return -1;
         }
-        
+
         return default;
     }
 

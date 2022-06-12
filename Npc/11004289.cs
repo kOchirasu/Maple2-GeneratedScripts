@@ -21,7 +21,7 @@ public class _11004289 : NpcScript {
                 // - My cousin certainly devoted enough time and money to this place. He passed the hotel to me when he died, but I simply have no interest in running it.
                 return -1;
         }
-        
+
         return default;
     }
 

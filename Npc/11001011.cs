@@ -21,7 +21,7 @@ public class _11001011 : NpcScript {
                 // - My realtor said that I'd only hear the sound of waves. I wouldn't have come here if I knew my neighbors would be so terrible.
                 return -1;
         }
-        
+
         return default;
     }
 

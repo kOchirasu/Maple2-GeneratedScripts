@@ -41,7 +41,7 @@ public class _11001314 : NpcScript {
                 // - Maybe you don't know how this works, but you're supposed to trade intel with me, not question my credibility. Well, forget you!
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -21,7 +21,7 @@ public class _11004225 : NpcScript {
                 // - When I think back on that audition at $map:52000061$, I can't help but smile. That day changed my life.
                 return -1;
         }
-        
+
         return default;
     }
 

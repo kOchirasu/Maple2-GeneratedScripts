@@ -85,7 +85,7 @@ public class _11000874 : NpcScript {
                 // - I've been studying turtles in the hopes of finding a clue to where their king went. And now, with my bald head and hunched-up shoulders and craning neck, I almost look like a turtle myself. Heh. 
                 return -1;
         }
-        
+
         return default;
     }
 

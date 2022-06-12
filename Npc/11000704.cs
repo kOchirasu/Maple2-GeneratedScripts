@@ -21,7 +21,7 @@ public class _11000704 : NpcScript {
                 // - Come to sample our juice? $npcName:11000445[gender:1]$ right here will set you up. Hope you're ready for a trip to flavor country!
                 return -1;
         }
-        
+
         return default;
     }
 

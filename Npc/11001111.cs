@@ -21,7 +21,7 @@ public class _11001111 : NpcScript {
                 // - The soul inside this orb... If it's left alone for too long, it'll be swallowed by the enormous darkness that is the Shadow World.
                 return -1;
         }
-        
+
         return default;
     }
 

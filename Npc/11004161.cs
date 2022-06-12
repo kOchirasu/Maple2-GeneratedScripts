@@ -21,7 +21,7 @@ public class _11004161 : NpcScript {
                 // - Sigh, no time to rest. Too many patients to get to.
                 return -1;
         }
-        
+
         return default;
     }
 

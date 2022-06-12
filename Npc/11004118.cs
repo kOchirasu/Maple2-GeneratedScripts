@@ -21,7 +21,7 @@ public class _11004118 : NpcScript {
                 // - The blast area was pretty big...
                 return -1;
         }
-        
+
         return default;
     }
 

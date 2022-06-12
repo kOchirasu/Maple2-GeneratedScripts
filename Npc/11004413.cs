@@ -29,7 +29,7 @@ public class _11004413 : NpcScript {
                 // - The toy train is completely free because it's run by the fairfolk! We barely even know what money is! Come along to $map:63000072$!
                 return -1;
         }
-        
+
         return default;
     }
 

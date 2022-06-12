@@ -25,7 +25,7 @@ public class _11000499 : NpcScript {
                 // - Others pointed their fingers and called us cowards, but we didn't care. We just wanted to keep our charge safe... 
                 return -1;
         }
-        
+
         return default;
     }
 

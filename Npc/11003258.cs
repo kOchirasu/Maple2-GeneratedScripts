@@ -25,7 +25,7 @@ public class _11003258 : NpcScript {
                 // - But don't you think Professor $npcName:11003251[gender:0]$ is looking especially good lately? His skin has taken on a beautiful pasty sheen from all his hard work. I could stare at him all day...
                 return -1;
         }
-        
+
         return default;
     }
 

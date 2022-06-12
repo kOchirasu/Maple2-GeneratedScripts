@@ -21,7 +21,7 @@ public class _11000616 : NpcScript {
                 // - Don't compare us to the empire. They care more about their hierarchy than the safety of their charges. Their hypocrisy is disgusting.
                 return -1;
         }
-        
+
         return default;
     }
 

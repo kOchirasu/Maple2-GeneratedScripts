@@ -21,7 +21,7 @@ public class _11001190 : NpcScript {
                 // - Trying to steal a Blackstar train? They've got to be crazy!
                 return -1;
         }
-        
+
         return default;
     }
 

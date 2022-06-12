@@ -25,7 +25,7 @@ public class _11004240 : NpcScript {
                 // - I am truly in your debt. Thank you. I'm sorry about everything.
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -81,7 +81,7 @@ public class _11003644 : NpcScript {
                 // - No more data... No more...
                 return -1;
         }
-        
+
         return default;
     }
 

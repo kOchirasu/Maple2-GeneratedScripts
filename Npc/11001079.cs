@@ -21,7 +21,7 @@ public class _11001079 : NpcScript {
                 // - Ugh... I know this isn't a vacation, but it's just too hot!
                 return -1;
         }
-        
+
         return default;
     }
 

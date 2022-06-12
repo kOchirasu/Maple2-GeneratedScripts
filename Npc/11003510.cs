@@ -33,7 +33,7 @@ public class _11003510 : NpcScript {
                 // - Why not take a stroll with a little friend?
                 return -1;
         }
-        
+
         return default;
     }
 

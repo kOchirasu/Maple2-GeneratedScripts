@@ -21,7 +21,7 @@ public class _11000685 : NpcScript {
                 // - $map:02000227$ is the border between the mortal and spirit realms.
                 return -1;
         }
-        
+
         return default;
     }
 

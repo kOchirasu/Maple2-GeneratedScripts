@@ -31,7 +31,7 @@ public class _11001109 : NpcScript {
                 // - That's... I want to stay with $npcName:11000614[gender:0]$. I never want to be separated from him again. 
                 return -1;
         }
-        
+
         return default;
     }
 

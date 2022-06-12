@@ -938,7 +938,7 @@ public class _11000774 : NpcScript {
                 // - I can tell you my name. It's $MaidName$. Nothing else about me can be described in words.
                 return -1;
         }
-        
+
         return default;
     }
 

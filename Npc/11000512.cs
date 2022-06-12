@@ -1185,7 +1185,7 @@ public class _11000512 : NpcScript {
                 // - My name is $MaidName$, and I'm an assistant of this household. How may I help you?
                 return -1;
         }
-        
+
         return default;
     }
 

@@ -49,7 +49,7 @@ public class _11004559 : NpcScript {
                 // - Oh, you think you can take me on just because I dance all day? Well, I have news for you, $male:buddy,female:lady$. Dancing is fantastic exercise. I'm going to crush you like a teeny tiny bug!
                 return -1;
         }
-        
+
         return default;
     }
 
