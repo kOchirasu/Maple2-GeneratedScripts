@@ -5,45 +5,52 @@ using Maple2.Script.Npc;
 /// 11001130: Nordan
 /// </summary>
 public class _11001130 : NpcScript {
-    internal _11001130(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0911192907003858$ 
-                // - D-do you want some herbs?
-                return true;
-            case 30:
-                // $script:0911192907003861$ 
+    // Select 0:
+    // $script:0911192907003858$
+    // - D-do you want some herbs?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0911192907003861$
                 // - W-what's with those weird noises? You hear them too, r-right?
                 switch (selection) {
                     // $script:0911192907003862$
                     // - I didn't hear anything.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0911192907003863$ 
+                return -1;
+            case (31, 0):
+                // $script:0911192907003863$
                 // - What?! D-don't look at me like that... I'm not crazy!
                 switch (selection) {
                     // $script:0911192907003864$
                     // - It was probably just a small animal.
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0911192907003865$ 
+                return -1;
+            case (32, 0):
+                // $script:0911192907003865$
                 // - Y-you think so? You'll protect me if it's something scary though, right? Hngg... Now my heart is p-pounding.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

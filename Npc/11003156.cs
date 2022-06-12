@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003156: Pippy
 /// </summary>
 public class _11003156 : NpcScript {
-    internal _11003156(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0306155707008047$ 
-                // - How may I help you?
-                return true;
-            case 20:
-                // $script:0306155707008049$ 
+    // Select 0:
+    // $script:0306155707008047$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0306155707008049$
                 // - I know, right? All three of us are pretty, but the prettiest one is... oh, you were talking about the flowers. Sure, they're pretty too! Ah, forget what I said earlier.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000871: Tuner
 /// </summary>
 public class _11000871 : NpcScript {
-    internal _11000871(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003148$ 
-                // - Huh?
-                return true;
-            case 20:
-                // $script:0831180407003150$ 
+    // Select 0:
+    // $script:0831180407003148$
+    // - Huh?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407003150$
                 // - $MyPCName$, would you like to know what's going on here? You look a little... bewildered.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

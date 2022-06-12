@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004061: Junta
 /// </summary>
 public class _11004061 : NpcScript {
-    internal _11004061(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614185307010095$ 
+    // Select 0:
+    // $script:0614185307010095$
+    // - I'm sorry about what happened...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0614185307010096$
                 // - I'm sorry about what happened...
-                return true;
-            case 10:
-                // $script:0614185307010096$ 
-                // - I'm sorry about what happened...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003956: Priest
 /// </summary>
 public class _11003956 : NpcScript {
-    internal _11003956(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614143707010003$ 
-                // - Do you believe in the power of the light?
-                return true;
-            case 20:
-                // $script:0614143707010004$ 
+    // Select 0:
+    // $script:0614143707010003$
+    // - Do you believe in the power of the light?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0614143707010004$
                 // - This Frontier Foundation is a beautiful place. I look forward to working with such capable individuals.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

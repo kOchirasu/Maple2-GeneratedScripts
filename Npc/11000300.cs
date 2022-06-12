@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000300: Mills
 /// </summary>
 public class _11000300 : NpcScript {
-    internal _11000300(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001191$ 
-                // - What brings you here?
-                return true;
-            case 20:
-                // $script:0831180407001193$ 
+    // Select 0:
+    // $script:0831180407001191$
+    // - What brings you here?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407001193$
                 // - Do you know what's living down below? $npcNamePlural:22000005$! They're so big and dreadful... Just looking at them leaves me petrified. How could I possibly get one of their tails?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

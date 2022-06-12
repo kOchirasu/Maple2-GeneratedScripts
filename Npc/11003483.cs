@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003483: Humblis Agent
 /// </summary>
 public class _11003483 : NpcScript {
-    internal _11003483(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0721140007008696$ 
+    // Select 0:
+    // $script:0721140007008696$
+    // - What's wrong?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0721142007008714$
                 // - What's wrong?
-                return true;
-            case 10:
-                // $script:0721142007008714$ 
-                // - What's wrong?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

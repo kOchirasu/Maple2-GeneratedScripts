@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003445: Einos
 /// </summary>
 public class _11003445 : NpcScript {
-    internal _11003445(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0721140007008693$ 
+    // Select 0:
+    // $script:0721140007008693$
+    // - I sense change in the wind.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0721142007008711$
                 // - I sense change in the wind.
-                return true;
-            case 10:
-                // $script:0721142007008711$ 
-                // - I sense change in the wind.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

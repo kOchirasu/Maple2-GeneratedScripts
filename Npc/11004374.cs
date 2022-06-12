@@ -5,70 +5,76 @@ using Maple2.Script.Npc;
 /// 11004374: Bobo
 /// </summary>
 public class _11004374 : NpcScript {
-    internal _11004374(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109213607011785$ 
-                // - You want presents? Hee hee.
-                return true;
-            case 10:
-                // $script:1109213607011786$ 
+    // Select 0:
+    // $script:1109213607011785$
+    // - You want presents? Hee hee.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109213607011786$
                 // - You want presents? Hee hee.
                 switch (selection) {
                     // $script:1120173007011859$
                     // - Never mind, I don't want it.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                     // $script:1120173007011860$
                     // - I want it.
                     case 1:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 11:
-                // $script:1120173007011861$ 
+                return -1;
+            case (11, 0):
+                // $script:1120173007011861$
                 // - $npcName:11004349[gender:0]$ do better now. $npcName:11004349[gender:0]$ is sad.
-                return true;
-            case 12:
-                // $script:1120173007011862$ 
+                return -1;
+            case (12, 0):
+                // $script:1120173007011862$
                 // - What want? $npcName:11004349[gender:0]$ do best!
                 switch (selection) {
                     // $script:1120173007011863$
                     // - $npcName:11004349[gender:0]$'s big heart is enough.
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                     // $script:1120173007011864$
                     // - How about a million mesos?
                     case 1:
-                        Id = 14;
-                        return false;
+                        return 14;
                 }
-                return true;
-            case 13:
-                // $script:1120173007011865$ 
+                return -1;
+            case (13, 0):
+                // $script:1120173007011865$
                 // - $MyPCName$... better than Santa! $npcName:11004349[gender:0]$ happy!
-                return true;
-            case 14:
-                // $script:1120173007011866$ 
+                return -1;
+            case (14, 0):
+                // $script:1120173007011866$
                 // - Sorry... $npcName:11004349[gender:0]$ no money. Sniff... Sorry. Very sorry.
                 switch (selection) {
                     // $script:1120173007011867$
                     // - $npcName:11004349[gender:0]$'s big heart is enough.
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                 }
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Close,
+            (12, 0) => NpcTalkButton.SelectableDistractor,
+            (13, 0) => NpcTalkButton.Close,
+            (14, 0) => NpcTalkButton.SelectableDistractor,
+            _ => NpcTalkButton.None,
+        };
     }
 }

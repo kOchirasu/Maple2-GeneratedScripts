@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000461: Isabel
 /// </summary>
 public class _11000461 : NpcScript {
-    internal _11000461(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002048$ 
-                // - Can I help you?
-                return true;
-            case 50:
-                // $script:0831180407002051$ 
+    // Select 0:
+    // $script:0831180407002048$
+    // - Can I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407002051$
                 // - Others say Chief Hairdresser $npcName:11000255[gender:1]$ is the best, but I like $npcName:11000253[gender:0]$'s style.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

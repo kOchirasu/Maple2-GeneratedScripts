@@ -5,30 +5,37 @@ using Maple2.Script.Npc;
 /// 11000257: Douglas
 /// </summary>
 public class _11000257 : NpcScript {
-    internal _11000257(INpcScriptContext context) : base(context) {
-        Id = 1;
-        // TODO: Job 1
+    protected override int First() {
+        return 1;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180610000408$ 
-                // - How may I help you?
-                return true;
-            case 1:
-                // $script:0831180610000413$ functionID=1 
+    // Select 0:
+    // $script:0831180610000408$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (1, 0):
+                // functionID=1 
+                // $script:0831180610000413$
                 // - Being strong is important, but looking fabulous while you fight is the true key to happiness, y'know. So... wanna spruce up your gear?
                 switch (selection) {
                     // $script:0831180610000414$
                     // - Yes! I need more color in my life!
                     case 0:
-                        Id = 0;
-                        return false;
+                        return 0;
                 }
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (1, 0) => NpcTalkButton.SelectableBeauty,
+            _ => NpcTalkButton.None,
+        };
     }
 }

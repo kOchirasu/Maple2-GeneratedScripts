@@ -5,29 +5,45 @@ using Maple2.Script.Npc;
 /// 11000695: Bazette
 /// </summary>
 public class _11000695 : NpcScript {
-    internal _11000695(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002802$ 
-                // - What brings you here?
-                return true;
-            case 50:
-                // $script:0831180407002806$ 
+    // Select 0:
+    // $script:0831180407002802$
+    // - What brings you here?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407002806$
                 // - Making potions is very difficult. The first priority is preparing the ingredients. You need very specific ingredients to make effective potions.
-                // $script:0831180407002807$ 
+                return 50;
+            case (50, 1):
+                // $script:0831180407002807$
                 // - Some people compare potion brewing to cooking. They're crazy if they think potions are as easy to make as food.
-                // $script:0831180407002808$ 
+                return 50;
+            case (50, 2):
+                // $script:0831180407002808$
                 // - Here, I'll give you an example. Say you're making fried rice. You can put in just about anything you want. Ham, peppers, carrots, anything you want.
-                // $script:0831180407002809$ 
+                return 50;
+            case (50, 3):
+                // $script:0831180407002809$
                 // - When you're making a potion, however, you must add the ingredients in the correct order, at the correct time. You can't take your eyes off the cauldron.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Next,
+            (50, 1) => NpcTalkButton.Next,
+            (50, 2) => NpcTalkButton.Next,
+            (50, 3) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

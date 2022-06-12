@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000301: Jax
 /// </summary>
 public class _11000301 : NpcScript {
-    internal _11000301(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001194$ 
-                // - What brings you?
-                return true;
-            case 20:
-                // $script:0831180407001196$ 
+    // Select 0:
+    // $script:0831180407001194$
+    // - What brings you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407001196$
                 // - This place is dangerous. Be careful, especially if you want to use skills while on the Bone Bridge. Things can get scary there pretty quickly.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

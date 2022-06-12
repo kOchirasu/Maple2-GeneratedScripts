@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001060: Blanche
 /// </summary>
 public class _11001060 : NpcScript {
-    internal _11001060(INpcScriptContext context) : base(context) {
-        Id = 60;
-        // TODO: RandomPick 60
+    protected override int First() {
+        return 60;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180306000373$ 
-                // - Do you have business with me?
-                return true;
-            case 60:
-                // $script:0831180306000376$ 
+    // Select 0:
+    // $script:0831180306000373$
+    // - Do you have business with me?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (60, 0):
+                // $script:0831180306000376$
                 // - I don't think I'll do business with you, $MyPCName$. I prefer to work with those who have $achieve:23200015$ Trophies. I apologize for any inconvenience.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (60, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

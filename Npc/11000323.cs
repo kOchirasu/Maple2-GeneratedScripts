@@ -5,34 +5,45 @@ using Maple2.Script.Npc;
 /// 11000323: Tony
 /// </summary>
 public class _11000323 : NpcScript {
-    internal _11000323(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 40;50;60;70
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001300$ 
-                // - How may I help you?
-                return true;
-            case 40:
-                // $script:0831180407001303$ 
+    // Select 0:
+    // $script:0831180407001300$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:0831180407001303$
                 // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot warrior? 
-                return true;
-            case 50:
-                // $script:0831180407001304$ 
+                return -1;
+            case (50, 0):
+                // $script:0831180407001304$
                 // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot mage? 
-                return true;
-            case 60:
-                // $script:0831180407001305$ 
+                return -1;
+            case (60, 0):
+                // $script:0831180407001305$
                 // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot archer? 
-                return true;
-            case 70:
-                // $script:0831180407001306$ 
+                return -1;
+            case (70, 0):
+                // $script:0831180407001306$
                 // - I hate history the most. There are too many things to remember, heroes and names and... What was the name of that big-shot thief? 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Close,
+            (50, 0) => NpcTalkButton.Close,
+            (60, 0) => NpcTalkButton.Close,
+            (70, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

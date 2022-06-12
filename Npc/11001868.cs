@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001868: Rachael
 /// </summary>
 public class _11001868 : NpcScript {
-    internal _11001868(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1213150207007549$ 
-                // - Ah, nice to see you!
-                return true;
-            case 20:
-                // $script:1213150207007551$ 
+    // Select 0:
+    // $script:1213150207007549$
+    // - Ah, nice to see you!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:1213150207007551$
                 // - This mine is run by the Nerman Guild. We've got all the materials a blacksmith might need.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

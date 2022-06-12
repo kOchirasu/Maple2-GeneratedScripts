@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004033: Orde
 /// </summary>
 public class _11004033 : NpcScript {
-    internal _11004033(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614185307010051$ 
-                // - Ugh, I hate field duty...
-                return true;
-            case 20:
-                // $script:0614185307010052$ 
+    // Select 0:
+    // $script:0614185307010051$
+    // - Ugh, I hate field duty...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0614185307010052$
                 // - It's dangerous outside the blanket, $MyPCName$.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,46 +5,55 @@ using Maple2.Script.Npc;
 /// 11000420: Moma
 /// </summary>
 public class _11000420 : NpcScript {
-    internal _11000420(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 90;100
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001748$ 
-                // - You got something to say? 
-                return true;
-            case 90:
-                // $script:0831180407001754$ 
+    // Select 0:
+    // $script:0831180407001748$
+    // - You got something to say? 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (90, 0):
+                // $script:0831180407001754$
                 // - Are you sightseeing? Head north to the condominium complex. The staff is nice, and it's really pretty around there. Just sayin'.
-                return true;
-            case 100:
-                // $script:0831180407001755$ 
+                return -1;
+            case (100, 0):
+                // $script:0831180407001755$
                 // - $MyPCName$, do you like fish?
                 switch (selection) {
                     // $script:0831180407001756$
                     // - Yep.
                     case 0:
-                        Id = 101;
-                        return false;
+                        return 101;
                     // $script:0831180407001757$
                     // - Nope.
                     case 1:
-                        Id = 102;
-                        return false;
+                        return 102;
                 }
-                return true;
-            case 101:
-                // $script:0831180407001758$ 
+                return -1;
+            case (101, 0):
+                // $script:0831180407001758$
                 // - Well $MyPCName$, you're more health-conscious than I thought. Fish is an excellent source of protein and other essential nutrients.
-                return true;
-            case 102:
-                // $script:0831180407001759$ 
+                return -1;
+            case (102, 0):
+                // $script:0831180407001759$
                 // - Oh, you should eat fish regularly. I thought you knew that, $MyPCName$. Do you only eat red meat? It's too fatty. Eating fish helps you lose weight.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (90, 0) => NpcTalkButton.Close,
+            (100, 0) => NpcTalkButton.SelectableDistractor,
+            (101, 0) => NpcTalkButton.Close,
+            (102, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

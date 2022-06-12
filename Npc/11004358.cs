@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004358: Evelyn
 /// </summary>
 public class _11004358 : NpcScript {
-    internal _11004358(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109213607011769$ 
-                // - Oh look, $MyPCName$. Snow!
-                return true;
-            case 10:
-                // $script:1109213607011770$ 
+    // Select 0:
+    // $script:1109213607011769$
+    // - Oh look, $MyPCName$. Snow!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109213607011770$
                 // - I always love snow for the holidays.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

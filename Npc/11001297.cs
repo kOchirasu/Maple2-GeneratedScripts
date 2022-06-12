@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11001297: Tara
 /// </summary>
 public class _11001297 : NpcScript {
-    internal _11001297(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1215203907005011$ 
-                // - I can't stand this...
-                return true;
-            case 40:
-                // $script:1227194507005641$ 
+    // Select 0:
+    // $script:1215203907005011$
+    // - I can't stand this...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1227194507005641$
                 // - If nobody stands up to injustice, then we all suffer.
-                // $script:1227194507005642$ 
+                return 40;
+            case (40, 1):
+                // $script:1227194507005642$
                 // - Just because others turn a blind eye, that doesn't mean that <i>we</i> should. If something is wrong, then we must work to make it right.
-                // $script:1227194507005643$ 
+                return 40;
+            case (40, 2):
+                // $script:1227194507005643$
                 // - Otherwise, it all becomes a vicious cycle. People like us need to act or nothing will ever change.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Next,
+            (40, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

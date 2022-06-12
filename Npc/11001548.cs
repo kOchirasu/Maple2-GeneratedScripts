@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001548: Suspicious Individual
 /// </summary>
 public class _11001548 : NpcScript {
-    internal _11001548(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0629000607006395$ 
-                // - What seems to be the problem?
-                return true;
-            case 10:
-                // $script:0629000607006396$ 
+    // Select 0:
+    // $script:0629000607006395$
+    // - What seems to be the problem?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0629000607006396$
                 // - I've got nothing to say to you.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

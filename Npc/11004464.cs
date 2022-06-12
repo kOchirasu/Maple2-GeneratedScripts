@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11004464: Richmonde Defender
 /// </summary>
 public class _11004464 : NpcScript {
-    internal _11004464(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1227192907012087$ 
-                // - Huh? You don't look like a refugee.
-                return true;
-            case 10:
-                // $script:1227192907012088$ 
+    // Select 0:
+    // $script:1227192907012087$
+    // - Huh? You don't look like a refugee.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1227192907012088$
                 // - Huh? You don't look like a refugee.
                 switch (selection) {
                     // $script:1227192907012089$
                     // - I have come from the distant land of Maple World.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1227192907012090$ 
+                return -1;
+            case (11, 0):
+                // $script:1227192907012090$
                 // - Never heard of it. Look, just keep your head down and try not to get caught in the crossfire.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

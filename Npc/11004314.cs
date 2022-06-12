@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004314: Schatten
 /// </summary>
 public class _11004314 : NpcScript {
-    internal _11004314(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0928133807011354$ 
-                // - I am the shadow that evil fears.
-                return true;
-            case 10:
-                // $script:0928133807011355$ 
+    // Select 0:
+    // $script:0928133807011354$
+    // - I am the shadow that evil fears.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0928133807011355$
                 // - My agents can't get past the insane AI that's controlling most of Kritias! I feel so... frustrated.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

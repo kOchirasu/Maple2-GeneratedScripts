@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11004287: Alberto Bean
 /// </summary>
 public class _11004287 : NpcScript {
-    internal _11004287(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0220212507014570$ 
-                // - Nice to meet you.
-                return true;
-            case 10:
-                // $script:0220212507014571$ 
+    // Select 0:
+    // $script:0220212507014570$
+    // - Nice to meet you.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0220212507014571$
                 // - You just might be up to the Queen Bean Rumble.
-                // $script:0220212507014572$ 
+                return 10;
+            case (10, 1):
+                // $script:0220212507014572$
                 // - I do think you shall be an amusement for Her Highness.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

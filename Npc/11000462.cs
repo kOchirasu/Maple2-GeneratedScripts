@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000462: Amelia
 /// </summary>
 public class _11000462 : NpcScript {
-    internal _11000462(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002052$ 
-                // - How may I help you?
-                return true;
-            case 50:
-                // $script:0831180407002056$ 
+    // Select 0:
+    // $script:0831180407002052$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407002056$
                 // - What brings you to $map:02000107$? Since you're here, I was thinking about changing up my skin tone again. Do you think I should do it?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

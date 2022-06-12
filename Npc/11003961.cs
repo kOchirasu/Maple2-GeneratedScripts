@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003961: Heavy Gunner
 /// </summary>
 public class _11003961 : NpcScript {
-    internal _11003961(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614143707010013$ 
-                // - Booooring.
-                return true;
-            case 20:
-                // $script:0614143707010014$ 
+    // Select 0:
+    // $script:0614143707010013$
+    // - Booooring.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0614143707010014$
                 // - Do you want me to teach you about the immense power of the lapenshards? ...No? Pfft.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

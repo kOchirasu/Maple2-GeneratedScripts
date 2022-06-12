@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000427: Kakomani
 /// </summary>
 public class _11000427 : NpcScript {
-    internal _11000427(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001779$ 
-                // - What're you doing here?
-                return true;
-            case 20:
-                // $script:0831180407001781$ 
+    // Select 0:
+    // $script:0831180407001779$
+    // - What're you doing here?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407001781$
                 // - Mature $npcName:11000423$s are almost impossible to train. The best time to train them is right after they're born. If only $npcName:23000019[gender:0]$ didn't keep interfering, I could train up a new group of chicks... 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

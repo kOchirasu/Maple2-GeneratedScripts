@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004466: Richmonde Guard
 /// </summary>
 public class _11004466 : NpcScript {
-    internal _11004466(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1227192907012101$ 
+    // Select 0:
+    // $script:1227192907012101$
+    // - All's we—Huh?! You're an outlander!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1227192907012102$
                 // - All's we—Huh?! You're an outlander!
-                return true;
-            case 10:
-                // $script:1227192907012102$ 
-                // - All's we—Huh?! You're an outlander!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

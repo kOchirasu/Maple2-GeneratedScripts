@@ -5,45 +5,52 @@ using Maple2.Script.Npc;
 /// 11001412: Sumsum
 /// </summary>
 public class _11001412 : NpcScript {
-    internal _11001412(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217205907005409$ 
-                // - So... much... pain...
-                return true;
-            case 40:
-                // $script:1222203907005501$ 
+    // Select 0:
+    // $script:1217205907005409$
+    // - So... much... pain...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1222203907005501$
                 // - C-can't... talk... Too... busy... pain...
                 switch (selection) {
                     // $script:1222203907005502$
                     // - Where does it hurt?
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                 }
-                return true;
-            case 41:
-                // $script:1222203907005503$ 
+                return -1;
+            case (41, 0):
+                // $script:1222203907005503$
                 // - Leave me alone... you dummy... I need to rest...
                 switch (selection) {
                     // $script:1222203907005504$
                     // - Hey, I'm just trying to help!
                     case 0:
-                        Id = 42;
-                        return false;
+                        return 42;
                 }
-                return true;
-            case 42:
-                // $script:1222203907005505$ 
+                return -1;
+            case (42, 0):
+                // $script:1222203907005505$
                 // - G-go away... I don't want... your help... 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.SelectableDistractor,
+            (42, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

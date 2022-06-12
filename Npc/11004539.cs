@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11004539: Barricade Defender
 /// </summary>
 public class _11004539 : NpcScript {
-    internal _11004539(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0104170807012621$ 
+    // Select 0:
+    // $script:0104170807012621$
+    // - Ah! You startled me!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0104170807012622$
                 // - Ah! You startled me!
-                return true;
-            case 10:
-                // $script:0104170807012622$ 
-                // - Ah! You startled me!
-                // $script:0104170807012623$ 
+                return 10;
+            case (10, 1):
+                // $script:0104170807012623$
                 // - You better watch out who you sneak up on. I was two seconds away from tombstoning you!
-                // $script:0104170807012624$ 
+                return 10;
+            case (10, 2):
+                // $script:0104170807012624$
                 // - If you have time to chat, you have time to fight!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Next,
+            (10, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

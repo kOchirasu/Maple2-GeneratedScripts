@@ -5,26 +5,35 @@ using Maple2.Script.Npc;
 /// 11001596: Landevian
 /// </summary>
 public class _11001596 : NpcScript {
-    internal _11001596(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 10;20
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0504151707006084$ 
-                // - Sigh... 
-                return true;
-            case 10:
-                // $script:0515180307006133$ 
+    // Select 0:
+    // $script:0504151707006084$
+    // - Sigh... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0515180307006133$
                 // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up!
-                return true;
-            case 20:
-                // $script:0524142307006222$ 
+                return -1;
+            case (20, 0):
+                // $script:0524142307006222$
                 // - This isn't like $npcName:11001229[gender:0]$ at all. Wake up!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

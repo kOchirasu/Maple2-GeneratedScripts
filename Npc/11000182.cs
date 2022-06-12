@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000182: Junkyard Worker
 /// </summary>
 public class _11000182 : NpcScript {
-    internal _11000182(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000762$ 
-                // - What?
-                return true;
-            case 50:
-                // $script:0831180407000767$ 
+    // Select 0:
+    // $script:0831180407000762$
+    // - What?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407000767$
                 // - Scram, I got work to do.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

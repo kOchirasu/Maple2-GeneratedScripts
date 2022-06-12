@@ -5,49 +5,62 @@ using Maple2.Script.Npc;
 /// 11004069: Cheez
 /// </summary>
 public class _11004069 : NpcScript {
-    internal _11004069(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0619202207010143$ 
+    // Select 0:
+    // $script:0619202207010143$
+    // - It's breezy up here!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0619202207010144$
                 // - It's breezy up here!
-                return true;
-            case 10:
-                // $script:0619202207010144$ 
-                // - It's breezy up here!
-                // $script:0619202207010145$ 
+                return 10;
+            case (10, 1):
+                // $script:0619202207010145$
                 // - Huh? What do <i>you</i> want?
                 switch (selection) {
                     // $script:0619202207010146$
                     // - $npcName:11000367$'s owner is worried...
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0619202207010147$ 
+                return -1;
+            case (31, 0):
+                // $script:0619202207010147$
                 // - That's too bad. $npcName:11000367$ and I were meant for each other. It was fate.
                 switch (selection) {
                     // $script:0619202207010148$
                     // - How'd you two meet, anyway?
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0619202207010149$ 
+                return -1;
+            case (32, 0):
+                // $script:0619202207010149$
                 // - How is that any of your business? Let's just say that Skittle saved me from a really tough situation.
-                // $script:0619202207010150$ 
+                return 32;
+            case (32, 1):
+                // $script:0619202207010150$
                 // - You should just wish us happiness, okay?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Next,
+            (32, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

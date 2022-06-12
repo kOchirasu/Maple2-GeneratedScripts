@@ -5,36 +5,46 @@ using Maple2.Script.Npc;
 /// 11004505: Mannstad Sentry
 /// </summary>
 public class _11004505 : NpcScript {
-    internal _11004505(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1228182607012429$ 
-                // - Identify yourself!
-                return true;
-            case 10:
-                // $script:1228182607012430$ 
+    // Select 0:
+    // $script:1228182607012429$
+    // - Identify yourself!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1228182607012430$
                 // - Identify yourself!
                 switch (selection) {
                     // $script:1228182607012431$
                     // - Whoa, there. I'm a friend!
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1228182607012432$ 
+                return -1;
+            case (11, 0):
+                // $script:1228182607012432$
                 // - Hey, you're that outlander. I read a report on you.
-                // $script:1228182607012433$ 
+                return 11;
+            case (11, 1):
+                // $script:1228182607012433$
                 // - Sorry if I seem on edge. Not all of the outlanders have been as... helpful as you.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Next,
+            (11, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

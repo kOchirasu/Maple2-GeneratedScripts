@@ -5,26 +5,35 @@ using Maple2.Script.Npc;
 /// 11003878: Mani
 /// </summary>
 public class _11003878 : NpcScript {
-    internal _11003878(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 10;20
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0417135107009872$ 
+    // Select 0:
+    // $script:0417135107009872$
+    // - Welcome to $map:02000425$, the beautiful island of alchemy.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0417135107009873$
                 // - Welcome to $map:02000425$, the beautiful island of alchemy.
-                return true;
-            case 10:
-                // $script:0417135107009873$ 
+                return -1;
+            case (20, 0):
+                // $script:0419172107009857$
                 // - Welcome to $map:02000425$, the beautiful island of alchemy.
-                return true;
-            case 20:
-                // $script:0419172107009857$ 
-                // - Welcome to $map:02000425$, the beautiful island of alchemy.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

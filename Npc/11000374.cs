@@ -5,37 +5,46 @@ using Maple2.Script.Npc;
 /// 11000374: Tann
 /// </summary>
 public class _11000374 : NpcScript {
-    internal _11000374(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;60
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001534$ 
-                // - What?
-                return true;
-            case 30:
-                // $script:0831180407001537$ 
+    // Select 0:
+    // $script:0831180407001534$
+    // - What?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407001537$
                 // - What?
                 switch (selection) {
                     // $script:0831180407001538$
                     // - So uh... are you a dude or a lady?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0831180407001539$ 
+                return -1;
+            case (31, 0):
+                // $script:0831180407001539$
                 // - Think what you like!
-                return true;
-            case 60:
-                // $script:0831180407001540$ 
+                return -1;
+            case (60, 0):
+                // $script:0831180407001540$
                 // - There are treasure chests hidden all over the world. How did they get there? Who knows and who cares! Just remember the golden rule: finders keepers!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            (60, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

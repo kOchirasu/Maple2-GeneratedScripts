@@ -5,36 +5,47 @@ using Maple2.Script.Npc;
 /// 11004521: Mayu
 /// </summary>
 public class _11004521 : NpcScript {
-    internal _11004521(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0102174210002228$ 
+    // Select 0:
+    // $script:0102174210002228$
+    // - If you need a lift back to $map:02000001$, I'm your gal!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0102174210002229$
                 // - If you need a lift back to $map:02000001$, I'm your gal!
-                return true;
-            case 10:
-                // $script:0102174210002229$ 
-                // - If you need a lift back to $map:02000001$, I'm your gal!
-                // $script:0102174210002230$ 
+                return 10;
+            case (10, 1):
+                // $script:0102174210002230$
                 // - We're heading out straight away. If you miss this place, you can always use the <i>Lumiwind</i> to come back. Are you ready to return to $map:02000001$?
                 switch (selection) {
                     // $script:0102174210002231$
                     // - Take me to $map:02000001$!
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:0102174210002232$ functionID=1 
+                return -1;
+            case (11, 0):
+                // functionID=1 
+                // $script:0102174210002232$
                 // - All right. Away we go!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,67 +5,74 @@ using Maple2.Script.Npc;
 /// 11003635: Chandler
 /// </summary>
 public class _11003635 : NpcScript {
-    internal _11003635(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109121007009054$ 
-                // - Science is the answer!
-                return true;
-            case 10:
-                // $script:1109121007009055$ 
+    // Select 0:
+    // $script:1109121007009054$
+    // - Science is the answer!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109121007009055$
                 // - Ah, greetings, fellow scientist! Are you here to discuss the latest theories in electromathography?
                 switch (selection) {
                     // $script:1109121007009056$
                     // - I'm looking for someone, actually.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1109121007009057$ 
+                return -1;
+            case (11, 0):
+                // $script:1109121007009057$
                 // - In that case, you've found the right person, $MyPCName$.
                 switch (selection) {
                     // $script:1109121007009058$
                     // - How do you know me?
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:1109121007009059$ 
+                return -1;
+            case (12, 0):
+                // $script:1109121007009059$
                 // - Everyone in Dark Wind knows you.
                 switch (selection) {
                     // $script:1109121007009060$
                     // - Then you must have a message for $npcName:11003535[gender:1]$.
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                 }
-                return true;
-            case 13:
-                // $script:1109121007009061$ 
+                return -1;
+            case (13, 0):
+                // $script:1109121007009061$
                 // - "Pancakes, with extra syrup!"
                 switch (selection) {
                     // $script:1109121007009062$
                     // - If I give you pancakes, will you tell me the message?
                     case 0:
-                        Id = 14;
-                        return false;
+                        return 14;
                 }
-                return true;
-            case 14:
-                // $script:1109121007009063$ 
+                return -1;
+            case (14, 0):
+                // $script:1109121007009063$
                 // - That <i>is</i> the message. Now, about those theories...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.SelectableDistractor,
+            (13, 0) => NpcTalkButton.SelectableDistractor,
+            (14, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

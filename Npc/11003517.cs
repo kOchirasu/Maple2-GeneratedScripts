@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11003517: Ashim
 /// </summary>
 public class _11003517 : NpcScript {
-    internal _11003517(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0817044507008848$ 
-                // - What?
-                return true;
-            case 30:
-                // $script:0817044507008851$ 
+    // Select 0:
+    // $script:0817044507008848$
+    // - What?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0817044507008851$
                 // - What?
                 switch (selection) {
                     // $script:0817044507008852$
                     // - Tell me about the five auras.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0817044507008853$ 
+                return -1;
+            case (31, 0):
+                // $script:0817044507008853$
                 // - Aur-what? Look, I just want to finish my exam and grab some grub.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11001054: Nomar
 /// </summary>
 public class _11001054 : NpcScript {
-    internal _11001054(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003600$ 
-                // - What is it?
-                return true;
-            case 30:
-                // $script:0831180407003603$ 
+    // Select 0:
+    // $script:0831180407003600$
+    // - What is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407003603$
                 // - People say that sometimes dreams, do come true. I hope they're right.
                 switch (selection) {
                     // $script:0831180407003604$
                     // - What's your dream?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0831180407003605$ 
+                return -1;
+            case (31, 0):
+                // $script:0831180407003605$
                 // - My dream isn't much. I just want to be a successful businessman. I may be delivering pizzas now, but I know I can make it big if I work hard enough.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

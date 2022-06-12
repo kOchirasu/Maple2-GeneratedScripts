@@ -5,43 +5,50 @@ using Maple2.Script.Npc;
 /// 11001131: Roteo
 /// </summary>
 public class _11001131 : NpcScript {
-    internal _11001131(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0911192907003866$ 
-                // - Hmm? What do you want?
-                return true;
-            case 30:
-                // $script:0911192907003869$ 
+    // Select 0:
+    // $script:0911192907003866$
+    // - Hmm? What do you want?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0911192907003869$
                 // - Hah. Cold, are we? Maybe you should've worn thicker clothes.
                 switch (selection) {
                     // $script:0911192907003870$
                     // - I'm not c-c-cold.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                     // $script:0911192907003871$
                     // - Are you kidding? I'm <b>freezing</b>.
                     case 1:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 31:
-                // $script:0911192907003872$ 
+                return -1;
+            case (31, 0):
+                // $script:0911192907003872$
                 // - Bahaha. A real tough cookie, aren't you?  I'm a professional explorer, and even I get a little cold at times like this. Maybe you belong in my line of work.
-                return true;
-            case 32:
-                // $script:0911192907003873$ 
+                return -1;
+            case (32, 0):
+                // $script:0911192907003873$
                 // - You look like seasoned adventurer. I'm sure you've seen worse weather than this. So suck it up! Bahaha.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            (32, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

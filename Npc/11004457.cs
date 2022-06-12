@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004457: Evian
 /// </summary>
 public class _11004457 : NpcScript {
-    internal _11004457(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0109134107012662$ 
+    // Select 0:
+    // $script:0109134107012662$
+    // - Our first steps in a new world. I should be excited, but all I feel is nervous...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0109134107012663$
                 // - Our first steps in a new world. I should be excited, but all I feel is nervous...
-                return true;
-            case 10:
-                // $script:0109134107012663$ 
-                // - Our first steps in a new world. I should be excited, but all I feel is nervous...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

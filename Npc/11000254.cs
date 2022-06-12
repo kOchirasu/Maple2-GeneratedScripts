@@ -5,51 +5,63 @@ using Maple2.Script.Npc;
 /// 11000254: Jane
 /// </summary>
 public class _11000254 : NpcScript {
-    internal _11000254(INpcScriptContext context) : base(context) {
-        Id = 60;
-        // TODO: RandomPick 60
+    protected override int First() {
+        return 60;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001056$ 
-                // - How may I help you?
-                return true;
-            case 60:
-                // $script:0831180407001060$ 
+    // Select 0:
+    // $script:0831180407001056$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (60, 0):
+                // $script:0831180407001060$
                 // - Hey, there! If you've got a style in mind, we can make it happen. If you don't, maybe a magazine will inspire you. Want one?
                 switch (selection) {
                     // $script:0831180407001061$
                     // - Yep.
                     case 0:
-                        Id = 0; // TODO: 61,62 | 63
-                        return false;
+                        // TODO: goto 61,62
+                        // TODO: gotoFail 63
+                        return -1;
                     // $script:0831180407001062$
                     // - I'd like some advice.
                     case 1:
-                        Id = 64;
-                        return false;
+                        return 64;
                 }
-                return true;
-            case 61:
-                // $script:0831180407001063$ functionID=1 
+                return -1;
+            case (61, 0):
+                // functionID=1 openTalkReward=True 
+                // $script:0831180407001063$
                 // - Sure thing. This has all the latest styles. Have a seat and check them out.
-                return true;
-            case 62:
-                // $script:0831180407001064$ 
+                return -1;
+            case (62, 0):
+                // $script:0831180407001064$
                 // - Err... I'm afraid you already have the only magazine we have. Sorry about that.
-                return true;
-            case 63:
-                // $script:0831180407001065$ 
+                return -1;
+            case (63, 0):
+                // $script:0831180407001065$
                 // - Oh, friend... I'm afraid your bag is too heavy. Why don't you lighten it first?
-                return true;
-            case 64:
-                // $script:0831180407001066$ 
+                return -1;
+            case (64, 0):
+                // $script:0831180407001066$
                 // - Sure! I love nothing more than helping match people with the hair of their dreams. Let's chat and find something that's totally you!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (60, 0) => NpcTalkButton.SelectableDistractor,
+            (61, 0) => NpcTalkButton.Close,
+            (62, 0) => NpcTalkButton.Close,
+            (63, 0) => NpcTalkButton.Close,
+            (64, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

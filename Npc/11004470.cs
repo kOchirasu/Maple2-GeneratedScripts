@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11004470: Colorata
 /// </summary>
 public class _11004470 : NpcScript {
-    internal _11004470(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1227195007012417$ 
+    // Select 0:
+    // $script:1227195007012417$
+    // - I was playing hide-and-seek with my friends, but I just can't find them!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1227195007012418$
                 // - I was playing hide-and-seek with my friends, but I just can't find them!
-                return true;
-            case 10:
-                // $script:1227195007012418$ 
-                // - I was playing hide-and-seek with my friends, but I just can't find them!
-                // $script:1227195007012419$ 
+                return 10;
+            case (10, 1):
+                // $script:1227195007012419$
                 // - Where did you go?! I give up! Please come out!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

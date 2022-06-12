@@ -5,74 +5,97 @@ using Maple2.Script.Npc;
 /// 11004447: Beri Ring
 /// </summary>
 public class _11004447 : NpcScript {
-    internal _11004447(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;60
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217160307011984$ 
-                // - Hello, $MyPCName$!
-                return true;
-            case 30:
-                // $script:1217160307012011$ 
+    // Select 0:
+    // $script:1217160307011984$
+    // - Hello, $MyPCName$!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:1217160307012011$
                 // - You must be here about this fancy chest, yes? It's enchanted to provide you with the materials you need to upgrade your gemstones.
-                // $script:1217160307012012$ 
+                return 30;
+            case (30, 1):
+                // $script:1217160307012012$
                 // - Go ahead and give it a try. You'll need the proper reagents to open it, of course.
                 switch (selection) {
                     // $script:1217160307012013$
                     // - What reagents do I need?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                     // $script:1217160307012014$
                     // - I'm curious about the science behind this.
                     case 1:
-                        Id = 33;
-                        return false;
+                        return 33;
                 }
-                return true;
-            case 31:
-                // $script:1217160307012015$ 
+                return -1;
+            case (31, 0):
+                // $script:1217160307012015$
                 // - You'll want some $itemPlural:30001187$, which you can get by hunting monsters. That's the raw material that you will turn into gemstones.
-                // $script:1217160307012016$ 
+                return 31;
+            case (31, 1):
+                // $script:1217160307012016$
                 // - To trigger the reaction, just use some $item:30001188$, and viola!
                 switch (selection) {
                     // $script:1217160307012017$
                     // - How do I get those?
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:1217160307012018$ 
+                return -1;
+            case (32, 0):
+                // $script:1217160307012018$
                 // - Fortunately for you, I just so happen to sell them! I should warn you, though, that my supply is pretty limited. It's not easy to make, you know.
-                return true;
-            case 33:
-                // $script:1217160307012019$ 
+                return -1;
+            case (33, 0):
+                // $script:1217160307012019$
                 // - $npc:11000601[gender:1]$ discovered this chest while taking inventory of the royal reliquary. We think it was a gift to the empress from a faraway place. Anyway, it seems to turn the energy of monsters into something useful.
-                // $script:1217160307012020$ 
+                return 33;
+            case (33, 1):
+                // $script:1217160307012020$
                 // - The $npc:11004215$, as we've taken to calling it, can convert all kinds of energy. As soon as she found it, $npcName:11000601[gender:1]$ set herself to researching the device.
-                // $script:1217160307012021$ 
+                return 33;
+            case (33, 2):
+                // $script:1217160307012021$
                 // - To her surprise, the chest was even able to take the $item:30001187$ taken from monsters and turn it into gem dust. We agreed that it would be in everyone's best interest to make this device freely available to adventurer's like you!
-                // $script:1217160307012022$ 
+                return 33;
+            case (33, 3):
+                // $script:1217160307012022$
                 // - Now, you will need $item:30001188$ to stabilize the process. It's simple physics, as I'm sure you know.
                 switch (selection) {
                     // $script:1217160307012023$
                     // - What materials do I need?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 60:
-                // $script:1217160307012026$ 
+                return -1;
+            case (60, 0):
+                // $script:1217160307012026$
                 // - The empress has declared that all experienced adventurers shall have access to this enchanted chest here! Not you, though. I'm afraid you're not quite experienced enough. Would you be so kind as to come back when you're level 50?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Next,
+            (30, 1) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Next,
+            (31, 1) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Close,
+            (33, 0) => NpcTalkButton.Next,
+            (33, 1) => NpcTalkButton.Next,
+            (33, 2) => NpcTalkButton.Next,
+            (33, 3) => NpcTalkButton.SelectableDistractor,
+            (60, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

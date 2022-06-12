@@ -5,26 +5,35 @@ using Maple2.Script.Npc;
 /// 11003522: Little Tree Sprite
 /// </summary>
 public class _11003522 : NpcScript {
-    internal _11003522(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0816160115009026$ 
-                // - What's happening?
-                return true;
-            case 30:
-                // $script:0816160115009027$ 
+    // Select 0:
+    // $script:0816160115009026$
+    // - What's happening?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0816160115009027$
                 // - Lookit me!
-                return true;
-            case 40:
-                // $script:0816160115009028$ 
+                return -1;
+            case (40, 0):
+                // $script:0816160115009028$
                 // - What's happening?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

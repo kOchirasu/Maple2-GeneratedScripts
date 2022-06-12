@@ -5,24 +5,23 @@ using Maple2.Script.Npc;
 /// 11000120: 
 /// </summary>
 public class _11000120 : NpcScript {
-    internal _11000120(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override void FirstScript() {
+        (Id, Button) = (10, NpcTalkButton.Close);
     }
 
-    public override bool Next(int selection = 0) {
+    protected override (int, NpcTalkButton) Next(int selection) {
         switch (Id) {
             case 0:
                 // $script:0831180407000519$ 
                 // - Select a thread.
-                return true;
+                return default;
             case 10:
                 // $script:0831180407000520$ 
                 // - This road is fraught with danger. You will need to make a detour.
                 //   - Voice of experience
-                return true;
-            default:
-                return true;
+                return default;
         }
+        
+        return default;
     }
 }

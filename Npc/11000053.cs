@@ -5,26 +5,35 @@ using Maple2.Script.Npc;
 /// 11000053: Luen
 /// </summary>
 public class _11000053 : NpcScript {
-    internal _11000053(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000227$ 
-                // - What is it?
-                return true;
-            case 30:
-                // $script:0831180407000230$ 
+    // Select 0:
+    // $script:0831180407000227$
+    // - What is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407000230$
                 // - $MyPCName$! Are you here to make some money? The court festival must be great for business. Everywhere I look, folks are out doing something for it.
-                return true;
-            case 40:
-                // $script:0831180407000231$ 
+                return -1;
+            case (40, 0):
+                // $script:0831180407000231$
                 // - The priciest thing to come out of all this is $itemPlural:20000013$, and you can only get them from Turtle Hill, where $npcName:22300149$ is.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003081: Seaside Cabin
 /// </summary>
 public class _11003081 : NpcScript {
-    internal _11003081(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0113143107007762$ 
-                // - <font color="#909090">(You see a wooden cabin weathered by wind and sea.)</font>
-                return true;
-            case 30:
-                // $script:0113143107007763$ 
+    // Select 0:
+    // $script:0113143107007762$
+    // - <font color="#909090">(You see a wooden cabin weathered by wind and sea.)</font>
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0113143107007763$
                 // - <font color="#909090">(Is someone inside this cabin? You can hear voices.)</font>
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

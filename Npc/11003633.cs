@@ -5,61 +5,67 @@ using Maple2.Script.Npc;
 /// 11003633: Anton
 /// </summary>
 public class _11003633 : NpcScript {
-    internal _11003633(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109121007009025$ 
-                // - Goods for sale! Get your goods at various prices!
-                return true;
-            case 10:
-                // $script:1109121007009026$ 
+    // Select 0:
+    // $script:1109121007009025$
+    // - Goods for sale! Get your goods at various prices!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109121007009026$
                 // - Knick-knacks for sale! I've also got paddywhacks!
                 switch (selection) {
                     // $script:1109121007009027$
                     // - Not interested.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                     // $script:1109121007009028$
                     // - You're no ordinary peddler...
                     case 1:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 11:
-                // $script:1109121007009029$ 
+                return -1;
+            case (11, 0):
+                // $script:1109121007009029$
                 // - Heh! That was a test, $MyPCName$. And you failed.
                 switch (selection) {
                     // $script:1109121007009030$
                     // - You know me?
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:1109121007009031$ 
+                return -1;
+            case (12, 0):
+                // $script:1109121007009031$
                 // - Our mutual friend sent you, didn't she? Tell her, "the cuckoo bird goes caw caw."
                 switch (selection) {
                     // $script:1109121007009032$
                     // - What does that even mean?
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                 }
-                return true;
-            case 13:
-                // $script:1109121007009033$ 
+                return -1;
+            case (13, 0):
+                // $script:1109121007009033$
                 // - Ahem! Pardon me, $male:sir,female:ma'am$, but if you're not buying anything, please make way for paying customers.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.SelectableDistractor,
+            (13, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

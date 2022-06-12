@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000121: Daniel
 /// </summary>
 public class _11000121 : NpcScript {
-    internal _11000121(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000521$ 
-                // - What is it?
-                return true;
-            case 50:
-                // $script:0831180407000526$ 
+    // Select 0:
+    // $script:0831180407000521$
+    // - What is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407000526$
                 // - Each of the monsters from the Land of Darkness has unique genetic material. By analyzing a wide range of material, I'm hoping to determine the rules that differentiate them from Maple World's monsters.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

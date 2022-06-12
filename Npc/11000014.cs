@@ -5,43 +5,50 @@ using Maple2.Script.Npc;
 /// 11000014: Kalanko
 /// </summary>
 public class _11000014 : NpcScript {
-    internal _11000014(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000067$ 
-                // - What is it?
-                return true;
-            case 20:
-                // $script:0831180407000069$ 
+    // Select 0:
+    // $script:0831180407000067$
+    // - What is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407000069$
                 // - W-who are you? You better not be here to steal anything. This is my spot!
                 switch (selection) {
                     // $script:0831180407000070$
                     // - That's right.
                     case 0:
-                        Id = 21;
-                        return false;
+                        return 21;
                     // $script:0831180407000071$
                     // - No.
                     case 1:
-                        Id = 22;
-                        return false;
+                        return 22;
                 }
-                return true;
-            case 21:
-                // $script:0831180407000072$ 
+                return -1;
+            case (21, 0):
+                // $script:0831180407000072$
                 // - Hey, no! Get out! If we take too much stuff, they'll notice for sure!
-                return true;
-            case 22:
-                // $script:0831180407000073$ 
+                return -1;
+            case (22, 0):
+                // $script:0831180407000073$
                 // - Oh, okay. Good. You'd better get out of here then, before someone sees you. And don't tell anyone you saw me in here!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.SelectableDistractor,
+            (21, 0) => NpcTalkButton.Close,
+            (22, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

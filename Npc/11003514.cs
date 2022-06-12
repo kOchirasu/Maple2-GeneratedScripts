@@ -5,105 +5,107 @@ using Maple2.Script.Npc;
 /// 11003514: Havika
 /// </summary>
 public class _11003514 : NpcScript {
-    internal _11003514(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0817044507008814$ 
-                // - What's going on?
-                return true;
-            case 30:
-                // $script:0817044507008817$ 
+    // Select 0:
+    // $script:0817044507008814$
+    // - What's going on?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0817044507008817$
                 // - What's going on...?
                 switch (selection) {
                     // $script:0817044507008818$
                     // - Tell me about the five auras.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0817044507008819$ 
+                return -1;
+            case (31, 0):
+                // $script:0817044507008819$
                 // - The singewings live on Bahram Mountain to the north. They protect their eggs on the mountaintop. You can get Blazing Courage by stealing those eggs...
                 switch (selection) {
                     // $script:0817044507008820$
                     // - Tell me about Bahram Mountain.
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                     // $script:0817044507008821$
                     // - Tell me about the singewings.
                     case 1:
-                        Id = 33;
-                        return false;
+                        return 33;
                     // $script:0817044507008822$
                     // - Tell me about the dragon eggs.
                     case 2:
-                        Id = 34;
-                        return false;
+                        return 34;
                 }
-                return true;
-            case 32:
-                // $script:0817044507008823$ 
+                return -1;
+            case (32, 0):
+                // $script:0817044507008823$
                 // - It's actually a burning volcano. I wouldn't climb it without the right gear. Unless you're lava resistant...? 
                 switch (selection) {
                     // $script:0817044507008824$
                     // - I need to ask something else.
                     case 0:
-                        Id = 35;
-                        return false;
+                        return 35;
                 }
-                return true;
-            case 33:
-                // $script:0817044507008825$ 
+                return -1;
+            case (33, 0):
+                // $script:0817044507008825$
                 // - The singewings are fire-breathers. Their breath is even hotter than lava... 
                 switch (selection) {
                     // $script:0817133807008875$
                     // - I need to ask something else.
                     case 0:
-                        Id = 35;
-                        return false;
+                        return 35;
                 }
-                return true;
-            case 34:
-                // $script:0817044507008826$ 
+                return -1;
+            case (34, 0):
+                // $script:0817044507008826$
                 // - Dragon eggs don't tend to wander off on their own. What the singewings will do when they notice their eggs are missing... I can't say. 
                 switch (selection) {
                     // $script:0817133807008876$
                     // - I need to ask something else.
                     case 0:
-                        Id = 35;
-                        return false;
+                        return 35;
                 }
-                return true;
-            case 35:
-                // $script:0817044507008827$ 
+                return -1;
+            case (35, 0):
+                // $script:0817044507008827$
                 // - Do you have more questions?
                 switch (selection) {
                     // $script:0817044507008828$
                     // - Tell me about Bahram Mountain.
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                     // $script:0817044507008829$
                     // - Tell me about the singewings.
                     case 1:
-                        Id = 33;
-                        return false;
+                        return 33;
                     // $script:0817044507008830$
                     // - Tell me about the dragon eggs.
                     case 2:
-                        Id = 34;
-                        return false;
+                        return 34;
                 }
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.SelectableDistractor,
+            (33, 0) => NpcTalkButton.SelectableDistractor,
+            (34, 0) => NpcTalkButton.SelectableDistractor,
+            (35, 0) => NpcTalkButton.SelectableDistractor,
+            _ => NpcTalkButton.None,
+        };
     }
 }

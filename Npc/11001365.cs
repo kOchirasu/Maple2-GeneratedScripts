@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001365: Dunba
 /// </summary>
 public class _11001365 : NpcScript {
-    internal _11001365(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1215222907005048$ 
-                // - Sigh... I'm so glad that everyone's safe.
-                return true;
-            case 10:
-                // $script:1230171207005755$ 
+    // Select 0:
+    // $script:1215222907005048$
+    // - Sigh... I'm so glad that everyone's safe.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1230171207005755$
                 // - I hope the Blackstars leave me alone this time... I don't want a rematch with Vasara Chen...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

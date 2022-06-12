@@ -5,63 +5,73 @@ using Maple2.Script.Npc;
 /// 11001396: Navila
 /// </summary>
 public class _11001396 : NpcScript {
-    internal _11001396(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40;50
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217193307005396$ 
-                // - What's wrong?
-                return true;
-            case 30:
-                // $script:1226235907005592$ 
+    // Select 0:
+    // $script:1217193307005396$
+    // - What's wrong?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:1226235907005592$
                 // - The ruins... These diseases... They all broke out around... No, the timeline doesn't fit.
                 switch (selection) {
                     // $script:1226235907005593$
                     // - What are you mumbling about?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:1226235907005594$ 
+                return -1;
+            case (31, 0):
+                // $script:1226235907005594$
                 // - Ah, yes? Can I help you?
                 switch (selection) {
                     // $script:1226235907005595$
                     // - You look like you've got a lot on your mind.
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:1226235907005596$ 
+                return -1;
+            case (32, 0):
+                // $script:1226235907005596$
                 // - Yes, you're right. I'm trying to figure some things out. And you're interrupting me.
                 switch (selection) {
                     // $script:1226235907005597$
                     // - Oops! I didn't mean to.
                     case 0:
-                        Id = 33;
-                        return false;
+                        return 33;
                 }
-                return true;
-            case 33:
-                // $script:1226235907005598$ 
+                return -1;
+            case (33, 0):
+                // $script:1226235907005598$
                 // - Good.
-                return true;
-            case 40:
-                // $script:1227015507005608$ 
+                return -1;
+            case (40, 0):
+                // $script:1227015507005608$
                 // - This is all my fault...
-                return true;
-            case 50:
-                // $script:0201104007005866$ 
+                return -1;
+            case (50, 0):
+                // $script:0201104007005866$
                 // - I won't be so arrogant or impatient ever again. I'll try to be careful from now on. Thank you for your help, $MyPCName$.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.SelectableDistractor,
+            (33, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.Close,
+            (50, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

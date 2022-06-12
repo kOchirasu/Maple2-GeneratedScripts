@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000875: Brynner
 /// </summary>
 public class _11000875 : NpcScript {
-    internal _11000875(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003181$ 
-                // - I'm going to be rich soon.
-                return true;
-            case 20:
-                // $script:0831180407003183$ 
+    // Select 0:
+    // $script:0831180407003181$
+    // - I'm going to be rich soon.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407003183$
                 // - What am I going to do when I become rich? Well... I want a nice-looking house, a nice-looking car, nice-looking clothes, nice-looking shoes... Basically, everything I have should look nice. Right?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

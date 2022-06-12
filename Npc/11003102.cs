@@ -5,43 +5,50 @@ using Maple2.Script.Npc;
 /// 11003102: SwolePatrol Guild Leader
 /// </summary>
 public class _11003102 : NpcScript {
-    internal _11003102(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0119135307007835$ 
-                // - Hm, you look like you could use some exercise.
-                return true;
-            case 30:
-                // $script:0119135307007838$ 
+    // Select 0:
+    // $script:0119135307007835$
+    // - Hm, you look like you could use some exercise.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0119135307007838$
                 // - Isn't it time you got buff? I'd invite you to my SwolePatrol guild but we don't have any openings. 
                 switch (selection) {
                     // $script:0119135307007839$
                     // - I totally want to join your guild!
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                     // $script:0119135307007840$
                     // - Not really my scene, but thanks.
                     case 1:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 31:
-                // $script:0119135307007841$ 
+                return -1;
+            case (31, 0):
+                // $script:0119135307007841$
                 // - What's wrong, got fries in your ears? Just kidding, but for real we're full. You're gonna have to find another guild to pump you up.
-                return true;
-            case 32:
-                // $script:0119135307007842$ 
+                return -1;
+            case (32, 0):
+                // $script:0119135307007842$
                 // - Oh, really? I have a feeling you'll be changing your mind sometime soon. 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            (32, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

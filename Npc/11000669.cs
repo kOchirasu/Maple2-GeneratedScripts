@@ -5,49 +5,62 @@ using Maple2.Script.Npc;
 /// 11000669: Ronzo
 /// </summary>
 public class _11000669 : NpcScript {
-    internal _11000669(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002718$ 
-                // - WHAT?!
-                return true;
-            case 30:
-                // $script:0831180407002721$ 
+    // Select 0:
+    // $script:0831180407002718$
+    // - WHAT?!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407002721$
                 // - What are you doing here? How did you even GET here?
                 switch (selection) {
                     // $script:0831180407002722$
                     // - Easily.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0831180407002723$ 
+                return -1;
+            case (31, 0):
+                // $script:0831180407002723$
                 // - Kid, I'm impressed. You made it this far, but it's time for you to go. Leave before something bad happens to you. 
                 switch (selection) {
                     // $script:0831180407002724$
                     // - Why?
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0831180407002725$ 
+                return -1;
+            case (32, 0):
+                // $script:0831180407002725$
                 // - I stay well away from the basement levels. And I live here!
-                // $script:0831180407002726$ 
+                return 32;
+            case (32, 1):
+                // $script:0831180407002726$
                 // - I had to come down here today, but believe me... I can't WAIT to get back upstairs.
-                // $script:0831180407002727$ 
+                return 32;
+            case (32, 2):
+                // $script:0831180407002727$
                 // - Don't try anything stupid. Just get out of here!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Next,
+            (32, 1) => NpcTalkButton.Next,
+            (32, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

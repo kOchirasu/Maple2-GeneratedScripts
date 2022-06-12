@@ -5,36 +5,46 @@ using Maple2.Script.Npc;
 /// 11004463: Safehold Guardsman
 /// </summary>
 public class _11004463 : NpcScript {
-    internal _11004463(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1227192907012080$ 
+    // Select 0:
+    // $script:1227192907012080$
+    // - All... is... well!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1227192907012081$
                 // - All... is... well!
-                return true;
-            case 10:
-                // $script:1227192907012081$ 
-                // - All... is... well!
-                // $script:1227192907012082$ 
+                return 10;
+            case (10, 1):
+                // $script:1227192907012082$
                 // - I've been trying to get in this platoon for ages. They finally give me the transfer, and the whole platoon is shipped out to this crazy place. Man...
                 switch (selection) {
                     // $script:1227192907012083$
                     // - Chin up, sad guard.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1227192907012084$ 
+                return -1;
+            case (11, 0):
+                // $script:1227192907012084$
                 // - Hearing those words from your mouth fills me with hope. Thank you, $MyPCName$! I'll fight my hardest!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

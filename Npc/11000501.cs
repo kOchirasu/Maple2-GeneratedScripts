@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000501: Balboa
 /// </summary>
 public class _11000501 : NpcScript {
-    internal _11000501(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002179$ 
-                // - How may I help you?
-                return true;
-            case 20:
-                // $script:0831180407002181$ 
+    // Select 0:
+    // $script:0831180407002179$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407002181$
                 // - As long as you know who you are and what you believe, what others think of you doesn't matter. That's the way we Boroboros live.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

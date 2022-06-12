@@ -5,36 +5,46 @@ using Maple2.Script.Npc;
 /// 11003519: Nimeisha
 /// </summary>
 public class _11003519 : NpcScript {
-    internal _11003519(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0817044507008869$ 
-                // - Can I help you?
-                return true;
-            case 30:
-                // $script:0817044507008871$ 
+    // Select 0:
+    // $script:0817044507008869$
+    // - Can I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0817044507008871$
                 // - Can I help you?
                 switch (selection) {
                     // $script:0817044507008872$
                     // - Tell me about the five auras.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0817044507008873$ 
+                return -1;
+            case (31, 0):
+                // $script:0817044507008873$
                 // - An aura has no physical form. It's intangible. Still, if you focus hard on one thing, you're bound to reach your peak.
-                // $script:0817044507008874$ 
+                return 31;
+            case (31, 1):
+                // $script:0817044507008874$
                 // - When you focus one gathering one type of aura, you'll feel it build up. Once it's full, it can be placed in a bowl, like water.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Next,
+            (31, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

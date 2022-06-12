@@ -5,46 +5,70 @@ using Maple2.Script.Npc;
 /// 11001028: Mett
 /// </summary>
 public class _11001028 : NpcScript {
-    internal _11001028(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40;50;51;52
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003507$ 
-                // - Welcome.
-                return true;
-            case 30:
-                // $script:0831180407003510$ 
+    // Select 0:
+    // $script:0831180407003507$
+    // - Welcome.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407003510$
                 // - You look healthy. I wish I could be as free as you. 
-                return true;
-            case 40:
-                // $script:0831180407003511$ 
+                return -1;
+            case (40, 0):
+                // $script:0831180407003511$
                 // - I wasn't always like this. I had... an accident. 
-                // $script:0831180407003512$ 
+                return 40;
+            case (40, 1):
+                // $script:0831180407003512$
                 // - Ah well, no point in regrets. I just wish there was a way to turn back time. 
-                return true;
-            case 50:
-                // $script:0831180407003513$ 
+                return -1;
+            case (50, 0):
+                // $script:0831180407003513$
                 // - Eh? You've brought the $item:30000320$! With $npcName:24000615$ gone and $item:30000320$ in hand, I can finally complete my research! 
-                // $script:0831180407003514$ 
+                return 50;
+            case (50, 1):
+                // $script:0831180407003514$
                 // - Please add the $item:30000320$ back to the alpha chrono-controller over there to reactivate it.
-                return true;
-            case 51:
-                // $script:0831180407003515$ 
+                return -1;
+            case (51, 0):
+                // $script:0831180407003515$
                 // - Eh? You've brought the $item:30000321$! With $npcName:24000615$ gone and $item:30000321$ in hand, I can finally complete my research! 
-                // $script:0831180407003516$ 
+                return 51;
+            case (51, 1):
+                // $script:0831180407003516$
                 // - Please add the $item:30000321$ back to the beta chrono-controller over there to reactivate it.
-                return true;
-            case 52:
-                // $script:0831180407003517$ 
+                return -1;
+            case (52, 0):
+                // $script:0831180407003517$
                 // - Eh? You've brought the $item:30000322$! With $npcName:24000615$ gone and $item:30000322$ in hand, I can finally complete my research! 
-                // $script:0831180407003518$ 
+                return 52;
+            case (52, 1):
+                // $script:0831180407003518$
                 // - Please add the $item:30000322$ back to the delta chrono-controller over there to reactivate it.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Close,
+            (50, 0) => NpcTalkButton.Next,
+            (50, 1) => NpcTalkButton.Close,
+            (51, 0) => NpcTalkButton.Next,
+            (51, 1) => NpcTalkButton.Close,
+            (52, 0) => NpcTalkButton.Next,
+            (52, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

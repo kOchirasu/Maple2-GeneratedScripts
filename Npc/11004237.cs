@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11004237: Allon
 /// </summary>
 public class _11004237 : NpcScript {
-    internal _11004237(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0809223207010929$ 
-                // - Good work, $MyPCName$.
-                return true;
-            case 10:
-                // $script:0809223207010930$ 
+    // Select 0:
+    // $script:0809223207010929$
+    // - Good work, $MyPCName$.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0809223207010930$
                 // - Good work, $MyPCName$. I'd better head back to $map:02000001$ now.
-                // $script:0809223207010931$ 
+                return 10;
+            case (10, 1):
+                // $script:0809223207010931$
                 // - I haven't seen his face in some time.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

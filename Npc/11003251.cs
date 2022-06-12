@@ -5,54 +5,66 @@ using Maple2.Script.Npc;
 /// 11003251: Einos
 /// </summary>
 public class _11003251 : NpcScript {
-    internal _11003251(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40;50;60
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0403155707008169$ 
-                // - How may I help you?
-                return true;
-            case 30:
-                // $script:0403155707008170$ 
+    // Select 0:
+    // $script:0403155707008169$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0403155707008170$
                 // - We must uncover the secret of darkness before it claims any more lives.
-                return true;
-            case 40:
-                // $script:0526174607008529$ 
+                return -1;
+            case (40, 0):
+                // $script:0526174607008529$
                 // - In search of $itemPlural:20000045$, are you?
                 switch (selection) {
                     // $script:0526174607008530$
                     // - Do you have any $itemPlural:20000045$ for me?
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                     // $script:0526174607008531$
                     // - How do I make the crystal react?
                     case 1:
-                        Id = 42;
-                        return false;
+                        return 42;
                 }
-                return true;
-            case 41:
-                // $script:0526174607008532$ functionID=1 
+                return -1;
+            case (41, 0):
+                // functionID=1 openTalkReward=True 
+                // $script:0526174607008532$
                 // - Here you go. The crystal should react to this.
-                return true;
-            case 42:
-                // $script:0530154407008539$ 
+                return -1;
+            case (42, 0):
+                // $script:0530154407008539$
                 // - Take the $item:20000045$ to the crystal, then press space.
-                return true;
-            case 50:
-                // $script:0530154407008540$ 
+                return -1;
+            case (50, 0):
+                // $script:0530154407008540$
                 // - One $item:20000045$ is enough, I think. You don't need any more.
-                return true;
-            case 60:
-                // $script:0530154407008541$ 
+                return -1;
+            case (60, 0):
+                // $script:0530154407008541$
                 // - We must uncover the secret of darkness before it claims any more lives.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.Close,
+            (42, 0) => NpcTalkButton.Close,
+            (50, 0) => NpcTalkButton.Close,
+            (60, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

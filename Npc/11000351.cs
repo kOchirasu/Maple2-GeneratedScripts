@@ -5,19 +5,28 @@ using Maple2.Script.Npc;
 /// 11000351: Mirror
 /// </summary>
 public class _11000351 : NpcScript {
-    internal _11000351(INpcScriptContext context) : base(context) {
-        Id = 0;
-        // TODO: Job 0
+    protected override int First() {
+        return 0;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180610000437$ functionID=1 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (0, 0):
+                // functionID=1 
+                // $script:0831180610000437$
                 // - Just look at that gorgeous reflection! Can you believe that's you?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (0, 0) => NpcTalkButton.SelectableBeauty,
+            _ => NpcTalkButton.None,
+        };
     }
 }

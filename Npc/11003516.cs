@@ -5,45 +5,52 @@ using Maple2.Script.Npc;
 /// 11003516: Jahari
 /// </summary>
 public class _11003516 : NpcScript {
-    internal _11003516(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0817044507008840$ 
-                // - What?
-                return true;
-            case 30:
-                // $script:0817044507008843$ 
+    // Select 0:
+    // $script:0817044507008840$
+    // - What?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0817044507008843$
                 // - What?
                 switch (selection) {
                     // $script:0817044507008844$
                     // - Tell me about the five auras.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0817044507008845$ 
+                return -1;
+            case (31, 0):
+                // $script:0817044507008845$
                 // - Lycaos live in the wastelands to the southwest. You can capture them to get their Enduring Health.
                 switch (selection) {
                     // $script:0817044507008846$
                     // - Tell me about lycaos.
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0817044507008847$ 
+                return -1;
+            case (32, 0):
+                // $script:0817044507008847$
                 // - They're not easy to capture. If you don't tie them up or stun them, they'll slip away.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

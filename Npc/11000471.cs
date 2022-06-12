@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000471: Vito
 /// </summary>
 public class _11000471 : NpcScript {
-    internal _11000471(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002062$ 
-                // - Ah, what is it?
-                return true;
-            case 20:
-                // $script:0831180407002064$ 
+    // Select 0:
+    // $script:0831180407002062$
+    // - Ah, what is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407002064$
                 // - I know height isn't everything, but I really don't like being shorter than most people... 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

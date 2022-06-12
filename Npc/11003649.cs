@@ -5,67 +5,74 @@ using Maple2.Script.Npc;
 /// 11003649: Kupa
 /// </summary>
 public class _11003649 : NpcScript {
-    internal _11003649(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109121007009206$ 
-                // - Eh heh heh.
-                return true;
-            case 10:
-                // $script:1109121007009207$ 
+    // Select 0:
+    // $script:1109121007009206$
+    // - Eh heh heh.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109121007009207$
                 // - And what brings a youngster like you here, hm?
                 switch (selection) {
                     // $script:1109121007009208$
                     // - I'm looking for someone.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1109121007009209$ 
+                return -1;
+            case (11, 0):
+                // $script:1109121007009209$
                 // - Looking for someone, eh? Well, you're in luck! I know everybody here. So, who is it you're after, hm?
                 switch (selection) {
                     // $script:1109121007009210$
                     // - Oh, I think I can find them on my own.
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:1109121007009211$ 
+                return -1;
+            case (12, 0):
+                // $script:1109121007009211$
                 // - Being tight-lipped about it, are you? $npcName:11003535[gender:1]$ trains her people well.
                 switch (selection) {
                     // $script:1109121007009212$
                     // - You're with Dark Wind?
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                 }
-                return true;
-            case 13:
-                // $script:1109121007009213$ 
+                return -1;
+            case (13, 0):
+                // $script:1109121007009213$
                 // - Eh heh heh! Surprised? Even us old timers can help out sometimes. Anyway, you run along and tell her, "Eyes. Alpha. Blonde hair."
                 switch (selection) {
                     // $script:1109121007009214$
                     // - Will do!
                     case 0:
-                        Id = 14;
-                        return false;
+                        return 14;
                 }
-                return true;
-            case 14:
-                // $script:1109121007009215$ 
+                return -1;
+            case (14, 0):
+                // $script:1109121007009215$
                 // - Eh heh heh!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.SelectableDistractor,
+            (13, 0) => NpcTalkButton.SelectableDistractor,
+            (14, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

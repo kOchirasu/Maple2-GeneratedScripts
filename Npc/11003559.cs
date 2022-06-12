@@ -5,17 +5,16 @@ using Maple2.Script.Npc;
 /// 11003559: 
 /// </summary>
 public class _11003559 : NpcScript {
-    internal _11003559(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override void FirstScript() {
+        (Id, Button) = (10, NpcTalkButton.SelectableDistractor);
     }
 
-    public override bool Next(int selection = 0) {
+    protected override (int, NpcTalkButton) Next(int selection) {
         switch (Id) {
             case 0:
                 // $script:0920165106000914$ 
                 // - ((China Only)) Nihao! Welcome, $MyPCName$!
-                return true;
+                return default;
             case 10:
                 // $script:0920165106000915$ 
                 // - Nihao, $MyPCName$! I am $npcName:11003559[gender:1]$ from China!
@@ -23,18 +22,17 @@ public class _11003559 : NpcScript {
                     // $script:0920165106000916$
                     // - ((China Only)) How'd you end up coming here?
                     case 0:
-                        Id = 15;
-                        return false;
+                        return (15, NpcTalkButton.Close);
                 }
-                return true;
+                return default;
             case 15:
                 // $script:0920165106000917$ 
                 // - ((China Only)) Global MapleStory 2!
                 //   I came to meet the Korean adventurers in celebration of MapleStory 2's launch in China!
                 //   I'm glad to be able to meet Korean adventurers for Korea's biggest holiday, Chuseok!
-                return true;
-            default:
-                return true;
+                return default;
         }
+        
+        return default;
     }
 }

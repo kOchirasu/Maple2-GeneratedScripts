@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11001280: Eupheria
 /// </summary>
 public class _11001280 : NpcScript {
-    internal _11001280(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1208234507004843$ 
-                // - I-I'm not... strong enough...
-                return true;
-            case 30:
-                // $script:1208234507004846$ 
+    // Select 0:
+    // $script:1208234507004843$
+    // - I-I'm not... strong enough...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:1208234507004846$
                 // - Gah! I failed to avenge Master Arazaad. Again!
                 switch (selection) {
                     // $script:1208234507004847$
                     // - You'll get your chance.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:1208234507004848$ 
+                return -1;
+            case (31, 0):
+                // $script:1208234507004848$
                 // - Just wait. Perhaps I'm not strong enough now, but I'll keep training. And someday, I'll rend $npcName:11001231[gender:0]$ asunder!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

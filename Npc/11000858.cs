@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11000858: Darphony
 /// </summary>
 public class _11000858 : NpcScript {
-    internal _11000858(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003121$ 
-                // - Ah... N-nice to meet you... 
-                return true;
-            case 40:
-                // $script:0831180407003125$ 
+    // Select 0:
+    // $script:0831180407003121$
+    // - Ah... N-nice to meet you... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:0831180407003125$
                 // - The w-wolves showed up again... They destroyed our fence, and some of our sheep were so scared that they ran into that thicket. 
-                // $script:0831180407003126$ 
+                return 40;
+            case (40, 1):
+                // $script:0831180407003126$
                 // - But an $npcName:24000702$ carried off $npcName:11001013[gender:1]$'s $item:30000328$ in its jaws... 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

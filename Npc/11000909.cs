@@ -5,27 +5,35 @@ using Maple2.Script.Npc;
 /// 11000909: Liberation Army Orders
 /// </summary>
 public class _11000909 : NpcScript {
-    internal _11000909(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003269$ 
-                // - If you can read this directive, follow the instructions in secret.
-                return true;
-            case 10:
-                // $script:0831180407003270$ 
+    // Select 0:
+    // $script:0831180407003269$
+    // - If you can read this directive, follow the instructions in secret.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0831180407003270$
                 // - Access denied. Unauthorized personnel.
-                return true;
-            case 20:
-                // $script:0831180407003271$ 
+                return -1;
+            case (20, 0):
+                // $script:0831180407003271$
                 // - Unauthorized personnel cannot view this directive.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11000595: Scott
 /// </summary>
 public class _11000595 : NpcScript {
-    internal _11000595(INpcScriptContext context) : base(context) {
-        Id = 50;
-        // TODO: RandomPick 50
+    protected override int First() {
+        return 50;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002385$ 
-                // - Hm... That's... 
-                return true;
-            case 50:
-                // $script:0831180407002389$ 
+    // Select 0:
+    // $script:0831180407002385$
+    // - Hm... That's... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407002389$
                 // - Mm? Are you a traveler?
                 switch (selection) {
                     // $script:0831180407002390$
                     // - What are you doing here?
                     case 0:
-                        Id = 51;
-                        return false;
+                        return 51;
                 }
-                return true;
-            case 51:
-                // $script:0831180407002391$ 
+                return -1;
+            case (51, 0):
+                // $script:0831180407002391$
                 // - Oh, me? I'm studying these creatures we call the fairfolk. All kinds of fairfolk inhabit forests like this.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.SelectableDistractor,
+            (51, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

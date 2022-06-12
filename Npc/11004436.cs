@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004436: Schatten
 /// </summary>
 public class _11004436 : NpcScript {
-    internal _11004436(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1213154907011976$ 
-                // - I am the shadow that evil fears.
-                return true;
-            case 10:
-                // $script:1213154907011977$ 
+    // Select 0:
+    // $script:1213154907011976$
+    // - I am the shadow that evil fears.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1213154907011977$
                 // - Hey there, $male:handsome,female:gorgeous$. After I've racked up some shore leave, what say we take a tour of Kritias's inns and test out their bed springs?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11004536: Barricade Patrolman
 /// </summary>
 public class _11004536 : NpcScript {
-    internal _11004536(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0104170807012607$ 
+    // Select 0:
+    // $script:0104170807012607$
+    // - Don't worry. I've got my eye on the enemy movements.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0104170807012608$
                 // - Don't worry. I've got my eye on the enemy movements.
-                return true;
-            case 10:
-                // $script:0104170807012608$ 
-                // - Don't worry. I've got my eye on the enemy movements.
-                // $script:0104170807012609$ 
+                return 10;
+            case (10, 1):
+                // $script:0104170807012609$
                 // - There are no signs of an enemy attack, but that can change in an instant. That's why we can't slack off on our patrols!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004022: Mysterious Bladesman
 /// </summary>
 public class _11004022 : NpcScript {
-    internal _11004022(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614185307010031$ 
-                // - Don't talk to me.
-                return true;
-            case 20:
-                // $script:0614185307010032$ 
+    // Select 0:
+    // $script:0614185307010031$
+    // - Don't talk to me.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0614185307010032$
                 // - Go away, you bother me.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,24 +5,31 @@ using Maple2.Script.Npc;
 /// 11004211: Pupu
 /// </summary>
 public class _11004211 : NpcScript {
-    internal _11004211(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0806052107010676$ 
-                // - Yaaawn...
-                return true;
-            case 10:
-                // $script:0806052107010677$ 
+    // Select 0:
+    // $script:0806052107010676$
+    // - Yaaawn...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0806052107010677$
                 // - ♬I wanna be where the mushfolk are. I wanna see—wanna see 'em mushin'.
                 //   Bouncin' around on those stalks!♬
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

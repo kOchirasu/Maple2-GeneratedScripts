@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11003355: Ralph's Lackey
 /// </summary>
 public class _11003355 : NpcScript {
-    internal _11003355(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0517164307008506$ 
-                // - It won't be so easy next time.
-                return true;
-            case 20:
-                // $script:0517164307008508$ 
+    // Select 0:
+    // $script:0517164307008506$
+    // - It won't be so easy next time.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0517164307008508$
                 // - You better get ready. The big guy'll knock your teeth out!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

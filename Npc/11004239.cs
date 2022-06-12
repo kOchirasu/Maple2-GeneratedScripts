@@ -5,29 +5,45 @@ using Maple2.Script.Npc;
 /// 11004239: Tinchai
 /// </summary>
 public class _11004239 : NpcScript {
-    internal _11004239(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0809223207010935$ 
+    // Select 0:
+    // $script:0809223207010935$
+    // - Is this goodbye?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0809223207010936$
                 // - Is this goodbye?
-                return true;
-            case 10:
-                // $script:0809223207010936$ 
-                // - Is this goodbye?
-                // $script:0809223207010937$ 
+                return 10;
+            case (10, 1):
+                // $script:0809223207010937$
                 // - You did a great job!
-                // $script:0809223207010938$ 
+                return 10;
+            case (10, 2):
+                // $script:0809223207010938$
                 // - I wish $npcName:11004238[gender:0]$ felt more like celebrating. I guess he's embarrassed about missing all the action.
-                // $script:0809223207010939$ 
+                return 10;
+            case (10, 3):
+                // $script:0809223207010939$
                 // - Next time, Guidance will be there to help! Just say the word.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Next,
+            (10, 2) => NpcTalkButton.Next,
+            (10, 3) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000447: Injured Guard
 /// </summary>
 public class _11000447 : NpcScript {
-    internal _11000447(INpcScriptContext context) : base(context) {
-        Id = 80;
-        // TODO: RandomPick 80
+    protected override int First() {
+        return 80;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001872$ 
+    // Select 0:
+    // $script:0831180407001872$
+    // - Ugh...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (80, 0):
+                // $script:0831180407001877$
                 // - Ugh...
-                return true;
-            case 80:
-                // $script:0831180407001877$ 
-                // - Ugh...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (80, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

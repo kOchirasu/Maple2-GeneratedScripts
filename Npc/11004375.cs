@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004375: Snowleaf Fairfolk
 /// </summary>
 public class _11004375 : NpcScript {
-    internal _11004375(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109213607011787$ 
+    // Select 0:
+    // $script:1109213607011787$
+    // - Did you know? The fairfolk love sweet things. LOVE them.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109213607011788$
                 // - Did you know? The fairfolk love sweet things. LOVE them.
-                return true;
-            case 10:
-                // $script:1109213607011788$ 
-                // - Did you know? The fairfolk love sweet things. LOVE them.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

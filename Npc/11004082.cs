@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004082: Frightened Shut-In
 /// </summary>
 public class _11004082 : NpcScript {
-    internal _11004082(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0622133907010273$ 
+    // Select 0:
+    // $script:0622133907010273$
+    // - Sigh... Will I ever get to leave this house again?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0622133907010274$
                 // - Sigh... Will I ever get to leave this house again?
-                return true;
-            case 10:
-                // $script:0622133907010274$ 
-                // - Sigh... Will I ever get to leave this house again?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

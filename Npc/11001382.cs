@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001382: Zendal
 /// </summary>
 public class _11001382 : NpcScript {
-    internal _11001382(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217193307005382$ 
-                // - What brings you here?
-                return true;
-            case 30:
-                // $script:1228164407005727$ 
+    // Select 0:
+    // $script:1217193307005382$
+    // - What brings you here?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:1228164407005727$
                 // - If you're thinking of investing in $map:02010036$, you're too late... friend. I was here first.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

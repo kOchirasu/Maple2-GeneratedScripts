@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11000099: Caprio
 /// </summary>
 public class _11000099 : NpcScript {
-    internal _11000099(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000388$ 
-                // - What is it?
-                return true;
-            case 30:
-                // $script:0831180407000391$ 
+    // Select 0:
+    // $script:0831180407000388$
+    // - What is it?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407000391$
                 // - Hey, $MyPCName$! Have you heard about the hero who collected over 1,000 mesos just by hunting monsters? That's me!
-                // $script:0831180407000392$ 
+                return 30;
+            case (30, 1):
+                // $script:0831180407000392$
                 // - I think I was born to be a hunter. You should find something that you can be good at and have fun doing.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Next,
+            (30, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

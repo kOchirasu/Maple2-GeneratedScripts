@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004220: Agent K
 /// </summary>
 public class _11004220 : NpcScript {
-    internal _11004220(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0806222707010785$ 
-                // - Can't talk. Important mission.
-                return true;
-            case 10:
-                // $script:0806222707010786$ 
+    // Select 0:
+    // $script:0806222707010785$
+    // - Can't talk. Important mission.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0806222707010786$
                 // - Sorry, I don't have time for games... I'm here on a special mission. My partner said to meet him at the tables on the dock over by the balloons, but he's nowhere in sight.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

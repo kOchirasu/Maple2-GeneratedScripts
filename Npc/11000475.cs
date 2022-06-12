@@ -5,33 +5,53 @@ using Maple2.Script.Npc;
 /// 11000475: Wheel of Joy
 /// </summary>
 public class _11000475 : NpcScript {
-    internal _11000475(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: Job 30
         // TODO: RandomPick 40
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 30:
-                // $script:0831180610000459$ 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180610000459$
                 // - Spin, spin!
-                // $script:0831180610000460$ functionID=1 buttonSet=16 
+                return 30;
+            case (30, 1):
+                // functionID=1 
+                // $script:0831180610000460$
                 // - Congratulations, you're a winner!
                 //   You get to draw a <font color="#ffd200">wondrous item</font>!
-                // $script:0831180610000461$ buttonSet=1 
+                return 30;
+            case (30, 2):
+                // $script:0831180610000461$
                 // - Come on, spin the roulette for your chance to win amazing items!
                 //   May luck be with you, <font color="#ffd200">$MyPCName$</font>!
-                return true;
-            case 40:
-                // $script:0831180610000462$ 
+                return -1;
+            case (40, 0):
+                // $script:0831180610000462$
                 // - You get only <font color="#ffd200">one chance to spin $npc:11000475$</font>.
                 //   Want to spin again? Then you'll have to win again!
-                // $script:0831180610000463$ 
+                return 40;
+            case (40, 1):
+                // $script:0831180610000463$
                 // - I hope you come back and win again soon!
                 //   Have a lucky journey!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Close,
+            (30, 0) => NpcTalkButton.Next,
+            (30, 1) => NpcTalkButton.Roulette,
+            (30, 2) => NpcTalkButton.Empty,
+            _ => NpcTalkButton.None,
+        };
     }
 }

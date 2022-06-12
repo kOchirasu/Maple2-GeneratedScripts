@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000629: Kimo
 /// </summary>
 public class _11000629 : NpcScript {
-    internal _11000629(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002530$ 
-                // - Screeeeech!
-                return true;
-            case 20:
-                // $script:0831180407002532$ 
+    // Select 0:
+    // $script:0831180407002530$
+    // - Screeeeech!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407002532$
                 // - $map:02000051$ is a great place to raise a family like mine. Its highlands are safe from monsters on the ground, and my children can practice flying!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

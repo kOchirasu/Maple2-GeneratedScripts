@@ -5,28 +5,30 @@ using Maple2.Script.Npc;
 /// 11000612: 
 /// </summary>
 public class _11000612 : NpcScript {
-    internal _11000612(INpcScriptContext context) : base(context) {
+    protected override void FirstScript() {
         // TODO: Job 20
+        // (Id, Button) = (20, NpcTalkButton.Close);
         // TODO: RandomPick 10
+        // (Id, Button) = (10, NpcTalkButton.Close);
     }
 
-    public override bool Next(int selection = 0) {
+    protected override (int, NpcTalkButton) Next(int selection) {
         switch (Id) {
             case 0:
                 // $script:0831180610000870$ 
                 // - How may I help you?
-                return true;
+                return default;
             case 20:
                 // $script:0831180610000872$ 
                 // - I hope you enjoyed your stay.
                 //   Would you like to leave the Guild Lounge now?
-                return true;
+                return default;
             case 10:
                 // $script:0831180610000871$ 
                 // - Only members can use the Guild Lounge.
-                return true;
-            default:
-                return true;
+                return default;
         }
+        
+        return default;
     }
 }

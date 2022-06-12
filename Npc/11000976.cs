@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000976: Jinbar
 /// </summary>
 public class _11000976 : NpcScript {
-    internal _11000976(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003376$ 
-                // - Wa-tcha! Hyoo! <i>That</i> is the sound of a master martial artist!
-                return true;
-            case 20:
-                // $script:0831180407003378$ 
+    // Select 0:
+    // $script:0831180407003376$
+    // - Wa-tcha! Hyoo! <i>That</i> is the sound of a master martial artist!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407003378$
                 // - Nothing is impossible for true martial artists. Do you want to become strong? It won't be easy. 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

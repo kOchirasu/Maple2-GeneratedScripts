@@ -5,31 +5,50 @@ using Maple2.Script.Npc;
 /// 11004334: Claudine
 /// </summary>
 public class _11004334 : NpcScript {
-    internal _11004334(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1010140307011584$ 
-                // - Wow...
-                return true;
-            case 10:
-                // $script:1010140307011585$ 
+    // Select 0:
+    // $script:1010140307011584$
+    // - Wow...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1010140307011585$
                 // - This place has exceeded my every expectation.
-                // $script:1010140307011586$ 
+                return 10;
+            case (10, 1):
+                // $script:1010140307011586$
                 // - To think, we're standing in a land where magic has been made to serve technology. It's almost too good to be true!
-                // $script:1010140307011587$ 
+                return 10;
+            case (10, 2):
+                // $script:1010140307011587$
                 // - See how these magic stones have been reduced to mere tools, like the cogwheel and the level?
-                // $script:1010140307011588$ 
+                return 10;
+            case (10, 3):
+                // $script:1010140307011588$
                 // - I must learn everything about this place...
-                // $script:1010140307011589$ 
+                return 10;
+            case (10, 4):
+                // $script:1010140307011589$
                 // - Soon, the Resistance will dominate Maple World using the technology of Kritias!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Next,
+            (10, 2) => NpcTalkButton.Next,
+            (10, 3) => NpcTalkButton.Next,
+            (10, 4) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

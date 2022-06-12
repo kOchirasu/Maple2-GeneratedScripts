@@ -5,39 +5,51 @@ using Maple2.Script.Npc;
 /// 11004134: Ishura
 /// </summary>
 public class _11004134 : NpcScript {
-    internal _11004134(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 10;100
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0730132107010529$ 
-                // - ...
-                return true;
-            case 10:
-                // $script:0730132107010530$ 
+    // Select 0:
+    // $script:0730132107010529$
+    // - ...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0730132107010530$
                 // - Huh?
-                return true;
-            case 100:
-                // $script:0730132107010531$ 
+                return -1;
+            case (100, 0):
+                // $script:0730132107010531$
                 // - Huh?
                 switch (selection) {
                     // $script:0730132107010532$
                     // - I was worried about you. Let's get out of here.
                     case 0:
-                        Id = 101;
-                        return false;
+                        return 101;
                 }
-                return true;
-            case 101:
-                // $script:0730132107010533$ 
+                return -1;
+            case (101, 0):
+                // $script:0730132107010533$
                 // - Nonsense.
-                // $script:0730132107010534$ 
+                return 101;
+            case (101, 1):
+                // $script:0730132107010534$
                 // - There's nothing more to talk about.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            (100, 0) => NpcTalkButton.SelectableDistractor,
+            (101, 0) => NpcTalkButton.Next,
+            (101, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

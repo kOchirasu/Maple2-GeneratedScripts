@@ -5,82 +5,98 @@ using Maple2.Script.Npc;
 /// 11004100: NPCNAME_11004100_NAME
 /// </summary>
 public class _11004100 : NpcScript {
-    internal _11004100(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0705145607010403$ 
-                // - SCRIPTNPCNAM_0705145607010403_NAME
-                return true;
-            case 30:
-                // $script:0705145607010406$ 
+    // Select 0:
+    // $script:0705145607010403$
+    // - SCRIPTNPCNAM_0705145607010403_NAME
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0705145607010406$
                 // - SCRIPTNPCNAM_0705145607010406_NAME
                 switch (selection) {
                     // $script:0705145607010407$
                     // - SCRIPTNPCNAM_0705145607010407_NAME
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0705145607010408$ 
+                return -1;
+            case (31, 0):
+                // $script:0705145607010408$
                 // - SCRIPTNPCNAM_0705145607010408_NAME
                 switch (selection) {
                     // $script:0705145607010409$
                     // - SCRIPTNPCNAM_0705145607010409_NAME
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0705145607010410$ 
+                return -1;
+            case (32, 0):
+                // $script:0705145607010410$
                 // - SCRIPTNPCNAM_0705145607010410_NAME
-                // $script:0705145607010411$ 
+                return 32;
+            case (32, 1):
+                // $script:0705145607010411$
                 // - SCRIPTNPCNAM_0705145607010411_NAME
                 switch (selection) {
                     // $script:0705145607010412$
                     // - SCRIPTNPCNAM_0705145607010412_NAME
                     case 0:
-                        Id = 33;
-                        return false;
+                        return 33;
                     // $script:0705145607010413$
                     // - SCRIPTNPCNAM_0705145607010413_NAME
                     case 1:
-                        Id = 34;
-                        return false;
+                        return 34;
                 }
-                return true;
-            case 33:
-                // $script:0705145607010414$ 
+                return -1;
+            case (33, 0):
+                // $script:0705145607010414$
                 // - SCRIPTNPCNAM_0705145607010414_NAME
-                // $script:0705145607010415$ 
+                return 33;
+            case (33, 1):
+                // $script:0705145607010415$
                 // - SCRIPTNPCNAM_0705145607010415_NAME
-                return true;
-            case 34:
-                // $script:0705145607010416$ 
+                return -1;
+            case (34, 0):
+                // $script:0705145607010416$
                 // - SCRIPTNPCNAM_0705145607010416_NAME
                 switch (selection) {
                     // $script:0705145607010417$
                     // - SCRIPTNPCNAM_0705145607010417_NAME
                     case 0:
-                        Id = 35;
-                        return false;
+                        return 35;
                 }
-                return true;
-            case 35:
-                // $script:0705145607010418$ 
+                return -1;
+            case (35, 0):
+                // $script:0705145607010418$
                 // - SCRIPTNPCNAM_0705145607010418_NAME
-                // $script:0705145607010420$ 
+                return 35;
+            case (35, 1):
+                // $script:0705145607010420$
                 // - SCRIPTNPCNAM_0705145607010420_NAME
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.Next,
+            (32, 1) => NpcTalkButton.SelectableDistractor,
+            (33, 0) => NpcTalkButton.Next,
+            (33, 1) => NpcTalkButton.Close,
+            (34, 0) => NpcTalkButton.SelectableDistractor,
+            (35, 0) => NpcTalkButton.Next,
+            (35, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

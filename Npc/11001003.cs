@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11001003: Bobby
 /// </summary>
 public class _11001003 : NpcScript {
-    internal _11001003(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0406144907006012$ 
-                // - Hello, $MyPCName$!
-                return true;
-            case 40:
-                // $script:0913145407011305$ 
+    // Select 0:
+    // $script:0406144907006012$
+    // - Hello, $MyPCName$!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:0913145407011305$
                 // - Howdy, $MyPCName$! I'm $npcName:11001003[gender:0]$. Do you want to learn more about the events we're running today? 
                 switch (selection) {
                     // $script:0913145407011306$
                     // - Who's the girl in the matching outfit?
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                 }
-                return true;
-            case 41:
-                // $script:0913145407011307$ 
+                return -1;
+            case (41, 0):
+                // $script:0913145407011307$
                 // - You mean $npcName:11001002[gender:1]$? That's my twin sister. She's also a dang good event guide, if you don't mind my saying. Whenever you're curious about any events in Maple World, we're the folks to talk to!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

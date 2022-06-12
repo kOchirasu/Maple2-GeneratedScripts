@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004054: Rejan
 /// </summary>
 public class _11004054 : NpcScript {
-    internal _11004054(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0614185307010081$ 
+    // Select 0:
+    // $script:0614185307010081$
+    // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0614185307010082$
                 // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
-                return true;
-            case 10:
-                // $script:0614185307010082$ 
-                // - My master and the leaders of Terrun Calibre will definitely return. Until then, I'll carry out their will.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

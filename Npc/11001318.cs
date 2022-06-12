@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11001318: Kabo
 /// </summary>
 public class _11001318 : NpcScript {
-    internal _11001318(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1215203907005037$ 
-                // - Do you need help?
-                return true;
-            case 40:
-                // $script:1227194507005704$ 
+    // Select 0:
+    // $script:1215203907005037$
+    // - Do you need help?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1227194507005704$
                 // - The greatest threat is the one we do not see. We need divine guidance to find our path.
-                // $script:1227194507005705$ 
+                return 40;
+            case (40, 1):
+                // $script:1227194507005705$
                 // - We humans are weak and hopeless, but we have a will that is stronger than steel.
-                // $script:1227194507005706$ 
+                return 40;
+            case (40, 2):
+                // $script:1227194507005706$
                 // - The divine recognizes this and guides our hand. Remember that, and you will never know fear.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Next,
+            (40, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

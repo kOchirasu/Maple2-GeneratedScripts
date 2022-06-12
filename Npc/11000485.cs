@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11000485: Mushkid
 /// </summary>
 public class _11000485 : NpcScript {
-    internal _11000485(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002129$ 
-                // - What's up?
-                return true;
-            case 30:
-                // $script:0831180407002132$ 
+    // Select 0:
+    // $script:0831180407002129$
+    // - What's up?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407002132$
                 // - Down below, $npcName:22000321$ has claimed all of the $map:2000202$ for herself!
-                // $script:0831180407002133$ 
+                return 30;
+            case (30, 1):
+                // $script:0831180407002133$
                 // - She's bad, but... so cool! I want to be a monster mushroom like her!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Next,
+            (30, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

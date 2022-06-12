@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000594: Lavi
 /// </summary>
 public class _11000594 : NpcScript {
-    internal _11000594(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002382$ 
-                // - How may I help you?
-                return true;
-            case 30:
-                // $script:0831180407002384$ 
+    // Select 0:
+    // $script:0831180407002382$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407002384$
                 // - Everything in this world has energy, and lava has the most potent energy of all!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000520: Poron
 /// </summary>
 public class _11000520 : NpcScript {
-    internal _11000520(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002227$ 
-                // - If you're not here for the job, please leave.
-                return true;
-            case 20:
-                // $script:0831180407002229$ 
+    // Select 0:
+    // $script:0831180407002227$
+    // - If you're not here for the job, please leave.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407002229$
                 // - Industrialization, urban development... I don't know who'll really benefit from all that.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

@@ -5,36 +5,46 @@ using Maple2.Script.Npc;
 /// 11001315: Amorro
 /// </summary>
 public class _11001315 : NpcScript {
-    internal _11001315(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1215203907005034$ 
-                // - It's a beautiful day, isn't it? 
-                return true;
-            case 40:
-                // $script:1227194507005691$ 
+    // Select 0:
+    // $script:1215203907005034$
+    // - It's a beautiful day, isn't it? 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1227194507005691$
                 // - People are always asking me if I'm okay living with my gramps. Well, I am!
-                // $script:1227194507005692$ 
+                return 40;
+            case (40, 1):
+                // $script:1227194507005692$
                 // - I don't care if you think he's a screaming old fart. If you ask me, he's a great man!
                 switch (selection) {
                     // $script:1227194507005693$
                     // - Your grandpa isn't popular, is he?
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                 }
-                return true;
-            case 41:
-                // $script:1227194507005694$ 
+                return -1;
+            case (41, 0):
+                // $script:1227194507005694$
                 // - They're just jealous of how great he is! Gramps talks loud so people can hear him clearly. Isn't that nice? 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

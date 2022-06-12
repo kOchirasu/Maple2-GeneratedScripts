@@ -5,28 +5,30 @@ using Maple2.Script.Npc;
 /// 11001089: 
 /// </summary>
 public class _11001089 : NpcScript {
-    internal _11001089(INpcScriptContext context) : base(context) {
+    protected override void FirstScript() {
         // TODO: Job 1
+        // (Id, Button) = (1, NpcTalkButton.Close);
         // TODO: RandomPick 10
+        // (Id, Button) = (10, NpcTalkButton.Close);
     }
 
-    public override bool Next(int selection = 0) {
+    protected override (int, NpcTalkButton) Next(int selection) {
         switch (Id) {
             case 0:
                 // $script:0831180610001015$ 
                 // - What brings you here?
-                return true;
+                return default;
             case 1:
                 // $script:0831180610001018$ 
                 // - You look a right mess! How about I treat you? It'll only be a measly $paneltyPrice$ mesos.
                 //   Don't worry, I'm a real doctor!
-                return true;
+                return default;
             case 10:
                 // $script:0831180610001019$ 
                 // - You don't look like you need my help right now, but you will eventually. Oh yes, trust me on this one. Bad things happen around here all the time. 
-                return true;
-            default:
-                return true;
+                return default;
         }
+        
+        return default;
     }
 }

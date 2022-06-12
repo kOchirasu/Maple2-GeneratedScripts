@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11004242: Eupheria
 /// </summary>
 public class _11004242 : NpcScript {
-    internal _11004242(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0809223207010947$ 
-                // - How can I help you?
-                return true;
-            case 10:
-                // $script:0809223207010948$ 
+    // Select 0:
+    // $script:0809223207010947$
+    // - How can I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0809223207010948$
                 // - I feel like I'm still in a dream.
-                // $script:0809223207010949$ 
+                return 10;
+            case (10, 1):
+                // $script:0809223207010949$
                 // - I'm so confused. My memories are all jumbled. I think I need some time.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

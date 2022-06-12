@@ -5,25 +5,35 @@ using Maple2.Script.Npc;
 /// 11001057: Stark
 /// </summary>
 public class _11001057 : NpcScript {
-    internal _11001057(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003608$ 
-                // - Oh, no... 
-                return true;
-            case 30:
-                // $script:0831180407003611$ 
+    // Select 0:
+    // $script:0831180407003608$
+    // - Oh, no... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407003611$
                 // - I look older than $npcName:11001028[gender:0]$. Well, thanks, I guess.
-                // $script:0831180407003612$ 
+                return 30;
+            case (30, 1):
+                // $script:0831180407003612$
                 // - $npcName:11001028[gender:0]$ looks young because he's bald, but he's the same age I am. Maybe I should shave my head, too. 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Next,
+            (30, 1) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

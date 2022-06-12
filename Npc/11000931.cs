@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000931: Kaveki
 /// </summary>
 public class _11000931 : NpcScript {
-    internal _11000931(INpcScriptContext context) : base(context) {
-        Id = 20;
-        // TODO: RandomPick 20
+    protected override int First() {
+        return 20;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407003305$ 
-                // - It's too late for regrets...
-                return true;
-            case 20:
-                // $script:0831180407003307$ 
+    // Select 0:
+    // $script:0831180407003305$
+    // - It's too late for regrets...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (20, 0):
+                // $script:0831180407003307$
                 // - Sometimes I hate being able to see things that others can't.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (20, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

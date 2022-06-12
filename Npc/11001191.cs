@@ -5,38 +5,51 @@ using Maple2.Script.Npc;
 /// 11001191: Joanna
 /// </summary>
 public class _11001191 : NpcScript {
-    internal _11001191(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1016202007004164$ 
-                // - I wish I could cast my worries into the wind... 
-                return true;
-            case 30:
-                // $script:1016202007004167$ 
+    // Select 0:
+    // $script:1016202007004164$
+    // - I wish I could cast my worries into the wind... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:1016202007004167$
                 // - I wish it would all just be over...  
                 switch (selection) {
                     // $script:1016202007004168$
                     // - What's wrong?
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:1016202007004170$ 
+                return -1;
+            case (31, 0):
+                // $script:1016202007004170$
                 // - It's been one disaster after another, and I'm just too tired to fight anymore. Money is ruining my life. If I could live without it, I would've quit already.
-                // $script:1016202007004171$ 
+                return 31;
+            case (31, 1):
+                // $script:1016202007004171$
                 // - I got transferred to another department because of an argument with the head of the broadcasting station over my program. Journalism used to be about integrity! It was about telling the truth, not just covering what makes money! I just can't do it anymore. 
-                // $script:1022192907004266$ 
+                return 31;
+            case (31, 2):
+                // $script:1022192907004266$
                 // - I soldier on and cover what they tell me, acting like there's nothing wrong. But every day I die a little inside. Someone's got to stand up to them, I know that! But if I do, they'll just replace me with another yes-man...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Next,
+            (31, 1) => NpcTalkButton.Next,
+            (31, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

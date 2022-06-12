@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11001564: Eupheria
 /// </summary>
 public class _11001564 : NpcScript {
-    internal _11001564(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0504151707006052$ 
-                // - There you are.
-                return true;
-            case 10:
-                // $script:0515180307006108$ 
+    // Select 0:
+    // $script:0504151707006052$
+    // - There you are.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0515180307006108$
                 // - No matter $npcName:11001231[gender:0]$'s reasons or excuses, I will never forgive him for murdering Arazaad.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

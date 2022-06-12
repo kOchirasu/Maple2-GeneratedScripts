@@ -5,56 +5,63 @@ using Maple2.Script.Npc;
 /// 11004673: NPCNAME_11004673_NAME:[F]Event
 /// </summary>
 public class _11004673 : NpcScript {
-    internal _11004673(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0603204607014976$ 
-                // - SCRIPTNPCNAM_0603204607014976_NAME:[F]Event
-                return true;
-            case 30:
-                // $script:0603204607014977$ 
+    // Select 0:
+    // $script:0603204607014976$
+    // - SCRIPTNPCNAM_0603204607014976_NAME:[F]Event
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0603204607014977$
                 // - SCRIPTNPCNAM_0603204607014977_NAME:[F]Event
                 switch (selection) {
                     // $script:0613033007015021$
                     // - SCRIPTNPCNAM_0613033007015021_NAME:[F]Event
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                 }
-                return true;
-            case 31:
-                // $script:0613033007015022$ 
+                return -1;
+            case (31, 0):
+                // $script:0613033007015022$
                 // - SCRIPTNPCNAM_0613033007015022_NAME:[F]Event
                 switch (selection) {
                     // $script:0613033007015023$
                     // - SCRIPTNPCNAM_0613033007015023_NAME:[F]Event
                     case 0:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 32:
-                // $script:0613033007015024$ 
+                return -1;
+            case (32, 0):
+                // $script:0613033007015024$
                 // - SCRIPTNPCNAM_0613033007015024_NAME:[F]Event
                 switch (selection) {
                     // $script:0613033007015025$
                     // - SCRIPTNPCNAM_0613033007015025_NAME:[F]Event
                     case 0:
-                        Id = 33;
-                        return false;
+                        return 33;
                 }
-                return true;
-            case 33:
-                // $script:0613033007015026$ 
+                return -1;
+            case (33, 0):
+                // $script:0613033007015026$
                 // - SCRIPTNPCNAM_0613033007015026_NAME:[F]Event
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.SelectableDistractor,
+            (32, 0) => NpcTalkButton.SelectableDistractor,
+            (33, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

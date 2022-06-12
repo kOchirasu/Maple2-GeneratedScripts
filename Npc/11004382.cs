@@ -5,45 +5,52 @@ using Maple2.Script.Npc;
 /// 11004382: Lydia
 /// </summary>
 public class _11004382 : NpcScript {
-    internal _11004382(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1109213607011803$ 
-                // - I will find love this winter!
-                return true;
-            case 10:
-                // $script:1109213607011804$ 
+    // Select 0:
+    // $script:1109213607011803$
+    // - I will find love this winter!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1109213607011804$
                 // - I confessed my love to someone during the holidays last year...
                 switch (selection) {
                     // $script:1109213607011805$
                     // - What happened?
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1109213607011806$ 
+                return -1;
+            case (11, 0):
+                // $script:1109213607011806$
                 // - The very next day, he gave it away. This year, I'll give it to someone special...
                 switch (selection) {
                     // $script:1109213607011807$
                     // - Well, happy holidays!
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:1109213607011808$ 
+                return -1;
+            case (12, 0):
+                // $script:1109213607011808$
                 // - You listen to me, find your true love before the year ends!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

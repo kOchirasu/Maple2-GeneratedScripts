@@ -5,21 +5,29 @@ using Maple2.Script.Npc;
 /// 11000287: Bag
 /// </summary>
 public class _11000287 : NpcScript {
-    internal _11000287(INpcScriptContext context) : base(context) {
+    protected override int First() {
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407001127$ 
-                // - Check the altar.
-                return true;
-            case 10:
-                // $script:0831180407001128$ 
+    // Select 0:
+    // $script:0831180407001127$
+    // - Check the altar.
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0831180407001128$
                 // - This altar is covered in layers of dust, the result of ages of neglect.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

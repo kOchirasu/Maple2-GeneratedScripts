@@ -5,34 +5,45 @@ using Maple2.Script.Npc;
 /// 11000586: Injured Guard
 /// </summary>
 public class _11000586 : NpcScript {
-    internal _11000586(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 50;60;70;80
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002370$ 
-                // - Ugh... 
-                return true;
-            case 50:
-                // $script:0831180407002375$ 
+    // Select 0:
+    // $script:0831180407002370$
+    // - Ugh... 
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (50, 0):
+                // $script:0831180407002375$
                 // - H-help... 
-                return true;
-            case 60:
-                // $script:0831180407002376$ 
+                return -1;
+            case (60, 0):
+                // $script:0831180407002376$
                 // - Ugh... 
-                return true;
-            case 70:
-                // $script:0831180407002377$ 
+                return -1;
+            case (70, 0):
+                // $script:0831180407002377$
                 // - Ugh... No... 
-                return true;
-            case 80:
-                // $script:0831180407002378$ 
+                return -1;
+            case (80, 0):
+                // $script:0831180407002378$
                 // - I can't... die like this... 
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (50, 0) => NpcTalkButton.Close,
+            (60, 0) => NpcTalkButton.Close,
+            (70, 0) => NpcTalkButton.Close,
+            (80, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

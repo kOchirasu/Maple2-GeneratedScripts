@@ -5,45 +5,52 @@ using Maple2.Script.Npc;
 /// 11001409: Fubo
 /// </summary>
 public class _11001409 : NpcScript {
-    internal _11001409(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217205907005406$ 
-                // - No exceptions. Not even for humans!
-                return true;
-            case 40:
-                // $script:1222203907005486$ 
+    // Select 0:
+    // $script:1217205907005406$
+    // - No exceptions. Not even for humans!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1222203907005486$
                 // - You want to be strong, like the Meerkat Patrol? Then join our training!
                 switch (selection) {
                     // $script:1222203907005487$
                     // - That sounds <i>adorable</i>. Sign me up!
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                 }
-                return true;
-            case 41:
-                // $script:1222203907005488$ 
+                return -1;
+            case (41, 0):
+                // $script:1222203907005488$
                 // - Don't underestimate us. If you cry and give up halfway through, you'll never live it down!
                 switch (selection) {
                     // $script:1222203907005489$
                     // - I can handle anything you throw at me!
                     case 0:
-                        Id = 42;
-                        return false;
+                        return 42;
                 }
-                return true;
-            case 42:
-                // $script:1222203907005490$ 
+                return -1;
+            case (42, 0):
+                // $script:1222203907005490$
                 // - Heh... I'll see to it that you run away with your tail between your legs!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.SelectableDistractor,
+            (42, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

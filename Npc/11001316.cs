@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11001316: Masharr
 /// </summary>
 public class _11001316 : NpcScript {
-    internal _11001316(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1215203907005035$ 
-                // - What brings you to this place?
-                return true;
-            case 40:
-                // $script:1227194507005698$ 
+    // Select 0:
+    // $script:1215203907005035$
+    // - What brings you to this place?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1227194507005698$
                 // - I cannot see you, but I know you by voice, scent, and soul.
-                // $script:1227194507005699$ 
+                return 40;
+            case (40, 1):
+                // $script:1227194507005699$
                 // - Your soul is pure. Maybe you can do it...
-                // $script:1227194507005700$ 
+                return 40;
+            case (40, 2):
+                // $script:1227194507005700$
                 // - May you be blessed with good vibes.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Next,
+            (40, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

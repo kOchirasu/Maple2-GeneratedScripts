@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11001389: Dalan
 /// </summary>
 public class _11001389 : NpcScript {
-    internal _11001389(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1217193307005389$ 
-                // - Why's he so worried all the time?
-                return true;
-            case 40:
-                // $script:1223165107005563$ 
+    // Select 0:
+    // $script:1217193307005389$
+    // - Why's he so worried all the time?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1223165107005563$
                 // - I have this friend named $npcName:11001396[gender:1]$. She has a house, but she practically lives out in the desert...
-                // $script:1223165107005564$ 
+                return 40;
+            case (40, 1):
+                // $script:1223165107005564$
                 // - She had a chance to get a good job in $map:02010002$, but she let it slip through her fingers. She could've been enjoying the finer things in life by now...
-                // $script:1223165107005565$ 
+                return 40;
+            case (40, 2):
+                // $script:1223165107005565$
                 // - She's always talking about ruins and secrets. Why does she let such silly nonsense weigh her down? She tried to tell me about it, but honestly, it's so boring I forgot it already...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.Next,
+            (40, 1) => NpcTalkButton.Next,
+            (40, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

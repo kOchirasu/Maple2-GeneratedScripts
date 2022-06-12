@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11000065: Marco
 /// </summary>
 public class _11000065 : NpcScript {
-    internal _11000065(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407000336$ 
-                // - How may I help you?
-                return true;
-            case 30:
-                // $script:0831180407000338$ 
+    // Select 0:
+    // $script:0831180407000336$
+    // - How may I help you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407000338$
                 // - As the mayor, I have a serious dilemma. Should I make the city great again, or is it already great?
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

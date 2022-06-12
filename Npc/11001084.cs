@@ -5,34 +5,41 @@ using Maple2.Script.Npc;
 /// 11001084: Dodo
 /// </summary>
 public class _11001084 : NpcScript {
-    internal _11001084(INpcScriptContext context) : base(context) {
-        Id = 40;
-        // TODO: RandomPick 40
+    protected override int First() {
+        return 40;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1216233107005214$ 
-                // - Ah! A human!
-                return true;
-            case 40:
-                // $script:1216233107005218$ 
+    // Select 0:
+    // $script:1216233107005214$
+    // - Ah! A human!
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (40, 0):
+                // $script:1216233107005218$
                 // - We're not supposed to talk to strangers without the captain's approval.
                 switch (selection) {
                     // $script:1216233107005219$
                     // - I'm not a stranger. I'm just a friend you haven't met.
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                 }
-                return true;
-            case 41:
-                // $script:1216233107005220$ 
+                return -1;
+            case (41, 0):
+                // $script:1216233107005220$
                 // - I'm not falling for that. Shoo!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

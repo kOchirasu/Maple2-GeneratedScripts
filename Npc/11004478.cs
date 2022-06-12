@@ -5,47 +5,57 @@ using Maple2.Script.Npc;
 /// 11004478: Hani
 /// </summary>
 public class _11004478 : NpcScript {
-    internal _11004478(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:1228141007012420$ 
-                // - Blake is so... bedazzling! Don't you think so, too?
-                return true;
-            case 10:
-                // $script:1228141007012421$ 
+    // Select 0:
+    // $script:1228141007012420$
+    // - Blake is so... bedazzling! Don't you think so, too?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:1228141007012421$
                 // - Blake is so... bedazzling! Don't you think so, too?
                 switch (selection) {
                     // $script:1228141007012422$
                     // - Bedazzling. Sure. Let's say yes.
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:1228141007012423$ 
+                return -1;
+            case (11, 0):
+                // $script:1228141007012423$
                 // - It's like we're witnessing history. The day Blake set foot in the new world!
-                // $script:1228141007012424$ 
+                return 11;
+            case (11, 1):
+                // $script:1228141007012424$
                 // - Wanna join the new Blake Fan Club—Kritias Branch? I've got the paperwork right here!
                 switch (selection) {
                     // $script:1228141007012425$
                     // - Oh no, something urgent just came up. Bye.
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:1228141007012426$ 
+                return -1;
+            case (12, 0):
+                // $script:1228141007012426$
                 // - Really? Shoot... Well, come back soon, before we fill up!
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.Next,
+            (11, 1) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

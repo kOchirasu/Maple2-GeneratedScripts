@@ -5,60 +5,73 @@ using Maple2.Script.Npc;
 /// 11004258: Casto
 /// </summary>
 public class _11004258 : NpcScript {
-    internal _11004258(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0829171107010976$ 
-                // - It's soooo hot. And I've made no progress on my research. Ugh...
-                return true;
-            case 10:
-                // $script:0829171107010977$ 
+    // Select 0:
+    // $script:0829171107010976$
+    // - It's soooo hot. And I've made no progress on my research. Ugh...
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0829171107010977$
                 // - It's soooo hot. And I've made no progress on my research. Ugh...
                 switch (selection) {
                     // $script:0831140807011028$
                     // - What are you researching?
                     case 0:
-                        Id = 11;
-                        return false;
+                        return 11;
                 }
-                return true;
-            case 11:
-                // $script:0831140807011029$ 
+                return -1;
+            case (11, 0):
+                // $script:0831140807011029$
                 // - Oh, not much. Just, you know, the dragon that lives here in $map:02000011$.
                 switch (selection) {
                     // $script:0831140807011030$
                     // - $npcName:23100011$?
                     case 0:
-                        Id = 12;
-                        return false;
+                        return 12;
                 }
-                return true;
-            case 12:
-                // $script:0831140807011031$ 
+                return -1;
+            case (12, 0):
+                // $script:0831140807011031$
                 // - Maybe. That's what I'm researching. I personally believe that $npcName:23100011$, the legendary dragon, lives here, but I'm searching for proof. You've heard the legend, right?
                 switch (selection) {
                     // $script:0831140807011032$
                     // - Nope! Tell me!
                     case 0:
-                        Id = 13;
-                        return false;
+                        return 13;
                 }
-                return true;
-            case 13:
-                // $script:0831140807011033$ 
+                return -1;
+            case (13, 0):
+                // $script:0831140807011033$
                 // - Once upon a time, not too far from here, there was a place called the Forest of Wisdom. One day, the fire dragon turned the place into a sea of flame. It was the greatest loss of life in the history of the world. Supposedly, the dragon slumbers somewhere here in $map:02000011$.
-                // $script:0831140807011034$ 
+                return 13;
+            case (13, 1):
+                // $script:0831140807011034$
                 // - This area didn't used to be so hot... Not until after the fire dragon went into hiding here.
-                // $script:0831140807011035$ 
+                return 13;
+            case (13, 2):
+                // $script:0831140807011035$
                 // - That's my theory, at least. Anyway, if you find anything, let me know. I kind of want to go home now.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.SelectableDistractor,
+            (11, 0) => NpcTalkButton.SelectableDistractor,
+            (12, 0) => NpcTalkButton.SelectableDistractor,
+            (13, 0) => NpcTalkButton.Next,
+            (13, 1) => NpcTalkButton.Next,
+            (13, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

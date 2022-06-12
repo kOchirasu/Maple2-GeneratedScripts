@@ -5,46 +5,55 @@ using Maple2.Script.Npc;
 /// 11000529: Blackeye
 /// </summary>
 public class _11000529 : NpcScript {
-    internal _11000529(INpcScriptContext context) : base(context) {
+    protected override int First() {
         // TODO: RandomPick 30;40
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0831180407002267$ 
-                // - What brings you here?
-                return true;
-            case 30:
-                // $script:0831180407002270$ 
+    // Select 0:
+    // $script:0831180407002267$
+    // - What brings you here?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0831180407002270$
                 // - Dark Wind has changed too much. Now it's crushing the citizens under authoritarian rule instead of protecting them like they used to. I can't let this continue.
-                return true;
-            case 40:
-                // $script:0831180407002271$ 
+                return -1;
+            case (40, 0):
+                // $script:0831180407002271$
                 // - $MyPCName$, do the people in this city look happy to you?
                 switch (selection) {
                     // $script:0831180407002272$
                     // - Yep!
                     case 0:
-                        Id = 41;
-                        return false;
+                        return 41;
                     // $script:0831180407002273$
                     // - Beats me.
                     case 1:
-                        Id = 42;
-                        return false;
+                        return 42;
                 }
-                return true;
-            case 41:
-                // $script:0831180407002274$ 
+                return -1;
+            case (41, 0):
+                // $script:0831180407002274$
                 // - Then you're a fool. There's no point in discussing this further. Leave.
-                return true;
-            case 42:
-                // $script:0831180407002275$ 
+                return -1;
+            case (42, 0):
+                // $script:0831180407002275$
                 // - Try to see through their deceptions. It's not hard to find the rotting heart of this city.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.Close,
+            (40, 0) => NpcTalkButton.SelectableDistractor,
+            (41, 0) => NpcTalkButton.Close,
+            (42, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

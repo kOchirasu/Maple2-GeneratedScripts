@@ -5,43 +5,50 @@ using Maple2.Script.Npc;
 /// 11001121: Dr. Collins
 /// </summary>
 public class _11001121 : NpcScript {
-    internal _11001121(INpcScriptContext context) : base(context) {
-        Id = 30;
-        // TODO: RandomPick 30
+    protected override int First() {
+        return 30;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0910171307003826$ 
-                // - What brings you?
-                return true;
-            case 30:
-                // $script:0915113107003927$ 
+    // Select 0:
+    // $script:0910171307003826$
+    // - What brings you?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (30, 0):
+                // $script:0915113107003927$
                 // - Those on the cutting edge of technological research often complain about lack of funds, resources, and other material things. The only thing I lack is time... Say, how old do you think I am?
                 switch (selection) {
                     // $script:0915113107003928$
                     // - You look young-ish to me.
                     case 0:
-                        Id = 31;
-                        return false;
+                        return 31;
                     // $script:0915113107003929$
                     // - You look like an old geezer. 50-plus, at least.
                     case 1:
-                        Id = 32;
-                        return false;
+                        return 32;
                 }
-                return true;
-            case 31:
-                // $script:0915113107003930$ 
+                return -1;
+            case (31, 0):
+                // $script:0915113107003930$
                 // - Hmph! Flattery will get you nowhere with me. Or perhaps you need to see an eye doctor.
-                return true;
-            case 32:
-                // $script:0915113107003931$ 
+                return -1;
+            case (32, 0):
+                // $script:0915113107003931$
                 // - Close enough! There's so much I want to study, but I'm past my prime. <i>If only there were more time...!</i> Wait... That gives me an idea...
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (30, 0) => NpcTalkButton.SelectableDistractor,
+            (31, 0) => NpcTalkButton.Close,
+            (32, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

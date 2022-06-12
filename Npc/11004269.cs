@@ -5,27 +5,40 @@ using Maple2.Script.Npc;
 /// 11004269: East Auto Bridge
 /// </summary>
 public class _11004269 : NpcScript {
-    internal _11004269(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0911203207011226$ 
+    // Select 0:
+    // $script:0911203207011226$
+    // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font>
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0911203207011227$
                 // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font>
-                return true;
-            case 10:
-                // $script:0911203207011227$ 
-                // - <font color="#909090">(This bridge connects the city to the desert of Karkar. It plays a major role in the development of the island.)</font>
-                // $script:0911203207011228$ 
+                return 10;
+            case (10, 1):
+                // $script:0911203207011228$
                 // - <font color="#909090">(This wonderful bridge was designed by the genius architect brother Opath and Oparts. The older brother, Opath, was in charge of the eastern exchange.)</font>
-                // $script:0911203207011229$ 
+                return 10;
+            case (10, 2):
+                // $script:0911203207011229$
                 // - <font color="#909090">(He added intriguing detail and a touch of mischief to the design, including hidden magic portals and shortcuts.)</font>
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Next,
+            (10, 1) => NpcTalkButton.Next,
+            (10, 2) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }

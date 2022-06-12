@@ -5,23 +5,30 @@ using Maple2.Script.Npc;
 /// 11004195: Ereve
 /// </summary>
 public class _11004195 : NpcScript {
-    internal _11004195(INpcScriptContext context) : base(context) {
-        Id = 10;
-        // TODO: RandomPick 10
+    protected override int First() {
+        return 10;
     }
 
-    public override bool Next(int selection = 0) {
-        switch (Id) {
-            case 0:
-                // $script:0806025707010638$ 
-                // - $MyPCName$, what brings you to me?
-                return true;
-            case 10:
-                // $script:0806025707010639$ 
+    // Select 0:
+    // $script:0806025707010638$
+    // - $MyPCName$, what brings you to me?
+    protected override int Select() => 0;
+
+    protected override int Execute(int selection) {
+        switch (Id, Index++) {
+            case (10, 0):
+                // $script:0806025707010639$
                 // - You must always believe in yourself. Though the road is long and difficult, it is our duty to bring peace to this world.
-                return true;
-            default:
-                return true;
+                return -1;
         }
+        
+        return default;
+    }
+
+    protected override NpcTalkButton Button() {
+        return (Id, Index) switch {
+            (10, 0) => NpcTalkButton.Close,
+            _ => NpcTalkButton.None,
+        };
     }
 }
