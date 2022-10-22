@@ -26,19 +26,19 @@ public class _11003386 : NpcScript {
                     case 0:
                         // TODO: goto 31
                         // TODO: gotoFail 32
-                        return -1;
+                        return 32;
                     // $script:0622191110001847$
                     // - Pay 50 $itemPlural:30000782$ to spin continuously.
                     case 1:
                         // TODO: goto 10
                         // TODO: gotoFail 32
-                        return -1;
+                        return 32;
                     // $script:0622191110001848$
                     // - Pay 500 $itemPlural:30000782$ to spin continuously.
                     case 2:
                         // TODO: goto 100
                         // TODO: gotoFail 32
-                        return -1;
+                        return 32;
                 }
                 return -1;
             case (31, 0):

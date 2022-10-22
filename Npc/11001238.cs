@@ -89,7 +89,7 @@ public class _11001238 : NpcScript {
                     case 0:
                         // TODO: goto 42
                         // TODO: gotoFail 43
-                        return -1;
+                        return 43;
                 }
                 return -1;
             case (42, 0):

@@ -25,7 +25,7 @@ public class _11000254 : NpcScript {
                     case 0:
                         // TODO: goto 61,62
                         // TODO: gotoFail 63
-                        return -1;
+                        return 63;
                     // $script:0831180407001062$
                     // - I'd like some advice.
                     case 1:

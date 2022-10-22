@@ -39,25 +39,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 41
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407003997$
                     // - (Add 9 $itemPlural:30000390$.)
                     case 1:
                         // TODO: goto 42
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407003998$
                     // - (Add 8 $itemPlural:30000390$.)
                     case 2:
                         // TODO: goto 22
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407003999$
                     // - (Add 7 $itemPlural:30000390$.)
                     case 3:
                         // TODO: goto 44
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (22, 0):
@@ -69,25 +69,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 23
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004002$
                     // - (Add 9 $itemPlural:30000392$.)
                     case 1:
                         // TODO: goto 52
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004003$
                     // - (Add 8 $itemPlural:30000392$.)
                     case 2:
                         // TODO: goto 53
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004004$
                     // - (Add 7 $itemPlural:30000392$.)
                     case 3:
                         // TODO: goto 54
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (23, 0):
@@ -99,25 +99,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 61
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004007$
                     // - (Add 9 $itemPlural:30000391$.)
                     case 1:
                         // TODO: goto 62
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004008$
                     // - (Add 8 $itemPlural:30000391$.)
                     case 2:
                         // TODO: goto 63
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004009$
                     // - (Add 7 $itemPlural:30000391$.)
                     case 3:
                         // TODO: goto 24
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (24, 0):
@@ -129,25 +129,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 71
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004012$
                     // - (Add 9 $itemPlural:30000393$.)
                     case 1:
                         // TODO: goto 25
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004013$
                     // - (Add 8 $itemPlural:30000393$.)
                     case 2:
                         // TODO: goto 73
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:0916043407004014$
                     // - (Add 7 $itemPlural:30000393$.)
                     case 3:
                         // TODO: goto 74
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (25, 0):
@@ -167,7 +167,7 @@ public class _11001147 : NpcScript {
                     case 2:
                         // TODO: goto 26
                         // TODO: gotoFail 27
-                        return -1;
+                        return 27;
                     // $script:0916043407004019$
                     // - (Cook over low heat for 3 minutes.)
                     case 3:
@@ -205,25 +205,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 51
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004305$
                     // - (Add 9 $itemPlural:30000392$.)
                     case 1:
                         // TODO: goto 52
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004306$
                     // - (Add 8 $itemPlural:30000392$.)
                     case 2:
                         // TODO: goto 53
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004307$
                     // - (Add 7 $itemPlural:30000392$.)
                     case 3:
                         // TODO: goto 54
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (42, 0):
@@ -235,25 +235,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 51
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004310$
                     // - (Add 9 $itemPlural:30000392$.)
                     case 1:
                         // TODO: goto 52
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004311$
                     // - (Add 8 $itemPlural:30000392$.)
                     case 2:
                         // TODO: goto 53
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004312$
                     // - (Add 7 $itemPlural:30000392$.)
                     case 3:
                         // TODO: goto 54
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (43, 0):
@@ -265,25 +265,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 51
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004315$
                     // - (Add 9 $itemPlural:30000392$.)
                     case 1:
                         // TODO: goto 52
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004316$
                     // - (Add 8 $itemPlural:30000392$.)
                     case 2:
                         // TODO: goto 53
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004317$
                     // - (Add 7 $itemPlural:30000392$.)
                     case 3:
                         // TODO: goto 54
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (44, 0):
@@ -295,25 +295,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 51
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004320$
                     // - (Add 9 $itemPlural:30000392$.)
                     case 1:
                         // TODO: goto 52
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004321$
                     // - (Add 8 $itemPlural:30000392$.)
                     case 2:
                         // TODO: goto 53
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004322$
                     // - (Add 7 $itemPlural:30000392$.)
                     case 3:
                         // TODO: goto 54
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (51, 0):
@@ -325,25 +325,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 61
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004325$
                     // - (Add 9 $itemPlural:30000391$.)
                     case 1:
                         // TODO: goto 62
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004326$
                     // - (Add 8 $itemPlural:30000391$.)
                     case 2:
                         // TODO: goto 63
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004327$
                     // - (Add 7 $itemPlural:30000391$.)
                     case 3:
                         // TODO: goto 64
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (52, 0):
@@ -355,25 +355,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 61
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004330$
                     // - (Add 9 $itemPlural:30000391$.)
                     case 1:
                         // TODO: goto 62
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004331$
                     // - (Add 8 $itemPlural:30000391$.)
                     case 2:
                         // TODO: goto 63
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004332$
                     // - (Add 7 $itemPlural:30000391$.)
                     case 3:
                         // TODO: goto 64
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (53, 0):
@@ -385,25 +385,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 61
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004335$
                     // - (Add 9 $itemPlural:30000391$.)
                     case 1:
                         // TODO: goto 62
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004336$
                     // - (Add 8 $itemPlural:30000391$.)
                     case 2:
                         // TODO: goto 63
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004337$
                     // - (Add 7 $itemPlural:30000391$.)
                     case 3:
                         // TODO: goto 64
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (54, 0):
@@ -415,25 +415,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 61
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004340$
                     // - (Add 9 $itemPlural:30000391$.)
                     case 1:
                         // TODO: goto 62
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004341$
                     // - (Add 8 $itemPlural:30000391$.)
                     case 2:
                         // TODO: goto 63
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004342$
                     // - (Add 7 $itemPlural:30000391$.)
                     case 3:
                         // TODO: goto 64
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (61, 0):
@@ -445,25 +445,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 71
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004345$
                     // - (Add 9 $itemPlural:30000393$.)
                     case 1:
                         // TODO: goto 72
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004346$
                     // - (Add 8 $itemPlural:30000393$.)
                     case 2:
                         // TODO: goto 73
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004347$
                     // - (Add 7 $itemPlural:30000393$.)
                     case 3:
                         // TODO: goto 74
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (62, 0):
@@ -475,25 +475,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 71
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004350$
                     // - (Add 9 $itemPlural:30000393$.)
                     case 1:
                         // TODO: goto 72
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004351$
                     // - (Add 8 $itemPlural:30000393$.)
                     case 2:
                         // TODO: goto 73
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004352$
                     // - (Add 7 $itemPlural:30000393$.)
                     case 3:
                         // TODO: goto 74
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (63, 0):
@@ -505,25 +505,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 71
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004355$
                     // - (Add 9 $itemPlural:30000393$.)
                     case 1:
                         // TODO: goto 72
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004356$
                     // - (Add 8 $itemPlural:30000393$.)
                     case 2:
                         // TODO: goto 73
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004357$
                     // - (Add 7 $itemPlural:30000393$.)
                     case 3:
                         // TODO: goto 74
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (64, 0):
@@ -535,25 +535,25 @@ public class _11001147 : NpcScript {
                     case 0:
                         // TODO: goto 71
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004360$
                     // - (Add 9 $itemPlural:30000393$.)
                     case 1:
                         // TODO: goto 72
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004361$
                     // - (Add 8 $itemPlural:30000393$.)
                     case 2:
                         // TODO: goto 73
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                     // $script:1027181907004362$
                     // - (Add 7 $itemPlural:30000393$.)
                     case 3:
                         // TODO: goto 74
                         // TODO: gotoFail 28
-                        return -1;
+                        return 28;
                 }
                 return -1;
             case (71, 0):

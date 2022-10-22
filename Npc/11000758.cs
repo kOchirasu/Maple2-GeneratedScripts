@@ -25,13 +25,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000474$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000475$
                     // - Let's chat!
                     case 2:
@@ -48,13 +48,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000478$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000479$
                     // - Let's chat!
                     case 2:
@@ -71,13 +71,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000482$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000483$
                     // - Let's chat!
                     case 2:
@@ -94,13 +94,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000486$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000487$
                     // - Let's chat!
                     case 2:
@@ -121,13 +121,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000491$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000492$
                     // - Let's chat!
                     case 2:
@@ -148,13 +148,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000496$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000497$
                     // - Let's chat!
                     case 2:
@@ -176,13 +176,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 8040,8050,8060,9040
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000501$
                     // - (Pay $MaidSalary$.)
                     case 1:
                         // TODO: goto 8000,8001,8010,8011,8901
                         // TODO: gotoFail 8900,8910
-                        return -1;
+                        return 8900,8910;
                 }
                 return -1;
             case (8000, 0):
@@ -223,13 +223,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000509$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000510$
                     // - Let's chat!
                     case 2:
@@ -250,13 +250,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000514$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000515$
                     // - Let's chat!
                     case 2:
@@ -277,13 +277,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000519$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000520$
                     // - Let's chat!
                     case 2:
@@ -304,13 +304,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000524$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000525$
                     // - Let's chat!
                     case 2:
@@ -352,7 +352,7 @@ public class _11000758 : NpcScript {
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000534$
                     // - Let's chat!
                     case 2:
@@ -373,7 +373,7 @@ public class _11000758 : NpcScript {
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000538$
                     // - Let's chat!
                     case 2:
@@ -394,7 +394,7 @@ public class _11000758 : NpcScript {
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000542$
                     // - Let's chat!
                     case 2:
@@ -431,7 +431,7 @@ public class _11000758 : NpcScript {
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000549$
                     // - Let's chat!
                     case 2:
@@ -452,7 +452,7 @@ public class _11000758 : NpcScript {
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000553$
                     // - Let's chat!
                     case 2:
@@ -499,13 +499,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000562$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000563$
                     // - Let's chat!
                     case 2:
@@ -524,13 +524,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000566$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000567$
                     // - Let's chat!
                     case 2:
@@ -629,13 +629,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000586$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000587$
                     // - Let's chat!
                     case 2:
@@ -652,13 +652,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000590$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000591$
                     // - Let's chat!
                     case 2:
@@ -675,13 +675,13 @@ public class _11000758 : NpcScript {
                     case 0:
                         // TODO: goto 10,9010
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000594$
                     // - I want to check your profile.
                     case 1:
                         // TODO: goto 20,8020,9020
                         // TODO: gotoFail 8999
-                        return -1;
+                        return 8999;
                     // $script:0831180509000595$
                     // - Let's chat!
                     case 2:

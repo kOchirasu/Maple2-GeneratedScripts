@@ -25,13 +25,13 @@ public class _11004215 : NpcScript {
                     case 0:
                         // TODO: goto 11
                         // TODO: gotoFail 14
-                        return -1;
+                        return 14;
                     // $script:0808172007010852$
                     // - (Create 10.)
                     case 1:
                         // TODO: goto 21
                         // TODO: gotoFail 24
-                        return -1;
+                        return 24;
                     // $script:0808172007010853$
                     // - (Not now.)
                     case 2:
@@ -47,7 +47,7 @@ public class _11004215 : NpcScript {
                     case 0:
                         // TODO: goto 12
                         // TODO: gotoFail 13
-                        return -1;
+                        return 13;
                 }
                 return -1;
             case (12, 0):
@@ -76,7 +76,7 @@ public class _11004215 : NpcScript {
                     case 0:
                         // TODO: goto 22
                         // TODO: gotoFail 13
-                        return -1;
+                        return 13;
                 }
                 return -1;
             case (22, 0):

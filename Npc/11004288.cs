@@ -29,7 +29,7 @@ public class _11004288 : NpcScript {
                     case 0:
                         // TODO: goto 20
                         // TODO: gotoFail 60
-                        return -1;
+                        return 60;
                 }
                 return -1;
             case (20, 0):
@@ -45,7 +45,7 @@ public class _11004288 : NpcScript {
                     case 1:
                         // TODO: goto 40
                         // TODO: gotoFail 50
-                        return -1;
+                        return 50;
                 }
                 return -1;
             case (30, 0):

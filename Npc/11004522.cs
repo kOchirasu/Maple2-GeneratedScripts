@@ -9,16 +9,13 @@ public class _11004522 : NpcScript {
         // TODO: RandomPick 10;50
     }
 
-    protected override int Select() {
-        // Select 0:
-        // $script:0103163407012492$
-        // - Beeep... Beeep...
-        // Select 40:
-        // $script:0104140207012576$
-        // - Beeep... Beeep...
-        // TODO: 0,40
-        return 0;
-    }
+    // Select 0:
+    // $script:0103163407012492$
+    // - Beeep... Beeep...
+    // Select 40:
+    // $script:0104140207012576$
+    // - Beeep... Beeep...
+    protected override int Select() => Random(0, 40);
 
     protected override int Execute(int selection) {
         switch (Id, Index++) {

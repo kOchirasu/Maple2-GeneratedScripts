@@ -75,7 +75,7 @@ public class _11000600 : NpcScript {
                     case 0:
                         // TODO: goto 66
                         // TODO: gotoFail 67
-                        return -1;
+                        return 67;
                 }
                 return -1;
             case (66, 0):
@@ -150,7 +150,7 @@ public class _11000600 : NpcScript {
                     case 0:
                         // TODO: goto 96
                         // TODO: gotoFail 97
-                        return -1;
+                        return 97;
                 }
                 return -1;
             case (96, 0):
@@ -221,7 +221,7 @@ public class _11000600 : NpcScript {
                     case 0:
                         // TODO: goto 116
                         // TODO: gotoFail 117
-                        return -1;
+                        return 117;
                 }
                 return -1;
             case (116, 0):
@@ -292,7 +292,7 @@ public class _11000600 : NpcScript {
                     case 0:
                         // TODO: goto 136
                         // TODO: gotoFail 137
-                        return -1;
+                        return 137;
                 }
                 return -1;
             case (136, 0):

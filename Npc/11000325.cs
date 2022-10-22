@@ -39,7 +39,7 @@ public class _11000325 : NpcScript {
                     case 0:
                         // TODO: goto 33,37
                         // TODO: gotoFail 34
-                        return -1;
+                        return 34;
                     // $script:0831180407001318$
                     // - Luxurious sports cars.
                     case 1:

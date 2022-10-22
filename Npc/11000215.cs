@@ -25,7 +25,7 @@ public class _11000215 : NpcScript {
                     case 0:
                         // TODO: goto 21,22
                         // TODO: gotoFail 23
-                        return -1;
+                        return 23;
                     // $script:0831180407000915$
                     // - Where am I supposed to post $item:30000038$ again?
                     case 1:
@@ -58,7 +58,7 @@ public class _11000215 : NpcScript {
                     case 0:
                         // TODO: goto 31,32
                         // TODO: gotoFail 33
-                        return -1;
+                        return 33;
                     // $script:0831180407000922$
                     // - Where am I supposed to post $item:30000038$ again?
                     case 1:
@@ -91,7 +91,7 @@ public class _11000215 : NpcScript {
                     case 0:
                         // TODO: goto 41,42
                         // TODO: gotoFail 43
-                        return -1;
+                        return 43;
                     // $script:0831180407000929$
                     // - Where am I supposed to post $item:30000038$ again?
                     case 1:
@@ -124,7 +124,7 @@ public class _11000215 : NpcScript {
                     case 0:
                         // TODO: goto 51,52
                         // TODO: gotoFail 53
-                        return -1;
+                        return 53;
                     // $script:0831180407000936$
                     // - Where am I supposed to post $item:30000038$ again?
                     case 1:
