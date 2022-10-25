@@ -1,16 +1,16 @@
 """ trigger/52000028_qd/npc_1013.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=103, spawnIds=[1013]):
-            destroy_monster(spawnIds=[1013])
-            return 종료()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=103, spawnIds=[1013]):
+            self.destroy_monster(spawnIds=[1013])
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

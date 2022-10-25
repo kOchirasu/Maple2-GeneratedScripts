@@ -1,244 +1,244 @@
 """ trigger/82000001_survival/10_ridingbattle.xml """
-from common import *
-import state
+import common
 
 
-#  변신 탈것 riding battle 
-class Setting(state.State):
+# 변신 탈것 riding battle
+class Setting(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False)
-        set_user_value(key='BattleRidingOnCount', value=0)
-        set_user_value(key='BattleRidingOff', value=0)
+        self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False)
+        self.set_user_value(key='BattleRidingOnCount', value=0)
+        self.set_user_value(key='BattleRidingOff', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOnCount', value=1):
-            return OnOffRandom()
-
-
-class OnOffRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=40):
-            return BattleRidingOn()
-        if random_condition(rate=60):
-            return BattleRidingOff()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOnCount', value=1):
+            return OnOffRandom(self.ctx)
 
 
-class BattleRidingOff(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class OnOffRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=40):
+            return BattleRidingOn(self.ctx)
+        if self.random_condition(rate=60):
+            return BattleRidingOff(self.ctx)
 
 
-class BattleRidingOn(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DelayRandom()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class BattleRidingOff(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class DelayRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=10):
-            return Delay_5min00sec()
-        if random_condition(rate=10):
-            return Delay_5min20sec()
-        if random_condition(rate=10):
-            return Delay_5min40sec()
-        if random_condition(rate=10):
-            return Delay_6min00sec()
-        if random_condition(rate=10):
-            return Delay_6min20sec()
-        if random_condition(rate=10):
-            return Delay_6min40sec()
-        if random_condition(rate=10):
-            return Delay_7min00sec()
+class BattleRidingOn(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DelayRandom(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_5min00sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class DelayRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=10):
+            return Delay_5min00sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_5min20sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_5min40sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_6min00sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_6min20sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_6min40sec(self.ctx)
+        if self.random_condition(rate=10):
+            return Delay_7min00sec(self.ctx)
 
 
-class Delay_5min20sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=320000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_5min00sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_5min40sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=340000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_5min20sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=320000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_6min00sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=360000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_5min40sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=340000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_6min20sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=380000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_6min00sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=360000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_6min40sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=400000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_6min20sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=380000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Delay_7min00sec(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=420000):
-            return RidingSpawn()
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+class Delay_6min40sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=400000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn(state.State):
+class Delay_7min00sec(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=420000):
+            return RidingSpawn(self.ctx)
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
+
+
+class RidingSpawn(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337], isStart=True) # riding battle test
-        side_npc_talk(npcId=23000110, illust='Mushking_normal', duration=5000, script='$82000000_survival__10_RIDINGBATTLE__0$')
+        self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337], isStart=True) # riding battle test
+        self.side_npc_talk(npcId=23000110, illust='Mushking_normal', duration=5000, script='$82000000_survival__10_RIDINGBATTLE__0$')
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_none()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_north()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_south()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_east()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_west()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_northsouth()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_northeast()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_northwest()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_eastwest()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_southeast()
-        if random_condition(rate=10):
-            return RidingSpawn_Extra_southwest()
-
-
-class RidingSpawn_Extra_none(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_none(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_north(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_south(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_east(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_west(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_northsouth(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_northeast(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_northwest(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_eastwest(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_southeast(self.ctx)
+        if self.random_condition(rate=10):
+            return RidingSpawn_Extra_southwest(self.ctx)
 
 
-class RidingSpawn_Extra_north(state.State):
+class RidingSpawn_Extra_none(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
+
+
+class RidingSpawn_Extra_north(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000338], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000338], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_south(state.State):
+class RidingSpawn_Extra_south(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000340], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000340], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_east(state.State):
+class RidingSpawn_Extra_east(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000339], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000339], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_west(state.State):
+class RidingSpawn_Extra_west(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000341], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000341], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_northsouth(state.State):
+class RidingSpawn_Extra_northsouth(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000338,10000340], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000338,10000340], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_northeast(state.State):
+class RidingSpawn_Extra_northeast(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000338,10000339], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000338,10000339], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_northwest(state.State):
+class RidingSpawn_Extra_northwest(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000338,10000341], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000338,10000341], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_eastwest(state.State):
+class RidingSpawn_Extra_eastwest(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000339,10000341], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000339,10000341], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_southeast(state.State):
+class RidingSpawn_Extra_southeast(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000339,10000340], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000339,10000340], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class RidingSpawn_Extra_southwest(state.State):
+class RidingSpawn_Extra_southwest(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000341,10000340], isStart=True) # riding battle test
+        self.start_combine_spawn(groupId=[10000341,10000340], isStart=True) # riding battle test
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BattleRidingOff', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BattleRidingOff', value=1):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False) # riding battle test
+        self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False) # riding battle test
 
 
+initial_state = Setting

@@ -1,34 +1,34 @@
 """ trigger/52000051_qd/03_removelight.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ResetInnerLight', value=0)
-        set_user_value(key='RemoveInnerLight', value=0)
+        self.set_user_value(key='ResetInnerLight', value=0)
+        self.set_user_value(key='RemoveInnerLight', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ResetInnerLight', value=1):
-            return Play()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ResetInnerLight', value=1):
+            return Play(self.ctx)
 
 
-class Play(state.State):
+class Play(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ResetInnerLight', value=0)
-        set_user_value(key='RemoveInnerLight', value=0)
+        self.set_user_value(key='ResetInnerLight', value=0)
+        self.set_user_value(key='RemoveInnerLight', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='RemoveInnerLight', value=1):
-            return RemoveLight01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='RemoveInnerLight', value=1):
+            return RemoveLight01(self.ctx)
 
 
-class RemoveLight01(state.State):
+class RemoveLight01(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[9001], skillId=70000103, level=1)
+        self.add_buff(boxIds=[9001], skillId=70000103, level=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

@@ -1,87 +1,87 @@
 """ trigger/52020011_qd/main_a.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60200015], questStates=[2]):
-            return Ready()
+class Idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200015], questStates=[2]):
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return Setting()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return Setting(self.ctx)
 
 
-class Setting(state.State):
+class Setting(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        select_camera_path(pathIds=[4001], returnView=False)
-        move_user(mapId=52020011, portalId=6001)
-        set_scene_skip(state=Exit, arg2='Exit')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.select_camera_path(pathIds=[4001], returnView=False)
+        self.move_user(mapId=52020011, portalId=6001)
+        self.set_scene_skip(state=Exit, action='Exit')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return scene_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return scene_01(self.ctx)
 
 
-class scene_01(state.State):
+class scene_01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera_path(pathIds=[4002], returnView=False)
-        show_caption(type='VerticalCaption', title='$map:52020011$', desc='$NpcName:11003599$의 임시 거처', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=3000, scale=1.5)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera_path(pathIds=[4002], returnView=False)
+        self.show_caption(type='VerticalCaption', title='$map:52020011$', desc='$NpcName:11003599$의 임시 거처', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=3000, scale=1.5)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return scene_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return scene_02(self.ctx)
 
 
-class scene_02(state.State):
+class scene_02(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4003,4004,4005,4006], returnView=False)
+        self.select_camera_path(pathIds=[4003,4004,4005,4006], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4500):
-            return scene_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4500):
+            return scene_03(self.ctx)
 
     def on_exit(self):
-        set_pc_emotion_sequence(sequenceNames=['Emotion_Chin_Chin_A'])
+        self.set_pc_emotion_sequence(sequenceNames=['Emotion_Chin_Chin_A'])
 
 
-class scene_03(state.State):
+class scene_03(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4007,4008], returnView=False)
+        self.select_camera_path(pathIds=[4007,4008], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return scene_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return scene_04(self.ctx)
 
 
-class scene_04(state.State):
+class scene_04(common.Trigger):
     def on_enter(self):
-        show_caption(type='NameCaption', title='$NpcName:11003599$', desc='크리티아스 왕녀', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=3000, scale=2)
-        add_cinematic_talk(npcId=11003599, msg='그래, 반갑구나.', duration=2800)
-        set_scene_skip()
+        self.show_caption(type='NameCaption', title='$NpcName:11003599$', desc='크리티아스 왕녀', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=3000, scale=2)
+        self.add_cinematic_talk(npcId=11003599, msg='그래, 반갑구나.', duration=2800)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return Exit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return Exit(self.ctx)
 
 
-class Exit(state.State):
+class Exit(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=0)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=0)
 
 
+initial_state = Idle

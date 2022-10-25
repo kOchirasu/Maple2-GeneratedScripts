@@ -1,137 +1,137 @@
 """ trigger/52000193_qd/52000193.xml """
-from common import *
-import state
+import common
 
 
-class start(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[2001]):
-            return CameraEffect01()
+class start(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[2001]):
+            return CameraEffect01(self.ctx)
 
 
-class CameraEffect01(state.State):
+class CameraEffect01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return CameraEffect02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return CameraEffect02(self.ctx)
 
 
-class CameraEffect02(state.State):
+class CameraEffect02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[202])
-        visible_my_pc(isVisible=False) # 유저 투명 처리
-        set_cinematic_ui(type=1)
+        self.create_monster(spawnIds=[202])
+        self.visible_my_pc(isVisible=False) # 유저 투명 처리
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraEffect02_01()
-
-
-class CameraEffect02_01(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[10003406], questStates=[2]):
-            return CameraEffect02_02()
-        if quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[3]):
-            return 이동()
-        if quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[2]):
-            return 변신_02()
-        if not quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[2]):
-            return 변신_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraEffect02_01(self.ctx)
 
 
-class CameraEffect02_02(state.State):
+class CameraEffect02_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[10003406], questStates=[2]):
+            return CameraEffect02_02(self.ctx)
+        if self.quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[3]):
+            return 이동(self.ctx)
+        if self.quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[2]):
+            return 변신_02(self.ctx)
+        if not self.quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[2]):
+            return 변신_02(self.ctx)
+
+
+class CameraEffect02_02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=9, script='$52000193_QD__52000193__0$')
+        self.set_cinematic_ui(type=9, script='$52000193_QD__52000193__0$')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CameraEffect03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CameraEffect03(self.ctx)
 
 
-class CameraEffect03(state.State):
+class CameraEffect03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=1)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraEffect03_3()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraEffect03_3(self.ctx)
 
 
-class CameraEffect03_3(state.State):
+class CameraEffect03_3(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4001,4002], returnView=False)
-        show_caption(type='VerticalCaption', title='$52000193_QD__52000193__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
+        self.select_camera_path(pathIds=[4001,4002], returnView=False)
+        self.show_caption(type='VerticalCaption', title='$52000193_QD__52000193__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return CameraEffect03_4()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return CameraEffect03_4(self.ctx)
 
 
-class CameraEffect03_4(state.State):
+class CameraEffect03_4(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 변신_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 변신_01(self.ctx)
 
 
-class 변신_01(state.State):
+class 변신_01(common.Trigger):
     def on_enter(self):
-        reset_camera(interpolationTime=0)
-        destroy_monster(spawnIds=[201])
-        visible_my_pc(isVisible=True) # 유저 투명 처리 품
-        set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        add_buff(boxIds=[2001], skillId=99910402, level=1, arg4=False, arg5=True) # 에레브 변신
-        add_buff(boxIds=[2001], skillId=99910402, level=1, arg4=False, arg5=False) # 에레브 변신
+        self.reset_camera(interpolationTime=0)
+        self.destroy_monster(spawnIds=[201])
+        self.visible_my_pc(isVisible=True) # 유저 투명 처리 품
+        self.set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
+        self.add_buff(boxIds=[2001], skillId=99910402, level=1, isPlayer=False, isSkillSet=True) # 에레브 변신
+        self.add_buff(boxIds=[2001], skillId=99910402, level=1, isPlayer=False, isSkillSet=False) # 에레브 변신
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return CameraEffect03_6()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return CameraEffect03_6(self.ctx)
 
 
-class 변신_02(state.State):
+class 변신_02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000193, portalId=5002)
-        reset_camera(interpolationTime=0)
-        destroy_monster(spawnIds=[201])
-        visible_my_pc(isVisible=True) # 유저 투명 처리 품
-        set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        add_buff(boxIds=[2001], skillId=99910402, level=1, arg4=False, arg5=True) # 에레브 변신
-        add_buff(boxIds=[2001], skillId=99910402, level=1, arg4=False, arg5=False) # 에레브 변신
+        self.move_user(mapId=52000193, portalId=5002)
+        self.reset_camera(interpolationTime=0)
+        self.destroy_monster(spawnIds=[201])
+        self.visible_my_pc(isVisible=True) # 유저 투명 처리 품
+        self.set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
+        self.add_buff(boxIds=[2001], skillId=99910402, level=1, isPlayer=False, isSkillSet=True) # 에레브 변신
+        self.add_buff(boxIds=[2001], skillId=99910402, level=1, isPlayer=False, isSkillSet=False) # 에레브 변신
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return CameraEffect03_6()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return CameraEffect03_6(self.ctx)
 
 
-class CameraEffect03_6(state.State):
+class CameraEffect03_6(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraEffect03_8()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraEffect03_8(self.ctx)
 
 
-class CameraEffect03_8(state.State):
+class CameraEffect03_8(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[3]):
-            return 이동()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[10003407], questStates=[3]):
+            return 이동(self.ctx)
 
 
-class 이동(state.State):
+class 이동(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000065, portalId=0)
+        self.move_user(mapId=2000065, portalId=0)
 
 
+initial_state = start

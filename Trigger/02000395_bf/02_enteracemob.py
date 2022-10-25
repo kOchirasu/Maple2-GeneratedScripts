@@ -1,39 +1,39 @@
 """ trigger/02000395_bf/02_enteracemob.xml """
-from common import *
-import state
+import common
 
 
-class Setting(state.State):
+class Setting(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[900,901]) # Mob_Enter
-        set_user_value(key='MobSpawn', value=0)
+        self.destroy_monster(spawnIds=[900,901]) # Mob_Enter
+        self.set_user_value(key='MobSpawn', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MobSpawn', value=1):
-            return MobSpawn01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MobSpawn', value=1):
+            return MobSpawn01(self.ctx)
 
 
-class MobSpawn01(state.State):
+class MobSpawn01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[900], arg2=False)
+        self.create_monster(spawnIds=[900], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return MobSpawn02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return MobSpawn02(self.ctx)
 
 
-class MobSpawn02(state.State):
+class MobSpawn02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[901], arg2=False)
+        self.create_monster(spawnIds=[901], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[900,901]):
-            return Reset()
-
-
-class Reset(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return MobSpawn01()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[900,901]):
+            return Reset(self.ctx)
 
 
+class Reset(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return MobSpawn01(self.ctx)
+
+
+initial_state = Setting

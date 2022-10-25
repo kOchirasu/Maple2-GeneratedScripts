@@ -1,38 +1,38 @@
 """ trigger/02000471_bf/timer.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2040301, key='TimerEnd', value=0)
+        self.set_user_value(triggerId=2040301, key='TimerEnd', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TimerStart', value=1):
-            return start()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TimerStart', value=1):
+            return start(self.ctx)
 
 
-class start(state.State):
+class start(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='Timer', seconds=420, clearAtZero=True, display=True, arg5=0)
-        set_event_ui(type=1, arg2='$02000471_BF__TIMER__0$', arg3='5000', arg4='0')
+        self.set_timer(timerId='Timer', seconds=420, startDelay=1, interval=1, vOffset=0)
+        self.set_event_ui(type=1, arg2='$02000471_BF__TIMER__0$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='Timer'):
-            return end_fail()
-        if user_value(key='InteractClear', value=1):
-            return end_clear()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='Timer'):
+            return end_fail(self.ctx)
+        if self.user_value(key='InteractClear', value=1):
+            return end_clear(self.ctx)
 
 
-class end_fail(state.State):
+class end_fail(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2040301, key='TimerEnd', value=1)
-        reset_timer(timerId='Timer')
+        self.set_user_value(triggerId=2040301, key='TimerEnd', value=1)
+        self.reset_timer(timerId='Timer')
 
 
-class end_clear(state.State):
+class end_clear(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2040301, key='InteractClear', value=1)
-        reset_timer(timerId='Timer')
+        self.set_user_value(triggerId=2040301, key='InteractClear', value=1)
+        self.reset_timer(timerId='Timer')
 
 
+initial_state = idle

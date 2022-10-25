@@ -1,27 +1,27 @@
 """ trigger/61000010_me/goal.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='gameStart', value=1):
-            return 결승점()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='gameStart', value=1):
+            return 결승점(self.ctx)
 
 
-class 결승점(state.State):
+class 결승점(common.Trigger):
     def on_enter(self):
-        end_mini_game_round(winnerBoxId=102, isOnlyWinner=True, expRate=1)
-        mini_game_give_reward(winnerBoxId=102, contentType='MiniGameType2')
-        end_mini_game(winnerBoxId=102, isOnlyWinner='true', gameName='shanghairunner')
-        add_buff(boxIds=[102], skillId=70000019, level=1)
+        self.end_mini_game_round(winnerBoxId=102, isOnlyWinner=True, expRate=1)
+        self.mini_game_give_reward(winnerBoxId=102, contentType='MiniGameType2')
+        self.end_mini_game(winnerBoxId=102, isOnlyWinner='true', gameName='shanghairunner')
+        self.add_buff(boxIds=[102], skillId=70000019, level=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return 결승점()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return 결승점(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

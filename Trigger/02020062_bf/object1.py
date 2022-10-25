@@ -1,91 +1,91 @@
 """ trigger/02020062_bf/object1.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=False)
-        set_user_value(triggerId=99990014, key='EliteSpawn', value=0)
-        set_interact_object(triggerIds=[12000107], state=2)
+        self.set_effect(triggerIds=[5001], visible=False)
+        self.set_user_value(triggerId=99990014, key='EliteSpawn', value=0)
+        self.set_interact_object(triggerIds=[12000107], state=2)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ObjectStart', value=1):
-            return 레버1_가이드메시지()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ObjectStart', value=1):
+            return 레버1_가이드메시지(self.ctx)
 
 
-class 레버1_가이드메시지(state.State):
+class 레버1_가이드메시지(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[721], arg2=False)
+        self.create_monster(spawnIds=[721], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ObjectStart', value=2):
-            return 대기()
-        if user_detected(boxIds=[9011]):
-            set_event_ui(type=1, arg2='$02020062_BF__OBJECT1__0$', arg3='5000', arg4='9011')
-            return 레버1_체크()
-
-
-class 레버1_체크(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='ObjectStart', value=2):
-            return 대기()
-        if monster_dead(boxIds=[711]):
-            return 레버1_발동()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ObjectStart', value=2):
+            return 대기(self.ctx)
+        if self.user_detected(boxIds=[9011]):
+            self.set_event_ui(type=1, arg2='$02020062_BF__OBJECT1__0$', arg3='5000', arg4='9011')
+            return 레버1_체크(self.ctx)
 
 
-class 레버1_발동(state.State):
+class 레버1_체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ObjectStart', value=2):
+            return 대기(self.ctx)
+        if self.monster_dead(boxIds=[711]):
+            return 레버1_발동(self.ctx)
+
+
+class 레버1_발동(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=True)
-        set_interact_object(triggerIds=[12000107], state=1)
-        set_event_ui(type=1, arg2='$02020062_BF__OBJECT1__1$', arg3='5000', arg4='9011')
+        self.set_effect(triggerIds=[5001], visible=True)
+        self.set_interact_object(triggerIds=[12000107], state=1)
+        self.set_event_ui(type=1, arg2='$02020062_BF__OBJECT1__1$', arg3='5000', arg4='9011')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ObjectStart', value=2):
-            return 대기()
-        if monster_dead(boxIds=[701]):
-            return 종료()
-        if object_interacted(interactIds=[12000107], arg2=0):
-            return 레버1_몬스터등장()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ObjectStart', value=2):
+            return 대기(self.ctx)
+        if self.monster_dead(boxIds=[701]):
+            return 종료(self.ctx)
+        if self.object_interacted(interactIds=[12000107], stateValue=0):
+            return 레버1_몬스터등장(self.ctx)
 
 
-class 레버1_몬스터등장(state.State):
+class 레버1_몬스터등장(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990014, key='EliteSpawn', value=1)
+        self.set_user_value(triggerId=99990014, key='EliteSpawn', value=1)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ObjectStart', value=2):
-            return 대기()
-        if monster_dead(boxIds=[701]):
-            return 종료()
-        if wait_tick(waitTick=20000):
-            return 레버1_재활성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ObjectStart', value=2):
+            return 대기(self.ctx)
+        if self.monster_dead(boxIds=[701]):
+            return 종료(self.ctx)
+        if self.wait_tick(waitTick=20000):
+            return 레버1_재활성(self.ctx)
 
 
-class 레버1_재활성(state.State):
+class 레버1_재활성(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000107], state=1)
+        self.set_interact_object(triggerIds=[12000107], state=1)
 
-    def on_tick(self) -> state.State:
-        if all_of():
-            return 종료()
-        if object_interacted(interactIds=[12000107], arg2=0):
-            return 레버1_재활성_대기()
-
-
-class 레버1_재활성_대기(state.State):
-    def on_tick(self) -> state.State:
-        if all_of():
-            return 종료()
-        if wait_tick(waitTick=20000):
-            return 레버1_재활성()
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return 종료(self.ctx)
+        if self.object_interacted(interactIds=[12000107], stateValue=0):
+            return 레버1_재활성_대기(self.ctx)
 
 
-class 종료(state.State):
+class 레버1_재활성_대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return 종료(self.ctx)
+        if self.wait_tick(waitTick=20000):
+            return 레버1_재활성(self.ctx)
+
+
+class 종료(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=False)
-        set_user_value(triggerId=99990014, key='EliteSpawn', value=2)
-        destroy_monster(spawnIds=[721], arg2=False)
-        set_interact_object(triggerIds=[12000107], state=2)
+        self.set_effect(triggerIds=[5001], visible=False)
+        self.set_user_value(triggerId=99990014, key='EliteSpawn', value=2)
+        self.destroy_monster(spawnIds=[721], arg2=False)
+        self.set_interact_object(triggerIds=[12000107], state=2)
 
 
+initial_state = 대기

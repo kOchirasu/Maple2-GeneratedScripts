@@ -1,30 +1,30 @@
 """ trigger/02100009_bf/monsterdie_2.xml """
-from common import *
-import state
+import common
 
 
-class 유저감지(state.State):
+class 유저감지(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[1000049], isEnable=False)
+        self.set_skill(triggerIds=[1000049], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 대기()
-
-
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[100000002]):
-            return 버프()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 대기(self.ctx)
 
 
-class 버프(state.State):
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[100000002]):
+            return 버프(self.ctx)
+
+
+class 버프(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[100000001], skillId=50000217, level=1, arg4=True, arg5=False)
-        set_skill(triggerIds=[1000049], isEnable=True)
+        self.add_buff(boxIds=[100000001], skillId=50000217, level=1, isPlayer=True, isSkillSet=False)
+        self.set_skill(triggerIds=[1000049], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
             return None
 
 
+initial_state = 유저감지

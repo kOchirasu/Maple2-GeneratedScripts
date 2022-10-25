@@ -1,60 +1,60 @@
 """ trigger/02000482_bf/06_toroom_false.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002033], state=0) # ToRoom_False
-        set_user_value(key='ToRoomFalse', value=0)
-        set_user_value(key='AnotherGuide', value=0)
+        self.set_interact_object(triggerIds=[10002033], state=0) # ToRoom_False
+        self.set_user_value(key='ToRoomFalse', value=0)
+        self.set_user_value(key='AnotherGuide', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ToRoomFalse', value=1):
-            return ToRoomFalse()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ToRoomFalse', value=1):
+            return ToRoomFalse(self.ctx)
 
 
-class ToRoomFalse(state.State):
+class ToRoomFalse(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002033], state=1) # ToRoom_False
+        self.set_interact_object(triggerIds=[10002033], state=1) # ToRoom_False
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002033], arg2=0):
-            return NoticeDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002033], stateValue=0):
+            return NoticeDelay(self.ctx)
 
 
-class NoticeDelay(state.State):
+class NoticeDelay(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=5, key='AnotherGuide', value=1)
-        set_user_value(triggerId=7, key='AnotherGuide', value=1)
+        self.set_user_value(triggerId=5, key='AnotherGuide', value=1)
+        self.set_user_value(triggerId=7, key='AnotherGuide', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return NoticeOn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return NoticeOn(self.ctx)
 
 
-class NoticeOn(state.State):
+class NoticeOn(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039604, textId=20039604) # 가이드 : 문이 안쪽에서 굳게 잠겨 있습니다.
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039604, textId=20039604) # 가이드 : 문이 안쪽에서 굳게 잠겨 있습니다.
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CloseGuide02()
-        if user_value(key='AnotherGuide', value=1):
-            return CloseGuide01()
-
-
-class CloseGuide01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return CloseGuide02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CloseGuide02(self.ctx)
+        if self.user_value(key='AnotherGuide', value=1):
+            return CloseGuide01(self.ctx)
 
 
-class CloseGuide02(state.State):
+class CloseGuide01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return CloseGuide02(self.ctx)
+
+
+class CloseGuide02(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20039604)
-        set_user_value(triggerId=5, key='AnotherGuide', value=0)
-        set_user_value(triggerId=7, key='AnotherGuide', value=0)
+        self.hide_guide_summary(entityId=20039604)
+        self.set_user_value(triggerId=5, key='AnotherGuide', value=0)
+        self.set_user_value(triggerId=7, key='AnotherGuide', value=0)
 
 
+initial_state = Wait

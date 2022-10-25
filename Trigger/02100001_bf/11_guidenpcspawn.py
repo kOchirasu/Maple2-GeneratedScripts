@@ -1,34 +1,34 @@
 """ trigger/02100001_bf/11_guidenpcspawn.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[109])
+        self.destroy_monster(spawnIds=[109])
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9903]):
-            return NpcSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9903]):
+            return NpcSpawn(self.ctx)
 
 
-class NpcSpawn(state.State):
+class NpcSpawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[109], arg2=False)
+        self.create_monster(spawnIds=[109], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=60000):
-            return CheckUser()
-
-
-class CheckUser(state.State):
-    def on_tick(self) -> state.State:
-        if not user_detected(boxIds=[9903]):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=60000):
+            return CheckUser(self.ctx)
 
 
-class Quit(state.State):
+class CheckUser(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.user_detected(boxIds=[9903]):
+            return Quit(self.ctx)
+
+
+class Quit(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[109])
+        self.destroy_monster(spawnIds=[109])
 
 
+initial_state = Wait

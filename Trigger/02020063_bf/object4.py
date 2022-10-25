@@ -1,44 +1,44 @@
 """ trigger/02020063_bf/object4.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[714], arg2=False)
+        self.destroy_monster(spawnIds=[714], arg2=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TurretSpawn_4', value=1):
-            return 터렛_활성화()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TurretSpawn_4', value=1):
+            return 터렛_활성화(self.ctx)
 
 
-class 터렛_활성화(state.State):
+class 터렛_활성화(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[714], arg2=False)
+        self.create_monster(spawnIds=[714], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TurretSpawn_4', value=0):
-            return 대기()
-        if monster_dead(boxIds=[714]):
-            return 터렛_비활성화()
-        if monster_dead(boxIds=[801]):
-            return 종료()
-
-
-class 터렛_비활성화(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='TurretSpawn_4', value=0):
-            return 대기()
-        if monster_dead(boxIds=[801]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TurretSpawn_4', value=0):
+            return 대기(self.ctx)
+        if self.monster_dead(boxIds=[714]):
+            return 터렛_비활성화(self.ctx)
+        if self.monster_dead(boxIds=[801]):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 터렛_비활성화(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TurretSpawn_4', value=0):
+            return 대기(self.ctx)
+        if self.monster_dead(boxIds=[801]):
+            return 종료(self.ctx)
+
+
+class 종료(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[714], arg2=False)
+        self.destroy_monster(spawnIds=[714], arg2=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TurretSpawn_4', value=1):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TurretSpawn_4', value=1):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

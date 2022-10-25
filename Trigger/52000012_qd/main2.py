@@ -1,65 +1,65 @@
 """ trigger/52000012_qd/main2.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
-        set_actor(triggerId=10001, visible=True, initialSequence='Closed')
-        set_actor(triggerId=10002, visible=True, initialSequence='Closed')
-        set_mesh(triggerIds=[10011], visible=True)
-        set_mesh(triggerIds=[10012], visible=True)
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_actor(triggerId=10001, visible=True, initialSequence='Closed')
+        self.set_actor(triggerId=10002, visible=True, initialSequence='Closed')
+        self.set_mesh(triggerIds=[10011], visible=True)
+        self.set_mesh(triggerIds=[10012], visible=True)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[2]):
-            return 문열림1()
-        if quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[3]):
-            return 문열림1()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[2]):
+            return 문열림1(self.ctx)
+        if self.quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[3]):
+            return 문열림1(self.ctx)
 
     def on_exit(self):
-        create_monster(spawnIds=[2000], arg2=False)
-        destroy_monster(spawnIds=[5000])
-        destroy_monster(spawnIds=[101])
-        destroy_monster(spawnIds=[102])
-        destroy_monster(spawnIds=[103])
+        self.create_monster(spawnIds=[2000], animationEffect=False)
+        self.destroy_monster(spawnIds=[5000])
+        self.destroy_monster(spawnIds=[101])
+        self.destroy_monster(spawnIds=[102])
+        self.destroy_monster(spawnIds=[103])
 
 
-class 문열림1(state.State):
+class 문열림1(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='19', seconds=1)
-        set_actor(triggerId=10001, visible=True, initialSequence='Opened')
-        set_mesh(triggerIds=[10011], visible=False)
+        self.set_timer(timerId='19', seconds=1)
+        self.set_actor(triggerId=10001, visible=True, initialSequence='Opened')
+        self.set_mesh(triggerIds=[10011], visible=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='19'):
-            return 문열림2()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='19'):
+            return 문열림2(self.ctx)
 
 
-class 문열림2(state.State):
+class 문열림2(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=10002, visible=True, initialSequence='Opened')
-        set_mesh(triggerIds=[10012], visible=False)
+        self.set_actor(triggerId=10002, visible=True, initialSequence='Opened')
+        self.set_mesh(triggerIds=[10012], visible=False)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[2]):
-            return 포털생성()
-        if quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[3]):
-            return 포털생성()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[2]):
+            return 포털생성(self.ctx)
+        if self.quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[3]):
+            return 포털생성(self.ctx)
 
 
-class 포털생성(state.State):
+class 포털생성(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> state.State:
-        if not user_detected(boxIds=[9001]):
-            return 종료()
-
-
-class 종료(state.State):
-    def on_tick(self) -> state.State:
-        if true():
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if not self.user_detected(boxIds=[9001]):
+            return 종료(self.ctx)
 
 
+class 종료(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 대기(self.ctx)
+
+
+initial_state = 대기

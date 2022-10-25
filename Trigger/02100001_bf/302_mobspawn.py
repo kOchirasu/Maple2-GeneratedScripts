@@ -1,37 +1,37 @@
 """ trigger/02100001_bf/302_mobspawn.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RemoveAll', value=0)
-        destroy_monster(spawnIds=[302])
+        self.set_user_value(key='RemoveAll', value=0)
+        self.destroy_monster(spawnIds=[302])
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return MobSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return MobSpawn(self.ctx)
 
 
-class MobSpawn(state.State):
+class MobSpawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[302], arg2=False)
+        self.create_monster(spawnIds=[302], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[302]):
-            return Delay01()
-        if user_value(key='RemoveAll', value=1):
-            return Quit()
-
-
-class Delay01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=45000):
-            return MobSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[302]):
+            return Delay01(self.ctx)
+        if self.user_value(key='RemoveAll', value=1):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Delay01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=45000):
+            return MobSpawn(self.ctx)
+
+
+class Quit(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[302])
+        self.destroy_monster(spawnIds=[302])
 
 
+initial_state = Wait

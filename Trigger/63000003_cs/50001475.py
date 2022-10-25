@@ -1,57 +1,57 @@
 """ trigger/63000003_cs/50001475.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[1001,1002], arg2=False)
+        self.create_monster(spawnIds=[1001,1002], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[101], questIds=[50001475], questStates=[3]):
-            return 말풍선01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[101], questIds=[50001475], questStates=[3]):
+            return 말풍선01(self.ctx)
 
 
-class 말풍선01(state.State):
+class 말풍선01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_conversation(type=1, spawnId=1001, script='$63000003_CS__50001475__0$', arg4=4, arg5=0)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_conversation(type=1, spawnId=1001, script='$63000003_CS__50001475__0$', arg4=4, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return NPC이동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return NPC이동(self.ctx)
 
 
-class NPC이동(state.State):
+class NPC이동(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=1001, patrolName='MS2PatrolData_A')
-        move_npc(spawnId=1002, patrolName='MS2PatrolData_A')
+        self.move_npc(spawnId=1001, patrolName='MS2PatrolData_A')
+        self.move_npc(spawnId=1002, patrolName='MS2PatrolData_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return PC이동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return PC이동(self.ctx)
 
 
-class PC이동(state.State):
+class PC이동(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_A')
+        self.move_user_path(patrolName='MS2PatrolData_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4500):
-            return 강제이동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4500):
+            return 강제이동(self.ctx)
 
 
-class 강제이동(state.State):
+class 강제이동(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000062, portalId=0)
+        self.move_user(mapId=2000062, portalId=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

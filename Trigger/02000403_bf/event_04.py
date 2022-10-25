@@ -1,45 +1,45 @@
 """ trigger/02000403_bf/event_04.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1803], visible=True, arg3=0, arg4=200, arg5=0)
-        set_mesh(triggerIds=[1804], visible=False, arg3=0, arg4=200, arg5=0)
-        set_mesh(triggerIds=[1805], visible=False, arg3=0, arg4=200, arg5=0)
-        set_mesh(triggerIds=[1806], visible=False, arg3=0, arg4=200, arg5=0)
+        self.set_mesh(triggerIds=[1803], visible=True, arg3=0, delay=200, scale=0)
+        self.set_mesh(triggerIds=[1804], visible=False, arg3=0, delay=200, scale=0)
+        self.set_mesh(triggerIds=[1805], visible=False, arg3=0, delay=200, scale=0)
+        self.set_mesh(triggerIds=[1806], visible=False, arg3=0, delay=200, scale=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[705]):
-            return Ready()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[705]):
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1803], visible=False, arg3=0, arg4=200, arg5=85)
-        set_mesh(triggerIds=[1804], visible=True, arg3=0, arg4=200, arg5=85)
-        set_mesh(triggerIds=[1805], visible=False, arg3=0, arg4=200, arg5=0)
+        self.set_mesh(triggerIds=[1803], visible=False, arg3=0, delay=200, scale=85)
+        self.set_mesh(triggerIds=[1804], visible=True, arg3=0, delay=200, scale=85)
+        self.set_mesh(triggerIds=[1805], visible=False, arg3=0, delay=200, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return Ready_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return Ready_02(self.ctx)
 
 
-class Ready_02(state.State):
+class Ready_02(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1803], visible=False, arg3=0, arg4=200, arg5=5)
-        set_mesh(triggerIds=[1804], visible=True, arg3=0, arg4=200, arg5=5)
-        set_mesh(triggerIds=[1806], visible=True, arg3=0, arg4=200, arg5=5)
-        set_achievement(triggerId=705, type='trigger', achieve='Hauntedmansion')
+        self.set_mesh(triggerIds=[1803], visible=False, arg3=0, delay=200, scale=5)
+        self.set_mesh(triggerIds=[1804], visible=True, arg3=0, delay=200, scale=5)
+        self.set_mesh(triggerIds=[1806], visible=True, arg3=0, delay=200, scale=5)
+        self.set_achievement(triggerId=705, type='trigger', achieve='Hauntedmansion')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Ready_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Ready_03(self.ctx)
 
 
-class Ready_03(state.State):
+class Ready_03(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1806], visible=False, arg3=0, arg4=200, arg5=5)
+        self.set_mesh(triggerIds=[1806], visible=False, arg3=0, delay=200, scale=5)
 
 
+initial_state = idle

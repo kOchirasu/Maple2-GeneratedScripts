@@ -1,41 +1,41 @@
 """ trigger/02000315_bf/wounded_104.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='BridgeOpen', value=0)
-        set_interact_object(triggerIds=[10001039], state=1)
+        self.set_user_value(key='BridgeOpen', value=0)
+        self.set_interact_object(triggerIds=[10001039], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001039], arg2=0):
-            return WakeUp()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001039], stateValue=0):
+            return WakeUp(self.ctx)
 
 
-class WakeUp(state.State):
+class WakeUp(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001039], state=2)
-        create_monster(spawnIds=[104], arg2=False)
+        self.set_interact_object(triggerIds=[10001039], state=2)
+        self.create_monster(spawnIds=[104], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BridgeOpen', value=2):
-            return Patrol02()
-        if user_value(key='BridgeOpen', value=3):
-            return Patrol03()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BridgeOpen', value=2):
+            return Patrol02(self.ctx)
+        if self.user_value(key='BridgeOpen', value=3):
+            return Patrol03(self.ctx)
 
 
-class Patrol02(state.State):
+class Patrol02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=104, patrolName='MS2PatrolData_1041')
+        self.move_npc(spawnId=104, patrolName='MS2PatrolData_1041')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BridgeOpen', value=3):
-            return Patrol03()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BridgeOpen', value=3):
+            return Patrol03(self.ctx)
 
 
-class Patrol03(state.State):
+class Patrol03(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=104, patrolName='MS2PatrolData_1042')
+        self.move_npc(spawnId=104, patrolName='MS2PatrolData_1042')
 
 
+initial_state = Wait

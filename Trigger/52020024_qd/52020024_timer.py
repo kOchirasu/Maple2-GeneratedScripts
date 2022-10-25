@@ -1,27 +1,27 @@
 """ trigger/52020024_qd/52020024_timer.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='TimerStart', value=1):
-            return 시작()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TimerStart', value=1):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=5, clearAtZero=True, display=True)
+        self.set_timer(timerId='1', seconds=5, startDelay=1, interval=1)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990001, key='TimerStart', value=2)
-        set_user_value(triggerId=99990003, key='FinalPhase', value=2)
-        reset_timer(timerId='1')
+        self.set_user_value(triggerId=99990001, key='TimerStart', value=2)
+        self.set_user_value(triggerId=99990003, key='FinalPhase', value=2)
+        self.reset_timer(timerId='1')
 
 
+initial_state = 대기

@@ -1,69 +1,69 @@
 """ trigger/52000014_qd/steam_5800.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return 딜레이01()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return 딜레이01(self.ctx)
 
 
-class 딜레이01(state.State):
+class 딜레이01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=2)
+        self.set_timer(timerId='1', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 발사01()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 발사01(self.ctx)
 
 
-class 발사01(state.State):
+class 발사01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=1)
-        create_monster(spawnIds=[580], arg2=False)
+        self.set_timer(timerId='2', seconds=1)
+        self.create_monster(spawnIds=[580], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 발사02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 발사02(self.ctx)
 
 
-class 발사02(state.State):
+class 발사02(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=3)
-        create_monster(spawnIds=[581], arg2=False)
+        self.set_timer(timerId='3', seconds=3)
+        self.create_monster(spawnIds=[581], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 딜레이02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 딜레이02(self.ctx)
 
 
-class 딜레이02(state.State):
+class 딜레이02(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='4', seconds=1)
-        destroy_monster(spawnIds=[580])
+        self.set_timer(timerId='4', seconds=1)
+        self.destroy_monster(spawnIds=[580])
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return 발사03()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return 발사03(self.ctx)
 
 
-class 발사03(state.State):
+class 발사03(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='5', seconds=2)
-        create_monster(spawnIds=[581], arg2=False)
+        self.set_timer(timerId='5', seconds=2)
+        self.create_monster(spawnIds=[581], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='5'):
-            return 초기화()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='5'):
+            return 초기화(self.ctx)
 
 
-class 초기화(state.State):
+class 초기화(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[581])
+        self.destroy_monster(spawnIds=[581])
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 딜레이01()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 딜레이01(self.ctx)
 
 
+initial_state = 대기

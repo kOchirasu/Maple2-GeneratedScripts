@@ -1,67 +1,67 @@
 """ trigger/99999949/02_setonetimeeffect.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
-        set_onetime_effect(id=2, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
-        set_onetime_effect(id=3, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
-        set_onetime_effect(id=4, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
+        self.set_onetime_effect(id=2, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
+        self.set_onetime_effect(id=3, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
+        self.set_onetime_effect(id=4, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9011]):
-            return Guide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9011]):
+            return Guide(self.ctx)
 
 
-class Guide(state.State):
+class Guide(common.Trigger):
     def on_enter(self):
-        debug_string(string='2번 영역에 들어가면 SetOnetimeEffect 트리거가 발동됩니다.')
+        self.debug_string(string='2번 영역에 들어가면 SetOnetimeEffect 트리거가 발동됩니다.')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9010]):
-            return SetOnetimeEffectReady01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9010]):
+            return SetOnetimeEffectReady01(self.ctx)
 
 
-class SetOnetimeEffectReady01(state.State):
+class SetOnetimeEffectReady01(common.Trigger):
     def on_enter(self):
-        debug_string(string='SetOnetimeEffect 2초 후에 시작됩니다.')
-        set_onetime_effect(id=2, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
+        self.debug_string(string='SetOnetimeEffect 2초 후에 시작됩니다.')
+        self.set_onetime_effect(id=2, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SetOnetimeEffectReady02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SetOnetimeEffectReady02(self.ctx)
 
 
-class SetOnetimeEffectReady02(state.State):
+class SetOnetimeEffectReady02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
+        self.set_onetime_effect(id=3, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SetOnetimeEffect01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SetOnetimeEffect01(self.ctx)
 
 
-class SetOnetimeEffect01(state.State):
+class SetOnetimeEffect01(common.Trigger):
     def on_enter(self):
-        debug_string(string='SetOnetimeEffect 재생')
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
-        set_onetime_effect(id=4, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.debug_string(string='SetOnetimeEffect 재생')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
-        set_onetime_effect(id=4, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        debug_string(string='7초 후에 트리거가 리셋됩니다. 2번 영역 밖으로 나가세요.')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_black.xml')
+        self.set_onetime_effect(id=4, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.debug_string(string='7초 후에 트리거가 리셋됩니다. 2번 영역 밖으로 나가세요.')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

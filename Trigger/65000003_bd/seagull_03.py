@@ -1,33 +1,33 @@
 """ trigger/65000003_bd/seagull_03.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2003], arg2=False)
+        self.create_monster(spawnIds=[2003], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[10503]):
-            return 이동()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[10503]):
+            return 이동(self.ctx)
 
 
-class 이동(state.State):
+class 이동(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=2)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            move_npc(spawnId=2003, patrolName='MS2PatrolData_2003')
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            self.move_npc(spawnId=2003, patrolName='MS2PatrolData_2003')
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1800000', seconds=1800000)
+        self.set_timer(timerId='1800000', seconds=1800000)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1800000'):
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1800000'):
             return None # Missing State: 종료2
 
 
+initial_state = 시작

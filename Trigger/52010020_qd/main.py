@@ -1,99 +1,99 @@
 """ trigger/52010020_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=False)
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=4)
-        create_monster(spawnIds=[101,102])
+        self.set_effect(triggerIds=[7001], visible=False)
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=4)
+        self.create_monster(spawnIds=[101,102])
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[701]):
-            return Event_Ready()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[701]):
+            return Event_Ready(self.ctx)
 
 
-class Event_Ready(state.State):
+class Event_Ready(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=3)
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_01()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_01(self.ctx)
 
 
-class Event_01(state.State):
+class Event_01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
-        set_conversation(type=1, spawnId=102, script='$52010020_QD__MAIN__0$', arg4=5)
-        set_timer(timerId='2', seconds=2)
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
+        self.set_conversation(type=1, spawnId=102, script='$52010020_QD__MAIN__0$', arg4=5)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return Event_02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return Event_02(self.ctx)
 
 
-class Event_02(state.State):
+class Event_02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=101, patrolName='MS2PatrolData_2002')
-        set_conversation(type=1, spawnId=101, script='$52010020_QD__MAIN__1$', arg4=5)
-        set_timer(timerId='5', seconds=5)
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_2002')
+        self.set_conversation(type=1, spawnId=101, script='$52010020_QD__MAIN__1$', arg4=5)
+        self.set_timer(timerId='5', seconds=5)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='5'):
-            return Event_03()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='5'):
+            return Event_03(self.ctx)
 
 
-class Event_03(state.State):
+class Event_03(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=True)
-        move_npc(spawnId=101, patrolName='MS2PatrolData_2004')
-        move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
-        move_user(mapId=52010020, portalId=1, boxId=701)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False)
-        create_monster(spawnIds=[103])
-        move_npc(spawnId=103, patrolName='MS2PatrolData_2003')
-        select_camera_path(pathIds=[8001,8002], returnView=False) # 사이드뷰 카메라
-        set_timer(timerId='4', seconds=4)
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_2004')
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
+        self.move_user(mapId=52010020, portalId=1, boxId=701)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.create_monster(spawnIds=[103])
+        self.move_npc(spawnId=103, patrolName='MS2PatrolData_2003')
+        self.select_camera_path(pathIds=[8001,8002], returnView=False) # 사이드뷰 카메라
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Event_04()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Event_04(self.ctx)
 
 
-class Event_04(state.State):
+class Event_04(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001502, script='$52010020_QD__MAIN__2$', arg4=4)
-        move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
-        set_timer(timerId='3', seconds=3)
+        self.set_conversation(type=2, spawnId=11001502, script='$52010020_QD__MAIN__2$', arg4=4)
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_05()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_05(self.ctx)
 
     def on_exit(self):
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=4)
 
 
-class Event_05(state.State):
+class Event_05(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=2)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return end(self.ctx)
 
     def on_exit(self):
-        set_achievement(triggerId=701, type='trigger', achieve='luanDialogue')
-        select_camera(triggerId=8001, enable=False)
-        move_user(mapId=52010019, portalId=2, boxId=701)
+        self.set_achievement(triggerId=701, type='trigger', achieve='luanDialogue')
+        self.select_camera(triggerId=8001, enable=False)
+        self.move_user(mapId=52010019, portalId=2, boxId=701)
 
 
-class end(state.State):
+class end(common.Trigger):
     pass
 
 
+initial_state = idle

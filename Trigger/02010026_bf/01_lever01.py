@@ -1,34 +1,34 @@
 """ trigger/02010026_bf/01_lever01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1000,1001,1002,1003,1004], visible=False, arg3=0, arg4=0, arg5=5)
-        set_interact_object(triggerIds=[10000908], state=1)
+        self.set_mesh(triggerIds=[1000,1001,1002,1003,1004], visible=False, arg3=0, delay=0, scale=5)
+        self.set_interact_object(triggerIds=[10000908], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000908], arg2=0):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000908], stateValue=0):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_random_mesh(triggerIds=[1000,1001,1002,1003,1004], visible=True, meshCount=5, arg4=100, delay=100)
-        set_timer(timerId='2', seconds=5)
+        self.set_random_mesh(triggerIds=[1000,1001,1002,1003,1004], visible=True, meshCount=5, arg4=100, delay=100)
+        self.set_timer(timerId='2', seconds=5)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 재사용대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 재사용대기(self.ctx)
 
 
-class 재사용대기(state.State):
+class 재사용대기(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=10)
+        self.set_timer(timerId='3', seconds=10)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

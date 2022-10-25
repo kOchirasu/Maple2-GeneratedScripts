@@ -1,56 +1,56 @@
 """ trigger/99999841/invasion_portal.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990010, key='PCmove', value=0)
-        set_interact_object(triggerIds=[10002184], state=2, arg3=False)
+        self.set_user_value(triggerId=99990010, key='PCmove', value=0)
+        self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
 
 
-class 포탈열림(state.State):
+class 포탈열림(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=30, clearAtZero=True)
-        set_interact_object(triggerIds=[10002184], state=1, arg3=False)
+        self.set_timer(timerId='1', seconds=30, startDelay=1)
+        self.set_interact_object(triggerIds=[10002184], state=1, arg3=False)
 
-    def on_tick(self) -> state.State:
-        if dungeon_variable(varID='2', value=1):
-            return 종료()
-        if time_expired(timerId='1'):
-            reset_timer(timerId='1')
-            return 포탈닫힘()
-        if object_interacted(interactIds=[10002184], arg2=2):
-            return 유저이동()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_variable(varId=2, value=1):
+            return 종료(self.ctx)
+        if self.time_expired(timerId='1'):
+            self.reset_timer(timerId='1')
+            return 포탈닫힘(self.ctx)
+        if self.object_interacted(interactIds=[10002184], stateValue=2):
+            return 유저이동(self.ctx)
 
 
-class 유저이동(state.State):
+class 유저이동(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990010, key='PCmove', value=1)
+        self.set_user_value(triggerId=99990010, key='PCmove', value=1)
 
-    def on_tick(self) -> state.State:
-        if dungeon_variable(varID='2', value=1):
-            return 종료()
-        if dungeon_variable(varID='1000', value=1):
-            return 포탈열림()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_variable(varId=2, value=1):
+            return 종료(self.ctx)
+        if self.dungeon_variable(varId=1000, value=1):
+            return 포탈열림(self.ctx)
 
 
-class 포탈닫힘(state.State):
+class 포탈닫힘(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990010, key='PCmove', value=0)
-        set_timer(timerId='2', seconds=60, clearAtZero=True)
-        set_interact_object(triggerIds=[10002184], state=2, arg3=False)
+        self.set_user_value(triggerId=99990010, key='PCmove', value=0)
+        self.set_timer(timerId='2', seconds=60, startDelay=1)
+        self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
 
-    def on_tick(self) -> state.State:
-        if dungeon_variable(varID='2', value=1):
-            return 종료()
-        if time_expired(timerId='2'):
-            reset_timer(timerId='2')
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_variable(varId=2, value=1):
+            return 종료(self.ctx)
+        if self.time_expired(timerId='2'):
+            self.reset_timer(timerId='2')
+            return 대기(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002184], state=2, arg3=False)
+        self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
 
 
+initial_state = 대기

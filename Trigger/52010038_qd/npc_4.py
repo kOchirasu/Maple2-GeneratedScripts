@@ -1,50 +1,50 @@
 """ trigger/52010038_qd/npc_4.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6204], visible=False)
+        self.set_effect(triggerIds=[6204], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='GaugeStart', value=1):
-            return npc체크()
-
-
-class npc체크(state.State):
-    def on_tick(self) -> state.State:
-        if monster_in_combat(boxIds=[1804]):
-            return 이펙트()
-        if not monster_in_combat(boxIds=[1804]):
-            return 생성()
-        if user_value(key='GaugeClosed', value=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='GaugeStart', value=1):
+            return npc체크(self.ctx)
 
 
-class 이펙트(state.State):
+class npc체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_in_combat(boxIds=[1804]):
+            return 이펙트(self.ctx)
+        if not self.monster_in_combat(boxIds=[1804]):
+            return 생성(self.ctx)
+        if self.user_value(key='GaugeClosed', value=1):
+            return 종료(self.ctx)
+
+
+class 이펙트(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6204], visible=True)
+        self.set_effect(triggerIds=[6204], visible=True)
 
-    def on_tick(self) -> state.State:
-        if not monster_in_combat(boxIds=[1804]):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if not self.monster_in_combat(boxIds=[1804]):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6204], visible=False)
-        init_npc_rotation(spawnIds=[1804])
-        create_monster(spawnIds=[4000], arg2=False)
+        self.set_effect(triggerIds=[6204], visible=False)
+        self.init_npc_rotation(spawnIds=[1804])
+        self.create_monster(spawnIds=[4000], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return npc체크()
-        if user_value(key='GaugeClosed', value=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return npc체크(self.ctx)
+        if self.user_value(key='GaugeClosed', value=1):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

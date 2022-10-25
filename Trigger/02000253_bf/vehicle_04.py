@@ -1,51 +1,51 @@
 """ trigger/02000253_bf/vehicle_04.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8054], visible=False)
+        self.set_effect(triggerIds=[8054], visible=False)
 
-    def on_tick(self) -> state.State:
-        if dungeon_max_user_count(value=4):
-            return vehicle_01()
-
-
-class vehicle_01(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=906, boxId=1):
-            return monster_spawn_ready()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_max_user_count(value=4):
+            return vehicle_01(self.ctx)
 
 
-class monster_spawn_ready(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=8000):
-            return monster_spawn()
+class vehicle_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=906, boxId=1):
+            return monster_spawn_ready(self.ctx)
 
 
-class monster_spawn(state.State):
+class monster_spawn_ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=8000):
+            return monster_spawn(self.ctx)
+
+
+class monster_spawn(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8054], visible=True)
-        create_monster(spawnIds=[3002], arg2=True)
+        self.set_effect(triggerIds=[8054], visible=True)
+        self.create_monster(spawnIds=[3002], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[3002]):
-            return vehicle_spawn()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[3002]):
+            return vehicle_spawn(self.ctx)
 
 
-class vehicle_spawn(state.State):
+class vehicle_spawn(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8054], visible=False)
-        set_interact_object(triggerIds=[10001051], state=1)
+        self.set_effect(triggerIds=[8054], visible=False)
+        self.set_interact_object(triggerIds=[10001051], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001051], arg2=0):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001051], stateValue=0):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001051], state=2)
+        self.set_interact_object(triggerIds=[10001051], state=2)
 
 
+initial_state = idle

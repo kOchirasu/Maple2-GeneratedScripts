@@ -1,80 +1,80 @@
 """ trigger/02000396_bf/02_mobattack.xml """
-from common import *
-import state
+import common
 
 
-class Setting(state.State):
+class Setting(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=False) # DoorOpen
-        set_effect(triggerIds=[5002], visible=False) # DoorOpen
-        set_effect(triggerIds=[5003], visible=False) # DoorOpen
-        set_actor(triggerId=4001, visible=True, initialSequence='Closed')
-        set_actor(triggerId=4002, visible=True, initialSequence='Closed')
-        set_actor(triggerId=4003, visible=True, initialSequence='Closed')
-        set_agent(triggerIds=[8000,8001], visible=True)
-        set_agent(triggerIds=[8002,8003], visible=True)
-        set_agent(triggerIds=[8004,8005], visible=True)
-        destroy_monster(spawnIds=[910,911,920,921,930,931]) # Mob
-        set_user_value(key='MobSpawn', value=0)
-        set_user_value(key='MobAttack', value=0)
+        self.set_effect(triggerIds=[5001], visible=False) # DoorOpen
+        self.set_effect(triggerIds=[5002], visible=False) # DoorOpen
+        self.set_effect(triggerIds=[5003], visible=False) # DoorOpen
+        self.set_actor(triggerId=4001, visible=True, initialSequence='Closed')
+        self.set_actor(triggerId=4002, visible=True, initialSequence='Closed')
+        self.set_actor(triggerId=4003, visible=True, initialSequence='Closed')
+        self.set_agent(triggerIds=[8000,8001], visible=True)
+        self.set_agent(triggerIds=[8002,8003], visible=True)
+        self.set_agent(triggerIds=[8004,8005], visible=True)
+        self.destroy_monster(spawnIds=[910,911,920,921,930,931]) # Mob
+        self.set_user_value(key='MobSpawn', value=0)
+        self.set_user_value(key='MobAttack', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MobSpawn', value=1):
-            return MobSpawn01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MobSpawn', value=1):
+            return MobSpawn01(self.ctx)
 
 
-class MobSpawn01(state.State):
+class MobSpawn01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[910,911], arg2=False) # Mob01
-        create_monster(spawnIds=[920,921], arg2=False) # Mob01
-        create_monster(spawnIds=[930,931], arg2=False) # Mob01
+        self.create_monster(spawnIds=[910,911], animationEffect=False) # Mob01
+        self.create_monster(spawnIds=[920,921], animationEffect=False) # Mob01
+        self.create_monster(spawnIds=[930,931], animationEffect=False) # Mob01
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MobAttack', value=1):
-            return MobAttackDelay()
-
-
-class MobAttackDelay(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9001]):
-            return MobAttack01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MobAttack', value=1):
+            return MobAttackDelay(self.ctx)
 
 
-class MobAttack01(state.State):
+class MobAttackDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9001]):
+            return MobAttack01(self.ctx)
+
+
+class MobAttack01(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[8000,8001], visible=False)
-        set_actor(triggerId=4001, visible=True, initialSequence='Opened')
-        set_effect(triggerIds=[5001], visible=True) # DoorOpen
+        self.set_agent(triggerIds=[8000,8001], visible=False)
+        self.set_actor(triggerId=4001, visible=True, initialSequence='Opened')
+        self.set_effect(triggerIds=[5001], visible=True) # DoorOpen
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return MobAttack02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return MobAttack02(self.ctx)
 
 
-class MobAttack02(state.State):
+class MobAttack02(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[8002,8003], visible=False)
-        set_actor(triggerId=4002, visible=True, initialSequence='Opened')
-        set_effect(triggerIds=[5002], visible=True) # DoorOpen
+        self.set_agent(triggerIds=[8002,8003], visible=False)
+        self.set_actor(triggerId=4002, visible=True, initialSequence='Opened')
+        self.set_effect(triggerIds=[5002], visible=True) # DoorOpen
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return MobAttack03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return MobAttack03(self.ctx)
 
 
-class MobAttack03(state.State):
+class MobAttack03(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[8004,8005], visible=False)
-        set_actor(triggerId=4003, visible=True, initialSequence='Opened')
-        set_effect(triggerIds=[5003], visible=True) # DoorOpen
+        self.set_agent(triggerIds=[8004,8005], visible=False)
+        self.set_actor(triggerId=4003, visible=True, initialSequence='Opened')
+        self.set_effect(triggerIds=[5003], visible=True) # DoorOpen
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[910,911,920,921,930,931,901,902,903]):
-            return MobClear()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[910,911,920,921,930,931,901,902,903]):
+            return MobClear(self.ctx)
 
 
-class MobClear(state.State):
+class MobClear(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1, key='MobClear', value=1)
+        self.set_user_value(triggerId=1, key='MobClear', value=1)
 
 
+initial_state = Setting

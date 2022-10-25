@@ -1,9 +1,9 @@
 """ trigger/02000241_bf/trigger_01_01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     pass
 
 
+initial_state = 대기

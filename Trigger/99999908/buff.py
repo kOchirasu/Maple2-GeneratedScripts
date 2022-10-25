@@ -1,24 +1,24 @@
 """ trigger/99999908/buff.xml """
-from common import *
-import state
+import common
 
 
-#  에디셔널 이펙트를 계속 걸어줌 
-class idle(state.State):
+# 에디셔널 이펙트를 계속 걸어줌
+class idle(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[701], skillId=99910220, level=1, arg4=False, arg5=False)
+        self.add_buff(boxIds=[701], skillId=99910220, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return buff_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return buff_01(self.ctx)
 
 
-class buff_01(state.State):
+class buff_01(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[701], skillId=99910220, level=1, arg4=False, arg5=False)
+        self.add_buff(boxIds=[701], skillId=99910220, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return idle()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return idle(self.ctx)
 
 
+initial_state = idle

@@ -1,31 +1,31 @@
 """ trigger/52000050_qd/common.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=702, spawnIds=[121]):
-            return npc_exit_01()
-        if npc_detected(boxId=702, spawnIds=[122]):
-            return npc_exit_02()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=702, spawnIds=[121]):
+            return npc_exit_01(self.ctx)
+        if self.npc_detected(boxId=702, spawnIds=[122]):
+            return npc_exit_02(self.ctx)
 
 
-class npc_exit_01(state.State):
+class npc_exit_01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[121])
+        self.destroy_monster(spawnIds=[121])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return idle()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return idle(self.ctx)
 
 
-class npc_exit_02(state.State):
+class npc_exit_02(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[122])
+        self.destroy_monster(spawnIds=[122])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return idle()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return idle(self.ctx)
 
 
+initial_state = idle

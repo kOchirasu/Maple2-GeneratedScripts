@@ -1,32 +1,32 @@
 """ trigger/02100001_bf/1210_flyaway.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='FlyAway', value=0)
+        self.set_user_value(key='FlyAway', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='FlyAway', value=1):
-            return FlyAway()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='FlyAway', value=1):
+            return FlyAway(self.ctx)
 
 
-class FlyAway(state.State):
+class FlyAway(common.Trigger):
     def on_enter(self):
-        change_monster(removeSpawnId=210, addSpawnId=1210)
+        self.change_monster(removeSpawnId=210, addSpawnId=1210)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[1210])
+        self.destroy_monster(spawnIds=[1210])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

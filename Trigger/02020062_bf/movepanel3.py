@@ -1,46 +1,46 @@
 """ trigger/02020062_bf/movepanel3.xml """
-from common import *
-import state
+import common
 
 
-class 발판초기화(state.State):
+class 발판초기화(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enabled=False)
-        set_visible_breakable_object(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], arg2=False)
-        set_user_value(triggerId=99990026, key='MovePanel03', value=0)
-        set_interact_object(triggerIds=[12000117], state=2) # 이동발판트리거
+        self.set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enable=False)
+        self.set_visible_breakable_object(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], visible=False)
+        self.set_user_value(triggerId=99990026, key='MovePanel03', value=0)
+        self.set_interact_object(triggerIds=[12000117], state=2) # 이동발판트리거
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MovePanel03', value=1):
-            return 레버생성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MovePanel03', value=1):
+            return 레버생성(self.ctx)
 
 
-class 레버생성(state.State):
+class 레버생성(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000117], state=1) # 이동발판트리거
+        self.set_interact_object(triggerIds=[12000117], state=1) # 이동발판트리거
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[12000117], arg2=0):
-            return 발판이동()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[12000117], stateValue=0):
+            return 발판이동(self.ctx)
 
 
-class 발판이동(state.State):
+class 발판이동(common.Trigger):
     def on_enter(self):
-        set_visible_breakable_object(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], arg2=True)
-        set_interact_object(triggerIds=[12000117], state=2) # 이동발판트리거
+        self.set_visible_breakable_object(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], visible=True)
+        self.set_interact_object(triggerIds=[12000117], state=2) # 이동발판트리거
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9202]):
-            set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enabled=True)
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9202]):
+            self.set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enable=True)
+            return 대기(self.ctx)
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enabled=False)
+        self.set_breakable(triggerIds=[2200,2201,2202,2203,2204,2205,2206,2207,2208], enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 발판이동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 발판이동(self.ctx)
 
 
+initial_state = 발판초기화

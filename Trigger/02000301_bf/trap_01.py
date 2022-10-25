@@ -1,55 +1,55 @@
 """ trigger/02000301_bf/trap_01.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_Off')
-        set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_Off')
-        set_interact_object(triggerIds=[10000511], state=1)
-        set_effect(triggerIds=[603], visible=False)
-        set_effect(triggerIds=[604], visible=False)
-        set_effect(triggerIds=[605], visible=False)
-        set_effect(triggerIds=[610], visible=False)
-        set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=False, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[4101,4102,4103,4104], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_Off')
+        self.set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_Off')
+        self.set_interact_object(triggerIds=[10000511], state=1)
+        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(triggerIds=[604], visible=False)
+        self.set_effect(triggerIds=[605], visible=False)
+        self.set_effect(triggerIds=[610], visible=False)
+        self.set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[4101,4102,4103,4104], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 경보()
-        if object_interacted(interactIds=[10000511], arg2=0):
-            return 해제()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 경보(self.ctx)
+        if self.object_interacted(interactIds=[10000511], stateValue=0):
+            return 해제(self.ctx)
 
 
-class 경보(state.State):
+class 경보(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_On')
-        set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_On')
-        set_interact_object(triggerIds=[10000511], state=0)
-        create_monster(spawnIds=[2002], arg2=False)
-        set_effect(triggerIds=[603], visible=True)
-        set_effect(triggerIds=[604], visible=True)
-        set_effect(triggerIds=[605], visible=True)
-        set_effect(triggerIds=[610], visible=True)
-        show_guide_summary(entityId=20003001, textId=20003001)
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=True, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[4101,4102,4103,4104], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_On')
+        self.set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_On')
+        self.set_interact_object(triggerIds=[10000511], state=0)
+        self.create_monster(spawnIds=[2002], animationEffect=False)
+        self.set_effect(triggerIds=[603], visible=True)
+        self.set_effect(triggerIds=[604], visible=True)
+        self.set_effect(triggerIds=[605], visible=True)
+        self.set_effect(triggerIds=[610], visible=True)
+        self.show_guide_summary(entityId=20003001, textId=20003001)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[4101,4102,4103,4104], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[2002]):
-            hide_guide_summary(entityId=20003001)
-            set_effect(triggerIds=[610], visible=False)
-            set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_Off')
-            set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_Off')
-            return 해제()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[2002]):
+            self.hide_guide_summary(entityId=20003001)
+            self.set_effect(triggerIds=[610], visible=False)
+            self.set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_Off')
+            self.set_actor(triggerId=203, visible=True, initialSequence='sf_quest_light_A01_Off')
+            return 해제(self.ctx)
 
 
-class 해제(state.State):
+class 해제(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[2002])
-        set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=False, arg3=0, arg4=0, arg5=5)
-        set_mesh(triggerIds=[4101,4102,4103,4104], visible=False, arg3=0, arg4=0, arg5=5)
+        self.destroy_monster(spawnIds=[2002])
+        self.set_mesh(triggerIds=[3011,3012,3013,3014,3015,3016], visible=False, arg3=0, delay=0, scale=5)
+        self.set_mesh(triggerIds=[4101,4102,4103,4104], visible=False, arg3=0, delay=0, scale=5)
 
 
+initial_state = 시작

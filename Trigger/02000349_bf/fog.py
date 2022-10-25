@@ -1,52 +1,52 @@
 """ trigger/02000349_bf/fog.xml """
-from common import *
-import state
+import common
 
 
-class 준비(state.State):
+class 준비(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000813], state=2)
+        self.set_interact_object(triggerIds=[10000813], state=2)
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=136, spawnIds=[2006]):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=136, spawnIds=[2006]):
+            return 시작대기중(self.ctx)
 
 
-class 시작대기중(state.State):
+class 시작대기중(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[1098])
-        set_effect(triggerIds=[600], visible=False) # fog 500
-        set_effect(triggerIds=[602], visible=False) # fog 1500
-        set_interact_object(triggerIds=[10000813], state=2)
+        self.create_monster(spawnIds=[1098])
+        self.set_effect(triggerIds=[600], visible=False) # fog 500
+        self.set_effect(triggerIds=[602], visible=False) # fog 1500
+        self.set_interact_object(triggerIds=[10000813], state=2)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[1098]):
-            return 포그()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[1098]):
+            return 포그(self.ctx)
 
 
-class 포그(state.State):
+class 포그(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[600], visible=True)
-        set_interact_object(triggerIds=[10000813], state=1)
-        show_guide_summary(entityId=20003494, textId=20003494)
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.set_effect(triggerIds=[600], visible=True)
+        self.set_interact_object(triggerIds=[10000813], state=1)
+        self.show_guide_summary(entityId=20003494, textId=20003494)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000813], arg2=0):
-            return 대기시간()
-        if monster_dead(boxIds=[1099]):
-            return 대기시간()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000813], stateValue=0):
+            return 대기시간(self.ctx)
+        if self.monster_dead(boxIds=[1099]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20003494)
-        set_effect(triggerIds=[602], visible=True)
-        set_interact_object(triggerIds=[10000813], state=0)
-        set_timer(timerId='10', seconds=10)
+        self.hide_guide_summary(entityId=20003494)
+        self.set_effect(triggerIds=[602], visible=True)
+        self.set_interact_object(triggerIds=[10000813], state=0)
+        self.set_timer(timerId='10', seconds=10)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='10'):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='10'):
+            return 시작대기중(self.ctx)
 
 
+initial_state = 준비

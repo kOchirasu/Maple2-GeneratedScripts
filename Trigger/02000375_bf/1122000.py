@@ -1,27 +1,27 @@
 """ trigger/02000375_bf/1122000.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=13500, arg2=False)
+        self.set_sound(triggerId=13500, enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ChangeBGM', value=1):
-            return BGM변경()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ChangeBGM', value=1):
+            return BGM변경(self.ctx)
 
 
-class BGM변경(state.State):
+class BGM변경(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=13500, arg2=True)
+        self.set_sound(triggerId=13500, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

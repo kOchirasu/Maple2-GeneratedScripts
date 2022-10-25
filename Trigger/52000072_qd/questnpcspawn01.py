@@ -1,136 +1,136 @@
 """ trigger/52000072_qd/questnpcspawn01.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[40002684], questStates=[2]):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002684], questStates=[2]):
             return None # Missing State: NpcRemove01
-        if quest_user_detected(boxIds=[9900], questIds=[40002684], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[1]): # 레논이 있던 자리
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[3]):
-            return NpcChange02()
-        if quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[2]):
-            return NpcChange02()
-        if quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[1]):
-            return NpcChange02()
-        if quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[3]):
-            return NpcChange02()
-        if quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[2]):
-            return NpcChange02()
-        if quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[1]):
-            return SetCamera01()
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002684], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002683], questStates=[1]): # 레논이 있던 자리
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[3]):
+            return NpcChange02(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[2]):
+            return NpcChange02(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002682], questStates=[1]):
+            return NpcChange02(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[3]):
+            return NpcChange02(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[2]):
+            return NpcChange02(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002681], questStates=[1]):
+            return SetCamera01(self.ctx)
 
 
-class NpcChange01(state.State):
+class NpcChange01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201], arg2=False)
+        self.create_monster(spawnIds=[201], animationEffect=False)
 
 
-class NpcChange02(state.State):
+class NpcChange02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=False)
+        self.create_monster(spawnIds=[101], animationEffect=False)
 
 
-#  NPC 패트롤 연출 
-class SetCamera01(state.State):
+# NPC 패트롤 연출
+class SetCamera01(common.Trigger):
     def on_enter(self):
-        set_scene_skip(state=ActEnd01, arg2='exit')
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_scene_skip(state=ActEnd01, action='exit')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SetCamera02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SetCamera02(self.ctx)
 
 
-class SetCamera02(state.State):
+class SetCamera02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=600, enable=True)
-        create_monster(spawnIds=[102,301,401], arg2=False)
+        self.select_camera(triggerId=600, enable=True)
+        self.create_monster(spawnIds=[102,301,401], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ActStart01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ActStart01(self.ctx)
 
 
-class ActStart01(state.State):
+class ActStart01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        move_npc(spawnId=301, patrolName='MS2PatrolData_301')
-        move_npc(spawnId=401, patrolName='MS2PatrolData_401')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.move_npc(spawnId=301, patrolName='MS2PatrolData_301')
+        self.move_npc(spawnId=401, patrolName='MS2PatrolData_401')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ActStart02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ActStart02(self.ctx)
 
 
-class ActStart02(state.State):
+class ActStart02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=102, patrolName='MS2PatrolData_102')
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ActStart03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ActStart03(self.ctx)
 
 
-class ActStart03(state.State):
+class ActStart03(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=601, enable=True)
+        self.select_camera(triggerId=601, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ActEnd01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ActEnd01(self.ctx)
 
 
-class ActEnd01(state.State):
+class ActEnd01(common.Trigger):
     def on_enter(self):
-        set_scene_skip()
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        destroy_monster(spawnIds=[301,401])
+        self.set_scene_skip()
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.destroy_monster(spawnIds=[301,401])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return ActEnd02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return ActEnd02(self.ctx)
 
 
-class ActEnd02(state.State):
+class ActEnd02(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[102])
-        create_monster(spawnIds=[101], arg2=False)
-        reset_camera(interpolationTime=1)
+        self.destroy_monster(spawnIds=[102])
+        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return ActEnd03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return ActEnd03(self.ctx)
 
 
-class ActEnd03(state.State):
+class ActEnd03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return QuestComplete()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return QuestComplete(self.ctx)
 
 
-class QuestComplete(state.State):
+class QuestComplete(common.Trigger):
     def on_enter(self):
-        set_achievement(triggerId=9900, type='trigger', achieve='triangularRelation')
+        self.set_achievement(triggerId=9900, type='trigger', achieve='triangularRelation')
 
 
+initial_state = Wait

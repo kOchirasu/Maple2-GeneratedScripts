@@ -1,41 +1,41 @@
 """ trigger/52020010_qd/main_a.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
+class Idle(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=False)
-        set_actor(triggerId=8001, visible=False, initialSequence='Event_01_A')
+        self.set_effect(triggerIds=[5001], visible=False)
+        self.set_actor(triggerId=8001, visible=False, initialSequence='Event_01_A')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60200045], questStates=[2]):
-            return Event_01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200045], questStates=[2]):
+            return Event_01(self.ctx)
 
 
-class Event_01(state.State):
+class Event_01(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4001], returnView=False)
+        self.select_camera_path(pathIds=[4001], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return Event_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return Event_02(self.ctx)
 
 
-class Event_02(state.State):
+class Event_02(common.Trigger):
     def on_enter(self):
-        add_balloon_talk(spawnId=0, msg='!!!', duration=1000, delayTick=0)
-        set_effect(triggerIds=[5001], visible=True)
-        set_actor(triggerId=8001, visible=True, initialSequence='Event_03_A')
+        self.add_balloon_talk(spawnId=0, msg='!!!', duration=1000, delayTick=0)
+        self.set_effect(triggerIds=[5001], visible=True)
+        self.set_actor(triggerId=8001, visible=True, initialSequence='Event_03_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Event_End()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Event_End(self.ctx)
 
 
-class Event_End(state.State):
+class Event_End(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=8001, visible=False, initialSequence='Event_03_A')
-        reset_camera(interpolationTime=1)
+        self.set_actor(triggerId=8001, visible=False, initialSequence='Event_03_A')
+        self.reset_camera(interpolationTime=1)
 
 
+initial_state = Idle

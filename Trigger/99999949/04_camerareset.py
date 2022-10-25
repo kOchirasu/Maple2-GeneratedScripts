@@ -1,72 +1,73 @@
 """ trigger/99999949/04_camerareset.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9031]):
-            return Guide()
+class Wait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9031]):
+            return Guide(self.ctx)
 
 
-class Guide(state.State):
+class Guide(common.Trigger):
     def on_enter(self):
-        debug_string(string='4번 영역에 들어가면 CameraReset 트리거가 발동됩니다.')
+        self.debug_string(string='4번 영역에 들어가면 CameraReset 트리거가 발동됩니다.')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9030]):
-            return CameraReady()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9030]):
+            return CameraReady(self.ctx)
 
 
-class CameraReady(state.State):
+class CameraReady(common.Trigger):
     def on_enter(self):
-        debug_string(string='SetOnetimeEffect 1초 후에 시작됩니다.')
+        self.debug_string(string='SetOnetimeEffect 1초 후에 시작됩니다.')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraWalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraWalk01(self.ctx)
 
 
-class CameraWalk01(state.State):
+class CameraWalk01(common.Trigger):
     def on_enter(self):
-        debug_string(string='600번 카메라 선택')
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=603, enable=True)
+        self.debug_string(string='600번 카메라 선택')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=603, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return CameraWalk03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return CameraWalk03(self.ctx)
 
 
-class CameraWalk03(state.State):
+class CameraWalk03(common.Trigger):
     def on_enter(self):
-        debug_string(string='602번 카메라 선택')
-        select_camera(triggerId=604, enable=True)
+        self.debug_string(string='602번 카메라 선택')
+        self.select_camera(triggerId=604, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CameraReset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CameraReset(self.ctx)
 
 
-class CameraReset(state.State):
+class CameraReset(common.Trigger):
     def on_enter(self):
-        debug_string(string='모든 카메라 리셋')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        select_camera(triggerId=604, enable=False) # action name="카메라리셋" interpolationTime="3.0"/
+        self.debug_string(string='모든 카메라 리셋')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.select_camera(triggerId=604, enable=False)
+        # action name="카메라리셋" interpolationTime="3.0"/
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        debug_string(string='5초 후에 트리거가 리셋됩니다. 4번 영역 밖으로 나가세요.')
+        self.debug_string(string='5초 후에 트리거가 리셋됩니다. 4번 영역 밖으로 나가세요.')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

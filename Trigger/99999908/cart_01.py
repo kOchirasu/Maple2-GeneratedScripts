@@ -1,9 +1,9 @@
 """ trigger/99999908/cart_01.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     pass
 
 
+initial_state = 시작

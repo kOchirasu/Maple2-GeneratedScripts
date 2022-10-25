@@ -1,133 +1,133 @@
 """ trigger/52010005_qd/act01.xml """
-from common import *
-import state
+import common
 
 
-class 퀘스트조건01(state.State):
+class 퀘스트조건01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=True)
-        set_interact_object(triggerIds=[10000872], state=0)
+        self.create_monster(spawnIds=[101], animationEffect=True)
+        self.set_interact_object(triggerIds=[10000872], state=0)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9000], questIds=[10002820], questStates=[2]):
-            return Q1_마샤르교체01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9000], questIds=[10002820], questStates=[2]):
+            return Q1_마샤르교체01(self.ctx)
 
 
-#   1st Quest 
-class Q1_마샤르교체01(state.State):
+# 1st Quest
+class Q1_마샤르교체01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1)
-        destroy_monster(spawnIds=[101])
-        create_monster(spawnIds=[102], arg2=False)
+        self.set_timer(timerId='1', seconds=1)
+        self.destroy_monster(spawnIds=[101])
+        self.create_monster(spawnIds=[102], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return Q1_딜레이01()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return Q1_딜레이01(self.ctx)
 
 
-class Q1_딜레이01(state.State):
+class Q1_딜레이01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=1)
+        self.set_timer(timerId='2', seconds=1)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return Q1_미카등장()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return Q1_미카등장(self.ctx)
 
 
-class Q1_미카등장(state.State):
+class Q1_미카등장(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201], arg2=False)
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2010')
+        self.create_monster(spawnIds=[201], animationEffect=False)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2010')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Q1_마샤르이동01()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Q1_마샤르이동01(self.ctx)
 
 
-class Q1_마샤르이동01(state.State):
+class Q1_마샤르이동01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=102, patrolName='MS2PatrolData_1020')
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_1020')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=8001, spawnIds=[102]):
-            return Q1_마샤르대화01()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=8001, spawnIds=[102]):
+            return Q1_마샤르대화01(self.ctx)
 
 
-class Q1_마샤르대화01(state.State):
+class Q1_마샤르대화01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=102, script='$52010005_QD__ACT01__0$', arg4=2, arg5=0)
+        self.set_conversation(type=1, spawnId=102, script='$52010005_QD__ACT01__0$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=8002, spawnIds=[102]):
-            return Q1_마샤르대화02()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=8002, spawnIds=[102]):
+            return Q1_마샤르대화02(self.ctx)
 
 
-class Q1_마샤르대화02(state.State):
+class Q1_마샤르대화02(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='4', seconds=3)
-        set_conversation(type=1, spawnId=102, script='$52010005_QD__ACT01__1$', arg4=2, arg5=0)
+        self.set_timer(timerId='4', seconds=3)
+        self.set_conversation(type=1, spawnId=102, script='$52010005_QD__ACT01__1$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Q1_카메라연출01()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Q1_카메라연출01(self.ctx)
 
 
-class Q1_카메라연출01(state.State):
+class Q1_카메라연출01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='5', seconds=3)
-        destroy_monster(spawnIds=[102])
-        create_monster(spawnIds=[104], arg2=False)
-        select_camera(triggerId=1001, enable=True)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_timer(timerId='5', seconds=3)
+        self.destroy_monster(spawnIds=[102])
+        self.create_monster(spawnIds=[104], animationEffect=False)
+        self.select_camera(triggerId=1001, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='5'):
-            return Q1_카메라연출02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='5'):
+            return Q1_카메라연출02(self.ctx)
 
 
-class Q1_카메라연출02(state.State):
+class Q1_카메라연출02(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='6', seconds=5)
-        destroy_monster(spawnIds=[201])
-        create_monster(spawnIds=[202], arg2=False)
-        set_conversation(type=2, spawnId=11001285, script='$52010005_QD__ACT01__2$', arg4=4)
-        set_skip(state=Q1_카메라연출03)
+        self.set_timer(timerId='6', seconds=5)
+        self.destroy_monster(spawnIds=[201])
+        self.create_monster(spawnIds=[202], animationEffect=False)
+        self.set_conversation(type=2, spawnId=11001285, script='$52010005_QD__ACT01__2$', arg4=4)
+        self.set_skip(state=Q1_카메라연출03)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Q1_카메라연출03()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Q1_카메라연출03(self.ctx)
 
     def on_exit(self):
-        remove_cinematic_talk()
+        self.remove_cinematic_talk()
 
 
-class Q1_카메라연출03(state.State):
+class Q1_카메라연출03(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='7', seconds=1)
-        select_camera(triggerId=1001, enable=False)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_timer(timerId='7', seconds=1)
+        self.select_camera(triggerId=1001, enable=False)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='7'):
-            return Q1_마샤르교체02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='7'):
+            return Q1_마샤르교체02(self.ctx)
 
 
-class Q1_마샤르교체02(state.State):
+class Q1_마샤르교체02(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[104])
-        create_monster(spawnIds=[103], arg2=False)
+        self.destroy_monster(spawnIds=[104])
+        self.create_monster(spawnIds=[103], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9000], questIds=[10002821], questStates=[2]):
-            return Q1_퇴장()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9000], questIds=[10002821], questStates=[2]):
+            return Q1_퇴장(self.ctx)
 
 
-class Q1_퇴장(state.State):
+class Q1_퇴장(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[103])
-        destroy_monster(spawnIds=[202])
-        create_monster(spawnIds=[101], arg2=True)
+        self.destroy_monster(spawnIds=[103])
+        self.destroy_monster(spawnIds=[202])
+        self.create_monster(spawnIds=[101], animationEffect=True)
 
 
+initial_state = 퀘스트조건01

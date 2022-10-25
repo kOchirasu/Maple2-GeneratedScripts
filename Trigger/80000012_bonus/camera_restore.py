@@ -1,25 +1,25 @@
 """ trigger/80000012_bonus/camera_restore.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8001, enable=True)
-        set_timer(timerId='2', seconds=2)
+        self.select_camera(triggerId=8001, enable=True)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return camera_restore()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return camera_restore(self.ctx)
 
 
-class camera_restore(state.State):
+class camera_restore(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8001, enable=True)
-        set_timer(timerId='2', seconds=2)
+        self.select_camera(triggerId=8001, enable=True)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return idle()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return idle(self.ctx)
 
 
+initial_state = idle

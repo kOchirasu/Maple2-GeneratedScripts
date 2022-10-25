@@ -1,48 +1,48 @@
 """ trigger/02020200_bf/04_bomb3.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='BombOn', value=1):
-            return 시작()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BombOn', value=1):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[113], arg2=False)
+        self.create_monster(spawnIds=[113], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BombOn', value=2):
-            return 종료()
-        if monster_dead(boxIds=[113]):
-            return 폭탄_터짐()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BombOn', value=2):
+            return 종료(self.ctx)
+        if self.monster_dead(boxIds=[113]):
+            return 폭탄_터짐(self.ctx)
 
 
-class 폭탄_터짐(state.State):
+class 폭탄_터짐(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[2003], visible=False, arg3=1500, arg5=3)
+        self.set_mesh(triggerIds=[2003], visible=False, arg3=1500, scale=3)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='BombOn', value=2):
-            return 종료()
-        if true():
-            return 대기시간()
-
-
-class 대기시간(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='BombOn', value=2):
-            return 종료()
-        if wait_tick(waitTick=40000):
-            set_mesh(triggerIds=[2003], visible=True, arg5=3)
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BombOn', value=2):
+            return 종료(self.ctx)
+        if self.true():
+            return 대기시간(self.ctx)
 
 
-class 종료(state.State):
+class 대기시간(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BombOn', value=2):
+            return 종료(self.ctx)
+        if self.wait_tick(waitTick=40000):
+            self.set_mesh(triggerIds=[2003], visible=True, scale=3)
+            return 시작(self.ctx)
+
+
+class 종료(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[113])
-        set_mesh(triggerIds=[2003], visible=False, arg3=1500, arg5=3)
+        self.destroy_monster(spawnIds=[113])
+        self.set_mesh(triggerIds=[2003], visible=False, arg3=1500, scale=3)
 
 
+initial_state = 대기

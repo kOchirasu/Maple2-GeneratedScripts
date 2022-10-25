@@ -1,47 +1,47 @@
 """ trigger/02020030_bf/11005_playg.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='PlayG', value=0)
+        self.set_user_value(key='PlayG', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PlayG', value=1):
-            return ActorOff()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PlayG', value=1):
+            return ActorOff(self.ctx)
 
 
-class ActorOff(state.State):
+class ActorOff(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell G
+        self.set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell G
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[12000062], arg2=0):
-            return ActorOn()
-        if user_value(key='PlayG', value=0):
-            return ResetDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[12000062], stateValue=0):
+            return ActorOn(self.ctx)
+        if self.user_value(key='PlayG', value=0):
+            return ResetDelay(self.ctx)
 
 
-class ActorOn(state.State):
+class ActorOn(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_blue') # Bell G
+        self.set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_blue') # Bell G
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=700):
-            return ResetDelay()
-        if user_value(key='PlayG', value=0):
-            return ResetDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=700):
+            return ResetDelay(self.ctx)
+        if self.user_value(key='PlayG', value=0):
+            return ResetDelay(self.ctx)
 
 
-class ResetDelay(state.State):
+class ResetDelay(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell G
+        self.set_actor(triggerId=11005, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell G
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return ActorOff()
-        if user_value(key='PlayG', value=0):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return ActorOff(self.ctx)
+        if self.user_value(key='PlayG', value=0):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

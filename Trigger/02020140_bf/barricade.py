@@ -1,68 +1,68 @@
 """ trigger/02020140_bf/barricade.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
-    def on_tick(self) -> state.State:
-        if check_user():
-            return 칸막이대기시작()
+class 시작대기중(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return 칸막이대기시작(self.ctx)
 
 
-class 칸막이대기시작(state.State):
+class 칸막이대기시작(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=False)
-        set_effect(triggerIds=[602], visible=False)
-        set_effect(triggerIds=[603], visible=False)
-        set_effect(triggerIds=[604], visible=False)
-        set_effect(triggerIds=[605], visible=False)
-        set_mesh(triggerIds=[608], visible=False, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[609], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[601], visible=False)
+        self.set_effect(triggerIds=[602], visible=False)
+        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(triggerIds=[604], visible=False)
+        self.set_effect(triggerIds=[605], visible=False)
+        self.set_mesh(triggerIds=[608], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[609], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 칸막이대기알림()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 칸막이대기알림(self.ctx)
 
 
-class 칸막이대기알림(state.State):
+class 칸막이대기알림(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02020140_BF__BARRICADE__0$', arg3='3000')
-        dungeon_enable_give_up(isEnable='1')
+        self.set_event_ui(type=1, arg2='$02020140_BF__BARRICADE__0$', arg3='3000')
+        self.dungeon_enable_give_up(isEnable='1')
 
-    def on_tick(self) -> state.State:
-        if dungeon_time_out():
-            return 던전실패종료()
-        if dungeon_check_state(checkState='Fail'):
-            return 던전실패종료()
-        if wait_tick(waitTick=30000):
-            return 칸막이막기()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_time_out():
+            return 던전실패종료(self.ctx)
+        if self.dungeon_check_state(checkState='Fail'):
+            return 던전실패종료(self.ctx)
+        if self.wait_tick(waitTick=30000):
+            return 칸막이막기(self.ctx)
 
 
-class 칸막이막기(state.State):
+class 칸막이막기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=True)
-        set_effect(triggerIds=[602], visible=True)
-        set_effect(triggerIds=[603], visible=True)
-        set_effect(triggerIds=[604], visible=True)
-        set_effect(triggerIds=[605], visible=True)
-        set_mesh(triggerIds=[608], visible=True, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[609], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[601], visible=True)
+        self.set_effect(triggerIds=[602], visible=True)
+        self.set_effect(triggerIds=[603], visible=True)
+        self.set_effect(triggerIds=[604], visible=True)
+        self.set_effect(triggerIds=[605], visible=True)
+        self.set_mesh(triggerIds=[608], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[609], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if dungeon_time_out():
-            return 던전실패종료()
-        if dungeon_check_state(checkState='Fail'):
-            return 던전실패종료()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_time_out():
+            return 던전실패종료(self.ctx)
+        if self.dungeon_check_state(checkState='Fail'):
+            return 던전실패종료(self.ctx)
 
 
-class 던전실패종료(state.State):
+class 던전실패종료(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=False)
-        set_effect(triggerIds=[602], visible=False)
-        set_effect(triggerIds=[603], visible=False)
-        set_effect(triggerIds=[604], visible=False)
-        set_effect(triggerIds=[605], visible=False)
-        set_mesh(triggerIds=[608], visible=False, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[609], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[601], visible=False)
+        self.set_effect(triggerIds=[602], visible=False)
+        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(triggerIds=[604], visible=False)
+        self.set_effect(triggerIds=[605], visible=False)
+        self.set_mesh(triggerIds=[608], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[609], visible=False, arg3=0, delay=0, scale=0)
 
 
+initial_state = 시작대기중

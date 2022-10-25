@@ -1,25 +1,25 @@
 """ trigger/02100000_bf/spawn.xml """
-from common import *
-import state
+import common
 
 
-class 소환(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='MonsterSpawn', value=1):
-            return 끝_1()
+class 소환(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MonsterSpawn', value=1):
+            return 끝_1(self.ctx)
 
     def on_exit(self):
-        create_monster(spawnIds=[81003], arg2=True)
-        create_monster(spawnIds=[810031], arg2=True)
-        create_monster(spawnIds=[810032], arg2=True)
+        self.create_monster(spawnIds=[81003], animationEffect=True)
+        self.create_monster(spawnIds=[810031], animationEffect=True)
+        self.create_monster(spawnIds=[810032], animationEffect=True)
 
 
-class 끝_1(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[82001]):
+class 끝_1(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[82001]):
             return None # Missing State: 성공
 
     def on_exit(self):
-        destroy_monster(spawnIds=[-1])
+        self.destroy_monster(spawnIds=[-1])
 
 
+initial_state = 소환

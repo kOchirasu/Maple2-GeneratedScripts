@@ -1,75 +1,75 @@
 """ trigger/99999883/testtrigger3.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001010], state=0) # FlyingCloud
-        set_breakable(triggerIds=[4000], enabled=False)
-        set_visible_breakable_object(triggerIds=[4000], arg2=False)
+        self.set_interact_object(triggerIds=[10001010], state=0) # FlyingCloud
+        self.set_breakable(triggerIds=[4000], enable=False)
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9900]):
-            return Enter01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9900]):
+            return Enter01(self.ctx)
 
 
-class Enter01(state.State):
+class Enter01(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001010], state=1) # FlyingCloud
+        self.set_interact_object(triggerIds=[10001010], state=1) # FlyingCloud
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001010], arg2=0):
-            return TakeOffFlyingCloud01()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001010], stateValue=0):
+            return TakeOffFlyingCloud01(self.ctx)
 
 
-class TakeOffFlyingCloud01(state.State):
+class TakeOffFlyingCloud01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        set_interact_object(triggerIds=[10001010], state=2) # FlyingCloud
-        set_visible_breakable_object(triggerIds=[4000], arg2=True)
-        set_breakable(triggerIds=[4000], enabled=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.set_interact_object(triggerIds=[10001010], state=2) # FlyingCloud
+        self.set_visible_breakable_object(triggerIds=[4000], visible=True)
+        self.set_breakable(triggerIds=[4000], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return TakeOffFlyingCloud02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return TakeOffFlyingCloud02(self.ctx)
 
 
-class TakeOffFlyingCloud02(state.State):
+class TakeOffFlyingCloud02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=99999883, portalId=100, boxId=9900)
+        self.move_user(mapId=99999883, portalId=100, boxId=9900)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return TakeOffFlyingCloud03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return TakeOffFlyingCloud03(self.ctx)
 
 
-class TakeOffFlyingCloud03(state.State):
+class TakeOffFlyingCloud03(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=9000):
-            return TakeOffFlyingCloud04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=9000):
+            return TakeOffFlyingCloud04(self.ctx)
 
 
-class TakeOffFlyingCloud04(state.State):
+class TakeOffFlyingCloud04(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        move_user(mapId=99999883, portalId=101, boxId=9900)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.move_user(mapId=99999883, portalId=101, boxId=9900)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4000], enabled=False)
-        set_visible_breakable_object(triggerIds=[4000], arg2=False)
+        self.set_breakable(triggerIds=[4000], enable=False)
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
 
 
+initial_state = Wait

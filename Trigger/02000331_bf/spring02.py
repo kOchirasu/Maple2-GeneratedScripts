@@ -1,69 +1,69 @@
 """ trigger/02000331_bf/spring02.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7001], isEnable=False)
-        set_skill(triggerIds=[7002], isEnable=False)
-        set_skill(triggerIds=[7003], isEnable=False)
-        set_skill(triggerIds=[7004], isEnable=False)
-        set_skill(triggerIds=[7005], isEnable=False)
-        set_skill(triggerIds=[7006], isEnable=False)
-        set_skill(triggerIds=[7007], isEnable=False)
-        set_skill(triggerIds=[7008], isEnable=False)
-        set_skill(triggerIds=[7009], isEnable=False)
-        set_skill(triggerIds=[7010], isEnable=False)
-        set_skill(triggerIds=[7011], isEnable=False)
-        set_skill(triggerIds=[7012], isEnable=False)
-        set_skill(triggerIds=[7013], isEnable=False)
-        set_skill(triggerIds=[7014], isEnable=False)
-        set_skill(triggerIds=[7015], isEnable=False)
-        set_skill(triggerIds=[7016], isEnable=False)
-        set_skill(triggerIds=[7017], isEnable=False)
-        set_skill(triggerIds=[7018], isEnable=False)
-        set_skill(triggerIds=[7019], isEnable=False)
-        set_skill(triggerIds=[7020], isEnable=False)
-        set_skill(triggerIds=[7021], isEnable=False)
-        set_skill(triggerIds=[7022], isEnable=False)
-        set_skill(triggerIds=[7023], isEnable=False)
-        set_skill(triggerIds=[7024], isEnable=False)
+        self.set_skill(triggerIds=[7001], enable=False)
+        self.set_skill(triggerIds=[7002], enable=False)
+        self.set_skill(triggerIds=[7003], enable=False)
+        self.set_skill(triggerIds=[7004], enable=False)
+        self.set_skill(triggerIds=[7005], enable=False)
+        self.set_skill(triggerIds=[7006], enable=False)
+        self.set_skill(triggerIds=[7007], enable=False)
+        self.set_skill(triggerIds=[7008], enable=False)
+        self.set_skill(triggerIds=[7009], enable=False)
+        self.set_skill(triggerIds=[7010], enable=False)
+        self.set_skill(triggerIds=[7011], enable=False)
+        self.set_skill(triggerIds=[7012], enable=False)
+        self.set_skill(triggerIds=[7013], enable=False)
+        self.set_skill(triggerIds=[7014], enable=False)
+        self.set_skill(triggerIds=[7015], enable=False)
+        self.set_skill(triggerIds=[7016], enable=False)
+        self.set_skill(triggerIds=[7017], enable=False)
+        self.set_skill(triggerIds=[7018], enable=False)
+        self.set_skill(triggerIds=[7019], enable=False)
+        self.set_skill(triggerIds=[7020], enable=False)
+        self.set_skill(triggerIds=[7021], enable=False)
+        self.set_skill(triggerIds=[7022], enable=False)
+        self.set_skill(triggerIds=[7023], enable=False)
+        self.set_skill(triggerIds=[7024], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[99991]):
-            return 스킬발동()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[99991]):
+            return 스킬발동(self.ctx)
 
 
-class 스킬발동(state.State):
+class 스킬발동(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7001], isEnable=True)
-        set_skill(triggerIds=[7002], isEnable=True)
-        set_skill(triggerIds=[7003], isEnable=True)
-        set_skill(triggerIds=[7004], isEnable=True)
-        set_skill(triggerIds=[7005], isEnable=True)
-        set_skill(triggerIds=[7006], isEnable=True)
-        set_skill(triggerIds=[7007], isEnable=True)
-        set_skill(triggerIds=[7008], isEnable=True)
-        set_skill(triggerIds=[7009], isEnable=True)
-        set_skill(triggerIds=[7010], isEnable=True)
-        set_skill(triggerIds=[7011], isEnable=True)
-        set_skill(triggerIds=[7012], isEnable=True)
-        set_skill(triggerIds=[7013], isEnable=True)
-        set_skill(triggerIds=[7014], isEnable=True)
-        set_skill(triggerIds=[7015], isEnable=True)
-        set_skill(triggerIds=[7016], isEnable=True)
-        set_skill(triggerIds=[7017], isEnable=True)
-        set_skill(triggerIds=[7018], isEnable=True)
-        set_skill(triggerIds=[7019], isEnable=True)
-        set_skill(triggerIds=[7020], isEnable=True)
-        set_skill(triggerIds=[7021], isEnable=True)
-        set_skill(triggerIds=[7022], isEnable=True)
-        set_skill(triggerIds=[7023], isEnable=True)
-        set_skill(triggerIds=[7024], isEnable=True)
+        self.set_skill(triggerIds=[7001], enable=True)
+        self.set_skill(triggerIds=[7002], enable=True)
+        self.set_skill(triggerIds=[7003], enable=True)
+        self.set_skill(triggerIds=[7004], enable=True)
+        self.set_skill(triggerIds=[7005], enable=True)
+        self.set_skill(triggerIds=[7006], enable=True)
+        self.set_skill(triggerIds=[7007], enable=True)
+        self.set_skill(triggerIds=[7008], enable=True)
+        self.set_skill(triggerIds=[7009], enable=True)
+        self.set_skill(triggerIds=[7010], enable=True)
+        self.set_skill(triggerIds=[7011], enable=True)
+        self.set_skill(triggerIds=[7012], enable=True)
+        self.set_skill(triggerIds=[7013], enable=True)
+        self.set_skill(triggerIds=[7014], enable=True)
+        self.set_skill(triggerIds=[7015], enable=True)
+        self.set_skill(triggerIds=[7016], enable=True)
+        self.set_skill(triggerIds=[7017], enable=True)
+        self.set_skill(triggerIds=[7018], enable=True)
+        self.set_skill(triggerIds=[7019], enable=True)
+        self.set_skill(triggerIds=[7020], enable=True)
+        self.set_skill(triggerIds=[7021], enable=True)
+        self.set_skill(triggerIds=[7022], enable=True)
+        self.set_skill(triggerIds=[7023], enable=True)
+        self.set_skill(triggerIds=[7024], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

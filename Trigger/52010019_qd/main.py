@@ -1,76 +1,76 @@
 """ trigger/52010019_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101,102,103])
+        self.create_monster(spawnIds=[101,102,103])
 
 
-class Event_01(state.State):
+class Event_01(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8001, enable=True)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_timer(timerId='3', seconds=3)
-        set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__0$', arg4=3)
-        set_skip(state=Event_02)
+        self.select_camera(triggerId=8001, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_timer(timerId='3', seconds=3)
+        self.set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__0$', arg4=3)
+        self.set_skip(state=Event_02)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_02(self.ctx)
 
     def on_exit(self):
-        remove_cinematic_talk()
+        self.remove_cinematic_talk()
 
 
-class Event_02(state.State):
+class Event_02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__1$', arg4=3)
-        set_skip(state=Event_03)
-        set_timer(timerId='3', seconds=3)
+        self.set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__1$', arg4=3)
+        self.set_skip(state=Event_03)
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_03()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_03(self.ctx)
 
     def on_exit(self):
-        remove_cinematic_talk()
+        self.remove_cinematic_talk()
 
 
-class Event_03(state.State):
+class Event_03(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__2$', arg4=3)
-        set_skip(state=Event_04)
-        set_timer(timerId='3', seconds=3)
+        self.set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__2$', arg4=3)
+        self.set_skip(state=Event_04)
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_04()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_04(self.ctx)
 
     def on_exit(self):
-        remove_cinematic_talk()
+        self.remove_cinematic_talk()
 
 
-class Event_04(state.State):
+class Event_04(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__3$', arg4=3)
-        set_timer(timerId='3', seconds=3)
-        set_skip(state=Event_05)
+        self.set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__3$', arg4=3)
+        self.set_timer(timerId='3', seconds=3)
+        self.set_skip(state=Event_05)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return Event_05()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return Event_05(self.ctx)
 
     def on_exit(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=7)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=7)
 
 
-class Event_05(state.State):
+class Event_05(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8001, enable=False)
+        self.select_camera(triggerId=8001, enable=False)
 
 
+initial_state = idle

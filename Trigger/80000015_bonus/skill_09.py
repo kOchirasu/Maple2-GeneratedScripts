@@ -1,83 +1,83 @@
 """ trigger/80000015_bonus/skill_09.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[103]):
-            return 대기시간()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[103]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[720], isEnable=False)
-        set_skill(triggerIds=[721], isEnable=False)
-        set_skill(triggerIds=[722], isEnable=False)
-        set_skill(triggerIds=[723], isEnable=False)
-        set_skill(triggerIds=[724], isEnable=False)
-        set_skill(triggerIds=[725], isEnable=False)
+        self.set_skill(triggerIds=[720], enable=False)
+        self.set_skill(triggerIds=[721], enable=False)
+        self.set_skill(triggerIds=[722], enable=False)
+        self.set_skill(triggerIds=[723], enable=False)
+        self.set_skill(triggerIds=[724], enable=False)
+        self.set_skill(triggerIds=[725], enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 스킬01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 스킬01(self.ctx)
 
 
-class 스킬01(state.State):
+class 스킬01(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[720], isEnable=True)
+        self.set_skill(triggerIds=[720], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 스킬02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 스킬02(self.ctx)
 
 
-class 스킬02(state.State):
+class 스킬02(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[721], isEnable=True)
+        self.set_skill(triggerIds=[721], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 스킬03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 스킬03(self.ctx)
 
 
-class 스킬03(state.State):
+class 스킬03(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[722], isEnable=True)
+        self.set_skill(triggerIds=[722], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 스킬04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 스킬04(self.ctx)
 
 
-class 스킬04(state.State):
+class 스킬04(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[723], isEnable=True)
+        self.set_skill(triggerIds=[723], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=200):
-            return 스킬05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=200):
+            return 스킬05(self.ctx)
 
 
-class 스킬05(state.State):
+class 스킬05(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[724], isEnable=True)
+        self.set_skill(triggerIds=[724], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 스킬06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 스킬06(self.ctx)
 
 
-class 스킬06(state.State):
+class 스킬06(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[725], isEnable=True)
+        self.set_skill(triggerIds=[725], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 대기시간()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 대기시간(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

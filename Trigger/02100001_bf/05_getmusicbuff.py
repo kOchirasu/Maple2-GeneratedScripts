@@ -1,45 +1,45 @@
 """ trigger/02100001_bf/05_getmusicbuff.xml """
-from common import *
-import state
+import common
 
 
-#  아프렐라 오지 : 연주 시 특수 효과가 발동되는 패시브 버프 부여 
-class Wait(state.State):
+# 아프렐라 오지 : 연주 시 특수 효과가 발동되는 패시브 버프 부여
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='GiveBuffSlowly', value=0)
+        self.set_user_value(key='GiveBuffSlowly', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9900]):
-            return GiveBuff01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9900]):
+            return GiveBuff01(self.ctx)
 
 
-#  시작 초반에 철창 문이 닫히기 전까지 1초마다 버프 지급 
-class GiveBuff01(state.State):
+# 시작 초반에 철창 문이 닫히기 전까지 1초마다 버프 지급
+class GiveBuff01(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[9900], skillId=71000030, level=1)
+        self.add_buff(boxIds=[9900], skillId=71000030, level=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return GiveBuff01()
-        if user_value(key='GiveBuffSlowly', value=1):
-            return GiveBuff02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return GiveBuff01(self.ctx)
+        if self.user_value(key='GiveBuffSlowly', value=1):
+            return GiveBuff02(self.ctx)
 
 
-#  철창문이 닫힌 이후에는 세이프 존에 유저를 감지하면 세이프 존에 있는 유저에게 버프 지급 
-class GiveBuff02(state.State):
+# 철창문이 닫힌 이후에는 세이프 존에 유저를 감지하면 세이프 존에 있는 유저에게 버프 지급
+class GiveBuff02(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[9901], skillId=71000030, level=1)
+        self.add_buff(boxIds=[9901], skillId=71000030, level=1)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9901]):
-            return GiveBuff02()
-        if user_value(key='GiveBuffSlowly', value=2):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9901]):
+            return GiveBuff02(self.ctx)
+        if self.user_value(key='GiveBuffSlowly', value=2):
+            return Quit(self.ctx)
 
 
-#  플레이 제한 시간이 끝나면 버프 지급을 멈춤 
-class Quit(state.State):
+# 플레이 제한 시간이 끝나면 버프 지급을 멈춤
+class Quit(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[9900], skillId=71000034, level=1)
+        self.add_buff(boxIds=[9900], skillId=71000034, level=1)
 
 
+initial_state = Wait

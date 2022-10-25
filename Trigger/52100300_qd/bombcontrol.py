@@ -1,53 +1,53 @@
 """ trigger/52100300_qd/bombcontrol.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990001, key='RandomBombEnd', value=0)
-        start_combine_spawn(groupId=[522], isStart=False)
-        start_combine_spawn(groupId=[523], isStart=False)
-        start_combine_spawn(groupId=[524], isStart=False)
+        self.set_user_value(triggerId=99990001, key='RandomBombEnd', value=0)
+        self.start_combine_spawn(groupId=[522], isStart=False)
+        self.start_combine_spawn(groupId=[523], isStart=False)
+        self.start_combine_spawn(groupId=[524], isStart=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='RandomBomb', value=1):
-            return 포탑생성_1()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='RandomBomb', value=1):
+            return 포탑생성_1(self.ctx)
 
 
-class 포탑생성_1(state.State):
+class 포탑생성_1(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[152], arg2=True) # 몬스터 등장
-        start_combine_spawn(groupId=[524], isStart=True)
+        self.create_monster(spawnIds=[152], animationEffect=True) # 몬스터 등장
+        self.start_combine_spawn(groupId=[524], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[152]):
-            return 포탑생성_2()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[152]):
+            return 포탑생성_2(self.ctx)
 
 
-class 포탑생성_2(state.State):
+class 포탑생성_2(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[522], isStart=True)
+        self.start_combine_spawn(groupId=[522], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return 포탑생성_3()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return 포탑생성_3(self.ctx)
 
 
-class 포탑생성_3(state.State):
+class 포탑생성_3(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[523], isStart=True)
+        self.start_combine_spawn(groupId=[523], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[151,152,153,154,155,156,157,158,159]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[151,152,153,154,155,156,157,158,159]):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990001, key='RandomBombEnd', value=1)
-        start_combine_spawn(groupId=[522], isStart=False)
-        start_combine_spawn(groupId=[523], isStart=False)
-        start_combine_spawn(groupId=[524], isStart=False)
+        self.set_user_value(triggerId=99990001, key='RandomBombEnd', value=1)
+        self.start_combine_spawn(groupId=[522], isStart=False)
+        self.start_combine_spawn(groupId=[523], isStart=False)
+        self.start_combine_spawn(groupId=[524], isStart=False)
 
 
+initial_state = 대기

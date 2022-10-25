@@ -1,21 +1,21 @@
 """ trigger/99999925/checkpolymorph.xml """
-from common import *
-import state
+import common
 
 
-class CheckIdle(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='BuffGo', value=1):
-            return Checkpoly()
+class CheckIdle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='BuffGo', value=1):
+            return Checkpoly(self.ctx)
 
 
-class Checkpoly(state.State):
+class Checkpoly(common.Trigger):
     def on_enter(self):
-        set_ai_extra_data(key='BuffStart', value=1, isModify=True)
-        set_user_value(key='BuffGo', value=0)
+        self.set_ai_extra_data(key='BuffStart', value=1, isModify=True)
+        self.set_user_value(key='BuffGo', value=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CheckIdle()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CheckIdle(self.ctx)
 
 
+initial_state = CheckIdle

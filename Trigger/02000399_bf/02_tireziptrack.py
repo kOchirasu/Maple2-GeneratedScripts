@@ -1,102 +1,102 @@
 """ trigger/02000399_bf/02_tireziptrack.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[100]) # Tire
-        set_user_value(key='TireSpawn', value=0)
-        set_interact_object(triggerIds=[10001149], state=0) # MakeTireZipTrack
+        self.destroy_monster(spawnIds=[100]) # Tire
+        self.set_user_value(key='TireSpawn', value=0)
+        self.set_interact_object(triggerIds=[10001149], state=0) # MakeTireZipTrack
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TireSpawn', value=1):
-            return GuideInteract()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TireSpawn', value=1):
+            return GuideInteract(self.ctx)
 
 
-class GuideInteract(state.State):
+class GuideInteract(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039903, textId=20039903) # 가이드 : 건너편 탑으로 이동할 수 있는 장치를 찾으세요
-        set_interact_object(triggerIds=[10001149], state=1) # MakeTireZipTrack
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039903, textId=20039903) # 가이드 : 건너편 탑으로 이동할 수 있는 장치를 찾으세요
+        self.set_interact_object(triggerIds=[10001149], state=1) # MakeTireZipTrack
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001149], arg2=0):
-            return TireSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001149], stateValue=0):
+            return TireSpawn(self.ctx)
 
     def on_exit(self):
-        hide_guide_summary(entityId=20039903)
+        self.hide_guide_summary(entityId=20039903)
 
 
-class TireSpawn(state.State):
+class TireSpawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[100], arg2=False) # Tire
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039904, textId=20039904, duration=3000) # 가이드 : 타이어에 매달리세요!
+        self.create_monster(spawnIds=[100], animationEffect=False) # Tire
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039904, textId=20039904, duration=3000) # 가이드 : 타이어에 매달리세요!
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return GuideTireHold()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return GuideTireHold(self.ctx)
 
 
-class GuideTireHold(state.State):
+class GuideTireHold(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039905, textId=20039905, duration=2000) # 가이드 : 출발합니다!
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039905, textId=20039905, duration=2000) # 가이드 : 출발합니다!
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return TireMove()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return TireMove(self.ctx)
 
 
-class TireMove(state.State):
+class TireMove(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=100, patrolName='MS2PatrolData_100')
+        self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7000):
-            return TireRemove01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7000):
+            return TireRemove01(self.ctx)
 
 
-class TireRemove01(state.State):
+class TireRemove01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[100])
+        self.destroy_monster(spawnIds=[100])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return TireResetDelay()
-
-
-class TireResetDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return TireReset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return TireResetDelay(self.ctx)
 
 
-class TireReset(state.State):
+class TireResetDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return TireReset(self.ctx)
+
+
+class TireReset(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001149], state=1) # MakeTireZipTrack
+        self.set_interact_object(triggerIds=[10001149], state=1) # MakeTireZipTrack
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001149], arg2=0):
-            return TireSpawnAgain()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001149], stateValue=0):
+            return TireSpawnAgain(self.ctx)
 
 
-class TireSpawnAgain(state.State):
+class TireSpawnAgain(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[100], arg2=False) # Tire
+        self.create_monster(spawnIds=[100], animationEffect=False) # Tire
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return TireMoveAgain()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return TireMoveAgain(self.ctx)
 
 
-class TireMoveAgain(state.State):
+class TireMoveAgain(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=100, patrolName='MS2PatrolData_100')
+        self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
-            return TireRemove01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
+            return TireRemove01(self.ctx)
 
 
+initial_state = Wait

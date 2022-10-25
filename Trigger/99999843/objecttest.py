@@ -1,45 +1,45 @@
 """ trigger/99999843/objecttest.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000401], state=1)
-        set_interact_object(triggerIds=[12000400], state=2)
-        set_interact_object(triggerIds=[12000402], state=2)
-        set_interact_object(triggerIds=[12000403], state=2)
+        self.set_interact_object(triggerIds=[12000401], state=1)
+        self.set_interact_object(triggerIds=[12000400], state=2)
+        self.set_interact_object(triggerIds=[12000402], state=2)
+        self.set_interact_object(triggerIds=[12000403], state=2)
 
-    def on_tick(self) -> state.State:
-        if all_of():
-            return PC_MOVE_01()
-
-
-class PC_MOVE_01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            patrol_condition_user(patrolName='MS2PatrolData0', patrolIndex=1, additionalEffectId=73000006)
-            return PC_MOVE_02_Delay()
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return PC_MOVE_01(self.ctx)
 
 
-class PC_MOVE_02_Delay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PC_MOVE_02()
+class PC_MOVE_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            self.patrol_condition_user(patrolName='MS2PatrolData0', patrolIndex=1, additionalEffectId=73000006)
+            return PC_MOVE_02_Delay(self.ctx)
 
 
-class PC_MOVE_02(state.State):
+class PC_MOVE_02_Delay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PC_MOVE_02(self.ctx)
+
+
+class PC_MOVE_02(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[901], skillId=73000009, level=1, arg4=False, arg5=False)
+        self.add_buff(boxIds=[901], skillId=73000009, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PC_MOVE_02_Delay()
-
-
-class RESET_DELAY(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PC_MOVE_02_Delay(self.ctx)
 
 
+class RESET_DELAY(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 대기(self.ctx)
+
+
+initial_state = 대기

@@ -1,23 +1,23 @@
 """ trigger/02010036_bf/water.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3001], visible=True, arg3=0, arg4=30, arg5=2)
+        self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=30, scale=2)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 부서짐()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 부서짐(self.ctx)
 
 
-class 부서짐(state.State):
+class 부서짐(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3001], visible=False, arg3=0, arg4=30, arg5=2)
+        self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=30, scale=2)
 
-    def on_tick(self) -> state.State:
-        if not user_detected(boxIds=[101]):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if not self.user_detected(boxIds=[101]):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

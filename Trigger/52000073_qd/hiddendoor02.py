@@ -1,78 +1,78 @@
 """ trigger/52000073_qd/hiddendoor02.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
-        set_mesh(triggerIds=[2000], visible=True, arg3=0, arg4=0, arg5=0) # Wall
-        set_breakable(triggerIds=[4000], enabled=False) # Move
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # Move
-        set_interact_object(triggerIds=[10001082], state=1) # BookCase
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
+        self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
+        self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0) # Wall
+        self.set_breakable(triggerIds=[4000], enable=False) # Move
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move
+        self.set_interact_object(triggerIds=[10001082], state=1) # BookCase
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001082], arg2=0):
-            return BookCaseMove01()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001082], stateValue=0):
+            return BookCaseMove01(self.ctx)
 
 
-class BookCaseMove01(state.State):
+class BookCaseMove01(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4000], enabled=True) # Move
-        set_visible_breakable_object(triggerIds=[4000], arg2=True) # Move
-        set_mesh(triggerIds=[2000], visible=False, arg3=0, arg4=0, arg5=3) # Wall
+        self.set_breakable(triggerIds=[4000], enable=True) # Move
+        self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move
+        self.set_mesh(triggerIds=[2000], visible=False, arg3=0, delay=0, scale=3) # Wall
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DoorOpen01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DoorOpen01(self.ctx)
 
 
-class DoorOpen01(state.State):
+class DoorOpen01(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3000, visible=True, initialSequence='Opened') # HiddenDoor
-        set_portal(portalId=2, visible=True, enabled=False, minimapVisible=False)
+        self.set_actor(triggerId=3000, visible=True, initialSequence='Opened') # HiddenDoor
+        self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DoorOpen02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DoorOpen02(self.ctx)
 
 
-class DoorOpen02(state.State):
+class DoorOpen02(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=57000):
-            return DoorClose01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=57000):
+            return DoorClose01(self.ctx)
 
 
-class DoorClose01(state.State):
+class DoorClose01(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
-        set_portal(portalId=2, visible=True, enabled=False, minimapVisible=False)
+        self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
+        self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DoorClose02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DoorClose02(self.ctx)
 
 
-class DoorClose02(state.State):
+class DoorClose02(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4000], enabled=False) # Move
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # Move
-        set_mesh(triggerIds=[2000], visible=True, arg3=0, arg4=0, arg5=3) # Wall
-        set_interact_object(triggerIds=[10001082], state=1) # BookCase
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
+        self.set_breakable(triggerIds=[4000], enable=False) # Move
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move
+        self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=3) # Wall
+        self.set_interact_object(triggerIds=[10001082], state=1) # BookCase
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Reset()
-
-
-class Reset(state.State):
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001082], arg2=0):
-            return BookCaseMove01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Reset(self.ctx)
 
 
+class Reset(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001082], stateValue=0):
+            return BookCaseMove01(self.ctx)
+
+
+initial_state = Wait

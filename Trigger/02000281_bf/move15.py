@@ -1,24 +1,24 @@
 """ trigger/02000281_bf/move15.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[815], enabled=False)
+        self.set_breakable(triggerIds=[815], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[195]):
-            return 발판발동()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[195]):
+            return 발판발동(self.ctx)
 
 
-class 발판발동(state.State):
+class 발판발동(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='30', seconds=30, clearAtZero=False)
-        set_breakable(triggerIds=[815], enabled=True)
+        self.set_timer(timerId='30', seconds=30, startDelay=0)
+        self.set_breakable(triggerIds=[815], enable=True)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='30'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='30'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

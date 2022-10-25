@@ -1,111 +1,111 @@
 """ trigger/51000003_dg/cannon_projectile.xml """
-from common import *
-import state
+import common
 
 
-#  플레이어 감지 
-#  큐브스킬형 캐논 발사체 
-class Round_check(state.State):
+# 플레이어 감지
+# 큐브스킬형 캐논 발사체
+class Round_check(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
+        self.destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_01', value=1):
-            return Round_01()
-        if user_value(key='Round_02', value=1):
-            return Round_02()
-        if user_value(key='Round_03', value=1):
-            return Round_03()
-        if user_value(key='Round_04', value=1):
-            return Round_04()
-        if user_value(key='Round_05', value=1):
-            return Round_05()
-        if user_value(key='Round_06', value=1):
-            return Round_06()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_01', value=1):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_02', value=1):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_03', value=1):
+            return Round_03(self.ctx)
+        if self.user_value(key='Round_04', value=1):
+            return Round_04(self.ctx)
+        if self.user_value(key='Round_05', value=1):
+            return Round_05(self.ctx)
+        if self.user_value(key='Round_06', value=1):
+            return Round_06(self.ctx)
 
 
-class Round_01(state.State):
+class Round_01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[113], arg2=True, arg3=600)
-        create_monster(spawnIds=[118], arg2=True, arg3=1500)
+        self.create_monster(spawnIds=[113], animationEffect=True, animationDelay=600)
+        self.create_monster(spawnIds=[118], animationEffect=True, animationDelay=1500)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_02', value=1):
-            return Round_02()
-        if user_value(key='Reset', value=1):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_02', value=1):
+            return Round_02(self.ctx)
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class Round_02(state.State):
+class Round_02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[114], arg2=True, arg3=700)
-        create_monster(spawnIds=[117], arg2=True, arg3=1100)
+        self.create_monster(spawnIds=[114], animationEffect=True, animationDelay=700)
+        self.create_monster(spawnIds=[117], animationEffect=True, animationDelay=1100)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_03', value=1):
-            return Round_03()
-        if user_value(key='Reset', value=1):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_03', value=1):
+            return Round_03(self.ctx)
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class Round_03(state.State):
+class Round_03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[112], arg2=True, arg3=800)
-        create_monster(spawnIds=[116], arg2=True, arg3=1300)
+        self.create_monster(spawnIds=[112], animationEffect=True, animationDelay=800)
+        self.create_monster(spawnIds=[116], animationEffect=True, animationDelay=1300)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_04', value=1):
-            return Round_04()
-        if user_value(key='Reset', value=1):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_04', value=1):
+            return Round_04(self.ctx)
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class Round_04(state.State):
+class Round_04(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[111], arg2=True, arg3=300)
-        create_monster(spawnIds=[115], arg2=True, arg3=900)
+        self.create_monster(spawnIds=[111], animationEffect=True, animationDelay=300)
+        self.create_monster(spawnIds=[115], animationEffect=True, animationDelay=900)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_05', value=1):
-            return Round_05()
-        if user_value(key='Reset', value=1):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_05', value=1):
+            return Round_05(self.ctx)
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class Round_05(state.State):
+class Round_05(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
-        create_monster(spawnIds=[101], arg2=True, arg3=1000)
-        create_monster(spawnIds=[102], arg2=True, arg3=2000)
-        create_monster(spawnIds=[103], arg2=True, arg3=3000)
-        create_monster(spawnIds=[104], arg2=True, arg3=4000)
-        create_monster(spawnIds=[105], arg2=True, arg3=5000)
-        create_monster(spawnIds=[106], arg2=True, arg3=6000)
-        create_monster(spawnIds=[107], arg2=True, arg3=7000)
-        create_monster(spawnIds=[108], arg2=True, arg3=0)
+        self.destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
+        self.create_monster(spawnIds=[101], animationEffect=True, animationDelay=1000)
+        self.create_monster(spawnIds=[102], animationEffect=True, animationDelay=2000)
+        self.create_monster(spawnIds=[103], animationEffect=True, animationDelay=3000)
+        self.create_monster(spawnIds=[104], animationEffect=True, animationDelay=4000)
+        self.create_monster(spawnIds=[105], animationEffect=True, animationDelay=5000)
+        self.create_monster(spawnIds=[106], animationEffect=True, animationDelay=6000)
+        self.create_monster(spawnIds=[107], animationEffect=True, animationDelay=7000)
+        self.create_monster(spawnIds=[108], animationEffect=True, animationDelay=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_06', value=1):
-            return Round_check()
-        if user_value(key='Reset', value=1):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_06', value=1):
+            return Round_check(self.ctx)
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class Round_06(state.State):
+class Round_06(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[121], arg2=True, arg3=1000)
-        create_monster(spawnIds=[122], arg2=True, arg3=3000)
-        create_monster(spawnIds=[123], arg2=True, arg3=5000)
+        self.create_monster(spawnIds=[121], animationEffect=True, animationDelay=1000)
+        self.create_monster(spawnIds=[122], animationEffect=True, animationDelay=3000)
+        self.create_monster(spawnIds=[123], animationEffect=True, animationDelay=5000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
             return None # Missing State: Round_06_02
-        if user_value(key='Reset', value=1):
-            return End()
+        if self.user_value(key='Reset', value=1):
+            return End(self.ctx)
 
 
-class End(state.State):
+class End(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,117,118])
+        self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,117,118])
 
 
+initial_state = Round_check

@@ -1,28 +1,28 @@
 """ trigger/02000142_bf/trigger_01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[7000], enabled=False)
-        set_interact_object(triggerIds=[10000245], state=1)
+        self.set_breakable(triggerIds=[7000], enable=False)
+        self.set_interact_object(triggerIds=[10000245], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000245], arg2=0):
-            return 이동()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000245], stateValue=0):
+            return 이동(self.ctx)
 
 
-class 이동(state.State):
+class 이동(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=15, clearAtZero=False)
-        set_breakable(triggerIds=[7000], enabled=True)
+        self.set_timer(timerId='1', seconds=15, startDelay=0)
+        self.set_breakable(triggerIds=[7000], enable=True)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 대기(self.ctx)
 
     def on_exit(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
 
+initial_state = 대기

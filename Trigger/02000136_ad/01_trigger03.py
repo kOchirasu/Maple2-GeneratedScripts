@@ -1,27 +1,27 @@
 """ trigger/02000136_ad/01_trigger03.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[804], visible=False)
-        set_interact_object(triggerIds=[10000068], state=1)
-        set_mesh(triggerIds=[15], visible=False)
+        self.set_effect(triggerIds=[804], visible=False)
+        self.set_interact_object(triggerIds=[10000068], state=1)
+        self.set_mesh(triggerIds=[15], visible=False)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000068], arg2=0):
-            return 발판등장()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000068], stateValue=0):
+            return 발판등장(self.ctx)
 
 
-class 발판등장(state.State):
+class 발판등장(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[15], visible=True)
-        set_effect(triggerIds=[804], visible=True)
-        set_timer(timerId='2', seconds=4)
+        self.set_mesh(triggerIds=[15], visible=True)
+        self.set_effect(triggerIds=[804], visible=True)
+        self.set_timer(timerId='2', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

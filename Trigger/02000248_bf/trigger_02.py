@@ -1,25 +1,25 @@
 """ trigger/02000248_bf/trigger_02.xml """
-from common import *
-import state
+import common
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_cube(triggerIds=[2101,2102,2103,2104,2105], isVisible=True)
+        self.set_cube(triggerIds=[2101,2102,2103,2104,2105], isVisible=True)
 
 
-class objectset(state.State):
+class objectset(common.Trigger):
     def on_enter(self):
-        set_cube(triggerIds=[2101,2102,2103,2104,2105], randomCount=1, isVisible=True)
+        self.set_cube(triggerIds=[2101,2102,2103,2104,2105], randomCount=1, isVisible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return WaitTick()
-
-
-class WaitTick(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return objectset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return WaitTick(self.ctx)
 
 
+class WaitTick(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return objectset(self.ctx)
+
+
+initial_state = ready

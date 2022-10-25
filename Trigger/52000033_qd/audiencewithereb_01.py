@@ -1,292 +1,292 @@
 """ trigger/52000033_qd/audiencewithereb_01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101,201,301,401,501,502,503,504,505,506,507,508,509,510], arg2=False)
-        set_effect(triggerIds=[5000], visible=False) # SpotLight_01
-        set_effect(triggerIds=[5001], visible=False) # SpotLight_02
-        set_effect(triggerIds=[5002], visible=False) # GuardBow
+        self.create_monster(spawnIds=[101,201,301,401,501,502,503,504,505,506,507,508,509,510], animationEffect=False)
+        self.set_effect(triggerIds=[5000], visible=False) # SpotLight_01
+        self.set_effect(triggerIds=[5001], visible=False) # SpotLight_02
+        self.set_effect(triggerIds=[5002], visible=False) # GuardBow
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return LodingDelay01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return LodingDelay01(self.ctx)
 
 
-class LodingDelay01(state.State):
+class LodingDelay01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9000], questIds=[50001301], questStates=[3]):
-            return QuestOngoing02()
-        if quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[3]):
-            return QuestOngoing01()
-        if quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[2]):
-            return PCWalkIn01()
-        if wait_tick(waitTick=3000):
-            return PCtoLeave01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9000], questIds=[50001301], questStates=[3]):
+            return QuestOngoing02(self.ctx)
+        if self.quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[3]):
+            return QuestOngoing01(self.ctx)
+        if self.quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[2]):
+            return PCWalkIn01(self.ctx)
+        if self.wait_tick(waitTick=3000):
+            return PCtoLeave01(self.ctx)
 
 
-#   첫 번째 퀘스트 완료 상태 
-class QuestOngoing01(state.State):
+# 첫 번째 퀘스트 완료 상태
+class QuestOngoing01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return SecondQuestCheck02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return SecondQuestCheck02(self.ctx)
 
 
-#   두 번째 퀘스트 완료 상태 
-class QuestOngoing02(state.State):
+# 두 번째 퀘스트 완료 상태
+class QuestOngoing02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCGoCenter01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCGoCenter01(self.ctx)
 
 
-#   첫 번째 퀘스트 완료 가능 상태 
-class PCWalkIn01(state.State):
+# 첫 번째 퀘스트 완료 가능 상태
+class PCWalkIn01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=600, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=600, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return PCWalkIn02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return PCWalkIn02(self.ctx)
 
 
-class PCWalkIn02(state.State):
+class PCWalkIn02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=601, enable=True)
+        self.select_camera(triggerId=601, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCWalkIn03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCWalkIn03(self.ctx)
 
 
-class PCWalkIn03(state.State):
+class PCWalkIn03(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1000')
+        self.move_user_path(patrolName='MS2PatrolData_1000')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return PCWalkIn04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return PCWalkIn04(self.ctx)
 
 
-class PCWalkIn04(state.State):
+class PCWalkIn04(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=602, enable=True)
+        self.select_camera(triggerId=602, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return BowAction01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return BowAction01(self.ctx)
 
 
-class BowAction01(state.State):
+class BowAction01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=501, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=502, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=503, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=504, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=505, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=506, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=507, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=508, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=509, sequenceName='Bow_A')
-        set_npc_emotion_sequence(spawnId=510, sequenceName='Bow_A')
-        set_effect(triggerIds=[5002], visible=True) # GuardBow
+        self.set_npc_emotion_sequence(spawnId=501, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=502, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=503, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=504, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=505, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=506, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=507, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=508, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=509, sequenceName='Bow_A')
+        self.set_npc_emotion_sequence(spawnId=510, sequenceName='Bow_A')
+        self.set_effect(triggerIds=[5002], visible=True) # GuardBow
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return BowAction02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return BowAction02(self.ctx)
 
 
-class BowAction02(state.State):
+class BowAction02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=701, enable=True)
+        self.select_camera(triggerId=701, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ErebTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ErebTalk01(self.ctx)
 
 
-class ErebTalk01(state.State):
+class ErebTalk01(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1001')
-        select_camera(triggerId=700, enable=True)
+        self.move_user_path(patrolName='MS2PatrolData_1001')
+        self.select_camera(triggerId=700, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ErebTalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ErebTalk02(self.ctx)
 
 
-class ErebTalk02(state.State):
+class ErebTalk02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__0$', arg4=4, arg5=0)
-        set_skip(state=ErebTalk03)
+        self.set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__0$', arg4=4, arg5=0)
+        self.set_skip(state=ErebTalk03)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ErebTalk03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ErebTalk03(self.ctx)
 
 
-class ErebTalk03(state.State):
+class ErebTalk03(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ErebTalk04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ErebTalk04(self.ctx)
 
 
-class ErebTalk04(state.State):
+class ErebTalk04(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=700, enable=False)
+        self.select_camera(triggerId=700, enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondQuestCheck01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondQuestCheck01(self.ctx)
 
     def on_exit(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
 
-class SecondQuestCheck01(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[50001300], questStates=[3]):
-            return SecondQuestCheck02()
+class SecondQuestCheck01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[50001300], questStates=[3]):
+            return SecondQuestCheck02(self.ctx)
 
 
-class SecondQuestCheck02(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[50001301], questStates=[3]):
-            return PCGoCenter01()
+class SecondQuestCheck02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[50001301], questStates=[3]):
+            return PCGoCenter01(self.ctx)
 
 
-class PCGoCenter01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCGoCenter02()
+class PCGoCenter01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCGoCenter02(self.ctx)
 
 
-class PCGoCenter02(state.State):
+class PCGoCenter02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCGoCenter03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCGoCenter03(self.ctx)
 
 
-class PCGoCenter03(state.State):
+class PCGoCenter03(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000033, portalId=10, boxId=9900)
+        self.move_user(mapId=52000033, portalId=10, boxId=9900)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCGoCenter04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCGoCenter04(self.ctx)
 
 
-class PCGoCenter04(state.State):
+class PCGoCenter04(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=800, enable=True)
-        move_user_path(patrolName='MS2PatrolData_1002')
+        self.select_camera(triggerId=800, enable=True)
+        self.move_user_path(patrolName='MS2PatrolData_1002')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCGoCenter05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCGoCenter05(self.ctx)
 
 
-class PCGoCenter05(state.State):
+class PCGoCenter05(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCSpotLighting01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCSpotLighting01(self.ctx)
 
 
-class PCSpotLighting01(state.State):
+class PCSpotLighting01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # SpotLight_01
-        set_effect(triggerIds=[5001], visible=True) # SpotLight_02
+        self.set_effect(triggerIds=[5000], visible=True) # SpotLight_01
+        self.set_effect(triggerIds=[5001], visible=True) # SpotLight_02
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCSpotLighting02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCSpotLighting02(self.ctx)
 
 
-class PCSpotLighting02(state.State):
+class PCSpotLighting02(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_sequence(sequenceNames=['Emotion_Happy_A'])
+        self.set_pc_emotion_sequence(sequenceNames=['Emotion_Happy_A'])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return PCSpotLighting03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return PCSpotLighting03(self.ctx)
 
 
-class PCSpotLighting03(state.State):
+class PCSpotLighting03(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1003')
-        select_camera(triggerId=801, enable=True)
+        self.move_user_path(patrolName='MS2PatrolData_1003')
+        self.select_camera(triggerId=801, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ErebTalk11()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ErebTalk11(self.ctx)
 
 
-class ErebTalk11(state.State):
+class ErebTalk11(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__1$', arg4=5, arg5=0)
-        set_skip(state=ErebTalk12)
+        self.set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__1$', arg4=5, arg5=0)
+        self.set_skip(state=ErebTalk12)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return ErebTalk12()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return ErebTalk12(self.ctx)
 
 
-class ErebTalk12(state.State):
+class ErebTalk12(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ErebTalk13()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ErebTalk13(self.ctx)
 
 
-class ErebTalk13(state.State):
+class ErebTalk13(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=801, enable=False)
+        self.select_camera(triggerId=801, enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCtoLeave01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCtoLeave01(self.ctx)
 
     def on_exit(self):
-        set_effect(triggerIds=[5000], visible=False) # SpotLight_01
-        set_effect(triggerIds=[5001], visible=False) # SpotLight_02
+        self.set_effect(triggerIds=[5000], visible=False) # SpotLight_01
+        self.set_effect(triggerIds=[5001], visible=False) # SpotLight_02
 
 
-class PCtoLeave01(state.State):
+class PCtoLeave01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
 
+initial_state = 대기

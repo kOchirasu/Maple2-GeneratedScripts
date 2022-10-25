@@ -1,441 +1,441 @@
 """ trigger/66200001_gd/barrier_8320.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=2) # On
-        set_interact_object(triggerIds=[10001210], state=2) # Off
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=2) # On
+        self.set_interact_object(triggerIds=[10001210], state=2) # Off
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Barrier32', value=1):
-            return Sensor7321()
-        if user_value(key='Barrier32', value=2):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=3):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=4):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=5):
-            return Sensor7325()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Barrier32', value=1):
+            return Sensor7321(self.ctx)
+        if self.user_value(key='Barrier32', value=2):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=3):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=4):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=5):
+            return Sensor7325(self.ctx)
 
 
-#  1명 방어 불가 
-class Sensor7321(state.State):
+# 1명 방어 불가
+class Sensor7321(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=1) # yellow
+        self.set_user_value(triggerId=7320, key='Color32', value=1) # yellow
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=1, operator='Equal'):
-            return Activate7321()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=1, operator='Equal'):
+            return Activate7321(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Activate7321(state.State):
+class Activate7321(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=2) # green
+        self.set_user_value(triggerId=7320, key='Color32', value=2) # green
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=1, operator='Equal'):
-            return Sensor7321()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=1, operator='Equal'):
+            return Sensor7321(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-#  2명 
-class Sensor7322(state.State):
+# 2명
+class Sensor7322(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=1) # yellow
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=0) # On
-        set_interact_object(triggerIds=[10001210], state=0) # Off
+        self.set_user_value(triggerId=7320, key='Color32', value=1) # yellow
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=0) # On
+        self.set_interact_object(triggerIds=[10001210], state=0) # Off
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=2, operator='Equal'):
-            return SafeGreen7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return SafeGreen7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class SafeGreen7322(state.State):
+class SafeGreen7322(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=2) # green
+        self.set_user_value(triggerId=7320, key='Color32', value=2) # green
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=2, operator='Equal'):
-            return CheckSameUserTag7322()
-        if not count_users(boxId=9320, boxId=2, operator='Equal'):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-
-
-class CheckSameUserTag7322(state.State):
-    def on_tick(self) -> state.State:
-        if all_of():
-            return Enable7322()
-        if not count_users(boxId=9320, boxId=2, operator='Equal'):
-            return Sensor7322()
-        if not check_same_user_tag(boxId=9320):
-            return SafeGreen7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return CheckSameUserTag7322(self.ctx)
+        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Enable7322(state.State):
+class CheckSameUserTag7322(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return Enable7322(self.ctx)
+        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return Sensor7322(self.ctx)
+        if not self.check_same_user_tag(boxId=9320):
+            return SafeGreen7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+
+
+class Enable7322(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
-        set_interact_object(triggerIds=[10001194], state=1) # On
+        self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(triggerIds=[10001194], state=1) # On
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001194], arg2=0):
-            return Activate7322()
-        if not count_users(boxId=9320, boxId=2, operator='Equal'):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001194], stateValue=0):
+            return Activate7322(self.ctx)
+        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Activate7322(state.State):
+class Activate7322(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=True)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10001194], state=2) # On
+        self.set_effect(triggerIds=[8320], visible=True)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10001194], state=2) # On
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=2, operator='Equal'):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if wait_tick(waitTick=1000):
-            return Delay7322()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.wait_tick(waitTick=1000):
+            return Delay7322(self.ctx)
 
 
-class Delay7322(state.State):
+class Delay7322(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001210], state=1) # Off
+        self.set_interact_object(triggerIds=[10001210], state=1) # Off
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=2, operator='Equal'):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if object_interacted(interactIds=[10001210], arg2=0):
-            return DeActivate7322()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.object_interacted(interactIds=[10001210], stateValue=0):
+            return DeActivate7322(self.ctx)
 
 
-class DeActivate7322(state.State):
+class DeActivate7322(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=False)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Sensor7322()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Sensor7322(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-#  3명 
-class Sensor7323(state.State):
+# 3명
+class Sensor7323(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=1) # yellow
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=0) # On
-        set_interact_object(triggerIds=[10001210], state=0) # Off
+        self.set_user_value(triggerId=7320, key='Color32', value=1) # yellow
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=0) # On
+        self.set_interact_object(triggerIds=[10001210], state=0) # Off
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=3, operator='Equal'):
-            return SafeGreen7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return SafeGreen7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class SafeGreen7323(state.State):
+class SafeGreen7323(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=2) # green
+        self.set_user_value(triggerId=7320, key='Color32', value=2) # green
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=3, operator='Equal'):
-            return CheckSameUserTag7323()
-        if not count_users(boxId=9320, boxId=3, operator='Equal'):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-
-
-class CheckSameUserTag7323(state.State):
-    def on_tick(self) -> state.State:
-        if all_of():
-            return Enable7323()
-        if not count_users(boxId=9320, boxId=3, operator='Equal'):
-            return Sensor7323()
-        if not check_same_user_tag(boxId=9320):
-            return SafeGreen7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return CheckSameUserTag7323(self.ctx)
+        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Enable7323(state.State):
+class CheckSameUserTag7323(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return Enable7323(self.ctx)
+        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return Sensor7323(self.ctx)
+        if not self.check_same_user_tag(boxId=9320):
+            return SafeGreen7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+
+
+class Enable7323(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
-        set_interact_object(triggerIds=[10001194], state=1) # On
+        self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(triggerIds=[10001194], state=1) # On
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001194], arg2=0):
-            return Activate7323()
-        if not count_users(boxId=9320, boxId=3, operator='Equal'):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001194], stateValue=0):
+            return Activate7323(self.ctx)
+        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Activate7323(state.State):
+class Activate7323(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=True)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10001194], state=2) # On
+        self.set_effect(triggerIds=[8320], visible=True)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10001194], state=2) # On
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=3, operator='Equal'):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if wait_tick(waitTick=1000):
-            return Delay7323()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.wait_tick(waitTick=1000):
+            return Delay7323(self.ctx)
 
 
-class Delay7323(state.State):
+class Delay7323(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001210], state=1) # Off
+        self.set_interact_object(triggerIds=[10001210], state=1) # Off
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=3, operator='Equal'):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if object_interacted(interactIds=[10001210], arg2=0):
-            return DeActivate7323()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.object_interacted(interactIds=[10001210], stateValue=0):
+            return DeActivate7323(self.ctx)
 
 
-class DeActivate7323(state.State):
+class DeActivate7323(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=False)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Sensor7323()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Sensor7323(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-#  4명 
-class Sensor7324(state.State):
+# 4명
+class Sensor7324(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=1) # yellow
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=0) # On
-        set_interact_object(triggerIds=[10001210], state=0) # Off
+        self.set_user_value(triggerId=7320, key='Color32', value=1) # yellow
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=0) # On
+        self.set_interact_object(triggerIds=[10001210], state=0) # Off
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=4, operator='Equal'):
-            return SafeGreen7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return SafeGreen7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class SafeGreen7324(state.State):
+class SafeGreen7324(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=2) # green
+        self.set_user_value(triggerId=7320, key='Color32', value=2) # green
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=4, operator='Equal'):
-            return CheckSameUserTag7324()
-        if not count_users(boxId=9320, boxId=4, operator='Equal'):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-
-
-class CheckSameUserTag7324(state.State):
-    def on_tick(self) -> state.State:
-        if all_of():
-            return Enable7324()
-        if not count_users(boxId=9320, boxId=4, operator='Equal'):
-            return Sensor7324()
-        if not check_same_user_tag(boxId=9320):
-            return SafeGreen7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return CheckSameUserTag7324(self.ctx)
+        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Enable7324(state.State):
+class CheckSameUserTag7324(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return Enable7324(self.ctx)
+        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return Sensor7324(self.ctx)
+        if not self.check_same_user_tag(boxId=9320):
+            return SafeGreen7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+
+
+class Enable7324(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
-        set_interact_object(triggerIds=[10001194], state=1) # On
+        self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(triggerIds=[10001194], state=1) # On
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001194], arg2=0):
-            return Activate7324()
-        if not count_users(boxId=9320, boxId=4, operator='Equal'):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001194], stateValue=0):
+            return Activate7324(self.ctx)
+        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Activate7324(state.State):
+class Activate7324(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=True)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10001194], state=2) # On
+        self.set_effect(triggerIds=[8320], visible=True)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10001194], state=2) # On
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=4, operator='Equal'):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if wait_tick(waitTick=1000):
-            return Delay7324()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.wait_tick(waitTick=1000):
+            return Delay7324(self.ctx)
 
 
-class Delay7324(state.State):
+class Delay7324(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001210], state=1) # Off
+        self.set_interact_object(triggerIds=[10001210], state=1) # Off
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=4, operator='Equal'):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if object_interacted(interactIds=[10001210], arg2=0):
-            return DeActivate7324()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.object_interacted(interactIds=[10001210], stateValue=0):
+            return DeActivate7324(self.ctx)
 
 
-class DeActivate7324(state.State):
+class DeActivate7324(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=False)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Sensor7324()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Sensor7324(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-#  5명 
-class Sensor7325(state.State):
+# 5명
+class Sensor7325(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=1) # yellow
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=0) # On
-        set_interact_object(triggerIds=[10001210], state=0) # Off
+        self.set_user_value(triggerId=7320, key='Color32', value=1) # yellow
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=0) # On
+        self.set_interact_object(triggerIds=[10001210], state=0) # Off
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=5, operator='Equal'):
-            return SafeGreen7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return SafeGreen7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class SafeGreen7325(state.State):
+class SafeGreen7325(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=7320, key='Color32', value=2) # green
+        self.set_user_value(triggerId=7320, key='Color32', value=2) # green
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9320, boxId=5, operator='Equal'):
-            return CheckSameUserTag7325()
-        if not count_users(boxId=9320, boxId=5, operator='Equal'):
-            return Sensor7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-
-
-class CheckSameUserTag7325(state.State):
-    def on_tick(self) -> state.State:
-        if all_of():
-            return Enable7325()
-        if not count_users(boxId=9320, boxId=5, operator='Equal'):
-            return Sensor7325()
-        if not check_same_user_tag(boxId=9320):
-            return SafeGreen7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return CheckSameUserTag7325(self.ctx)
+        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return Sensor7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Enable7325(state.State):
+class CheckSameUserTag7325(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return Enable7325(self.ctx)
+        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return Sensor7325(self.ctx)
+        if not self.check_same_user_tag(boxId=9320):
+            return SafeGreen7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+
+
+class Enable7325(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
-        set_interact_object(triggerIds=[10001194], state=1) # On
+        self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(triggerIds=[10001194], state=1) # On
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001194], arg2=0):
-            return Activate7325()
-        if not count_users(boxId=9320, boxId=5, operator='Equal'):
-            return Sensor7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001194], stateValue=0):
+            return Activate7325(self.ctx)
+        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return Sensor7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Activate7325(state.State):
+class Activate7325(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=True)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10001194], state=2) # On
+        self.set_effect(triggerIds=[8320], visible=True)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=True, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10001194], state=2) # On
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=5, operator='Equal'):
-            return Sensor7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if wait_tick(waitTick=1000):
-            return Delay7325()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return Sensor7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.wait_tick(waitTick=1000):
+            return Delay7325(self.ctx)
 
 
-class Delay7325(state.State):
+class Delay7325(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001210], state=1) # Off
+        self.set_interact_object(triggerIds=[10001210], state=1) # Off
 
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9320, boxId=5, operator='Equal'):
-            return Sensor7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
-        if object_interacted(interactIds=[10001210], arg2=0):
-            return DeActivate7325()
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+            return Sensor7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
+        if self.object_interacted(interactIds=[10001210], stateValue=0):
+            return DeActivate7325(self.ctx)
 
 
-class DeActivate7325(state.State):
+class DeActivate7325(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8320], visible=False)
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Sensor7325()
-        if user_value(key='Barrier32', value=10):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Sensor7325(self.ctx)
+        if self.user_value(key='Barrier32', value=10):
+            return Reset(self.ctx)
 
 
-class Reset(state.State):
+class Reset(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8320], visible=False)
-        set_interact_object(triggerIds=[10001194], state=0) # On
-        set_interact_object(triggerIds=[10001210], state=0) # Off
-        set_user_value(key='Barrier32', value=0)
+        self.set_mesh(triggerIds=[8321,8322,8323,8324,8325,8326,8327,8328], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8320], visible=False)
+        self.set_interact_object(triggerIds=[10001194], state=0) # On
+        self.set_interact_object(triggerIds=[10001210], state=0) # Off
+        self.set_user_value(key='Barrier32', value=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

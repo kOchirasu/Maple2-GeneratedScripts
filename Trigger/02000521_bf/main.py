@@ -1,32 +1,32 @@
 """ trigger/02000521_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[6001], visible=False)
-        set_mesh(triggerIds=[6002], visible=False)
-        set_mesh(triggerIds=[6003], visible=False)
-        set_mesh(triggerIds=[6004], visible=False)
+        self.set_mesh(triggerIds=[6001], visible=False)
+        self.set_mesh(triggerIds=[6002], visible=False)
+        self.set_mesh(triggerIds=[6003], visible=False)
+        self.set_mesh(triggerIds=[6004], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[702]):
-            return chaos_raid()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[702]):
+            return chaos_raid(self.ctx)
 
 
-class chaos_raid(state.State):
+class chaos_raid(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[402], arg2=False)
+        self.create_monster(spawnIds=[402], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ExitPortal', value=1):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ExitPortal', value=1):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        dungeon_clear()
-        set_portal(portalId=4, visible=True, enabled=True, minimapVisible=True)
+        self.dungeon_clear()
+        self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
 
 
+initial_state = ready

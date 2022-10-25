@@ -1,53 +1,53 @@
 """ trigger/02000213_bf/regenmob11.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 소환몹등장()
+class 시작대기중(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 소환몹등장(self.ctx)
 
 
-class 소환몹등장(state.State):
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000260], arg2=1):
-            create_monster(spawnIds=[1011], arg2=False)
-            return 소멸체크()
+class 소환몹등장(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000260], stateValue=1):
+            self.create_monster(spawnIds=[1011], animationEffect=False)
+            return 소멸체크(self.ctx)
 
 
-class 소멸체크(state.State):
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000260], arg2=0):
-            return 소멸()
-        if object_interacted(interactIds=[10000260], arg2=2):
-            return 소멸()
-        if monster_dead(boxIds=[1011]):
-            return 대기시간()
+class 소멸체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000260], stateValue=0):
+            return 소멸(self.ctx)
+        if self.object_interacted(interactIds=[10000260], stateValue=2):
+            return 소멸(self.ctx)
+        if self.monster_dead(boxIds=[1011]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=15)
+        self.set_timer(timerId='1', seconds=15)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 소환몹등장()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 소환몹등장(self.ctx)
 
     def on_exit(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
 
-class 소멸(state.State):
+class 소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[1011])
-        set_timer(timerId='1', seconds=1200)
+        self.destroy_monster(spawnIds=[1011])
+        self.set_timer(timerId='1', seconds=1200)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 시작대기중(self.ctx)
 
     def on_exit(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
 
+initial_state = 시작대기중

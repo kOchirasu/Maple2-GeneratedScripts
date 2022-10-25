@@ -1,40 +1,40 @@
 """ trigger/02000076_tw_henesysvillage/01_npcbackup08.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[1001], questIds=[10002041], questStates=[1]):
-            return 지원군생성()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[1001], questIds=[10002041], questStates=[1]):
+            return 지원군생성(self.ctx)
 
 
-class 지원군생성(state.State):
+class 지원군생성(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[108], arg2=False)
-        move_npc(spawnId=108, patrolName='MS2PatrolData_18')
+        self.create_monster(spawnIds=[108], animationEffect=False)
+        self.move_npc(spawnId=108, patrolName='MS2PatrolData_18')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=3008, spawnIds=[108]):
-            return 지원군이동()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=3008, spawnIds=[108]):
+            return 지원군이동(self.ctx)
 
 
-class 지원군이동(state.State):
+class 지원군이동(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=108, patrolName='MS2PatrolData_108')
+        self.move_npc(spawnId=108, patrolName='MS2PatrolData_108')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=2001, spawnIds=[108]):
-            return 지원군소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=2001, spawnIds=[108]):
+            return 지원군소멸(self.ctx)
 
 
-class 지원군소멸(state.State):
+class 지원군소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[108])
-        set_timer(timerId='3', seconds=120)
+        self.destroy_monster(spawnIds=[108])
+        self.set_timer(timerId='3', seconds=120)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

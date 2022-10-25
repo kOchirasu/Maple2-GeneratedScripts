@@ -1,300 +1,298 @@
 """ trigger/02000294_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=True)
-        destroy_monster(spawnIds=[3001])
-        destroy_monster(spawnIds=[3002])
-        destroy_monster(spawnIds=[3003])
-        destroy_monster(spawnIds=[3004])
-        destroy_monster(spawnIds=[3005])
-        destroy_monster(spawnIds=[3006])
-        destroy_monster(spawnIds=[3007])
-        destroy_monster(spawnIds=[3008])
-        destroy_monster(spawnIds=[3009])
-        destroy_monster(spawnIds=[3010])
-        destroy_monster(spawnIds=[3011])
-        destroy_monster(spawnIds=[3012])
-        destroy_monster(spawnIds=[3013])
-        destroy_monster(spawnIds=[3014])
-        destroy_monster(spawnIds=[3015])
-        destroy_monster(spawnIds=[3016])
-        destroy_monster(spawnIds=[3017])
-        destroy_monster(spawnIds=[3100]) # Boss
-        destroy_monster(spawnIds=[3101])
-        destroy_monster(spawnIds=[3102])
-        destroy_monster(spawnIds=[3103])
-        destroy_monster(spawnIds=[3104])
-        destroy_monster(spawnIds=[10000]) # Actor
-        set_agent(triggerIds=[133], visible=False)
-        set_agent(triggerIds=[134], visible=False)
-        set_agent(triggerIds=[135], visible=False)
-        set_agent(triggerIds=[136], visible=False)
-        set_agent(triggerIds=[137], visible=False)
-        set_agent(triggerIds=[138], visible=False)
-        set_agent(triggerIds=[139], visible=False)
-        set_agent(triggerIds=[140], visible=False)
-        set_agent(triggerIds=[141], visible=False)
-        set_agent(triggerIds=[142], visible=False)
-        set_agent(triggerIds=[143], visible=False)
-        set_agent(triggerIds=[144], visible=False)
-        set_agent(triggerIds=[145], visible=False)
-        set_agent(triggerIds=[146], visible=False)
-        set_agent(triggerIds=[147], visible=False)
-        set_agent(triggerIds=[148], visible=False)
-        set_agent(triggerIds=[149], visible=False)
-        set_agent(triggerIds=[150], visible=False)
-        set_agent(triggerIds=[151], visible=False)
-        set_agent(triggerIds=[152], visible=False)
-        set_agent(triggerIds=[153], visible=False)
-        set_agent(triggerIds=[154], visible=False)
-        set_agent(triggerIds=[155], visible=False)
-        set_agent(triggerIds=[156], visible=False)
-        set_agent(triggerIds=[157], visible=False)
-        set_actor(triggerId=900, visible=True, initialSequence='Closed') # Door
-        set_mesh(triggerIds=[101,102], visible=True, arg3=0, arg4=0, arg5=0) # ExitFenceBarrier
-        set_mesh(triggerIds=[103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132], visible=True, arg3=0, arg4=0, arg5=0) # Brige
-        set_mesh(triggerIds=[25000,25001,25002,25003,25004,25005,25006,25007,25008,25009,25010,25011,25012,25013,25014,25015,25016,25017], visible=True, arg3=0, arg4=0, arg5=0) # Fence
-        set_mesh(triggerIds=[300], visible=True, arg3=0, arg4=0, arg5=0) # InvisibleEnterBarrier
-        set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314], visible=True, arg3=0, arg4=0, arg5=0) # CubeEnterBarrier
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=True)
+        self.destroy_monster(spawnIds=[3001])
+        self.destroy_monster(spawnIds=[3002])
+        self.destroy_monster(spawnIds=[3003])
+        self.destroy_monster(spawnIds=[3004])
+        self.destroy_monster(spawnIds=[3005])
+        self.destroy_monster(spawnIds=[3006])
+        self.destroy_monster(spawnIds=[3007])
+        self.destroy_monster(spawnIds=[3008])
+        self.destroy_monster(spawnIds=[3009])
+        self.destroy_monster(spawnIds=[3010])
+        self.destroy_monster(spawnIds=[3011])
+        self.destroy_monster(spawnIds=[3012])
+        self.destroy_monster(spawnIds=[3013])
+        self.destroy_monster(spawnIds=[3014])
+        self.destroy_monster(spawnIds=[3015])
+        self.destroy_monster(spawnIds=[3016])
+        self.destroy_monster(spawnIds=[3017])
+        self.destroy_monster(spawnIds=[3100]) # Boss
+        self.destroy_monster(spawnIds=[3101])
+        self.destroy_monster(spawnIds=[3102])
+        self.destroy_monster(spawnIds=[3103])
+        self.destroy_monster(spawnIds=[3104])
+        self.destroy_monster(spawnIds=[10000]) # Actor
+        self.set_agent(triggerIds=[133], visible=False)
+        self.set_agent(triggerIds=[134], visible=False)
+        self.set_agent(triggerIds=[135], visible=False)
+        self.set_agent(triggerIds=[136], visible=False)
+        self.set_agent(triggerIds=[137], visible=False)
+        self.set_agent(triggerIds=[138], visible=False)
+        self.set_agent(triggerIds=[139], visible=False)
+        self.set_agent(triggerIds=[140], visible=False)
+        self.set_agent(triggerIds=[141], visible=False)
+        self.set_agent(triggerIds=[142], visible=False)
+        self.set_agent(triggerIds=[143], visible=False)
+        self.set_agent(triggerIds=[144], visible=False)
+        self.set_agent(triggerIds=[145], visible=False)
+        self.set_agent(triggerIds=[146], visible=False)
+        self.set_agent(triggerIds=[147], visible=False)
+        self.set_agent(triggerIds=[148], visible=False)
+        self.set_agent(triggerIds=[149], visible=False)
+        self.set_agent(triggerIds=[150], visible=False)
+        self.set_agent(triggerIds=[151], visible=False)
+        self.set_agent(triggerIds=[152], visible=False)
+        self.set_agent(triggerIds=[153], visible=False)
+        self.set_agent(triggerIds=[154], visible=False)
+        self.set_agent(triggerIds=[155], visible=False)
+        self.set_agent(triggerIds=[156], visible=False)
+        self.set_agent(triggerIds=[157], visible=False)
+        self.set_actor(triggerId=900, visible=True, initialSequence='Closed') # Door
+        self.set_mesh(triggerIds=[101,102], visible=True, arg3=0, delay=0, scale=0) # ExitFenceBarrier
+        self.set_mesh(triggerIds=[103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132], visible=True, arg3=0, delay=0, scale=0) # Brige
+        self.set_mesh(triggerIds=[25000,25001,25002,25003,25004,25005,25006,25007,25008,25009,25010,25011,25012,25013,25014,25015,25016,25017], visible=True, arg3=0, delay=0, scale=0) # Fence
+        self.set_mesh(triggerIds=[300], visible=True, arg3=0, delay=0, scale=0) # InvisibleEnterBarrier
+        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314], visible=True, arg3=0, delay=0, scale=0) # CubeEnterBarrier
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return LoadingDelay()
-
-
-class LoadingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return state.DungeonStart()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return LoadingDelay(self.ctx)
 
 
-class DungeonStart(state.DungeonStart):
+class LoadingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return DungeonStart(self.ctx)
+
+
+class DungeonStart(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        create_monster(spawnIds=[10000], arg2=False)
-        select_camera(triggerId=600, enable=True)
-        set_skip(state=GateOpen01)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.create_monster(spawnIds=[10000], animationEffect=False)
+        self.select_camera(triggerId=600, enable=True)
+        self.set_skip(state=GateOpen01)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return NpcMonologue01()
-
-state.DungeonStart = DungeonStart
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return NpcMonologue01(self.ctx)
 
 
-class NpcMonologue01(state.State):
+class NpcMonologue01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=10000, patrolName='MS2PatrolData_10000')
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__0$', arg4=2, arg5=0)
-        set_skip(state=GateOpen01)
+        self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10000')
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__0$', arg4=2, arg5=0)
+        self.set_skip(state=GateOpen01)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return NpcMonologue02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return NpcMonologue02(self.ctx)
 
 
-class NpcMonologue02(state.State):
+class NpcMonologue02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=10000, patrolName='MS2PatrolData_10001')
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__1$', arg4=2, arg5=0)
-        set_skip(state=GateOpen01)
+        self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10001')
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__1$', arg4=2, arg5=0)
+        self.set_skip(state=GateOpen01)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GateOpen01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GateOpen01(self.ctx)
 
 
-class GateOpen01(state.State):
+class GateOpen01(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=600, enable=False)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_actor(triggerId=900, visible=True, initialSequence='Opened')
-        set_mesh(triggerIds=[300], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleEnterBarrier
-        set_skip()
+        self.select_camera(triggerId=600, enable=False)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_actor(triggerId=900, visible=True, initialSequence='Opened')
+        self.set_mesh(triggerIds=[300], visible=False, arg3=0, delay=0, scale=0) # InvisibleEnterBarrier
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return GateOpen02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return GateOpen02(self.ctx)
 
 
-class GateOpen02(state.State):
+class GateOpen02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=10000, patrolName='MS2PatrolData_10002')
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__2$', arg4=3, arg5=0)
-        set_actor(triggerId=900, visible=False, initialSequence='Opened')
-        set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314], visible=False, arg3=1000, arg4=500, arg5=5) # CubeEnterBarrier
+        self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10002')
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__2$', arg4=3, arg5=0)
+        self.set_actor(triggerId=900, visible=False, initialSequence='Opened')
+        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314], visible=False, arg3=1000, delay=500, scale=5) # CubeEnterBarrier
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Battle01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Battle01(self.ctx)
 
 
-class Battle01(state.State):
+class Battle01(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20002941, textId=20002941) # 용광로 괴수를 처치하세요!
-        create_monster(spawnIds=[3001], arg2=False)
-        create_monster(spawnIds=[3002], arg2=False)
-        create_monster(spawnIds=[3003], arg2=False)
-        create_monster(spawnIds=[3004], arg2=False)
-        create_monster(spawnIds=[3005], arg2=False)
-        create_monster(spawnIds=[3006], arg2=False)
-        create_monster(spawnIds=[3007], arg2=False)
-        create_monster(spawnIds=[3008], arg2=False)
-        create_monster(spawnIds=[3009], arg2=False)
-        create_monster(spawnIds=[3010], arg2=False)
-        create_monster(spawnIds=[3011], arg2=False)
-        create_monster(spawnIds=[3012], arg2=False)
-        create_monster(spawnIds=[3013], arg2=False)
-        create_monster(spawnIds=[3014], arg2=False)
-        create_monster(spawnIds=[3015], arg2=False)
-        create_monster(spawnIds=[3016], arg2=False)
-        create_monster(spawnIds=[3017], arg2=False)
-        create_monster(spawnIds=[3100], arg2=False) # Boss
+        self.show_guide_summary(entityId=20002941, textId=20002941) # 용광로 괴수를 처치하세요!
+        self.create_monster(spawnIds=[3001], animationEffect=False)
+        self.create_monster(spawnIds=[3002], animationEffect=False)
+        self.create_monster(spawnIds=[3003], animationEffect=False)
+        self.create_monster(spawnIds=[3004], animationEffect=False)
+        self.create_monster(spawnIds=[3005], animationEffect=False)
+        self.create_monster(spawnIds=[3006], animationEffect=False)
+        self.create_monster(spawnIds=[3007], animationEffect=False)
+        self.create_monster(spawnIds=[3008], animationEffect=False)
+        self.create_monster(spawnIds=[3009], animationEffect=False)
+        self.create_monster(spawnIds=[3010], animationEffect=False)
+        self.create_monster(spawnIds=[3011], animationEffect=False)
+        self.create_monster(spawnIds=[3012], animationEffect=False)
+        self.create_monster(spawnIds=[3013], animationEffect=False)
+        self.create_monster(spawnIds=[3014], animationEffect=False)
+        self.create_monster(spawnIds=[3015], animationEffect=False)
+        self.create_monster(spawnIds=[3016], animationEffect=False)
+        self.create_monster(spawnIds=[3017], animationEffect=False)
+        self.create_monster(spawnIds=[3100], animationEffect=False) # Boss
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
-            return Battle02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
+            return Battle02(self.ctx)
 
 
-class Battle02(state.State):
+class Battle02(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=999992, key='Battle_01', value=1)
-        create_monster(spawnIds=[3101], arg2=True)
-        create_monster(spawnIds=[3102], arg2=True)
-        create_monster(spawnIds=[3103], arg2=True)
-        create_monster(spawnIds=[3104], arg2=True)
-        hide_guide_summary(entityId=20002941)
+        self.set_user_value(triggerId=999992, key='Battle_01', value=1)
+        self.create_monster(spawnIds=[3101], animationEffect=True)
+        self.create_monster(spawnIds=[3102], animationEffect=True)
+        self.create_monster(spawnIds=[3103], animationEffect=True)
+        self.create_monster(spawnIds=[3104], animationEffect=True)
+        self.hide_guide_summary(entityId=20002941)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[3100]):
-            return Battle03()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[3100]):
+            return Battle03(self.ctx)
 
 
-class Battle03(state.State):
+class Battle03(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[133], visible=True)
-        set_agent(triggerIds=[134], visible=True)
-        set_agent(triggerIds=[135], visible=True)
-        set_agent(triggerIds=[136], visible=True)
-        set_agent(triggerIds=[137], visible=True)
-        set_agent(triggerIds=[138], visible=True)
-        set_agent(triggerIds=[139], visible=True)
-        set_agent(triggerIds=[140], visible=True)
-        set_agent(triggerIds=[141], visible=True)
-        set_agent(triggerIds=[142], visible=True)
-        set_agent(triggerIds=[143], visible=True)
-        set_agent(triggerIds=[144], visible=True)
-        set_agent(triggerIds=[145], visible=True)
-        set_agent(triggerIds=[146], visible=True)
-        set_agent(triggerIds=[147], visible=True)
-        set_agent(triggerIds=[148], visible=True)
-        set_agent(triggerIds=[149], visible=True)
-        set_agent(triggerIds=[150], visible=True)
-        set_agent(triggerIds=[151], visible=True)
-        set_agent(triggerIds=[152], visible=True)
-        set_agent(triggerIds=[153], visible=True)
-        set_agent(triggerIds=[154], visible=True)
-        set_agent(triggerIds=[155], visible=True)
-        set_agent(triggerIds=[156], visible=True)
-        set_agent(triggerIds=[157], visible=True)
-        destroy_monster(spawnIds=[3001])
-        destroy_monster(spawnIds=[3002])
-        destroy_monster(spawnIds=[3003])
-        destroy_monster(spawnIds=[3004])
-        destroy_monster(spawnIds=[3005])
-        destroy_monster(spawnIds=[3006])
-        destroy_monster(spawnIds=[3007])
-        destroy_monster(spawnIds=[3008])
-        destroy_monster(spawnIds=[3009])
-        destroy_monster(spawnIds=[3010])
-        destroy_monster(spawnIds=[3011])
-        destroy_monster(spawnIds=[3012])
-        destroy_monster(spawnIds=[3013])
-        destroy_monster(spawnIds=[3014])
-        destroy_monster(spawnIds=[3015])
-        destroy_monster(spawnIds=[3016])
-        destroy_monster(spawnIds=[3017])
-        destroy_monster(spawnIds=[3018])
-        destroy_monster(spawnIds=[3101])
-        destroy_monster(spawnIds=[3102])
-        destroy_monster(spawnIds=[3103])
-        destroy_monster(spawnIds=[3104])
+        self.set_agent(triggerIds=[133], visible=True)
+        self.set_agent(triggerIds=[134], visible=True)
+        self.set_agent(triggerIds=[135], visible=True)
+        self.set_agent(triggerIds=[136], visible=True)
+        self.set_agent(triggerIds=[137], visible=True)
+        self.set_agent(triggerIds=[138], visible=True)
+        self.set_agent(triggerIds=[139], visible=True)
+        self.set_agent(triggerIds=[140], visible=True)
+        self.set_agent(triggerIds=[141], visible=True)
+        self.set_agent(triggerIds=[142], visible=True)
+        self.set_agent(triggerIds=[143], visible=True)
+        self.set_agent(triggerIds=[144], visible=True)
+        self.set_agent(triggerIds=[145], visible=True)
+        self.set_agent(triggerIds=[146], visible=True)
+        self.set_agent(triggerIds=[147], visible=True)
+        self.set_agent(triggerIds=[148], visible=True)
+        self.set_agent(triggerIds=[149], visible=True)
+        self.set_agent(triggerIds=[150], visible=True)
+        self.set_agent(triggerIds=[151], visible=True)
+        self.set_agent(triggerIds=[152], visible=True)
+        self.set_agent(triggerIds=[153], visible=True)
+        self.set_agent(triggerIds=[154], visible=True)
+        self.set_agent(triggerIds=[155], visible=True)
+        self.set_agent(triggerIds=[156], visible=True)
+        self.set_agent(triggerIds=[157], visible=True)
+        self.destroy_monster(spawnIds=[3001])
+        self.destroy_monster(spawnIds=[3002])
+        self.destroy_monster(spawnIds=[3003])
+        self.destroy_monster(spawnIds=[3004])
+        self.destroy_monster(spawnIds=[3005])
+        self.destroy_monster(spawnIds=[3006])
+        self.destroy_monster(spawnIds=[3007])
+        self.destroy_monster(spawnIds=[3008])
+        self.destroy_monster(spawnIds=[3009])
+        self.destroy_monster(spawnIds=[3010])
+        self.destroy_monster(spawnIds=[3011])
+        self.destroy_monster(spawnIds=[3012])
+        self.destroy_monster(spawnIds=[3013])
+        self.destroy_monster(spawnIds=[3014])
+        self.destroy_monster(spawnIds=[3015])
+        self.destroy_monster(spawnIds=[3016])
+        self.destroy_monster(spawnIds=[3017])
+        self.destroy_monster(spawnIds=[3018])
+        self.destroy_monster(spawnIds=[3101])
+        self.destroy_monster(spawnIds=[3102])
+        self.destroy_monster(spawnIds=[3103])
+        self.destroy_monster(spawnIds=[3104])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return BattleEnd01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return BattleEnd01(self.ctx)
 
 
-class BattleEnd01(state.State):
+class BattleEnd01(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[137], visible=False)
-        set_agent(triggerIds=[138], visible=False)
-        set_agent(triggerIds=[152], visible=False)
-        set_agent(triggerIds=[153], visible=False)
-        move_npc(spawnId=10000, patrolName='MS2PatrolData_10003')
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__3$', arg4=2, arg5=0)
+        self.set_agent(triggerIds=[137], visible=False)
+        self.set_agent(triggerIds=[138], visible=False)
+        self.set_agent(triggerIds=[152], visible=False)
+        self.set_agent(triggerIds=[153], visible=False)
+        self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10003')
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__3$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return BattleEnd02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return BattleEnd02(self.ctx)
 
 
-class BattleEnd02(state.State):
+class BattleEnd02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__4$', arg4=2, arg5=0)
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__4$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return BattleEnd03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return BattleEnd03(self.ctx)
 
 
-class BattleEnd03(state.State):
+class BattleEnd03(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=10000, patrolName='MS2PatrolData_10004')
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__5$', arg4=3, arg5=0)
-        set_mesh(triggerIds=[101,102], visible=False, arg3=0, arg4=0, arg5=5)
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
+        self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10004')
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__5$', arg4=3, arg5=0)
+        self.set_mesh(triggerIds=[101,102], visible=False, arg3=0, delay=0, scale=5)
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return BattleEnd04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return BattleEnd04(self.ctx)
 
 
-class BattleEnd04(state.State):
+class BattleEnd04(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20002942, textId=20002942)
-        set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__6$', arg4=4, arg5=0)
+        self.show_guide_summary(entityId=20002942, textId=20002942)
+        self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__6$', arg4=4, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20002942)
-        destroy_monster(spawnIds=[3001])
-        destroy_monster(spawnIds=[3002])
-        destroy_monster(spawnIds=[3003])
-        destroy_monster(spawnIds=[3004])
-        destroy_monster(spawnIds=[3005])
-        destroy_monster(spawnIds=[3006])
-        destroy_monster(spawnIds=[3007])
-        destroy_monster(spawnIds=[3008])
-        destroy_monster(spawnIds=[3009])
-        destroy_monster(spawnIds=[3010])
-        destroy_monster(spawnIds=[3011])
-        destroy_monster(spawnIds=[3012])
-        destroy_monster(spawnIds=[3013])
-        destroy_monster(spawnIds=[3014])
-        destroy_monster(spawnIds=[3015])
-        destroy_monster(spawnIds=[3016])
-        destroy_monster(spawnIds=[3017])
+        self.hide_guide_summary(entityId=20002942)
+        self.destroy_monster(spawnIds=[3001])
+        self.destroy_monster(spawnIds=[3002])
+        self.destroy_monster(spawnIds=[3003])
+        self.destroy_monster(spawnIds=[3004])
+        self.destroy_monster(spawnIds=[3005])
+        self.destroy_monster(spawnIds=[3006])
+        self.destroy_monster(spawnIds=[3007])
+        self.destroy_monster(spawnIds=[3008])
+        self.destroy_monster(spawnIds=[3009])
+        self.destroy_monster(spawnIds=[3010])
+        self.destroy_monster(spawnIds=[3011])
+        self.destroy_monster(spawnIds=[3012])
+        self.destroy_monster(spawnIds=[3013])
+        self.destroy_monster(spawnIds=[3014])
+        self.destroy_monster(spawnIds=[3015])
+        self.destroy_monster(spawnIds=[3016])
+        self.destroy_monster(spawnIds=[3017])
 
 
+initial_state = 대기

@@ -1,24 +1,24 @@
 """ trigger/99999883/testtrigger2.xml """
-from common import *
-import state
+import common
 
 
-class State1(state.State):
+class State1(common.Trigger):
     def on_enter(self):
-        debug_string(string='현재 State1')
+        self.debug_string(string='현재 State1')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='test', value=1):
-            return State2()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='test', value=1):
+            return State2(self.ctx)
 
 
-class State2(state.State):
+class State2(common.Trigger):
     def on_enter(self):
-        set_user_value(key='test', value=0)
-        debug_string(string='현재 State2')
+        self.set_user_value(key='test', value=0)
+        self.debug_string(string='현재 State2')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return State1()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return State1(self.ctx)
 
 
+initial_state = State1

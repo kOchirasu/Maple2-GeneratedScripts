@@ -1,204 +1,204 @@
 """ trigger/02020066_bf/15000_minipuzzle_interactwithnpc.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
-        reset_timer(timerId='10')
-        enable_local_camera(isEnable=False) # 로컬카메라 전체 OFF
-        set_user_value(key='StandAsideTypeA', value=0)
-        set_user_value(key='StandAsideTypeB', value=0)
-        set_mesh(triggerIds=[15101], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Enterance
-        set_mesh(triggerIds=[15102], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Inside
-        set_actor(triggerId=15100, visible=False, initialSequence='Idle_A') # Dummy RareBox
-        set_interact_object(triggerIds=[12000253], state=2) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
-        set_interact_object(triggerIds=[12000078], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeA / Additional Effect 71001051 71001231 부여
-        set_interact_object(triggerIds=[12000093], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeB / Additional Effect 71001051 71001241 부여
-        destroy_monster(spawnIds=[15401,15402,15501,15502]) # TypeA 15401 15402
-        set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
-        set_effect(triggerIds=[15301], visible=False) # Right Sound Effect
-        set_effect(triggerIds=[15302], visible=False) # Wrong Sound Effect
-        set_effect(triggerIds=[15303], visible=False) # Happy Sound Effect
-        set_effect(triggerIds=[15304], visible=False) # Shy Sound Effect
+        self.reset_timer(timerId='1')
+        self.reset_timer(timerId='10')
+        self.enable_local_camera(isEnable=False) # 로컬카메라 전체 OFF
+        self.set_user_value(key='StandAsideTypeA', value=0)
+        self.set_user_value(key='StandAsideTypeB', value=0)
+        self.set_mesh(triggerIds=[15101], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Enterance
+        self.set_mesh(triggerIds=[15102], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Inside
+        self.set_actor(triggerId=15100, visible=False, initialSequence='Idle_A') # Dummy RareBox
+        self.set_interact_object(triggerIds=[12000253], state=2) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
+        self.set_interact_object(triggerIds=[12000078], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeA / Additional Effect 71001051 71001231 부여
+        self.set_interact_object(triggerIds=[12000093], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeB / Additional Effect 71001051 71001241 부여
+        self.destroy_monster(spawnIds=[15401,15402,15501,15502]) # TypeA 15401 15402
+        self.set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
+        self.set_effect(triggerIds=[15301], visible=False) # Right Sound Effect
+        self.set_effect(triggerIds=[15302], visible=False) # Wrong Sound Effect
+        self.set_effect(triggerIds=[15303], visible=False) # Happy Sound Effect
+        self.set_effect(triggerIds=[15304], visible=False) # Shy Sound Effect
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TimeEventOn', value=1):
-            return SettingDelay()
-
-
-class SettingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            enable_local_camera(isEnable=True)
-            return InteractWithNpc_NpcTypeRandomPick()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TimeEventOn', value=1):
+            return SettingDelay(self.ctx)
 
 
-class InteractWithNpc_NpcTypeRandomPick(state.State):
+class SettingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            self.enable_local_camera(isEnable=True)
+            return InteractWithNpc_NpcTypeRandomPick(self.ctx)
+
+
+class InteractWithNpc_NpcTypeRandomPick(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[15101], visible=True, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Enterance
-        set_mesh(triggerIds=[15002], visible=True, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Inside
-        set_actor(triggerId=15100, visible=True, initialSequence='Idle_A') # Dummy RareBox
-        set_user_value(triggerId=15001, key='PortalOn', value=1)
+        self.set_mesh(triggerIds=[15101], visible=True, arg3=0, delay=0, scale=0) # InvisibleBlock_Enterance
+        self.set_mesh(triggerIds=[15002], visible=True, arg3=0, delay=0, scale=0) # InvisibleBlock_Inside
+        self.set_actor(triggerId=15100, visible=True, initialSequence='Idle_A') # Dummy RareBox
+        self.set_user_value(triggerId=15001, key='PortalOn', value=1)
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=50):
-            return InteractWithNpc_NpcTypeA_Setting()
-        if random_condition(rate=50):
-            return InteractWithNpc_NpcTypeB_Setting()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=50):
+            return InteractWithNpc_NpcTypeA_Setting(self.ctx)
+        if self.random_condition(rate=50):
+            return InteractWithNpc_NpcTypeB_Setting(self.ctx)
 
 
-#  포잉 TypeA 경계하는 녀석 스폰 / 정중한 인사하면 비켜줌 
-class InteractWithNpc_NpcTypeA_Setting(state.State):
+# 포잉 TypeA 경계하는 녀석 스폰 / 정중한 인사하면 비켜줌
+class InteractWithNpc_NpcTypeA_Setting(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000078], state=1) # NPC_TurnedAround / 기믹 시작 오브젝트 / Additional Effect 71001051 부여
+        self.set_interact_object(triggerIds=[12000078], state=1) # NPC_TurnedAround / 기믹 시작 오브젝트 / Additional Effect 71001051 부여
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[12000078], arg2=0):
-            set_timer(timerId='1', seconds=120, clearAtZero=True, display=False, arg5=0)
-            return InteractWithNpc_NpcTypeA_NpcSpawn()
-        if user_value(key='TimeEventOn', value=0):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[12000078], stateValue=0):
+            self.set_timer(timerId='1', seconds=120, startDelay=1, interval=0, vOffset=0)
+            return InteractWithNpc_NpcTypeA_NpcSpawn(self.ctx)
+        if self.user_value(key='TimeEventOn', value=0):
+            return Wait(self.ctx)
 
 
-class InteractWithNpc_NpcTypeA_NpcSpawn(state.State):
+class InteractWithNpc_NpcTypeA_NpcSpawn(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000078], state=2)
-        create_monster(spawnIds=[15401], arg2=True)
-        set_user_value(triggerId=1000051, key='NPCTalk', value=1)
+        self.set_interact_object(triggerIds=[12000078], state=2)
+        self.create_monster(spawnIds=[15401], animationEffect=True)
+        self.set_user_value(triggerId=1000051, key='NPCTalk', value=1)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='StandAsideTypeA', value=1):
-            set_user_value(triggerId=1000051, key='NPCTalk', value=0)
-            return InteractWithNpc_NpcTypeA_NpcChange()
-        if time_expired(timerId='1'):
-            return InteractWithNpc_Fail()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='StandAsideTypeA', value=1):
+            self.set_user_value(triggerId=1000051, key='NPCTalk', value=0)
+            return InteractWithNpc_NpcTypeA_NpcChange(self.ctx)
+        if self.time_expired(timerId='1'):
+            return InteractWithNpc_Fail(self.ctx)
 
 
-class InteractWithNpc_NpcTypeA_NpcChange(state.State):
+class InteractWithNpc_NpcTypeA_NpcChange(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
-        destroy_monster(spawnIds=[15401])
-        create_monster(spawnIds=[15402], arg2=True)
-        set_user_value(triggerId=15001, key='PortalOn', value=2)
-        set_mesh(triggerIds=[15101], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Enterance
-        set_mesh(triggerIds=[15102], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Inside
-        add_buff(boxIds=[150001], skillId=71001052, level=1, arg4=False, arg5=False)
-        set_timer(timerId='10', seconds=60, clearAtZero=True, display=False, arg5=0)
-        set_user_value(triggerId=151001, key='NPCKill', value=1)
+        self.set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
+        self.destroy_monster(spawnIds=[15401])
+        self.create_monster(spawnIds=[15402], animationEffect=True)
+        self.set_user_value(triggerId=15001, key='PortalOn', value=2)
+        self.set_mesh(triggerIds=[15101], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Enterance
+        self.set_mesh(triggerIds=[15102], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Inside
+        self.add_buff(boxIds=[150001], skillId=71001052, level=1, isPlayer=False, isSkillSet=False)
+        self.set_timer(timerId='10', seconds=60, startDelay=1, interval=0, vOffset=0)
+        self.set_user_value(triggerId=151001, key='NPCKill', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return InteractWithNpc_NpcTypeA_StandAside()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return InteractWithNpc_NpcTypeA_StandAside(self.ctx)
 
 
-class InteractWithNpc_NpcTypeA_StandAside(state.State):
+class InteractWithNpc_NpcTypeA_StandAside(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[15303], visible=True)
-        move_npc(spawnId=15402, patrolName='MS2PatrolData_15600')
+        self.set_effect(triggerIds=[15303], visible=True)
+        self.move_npc(spawnId=15402, patrolName='MS2PatrolData_15600')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return InteractWithNpc_Success()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return InteractWithNpc_Success(self.ctx)
 
 
-#  포잉 TypeB 딴청 피우는 녀석 스폰 / 빤히 쳐다보하면 비켜줌 
-class InteractWithNpc_NpcTypeB_Setting(state.State):
+# 포잉 TypeB 딴청 피우는 녀석 스폰 / 빤히 쳐다보하면 비켜줌
+class InteractWithNpc_NpcTypeB_Setting(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000093], state=1) # NPC_TurnedAround / 기믹 시작 오브젝트 / Additional Effect 71001051 부여
+        self.set_interact_object(triggerIds=[12000093], state=1) # NPC_TurnedAround / 기믹 시작 오브젝트 / Additional Effect 71001051 부여
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[12000093], arg2=0):
-            set_timer(timerId='1', seconds=120, clearAtZero=True, display=False, arg5=0)
-            return InteractWithNpc_NpcTypeB_NpcSpawn()
-        if user_value(key='TimeEventOn', value=0):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[12000093], stateValue=0):
+            self.set_timer(timerId='1', seconds=120, startDelay=1, interval=0, vOffset=0)
+            return InteractWithNpc_NpcTypeB_NpcSpawn(self.ctx)
+        if self.user_value(key='TimeEventOn', value=0):
+            return Wait(self.ctx)
 
 
-class InteractWithNpc_NpcTypeB_NpcSpawn(state.State):
+class InteractWithNpc_NpcTypeB_NpcSpawn(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000093], state=2)
-        create_monster(spawnIds=[15501], arg2=True)
-        set_user_value(triggerId=1000052, key='NPCTalk', value=1)
+        self.set_interact_object(triggerIds=[12000093], state=2)
+        self.create_monster(spawnIds=[15501], animationEffect=True)
+        self.set_user_value(triggerId=1000052, key='NPCTalk', value=1)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='StandAsideTypeB', value=1):
-            set_user_value(triggerId=1000052, key='NPCTalk', value=0)
-            return InteractWithNpc_NpcTypeB_NpcChange()
-        if time_expired(timerId='1'):
-            return InteractWithNpc_Fail()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='StandAsideTypeB', value=1):
+            self.set_user_value(triggerId=1000052, key='NPCTalk', value=0)
+            return InteractWithNpc_NpcTypeB_NpcChange(self.ctx)
+        if self.time_expired(timerId='1'):
+            return InteractWithNpc_Fail(self.ctx)
 
 
-class InteractWithNpc_NpcTypeB_NpcChange(state.State):
+class InteractWithNpc_NpcTypeB_NpcChange(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
-        destroy_monster(spawnIds=[15501])
-        create_monster(spawnIds=[15502], arg2=True)
-        set_user_value(triggerId=15001, key='PortalOn', value=2)
-        set_mesh(triggerIds=[15101], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Enterance
-        set_mesh(triggerIds=[15102], visible=False, arg3=0, arg4=0, arg5=0) # InvisibleBlock_Inside
-        add_buff(boxIds=[150001], skillId=71001052, level=1, arg4=False, arg5=False)
-        set_timer(timerId='10', seconds=60, clearAtZero=True, display=False, arg5=0)
-        set_user_value(triggerId=151001, key='NPCKill', value=1)
+        self.set_effect(triggerIds=[15300], visible=False) # Success Sound Effect
+        self.destroy_monster(spawnIds=[15501])
+        self.create_monster(spawnIds=[15502], animationEffect=True)
+        self.set_user_value(triggerId=15001, key='PortalOn', value=2)
+        self.set_mesh(triggerIds=[15101], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Enterance
+        self.set_mesh(triggerIds=[15102], visible=False, arg3=0, delay=0, scale=0) # InvisibleBlock_Inside
+        self.add_buff(boxIds=[150001], skillId=71001052, level=1, isPlayer=False, isSkillSet=False)
+        self.set_timer(timerId='10', seconds=60, startDelay=1, interval=0, vOffset=0)
+        self.set_user_value(triggerId=151001, key='NPCKill', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return InteractWithNpc_NpcTypeB_StandAside()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return InteractWithNpc_NpcTypeB_StandAside(self.ctx)
 
 
-class InteractWithNpc_NpcTypeB_StandAside(state.State):
+class InteractWithNpc_NpcTypeB_StandAside(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[15304], visible=True)
-        move_npc(spawnId=15502, patrolName='MS2PatrolData_15600')
+        self.set_effect(triggerIds=[15304], visible=True)
+        self.move_npc(spawnId=15502, patrolName='MS2PatrolData_15600')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return InteractWithNpc_Success()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return InteractWithNpc_Success(self.ctx)
 
 
-#  퍼즐 성공 후 종료 
-class InteractWithNpc_Success(state.State):
+# 퍼즐 성공 후 종료
+class InteractWithNpc_Success(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=15000, key='TimeEventOn', value=0)
-        set_actor(triggerId=15100, visible=False, initialSequence='Idle_A') # Dummy RareBox
-        set_effect(triggerIds=[15300], visible=True) # Success Sound Effect
-        set_interact_object(triggerIds=[12000253], state=1) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
+        self.set_user_value(triggerId=15000, key='TimeEventOn', value=0)
+        self.set_actor(triggerId=15100, visible=False, initialSequence='Idle_A') # Dummy RareBox
+        self.set_effect(triggerIds=[15300], visible=True) # Success Sound Effect
+        self.set_interact_object(triggerIds=[12000253], state=1) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[12000253], arg2=0):
-            return InteractWithNpc_SuccessDelay()
-        if time_expired(timerId='10'):
-            return InteractWithNpc_Fail()
-
-
-class InteractWithNpc_SuccessDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return InteractWithNpc_Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[12000253], stateValue=0):
+            return InteractWithNpc_SuccessDelay(self.ctx)
+        if self.time_expired(timerId='10'):
+            return InteractWithNpc_Fail(self.ctx)
 
 
-#  제한 시간 종료 
-class InteractWithNpc_Fail(state.State):
+class InteractWithNpc_SuccessDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return InteractWithNpc_Quit(self.ctx)
+
+
+# 제한 시간 종료
+class InteractWithNpc_Fail(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[12000253], state=2) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
-        set_interact_object(triggerIds=[12000078], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeA / Additional Effect 71001051 71001231 부여
-        set_interact_object(triggerIds=[12000093], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeB / Additional Effect 71001051 71001241 부여
+        self.set_interact_object(triggerIds=[12000253], state=2) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001151 걸어서 71001051 제거
+        self.set_interact_object(triggerIds=[12000078], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeA / Additional Effect 71001051 71001231 부여
+        self.set_interact_object(triggerIds=[12000093], state=2) # NPC_TurnedAround / 기믹 시작 오브젝트 / TypeB / Additional Effect 71001051 71001241 부여
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'): # 타임이벤트가 종료했으면 완전 초기화
-            return InteractWithNpc_Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'): # 타임이벤트가 종료했으면 완전 초기화
+            return InteractWithNpc_Quit(self.ctx)
 
 
-class InteractWithNpc_Quit(state.State):
+class InteractWithNpc_Quit(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
-        reset_timer(timerId='10')
-        set_user_value(triggerId=15001, key='PortalOn', value=0)
-        destroy_monster(spawnIds=[15401,15402,15501,15502]) # TypeA 15401 15402
+        self.reset_timer(timerId='1')
+        self.reset_timer(timerId='10')
+        self.set_user_value(triggerId=15001, key='PortalOn', value=0)
+        self.destroy_monster(spawnIds=[15401,15402,15501,15502]) # TypeA 15401 15402
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

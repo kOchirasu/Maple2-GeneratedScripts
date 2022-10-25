@@ -1,758 +1,758 @@
 """ trigger/02000378_bf/909_mobwave_09round.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='PenaltyFinish', value=0)
-        set_user_value(key='WaveTime', value=0) # 웨이브 진행 순서 기억
-        set_effect(triggerIds=[5109], visible=False) # 09Round_ShadowApp
+        self.set_user_value(key='PenaltyFinish', value=0)
+        self.set_user_value(key='WaveTime', value=0) # 웨이브 진행 순서 기억
+        self.set_effect(triggerIds=[5109], visible=False) # 09Round_ShadowApp
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MobWaveStart', value=1):
-            return Ready()
-
-
-class Ready(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveStart()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MobWaveStart', value=1):
+            return Ready(self.ctx)
 
 
-class FirstWaveStart(state.State):
+class Ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveStart(self.ctx)
+
+
+class FirstWaveStart(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__0$', arg3='6000', arg4='0')
-        set_user_value(key='WaveTime', value=1) # 웨이브 진행 순서 기억
-        set_effect(triggerIds=[5109], visible=True) # 09Round_ShadowApp
+        self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
+        self.set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__0$', arg3='6000', arg4='0')
+        self.set_user_value(key='WaveTime', value=1) # 웨이브 진행 순서 기억
+        self.set_effect(triggerIds=[5109], visible=True) # 09Round_ShadowApp
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirectionRandom()
-
-
-#  방향 랜덤 
-class FirstWaveDirectionRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=20):
-            return FirstWaveDirection10()
-        if random_condition(rate=20):
-            return FirstWaveDirection20()
-        if random_condition(rate=20):
-            return FirstWaveDirection30()
-        if random_condition(rate=20):
-            return FirstWaveDirection40()
-        if random_condition(rate=20):
-            return FirstWaveDirection50()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirectionRandom(self.ctx)
 
 
-class FirstWaveDirection10(state.State):
+# 방향 랜덤
+class FirstWaveDirectionRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=20):
+            return FirstWaveDirection10(self.ctx)
+        if self.random_condition(rate=20):
+            return FirstWaveDirection20(self.ctx)
+        if self.random_condition(rate=20):
+            return FirstWaveDirection30(self.ctx)
+        if self.random_condition(rate=20):
+            return FirstWaveDirection40(self.ctx)
+        if self.random_condition(rate=20):
+            return FirstWaveDirection50(self.ctx)
+
+
+class FirstWaveDirection10(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90900,90902,90904], arg2=False) # ,90906,90908
+        self.create_monster(spawnIds=[90900,90902,90904], animationEffect=False) # ,90906,90908
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirection11()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirection11(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection11(state.State):
+class FirstWaveDirection11(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90901,90903,90905], arg2=False) # ,90907,90909
+        self.create_monster(spawnIds=[90901,90903,90905], animationEffect=False) # ,90907,90909
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection20(state.State):
+class FirstWaveDirection20(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90910,90912,90914], arg2=False) # ,90916,90918
+        self.create_monster(spawnIds=[90910,90912,90914], animationEffect=False) # ,90916,90918
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirection21()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirection21(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection21(state.State):
+class FirstWaveDirection21(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90911,90913,90915], arg2=False) # ,90917,90919
+        self.create_monster(spawnIds=[90911,90913,90915], animationEffect=False) # ,90917,90919
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection30(state.State):
+class FirstWaveDirection30(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90920,90922,90924], arg2=False) # ,90926,90928
+        self.create_monster(spawnIds=[90920,90922,90924], animationEffect=False) # ,90926,90928
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirection31()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirection31(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection31(state.State):
+class FirstWaveDirection31(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90921,90923,90925], arg2=False) # ,90927,90929
+        self.create_monster(spawnIds=[90921,90923,90925], animationEffect=False) # ,90927,90929
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection40(state.State):
+class FirstWaveDirection40(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90930,90932,90934], arg2=False) # ,90936,90938
+        self.create_monster(spawnIds=[90930,90932,90934], animationEffect=False) # ,90936,90938
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirection41()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirection41(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection41(state.State):
+class FirstWaveDirection41(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90931,90933,90935], arg2=False) # ,90937,90939
+        self.create_monster(spawnIds=[90931,90933,90935], animationEffect=False) # ,90937,90939
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection50(state.State):
+class FirstWaveDirection50(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90940,90942,90944], arg2=False) # ,90946,90948
+        self.create_monster(spawnIds=[90940,90942,90944], animationEffect=False) # ,90946,90948
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDirection51()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDirection51(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDirection51(state.State):
+class FirstWaveDirection51(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90941,90943,90945], arg2=False) # ,90947,90949
+        self.create_monster(spawnIds=[90941,90943,90945], animationEffect=False) # ,90947,90949
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
-
-
-#  딜레이 랜덤 
-class FirstWaveDelayRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=30):
-            return FirstWaveDelay4000()
-        if random_condition(rate=30):
-            return FirstWaveDelay5000()
-        if random_condition(rate=30):
-            return FirstWaveDelay3000()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDelay4000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return SecondWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+# 딜레이 랜덤
+class FirstWaveDelayRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=30):
+            return FirstWaveDelay4000(self.ctx)
+        if self.random_condition(rate=30):
+            return FirstWaveDelay5000(self.ctx)
+        if self.random_condition(rate=30):
+            return FirstWaveDelay3000(self.ctx)
 
 
-class FirstWaveDelay5000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return SecondWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class FirstWaveDelay4000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return SecondWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FirstWaveDelay3000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return SecondWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class FirstWaveDelay5000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return SecondWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveStart(state.State):
+class FirstWaveDelay3000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return SecondWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
+
+
+class SecondWaveStart(common.Trigger):
     def on_enter(self):
-        set_user_value(key='WaveTime', value=2) # 웨이브 진행 순서 기억
+        self.set_user_value(key='WaveTime', value=2) # 웨이브 진행 순서 기억
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirectionRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
-
-
-#  방향 랜덤 
-class SecondWaveDirectionRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=20):
-            return SecondWaveDirection10()
-        if random_condition(rate=20):
-            return SecondWaveDirection20()
-        if random_condition(rate=20):
-            return SecondWaveDirection30()
-        if random_condition(rate=20):
-            return SecondWaveDirection40()
-        if random_condition(rate=20):
-            return SecondWaveDirection50()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirectionRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection10(state.State):
+# 방향 랜덤
+class SecondWaveDirectionRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=20):
+            return SecondWaveDirection10(self.ctx)
+        if self.random_condition(rate=20):
+            return SecondWaveDirection20(self.ctx)
+        if self.random_condition(rate=20):
+            return SecondWaveDirection30(self.ctx)
+        if self.random_condition(rate=20):
+            return SecondWaveDirection40(self.ctx)
+        if self.random_condition(rate=20):
+            return SecondWaveDirection50(self.ctx)
+
+
+class SecondWaveDirection10(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90904,90906,90908], arg2=False) # 90900,90902,
+        self.create_monster(spawnIds=[90904,90906,90908], animationEffect=False) # 90900,90902,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirection11()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirection11(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection11(state.State):
+class SecondWaveDirection11(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90905,90907,90909], arg2=False) # 90901,90903,
+        self.create_monster(spawnIds=[90905,90907,90909], animationEffect=False) # 90901,90903,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection20(state.State):
+class SecondWaveDirection20(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90914,90916,90918], arg2=False) # 90910,90912,
+        self.create_monster(spawnIds=[90914,90916,90918], animationEffect=False) # 90910,90912,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirection21()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirection21(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection21(state.State):
+class SecondWaveDirection21(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90915,90917,90919], arg2=False) # 90911,90913,
+        self.create_monster(spawnIds=[90915,90917,90919], animationEffect=False) # 90911,90913,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection30(state.State):
+class SecondWaveDirection30(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90924,90926,90928], arg2=False) # 90920,90922,
+        self.create_monster(spawnIds=[90924,90926,90928], animationEffect=False) # 90920,90922,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirection31()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirection31(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection31(state.State):
+class SecondWaveDirection31(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90925,90927,90929], arg2=False) # 90921,90923,
+        self.create_monster(spawnIds=[90925,90927,90929], animationEffect=False) # 90921,90923,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection40(state.State):
+class SecondWaveDirection40(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90934,90936,90938], arg2=False) # 90930,90932,
+        self.create_monster(spawnIds=[90934,90936,90938], animationEffect=False) # 90930,90932,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirection41()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirection41(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection41(state.State):
+class SecondWaveDirection41(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90935,90937,90939], arg2=False) # 90931,90933,
+        self.create_monster(spawnIds=[90935,90937,90939], animationEffect=False) # 90931,90933,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection50(state.State):
+class SecondWaveDirection50(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90944,90946,90948], arg2=False) # 90940,90942,
+        self.create_monster(spawnIds=[90944,90946,90948], animationEffect=False) # 90940,90942,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDirection51()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDirection51(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDirection51(state.State):
+class SecondWaveDirection51(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90945,90947,90949], arg2=False) # 90941,90943,
+        self.create_monster(spawnIds=[90945,90947,90949], animationEffect=False) # 90941,90943,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
-
-
-#  딜레이 랜덤 
-class SecondWaveDelayRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=30):
-            return SecondWaveDelay3000()
-        if random_condition(rate=30):
-            return SecondWaveDelay4000()
-        if random_condition(rate=30):
-            return SecondWaveDelay5000()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDelay3000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ThirdWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+# 딜레이 랜덤
+class SecondWaveDelayRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=30):
+            return SecondWaveDelay3000(self.ctx)
+        if self.random_condition(rate=30):
+            return SecondWaveDelay4000(self.ctx)
+        if self.random_condition(rate=30):
+            return SecondWaveDelay5000(self.ctx)
 
 
-class SecondWaveDelay4000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ThirdWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class SecondWaveDelay3000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ThirdWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class SecondWaveDelay5000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return ThirdWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class SecondWaveDelay4000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ThirdWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-#  방향 랜덤 
-class ThirdWaveStart(state.State):
+class SecondWaveDelay5000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return ThirdWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
+
+
+# 방향 랜덤
+class ThirdWaveStart(common.Trigger):
     def on_enter(self):
-        set_user_value(key='WaveTime', value=3) # 웨이브 진행 순서 기억
+        self.set_user_value(key='WaveTime', value=3) # 웨이브 진행 순서 기억
 
-    def on_tick(self) -> state.State:
-        if true():
-            return ThirdWaveDirectionRandom()
-
-
-class ThirdWaveDirectionRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=20):
-            return ThirdWaveDirection10()
-        if random_condition(rate=20):
-            return ThirdWaveDirection20()
-        if random_condition(rate=20):
-            return ThirdWaveDirection30()
-        if random_condition(rate=20):
-            return ThirdWaveDirection40()
-        if random_condition(rate=20):
-            return ThirdWaveDirection50()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return ThirdWaveDirectionRandom(self.ctx)
 
 
-class ThirdWaveDirection10(state.State):
+class ThirdWaveDirectionRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=20):
+            return ThirdWaveDirection10(self.ctx)
+        if self.random_condition(rate=20):
+            return ThirdWaveDirection20(self.ctx)
+        if self.random_condition(rate=20):
+            return ThirdWaveDirection30(self.ctx)
+        if self.random_condition(rate=20):
+            return ThirdWaveDirection40(self.ctx)
+        if self.random_condition(rate=20):
+            return ThirdWaveDirection50(self.ctx)
+
+
+class ThirdWaveDirection10(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90900,90902,90908], arg2=False) # 90904,90906,
+        self.create_monster(spawnIds=[90900,90902,90908], animationEffect=False) # 90904,90906,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDirection11()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDirection11(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection11(state.State):
+class ThirdWaveDirection11(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90901,90903,90909], arg2=False) # 90905,90907,
+        self.create_monster(spawnIds=[90901,90903,90909], animationEffect=False) # 90905,90907,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection20(state.State):
+class ThirdWaveDirection20(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90910,90912,90918], arg2=False) # 90914,90916,
+        self.create_monster(spawnIds=[90910,90912,90918], animationEffect=False) # 90914,90916,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDirection21()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDirection21(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection21(state.State):
+class ThirdWaveDirection21(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90911,90913,90919], arg2=False) # 90915,90917,
+        self.create_monster(spawnIds=[90911,90913,90919], animationEffect=False) # 90915,90917,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection30(state.State):
+class ThirdWaveDirection30(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90920,90922,90928], arg2=False) # 90924,90926,
+        self.create_monster(spawnIds=[90920,90922,90928], animationEffect=False) # 90924,90926,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDirection31()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDirection31(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection31(state.State):
+class ThirdWaveDirection31(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90921,90923,90929], arg2=False) # 90925,90927,
+        self.create_monster(spawnIds=[90921,90923,90929], animationEffect=False) # 90925,90927,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection40(state.State):
+class ThirdWaveDirection40(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90930,90932,90938], arg2=False) # 90934,90936,
+        self.create_monster(spawnIds=[90930,90932,90938], animationEffect=False) # 90934,90936,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDirection41()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDirection41(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection41(state.State):
+class ThirdWaveDirection41(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90931,90933,90939], arg2=False) # 90935,90937,
+        self.create_monster(spawnIds=[90931,90933,90939], animationEffect=False) # 90935,90937,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection50(state.State):
+class ThirdWaveDirection50(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90940,90942,90948], arg2=False) # 90944,90946,
+        self.create_monster(spawnIds=[90940,90942,90948], animationEffect=False) # 90944,90946,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDirection51()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDirection51(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDirection51(state.State):
+class ThirdWaveDirection51(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90941,90943,90949], arg2=False) # 90945,90947,
+        self.create_monster(spawnIds=[90941,90943,90949], animationEffect=False) # 90945,90947,
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ThirdWaveDelayRandom()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
-
-
-#  딜레이 랜덤 
-class ThirdWaveDelayRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=30):
-            return ThirdWaveDelay2000()
-        if random_condition(rate=30):
-            return ThirdWaveDelay3000()
-        if random_condition(rate=30):
-            return ThirdWaveDelay4000()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ThirdWaveDelayRandom(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDelay2000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return FourthWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+# 딜레이 랜덤
+class ThirdWaveDelayRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=30):
+            return ThirdWaveDelay2000(self.ctx)
+        if self.random_condition(rate=30):
+            return ThirdWaveDelay3000(self.ctx)
+        if self.random_condition(rate=30):
+            return ThirdWaveDelay4000(self.ctx)
 
 
-class ThirdWaveDelay3000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return FourthWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class ThirdWaveDelay2000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return FourthWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class ThirdWaveDelay4000(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return FourthWaveStart()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+class ThirdWaveDelay3000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return FourthWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveStart(state.State):
+class ThirdWaveDelay4000(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return FourthWaveStart(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
+
+
+class FourthWaveStart(common.Trigger):
     def on_enter(self):
-        set_user_value(key='WaveTime', value=4)
+        self.set_user_value(key='WaveTime', value=4)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return FourthWaveDirectionRandom()
-
-
-#  방향 랜덤  
-class FourthWaveDirectionRandom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=20):
-            return FourthWaveDirection10()
-        if random_condition(rate=20):
-            return FourthWaveDirection20()
-        if random_condition(rate=20):
-            return FourthWaveDirection30()
-        if random_condition(rate=20):
-            return FourthWaveDirection40()
-        if random_condition(rate=20):
-            return FourthWaveDirection50()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return FourthWaveDirectionRandom(self.ctx)
 
 
-class FourthWaveDirection10(state.State):
+# 방향 랜덤
+class FourthWaveDirectionRandom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=20):
+            return FourthWaveDirection10(self.ctx)
+        if self.random_condition(rate=20):
+            return FourthWaveDirection20(self.ctx)
+        if self.random_condition(rate=20):
+            return FourthWaveDirection30(self.ctx)
+        if self.random_condition(rate=20):
+            return FourthWaveDirection40(self.ctx)
+        if self.random_condition(rate=20):
+            return FourthWaveDirection50(self.ctx)
+
+
+class FourthWaveDirection10(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90900,90906,90908], arg2=False) # ,90902,90904
+        self.create_monster(spawnIds=[90900,90906,90908], animationEffect=False) # ,90902,90904
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FourthWaveDirection11()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FourthWaveDirection11(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection11(state.State):
+class FourthWaveDirection11(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90901,90907,90909], arg2=False) # ,90903,90905
+        self.create_monster(spawnIds=[90901,90907,90909], animationEffect=False) # ,90903,90905
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection20(state.State):
+class FourthWaveDirection20(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90910,90916,90918], arg2=False) # ,90912,90914
+        self.create_monster(spawnIds=[90910,90916,90918], animationEffect=False) # ,90912,90914
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FourthWaveDirection21()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FourthWaveDirection21(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection21(state.State):
+class FourthWaveDirection21(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90911,90917,90919], arg2=False) # ,90913,90915
+        self.create_monster(spawnIds=[90911,90917,90919], animationEffect=False) # ,90913,90915
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection30(state.State):
+class FourthWaveDirection30(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90920,90926,90928], arg2=False) # ,90922,90924
+        self.create_monster(spawnIds=[90920,90926,90928], animationEffect=False) # ,90922,90924
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FourthWaveDirection31()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FourthWaveDirection31(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection31(state.State):
+class FourthWaveDirection31(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90921,90927,90929], arg2=False) # ,90923,90925
+        self.create_monster(spawnIds=[90921,90927,90929], animationEffect=False) # ,90923,90925
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection40(state.State):
+class FourthWaveDirection40(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90930,90936,90938], arg2=False) # ,90932,90934
+        self.create_monster(spawnIds=[90930,90936,90938], animationEffect=False) # ,90932,90934
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FourthWaveDirection41()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FourthWaveDirection41(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection41(state.State):
+class FourthWaveDirection41(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90931,90937,90939], arg2=False) # ,90933,90935
+        self.create_monster(spawnIds=[90931,90937,90939], animationEffect=False) # ,90933,90935
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection50(state.State):
+class FourthWaveDirection50(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90940,90946,90948], arg2=False) # ,90942,90944
+        self.create_monster(spawnIds=[90940,90946,90948], animationEffect=False) # ,90942,90944
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FourthWaveDirection51(state.State):
+class FourthWaveDirection51(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90941,90947,90949], arg2=False) # ,90943,90945
+        self.create_monster(spawnIds=[90941,90947,90949], animationEffect=False) # ,90943,90945
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-#  추가 웨이브 경험치 없음 
-class FifthWaveStart(state.State):
+# 추가 웨이브 경험치 없음
+class FifthWaveStart(common.Trigger):
     def on_enter(self):
-        set_user_value(key='WaveTime', value=5) # 웨이브 진행 순서 기억
-        create_monster(spawnIds=[90990,90992,90994], arg2=False) # - ,90996,90998
+        self.set_user_value(key='WaveTime', value=5) # 웨이브 진행 순서 기억
+        self.create_monster(spawnIds=[90990,90992,90994], animationEffect=False) # - ,90996,90998
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FifthWaveDelay()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FifthWaveDelay(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class FifthWaveDelay(state.State):
+class FifthWaveDelay(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90991,90993,90995], arg2=False) # ,90997,90999
+        self.create_monster(spawnIds=[90991,90993,90995], animationEffect=False) # ,90997,90999
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return DefenceSucess01()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
-
-
-#  웨이브 종료 
-class DefenceSucess01(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[90900,90901,90902,90903,90904,90905,90906,90907,90908,90910,90910,90911,90912,90913,90914,90915,90916,90917,90918,90919,90920,90921,90922,90923,90924,90925,90926,90927,90928,90929,90930,90931,90932,90933,90934,90935,90936,90937,90938,90939,90940,90941,90942,90943,90944,90945,90946,90947,90948,90949,90980,90981,90982,90983,90984,90985,90986,90987,90988,90989,90990,90991,90992,90993,90994,90995,90996,90997,90998,90999]):
-            return DefenceSucess02()
-        if monster_dead(boxIds=[1009]):
-            return NpcDownPenaltyStart()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
 
 
-class DefenceSucess02(state.State):
+# 웨이브 종료
+class DefenceSucess01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[90900,90901,90902,90903,90904,90905,90906,90907,90908,90910,90910,90911,90912,90913,90914,90915,90916,90917,90918,90919,90920,90921,90922,90923,90924,90925,90926,90927,90928,90929,90930,90931,90932,90933,90934,90935,90936,90937,90938,90939,90940,90941,90942,90943,90944,90945,90946,90947,90948,90949,90980,90981,90982,90983,90984,90985,90986,90987,90988,90989,90990,90991,90992,90993,90994,90995,90996,90997,90998,90999]):
+            return DefenceSucess02(self.ctx)
+        if self.monster_dead(boxIds=[1009]):
+            return NpcDownPenaltyStart(self.ctx)
+
+
+class DefenceSucess02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5109], visible=False) # 09Round_ShadowApp
-        set_user_value(triggerId=9, key='09RoundSuccess', value=1)
+        self.set_effect(triggerIds=[5109], visible=False) # 09Round_ShadowApp
+        self.set_user_value(triggerId=9, key='09RoundSuccess', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Quit(self.ctx)
 
 
-#  패널티 10초 
-class NpcDownPenaltyStart(state.State):
+# 패널티 10초
+class NpcDownPenaltyStart(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=809, key='PenaltyMob', value=1)
-        destroy_monster(spawnIds=[1009]) # 수호대상 틴차이
-        create_monster(spawnIds=[1109], arg2=False) # 쓰러진 틴차이
-        set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__1$', arg3='4000', arg4='0')
-        set_conversation(type=1, spawnId=1109, script='$02000378_BF__909_MOBWAVE_09ROUND__2$', arg4=4, arg5=4) # 틴차이
+        self.set_user_value(triggerId=809, key='PenaltyMob', value=1)
+        self.destroy_monster(spawnIds=[1009]) # 수호대상 틴차이
+        self.create_monster(spawnIds=[1109], animationEffect=False) # 쓰러진 틴차이
+        self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
+        self.set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__1$', arg3='4000', arg4='0')
+        self.set_conversation(type=1, spawnId=1109, script='$02000378_BF__909_MOBWAVE_09ROUND__2$', arg4=4, arg5=4) # 틴차이
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return NpcDownPenaltyEnd()
-
-
-class NpcDownPenaltyEnd(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='PenaltyFinish', value=1):
-            return ReturnToWave()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return NpcDownPenaltyEnd(self.ctx)
 
 
-class ReturnToWave(state.State):
+class NpcDownPenaltyEnd(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PenaltyFinish', value=1):
+            return ReturnToWave(self.ctx)
+
+
+class ReturnToWave(common.Trigger):
     def on_enter(self):
-        set_user_value(key='PenaltyFinish', value=0)
-        set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__3$', arg3='4000', arg4='0')
-        destroy_monster(spawnIds=[1109]) # 쓰러진 틴차이
-        create_monster(spawnIds=[1009], arg2=False) # 수호대상 틴차이
-        remove_balloon_talk(spawnId=1109)
+        self.set_user_value(key='PenaltyFinish', value=0)
+        self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
+        self.set_event_ui(type=1, arg2='$02000378_BF__909_MOBWAVE_09ROUND__3$', arg3='4000', arg4='0')
+        self.destroy_monster(spawnIds=[1109]) # 쓰러진 틴차이
+        self.create_monster(spawnIds=[1009], animationEffect=False) # 수호대상 틴차이
+        self.remove_balloon_talk(spawnId=1109)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='WaveTime', value=1):
-            return SecondWaveStart()
-        if user_value(key='WaveTime', value=2):
-            return ThirdWaveStart()
-        if user_value(key='WaveTime', value=3):
-            return FourthWaveStart()
-        if user_value(key='WaveTime', value=4):
-            return FifthWaveStart()
-        if user_value(key='WaveTime', value=5):
-            return FifthWaveStart()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='WaveTime', value=1):
+            return SecondWaveStart(self.ctx)
+        if self.user_value(key='WaveTime', value=2):
+            return ThirdWaveStart(self.ctx)
+        if self.user_value(key='WaveTime', value=3):
+            return FourthWaveStart(self.ctx)
+        if self.user_value(key='WaveTime', value=4):
+            return FifthWaveStart(self.ctx)
+        if self.user_value(key='WaveTime', value=5):
+            return FifthWaveStart(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     pass
 
 
+initial_state = Wait

@@ -1,181 +1,181 @@
 """ trigger/02000485_bf/01_abovewall.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3000], visible=True, arg3=0, arg4=0, arg5=0) # InvisibleMesh_forTransparancy
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
-        set_interact_object(triggerIds=[10002048], state=0) # LeverForLadder01
-        set_interact_object(triggerIds=[10002049], state=0) # LeverForRope
-        set_interact_object(triggerIds=[10002050], state=0) # LeverForLadder02
-        destroy_monster(spawnIds=[901,902,903]) # Mob
-        destroy_monster(spawnIds=[910,911,912,920,921,922,930,931,932,940,941,942]) # Mob
-        set_ladder(triggerIds=[510], visible=False, animationEffect=False, animationDelay=0) # Ladder01
-        set_ladder(triggerIds=[511], visible=False, animationEffect=False, animationDelay=0) # Ladder01
-        set_ladder(triggerIds=[512], visible=False, animationEffect=False, animationDelay=0) # Ladder01
-        set_ladder(triggerIds=[513], visible=False, animationEffect=False, animationDelay=0) # Ladder01
-        set_ladder(triggerIds=[514], visible=False, animationEffect=False, animationDelay=0) # Ladder01
-        set_ladder(triggerIds=[520], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[521], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[522], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[523], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[524], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[525], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[526], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[527], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_ladder(triggerIds=[528], visible=False, animationEffect=False, animationDelay=0) # Ladder02
-        set_rope(triggerId=530, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=531, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=532, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=533, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=534, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=535, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=536, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=537, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=538, visible=False, animationEffect=False, animationDelay=0) # Rope
-        set_rope(triggerId=539, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # InvisibleMesh_forTransparancy
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_interact_object(triggerIds=[10002048], state=0) # LeverForLadder01
+        self.set_interact_object(triggerIds=[10002049], state=0) # LeverForRope
+        self.set_interact_object(triggerIds=[10002050], state=0) # LeverForLadder02
+        self.destroy_monster(spawnIds=[901,902,903]) # Mob
+        self.destroy_monster(spawnIds=[910,911,912,920,921,922,930,931,932,940,941,942]) # Mob
+        self.set_ladder(triggerIds=[510], visible=False, animationEffect=False, animationDelay=0) # Ladder01
+        self.set_ladder(triggerIds=[511], visible=False, animationEffect=False, animationDelay=0) # Ladder01
+        self.set_ladder(triggerIds=[512], visible=False, animationEffect=False, animationDelay=0) # Ladder01
+        self.set_ladder(triggerIds=[513], visible=False, animationEffect=False, animationDelay=0) # Ladder01
+        self.set_ladder(triggerIds=[514], visible=False, animationEffect=False, animationDelay=0) # Ladder01
+        self.set_ladder(triggerIds=[520], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[521], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[522], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[523], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[524], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[525], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[526], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[527], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_ladder(triggerIds=[528], visible=False, animationEffect=False, animationDelay=0) # Ladder02
+        self.set_rope(triggerId=530, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=531, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=532, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=533, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=534, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=535, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=536, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=537, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=538, visible=False, animationEffect=False, animationDelay=0) # Rope
+        self.set_rope(triggerId=539, visible=False, animationEffect=False, animationDelay=0) # Rope
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return LoadingDelay()
-
-
-class LoadingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return GuideToMove()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return LoadingDelay(self.ctx)
 
 
-class GuideToMove(state.State):
+class LoadingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return GuideToMove(self.ctx)
+
+
+class GuideToMove(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039901, textId=20039901, duration=3000) # 가이드 : 성벽을 따라 다음 탑으로 이동하세요.
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039901, textId=20039901, duration=3000) # 가이드 : 성벽을 따라 다음 탑으로 이동하세요.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9100]):
-            return MobActorSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9100]):
+            return MobActorSpawn(self.ctx)
 
 
-class MobActorSpawn(state.State):
+class MobActorSpawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[901,902,903], arg2=False) # Mob
-        set_conversation(type=1, spawnId=901, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
-        set_conversation(type=1, spawnId=902, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
-        set_conversation(type=1, spawnId=903, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
+        self.create_monster(spawnIds=[901,902,903], animationEffect=False) # Mob
+        self.set_conversation(type=1, spawnId=901, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
+        self.set_conversation(type=1, spawnId=902, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
+        self.set_conversation(type=1, spawnId=903, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Battle01Start()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Battle01Start(self.ctx)
 
 
-class Battle01Start(state.State):
+class Battle01Start(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[930,931,932], arg2=False) # Mob
-        set_interact_object(triggerIds=[10002048], state=1) # LeverForLadder01
+        self.create_monster(spawnIds=[930,931,932], animationEffect=False) # Mob
+        self.set_interact_object(triggerIds=[10002048], state=1) # LeverForLadder01
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002048], arg2=0):
-            return Battle02Start()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002048], stateValue=0):
+            return Battle02Start(self.ctx)
 
 
-class Battle02Start(state.State):
+class Battle02Start(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039902, textId=20039902, duration=3000) # 가이드 : 사다리를 타고 위로 올라가세요.
-        set_ladder(triggerIds=[510], visible=True, animationEffect=True, animationDelay=2) # Ladder01
-        set_ladder(triggerIds=[511], visible=True, animationEffect=True, animationDelay=2) # Ladder01
-        set_ladder(triggerIds=[512], visible=True, animationEffect=True, animationDelay=2) # Ladder01
-        set_ladder(triggerIds=[513], visible=True, animationEffect=True, animationDelay=2) # Ladder01
-        set_ladder(triggerIds=[514], visible=True, animationEffect=True, animationDelay=2) # Ladder01
-        set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        create_monster(spawnIds=[910,911,912], arg2=False) # Mob
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039902, textId=20039902, duration=3000) # 가이드 : 사다리를 타고 위로 올라가세요.
+        self.set_ladder(triggerIds=[510], visible=True, animationEffect=True, animationDelay=2) # Ladder01
+        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True, animationDelay=2) # Ladder01
+        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True, animationDelay=2) # Ladder01
+        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True, animationDelay=2) # Ladder01
+        self.set_ladder(triggerIds=[514], visible=True, animationEffect=True, animationDelay=2) # Ladder01
+        self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.create_monster(spawnIds=[910,911,912], animationEffect=False) # Mob
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9300]):
-            return Battle03Start()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9300]):
+            return Battle03Start(self.ctx)
 
 
-class Battle03Start(state.State):
+class Battle03Start(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2, key='TireSpawn', value=1)
-        create_monster(spawnIds=[920,921,922], arg2=False) # Mob
-        set_interact_object(triggerIds=[10002049], state=1) # LeverForRope
+        self.set_user_value(triggerId=2, key='TireSpawn', value=1)
+        self.create_monster(spawnIds=[920,921,922], animationEffect=False) # Mob
+        self.set_interact_object(triggerIds=[10002049], state=1) # LeverForRope
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002049], arg2=0):
-            return RopeOn()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002049], stateValue=0):
+            return RopeOn(self.ctx)
 
 
-class RopeOn(state.State):
+class RopeOn(common.Trigger):
     def on_enter(self):
-        set_rope(triggerId=530, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=531, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=532, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=533, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=534, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=535, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=536, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=537, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=538, visible=True, animationEffect=True, animationDelay=2) # Rope
-        set_rope(triggerId=539, visible=True, animationEffect=True, animationDelay=2) # Rope
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039906, textId=20039906) # 가이드 : 로프를 타고 탑 위층으로 올라가세요.
+        self.set_rope(triggerId=530, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=531, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=532, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=533, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=534, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=535, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=536, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=537, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=538, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.set_rope(triggerId=539, visible=True, animationEffect=True, animationDelay=2) # Rope
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039906, textId=20039906) # 가이드 : 로프를 타고 탑 위층으로 올라가세요.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9200]):
-            return Battle04Start()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9200]):
+            return Battle04Start(self.ctx)
 
 
-class Battle04Start(state.State):
+class Battle04Start(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20039906)
+        self.hide_guide_summary(entityId=20039906)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9350]):
-            return Battle04Start_2()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9350]):
+            return Battle04Start_2(self.ctx)
 
 
-class Battle04Start_2(state.State):
+class Battle04Start_2(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039907, textId=20039907, duration=3000) # 주변 몬스터들을 처치하고 [b:레버]를 당기세요.
-        create_monster(spawnIds=[940,941,942], arg2=False) # Mob
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039907, textId=20039907, duration=3000) # 주변 몬스터들을 처치하고 [b:레버]를 당기세요.
+        self.create_monster(spawnIds=[940,941,942], animationEffect=False) # Mob
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Battle04End()
-
-
-class Battle04End(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[940,941,942]):
-            return SwichOn()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Battle04End(self.ctx)
 
 
-class SwichOn(state.State):
+class Battle04End(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[940,941,942]):
+            return SwichOn(self.ctx)
+
+
+class SwichOn(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002050], state=1) # LeverForLadder01
+        self.set_interact_object(triggerIds=[10002050], state=1) # LeverForLadder01
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002050], arg2=0):
-            return PortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002050], stateValue=0):
+            return PortalOn(self.ctx)
 
 
-class PortalOn(state.State):
+class PortalOn(common.Trigger):
     def on_enter(self):
-        set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[521], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[522], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[523], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[524], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[525], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[526], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[527], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        set_ladder(triggerIds=[528], visible=True, animationEffect=True, animationDelay=2) # Ladder02
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039804, textId=20039804, duration=5000) # 가이드 : 사다리를 타고 위로 올라가세요.
-        set_portal(portalId=2, visible=False, enabled=True, minimapVisible=False)
+        self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[521], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[522], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[523], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[524], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[525], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[526], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[527], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.set_ladder(triggerIds=[528], visible=True, animationEffect=True, animationDelay=2) # Ladder02
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039804, textId=20039804, duration=5000) # 가이드 : 사다리를 타고 위로 올라가세요.
+        self.set_portal(portalId=2, visible=False, enable=True, minimapVisible=False)
 
 
+initial_state = Wait

@@ -1,21 +1,21 @@
 """ trigger/66200001_gd/03_removedropout.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9002]):
-            return Remove()
+class Wait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9002]):
+            return Remove(self.ctx)
 
 
-class Remove(state.State):
+class Remove(common.Trigger):
     def on_enter(self):
-        move_to_portal(boxId=9002, userTagId=1, portalId=21) # Tag1=Blue
-        move_to_portal(boxId=9002, userTagId=2, portalId=22) # Tag2=Red
+        self.move_to_portal(boxId=9002, userTagId=1, portalId=21) # Tag1=Blue
+        self.move_to_portal(boxId=9002, userTagId=2, portalId=22) # Tag2=Red
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9002]):
-            return Remove()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9002]):
+            return Remove(self.ctx)
 
 
+initial_state = Wait

@@ -1,12 +1,12 @@
 """ trigger/63000054_cs/01_portalevent.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=20007001, visible=False, enabled=False, minimapVisible=True) # 자쿰
-        set_portal(portalId=20023001, visible=False, enabled=False, minimapVisible=True) # 핑크빈
-        create_widget(type='ReverseRaidPortal')
+        self.set_portal(portalId=20007001, visible=False, enable=False, minimapVisible=True) # 자쿰
+        self.set_portal(portalId=20023001, visible=False, enable=False, minimapVisible=True) # 핑크빈
+        self.create_widget(type='ReverseRaidPortal')
 
 
+initial_state = Wait

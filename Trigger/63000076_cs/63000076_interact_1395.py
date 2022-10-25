@@ -1,47 +1,47 @@
 """ trigger/63000076_cs/63000076_interact_1395.xml """
-from common import *
-import state
+import common
 
 
-class 준비(state.State):
+class 준비(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[116], arg2=False)
-        create_monster(spawnIds=[117], arg2=False)
+        self.create_monster(spawnIds=[116], animationEffect=False)
+        self.create_monster(spawnIds=[117], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001395], arg2=0):
-            return 화난요정_01_1395()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001395], stateValue=0):
+            return 화난요정_01_1395(self.ctx)
 
 
-class 화난요정_01_1395(state.State):
+class 화난요정_01_1395(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[116])
-        destroy_monster(spawnIds=[117])
-        create_monster(spawnIds=[216], arg2=True)
-        create_monster(spawnIds=[217], arg2=True)
+        self.destroy_monster(spawnIds=[116])
+        self.destroy_monster(spawnIds=[117])
+        self.create_monster(spawnIds=[216], animationEffect=True)
+        self.create_monster(spawnIds=[217], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[216,217]):
-            return 화난요정_02_1395()
-
-
-class 화난요정_02_1395(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 화난요정_03_1395()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[216,217]):
+            return 화난요정_02_1395(self.ctx)
 
 
-class 화난요정_03_1395(state.State):
+class 화난요정_02_1395(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 화난요정_03_1395(self.ctx)
+
+
+class 화난요정_03_1395(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[116], arg2=False)
-        create_monster(spawnIds=[117], arg2=False)
+        self.create_monster(spawnIds=[116], animationEffect=False)
+        self.create_monster(spawnIds=[117], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 준비

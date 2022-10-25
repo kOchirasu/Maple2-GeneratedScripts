@@ -1,41 +1,41 @@
 """ trigger/02000066_bf/cannon_effect17.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[817], visible=False)
+        self.set_effect(triggerIds=[817], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[127]):
-            return 이펙트대기()
-
-
-class 이펙트대기(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=127, spawnIds=[8017]):
-            return 이펙트on()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[127]):
+            return 이펙트대기(self.ctx)
 
 
-class 이펙트on(state.State):
+class 이펙트대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=127, spawnIds=[8017]):
+            return 이펙트on(self.ctx)
+
+
+class 이펙트on(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[817], visible=True)
+        self.set_effect(triggerIds=[817], visible=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[8017]):
-            return 대기시간()
-        if not user_detected(boxIds=[127]):
-            return 대기시간()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[8017]):
+            return 대기시간(self.ctx)
+        if not self.user_detected(boxIds=[127]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[817], visible=False)
-        set_timer(timerId='2', seconds=2)
+        self.set_effect(triggerIds=[817], visible=False)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 시작(self.ctx)
 
 
+initial_state = 시작

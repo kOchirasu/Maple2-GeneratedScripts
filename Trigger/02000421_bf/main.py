@@ -1,33 +1,33 @@
 """ trigger/02000421_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[6001], visible=False)
-        set_mesh(triggerIds=[6002], visible=False)
-        set_mesh(triggerIds=[6003], visible=False)
-        set_mesh(triggerIds=[6004], visible=False)
-        set_mesh(triggerIds=[6005], visible=False)
-        set_mesh(triggerIds=[6006], visible=False)
-        set_mesh(triggerIds=[6007], visible=False)
-        set_mesh(triggerIds=[6008], visible=False)
-        set_mesh(triggerIds=[6009], visible=False)
-        set_mesh(triggerIds=[6010], visible=False)
-        set_mesh(triggerIds=[6011], visible=False)
-        set_mesh(triggerIds=[6012], visible=False)
-        set_mesh(triggerIds=[6013], visible=False)
-        set_mesh(triggerIds=[6014], visible=False)
-        set_mesh(triggerIds=[6015], visible=False)
-        set_mesh(triggerIds=[6016], visible=False)
+        self.set_mesh(triggerIds=[6001], visible=False)
+        self.set_mesh(triggerIds=[6002], visible=False)
+        self.set_mesh(triggerIds=[6003], visible=False)
+        self.set_mesh(triggerIds=[6004], visible=False)
+        self.set_mesh(triggerIds=[6005], visible=False)
+        self.set_mesh(triggerIds=[6006], visible=False)
+        self.set_mesh(triggerIds=[6007], visible=False)
+        self.set_mesh(triggerIds=[6008], visible=False)
+        self.set_mesh(triggerIds=[6009], visible=False)
+        self.set_mesh(triggerIds=[6010], visible=False)
+        self.set_mesh(triggerIds=[6011], visible=False)
+        self.set_mesh(triggerIds=[6012], visible=False)
+        self.set_mesh(triggerIds=[6013], visible=False)
+        self.set_mesh(triggerIds=[6014], visible=False)
+        self.set_mesh(triggerIds=[6015], visible=False)
+        self.set_mesh(triggerIds=[6016], visible=False)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=700, boxId=1):
-            return Ready_Idle()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=700, boxId=1):
+            return Ready_Idle(self.ctx)
 
 
-class Ready_Idle(state.State):
+class Ready_Idle(common.Trigger):
     pass
 
 
+initial_state = Ready

@@ -1,92 +1,92 @@
 """ trigger/02000315_bf/guide_03.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=False) # UI
-        set_user_value(key='CameraWalkEnd', value=0)
+        self.set_effect(triggerIds=[5000], visible=False) # UI
+        self.set_user_value(key='CameraWalkEnd', value=0)
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return LoadingDelay01()
-
-
-class LoadingDelay01(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='CameraWalkEnd', value=1):
-            return LoadingDelay02()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return LoadingDelay01(self.ctx)
 
 
-class LoadingDelay02(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstBattleGuide()
+class LoadingDelay01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='CameraWalkEnd', value=1):
+            return LoadingDelay02(self.ctx)
 
 
-class FirstBattleGuide(state.State):
+class LoadingDelay02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstBattleGuide(self.ctx)
+
+
+class FirstBattleGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[502]):
-            return FirstBridgeGuide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[502]):
+            return FirstBridgeGuide(self.ctx)
 
 
-class FirstBridgeGuide(state.State):
+class FirstBridgeGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[503]):
-            return SecondBattleGuide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[503]):
+            return SecondBattleGuide(self.ctx)
 
 
-class SecondBattleGuide(state.State):
+class SecondBattleGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[505]):
-            return SecondBridgeGuide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[505]):
+            return SecondBridgeGuide(self.ctx)
 
 
-class SecondBridgeGuide(state.State):
+class SecondBridgeGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[506]):
-            return ThirdBattleGuide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[506]):
+            return ThirdBattleGuide(self.ctx)
 
 
-class ThirdBattleGuide(state.State):
+class ThirdBattleGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[508]):
-            return ThirdBridgeGuide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[508]):
+            return ThirdBridgeGuide(self.ctx)
 
 
-class ThirdBridgeGuide(state.State):
+class ThirdBridgeGuide(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # UI
-        show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.set_effect(triggerIds=[5000], visible=True) # UI
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[402]):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[402]):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20031502)
+        self.hide_guide_summary(entityId=20031502)
 
 
+initial_state = Wait

@@ -1,25 +1,25 @@
 """ trigger/61000006_me/trigger_05.xml """
-from common import *
-import state
+import common
 
 
-class 레버(state.State):
+class 레버(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000214], state=1)
-        set_mesh(triggerIds=[551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568], visible=True)
+        self.set_interact_object(triggerIds=[10000214], state=1)
+        self.set_mesh(triggerIds=[551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568], visible=True)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000214], arg2=0):
-            return 바닥열기()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000214], stateValue=0):
+            return 바닥열기(self.ctx)
 
 
-class 바닥열기(state.State):
+class 바닥열기(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='12', seconds=200)
-        set_mesh(triggerIds=[551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568], visible=False)
+        self.set_timer(timerId='12', seconds=200)
+        self.set_mesh(triggerIds=[551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568], visible=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='12'):
-            return 레버()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='12'):
+            return 레버(self.ctx)
 
 
+initial_state = 레버

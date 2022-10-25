@@ -1,36 +1,35 @@
 """ trigger/02000410_bf/etcset.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=750, boxId=1):
-            return 타이머()
+class Ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=750, boxId=1):
+            return 타이머(self.ctx)
 
 
-class 타이머(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=28000):
-            set_event_ui(type=1, arg2='$02000410_BF__BARRICADE_GIVEUP_0$', arg3='5000')
-            dungeon_enable_give_up(isEnable='1')
-            return 입구포탈제거()
+class 타이머(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=28000):
+            self.set_event_ui(type=1, arg2='$02000410_BF__BARRICADE_GIVEUP_0$', arg3='5000')
+            self.dungeon_enable_give_up(isEnable='1')
+            return 입구포탈제거(self.ctx)
 
 
-class 입구포탈제거(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            set_portal(portalId=3, visible=False, enabled=False, minimapVisible=False)
-            return 보스HP체크()
+class 입구포탈제거(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
+            return 보스HP체크(self.ctx)
 
 
-class 보스HP체크(state.State):
-    def on_tick(self) -> state.State:
-        if check_npc_damage(spawnId=102, damageRate=1):
-            add_buff(boxIds=[102], skillId=50004522, level=1, arg4=True)
-            dungeon_mission_complete(feature='DungeonRankBalance_01', missionId=24090004)
-            dungeon_mission_complete(feature='DungeonRankBalance_02', missionId=24090014)
-            return 메시지알림()
+class 보스HP체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.check_npc_damage(spawnId=102, damageRate=1):
+            self.add_buff(boxIds=[102], skillId=50004522, level=1, isPlayer=True)
+            self.dungeon_mission_complete(feature='DungeonRankBalance_01', missionId=24090004)
+            self.dungeon_mission_complete(feature='DungeonRankBalance_02', missionId=24090014)
+            return 메시지알림(self.ctx)
         """
         condition name="CheckNpcDamage"   파라미터 기능 설명
         
@@ -45,19 +44,20 @@ class 보스HP체크(state.State):
         """
 
 
-class 메시지알림(state.State):
+class 메시지알림(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20041005, textId=20041005) # 인페르녹의 쉴드가 사라졌다는 것을 메시지로 알려줌
+        self.show_guide_summary(entityId=20041005, textId=20041005) # 인페르녹의 쉴드가 사라졌다는 것을 메시지로 알려줌
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=8000):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=8000):
+            return 종료(self.ctx)
 
     def on_exit(self):
-        hide_guide_summary(entityId=20041005)
+        self.hide_guide_summary(entityId=20041005)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = Ready

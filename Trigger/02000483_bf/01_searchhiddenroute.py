@@ -1,103 +1,103 @@
 """ trigger/02000483_bf/01_searchhiddenroute.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=False) # PortalOn
-        set_user_value(key='PortalOn', value=0)
-        set_portal(portalId=10, visible=False, enabled=False, minimapVisible=False)
+        self.set_effect(triggerIds=[5000], visible=False) # PortalOn
+        self.set_user_value(key='PortalOn', value=0)
+        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return LoadingDelay()
-
-
-class LoadingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return PickRandomRoute()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return LoadingDelay(self.ctx)
 
 
-class PickRandomRoute(state.State):
+class LoadingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return PickRandomRoute(self.ctx)
+
+
+class PickRandomRoute(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=20039701, textId=20039701, duration=4000) # 가이드 : 다른 방으로 이동할 수 있는 길을 찾으세요.
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=20039701, textId=20039701, duration=4000) # 가이드 : 다른 방으로 이동할 수 있는 길을 찾으세요.
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=20):
-            return BehindFireplace()
-        if random_condition(rate=20):
-            return BehindBookcase()
-        if random_condition(rate=20):
-            return FindKeyFromFabricbox()
-        if random_condition(rate=20):
-            return FindKeyFromCandle()
-        if random_condition(rate=20):
-            return FindKeyFromDocument()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=20):
+            return BehindFireplace(self.ctx)
+        if self.random_condition(rate=20):
+            return BehindBookcase(self.ctx)
+        if self.random_condition(rate=20):
+            return FindKeyFromFabricbox(self.ctx)
+        if self.random_condition(rate=20):
+            return FindKeyFromCandle(self.ctx)
+        if self.random_condition(rate=20):
+            return FindKeyFromDocument(self.ctx)
 
 
-class BehindBookcase(state.State):
+class BehindBookcase(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3200, key='HiddenRouteOpen', value=1)
-        set_user_value(triggerId=3300, key='FindKey', value=2)
-        set_user_value(triggerId=3400, key='FindKey', value=2)
-        set_user_value(triggerId=3500, key='FindKey', value=2)
+        self.set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3200, key='HiddenRouteOpen', value=1)
+        self.set_user_value(triggerId=3300, key='FindKey', value=2)
+        self.set_user_value(triggerId=3400, key='FindKey', value=2)
+        self.set_user_value(triggerId=3500, key='FindKey', value=2)
 
 
-class BehindFireplace(state.State):
+class BehindFireplace(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3100, key='HiddenRouteOpen', value=1)
-        set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3300, key='FindKey', value=2)
-        set_user_value(triggerId=3400, key='FindKey', value=2)
-        set_user_value(triggerId=3500, key='FindKey', value=2)
+        self.set_user_value(triggerId=3100, key='HiddenRouteOpen', value=1)
+        self.set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3300, key='FindKey', value=2)
+        self.set_user_value(triggerId=3400, key='FindKey', value=2)
+        self.set_user_value(triggerId=3500, key='FindKey', value=2)
 
 
-class FindKeyFromFabricbox(state.State):
+class FindKeyFromFabricbox(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3300, key='FindKey', value=1)
-        set_user_value(triggerId=3400, key='FindKey', value=2)
-        set_user_value(triggerId=3500, key='FindKey', value=2)
+        self.set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3300, key='FindKey', value=1)
+        self.set_user_value(triggerId=3400, key='FindKey', value=2)
+        self.set_user_value(triggerId=3500, key='FindKey', value=2)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PortalOn', value=1):
-            return PortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PortalOn', value=1):
+            return PortalOn(self.ctx)
 
 
-class FindKeyFromCandle(state.State):
+class FindKeyFromCandle(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3300, key='FindKey', value=2)
-        set_user_value(triggerId=3400, key='FindKey', value=1)
-        set_user_value(triggerId=3500, key='FindKey', value=2)
+        self.set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3300, key='FindKey', value=2)
+        self.set_user_value(triggerId=3400, key='FindKey', value=1)
+        self.set_user_value(triggerId=3500, key='FindKey', value=2)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PortalOn', value=1):
-            return PortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PortalOn', value=1):
+            return PortalOn(self.ctx)
 
 
-class FindKeyFromDocument(state.State):
+class FindKeyFromDocument(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
-        set_user_value(triggerId=3300, key='FindKey', value=2)
-        set_user_value(triggerId=3400, key='FindKey', value=2)
-        set_user_value(triggerId=3500, key='FindKey', value=1)
+        self.set_user_value(triggerId=3100, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3200, key='HiddenRouteOpen', value=2)
+        self.set_user_value(triggerId=3300, key='FindKey', value=2)
+        self.set_user_value(triggerId=3400, key='FindKey', value=2)
+        self.set_user_value(triggerId=3500, key='FindKey', value=1)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PortalOn', value=1):
-            return PortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PortalOn', value=1):
+            return PortalOn(self.ctx)
 
 
-class PortalOn(state.State):
+class PortalOn(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # PortalOn
-        set_portal(portalId=10, visible=True, enabled=True, minimapVisible=False)
+        self.set_effect(triggerIds=[5000], visible=True) # PortalOn
+        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
 
 
+initial_state = Wait

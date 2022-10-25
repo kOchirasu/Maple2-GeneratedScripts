@@ -1,30 +1,30 @@
 """ trigger/02000245_bf/trigger_04_01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[707,708], visible=False)
-        destroy_monster(spawnIds=[616,617,618,619,620,621,622,623,624])
+        self.set_mesh(triggerIds=[707,708], visible=False)
+        self.destroy_monster(spawnIds=[616,617,618,619,620,621,622,623,624])
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[204]):
-            return 몹생성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[204]):
+            return 몹생성(self.ctx)
 
 
-class 몹생성(state.State):
+class 몹생성(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[616,617,618,619,620,621,622,623,624], arg2=False)
+        self.create_monster(spawnIds=[616,617,618,619,620,621,622,623,624], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[616,617,618,619,620,621,622,623,624]):
-            return 통과()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[616,617,618,619,620,621,622,623,624]):
+            return 통과(self.ctx)
 
 
-class 통과(state.State):
+class 통과(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[707,708], visible=False)
-        set_timer(timerId='1', seconds=180)
+        self.set_mesh(triggerIds=[707,708], visible=False)
+        self.set_timer(timerId='1', seconds=180)
 
 
+initial_state = 대기

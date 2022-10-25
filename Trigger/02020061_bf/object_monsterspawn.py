@@ -1,30 +1,30 @@
 """ trigger/02020061_bf/object_monsterspawn.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[482], isStart=False)
+        self.start_combine_spawn(groupId=[482], isStart=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='EliteSpawn', value=1):
-            return 스폰()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='EliteSpawn', value=1):
+            return 스폰(self.ctx)
 
 
-class 스폰(state.State):
+class 스폰(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[482], isStart=True)
+        self.start_combine_spawn(groupId=[482], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='EliteSpawn', value=0):
-            return 대기()
-        if user_value(key='EliteSpawn', value=2):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='EliteSpawn', value=0):
+            return 대기(self.ctx)
+        if self.user_value(key='EliteSpawn', value=2):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[482], isStart=False)
+        self.start_combine_spawn(groupId=[482], isStart=False)
 
 
+initial_state = 대기

@@ -1,79 +1,79 @@
 """ trigger/52000052_qd/702_darknesstotem_02round.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, arg4=0, arg5=0) # TotemGround
-        set_user_value(key='TotemApp', value=0)
+        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, delay=0, scale=0) # TotemGround
+        self.set_user_value(key='TotemApp', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='TotemApp', value=1):
-            return TotemApp01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='TotemApp', value=1):
+            return TotemApp01(self.ctx)
 
 
-class TotemApp01(state.State):
+class TotemApp01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[2002]) # 전투용 준타
-        create_monster(spawnIds=[2302], arg2=False) # 날아라 준타
-        set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=True, arg3=0, arg4=0, arg5=5) # TotemGround
-        create_monster(spawnIds=[920], arg2=False) # 암흑 토템
+        self.destroy_monster(spawnIds=[2002]) # 전투용 준타
+        self.create_monster(spawnIds=[2302], animationEffect=False) # 날아라 준타
+        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=True, arg3=0, delay=0, scale=5) # TotemGround
+        self.create_monster(spawnIds=[920], animationEffect=False) # 암흑 토템
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return JuntaReady01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return JuntaReady01(self.ctx)
 
 
-class JuntaReady01(state.State):
+class JuntaReady01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=2302, script='$52000052_QD__702_DARKNESSTOTEM_02ROUND__0$', arg4=3, arg5=0) # 전투중인 준타
+        self.set_conversation(type=1, spawnId=2302, script='$52000052_QD__702_DARKNESSTOTEM_02ROUND__0$', arg4=3, arg5=0) # 전투중인 준타
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return JuntaGoUp01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return JuntaGoUp01(self.ctx)
 
 
-class JuntaGoUp01(state.State):
+class JuntaGoUp01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=2302, patrolName='MS2PatrolData_2302')
+        self.move_npc(spawnId=2302, patrolName='MS2PatrolData_2302')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return DestoryTotem01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return DestoryTotem01(self.ctx)
 
 
-class DestoryTotem01(state.State):
+class DestoryTotem01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2102], arg2=False) # 토템 옆에 준타
+        self.create_monster(spawnIds=[2102], animationEffect=False) # 토템 옆에 준타
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return JuntaReturn01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return JuntaReturn01(self.ctx)
 
 
-class JuntaReturn01(state.State):
+class JuntaReturn01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[920]) # 암흑 토템
-        destroy_monster(spawnIds=[2302]) # 날아라 준타
-        destroy_monster(spawnIds=[2102]) # 토템 옆에 준타
+        self.destroy_monster(spawnIds=[920]) # 암흑 토템
+        self.destroy_monster(spawnIds=[2302]) # 날아라 준타
+        self.destroy_monster(spawnIds=[2102]) # 토템 옆에 준타
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return JuntaReturn02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return JuntaReturn02(self.ctx)
 
 
-class JuntaReturn02(state.State):
+class JuntaReturn02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2202], arg2=False) # Regen_A 준타
+        self.create_monster(spawnIds=[2202], animationEffect=False) # Regen_A 준타
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, arg4=0, arg5=5) # TotemGround
+        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, delay=0, scale=5) # TotemGround
 
 
+initial_state = Wait

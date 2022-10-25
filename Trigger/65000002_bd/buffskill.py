@@ -1,82 +1,82 @@
 """ trigger/65000002_bd/buffskill.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
+class 시작대기중(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=False)
+        self.set_effect(triggerIds=[601], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[103]):
-            return 초대기2()
-
-
-class 초대기2(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 스킬랜덤()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[103]):
+            return 초대기2(self.ctx)
 
 
-class 스킬랜덤(state.State):
+class 초대기2(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 스킬랜덤(self.ctx)
+
+
+class 스킬랜덤(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=True)
-        play_system_sound_in_box(sound='BD_Buffskill_00')
-        show_guide_summary(entityId=26500202, textId=26500202, duration=3000)
+        self.set_effect(triggerIds=[601], visible=True)
+        self.play_system_sound_in_box(sound='BD_Buffskill_00')
+        self.show_guide_summary(entityId=26500202, textId=26500202, duration=3000)
 
-    def on_tick(self) -> state.State:
-        if not user_detected(boxIds=[103]):
-            return 초기화()
-        if random_condition(rate=33):
-            return A스킬작동()
-        if random_condition(rate=33):
-            return B스킬작동()
-        if random_condition(rate=34):
-            return C스킬작동()
+    def on_tick(self) -> common.Trigger:
+        if not self.user_detected(boxIds=[103]):
+            return 초기화(self.ctx)
+        if self.random_condition(rate=33):
+            return A스킬작동(self.ctx)
+        if self.random_condition(rate=33):
+            return B스킬작동(self.ctx)
+        if self.random_condition(rate=34):
+            return C스킬작동(self.ctx)
 
 
-class A스킬작동(state.State):
+class A스킬작동(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7001], isEnable=True)
-        set_timer(timerId='60', seconds=60)
+        self.set_skill(triggerIds=[7001], enable=True)
+        self.set_timer(timerId='60', seconds=60)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='60'):
-            set_skill(triggerIds=[7001], isEnable=False)
-            return 스킬랜덤()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='60'):
+            self.set_skill(triggerIds=[7001], enable=False)
+            return 스킬랜덤(self.ctx)
 
 
-class B스킬작동(state.State):
+class B스킬작동(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7002], isEnable=True)
-        set_timer(timerId='60', seconds=60)
+        self.set_skill(triggerIds=[7002], enable=True)
+        self.set_timer(timerId='60', seconds=60)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='60'):
-            set_skill(triggerIds=[7002], isEnable=False)
-            return 스킬랜덤()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='60'):
+            self.set_skill(triggerIds=[7002], enable=False)
+            return 스킬랜덤(self.ctx)
 
 
-class C스킬작동(state.State):
+class C스킬작동(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7003], isEnable=True)
-        set_timer(timerId='60', seconds=60)
+        self.set_skill(triggerIds=[7003], enable=True)
+        self.set_timer(timerId='60', seconds=60)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='60'):
-            set_skill(triggerIds=[7003], isEnable=False)
-            return 스킬랜덤()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='60'):
+            self.set_skill(triggerIds=[7003], enable=False)
+            return 스킬랜덤(self.ctx)
 
 
-class 초기화(state.State):
+class 초기화(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1)
-        set_skill(triggerIds=[7001], isEnable=False)
-        set_skill(triggerIds=[7002], isEnable=False)
-        set_skill(triggerIds=[7003], isEnable=False)
+        self.set_timer(timerId='1', seconds=1)
+        self.set_skill(triggerIds=[7001], enable=False)
+        self.set_skill(triggerIds=[7002], enable=False)
+        self.set_skill(triggerIds=[7003], enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 시작대기중(self.ctx)
 
 
+initial_state = 시작대기중

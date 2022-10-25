@@ -1,163 +1,163 @@
 """ trigger/52010051_qd/52010051_qd.xml """
-from common import *
-import state
+import common
 
 
-class start(state.State):
-    def on_tick(self) -> state.State:
-        if check_user():
-            visible_my_pc(isVisible=False)
-            create_monster(spawnIds=[2003], arg2=False)
-            set_mesh(triggerIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=False, arg3=0, arg4=0, arg5=0)
-            return CameraEffect01()
+class start(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            self.visible_my_pc(isVisible=False)
+            self.create_monster(spawnIds=[2003], animationEffect=False)
+            self.set_mesh(triggerIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=False, arg3=0, delay=0, scale=0)
+            return CameraEffect01(self.ctx)
 
 
-class CameraEffect01(state.State):
+class CameraEffect01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_cinematic_ui(type=1)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraEffect02()
-
-
-class CameraEffect02(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraEffect03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraEffect02(self.ctx)
 
 
-class CameraEffect03(state.State):
+class CameraEffect02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraEffect03(self.ctx)
+
+
+class CameraEffect03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        select_camera_path(pathIds=[1002,1003], returnView=False)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera_path(pathIds=[1002,1003], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return CameraEffect4()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return CameraEffect4(self.ctx)
 
 
-class CameraEffect4(state.State):
+class CameraEffect4(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[1004], returnView=False)
-        create_monster(spawnIds=[2002], arg2=False) # 더미 벨라
+        self.select_camera_path(pathIds=[1004], returnView=False)
+        self.create_monster(spawnIds=[2002], animationEffect=False) # 더미 벨라
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CameraEffect4_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CameraEffect4_b(self.ctx)
 
 
-class CameraEffect4_b(state.State):
+class CameraEffect4_b(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=0)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 버프부여()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 버프부여(self.ctx)
 
 
-class 버프부여(state.State):
+class 버프부여(common.Trigger):
     def on_enter(self):
-        set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser'], visible=False)
-        visible_my_pc(isVisible=True) # 유저 투명 처리
-        destroy_monster(spawnIds=[2002])
-        add_buff(boxIds=[101], skillId=99910280, level=1, arg4=False, arg5=True) # 벨라 변신
-        add_buff(boxIds=[101], skillId=99910280, level=1, arg4=False, arg5=False) # 벨라 변신
-        show_guide_summary(entityId=25201503, textId=25201503, duration=10000)
+        self.set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser'], visible=False)
+        self.visible_my_pc(isVisible=True) # 유저 투명 처리
+        self.destroy_monster(spawnIds=[2002])
+        self.add_buff(boxIds=[101], skillId=99910280, level=1, isPlayer=False, isSkillSet=True) # 벨라 변신
+        self.add_buff(boxIds=[101], skillId=99910280, level=1, isPlayer=False, isSkillSet=False) # 벨라 변신
+        self.show_guide_summary(entityId=25201503, textId=25201503, duration=10000)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9010]):
-            return 마법다리형성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9010]):
+            return 마법다리형성(self.ctx)
 
 
-class 마법다리형성(state.State):
+class 마법다리형성(common.Trigger):
     def on_enter(self):
-        set_local_camera(cameraId=1006, enable=True) # LocalTargetCamera
-        set_mesh(triggerIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=True, arg3=1000, arg4=160, arg5=0)
+        self.set_local_camera(cameraId=1006, enable=True) # LocalTargetCamera
+        self.set_mesh(triggerIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009,4010,4011,4012,4013,4014,4015,4016,4017,4018,4019,4020,4021,4022,4023,4024,4025,4026,4027,4028,4029,4030,4031,4032,4033,4034,4035,4036,4037,4038,4039,4040,4041,4042,4043,4044,4045,4046,4047,4048,4049,4050,4051,4052,4053,4054,4055,4056,4057,4058,4059,4060,4061,4062,4063,4064,4065,4066,4067,4068,4069,4070,4071], visible=True, arg3=1000, delay=160, scale=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9020]):
-            return 검마발록연출01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9020]):
+            return 검마발록연출01(self.ctx)
 
 
-class 검마발록연출01(state.State):
+class 검마발록연출01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_cinematic_ui(type=1)
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 검마발록연출02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 검마발록연출02(self.ctx)
 
 
-class 검마발록연출02(state.State):
+class 검마발록연출02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        select_camera_path(pathIds=[1000,1001], returnView=False)
+        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera_path(pathIds=[1000,1001], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 검마발록연출03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 검마발록연출03(self.ctx)
 
 
-class 검마발록연출03(state.State):
+class 검마발록연출03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2000], arg2=False) # 발록
-        create_monster(spawnIds=[2001], arg2=False) # 검은 마법사
+        self.create_monster(spawnIds=[2000], animationEffect=False) # 발록
+        self.create_monster(spawnIds=[2001], animationEffect=False) # 검은 마법사
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=9000):
-            return 검마발록연출03_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=9000):
+            return 검마발록연출03_b(self.ctx)
 
 
-class 검마발록연출03_b(state.State):
+class 검마발록연출03_b(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return 검마발록연출04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return 검마발록연출04(self.ctx)
 
 
-class 검마발록연출04(state.State):
+class 검마발록연출04(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=0)
-        set_local_camera(cameraId=1005, enable=True) # LocalTargetCamera
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=0)
+        self.set_local_camera(cameraId=1005, enable=True) # LocalTargetCamera
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[101], questIds=[91000046], questStates=[3]):
-            return 완료연출01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[101], questIds=[91000046], questStates=[3]):
+            return 완료연출01(self.ctx)
 
 
-class 완료연출01(state.State):
+class 완료연출01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
-        set_cinematic_ui(type=1)
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return 완료연출02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return 완료연출02(self.ctx)
 
 
-class 완료연출02(state.State):
+class 완료연출02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
-        move_user(mapId=52010052, portalId=1)
+        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        self.move_user(mapId=52010052, portalId=1)
 
 
+initial_state = start

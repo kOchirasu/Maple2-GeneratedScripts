@@ -1,156 +1,156 @@
 """ trigger/52000074_qd/questnpcspawn01.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101,201], arg2=False)
+        self.create_monster(spawnIds=[101,201], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[3]):
-            return NpcRemove01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[2]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[1]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[3]):
-            return NpcChange01()
-        if quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[2]):
-            return NpcTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[3]):
+            return NpcRemove01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[2]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[1]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[3]):
+            return NpcChange01(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[2]):
+            return NpcTalk01(self.ctx)
 
 
-class NpcRemove01(state.State):
+class NpcRemove01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[101,201])
+        self.destroy_monster(spawnIds=[101,201])
 
 
-class NpcChange01(state.State):
+class NpcChange01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[101])
-        create_monster(spawnIds=[102], arg2=False)
+        self.destroy_monster(spawnIds=[101])
+        self.create_monster(spawnIds=[102], animationEffect=False)
 
 
-class NpcTalk01(state.State):
+class NpcTalk01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[101])
-        create_monster(spawnIds=[102], arg2=False)
+        self.destroy_monster(spawnIds=[101])
+        self.create_monster(spawnIds=[102], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraSet01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraSet01(self.ctx)
 
 
-class CameraSet01(state.State):
+class CameraSet01(common.Trigger):
     def on_enter(self):
-        set_scene_skip(state=TalkEnd01, arg2='exit')
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=600, enable=True)
+        self.set_scene_skip(state=TalkEnd01, action='exit')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=600, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return EveTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return EveTalk01(self.ctx)
 
 
-class EveTalk01(state.State):
+class EveTalk01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__0$', arg4=5) # 이브
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__0$', arg4=5) # 이브
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return EveTalk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return EveTalk01Skip(self.ctx)
 
 
-class EveTalk01Skip(state.State):
+class EveTalk01Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
-        remove_cinematic_talk()
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
         # <action name="스킵을설정한다" arg1=""/>
 
-    def on_tick(self) -> state.State:
-        if true():
-            return LennonTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return LennonTalk01(self.ctx)
 
 
-class LennonTalk01(state.State):
+class LennonTalk01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=102, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001961, script='$52000074_QD__QUESTNPCSPAWN01__1$', arg4=5) # 레논
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001961, script='$52000074_QD__QUESTNPCSPAWN01__1$', arg4=5) # 레논
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return LennonTalk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return LennonTalk01Skip(self.ctx)
 
 
-class LennonTalk01Skip(state.State):
+class LennonTalk01Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=102, sequenceName='Idle_A')
-        remove_cinematic_talk()
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
         # <action name="스킵을설정한다" arg1=""/>
 
-    def on_tick(self) -> state.State:
-        if true():
-            return EveTalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return EveTalk02(self.ctx)
 
 
-class EveTalk02(state.State):
+class EveTalk02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__2$', arg4=3) # 이브
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__2$', arg4=3) # 이브
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return EveTalk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return EveTalk02Skip(self.ctx)
 
 
-class EveTalk02Skip(state.State):
+class EveTalk02Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
-        remove_cinematic_talk()
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
         # <action name="스킵을설정한다" arg1=""/>
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return TalkEnd01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return TalkEnd01(self.ctx)
 
 
-class TalkEnd01(state.State):
+class TalkEnd01(common.Trigger):
     def on_enter(self):
-        set_scene_skip()
-        select_camera(triggerId=600, enable=False)
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=0)
+        self.set_scene_skip()
+        self.select_camera(triggerId=600, enable=False)
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
 
 
+initial_state = Wait

@@ -1,83 +1,83 @@
 """ trigger/52000066_qd/rockdrop_10.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[8000], isEnable=False)
-        set_skill(triggerIds=[8001], isEnable=False)
-        set_effect(triggerIds=[7000], visible=False) # RockDrop
-        set_effect(triggerIds=[7001], visible=False) # RockDrop
+        self.set_skill(triggerIds=[8000], enable=False)
+        self.set_skill(triggerIds=[8001], enable=False)
+        self.set_effect(triggerIds=[7000], visible=False) # RockDrop
+        self.set_effect(triggerIds=[7001], visible=False) # RockDrop
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return RockDrop01()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return RockDrop01(self.ctx)
 
 
-class RockDrop01(state.State):
+class RockDrop01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7000], visible=True) # RockDrop
+        self.set_effect(triggerIds=[7000], visible=True) # RockDrop
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1200):
-            return RockDrop02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1200):
+            return RockDrop02(self.ctx)
 
 
-class RockDrop02(state.State):
+class RockDrop02(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[8000], isEnable=True)
+        self.set_skill(triggerIds=[8000], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return RockDrop11()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return RockDrop11(self.ctx)
 
 
-class RockDrop11(state.State):
+class RockDrop11(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=True) # RockDrop
+        self.set_effect(triggerIds=[7001], visible=True) # RockDrop
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1200):
-            return RockDrop12()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1200):
+            return RockDrop12(self.ctx)
 
 
-class RockDrop12(state.State):
+class RockDrop12(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[8001], isEnable=True)
+        self.set_skill(triggerIds=[8001], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return RockDrop21()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return RockDrop21(self.ctx)
 
 
-class RockDrop21(state.State):
+class RockDrop21(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7000], visible=True) # RockDrop
+        self.set_effect(triggerIds=[7000], visible=True) # RockDrop
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1200):
-            return RockDrop22()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1200):
+            return RockDrop22(self.ctx)
 
 
-class RockDrop22(state.State):
+class RockDrop22(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[8000], isEnable=True)
+        self.set_skill(triggerIds=[8000], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return Reset(self.ctx)
 
 
-class Reset(state.State):
+class Reset(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[8000], isEnable=False)
-        set_skill(triggerIds=[8001], isEnable=False)
-        set_effect(triggerIds=[7000], visible=False) # RockDrop
-        set_effect(triggerIds=[7001], visible=False) # RockDrop
+        self.set_skill(triggerIds=[8000], enable=False)
+        self.set_skill(triggerIds=[8001], enable=False)
+        self.set_effect(triggerIds=[7000], visible=False) # RockDrop
+        self.set_effect(triggerIds=[7001], visible=False) # RockDrop
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return RockDrop01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return RockDrop01(self.ctx)
 
 
+initial_state = Wait

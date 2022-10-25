@@ -1,19 +1,19 @@
 """ trigger/52100022_qd/03_boss03portal.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=40, visible=False, enabled=False, minimapVisible=False) # Boss01Spawn
+        self.set_portal(portalId=40, visible=False, enable=False, minimapVisible=False) # Boss01Spawn
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=9900, spawnIds=[903]):
-            return ActionPortal01()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=9900, spawnIds=[903]):
+            return ActionPortal01(self.ctx)
 
 
-class ActionPortal01(state.State):
+class ActionPortal01(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=40, visible=False, enabled=True, minimapVisible=False) # Boss01Spawn
+        self.set_portal(portalId=40, visible=False, enable=True, minimapVisible=False) # Boss01Spawn
 
 
+initial_state = Wait

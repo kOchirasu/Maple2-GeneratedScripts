@@ -1,268 +1,268 @@
 """ trigger/02000452_bf/1122330_move.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=20, visible=False, enabled=False, minimapVisible=False) # Emergency
-        set_mesh(triggerIds=[3000], visible=True, arg3=0, arg4=0, arg5=0) # ElevatorHallRoof
-        set_mesh(triggerIds=[3001], visible=True, arg3=0, arg4=0, arg5=0) # ElevatorHallGround
-        set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=0, arg4=0, arg5=0) # VisibleRoof
-        set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=True, arg3=0, arg4=0, arg5=0) # VisibleGround
-        set_agent(triggerIds=[8000], visible=True)
-        set_agent(triggerIds=[8001], visible=True)
-        set_agent(triggerIds=[8002], visible=True)
-        set_agent(triggerIds=[8003], visible=True)
-        set_agent(triggerIds=[8004], visible=True)
-        set_agent(triggerIds=[8005], visible=True)
-        set_agent(triggerIds=[8006], visible=True)
-        set_agent(triggerIds=[8007], visible=True)
-        set_agent(triggerIds=[8008], visible=True)
-        set_agent(triggerIds=[8009], visible=True)
-        set_agent(triggerIds=[8010], visible=True)
-        set_agent(triggerIds=[8011], visible=True)
-        set_agent(triggerIds=[8012], visible=True)
-        set_agent(triggerIds=[8013], visible=True)
-        set_agent(triggerIds=[8014], visible=True)
-        set_agent(triggerIds=[8015], visible=True)
-        set_agent(triggerIds=[8016], visible=True)
-        set_agent(triggerIds=[8017], visible=True)
-        set_agent(triggerIds=[8018], visible=True)
-        set_agent(triggerIds=[8019], visible=True)
-        set_breakable(triggerIds=[4000], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4001], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4002], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4003], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4004], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4005], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4006], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4007], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4008], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4009], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4010], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4011], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4012], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4013], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4014], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4015], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4016], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4017], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4018], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4019], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4020], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4021], enabled=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4001], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4002], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4003], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4004], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4005], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4006], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4007], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4008], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4009], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4010], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4011], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4012], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4013], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4014], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4015], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4016], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4017], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4018], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4019], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4020], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4021], arg2=False) # Move_GoUp
-        set_interact_object(triggerIds=[10002013], state=2) # IceSwitch
-        set_user_value(key='ElevatorOn', value=0)
-        set_user_value(key='DungeonClear', value=0)
-        set_user_value(key='AgentOff', value=0)
+        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False) # Emergency
+        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # ElevatorHallRoof
+        self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # ElevatorHallGround
+        self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=0, delay=0, scale=0) # VisibleRoof
+        self.set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=True, arg3=0, delay=0, scale=0) # VisibleGround
+        self.set_agent(triggerIds=[8000], visible=True)
+        self.set_agent(triggerIds=[8001], visible=True)
+        self.set_agent(triggerIds=[8002], visible=True)
+        self.set_agent(triggerIds=[8003], visible=True)
+        self.set_agent(triggerIds=[8004], visible=True)
+        self.set_agent(triggerIds=[8005], visible=True)
+        self.set_agent(triggerIds=[8006], visible=True)
+        self.set_agent(triggerIds=[8007], visible=True)
+        self.set_agent(triggerIds=[8008], visible=True)
+        self.set_agent(triggerIds=[8009], visible=True)
+        self.set_agent(triggerIds=[8010], visible=True)
+        self.set_agent(triggerIds=[8011], visible=True)
+        self.set_agent(triggerIds=[8012], visible=True)
+        self.set_agent(triggerIds=[8013], visible=True)
+        self.set_agent(triggerIds=[8014], visible=True)
+        self.set_agent(triggerIds=[8015], visible=True)
+        self.set_agent(triggerIds=[8016], visible=True)
+        self.set_agent(triggerIds=[8017], visible=True)
+        self.set_agent(triggerIds=[8018], visible=True)
+        self.set_agent(triggerIds=[8019], visible=True)
+        self.set_breakable(triggerIds=[4000], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4001], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4002], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4003], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4004], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4005], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4006], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4007], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4008], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4009], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4010], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4011], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4012], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4013], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4014], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4015], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4016], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4017], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4018], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4019], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4020], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4021], enable=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4001], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4002], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4003], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4004], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4005], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4006], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4007], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4008], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4009], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4010], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4011], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4012], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4013], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4014], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4015], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4016], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4017], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4018], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4019], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4020], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4021], visible=False) # Move_GoUp
+        self.set_interact_object(triggerIds=[10002013], state=2) # IceSwitch
+        self.set_user_value(key='ElevatorOn', value=0)
+        self.set_user_value(key='DungeonClear', value=0)
+        self.set_user_value(key='AgentOff', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ElevatorOn', value=1):
-            return BoardApp01()
-        if user_value(key='AgentOff', value=1):
-            return AgentOff01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ElevatorOn', value=1):
+            return BoardApp01(self.ctx)
+        if self.user_value(key='AgentOff', value=1):
+            return AgentOff01(self.ctx)
 
 
-class BoardApp01(state.State):
+class BoardApp01(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20038102, textId=20038102) # 스위치를 작동시켜보세요
-        set_interact_object(triggerIds=[10002013], state=1) # IceSwitch
+        self.show_guide_summary(entityId=20038102, textId=20038102) # 스위치를 작동시켜보세요
+        self.set_interact_object(triggerIds=[10002013], state=1) # IceSwitch
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002013], arg2=0):
-            return BoardGoUp01()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002013], stateValue=0):
+            return BoardGoUp01(self.ctx)
 
 
-class BoardGoUp01(state.State):
+class BoardGoUp01(common.Trigger):
     def on_enter(self):
-        hide_guide_summary(entityId=20038102)
-        set_interact_object(triggerIds=[10002013], state=2) # Lever
-        set_breakable(triggerIds=[4000], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4001], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4002], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4003], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4004], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4005], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4006], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4007], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4008], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4009], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4010], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4011], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4012], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4013], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4014], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4015], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4016], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4017], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4018], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4019], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4020], enabled=True) # Move_GoUp
-        set_breakable(triggerIds=[4021], enabled=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4000], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4001], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4002], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4003], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4004], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4005], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4006], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4007], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4008], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4009], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4010], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4011], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4012], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4013], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4014], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4015], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4016], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4017], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4018], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4019], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4020], arg2=True) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4021], arg2=True) # Move_GoUp
-        set_mesh(triggerIds=[3000], visible=False, arg3=500, arg4=0, arg5=0) # ElevatorHallRoof
-        set_mesh(triggerIds=[3001], visible=False, arg3=500, arg4=0, arg5=0) # ElevatorHallGround
-        set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=False, arg3=200, arg4=0, arg5=2) # VisibleRoof
-        set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=False, arg3=200, arg4=0, arg5=2) # VisibleGround
+        self.hide_guide_summary(entityId=20038102)
+        self.set_interact_object(triggerIds=[10002013], state=2) # Lever
+        self.set_breakable(triggerIds=[4000], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4001], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4002], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4003], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4004], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4005], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4006], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4007], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4008], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4009], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4010], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4011], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4012], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4013], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4014], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4015], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4016], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4017], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4018], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4019], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4020], enable=True) # Move_GoUp
+        self.set_breakable(triggerIds=[4021], enable=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4001], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4002], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4003], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4004], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4005], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4006], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4007], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4008], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4009], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4010], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4011], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4012], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4013], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4014], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4015], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4016], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4017], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4018], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4019], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4020], visible=True) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4021], visible=True) # Move_GoUp
+        self.set_mesh(triggerIds=[3000], visible=False, arg3=500, delay=0, scale=0) # ElevatorHallRoof
+        self.set_mesh(triggerIds=[3001], visible=False, arg3=500, delay=0, scale=0) # ElevatorHallGround
+        self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=False, arg3=200, delay=0, scale=2) # VisibleRoof
+        self.set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=False, arg3=200, delay=0, scale=2) # VisibleGround
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
-            return BoardGoUp02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
+            return BoardGoUp02(self.ctx)
 
 
-class BoardGoUp02(state.State):
+class BoardGoUp02(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3000], visible=True, arg3=100, arg4=0, arg5=0) # ElevatorHallRoof
-        set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=100, arg4=0, arg5=2) # VisibleRoof
+        self.set_mesh(triggerIds=[3000], visible=True, arg3=100, delay=0, scale=0) # ElevatorHallRoof
+        self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=100, delay=0, scale=2) # VisibleRoof
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return BoardGoUp03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return BoardGoUp03(self.ctx)
 
 
-class BoardGoUp03(state.State):
+class BoardGoUp03(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4000], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4001], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4002], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4003], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4004], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4005], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4006], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4007], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4008], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4009], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4010], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4011], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4012], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4013], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4014], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4015], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4016], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4017], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4018], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4019], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4020], enabled=False) # Move_GoUp
-        set_breakable(triggerIds=[4021], enabled=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4001], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4002], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4003], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4004], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4005], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4006], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4007], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4008], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4009], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4010], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4011], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4012], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4013], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4014], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4015], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4016], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4017], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4018], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4019], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4020], arg2=False) # Move_GoUp
-        set_visible_breakable_object(triggerIds=[4021], arg2=False) # Move_GoUp
-        set_agent(triggerIds=[8000], visible=False)
-        set_agent(triggerIds=[8001], visible=False)
-        set_agent(triggerIds=[8002], visible=False)
-        set_agent(triggerIds=[8003], visible=False)
-        set_agent(triggerIds=[8004], visible=False)
-        set_agent(triggerIds=[8005], visible=False)
-        set_agent(triggerIds=[8006], visible=False)
-        set_agent(triggerIds=[8007], visible=False)
-        set_agent(triggerIds=[8008], visible=False)
-        set_agent(triggerIds=[8009], visible=False)
-        set_agent(triggerIds=[8010], visible=False)
-        set_agent(triggerIds=[8011], visible=False)
-        set_agent(triggerIds=[8012], visible=False)
-        set_agent(triggerIds=[8013], visible=False)
-        set_agent(triggerIds=[8014], visible=False)
-        set_agent(triggerIds=[8015], visible=False)
-        set_agent(triggerIds=[8016], visible=False)
-        set_agent(triggerIds=[8017], visible=False)
-        set_agent(triggerIds=[8018], visible=False)
-        set_agent(triggerIds=[8019], visible=False)
+        self.set_breakable(triggerIds=[4000], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4001], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4002], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4003], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4004], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4005], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4006], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4007], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4008], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4009], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4010], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4011], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4012], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4013], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4014], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4015], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4016], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4017], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4018], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4019], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4020], enable=False) # Move_GoUp
+        self.set_breakable(triggerIds=[4021], enable=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4001], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4002], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4003], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4004], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4005], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4006], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4007], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4008], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4009], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4010], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4011], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4012], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4013], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4014], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4015], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4016], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4017], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4018], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4019], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4020], visible=False) # Move_GoUp
+        self.set_visible_breakable_object(triggerIds=[4021], visible=False) # Move_GoUp
+        self.set_agent(triggerIds=[8000], visible=False)
+        self.set_agent(triggerIds=[8001], visible=False)
+        self.set_agent(triggerIds=[8002], visible=False)
+        self.set_agent(triggerIds=[8003], visible=False)
+        self.set_agent(triggerIds=[8004], visible=False)
+        self.set_agent(triggerIds=[8005], visible=False)
+        self.set_agent(triggerIds=[8006], visible=False)
+        self.set_agent(triggerIds=[8007], visible=False)
+        self.set_agent(triggerIds=[8008], visible=False)
+        self.set_agent(triggerIds=[8009], visible=False)
+        self.set_agent(triggerIds=[8010], visible=False)
+        self.set_agent(triggerIds=[8011], visible=False)
+        self.set_agent(triggerIds=[8012], visible=False)
+        self.set_agent(triggerIds=[8013], visible=False)
+        self.set_agent(triggerIds=[8014], visible=False)
+        self.set_agent(triggerIds=[8015], visible=False)
+        self.set_agent(triggerIds=[8016], visible=False)
+        self.set_agent(triggerIds=[8017], visible=False)
+        self.set_agent(triggerIds=[8018], visible=False)
+        self.set_agent(triggerIds=[8019], visible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return EmergencyPortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return EmergencyPortalOn(self.ctx)
 
 
-class EmergencyPortalOn(state.State):
+class EmergencyPortalOn(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=20, visible=True, enabled=True, minimapVisible=False) # Emergency
+        self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False) # Emergency
 
 
-#  좌우 상단 입장 시 
-class AgentOff01(state.State):
+# 좌우 상단 입장 시
+class AgentOff01(common.Trigger):
     def on_enter(self):
-        set_agent(triggerIds=[8000], visible=False)
-        set_agent(triggerIds=[8001], visible=False)
-        set_agent(triggerIds=[8002], visible=False)
-        set_agent(triggerIds=[8003], visible=False)
-        set_agent(triggerIds=[8004], visible=False)
-        set_agent(triggerIds=[8005], visible=False)
-        set_agent(triggerIds=[8006], visible=False)
-        set_agent(triggerIds=[8007], visible=False)
-        set_agent(triggerIds=[8008], visible=False)
-        set_agent(triggerIds=[8009], visible=False)
-        set_agent(triggerIds=[8010], visible=False)
-        set_agent(triggerIds=[8011], visible=False)
-        set_agent(triggerIds=[8012], visible=False)
-        set_agent(triggerIds=[8013], visible=False)
-        set_agent(triggerIds=[8014], visible=False)
-        set_agent(triggerIds=[8015], visible=False)
-        set_agent(triggerIds=[8016], visible=False)
-        set_agent(triggerIds=[8017], visible=False)
-        set_agent(triggerIds=[8018], visible=False)
-        set_agent(triggerIds=[8019], visible=False)
+        self.set_agent(triggerIds=[8000], visible=False)
+        self.set_agent(triggerIds=[8001], visible=False)
+        self.set_agent(triggerIds=[8002], visible=False)
+        self.set_agent(triggerIds=[8003], visible=False)
+        self.set_agent(triggerIds=[8004], visible=False)
+        self.set_agent(triggerIds=[8005], visible=False)
+        self.set_agent(triggerIds=[8006], visible=False)
+        self.set_agent(triggerIds=[8007], visible=False)
+        self.set_agent(triggerIds=[8008], visible=False)
+        self.set_agent(triggerIds=[8009], visible=False)
+        self.set_agent(triggerIds=[8010], visible=False)
+        self.set_agent(triggerIds=[8011], visible=False)
+        self.set_agent(triggerIds=[8012], visible=False)
+        self.set_agent(triggerIds=[8013], visible=False)
+        self.set_agent(triggerIds=[8014], visible=False)
+        self.set_agent(triggerIds=[8015], visible=False)
+        self.set_agent(triggerIds=[8016], visible=False)
+        self.set_agent(triggerIds=[8017], visible=False)
+        self.set_agent(triggerIds=[8018], visible=False)
+        self.set_agent(triggerIds=[8019], visible=False)
 
 
+initial_state = Wait

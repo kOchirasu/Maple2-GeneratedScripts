@@ -1,143 +1,143 @@
 """ trigger/99999949/07_detectliftableobject.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9061]):
-            return Guide()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9061]):
+            return Guide(self.ctx)
 
 
-class Guide(state.State):
+class Guide(common.Trigger):
     def on_enter(self):
-        debug_string(string='7번 영역에 들어가면 DetectLiftableObject 트리거가 발동됩니다.')
+        self.debug_string(string='7번 영역에 들어가면 DetectLiftableObject 트리거가 발동됩니다.')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9060]):
-            return Ready01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9060]):
+            return Ready01(self.ctx)
 
 
-class Ready01(state.State):
+class Ready01(common.Trigger):
     def on_enter(self):
-        debug_string(string='DetectLiftableObject 2초 후에 시작됩니다.')
+        self.debug_string(string='DetectLiftableObject 2초 후에 시작됩니다.')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Ready02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Ready02(self.ctx)
 
 
-class Ready02(state.State):
+class Ready02(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__0$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__0$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return QuizRandom01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return QuizRandom01(self.ctx)
 
 
-class QuizRandom01(state.State):
+class QuizRandom01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5007], visible=True) # 내려놓을 위치 가이드
+        self.set_effect(triggerIds=[5007], visible=True) # 내려놓을 위치 가이드
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=50):
-            return AnswerIsWood01()
-        if random_condition(rate=50):
-            return AnswerIsRock01()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=50):
+            return AnswerIsWood01(self.ctx)
+        if self.random_condition(rate=50):
+            return AnswerIsRock01(self.ctx)
 
 
-class AnswerIsWood01(state.State):
+class AnswerIsWood01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__1$', arg3='2000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__1$', arg3='2000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9062], itemId=0):
-            return CheckAnswerWood01()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9062], itemId=0):
+            return CheckAnswerWood01(self.ctx)
 
 
-class CheckAnswerWood01(state.State):
+class CheckAnswerWood01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9062], itemId=30000377):
-            return RightAnswerWood01()
-        if not detect_liftable_object(boxIds=[9062], itemId=30000377):
-            return WrongAnswerWood01()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9062], itemId=30000377):
+            return RightAnswerWood01(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9062], itemId=30000377):
+            return WrongAnswerWood01(self.ctx)
 
 
-class RightAnswerWood01(state.State):
+class RightAnswerWood01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__2$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__2$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return ClearDetectBox01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return ClearDetectBox01(self.ctx)
 
 
-class WrongAnswerWood01(state.State):
+class WrongAnswerWood01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__3$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__3$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return ClearDetectBox01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return ClearDetectBox01(self.ctx)
 
 
-class AnswerIsRock01(state.State):
+class AnswerIsRock01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__4$', arg3='2000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__4$', arg3='2000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9062], itemId=0):
-            return CheckAnswerRock01()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9062], itemId=0):
+            return CheckAnswerRock01(self.ctx)
 
 
-class CheckAnswerRock01(state.State):
+class CheckAnswerRock01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
+        self.set_effect(triggerIds=[5007], visible=False) # 내려놓을 위치 가이드
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9062], itemId=30000440):
-            return RightAnswerRock01()
-        if not detect_liftable_object(boxIds=[9062], itemId=30000440):
-            return WrongAnswerRock01()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9062], itemId=30000440):
+            return RightAnswerRock01(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9062], itemId=30000440):
+            return WrongAnswerRock01(self.ctx)
 
 
-class RightAnswerRock01(state.State):
+class RightAnswerRock01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__5$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__5$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return ClearDetectBox01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return ClearDetectBox01(self.ctx)
 
 
-class WrongAnswerRock01(state.State):
+class WrongAnswerRock01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__6$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$99999949__07_DETECTLIFTABLEOBJECT__6$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return ClearDetectBox01()
-
-
-class ClearDetectBox01(state.State):
-    def on_tick(self) -> state.State:
-        if not detect_liftable_object(boxIds=[9062], itemId=0):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return ClearDetectBox01(self.ctx)
 
 
-class Quit(state.State):
+class ClearDetectBox01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.detect_liftable_object(boxIds=[9062], itemId=0):
+            return Quit(self.ctx)
+
+
+class Quit(common.Trigger):
     def on_enter(self):
-        debug_string(string='3초 후에 트리거가 리셋됩니다. 7번 영역 밖으로 나가세요.')
+        self.debug_string(string='3초 후에 트리거가 리셋됩니다. 7번 영역 밖으로 나가세요.')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

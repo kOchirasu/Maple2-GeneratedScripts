@@ -1,181 +1,181 @@
 """ trigger/63000042_cs/wakeup02.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=7001, arg2=True)
+        self.set_sound(triggerId=7001, enable=True)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[60100005,60100006,60100007,60100008,60100009,60100010], questStates=[2]):
-            return ready()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[60100005,60100006,60100007,60100008,60100009,60100010], questStates=[2]):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        destroy_monster(spawnIds=[102])
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False)
-        move_user(mapId=63000042, portalId=10)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.destroy_monster(spawnIds=[102])
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.move_user(mapId=63000042, portalId=10)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return talk_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return talk_01(self.ctx)
 
 
-class talk_01(state.State):
+class talk_01(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__0$', duration=3000)
-        set_scene_skip(state=sitready, arg2='nextState')
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__0$', duration=3000)
+        self.set_scene_skip(state=sitready, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return talk_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return talk_02(self.ctx)
 
 
-class talk_02(state.State):
+class talk_02(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__1$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__1$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return talk_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return talk_03(self.ctx)
 
 
-class talk_03(state.State):
+class talk_03(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__2$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__2$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return talk_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return talk_04(self.ctx)
 
 
-class talk_04(state.State):
+class talk_04(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__3$', duration=3000)
+        self.add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__3$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return talk_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return talk_05(self.ctx)
 
 
-class talk_05(state.State):
+class talk_05(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__4$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__4$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return talk_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return talk_06(self.ctx)
 
 
-class talk_06(state.State):
+class talk_06(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__5$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__5$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return talk_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return talk_07(self.ctx)
 
 
-class talk_07(state.State):
+class talk_07(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__6$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__6$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return talk_08()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return talk_08(self.ctx)
 
 
-class talk_08(state.State):
+class talk_08(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__7$', duration=3000)
+        self.add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__7$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return talk_09()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return talk_09(self.ctx)
 
 
-class talk_09(state.State):
+class talk_09(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__8$', duration=3000)
-        set_scene_skip()
+        self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__8$', duration=3000)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return sitready()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return sitready(self.ctx)
 
 
-class sitready(state.State):
+class sitready(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=13000)
-        set_sound(triggerId=7002, arg2=True)
+        self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=13000)
+        self.set_sound(triggerId=7002, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return fadein()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return fadein(self.ctx)
 
 
-class fadein(state.State):
+class fadein(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        create_monster(spawnIds=[103], arg2=False) # 프레이 스폰
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.create_monster(spawnIds=[103], animationEffect=False) # 프레이 스폰
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return praymove_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return praymove_01(self.ctx)
 
 
-class praymove_01(state.State):
+class praymove_01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=103, patrolName='MS2PatrolData_103')
-        add_cinematic_talk(npcId=11003165, illustId='Fray_normal', msg='$63000042_CS__WAKEUP02__9$', duration=3000, align='Left')
-        set_scene_skip(state=end, arg2='exit')
+        self.move_npc(spawnId=103, patrolName='MS2PatrolData_103')
+        self.add_cinematic_talk(npcId=11003165, illustId='Fray_normal', msg='$63000042_CS__WAKEUP02__9$', duration=3000, align='Left')
+        self.set_scene_skip(state=end, action='exit')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return praytalk_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return praytalk_02(self.ctx)
 
 
-class praytalk_02(state.State):
+class praytalk_02(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003165, msg='$63000042_CS__WAKEUP02__10$', duration=3000)
-        select_camera_path(pathIds=[502], returnView=False)
+        self.add_cinematic_talk(npcId=11003165, msg='$63000042_CS__WAKEUP02__10$', duration=3000)
+        self.select_camera_path(pathIds=[502], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return pray()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return pray(self.ctx)
 
 
-class pray(state.State):
+class pray(common.Trigger):
     def on_enter(self):
-        show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align='centerRight', offsetRateX=0.5, duration=4000)
-        select_camera_path(pathIds=[502,503], returnView=False)
-        set_scene_skip()
+        self.show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align='centerRight', offsetRateX=0.5, duration=4000)
+        self.select_camera_path(pathIds=[502,503], returnView=False)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=100)
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True)
-        reset_camera(interpolationTime=1)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=100)
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.reset_camera(interpolationTime=1)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[60100010], questStates=[1]):
-            return warp()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[60100010], questStates=[1]):
+            return warp(self.ctx)
 
 
-class warp(state.State):
+class warp(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000033, portalId=1)
+        self.move_user(mapId=52000033, portalId=1)
 
 
+initial_state = idle

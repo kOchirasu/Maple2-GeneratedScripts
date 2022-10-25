@@ -1,72 +1,72 @@
 """ trigger/02000378_bf/807_penalty_07round.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='PenaltyMob', value=0)
+        self.set_user_value(key='PenaltyMob', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PenaltyMob', value=1):
-            return Ready()
-
-
-class Ready(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveStart01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PenaltyMob', value=1):
+            return Ready(self.ctx)
 
 
-class FirstWaveStart01(state.State):
+class Ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveStart01(self.ctx)
+
+
+class FirstWaveStart01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90780,90782,90784,90786,90788], arg2=False)
+        self.create_monster(spawnIds=[90780,90782,90784,90786,90788], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FirstWaveStart02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FirstWaveStart02(self.ctx)
 
 
-class FirstWaveStart02(state.State):
+class FirstWaveStart02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90781,90783,90785,90787,90789], arg2=False)
+        self.create_monster(spawnIds=[90781,90783,90785,90787,90789], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return SecondWaveStart01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return SecondWaveStart01(self.ctx)
 
 
-class SecondWaveStart01(state.State):
+class SecondWaveStart01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90790,90792,90794,90796,90798], arg2=False)
+        self.create_monster(spawnIds=[90790,90792,90794,90796,90798], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SecondWaveStart02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SecondWaveStart02(self.ctx)
 
 
-class SecondWaveStart02(state.State):
+class SecondWaveStart02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90791,90793,90795,90797,90799], arg2=False)
+        self.create_monster(spawnIds=[90791,90793,90795,90797,90799], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[90780,90781,90782,90783,90784,90785,90786,90787,90788,90789,90790,90791,90792,90793,90794,90795,90796,90797,90798,90799]):
-            return PenaltyFinished01()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[90780,90781,90782,90783,90784,90785,90786,90787,90788,90789,90790,90791,90792,90793,90794,90795,90796,90797,90798,90799]):
+            return PenaltyFinished01(self.ctx)
 
 
-class PenaltyFinished01(state.State):
+class PenaltyFinished01(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[90780,90781,90782,90783,90784,90785,90786,90787,90788,90789,90790,90791,90792,90793,90794,90795,90796,90797,90798,90799])
-        set_user_value(triggerId=907, key='PenaltyFinish', value=1)
+        self.destroy_monster(spawnIds=[90780,90781,90782,90783,90784,90785,90786,90787,90788,90789,90790,90791,90792,90793,90794,90795,90796,90797,90798,90799])
+        self.set_user_value(triggerId=907, key='PenaltyFinish', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PenaltyFinished02()
-
-
-class PenaltyFinished02(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PenaltyFinished02(self.ctx)
 
 
+class PenaltyFinished02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
+
+
+initial_state = Wait

@@ -1,19 +1,19 @@
 """ trigger/02000334_bf/gameover.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[200,999], arg2=True) # 성벽
+        self.create_monster(spawnIds=[200,999], animationEffect=True) # 성벽
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[200]):
-            return 게임오버()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[200]):
+            return 게임오버(self.ctx)
 
 
-class 게임오버(state.State):
+class 게임오버(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[999]) # 게임오버용몬스터 소멸
+        self.destroy_monster(spawnIds=[999]) # 게임오버용몬스터 소멸
 
 
+initial_state = 시작

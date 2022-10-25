@@ -1,9 +1,9 @@
 """ trigger/52010056_qd/eventsection_e.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
+class Idle(common.Trigger):
     pass
 
 
+initial_state = Idle

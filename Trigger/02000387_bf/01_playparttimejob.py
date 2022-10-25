@@ -1,1369 +1,1369 @@
 """ trigger/02000387_bf/01_playparttimejob.xml """
-from common import *
-import state
+import common
 
+#include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
-class Wait(state.State):
+
+class Wait(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False)
-        set_mesh(triggerIds=[2000,2001,2002,2003,2004], visible=True, arg3=0, arg4=0, arg5=0) # Barrier
-        set_mesh(triggerIds=[2005], visible=True, arg3=0, arg4=0, arg5=0) # Barrier
-        set_mesh(triggerIds=[2006], visible=True, arg3=0, arg4=0, arg5=0) # Barrier
-        set_mesh(triggerIds=[2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031], visible=True, arg3=0, arg4=0, arg5=0) # Barrier
-        set_actor(triggerId=4000, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
-        set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
-        set_actor(triggerId=4002, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
-        set_actor(triggerId=4003, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
-        set_effect(triggerIds=[5000], visible=False) # GuideUI
-        set_effect(triggerIds=[5101], visible=False) # DownArrow
-        set_effect(triggerIds=[5102], visible=False) # DownArrow
-        set_effect(triggerIds=[5103], visible=False) # DownArrow
-        set_effect(triggerIds=[5104], visible=False) # DownArrow
-        set_effect(triggerIds=[5105], visible=False) # DownArrow
-        set_effect(triggerIds=[5106], visible=False) # DownArrow
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.set_mesh(triggerIds=[2000,2001,2002,2003,2004], visible=True, arg3=0, delay=0, scale=0) # Barrier
+        self.set_mesh(triggerIds=[2005], visible=True, arg3=0, delay=0, scale=0) # Barrier
+        self.set_mesh(triggerIds=[2006], visible=True, arg3=0, delay=0, scale=0) # Barrier
+        self.set_mesh(triggerIds=[2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031], visible=True, arg3=0, delay=0, scale=0) # Barrier
+        self.set_actor(triggerId=4000, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
+        self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
+        self.set_actor(triggerId=4002, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
+        self.set_actor(triggerId=4003, visible=True, initialSequence='ry_functobj_door_E01_off') # RevolvingDoor
+        self.set_effect(triggerIds=[5000], visible=False) # GuideUI
+        self.set_effect(triggerIds=[5101], visible=False) # DownArrow
+        self.set_effect(triggerIds=[5102], visible=False) # DownArrow
+        self.set_effect(triggerIds=[5103], visible=False) # DownArrow
+        self.set_effect(triggerIds=[5104], visible=False) # DownArrow
+        self.set_effect(triggerIds=[5105], visible=False) # DownArrow
+        self.set_effect(triggerIds=[5106], visible=False) # DownArrow
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return LoadingDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(state.State):
+class LoadingDelay(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[100], arg2=False) # 캐시 카탈리나
+        self.create_monster(spawnIds=[100], animationEffect=False) # 캐시 카탈리나
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CheckUserCount()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CheckUserCount(self.ctx)
 
 
-class DungeonStart(state.DungeonStart):
+class DungeonStart(common.Trigger):
     def on_enter(self):
-        set_mini_game_area_for_hack(boxId=9001) # 해킹 보안용 시작 box 설정
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_mini_game_area_for_hack(boxId=9001) # 해킹 보안용 시작 box 설정
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return GuideTalk01()
-
-state.DungeonStart = DungeonStart
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return GuideTalk01(self.ctx)
 
 
-class GuideTalk01(state.State):
+class GuideTalk01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__0$', arg4=4) # 잡담에서 캐시마트에 대해 설명해주기
-        set_skip(state=GuideTalk01Skip)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__0$', arg4=4) # 잡담에서 캐시마트에 대해 설명해주기
+        self.set_skip(state=GuideTalk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return GuideTalk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return GuideTalk01Skip(self.ctx)
 
 
-class GuideTalk01Skip(state.State):
+class GuideTalk01Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return GuideTalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return GuideTalk02(self.ctx)
 
 
-class GuideTalk02(state.State):
+class GuideTalk02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__1$', arg4=4)
-        set_skip(state=GuideTalk02Skip)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__1$', arg4=4)
+        self.set_skip(state=GuideTalk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return GuideTalk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return GuideTalk02Skip(self.ctx)
 
 
-class GuideTalk02Skip(state.State):
+class GuideTalk02Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return GuideTalk03()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return GuideTalk03(self.ctx)
 
 
-class GuideTalk03(state.State):
+class GuideTalk03(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__2$', arg4=4)
-        set_skip(state=GuideTalk03Skip)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__2$', arg4=4)
+        self.set_skip(state=GuideTalk03Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return GuideTalk03Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return GuideTalk03Skip(self.ctx)
 
 
-class GuideTalk03Skip(state.State):
+class GuideTalk03Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return GuideTalk04()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return GuideTalk04(self.ctx)
 
 
-class GuideTalk04(state.State):
+class GuideTalk04(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__3$', arg4=4)
-        set_skip(state=GuideTalk04Skip)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__3$', arg4=4)
+        self.set_skip(state=GuideTalk04Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return GuideTalk04Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return GuideTalk04Skip(self.ctx)
 
 
-class GuideTalk04Skip(state.State):
+class GuideTalk04Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCPlacement01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCPlacement01(self.ctx)
 
 
-class PCPlacement01(state.State):
+class PCPlacement01(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=10, key='RandomPortalOn', value=1)
+        self.set_user_value(triggerId=10, key='RandomPortalOn', value=1)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9005, boxId=1, operator='Equal'):
-            return PCPlacement02()
-
-
-class PCPlacement02(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9006, boxId=3, operator='Equal'):
-            return PCPlacement03()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9005, boxId=1, operator='Equal'):
+            return PCPlacement02(self.ctx)
 
 
-class PCPlacement03(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return MartOpen()
+class PCPlacement02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9006, boxId=3, operator='Equal'):
+            return PCPlacement03(self.ctx)
 
 
-class MartOpen(state.State):
+class PCPlacement03(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return MartOpen(self.ctx)
+
+
+class MartOpen(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=4000, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
-        set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
-        set_actor(triggerId=4002, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
-        set_actor(triggerId=4003, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
-        set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__4$', arg3='3000', arg4='0')
+        self.set_actor(triggerId=4000, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
+        self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
+        self.set_actor(triggerId=4002, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
+        self.set_actor(triggerId=4003, visible=True, initialSequence='ry_functobj_door_E01_on') # RevolvingDoor
+        self.set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__4$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return R01Start()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return R01Start(self.ctx)
 
 
-class R01Start(state.State):
+class R01Start(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # GuideUI
-        set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__5$', arg3='3000', arg4='0')
-        set_event_ui(type=0, arg2='1,3') # Round1
-        set_effect(triggerIds=[5105], visible=True) # DownArrow
-        set_effect(triggerIds=[5106], visible=True) # DownArrow
+        self.set_effect(triggerIds=[5000], visible=True) # GuideUI
+        self.set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__5$', arg3='3000', arg4='0')
+        self.set_event_ui(type=0, arg2='1,3') # Round1
+        self.set_effect(triggerIds=[5105], visible=True) # DownArrow
+        self.set_effect(triggerIds=[5106], visible=True) # DownArrow
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return R01Customer01Row03Random()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return R01Customer01Row03Random(self.ctx)
 
 
-#  1Round 1번 고객  : 3번 레일 
-class R01Customer01Row03Random(state.State):
+# 1Round 1번 고객  : 3번 레일
+class R01Customer01Row03Random(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=10103)
+        self.set_user_value(key='RoundCustomerRow', value=10103)
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup3003()
-        if random_condition(rate=33):
-            return NpcGroup3007()
-        if random_condition(rate=33):
-            return NpcGroup3011()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup3003(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup3007(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup3011(self.ctx)
 
 
-#  1Round 2번 고객  : 2번 레일 
-class R01Customer02Row02Random(state.State):
+# 1Round 2번 고객  : 2번 레일
+class R01Customer02Row02Random(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=10202)
+        self.set_user_value(key='RoundCustomerRow', value=10202)
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup2002()
-        if random_condition(rate=33):
-            return NpcGroup2006()
-        if random_condition(rate=33):
-            return NpcGroup2010()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup2002(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup2006(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup2010(self.ctx)
 
 
-#  1Round 3번 고객  : 4번 레일 
-class R01Customer03Row04Random(state.State):
+# 1Round 3번 고객  : 4번 레일
+class R01Customer03Row04Random(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=10304)
+        self.set_user_value(key='RoundCustomerRow', value=10304)
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
             return None # Missing State: NpcGroup4205
-        if random_condition(rate=14):
-            return NpcGroup4208()
-        if random_condition(rate=14):
-            return NpcGroup4212()
-        if random_condition(rate=14):
-            return NpcGroup4216()
-        if random_condition(rate=14):
-            return NpcGroup4220()
-        if random_condition(rate=14):
-            return NpcGroup4224()
-        if random_condition(rate=15):
-            return NpcGroup4228()
-
-
-#  1Round 4번 고객  : 1번 레일 
-class R01Customer04Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=10401)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup1101()
-        if random_condition(rate=17):
-            return NpcGroup1105()
-        if random_condition(rate=17):
-            return NpcGroup1109()
-        if random_condition(rate=17):
-            return NpcGroup1113()
-        if random_condition(rate=16):
-            return NpcGroup1117()
-        if random_condition(rate=16):
-            return NpcGroup1121()
-
-
-class R01End(state.State):
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9007, spawnIds=[0]):
-            return R02StartDelay01()
-
-
-class R02StartDelay01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return R02Start()
-
-
-class R02Start(state.State):
-    def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # GuideUI
-        set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__6$', arg3='3000', arg4='0')
-        set_event_ui(type=0, arg2='2,3') # Round2
-
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return R02Customer01Row02Random()
-
-
-#  2Round 1번 고객  : 2번 레일 
-class R02Customer01Row02Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20102)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup2102()
-        if random_condition(rate=17):
-            return NpcGroup2106()
-        if random_condition(rate=17):
-            return NpcGroup2110()
-        if random_condition(rate=17):
-            return NpcGroup2114()
-        if random_condition(rate=16):
-            return NpcGroup2118()
-        if random_condition(rate=16):
-            return NpcGroup2122()
-
-
-#  2Round 2번 고객  : 3번 레일 
-class R02Customer02Row03Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20203)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup3203()
-        if random_condition(rate=14):
-            return NpcGroup3207()
-        if random_condition(rate=14):
-            return NpcGroup3211()
-        if random_condition(rate=14):
-            return NpcGroup3215()
-        if random_condition(rate=14):
-            return NpcGroup3219()
-        if random_condition(rate=14):
-            return NpcGroup3223()
-        if random_condition(rate=15):
-            return NpcGroup3227()
-
-
-#  2Round 3번 고객  : 1번 레일 
-class R02Customer03Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20301)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup1001()
-        if random_condition(rate=33):
-            return NpcGroup1005()
-        if random_condition(rate=33):
-            return NpcGroup1009()
-
-
-#  2Round 4번 고객  : 4번 레일 
-class R02Customer04Row04Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20404)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup4104()
-        if random_condition(rate=17):
-            return NpcGroup4108()
-        if random_condition(rate=17):
-            return NpcGroup4112()
-        if random_condition(rate=17):
-            return NpcGroup4116()
-        if random_condition(rate=16):
-            return NpcGroup4120()
-        if random_condition(rate=16):
-            return NpcGroup4124()
-
-
-#  2Round 5번 고객  : 2번 레일 
-class R02Customer05Row02Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20502)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup2202()
-        if random_condition(rate=14):
-            return NpcGroup2206()
-        if random_condition(rate=14):
-            return NpcGroup2210()
-        if random_condition(rate=14):
-            return NpcGroup2214()
-        if random_condition(rate=14):
-            return NpcGroup2218()
-        if random_condition(rate=14):
-            return NpcGroup2222()
-        if random_condition(rate=15):
-            return NpcGroup2226()
-
-
-#  2Round 6번 고객  : 3번 레일 
-class R02Customer06Row03Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20603)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup3103()
-        if random_condition(rate=17):
-            return NpcGroup3107()
-        if random_condition(rate=17):
-            return NpcGroup3111()
-        if random_condition(rate=17):
-            return NpcGroup3115()
-        if random_condition(rate=16):
-            return NpcGroup3119()
-        if random_condition(rate=16):
-            return NpcGroup3123()
-
-
-#  2Round 7번 고객  : 1번 레일 
-class R02Customer07Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20701)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup1201()
-        if random_condition(rate=14):
-            return NpcGroup1205()
-        if random_condition(rate=14):
-            return NpcGroup1209()
-        if random_condition(rate=14):
-            return NpcGroup1213()
-        if random_condition(rate=14):
-            return NpcGroup1217()
-        if random_condition(rate=14):
-            return NpcGroup1221()
-        if random_condition(rate=15):
-            return NpcGroup1225()
-
-
-#  2Round 8번 고객  : 4번 레일 
-class R02Customer08Row04Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=20804)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup4004()
-        if random_condition(rate=33):
-            return NpcGroup4008()
-        if random_condition(rate=33):
-            return NpcGroup4012()
-
-
-class R02End(state.State):
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9007, spawnIds=[0]):
-            return R03StartDelay01()
-
-
-class R03StartDelay01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return R03Start()
-
-
-class R03Start(state.State):
-    def on_enter(self):
-        set_effect(triggerIds=[5000], visible=True) # GuideUI
-        set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__7$', arg3='3000', arg4='0')
-        set_event_ui(type=0, arg2='3,3') # Round3
-
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return R03Customer01Row04Random()
-
-
-#  3Round 1번 고객  : 4번 레일 
-class R03Customer01Row04Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30104)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup4104()
-        if random_condition(rate=17):
-            return NpcGroup4108()
-        if random_condition(rate=17):
-            return NpcGroup4112()
-        if random_condition(rate=17):
-            return NpcGroup4116()
-        if random_condition(rate=16):
-            return NpcGroup4120()
-        if random_condition(rate=16):
-            return NpcGroup4124()
-
-
-#  3Round 2번 고객  : 3번 레일 
-class R03Customer02Row02Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30202)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup2202()
-        if random_condition(rate=14):
-            return NpcGroup2206()
-        if random_condition(rate=14):
-            return NpcGroup2210()
-        if random_condition(rate=14):
-            return NpcGroup2214()
-        if random_condition(rate=14):
-            return NpcGroup2218()
-        if random_condition(rate=14):
-            return NpcGroup2222()
-        if random_condition(rate=15):
-            return NpcGroup2226()
-
-
-#  3Round 3번 고객  : 2번 레일 
-class R03Customer03Row03Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30303)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup3003()
-        if random_condition(rate=33):
-            return NpcGroup3007()
-        if random_condition(rate=33):
-            return NpcGroup3011()
-
-
-#  3Round 4번 고객  : 1번 레일 
-class R03Customer04Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30401)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup1001()
-        if random_condition(rate=33):
-            return NpcGroup1005()
-        if random_condition(rate=33):
-            return NpcGroup1009()
-
-
-#  3Round 5번 고객  : 2번 레일 
-class R03Customer05Row02Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30502)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup2002()
-        if random_condition(rate=33):
-            return NpcGroup2006()
-        if random_condition(rate=33):
-            return NpcGroup2010()
-
-
-#  3Round 6번 고객  : 4번 레일 
-class R03Customer06Row04Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30604)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup4204()
-        if random_condition(rate=14):
-            return NpcGroup4208()
-        if random_condition(rate=14):
-            return NpcGroup4212()
-        if random_condition(rate=14):
-            return NpcGroup4216()
-        if random_condition(rate=14):
-            return NpcGroup4220()
-        if random_condition(rate=14):
-            return NpcGroup4224()
-        if random_condition(rate=15):
-            return NpcGroup4228()
-
-
-#  3Round 7번 고객  : 3번 레일 
-class R03Customer07Row03Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30703)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup3103()
-        if random_condition(rate=17):
-            return NpcGroup3107()
-        if random_condition(rate=17):
-            return NpcGroup3111()
-        if random_condition(rate=17):
-            return NpcGroup3115()
-        if random_condition(rate=16):
-            return NpcGroup3119()
-        if random_condition(rate=16):
-            return NpcGroup3123()
-
-
-#  3Round 8번 고객  : 1번 레일 
-class R03Customer08Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30801)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup1101()
-        if random_condition(rate=17):
-            return NpcGroup1105()
-        if random_condition(rate=17):
-            return NpcGroup1109()
-        if random_condition(rate=17):
-            return NpcGroup1113()
-        if random_condition(rate=16):
-            return NpcGroup1117()
-        if random_condition(rate=16):
-            return NpcGroup1121()
-
-
-#  3Round 9번 고객  : 1번 레일 
-class R03Customer09Row01Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=30901)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup1201()
-        if random_condition(rate=14):
-            return NpcGroup1205()
-        if random_condition(rate=14):
-            return NpcGroup1209()
-        if random_condition(rate=14):
-            return NpcGroup1213()
-        if random_condition(rate=14):
-            return NpcGroup1217()
-        if random_condition(rate=14):
-            return NpcGroup1221()
-        if random_condition(rate=15):
-            return NpcGroup1225()
-
-
-#  3Round 10번 고객  : 4번 레일 
-class R03Customer10Row04Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=31004)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=33):
-            return NpcGroup4004()
-        if random_condition(rate=33):
-            return NpcGroup4008()
-        if random_condition(rate=33):
-            return NpcGroup4012()
-
-
-#  3Round 11번 고객  : 2번 레일 
-class R03Customer11Row02Random(state.State):
-    def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=31102)
-
-    def on_tick(self) -> state.State:
-        if random_condition(rate=17):
-            return NpcGroup2102()
-        if random_condition(rate=17):
-            return NpcGroup2106()
-        if random_condition(rate=17):
-            return NpcGroup2110()
-        if random_condition(rate=17):
-            return NpcGroup2114()
-        if random_condition(rate=16):
-            return NpcGroup2118()
-        if random_condition(rate=16):
-            return NpcGroup2122()
+        if self.random_condition(rate=14):
+            return NpcGroup4208(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4212(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4216(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4220(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4224(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup4228(self.ctx)
+
+
+# 1Round 4번 고객  : 1번 레일
+class R01Customer04Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=10401)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup1101(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1105(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1109(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1113(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup1117(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup1121(self.ctx)
+
+
+class R01End(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9007, spawnIds=[0]):
+            return R02StartDelay01(self.ctx)
+
+
+class R02StartDelay01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return R02Start(self.ctx)
+
+
+class R02Start(common.Trigger):
+    def on_enter(self):
+        self.set_effect(triggerIds=[5000], visible=True) # GuideUI
+        self.set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__6$', arg3='3000', arg4='0')
+        self.set_event_ui(type=0, arg2='2,3') # Round2
+
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return R02Customer01Row02Random(self.ctx)
+
+
+# 2Round 1번 고객  : 2번 레일
+class R02Customer01Row02Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20102)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup2102(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2106(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2110(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2114(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup2118(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup2122(self.ctx)
+
+
+# 2Round 2번 고객  : 3번 레일
+class R02Customer02Row03Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20203)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup3203(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3207(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3211(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3215(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3219(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3223(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup3227(self.ctx)
+
+
+# 2Round 3번 고객  : 1번 레일
+class R02Customer03Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20301)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup1001(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup1005(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup1009(self.ctx)
+
+
+# 2Round 4번 고객  : 4번 레일
+class R02Customer04Row04Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20404)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup4104(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4108(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4112(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4116(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup4120(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup4124(self.ctx)
+
+
+# 2Round 5번 고객  : 2번 레일
+class R02Customer05Row02Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20502)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup2202(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2206(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2210(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2214(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2218(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2222(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup2226(self.ctx)
+
+
+# 2Round 6번 고객  : 3번 레일
+class R02Customer06Row03Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20603)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup3103(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3107(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3111(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3115(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup3119(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup3123(self.ctx)
+
+
+# 2Round 7번 고객  : 1번 레일
+class R02Customer07Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20701)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup1201(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1205(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1209(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1213(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1217(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1221(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup1225(self.ctx)
+
+
+# 2Round 8번 고객  : 4번 레일
+class R02Customer08Row04Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=20804)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup4004(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup4008(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup4012(self.ctx)
+
+
+class R02End(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9007, spawnIds=[0]):
+            return R03StartDelay01(self.ctx)
+
+
+class R03StartDelay01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return R03Start(self.ctx)
+
+
+class R03Start(common.Trigger):
+    def on_enter(self):
+        self.set_effect(triggerIds=[5000], visible=True) # GuideUI
+        self.set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__7$', arg3='3000', arg4='0')
+        self.set_event_ui(type=0, arg2='3,3') # Round3
+
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return R03Customer01Row04Random(self.ctx)
+
+
+# 3Round 1번 고객  : 4번 레일
+class R03Customer01Row04Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30104)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup4104(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4108(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4112(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup4116(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup4120(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup4124(self.ctx)
+
+
+# 3Round 2번 고객  : 3번 레일
+class R03Customer02Row02Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30202)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup2202(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2206(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2210(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2214(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2218(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup2222(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup2226(self.ctx)
+
+
+# 3Round 3번 고객  : 2번 레일
+class R03Customer03Row03Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30303)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup3003(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup3007(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup3011(self.ctx)
+
+
+# 3Round 4번 고객  : 1번 레일
+class R03Customer04Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30401)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup1001(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup1005(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup1009(self.ctx)
+
+
+# 3Round 5번 고객  : 2번 레일
+class R03Customer05Row02Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30502)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup2002(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup2006(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup2010(self.ctx)
+
+
+# 3Round 6번 고객  : 4번 레일
+class R03Customer06Row04Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30604)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup4204(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4208(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4212(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4216(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4220(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup4224(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup4228(self.ctx)
+
+
+# 3Round 7번 고객  : 3번 레일
+class R03Customer07Row03Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30703)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup3103(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3107(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3111(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup3115(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup3119(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup3123(self.ctx)
+
+
+# 3Round 8번 고객  : 1번 레일
+class R03Customer08Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30801)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup1101(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1105(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1109(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup1113(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup1117(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup1121(self.ctx)
+
+
+# 3Round 9번 고객  : 1번 레일
+class R03Customer09Row01Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=30901)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup1201(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1205(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1209(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1213(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1217(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup1221(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup1225(self.ctx)
+
+
+# 3Round 10번 고객  : 4번 레일
+class R03Customer10Row04Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=31004)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=33):
+            return NpcGroup4004(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup4008(self.ctx)
+        if self.random_condition(rate=33):
+            return NpcGroup4012(self.ctx)
+
+
+# 3Round 11번 고객  : 2번 레일
+class R03Customer11Row02Random(common.Trigger):
+    def on_enter(self):
+        self.set_user_value(key='RoundCustomerRow', value=31102)
+
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=17):
+            return NpcGroup2102(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2106(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2110(self.ctx)
+        if self.random_condition(rate=17):
+            return NpcGroup2114(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup2118(self.ctx)
+        if self.random_condition(rate=16):
+            return NpcGroup2122(self.ctx)
 
 
-#  3Round 12번 고객  : 3번 레일 
-class R03Customer12Row03Random(state.State):
+# 3Round 12번 고객  : 3번 레일
+class R03Customer12Row03Random(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RoundCustomerRow', value=31203)
+        self.set_user_value(key='RoundCustomerRow', value=31203)
 
-    def on_tick(self) -> state.State:
-        if random_condition(rate=15):
-            return NpcGroup3203()
-        if random_condition(rate=14):
-            return NpcGroup3207()
-        if random_condition(rate=14):
-            return NpcGroup3211()
-        if random_condition(rate=14):
-            return NpcGroup3215()
-        if random_condition(rate=14):
-            return NpcGroup3219()
-        if random_condition(rate=14):
-            return NpcGroup3223()
-        if random_condition(rate=15):
-            return NpcGroup3227()
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=15):
+            return NpcGroup3203(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3207(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3211(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3215(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3219(self.ctx)
+        if self.random_condition(rate=14):
+            return NpcGroup3223(self.ctx)
+        if self.random_condition(rate=15):
+            return NpcGroup3227(self.ctx)
 
 
-class R03End(state.State):
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9007, spawnIds=[0]):
-            return GameEndNotice01()
+class R03End(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9007, spawnIds=[0]):
+            return GameEndNotice01(self.ctx)
 
 
-class GameEndNotice01(state.State):
+class GameEndNotice01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        move_user(mapId=2000387, portalId=1, boxId=9900) # 사무실로 강제 이동
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__8$', arg4=4)
-        set_skip(state=GameEndNotice01Skip)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.move_user(mapId=2000387, portalId=1, boxId=9900) # 사무실로 강제 이동
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__01_PLAYPARTTIMEJOB__8$', arg4=4)
+        self.set_skip(state=GameEndNotice01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return GameEndNotice01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return GameEndNotice01Skip(self.ctx)
 
 
-class GameEndNotice01Skip(state.State):
+class GameEndNotice01Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_user_value(triggerId=10, key='DungeonClear', value=1)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_user_value(triggerId=10, key='DungeonClear', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return GameWrapUp()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return GameWrapUp(self.ctx)
 
 
-class GameWrapUp(state.State):
+class GameWrapUp(common.Trigger):
     def on_enter(self):
-        dungeon_clear()
+        self.dungeon_clear()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True)
-        unset_mini_game_area_for_hack() # 해킹 보안 종료
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.unset_mini_game_area_for_hack() # 해킹 보안 종료
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return PCLeave01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return PCLeave01(self.ctx)
 
 
-class PCLeave01(state.State):
+class PCLeave01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__10$', arg3='5000', arg4='0')
+        self.set_event_ui(type=1, arg2='$02000387_BF__01_PLAYPARTTIMEJOB__10$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return PCLeave02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return PCLeave02(self.ctx)
 
 
-class PCLeave02(state.State):
+class PCLeave02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=0, portalId=0)
+        self.move_user(mapId=0, portalId=0)
 
 
-#  NPC 그룹 랜덤 
-class NpcGroup1001(state.State):
+# NPC 그룹 랜덤
+class NpcGroup1001(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1001, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1001, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1005(state.State):
+class NpcGroup1005(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1005, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1005, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1009(state.State):
+class NpcGroup1009(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1009, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1009, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2002(state.State):
+class NpcGroup2002(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2002, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2002, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2006(state.State):
+class NpcGroup2006(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2006, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2006, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2010(state.State):
+class NpcGroup2010(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2010, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2010, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3003(state.State):
+class NpcGroup3003(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3003, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3003, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3007(state.State):
+class NpcGroup3007(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3007, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3007, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3011(state.State):
+class NpcGroup3011(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3011, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3011, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4004(state.State):
+class NpcGroup4004(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4004, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4004, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4008(state.State):
+class NpcGroup4008(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4008, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4008, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4012(state.State):
+class NpcGroup4012(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4012, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4012, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1101(state.State):
+class NpcGroup1101(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1101, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1101, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1105(state.State):
+class NpcGroup1105(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1105, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1105, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1109(state.State):
+class NpcGroup1109(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1109, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1109, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1113(state.State):
+class NpcGroup1113(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1113, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1113, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1117(state.State):
+class NpcGroup1117(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1117, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1117, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1121(state.State):
+class NpcGroup1121(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1121, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1121, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2102(state.State):
+class NpcGroup2102(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2102, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2102, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2106(state.State):
+class NpcGroup2106(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2106, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2106, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2110(state.State):
+class NpcGroup2110(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2110, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2110, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2114(state.State):
+class NpcGroup2114(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2114, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2114, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2118(state.State):
+class NpcGroup2118(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2118, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2118, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2122(state.State):
+class NpcGroup2122(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2122, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2122, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3103(state.State):
+class NpcGroup3103(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3103, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3103, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3107(state.State):
+class NpcGroup3107(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3107, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3107, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3111(state.State):
+class NpcGroup3111(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3111, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3111, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3115(state.State):
+class NpcGroup3115(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3115, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3115, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3119(state.State):
+class NpcGroup3119(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3119, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3119, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3123(state.State):
+class NpcGroup3123(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3123, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3123, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4104(state.State):
+class NpcGroup4104(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4104, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4104, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4108(state.State):
+class NpcGroup4108(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4108, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4108, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4112(state.State):
+class NpcGroup4112(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4112, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4112, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4116(state.State):
+class NpcGroup4116(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4116, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4116, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4120(state.State):
+class NpcGroup4120(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4120, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4120, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4124(state.State):
+class NpcGroup4124(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4124, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4124, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1201(state.State):
+class NpcGroup1201(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1201, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1201, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1205(state.State):
+class NpcGroup1205(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1205, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1205, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1209(state.State):
+class NpcGroup1209(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1209, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1209, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1213(state.State):
+class NpcGroup1213(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1213, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1213, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1217(state.State):
+class NpcGroup1217(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1217, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1217, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1221(state.State):
+class NpcGroup1221(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1221, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1221, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup1225(state.State):
+class NpcGroup1225(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=1225, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=1225, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2202(state.State):
+class NpcGroup2202(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2202, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2202, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2206(state.State):
+class NpcGroup2206(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2206, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2206, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2210(state.State):
+class NpcGroup2210(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2210, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2210, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2214(state.State):
+class NpcGroup2214(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2214, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2214, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2218(state.State):
+class NpcGroup2218(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2218, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2218, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2222(state.State):
+class NpcGroup2222(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2222, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2222, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup2226(state.State):
+class NpcGroup2226(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=2226, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=2226, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3203(state.State):
+class NpcGroup3203(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3203, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3203, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3207(state.State):
+class NpcGroup3207(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3207, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3207, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3211(state.State):
+class NpcGroup3211(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3211, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3211, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3215(state.State):
+class NpcGroup3215(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3215, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3215, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3219(state.State):
+class NpcGroup3219(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3219, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3219, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3223(state.State):
+class NpcGroup3223(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3223, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3223, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup3227(state.State):
+class NpcGroup3227(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=3227, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=3227, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4204(state.State):
+class NpcGroup4204(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4204, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4204, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4208(state.State):
+class NpcGroup4208(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4208, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4208, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4212(state.State):
+class NpcGroup4212(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4212, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4212, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4216(state.State):
+class NpcGroup4216(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4216, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4216, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4220(state.State):
+class NpcGroup4220(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4220, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4220, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4224(state.State):
+class NpcGroup4224(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4224, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4224, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NpcGroup4228(state.State):
+class NpcGroup4228(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4228, key='CustomerEnter', value=1)
+        self.set_user_value(triggerId=4228, key='CustomerEnter', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return NextTurnCheck()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return NextTurnCheck(self.ctx)
 
 
-class NextTurnCheck(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='RoundCustomerRow', value=10103):
-            return R01Customer02Row02Random()
-        if user_value(key='RoundCustomerRow', value=10202):
-            return R01Customer03Row04Random()
-        if user_value(key='RoundCustomerRow', value=10304):
-            return R01Customer04Row01Random()
-        if user_value(key='RoundCustomerRow', value=10401): # 2Round
-            return R01End()
-        if user_value(key='RoundCustomerRow', value=20102):
-            return R02Customer02Row03Random()
-        if user_value(key='RoundCustomerRow', value=20203):
-            return R02Customer03Row01Random()
-        if user_value(key='RoundCustomerRow', value=20301):
-            return R02Customer04Row04Random()
-        if user_value(key='RoundCustomerRow', value=20404):
-            return R02Customer05Row02Random()
-        if user_value(key='RoundCustomerRow', value=20502):
-            return R02Customer06Row03Random()
-        if user_value(key='RoundCustomerRow', value=20603):
-            return R02Customer07Row01Random()
-        if user_value(key='RoundCustomerRow', value=20701):
-            return R02Customer08Row04Random()
-        if user_value(key='RoundCustomerRow', value=20804): # 3Round
-            return R02End()
-        if user_value(key='RoundCustomerRow', value=30104):
-            return R03Customer02Row02Random()
-        if user_value(key='RoundCustomerRow', value=30202):
-            return R03Customer03Row03Random()
-        if user_value(key='RoundCustomerRow', value=30303):
-            return R03Customer04Row01Random()
-        if user_value(key='RoundCustomerRow', value=30401):
-            return R03Customer05Row02Random()
-        if user_value(key='RoundCustomerRow', value=30502):
-            return R03Customer06Row04Random()
-        if user_value(key='RoundCustomerRow', value=30604):
-            return R03Customer07Row03Random()
-        if user_value(key='RoundCustomerRow', value=30703):
-            return R03Customer08Row01Random()
-        if user_value(key='RoundCustomerRow', value=30801):
-            return R03Customer09Row01Random()
-        if user_value(key='RoundCustomerRow', value=30901):
-            return R03Customer10Row04Random()
-        if user_value(key='RoundCustomerRow', value=31004):
-            return R03Customer11Row02Random()
-        if user_value(key='RoundCustomerRow', value=31102):
-            return R03Customer12Row03Random()
-        if user_value(key='RoundCustomerRow', value=31203):
-            return R03End()
+class NextTurnCheck(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='RoundCustomerRow', value=10103):
+            return R01Customer02Row02Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=10202):
+            return R01Customer03Row04Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=10304):
+            return R01Customer04Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=10401): # 2Round
+            return R01End(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20102):
+            return R02Customer02Row03Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20203):
+            return R02Customer03Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20301):
+            return R02Customer04Row04Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20404):
+            return R02Customer05Row02Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20502):
+            return R02Customer06Row03Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20603):
+            return R02Customer07Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20701):
+            return R02Customer08Row04Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=20804): # 3Round
+            return R02End(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30104):
+            return R03Customer02Row02Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30202):
+            return R03Customer03Row03Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30303):
+            return R03Customer04Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30401):
+            return R03Customer05Row02Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30502):
+            return R03Customer06Row04Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30604):
+            return R03Customer07Row03Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30703):
+            return R03Customer08Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30801):
+            return R03Customer09Row01Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=30901):
+            return R03Customer10Row04Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=31004):
+            return R03Customer11Row02Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=31102):
+            return R03Customer12Row03Random(self.ctx)
+        if self.user_value(key='RoundCustomerRow', value=31203):
+            return R03End(self.ctx)
 
 
+initial_state = Wait

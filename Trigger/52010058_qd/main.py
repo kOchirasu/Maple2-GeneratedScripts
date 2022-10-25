@@ -1,29 +1,29 @@
 """ trigger/52010058_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9010, boxId=2):
-            return 성공연출시작()
+class Ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9010, boxId=2):
+            return 성공연출시작(self.ctx)
 
 
-class 성공연출시작(state.State):
+class 성공연출시작(common.Trigger):
     def on_enter(self):
-        create_widget(type='SceneMovie')
-        widget_action(type='SceneMovie', func='Clear')
-        play_scene_movie(fileName='common\WorldInvasionScene6.usm', movieId=1)
+        self.create_widget(type='SceneMovie')
+        self.widget_action(type='SceneMovie', func='Clear')
+        self.play_scene_movie(fileName='common\WorldInvasionScene6.usm', movieId=1)
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SceneMovie', name='IsStop', condition='1'):
-            return quit02()
-        if wait_tick(waitTick=9000):
-            return quit02()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+            return quit02(self.ctx)
+        if self.wait_tick(waitTick=9000):
+            return quit02(self.ctx)
 
 
-class quit02(state.State):
+class quit02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000422, portalId=3)
+        self.move_user(mapId=2000422, portalId=3)
 
 
+initial_state = Ready

@@ -1,34 +1,34 @@
 """ trigger/02100004_bf/npc08.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 소환대기()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 소환대기(self.ctx)
 
 
-class 소환대기(state.State):
+class 소환대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=999992, key='NpcSpawned08', value=0)
+        self.set_user_value(triggerId=999992, key='NpcSpawned08', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='NpcSpawn08', value=1):
-            return 소환()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='NpcSpawn08', value=1):
+            return 소환(self.ctx)
 
 
-class 소환(state.State):
+class 소환(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=999992, key='NpcSpawned08', value=1)
-        create_monster(spawnIds=[2008], arg2=True)
+        self.set_user_value(triggerId=999992, key='NpcSpawned08', value=1)
+        self.create_monster(spawnIds=[2008], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

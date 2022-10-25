@@ -1,140 +1,140 @@
 """ trigger/82000000_survival/03_storm.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        create_widget(type='SurvivalContents')
+        self.create_widget(type='SurvivalContents')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='StormStart', value=1):
-            return SetStorm()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='StormStart', value=1):
+            return SetStorm(self.ctx)
 
 
-class SetStorm(state.State):
+class SetStorm(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='StormData', widgetArg='1,0') # test용 수정 가능 지점 arg3="6,0" 10배 빠른 스톰
-        write_log(logName='Survival', arg3='Storm_Step_0') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='StormData', widgetArg='1,0') # test용 수정 가능 지점 arg3="6,0" 10배 빠른 스톰
+        self.write_log(logName='Survival', event='Storm_Step_0') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Step01()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Step01(self.ctx)
 
 
-class Step01(state.State):
+class Step01(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_1_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_1_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step02()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step02(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_1_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_1_end') # 서바이벌 스톰 로그
 
 
-class Step02(state.State):
+class Step02(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='2')
-        write_log(logName='Survival', arg3='Storm_Step_2_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='2')
+        self.write_log(logName='Survival', event='Storm_Step_2_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step03()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step03(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_2_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_2_end') # 서바이벌 스톰 로그
 
 
-class Step03(state.State):
+class Step03(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='3')
-        write_log(logName='Survival', arg3='Storm_Step_3_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='3')
+        self.write_log(logName='Survival', event='Storm_Step_3_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step04()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step04(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_3_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_3_end') # 서바이벌 스톰 로그
 
 
-class Step04(state.State):
+class Step04(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='4')
-        write_log(logName='Survival', arg3='Storm_Step_4_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='4')
+        self.write_log(logName='Survival', event='Storm_Step_4_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step05()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step05(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_4_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_4_end') # 서바이벌 스톰 로그
 
 
-class Step05(state.State):
+class Step05(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='5')
-        write_log(logName='Survival', arg3='Storm_Step_5_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='5')
+        self.write_log(logName='Survival', event='Storm_Step_5_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step06()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step06(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_5_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_5_end') # 서바이벌 스톰 로그
 
 
-class Step06(state.State):
+class Step06(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='6')
-        write_log(logName='Survival', arg3='Storm_Step_6_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='6')
+        self.write_log(logName='Survival', event='Storm_Step_6_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step07()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step07(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_6_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_6_end') # 서바이벌 스톰 로그
 
 
-class Step07(state.State):
+class Step07(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='7')
-        write_log(logName='Survival', arg3='Storm_Step_7_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='7')
+        self.write_log(logName='Survival', event='Storm_Step_7_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Step08()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Step08(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_7_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_7_end') # 서바이벌 스톰 로그
 
 
-class Step08(state.State):
+class Step08(common.Trigger):
     def on_enter(self):
-        widget_action(type='SurvivalContents', func='EnterStep', widgetArg='8')
-        write_log(logName='Survival', arg3='Storm_Step_8_start') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='EnterStep', widgetArg='8')
+        self.write_log(logName='Survival', event='Storm_Step_8_start') # 서바이벌 스톰 로그
 
-    def on_tick(self) -> state.State:
-        if widget_condition(type='SurvivalContents', name='TimeOver'):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+            return Quit(self.ctx)
 
     def on_exit(self):
-        widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
-        write_log(logName='Survival', arg3='Storm_Step_8_end') # 서바이벌 스톰 로그
+        self.widget_action(type='SurvivalContents', func='ExitStep', widgetArg='1')
+        self.write_log(logName='Survival', event='Storm_Step_8_end') # 서바이벌 스톰 로그
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     pass
 
 
+initial_state = Wait

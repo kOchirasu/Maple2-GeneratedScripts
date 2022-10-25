@@ -1,27 +1,27 @@
 """ trigger/80000012_bonus/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8001, enable=True)
+        self.select_camera(triggerId=8001, enable=True)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[701]):
-            return start()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[701]):
+            return start(self.ctx)
 
 
-class start(state.State):
+class start(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[199], arg2=False) # 웨이브 장치 작동
+        self.create_monster(spawnIds=[199], animationEffect=False) # 웨이브 장치 작동
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='60'):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='60'):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     pass
 
 
+initial_state = idle

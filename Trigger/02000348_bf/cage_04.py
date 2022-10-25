@@ -1,44 +1,44 @@
 """ trigger/02000348_bf/cage_04.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[2104], visible=False, arg3=0, arg4=10)
-        set_effect(triggerIds=[8004], visible=False)
-        set_actor(triggerId=2204, visible=False, initialSequence='Sit_Ground_Idle_A')
+        self.set_mesh(triggerIds=[2104], visible=False, arg3=0, delay=10)
+        self.set_effect(triggerIds=[8004], visible=False)
+        self.set_actor(triggerId=2204, visible=False, initialSequence='Sit_Ground_Idle_A')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='cage_04', value=1):
-            return ready()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='cage_04', value=1):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[2104], visible=True, arg3=0, arg4=0)
-        set_effect(triggerIds=[8004], visible=True)
-        set_actor(triggerId=2204, visible=True, initialSequence='Sit_Ground_Idle_A')
+        self.set_mesh(triggerIds=[2104], visible=True, arg3=0, delay=0)
+        self.set_effect(triggerIds=[8004], visible=True)
+        self.set_actor(triggerId=2204, visible=True, initialSequence='Sit_Ground_Idle_A')
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[214]):
-            return npc()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[214]):
+            return npc(self.ctx)
 
 
-class npc(state.State):
+class npc(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8004], visible=False)
-        set_mesh(triggerIds=[2104], visible=False, arg3=0, arg4=10)
-        set_actor(triggerId=2204, visible=False, initialSequence='Dead_A')
-        create_monster(spawnIds=[224], arg2=True)
+        self.set_effect(triggerIds=[8004], visible=False)
+        self.set_mesh(triggerIds=[2104], visible=False, arg3=0, delay=10)
+        self.set_actor(triggerId=2204, visible=False, initialSequence='Dead_A')
+        self.create_monster(spawnIds=[224], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return NPC소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return NPC소멸(self.ctx)
 
 
-class NPC소멸(state.State):
+class NPC소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[224])
+        self.destroy_monster(spawnIds=[224])
 
 
+initial_state = idle

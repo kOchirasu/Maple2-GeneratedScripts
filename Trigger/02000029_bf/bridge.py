@@ -1,28 +1,28 @@
 """ trigger/02000029_bf/bridge.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if monster_in_combat(boxIds=[99]):
-            return 발판01()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_in_combat(boxIds=[99]):
+            return 발판01(self.ctx)
 
 
-class 발판01(state.State):
+class 발판01(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=False, arg3=0, arg4=200, arg5=2)
+        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=False, arg3=0, delay=200, scale=2)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[99]):
-            return 해모칸죽음()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[99]):
+            return 해모칸죽음(self.ctx)
 
 
-class 해모칸죽음(state.State):
+class 해모칸죽음(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322], visible=True, arg3=0, delay=0, scale=0)
 
 
+initial_state = 대기

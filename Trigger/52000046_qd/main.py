@@ -1,89 +1,89 @@
 """ trigger/52000046_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[199], questIds=[60100215], questStates=[2]):
-            return ready()
-        if quest_user_detected(boxIds=[199], questIds=[60100215], questStates=[3]):
-            return scene_04()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[199], questIds=[60100215], questStates=[2]):
+            return ready(self.ctx)
+        if self.quest_user_detected(boxIds=[199], questIds=[60100215], questStates=[3]):
+            return scene_04(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        create_monster(spawnIds=[101], arg2=False)
-        destroy_monster(spawnIds=[1001,1002,2002])
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.destroy_monster(spawnIds=[1001,1002,2002])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return camera()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return camera(self.ctx)
 
 
-class camera(state.State):
+class camera(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4001,4002,4003], returnView=False)
+        self.select_camera_path(pathIds=[4001,4002,4003], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_01(self.ctx)
 
 
-class scene_01(state.State):
+class scene_01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='ChatUp_A')
-        add_cinematic_talk(npcId=11003216, msg='$52000046_QD__MAIN__0$', duration=3000, align='Left')
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='ChatUp_A')
+        self.add_cinematic_talk(npcId=11003216, msg='$52000046_QD__MAIN__0$', duration=3000, align='Left')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return scene_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return scene_02(self.ctx)
 
 
-class scene_02(state.State):
+class scene_02(common.Trigger):
     def on_enter(self):
-        show_caption(scale=2.3, type='NameCaption', title='$52000046_QD__MAIN__1$', desc='$52000046_QD__MAIN__2$', align='centerLeft', offsetRateX=-0.15, duration=4000)
+        self.show_caption(scale=2.3, type='NameCaption', title='$52000046_QD__MAIN__1$', desc='$52000046_QD__MAIN__2$', align='centerLeft', offsetRateX=-0.15, duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return scene_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return scene_03(self.ctx)
 
 
-class scene_03(state.State):
+class scene_03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_04(self.ctx)
 
 
-class scene_04(state.State):
+class scene_04(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[1001,1002,2002])
-        destroy_monster(spawnIds=[101])
-        create_monster(spawnIds=[102], arg2=True)
-        reset_camera(interpolationTime=1)
+        self.destroy_monster(spawnIds=[1001,1002,2002])
+        self.destroy_monster(spawnIds=[101])
+        self.create_monster(spawnIds=[102], animationEffect=True)
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_05(self.ctx)
 
 
-class scene_05(state.State):
+class scene_05(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return emd()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return emd(self.ctx)
 
 
-class emd(state.State):
+class emd(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
 
+initial_state = idle

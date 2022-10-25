@@ -1,138 +1,138 @@
 """ trigger/52010067_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class 연출01(state.State):
-    def on_tick(self) -> state.State:
-        if check_user():
-            visible_my_pc(isVisible=False)
-            set_cinematic_ui(type=1)
-            set_effect(triggerIds=[9010], visible=False)
-            return 연출브릿지()
+class 연출01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            self.visible_my_pc(isVisible=False)
+            self.set_cinematic_ui(type=1)
+            self.set_effect(triggerIds=[9010], visible=False)
+            return 연출브릿지(self.ctx)
 
 
-class 연출브릿지(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[2]):
-            return 조준씬01()
-        if quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[3]):
-            return 피격씬01()
+class 연출브릿지(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[2]):
+            return 조준씬01(self.ctx)
+        if self.quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[3]):
+            return 피격씬01(self.ctx)
 
 
-#  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@포신정렬씬@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-class 조준씬01(state.State):
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@포신정렬씬@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+class 조준씬01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[200], arg2=False) # 인페르녹
+        self.create_monster(spawnIds=[200], animationEffect=False) # 인페르녹
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 연출02_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 연출02_b(self.ctx)
 
 
-class 연출02_b(state.State):
+class 연출02_b(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1300):
-            return 연출02_c()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1300):
+            return 연출02_c(self.ctx)
 
 
-class 연출02_c(state.State):
+class 연출02_c(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[2000,2001,2002,2003,2004], returnView=False)
+        self.select_camera_path(pathIds=[2000,2001,2002,2003,2004], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5300):
-            return 연출03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5300):
+            return 연출03(self.ctx)
 
 
-class 연출03(state.State):
+class 연출03(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[2005,2006,2007,2008,2009,2010,2011], returnView=False)
+        self.select_camera_path(pathIds=[2005,2006,2007,2008,2009,2010,2011], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3200):
-            return 연출04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3200):
+            return 연출04(self.ctx)
 
 
-class 연출04(state.State):
+class 연출04(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[2012], returnView=False)
+        self.select_camera_path(pathIds=[2012], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 연출05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 연출05(self.ctx)
 
 
-class 연출05(state.State):
+class 연출05(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return quit(self.ctx)
 
 
-class quit(state.State):
+class quit(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000422, portalId=3)
+        self.move_user(mapId=2000422, portalId=3)
 
 
-#  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@피격씬@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
-class 피격씬01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 피격씬01_a()
+# @@@@@@@@@@@@@@@@@@@@@@@@@@@@@피격씬@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+class 피격씬01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 피격씬01_a(self.ctx)
 
 
-class 피격씬01_a(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1300):
-            return 피격씬02()
+class 피격씬01_a(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1300):
+            return 피격씬02(self.ctx)
 
 
-class 피격씬02(state.State):
+class 피격씬02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[9010], visible=True)
-        select_camera_path(pathIds=[3004,3005], returnView=False)
+        self.set_effect(triggerIds=[9010], visible=True)
+        self.select_camera_path(pathIds=[3004,3005], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 피격씬03_a()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 피격씬03_a(self.ctx)
 
 
-class 피격씬03_a(state.State):
+class 피격씬03_a(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[3000,3001], returnView=False)
+        self.select_camera_path(pathIds=[3000,3001], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3900):
-            return 피격씬03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3900):
+            return 피격씬03(self.ctx)
 
 
-class 피격씬03(state.State):
+class 피격씬03(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[3002,3003], returnView=False)
-        set_time_scale(enable=True, startScale=0.1, endScale=0.1, duration=3.5, interpolator=1) # 2초간 느려지기 시작
+        self.select_camera_path(pathIds=[3002,3003], returnView=False)
+        self.set_time_scale(enable=True, startScale=0.1, endScale=0.1, duration=3.5, interpolator=1) # 2초간 느려지기 시작
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3600):
-            return 피격씬04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3600):
+            return 피격씬04(self.ctx)
 
 
-class 피격씬04(state.State):
+class 피격씬04(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return quit02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return quit02(self.ctx)
 
 
-class quit02(state.State):
+class quit02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000422, portalId=3)
+        self.move_user(mapId=2000422, portalId=3)
 
 
+initial_state = 연출01

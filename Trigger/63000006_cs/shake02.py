@@ -1,46 +1,46 @@
 """ trigger/63000006_cs/shake02.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9001]):
-            return 다리흔들기준비()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9001]):
+            return 다리흔들기준비(self.ctx)
 
 
-class 다리흔들기준비(state.State):
+class 다리흔들기준비(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[910], isEnable=False)
-        set_skill(triggerIds=[911], isEnable=False)
-        set_skill(triggerIds=[912], isEnable=False)
-        set_skill(triggerIds=[913], isEnable=False)
+        self.set_skill(triggerIds=[910], enable=False)
+        self.set_skill(triggerIds=[911], enable=False)
+        self.set_skill(triggerIds=[912], enable=False)
+        self.set_skill(triggerIds=[913], enable=False)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 스킬발동01()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 스킬발동01(self.ctx)
 
 
-class 스킬발동01(state.State):
+class 스킬발동01(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=42)
-        set_skill(triggerIds=[910], isEnable=True)
-        set_skill(triggerIds=[911], isEnable=True)
-        set_skill(triggerIds=[912], isEnable=True)
-        set_skill(triggerIds=[913], isEnable=True)
+        self.set_timer(timerId='1', seconds=42)
+        self.set_skill(triggerIds=[910], enable=True)
+        self.set_skill(triggerIds=[911], enable=True)
+        self.set_skill(triggerIds=[912], enable=True)
+        self.set_skill(triggerIds=[913], enable=True)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 다리흔들기준비()
-        if user_detected(boxIds=[9002]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 다리흔들기준비(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[910], isEnable=False)
-        set_skill(triggerIds=[911], isEnable=False)
-        set_skill(triggerIds=[912], isEnable=False)
-        set_skill(triggerIds=[913], isEnable=False)
+        self.set_skill(triggerIds=[910], enable=False)
+        self.set_skill(triggerIds=[911], enable=False)
+        self.set_skill(triggerIds=[912], enable=False)
+        self.set_skill(triggerIds=[913], enable=False)
 
 
+initial_state = 대기

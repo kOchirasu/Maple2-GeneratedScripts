@@ -1,144 +1,144 @@
 """ trigger/02020063_bf/battle_3_monsterspawn.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990001, key='Battle_3_Clear', value=0)
-        start_combine_spawn(groupId=[500], isStart=False)
-        start_combine_spawn(groupId=[501], isStart=False)
-        start_combine_spawn(groupId=[502], isStart=False)
-        start_combine_spawn(groupId=[503], isStart=False)
-        start_combine_spawn(groupId=[504], isStart=False)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        reset_timer(timerId='1')
-        reset_timer(timerId='2')
-        reset_timer(timerId='3')
-        reset_timer(timerId='4')
+        self.set_user_value(triggerId=99990001, key='Battle_3_Clear', value=0)
+        self.start_combine_spawn(groupId=[500], isStart=False)
+        self.start_combine_spawn(groupId=[501], isStart=False)
+        self.start_combine_spawn(groupId=[502], isStart=False)
+        self.start_combine_spawn(groupId=[503], isStart=False)
+        self.start_combine_spawn(groupId=[504], isStart=False)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.reset_timer(timerId='1')
+        self.reset_timer(timerId='2')
+        self.reset_timer(timerId='3')
+        self.reset_timer(timerId='4')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=1):
-            return 스폰_1_SE()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=1):
+            return 스폰_1_SE(self.ctx)
 
 
-#   시작 
-class 스폰_1_SE(state.State):
+# 시작
+class 스폰_1_SE(common.Trigger):
     def on_enter(self):
-        score_board_create(maxScore=900) # <ShadowExpedition 기능을 대체함>
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.score_board_create(maxScore=900) # <ShadowExpedition 기능을 대체함>
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if wait_tick(waitTick=5000):
-            return 스폰_1()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.wait_tick(waitTick=5000):
+            return 스폰_1(self.ctx)
 
 
-class 스폰_1(state.State):
+class 스폰_1(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=60, clearAtZero=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        start_combine_spawn(groupId=[500], isStart=True)
+        self.set_timer(timerId='1', seconds=60, startDelay=1)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.start_combine_spawn(groupId=[500], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if any_one():
-            return 스폰_3_SE()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.any_one():
+            return 스폰_3_SE(self.ctx)
 
 
-class 스폰_2_SE(state.State):
+class 스폰_2_SE(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if wait_tick(waitTick=2000):
-            return 스폰_2()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return 스폰_2(self.ctx)
 
 
-class 스폰_2(state.State):
+class 스폰_2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=60, clearAtZero=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        start_combine_spawn(groupId=[501], isStart=True)
+        self.set_timer(timerId='2', seconds=60, startDelay=1)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.start_combine_spawn(groupId=[501], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if any_one():
-            return 스폰_3_SE()
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.any_one():
+            return 스폰_3_SE(self.ctx)
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
 
 
-class 스폰_3_SE(state.State):
+class 스폰_3_SE(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if wait_tick(waitTick=2000):
-            return 스폰_3()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return 스폰_3(self.ctx)
 
 
-class 스폰_3(state.State):
+class 스폰_3(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=60, clearAtZero=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        start_combine_spawn(groupId=[502], isStart=True)
+        self.set_timer(timerId='3', seconds=60, startDelay=1)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.start_combine_spawn(groupId=[502], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if any_one():
-            return 스폰_4_SE()
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.any_one():
+            return 스폰_4_SE(self.ctx)
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
 
 
-class 스폰_4_SE(state.State):
+class 스폰_4_SE(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if wait_tick(waitTick=2000):
-            return 스폰_4()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return 스폰_4(self.ctx)
 
 
-class 스폰_4(state.State):
+class 스폰_4(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='4', seconds=60, clearAtZero=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        start_combine_spawn(groupId=[503], isStart=True)
+        self.set_timer(timerId='4', seconds=60, startDelay=1)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.start_combine_spawn(groupId=[503], isStart=True)
 
-    def on_tick(self) -> state.State:
-        if any_one():
-            return 스폰_5_SE()
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.any_one():
+            return 스폰_5_SE(self.ctx)
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
 
 
-class 스폰_5_SE(state.State):
+class 스폰_5_SE(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
-        if wait_tick(waitTick=2000):
-            return 스폰_5()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return 스폰_5(self.ctx)
 
 
-class 스폰_5(state.State):
+class 스폰_5(common.Trigger):
     def on_enter(self):
-        start_combine_spawn(groupId=[504], isStart=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        score_board_remove()
+        self.start_combine_spawn(groupId=[504], isStart=True)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.score_board_remove()
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Battle_3_SpawnStart', value=0):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Battle_3_SpawnStart', value=0):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

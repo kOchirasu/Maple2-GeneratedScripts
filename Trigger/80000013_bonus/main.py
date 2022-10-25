@@ -1,24 +1,24 @@
 """ trigger/80000013_bonus/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[701]):
-            return start()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[701]):
+            return start(self.ctx)
 
 
-class start(state.State):
+class start(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[108], arg2=False)
+        self.create_monster(spawnIds=[108], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=60000):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=60000):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     pass
 
 
+initial_state = idle

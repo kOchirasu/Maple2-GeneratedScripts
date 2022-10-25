@@ -1,60 +1,60 @@
 """ trigger/02000336_bf/train_open.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[16014,16015,16016], visible=False) # 안보이는 상태
-        set_interact_object(triggerIds=[10000805], state=1)
+        self.set_mesh(triggerIds=[16014,16015,16016], visible=False) # 안보이는 상태
+        self.set_interact_object(triggerIds=[10000805], state=1)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=706, boxId=1):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=706, boxId=1):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=113, textId=20003363)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=113, textId=20003363)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000805], arg2=0):
-            return 작동_01()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000805], stateValue=0):
+            return 작동_01(self.ctx)
 
     def on_exit(self):
-        hide_guide_summary(entityId=113)
+        self.hide_guide_summary(entityId=113)
 
 
-class 작동_01(state.State):
+class 작동_01(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[16011,16012,16013], visible=False, arg4=300, arg5=10) # 빨간 선이
-        set_mesh(triggerIds=[16014,16015,16016], visible=True, arg4=300, arg5=10) # 파란 선으로
-        set_effect(triggerIds=[7013], visible=True)
-        set_timer(timerId='3', seconds=3)
+        self.set_mesh(triggerIds=[16011,16012,16013], visible=False, delay=300, scale=10) # 빨간 선이
+        self.set_mesh(triggerIds=[16014,16015,16016], visible=True, delay=300, scale=10) # 파란 선으로
+        self.set_effect(triggerIds=[7013], visible=True)
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 작동_02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 작동_02(self.ctx)
 
 
-class 작동_02(state.State):
+class 작동_02(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=106, textId=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
-        set_skill(triggerIds=[5802], isEnable=True) # 벽 날리는 스킬
-        set_mesh(triggerIds=[16001], visible=False, arg4=30, arg5=0) # 드럼통 폭발
-        set_mesh(triggerIds=[16014,16015,16016], visible=False, arg4=0, arg5=10) # 파란 선도 마저 삭제
-        set_mesh(triggerIds=[16000], visible=False, arg4=50, arg5=1) # 유리창 해제
-        set_timer(timerId='1', seconds=1)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=106, textId=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
+        self.set_skill(triggerIds=[5802], enable=True) # 벽 날리는 스킬
+        self.set_mesh(triggerIds=[16001], visible=False, delay=30, scale=0) # 드럼통 폭발
+        self.set_mesh(triggerIds=[16014,16015,16016], visible=False, delay=0, scale=10) # 파란 선도 마저 삭제
+        self.set_mesh(triggerIds=[16000], visible=False, delay=50, scale=1) # 유리창 해제
+        self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=702, boxId=1):
-            return 작동_03()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=702, boxId=1):
+            return 작동_03(self.ctx)
 
 
-class 작동_03(state.State):
+class 작동_03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[305,306,307,308], arg2=False) # 기본 배치 될 몬스터 등장
+        self.create_monster(spawnIds=[305,306,307,308], animationEffect=False) # 기본 배치 될 몬스터 등장
 
 
+initial_state = 대기

@@ -1,35 +1,35 @@
 """ trigger/02020009_bf/151001_npckill.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='NPCKill', value=1):
-            return NPCKillWait()
+class Wait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='NPCKill', value=1):
+            return NPCKillWait(self.ctx)
 
 
-class NPCKillWait(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7500):
-            return NPCKill()
+class NPCKillWait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7500):
+            return NPCKill(self.ctx)
 
 
-class NPCKill(state.State):
+class NPCKill(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[15401,15402,15501,15502])
+        self.destroy_monster(spawnIds=[15401,15402,15501,15502])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return KillEnd()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return KillEnd(self.ctx)
 
 
-class KillEnd(state.State):
+class KillEnd(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=151001, key='NPCKill', value=0)
+        self.set_user_value(triggerId=151001, key='NPCKill', value=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

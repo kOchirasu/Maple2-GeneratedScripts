@@ -1,28 +1,28 @@
 """ trigger/52000116_qd/idle.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101]) # Nelf_11003163
+        self.create_monster(spawnIds=[101]) # Nelf_11003163
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return nelftalk()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return nelftalk(self.ctx)
 
 
-class nelftalk(state.State):
+class nelftalk(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=101, script='$52000116_QD__IDLE__0$', arg4=3, arg5=0) # 넬프 대사
+        self.set_conversation(type=1, spawnId=101, script='$52000116_QD__IDLE__0$', arg4=3, arg5=0) # 넬프 대사
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return nelfmove()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return nelfmove(self.ctx)
 
 
-class nelfmove(state.State):
+class nelfmove(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=101, patrolName='MS2PatrolData_3001')
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_3001')
 
 
+initial_state = idle

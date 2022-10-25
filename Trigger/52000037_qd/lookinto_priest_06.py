@@ -1,236 +1,236 @@
 """ trigger/52000037_qd/lookinto_priest_06.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=4000, visible=False, initialSequence='Dead_A') # NelfActor
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=13, visible=False, enabled=False, minimapVisible=False)
-        set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, arg4=0, arg5=0)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        set_onetime_effect(id=2, enable=False, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
-        set_onetime_effect(id=3, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        set_onetime_effect(id=4, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        set_onetime_effect(id=5, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_actor(triggerId=4000, visible=False, initialSequence='Dead_A') # NelfActor
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
+        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, enable=False, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=4, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_onetime_effect(id=5, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9000], questIds=[60100070], questStates=[3], jobCode=40):
-            return Quit()
-        if quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[2], jobCode=40):
-            return Quit()
-        if quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1], jobCode=40):
-            return LoadingDelay02()
-        if quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[3], jobCode=40):
-            return DefaultSetting02()
-        if quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[2], jobCode=40):
-            return LoadingDelay01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9000], questIds=[60100070], questStates=[3], jobCode=40):
+            return Quit(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[2], jobCode=40):
+            return Quit(self.ctx)
+        if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1], jobCode=40):
+            return LoadingDelay02(self.ctx)
+        if self.quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[3], jobCode=40):
+            return DefaultSetting02(self.ctx)
+        if self.quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[2], jobCode=40):
+            return LoadingDelay01(self.ctx)
 
 
-class LoadingDelay01(state.State):
+class LoadingDelay01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraWalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraWalk01(self.ctx)
 
 
-class CameraWalk01(state.State):
+class CameraWalk01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        select_camera(triggerId=800, enable=True)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.select_camera(triggerId=800, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraWalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraWalk02(self.ctx)
 
 
-class CameraWalk02(state.State):
+class CameraWalk02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraWalk03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraWalk03(self.ctx)
 
 
-class CameraWalk03(state.State):
+class CameraWalk03(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=801, enable=True)
+        self.select_camera(triggerId=801, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraWalk04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraWalk04(self.ctx)
 
 
-class CameraWalk04(state.State):
+class CameraWalk04(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return CameraShot01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return CameraShot01(self.ctx)
 
 
-class CameraShot01(state.State):
+class CameraShot01(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=802, enable=True)
-        set_onetime_effect(id=3, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.select_camera(triggerId=802, enable=True)
+        self.set_onetime_effect(id=3, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=700):
-            return CameraShot02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=700):
+            return CameraShot02(self.ctx)
 
 
-class CameraShot02(state.State):
+class CameraShot02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=803, enable=True)
-        set_onetime_effect(id=4, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.select_camera(triggerId=803, enable=True)
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=700):
-            return CameraShot03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=700):
+            return CameraShot03(self.ctx)
 
 
-class CameraShot03(state.State):
+class CameraShot03(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=804, enable=True)
-        set_onetime_effect(id=5, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.select_camera(triggerId=804, enable=True)
+        self.set_onetime_effect(id=5, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CameraFadeIn01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CameraFadeIn01(self.ctx)
 
 
-class CameraFadeIn01(state.State):
+class CameraFadeIn01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CameraFadeOut01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CameraFadeOut01(self.ctx)
 
 
-class CameraFadeOut01(state.State):
+class CameraFadeOut01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        select_camera(triggerId=804, enable=False)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.select_camera(triggerId=804, enable=False)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return DefaultSetting02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return DefaultSetting02(self.ctx)
 
 
-class DefaultSetting02(state.State):
+class DefaultSetting02(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
-        create_monster(spawnIds=[101], arg2=False) # NelfDummyNPC
+        self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
+        self.create_monster(spawnIds=[101], animationEffect=False) # NelfDummyNPC
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1]):
-            return LoadingDelay02()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1]):
+            return LoadingDelay02(self.ctx)
 
 
-class LoadingDelay02(state.State):
+class LoadingDelay02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
-        create_monster(spawnIds=[501], arg2=False) # 의문의남자
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
+        self.create_monster(spawnIds=[501], animationEffect=False) # 의문의남자
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return LoadingDelay03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return LoadingDelay03(self.ctx)
 
 
-class LoadingDelay03(state.State):
+class LoadingDelay03(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000037, portalId=11)
+        self.move_user(mapId=52000037, portalId=11)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FindDoor01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FindDoor01(self.ctx)
 
 
-class FindDoor01(state.State):
+class FindDoor01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        move_user_path(patrolName='MS2PatrolData_1200')
-        select_camera(triggerId=810, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.move_user_path(patrolName='MS2PatrolData_1200')
+        self.select_camera(triggerId=810, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FindDoor02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FindDoor02(self.ctx)
 
 
-class FindDoor02(state.State):
+class FindDoor02(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=13, visible=True, enabled=True, minimapVisible=True)
-        move_npc(spawnId=501, patrolName='MS2PatrolData_500') # 의문의남자
+        self.set_portal(portalId=13, visible=True, enable=True, minimapVisible=True)
+        self.move_npc(spawnId=501, patrolName='MS2PatrolData_500') # 의문의남자
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return FindDoor03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return FindDoor03(self.ctx)
 
 
-class FindDoor03(state.State):
+class FindDoor03(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=811, enable=True)
+        self.select_camera(triggerId=811, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Chase01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Chase01(self.ctx)
 
 
-class Chase01(state.State):
+class Chase01(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3000,3001], visible=False, arg3=100, arg4=200, arg5=1)
+        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=100, delay=200, scale=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Chase02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Chase02(self.ctx)
 
 
-class Chase02(state.State):
+class Chase02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=501, patrolName='MS2PatrolData_501') # 의문의남자
+        self.move_npc(spawnId=501, patrolName='MS2PatrolData_501') # 의문의남자
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=9500, spawnIds=[501]):
-            return Chase03()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=9500, spawnIds=[501]):
+            return Chase03(self.ctx)
 
 
-class Chase03(state.State):
+class Chase03(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[501])
+        self.destroy_monster(spawnIds=[501])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Quit02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Quit02(self.ctx)
 
 
-class Quit02(state.State):
+class Quit02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        select_camera(triggerId=811, enable=False)
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        set_event_ui(type=1, arg2='$52000037_QD__LOOKINTO_PRIEST_06__0$', arg3='3000', arg4='0')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.select_camera(triggerId=811, enable=False)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.set_event_ui(type=1, arg2='$52000037_QD__LOOKINTO_PRIEST_06__0$', arg3='3000', arg4='0')
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 
+initial_state = Wait

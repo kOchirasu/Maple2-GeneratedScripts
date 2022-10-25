@@ -1,38 +1,38 @@
 """ trigger/51000004_dg/fail.xml """
-from common import *
-import state
+import common
 
 
-class gameset(state.State):
+class gameset(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=8011, enable=False) # 카메라 옆으로 보냄, 줌인
+        self.select_camera(triggerId=8011, enable=False) # 카메라 옆으로 보냄, 줌인
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Fail', value=1):
-            return Fail_condition()
-
-
-class Fail_condition(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9001]):
-            return Fail()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Fail', value=1):
+            return Fail_condition(self.ctx)
 
 
-class Fail(state.State):
+class Fail_condition(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9001]):
+            return Fail(self.ctx)
+
+
+class Fail(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01')
-        write_log(logName='PinkBeanThreeTwoOne_log', event='9001', arg3='char_event', arg5='gameover')
-        set_timer(timerId='10', seconds=10, display=True)
-        select_camera_path(pathIds=[8011,8010], returnView=False) # 카메라 뒤로 당김
-        arcade_three_two_one(type='EndGame')
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01')
+        self.write_log(logName='PinkBeanThreeTwoOne_log', triggerId=9001, event='char_event', subEvent='gameover')
+        self.set_timer(timerId='10', seconds=10, interval=1)
+        self.select_camera_path(pathIds=[8011,8010], returnView=False) # 카메라 뒤로 당김
+        self.arcade_three_two_one(type='EndGame')
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='10'):
-            return End()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='10'):
+            return End(self.ctx)
 
 
-class End(state.State):
+class End(common.Trigger):
     def on_enter(self):
-        move_user(mapId=0, portalId=0)
+        self.move_user(mapId=0, portalId=0)
 
 
+initial_state = gameset

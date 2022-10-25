@@ -1,9 +1,9 @@
 """ trigger/99999940_bgtest/sample.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기(state.State):
+class 시작대기(common.Trigger):
     pass
 
 
+initial_state = 시작대기

@@ -1,9 +1,9 @@
 """ trigger/52000040_qd/common.xml """
-from common import *
-import state
+import common
 
 
-class end_01(state.State):
+class end_01(common.Trigger):
     pass
 
 
+initial_state = end_01

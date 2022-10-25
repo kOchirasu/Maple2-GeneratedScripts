@@ -1,27 +1,27 @@
 """ trigger/02000066_bf/buffskill.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
+class 시작대기중(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6002], visible=True)
+        self.set_effect(triggerIds=[6002], visible=True)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[104]):
-            return A스킬작동()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[104]):
+            return A스킬작동(self.ctx)
 
 
-class A스킬작동(state.State):
+class A스킬작동(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6002], visible=False)
-        set_skill(triggerIds=[7001], isEnable=True)
-        set_timer(timerId='60', seconds=60)
+        self.set_effect(triggerIds=[6002], visible=False)
+        self.set_skill(triggerIds=[7001], enable=True)
+        self.set_timer(timerId='60', seconds=60)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='60'):
-            set_skill(triggerIds=[7001], isEnable=False)
-            set_effect(triggerIds=[6002], visible=False)
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='60'):
+            self.set_skill(triggerIds=[7001], enable=False)
+            self.set_effect(triggerIds=[6002], visible=False)
+            return 시작대기중(self.ctx)
 
 
+initial_state = 시작대기중

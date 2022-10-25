@@ -1,49 +1,49 @@
 """ trigger/02000213_bf/spawncheck.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=102, spawnIds=[1099]):
-            return 잡몹소멸()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=102, spawnIds=[1099]):
+            return 잡몹소멸(self.ctx)
 
 
-class 잡몹소멸(state.State):
+class 잡몹소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[1001])
-        destroy_monster(spawnIds=[1002])
-        destroy_monster(spawnIds=[1003])
-        destroy_monster(spawnIds=[1004])
-        destroy_monster(spawnIds=[1005])
-        destroy_monster(spawnIds=[1006])
-        destroy_monster(spawnIds=[1007])
-        destroy_monster(spawnIds=[1008])
-        destroy_monster(spawnIds=[1009])
-        destroy_monster(spawnIds=[1010])
-        destroy_monster(spawnIds=[1011])
-        destroy_monster(spawnIds=[1012])
-        destroy_monster(spawnIds=[1013])
-        destroy_monster(spawnIds=[1014])
-        destroy_monster(spawnIds=[1015])
-        destroy_monster(spawnIds=[1016])
-        destroy_monster(spawnIds=[1017])
-        destroy_monster(spawnIds=[1018])
-        destroy_monster(spawnIds=[1019])
-        destroy_monster(spawnIds=[1020])
-        destroy_monster(spawnIds=[1021])
-        destroy_monster(spawnIds=[1022])
-        destroy_monster(spawnIds=[1023])
-        destroy_monster(spawnIds=[1024])
-        destroy_monster(spawnIds=[1025])
-        destroy_monster(spawnIds=[1026])
-        destroy_monster(spawnIds=[1027])
-        destroy_monster(spawnIds=[1028])
-        destroy_monster(spawnIds=[1029])
-        destroy_monster(spawnIds=[1030])
+        self.destroy_monster(spawnIds=[1001])
+        self.destroy_monster(spawnIds=[1002])
+        self.destroy_monster(spawnIds=[1003])
+        self.destroy_monster(spawnIds=[1004])
+        self.destroy_monster(spawnIds=[1005])
+        self.destroy_monster(spawnIds=[1006])
+        self.destroy_monster(spawnIds=[1007])
+        self.destroy_monster(spawnIds=[1008])
+        self.destroy_monster(spawnIds=[1009])
+        self.destroy_monster(spawnIds=[1010])
+        self.destroy_monster(spawnIds=[1011])
+        self.destroy_monster(spawnIds=[1012])
+        self.destroy_monster(spawnIds=[1013])
+        self.destroy_monster(spawnIds=[1014])
+        self.destroy_monster(spawnIds=[1015])
+        self.destroy_monster(spawnIds=[1016])
+        self.destroy_monster(spawnIds=[1017])
+        self.destroy_monster(spawnIds=[1018])
+        self.destroy_monster(spawnIds=[1019])
+        self.destroy_monster(spawnIds=[1020])
+        self.destroy_monster(spawnIds=[1021])
+        self.destroy_monster(spawnIds=[1022])
+        self.destroy_monster(spawnIds=[1023])
+        self.destroy_monster(spawnIds=[1024])
+        self.destroy_monster(spawnIds=[1025])
+        self.destroy_monster(spawnIds=[1026])
+        self.destroy_monster(spawnIds=[1027])
+        self.destroy_monster(spawnIds=[1028])
+        self.destroy_monster(spawnIds=[1029])
+        self.destroy_monster(spawnIds=[1030])
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[1099]):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[1099]):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

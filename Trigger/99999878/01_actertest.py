@@ -1,50 +1,50 @@
 """ trigger/99999878/01_actertest.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1000, visible=True, initialSequence='Closed')
-        set_breakable(triggerIds=[2000], enabled=False)
-        set_visible_breakable_object(triggerIds=[2000], arg2=True)
+        self.set_actor(triggerId=1000, visible=True, initialSequence='Closed')
+        self.set_breakable(triggerIds=[2000], enable=False)
+        self.set_visible_breakable_object(triggerIds=[2000], visible=True)
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return OpenDelay()
-
-
-class OpenDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Open()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return OpenDelay(self.ctx)
 
 
-class Open(state.State):
+class OpenDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Open(self.ctx)
+
+
+class Open(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1000, visible=True, initialSequence='Opened')
-        set_breakable(triggerIds=[2000], enabled=True)
-        set_visible_breakable_object(triggerIds=[2000], arg2=True)
+        self.set_actor(triggerId=1000, visible=True, initialSequence='Opened')
+        self.set_breakable(triggerIds=[2000], enable=True)
+        self.set_visible_breakable_object(triggerIds=[2000], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return OffDelay()
-
-
-class OffDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Off()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return OffDelay(self.ctx)
 
 
-class Off(state.State):
+class OffDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Off(self.ctx)
+
+
+class Off(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1000, visible=False, initialSequence='Opened')
-        set_breakable(triggerIds=[2000], enabled=False)
-        set_visible_breakable_object(triggerIds=[2000], arg2=False)
+        self.set_actor(triggerId=1000, visible=False, initialSequence='Opened')
+        self.set_breakable(triggerIds=[2000], enable=False)
+        self.set_visible_breakable_object(triggerIds=[2000], visible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

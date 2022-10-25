@@ -1,50 +1,50 @@
 """ trigger/02000486_bf/100_dualkill.xml """
-from common import *
-import state
+import common
 
 
-class 룸체크(state.State):
-    def on_tick(self) -> state.State:
-        if is_dungeon_room():
-            return Wait()
+class 룸체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.is_dungeon_room():
+            return Wait(self.ctx)
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='CheckDualKill', value=0)
+        self.set_user_value(key='CheckDualKill', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='CheckDualKill', value=1):
-            return CheckDualKill()
-
-
-class CheckDualKill(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[900]):
-            return LionBlueDead()
-        if monster_dead(boxIds=[901]):
-            return LionRedDead()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='CheckDualKill', value=1):
+            return CheckDualKill(self.ctx)
 
 
-class LionBlueDead(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[901]):
-            set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
-            return Quit()
-        if wait_tick(waitTick=2000):
-            return Quit()
+class CheckDualKill(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[900]):
+            return LionBlueDead(self.ctx)
+        if self.monster_dead(boxIds=[901]):
+            return LionRedDead(self.ctx)
 
 
-class LionRedDead(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[900]):
-            set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
-            return Quit()
-        if wait_tick(waitTick=2000):
-            return Quit()
+class LionBlueDead(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[901]):
+            self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
+            return Quit(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class LionRedDead(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[900]):
+            self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
+            return Quit(self.ctx)
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
+
+
+class Quit(common.Trigger):
     pass
 
 
+initial_state = 룸체크

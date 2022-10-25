@@ -1,43 +1,43 @@
 """ trigger/80000009_bonus/trigger_04.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000211], state=1)
+        self.set_interact_object(triggerIds=[10000211], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000211], arg2=0):
-            return 소환()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000211], stateValue=0):
+            return 소환(self.ctx)
 
 
-class 소환(state.State):
+class 소환(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[104], arg2=False)
-        move_npc(spawnId=104, patrolName='MS2PatrolData_301')
+        self.create_monster(spawnIds=[104], animationEffect=False)
+        self.move_npc(spawnId=104, patrolName='MS2PatrolData_301')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=401, spawnIds=[104]):
-            return 몬스터소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=401, spawnIds=[104]):
+            return 몬스터소멸(self.ctx)
 
 
-class 몬스터소멸(state.State):
+class 몬스터소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[104])
-        set_timer(timerId='4', seconds=1)
+        self.destroy_monster(spawnIds=[104])
+        self.set_timer(timerId='4', seconds=1)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return 아이템()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return 아이템(self.ctx)
 
 
-class 아이템(state.State):
+class 아이템(common.Trigger):
     def on_enter(self):
-        create_item(spawnIds=[502])
+        self.create_item(spawnIds=[502])
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 대기(self.ctx)
 
 
+initial_state = 대기

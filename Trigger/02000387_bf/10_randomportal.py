@@ -1,309 +1,309 @@
 """ trigger/02000387_bf/10_randomportal.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[2011,2012,2013,2014], visible=True, arg3=0, arg4=0, arg5=0) # DoorMesh_AlwaysOn
-        set_effect(triggerIds=[5001], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5002], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5003], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5004], visible=False) # FrontDoorStep
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=12, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=13, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=14, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=22, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=23, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=24, visible=False, enabled=False, minimapVisible=False)
-        set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_user_value(key='RandomPortalOn', value=0)
-        set_user_value(key='CounterDoorPick', value=0)
-        set_user_value(key='DungeonClear', value=0)
+        self.set_mesh(triggerIds=[2011,2012,2013,2014], visible=True, arg3=0, delay=0, scale=0) # DoorMesh_AlwaysOn
+        self.set_effect(triggerIds=[5001], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5002], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5003], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5004], visible=False) # FrontDoorStep
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=12, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=14, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=22, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=23, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=24, visible=False, enable=False, minimapVisible=False)
+        self.set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_user_value(key='RandomPortalOn', value=0)
+        self.set_user_value(key='CounterDoorPick', value=0)
+        self.set_user_value(key='DungeonClear', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='RandomPortalOn', value=1):
-            return Guide01()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='RandomPortalOn', value=1):
+            return Guide01(self.ctx)
 
 
-class Guide01(state.State):
+class Guide01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__0$', arg3='3000', arg4='0')
-        set_effect(triggerIds=[5001], visible=True) # FrontDoorStep
-        set_effect(triggerIds=[5002], visible=True) # FrontDoorStep
-        set_effect(triggerIds=[5003], visible=True) # FrontDoorStep
-        set_effect(triggerIds=[5004], visible=True) # FrontDoorStep
+        self.set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__0$', arg3='3000', arg4='0')
+        self.set_effect(triggerIds=[5001], visible=True) # FrontDoorStep
+        self.set_effect(triggerIds=[5002], visible=True) # FrontDoorStep
+        self.set_effect(triggerIds=[5003], visible=True) # FrontDoorStep
+        self.set_effect(triggerIds=[5004], visible=True) # FrontDoorStep
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CheckMember01()
-
-
-class CheckMember01(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9001, boxId=1, operator='Equal'):
-            return CheckMember02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CheckMember01(self.ctx)
 
 
-class CheckMember02(state.State):
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9001, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if count_users(boxId=9002, boxId=1, operator='Equal'):
-            return CheckMember03()
+class CheckMember01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9001, boxId=1, operator='Equal'):
+            return CheckMember02(self.ctx)
 
 
-class CheckMember03(state.State):
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9001, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if not count_users(boxId=9002, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if count_users(boxId=9003, boxId=1, operator='Equal'):
-            return CheckMember04()
+class CheckMember02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if self.count_users(boxId=9002, boxId=1, operator='Equal'):
+            return CheckMember03(self.ctx)
 
 
-class CheckMember04(state.State):
-    def on_tick(self) -> state.State:
-        if not count_users(boxId=9001, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if not count_users(boxId=9002, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if not count_users(boxId=9003, boxId=1, operator='Equal'):
-            return CheckMember01()
-        if count_users(boxId=9004, boxId=1, operator='Equal'):
-            return DoorActivate01()
+class CheckMember03(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if not self.count_users(boxId=9002, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if self.count_users(boxId=9003, boxId=1, operator='Equal'):
+            return CheckMember04(self.ctx)
 
 
-class DoorActivate01(state.State):
+class CheckMember04(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if not self.count_users(boxId=9002, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if not self.count_users(boxId=9003, boxId=1, operator='Equal'):
+            return CheckMember01(self.ctx)
+        if self.count_users(boxId=9004, boxId=1, operator='Equal'):
+            return DoorActivate01(self.ctx)
+
+
+class DoorActivate01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return DoorActivate02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return DoorActivate02(self.ctx)
 
 
-class DoorActivate02(state.State):
+class DoorActivate02(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
-        set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
-        set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
-        set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
+        self.set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
+        self.set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
+        self.set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
+        self.set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PickPortalPattern()
-
-
-#  4개의 문 중에서 하나만 카운터로 
-class PickPortalPattern(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=25):
-            return FirstDoorPick()
-        if random_condition(rate=25):
-            return SecondDoorPick()
-        if random_condition(rate=25):
-            return ThirdDoorPick()
-        if random_condition(rate=25):
-            return rdDoorPick4()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PickPortalPattern(self.ctx)
 
 
-class FirstDoorPick(state.State):
+# 4개의 문 중에서 하나만 카운터로
+class PickPortalPattern(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=25):
+            return FirstDoorPick(self.ctx)
+        if self.random_condition(rate=25):
+            return SecondDoorPick(self.ctx)
+        if self.random_condition(rate=25):
+            return ThirdDoorPick(self.ctx)
+        if self.random_condition(rate=25):
+            return rdDoorPick4(self.ctx)
+
+
+class FirstDoorPick(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=11, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=22, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=23, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=24, visible=False, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=11, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=23, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=24, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GameStart00()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GameStart00(self.ctx)
 
 
-class SecondDoorPick(state.State):
+class SecondDoorPick(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=12, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=23, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=24, visible=False, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=12, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=23, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=24, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GameStart00()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GameStart00(self.ctx)
 
 
-class ThirdDoorPick(state.State):
+class ThirdDoorPick(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=13, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=22, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=24, visible=False, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=13, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=24, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GameStart00()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GameStart00(self.ctx)
 
 
-class rdDoorPick4(state.State):
+class rdDoorPick4(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=14, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=22, visible=False, enabled=True, minimapVisible=False)
-        set_portal(portalId=23, visible=False, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=14, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portalId=23, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GameStart00()
-
-
-class GameStart00(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9800, boxId=4, operator='Equal'):
-            return GameStart01()
-        if count_users(boxId=9800, boxId=4, operator='Less'):
-            return GameStartDelay01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GameStart00(self.ctx)
 
 
-class GameStartDelay01(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return GameStart01()
+class GameStart00(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9800, boxId=4, operator='Equal'):
+            return GameStart01(self.ctx)
+        if self.count_users(boxId=9800, boxId=4, operator='Less'):
+            return GameStartDelay01(self.ctx)
 
 
-class GameStart01(state.State):
+class GameStartDelay01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return GameStart01(self.ctx)
+
+
+class GameStart01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=12, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=13, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=14, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=22, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=23, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=24, visible=False, enabled=False, minimapVisible=False)
-        set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
-        set_effect(triggerIds=[5001], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5002], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5003], visible=False) # FrontDoorStep
-        set_effect(triggerIds=[5004], visible=False) # FrontDoorStep
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=12, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=14, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=22, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=23, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=24, visible=False, enable=False, minimapVisible=False)
+        self.set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_actor(triggerId=4104, visible=True, initialSequence='ry_functobj_door_B01_off') # OfficeDoor
+        self.set_effect(triggerIds=[5001], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5002], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5003], visible=False) # FrontDoorStep
+        self.set_effect(triggerIds=[5004], visible=False) # FrontDoorStep
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9005, boxId=1, operator='Equal'):
-            return GameStart02()
-        if count_users(boxId=9900, boxId=4, operator='Less'):
-            return EndGame01()
-
-
-class GameStart02(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9006, boxId=3, operator='Equal'):
-            return secondsWait10()
-        if count_users(boxId=9900, boxId=4, operator='Less'):
-            return EndGame01()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9005, boxId=1, operator='Equal'):
+            return GameStart02(self.ctx)
+        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+            return EndGame01(self.ctx)
 
 
-class secondsWait10(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='DungeonClear', value=1):
-            return Quit()
-        if wait_tick(waitTick=10000):
-            return CheckMemeberAgain()
+class GameStart02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9006, boxId=3, operator='Equal'):
+            return secondsWait10(self.ctx)
+        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+            return EndGame01(self.ctx)
 
 
-class CheckMemeberAgain(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9900, boxId=4, operator='Equal'):
-            return secondsWait10()
-        if count_users(boxId=9900, boxId=4, operator='Less'):
-            return EndGame01()
-        if user_value(key='DungeonClear', value=1):
-            return Quit()
+class secondsWait10(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='DungeonClear', value=1):
+            return Quit(self.ctx)
+        if self.wait_tick(waitTick=10000):
+            return CheckMemeberAgain(self.ctx)
 
 
-class EndGame01(state.State):
+class CheckMemeberAgain(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9900, boxId=4, operator='Equal'):
+            return secondsWait10(self.ctx)
+        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+            return EndGame01(self.ctx)
+        if self.user_value(key='DungeonClear', value=1):
+            return Quit(self.ctx)
+
+
+class EndGame01(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__1$', arg3='3000', arg4='0')
+        self.set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__1$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return PCMoveOut01()
-        if user_value(key='DungeonClear', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return PCMoveOut01(self.ctx)
+        if self.user_value(key='DungeonClear', value=1):
+            return Quit(self.ctx)
 
 
-class PCMoveOut01(state.State):
+class PCMoveOut01(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2000387, portalId=1, boxId=9900) # 사무실로 강제 이동
+        self.move_user(mapId=2000387, portalId=1, boxId=9900) # 사무실로 강제 이동
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FieredNotice01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FieredNotice01(self.ctx)
 
 
-class FieredNotice01(state.State):
+class FieredNotice01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__2$', arg4=4)
-        set_skip(state=FieredNotice01Skip)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__2$', arg4=4)
+        self.set_skip(state=FieredNotice01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return FieredNotice01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return FieredNotice01Skip(self.ctx)
 
 
-class FieredNotice01Skip(state.State):
+class FieredNotice01Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return FieredNotice02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return FieredNotice02(self.ctx)
 
 
-class FieredNotice02(state.State):
+class FieredNotice02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__3$', arg4=4)
-        set_skip(state=FieredNotice02Skip)
+        self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__3$', arg4=4)
+        self.set_skip(state=FieredNotice02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return FieredNotice02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return FieredNotice02Skip(self.ctx)
 
 
-class FieredNotice02Skip(state.State):
+class FieredNotice02Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCForceToLeave()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCForceToLeave(self.ctx)
 
 
-class PCForceToLeave(state.State):
+class PCForceToLeave(common.Trigger):
     def on_enter(self):
-        move_user(mapId=0, portalId=0)
+        self.move_user(mapId=0, portalId=0)
 
     def on_exit(self):
-        destroy_monster(spawnIds=[100])
+        self.destroy_monster(spawnIds=[100])
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     pass
 
 
+initial_state = Wait

@@ -1,49 +1,49 @@
 """ trigger/02000483_bf/3400_findkeyfromcandle.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3400], visible=False, arg3=0, arg4=0, arg5=0) # FindKeyFromCandle
-        set_mesh(triggerIds=[3401], visible=True, arg3=0, arg4=0, arg5=0) # Candle
-        set_interact_object(triggerIds=[10001143], state=0) # Candle
-        set_user_value(key='FindKey', value=0)
+        self.set_mesh(triggerIds=[3400], visible=False, arg3=0, delay=0, scale=0) # FindKeyFromCandle
+        self.set_mesh(triggerIds=[3401], visible=True, arg3=0, delay=0, scale=0) # Candle
+        self.set_interact_object(triggerIds=[10001143], state=0) # Candle
+        self.set_user_value(key='FindKey', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='FindKey', value=1):
-            return True()
-        if user_value(key='FindKey', value=2):
-            return False()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='FindKey', value=1):
+            return True(self.ctx)
+        if self.user_value(key='FindKey', value=2):
+            return False(self.ctx)
 
 
-class True(state.State):
+class True(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3401], visible=False, arg3=100, arg4=0, arg5=2) # Candle
-        set_interact_object(triggerIds=[10001143], state=1) # Candle
+        self.set_mesh(triggerIds=[3401], visible=False, arg3=100, delay=0, scale=2) # Candle
+        self.set_interact_object(triggerIds=[10001143], state=1) # Candle
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001143], arg2=0):
-            return KeyFound()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001143], stateValue=0):
+            return KeyFound(self.ctx)
 
 
-class KeyFound(state.State):
+class KeyFound(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3400], visible=True, arg3=0, arg4=0, arg5=2) # FindKeyFromCandle
-        set_user_value(triggerId=1, key='PortalOn', value=1)
+        self.set_mesh(triggerIds=[3400], visible=True, arg3=0, delay=0, scale=2) # FindKeyFromCandle
+        self.set_user_value(triggerId=1, key='PortalOn', value=1)
 
 
-class False(state.State):
+class False(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001143], state=1) # Candle
+        self.set_interact_object(triggerIds=[10001143], state=1) # Candle
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001143], arg2=0):
-            return NothingHappened()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001143], stateValue=0):
+            return NothingHappened(self.ctx)
 
 
-class NothingHappened(state.State):
+class NothingHappened(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3401], visible=True, arg3=0, arg4=0, arg5=0) # Fabricbox
+        self.set_mesh(triggerIds=[3401], visible=True, arg3=0, delay=0, scale=0) # Fabricbox
 
 
+initial_state = Wait

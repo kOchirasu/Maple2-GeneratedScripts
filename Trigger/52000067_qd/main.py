@@ -1,54 +1,53 @@
 """ trigger/52000067_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        set_time_scale(enable=False, startScale=1, endScale=1, duration=0, interpolator=0)
-        reset_camera(interpolationTime=0)
-        set_interact_object(triggerIds=[10001073], state=2)
-        set_effect(triggerIds=[7005], visible=False) # mask_black
-        set_effect(triggerIds=[7001], visible=False)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.set_time_scale(enable=False, startScale=1, endScale=1, duration=0, interpolator=0)
+        self.reset_camera(interpolationTime=0)
+        self.set_interact_object(triggerIds=[10001073], state=2)
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.set_effect(triggerIds=[7001], visible=False)
         # <action name="카메라경로를선택한다" arg1="8001" arg2="0"/>
-        set_effect(triggerIds=[7010], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7011], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7012], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7013], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7014], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7015], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7016], visible=False) # 다크 포탈
-        set_effect(triggerIds=[7110], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7111], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7112], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7113], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7114], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7115], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7116], visible=False) # 다크 포탈 폭발
-        set_effect(triggerIds=[7301], visible=False) # 다크 포탈 생성음
-        set_effect(triggerIds=[7302], visible=False) # 다크 포탈 생성음
-        set_effect(triggerIds=[7303], visible=False) # 다크 포탈 생성음
-        set_effect(triggerIds=[7304], visible=False) # 다크 포탈 생성음
-        set_effect(triggerIds=[7305], visible=False) # 로봇 랜딩음
-        set_effect(triggerIds=[7306], visible=False) # 데블린 워리어 등장음
-        set_effect(triggerIds=[7307], visible=False) # 수리 음
-        set_effect(triggerIds=[7308], visible=False) # 로봇 스파크 음
-        set_effect(triggerIds=[7309], visible=False) # 로봇 움직임 음
-        set_effect(triggerIds=[7310], visible=False) # 로봇 탑승 음
-        set_effect(triggerIds=[7117], visible=False) # 감전
-        set_actor(triggerId=4999, visible=False, initialSequence='Regen_A')
-        set_actor(triggerId=4001, visible=False, initialSequence='Attack_02_H')
-        set_actor(triggerId=4002, visible=False, initialSequence='Dead_Idle_A')
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        move_user(mapId=52000067, portalId=1)
+        self.set_effect(triggerIds=[7010], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7011], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7012], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7013], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7014], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7015], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7016], visible=False) # 다크 포탈
+        self.set_effect(triggerIds=[7110], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7111], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7112], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7113], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7114], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7115], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7116], visible=False) # 다크 포탈 폭발
+        self.set_effect(triggerIds=[7301], visible=False) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7302], visible=False) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7303], visible=False) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7304], visible=False) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7305], visible=False) # 로봇 랜딩음
+        self.set_effect(triggerIds=[7306], visible=False) # 데블린 워리어 등장음
+        self.set_effect(triggerIds=[7307], visible=False) # 수리 음
+        self.set_effect(triggerIds=[7308], visible=False) # 로봇 스파크 음
+        self.set_effect(triggerIds=[7309], visible=False) # 로봇 움직임 음
+        self.set_effect(triggerIds=[7310], visible=False) # 로봇 탑승 음
+        self.set_effect(triggerIds=[7117], visible=False) # 감전
+        self.set_actor(triggerId=4999, visible=False, initialSequence='Regen_A')
+        self.set_actor(triggerId=4001, visible=False, initialSequence='Attack_02_H')
+        self.set_actor(triggerId=4002, visible=False, initialSequence='Dead_Idle_A')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.move_user(mapId=52000067, portalId=1)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=702, boxId=1):
-            return ready()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=702, boxId=1):
+            return ready(self.ctx)
         """
         <condition name="WaitTick" waitTick="3000" > 
                     <transition state="fadein"/>
@@ -56,685 +55,686 @@ class idle(state.State):
         """
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_effect(triggerIds=[7005], visible=True) # mask_black
-        set_cinematic_ui(type=9, script='$52000067_QD__MAIN__0$', arg3=False)
-        set_scene_skip(state=Skip_1, arg2='nextState')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__0$', arg3=False)
+        self.set_scene_skip(state=Skip_1, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return start()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return start(self.ctx)
 
 
-class start(state.State):
+class start(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7005], visible=False) # mask_black
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        remove_buff(boxId=702, skillId=99910070)
-        create_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], arg2=True) # 다크윈드
-        create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], arg2=True) # 침략자
-        create_monster(spawnIds=[551,552,553,554,555], arg2=True)
-        create_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], arg2=True)
-        create_monster(spawnIds=[121,121,123], arg2=False) # 블랙윈드 대원
-        create_monster(spawnIds=[752,753,754], arg2=False) # 보디가드
-        move_user_path(patrolName='MS2PatrolData_1002')
-        select_camera_path(pathIds=[8001,8002], returnView=False)
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.remove_buff(boxId=702, skillId=99910070)
+        self.create_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], animationEffect=True) # 다크윈드
+        self.create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], animationEffect=True) # 침략자
+        self.create_monster(spawnIds=[551,552,553,554,555], animationEffect=True)
+        self.create_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], animationEffect=True)
+        self.create_monster(spawnIds=[121,121,123], animationEffect=False) # 블랙윈드 대원
+        self.create_monster(spawnIds=[752,753,754], animationEffect=False) # 보디가드
+        self.move_user_path(patrolName='MS2PatrolData_1002')
+        self.select_camera_path(pathIds=[8001,8002], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4500):
-            return portal_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4500):
+            return portal_01(self.ctx)
 
 
-class portal_01(state.State):
+class portal_01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7301], visible=True) # 다크 포탈 생성음
-        set_effect(triggerIds=[7010], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7301], visible=True) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7010], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return portal_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return portal_02(self.ctx)
 
 
-class portal_02(state.State):
+class portal_02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7302], visible=True) # 다크 포탈 생성음
-        set_effect(triggerIds=[7016], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7302], visible=True) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7016], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return portal_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return portal_03(self.ctx)
 
 
-class portal_03(state.State):
+class portal_03(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7303], visible=True) # 다크 포탈 생성음
-        set_effect(triggerIds=[7013], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7303], visible=True) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7013], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return portal_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return portal_04(self.ctx)
 
 
-class portal_04(state.State):
+class portal_04(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7304], visible=True) # 다크 포탈 생성음
-        set_effect(triggerIds=[7012], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7014], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7304], visible=True) # 다크 포탈 생성음
+        self.set_effect(triggerIds=[7012], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7014], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return portal_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return portal_05(self.ctx)
 
 
-class portal_05(state.State):
+class portal_05(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7015], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7015], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return portal_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return portal_06(self.ctx)
 
 
-class portal_06(state.State):
+class portal_06(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7011], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7011], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_01(self.ctx)
 
 
-class scene_01(state.State):
+class scene_01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201], arg2=True)
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2001')
+        self.create_monster(spawnIds=[201], animationEffect=True)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2001')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return scene_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return scene_02(self.ctx)
 
 
-class scene_02(state.State):
+class scene_02(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8004], returnView=False)
+        self.select_camera_path(pathIds=[8004], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_03a()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_03a(self.ctx)
 
 
-class scene_03a(state.State):
+class scene_03a(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__1$', arg4=3)
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__1$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_03b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_03b(self.ctx)
 
 
-class scene_03b(state.State):
+class scene_03b(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1003')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__2$', arg4=3)
+        self.move_user_path(patrolName='MS2PatrolData_1003')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__2$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return scene_03c()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return scene_03c(self.ctx)
 
 
-class scene_03c(state.State):
+class scene_03c(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__3$', arg4=3)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__3$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_03c_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_03c_02(self.ctx)
 
 
-class scene_03c_02(state.State):
+class scene_03c_02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7305], visible=True) # 로봇 랜딩음
+        self.set_effect(triggerIds=[7305], visible=True) # 로봇 랜딩음
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return scene_03d()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return scene_03d(self.ctx)
 
 
-class scene_03d(state.State):
+class scene_03d(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=0, script='$52000067_QD__MAIN__22$', arg4=2, arg5=0)
-        move_user_path(patrolName='MS2PatrolData_1004')
+        self.set_conversation(type=1, spawnId=0, script='$52000067_QD__MAIN__22$', arg4=2, arg5=0)
+        self.move_user_path(patrolName='MS2PatrolData_1004')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return scene_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return scene_03(self.ctx)
 
 
-class scene_03(state.State):
+class scene_03(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8005], returnView=False)
+        self.select_camera_path(pathIds=[8005], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_05(self.ctx)
 
 
-class scene_05(state.State):
+class scene_05(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=4001, visible=True, initialSequence='Regen_A')
-        set_effect(triggerIds=[7001], visible=True)
-        set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2, interpolator=2) # 2초간 느려지기 시작
+        self.set_actor(triggerId=4001, visible=True, initialSequence='Regen_A')
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2, interpolator=2) # 2초간 느려지기 시작
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=700):
-            return scene_05_a()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=700):
+            return scene_05_a(self.ctx)
 
 
-class scene_05_a(state.State):
+class scene_05_a(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_sequence(sequenceNames=['Jump_Damg_A'])
+        self.set_pc_emotion_sequence(sequenceNames=['Jump_Damg_A'])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1400):
-            return scene_05_b()
-
-
-class scene_05_b(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_05_d()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1400):
+            return scene_05_b(self.ctx)
 
 
-class scene_05_d(state.State):
+class scene_05_b(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_05_d(self.ctx)
+
+
+class scene_05_d(common.Trigger):
     def on_enter(self):
-        set_time_scale(enable=True, startScale=0.1, endScale=1, duration=1, interpolator=2) # 1초 뒤 복원
-        select_camera_path(pathIds=[8099,8005], returnView=False)
+        self.set_time_scale(enable=True, startScale=0.1, endScale=1, duration=1, interpolator=2) # 1초 뒤 복원
+        self.select_camera_path(pathIds=[8099,8005], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_06(self.ctx)
 
 
-class scene_06(state.State):
+class scene_06(common.Trigger):
     def on_enter(self):
-        set_time_scale(enable=False, startScale=1, endScale=1, duration=1, interpolator=0) # 종료
-        select_camera_path(pathIds=[8005,8006], returnView=False)
-        set_actor(triggerId=4001, visible=True, initialSequence='Idle_A')
+        self.set_time_scale(enable=False, startScale=1, endScale=1, duration=1, interpolator=0) # 종료
+        self.select_camera_path(pathIds=[8005,8006], returnView=False)
+        self.set_actor(triggerId=4001, visible=True, initialSequence='Idle_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_07(self.ctx)
 
 
-class scene_07(state.State):
+class scene_07(common.Trigger):
     def on_enter(self):
-        set_time_scale(enable=False, startScale=0, endScale=0, duration=0, interpolator=0) # 1초 뒤 복원
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__4$', arg4=3)
+        self.set_time_scale(enable=False, startScale=0, endScale=0, duration=0, interpolator=0) # 1초 뒤 복원
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__4$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return scene_08()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return scene_08(self.ctx)
 
 
-class scene_08(state.State):
+class scene_08(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8006,8007], returnView=False)
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__5$', arg4=3)
+        self.select_camera_path(pathIds=[8006,8007], returnView=False)
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__5$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_09()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_09(self.ctx)
 
 
-class scene_09(state.State):
+class scene_09(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__6$', arg4=3)
-        set_scene_skip()
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__6$', arg4=3)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return fadeout()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return fadeout(self.ctx)
 
 
-class Skip_1(state.State):
+class Skip_1(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=4)
-        remove_buff(boxId=702, skillId=99910070)
-        destroy_monster(spawnIds=[201])
-        destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123])
-        destroy_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514])
-        destroy_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,531,532,533,534,535,536,537,538,539])
-        destroy_monster(spawnIds=[551,552,553,554,555,556,557,558,559])
-        destroy_monster(spawnIds=[751,752,753,754,756,757,758,759,761,762])
+        self.set_cinematic_ui(type=4)
+        self.remove_buff(boxId=702, skillId=99910070)
+        self.destroy_monster(spawnIds=[201])
+        self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123])
+        self.destroy_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514])
+        self.destroy_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,531,532,533,534,535,536,537,538,539])
+        self.destroy_monster(spawnIds=[551,552,553,554,555,556,557,558,559])
+        self.destroy_monster(spawnIds=[751,752,753,754,756,757,758,759,761,762])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Skip_2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Skip_2(self.ctx)
 
 
-class Skip_2(state.State):
+class Skip_2(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201])
-        create_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], arg2=True) # 다크윈드
-        create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], arg2=True) # 침략자
-        create_monster(spawnIds=[551,552,553,554,555], arg2=True)
-        create_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], arg2=True)
-        create_monster(spawnIds=[121,121,123], arg2=False) # 블랙윈드 대원
-        create_monster(spawnIds=[752,753,754], arg2=False) # 보디가드
-        move_user_path(patrolName='MS2PatrolData_1002')
-        select_camera_path(pathIds=[8001,8002], returnView=False)
-        set_actor(triggerId=4001, visible=True, initialSequence='Regen_A')
-        set_effect(triggerIds=[7001], visible=True)
-        set_effect(triggerIds=[7010], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7011], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7012], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7013], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7014], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7015], visible=True) # 다크 포탈
-        set_effect(triggerIds=[7016], visible=True) # 다크 포탈
+        self.create_monster(spawnIds=[201])
+        self.create_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], animationEffect=True) # 다크윈드
+        self.create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], animationEffect=True) # 침략자
+        self.create_monster(spawnIds=[551,552,553,554,555], animationEffect=True)
+        self.create_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536], animationEffect=True)
+        self.create_monster(spawnIds=[121,121,123], animationEffect=False) # 블랙윈드 대원
+        self.create_monster(spawnIds=[752,753,754], animationEffect=False) # 보디가드
+        self.move_user_path(patrolName='MS2PatrolData_1002')
+        self.select_camera_path(pathIds=[8001,8002], returnView=False)
+        self.set_actor(triggerId=4001, visible=True, initialSequence='Regen_A')
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.set_effect(triggerIds=[7010], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7011], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7012], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7013], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7014], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7015], visible=True) # 다크 포탈
+        self.set_effect(triggerIds=[7016], visible=True) # 다크 포탈
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return fadeout()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return fadeout(self.ctx)
 
 
-class fadeout(state.State):
+class fadeout(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
-        set_effect(triggerIds=[7005], visible=True) # mask_black
-        set_scene_skip()
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return fadein()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return fadein(self.ctx)
 
 
-class fadein(state.State):
+class fadein(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=25200671, textId=25200671)
-        set_mesh(triggerIds=[6004,6005], visible=True, arg3=0, arg4=0, arg5=10) # 투명 벽
-        set_conversation(type=1, spawnId=201, script='$52000067_QD__MAIN__7$', arg4=3, arg5=2)
-        set_interact_object(triggerIds=[10001073], state=1)
-        set_actor(triggerId=4001, visible=False, initialSequence='Regen_A')
-        reset_camera(interpolationTime=0)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=25200671, textId=25200671)
+        self.set_mesh(triggerIds=[6004,6005], visible=True, arg3=0, delay=0, scale=10) # 투명 벽
+        self.set_conversation(type=1, spawnId=201, script='$52000067_QD__MAIN__7$', arg4=3, arg5=2)
+        self.set_interact_object(triggerIds=[10001073], state=1)
+        self.set_actor(triggerId=4001, visible=False, initialSequence='Regen_A')
+        self.reset_camera(interpolationTime=0)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001073], arg2=0):
-            return play()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001073], stateValue=0):
+            return play(self.ctx)
 
 
-class play(state.State):
+class play(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7310], visible=True) # 로봇 탑승 음
-        hide_guide_summary(entityId=25200671)
-        set_conversation(type=1, spawnId=201, script='$52000067_QD__MAIN__8$', arg4=3, arg5=0)
-        set_mesh(triggerIds=[6001,6002,6003,6004,6005], visible=False, arg3=0, arg4=0, arg5=10) # 투명 벽
-        set_interact_object(triggerIds=[10001073], state=2)
+        self.set_effect(triggerIds=[7310], visible=True) # 로봇 탑승 음
+        self.hide_guide_summary(entityId=25200671)
+        self.set_conversation(type=1, spawnId=201, script='$52000067_QD__MAIN__8$', arg4=3, arg5=0)
+        self.set_mesh(triggerIds=[6001,6002,6003,6004,6005], visible=False, arg3=0, delay=0, scale=10) # 투명 벽
+        self.set_interact_object(triggerIds=[10001073], state=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return GuideMission()
-        if monster_dead(boxIds=[801,802,803,804,805,806,807]):
-            return boss_event()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return GuideMission(self.ctx)
+        if self.monster_dead(boxIds=[801,802,803,804,805,806,807]):
+            return boss_event(self.ctx)
 
 
-class GuideMission(state.State):
+class GuideMission(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$52000067_QD__MAIN__9$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$52000067_QD__MAIN__9$', arg3='3000')
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[801,802,803,804,805,806,807]):
-            return boss_event()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[801,802,803,804,805,806,807]):
+            return boss_event(self.ctx)
 
 
-class boss_event(state.State):
+class boss_event(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return boss_event_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return boss_event_02(self.ctx)
 
 
-class boss_event_02(state.State):
+class boss_event_02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000067, portalId=2)
-        set_effect(triggerIds=[7005], visible=False) # mask_black
-        select_camera_path(pathIds=[8008,8009], returnView=False)
-        destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123])
-        destroy_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514])
-        destroy_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,531,532,533,534,535,536,537,538,539])
-        destroy_monster(spawnIds=[551,552,553,554,555,556,557,558,559])
-        destroy_monster(spawnIds=[801,802,803,804,805,806,807])
+        self.move_user(mapId=52000067, portalId=2)
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.select_camera_path(pathIds=[8008,8009], returnView=False)
+        self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,121,122,123])
+        self.destroy_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514])
+        self.destroy_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,531,532,533,534,535,536,537,538,539])
+        self.destroy_monster(spawnIds=[551,552,553,554,555,556,557,558,559])
+        self.destroy_monster(spawnIds=[801,802,803,804,805,806,807])
         # <action name="몬스터소멸시킨다" arg1="851,852,853,854,855,856,857,858,859,861,862,863,864,865,866,867" />
-        destroy_monster(spawnIds=[751,752,753,754,756,757,758,759,761,762])
+        self.destroy_monster(spawnIds=[751,752,753,754,756,757,758,759,761,762])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return boss_event_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return boss_event_03(self.ctx)
 
 
-class boss_event_03(state.State):
+class boss_event_03(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7306], visible=True) # 데블린 워리어 등장음
-        create_monster(spawnIds=[999], arg2=True, arg3=5000)
-        set_scene_skip(state=Skip_3, arg2='nextState')
+        self.set_effect(triggerIds=[7306], visible=True) # 데블린 워리어 등장음
+        self.create_monster(spawnIds=[999], animationEffect=True, animationDelay=5000)
+        self.set_scene_skip(state=Skip_3, action='nextState')
         # <action name="액터를설정한다" arg1="4999" arg2="0" arg3="Regen_A" />
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return boss_event_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return boss_event_04(self.ctx)
 
 
-class boss_event_04(state.State):
+class boss_event_04(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8010,8011], returnView=False)
-        set_npc_emotion_sequence(spawnId=999, sequenceName='AttackReady_A')
-        set_scene_skip()
+        self.select_camera_path(pathIds=[8010,8011], returnView=False)
+        self.set_npc_emotion_sequence(spawnId=999, sequenceName='AttackReady_A')
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return boss_event_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return boss_event_05(self.ctx)
 
 
-class Skip_3(state.State):
+class Skip_3(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return boss_event_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return boss_event_05(self.ctx)
 
 
-class boss_event_05(state.State):
+class boss_event_05(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8012], returnView=False)
-        set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.select_camera_path(pathIds=[8012], returnView=False)
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return boss_event_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return boss_event_06(self.ctx)
 
 
-class boss_event_06(state.State):
+class boss_event_06(common.Trigger):
     def on_enter(self):
-        reset_camera(interpolationTime=0)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.reset_camera(interpolationTime=0)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return boss_event_07()
-
-
-class boss_event_07(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[999]):
-            return ending_ready()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return boss_event_07(self.ctx)
 
 
-class ending_ready(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return ending()
+class boss_event_07(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[999]):
+            return ending_ready(self.ctx)
 
 
-class ending(state.State):
+class ending_ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return ending(self.ctx)
+
+
+class ending(common.Trigger):
     def on_enter(self):
-        set_scene_skip(state=Skip_4, arg2='exit')
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_scene_skip(state=Skip_4, action='exit')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ending_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ending_02(self.ctx)
 
 
-class ending_02(state.State):
+class ending_02(common.Trigger):
     def on_enter(self):
-        set_visible_breakable_object(triggerIds=[6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310], arg2=False)
-        set_visible_breakable_object(triggerIds=[6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321], arg2=False)
-        set_visible_breakable_object(triggerIds=[6322,6323,6324,6325,6326,6327,6328,6329,6330,6331], arg2=False)
-        remove_buff(boxId=702, skillId=99910070)
-        set_cinematic_ui(type=9, script='$52000067_QD__MAIN__10$', arg3=False)
+        self.set_visible_breakable_object(triggerIds=[6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310], visible=False)
+        self.set_visible_breakable_object(triggerIds=[6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321], visible=False)
+        self.set_visible_breakable_object(triggerIds=[6322,6323,6324,6325,6326,6327,6328,6329,6330,6331], visible=False)
+        self.remove_buff(boxId=702, skillId=99910070)
+        self.set_cinematic_ui(type=9, script='$52000067_QD__MAIN__10$', arg3=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_02_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_02_b(self.ctx)
 
 
-class ending_02_b(state.State):
+class ending_02_b(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[851,852,853,854,855,856,857,858,859,860], arg2=True)
-        create_monster(spawnIds=[861,862,863,864,865,866,867,868,869,870], arg2=True)
+        self.create_monster(spawnIds=[851,852,853,854,855,856,857,858,859,860], animationEffect=True)
+        self.create_monster(spawnIds=[861,862,863,864,865,866,867,868,869,870], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ending_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ending_03(self.ctx)
 
 
-class ending_03(state.State):
+class ending_03(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7307], visible=True) # 수리 음
-        set_conversation(type=1, spawnId=861, script='$52000067_QD__MAIN__11$', arg4=2, arg5=0)
-        set_conversation(type=1, spawnId=853, script='$52000067_QD__MAIN__12$', arg4=2, arg5=2)
-        set_conversation(type=1, spawnId=851, script='$52000067_QD__MAIN__13$', arg4=3, arg5=3)
-        set_conversation(type=1, spawnId=861, script='$52000067_QD__MAIN__14$', arg4=3, arg5=4)
-        set_conversation(type=1, spawnId=862, script='$52000067_QD__MAIN__15$', arg4=3, arg5=2)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera_path(pathIds=[8014,8015], returnView=False)
-        set_effect(triggerIds=[7005], visible=False)
+        self.set_effect(triggerIds=[7307], visible=True) # 수리 음
+        self.set_conversation(type=1, spawnId=861, script='$52000067_QD__MAIN__11$', arg4=2, arg5=0)
+        self.set_conversation(type=1, spawnId=853, script='$52000067_QD__MAIN__12$', arg4=2, arg5=2)
+        self.set_conversation(type=1, spawnId=851, script='$52000067_QD__MAIN__13$', arg4=3, arg5=3)
+        self.set_conversation(type=1, spawnId=861, script='$52000067_QD__MAIN__14$', arg4=3, arg5=4)
+        self.set_conversation(type=1, spawnId=862, script='$52000067_QD__MAIN__15$', arg4=3, arg5=2)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera_path(pathIds=[8014,8015], returnView=False)
+        self.set_effect(triggerIds=[7005], visible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7000):
-            return ending_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7000):
+            return ending_04(self.ctx)
 
 
-class ending_04(state.State):
+class ending_04(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7117], visible=True) # 감전 이펙트
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
-        move_user(mapId=52000067, portalId=3)
-        set_actor(triggerId=4002, visible=True, initialSequence='Dead_Idle_A')
-        set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_effect(triggerIds=[7117], visible=True) # 감전 이펙트
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
+        self.move_user(mapId=52000067, portalId=3)
+        self.set_actor(triggerId=4002, visible=True, initialSequence='Dead_Idle_A')
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_05(self.ctx)
 
 
-class ending_05(state.State):
+class ending_05(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8016,8017], returnView=False)
+        self.select_camera_path(pathIds=[8016,8017], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_06(self.ctx)
 
 
-class ending_06(state.State):
+class ending_06(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7308], visible=True) # 로봇 스파크 음
-        set_effect(triggerIds=[7005], visible=False) # mask_black
+        self.set_effect(triggerIds=[7308], visible=True) # 로봇 스파크 음
+        self.set_effect(triggerIds=[7005], visible=False) # mask_black
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return ending_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return ending_07(self.ctx)
 
 
-class ending_07(state.State):
+class ending_07(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__16$', arg4=3)
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__16$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ending_08()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ending_08(self.ctx)
 
 
-class ending_08(state.State):
+class ending_08(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__17$', arg4=3)
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__17$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ending_09()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ending_09(self.ctx)
 
 
-class ending_09(state.State):
+class ending_09(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8018], returnView=False)
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2004')
+        self.select_camera_path(pathIds=[8018], returnView=False)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2004')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_09_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_09_b(self.ctx)
 
 
-class ending_09_b(state.State):
+class ending_09_b(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1005')
+        self.move_user_path(patrolName='MS2PatrolData_1005')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ending_10()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ending_10(self.ctx)
 
 
-class ending_10(state.State):
+class ending_10(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__18$', arg4=3)
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__18$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ending_11()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ending_11(self.ctx)
 
 
-class ending_11(state.State):
+class ending_11(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2005')
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__19$', arg4=3)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2005')
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__19$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ending_12()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ending_12(self.ctx)
 
 
-class ending_12(state.State):
+class ending_12(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__20$', arg4=3)
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__20$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return ending_12_b()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return ending_12_b(self.ctx)
 
 
-class ending_12_b(state.State):
+class ending_12_b(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1006')
+        self.move_user_path(patrolName='MS2PatrolData_1006')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_13()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_13(self.ctx)
 
 
-class ending_13(state.State):
+class ending_13(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_2006')
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_2006')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_14()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_14(self.ctx)
 
 
-class ending_14(state.State):
+class ending_14(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8019], returnView=False)
+        self.select_camera_path(pathIds=[8019], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ending_15()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ending_15(self.ctx)
 
 
-class ending_15(state.State):
+class ending_15(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__21$', arg4=3)
+        self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__21$', arg4=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return ending_16()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return ending_16(self.ctx)
 
 
-class ending_16(state.State):
+class ending_16(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[8020], returnView=False)
-        move_npc(spawnId=201, patrolName='MS2PatrolData_1006')
+        self.select_camera_path(pathIds=[8020], returnView=False)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_1006')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7000):
-            return ending_17()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7000):
+            return ending_17(self.ctx)
 
 
-class ending_17(state.State):
+class ending_17(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7309], visible=True) # 로봇 움직임 음
-        set_actor(triggerId=4002, visible=True, initialSequence='Dead_Damg_A')
-        set_scene_skip()
+        self.set_effect(triggerIds=[7309], visible=True) # 로봇 움직임 음
+        self.set_actor(triggerId=4002, visible=True, initialSequence='Dead_Damg_A')
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return ending_18()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return ending_18(self.ctx)
 
 
-class Skip_4(state.State):
+class Skip_4(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=4)
-        set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
+        self.set_cinematic_ui(type=4)
+        self.set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return end02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return end02(self.ctx)
 
 
-class ending_18(state.State):
+class ending_18(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7005], visible=True) # mask_black
-        set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
+        self.set_effect(triggerIds=[7005], visible=True) # mask_black
+        self.set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return end01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return end01(self.ctx)
 
 
-class end01(state.State):
+class end01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=4)
-        play_scene_movie(fileName='Aftermath_Madria.swf')
-        set_scene_skip(state=end02, arg2='exit')
+        self.set_cinematic_ui(type=4)
+        self.play_scene_movie(fileName='Aftermath_Madria.swf')
+        self.set_scene_skip(state=end02, action='exit')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return end02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return end02(self.ctx)
 
 
-class end02(state.State):
+class end02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000055, portalId=1)
+        self.move_user(mapId=52000055, portalId=1)
 
 
+initial_state = idle

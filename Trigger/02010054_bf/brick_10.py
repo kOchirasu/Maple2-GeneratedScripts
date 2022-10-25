@@ -1,29 +1,29 @@
 """ trigger/02010054_bf/brick_10.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[34010], visible=True, arg3=0, arg4=0, arg5=0)
-        set_skill(triggerIds=[7010], isEnable=False)
+        self.set_mesh(triggerIds=[34010], visible=True, arg3=0, delay=0, scale=0)
+        self.set_skill(triggerIds=[7010], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[1110]):
-            return 발판()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[1110]):
+            return 발판(self.ctx)
 
 
-class 발판(state.State):
+class 발판(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[7010], isEnable=True)
+        self.set_skill(triggerIds=[7010], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=200):
-            set_mesh(triggerIds=[34010], visible=False, arg3=0, arg4=0, arg5=0)
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=200):
+            self.set_mesh(triggerIds=[34010], visible=False, arg3=0, delay=0, scale=0)
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

@@ -1,167 +1,165 @@
 """ trigger/02100009_bf/barricade.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[80000], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return CheckUser10_GuildRaid()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return CheckUser10_GuildRaid(self.ctx)
 
 
-class CheckUser10_GuildRaid(state.State):
+class CheckUser10_GuildRaid(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=30, clearAtZero=True, display=False, arg5=0) # 최대 30초 대기
+        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=102, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if count_users(boxId=102, boxId=10, operator='Less'):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=102, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.count_users(boxId=102, boxId=10, operator='Less'):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Wait(state.State):
+class MaxCount10_Wait(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=40012, textId=40012, duration=3000)
+        self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=102, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if time_expired(timerId='1'):
-            return MaxCount10_Start()
-        if wait_tick(waitTick=6000):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=102, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.time_expired(timerId='1'):
+            return MaxCount10_Start(self.ctx)
+        if self.wait_tick(waitTick=6000):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Start(state.State):
+class MaxCount10_Start(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return state.DungeonStart()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return DungeonStart(self.ctx)
 
 
-class DungeonStart(state.DungeonStart):
+class DungeonStart(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=904, enable=True)
+        self.select_camera(triggerId=904, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return ShowCaption01()
-
-state.DungeonStart = DungeonStart
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return ShowCaption01(self.ctx)
 
 
-#  설명문 출력 
-class ShowCaption01(state.State):
+# 설명문 출력
+class ShowCaption01(common.Trigger):
     def on_enter(self):
-        set_cinematic_intro(text='$02100009_BF__BARRICADE__0$')
-        set_skip(state=ShowCaption01Skip)
+        self.set_cinematic_intro(text='$02100009_BF__BARRICADE__0$')
+        self.set_skip(state=ShowCaption01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return ShowCaption01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return ShowCaption01Skip(self.ctx)
 
 
-class ShowCaption01Skip(state.State):
+class ShowCaption01Skip(common.Trigger):
     def on_enter(self):
-        set_skip()
-        remove_cinematic_talk()
+        self.set_skip()
+        self.remove_cinematic_talk()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return ShowCaption02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return ShowCaption02(self.ctx)
 
 
-class ShowCaption02(state.State):
+class ShowCaption02(common.Trigger):
     def on_enter(self):
-        set_cinematic_intro(text='$02100009_BF__BARRICADE__1$')
-        set_skip(state=ShowCaption02Skip)
+        self.set_cinematic_intro(text='$02100009_BF__BARRICADE__1$')
+        self.set_skip(state=ShowCaption02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return ShowCaption02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return ShowCaption02Skip(self.ctx)
 
 
-class ShowCaption02Skip(state.State):
+class ShowCaption02Skip(common.Trigger):
     def on_enter(self):
-        set_skip()
-        remove_cinematic_talk()
+        self.set_skip()
+        self.remove_cinematic_talk()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return CloseCaptionSetting()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return CloseCaptionSetting(self.ctx)
 
 
-class CloseCaptionSetting(state.State):
+class CloseCaptionSetting(common.Trigger):
     def on_enter(self):
-        close_cinematic()
-        select_camera(triggerId=904, enable=False)
+        self.close_cinematic()
+        self.select_camera(triggerId=904, enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 대기(self.ctx)
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=False)
-        set_effect(triggerIds=[7002], visible=False)
-        set_effect(triggerIds=[7003], visible=False)
-        set_effect(triggerIds=[7004], visible=False)
-        set_mesh(triggerIds=[8000], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_effect(triggerIds=[7001], visible=False)
+        self.set_effect(triggerIds=[7002], visible=False)
+        self.set_effect(triggerIds=[7003], visible=False)
+        self.set_effect(triggerIds=[7004], visible=False)
+        self.set_mesh(triggerIds=[8000], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if any_one():
-            return 유저감지()
-
-
-class 유저감지(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 카운트()
+    def on_tick(self) -> common.Trigger:
+        if self.any_one():
+            return 유저감지(self.ctx)
 
 
-class 카운트(state.State):
+class 유저감지(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 카운트(self.ctx)
+
+
+class 카운트(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02100009_BF__BARRICADE__2$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$02100009_BF__BARRICADE__2$', arg3='3000')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            return 차단()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            return 차단(self.ctx)
 
 
-class 차단(state.State):
+class 차단(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[8000], visible=True, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[7001], visible=True)
-        set_effect(triggerIds=[7002], visible=True)
-        set_effect(triggerIds=[7003], visible=True)
-        set_effect(triggerIds=[7004], visible=True)
+        self.set_mesh(triggerIds=[8000], visible=True, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.set_effect(triggerIds=[7002], visible=True)
+        self.set_effect(triggerIds=[7003], visible=True)
+        self.set_effect(triggerIds=[7004], visible=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[100000001,100000002]):
-            return 차단해제()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[100000001,100000002]):
+            return 차단해제(self.ctx)
 
 
-class 차단해제(state.State):
+class 차단해제(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[8000], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[7001], visible=False)
-        set_effect(triggerIds=[7002], visible=False)
-        set_effect(triggerIds=[7003], visible=False)
-        set_effect(triggerIds=[7004], visible=False)
+        self.set_mesh(triggerIds=[8000], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[7001], visible=False)
+        self.set_effect(triggerIds=[7002], visible=False)
+        self.set_effect(triggerIds=[7003], visible=False)
+        self.set_effect(triggerIds=[7004], visible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=100):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = Wait

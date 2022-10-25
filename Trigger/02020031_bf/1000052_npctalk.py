@@ -1,43 +1,43 @@
 """ trigger/02020031_bf/1000052_npctalk.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='NPCTalk', value=1):
-            return NPCTalkOnWait()
+class Wait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='NPCTalk', value=1):
+            return NPCTalkOnWait(self.ctx)
 
 
-class NPCTalkOnWait(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=8000):
-            return NPCTalkOn()
+class NPCTalkOnWait(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=8000):
+            return NPCTalkOn(self.ctx)
 
 
-class NPCTalkOn(state.State):
+class NPCTalkOn(common.Trigger):
     def on_enter(self):
-        add_balloon_talk(spawnId=15501, msg='$02020031_BF__1000052_NPCTALK__0$', duration=3000, delayTick=0)
+        self.add_balloon_talk(spawnId=15501, msg='$02020031_BF__1000052_NPCTALK__0$', duration=3000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return TalkDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return TalkDelay(self.ctx)
 
 
-class TalkDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=17000):
-            return NPCTalkOn()
-        if user_value(key='NPCTalk', value=0):
+class TalkDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=17000):
+            return NPCTalkOn(self.ctx)
+        if self.user_value(key='NPCTalk', value=0):
             return None # Missing State: NPCTalkOff
 
 
-class PortalOff(state.State):
+class PortalOff(common.Trigger):
     def on_enter(self):
-        remove_balloon_talk(spawnId=15501)
+        self.remove_balloon_talk(spawnId=15501)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

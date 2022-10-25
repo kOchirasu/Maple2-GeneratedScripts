@@ -1,28 +1,28 @@
 """ trigger/02000491_bf/portal_02.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=802, visible=False, enabled=False, minimapVisible=False)
+        self.set_portal(portalId=802, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000984], arg2=0):
-            return 포털활성화()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000984], stateValue=0):
+            return 포털활성화(self.ctx)
 
 
-class 포털활성화(state.State):
+class 포털활성화(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=802, visible=False, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=802, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            set_interact_object(triggerIds=[10000984], state=1)
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            self.set_interact_object(triggerIds=[10000984], state=1)
+            return 대기(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

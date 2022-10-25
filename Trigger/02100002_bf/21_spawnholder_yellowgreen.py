@@ -1,75 +1,75 @@
 """ trigger/02100002_bf/21_spawnholder_yellowgreen.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ActivateHolder', value=0) # 메인 트리거에서 받는 신호
-        set_user_value(key='DungeonQuit', value=0) # ON
-        set_interact_object(triggerIds=[10001248], state=2) # OFF
-        set_interact_object(triggerIds=[10001249], state=0)
+        self.set_user_value(key='ActivateHolder', value=0) # 메인 트리거에서 받는 신호
+        self.set_user_value(key='DungeonQuit', value=0) # ON
+        self.set_interact_object(triggerIds=[10001248], state=2) # OFF
+        self.set_interact_object(triggerIds=[10001249], state=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ActivateHolder', value=1):
-            return LoadingDelay()
-
-
-class LoadingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SpawnStart()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ActivateHolder', value=1):
+            return LoadingDelay(self.ctx)
 
 
-class SpawnStart(state.State):
+class LoadingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SpawnStart(self.ctx)
+
+
+class SpawnStart(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001249], state=1) # ON
-        set_interact_object(triggerIds=[10001248], state=2)
+        self.set_interact_object(triggerIds=[10001249], state=1) # ON
+        self.set_interact_object(triggerIds=[10001248], state=2)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001249], arg2=0):
-            return StopDelay()
-        if user_value(key='DungeonQuit', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001249], stateValue=0):
+            return StopDelay(self.ctx)
+        if self.user_value(key='DungeonQuit', value=1):
+            return Quit(self.ctx)
 
 
-class StopDelay(state.State):
+class StopDelay(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=101, key='SpawnHold', value=1)
+        self.set_user_value(triggerId=101, key='SpawnHold', value=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SpawnStop()
-        if user_value(key='DungeonQuit', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SpawnStop(self.ctx)
+        if self.user_value(key='DungeonQuit', value=1):
+            return Quit(self.ctx)
 
 
-class SpawnStop(state.State):
+class SpawnStop(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001249], state=2) # ON
-        set_interact_object(triggerIds=[10001248], state=1)
+        self.set_interact_object(triggerIds=[10001249], state=2) # ON
+        self.set_interact_object(triggerIds=[10001248], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001248], arg2=0):
-            return StartDelay()
-        if user_value(key='DungeonQuit', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001248], stateValue=0):
+            return StartDelay(self.ctx)
+        if self.user_value(key='DungeonQuit', value=1):
+            return Quit(self.ctx)
 
 
-class StartDelay(state.State):
+class StartDelay(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=101, key='SpawnHold', value=0)
+        self.set_user_value(triggerId=101, key='SpawnHold', value=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return SpawnStart()
-        if user_value(key='DungeonQuit', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return SpawnStart(self.ctx)
+        if self.user_value(key='DungeonQuit', value=1):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001248], state=2) # OFF
-        set_interact_object(triggerIds=[10001249], state=0)
+        self.set_interact_object(triggerIds=[10001248], state=2) # OFF
+        self.set_interact_object(triggerIds=[10001249], state=0)
 
 
+initial_state = Wait

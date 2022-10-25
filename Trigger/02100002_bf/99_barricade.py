@@ -1,73 +1,73 @@
 """ trigger/02100002_bf/99_barricade.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='PortalOn', value=0)
-        set_user_value(key='MissionStart', value=0)
-        set_user_value(key='DungeonClear', value=0)
-        set_portal(portalId=10, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=20, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=False, minimapVisible=False)
+        self.set_user_value(key='PortalOn', value=0)
+        self.set_user_value(key='MissionStart', value=0)
+        self.set_user_value(key='DungeonClear', value=0)
+        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='PortalOn', value=1):
-            return PortalOnDelay()
-
-
-class PortalOnDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='PortalOn', value=1):
+            return PortalOnDelay(self.ctx)
 
 
-class PortalOn(state.State):
+class PortalOnDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PortalOn(self.ctx)
+
+
+class PortalOn(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=10, visible=True, enabled=True, minimapVisible=True)
-        set_portal(portalId=11, visible=True, enabled=True, minimapVisible=True)
-        set_portal(portalId=20, visible=True, enabled=True, minimapVisible=True)
-        set_portal(portalId=21, visible=True, enabled=True, minimapVisible=True)
+        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portalId=21, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MissionStart', value=1):
-            return CountDown()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MissionStart', value=1):
+            return CountDown(self.ctx)
 
 
-class CountDown(state.State):
+class CountDown(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02100002_BF__99_BARRICADE__0$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$02100002_BF__99_BARRICADE__0$', arg3='3000')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            return ShutDown()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            return ShutDown(self.ctx)
 
 
-#  임시 테스트용 데이터 세팅 가능 지점 포탈 열어놓기 
-class ShutDown(state.State):
+# 임시 테스트용 데이터 세팅 가능 지점 포탈 열어놓기
+class ShutDown(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=10, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=20, visible=False, enabled=False, minimapVisible=False)
-        set_portal(portalId=21, visible=False, enabled=False, minimapVisible=False)
+        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='DungeonClear', value=1):
-            return Release()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='DungeonClear', value=1):
+            return Release(self.ctx)
 
 
-class Release(state.State):
+class Release(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=10, visible=True, enabled=True, minimapVisible=False)
+        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     pass
 
 
+initial_state = Wait

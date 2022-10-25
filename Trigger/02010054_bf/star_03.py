@@ -1,43 +1,43 @@
 """ trigger/02010054_bf/star_03.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000861], state=2)
-        set_effect(triggerIds=[606], visible=False)
-        set_mesh(triggerIds=[3310,3311,3312,3313], visible=False, arg3=0, arg4=0, arg5=0)
-        set_mesh(triggerIds=[3126], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_interact_object(triggerIds=[10000861], state=2)
+        self.set_effect(triggerIds=[606], visible=False)
+        self.set_mesh(triggerIds=[3310,3311,3312,3313], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(triggerIds=[3126], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[102]):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[102]):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3310,3311,3312,3313], visible=True, arg3=0, arg4=500, arg5=3)
+        self.set_mesh(triggerIds=[3310,3311,3312,3313], visible=True, arg3=0, delay=500, scale=3)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[104]):
-            return 몬스터생성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[104]):
+            return 몬스터생성(self.ctx)
 
 
-class 몬스터생성(state.State):
+class 몬스터생성(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3126], visible=False, arg3=0, arg4=0, arg5=5)
-        set_mesh(triggerIds=[3310,3311,3312,3313], visible=False, arg3=0, arg4=900, arg5=3)
-        set_effect(triggerIds=[606], visible=True)
-        create_monster(spawnIds=[2005], arg2=False)
+        self.set_mesh(triggerIds=[3126], visible=False, arg3=0, delay=0, scale=5)
+        self.set_mesh(triggerIds=[3310,3311,3312,3313], visible=False, arg3=0, delay=900, scale=3)
+        self.set_effect(triggerIds=[606], visible=True)
+        self.create_monster(spawnIds=[2005], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[2005]):
-            set_interact_object(triggerIds=[10000861], state=1)
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[2005]):
+            self.set_interact_object(triggerIds=[10000861], state=1)
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

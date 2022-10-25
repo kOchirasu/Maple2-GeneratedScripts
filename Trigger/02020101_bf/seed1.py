@@ -1,176 +1,176 @@
 """ trigger/02020101_bf/seed1.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[1003], skillId=70002110, level=1, arg5=False)
+        self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         # <action name="SetUserValue" triggerID="900005" key="TimerStart" value="0" />
-        set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-        set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-        set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10002124], state=0)
-        set_interact_object(triggerIds=[10002125], state=0)
-        set_interact_object(triggerIds=[10002126], state=0)
-        set_interact_object(triggerIds=[10002127], state=0)
-        set_interact_object(triggerIds=[10002128], state=0)
-        set_interact_object(triggerIds=[10002129], state=0)
-        set_skill(triggerIds=[901], isEnable=False)
-        set_skill(triggerIds=[902], isEnable=False)
+        self.set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+        self.set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+        self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10002124], state=0)
+        self.set_interact_object(triggerIds=[10002125], state=0)
+        self.set_interact_object(triggerIds=[10002126], state=0)
+        self.set_interact_object(triggerIds=[10002127], state=0)
+        self.set_interact_object(triggerIds=[10002128], state=0)
+        self.set_interact_object(triggerIds=[10002129], state=0)
+        self.set_skill(triggerIds=[901], enable=False)
+        self.set_skill(triggerIds=[902], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Seed', value=1):
-            return 대기시간()
-
-
-class 대기시간(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 활성화()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Seed', value=1):
+            return 대기시간(self.ctx)
 
 
-class 활성화(state.State):
+class 대기시간(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 활성화(self.ctx)
+
+
+class 활성화(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[9001,9002,9003,9004], visible=True, arg3=0, arg4=0, arg5=2)
-        set_interact_object(triggerIds=[10002124], state=1)
-        set_interact_object(triggerIds=[10002125], state=1)
-        set_interact_object(triggerIds=[10002126], state=1)
-        set_interact_object(triggerIds=[10002127], state=1)
+        self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=True, arg3=0, delay=0, scale=2)
+        self.set_interact_object(triggerIds=[10002124], state=1)
+        self.set_interact_object(triggerIds=[10002125], state=1)
+        self.set_interact_object(triggerIds=[10002126], state=1)
+        self.set_interact_object(triggerIds=[10002127], state=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if wait_tick(waitTick=20000):
-            set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-            set_interact_object(triggerIds=[10002124], state=0)
-            set_interact_object(triggerIds=[10002125], state=0)
-            set_interact_object(triggerIds=[10002126], state=0)
-            set_interact_object(triggerIds=[10002127], state=0)
-            return 종료()
-        if object_interacted(interactIds=[10002124], arg2=0):
-            set_interact_object(triggerIds=[10002125], state=0)
-            set_interact_object(triggerIds=[10002126], state=0)
-            set_interact_object(triggerIds=[10002127], state=0)
-            set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-            return 씨앗심기1()
-        if object_interacted(interactIds=[10002125], arg2=0):
-            set_interact_object(triggerIds=[10002124], state=0)
-            set_interact_object(triggerIds=[10002126], state=0)
-            set_interact_object(triggerIds=[10002127], state=0)
-            set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-            return 씨앗심기2()
-        if object_interacted(interactIds=[10002126], arg2=0):
-            set_interact_object(triggerIds=[10002124], state=0)
-            set_interact_object(triggerIds=[10002125], state=0)
-            set_interact_object(triggerIds=[10002127], state=0)
-            set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-            return 씨앗심기3()
-        if object_interacted(interactIds=[10002127], arg2=0):
-            set_interact_object(triggerIds=[10002124], state=0)
-            set_interact_object(triggerIds=[10002125], state=0)
-            set_interact_object(triggerIds=[10002126], state=0)
-            set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-            return 씨앗심기4()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.wait_tick(waitTick=20000):
+            self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+            self.set_interact_object(triggerIds=[10002124], state=0)
+            self.set_interact_object(triggerIds=[10002125], state=0)
+            self.set_interact_object(triggerIds=[10002126], state=0)
+            self.set_interact_object(triggerIds=[10002127], state=0)
+            return 종료(self.ctx)
+        if self.object_interacted(interactIds=[10002124], stateValue=0):
+            self.set_interact_object(triggerIds=[10002125], state=0)
+            self.set_interact_object(triggerIds=[10002126], state=0)
+            self.set_interact_object(triggerIds=[10002127], state=0)
+            self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+            return 씨앗심기1(self.ctx)
+        if self.object_interacted(interactIds=[10002125], stateValue=0):
+            self.set_interact_object(triggerIds=[10002124], state=0)
+            self.set_interact_object(triggerIds=[10002126], state=0)
+            self.set_interact_object(triggerIds=[10002127], state=0)
+            self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+            return 씨앗심기2(self.ctx)
+        if self.object_interacted(interactIds=[10002126], stateValue=0):
+            self.set_interact_object(triggerIds=[10002124], state=0)
+            self.set_interact_object(triggerIds=[10002125], state=0)
+            self.set_interact_object(triggerIds=[10002127], state=0)
+            self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+            return 씨앗심기3(self.ctx)
+        if self.object_interacted(interactIds=[10002127], stateValue=0):
+            self.set_interact_object(triggerIds=[10002124], state=0)
+            self.set_interact_object(triggerIds=[10002125], state=0)
+            self.set_interact_object(triggerIds=[10002126], state=0)
+            self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+            return 씨앗심기4(self.ctx)
 
 
-class 씨앗심기1(state.State):
+class 씨앗심기1(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002128], state=1)
-        set_interact_object(triggerIds=[10002129], state=1)
+        self.set_interact_object(triggerIds=[10002128], state=1)
+        self.set_interact_object(triggerIds=[10002129], state=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if any_one():
-            return 나무생성1()
-        if not check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.any_one():
+            return 나무생성1(self.ctx)
+        if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
+            return 종료(self.ctx)
 
 
-class 씨앗심기2(state.State):
+class 씨앗심기2(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002128], state=1)
-        set_interact_object(triggerIds=[10002129], state=1)
+        self.set_interact_object(triggerIds=[10002128], state=1)
+        self.set_interact_object(triggerIds=[10002129], state=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if any_one():
-            return 나무생성1()
-        if not check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.any_one():
+            return 나무생성1(self.ctx)
+        if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
+            return 종료(self.ctx)
 
 
-class 씨앗심기3(state.State):
+class 씨앗심기3(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002128], state=1)
-        set_interact_object(triggerIds=[10002129], state=1)
+        self.set_interact_object(triggerIds=[10002128], state=1)
+        self.set_interact_object(triggerIds=[10002129], state=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if any_one():
-            return 나무생성1()
-        if not check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.any_one():
+            return 나무생성1(self.ctx)
+        if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
+            return 종료(self.ctx)
 
 
-class 씨앗심기4(state.State):
+class 씨앗심기4(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002128], state=1)
-        set_interact_object(triggerIds=[10002129], state=1)
+        self.set_interact_object(triggerIds=[10002128], state=1)
+        self.set_interact_object(triggerIds=[10002129], state=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if any_one():
-            return 나무생성1()
-        if not check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.any_one():
+            return 나무생성1(self.ctx)
+        if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
+            return 종료(self.ctx)
 
 
-class 나무생성1(state.State):
+class 나무생성1(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[901], isEnable=True)
-        set_skill(triggerIds=[902], isEnable=True)
-        set_interact_object(triggerIds=[10002128], state=2)
-        set_interact_object(triggerIds=[10002129], state=2)
-        set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_On')
-        set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_On')
+        self.set_skill(triggerIds=[901], enable=True)
+        self.set_skill(triggerIds=[902], enable=True)
+        self.set_interact_object(triggerIds=[10002128], state=2)
+        self.set_interact_object(triggerIds=[10002129], state=2)
+        self.set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_On')
+        self.set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_On')
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 종료()
-        if wait_tick(waitTick=20000):
-            set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-            set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-            set_interact_object(triggerIds=[10002128], state=0)
-            set_interact_object(triggerIds=[10002129], state=0)
-            set_skill(triggerIds=[901], isEnable=False)
-            set_skill(triggerIds=[902], isEnable=False)
-            set_user_value(triggerId=900009, key='Seed', value=0)
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 종료(self.ctx)
+        if self.wait_tick(waitTick=20000):
+            self.set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+            self.set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+            self.set_interact_object(triggerIds=[10002128], state=0)
+            self.set_interact_object(triggerIds=[10002129], state=0)
+            self.set_skill(triggerIds=[901], enable=False)
+            self.set_skill(triggerIds=[902], enable=False)
+            self.set_user_value(triggerId=900009, key='Seed', value=0)
+            return 시작(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=900009, key='Seed', value=0)
-        add_buff(boxIds=[1003], skillId=70002110, level=1, arg5=False)
-        set_skill(triggerIds=[901], isEnable=False)
-        set_skill(triggerIds=[902], isEnable=False)
-        set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-        set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
-        set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10002124], state=0)
-        set_interact_object(triggerIds=[10002125], state=0)
-        set_interact_object(triggerIds=[10002126], state=0)
-        set_interact_object(triggerIds=[10002127], state=0)
-        set_interact_object(triggerIds=[10002128], state=0)
-        set_interact_object(triggerIds=[10002129], state=0)
+        self.set_user_value(triggerId=900009, key='Seed', value=0)
+        self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
+        self.set_skill(triggerIds=[901], enable=False)
+        self.set_skill(triggerIds=[902], enable=False)
+        self.set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+        self.set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
+        self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10002124], state=0)
+        self.set_interact_object(triggerIds=[10002125], state=0)
+        self.set_interact_object(triggerIds=[10002126], state=0)
+        self.set_interact_object(triggerIds=[10002127], state=0)
+        self.set_interact_object(triggerIds=[10002128], state=0)
+        self.set_interact_object(triggerIds=[10002129], state=0)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 시작(self.ctx)
 
 
+initial_state = 시작

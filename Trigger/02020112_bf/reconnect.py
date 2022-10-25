@@ -1,28 +1,28 @@
 """ trigger/02020112_bf/reconnect.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='Reconnect', value=1):
-            return 버프쏴주기()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Reconnect', value=1):
+            return 버프쏴주기(self.ctx)
 
 
-class 버프쏴주기(state.State):
+class 버프쏴주기(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[916], skillId=70002105, level=1, arg5=False)
-        set_timer(timerId='1', seconds=5, clearAtZero=False, display=False)
+        self.add_buff(boxIds=[916], skillId=70002105, level=1, isSkillSet=False)
+        self.set_timer(timerId='1', seconds=5, startDelay=0, interval=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Reconnect', value=2):
-            return 종료()
-        if time_expired(timerId='1'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Reconnect', value=2):
+            return 종료(self.ctx)
+        if self.time_expired(timerId='1'):
+            return 대기(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[931], skillId=70002112, level=1, arg5=False)
+        self.add_buff(boxIds=[931], skillId=70002112, level=1, isSkillSet=False)
 
 
+initial_state = 대기

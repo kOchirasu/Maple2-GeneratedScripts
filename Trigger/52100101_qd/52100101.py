@@ -1,366 +1,366 @@
 """ trigger/52100101_qd/52100101.xml """
-from common import *
-import state
+import common
 
 
-class wait_01(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[2001]):
-            return wait_02()
+class wait_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[2001]):
+            return wait_02(self.ctx)
 
 
-class wait_02(state.State):
+class wait_02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=False) # 정리
-        destroy_monster(spawnIds=[101])
-        destroy_monster(spawnIds=[102])
-        destroy_monster(spawnIds=[103])
-        destroy_monster(spawnIds=[104])
-        destroy_monster(spawnIds=[105])
-        destroy_monster(spawnIds=[106])
-        destroy_monster(spawnIds=[107])
-        destroy_monster(spawnIds=[108])
-        destroy_monster(spawnIds=[109])
-        destroy_monster(spawnIds=[110])
-        destroy_monster(spawnIds=[111])
-        destroy_monster(spawnIds=[112])
-        destroy_monster(spawnIds=[113])
-        destroy_monster(spawnIds=[114]) # 다시생성
-        create_monster(spawnIds=[101], arg2=False)
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Dead_A')
-        create_monster(spawnIds=[102], arg2=False)
-        set_npc_emotion_sequence(spawnId=102, sequenceName='Dead_B')
-        create_monster(spawnIds=[103], arg2=False)
-        set_npc_emotion_sequence(spawnId=103, sequenceName='Dead_A')
-        create_monster(spawnIds=[104], arg2=False)
-        set_npc_emotion_sequence(spawnId=104, sequenceName='Dead_B')
-        create_monster(spawnIds=[105], arg2=False)
-        set_npc_emotion_sequence(spawnId=105, sequenceName='Dead_A')
-        create_monster(spawnIds=[106], arg2=False)
-        set_npc_emotion_sequence(spawnId=106, sequenceName='Dead_B')
-        create_monster(spawnIds=[107], arg2=False)
-        set_npc_emotion_sequence(spawnId=107, sequenceName='Dead_B')
-        create_monster(spawnIds=[108], arg2=False)
-        set_npc_emotion_sequence(spawnId=108, sequenceName='Dead_A')
-        create_monster(spawnIds=[114], arg2=False) # 클라디아
-        set_npc_emotion_loop(spawnId=114, sequenceName='Sit_Down_A', duration=1E+10) # 클라디아
+        self.set_effect(triggerIds=[5001], visible=False) # 정리
+        self.destroy_monster(spawnIds=[101])
+        self.destroy_monster(spawnIds=[102])
+        self.destroy_monster(spawnIds=[103])
+        self.destroy_monster(spawnIds=[104])
+        self.destroy_monster(spawnIds=[105])
+        self.destroy_monster(spawnIds=[106])
+        self.destroy_monster(spawnIds=[107])
+        self.destroy_monster(spawnIds=[108])
+        self.destroy_monster(spawnIds=[109])
+        self.destroy_monster(spawnIds=[110])
+        self.destroy_monster(spawnIds=[111])
+        self.destroy_monster(spawnIds=[112])
+        self.destroy_monster(spawnIds=[113])
+        self.destroy_monster(spawnIds=[114]) # 다시생성
+        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Dead_A')
+        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Dead_B')
+        self.create_monster(spawnIds=[103], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=103, sequenceName='Dead_A')
+        self.create_monster(spawnIds=[104], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=104, sequenceName='Dead_B')
+        self.create_monster(spawnIds=[105], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=105, sequenceName='Dead_A')
+        self.create_monster(spawnIds=[106], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=106, sequenceName='Dead_B')
+        self.create_monster(spawnIds=[107], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=107, sequenceName='Dead_B')
+        self.create_monster(spawnIds=[108], animationEffect=False)
+        self.set_npc_emotion_sequence(spawnId=108, sequenceName='Dead_A')
+        self.create_monster(spawnIds=[114], animationEffect=False) # 클라디아
+        self.set_npc_emotion_loop(spawnId=114, sequenceName='Sit_Down_A', duration=1E+10) # 클라디아
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[50100860], questStates=[2]):
-            return wait_01_02()
-        if quest_user_detected(boxIds=[2002], questIds=[50100870], questStates=[3]):
-            return wait_01_03()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[50100860], questStates=[2]):
+            return wait_01_02(self.ctx)
+        if self.quest_user_detected(boxIds=[2002], questIds=[50100870], questStates=[3]):
+            return wait_01_03(self.ctx)
 
 
-class wait_01_02(state.State):
+class wait_01_02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return wait_01_02_003()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return wait_01_02_003(self.ctx)
 
 
-class wait_01_02_003(state.State):
+class wait_01_02_003(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        move_user(mapId=52100101, portalId=2)
+        self.set_cinematic_ui(type=1)
+        self.move_user(mapId=52100101, portalId=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 구릉도착()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 구릉도착(self.ctx)
 
 
-class 구릉도착(state.State):
+class 구릉도착(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 구릉도착_01_2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 구릉도착_01_2(self.ctx)
 
 
-class 구릉도착_01_2(state.State):
+class 구릉도착_01_2(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4001,4002,4003], returnView=False)
-        move_user_path(patrolName='MS2PatrolData_3001')
-        set_scene_skip(state=Skip_1, arg2='nextState')
+        self.select_camera_path(pathIds=[4001,4002,4003], returnView=False)
+        self.move_user_path(patrolName='MS2PatrolData_3001')
+        self.set_scene_skip(state=Skip_1, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return 구릉도착_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 구릉도착_02(self.ctx)
 
 
-class 구릉도착_02(state.State):
+class 구릉도착_02(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__0$', duration=4000)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__0$', duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
-            return 검은군단들()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
+            return 검은군단들(self.ctx)
 
 
-class 검은군단들(state.State):
+class 검은군단들(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4004], returnView=False) # 미사일포트 조금 더 적게
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__1$', duration=4000)
+        self.select_camera_path(pathIds=[4004], returnView=False) # 미사일포트 조금 더 적게
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__1$', duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 검은군단들2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 검은군단들2(self.ctx)
 
 
-class 검은군단들2(state.State):
+class 검은군단들2(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4005,4007], returnView=False) # 시간 계산 다시
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__2$', duration=4000)
+        self.select_camera_path(pathIds=[4005,4007], returnView=False) # 시간 계산 다시
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__2$', duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 검은군단들3()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 검은군단들3(self.ctx)
 
 
-class 검은군단들3(state.State):
+class 검은군단들3(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__3$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__3$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 정리_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 정리_01(self.ctx)
 
 
-class 정리_01(state.State):
+class 정리_01(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 정리_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 정리_02(self.ctx)
 
 
-class 정리_02(state.State):
+class 정리_02(common.Trigger):
     def on_enter(self):
-        reset_camera(interpolationTime=0)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_scene_skip()
+        self.reset_camera(interpolationTime=0)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 밝아짐()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 밝아짐(self.ctx)
 
 
-class Skip_1(state.State):
+class Skip_1(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        reset_camera(interpolationTime=0)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolationTime=0)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 밝아짐()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 밝아짐(self.ctx)
 
 
-class 밝아짐(state.State):
+class 밝아짐(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2002], questIds=[50100870], questStates=[3]):
-            return wait_01_03()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2002], questIds=[50100870], questStates=[3]):
+            return wait_01_03(self.ctx)
 
 
-class wait_01_03(state.State):
+class wait_01_03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        set_cinematic_ui(type=1)
+        self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return wait_01_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return wait_01_04(self.ctx)
 
 
-class wait_01_04(state.State):
+class wait_01_04(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        move_user(mapId=52100101, portalId=3)
-        create_monster(spawnIds=[109], arg2=False) # 장교
-        create_monster(spawnIds=[110], arg2=False) # 병사
-        create_monster(spawnIds=[111], arg2=False)
-        create_monster(spawnIds=[112], arg2=False)
-        create_monster(spawnIds=[113], arg2=False)
+        self.set_cinematic_ui(type=1)
+        self.move_user(mapId=52100101, portalId=3)
+        self.create_monster(spawnIds=[109], animationEffect=False) # 장교
+        self.create_monster(spawnIds=[110], animationEffect=False) # 병사
+        self.create_monster(spawnIds=[111], animationEffect=False)
+        self.create_monster(spawnIds=[112], animationEffect=False)
+        self.create_monster(spawnIds=[113], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 클라디아바라봄()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 클라디아바라봄(self.ctx)
 
 
-class 클라디아바라봄(state.State):
+class 클라디아바라봄(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 클라디아바라봄_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 클라디아바라봄_02(self.ctx)
 
 
-class 클라디아바라봄_02(state.State):
+class 클라디아바라봄_02(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4009], returnView=False)
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__4$', duration=3000)
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__5$', duration=3000)
-        set_scene_skip(state=Skip_2, arg2='nextState')
+        self.select_camera_path(pathIds=[4009], returnView=False)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__4$', duration=3000)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__5$', duration=3000)
+        self.set_scene_skip(state=Skip_2, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=6000):
-            return 게오르크_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=6000):
+            return 게오르크_04(self.ctx)
 
 
-class 게오르크_04(state.State):
+class 게오르크_04(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4011,4013], returnView=False) # 바로 오는 것으로
-        move_npc(spawnId=109, patrolName='MS2PatrolData_3002')
-        move_npc(spawnId=110, patrolName='MS2PatrolData_3003')
-        move_npc(spawnId=111, patrolName='MS2PatrolData_3004')
-        move_npc(spawnId=112, patrolName='MS2PatrolData_3005')
-        move_npc(spawnId=113, patrolName='MS2PatrolData_3006')
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__6$', duration=3000)
+        self.select_camera_path(pathIds=[4011,4013], returnView=False) # 바로 오는 것으로
+        self.move_npc(spawnId=109, patrolName='MS2PatrolData_3002')
+        self.move_npc(spawnId=110, patrolName='MS2PatrolData_3003')
+        self.move_npc(spawnId=111, patrolName='MS2PatrolData_3004')
+        self.move_npc(spawnId=112, patrolName='MS2PatrolData_3005')
+        self.move_npc(spawnId=113, patrolName='MS2PatrolData_3006')
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__6$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 게오르크_04_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 게오르크_04_02(self.ctx)
 
 
-class 게오르크_04_02(state.State):
+class 게오르크_04_02(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__7$', duration=4000)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__7$', duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4500):
-            return 게오르크_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4500):
+            return 게오르크_05(self.ctx)
 
 
-class 게오르크_05(state.State):
+class 게오르크_05(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__8$', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__8$', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return 게오르크_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 게오르크_06(self.ctx)
 
 
-class 게오르크_06(state.State):
+class 게오르크_06(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4014], returnView=False)
-        move_user_path(patrolName='MS2PatrolData_3007')
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__9$', duration=4000)
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__10$', duration=4000)
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__11$', duration=4500)
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__12$', duration=4000)
+        self.select_camera_path(pathIds=[4014], returnView=False)
+        self.move_user_path(patrolName='MS2PatrolData_3007')
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__9$', duration=4000)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__10$', duration=4000)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__11$', duration=4500)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__12$', duration=4000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=16500):
-            return 게오르크_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=16500):
+            return 게오르크_07(self.ctx)
 
 
-class 게오르크_07(state.State):
+class 게오르크_07(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__13$', duration=4500)
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__14$', duration=4500)
-        add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__15$', duration=4500)
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__16$', duration=4000)
-        add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__17$', duration=4500)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__13$', duration=4500)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__14$', duration=4500)
+        self.add_cinematic_talk(npcId=0, msg='$52100101_QD__52100101__15$', duration=4500)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__16$', duration=4000)
+        self.add_cinematic_talk(npcId=11004422, msg='$52100101_QD__52100101__17$', duration=4500)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=22000):
-            return 잠시후()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=22000):
+            return 잠시후(self.ctx)
 
 
-class 잠시후(state.State):
+class 잠시후(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 잠시후_2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 잠시후_2(self.ctx)
 
 
-class 잠시후_2(state.State):
+class 잠시후_2(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=9, script='$52100101_QD__52100101__18$')
-        select_camera_path(pathIds=[4015], returnView=False)
+        self.set_cinematic_ui(type=9, script='$52100101_QD__52100101__18$')
+        self.select_camera_path(pathIds=[4015], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 잠시후_3()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 잠시후_3(self.ctx)
 
 
-class 잠시후_3(state.State):
+class 잠시후_3(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[109]) # 장교
-        destroy_monster(spawnIds=[110]) # 병사
-        destroy_monster(spawnIds=[111])
-        destroy_monster(spawnIds=[112])
-        destroy_monster(spawnIds=[113])
-        destroy_monster(spawnIds=[114])
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        visible_my_pc(isVisible=False)
+        self.destroy_monster(spawnIds=[109]) # 장교
+        self.destroy_monster(spawnIds=[110]) # 병사
+        self.destroy_monster(spawnIds=[111])
+        self.destroy_monster(spawnIds=[112])
+        self.destroy_monster(spawnIds=[113])
+        self.destroy_monster(spawnIds=[114])
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.visible_my_pc(isVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 잠시후_4()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 잠시후_4(self.ctx)
 
 
-class 잠시후_4(state.State):
+class 잠시후_4(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 잠시후_5()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 잠시후_5(self.ctx)
 
 
-class 잠시후_5(state.State):
+class 잠시후_5(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4016], returnView=False)
-        set_effect(triggerIds=[5001], visible=True)
-        add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__19$', duration=3000)
-        add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__20$', duration=3000)
-        add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__21$', duration=3000)
-        add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__22$', duration=3000)
-        set_scene_skip()
+        self.select_camera_path(pathIds=[4016], returnView=False)
+        self.set_effect(triggerIds=[5001], visible=True)
+        self.add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__19$', duration=3000)
+        self.add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__20$', duration=3000)
+        self.add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__21$', duration=3000)
+        self.add_cinematic_talk(npcId=11004421, msg='$52100101_QD__52100101__22$', duration=3000)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=12000):
-            return 이동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=12000):
+            return 이동(self.ctx)
 
 
-class Skip_2(state.State):
+class Skip_2(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 이동_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 이동_02(self.ctx)
 
 
-class 이동(state.State):
+class 이동(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 이동_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 이동_02(self.ctx)
 
 
-class 이동_02(state.State):
+class 이동_02(common.Trigger):
     def on_enter(self):
-        visible_my_pc(isVisible=True)
-        move_user(mapId=2020029, portalId=3)
+        self.visible_my_pc(isVisible=True)
+        self.move_user(mapId=2020029, portalId=3)
 
 
+initial_state = wait_01

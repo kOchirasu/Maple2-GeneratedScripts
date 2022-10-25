@@ -1,35 +1,35 @@
 """ trigger/02000255_bf/portal02.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=52, visible=False, enabled=False, minimapVisible=False)
-        set_interact_object(triggerIds=[10000717], state=1)
+        self.set_portal(portalId=52, visible=False, enable=False, minimapVisible=False)
+        self.set_interact_object(triggerIds=[10000717], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000717], arg2=0):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000717], stateValue=0):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=52, visible=False, enabled=True, minimapVisible=False)
-        set_timer(timerId='2', seconds=2)
+        self.set_portal(portalId=52, visible=False, enable=True, minimapVisible=False)
+        self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            set_portal(portalId=52, visible=False, enabled=False, minimapVisible=False)
-            return 재사용대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            self.set_portal(portalId=52, visible=False, enable=False, minimapVisible=False)
+            return 재사용대기(self.ctx)
 
 
-class 재사용대기(state.State):
+class 재사용대기(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=3)
+        self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

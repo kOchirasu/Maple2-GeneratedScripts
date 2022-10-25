@@ -1,28 +1,28 @@
 """ trigger/61000004_me/trap_03.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000128], state=1)
+        self.set_interact_object(triggerIds=[10000128], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000128], arg2=0):
-            set_mesh(triggerIds=[601,602,603,604], visible=False, arg3=0, arg4=0)
-            return 완료()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000128], stateValue=0):
+            self.set_mesh(triggerIds=[601,602,603,604], visible=False, arg3=0, delay=0)
+            return 완료(self.ctx)
 
 
-class 완료(state.State):
+class 완료(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='128', seconds=5, clearAtZero=False)
+        self.set_timer(timerId='128', seconds=5, startDelay=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='128'):
-            set_mesh(triggerIds=[601,602,603,604], visible=True, arg3=0, arg4=0)
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='128'):
+            self.set_mesh(triggerIds=[601,602,603,604], visible=True, arg3=0, delay=0)
+            return 시작(self.ctx)
 
     def on_exit(self):
-        reset_timer(timerId='128')
+        self.reset_timer(timerId='128')
 
 
+initial_state = 시작

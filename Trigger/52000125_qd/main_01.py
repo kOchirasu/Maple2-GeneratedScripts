@@ -1,187 +1,187 @@
 """ trigger/52000125_qd/main_01.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60100190,60100191,60100192,60100193,60100194,60100195], questStates=[2]):
-            return ready()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60100190,60100191,60100192,60100193,60100194,60100195], questStates=[2]):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False)
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_01(self.ctx)
 
 
-#  씬 진행 
-class scene_01(state.State):
+# 씬 진행
+class scene_01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        select_camera_path(pathIds=[4006], returnView=False)
-        create_monster(spawnIds=[201], arg2=True) # 연출 제타 (11003207)
-        move_user(mapId=52000125, portalId=6001)
-        set_npc_emotion_sequence(spawnId=102, sequenceName='Clap_A')
-        add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__0$', duration=3000, align='center')
-        set_scene_skip(state=scene_08, arg2='exit')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.select_camera_path(pathIds=[4006], returnView=False)
+        self.create_monster(spawnIds=[201], animationEffect=True) # 연출 제타 (11003207)
+        self.move_user(mapId=52000125, portalId=6001)
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Clap_A')
+        self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__0$', duration=3000, align='center')
+        self.set_scene_skip(state=scene_08, action='exit')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_02(self.ctx)
 
 
-class scene_02(state.State):
+class scene_02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=102, sequenceName='ChatUp')
-        add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__1$', duration=1000, align='center')
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='ChatUp')
+        self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__1$', duration=1000, align='center')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_03(self.ctx)
 
 
-class scene_03(state.State):
+class scene_03(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003208, msg='$52000125_QD__MAIN_01__2$', duration=2000, align='center')
+        self.add_cinematic_talk(npcId=11003208, msg='$52000125_QD__MAIN_01__2$', duration=2000, align='center')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return scene_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return scene_04(self.ctx)
 
 
-class scene_04(state.State):
+class scene_04(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4003], returnView=False)
-        add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__3$', duration=3000, align='center')
+        self.select_camera_path(pathIds=[4003], returnView=False)
+        self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN_01__3$', duration=3000, align='center')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_05(self.ctx)
 
 
-class scene_05(state.State):
+class scene_05(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4003,4004,4005], returnView=False)
+        self.select_camera_path(pathIds=[4003,4004,4005], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_06(self.ctx)
 
 
-class scene_06(state.State):
+class scene_06(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return scene_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return scene_07(self.ctx)
 
 
-class scene_07(state.State):
+class scene_07(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        set_scene_skip()
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return scene_08()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return scene_08(self.ctx)
 
 
-class scene_08(state.State):
+class scene_08(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[201]) # 연출용 제타()
-        create_monster(spawnIds=[202], arg2=True) # 퀘스트용 제타 ()
+        self.destroy_monster(spawnIds=[201]) # 연출용 제타()
+        self.create_monster(spawnIds=[202], animationEffect=True) # 퀘스트용 제타 ()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True)
-        set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        reset_camera(interpolationTime=1)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.reset_camera(interpolationTime=1)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60100195], questStates=[2]):
-            return eventtalk_start()
-
-
-#  마크&제타 재회 
-class eventtalk_start(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return eventtalk_01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60100195], questStates=[2]):
+            return eventtalk_start(self.ctx)
 
 
-class eventtalk_01(state.State):
+# 마크&제타 재회
+class eventtalk_start(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return eventtalk_01(self.ctx)
+
+
+class eventtalk_01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=102, patrolName='MS2PatrolData_3003')
-        move_npc(spawnId=202, patrolName='MS2PatrolData_3004')
-        add_balloon_talk(spawnId=102, msg='$52000125_QD__MAIN_01__4$', duration=2000, delayTick=0)
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_3003')
+        self.move_npc(spawnId=202, patrolName='MS2PatrolData_3004')
+        self.add_balloon_talk(spawnId=102, msg='$52000125_QD__MAIN_01__4$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return eventtalk_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return eventtalk_02(self.ctx)
 
 
-class eventtalk_02(state.State):
+class eventtalk_02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=202, sequenceName='ChatUp_A')
-        add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__5$', duration=2000, delayTick=0)
+        self.set_npc_emotion_sequence(spawnId=202, sequenceName='ChatUp_A')
+        self.add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__5$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return eventtalk_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return eventtalk_03(self.ctx)
 
 
-class eventtalk_03(state.State):
+class eventtalk_03(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
-        add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__6$', duration=2000, delayTick=0)
+        self.set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
+        self.add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__6$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return eventtalk_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return eventtalk_04(self.ctx)
 
 
-class eventtalk_04(state.State):
+class eventtalk_04(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=202, sequenceName='ChatUp_A')
-        add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__7$', duration=2000, delayTick=0)
+        self.set_npc_emotion_sequence(spawnId=202, sequenceName='ChatUp_A')
+        self.add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__7$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return eventtalk_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return eventtalk_05(self.ctx)
 
 
-class eventtalk_05(state.State):
+class eventtalk_05(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=102, sequenceName='Idle_A')
-        add_balloon_talk(spawnId=102, msg='$52000125_QD__MAIN_01__8$', duration=2000, delayTick=0)
+        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Idle_A')
+        self.add_balloon_talk(spawnId=102, msg='$52000125_QD__MAIN_01__8$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return eventtalk_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return eventtalk_06(self.ctx)
 
 
-class eventtalk_06(state.State):
+class eventtalk_06(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=202, sequenceName='Idle_A')
-        add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__9$', duration=2000, delayTick=0)
+        self.set_npc_emotion_sequence(spawnId=202, sequenceName='Idle_A')
+        self.add_balloon_talk(spawnId=202, msg='$52000125_QD__MAIN_01__9$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=20000):
-            return eventtalk_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=20000):
+            return eventtalk_02(self.ctx)
 
 
+initial_state = idle

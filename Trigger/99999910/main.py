@@ -1,16 +1,16 @@
 """ trigger/99999910/main.xml """
-from common import *
-import state
+import common
 
 
-#  플레이어 감지 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[701]):
-            return ready()
+# 플레이어 감지
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[701]):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     pass
 
 
+initial_state = idle

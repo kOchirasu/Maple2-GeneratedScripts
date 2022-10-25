@@ -1,32 +1,32 @@
 """ trigger/63000079_cs/trigger_12.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[312], visible=False, arg3=0, arg4=0, arg5=2)
+        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[112]):
-            return 발판12()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[112]):
+            return 발판12(self.ctx)
 
 
-class 발판12(state.State):
+class 발판12(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[312], visible=True, arg3=0, arg4=0, arg5=2)
+        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2)
 
-    def on_tick(self) -> state.State:
-        if not user_detected(boxIds=[112]):
-            return 발판12끝()
+    def on_tick(self) -> common.Trigger:
+        if not self.user_detected(boxIds=[112]):
+            return 발판12끝(self.ctx)
 
 
-class 발판12끝(state.State):
+class 발판12끝(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='412', seconds=2, clearAtZero=False)
+        self.set_timer(timerId='412', seconds=2, startDelay=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='412'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='412'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

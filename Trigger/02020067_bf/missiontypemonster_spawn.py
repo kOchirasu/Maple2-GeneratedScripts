@@ -1,24 +1,24 @@
 """ trigger/02020067_bf/missiontypemonster_spawn.xml """
-from common import *
-import state
+import common
 
 
-class 루프1(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            start_combine_spawn(groupId=[528], isStart=True)
-            return 루프2()
+class 루프1(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            self.start_combine_spawn(groupId=[528], isStart=True)
+            return 루프2(self.ctx)
 
 
-class 루프2(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=150000):
-            return 루프3()
+class 루프2(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=150000):
+            return 루프3(self.ctx)
 
 
-class 루프3(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=150000):
-            return 루프2()
+class 루프3(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=150000):
+            return 루프2(self.ctx)
 
 
+initial_state = 루프1

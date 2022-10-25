@@ -1,55 +1,55 @@
 """ trigger/02000525_bf/bossspawn.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False)
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[10]):
-            return 난이도별보스등장()
-
-
-class 난이도별보스등장(state.State):
-    def on_tick(self) -> state.State:
-        if dungeon_id(dungeonId=23048003):
-            return 일반난이도_보스등장()
-        if dungeon_id(dungeonId=23049003):
-            return 어려움난이도_보스등장()
-        if wait_tick(waitTick=1100):
-            return 일반난이도_보스등장()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[10]):
+            return 난이도별보스등장(self.ctx)
 
 
-class 일반난이도_보스등장(state.State):
+class 난이도별보스등장(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_id(dungeonId=23048003):
+            return 일반난이도_보스등장(self.ctx)
+        if self.dungeon_id(dungeonId=23049003):
+            return 어려움난이도_보스등장(self.ctx)
+        if self.wait_tick(waitTick=1100):
+            return 일반난이도_보스등장(self.ctx)
+
+
+class 일반난이도_보스등장(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=True)
+        self.create_monster(spawnIds=[101], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 클리어처리()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 클리어처리(self.ctx)
 
 
-class 어려움난이도_보스등장(state.State):
+class 어려움난이도_보스등장(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[102], arg2=True)
+        self.create_monster(spawnIds=[102], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[102]):
-            return 클리어처리()
-
-
-class 클리어처리(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            dungeon_clear()
-            return 종료처리()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[102]):
+            return 클리어처리(self.ctx)
 
 
-class 종료처리(state.State):
+class 클리어처리(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            self.dungeon_clear()
+            return 종료처리(self.ctx)
+
+
+class 종료처리(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[-1])
-        set_portal(portalId=11, visible=True, enabled=True, minimapVisible=True)
+        self.destroy_monster(spawnIds=[-1])
+        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
 
 
+initial_state = 대기

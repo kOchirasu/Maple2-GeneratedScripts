@@ -1,16 +1,16 @@
 """ trigger/99999883/testtrigger4.xml """
-from common import *
-import state
+import common
 
 
-class START(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[2001]):
-            return idle()
+class START(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[2001]):
+            return idle(self.ctx)
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=True)
+        self.create_monster(spawnIds=[101], animationEffect=True)
 
 
+initial_state = START

@@ -1,149 +1,149 @@
 """ trigger/52020010_qd/main_b.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2006], questIds=[60200055], questStates=[1]):
-            return Object_Check()
+class Idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2006], questIds=[60200055], questStates=[1]):
+            return Object_Check(self.ctx)
 
 
-class Object_Check(state.State):
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001276], arg2=0):
-            return Ready()
+class Object_Check(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001276], stateValue=0):
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return Move_6001()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return Move_6001(self.ctx)
 
 
-class Move_6001(state.State):
+class Move_6001(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52020010, portalId=6002)
+        self.move_user(mapId=52020010, portalId=6002)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return Event_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return Event_01(self.ctx)
 
 
-class Event_01(state.State):
+class Event_01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_pc_emotion_sequence(sequenceNames=['Object_React_H'])
-        add_cinematic_talk(npcId=0, msg='왜 아무일도 일어나지 않는거지?', duration=2800)
-        set_scene_skip(state=Next, arg2='nextState')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_pc_emotion_sequence(sequenceNames=['Object_React_H'])
+        self.add_cinematic_talk(npcId=0, msg='왜 아무일도 일어나지 않는거지?', duration=2800)
+        self.set_scene_skip(state=Next, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return Event_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return Event_02(self.ctx)
 
 
-class Event_02(state.State):
+class Event_02(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_sequence(sequenceNames=['Object_React_G'])
-        add_cinematic_talk(npcId=0, msg='두들겨 볼까?', duration=2800)
+        self.set_pc_emotion_sequence(sequenceNames=['Object_React_G'])
+        self.add_cinematic_talk(npcId=0, msg='두들겨 볼까?', duration=2800)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Event_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Event_03(self.ctx)
 
 
-class Event_03(state.State):
+class Event_03(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003610, msg='으으으.... 시끄럽구나!', duration=2800) # 11003610: 틱택톡
-        add_balloon_talk(spawnId=0, msg='!!!', duration=2000, delayTick=1000)
+        self.add_cinematic_talk(npcId=11003610, msg='으으으.... 시끄럽구나!', duration=2800) # 11003610: 틱택톡
+        self.add_balloon_talk(spawnId=0, msg='!!!', duration=2000, delayTick=1000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Event_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Event_04(self.ctx)
 
 
-class Event_04(state.State):
+class Event_04(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[501], arg2=True)
+        self.create_monster(spawnIds=[501], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return Event_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return Event_05(self.ctx)
 
 
-class Event_05(state.State):
+class Event_05(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=11003610, msg='네 놈이냐! 내 잠을 깨운 녀석이!', duration=2800) # 11003610: 틱택톡
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=11003610, msg='네 놈이냐! 내 잠을 깨운 녀석이!', duration=2800) # 11003610: 틱택톡
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Event_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Event_06(self.ctx)
 
 
-class Event_06(state.State):
+class Event_06(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=11003610, msg='감히 내 시간을 방해하다니 가만두지 않겠다!', duration=2800) # 11003610: 틱택톡
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=11003610, msg='감히 내 시간을 방해하다니 가만두지 않겠다!', duration=2800) # 11003610: 틱택톡
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Next()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Next(self.ctx)
 
 
-class Next(state.State):
+class Next(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[501])
-        create_monster(spawnIds=[601], arg2=True)
+        self.destroy_monster(spawnIds=[501])
+        self.create_monster(spawnIds=[601], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Battle()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Battle(self.ctx)
 
 
-class Battle(state.State):
+class Battle(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[601]):
-            return Mission_Clear()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[601]):
+            return Mission_Clear(self.ctx)
 
 
-class Mission_Clear(state.State):
+class Mission_Clear(common.Trigger):
     def on_enter(self):
-        set_achievement(type='trigger', achieve='ClockDevil')
+        self.set_achievement(type='trigger', achieve='ClockDevil')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2006], questIds=[60200050], questStates=[1]):
-            return Mission_Clear()
-        if quest_user_detected(boxIds=[2006], questIds=[60200055], questStates=[2]):
-            return Event_07()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2006], questIds=[60200050], questStates=[1]):
+            return Mission_Clear(self.ctx)
+        if self.quest_user_detected(boxIds=[2006], questIds=[60200055], questStates=[2]):
+            return Event_07(self.ctx)
 
 
-class Event_07(state.State):
+class Event_07(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=11003603, illustId='0', msg='인간! 파편이 돌아왔다! 어서 이리 와라!', duration=2800, align='Left') # 11003603: 틱토그
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=11003603, illustId='0', msg='인간! 파편이 돌아왔다! 어서 이리 와라!', duration=2800, align='Left') # 11003603: 틱토그
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Event_End()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Event_End(self.ctx)
 
 
-class Event_End(state.State):
+class Event_End(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
 
+initial_state = Idle

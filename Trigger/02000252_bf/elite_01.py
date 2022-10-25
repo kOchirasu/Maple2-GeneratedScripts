@@ -1,153 +1,153 @@
 """ trigger/02000252_bf/elite_01.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8901], visible=False) # 가이드 화살표
-        set_effect(triggerIds=[604], visible=False) # 벨라 음성
-        set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=True)
-        set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
+        self.set_effect(triggerIds=[8901], visible=False) # 가이드 화살표
+        self.set_effect(triggerIds=[604], visible=False) # 벨라 음성
+        self.set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=True)
+        self.set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=903, boxId=1):
-            return 딜레이()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=903, boxId=1):
+            return 딜레이(self.ctx)
 
 
-class 대기2(state.State):
+class 대기2(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=True)
-        set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
+        self.set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=True)
+        self.set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=903, boxId=1):
-            return 딜레이2()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=903, boxId=1):
+            return 딜레이2(self.ctx)
 
 
-class 딜레이(state.State):
+class 딜레이(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=3)
+        self.set_timer(timerId='1', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라(self.ctx)
 
 
-class 딜레이2(state.State):
+class 딜레이2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=3)
+        self.set_timer(timerId='1', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라2()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라2(self.ctx)
 
 
-class 벨라(state.State):
+class 벨라(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=2)
-        create_monster(spawnIds=[1002], arg2=False)
+        self.set_timer(timerId='1', seconds=2)
+        self.create_monster(spawnIds=[1002], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라대사()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라대사(self.ctx)
 
 
-class 벨라2(state.State):
+class 벨라2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=2)
-        create_monster(spawnIds=[1002], arg2=False)
+        self.set_timer(timerId='1', seconds=2)
+        self.create_monster(spawnIds=[1002], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라대사2()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라대사2(self.ctx)
 
 
-class 벨라대사(state.State):
+class 벨라대사(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=3)
-        set_conversation(type=1, spawnId=1002, script='$02000252_BF__ELITE_01__0$', arg4=2)
+        self.set_timer(timerId='1', seconds=3)
+        self.set_conversation(type=1, spawnId=1002, script='$02000252_BF__ELITE_01__0$', arg4=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라스킬()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라스킬(self.ctx)
 
 
-class 벨라대사2(state.State):
+class 벨라대사2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=3)
-        set_conversation(type=1, spawnId=1002, script='$02000252_BF__ELITE_01__1$', arg4=2)
+        self.set_timer(timerId='1', seconds=3)
+        self.set_conversation(type=1, spawnId=1002, script='$02000252_BF__ELITE_01__1$', arg4=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라스킬2()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라스킬2(self.ctx)
 
 
-class 벨라스킬(state.State):
+class 벨라스킬(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=2)
-        move_npc(spawnId=1002, patrolName='MS2PatrolData_2')
+        self.set_timer(timerId='1', seconds=2)
+        self.move_npc(spawnId=1002, patrolName='MS2PatrolData_2')
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 이동()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 이동(self.ctx)
 
 
-class 벨라스킬2(state.State):
+class 벨라스킬2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=2)
-        move_npc(spawnId=1002, patrolName='MS2PatrolData_2')
+        self.set_timer(timerId='1', seconds=2)
+        self.move_npc(spawnId=1002, patrolName='MS2PatrolData_2')
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 이동2()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 이동2(self.ctx)
 
 
-class 이동(state.State):
+class 이동(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1)
+        self.set_timer(timerId='1', seconds=1)
         # <action name="무작위유저를이동시킨다" arg1="02000252" arg2="9999" arg3="903" arg4="1" />
-        create_monster(spawnIds=[201], arg2=False)
-        create_monster(spawnIds=[1093], arg2=False)
-        create_monster(spawnIds=[1094], arg2=False)
-        create_monster(spawnIds=[1095], arg2=False)
-        create_monster(spawnIds=[1096], arg2=False)
-        create_monster(spawnIds=[1097], arg2=False)
-        create_monster(spawnIds=[1098], arg2=False)
-        create_monster(spawnIds=[1099], arg2=False)
-        create_monster(spawnIds=[1100], arg2=False)
-        create_monster(spawnIds=[1101], arg2=False)
-        set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
+        self.create_monster(spawnIds=[201], animationEffect=False)
+        self.create_monster(spawnIds=[1093], animationEffect=False)
+        self.create_monster(spawnIds=[1094], animationEffect=False)
+        self.create_monster(spawnIds=[1095], animationEffect=False)
+        self.create_monster(spawnIds=[1096], animationEffect=False)
+        self.create_monster(spawnIds=[1097], animationEffect=False)
+        self.create_monster(spawnIds=[1098], animationEffect=False)
+        self.create_monster(spawnIds=[1099], animationEffect=False)
+        self.create_monster(spawnIds=[1100], animationEffect=False)
+        self.create_monster(spawnIds=[1101], animationEffect=False)
+        self.set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라삭제()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라삭제(self.ctx)
 
 
-class 이동2(state.State):
+class 이동2(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1)
+        self.set_timer(timerId='1', seconds=1)
         # <action name="무작위유저를이동시킨다" arg1="02000252" arg2="9999" arg3="903" arg4="1" />
-        set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=True)
+        self.set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=True)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 벨라삭제()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 벨라삭제(self.ctx)
 
 
-class 벨라삭제(state.State):
+class 벨라삭제(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[1002])
+        self.destroy_monster(spawnIds=[1002])
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[201]):
-            return 개봉()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[201]):
+            return 개봉(self.ctx)
 
 
-class 개봉(state.State):
+class 개봉(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[8901], visible=True) # 가이드 화살표
-        set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
-        set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=False)
+        self.set_effect(triggerIds=[8901], visible=True) # 가이드 화살표
+        self.set_mesh(triggerIds=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
+        self.set_mesh(triggerIds=[2119,2120,2121,2122,2123,2124], visible=False)
 
 
+initial_state = 대기

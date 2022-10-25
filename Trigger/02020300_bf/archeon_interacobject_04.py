@@ -1,31 +1,31 @@
 """ trigger/02020300_bf/archeon_interacobject_04.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[901]):
-            return 시작()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[901]):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10002189], state=1)
+        self.set_interact_object(triggerIds=[10002189], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10002189], arg2=0):
-            set_interact_object(triggerIds=[10002189], state=2)
-            return 재활성대기()
-
-
-class 재활성대기(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10002189], stateValue=0):
+            self.set_interact_object(triggerIds=[10002189], state=2)
+            return 재활성대기(self.ctx)
 
 
-class 종료(state.State):
+class 재활성대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            return 시작(self.ctx)
+
+
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

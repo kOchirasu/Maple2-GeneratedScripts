@@ -1,32 +1,32 @@
 """ trigger/02020051_bf/107_text.xml """
-from common import *
-import state
+import common
 
 
-class 가이드시작(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='Text', value=1):
-            return 대기()
+class 가이드시작(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Text', value=1):
+            return 대기(self.ctx)
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            return 가이드_1()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            return 가이드_1(self.ctx)
 
 
-class 가이드_1(state.State):
+class 가이드_1(common.Trigger):
     def on_enter(self):
-        side_npc_talk(type='talk', npcId=11003536, illust='Neirin_surprise', script='$02020051_BF__107_TEXT__0$', duration=5684, voice='ko/Npc/00002201')
+        self.side_npc_talk(type='talk', npcId=11003536, illust='Neirin_surprise', script='$02020051_BF__107_TEXT__0$', duration=5684, voice='ko/Npc/00002201')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return 종료()
-
-
-class 종료(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='Text', value=2):
-            return 가이드시작()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return 종료(self.ctx)
 
 
+class 종료(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Text', value=2):
+            return 가이드시작(self.ctx)
+
+
+initial_state = 가이드시작

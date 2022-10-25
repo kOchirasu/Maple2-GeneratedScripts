@@ -1,20 +1,20 @@
 """ trigger/02100009_bf/buff_2.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            return 버프()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            return 버프(self.ctx)
 
 
-class 버프(state.State):
+class 버프(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[101], skillId=50000206, level=1, arg4=False, arg5=False)
+        self.add_buff(boxIds=[101], skillId=50000206, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

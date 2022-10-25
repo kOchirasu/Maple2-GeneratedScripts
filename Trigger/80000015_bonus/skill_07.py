@@ -1,50 +1,50 @@
 """ trigger/80000015_bonus/skill_07.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[712], isEnable=False)
-        set_skill(triggerIds=[726], isEnable=False)
-        set_visible_breakable_object(triggerIds=[7701,7702,7703,7704], arg2=False)
-        set_breakable(triggerIds=[7701,7702,7703,7704], enabled=False)
+        self.set_skill(triggerIds=[712], enable=False)
+        self.set_skill(triggerIds=[726], enable=False)
+        self.set_visible_breakable_object(triggerIds=[7701,7702,7703,7704], visible=False)
+        self.set_breakable(triggerIds=[7701,7702,7703,7704], enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[199]):
-            return 대기시간()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[199]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        set_visible_breakable_object(triggerIds=[7701,7702,7703,7704], arg2=True)
+        self.set_visible_breakable_object(triggerIds=[7701,7702,7703,7704], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[7701,7702,7703,7704], enabled=True)
+        self.set_breakable(triggerIds=[7701,7702,7703,7704], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 스킬발동()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 스킬발동(self.ctx)
 
 
-class 스킬발동(state.State):
+class 스킬발동(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[712], isEnable=True)
-        set_skill(triggerIds=[726], isEnable=True)
-        set_breakable(triggerIds=[7701,7702,7703,7704], enabled=False)
+        self.set_skill(triggerIds=[712], enable=True)
+        self.set_skill(triggerIds=[726], enable=True)
+        self.set_breakable(triggerIds=[7701,7702,7703,7704], enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 시작(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

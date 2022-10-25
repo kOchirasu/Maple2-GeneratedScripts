@@ -1,112 +1,112 @@
 """ trigger/52100202_qd/52100202.xml """
-from common import *
-import state
+import common
 
 
-class wait_01(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[10003250], questStates=[2]):
-            return wait_01_02()
+class wait_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[10003250], questStates=[2]):
+            return wait_01_02(self.ctx)
 
 
-class wait_01_02(state.State):
+class wait_01_02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        select_camera_path(pathIds=[4001], returnView=False)
-        set_cinematic_ui(type=1)
-        move_user(mapId=52100202, portalId=6001)
-        set_mesh(triggerIds=[4026], visible=True)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.select_camera_path(pathIds=[4001], returnView=False)
+        self.set_cinematic_ui(type=1)
+        self.move_user(mapId=52100202, portalId=6001)
+        self.set_mesh(triggerIds=[4026], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 티마이온()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 티마이온(self.ctx)
 
 
-class 티마이온(state.State):
+class 티마이온(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 티마이온_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 티마이온_02(self.ctx)
 
 
-class 티마이온_02(state.State):
+class 티마이온_02(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4005], returnView=False)
-        set_cinematic_ui(type=3)
-        move_user_path(patrolName='MS2PatrolData_3001')
-        add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__0$', duration=3500)
-        set_scene_skip(state=Skip_1, arg2='nextState')
+        self.select_camera_path(pathIds=[4005], returnView=False)
+        self.set_cinematic_ui(type=3)
+        self.move_user_path(patrolName='MS2PatrolData_3001')
+        self.add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__0$', duration=3500)
+        self.set_scene_skip(state=Skip_1, action='nextState')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return 티마이온_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 티마이온_03(self.ctx)
 
 
-class 티마이온_03(state.State):
+class 티마이온_03(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4002], returnView=False)
-        create_monster(spawnIds=[101], arg2=False)
+        self.select_camera_path(pathIds=[4002], returnView=False)
+        self.create_monster(spawnIds=[101], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 티마이온_03_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 티마이온_03_01(self.ctx)
 
 
-class 티마이온_03_01(state.State):
+class 티마이온_03_01(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4003], returnView=False)
-        set_npc_emotion_loop(spawnId=101, sequenceName='Attack_Idle', duration=3000)
+        self.select_camera_path(pathIds=[4003], returnView=False)
+        self.set_npc_emotion_loop(spawnId=101, sequenceName='Attack_Idle', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 티마이온_03_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 티마이온_03_02(self.ctx)
 
 
-class 티마이온_03_02(state.State):
+class 티마이온_03_02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Attack_01_J')
+        self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Attack_01_J')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return 티마이온_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return 티마이온_04(self.ctx)
 
 
-class 티마이온_04(state.State):
+class 티마이온_04(common.Trigger):
     def on_enter(self):
-        select_camera_path(pathIds=[4004,4006], returnView=False)
-        face_emotion(spawnId=0, emotionName='Trigger_serious')
-        add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__1$', duration=4500)
-        add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__2$', duration=4500)
-        set_scene_skip()
+        self.select_camera_path(pathIds=[4004,4006], returnView=False)
+        self.face_emotion(spawnId=0, emotionName='Trigger_serious')
+        self.add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__1$', duration=4500)
+        self.add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__2$', duration=4500)
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=9000):
-            return 정리_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=9000):
+            return 정리_02(self.ctx)
 
 
-class Skip_1(state.State):
+class Skip_1(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 정리_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 정리_02(self.ctx)
 
 
-class 정리_02(state.State):
+class 정리_02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 정리_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 정리_03(self.ctx)
 
 
-class 정리_03(state.State):
+class 정리_03(common.Trigger):
     def on_enter(self):
-        move_user(mapId=2020036, portalId=6001)
+        self.move_user(mapId=2020036, portalId=6001)
 
 
+initial_state = wait_01

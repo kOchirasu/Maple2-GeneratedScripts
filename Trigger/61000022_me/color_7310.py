@@ -1,150 +1,150 @@
 """ trigger/61000022_me/color_7310.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='Color31', value=10)
-        set_mesh(triggerIds=[831], visible=True, arg3=0, arg4=0, arg5=0) # yellow
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[1031], visible=False, arg3=0, arg4=0, arg5=0) # red
+        self.set_user_value(key='Color31', value=10)
+        self.set_mesh(triggerIds=[831], visible=True, arg3=0, delay=0, scale=0) # yellow
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[1031], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ColorStart', value=1):
-            return YellowBefore()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ColorStart', value=1):
+            return YellowBefore(self.ctx)
 
 
-#  Yellow Before 
-class YellowBefore(state.State):
+# Yellow Before
+class YellowBefore(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[831], visible=True, arg3=0, arg4=0, arg5=2) # yellow
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[1031], visible=False, arg3=0, arg4=0, arg5=0) # red
+        self.set_mesh(triggerIds=[831], visible=True, arg3=0, delay=0, scale=2) # yellow
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[1031], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=2):
-            return GreenAfter()
-        if user_value(key='Color31', value=3):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=2):
+            return GreenAfter(self.ctx)
+        if self.user_value(key='Color31', value=3):
             return None # Missing State: YellowtoRed
-        if user_value(key='Color31', value=4):
-            return Clear()
-        if user_value(key='Color31', value=0):
-            return Reset()
-        if user_value(key='Color31', value=5):
-            return Regen()
+        if self.user_value(key='Color31', value=4):
+            return Clear(self.ctx)
+        if self.user_value(key='Color31', value=0):
+            return Reset(self.ctx)
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  Red Before 
-class RedBefore(state.State):
+# Red Before
+class RedBefore(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1031], visible=True, arg3=0, arg4=0, arg5=0) # red
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[831], visible=False, arg3=0, arg4=0, arg5=0) # yellow
+        self.set_mesh(triggerIds=[1031], visible=True, arg3=0, delay=0, scale=0) # red
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[831], visible=False, arg3=0, delay=0, scale=0) # yellow
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=1):
-            return YellowAfter()
-        if user_value(key='Color31', value=2):
-            return GreenAfter()
-        if user_value(key='Color31', value=4):
-            return Clear()
-        if user_value(key='Color31', value=0):
-            return Reset()
-        if user_value(key='Color31', value=5):
-            return Regen()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=1):
+            return YellowAfter(self.ctx)
+        if self.user_value(key='Color31', value=2):
+            return GreenAfter(self.ctx)
+        if self.user_value(key='Color31', value=4):
+            return Clear(self.ctx)
+        if self.user_value(key='Color31', value=0):
+            return Reset(self.ctx)
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  Green After 
-class GreenAfter(state.State):
+# Green After
+class GreenAfter(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[931], visible=True, arg3=0, arg4=0, arg5=0) # green
+        self.set_mesh(triggerIds=[931], visible=True, arg3=0, delay=0, scale=0) # green
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=1):
-            return YellowAfter()
-        if user_value(key='Color31', value=3):
-            return RedAfter()
-        if user_value(key='Color31', value=4):
-            return Clear()
-        if user_value(key='Color31', value=0):
-            return Reset()
-        if user_value(key='Color31', value=5):
-            return Regen()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=1):
+            return YellowAfter(self.ctx)
+        if self.user_value(key='Color31', value=3):
+            return RedAfter(self.ctx)
+        if self.user_value(key='Color31', value=4):
+            return Clear(self.ctx)
+        if self.user_value(key='Color31', value=0):
+            return Reset(self.ctx)
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  Yellow After 
-class YellowAfter(state.State):
+# Yellow After
+class YellowAfter(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[831], visible=True, arg3=0, arg4=0, arg5=2) # yellow
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[1031], visible=False, arg3=100, arg4=0, arg5=0) # red
+        self.set_mesh(triggerIds=[831], visible=True, arg3=0, delay=0, scale=2) # yellow
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[1031], visible=False, arg3=100, delay=0, scale=0) # red
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=2):
-            return GreenAfter()
-        if user_value(key='Color31', value=3):
-            return RedAfter()
-        if user_value(key='Color31', value=4):
-            return Clear()
-        if user_value(key='Color31', value=0):
-            return Reset()
-        if user_value(key='Color31', value=5):
-            return Regen()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=2):
+            return GreenAfter(self.ctx)
+        if self.user_value(key='Color31', value=3):
+            return RedAfter(self.ctx)
+        if self.user_value(key='Color31', value=4):
+            return Clear(self.ctx)
+        if self.user_value(key='Color31', value=0):
+            return Reset(self.ctx)
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  Red After 
-class RedAfter(state.State):
+# Red After
+class RedAfter(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[1031], visible=True, arg3=0, arg4=0, arg5=0) # red
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[831], visible=False, arg3=100, arg4=0, arg5=0) # yellow
+        self.set_mesh(triggerIds=[1031], visible=True, arg3=0, delay=0, scale=0) # red
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[831], visible=False, arg3=100, delay=0, scale=0) # yellow
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=1):
-            return YellowAfter()
-        if user_value(key='Color31', value=2):
-            return GreenAfter()
-        if user_value(key='Color31', value=4):
-            return Clear()
-        if user_value(key='Color31', value=0):
-            return Reset()
-        if user_value(key='Color31', value=5):
-            return Regen()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=1):
+            return YellowAfter(self.ctx)
+        if self.user_value(key='Color31', value=2):
+            return GreenAfter(self.ctx)
+        if self.user_value(key='Color31', value=4):
+            return Clear(self.ctx)
+        if self.user_value(key='Color31', value=0):
+            return Reset(self.ctx)
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  All Clear 
-class Clear(state.State):
+# All Clear
+class Clear(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=2) # green
-        set_mesh(triggerIds=[831], visible=False, arg3=0, arg4=0, arg5=2) # yellow
-        set_mesh(triggerIds=[1031], visible=False, arg3=0, arg4=0, arg5=2) # red
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=2) # green
+        self.set_mesh(triggerIds=[831], visible=False, arg3=0, delay=0, scale=2) # yellow
+        self.set_mesh(triggerIds=[1031], visible=False, arg3=0, delay=0, scale=2) # red
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=5):
-            return Regen()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=5):
+            return Regen(self.ctx)
 
 
-#  Regen 
-class Regen(state.State):
+# Regen
+class Regen(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ColorStart', value=0) # Pattern Trigger
-        set_mesh(triggerIds=[831], visible=True, arg3=400, arg4=0, arg5=0) # yellow
-        set_mesh(triggerIds=[931], visible=False, arg3=0, arg4=0, arg5=0) # green
-        set_mesh(triggerIds=[1031], visible=False, arg3=0, arg4=0, arg5=0) # red
+        self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
+        self.set_mesh(triggerIds=[831], visible=True, arg3=400, delay=0, scale=0) # yellow
+        self.set_mesh(triggerIds=[931], visible=False, arg3=0, delay=0, scale=0) # green
+        self.set_mesh(triggerIds=[1031], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
-#  Reset 
-class Reset(state.State):
+# Reset
+class Reset(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ColorStart', value=0) # Pattern Trigger
+        self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Color31', value=5):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Color31', value=5):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

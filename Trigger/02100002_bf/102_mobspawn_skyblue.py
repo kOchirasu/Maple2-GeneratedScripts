@@ -1,126 +1,125 @@
 """ trigger/02100002_bf/102_mobspawn_skyblue.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='Gauge', value=0) # 탱크 리필 트리거에서 받는 신호
-        set_user_value(key='StopSpawn', value=0) # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
-        set_user_value(key='SpawnHold', value=0)
-        destroy_monster(spawnIds=[20100,20075,20050,20025,20001,21001,21002,21003])
-        set_effect(triggerIds=[5102], visible=False) # Normal Slime Rebirth Sound
-        set_effect(triggerIds=[5202], visible=False) # Abnormal Slime Rebirth Sound
+        self.set_user_value(key='Gauge', value=0) # 탱크 리필 트리거에서 받는 신호
+        self.set_user_value(key='StopSpawn', value=0) # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
+        self.set_user_value(key='SpawnHold', value=0)
+        self.destroy_monster(spawnIds=[20100,20075,20050,20025,20001,21001,21002,21003])
+        self.set_effect(triggerIds=[5102], visible=False) # Normal Slime Rebirth Sound
+        self.set_effect(triggerIds=[5202], visible=False) # Abnormal Slime Rebirth Sound
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Gauge', value=100):
-            return Gauge100_Normal()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Gauge', value=100):
+            return Gauge100_Normal(self.ctx)
 
 
-class Gauge100_Normal(state.State):
+class Gauge100_Normal(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
-        create_monster(spawnIds=[20100], arg2=False) # 100%
+        self.set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
+        self.create_monster(spawnIds=[20100], animationEffect=False) # 100%
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return Gauge_SpawnRamdom()
-        if user_value(key='SpawnHold', value=1):
-            return SpawnHold()
-        if user_value(key='Gauge', value=75):
-            return Gauge75_Normal()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return Gauge_SpawnRamdom(self.ctx)
+        if self.user_value(key='SpawnHold', value=1):
+            return SpawnHold(self.ctx)
+        if self.user_value(key='Gauge', value=75):
+            return Gauge75_Normal(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
 
 
-class Gauge75_Normal(state.State):
+class Gauge75_Normal(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
-        create_monster(spawnIds=[20075], arg2=False) # 75%
+        self.set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
+        self.create_monster(spawnIds=[20075], animationEffect=False) # 75%
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return Gauge_SpawnRamdom()
-        if user_value(key='SpawnHold', value=1):
-            return SpawnHold()
-        if user_value(key='Gauge', value=100):
-            return Gauge100_Normal()
-        if user_value(key='Gauge', value=50):
-            return Gauge50_Normal()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return Gauge_SpawnRamdom(self.ctx)
+        if self.user_value(key='SpawnHold', value=1):
+            return SpawnHold(self.ctx)
+        if self.user_value(key='Gauge', value=100):
+            return Gauge100_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=50):
+            return Gauge50_Normal(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
 
 
-class Gauge50_Normal(state.State):
+class Gauge50_Normal(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
-        create_monster(spawnIds=[20050], arg2=False) # 50%
+        self.set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
+        self.create_monster(spawnIds=[20050], animationEffect=False) # 50%
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return Gauge_SpawnRamdom()
-        if user_value(key='SpawnHold', value=1):
-            return SpawnHold()
-        if user_value(key='Gauge', value=75):
-            return Gauge75_Normal()
-        if user_value(key='Gauge', value=25):
-            return Gauge25_Normal()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return Gauge_SpawnRamdom(self.ctx)
+        if self.user_value(key='SpawnHold', value=1):
+            return SpawnHold(self.ctx)
+        if self.user_value(key='Gauge', value=75):
+            return Gauge75_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=25):
+            return Gauge25_Normal(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
 
 
-class Gauge25_Normal(state.State):
+class Gauge25_Normal(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
-        create_monster(spawnIds=[20025], arg2=False) # 25%
+        self.set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
+        self.create_monster(spawnIds=[20025], animationEffect=False) # 25%
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return Gauge_SpawnRamdom()
-        if user_value(key='SpawnHold', value=1):
-            return SpawnHold()
-        if user_value(key='Gauge', value=50):
-            return Gauge50_Normal()
-        if user_value(key='Gauge', value=1):
-            return Gauge1_Normal()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return Gauge_SpawnRamdom(self.ctx)
+        if self.user_value(key='SpawnHold', value=1):
+            return SpawnHold(self.ctx)
+        if self.user_value(key='Gauge', value=50):
+            return Gauge50_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=1):
+            return Gauge1_Normal(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
 
 
-class Gauge1_Normal(state.State):
+class Gauge1_Normal(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
-        create_monster(spawnIds=[20001], arg2=False) # 1%
+        self.set_effect(triggerIds=[5102], visible=True) # Normal Slime Rebirth Sound
+        self.create_monster(spawnIds=[20001], animationEffect=False) # 1%
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return Gauge_SpawnRamdom()
-        if user_value(key='SpawnHold', value=1):
-            return SpawnHold()
-        if user_value(key='Gauge', value=25):
-            return Gauge25_Normal()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
-
-
-#  스폰 홀드 
-class SpawnHold(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='SpawnHold', value=0):
-            return BackToGaugeState()
-        if user_value(key='StopSpawn', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return Gauge_SpawnRamdom(self.ctx)
+        if self.user_value(key='SpawnHold', value=1):
+            return SpawnHold(self.ctx)
+        if self.user_value(key='Gauge', value=25):
+            return Gauge25_Normal(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
 
 
-#  돌연변이 슬라임 랜덤 낮은 확률
-class Gauge_SpawnRamdom(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=100, desc='Normal'):
-            return Spawn_Normal()
-        if random_condition(rate=5, desc='Eater'):
-            return Spawn_Eater()
-        if random_condition(rate=10, desc='Runner'):
-            return Spawn_Runner()
+# 스폰 홀드
+class SpawnHold(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='SpawnHold', value=0):
+            return BackToGaugeState(self.ctx)
+        if self.user_value(key='StopSpawn', value=1):
+            return Quit(self.ctx)
+
+
+# 돌연변이 슬라임 랜덤 낮은 확률
+class Gauge_SpawnRamdom(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=100, desc='Normal'):
+            return Spawn_Normal(self.ctx)
+        if self.random_condition(rate=5, desc='Eater'):
+            return Spawn_Eater(self.ctx)
+        if self.random_condition(rate=10, desc='Runner'):
+            return Spawn_Runner(self.ctx)
         """
         <condition name="랜덤조건" arg1="1" desc="BigMom">
             <transition state="Spawn_BigMom" /> 
@@ -128,50 +127,51 @@ class Gauge_SpawnRamdom(state.State):
         """
 
 
-#  랜덤 스폰 공용 
-class Spawn_Normal(state.State):
-    def on_tick(self) -> state.State:
-        if true():
-            return BackToGaugeState()
+# 랜덤 스폰 공용
+class Spawn_Normal(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return BackToGaugeState(self.ctx)
 
 
-class Spawn_Eater(state.State):
+class Spawn_Eater(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5202], visible=True) # Abnormal Slime Rebirth Sound
-        create_monster(spawnIds=[21001], arg2=False)
+        self.set_effect(triggerIds=[5202], visible=True) # Abnormal Slime Rebirth Sound
+        self.create_monster(spawnIds=[21001], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return BackToGaugeState()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return BackToGaugeState(self.ctx)
 
 
-class Spawn_Runner(state.State):
+class Spawn_Runner(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5202], visible=True) # Abnormal Slime Rebirth Sound
-        create_monster(spawnIds=[21002], arg2=False)
+        self.set_effect(triggerIds=[5202], visible=True) # Abnormal Slime Rebirth Sound
+        self.create_monster(spawnIds=[21002], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return BackToGaugeState()
-
-
-#  게이지 상태 체크로 돌아가기 공용 
-class BackToGaugeState(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='Gauge', value=100):
-            return Gauge100_Normal()
-        if user_value(key='Gauge', value=75):
-            return Gauge75_Normal()
-        if user_value(key='Gauge', value=50):
-            return Gauge50_Normal()
-        if user_value(key='Gauge', value=25):
-            return Gauge25_Normal()
-        if user_value(key='Gauge', value=1):
-            return Gauge1_Normal()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return BackToGaugeState(self.ctx)
 
 
-class Quit(state.State):
+# 게이지 상태 체크로 돌아가기 공용
+class BackToGaugeState(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Gauge', value=100):
+            return Gauge100_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=75):
+            return Gauge75_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=50):
+            return Gauge50_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=25):
+            return Gauge25_Normal(self.ctx)
+        if self.user_value(key='Gauge', value=1):
+            return Gauge1_Normal(self.ctx)
+
+
+class Quit(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[20100,20075,20050,20025,20001,21001,21002,21003])
+        self.destroy_monster(spawnIds=[20100,20075,20050,20025,20001,21001,21002,21003])
 
 
+initial_state = Wait

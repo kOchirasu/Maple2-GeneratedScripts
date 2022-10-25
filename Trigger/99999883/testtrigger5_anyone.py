@@ -1,38 +1,38 @@
 """ trigger/99999883/testtrigger5_anyone.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[901])
+        self.destroy_monster(spawnIds=[901])
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return StartDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return StartDelay(self.ctx)
 
 
-class StartDelay(state.State):
+class StartDelay(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[901], arg2=True)
+        self.create_monster(spawnIds=[901], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=10000):
-            return CheckAnyOne()
-
-
-class CheckAnyOne(state.State):
-    def on_tick(self) -> state.State:
-        if any_one():
-            return QuitDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return CheckAnyOne(self.ctx)
 
 
-class QuitDelay(state.State):
+class CheckAnyOne(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.any_one():
+            return QuitDelay(self.ctx)
+
+
+class QuitDelay(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[901])
+        self.destroy_monster(spawnIds=[901])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

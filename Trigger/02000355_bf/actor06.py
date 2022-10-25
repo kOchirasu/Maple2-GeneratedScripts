@@ -1,66 +1,66 @@
 """ trigger/02000355_bf/actor06.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[606], visible=False)
-        set_actor(triggerId=206, visible=True, initialSequence='Damg_B')
+        self.set_effect(triggerIds=[606], visible=False)
+        self.set_actor(triggerId=206, visible=True, initialSequence='Damg_B')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[1601]):
-            return 몬스터소환대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[1601]):
+            return 몬스터소환대기(self.ctx)
 
 
-class 몬스터소환대기(state.State):
+class 몬스터소환대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[606], visible=True)
+        self.set_effect(triggerIds=[606], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return 몬스터소환()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 몬스터소환(self.ctx)
 
 
-class 몬스터소환(state.State):
+class 몬스터소환(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2006], arg2=False)
+        self.create_monster(spawnIds=[2006], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return 더미해제()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return 더미해제(self.ctx)
 
 
-class 더미해제(state.State):
+class 더미해제(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=206, visible=False, initialSequence='Damg_B')
+        self.set_actor(triggerId=206, visible=False, initialSequence='Damg_B')
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[2006]):
-            return 소멸()
-        if monster_dead(boxIds=[2099]):
-            return 소멸()
-
-
-class 대기시간(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return 리젠준비()
-        if monster_dead(boxIds=[2099]):
-            return 소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[2006]):
+            return 소멸(self.ctx)
+        if self.monster_dead(boxIds=[2099]):
+            return 소멸(self.ctx)
 
 
-class 리젠준비(state.State):
+class 대기시간(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return 리젠준비(self.ctx)
+        if self.monster_dead(boxIds=[2099]):
+            return 소멸(self.ctx)
+
+
+class 리젠준비(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=206, visible=True, initialSequence='Regen_A')
+        self.set_actor(triggerId=206, visible=True, initialSequence='Regen_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 대기(self.ctx)
 
 
-class 소멸(state.State):
+class 소멸(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[2006])
+        self.destroy_monster(spawnIds=[2006])
 
 
+initial_state = 대기

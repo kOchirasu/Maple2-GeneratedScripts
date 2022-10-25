@@ -1,20 +1,20 @@
 """ trigger/52100107_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9001], questIds=[91000890], questStates=[3]):
-            return NPC소환()
-        if quest_user_detected(boxIds=[9001], questIds=[91000900], questStates=[1]):
-            return NPC소환()
-        if quest_user_detected(boxIds=[9001], questIds=[91000900], questStates=[2]):
-            return NPC소환()
+class Ready(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9001], questIds=[91000890], questStates=[3]):
+            return NPC소환(self.ctx)
+        if self.quest_user_detected(boxIds=[9001], questIds=[91000900], questStates=[1]):
+            return NPC소환(self.ctx)
+        if self.quest_user_detected(boxIds=[9001], questIds=[91000900], questStates=[2]):
+            return NPC소환(self.ctx)
 
 
-class NPC소환(state.State):
+class NPC소환(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=False)
+        self.create_monster(spawnIds=[101], animationEffect=False)
 
 
+initial_state = Ready

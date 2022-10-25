@@ -1,38 +1,37 @@
 """ trigger/dungeon_common/checkuser10_guildraid.xml """
-from common import *
-import state
+import common
 
 
-class CheckUser10_GuildRaid(state.State):
+class CheckUser10_GuildRaid(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=30, clearAtZero=True, display=False, arg5=0) # 최대 30초 대기
+        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9900, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if count_users(boxId=9900, boxId=10, operator='Less'):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9900, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.count_users(boxId=9900, boxId=10, operator='Less'):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Wait(state.State):
+class MaxCount10_Wait(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=40012, textId=40012, duration=3000)
+        self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=9900, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if time_expired(timerId='1'):
-            return MaxCount10_Start()
-        if wait_tick(waitTick=6000):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=9900, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.time_expired(timerId='1'):
+            return MaxCount10_Start(self.ctx)
+        if self.wait_tick(waitTick=6000):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Start(state.State):
+class MaxCount10_Start(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return state.DungeonStart()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return DungeonStart(self.ctx)
 
 

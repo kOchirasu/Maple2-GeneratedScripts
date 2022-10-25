@@ -1,47 +1,47 @@
 """ trigger/52000014_qd/obstruct_4000.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[4000], isEnable=False)
-        set_effect(triggerIds=[400], visible=True)
-        set_effect(triggerIds=[401], visible=True)
-        set_effect(triggerIds=[402], visible=True)
-        set_effect(triggerIds=[403], visible=True)
+        self.set_skill(triggerIds=[4000], enable=False)
+        self.set_effect(triggerIds=[400], visible=True)
+        self.set_effect(triggerIds=[401], visible=True)
+        self.set_effect(triggerIds=[402], visible=True)
+        self.set_effect(triggerIds=[403], visible=True)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return 발동준비()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return 발동준비(self.ctx)
 
 
-class 발동준비(state.State):
+class 발동준비(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1)
+        self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 발동()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 발동(self.ctx)
 
 
-class 발동(state.State):
+class 발동(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=5)
-        set_skill(triggerIds=[4000], isEnable=True)
+        self.set_timer(timerId='2', seconds=5)
+        self.set_skill(triggerIds=[4000], enable=True)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 초기화()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 초기화(self.ctx)
 
 
-class 초기화(state.State):
+class 초기화(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=1)
-        set_skill(triggerIds=[4000], isEnable=False)
+        self.set_timer(timerId='3', seconds=1)
+        self.set_skill(triggerIds=[4000], enable=False)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 발동준비()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 발동준비(self.ctx)
 
 
+initial_state = 대기

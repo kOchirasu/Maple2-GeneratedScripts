@@ -1,80 +1,80 @@
 """ trigger/02000048_bf/fire_05.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
+class 시작대기중(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10000310], state=1)
-        set_mesh(triggerIds=[205], visible=False, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[305], visible=False)
+        self.set_interact_object(triggerIds=[10000310], state=1)
+        self.set_mesh(triggerIds=[205], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[305], visible=False)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000310], arg2=0):
-            return 오브젝트반응()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000310], stateValue=0):
+            return 오브젝트반응(self.ctx)
 
 
-class 오브젝트반응(state.State):
-    def on_tick(self) -> state.State:
-        if true():
-            return NPC이동()
+class 오브젝트반응(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return NPC이동(self.ctx)
 
     def on_exit(self):
-        set_mesh(triggerIds=[205], visible=True, arg3=0, arg4=0, arg5=1)
-        set_effect(triggerIds=[305], visible=True)
-        create_monster(spawnIds=[405], arg2=False)
+        self.set_mesh(triggerIds=[205], visible=True, arg3=0, delay=0, scale=1)
+        self.set_effect(triggerIds=[305], visible=True)
+        self.create_monster(spawnIds=[405], animationEffect=False)
 
 
-class NPC이동(state.State):
+class NPC이동(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=405, script='$02000048_BF__FIRE_05__0$', arg4=2)
-        set_timer(timerId='1', seconds=2)
+        self.set_conversation(type=1, spawnId=405, script='$02000048_BF__FIRE_05__0$', arg4=2)
+        self.set_timer(timerId='1', seconds=2)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 몬스터와전투()
-
-
-class 몬스터와전투(state.State):
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[405]):
-            return 딜레이()
-        if not monster_in_combat(boxIds=[405]):
-            return 몬스터소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 몬스터와전투(self.ctx)
 
 
-class 몬스터소멸(state.State):
+class 몬스터와전투(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[405]):
+            return 딜레이(self.ctx)
+        if not self.monster_in_combat(boxIds=[405]):
+            return 몬스터소멸(self.ctx)
+
+
+class 몬스터소멸(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=10)
+        self.set_timer(timerId='1', seconds=10)
 
-    def on_tick(self) -> state.State:
-        if monster_in_combat(boxIds=[405]):
-            reset_timer(timerId='1')
+    def on_tick(self) -> common.Trigger:
+        if self.monster_in_combat(boxIds=[405]):
+            self.reset_timer(timerId='1')
             return None
-        if monster_dead(boxIds=[405]):
-            return 소멸대기()
-        if time_expired(timerId='1'):
-            return 소멸대기()
+        if self.monster_dead(boxIds=[405]):
+            return 소멸대기(self.ctx)
+        if self.time_expired(timerId='1'):
+            return 소멸대기(self.ctx)
 
 
-class 소멸대기(state.State):
+class 소멸대기(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=5)
+        self.set_timer(timerId='1', seconds=5)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 딜레이()
-        if monster_in_combat(boxIds=[405]):
-            return 몬스터소멸()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 딜레이(self.ctx)
+        if self.monster_in_combat(boxIds=[405]):
+            return 몬스터소멸(self.ctx)
 
 
-class 딜레이(state.State):
+class 딜레이(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[405])
-        set_timer(timerId='1', seconds=3)
+        self.destroy_monster(spawnIds=[405])
+        self.set_timer(timerId='1', seconds=3)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 시작대기중(self.ctx)
 
 
+initial_state = 시작대기중

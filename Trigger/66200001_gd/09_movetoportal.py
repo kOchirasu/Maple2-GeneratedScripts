@@ -1,40 +1,40 @@
 """ trigger/66200001_gd/09_movetoportal.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='MoveToTeamPortal', value=0)
-        set_portal(portalId=6, visible=False, enabled=False, minimapVisible=False) # LeavePortal_Safe (arg3=작동여부)
+        self.set_user_value(key='MoveToTeamPortal', value=0)
+        self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False) # LeavePortal_Safe (arg3=작동여부)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='MoveToTeamPortal', value=1):
-            return MoveUserbyTag()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='MoveToTeamPortal', value=1):
+            return MoveUserbyTag(self.ctx)
 
 
-class MoveUserbyTag(state.State):
+class MoveUserbyTag(common.Trigger):
     def on_enter(self):
-        move_to_portal(boxId=9900, userTagId=1, portalId=11) # Tag1=Blue
-        move_to_portal(boxId=9900, userTagId=2, portalId=12) # Tag2=Red
-        set_user_value(triggerId=11, key='BannerCheckIn', value=1) # TheNumberOfBlueTeamWaiting
-        set_user_value(triggerId=13, key='BannerCheckIn', value=1) # TheNumberOfRedTeamWaiting
+        self.move_to_portal(boxId=9900, userTagId=1, portalId=11) # Tag1=Blue
+        self.move_to_portal(boxId=9900, userTagId=2, portalId=12) # Tag2=Red
+        self.set_user_value(triggerId=11, key='BannerCheckIn', value=1) # TheNumberOfBlueTeamWaiting
+        self.set_user_value(triggerId=13, key='BannerCheckIn', value=1) # TheNumberOfRedTeamWaiting
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9900]):
-            return MoveUserbyTag()
-        if user_value(key='MoveToTeamPortal', value=2):
-            return QuitDelay()
-
-
-class QuitDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9900]):
+            return MoveUserbyTag(self.ctx)
+        if self.user_value(key='MoveToTeamPortal', value=2):
+            return QuitDelay(self.ctx)
 
 
-class Quit(state.State):
+class QuitDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Quit(self.ctx)
+
+
+class Quit(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=6, visible=False, enabled=True, minimapVisible=False) # 게임 시작 후 입장한 유저 퇴장 조치
+        self.set_portal(portalId=6, visible=False, enable=True, minimapVisible=False) # 게임 시작 후 입장한 유저 퇴장 조치
 
 
+initial_state = Wait

@@ -1,43 +1,43 @@
 """ trigger/02020112_bf/gravityroomtimer.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990020, key='TimerReset', value=0)
+        self.set_user_value(triggerId=99990020, key='TimerReset', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Timer', value=1):
-            return 타이머시작()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Timer', value=1):
+            return 타이머시작(self.ctx)
 
 
-class 타이머시작(state.State):
+class 타이머시작(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=10, clearAtZero=True, display=True, arg5=-40)
+        self.set_timer(timerId='1', seconds=10, startDelay=1, interval=1, vOffset=-40)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Timer', value=2):
-            return 종료()
-        if time_expired(timerId='1'):
-            return 리셋()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Timer', value=2):
+            return 종료(self.ctx)
+        if self.time_expired(timerId='1'):
+            return 리셋(self.ctx)
 
 
-class 리셋(state.State):
+class 리셋(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
-        set_user_value(triggerId=99990020, key='TimerReset', value=1)
+        self.reset_timer(timerId='1')
+        self.set_user_value(triggerId=99990020, key='TimerReset', value=1)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='Timer', value=2):
-            return 종료()
-        if true():
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Timer', value=2):
+            return 종료(self.ctx)
+        if self.true():
+            return 대기(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
-        set_user_value(triggerId=99990020, key='TimerReset', value=0)
+        self.reset_timer(timerId='1')
+        self.set_user_value(triggerId=99990020, key='TimerReset', value=0)
 
 
+initial_state = 대기

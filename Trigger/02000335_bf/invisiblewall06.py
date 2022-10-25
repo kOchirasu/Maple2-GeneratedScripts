@@ -1,15 +1,15 @@
 """ trigger/02000335_bf/invisiblewall06.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
-    def on_tick(self) -> state.State:
-        if count_users(boxId=708, boxId=1):
-            return 벽면처리()
+class 시작(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=708, boxId=1):
+            return 벽면처리(self.ctx)
 
 
-class 벽면처리(state.State):
+class 벽면처리(common.Trigger):
     pass
 
 
+initial_state = 시작

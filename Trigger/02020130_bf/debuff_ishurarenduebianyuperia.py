@@ -1,71 +1,71 @@
 """ trigger/02020130_bf/debuff_ishurarenduebianyuperia.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_user_value(key='IshuraFirstSetEnd', value=0)
-        set_user_value(key='RenduebianFirstSetEnd', value=0)
-        set_user_value(key='YuperiaFirstSetEnd', value=0)
+        self.set_user_value(key='IshuraFirstSetEnd', value=0)
+        self.set_user_value(key='RenduebianFirstSetEnd', value=0)
+        self.set_user_value(key='YuperiaFirstSetEnd', value=0)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=601, boxId=1):
-            return 셋트전투판스킬트리거셋팅1()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=601, boxId=1):
+            return 셋트전투판스킬트리거셋팅1(self.ctx)
 
 
-class 셋트전투판스킬트리거셋팅1(state.State):
+class 셋트전투판스킬트리거셋팅1(common.Trigger):
     def on_enter(self):
-        set_skill(triggerIds=[1301], isEnable=True) # 이슈라 전투판 디버프 스킬 On으로 초기 셋팅하기
-        set_skill(triggerIds=[1302], isEnable=True) # 렌듀비앙 전투판 디버프 스킬 On으로 초기 셋팅하기
-        set_skill(triggerIds=[1303], isEnable=True) # 유페리아 전투판 디버프 스킬 On으로 초기 셋팅하기
+        self.set_skill(triggerIds=[1301], enable=True) # 이슈라 전투판 디버프 스킬 On으로 초기 셋팅하기
+        self.set_skill(triggerIds=[1302], enable=True) # 렌듀비앙 전투판 디버프 스킬 On으로 초기 셋팅하기
+        self.set_skill(triggerIds=[1303], enable=True) # 유페리아 전투판 디버프 스킬 On으로 초기 셋팅하기
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=310):
-            return 셋트전투판마무리신호대기1()
-
-
-class 셋트전투판마무리신호대기1(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='IshuraFirstSetEnd', value=1): # 레듀비앙 보스 AI에게 변수 신호 받을때까지 대기하기
-            return 이슈라_디버프스킬끄기()
-        if user_value(key='RenduebianFirstSetEnd', value=1): # 유페리아 보스 AI에게 변수 신호 받을때까지 대기하기
-            return 렌듀비앙_디버프스킬끄기()
-        if user_value(key='YuperiaFirstSetEnd', value=1):
-            return 유페리아_디버프스킬끄기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=310):
+            return 셋트전투판마무리신호대기1(self.ctx)
 
 
-class 이슈라_디버프스킬끄기(state.State):
+class 셋트전투판마무리신호대기1(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='IshuraFirstSetEnd', value=1): # 레듀비앙 보스 AI에게 변수 신호 받을때까지 대기하기
+            return 이슈라_디버프스킬끄기(self.ctx)
+        if self.user_value(key='RenduebianFirstSetEnd', value=1): # 유페리아 보스 AI에게 변수 신호 받을때까지 대기하기
+            return 렌듀비앙_디버프스킬끄기(self.ctx)
+        if self.user_value(key='YuperiaFirstSetEnd', value=1):
+            return 유페리아_디버프스킬끄기(self.ctx)
+
+
+class 이슈라_디버프스킬끄기(common.Trigger):
     def on_enter(self):
-        set_user_value(key='IshuraFirstSetEnd', value=0) # IshuraFirstSetEnd 변수 0으로 초기화
-        set_skill(triggerIds=[1301], isEnable=False) # 이슈라 전투판 디버프 스킬 끄기
+        self.set_user_value(key='IshuraFirstSetEnd', value=0) # IshuraFirstSetEnd 변수 0으로 초기화
+        self.set_skill(triggerIds=[1301], enable=False) # 이슈라 전투판 디버프 스킬 끄기
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=370):
-            return 셋트전투판마무리신호대기1()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=370):
+            return 셋트전투판마무리신호대기1(self.ctx)
 
 
-class 렌듀비앙_디버프스킬끄기(state.State):
+class 렌듀비앙_디버프스킬끄기(common.Trigger):
     def on_enter(self):
-        set_user_value(key='RenduebianFirstSetEnd', value=0) # RenduebianFirstSetEnd 변수 0으로 초기화
-        set_skill(triggerIds=[1302], isEnable=False) # 렌듀비앙 전투판 디버프 스킬 끄기
+        self.set_user_value(key='RenduebianFirstSetEnd', value=0) # RenduebianFirstSetEnd 변수 0으로 초기화
+        self.set_skill(triggerIds=[1302], enable=False) # 렌듀비앙 전투판 디버프 스킬 끄기
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=370):
-            return 셋트전투판마무리신호대기1()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=370):
+            return 셋트전투판마무리신호대기1(self.ctx)
 
 
-class 유페리아_디버프스킬끄기(state.State):
+class 유페리아_디버프스킬끄기(common.Trigger):
     def on_enter(self):
-        set_user_value(key='YuperiaFirstSetEnd', value=0) # YuperiaFirstSetEnd 변수 0으로 초기화
-        set_skill(triggerIds=[1303], isEnable=False) # 유페리아 전투판 디버프 스킬 끄기
+        self.set_user_value(key='YuperiaFirstSetEnd', value=0) # YuperiaFirstSetEnd 변수 0으로 초기화
+        self.set_skill(triggerIds=[1303], enable=False) # 유페리아 전투판 디버프 스킬 끄기
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=370):
-            return 셋트전투판마무리신호대기1()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=370):
+            return 셋트전투판마무리신호대기1(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = Ready

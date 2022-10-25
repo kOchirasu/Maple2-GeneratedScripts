@@ -1,25 +1,25 @@
 """ trigger/82000003_survival/07_hidepartyui.xml """
-from common import *
-import state
+import common
 
 
-class Setting(state.State):
+class Setting(common.Trigger):
     def on_enter(self):
-        set_user_value(key='HidePartyUI', value=0)
+        self.set_user_value(key='HidePartyUI', value=0)
 
 
-class HidePartyUI(state.State):
+class HidePartyUI(common.Trigger):
     def on_enter(self):
-        set_visible_ui(uiNames=['PartyDialog'], visible=False)
+        self.set_visible_ui(uiNames=['PartyDialog'], visible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return HidePartyUI()
-        if user_value(key='HidePartyUI', value=1):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return HidePartyUI(self.ctx)
+        if self.user_value(key='HidePartyUI', value=1):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     pass
 
 
+initial_state = Setting

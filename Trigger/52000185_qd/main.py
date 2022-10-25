@@ -1,25 +1,25 @@
 """ trigger/52000185_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
+class Idle(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[2001], skillId=99910280, level=1, arg4=False, arg5=True) # 벨라 변신
-        add_buff(boxIds=[2001], skillId=99910280, level=1, arg4=False, arg5=False) # 벨라 변신
+        self.add_buff(boxIds=[2001], skillId=99910280, level=1, isPlayer=False, isSkillSet=True) # 벨라 변신
+        self.add_buff(boxIds=[2001], skillId=99910280, level=1, isPlayer=False, isSkillSet=False) # 벨라 변신
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Ready()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[2001], skillId=99910280, level=1, arg4=False, arg5=True) # 벨라 변신
-        add_buff(boxIds=[2001], skillId=99910280, level=1, arg4=False, arg5=False) # 벨라 변신
+        self.add_buff(boxIds=[2001], skillId=99910280, level=1, isPlayer=False, isSkillSet=True) # 벨라 변신
+        self.add_buff(boxIds=[2001], skillId=99910280, level=1, isPlayer=False, isSkillSet=False) # 벨라 변신
 
-    def on_tick(self) -> state.State:
-        if true():
-            return Idle()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return Idle(self.ctx)
 
 
+initial_state = Idle

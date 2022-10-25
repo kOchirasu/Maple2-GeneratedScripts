@@ -1,10 +1,10 @@
 """ trigger/99999910/clear_monster.xml """
-from common import *
-import state
+import common
 
 
-#  플레이어 감지 
-class idle(state.State):
+# 플레이어 감지
+class idle(common.Trigger):
     pass
 
 
+initial_state = idle

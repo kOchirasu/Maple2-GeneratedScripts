@@ -1,322 +1,322 @@
 """ trigger/52000070_qd/trap01.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4000], enabled=False) # SlidingBoard
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # SlidingBoard
-        set_mesh(triggerIds=[3100], visible=False, arg3=0, arg4=0, arg5=0) # WallforMinimap
-        set_mesh(triggerIds=[4100], visible=False, arg3=0, arg4=0, arg5=0) # BoardOpened
-        set_mesh(triggerIds=[4200], visible=True, arg3=0, arg4=0, arg5=0) # BoardClosed
-        set_actor(triggerId=3000, visible=True, initialSequence='Closed') # Door
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        set_effect(triggerIds=[6000], visible=False) # LargeGear_SlidingBoard
-        set_effect(triggerIds=[6100], visible=False) # DoorOpen
+        self.set_breakable(triggerIds=[4000], enable=False) # SlidingBoard
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # SlidingBoard
+        self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0) # WallforMinimap
+        self.set_mesh(triggerIds=[4100], visible=False, arg3=0, delay=0, scale=0) # BoardOpened
+        self.set_mesh(triggerIds=[4200], visible=True, arg3=0, delay=0, scale=0) # BoardClosed
+        self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # Door
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_effect(triggerIds=[6000], visible=False) # LargeGear_SlidingBoard
+        self.set_effect(triggerIds=[6100], visible=False) # DoorOpen
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[1]):
-            return LoadingDelay01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[1]):
+            return LoadingDelay01(self.ctx)
 
 
-class LoadingDelay01(state.State):
+class LoadingDelay01(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False)
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCEnter01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCEnter01(self.ctx)
 
 
-class PCEnter01(state.State):
+class PCEnter01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=600, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=600, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return PCEnter02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return PCEnter02(self.ctx)
 
 
-class PCEnter02(state.State):
+class PCEnter02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=601, enable=True)
-        set_mesh(triggerIds=[4200], visible=False, arg3=100, arg4=0, arg5=3) # BoardClosed
-        set_breakable(triggerIds=[4000], enabled=True) # SlidingBoard
-        set_visible_breakable_object(triggerIds=[4000], arg2=True) # SlidingBoard
-        set_effect(triggerIds=[6000], visible=True) # LargeGear_SlidingBoard
+        self.select_camera(triggerId=601, enable=True)
+        self.set_mesh(triggerIds=[4200], visible=False, arg3=100, delay=0, scale=3) # BoardClosed
+        self.set_breakable(triggerIds=[4000], enable=True) # SlidingBoard
+        self.set_visible_breakable_object(triggerIds=[4000], visible=True) # SlidingBoard
+        self.set_effect(triggerIds=[6000], visible=True) # LargeGear_SlidingBoard
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return BoardSlide01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return BoardSlide01(self.ctx)
 
 
-class BoardSlide01(state.State):
+class BoardSlide01(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3000, visible=True, initialSequence='Opened') # Door
-        set_effect(triggerIds=[6100], visible=True) # DoorOpen
+        self.set_actor(triggerId=3000, visible=True, initialSequence='Opened') # Door
+        self.set_effect(triggerIds=[6100], visible=True) # DoorOpen
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return BoardSlide02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return BoardSlide02(self.ctx)
 
 
-class BoardSlide02(state.State):
+class BoardSlide02(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[4100], visible=True, arg3=800, arg4=0, arg5=3) # BoardOpened
+        self.set_mesh(triggerIds=[4100], visible=True, arg3=800, delay=0, scale=3) # BoardOpened
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return EnemyNpcWalkIn01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return EnemyNpcWalkIn01(self.ctx)
 
 
-class EnemyNpcWalkIn01(state.State):
+class EnemyNpcWalkIn01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[6000], visible=False) # LargeGear_SlidingBoard
-        set_breakable(triggerIds=[4000], enabled=False) # SlidingBoard
-        set_visible_breakable_object(triggerIds=[4000], arg2=False) # SlidingBoard
-        move_user_path(patrolName='MS2PatrolData_1000')
-        create_monster(spawnIds=[101], arg2=False)
-        move_npc(spawnId=101, patrolName='MS2PatrolData_101')
+        self.set_effect(triggerIds=[6000], visible=False) # LargeGear_SlidingBoard
+        self.set_breakable(triggerIds=[4000], enable=False) # SlidingBoard
+        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # SlidingBoard
+        self.move_user_path(patrolName='MS2PatrolData_1000')
+        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return EnemyNpcWalkIn02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return EnemyNpcWalkIn02(self.ctx)
 
 
-class EnemyNpcWalkIn02(state.State):
+class EnemyNpcWalkIn02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=602, enable=True)
-        create_monster(spawnIds=[102], arg2=False)
-        move_npc(spawnId=102, patrolName='MS2PatrolData_102')
+        self.select_camera(triggerId=602, enable=True)
+        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return EnemyNpcWalkIn03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return EnemyNpcWalkIn03(self.ctx)
 
 
-class EnemyNpcWalkIn03(state.State):
+class EnemyNpcWalkIn03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[103], arg2=False)
-        move_npc(spawnId=103, patrolName='MS2PatrolData_103')
+        self.create_monster(spawnIds=[103], animationEffect=False)
+        self.move_npc(spawnId=103, patrolName='MS2PatrolData_103')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return EnemyNpcWalkIn04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return EnemyNpcWalkIn04(self.ctx)
 
 
-class EnemyNpcWalkIn04(state.State):
+class EnemyNpcWalkIn04(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[104], arg2=False)
-        move_npc(spawnId=104, patrolName='MS2PatrolData_104')
-        select_camera(triggerId=603, enable=True)
+        self.create_monster(spawnIds=[104], animationEffect=False)
+        self.move_npc(spawnId=104, patrolName='MS2PatrolData_104')
+        self.select_camera(triggerId=603, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return EnemyNpcTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return EnemyNpcTalk01(self.ctx)
 
 
-class EnemyNpcTalk01(state.State):
+class EnemyNpcTalk01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__0$', arg4=5) # 카트반의 첩자
-        set_skip(state=EnemyNpcTalk01Skip)
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__0$', arg4=5) # 카트반의 첩자
+        self.set_skip(state=EnemyNpcTalk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return EnemyNpcTalk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return EnemyNpcTalk01Skip(self.ctx)
 
 
-class EnemyNpcTalk01Skip(state.State):
+class EnemyNpcTalk01Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
-        remove_cinematic_talk()
-        set_skip()
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return EnemyNpcTalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return EnemyNpcTalk02(self.ctx)
 
 
-class EnemyNpcTalk02(state.State):
+class EnemyNpcTalk02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__1$', arg4=5) # 카트반의 첩자
-        set_skip(state=EnemyNpcTalk02Skip)
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__1$', arg4=5) # 카트반의 첩자
+        self.set_skip(state=EnemyNpcTalk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return EnemyNpcTalk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return EnemyNpcTalk02Skip(self.ctx)
 
 
-class EnemyNpcTalk02Skip(state.State):
+class EnemyNpcTalk02Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
-        remove_cinematic_talk()
-        set_skip()
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return EnemyMobChange01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return EnemyMobChange01(self.ctx)
 
 
-class EnemyMobChange01(state.State):
+class EnemyMobChange01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=1)
-        destroy_monster(spawnIds=[101,102,103,104])
-        create_monster(spawnIds=[901,902,903,904], arg2=False)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=1)
+        self.destroy_monster(spawnIds=[101,102,103,104])
+        self.create_monster(spawnIds=[901,902,903,904], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[901,902,903,904]):
-            return BattleEnd01()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[901,902,903,904]):
+            return BattleEnd01(self.ctx)
 
 
-class BattleEnd01(state.State):
+class BattleEnd01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCPositionFix01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCPositionFix01(self.ctx)
 
 
-class PCPositionFix01(state.State):
+class PCPositionFix01(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=604, enable=True)
-        move_user(mapId=52000070, portalId=10, boxId=9900)
+        self.select_camera(triggerId=604, enable=True)
+        self.move_user(mapId=52000070, portalId=10, boxId=9900)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return PCPositionFix02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return PCPositionFix02(self.ctx)
 
 
-class PCPositionFix02(state.State):
+class PCPositionFix02(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FriendNpcWalkIn01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FriendNpcWalkIn01(self.ctx)
 
 
-class FriendNpcWalkIn01(state.State):
+class FriendNpcWalkIn01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201,202,203,204], arg2=False)
-        move_npc(spawnId=201, patrolName='MS2PatrolData_201')
-        move_npc(spawnId=202, patrolName='MS2PatrolData_202')
-        move_npc(spawnId=203, patrolName='MS2PatrolData_203')
-        move_npc(spawnId=204, patrolName='MS2PatrolData_204')
+        self.create_monster(spawnIds=[201,202,203,204], animationEffect=False)
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
+        self.move_npc(spawnId=202, patrolName='MS2PatrolData_202')
+        self.move_npc(spawnId=203, patrolName='MS2PatrolData_203')
+        self.move_npc(spawnId=204, patrolName='MS2PatrolData_204')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return FriendNpcWalkIn02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return FriendNpcWalkIn02(self.ctx)
 
 
-class FriendNpcWalkIn02(state.State):
+class FriendNpcWalkIn02(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1001')
-        select_camera(triggerId=605, enable=True)
+        self.move_user_path(patrolName='MS2PatrolData_1001')
+        self.select_camera(triggerId=605, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return FriendNpcTalk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return FriendNpcTalk01(self.ctx)
 
 
-class FriendNpcTalk01(state.State):
+class FriendNpcTalk01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__2$', arg4=4) # 험플스 대원
-        set_skip(state=FriendNpcTalk01Skip)
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__2$', arg4=4) # 험플스 대원
+        self.set_skip(state=FriendNpcTalk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return FriendNpcTalk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return FriendNpcTalk01Skip(self.ctx)
 
 
-class FriendNpcTalk01Skip(state.State):
+class FriendNpcTalk01Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
-        remove_cinematic_talk()
-        set_skip()
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return FriendNpcTalk02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return FriendNpcTalk02(self.ctx)
 
 
-class FriendNpcTalk02(state.State):
+class FriendNpcTalk02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__3$', arg4=4) # 험플스 대원
-        set_skip(state=FriendNpcTalk02Skip)
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
+        self.set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__3$', arg4=4) # 험플스 대원
+        self.set_skip(state=FriendNpcTalk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return FriendNpcTalk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return FriendNpcTalk02Skip(self.ctx)
 
 
-class FriendNpcTalk02Skip(state.State):
+class FriendNpcTalk02Skip(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
-        remove_cinematic_talk()
-        set_skip()
-        reset_camera(interpolationTime=1)
+        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return WayOpen01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return WayOpen01(self.ctx)
 
 
-class WayOpen01(state.State):
+class WayOpen01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_211')
-        move_npc(spawnId=202, patrolName='MS2PatrolData_212')
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_211')
+        self.move_npc(spawnId=202, patrolName='MS2PatrolData_212')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return WayOpen02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return WayOpen02(self.ctx)
 
 
-class WayOpen02(state.State):
+class WayOpen02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=203, patrolName='MS2PatrolData_213')
-        move_npc(spawnId=204, patrolName='MS2PatrolData_214')
+        self.move_npc(spawnId=203, patrolName='MS2PatrolData_213')
+        self.move_npc(spawnId=204, patrolName='MS2PatrolData_214')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return WayOpen03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return WayOpen03(self.ctx)
 
 
-class WayOpen03(state.State):
+class WayOpen03(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=201, script='$52000070_QD__TRAP01__4$', arg4=2, arg5=0)
+        self.set_conversation(type=1, spawnId=201, script='$52000070_QD__TRAP01__4$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return QuestCom()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return QuestCom(self.ctx)
 
 
-class QuestCom(state.State):
+class QuestCom(common.Trigger):
     def on_enter(self):
-        set_achievement(triggerId=9900, type='trigger', achieve='remnantssweeping')
+        self.set_achievement(triggerId=9900, type='trigger', achieve='remnantssweeping')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[2]):
-            return MoveToComplete()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[2]):
+            return MoveToComplete(self.ctx)
 
 
-class MoveToComplete(state.State):
+class MoveToComplete(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True)
-        move_user(mapId=2000208, portalId=1)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.move_user(mapId=2000208, portalId=1)
 
 
+initial_state = Wait

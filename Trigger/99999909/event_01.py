@@ -1,16 +1,16 @@
 """ trigger/99999909/event_01.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[702]):
-            return Ready()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[702]):
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$99999909__EVENT_01__0$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$99999909__EVENT_01__0$', arg3='3000')
 
 
+initial_state = idle

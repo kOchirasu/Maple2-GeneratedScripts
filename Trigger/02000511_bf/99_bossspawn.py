@@ -1,65 +1,65 @@
 """ trigger/02000511_bf/99_bossspawn.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
-    def on_tick(self) -> state.State:
-        if check_user():
-            return 기본셋팅()
+class 시작대기중(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return 기본셋팅(self.ctx)
 
 
-class 기본셋팅(state.State):
+class 기본셋팅(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[999])
-        set_portal(portalId=40, visible=False, enabled=False, minimapVisible=False)
-        set_mesh(triggerIds=[3160,3161,3162,3163,3164], visible=True, arg3=0, arg4=0, arg5=0) # Barrier
-        set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=False, arg3=0, arg4=0, arg5=0) # Bridge
-        set_mesh(triggerIds=[5610,5611,5612], visible=True, arg3=0, arg4=0, arg5=0) # BlueLight_BossStage
-        set_mesh_animation(triggerIds=[5610,5611,5612], visible=True, arg3=0, arg4=0) # BlueLight_BossStage
-        set_effect(triggerIds=[5010], visible=False) # Sound_PortalOn
-        set_effect(triggerIds=[5600], visible=False) # Sound_IceMelt_BossStage
+        self.destroy_monster(spawnIds=[999])
+        self.set_portal(portalId=40, visible=False, enable=False, minimapVisible=False)
+        self.set_mesh(triggerIds=[3160,3161,3162,3163,3164], visible=True, arg3=0, delay=0, scale=0) # Barrier
+        self.set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=False, arg3=0, delay=0, scale=0) # Bridge
+        self.set_mesh(triggerIds=[5610,5611,5612], visible=True, arg3=0, delay=0, scale=0) # BlueLight_BossStage
+        self.set_mesh_animation(triggerIds=[5610,5611,5612], visible=True, arg3=0, arg4=0) # BlueLight_BossStage
+        self.set_effect(triggerIds=[5010], visible=False) # Sound_PortalOn
+        self.set_effect(triggerIds=[5600], visible=False) # Sound_IceMelt_BossStage
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=170):
-            return BossSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=170):
+            return BossSpawn(self.ctx)
 
 
-class BossSpawn(state.State):
+class BossSpawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[999], arg2=False) # arg2="0" 을 넣으면 보스 등장하자마자 바로 공격 상태가 되는 것을 막을 수 있음
+        self.create_monster(spawnIds=[999], animationEffect=False) # arg2="0" 을 넣으면 보스 등장하자마자 바로 공격 상태가 되는 것을 막을 수 있음
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[999]):
-            return BossDead()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[999]):
+            return BossDead(self.ctx)
 
 
-class BossDead(state.State):
+class BossDead(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[999])
-        set_effect(triggerIds=[5600], visible=True) # Sound_IceMelt_BossStage
-        set_mesh(triggerIds=[5610,5611,5612], visible=False, arg3=500, arg4=0, arg5=5) # BlueLight_BossStage
-        set_mesh_animation(triggerIds=[5610,5611,5612], visible=False, arg3=0, arg4=0) # BlueLight_BossStage
+        self.destroy_monster(spawnIds=[999])
+        self.set_effect(triggerIds=[5600], visible=True) # Sound_IceMelt_BossStage
+        self.set_mesh(triggerIds=[5610,5611,5612], visible=False, arg3=500, delay=0, scale=5) # BlueLight_BossStage
+        self.set_mesh_animation(triggerIds=[5610,5611,5612], visible=False, arg3=0, arg4=0) # BlueLight_BossStage
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return BridgeApp()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return BridgeApp(self.ctx)
 
 
-class BridgeApp(state.State):
+class BridgeApp(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3160,3161,3162,3163,3164], visible=False, arg3=0, arg4=0, arg5=0) # Barrier
-        set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=True, arg3=0, arg4=100, arg5=2) # Bridge
-        set_effect(triggerIds=[5010], visible=True) # Sound_PortalOn
+        self.set_mesh(triggerIds=[3160,3161,3162,3163,3164], visible=False, arg3=0, delay=0, scale=0) # Barrier
+        self.set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212], visible=True, arg3=0, delay=100, scale=2) # Bridge
+        self.set_effect(triggerIds=[5010], visible=True) # Sound_PortalOn
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return DungeonClear()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return DungeonClear(self.ctx)
 
 
-class DungeonClear(state.State):
+class DungeonClear(common.Trigger):
     def on_enter(self):
-        dungeon_clear()
-        set_portal(portalId=40, visible=True, enabled=True, minimapVisible=True)
+        self.dungeon_clear()
+        self.set_portal(portalId=40, visible=True, enable=True, minimapVisible=True)
 
 
+initial_state = 시작대기중

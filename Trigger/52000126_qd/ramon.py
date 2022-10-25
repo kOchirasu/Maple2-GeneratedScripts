@@ -1,82 +1,82 @@
 """ trigger/52000126_qd/ramon.xml """
-from common import *
-import state
+import common
 
 
-#  장사꾼의 목격담(60100205) 완료 가능 상태 연출  
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60100205], questStates=[2]):
-            return fadein()
+# 장사꾼의 목격담(60100205) 완료 가능 상태 연출
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60100205], questStates=[2]):
+            return fadein(self.ctx)
 
 
-#  준비 
-class fadein(state.State):
+# 준비
+class fadein(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return ready()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_scene_skip(state=end, arg2='exit')
-        select_camera_path(pathIds=[4101], returnView=False)
+        self.set_scene_skip(state=end, action='exit')
+        self.select_camera_path(pathIds=[4101], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return fadeout()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return fadeout(self.ctx)
 
 
-class fadeout(state.State):
+class fadeout(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return camera_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return camera_01(self.ctx)
 
 
-class camera_01(state.State):
+class camera_01(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
-        select_camera_path(pathIds=[4101,4102], returnView=False)
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
+        self.select_camera_path(pathIds=[4101,4102], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return camera_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return camera_02(self.ctx)
 
 
-class camera_02(state.State):
+class camera_02(common.Trigger):
     def on_enter(self):
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
-        select_camera_path(pathIds=[4102,4103], returnView=False)
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
+        self.select_camera_path(pathIds=[4102,4103], returnView=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return camera_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return camera_03(self.ctx)
 
 
-class camera_03(state.State):
+class camera_03(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
-        add_cinematic_talk(npcId=11003209, msg='$52000126_QD__RAMON__0$', duration=2000, align='Left')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
+        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
+        self.add_cinematic_talk(npcId=11003209, msg='$52000126_QD__RAMON__0$', duration=2000, align='Left')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        set_scene_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=0)
+        self.set_scene_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=0)
 
 
+initial_state = idle

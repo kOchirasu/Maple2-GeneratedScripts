@@ -1,392 +1,392 @@
 """ trigger/52000039_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=False, enabled=False, minimapVisible=False)
-        hide_guide_summary(entityId=20020030)
-        hide_guide_summary(entityId=20020031)
+        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.hide_guide_summary(entityId=20020030)
+        self.hide_guide_summary(entityId=20020031)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[3]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[2]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[1]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[3]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[2]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[1]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[3]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[2]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[1]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[3]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[2]):
-            return NextMapPortalOpen()
-        if quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[1]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return PCPatrol01()
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[3]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[3]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_b_07()
-        if quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[2]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_b_07()
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[1]):
-            return ready_02()
-        if quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[2]):
-            create_monster(spawnIds=[101], arg2=True)
-            return scene_b_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[3]):
-            create_monster(spawnIds=[101], arg2=True)
-            return scene_b_01()
-        if quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[1]):
-            create_monster(spawnIds=[101], arg2=True)
-            move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
-            create_monster(spawnIds=[122], arg2=True)
-            return scene_b_02()
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
-        if user_detected(boxIds=[701], jobCode=110):
-            set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-            set_mesh(triggerIds=[6001], visible=False)
-            set_mesh(triggerIds=[6010], visible=False)
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            return scene_c_01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[3]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[2]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[1]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[3]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[2]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[1]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[3]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[2]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[1]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[3]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[2]):
+            return NextMapPortalOpen(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[1]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return PCPatrol01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[3]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[3]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_b_07(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[2]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_b_07(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[1]):
+            return ready_02(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[2]):
+            self.create_monster(spawnIds=[101], animationEffect=True)
+            return scene_b_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[3]):
+            self.create_monster(spawnIds=[101], animationEffect=True)
+            return scene_b_01(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[1]):
+            self.create_monster(spawnIds=[101], animationEffect=True)
+            self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
+            self.create_monster(spawnIds=[122], animationEffect=True)
+            return scene_b_02(self.ctx)
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
+        if self.user_detected(boxIds=[701], jobCode=110):
+            self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+            self.set_mesh(triggerIds=[6001], visible=False)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            return scene_c_01(self.ctx)
 
 
-class ready_02(state.State):
+class ready_02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201,202,203], arg2=False)
-        create_monster(spawnIds=[101,102], arg2=True)
+        self.create_monster(spawnIds=[201,202,203], animationEffect=False)
+        self.create_monster(spawnIds=[101,102], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[702], questIds=[40002633], questStates=[1]):
-            return start()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[702], questIds=[40002633], questStates=[1]):
+            return start(self.ctx)
 
 
-class start(state.State):
+class start(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=7001, enable=True)
-        move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
-        move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=7001, enable=True)
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
+        self.move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1500):
-            return start_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return start_02(self.ctx)
 
 
-class start_02(state.State):
+class start_02(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='5', seconds=5)
-        set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__0$', arg4=5)
+        self.set_timer(timerId='5', seconds=5)
+        self.set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__0$', arg4=5)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            set_cinematic_ui(type=0)
-            set_cinematic_ui(type=2)
-            select_camera(triggerId=7001, enable=False)
-            return start_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            self.set_cinematic_ui(type=0)
+            self.set_cinematic_ui(type=2)
+            self.select_camera(triggerId=7001, enable=False)
+            return start_03(self.ctx)
 
 
-class start_03(state.State):
+class start_03(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20020030, textId=20020030)
+        self.show_guide_summary(entityId=20020030, textId=20020030)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[201,202,203]):
-            destroy_monster(spawnIds=[102])
-            hide_guide_summary(entityId=20020030)
-            return scene_b_01()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[201,202,203]):
+            self.destroy_monster(spawnIds=[102])
+            self.hide_guide_summary(entityId=20020030)
+            return scene_b_01(self.ctx)
 
 
-class scene_b_01(state.State):
+class scene_b_01(common.Trigger):
     def on_enter(self):
-        set_achievement(triggerId=701, type='trigger', achieve='beyondroid2')
-        create_monster(spawnIds=[112], arg2=True)
+        self.set_achievement(triggerId=701, type='trigger', achieve='beyondroid2')
+        self.create_monster(spawnIds=[112], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[1]):
-            destroy_monster(spawnIds=[112])
-            create_monster(spawnIds=[122], arg2=True)
-            return scene_b_02()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[1]):
+            self.destroy_monster(spawnIds=[112])
+            self.create_monster(spawnIds=[122], animationEffect=True)
+            return scene_b_02(self.ctx)
 
 
-class scene_b_02(state.State):
+class scene_b_02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=122, patrolName='MS2PatrolData_2004')
-        set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__1$', arg4=3, arg5=0)
-        set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-        set_mesh(triggerIds=[6001], visible=False)
+        self.move_npc(spawnId=122, patrolName='MS2PatrolData_2004')
+        self.set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__1$', arg4=3, arg5=0)
+        self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+        self.set_mesh(triggerIds=[6001], visible=False)
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=703, spawnIds=[122]):
-            set_cinematic_ui(type=1)
-            set_cinematic_ui(type=3)
-            select_camera(triggerId=7002, enable=True)
-            move_user(mapId=52000039, portalId=3)
-            set_mesh(triggerIds=[6010], visible=False)
-            return scene_b_03()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=703, spawnIds=[122]):
+            self.set_cinematic_ui(type=1)
+            self.set_cinematic_ui(type=3)
+            self.select_camera(triggerId=7002, enable=True)
+            self.move_user(mapId=52000039, portalId=3)
+            self.set_mesh(triggerIds=[6010], visible=False)
+            return scene_b_03(self.ctx)
 
 
-class scene_b_03(state.State):
+class scene_b_03(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=122, patrolName='MS2PatrolData_2006')
-        set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__2$', arg4=3)
-        set_actor(triggerId=3010, visible=True, initialSequence='Idle_A')
+        self.move_npc(spawnId=122, patrolName='MS2PatrolData_2006')
+        self.set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__2$', arg4=3)
+        self.set_actor(triggerId=3010, visible=True, initialSequence='Idle_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_b_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_b_04(self.ctx)
 
 
-class scene_b_04(state.State):
+class scene_b_04(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=7003, enable=True)
-        move_npc(spawnId=122, patrolName='MS2PatrolData_2008')
-        set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__3$', arg4=3)
-        set_actor(triggerId=3010, visible=True, initialSequence='Idle_A')
+        self.select_camera(triggerId=7003, enable=True)
+        self.move_npc(spawnId=122, patrolName='MS2PatrolData_2008')
+        self.set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__3$', arg4=3)
+        self.set_actor(triggerId=3010, visible=True, initialSequence='Idle_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_b_05()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_b_05(self.ctx)
 
 
-class scene_b_05(state.State):
+class scene_b_05(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3010, visible=True, initialSequence='Attack_01_D')
+        self.set_actor(triggerId=3010, visible=True, initialSequence='Attack_01_D')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=650):
-            return scene_b_06()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=650):
+            return scene_b_06(self.ctx)
 
 
-class scene_b_06(state.State):
+class scene_b_06(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=4)
-        move_npc(spawnId=122, patrolName='MS2PatrolData_2010')
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=4)
+        self.move_npc(spawnId=122, patrolName='MS2PatrolData_2010')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-            create_monster(spawnIds=[210], arg2=True)
-            return scene_b_07()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+            self.create_monster(spawnIds=[210], animationEffect=True)
+            return scene_b_07(self.ctx)
 
 
-class scene_b_07(state.State):
+class scene_b_07(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=20020031, textId=20020031)
-        select_camera(triggerId=7003, enable=False)
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.show_guide_summary(entityId=20020031, textId=20020031)
+        self.select_camera(triggerId=7003, enable=False)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[210]):
-            hide_guide_summary(entityId=20020031)
-            set_achievement(triggerId=701, type='trigger', achieve='beyondguard')
-            destroy_monster(spawnIds=[101,122])
-            return scene_b_08()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[210]):
+            self.hide_guide_summary(entityId=20020031)
+            self.set_achievement(triggerId=701, type='trigger', achieve='beyondguard')
+            self.destroy_monster(spawnIds=[101,122])
+            return scene_b_08(self.ctx)
 
 
-class scene_b_08(state.State):
+class scene_b_08(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[111,132], arg2=True)
+        self.create_monster(spawnIds=[111,132], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=300):
-            return scene_b_09()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=300):
+            return scene_b_09(self.ctx)
 
 
-class scene_b_09(state.State):
+class scene_b_09(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__4$', arg4=3)
-        set_npc_emotion_loop(spawnId=132, sequenceName='Sit_Down_A', duration=3000)
-        set_npc_emotion_loop(spawnId=111, sequenceName='Sit_Down_A', duration=3000)
+        self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__4$', arg4=3)
+        self.set_npc_emotion_loop(spawnId=132, sequenceName='Sit_Down_A', duration=3000)
+        self.set_npc_emotion_loop(spawnId=111, sequenceName='Sit_Down_A', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return scene_b_10()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return scene_b_10(self.ctx)
 
 
-class scene_b_10(state.State):
+class scene_b_10(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__5$', arg4=3)
-        set_npc_emotion_loop(spawnId=132, sequenceName='Stun_A', duration=3000)
-        set_npc_emotion_loop(spawnId=111, sequenceName='Stun_A', duration=3000)
+        self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__5$', arg4=3)
+        self.set_npc_emotion_loop(spawnId=132, sequenceName='Stun_A', duration=3000)
+        self.set_npc_emotion_loop(spawnId=111, sequenceName='Stun_A', duration=3000)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
-            return scene_c_01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
+            return scene_c_01(self.ctx)
 
 
-class scene_c_01(state.State):
+class scene_c_01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__6$', arg4=3)
-        move_npc(spawnId=132, patrolName='MS2PatrolData_2012')
-        move_npc(spawnId=111, patrolName='MS2PatrolData_2011')
+        self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__6$', arg4=3)
+        self.move_npc(spawnId=132, patrolName='MS2PatrolData_2012')
+        self.move_npc(spawnId=111, patrolName='MS2PatrolData_2011')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return scene_c_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return scene_c_02(self.ctx)
 
 
-class scene_c_02(state.State):
+class scene_c_02(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
-        destroy_monster(spawnIds=[132,111])
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.destroy_monster(spawnIds=[132,111])
 
 
-#  비욘드 링크 중앙 컴퓨터실 포탈 열림 
-class NextMapPortalOpen(state.State):
+# 비욘드 링크 중앙 컴퓨터실 포탈 열림
+class NextMapPortalOpen(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
-        set_mesh(triggerIds=[6001], visible=False)
-        set_mesh(triggerIds=[6010], visible=False)
-        set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
+        self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
+        self.set_mesh(triggerIds=[6001], visible=False)
+        self.set_mesh(triggerIds=[6010], visible=False)
+        self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 
-#  흑성회 본부 지하 밀실 이동 
-class PCPatrol01(state.State):
+# 흑성회 본부 지하 밀실 이동
+class PCPatrol01(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return PCPatrol02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return PCPatrol02(self.ctx)
 
 
-class PCPatrol02(state.State):
+class PCPatrol02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=500, enable=True)
+        self.select_camera(triggerId=500, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PCPatrol03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PCPatrol03(self.ctx)
 
 
-class PCPatrol03(state.State):
+class PCPatrol03(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        move_user_path(patrolName='MS2PatrolData_1000')
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.move_user_path(patrolName='MS2PatrolData_1000')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return LookAround01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return LookAround01(self.ctx)
 
 
-class LookAround01(state.State):
+class LookAround01(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_sequence(sequenceNames=['Bore_C'])
-        set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__7$', arg4=2, arg5=0)
+        self.set_pc_emotion_sequence(sequenceNames=['Bore_C'])
+        self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__7$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return LookAround02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return LookAround02(self.ctx)
 
 
-class LookAround02(state.State):
+class LookAround02(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=501, enable=True)
-        set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__8$', arg4=2, arg5=0)
-        move_user_path(patrolName='MS2PatrolData_1001')
+        self.select_camera(triggerId=501, enable=True)
+        self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__8$', arg4=2, arg5=0)
+        self.move_user_path(patrolName='MS2PatrolData_1001')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return LookAround03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return LookAround03(self.ctx)
 
 
-class LookAround03(state.State):
+class LookAround03(common.Trigger):
     def on_enter(self):
-        move_user_path(patrolName='MS2PatrolData_1002')
-        set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__9$', arg4=2, arg5=0)
+        self.move_user_path(patrolName='MS2PatrolData_1002')
+        self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__9$', arg4=2, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1600):
-            return PCFainted01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1600):
+            return PCFainted01(self.ctx)
 
 
-class PCFainted01(state.State):
+class PCFainted01(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=502, enable=True)
-        set_pc_emotion_sequence(sequenceNames=['Down2_A','Down_Idle_A'])
+        self.select_camera(triggerId=502, enable=True)
+        self.set_pc_emotion_sequence(sequenceNames=['Down2_A','Down_Idle_A'])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2667):
-            return PCTeleport01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2667):
+            return PCTeleport01(self.ctx)
 
 
-class PCTeleport01(state.State):
+class PCTeleport01(common.Trigger):
     def on_enter(self):
-        set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=10000)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=10000)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return PCTeleport02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return PCTeleport02(self.ctx)
 
 
-class PCTeleport02(state.State):
+class PCTeleport02(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52000045, portalId=2, boxId=701)
-        select_camera(triggerId=502, enable=False)
+        self.move_user(mapId=52000045, portalId=2, boxId=701)
+        self.select_camera(triggerId=502, enable=False)
 
     def on_exit(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
 
 
+initial_state = ready

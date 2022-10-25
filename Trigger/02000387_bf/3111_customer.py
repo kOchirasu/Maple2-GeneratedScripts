@@ -1,294 +1,294 @@
 """ trigger/02000387_bf/3111_customer.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001101], state=0) # Greeting
-        set_user_value(key='CustomerEnter', value=0)
-        set_user_value(key='ItemNumber', value=0)
+        self.set_interact_object(triggerIds=[10001101], state=0) # Greeting
+        self.set_user_value(key='CustomerEnter', value=0)
+        self.set_user_value(key='ItemNumber', value=0)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='CustomerEnter', value=1):
-            return CustomerEnterDelay()
-
-
-class CustomerEnterDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return CustomerEnter()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='CustomerEnter', value=1):
+            return CustomerEnterDelay(self.ctx)
 
 
-class CustomerEnter(state.State):
+class CustomerEnterDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return CustomerEnter(self.ctx)
+
+
+class CustomerEnter(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[3111], arg2=False)
+        self.create_monster(spawnIds=[3111], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9130, spawnIds=[0]):
-            return Patrol03()
-        if not npc_detected(boxId=9131, spawnIds=[0]):
-            return Patrol01()
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9130, spawnIds=[0]):
+            return Patrol03(self.ctx)
+        if not self.npc_detected(boxId=9131, spawnIds=[0]):
+            return Patrol01(self.ctx)
 
 
-class Patrol01(state.State):
+class Patrol01(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=3111, patrolName='MS2PatrolData_301')
+        self.move_npc(spawnId=3111, patrolName='MS2PatrolData_301')
 
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9132, spawnIds=[0]):
-            return Patrol02Delay()
-
-
-class Patrol02Delay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Patrol02()
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9132, spawnIds=[0]):
+            return Patrol02Delay(self.ctx)
 
 
-class Patrol02(state.State):
+class Patrol02Delay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Patrol02(self.ctx)
+
+
+class Patrol02(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=3111, patrolName='MS2PatrolData_302')
+        self.move_npc(spawnId=3111, patrolName='MS2PatrolData_302')
 
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9133, spawnIds=[0]):
-            return Patrol03Delay()
-
-
-class Patrol03Delay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Patrol03()
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9133, spawnIds=[0]):
+            return Patrol03Delay(self.ctx)
 
 
-class Patrol03(state.State):
+class Patrol03Delay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Patrol03(self.ctx)
+
+
+class Patrol03(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=3111, patrolName='MS2PatrolData_303')
+        self.move_npc(spawnId=3111, patrolName='MS2PatrolData_303')
 
-    def on_tick(self) -> state.State:
-        if not npc_detected(boxId=9133, spawnIds=[0]):
-            return PatrolEndDelay()
-
-
-class PatrolEndDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return PatrolEnd()
+    def on_tick(self) -> common.Trigger:
+        if not self.npc_detected(boxId=9133, spawnIds=[0]):
+            return PatrolEndDelay(self.ctx)
 
 
-class PatrolEnd(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=9133, spawnIds=[3111]):
-            return WaitGreeting()
+class PatrolEndDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return PatrolEnd(self.ctx)
 
 
-class WaitGreeting(state.State):
+class PatrolEnd(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=9133, spawnIds=[3111]):
+            return WaitGreeting(self.ctx)
+
+
+class WaitGreeting(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001101], state=1) # Greeting
+        self.set_interact_object(triggerIds=[10001101], state=1) # Greeting
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001101], arg2=0):
-            return OrderRandomPick()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001101], stateValue=0):
+            return OrderRandomPick(self.ctx)
 
     def on_exit(self):
-        set_interact_object(triggerIds=[10001101], state=2) # Greeting
+        self.set_interact_object(triggerIds=[10001101], state=2) # Greeting
 
 
-#  고객 주문 랜덤
-class OrderRandomPick(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=1):
-            return PickItem_30000644()
-        if random_condition(rate=1):
-            return PickItem_30000679()
-        if random_condition(rate=1):
-            return PickItem_30000683()
-        if random_condition(rate=1):
-            return PickItem_30000685()
-        if random_condition(rate=1):
-            return PickItem_30000686()
-        if random_condition(rate=1):
-            return PickItem_30000716()
+# 고객 주문 랜덤
+class OrderRandomPick(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=1):
+            return PickItem_30000644(self.ctx)
+        if self.random_condition(rate=1):
+            return PickItem_30000679(self.ctx)
+        if self.random_condition(rate=1):
+            return PickItem_30000683(self.ctx)
+        if self.random_condition(rate=1):
+            return PickItem_30000685(self.ctx)
+        if self.random_condition(rate=1):
+            return PickItem_30000686(self.ctx)
+        if self.random_condition(rate=1):
+            return PickItem_30000716(self.ctx)
 
 
-#  	30000644 
-class PickItem_30000644(state.State):
+# 30000644
+class PickItem_30000644(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000644)
-        add_effect_nif(spawnId=3111, nifPath='Map/Iceland/Indoor/ic_in_cubric_box_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000644)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Iceland/Indoor/ic_in_cubric_box_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000644()
-
-
-class DetectItem_30000644(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000644):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000644):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000644(self.ctx)
 
 
-#  	30000679 
-class PickItem_30000679(state.State):
+class DetectItem_30000644(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000644):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000644):
+            return WrongItem(self.ctx)
+
+
+# 30000679
+class PickItem_30000679(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000679)
-        add_effect_nif(spawnId=3111, nifPath='Map/Royalcity/Field/ry_fi_prop_yacht_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000679)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Royalcity/Field/ry_fi_prop_yacht_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000679()
-
-
-class DetectItem_30000679(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000679):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000679):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000679(self.ctx)
 
 
-#  	30000683 
-class PickItem_30000683(state.State):
+class DetectItem_30000679(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000679):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000679):
+            return WrongItem(self.ctx)
+
+
+# 30000683
+class PickItem_30000683(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000683)
-        add_effect_nif(spawnId=3111, nifPath='Map/Orient/Field/or_fi_prop_ship_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000683)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Orient/Field/or_fi_prop_ship_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000683()
-
-
-class DetectItem_30000683(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000683):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000683):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000683(self.ctx)
 
 
-#  	30000685 
-class PickItem_30000685(state.State):
+class DetectItem_30000683(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000683):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000683):
+            return WrongItem(self.ctx)
+
+
+# 30000685
+class PickItem_30000685(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000685)
-        add_effect_nif(spawnId=3111, nifPath='Map/Lith/Field/li_fi_prop_anchor_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000685)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Lith/Field/li_fi_prop_anchor_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000685()
-
-
-class DetectItem_30000685(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000685):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000685):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000685(self.ctx)
 
 
-#  	30000686 
-class PickItem_30000686(state.State):
+class DetectItem_30000685(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000685):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000685):
+            return WrongItem(self.ctx)
+
+
+# 30000686
+class PickItem_30000686(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000686)
-        add_effect_nif(spawnId=3111, nifPath='Map/Lith/Field/li_fi_prop_tube_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000686)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Lith/Field/li_fi_prop_tube_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000686()
-
-
-class DetectItem_30000686(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000686):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000686):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000686(self.ctx)
 
 
-#  	30000716 
-class PickItem_30000716(state.State):
+class DetectItem_30000686(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000686):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000686):
+            return WrongItem(self.ctx)
+
+
+# 30000716
+class PickItem_30000716(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=True) # DownArrow
-        set_user_value(key='ItemNumber', value=30000716)
-        add_effect_nif(spawnId=3111, nifPath='Map/Kerningcity/Field/ke_fi_prop_tire_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
+        self.set_effect(triggerIds=[5103], visible=True) # DownArrow
+        self.set_user_value(key='ItemNumber', value=30000716)
+        self.add_effect_nif(spawnId=3111, nifPath='Map/Kerningcity/Field/ke_fi_prop_tire_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=0):
-            return DetectItem_30000716()
-
-
-class DetectItem_30000716(state.State):
-    def on_tick(self) -> state.State:
-        if detect_liftable_object(boxIds=[9203], itemId=30000716):
-            return RightItem()
-        if not detect_liftable_object(boxIds=[9203], itemId=30000716):
-            return WrongItem()
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=0):
+            return DetectItem_30000716(self.ctx)
 
 
-#  미션 성공 
-class RightItem(state.State):
+class DetectItem_30000716(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.detect_liftable_object(boxIds=[9203], itemId=30000716):
+            return RightItem(self.ctx)
+        if not self.detect_liftable_object(boxIds=[9203], itemId=30000716):
+            return WrongItem(self.ctx)
+
+
+# 미션 성공
+class RightItem(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=False) # DownArrow
-        play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Right_01')
-        remove_effect_nif(spawnId=3111)
-        set_conversation(type=1, spawnId=3111, script='$02000387_BF__3111_CUSTOMER__0$', arg4=3, arg5=0)
-        add_buff(boxIds=[9900], skillId=70000112, level=1, arg4=False, arg5=False)
+        self.set_effect(triggerIds=[5103], visible=False) # DownArrow
+        self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Right_01')
+        self.remove_effect_nif(spawnId=3111)
+        self.set_conversation(type=1, spawnId=3111, script='$02000387_BF__3111_CUSTOMER__0$', arg4=3, arg5=0)
+        self.add_buff(boxIds=[9900], skillId=70000112, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return CustomerLeave()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return CustomerLeave(self.ctx)
 
 
-class CustomerLeave(state.State):
+class CustomerLeave(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=3111, patrolName='MS2PatrolData_333')
+        self.move_npc(spawnId=3111, patrolName='MS2PatrolData_333')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=9303, spawnIds=[3111]):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=9303, spawnIds=[3111]):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[3111])
+        self.destroy_monster(spawnIds=[3111])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Wait(self.ctx)
 
 
-#  잘못된 아이템을 내려놓으면 
-class WrongItem(state.State):
+# 잘못된 아이템을 내려놓으면
+class WrongItem(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5103], visible=False) # DownArrow
-        play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Wrong_01')
-        remove_effect_nif(spawnId=3111)
-        set_conversation(type=1, spawnId=3111, script='$02000387_BF__3111_CUSTOMER__1$', arg4=3, arg5=0)
+        self.set_effect(triggerIds=[5103], visible=False) # DownArrow
+        self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Wrong_01')
+        self.remove_effect_nif(spawnId=3111)
+        self.set_conversation(type=1, spawnId=3111, script='$02000387_BF__3111_CUSTOMER__1$', arg4=3, arg5=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return WrongItemReturn()
-
-
-class WrongItemReturn(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='ItemNumber', value=30000644):
-            return PickItem_30000644()
-        if user_value(key='ItemNumber', value=30000679):
-            return PickItem_30000679()
-        if user_value(key='ItemNumber', value=30000683):
-            return PickItem_30000683()
-        if user_value(key='ItemNumber', value=30000685):
-            return PickItem_30000685()
-        if user_value(key='ItemNumber', value=30000686):
-            return PickItem_30000686()
-        if user_value(key='ItemNumber', value=30000716):
-            return PickItem_30000716()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return WrongItemReturn(self.ctx)
 
 
+class WrongItemReturn(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ItemNumber', value=30000644):
+            return PickItem_30000644(self.ctx)
+        if self.user_value(key='ItemNumber', value=30000679):
+            return PickItem_30000679(self.ctx)
+        if self.user_value(key='ItemNumber', value=30000683):
+            return PickItem_30000683(self.ctx)
+        if self.user_value(key='ItemNumber', value=30000685):
+            return PickItem_30000685(self.ctx)
+        if self.user_value(key='ItemNumber', value=30000686):
+            return PickItem_30000686(self.ctx)
+        if self.user_value(key='ItemNumber', value=30000716):
+            return PickItem_30000716(self.ctx)
+
+
+initial_state = Wait

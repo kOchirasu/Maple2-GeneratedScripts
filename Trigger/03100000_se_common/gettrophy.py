@@ -1,9 +1,9 @@
 """ trigger/03100000_se_common/gettrophy.xml """
-from common import *
-import state
+import common
 
 
-class getTrophy(state.State):
+class getTrophy(common.Trigger):
     pass
 
 
+initial_state = getTrophy

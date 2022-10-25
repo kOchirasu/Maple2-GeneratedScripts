@@ -1,14 +1,14 @@
 """ trigger/02000064_tw_triatown02_jp/stagetrigger_01.xml """
-from common import *
-import state
+import common
 
 
-class KickMusicAudience(state.State):
+class KickMusicAudience(common.Trigger):
     def on_enter(self):
-        kick_music_audience(boxId=101, portalId=802)
+        self.kick_music_audience(boxId=101, portalId=802)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return KickMusicAudience()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return KickMusicAudience(self.ctx)
 
 
+initial_state = KickMusicAudience

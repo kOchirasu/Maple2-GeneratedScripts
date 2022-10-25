@@ -1,45 +1,45 @@
 """ trigger/02000066_bf/gate05.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[3005])
+        self.destroy_monster(spawnIds=[3005])
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[103]):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[103]):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[604], visible=False)
-        set_interact_object(triggerIds=[10000337], state=0)
-        create_monster(spawnIds=[3005], arg2=False)
+        self.set_effect(triggerIds=[604], visible=False)
+        self.set_interact_object(triggerIds=[10000337], state=0)
+        self.create_monster(spawnIds=[3005], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[3005]):
-            return 게이트열림()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[3005]):
+            return 게이트열림(self.ctx)
 
 
-class 게이트열림(state.State):
+class 게이트열림(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=3)
-        set_interact_object(triggerIds=[10000337], state=1)
-        set_effect(triggerIds=[604], visible=True)
-        show_guide_summary(entityId=20000664, textId=20000664)
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.set_timer(timerId='3', seconds=3)
+        self.set_interact_object(triggerIds=[10000337], state=1)
+        self.set_effect(triggerIds=[604], visible=True)
+        self.show_guide_summary(entityId=20000664, textId=20000664)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            hide_guide_summary(entityId=20000664)
-            return 게이트닫힘()
-
-
-class 게이트닫힘(state.State):
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000337], arg2=0):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            self.hide_guide_summary(entityId=20000664)
+            return 게이트닫힘(self.ctx)
 
 
+class 게이트닫힘(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000337], stateValue=0):
+            return 생성(self.ctx)
+
+
+initial_state = 시작

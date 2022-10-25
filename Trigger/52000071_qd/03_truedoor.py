@@ -1,21 +1,21 @@
 """ trigger/52000071_qd/03_truedoor.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3002], visible=False, arg3=0, arg4=0, arg5=0) # 미니맵용_Invisible
-        set_portal(portalId=10, visible=False, enabled=False, minimapVisible=False)
-        set_interact_object(triggerIds=[10001105], state=1)
+        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0) # 미니맵용_Invisible
+        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
+        self.set_interact_object(triggerIds=[10001105], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001105], arg2=0):
-            return MobSpawn()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001105], stateValue=0):
+            return MobSpawn(self.ctx)
 
 
-class MobSpawn(state.State):
+class MobSpawn(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=10, visible=True, enabled=True, minimapVisible=True)
+        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
 
 
+initial_state = Wait

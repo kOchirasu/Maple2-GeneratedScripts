@@ -1,32 +1,32 @@
 """ trigger/02000055_bf/regenmob04.xml """
-from common import *
-import state
+import common
 
 
-class 시작대기중(state.State):
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=12, spawnIds=[91]):
-            return 소환몹등장()
+class 시작대기중(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=12, spawnIds=[91]):
+            return 소환몹등장(self.ctx)
 
 
-class 소환몹등장(state.State):
+class 소환몹등장(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101,102])
+        self.create_monster(spawnIds=[101,102])
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101,102]):
-            return 대기시간()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101,102]):
+            return 대기시간(self.ctx)
 
 
-class 대기시간(state.State):
+class 대기시간(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=20)
+        self.set_timer(timerId='1', seconds=20)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 시작대기중()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 시작대기중(self.ctx)
 
     def on_exit(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
 
+initial_state = 시작대기중

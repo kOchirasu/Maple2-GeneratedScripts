@@ -1,200 +1,200 @@
 """ trigger/99999911/wave_projectile.xml """
-from common import *
-import state
+import common
 
 
-#  플레이어 감지 
-class Round_check(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='Round_01', value=1):
-            return Round_01()
-        if user_value(key='Round_02', value=1):
-            return Round_02()
-        if user_value(key='Round_03', value=1):
+# 플레이어 감지
+class Round_check(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='Round_01', value=1):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_02', value=1):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_03', value=1):
             return None # Missing State: Round_03
-        if user_value(key='Round_04', value=1):
+        if self.user_value(key='Round_04', value=1):
             return None # Missing State: Round_04
 
 
-class Round_01(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=1):
-            return Round_01_Random_01()
-        if random_condition(rate=1):
-            return Round_01_Random_02()
-        if random_condition(rate=1):
-            return Round_01_Random_03()
-        if random_condition(rate=1):
-            return Round_01_Random_04()
-        if random_condition(rate=1):
-            return Round_01_Random_05()
-        if random_condition(rate=1):
-            return Round_01_Random_06()
+class Round_01(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=1):
+            return Round_01_Random_01(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_01_Random_02(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_01_Random_03(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_01_Random_04(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_01_Random_05(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_01_Random_06(self.ctx)
 
 
-class Round_01_Random_01(state.State):
+class Round_01_Random_01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[201], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_01_Random_02(state.State):
+class Round_01_Random_02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[202], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[202], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_01_Random_03(state.State):
+class Round_01_Random_03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[203], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[203], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_01_Random_04(state.State):
+class Round_01_Random_04(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[204], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[204], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_01_Random_05(state.State):
+class Round_01_Random_05(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[401], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[401], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_01_Random_06(state.State):
+class Round_01_Random_06(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[402], arg2=True)
-        set_timer(timerId='4', seconds=4)
+        self.create_monster(spawnIds=[402], animationEffect=True)
+        self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return Round_01()
-        if user_value(key='Round_01', value=0):
-            return Round_check()
-
-
-class Round_02(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=1):
-            return Round_02_Random_01()
-        if random_condition(rate=1):
-            return Round_02_Random_02()
-        if random_condition(rate=1):
-            return Round_02_Random_03()
-        if random_condition(rate=1):
-            return Round_02_Random_04()
-        if random_condition(rate=1):
-            return Round_02_Random_05()
-        if random_condition(rate=1):
-            return Round_02_Random_06()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return Round_01(self.ctx)
+        if self.user_value(key='Round_01', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_01(state.State):
+class Round_02(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=1):
+            return Round_02_Random_01(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_02_Random_02(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_02_Random_03(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_02_Random_04(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_02_Random_05(self.ctx)
+        if self.random_condition(rate=1):
+            return Round_02_Random_06(self.ctx)
+
+
+class Round_02_Random_01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[201], arg2=True, arg3=0)
-        create_monster(spawnIds=[202], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_02(state.State):
+class Round_02_Random_02(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[202], arg2=True, arg3=0)
-        create_monster(spawnIds=[201], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_03(state.State):
+class Round_02_Random_03(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[203], arg2=True, arg3=0)
-        create_monster(spawnIds=[204], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_04(state.State):
+class Round_02_Random_04(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[204], arg2=True, arg3=0)
-        create_monster(spawnIds=[203], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_05(state.State):
+class Round_02_Random_05(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[401], arg2=True, arg3=0)
-        create_monster(spawnIds=[401], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
-class Round_02_Random_06(state.State):
+class Round_02_Random_06(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[402], arg2=True, arg3=0)
-        create_monster(spawnIds=[402], arg2=True, arg3=2)
-        set_timer(timerId='6', seconds=6)
+        self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=2)
+        self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='6'):
-            return Round_02()
-        if user_value(key='Round_02', value=0):
-            return Round_check()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='6'):
+            return Round_02(self.ctx)
+        if self.user_value(key='Round_02', value=0):
+            return Round_check(self.ctx)
 
 
+initial_state = Round_check

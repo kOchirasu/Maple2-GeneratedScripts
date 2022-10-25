@@ -1,82 +1,82 @@
 """ trigger/02000336_bf/boss.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[90,92,93])
-        set_portal(portalId=1, visible=False, enabled=False, minimapVisible=False) # 보상으로 연결되는 포탈 제어 (끔)
-        set_effect(triggerIds=[7001], visible=False)
+        self.create_monster(spawnIds=[90,92,93])
+        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False) # 보상으로 연결되는 포탈 제어 (끔)
+        self.set_effect(triggerIds=[7001], visible=False)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=701, boxId=1):
-            return 시작_01()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=701, boxId=1):
+            return 시작_01(self.ctx)
 
 
-class 시작_01(state.State):
+class 시작_01(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7015], visible=True)
-        create_monster(spawnIds=[101])
+        self.set_effect(triggerIds=[7015], visible=True)
+        self.create_monster(spawnIds=[101])
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[101]):
-            return 조직원등장()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[101]):
+            return 조직원등장(self.ctx)
 
 
-class 조직원등장(state.State):
+class 조직원등장(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=True)
-        set_mesh(triggerIds=[8041,8042,8043,8044], visible=False, arg4=0, arg5=10) # 벽 해제
-        set_skill(triggerIds=[5801], isEnable=True) # 벽 날리는 스킬
-        create_monster(spawnIds=[181,182,183])
-        set_timer(timerId='2', seconds=2, display=False)
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.set_mesh(triggerIds=[8041,8042,8043,8044], visible=False, delay=0, scale=10) # 벽 해제
+        self.set_skill(triggerIds=[5801], enable=True) # 벽 날리는 스킬
+        self.create_monster(spawnIds=[181,182,183])
+        self.set_timer(timerId='2', seconds=2, interval=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 웨이홍_대사01()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 웨이홍_대사01(self.ctx)
 
 
-class 웨이홍_대사01(state.State):
+class 웨이홍_대사01(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[91])
-        destroy_monster(spawnIds=[90])
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=8001, enable=True)
-        set_conversation(type=2, spawnId=11003124, script='$02000336_BF__BOSS__0$', arg4=3) # 웨이홍 대사
-        set_skip(state=웨이홍_대사02)
-        set_timer(timerId='3', seconds=3, display=False)
+        self.create_monster(spawnIds=[91])
+        self.destroy_monster(spawnIds=[90])
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=8001, enable=True)
+        self.set_conversation(type=2, spawnId=11003124, script='$02000336_BF__BOSS__0$', arg4=3) # 웨이홍 대사
+        self.set_skip(state=웨이홍_대사02)
+        self.set_timer(timerId='3', seconds=3, interval=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 웨이홍_대사02()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 웨이홍_대사02(self.ctx)
 
     def on_exit(self):
-        remove_cinematic_talk()
+        self.remove_cinematic_talk()
 
 
-class 웨이홍_대사02(state.State):
+class 웨이홍_대사02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003124, script='$02000336_BF__BOSS__1$', arg4=3) # 웨이홍 대사
-        set_skip(state=종료)
-        set_timer(timerId='3', seconds=3, display=False)
+        self.set_conversation(type=2, spawnId=11003124, script='$02000336_BF__BOSS__1$', arg4=3) # 웨이홍 대사
+        self.set_skip(state=종료)
+        self.set_timer(timerId='3', seconds=3, interval=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 종료(self.ctx)
 
     def on_exit(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_cinematic_ui(type=7)
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_cinematic_ui(type=7)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        show_guide_summary(entityId=112, textId=40009) # 포탈을 타세요
-        select_camera(triggerId=8001, enable=False)
-        set_portal(portalId=1, visible=True, enabled=True, minimapVisible=True) # 보상으로 연결되는 포탈 제어 (켬)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entityId=112, textId=40009) # 포탈을 타세요
+        self.select_camera(triggerId=8001, enable=False)
+        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True) # 보상으로 연결되는 포탈 제어 (켬)
 
 
+initial_state = 시작

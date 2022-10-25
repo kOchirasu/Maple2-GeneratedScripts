@@ -1,88 +1,88 @@
 """ trigger/52020011_qd/main_b.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
+class Idle(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
-        set_actor(triggerId=8001, visible=False, initialSequence='Attack_Idle_A')
-        set_effect(triggerIds=[5001], visible=False)
-        set_effect(triggerIds=[5002], visible=False)
-        set_effect(triggerIds=[5003], visible=False)
-        set_effect(triggerIds=[5004], visible=False)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.set_actor(triggerId=8001, visible=False, initialSequence='Attack_Idle_A')
+        self.set_effect(triggerIds=[5001], visible=False)
+        self.set_effect(triggerIds=[5002], visible=False)
+        self.set_effect(triggerIds=[5003], visible=False)
+        self.set_effect(triggerIds=[5004], visible=False)
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[2]):
-            return Ready()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[2]):
+            return Ready(self.ctx)
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Set()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Set(self.ctx)
 
 
-class Set(state.State):
+class Set(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52020011, portalId=6001)
-        select_camera_path(pathIds=[4009], returnView=False)
-        set_actor(triggerId=8001, visible=True, initialSequence='Attack_Idle_A')
+        self.move_user(mapId=52020011, portalId=6001)
+        self.select_camera_path(pathIds=[4009], returnView=False)
+        self.set_actor(triggerId=8001, visible=True, initialSequence='Attack_Idle_A')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Go()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Go(self.ctx)
 
 
-class Go(state.State):
+class Go(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        add_cinematic_talk(npcId=11003599, msg='나 $npcName:11003599$의 이름으로 명한다.', duration=2800)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.add_cinematic_talk(npcId=11003599, msg='나 $npcName:11003599$의 이름으로 명한다.', duration=2800)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Scene_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Scene_01(self.ctx)
 
 
-class Scene_01(state.State):
+class Scene_01(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=11003599, msg='이 땅의 모든 저주받은 존재여! 깊고 어두운 곳으로 떨어져라!', duration=2800)
+        self.add_cinematic_talk(npcId=11003599, msg='이 땅의 모든 저주받은 존재여! 깊고 어두운 곳으로 떨어져라!', duration=2800)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Scene_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Scene_02(self.ctx)
 
 
-class Scene_02(state.State):
+class Scene_02(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5001], visible=True)
-        set_effect(triggerIds=[5002], visible=True)
+        self.set_effect(triggerIds=[5001], visible=True)
+        self.set_effect(triggerIds=[5002], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Scene_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Scene_03(self.ctx)
 
 
-class Scene_03(state.State):
+class Scene_03(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5003], visible=True)
-        set_effect(triggerIds=[5004], visible=True)
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
-        add_balloon_talk(spawnId=0, msg='!', duration=2000, delayTick=0)
+        self.set_effect(triggerIds=[5003], visible=True)
+        self.set_effect(triggerIds=[5004], visible=True)
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
+        self.add_balloon_talk(spawnId=0, msg='!', duration=2000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=700):
-            return Scene_Exit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=700):
+            return Scene_Exit(self.ctx)
 
 
-class Scene_Exit(state.State):
+class Scene_Exit(common.Trigger):
     def on_enter(self):
-        move_user(mapId=52020020, portalId=6001)
+        self.move_user(mapId=52020020, portalId=6001)
 
 
+initial_state = Idle

@@ -1,175 +1,175 @@
 """ trigger/83000003_colosseum/round10.xml """
-from common import *
-import state
+import common
 
 
-#  10라운드 미카 
-class 대기(state.State):
+# 10라운드 미카
+class 대기(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=11000, arg2=False)
-        set_sound(triggerId=11001, arg2=False)
-        set_sound(triggerId=12000, arg2=False)
-        set_sound(triggerId=12001, arg2=False)
-        set_sound(triggerId=13000, arg2=False)
-        set_sound(triggerId=13001, arg2=False)
+        self.set_sound(triggerId=11000, enable=False)
+        self.set_sound(triggerId=11001, enable=False)
+        self.set_sound(triggerId=12000, enable=False)
+        self.set_sound(triggerId=12001, enable=False)
+        self.set_sound(triggerId=13000, enable=False)
+        self.set_sound(triggerId=13001, enable=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='StartRound10', value=1):
-            return 시작딜레이()
-
-
-class 시작딜레이(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 라운드조건체크()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='StartRound10', value=1):
+            return 시작딜레이(self.ctx)
 
 
-class 라운드조건체크(state.State):
-    def on_tick(self) -> state.State:
-        if dungeon_round_require(round=10):
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_normal', script='$83000003_COLOSSEUM__ROUND10__0$', duration=5000)
-            return 라운드대기()
-        if true():
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__1$', duration=3000)
-            debug_string(string='던전 요구 아이템 점수를 달성 못해 실패 처리 됩니다.')
-            return FailRound()
+class 시작딜레이(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 라운드조건체크(self.ctx)
 
 
-class 라운드대기(state.State):
+class 라운드조건체크(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_round_require(round=10):
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_normal', script='$83000003_COLOSSEUM__ROUND10__0$', duration=5000)
+            return 라운드대기(self.ctx)
+        if self.true():
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__1$', duration=3000)
+            self.debug_string(string='던전 요구 아이템 점수를 달성 못해 실패 처리 됩니다.')
+            return FailRound(self.ctx)
+
+
+class 라운드대기(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=11000, arg2=True)
-        set_sound(triggerId=11001, arg2=True)
+        self.set_sound(triggerId=11000, enable=True)
+        self.set_sound(triggerId=11001, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            side_npc_talk(type='cutin', illust='Cutin_Mika_01', duration=3000)
-            show_round_ui(round=10, duration=3000)
-            return 몬스터스폰대기()
-
-
-class 몬스터스폰대기(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 몬스터스폰()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            self.side_npc_talk(type='cutin', illust='Cutin_Mika_01', duration=3000)
+            self.show_round_ui(round=10, duration=3000)
+            return 몬스터스폰대기(self.ctx)
 
 
-class 몬스터스폰(state.State):
+class 몬스터스폰대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 몬스터스폰(self.ctx)
+
+
+class 몬스터스폰(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[110], arg2=False)
-        add_buff(boxIds=[110], skillId=69000501, level=1, arg4=True)
+        self.create_monster(spawnIds=[110], animationEffect=False)
+        self.add_buff(boxIds=[110], skillId=69000501, level=1, isPlayer=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 카운트()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 카운트(self.ctx)
 
 
-class 카운트(state.State):
+class 카운트(common.Trigger):
     def on_enter(self):
-        show_count_ui(text='$83000003_COLOSSEUM__ROUND10__2$', count=3, soundType=2)
+        self.show_count_ui(text='$83000003_COLOSSEUM__ROUND10__2$', count=3, soundType=2)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3500):
-            return 전투시작()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 전투시작(self.ctx)
 
 
-class 전투시작(state.State):
+class 전투시작(common.Trigger):
     def on_enter(self):
-        lock_my_pc(isLock=False)
+        self.lock_my_pc(isLock=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 기믹더미소환()
-
-
-class 기믹더미소환(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=50):
-            create_monster(spawnIds=[10000], arg2=False)
-            return 스폰대사()
-        if random_condition(rate=50):
-            create_monster(spawnIds=[10001], arg2=False)
-            return 스폰대사()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 기믹더미소환(self.ctx)
 
 
-class 스폰대사(state.State):
+class 기믹더미소환(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=50):
+            self.create_monster(spawnIds=[10000], animationEffect=False)
+            return 스폰대사(self.ctx)
+        if self.random_condition(rate=50):
+            self.create_monster(spawnIds=[10001], animationEffect=False)
+            return 스폰대사(self.ctx)
+
+
+class 스폰대사(common.Trigger):
     def on_enter(self):
-        add_balloon_talk(spawnId=110, msg='$83000003_COLOSSEUM__ROUND10__3$', duration=3000)
-        set_timer(timerId='LimitTimer', seconds=180, clearAtZero=True)
-        set_npc_duel_hp_bar(isOpen=True, spawnId=[110], durationTick=180000, npcHpStep=10)
+        self.add_balloon_talk(spawnId=110, msg='$83000003_COLOSSEUM__ROUND10__3$', duration=3000)
+        self.set_timer(timerId='LimitTimer', seconds=180, startDelay=1)
+        self.set_npc_duel_hp_bar(isOpen=True, spawnId=[110], durationTick=180000, npcHpStep=10)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[110]):
-            add_balloon_talk(spawnId=110, msg='$83000003_COLOSSEUM__ROUND10__4$', duration=3000)
-            set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
-            destroy_monster(spawnIds=[10000])
-            destroy_monster(spawnIds=[10001])
-            return ClearRoundDelay()
-        if time_expired(timerId='LimitTimer'):
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__5$', duration=3000)
-            destroy_monster(spawnIds=[110])
-            set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
-            destroy_monster(spawnIds=[10000])
-            destroy_monster(spawnIds=[10001])
-            return FailRoundDelay()
-        if user_detected(boxIds=[902]):
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__6$', duration=3000)
-            destroy_monster(spawnIds=[110])
-            set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
-            destroy_monster(spawnIds=[10000])
-            destroy_monster(spawnIds=[10001])
-            return FailRoundDelay()
-        if not user_detected(boxIds=[904]):
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__7$', duration=3000)
-            destroy_monster(spawnIds=[110])
-            set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
-            destroy_monster(spawnIds=[10000])
-            destroy_monster(spawnIds=[10001])
-            return FailRoundDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[110]):
+            self.add_balloon_talk(spawnId=110, msg='$83000003_COLOSSEUM__ROUND10__4$', duration=3000)
+            self.set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
+            self.destroy_monster(spawnIds=[10000])
+            self.destroy_monster(spawnIds=[10001])
+            return ClearRoundDelay(self.ctx)
+        if self.time_expired(timerId='LimitTimer'):
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__5$', duration=3000)
+            self.destroy_monster(spawnIds=[110])
+            self.set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
+            self.destroy_monster(spawnIds=[10000])
+            self.destroy_monster(spawnIds=[10001])
+            return FailRoundDelay(self.ctx)
+        if self.user_detected(boxIds=[902]):
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__6$', duration=3000)
+            self.destroy_monster(spawnIds=[110])
+            self.set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
+            self.destroy_monster(spawnIds=[10000])
+            self.destroy_monster(spawnIds=[10001])
+            return FailRoundDelay(self.ctx)
+        if not self.user_detected(boxIds=[904]):
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000003_COLOSSEUM__ROUND10__7$', duration=3000)
+            self.destroy_monster(spawnIds=[110])
+            self.set_npc_duel_hp_bar(isOpen=False, spawnId=[110])
+            self.destroy_monster(spawnIds=[10000])
+            self.destroy_monster(spawnIds=[10001])
+            return FailRoundDelay(self.ctx)
 
 
-class ClearRoundDelay(state.State):
+class ClearRoundDelay(common.Trigger):
     def on_enter(self):
-        lock_my_pc(isLock=True)
-        set_sound(triggerId=12000, arg2=True)
-        set_sound(triggerId=12001, arg2=True)
+        self.lock_my_pc(isLock=True)
+        self.set_sound(triggerId=12000, enable=True)
+        self.set_sound(triggerId=12001, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            add_buff(boxIds=[904], skillId=69000503, level=1, arg4=False, arg5=False)
-            set_event_ui(type=3, arg2='$83000003_COLOSSEUM__ROUND10__8$', arg3='3000')
-            return ClearRound()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            self.add_buff(boxIds=[904], skillId=69000503, level=1, isPlayer=False, isSkillSet=False)
+            self.set_event_ui(type=3, arg2='$83000003_COLOSSEUM__ROUND10__8$', arg3='3000')
+            return ClearRound(self.ctx)
 
 
-class FailRoundDelay(state.State):
+class FailRoundDelay(common.Trigger):
     def on_enter(self):
-        set_sound(triggerId=13000, arg2=True)
-        set_sound(triggerId=13001, arg2=True)
+        self.set_sound(triggerId=13000, enable=True)
+        self.set_sound(triggerId=13001, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            set_event_ui(type=5, arg2='$83000003_COLOSSEUM__ROUND10__9$', arg3='3000')
-            return FailRound()
-
-
-class ClearRound(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            move_user_to_pos(pos=[300,-225,1500], rot=[0,0,270])
-            side_npc_talk(type='talk', npcId=11004288, illust='nagi_normal', script='$83000003_COLOSSEUM__ROUND10__10$', duration=3000)
-            set_user_value(triggerId=900001, key='StartRound10', value=2)
-            return 이동대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            self.set_event_ui(type=5, arg2='$83000003_COLOSSEUM__ROUND10__9$', arg3='3000')
+            return FailRound(self.ctx)
 
 
-class 이동대기(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 대기()
+class ClearRound(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            self.move_user_to_pos(pos=[300,-225,1500], rot=[0,0,270])
+            self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_normal', script='$83000003_COLOSSEUM__ROUND10__10$', duration=3000)
+            self.set_user_value(triggerId=900001, key='StartRound10', value=2)
+            return 이동대기(self.ctx)
 
 
-class FailRound(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            set_user_value(triggerId=900001, key='StartRound10', value=3)
-            return 대기()
+class 이동대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 대기(self.ctx)
 
 
+class FailRound(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            self.set_user_value(triggerId=900001, key='StartRound10', value=3)
+            return 대기(self.ctx)
+
+
+initial_state = 대기

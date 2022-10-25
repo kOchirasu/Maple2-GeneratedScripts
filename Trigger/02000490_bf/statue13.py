@@ -1,26 +1,26 @@
 """ trigger/02000490_bf/statue13.xml """
-from common import *
-import state
+import common
 
 
-class 세팅(state.State):
+class 세팅(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[13], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[13], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[199]):
-            return 수신대기()
-
-
-class 수신대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_value(key='StatueAnimal02Death', value=1):
-            set_mesh(triggerIds=[13], visible=False, arg3=0, arg4=0, arg5=0)
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[199]):
+            return 수신대기(self.ctx)
 
 
-class 종료(state.State):
+class 수신대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='StatueAnimal02Death', value=1):
+            self.set_mesh(triggerIds=[13], visible=False, arg3=0, delay=0, scale=0)
+            return 종료(self.ctx)
+
+
+class 종료(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[13], visible=False, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[13], visible=False, arg3=0, delay=0, scale=0)
 
 
+initial_state = 세팅

@@ -1,10 +1,10 @@
 """ trigger/02010058_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101,102,103], arg2=True)
+        self.create_monster(spawnIds=[101,102,103], animationEffect=True)
 
 
+initial_state = 시작

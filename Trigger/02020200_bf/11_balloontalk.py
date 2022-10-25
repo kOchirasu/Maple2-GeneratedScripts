@@ -1,50 +1,50 @@
 """ trigger/02020200_bf/11_balloontalk.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[905]):
-            return 대사1()
+class 대기(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[905]):
+            return 대사1(self.ctx)
 
 
-class 대사1(state.State):
+class 대사1(common.Trigger):
     def on_enter(self):
-        side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__0$')
-        add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__1$', duration=5000, delayTick=1000)
+        self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__0$')
+        self.add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__1$', duration=5000, delayTick=1000)
 
-    def on_tick(self) -> state.State:
-        if all_of():
-            return 대사2()
-        if all_of():
-            return 대사2()
-        if all_of():
-            return 대사2()
-        if monster_dead(boxIds=[205]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return 대사2(self.ctx)
+        if self.all_of():
+            return 대사2(self.ctx)
+        if self.all_of():
+            return 대사2(self.ctx)
+        if self.monster_dead(boxIds=[205]):
+            return 종료(self.ctx)
 
 
-class 대사2(state.State):
+class 대사2(common.Trigger):
     def on_enter(self):
-        add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__2$', duration=5000, delayTick=0)
+        self.add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__2$', duration=5000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if check_npc_additional_effect(spawnId=205, additionalEffectId=42030261, level=1):
-            return 대사3()
+    def on_tick(self) -> common.Trigger:
+        if self.check_npc_additional_effect(spawnId=205, additionalEffectId=42030261, level=1):
+            return 대사3(self.ctx)
 
 
-class 대사3(state.State):
+class 대사3(common.Trigger):
     def on_enter(self):
-        side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__3$')
-        add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__4$', duration=5000, delayTick=0)
+        self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020200_BF__11_BALLOONTALK__3$')
+        self.add_balloon_talk(spawnId=0, msg='$02020200_BF__11_BALLOONTALK__4$', duration=5000, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

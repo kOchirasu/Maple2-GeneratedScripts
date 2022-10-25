@@ -1,32 +1,32 @@
 """ trigger/52010023_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
+class idle(common.Trigger):
     def on_enter(self):
-        set_portal(portalId=2, visible=True, enabled=True, minimapVisible=True)
-        set_effect(triggerIds=[7001], visible=False)
-        create_monster(spawnIds=[101])
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_effect(triggerIds=[7001], visible=False)
+        self.create_monster(spawnIds=[101])
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[701], questIds=[40002500], questStates=[2]):
-            return Event_01()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[701], questIds=[40002500], questStates=[2]):
+            return Event_01(self.ctx)
 
 
-class Event_01(state.State):
+class Event_01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=1, spawnId=101, script='$52010023_QD__MAIN__0$', arg4=5)
-        move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
+        self.set_conversation(type=1, spawnId=101, script='$52010023_QD__MAIN__0$', arg4=5)
+        self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
 
-    def on_tick(self) -> state.State:
-        if npc_detected(boxId=702, spawnIds=[101]):
-            return Npc_out()
+    def on_tick(self) -> common.Trigger:
+        if self.npc_detected(boxId=702, spawnIds=[101]):
+            return Npc_out(self.ctx)
 
 
-class Npc_out(state.State):
+class Npc_out(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7001], visible=True)
-        destroy_monster(spawnIds=[101])
+        self.set_effect(triggerIds=[7001], visible=True)
+        self.destroy_monster(spawnIds=[101])
 
 
+initial_state = idle

@@ -1,76 +1,76 @@
 """ trigger/52020020_qd/main_a.xml """
-from common import *
-import state
+import common
 
 
-class Idle(state.State):
+class Idle(common.Trigger):
     def on_enter(self):
-        set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[2]):
-            return ready()
-        if quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[3]):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[2]):
+            return ready(self.ctx)
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200130], questStates=[3]):
+            return end(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_cinematic_ui(type=4)
-        move_user(mapId=52020020, portalId=6001)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=4)
+        self.move_user(mapId=52020020, portalId=6001)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Monologue_01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Monologue_01(self.ctx)
 
 
-class Monologue_01(state.State):
+class Monologue_01(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='으으.......', duration=2500, align='Right')
-        set_scene_skip(state=end, arg2='exit')
+        self.add_cinematic_talk(npcId=0, msg='으으.......', duration=2500, align='Right')
+        self.set_scene_skip(state=end, action='exit')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return Monologue_02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return Monologue_02(self.ctx)
 
 
-class Monologue_02(state.State):
+class Monologue_02(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='도대체 무슨 일이 일어난 거지?', duration=2500, align='Right')
+        self.add_cinematic_talk(npcId=0, msg='도대체 무슨 일이 일어난 거지?', duration=2500, align='Right')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return Monologue_03()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return Monologue_03(self.ctx)
 
 
-class Monologue_03(state.State):
+class Monologue_03(common.Trigger):
     def on_enter(self):
-        add_cinematic_talk(npcId=0, msg='.......', duration=3000, align='Right')
+        self.add_cinematic_talk(npcId=0, msg='.......', duration=3000, align='Right')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Monologue_04()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Monologue_04(self.ctx)
 
 
-class Monologue_04(state.State):
+class Monologue_04(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=3000)
-        add_cinematic_talk(npcId=0, msg='잠깐! 여기는?!', duration=3000, align='Right')
-        set_scene_skip()
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=3000)
+        self.add_cinematic_talk(npcId=0, msg='잠깐! 여기는?!', duration=3000, align='Right')
+        self.set_scene_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return end()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return end(self.ctx)
 
 
-class end(state.State):
+class end(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
 
+initial_state = Idle

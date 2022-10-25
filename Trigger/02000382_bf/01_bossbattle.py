@@ -1,254 +1,254 @@
 """ trigger/02000382_bf/01_bossbattle.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[901,902,903])
-        set_portal(portalId=10, visible=False, enabled=False, minimapVisible=False) # ExitTop
-        set_portal(portalId=11, visible=False, enabled=False, minimapVisible=False) # ExitUnder
-        enable_spawn_point_pc(spawnId=10000, isEnable=True) # PC스포너 제어
-        enable_spawn_point_pc(spawnId=10001, isEnable=False)
-        enable_spawn_point_pc(spawnId=10002, isEnable=False)
-        enable_spawn_point_pc(spawnId=10003, isEnable=False)
+        self.destroy_monster(spawnIds=[901,902,903])
+        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False) # ExitTop
+        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False) # ExitUnder
+        self.enable_spawn_point_pc(spawnId=10000, isEnable=True) # PC스포너 제어
+        self.enable_spawn_point_pc(spawnId=10001, isEnable=False)
+        self.enable_spawn_point_pc(spawnId=10002, isEnable=False)
+        self.enable_spawn_point_pc(spawnId=10003, isEnable=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9001]):
-            return Boss01SpawnDelay()
-        if user_detected(boxIds=[9002]):
-            return Boss02SpawnDelay()
-        if user_detected(boxIds=[9003]):
-            return Boss03SpawnDelay()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9001]):
+            return Boss01SpawnDelay(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return Boss02SpawnDelay(self.ctx)
+        if self.user_detected(boxIds=[9003]):
+            return Boss03SpawnDelay(self.ctx)
 
 
-#  오른쪽 
-class Boss01SpawnDelay(state.State):
+# 오른쪽
+class Boss01SpawnDelay(common.Trigger):
     def on_enter(self):
-        enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
-        enable_spawn_point_pc(spawnId=10001, isEnable=True)
+        self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawnId=10001, isEnable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Boss01Spawn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Boss01Spawn(self.ctx)
 
 
-class Boss01Spawn(state.State):
+class Boss01Spawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[901], arg2=False) # 23100084
-        set_user_value(triggerId=1122330, key='AgentOff', value=1)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=501, enable=True)
+        self.create_monster(spawnIds=[901], animationEffect=False) # 23100084
+        self.set_user_value(triggerId=1122330, key='AgentOff', value=1)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=501, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss01Talk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss01Talk01(self.ctx)
 
 
-class Boss01Talk01(state.State):
+class Boss01Talk01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__0$', arg4=4) # 설눈이
-        set_skip(state=Boss01Talk01Skip)
+        self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__0$', arg4=4) # 설눈이
+        self.set_skip(state=Boss01Talk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return Boss01Talk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return Boss01Talk01Skip(self.ctx)
 
 
-class Boss01Talk01Skip(state.State):
+class Boss01Talk01Skip(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=502, enable=True)
-        remove_cinematic_talk()
-        set_skip()
+        self.select_camera(triggerId=502, enable=True)
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss01Talk02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss01Talk02(self.ctx)
 
 
-class Boss01Talk02(state.State):
+class Boss01Talk02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__1$', arg4=5) # 에르다
-        set_skip(state=Boss01Talk02Skip)
+        self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__1$', arg4=5) # 에르다
+        self.set_skip(state=Boss01Talk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Boss01Talk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Boss01Talk02Skip(self.ctx)
 
 
-class Boss01Talk02Skip(state.State):
+class Boss01Talk02Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=1)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[901]):
-            return LeavePortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[901]):
+            return LeavePortalOn(self.ctx)
 
 
-#  중앙 
-class Boss02SpawnDelay(state.State):
+# 중앙
+class Boss02SpawnDelay(common.Trigger):
     def on_enter(self):
-        enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
-        enable_spawn_point_pc(spawnId=10002, isEnable=True)
+        self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawnId=10002, isEnable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Boss02Spawn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Boss02Spawn(self.ctx)
 
 
-class Boss02Spawn(state.State):
+class Boss02Spawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[902], arg2=False) # 23000086
+        self.create_monster(spawnIds=[902], animationEffect=False) # 23000086
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss02CameraSet()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss02CameraSet(self.ctx)
 
 
-class Boss02CameraSet(state.State):
+class Boss02CameraSet(common.Trigger):
     def on_enter(self):
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=511, enable=True)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=511, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss02Talk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss02Talk01(self.ctx)
 
 
-class Boss02Talk01(state.State):
+class Boss02Talk01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__2$', arg4=3) # 설눈이
-        set_skip(state=Boss02Talk01Skip)
+        self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__2$', arg4=3) # 설눈이
+        self.set_skip(state=Boss02Talk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Boss02Talk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Boss02Talk01Skip(self.ctx)
 
 
-class Boss02Talk01Skip(state.State):
+class Boss02Talk01Skip(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=512, enable=True)
-        remove_cinematic_talk()
-        set_skip()
+        self.select_camera(triggerId=512, enable=True)
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss02Talk02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss02Talk02(self.ctx)
 
 
-class Boss02Talk02(state.State):
+class Boss02Talk02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__3$', arg4=4) # 에르다
-        set_skip(state=Boss02Talk02Skip)
+        self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__3$', arg4=4) # 에르다
+        self.set_skip(state=Boss02Talk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return Boss02Talk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return Boss02Talk02Skip(self.ctx)
 
 
-class Boss02Talk02Skip(state.State):
+class Boss02Talk02Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=1)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[902]):
-            return LeavePortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[902]):
+            return LeavePortalOn(self.ctx)
 
 
-#  왼쪽 
-class Boss03SpawnDelay(state.State):
+# 왼쪽
+class Boss03SpawnDelay(common.Trigger):
     def on_enter(self):
-        enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
-        enable_spawn_point_pc(spawnId=10003, isEnable=True)
+        self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
+        self.enable_spawn_point_pc(spawnId=10003, isEnable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Boss03Spawn()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Boss03Spawn(self.ctx)
 
 
-class Boss03Spawn(state.State):
+class Boss03Spawn(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[903], arg2=False) # 23000087
-        set_user_value(triggerId=1122330, key='AgentOff', value=1)
-        set_cinematic_ui(type=1)
-        set_cinematic_ui(type=3)
-        select_camera(triggerId=521, enable=True)
+        self.create_monster(spawnIds=[903], animationEffect=False) # 23000087
+        self.set_user_value(triggerId=1122330, key='AgentOff', value=1)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.select_camera(triggerId=521, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss03Talk01()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss03Talk01(self.ctx)
 
 
-class Boss03Talk01(state.State):
+class Boss03Talk01(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__4$', arg4=4) # 설눈이
-        set_skip(state=Boss03Talk01Skip)
+        self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__4$', arg4=4) # 설눈이
+        self.set_skip(state=Boss03Talk01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=4000):
-            return Boss03Talk01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return Boss03Talk01Skip(self.ctx)
 
 
-class Boss03Talk01Skip(state.State):
+class Boss03Talk01Skip(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=522, enable=True)
-        remove_cinematic_talk()
-        set_skip()
+        self.select_camera(triggerId=522, enable=True)
+        self.remove_cinematic_talk()
+        self.set_skip()
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Boss03Talk02()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Boss03Talk02(self.ctx)
 
 
-class Boss03Talk02(state.State):
+class Boss03Talk02(common.Trigger):
     def on_enter(self):
-        set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__5$', arg4=5) # 에르다
-        set_skip(state=Boss03Talk02Skip)
+        self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__5$', arg4=5) # 에르다
+        self.set_skip(state=Boss03Talk02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Boss03Talk02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Boss03Talk02Skip(self.ctx)
 
 
-class Boss03Talk02Skip(state.State):
+class Boss03Talk02Skip(common.Trigger):
     def on_enter(self):
-        remove_cinematic_talk()
-        set_skip()
-        set_cinematic_ui(type=0)
-        set_cinematic_ui(type=2)
-        reset_camera(interpolationTime=1)
+        self.remove_cinematic_talk()
+        self.set_skip()
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[903]):
-            return LeavePortalOn()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[903]):
+            return LeavePortalOn(self.ctx)
 
 
-#  종료 
-class LeavePortalOn(state.State):
+# 종료
+class LeavePortalOn(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=4, key='BossKill', value=1)
-        destroy_monster(spawnIds=[901,902,903])
+        self.set_user_value(triggerId=4, key='BossKill', value=1)
+        self.destroy_monster(spawnIds=[901,902,903])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Quit(self.ctx)
 
 
-class Quit(state.State):
+class Quit(common.Trigger):
     def on_enter(self):
-        dungeon_clear()
-        set_achievement(triggerId=9900, type='trigger', achieve='ClearSnowQueen')
-        set_portal(portalId=10, visible=True, enabled=True, minimapVisible=True) # ExitTop
-        set_portal(portalId=11, visible=True, enabled=True, minimapVisible=True) # ExitUnder
+        self.dungeon_clear()
+        self.set_achievement(triggerId=9900, type='trigger', achieve='ClearSnowQueen')
+        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True) # ExitTop
+        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True) # ExitUnder
 
 
+initial_state = Wait

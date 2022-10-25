@@ -1,92 +1,92 @@
 """ trigger/03000036_bf/chest.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[11000023], state=1)
-        set_interact_object(triggerIds=[11000008], state=2)
-        set_interact_object(triggerIds=[11000009], state=2)
-        set_effect(triggerIds=[601], visible=False)
-        set_effect(triggerIds=[602], visible=False)
-        set_effect(triggerIds=[603], visible=False)
-        set_effect(triggerIds=[604], visible=False)
+        self.set_interact_object(triggerIds=[11000023], state=1)
+        self.set_interact_object(triggerIds=[11000008], state=2)
+        self.set_interact_object(triggerIds=[11000009], state=2)
+        self.set_effect(triggerIds=[601], visible=False)
+        self.set_effect(triggerIds=[602], visible=False)
+        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(triggerIds=[604], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[101]):
-            set_interact_object(triggerIds=[11000023], state=2)
-            return 차웨이브대기1()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[101]):
+            self.set_interact_object(triggerIds=[11000023], state=2)
+            return 차웨이브대기1(self.ctx)
 
 
-class 차웨이브대기1(state.State):
+class 차웨이브대기1(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=23000003, textId=23000003, duration=5000)
-        set_effect(triggerIds=[602], visible=True)
-        set_effect(triggerIds=[603], visible=True)
+        self.show_guide_summary(entityId=23000003, textId=23000003, duration=5000)
+        self.set_effect(triggerIds=[602], visible=True)
+        self.set_effect(triggerIds=[603], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 차웨이브시작1()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 차웨이브시작1(self.ctx)
 
 
-class 차웨이브시작1(state.State):
+class 차웨이브시작1(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[1001,1002], arg2=False)
+        self.create_monster(spawnIds=[1001,1002], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[1001,1002]):
-            return 차웨이브대기2()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[1001,1002]):
+            return 차웨이브대기2(self.ctx)
 
 
-class 차웨이브대기2(state.State):
+class 차웨이브대기2(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[601], visible=True)
+        self.set_effect(triggerIds=[601], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 차웨이브시작2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 차웨이브시작2(self.ctx)
 
 
-class 차웨이브시작2(state.State):
+class 차웨이브시작2(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[2001], arg2=False)
+        self.create_monster(spawnIds=[2001], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[2001]):
-            return 차웨이브대기3()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[2001]):
+            return 차웨이브대기3(self.ctx)
 
 
-class 차웨이브대기3(state.State):
+class 차웨이브대기3(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[604], visible=True)
+        self.set_effect(triggerIds=[604], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 차웨이브시작3()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 차웨이브시작3(self.ctx)
 
 
-class 차웨이브시작3(state.State):
+class 차웨이브시작3(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[3001], arg2=False)
+        self.create_monster(spawnIds=[3001], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[3001]):
-            set_event_ui(type=7, arg3='2000', arg4='0')
-            return 상자확률()
-
-
-class 상자확률(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=90):
-            set_interact_object(triggerIds=[11000008], state=1)
-            return 종료()
-        if random_condition(rate=10):
-            set_interact_object(triggerIds=[11000009], state=1)
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[3001]):
+            self.set_event_ui(type=7, arg3='2000', arg4='0')
+            return 상자확률(self.ctx)
 
 
-class 종료(state.State):
+class 상자확률(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=90):
+            self.set_interact_object(triggerIds=[11000008], state=1)
+            return 종료(self.ctx)
+        if self.random_condition(rate=10):
+            self.set_interact_object(triggerIds=[11000009], state=1)
+            return 종료(self.ctx)
+
+
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 대기

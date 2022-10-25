@@ -1,55 +1,55 @@
 """ trigger/02000331_bf/switch09.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[7773], visible=False) # 발판 휠 내려옴 사운드
-        set_breakable(triggerIds=[5001], enabled=False)
-        set_breakable(triggerIds=[5002], enabled=False)
-        set_breakable(triggerIds=[5011], enabled=False)
-        set_breakable(triggerIds=[5012], enabled=False)
-        set_breakable(triggerIds=[5021], enabled=False)
-        set_breakable(triggerIds=[5022], enabled=False)
-        set_breakable(triggerIds=[5031], enabled=False)
-        set_breakable(triggerIds=[5032], enabled=False)
-        set_mesh(triggerIds=[40000,40001], visible=False, arg3=0, arg4=0, arg5=0) # TOK용 투명한 매쉬
+        self.set_effect(triggerIds=[7773], visible=False) # 발판 휠 내려옴 사운드
+        self.set_breakable(triggerIds=[5001], enable=False)
+        self.set_breakable(triggerIds=[5002], enable=False)
+        self.set_breakable(triggerIds=[5011], enable=False)
+        self.set_breakable(triggerIds=[5012], enable=False)
+        self.set_breakable(triggerIds=[5021], enable=False)
+        self.set_breakable(triggerIds=[5022], enable=False)
+        self.set_breakable(triggerIds=[5031], enable=False)
+        self.set_breakable(triggerIds=[5032], enable=False)
+        self.set_mesh(triggerIds=[40000,40001], visible=False, arg3=0, delay=0, scale=0) # TOK용 투명한 매쉬
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000795], arg2=0):
-            return 발판내리기()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000795], stateValue=0):
+            return 발판내리기(self.ctx)
 
 
-class 발판내리기(state.State):
+class 발판내리기(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[5001], enabled=True)
-        set_breakable(triggerIds=[5002], enabled=True)
-        set_breakable(triggerIds=[5011], enabled=True)
-        set_breakable(triggerIds=[5012], enabled=True)
-        set_breakable(triggerIds=[5021], enabled=True)
-        set_breakable(triggerIds=[5022], enabled=True)
-        set_breakable(triggerIds=[5031], enabled=True)
-        set_breakable(triggerIds=[5032], enabled=True)
-        set_effect(triggerIds=[7773], visible=True) # 발판 내려올 때 휠 사운드
-        set_mesh(triggerIds=[40000,40001], visible=True, arg3=0, arg4=0, arg5=0) # TOK용 투명한 매쉬
+        self.set_breakable(triggerIds=[5001], enable=True)
+        self.set_breakable(triggerIds=[5002], enable=True)
+        self.set_breakable(triggerIds=[5011], enable=True)
+        self.set_breakable(triggerIds=[5012], enable=True)
+        self.set_breakable(triggerIds=[5021], enable=True)
+        self.set_breakable(triggerIds=[5022], enable=True)
+        self.set_breakable(triggerIds=[5031], enable=True)
+        self.set_breakable(triggerIds=[5032], enable=True)
+        self.set_effect(triggerIds=[7773], visible=True) # 발판 내려올 때 휠 사운드
+        self.set_mesh(triggerIds=[40000,40001], visible=True, arg3=0, delay=0, scale=0) # TOK용 투명한 매쉬
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=16000):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=16000):
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[5001], enabled=False)
-        set_breakable(triggerIds=[5002], enabled=False)
-        set_breakable(triggerIds=[5011], enabled=False)
-        set_breakable(triggerIds=[5012], enabled=False)
-        set_breakable(triggerIds=[5021], enabled=False)
-        set_breakable(triggerIds=[5022], enabled=False)
-        set_breakable(triggerIds=[5031], enabled=False)
-        set_breakable(triggerIds=[5032], enabled=False)
-        set_effect(triggerIds=[7773], visible=False) # 발판 휠 내려옴 사운드
-        set_mesh(triggerIds=[40000,40001], visible=False, arg3=0, arg4=0, arg5=0) # TOK용 투명한 매쉬
+        self.set_breakable(triggerIds=[5001], enable=False)
+        self.set_breakable(triggerIds=[5002], enable=False)
+        self.set_breakable(triggerIds=[5011], enable=False)
+        self.set_breakable(triggerIds=[5012], enable=False)
+        self.set_breakable(triggerIds=[5021], enable=False)
+        self.set_breakable(triggerIds=[5022], enable=False)
+        self.set_breakable(triggerIds=[5031], enable=False)
+        self.set_breakable(triggerIds=[5032], enable=False)
+        self.set_effect(triggerIds=[7773], visible=False) # 발판 휠 내려옴 사운드
+        self.set_mesh(triggerIds=[40000,40001], visible=False, arg3=0, delay=0, scale=0) # TOK용 투명한 매쉬
 
 
+initial_state = 대기

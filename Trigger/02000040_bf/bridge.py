@@ -1,35 +1,35 @@
 """ trigger/02000040_bf/bridge.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[301,302,303], visible=False, arg3=0, arg4=0, arg5=0)
-        set_interact_object(triggerIds=[10000319], state=1)
+        self.set_mesh(triggerIds=[301,302,303], visible=False, arg3=0, delay=0, scale=0)
+        self.set_interact_object(triggerIds=[10000319], state=1)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000319], arg2=0):
-            return 생성()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000319], stateValue=0):
+            return 생성(self.ctx)
 
 
-class 생성(state.State):
+class 생성(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[301,302,303], visible=True, arg3=0, arg4=500, arg5=2)
-        set_timer(timerId='3', seconds=3, clearAtZero=False, display=False)
+        self.set_mesh(triggerIds=[301,302,303], visible=True, arg3=0, delay=500, scale=2)
+        self.set_timer(timerId='3', seconds=3, startDelay=0, interval=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            set_mesh(triggerIds=[303,302,301], visible=False, arg3=0, arg4=500, arg5=2)
-            return 재사용대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            self.set_mesh(triggerIds=[303,302,301], visible=False, arg3=0, delay=500, scale=2)
+            return 재사용대기(self.ctx)
 
 
-class 재사용대기(state.State):
+class 재사용대기(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='10', seconds=10, clearAtZero=False, display=False)
+        self.set_timer(timerId='10', seconds=10, startDelay=0, interval=0)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='10'):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='10'):
+            return 대기(self.ctx)
 
 
+initial_state = 대기

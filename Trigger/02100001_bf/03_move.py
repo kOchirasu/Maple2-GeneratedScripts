@@ -1,44 +1,44 @@
 """ trigger/02100001_bf/03_move.xml """
-from common import *
-import state
+import common
 
 
-#  아프렐라 오지 : 선인장 쪽에서 올라올 수 있는 발판 
-class Wait(state.State):
+# 아프렐라 오지 : 선인장 쪽에서 올라올 수 있는 발판
+class Wait(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001242], state=1) # CrowMove
-        set_breakable(triggerIds=[4501], enabled=False) # Move
-        set_visible_breakable_object(triggerIds=[4501], arg2=True) # Move
+        self.set_interact_object(triggerIds=[10001242], state=1) # CrowMove
+        self.set_breakable(triggerIds=[4501], enable=False) # Move
+        self.set_visible_breakable_object(triggerIds=[4501], visible=True) # Move
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001242], arg2=0):
-            return MoveStart()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001242], stateValue=0):
+            return MoveStart(self.ctx)
 
 
-class MoveStart(state.State):
+class MoveStart(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4501], enabled=True) # Move
+        self.set_breakable(triggerIds=[4501], enable=True) # Move
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=7000):
-            return MoveStop()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=7000):
+            return MoveStop(self.ctx)
 
 
-class MoveStop(state.State):
+class MoveStop(common.Trigger):
     def on_enter(self):
-        set_breakable(triggerIds=[4501], enabled=False) # Move
+        self.set_breakable(triggerIds=[4501], enable=False) # Move
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return Reset()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return Reset(self.ctx)
 
 
-class Reset(state.State):
+class Reset(common.Trigger):
     def on_enter(self):
-        set_interact_object(triggerIds=[10001242], state=1) # CrowMove
+        self.set_interact_object(triggerIds=[10001242], state=1) # CrowMove
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001242], arg2=0):
-            return MoveStart()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001242], stateValue=0):
+            return MoveStart(self.ctx)
 
 
+initial_state = Wait

@@ -1,21 +1,21 @@
 """ trigger/02010060_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class Ready(state.State):
+class Ready(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[6001], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 남쪽 넓게 설정
-        set_mesh(triggerIds=[6002], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 10시쪽 끊어진 다리 지점
-        set_mesh(triggerIds=[6003], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 2시쪽 끊어진 다리 지점
+        self.set_mesh(triggerIds=[6001], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 남쪽 넓게 설정
+        self.set_mesh(triggerIds=[6002], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 10시쪽 끊어진 다리 지점
+        self.set_mesh(triggerIds=[6003], visible=False) # 몬스터는 밟을 수 있고 플레이어는 밟을 수 없는 투명벽 설정하기, 2시쪽 끊어진 다리 지점
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=700, boxId=1):
-            return Ready_Idle()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=700, boxId=1):
+            return Ready_Idle(self.ctx)
 
 
-class Ready_Idle(state.State):
+class Ready_Idle(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=1, display=False)
+        self.set_timer(timerId='1', seconds=1, interval=0)
 
 
+initial_state = Ready

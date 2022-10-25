@@ -1,55 +1,55 @@
 """ trigger/63000076_cs/63000076_interact_1394.xml """
-from common import *
-import state
+import common
 
 
-class 준비(state.State):
+class 준비(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=True)
-        create_monster(spawnIds=[102], arg2=True)
-        create_monster(spawnIds=[103], arg2=True)
-        create_monster(spawnIds=[104], arg2=True)
+        self.create_monster(spawnIds=[101], animationEffect=True)
+        self.create_monster(spawnIds=[102], animationEffect=True)
+        self.create_monster(spawnIds=[103], animationEffect=True)
+        self.create_monster(spawnIds=[104], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10001394], arg2=0):
-            return 화난요정_01_1394()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10001394], stateValue=0):
+            return 화난요정_01_1394(self.ctx)
 
 
-class 화난요정_01_1394(state.State):
+class 화난요정_01_1394(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[101])
-        destroy_monster(spawnIds=[102])
-        destroy_monster(spawnIds=[103])
-        destroy_monster(spawnIds=[104])
-        create_monster(spawnIds=[201], arg2=True)
-        create_monster(spawnIds=[202], arg2=True)
-        create_monster(spawnIds=[203], arg2=True)
-        create_monster(spawnIds=[204], arg2=True)
+        self.destroy_monster(spawnIds=[101])
+        self.destroy_monster(spawnIds=[102])
+        self.destroy_monster(spawnIds=[103])
+        self.destroy_monster(spawnIds=[104])
+        self.create_monster(spawnIds=[201], animationEffect=True)
+        self.create_monster(spawnIds=[202], animationEffect=True)
+        self.create_monster(spawnIds=[203], animationEffect=True)
+        self.create_monster(spawnIds=[204], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[201,202,203,204]):
-            return 화난요정_02_1394()
-
-
-class 화난요정_02_1394(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2000):
-            return 화난요정_03_1394()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[201,202,203,204]):
+            return 화난요정_02_1394(self.ctx)
 
 
-class 화난요정_03_1394(state.State):
+class 화난요정_02_1394(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return 화난요정_03_1394(self.ctx)
+
+
+class 화난요정_03_1394(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[101], arg2=True)
-        create_monster(spawnIds=[102], arg2=True)
-        create_monster(spawnIds=[103], arg2=True)
-        create_monster(spawnIds=[104], arg2=True)
+        self.create_monster(spawnIds=[101], animationEffect=True)
+        self.create_monster(spawnIds=[102], animationEffect=True)
+        self.create_monster(spawnIds=[103], animationEffect=True)
+        self.create_monster(spawnIds=[104], animationEffect=True)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 종료(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     pass
 
 
+initial_state = 준비

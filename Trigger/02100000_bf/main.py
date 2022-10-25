@@ -1,228 +1,226 @@
 """ trigger/02100000_bf/main.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[80000], visible=True, arg3=0, arg4=0, arg5=0)
+        self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return CheckUser10_GuildRaid()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return CheckUser10_GuildRaid(self.ctx)
 
 
-class CheckUser10_GuildRaid(state.State):
+class CheckUser10_GuildRaid(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=30, clearAtZero=True, display=False, arg5=0) # 최대 30초 대기
+        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=101, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if count_users(boxId=101, boxId=10, operator='Less'):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.count_users(boxId=101, boxId=10, operator='Less'):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Wait(state.State):
+class MaxCount10_Wait(common.Trigger):
     def on_enter(self):
-        show_guide_summary(entityId=40012, textId=40012, duration=3000)
+        self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
-    def on_tick(self) -> state.State:
-        if count_users(boxId=101, boxId=10, operator='GreaterEqual'):
-            return MaxCount10_Start()
-        if time_expired(timerId='1'):
-            return MaxCount10_Start()
-        if wait_tick(waitTick=6000):
-            return MaxCount10_Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
+            return MaxCount10_Start(self.ctx)
+        if self.time_expired(timerId='1'):
+            return MaxCount10_Start(self.ctx)
+        if self.wait_tick(waitTick=6000):
+            return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Start(state.State):
+class MaxCount10_Start(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
+        self.reset_timer(timerId='1')
 
-    def on_tick(self) -> state.State:
-        if true():
-            return state.DungeonStart()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return DungeonStart(self.ctx)
 
 
-class DungeonStart(state.DungeonStart):
+class DungeonStart(common.Trigger):
     def on_enter(self):
-        select_camera(triggerId=904, enable=True)
+        self.select_camera(triggerId=904, enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=2500):
-            return ShowCaption01()
-
-state.DungeonStart = DungeonStart
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=2500):
+            return ShowCaption01(self.ctx)
 
 
-#  설명문 출력 
-class ShowCaption01(state.State):
+# 설명문 출력
+class ShowCaption01(common.Trigger):
     def on_enter(self):
-        set_cinematic_intro(text='$02100000_BF__MAIN__0$')
-        set_skip(state=ShowCaption01Skip)
+        self.set_cinematic_intro(text='$02100000_BF__MAIN__0$')
+        self.set_skip(state=ShowCaption01Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return ShowCaption01Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return ShowCaption01Skip(self.ctx)
 
 
-class ShowCaption01Skip(state.State):
+class ShowCaption01Skip(common.Trigger):
     def on_enter(self):
-        set_skip()
-        remove_cinematic_talk()
+        self.set_skip()
+        self.remove_cinematic_talk()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return ShowCaption02()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return ShowCaption02(self.ctx)
 
 
-class ShowCaption02(state.State):
+class ShowCaption02(common.Trigger):
     def on_enter(self):
-        set_cinematic_intro(text='$02100000_BF__MAIN__1$')
-        set_skip(state=ShowCaption02Skip)
+        self.set_cinematic_intro(text='$02100000_BF__MAIN__1$')
+        self.set_skip(state=ShowCaption02Skip)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=15000):
-            return ShowCaption02Skip()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return ShowCaption02Skip(self.ctx)
 
 
-class ShowCaption02Skip(state.State):
+class ShowCaption02Skip(common.Trigger):
     def on_enter(self):
-        set_skip()
-        remove_cinematic_talk()
+        self.set_skip()
+        self.remove_cinematic_talk()
 
-    def on_tick(self) -> state.State:
-        if true():
-            return CloseCaptionSetting()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return CloseCaptionSetting(self.ctx)
 
 
-class CloseCaptionSetting(state.State):
+class CloseCaptionSetting(common.Trigger):
     def on_enter(self):
-        close_cinematic()
-        select_camera(triggerId=904, enable=False)
+        self.close_cinematic()
+        self.select_camera(triggerId=904, enable=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 대기(self.ctx)
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[101], skillId=70000133, level=1, arg4=False, arg5=False)
-        add_buff(boxIds=[101], skillId=70000133, level=1, arg4=False, arg5=True)
-        set_effect(triggerIds=[8001], visible=False)
-        set_effect(triggerIds=[8002], visible=False)
-        set_effect(triggerIds=[8003], visible=False)
-        set_mesh(triggerIds=[80000], visible=False, arg3=0, arg4=0, arg5=0)
-        set_skill(triggerIds=[910001], isEnable=True)
-        set_skill(triggerIds=[910002], isEnable=True)
-        set_skill(triggerIds=[910003], isEnable=True)
-        set_skill(triggerIds=[910004], isEnable=True)
-        set_skill(triggerIds=[910005], isEnable=True)
-        set_skill(triggerIds=[910006], isEnable=True)
-        set_skill(triggerIds=[910007], isEnable=True)
-        set_skill(triggerIds=[910008], isEnable=True)
-        set_skill(triggerIds=[910009], isEnable=True)
-        set_skill(triggerIds=[910010], isEnable=True)
-        set_skill(triggerIds=[910011], isEnable=True)
-        set_skill(triggerIds=[910012], isEnable=True)
-        set_skill(triggerIds=[910013], isEnable=True)
-        set_skill(triggerIds=[910014], isEnable=True)
-        set_skill(triggerIds=[910015], isEnable=True)
-        set_skill(triggerIds=[910016], isEnable=True)
-        set_skill(triggerIds=[910017], isEnable=True)
-        set_skill(triggerIds=[910018], isEnable=True)
-        set_skill(triggerIds=[910019], isEnable=True)
-        set_skill(triggerIds=[910020], isEnable=True)
-        set_skill(triggerIds=[920001], isEnable=True)
-        set_skill(triggerIds=[920002], isEnable=True)
-        set_skill(triggerIds=[920003], isEnable=True)
-        set_skill(triggerIds=[920004], isEnable=True)
-        set_skill(triggerIds=[920005], isEnable=True)
-        set_skill(triggerIds=[920006], isEnable=True)
-        set_skill(triggerIds=[920007], isEnable=True)
-        set_skill(triggerIds=[920008], isEnable=True)
-        set_skill(triggerIds=[920009], isEnable=True)
-        set_skill(triggerIds=[920010], isEnable=True)
-        set_skill(triggerIds=[920011], isEnable=True)
-        set_skill(triggerIds=[920012], isEnable=True)
-        set_skill(triggerIds=[920013], isEnable=True)
-        set_skill(triggerIds=[920014], isEnable=True)
-        set_skill(triggerIds=[920015], isEnable=True)
-        set_skill(triggerIds=[930001], isEnable=True)
-        set_skill(triggerIds=[930002], isEnable=True)
-        set_skill(triggerIds=[930003], isEnable=True)
-        set_skill(triggerIds=[930004], isEnable=True)
-        set_skill(triggerIds=[930005], isEnable=True)
-        set_skill(triggerIds=[930006], isEnable=True)
-        set_skill(triggerIds=[930007], isEnable=True)
-        set_skill(triggerIds=[930008], isEnable=True)
-        set_skill(triggerIds=[930009], isEnable=True)
-        set_skill(triggerIds=[930010], isEnable=True)
-        set_skill(triggerIds=[930011], isEnable=True)
-        set_skill(triggerIds=[930012], isEnable=True)
-        set_skill(triggerIds=[930013], isEnable=True)
-        set_skill(triggerIds=[930014], isEnable=True)
-        set_skill(triggerIds=[930015], isEnable=True)
-        set_skill(triggerIds=[930016], isEnable=True)
-        set_skill(triggerIds=[940001], isEnable=True)
-        set_skill(triggerIds=[940002], isEnable=True)
-        set_skill(triggerIds=[940003], isEnable=True)
-        set_skill(triggerIds=[940004], isEnable=True)
-        set_skill(triggerIds=[940005], isEnable=True)
-        set_skill(triggerIds=[940006], isEnable=True)
-        set_skill(triggerIds=[940007], isEnable=True)
-        set_skill(triggerIds=[940008], isEnable=True)
-        set_skill(triggerIds=[940009], isEnable=True)
-        set_skill(triggerIds=[940010], isEnable=True)
-        set_skill(triggerIds=[940011], isEnable=True)
-        set_skill(triggerIds=[940012], isEnable=True)
-        set_skill(triggerIds=[940013], isEnable=True)
-        set_skill(triggerIds=[940014], isEnable=True)
-        set_skill(triggerIds=[940015], isEnable=True)
-        set_skill(triggerIds=[940016], isEnable=True)
-        set_skill(triggerIds=[940017], isEnable=True)
-        set_skill(triggerIds=[940018], isEnable=True)
-        set_skill(triggerIds=[940019], isEnable=True)
-        set_skill(triggerIds=[940020], isEnable=True)
-        set_skill(triggerIds=[940021], isEnable=True)
-        set_skill(triggerIds=[940022], isEnable=True)
-        set_skill(triggerIds=[940023], isEnable=True)
-        set_skill(triggerIds=[940024], isEnable=True)
+        self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=False)
+        self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=True)
+        self.set_effect(triggerIds=[8001], visible=False)
+        self.set_effect(triggerIds=[8002], visible=False)
+        self.set_effect(triggerIds=[8003], visible=False)
+        self.set_mesh(triggerIds=[80000], visible=False, arg3=0, delay=0, scale=0)
+        self.set_skill(triggerIds=[910001], enable=True)
+        self.set_skill(triggerIds=[910002], enable=True)
+        self.set_skill(triggerIds=[910003], enable=True)
+        self.set_skill(triggerIds=[910004], enable=True)
+        self.set_skill(triggerIds=[910005], enable=True)
+        self.set_skill(triggerIds=[910006], enable=True)
+        self.set_skill(triggerIds=[910007], enable=True)
+        self.set_skill(triggerIds=[910008], enable=True)
+        self.set_skill(triggerIds=[910009], enable=True)
+        self.set_skill(triggerIds=[910010], enable=True)
+        self.set_skill(triggerIds=[910011], enable=True)
+        self.set_skill(triggerIds=[910012], enable=True)
+        self.set_skill(triggerIds=[910013], enable=True)
+        self.set_skill(triggerIds=[910014], enable=True)
+        self.set_skill(triggerIds=[910015], enable=True)
+        self.set_skill(triggerIds=[910016], enable=True)
+        self.set_skill(triggerIds=[910017], enable=True)
+        self.set_skill(triggerIds=[910018], enable=True)
+        self.set_skill(triggerIds=[910019], enable=True)
+        self.set_skill(triggerIds=[910020], enable=True)
+        self.set_skill(triggerIds=[920001], enable=True)
+        self.set_skill(triggerIds=[920002], enable=True)
+        self.set_skill(triggerIds=[920003], enable=True)
+        self.set_skill(triggerIds=[920004], enable=True)
+        self.set_skill(triggerIds=[920005], enable=True)
+        self.set_skill(triggerIds=[920006], enable=True)
+        self.set_skill(triggerIds=[920007], enable=True)
+        self.set_skill(triggerIds=[920008], enable=True)
+        self.set_skill(triggerIds=[920009], enable=True)
+        self.set_skill(triggerIds=[920010], enable=True)
+        self.set_skill(triggerIds=[920011], enable=True)
+        self.set_skill(triggerIds=[920012], enable=True)
+        self.set_skill(triggerIds=[920013], enable=True)
+        self.set_skill(triggerIds=[920014], enable=True)
+        self.set_skill(triggerIds=[920015], enable=True)
+        self.set_skill(triggerIds=[930001], enable=True)
+        self.set_skill(triggerIds=[930002], enable=True)
+        self.set_skill(triggerIds=[930003], enable=True)
+        self.set_skill(triggerIds=[930004], enable=True)
+        self.set_skill(triggerIds=[930005], enable=True)
+        self.set_skill(triggerIds=[930006], enable=True)
+        self.set_skill(triggerIds=[930007], enable=True)
+        self.set_skill(triggerIds=[930008], enable=True)
+        self.set_skill(triggerIds=[930009], enable=True)
+        self.set_skill(triggerIds=[930010], enable=True)
+        self.set_skill(triggerIds=[930011], enable=True)
+        self.set_skill(triggerIds=[930012], enable=True)
+        self.set_skill(triggerIds=[930013], enable=True)
+        self.set_skill(triggerIds=[930014], enable=True)
+        self.set_skill(triggerIds=[930015], enable=True)
+        self.set_skill(triggerIds=[930016], enable=True)
+        self.set_skill(triggerIds=[940001], enable=True)
+        self.set_skill(triggerIds=[940002], enable=True)
+        self.set_skill(triggerIds=[940003], enable=True)
+        self.set_skill(triggerIds=[940004], enable=True)
+        self.set_skill(triggerIds=[940005], enable=True)
+        self.set_skill(triggerIds=[940006], enable=True)
+        self.set_skill(triggerIds=[940007], enable=True)
+        self.set_skill(triggerIds=[940008], enable=True)
+        self.set_skill(triggerIds=[940009], enable=True)
+        self.set_skill(triggerIds=[940010], enable=True)
+        self.set_skill(triggerIds=[940011], enable=True)
+        self.set_skill(triggerIds=[940012], enable=True)
+        self.set_skill(triggerIds=[940013], enable=True)
+        self.set_skill(triggerIds=[940014], enable=True)
+        self.set_skill(triggerIds=[940015], enable=True)
+        self.set_skill(triggerIds=[940016], enable=True)
+        self.set_skill(triggerIds=[940017], enable=True)
+        self.set_skill(triggerIds=[940018], enable=True)
+        self.set_skill(triggerIds=[940019], enable=True)
+        self.set_skill(triggerIds=[940020], enable=True)
+        self.set_skill(triggerIds=[940021], enable=True)
+        self.set_skill(triggerIds=[940022], enable=True)
+        self.set_skill(triggerIds=[940023], enable=True)
+        self.set_skill(triggerIds=[940024], enable=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return 버프_2()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 버프_2(self.ctx)
 
 
-class 버프_2(state.State):
+class 버프_2(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02100000_BF__MAIN__2$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__2$', arg3='3000')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[105]):
-            return 바리케이트()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[105]):
+            return 바리케이트(self.ctx)
 
 
-class 바리케이트(state.State):
+class 바리케이트(common.Trigger):
     def on_enter(self):
-        set_event_ui(type=1, arg2='$02100000_BF__MAIN__3$', arg3='3000')
+        self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__3$', arg3='3000')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=30000):
-            return 닫기()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=30000):
+            return 닫기(self.ctx)
 
 
-class 닫기(state.State):
+class 닫기(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[80000], visible=True, arg3=0, arg4=0, arg5=0)
-        set_effect(triggerIds=[8001], visible=True)
-        set_effect(triggerIds=[8002], visible=True)
-        set_effect(triggerIds=[8003], visible=True)
+        self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
+        self.set_effect(triggerIds=[8001], visible=True)
+        self.set_effect(triggerIds=[8002], visible=True)
+        self.set_effect(triggerIds=[8003], visible=True)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
             return None
 
 
+initial_state = Wait

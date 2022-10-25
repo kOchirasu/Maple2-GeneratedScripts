@@ -1,50 +1,50 @@
 """ trigger/99999876/17000_minipuzzle_chatchupnpc.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_user_value(key='ChangeNpc', value=0) # 17101 몬스터 AI에서 받는 신호
-        destroy_monster(spawnIds=[17101,17102])
+        self.set_user_value(key='ChangeNpc', value=0) # 17101 몬스터 AI에서 받는 신호
+        self.destroy_monster(spawnIds=[17101,17102])
 
-    def on_tick(self) -> state.State:
-        if check_user():
-            return SettingDelay()
-
-
-class SettingDelay(state.State):
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return Setting()
+    def on_tick(self) -> common.Trigger:
+        if self.check_user():
+            return SettingDelay(self.ctx)
 
 
-class Setting(state.State):
+class SettingDelay(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return Setting(self.ctx)
+
+
+class Setting(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[17101], arg2=False)
+        self.create_monster(spawnIds=[17101], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if user_value(key='ChangeNpc', value=1):
-            return ChatchUpNpc()
+    def on_tick(self) -> common.Trigger:
+        if self.user_value(key='ChangeNpc', value=1):
+            return ChatchUpNpc(self.ctx)
 
 
-class ChatchUpNpc(state.State):
+class ChatchUpNpc(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=30, clearAtZero=True, display=False, arg5=0) # UI 표시 안함 / NPC AI에서 스폰시킨 InteractObject 의 LifeTime
-        change_monster(removeSpawnId=17101, addSpawnId=17102) # 동일 맵에 스포너가 있으면 대상 npc의 위치를 보정해서 교체되는 npc를 스폰 시켜줌
+        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # UI 표시 안함 / NPC AI에서 스폰시킨 InteractObject 의 LifeTime
+        self.change_monster(removeSpawnId=17101, addSpawnId=17102) # 동일 맵에 스포너가 있으면 대상 npc의 위치를 보정해서 교체되는 npc를 스폰 시켜줌
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return ChatchUpNpc_Quit()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return ChatchUpNpc_Quit(self.ctx)
 
 
-class ChatchUpNpc_Quit(state.State):
+class ChatchUpNpc_Quit(common.Trigger):
     def on_enter(self):
-        reset_timer(timerId='1')
-        destroy_monster(spawnIds=[17101,17102])
+        self.reset_timer(timerId='1')
+        self.destroy_monster(spawnIds=[17101,17102])
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=3000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait

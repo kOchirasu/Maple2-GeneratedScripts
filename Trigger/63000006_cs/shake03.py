@@ -1,93 +1,93 @@
 """ trigger/63000006_cs/shake03.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5070], visible=False)
+        self.set_effect(triggerIds=[5070], visible=False)
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[9000]):
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[9000]):
+            return 시작(self.ctx)
 
 
-class 시작(state.State):
+class 시작(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5070], visible=True)
+        self.set_effect(triggerIds=[5070], visible=True)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 간격랜덤()
-
-
-class 간격랜덤(state.State):
-    def on_tick(self) -> state.State:
-        if random_condition(rate=25):
-            return 초간격4()
-        if random_condition(rate=25):
-            return 초간격5()
-        if random_condition(rate=25):
-            return 초간격6()
-        if random_condition(rate=25):
-            return 초간격7()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 간격랜덤(self.ctx)
 
 
-class 초간격4(state.State):
+class 간격랜덤(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.random_condition(rate=25):
+            return 초간격4(self.ctx)
+        if self.random_condition(rate=25):
+            return 초간격5(self.ctx)
+        if self.random_condition(rate=25):
+            return 초간격6(self.ctx)
+        if self.random_condition(rate=25):
+            return 초간격7(self.ctx)
+
+
+class 초간격4(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='1', seconds=4)
+        self.set_timer(timerId='1', seconds=4)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 초기화()
-        if user_detected(boxIds=[9002]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 초기화(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return 종료(self.ctx)
 
 
-class 초간격5(state.State):
+class 초간격5(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='2', seconds=5)
+        self.set_timer(timerId='2', seconds=5)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='2'):
-            return 초기화()
-        if user_detected(boxIds=[9002]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='2'):
+            return 초기화(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return 종료(self.ctx)
 
 
-class 초간격6(state.State):
+class 초간격6(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='3', seconds=6)
+        self.set_timer(timerId='3', seconds=6)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='3'):
-            return 초기화()
-        if user_detected(boxIds=[9002]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='3'):
+            return 초기화(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return 종료(self.ctx)
 
 
-class 초간격7(state.State):
+class 초간격7(common.Trigger):
     def on_enter(self):
-        set_timer(timerId='4', seconds=7)
+        self.set_timer(timerId='4', seconds=7)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='4'):
-            return 초기화()
-        if user_detected(boxIds=[9002]):
-            return 종료()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='4'):
+            return 초기화(self.ctx)
+        if self.user_detected(boxIds=[9002]):
+            return 종료(self.ctx)
 
 
-class 초기화(state.State):
+class 초기화(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5070], visible=False)
+        self.set_effect(triggerIds=[5070], visible=False)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 시작()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 시작(self.ctx)
 
 
-class 종료(state.State):
+class 종료(common.Trigger):
     def on_enter(self):
-        set_effect(triggerIds=[5070], visible=False)
+        self.set_effect(triggerIds=[5070], visible=False)
 
 
+initial_state = 대기

@@ -1,38 +1,38 @@
 """ trigger/99999840/badmob3.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990005, key='BadMob', value=0)
+        self.set_user_value(triggerId=99990005, key='BadMob', value=0)
 
-    def on_tick(self) -> state.State:
-        if dungeon_variable(varID='913', value=1):
-            return 몬스터스폰()
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_variable(varId=913, value=1):
+            return 몬스터스폰(self.ctx)
 
 
-class 몬스터스폰(state.State):
+class 몬스터스폰(common.Trigger):
     def on_enter(self):
-        create_monster(spawnIds=[993], arg2=False)
+        self.create_monster(spawnIds=[993], animationEffect=False)
 
-    def on_tick(self) -> state.State:
-        if monster_dead(boxIds=[991,992,993]):
-            return 신호쏴주기()
+    def on_tick(self) -> common.Trigger:
+        if self.monster_dead(boxIds=[991,992,993]):
+            return 신호쏴주기(self.ctx)
 
 
-class 신호쏴주기(state.State):
+class 신호쏴주기(common.Trigger):
     def on_enter(self):
-        set_user_value(triggerId=99990005, key='BadMob', value=1)
+        self.set_user_value(triggerId=99990005, key='BadMob', value=1)
 
-    def on_tick(self) -> state.State:
-        if true():
-            return 종료()
-
-
-class 종료(state.State):
-    def on_tick(self) -> state.State:
-        if dungeon_variable(varID='913', value=0):
-            return 대기()
+    def on_tick(self) -> common.Trigger:
+        if self.true():
+            return 종료(self.ctx)
 
 
+class 종료(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.dungeon_variable(varId=913, value=0):
+            return 대기(self.ctx)
+
+
+initial_state = 대기

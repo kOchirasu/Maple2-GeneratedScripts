@@ -1,34 +1,34 @@
 """ trigger/52020020_qd/main_c.xml """
-from common import *
-import state
+import common
 
 
-class idle(state.State):
-    def on_tick(self) -> state.State:
-        if quest_user_detected(boxIds=[2001], questIds=[60200145], questStates=[1]):
-            return ready()
+class idle(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.quest_user_detected(boxIds=[2001], questIds=[60200145], questStates=[1]):
+            return ready(self.ctx)
 
 
-class ready(state.State):
+class ready(common.Trigger):
     def on_enter(self):
-        add_balloon_talk(spawnId=201, msg='전 밖에서 기다리고 있겠습니다.', duration=2500, delayTick=0)
+        self.add_balloon_talk(spawnId=201, msg='전 밖에서 기다리고 있겠습니다.', duration=2500, delayTick=0)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=500):
-            return move()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=500):
+            return move(self.ctx)
 
 
-class move(state.State):
+class move(common.Trigger):
     def on_enter(self):
-        move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
+        self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1200):
-            return out()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1200):
+            return out(self.ctx)
 
 
-class out(state.State):
+class out(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[201])
+        self.destroy_monster(spawnIds=[201])
 
 
+initial_state = idle

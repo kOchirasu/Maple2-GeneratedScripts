@@ -1,48 +1,48 @@
 """ trigger/02000293_bf/door05.xml """
-from common import *
-import state
+import common
 
 
-class 대기(state.State):
+class 대기(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1009, visible=False, initialSequence='Closed')
+        self.set_actor(triggerId=1009, visible=False, initialSequence='Closed')
 
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[999996]):
-            return 준비()
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[999996]):
+            return 준비(self.ctx)
 
 
-class 준비(state.State):
+class 준비(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1009, visible=False, initialSequence='Closed')
+        self.set_actor(triggerId=1009, visible=False, initialSequence='Closed')
 
-    def on_tick(self) -> state.State:
-        if object_interacted(interactIds=[10000531,10000522], arg2=0):
-            return 트리거02시작()
+    def on_tick(self) -> common.Trigger:
+        if self.object_interacted(interactIds=[10000531,10000522], stateValue=0):
+            return 트리거02시작(self.ctx)
 
 
-class 트리거02시작(state.State):
+class 트리거02시작(common.Trigger):
     def on_enter(self):
-        set_actor(triggerId=1009, visible=True, initialSequence='Opened')
-        create_monster(spawnIds=[2036], arg2=True)
-        set_timer(timerId='1', seconds=5)
+        self.set_actor(triggerId=1009, visible=True, initialSequence='Opened')
+        self.create_monster(spawnIds=[2036], animationEffect=True)
+        self.set_timer(timerId='1', seconds=5)
 
-    def on_tick(self) -> state.State:
-        if time_expired(timerId='1'):
-            return 트리거03시작()
+    def on_tick(self) -> common.Trigger:
+        if self.time_expired(timerId='1'):
+            return 트리거03시작(self.ctx)
 
 
-class 트리거03시작(state.State):
+class 트리거03시작(common.Trigger):
     def on_enter(self):
-        destroy_monster(spawnIds=[25000])
-        destroy_monster(spawnIds=[25001])
-        destroy_monster(spawnIds=[25002])
-        destroy_monster(spawnIds=[25003])
-        destroy_monster(spawnIds=[25004])
-        destroy_monster(spawnIds=[25005])
-        destroy_monster(spawnIds=[25006])
-        destroy_monster(spawnIds=[25007])
-        destroy_monster(spawnIds=[25008])
-        set_actor(triggerId=1009, visible=False, initialSequence='Closed')
+        self.destroy_monster(spawnIds=[25000])
+        self.destroy_monster(spawnIds=[25001])
+        self.destroy_monster(spawnIds=[25002])
+        self.destroy_monster(spawnIds=[25003])
+        self.destroy_monster(spawnIds=[25004])
+        self.destroy_monster(spawnIds=[25005])
+        self.destroy_monster(spawnIds=[25006])
+        self.destroy_monster(spawnIds=[25007])
+        self.destroy_monster(spawnIds=[25008])
+        self.set_actor(triggerId=1009, visible=False, initialSequence='Closed')
 
 
+initial_state = 대기

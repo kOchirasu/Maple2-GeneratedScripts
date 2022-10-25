@@ -1,20 +1,20 @@
 """ trigger/52000082_qd/main.xml """
-from common import *
-import state
+import common
 
 
-class mapskill(state.State):
-    def on_tick(self) -> state.State:
-        if user_detected(boxIds=[701]):
-            return mapskill_start()
+class mapskill(common.Trigger):
+    def on_tick(self) -> common.Trigger:
+        if self.user_detected(boxIds=[701]):
+            return mapskill_start(self.ctx)
 
 
-class mapskill_start(state.State):
+class mapskill_start(common.Trigger):
     def on_enter(self):
-        add_buff(boxIds=[701], skillId=70000114, level=1, arg4=False, arg5=False)
+        self.add_buff(boxIds=[701], skillId=70000114, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return mapskill()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return mapskill(self.ctx)
 
 
+initial_state = mapskill

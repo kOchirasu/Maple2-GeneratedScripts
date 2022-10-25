@@ -1,32 +1,32 @@
 """ trigger/02100001_bf/06_bridge.xml """
-from common import *
-import state
+import common
 
 
-class Wait(state.State):
+class Wait(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3300,3301,3302], visible=False, arg3=0, arg4=0, arg5=0) # Bridge Mesh
+        self.set_mesh(triggerIds=[3300,3301,3302], visible=False, arg3=0, delay=0, scale=0) # Bridge Mesh
 
-    def on_tick(self) -> state.State:
-        if all_of():
-            return BridgeOn()
+    def on_tick(self) -> common.Trigger:
+        if self.all_of():
+            return BridgeOn(self.ctx)
 
 
-class BridgeOn(state.State):
+class BridgeOn(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3300,3301,3302], visible=True, arg3=300, arg4=0, arg5=2) # Bridge Mesh
+        self.set_mesh(triggerIds=[3300,3301,3302], visible=True, arg3=300, delay=0, scale=2) # Bridge Mesh
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=5000):
-            return BridgeOff()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=5000):
+            return BridgeOff(self.ctx)
 
 
-class BridgeOff(state.State):
+class BridgeOff(common.Trigger):
     def on_enter(self):
-        set_mesh(triggerIds=[3300,3301,3302], visible=False, arg3=0, arg4=0, arg5=2) # Bridge Mesh
+        self.set_mesh(triggerIds=[3300,3301,3302], visible=False, arg3=0, delay=0, scale=2) # Bridge Mesh
 
-    def on_tick(self) -> state.State:
-        if wait_tick(waitTick=1000):
-            return Wait()
+    def on_tick(self) -> common.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return Wait(self.ctx)
 
 
+initial_state = Wait
