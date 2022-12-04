@@ -1,8 +1,8 @@
 """ trigger/99999845/field_3.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[12000313], state=2)
         self.set_interact_object(triggerIds=[12000314], state=2)
@@ -12,7 +12,7 @@ class 대기(common.Trigger):
         self.set_interact_object(triggerIds=[12000318], state=2)
         # <action name="SetVisibleBreakableObject" arg1="1001,1002,1003,1004,1005,1006,1007,1008,1009,1010" arg2="0" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block', value=1):
             self.set_user_value(triggerId=900004, key='Block', value=0)
             return Block_1(self.ctx)
@@ -27,8 +27,8 @@ class 대기(common.Trigger):
             return Block_4(self.ctx)
 
 
-class Block_1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1110]):
             self.set_visible_breakable_object(triggerIds=[1013], visible=True)
             self.set_interact_object(triggerIds=[12000313], state=1)
@@ -38,8 +38,8 @@ class Block_1(common.Trigger):
             return CableOn_13(self.ctx)
 
 
-class Block_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1111]):
             self.set_visible_breakable_object(triggerIds=[1014], visible=True)
             self.set_visible_breakable_object(triggerIds=[1015], visible=True)
@@ -51,8 +51,8 @@ class Block_2(common.Trigger):
             return CableOn_14_15(self.ctx)
 
 
-class Block_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1112]):
             self.set_visible_breakable_object(triggerIds=[1016], visible=True)
             self.set_visible_breakable_object(triggerIds=[1017], visible=True)
@@ -64,8 +64,8 @@ class Block_3(common.Trigger):
             return CableOn_16_17(self.ctx)
 
 
-class Block_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1113]):
             self.set_visible_breakable_object(triggerIds=[1018], visible=True)
             self.set_interact_object(triggerIds=[12000318], state=1)
@@ -75,16 +75,16 @@ class Block_4(common.Trigger):
             return CableOn_18(self.ctx)
 
 
-class CableOn_13(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_13(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000313], stateValue=0):
             self.set_interact_object(triggerIds=[12000313], state=2)
             self.move_user_to_pos(pos=[-2514.072,3816.40259,1500], rot=[0,0,0])
             return CableDelay_13(self.ctx)
 
 
-class CableOn_14_15(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_14_15(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000314], stateValue=0):
             self.set_interact_object(triggerIds=[12000314], state=2)
             self.set_interact_object(triggerIds=[12000315], state=2)
@@ -97,8 +97,8 @@ class CableOn_14_15(common.Trigger):
             return CableDelay_15(self.ctx)
 
 
-class CableOn_16_17(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_16_17(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000316], stateValue=0):
             self.set_interact_object(triggerIds=[12000316], state=2)
             self.set_interact_object(triggerIds=[12000317], state=2)
@@ -111,100 +111,100 @@ class CableOn_16_17(common.Trigger):
             return CableDelay_17(self.ctx)
 
 
-class CableOn_18(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_18(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000318], stateValue=0):
             self.set_interact_object(triggerIds=[12000318], state=2)
             self.move_user_to_pos(pos=[-840.132935,6427.83936,1640], rot=[0,0,0])
             return CableDelay_18(self.ctx)
 
 
-class CableDelay_13(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_13(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1013], enable=True)
             return CableOff_13(self.ctx)
 
 
-class CableDelay_14(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_14(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1014], enable=True)
             return CableOff_14(self.ctx)
 
 
-class CableDelay_15(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_15(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1015], enable=True)
             return CableOff_15(self.ctx)
 
 
-class CableDelay_16(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_16(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1016], enable=True)
             return CableOff_16(self.ctx)
 
 
-class CableDelay_17(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_17(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1017], enable=True)
             return CableOff_17(self.ctx)
 
 
-class CableDelay_18(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_18(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_breakable(triggerIds=[1018], enable=True)
             return CableOff_18(self.ctx)
 
 
-class CableOff_13(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_13(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=1)
             return End_03(self.ctx)
 
 
-class CableOff_14(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_14(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=1)
             return End_03(self.ctx)
 
 
-class CableOff_15(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_15(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=2)
             return End_03(self.ctx)
 
 
-class CableOff_16(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_16(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=1)
             return End_03(self.ctx)
 
 
-class CableOff_17(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_17(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=2)
             return End_03(self.ctx)
 
 
-class CableOff_18(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_18(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900005, key='Block', value=3)
             return End_03(self.ctx)
 
 
-class End_03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class End_03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 대기(self.ctx)
 

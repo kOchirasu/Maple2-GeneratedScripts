@@ -1,14 +1,14 @@
 """ trigger/61000006_me/trigger_06.xml """
-import common
+import trigger_api
 
 
-class 시간표등록(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시간표등록(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 시간표확인(self.ctx)
 
 
-class 시간표확인(common.Trigger):
+class 시간표확인(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000226], state=1)
         self.set_interact_object(triggerIds=[10000227], state=1)
@@ -65,60 +65,60 @@ class 시간표확인(common.Trigger):
         self.set_skill(triggerIds=[927], enable=False)
         self.set_skill(triggerIds=[928], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 어나운스0(self.ctx)
 
 
-class 어나운스0(common.Trigger):
+class 어나운스0(trigger_api.Trigger):
     def on_enter(self):
         self.set_state(id=1, states=[미로패턴01,미로패턴02,미로패턴03], randomize=False)
         self.set_state(id=2, states=[점프패턴01,점프패턴02], randomize=False)
         self.set_timer(timerId='89', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='89'):
             return 레버(self.ctx)
 
 
-class 레버(common.Trigger):
+class 레버(trigger_api.Trigger):
     def on_enter(self):
         self.set_state(id=1, states=[미로패턴01,미로패턴02,미로패턴03], randomize=False)
         self.set_state(id=2, states=[점프패턴01,점프패턴02], randomize=False)
         self.set_mesh(triggerIds=[527,528,529], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 패턴결정(self.ctx)
 
 
-class 패턴결정(common.Trigger):
+class 패턴결정(trigger_api.Trigger):
     def on_enter(self):
         self.use_state(arg1=1, arg2=True)
         self.use_state(arg1=2, arg2=True)
         self.set_timer(timerId='12', seconds=240)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='12'):
             return 시간표확인(self.ctx)
 
 
-class 미로패턴01(common.Trigger):
+class 미로패턴01(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[527], visible=False)
 
 
-class 미로패턴02(common.Trigger):
+class 미로패턴02(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[528], visible=False)
 
 
-class 미로패턴03(common.Trigger):
+class 미로패턴03(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[529], visible=False)
 
 
-class 점프패턴01(common.Trigger):
+class 점프패턴01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[711], visible=True)
         self.set_effect(triggerIds=[712], visible=False)
@@ -170,7 +170,7 @@ class 점프패턴01(common.Trigger):
         self.set_skill(triggerIds=[928], enable=True)
 
 
-class 점프패턴02(common.Trigger):
+class 점프패턴02(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[711], visible=False)
         self.set_effect(triggerIds=[712], visible=True)

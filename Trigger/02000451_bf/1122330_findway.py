@@ -1,11 +1,11 @@
 """ trigger/02000451_bf/1122330_findway.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[8000], enable=False)
         self.set_skill(triggerIds=[8001], enable=False)
@@ -36,78 +36,78 @@ class Setting(common.Trigger):
         self.set_user_value(key='BossRoomPortal02', value=0)
         self.set_user_value(key='BossRoomPortal03', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[201], animationEffect=False) # 연출용설눈이
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return NpcPatrol01(self.ctx)
 
 
-class NpcPatrol01(common.Trigger):
+class NpcPatrol01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_200')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return CameraSet01(self.ctx)
 
 
-class CameraSet01(common.Trigger):
+class CameraSet01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=500, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return NpcTalk01(self.ctx)
 
 
-class NpcTalk01(common.Trigger):
+class NpcTalk01(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11003068, script='$02000451_BF__1122330_FINDWAY__0$', arg4=5) # 설눈이
         self.set_skip(state=NpcTalk01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return NpcTalk01Skip(self.ctx)
 
 
-class NpcTalk01Skip(common.Trigger):
+class NpcTalk01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=501, enable=True)
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return DoorOpen01(self.ctx)
 
 
-class DoorOpen01(common.Trigger):
+class DoorOpen01(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4000, visible=True, initialSequence='ic_fi_funct_icedoor_A01_on') # IceDoor
         self.set_mesh(triggerIds=[3000,3001,3002], visible=False, arg3=0, delay=0, scale=0) # InvisibleBarrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraReset01(self.ctx)
 
 
-class CameraReset01(common.Trigger):
+class CameraReset01(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -116,28 +116,28 @@ class CameraReset01(common.Trigger):
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return NpcChange01(self.ctx)
 
 
-class NpcChange01(common.Trigger):
+class NpcChange01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[201])
         self.create_monster(spawnIds=[101,102], animationEffect=False) # 설눈이
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Guide01(self.ctx)
 
 
-class Guide01(common.Trigger):
+class Guide01(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20038101, textId=20038101, duration=4000) # 설눈이와 함께 이동하세요
         self.set_actor(triggerId=4000, visible=False, initialSequence='ic_fi_funct_icedoor_A01_on') # IceDoor
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], visible=False, arg3=2000, delay=70, scale=2) # WallMesh
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossRoomPortal01', value=1): # 21810048 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal02" param3="1"/>
             return BossRoomPortal01(self.ctx)
         if self.user_value(key='BossRoomPortal02', value=1): # 21810049 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal03" param3="1"/>
@@ -146,34 +146,34 @@ class Guide01(common.Trigger):
             return BossRoomPortal03(self.ctx)
 
 
-class BossRoomPortal01(common.Trigger):
+class BossRoomPortal01(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Quit(self.ctx)
 
 
-class BossRoomPortal02(common.Trigger):
+class BossRoomPortal02(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=12, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Quit(self.ctx)
 
 
-class BossRoomPortal03(common.Trigger):
+class BossRoomPortal03(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=13, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[8000], enable=True)
         self.set_skill(triggerIds=[8001], enable=True)

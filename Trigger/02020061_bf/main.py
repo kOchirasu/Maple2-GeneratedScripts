@@ -1,8 +1,8 @@
 """ trigger/02020061_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -22,49 +22,49 @@ class 대기(common.Trigger):
         self.set_user_value(triggerId=99990003, key='ObjectPhase', value=0)
         self.set_user_value(triggerId=99990008, key='BossPhase', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9001]):
             return 유저카운트(self.ctx)
 
 
-class 유저카운트(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 유저카운트(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='FieldGameStart', value=1):
             return 딜레이(self.ctx)
         if self.user_value(key='FieldGameStart', value=2):
             return 방폭(self.ctx)
 
 
-class 딜레이(common.Trigger):
+class 딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9002, type='trigger', achieve='corps_battle')
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__0$', arg3='5000')
         self.select_camera(triggerId=999, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 시작(self.ctx)
 
 
-class 방폭(common.Trigger):
+class 방폭(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__1$', arg3='10000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return 내보내기(self.ctx)
 
 
-class 내보내기(common.Trigger):
+class 내보내기(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 종료(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
         self.enable_spawn_point_pc(spawnId=2, isEnable=True)
@@ -81,14 +81,14 @@ class 시작(common.Trigger):
         self.set_actor(triggerId=1901, visible=False, initialSequence='Idle_A') # <연출용 액터>
         self.create_monster(spawnIds=[701], animationEffect=False) # <무적 오브젝트 생성>
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GaugeClear', value=1):
             return 오브젝트페이즈(self.ctx)
         if self.time_expired(timerId='1'):
             return 실패_세팅(self.ctx)
 
 
-class 오브젝트페이즈(common.Trigger):
+class 오브젝트페이즈(trigger_api.Trigger):
     def on_enter(self):
         self.give_reward_content(rewardId=31000001)
         self.set_event_ui(type=1, arg2='$02020061_BF__MAIN__3$', arg3='5000')
@@ -98,14 +98,14 @@ class 오브젝트페이즈(common.Trigger):
         self.set_user_value(triggerId=99990003, key='ObjectPhase', value=1)
         self.set_timer(timerId='2', seconds=180, startDelay=1, interval=1, vOffset=60) # <2라운드 게임 플레이 타임 설정>
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ObjectClear', value=1):
             return 보스페이즈(self.ctx)
         if self.time_expired(timerId='2'):
             return 실패_세팅(self.ctx)
 
 
-class 보스페이즈(common.Trigger):
+class 보스페이즈(trigger_api.Trigger):
     def on_enter(self):
         self.give_reward_content(rewardId=31000002)
         self.destroy_monster(spawnIds=[-1])
@@ -115,14 +115,14 @@ class 보스페이즈(common.Trigger):
         self.set_user_value(triggerId=99990008, key='BossPhase', value=1)
         self.set_timer(timerId='3', seconds=180, startDelay=1, interval=1, vOffset=60) # <3라운드 게임 플레이 타임 설정>
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossClear', value=1):
             return 성공_세팅(self.ctx)
         if self.time_expired(timerId='3'):
             return 실패_세팅(self.ctx)
 
 
-class 성공_세팅(common.Trigger):
+class 성공_세팅(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__5$')
         self.reset_timer(timerId='1')
@@ -132,22 +132,22 @@ class 성공_세팅(common.Trigger):
         self.set_user_value(triggerId=99990003, key='ObjectPhase', value=2)
         self.set_user_value(triggerId=99990004, key='BossPhase', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 성공_대사용(self.ctx)
 
 
-class 성공_대사용(common.Trigger):
+class 성공_대사용(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11003533, illust='Bliche_smile', duration=5000, script='$02020061_BF__MAIN__6$')
         self.destroy_monster(spawnIds=[-1])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 성공(self.ctx)
 
 
-class 실패_세팅(common.Trigger):
+class 실패_세팅(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020061_BF__MAIN__7$')
         self.reset_timer(timerId='1')
@@ -158,40 +158,40 @@ class 실패_세팅(common.Trigger):
         self.set_user_value(triggerId=99990004, key='BossPhase', value=2)
         self.destroy_monster(spawnIds=[-1])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 실패_대사용(self.ctx)
 
 
-class 실패_대사용(common.Trigger):
+class 실패_대사용(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11003533, illust='Bliche_normal', duration=5000, script='$02020061_BF__MAIN__8$')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 실패(self.ctx)
 
 
-class 성공(common.Trigger):
+class 성공(trigger_api.Trigger):
     def on_enter(self):
         self.field_war_end(isClear=True)
         self.set_achievement(type='trigger', achieve='FieldwarAchieve_1')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 종료(self.ctx)
 
 
-class 실패(common.Trigger):
+class 실패(trigger_api.Trigger):
     def on_enter(self):
         self.field_war_end(isClear=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)

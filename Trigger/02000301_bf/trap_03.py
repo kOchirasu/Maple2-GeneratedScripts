@@ -1,8 +1,8 @@
 """ trigger/02000301_bf/trap_03.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=206, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_actor(triggerId=207, visible=True, initialSequence='sf_quest_light_A01_Off')
@@ -14,7 +14,7 @@ class 시작(common.Trigger):
         self.set_mesh(triggerIds=[3031,3032,3033,3034,3035,3036], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4301,4302,4303,4304,4305,4306], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 경보(self.ctx)
         if self.user_detected(boxIds=[10301]):
@@ -31,7 +31,7 @@ class 시작(common.Trigger):
             return 해제(self.ctx)
 
 
-class 경보(common.Trigger):
+class 경보(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=206, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=207, visible=True, initialSequence='sf_quest_light_A01_On')
@@ -46,7 +46,7 @@ class 경보(common.Trigger):
         self.set_mesh(triggerIds=[3031,3032,3033,3034,3035,3036], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4301,4302,4303,4304,4305,4306], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2004]):
             self.hide_guide_summary(entityId=20003001)
             self.set_effect(triggerIds=[610], visible=False)
@@ -55,7 +55,7 @@ class 경보(common.Trigger):
             return 해제(self.ctx)
 
 
-class 해제(common.Trigger):
+class 해제(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[2004])
         self.set_mesh(triggerIds=[3031,3032,3033,3034,3035,3036], visible=False, arg3=0, delay=0, scale=5)

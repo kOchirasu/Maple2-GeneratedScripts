@@ -1,20 +1,20 @@
 """ trigger/02000471_bf/elite_01.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return spawn(self.ctx)
 
 
-class spawn(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class spawn(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Buff', value=1):
             return buff(self.ctx)
 
 
-class buff(common.Trigger):
+class buff(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[1999], skillId=70002001, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[301], skillId=70002001, level=1, isPlayer=True, isSkillSet=False)

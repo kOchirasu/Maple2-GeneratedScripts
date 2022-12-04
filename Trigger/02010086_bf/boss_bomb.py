@@ -1,14 +1,14 @@
 """ trigger/02010086_bf/boss_bomb.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=799, boxId=1):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[6001], enable=True)
         self.set_skill(triggerIds=[6002], enable=True)

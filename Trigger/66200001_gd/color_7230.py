@@ -1,15 +1,15 @@
 """ trigger/66200001_gd/color_7230.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Color23', value=10)
         self.set_mesh(triggerIds=[823], visible=True, arg3=0, delay=0, scale=0) # yellow
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1023], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorStart', value=1):
             return YellowBefore(self.ctx)
         if self.user_value(key='ColorStart', value=6):
@@ -17,13 +17,13 @@ class Wait(common.Trigger):
 
 
 # Yellow Before
-class YellowBefore(common.Trigger):
+class YellowBefore(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[823], visible=True, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1023], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorClear', value=1):
             return Clear(self.ctx)
         if self.user_value(key='ColorReset', value=1):
@@ -37,13 +37,13 @@ class YellowBefore(common.Trigger):
 
 
 # Red Before
-class RedBefore(common.Trigger):
+class RedBefore(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1023], visible=True, arg3=0, delay=0, scale=0) # red
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[823], visible=False, arg3=0, delay=0, scale=0) # yellow
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorClear', value=1):
             return Clear(self.ctx)
         if self.user_value(key='ColorReset', value=1):
@@ -57,11 +57,11 @@ class RedBefore(common.Trigger):
 
 
 # Green After
-class GreenAfter(common.Trigger):
+class GreenAfter(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[923], visible=True, arg3=0, delay=0, scale=0) # green
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorClear', value=1):
             return Clear(self.ctx)
         if self.user_value(key='ColorReset', value=1):
@@ -75,13 +75,13 @@ class GreenAfter(common.Trigger):
 
 
 # Yellow After
-class YellowAfter(common.Trigger):
+class YellowAfter(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[823], visible=True, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1023], visible=False, arg3=100, delay=0, scale=0) # red
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorClear', value=1):
             return Clear(self.ctx)
         if self.user_value(key='ColorReset', value=1):
@@ -95,13 +95,13 @@ class YellowAfter(common.Trigger):
 
 
 # Red After
-class RedAfter(common.Trigger):
+class RedAfter(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1023], visible=True, arg3=0, delay=0, scale=0) # red
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[823], visible=False, arg3=100, delay=0, scale=0) # yellow
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorClear', value=1):
             return Clear(self.ctx)
         if self.user_value(key='ColorReset', value=1):
@@ -115,19 +115,19 @@ class RedAfter(common.Trigger):
 
 
 # All Clear
-class Clear(common.Trigger):
+class Clear(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=2) # green
         self.set_mesh(triggerIds=[823], visible=False, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[1023], visible=False, arg3=0, delay=0, scale=2) # red
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorEnd', value=1):
             return Regen(self.ctx)
 
 
 # Regen
-class Regen(common.Trigger):
+class Regen(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
         self.set_user_value(key='ColorEnd', value=0) # Main Trigger
@@ -137,19 +137,19 @@ class Regen(common.Trigger):
         self.set_mesh(triggerIds=[923], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1023], visible=False, arg3=0, delay=0, scale=0) # red
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 
 
 # Reset
-class Reset(common.Trigger):
+class Reset(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
         self.set_user_value(key='ColorReset', value=0) # Sensor Trigger
         self.set_user_value(key='ColorClear', value=0) # Sensor Trigger
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ColorEnd', value=1):
             return Wait(self.ctx)
 

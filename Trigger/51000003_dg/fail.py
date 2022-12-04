@@ -1,15 +1,15 @@
 """ trigger/51000003_dg/fail.xml """
-import common
+import trigger_api
 
 
-class gameset(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class gameset(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Fail', value=1):
             return Fail_condition(self.ctx)
 
 
-class Fail_condition(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Fail_condition(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=799, boxId=1):
             return Fail(self.ctx)
         if self.count_users(boxId=705, boxId=1):
@@ -18,7 +18,7 @@ class Fail_condition(common.Trigger):
             return Fail(self.ctx)
 
 
-class Fail(common.Trigger):
+class Fail(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_Ending_Popup_01')
         self.set_timer(timerId='10', seconds=10, interval=1)
@@ -35,12 +35,12 @@ class Fail(common.Trigger):
         self.set_user_value(triggerId=991122, key='Reset', value=1) # wave_projectile_05.xml
         self.set_user_value(triggerId=991123, key='Reset', value=1) # normal_projectile_02.xml
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10'):
             return End(self.ctx)
 
 
-class End(common.Trigger):
+class End(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0, boxId=705)
 

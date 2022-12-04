@@ -1,8 +1,8 @@
 """ trigger/99999913/01_survival.xml """
-import common
+import trigger_api
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=False) # SafeZone Barrier Effect
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007], visible=True, arg3=0, delay=0, scale=0) # Barrier Center
@@ -20,7 +20,7 @@ class Setting(common.Trigger):
         self.set_sound(triggerId=20001, enable=False) # BGM Loop
         self.sight_range(enable=True, range=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9000]):
             return Wait01(self.ctx)
 
@@ -28,41 +28,41 @@ class Setting(common.Trigger):
         self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True) # SafeZone Barrier Effect
 
 
-class Wait01(common.Trigger):
+class Wait01(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=60, startDelay=1, interval=1, vOffset=-80) # test용 수정 가능 지점
         self.set_event_ui(type=1, arg2='잠시 기다려주세요.\n잠시 후 경기 시작점이 결정됩니다.', arg3='4000', arg4='0')
         self.write_log(logName='Survival', event='Waiting_Start') # 서바이벌 대기 시작
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait02(self.ctx)
         if self.time_expired(timerId='1'):
             return CheckTheNumberOfPlayers(self.ctx)
 
 
-class Wait02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Wait02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait01(self.ctx)
         if self.time_expired(timerId='1'):
             return CheckTheNumberOfPlayers(self.ctx)
 
 
-class CheckTheNumberOfPlayers(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckTheNumberOfPlayers(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=20, operator='Less'):
             return GameCancel01(self.ctx)
         if self.count_users(boxId=9000, boxId=20, operator='GreaterEqual'):
             return StartPositionRandomPick(self.ctx)
 
 
-class StartPositionRandomPick(common.Trigger):
+class StartPositionRandomPick(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='1')
         self.set_event_ui(type=1, arg2='시작점으로 이동합니다.', arg3='3000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=12.5):
             return PCRemap01_North(self.ctx)
         if self.random_condition(rate=12.5):
@@ -81,12 +81,12 @@ class StartPositionRandomPick(common.Trigger):
             return PCRemap08_SouthEast(self.ctx)
 
 
-class PCRemap01_North(common.Trigger):
+class PCRemap01_North(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=101, boxId=9000)
         self.write_log(logName='Survival', event='Waiting_PositionPick') # 위치 이동 시작
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -94,11 +94,11 @@ class PCRemap01_North(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=1)
 
 
-class PCRemap02_South(common.Trigger):
+class PCRemap02_South(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=102, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -106,11 +106,11 @@ class PCRemap02_South(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=2)
 
 
-class PCRemap03_East(common.Trigger):
+class PCRemap03_East(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=103, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -118,11 +118,11 @@ class PCRemap03_East(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=3)
 
 
-class PCRemap04_West(common.Trigger):
+class PCRemap04_West(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=104, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -130,11 +130,11 @@ class PCRemap04_West(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=4)
 
 
-class PCRemap05_NorthWest(common.Trigger):
+class PCRemap05_NorthWest(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=105, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -142,11 +142,11 @@ class PCRemap05_NorthWest(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=5)
 
 
-class PCRemap06_NorthEast(common.Trigger):
+class PCRemap06_NorthEast(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=106, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -154,11 +154,11 @@ class PCRemap06_NorthEast(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=6)
 
 
-class PCRemap07_SouthWest(common.Trigger):
+class PCRemap07_SouthWest(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=107, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -166,11 +166,11 @@ class PCRemap07_SouthWest(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=7)
 
 
-class PCRemap08_SouthEast(common.Trigger):
+class PCRemap08_SouthEast(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=82000001, portalId=108, boxId=9000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PVPReady(self.ctx)
 
@@ -178,36 +178,36 @@ class PCRemap08_SouthEast(common.Trigger):
         self.set_user_value(triggerId=2, key='SetRide', value=8)
 
 
-class PVPReady(common.Trigger):
+class PVPReady(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='space 키를 누르면  수레에 탈 수 있습니다.\nspace 키를 다시 누르면 수레에서 내립니다.', arg3='3000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return PVPStart(self.ctx)
 
 
-class PVPStart(common.Trigger):
+class PVPStart(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='경기를 곧 시작합니다!\n경기 시작과 함께 수레가 출발합니다!', arg3='4000', arg4='0')
         self.create_field_game(type='MapleSurvive')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Countdown(self.ctx)
 
 
-class Countdown(common.Trigger):
+class Countdown(trigger_api.Trigger):
     def on_enter(self):
         self.show_count_ui(text='경기 시작!', count=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return AreaOpen(self.ctx)
 
 
-class AreaOpen(common.Trigger):
+class AreaOpen(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=5, key='RareBoxOnCount', value=1)
         self.set_user_value(triggerId=2, key='StartPatrol', value=1)
@@ -227,24 +227,24 @@ class AreaOpen(common.Trigger):
         self.set_mesh(triggerIds=[3800,3801,3802,3803,3804,3805,3806,3807], visible=False, arg3=1000, delay=0, scale=2) # Barrier_NorthWest
         self.write_log(logName='Survival', event='Start') # 서바이벌 시작 로그 남김
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
             return GameStart(self.ctx)
 
 
-class GameStart(common.Trigger):
+class GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # BGM Intro
         self.set_sound(triggerId=20001, enable=True) # BGM Loop
         self.set_user_value(triggerId=3, key='StormStart', value=1)
         self.write_log(logName='Survival', event='StormStart') # 서바이벌 스톰 시작 로그 남김
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[9000]):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[11000037], state=0) # Normal Box
         self.set_interact_object(triggerIds=[11000039], state=0) # Normal Box
@@ -254,25 +254,25 @@ class Quit(common.Trigger):
 
 
 # 인원 미만으로 인한 경기 취소
-class GameCancel01(common.Trigger):
+class GameCancel01(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='참가자 부족으로 인해 경기를 취소합니다.', arg3='4000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameCancel02(self.ctx)
 
 
-class GameCancel02(common.Trigger):
+class GameCancel02(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='잠시 후 원래 있던 곳으로 돌아갑니다.', arg3='4000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return GameCancel03(self.ctx)
 
 
-class GameCancel03(common.Trigger):
+class GameCancel03(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[11000037], state=0) # Normal Box
         self.set_interact_object(triggerIds=[11000039], state=0) # Normal Box

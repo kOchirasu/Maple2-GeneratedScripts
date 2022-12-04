@@ -1,31 +1,31 @@
 """ trigger/80000013_bonus/mob_07.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return start(self.ctx)
 
 
-class start(common.Trigger):
+class start(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[107], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[107]):
             return wait(self.ctx)
 
 
-class wait(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class wait(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[701]):
             return start(self.ctx)
         if self.wait_tick(waitTick=1500):
             return idle(self.ctx)
 
 
-class end(common.Trigger):
+class end(trigger_api.Trigger):
     pass
 
 

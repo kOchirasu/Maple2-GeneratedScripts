@@ -1,82 +1,82 @@
 """ trigger/52000186_qd/52000186.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9002]):
             return 영상재생(self.ctx)
 
 
-class 영상재생(common.Trigger):
+class 영상재생(trigger_api.Trigger):
     def on_enter(self):
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='common\jp\Lapenta_Frontier.usm', movieId=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return 묘지전경씬01(self.ctx)
         if self.wait_tick(waitTick=110000):
             return 묘지전경씬01(self.ctx)
 
 
-class 묘지전경씬01(common.Trigger):
+class 묘지전경씬01(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[8000,8001,8002,8003], returnView=False)
         self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 묘지전경씬02(self.ctx)
 
 
-class 묘지전경씬02(common.Trigger):
+class 묘지전경씬02(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[8004,8005], returnView=False)
         self.show_caption(type='VerticalCaption', title='$52000186_QD__52000186__0$', desc='$52000186_QD__52000186__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 묘지전경씬03(self.ctx)
 
 
-class 묘지전경씬03(common.Trigger):
+class 묘지전경씬03(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Quit01(self.ctx)
 
 
-class Quit01(common.Trigger):
+class Quit01(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit02(self.ctx)
 
 
-class Skip_1(common.Trigger):
+class Skip_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit02(self.ctx)
 
 
-class Quit02(common.Trigger):
+class Quit02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -96,7 +96,7 @@ class Quit02(common.Trigger):
         self.create_monster(spawnIds=[4010], animationEffect=False)
         self.create_monster(spawnIds=[2000], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[40002777], questStates=[3]):
             return 출범연설시작01(self.ctx)
         if self.quest_user_detected(boxIds=[9001], questIds=[40002778], questStates=[3]):
@@ -122,17 +122,17 @@ class Quit02(common.Trigger):
 
 
 # ########################씬2 케이틀린 등장########################
-class 출범연설시작01(common.Trigger):
+class 출범연설시작01(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=10, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 출범연설시작02(self.ctx)
 
 
-class 출범연설시작02(common.Trigger):
+class 출범연설시작02(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=52000186, portalId=20)
         self.destroy_monster(spawnIds=[4000])
@@ -165,43 +165,43 @@ class 출범연설시작02(common.Trigger):
         self.create_monster(spawnIds=[3005], animationEffect=False)
         self.create_monster(spawnIds=[3006], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 출범연설시작03(self.ctx)
 
 
-class 출범연설시작03(common.Trigger):
+class 출범연설시작03(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002388], questStates=[3]):
             return 베아트리체움직임01(self.ctx)
 
 
-class 베아트리체움직임01(common.Trigger):
+class 베아트리체움직임01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=3000, patrolName='MS2PatrolData_bche_Run')
         self.move_npc(spawnId=3001, patrolName='MS2PatrolData_alf_Run')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002389], questStates=[3]):
             return 연설시퀀스종료01(self.ctx)
 
 
-class 연설시퀀스종료01(common.Trigger):
+class 연설시퀀스종료01(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=20, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 연설시퀀스종료02(self.ctx)
 
 
-class 연설시퀀스종료02(common.Trigger):
+class 연설시퀀스종료02(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[5000])
         self.destroy_monster(spawnIds=[5001])
@@ -223,12 +223,12 @@ class 연설시퀀스종료02(common.Trigger):
         self.destroy_monster(spawnIds=[3006])
         self.move_user(mapId=52010068, portalId=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 연설시퀀스종료03(self.ctx)
 
 
-class 연설시퀀스종료03(common.Trigger):
+class 연설시퀀스종료03(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)

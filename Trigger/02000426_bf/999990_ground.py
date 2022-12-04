@@ -1,32 +1,32 @@
 """ trigger/02000426_bf/999990_ground.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[5001,5002,5003,5004,5005,5006], visible=False, arg3=0, delay=0, scale=0) # 자쿰과의 전투 장소 3층 지형의 일부 바닥 큐브를 숨김 처리함
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[199]):
             return 대기중(self.ctx)
 
 
-class 대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ZakumBodyAppearance', value=1):
             return 층지형의숨겨진바닥생성3(self.ctx)
 
 
-class 층지형의숨겨진바닥생성3(common.Trigger):
+class 층지형의숨겨진바닥생성3(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[5001,5002,5003,5004,5005,5006], visible=True, arg3=1, delay=120, scale=0.5) # 자쿰 본체 하고 전투가 시작되면 자쿰본체한테 신호 받아서 3층 지형의 일부 바닥이 생성되도록 함
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

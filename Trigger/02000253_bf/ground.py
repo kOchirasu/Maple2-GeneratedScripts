@@ -1,62 +1,62 @@
 """ trigger/02000253_bf/ground.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[701], visible=False) # 벨라 음성
         self.set_effect(triggerIds=[702], visible=False) # 벨라 음성
         self.set_mesh(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=906, boxId=1):
             return 벨라소환(self.ctx)
 
 
-class 벨라소환(common.Trigger):
+class 벨라소환(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=5)
         self.create_monster(spawnIds=[1001])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라이동(self.ctx)
 
 
-class 벨라이동(common.Trigger):
+class 벨라이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=3)
         # <action name="이펙트를설정한다" arg1="701" arg2="1"/>
         self.set_conversation(type=1, spawnId=1001, script='$02000253_BF__GROUND__0$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라이동2(self.ctx)
 
 
-class 벨라이동2(common.Trigger):
+class 벨라이동2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=5)
         # <action name="이펙트를설정한다" arg1="702" arg2="1"/>
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1')
         self.set_conversation(type=1, spawnId=1001, script='$02000253_BF__GROUND__1$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라소멸(self.ctx)
 
 
-class 벨라소멸(common.Trigger):
+class 벨라소멸(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=140)
         self.destroy_monster(spawnIds=[1001])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 지진(self.ctx)
 
 
-class 지진(common.Trigger):
+class 지진(trigger_api.Trigger):
     pass
 
 

@@ -1,17 +1,17 @@
 """ trigger/52000067_qd/sub_event_04.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[759], animationEffect=True) # 시장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=706, boxId=1):
             return ready(self.ctx)
 
 
-class ready(common.Trigger):
+class ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=759, sequenceName='Talk_A')
         self.set_conversation(type=1, spawnId=759, script='$52000067_QD__SUB_EVENT_04__0$', arg4=3, arg5=0)

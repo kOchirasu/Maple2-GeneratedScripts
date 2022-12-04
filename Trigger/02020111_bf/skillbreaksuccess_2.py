@@ -1,14 +1,14 @@
 """ trigger/02020111_bf/skillbreaksuccess_2.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return 버프발동(self.ctx)
 
 
-class 버프발동(common.Trigger):
+class 버프발동(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[101], skillId=62100027, level=1, isPlayer=True)
         self.add_buff(boxIds=[1001], skillId=75000002, level=1)
@@ -23,7 +23,7 @@ class 버프발동(common.Trigger):
         self.set_user_value(triggerId=900103, key='Lapenta_Attack_Guide', value=2)
         self.set_user_value(triggerId=900204, key='Message', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return 시작(self.ctx)
 

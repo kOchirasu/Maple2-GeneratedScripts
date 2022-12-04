@@ -1,30 +1,30 @@
 """ trigger/02010034_bf/triggercube_01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3001], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             return 발판(self.ctx)
 
 
-class 발판(common.Trigger):
+class 발판(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3001], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[101]):
             return 발판숨김(self.ctx)
 
 
-class 발판숨김(common.Trigger):
+class 발판숨김(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='2', seconds=2, startDelay=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return 대기(self.ctx)
 

@@ -1,9 +1,9 @@
 """ trigger/52020010_qd/main_c.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2007], questIds=[60200055], questStates=[2]):
             return Actor_On(self.ctx)
         if self.quest_user_detected(boxIds=[2007], questIds=[60200055], questStates=[3]):
@@ -16,22 +16,22 @@ class Idle(common.Trigger):
             return Actor_Off(self.ctx)
 
 
-class Actor_On(common.Trigger):
+class Actor_On(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
             return Actor_Off(self.ctx)
         if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[3]):
             return Actor_Off(self.ctx)
 
 
-class Actor_Off(common.Trigger):
+class Actor_Off(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
             return Actor_Off(self.ctx)
         if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):

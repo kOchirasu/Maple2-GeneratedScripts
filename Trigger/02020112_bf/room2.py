@@ -1,30 +1,30 @@
 """ trigger/02020112_bf/room2.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=99990015, key='Extinction_2_check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteDead', value=1):
             return 종료2(self.ctx)
         if self.all_of():
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02020112_BF__ROOM2__0$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteDead', value=1):
             return 종료2(self.ctx)
         if self.wait_tick(waitTick=3000):
             return 격리(self.ctx)
 
 
-class 격리(common.Trigger):
+class 격리(trigger_api.Trigger):
     def on_enter(self):
         self.move_random_user(mapId=2020112, portalId=6, triggerId=932, count=1)
         self.set_timer(timerId='1', seconds=20, interval=1, vOffset=-40)
@@ -36,7 +36,7 @@ class 격리(common.Trigger):
         self.set_event_ui(type=1, arg2='$02020112_BF__ROOM2__1$', arg3='5000', arg4='932')
         self.add_buff(boxIds=[941], skillId=70002106, level=1, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteDead', value=1):
             return 종료2(self.ctx)
         if self.monster_dead(boxIds=[181,182,183]):
@@ -45,29 +45,29 @@ class 격리(common.Trigger):
             return 소멸(self.ctx)
 
 
-class 소멸(common.Trigger):
+class 소멸(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[941], skillId=70002107, level=1, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteDead', value=1):
             return 종료2(self.ctx)
         if self.true():
             return 종료(self.ctx)
 
 
-class 구출(common.Trigger):
+class 구출(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=2020112, portalId=5, boxId=941)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteDead', value=1):
             return 종료2(self.ctx)
         if self.true():
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=99990015, key='Extinction_2_check', value=2)
         self.destroy_monster(spawnIds=[181,182,183])
@@ -77,7 +77,7 @@ class 종료(common.Trigger):
         self.reset_timer(timerId='1')
 
 
-class 종료2(common.Trigger):
+class 종료2(trigger_api.Trigger):
     pass
 
 

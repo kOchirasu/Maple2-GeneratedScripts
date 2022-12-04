@@ -1,8 +1,8 @@
 """ trigger/02000535_bf/gamelogic_9002.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.create_widget(type='TypingGame') # 키입력 게임 선언
         self.create_widget(type='Round') # 라운드 관리 트리거위젯 선언
@@ -11,19 +11,19 @@ class 대기(common.Trigger):
         self.widget_action(type='Round', func='SettingRoundInitIfFail', widgetArg='0')
         self.lock_my_pc(isLock=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GameLogicStart', value=1):
             return 게임진입(self.ctx)
 
 
-class 게임진입(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 게임진입(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 새라운드시작가능체크(self.ctx)
 
 
-class 새라운드시작가능체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 새라운드시작가능체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='Round', name='GameClear'):
             return 게임성공종료(self.ctx)
         if self.widget_condition(type='Round', name='GameFail'):
@@ -32,8 +32,8 @@ class 새라운드시작가능체크(common.Trigger):
             return 라운드체크(self.ctx)
 
 
-class 라운드체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='Round', name='CurrentRound', condition='= 1'):
             return 라운드1시작전UI(self.ctx)
         if self.widget_condition(type='Round', name='CurrentRound', condition='= 2'):
@@ -42,11 +42,11 @@ class 라운드체크(common.Trigger):
             return 라운드3시작전UI(self.ctx)
 
 
-class 라운드1시작전UI(common.Trigger):
+class 라운드1시작전UI(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__0$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             self.lock_my_pc(isLock=True)
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__1$', arg3='6000')
@@ -54,8 +54,8 @@ class 라운드1시작전UI(common.Trigger):
             return 라운드1진행(self.ctx)
 
 
-class 라운드1진행(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드1진행(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='TypingGame', name='Result', condition='1'):
             self.widget_action(type='Round', func='RoundResult', widgetArg='1')
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__2$', arg3='3000')
@@ -66,11 +66,11 @@ class 라운드1진행(common.Trigger):
             return 라운드종료(self.ctx)
 
 
-class 라운드2시작전UI(common.Trigger):
+class 라운드2시작전UI(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__4$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             self.lock_my_pc(isLock=True)
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__5$', arg3='4000')
@@ -78,8 +78,8 @@ class 라운드2시작전UI(common.Trigger):
             return 라운드2진행(self.ctx)
 
 
-class 라운드2진행(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드2진행(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='TypingGame', name='Result', condition='1'):
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__6$', arg3='3000')
             self.widget_action(type='Round', func='RoundResult', widgetArg='1')
@@ -90,11 +90,11 @@ class 라운드2진행(common.Trigger):
             return 라운드종료(self.ctx)
 
 
-class 라운드3시작전UI(common.Trigger):
+class 라운드3시작전UI(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__8$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             self.lock_my_pc(isLock=True)
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__9$', arg3='3000')
@@ -102,8 +102,8 @@ class 라운드3시작전UI(common.Trigger):
             return 라운드3진행(self.ctx)
 
 
-class 라운드3진행(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드3진행(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='TypingGame', name='Result', condition='1'):
             self.lock_my_pc(isLock=True)
             self.set_event_ui(type=1, arg2='$02000535_BF__GAMELOGIC_9002__10$', arg3='3000')
@@ -115,29 +115,29 @@ class 라운드3진행(common.Trigger):
             return 라운드종료(self.ctx)
 
 
-class 라운드종료(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드종료(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             self.lock_my_pc(isLock=False)
             return 새라운드시작가능체크(self.ctx)
 
 
-class 게임성공종료(common.Trigger):
+class 게임성공종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1001, key='GameLogicEnd', value=1)
         self.set_user_value(key='GameLogicStart', value=999) # 코드는 테스트 후 지워주세요
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 대기(self.ctx)
 
 
-class 게임실패종료(common.Trigger):
+class 게임실패종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1001, key='GameLogicEnd', value=2)
         self.set_user_value(key='GameLogicStart', value=999) # 코드는 테스트 후 지워주세요
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 대기(self.ctx)
 

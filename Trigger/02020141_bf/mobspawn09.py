@@ -1,21 +1,21 @@
 """ trigger/02020141_bf/mobspawn09.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return 보스등장때까지잠시대기(self.ctx)
 
 
-class 보스등장때까지잠시대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 보스등장때까지잠시대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return 트리거영역체크시작(self.ctx)
 
 
-class 트리거영역체크시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 트리거영역체크시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 졸몬스터제거작업(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -24,14 +24,14 @@ class 트리거영역체크시작(common.Trigger):
             return 졸몬스터등장대기중(self.ctx)
 
 
-class 졸몬스터등장대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 졸몬스터등장대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 트리거영역안플레이어최종체크(self.ctx)
 
 
-class 트리거영역안플레이어최종체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 트리거영역안플레이어최종체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 졸몬스터제거작업(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -42,17 +42,17 @@ class 트리거영역안플레이어최종체크(common.Trigger):
             return 트리거영역체크시작(self.ctx)
 
 
-class 졸몬스터등장하기(common.Trigger):
+class 졸몬스터등장하기(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[10901,10902,10903,10904], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 트리거영역에계속있는지체크(self.ctx)
 
 
-class 트리거영역에계속있는지체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 트리거영역에계속있는지체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 졸몬스터제거작업(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -63,16 +63,16 @@ class 트리거영역에계속있는지체크(common.Trigger):
             return 졸몬스터제거작동대기(self.ctx)
 
 
-class 졸몬스터리젠단계시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 졸몬스터리젠단계시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10900]):
             return 졸몬스터리젠대기중(self.ctx)
         if not self.user_detected(boxIds=[10900]):
             return 졸몬스터제거작동대기(self.ctx)
 
 
-class 졸몬스터리젠대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 졸몬스터리젠대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 졸몬스터제거작업(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -83,8 +83,8 @@ class 졸몬스터리젠대기중(common.Trigger):
             return 졸몬스터리젠YesNo(self.ctx)
 
 
-class 졸몬스터리젠YesNo(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 졸몬스터리젠YesNo(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 졸몬스터제거작업(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -95,19 +95,19 @@ class 졸몬스터리젠YesNo(common.Trigger):
             return 졸몬스터제거작동대기(self.ctx)
 
 
-class 졸몬스터제거작동대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 졸몬스터제거작동대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10900]):
             return 트리거영역에계속있는지체크(self.ctx)
         if self.wait_tick(waitTick=7000):
             return 졸몬스터제거작업(self.ctx)
 
 
-class 졸몬스터제거작업(common.Trigger):
+class 졸몬스터제거작업(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[10901,10902,10903,10904])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MobSpawnStop', value=4):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[99]): # ##  보스가 죽으면 졸몹 등장 트리거 종료시키기 ##
@@ -116,7 +116,7 @@ class 졸몬스터제거작업(common.Trigger):
             return 트리거영역체크시작(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

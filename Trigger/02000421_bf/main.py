@@ -1,8 +1,8 @@
 """ trigger/02000421_bf/main.xml """
-import common
+import trigger_api
 
 
-class Ready(common.Trigger):
+class Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[6001], visible=False)
         self.set_mesh(triggerIds=[6002], visible=False)
@@ -21,12 +21,12 @@ class Ready(common.Trigger):
         self.set_mesh(triggerIds=[6015], visible=False)
         self.set_mesh(triggerIds=[6016], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=700, boxId=1):
             return Ready_Idle(self.ctx)
 
 
-class Ready_Idle(common.Trigger):
+class Ready_Idle(trigger_api.Trigger):
     pass
 
 

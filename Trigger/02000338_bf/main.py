@@ -1,8 +1,8 @@
 """ trigger/02000338_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[120], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[121], visible=False, animationEffect=False, animationDelay=0)
@@ -74,18 +74,18 @@ class 대기(common.Trigger):
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DungeonStart(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -94,12 +94,12 @@ class DungeonStart(common.Trigger):
         self.set_mesh(triggerIds=[70010], visible=True, arg3=250, delay=50, scale=2)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraWalk01(self.ctx)
 
 
-class CameraWalk01(common.Trigger):
+class CameraWalk01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -107,44 +107,44 @@ class CameraWalk01(common.Trigger):
         self.select_camera(triggerId=30200, enable=True)
         self.set_skip(state=CameraWalk05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return CameraWalk03(self.ctx)
 
 
-class CameraWalk03(common.Trigger):
+class CameraWalk03(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=30201, enable=True)
         self.set_skip(state=CameraWalk05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return CameraWalk04(self.ctx)
 
 
-class CameraWalk04(common.Trigger):
+class CameraWalk04(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_effect(triggerIds=[74500], visible=True)
         self.set_skip(state=CameraWalk05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return CameraWalk05(self.ctx)
 
 
-class CameraWalk05(common.Trigger):
+class CameraWalk05(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[5000], animationEffect=False)
         self.move_npc(spawnId=5000, patrolName='MS2PatrolData5000')
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return GroundFall01(self.ctx)
 
 
-class GroundFall01(common.Trigger):
+class GroundFall01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[32000], visible=True)
         self.set_effect(triggerIds=[32001], visible=True)
@@ -176,22 +176,22 @@ class GroundFall01(common.Trigger):
         self.set_mesh(triggerIds=[20220,20221,20222,20223,20224,20225], visible=False, arg3=5000, delay=50, scale=2)
         self.set_skip(state=차어나운스3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차어나운스3(self.ctx)
 
 
-class 차어나운스3(common.Trigger):
+class 차어나운스3(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Ready01(self.ctx)
 
 
-class Ready01(common.Trigger):
+class Ready01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -230,12 +230,12 @@ class Ready01(common.Trigger):
         self.set_mesh(triggerIds=[20217,20218,20219], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[20220,20221,20222,20223,20224,20225], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return FirstBattle01(self.ctx)
 
 
-class FirstBattle01(common.Trigger):
+class FirstBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
@@ -243,12 +243,12 @@ class FirstBattle01(common.Trigger):
         self.set_effect(triggerIds=[73001], visible=True)
         self.set_interact_object(triggerIds=[10000777], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000777], stateValue=0):
             return FirstBridgeOn01(self.ctx)
 
 
-class FirstBridgeOn01(common.Trigger):
+class FirstBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[75000], visible=False) # GuideArrow
         self.set_effect(triggerIds=[75001], visible=False) # GuideArrow
@@ -264,24 +264,24 @@ class FirstBridgeOn01(common.Trigger):
         self.set_mesh(triggerIds=[20,21,22,23,24,25,26,27,28,29,30,31,32], visible=True, arg3=100, delay=50, scale=2)
         self.create_monster(spawnIds=[5004,5005,5006,5007,5008,5009,5010], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return SecondBattle01(self.ctx)
 
 
-class SecondBattle01(common.Trigger):
+class SecondBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000778], state=1)
         self.set_effect(triggerIds=[73002], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000778], stateValue=0):
             return SecondBridgeOn01(self.ctx)
 
 
-class SecondBridgeOn01(common.Trigger):
+class SecondBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8003], visible=False)
         self.set_agent(triggerIds=[8004], visible=False)
@@ -292,12 +292,12 @@ class SecondBridgeOn01(common.Trigger):
         self.set_effect(triggerIds=[73002], visible=False)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19], visible=True, arg3=100, delay=50, scale=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[5000]):
             return ThirdBattle01(self.ctx)
 
 
-class ThirdBattle01(common.Trigger):
+class ThirdBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[76000], visible=True) # GuideArrow
         self.set_effect(triggerIds=[76001], visible=True) # GuideArrow
@@ -311,59 +311,59 @@ class ThirdBattle01(common.Trigger):
         self.set_ladder(triggerIds=[111], visible=True, animationEffect=True, animationDelay=4)
         self.set_ladder(triggerIds=[112], visible=True, animationEffect=True, animationDelay=6)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[999998]):
             return ThirdBrigeOn01(self.ctx)
 
 
-class ThirdBrigeOn01(common.Trigger):
+class ThirdBrigeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[76000], visible=False) # GuideArrow
         self.set_effect(triggerIds=[76001], visible=False) # GuideArrow
         self.set_effect(triggerIds=[76002], visible=False) # GuideArrow
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return FourthBattle01(self.ctx)
 
 
-class FourthBattle01(common.Trigger):
+class FourthBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000779], state=1)
         self.set_effect(triggerIds=[73004], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000779], stateValue=0):
             return FourthBridgeOn01(self.ctx)
 
 
-class FourthBridgeOn01(common.Trigger):
+class FourthBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20003382)
         self.set_effect(triggerIds=[73004], visible=False)
         self.set_mesh(triggerIds=[33,34,35,36,37,38,39,40,41], visible=True, arg3=100, delay=50, scale=2)
         self.create_monster(spawnIds=[5110,5111,5112,5113,5114,5115,5116,5117,5118,5119,5120,5121], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return FifthBattle01(self.ctx)
 
 
-class FifthBattle01(common.Trigger):
+class FifthBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000780], state=1)
         self.set_effect(triggerIds=[73005], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000780], stateValue=0):
             return FifthBridgeOn01(self.ctx)
 
 
-class FifthBridgeOn01(common.Trigger):
+class FifthBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8006], visible=False)
         self.set_agent(triggerIds=[8007], visible=False)
@@ -372,24 +372,24 @@ class FifthBridgeOn01(common.Trigger):
         self.set_effect(triggerIds=[73005], visible=False)
         self.set_mesh(triggerIds=[42,43,44,45,46,47,48], visible=True, arg3=100, delay=50, scale=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return SixthBattle01(self.ctx)
 
 
-class SixthBattle01(common.Trigger):
+class SixthBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000781], state=1)
         self.set_effect(triggerIds=[73006], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000781], stateValue=0):
             return SixthBridgeOn01(self.ctx)
 
 
-class SixthBridgeOn01(common.Trigger):
+class SixthBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8009], visible=False)
         self.set_agent(triggerIds=[8010], visible=False)
@@ -397,25 +397,25 @@ class SixthBridgeOn01(common.Trigger):
         self.set_effect(triggerIds=[73006], visible=False)
         self.set_mesh(triggerIds=[49,50,51,52,53,54,55], visible=True, arg3=100, delay=50, scale=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return SeventhBattle01(self.ctx)
 
 
-class SeventhBattle01(common.Trigger):
+class SeventhBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000782], state=1)
         self.set_effect(triggerIds=[73007], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000782], stateValue=0):
             return SeventhBridgeOn01(self.ctx)
 
 
 # 보스 전투 돌입
-class SeventhBridgeOn01(common.Trigger):
+class SeventhBridgeOn01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8011], visible=False)
         self.set_agent(triggerIds=[8012], visible=False)
@@ -428,57 +428,57 @@ class SeventhBridgeOn01(common.Trigger):
         self.show_guide_summary(entityId=20003381, textId=20003381, duration=7000)
         self.set_effect(triggerIds=[73007], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[5100]):
             return BossBattle01(self.ctx)
 
 
-class BossBattle01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class BossBattle01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_mesh(triggerIds=[70001,70002,70003,70004,70005,70006,70007,70008,70009], visible=True, arg3=200, delay=50, scale=2)
         self.set_mesh(triggerIds=[70010], visible=True, arg3=250, delay=50, scale=2)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return PCGetOut01(self.ctx)
 
 
-class PCGetOut01(common.Trigger):
+class PCGetOut01(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return PCGetOut02(self.ctx)
 
 
-class PCGetOut02(common.Trigger):
+class PCGetOut02(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return PCGetOut03(self.ctx)
 
 
-class PCGetOut03(common.Trigger):
+class PCGetOut03(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return PCGetOut04(self.ctx)
 
 
-class PCGetOut04(common.Trigger):
+class PCGetOut04(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 

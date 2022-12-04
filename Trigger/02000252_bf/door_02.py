@@ -1,20 +1,20 @@
 """ trigger/02000252_bf/door_02.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[171,172], visible=True)
         self.set_effect(triggerIds=[8033], visible=True)
         self.set_effect(triggerIds=[8034], visible=True)
         self.set_interact_object(triggerIds=[10000402], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000402], stateValue=0):
             return 열기(self.ctx)
 
 
-class 열기(common.Trigger):
+class 열기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=2)
         self.set_mesh(triggerIds=[171,172], visible=False)
@@ -25,12 +25,12 @@ class 열기(common.Trigger):
         self.move_npc(spawnId=1011, patrolName='MS2PatrolData_3')
         self.create_item(spawnIds=[1021])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 삭제(self.ctx)
 
 
-class 삭제(common.Trigger):
+class 삭제(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[1011])
 

@@ -1,8 +1,8 @@
 """ trigger/02020111_bf/skillbreak.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=900001, key='SkillBreakFail', value=0)
         self.set_user_value(triggerId=900008, key='SkillBreakFail', value=3)
@@ -20,12 +20,12 @@ class 대기(common.Trigger):
         self.set_user_value(triggerId=900202, key='Movement', value=2)
         self.set_user_value(triggerId=900203, key='Movement', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_npc_additional_effect(spawnId=101, additionalEffectId=70002181, level=1):
             return 스킬브레이크_실패(self.ctx)
 
 
-class 스킬브레이크_실패(common.Trigger):
+class 스킬브레이크_실패(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[101], skillId=62100026, level=1, isPlayer=True)
         self.add_buff(boxIds=[101], skillId=70002185, level=1, isPlayer=True) # 스킬브레이크 체크를 제거한다.
@@ -67,23 +67,23 @@ class 스킬브레이크_실패(common.Trigger):
         self.set_user_value(triggerId=900301, key='Light_On_3', value=1)
         self.set_user_value(triggerId=900301, key='Light_On_4', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 스킬브레이크_실패_2(self.ctx)
 
 
-class 스킬브레이크_실패_2(common.Trigger):
+class 스킬브레이크_실패_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=900005, key='Lapenta_Attack', value=0)
         self.set_user_value(triggerId=900006, key='Lapenta_Attack_2', value=0)
         self.set_user_value(triggerId=900102, key='Phase', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 대기(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

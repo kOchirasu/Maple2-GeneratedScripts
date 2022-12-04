@@ -1,23 +1,23 @@
 """ trigger/99999905/score02.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[604], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000414], stateValue=0):
             return 점수(self.ctx)
 
 
-class 점수(common.Trigger):
+class 점수(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_effect(triggerIds=[604], visible=True)
         # action name="전장점수를준다" arg1="105" arg2="50" /
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 대기(self.ctx)
 

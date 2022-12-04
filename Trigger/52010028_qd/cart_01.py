@@ -1,8 +1,8 @@
 """ trigger/52010028_qd/cart_01.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     pass
 
 

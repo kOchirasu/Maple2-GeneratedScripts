@@ -1,15 +1,15 @@
 """ trigger/61000008_me/05_banner.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[710], visible=True, arg3=0, delay=0, scale=2) # Banner10
         self.set_mesh(triggerIds=[700], visible=True, arg3=0, delay=0, scale=2) # Banner1
         self.set_mesh(triggerIds=[711,712,713,714,715], visible=False, arg3=0, delay=0, scale=0) # Banner10
         self.set_mesh(triggerIds=[701,702,703,704,705,706,707,708,709], visible=False, arg3=0, delay=0, scale=0) # Banner1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NextWait(self.ctx)
 
@@ -17,11 +17,11 @@ class Wait(common.Trigger):
         self.set_user_value(key='SetBanner', value=0)
 
 
-class SetBanner(common.Trigger):
+class SetBanner(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715], visible=False, arg3=0, delay=0, scale=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BannerNumber', value=50):
             self.set_mesh(triggerIds=[715], visible=True, arg3=0, delay=0, scale=2)
             self.set_mesh(triggerIds=[700], visible=True, arg3=0, delay=0, scale=2)
@@ -231,8 +231,8 @@ class SetBanner(common.Trigger):
         self.set_user_value(key='SetBanner', value=0)
 
 
-class NextWait(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class NextWait(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SetBanner', value=1):
             return SetBanner(self.ctx)
 

@@ -1,8 +1,8 @@
 """ trigger/02000397_bf/3700_hidden_wardrope.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5004], visible=False) # PortalOn
         self.set_ladder(triggerIds=[540], visible=False, animationEffect=False, animationDelay=0) # Ladder
@@ -18,24 +18,24 @@ class Wait(common.Trigger):
         self.set_interact_object(triggerIds=[10001146], state=0) # Wardrope
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='HiddenRouteOpen', value=1):
             return Opened(self.ctx)
         if self.user_value(key='HiddenRouteOpen', value=2):
             return Closed(self.ctx)
 
 
-class Opened(common.Trigger):
+class Opened(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3702], visible=False, arg3=100, delay=0, scale=2) # Wardrope
         self.set_interact_object(triggerIds=[10001146], state=1) # Wardrope
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001146], stateValue=0):
             return LadderOn(self.ctx)
 
 
-class LadderOn(common.Trigger):
+class LadderOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5004], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3700], visible=False, arg3=0, delay=0, scale=3) # Wall_BehindWardrope
@@ -49,17 +49,17 @@ class LadderOn(common.Trigger):
         self.set_ladder(triggerIds=[545], visible=True, animationEffect=True, animationDelay=2) # Ladder
 
 
-class Closed(common.Trigger):
+class Closed(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3702], visible=False, arg3=100, delay=0, scale=2) # Wardrope
         self.set_interact_object(triggerIds=[10001146], state=1) # Wardrope
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001146], stateValue=0):
             return NothingHappened(self.ctx)
 
 
-class NothingHappened(common.Trigger):
+class NothingHappened(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3702], visible=True, arg3=0, delay=0, scale=0) # Wardrope
 

@@ -1,8 +1,8 @@
 """ trigger/02010057_bf/main.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101,102,103], animationEffect=True)
 

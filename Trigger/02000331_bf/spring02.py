@@ -1,8 +1,8 @@
 """ trigger/02000331_bf/spring02.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[7001], enable=False)
         self.set_skill(triggerIds=[7002], enable=False)
@@ -29,12 +29,12 @@ class 대기(common.Trigger):
         self.set_skill(triggerIds=[7023], enable=False)
         self.set_skill(triggerIds=[7024], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[99991]):
             return 스킬발동(self.ctx)
 
 
-class 스킬발동(common.Trigger):
+class 스킬발동(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_skill(triggerIds=[7002], enable=True)
@@ -61,7 +61,7 @@ class 스킬발동(common.Trigger):
         self.set_skill(triggerIds=[7023], enable=True)
         self.set_skill(triggerIds=[7024], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 대기(self.ctx)
 

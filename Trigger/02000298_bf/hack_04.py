@@ -1,30 +1,30 @@
 """ trigger/02000298_bf/hack_04.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000372], state=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[109]):
             return 스폰(self.ctx)
         if self.user_detected(boxIds=[110]):
             return 스폰(self.ctx)
 
 
-class 스폰(common.Trigger):
+class 스폰(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1033], animationEffect=False)
         self.set_interact_object(triggerIds=[10000372], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000372], stateValue=0):
             return 코드체크(self.ctx)
 
 
-class 코드체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 코드체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=197, spawnIds=[1279]):
             return 코드_1279(self.ctx)
         if self.npc_detected(boxId=197, spawnIds=[1238]):
@@ -67,211 +67,211 @@ class 코드체크(common.Trigger):
             return 코드_4789(self.ctx)
 
 
-class 코드_1279(common.Trigger):
+class 코드_1279(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__0$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_1238(common.Trigger):
+class 코드_1238(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__1$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_1358(common.Trigger):
+class 코드_1358(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=3)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__2$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_1489(common.Trigger):
+class 코드_1489(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__3$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_1567(common.Trigger):
+class 코드_1567(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__4$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_1679(common.Trigger):
+class 코드_1679(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__5$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2389(common.Trigger):
+class 코드_2389(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__6$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2347(common.Trigger):
+class 코드_2347(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__7$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2478(common.Trigger):
+class 코드_2478(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__8$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2456(common.Trigger):
+class 코드_2456(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__9$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2569(common.Trigger):
+class 코드_2569(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__10$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_2678(common.Trigger):
+class 코드_2678(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__11$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_3458(common.Trigger):
+class 코드_3458(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__12$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_3589(common.Trigger):
+class 코드_3589(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__13$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_3679(common.Trigger):
+class 코드_3679(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__14$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_3789(common.Trigger):
+class 코드_3789(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__15$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_4567(common.Trigger):
+class 코드_4567(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__16$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_4578(common.Trigger):
+class 코드_4578(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__17$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_4689(common.Trigger):
+class 코드_4689(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__18$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 코드_4789(common.Trigger):
+class 코드_4789(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_04__19$', arg3='2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1800000', seconds=1800000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1800000'):
             return None # Missing State: 종료2
 

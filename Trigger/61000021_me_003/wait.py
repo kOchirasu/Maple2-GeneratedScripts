@@ -1,14 +1,14 @@
 """ trigger/61000021_me_003/wait.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[100]):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

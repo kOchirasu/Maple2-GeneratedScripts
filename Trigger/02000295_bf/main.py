@@ -1,8 +1,8 @@
 """ trigger/02000295_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[3000], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[3001], visible=False, animationEffect=False)
@@ -48,19 +48,19 @@ class 대기(common.Trigger):
         self.set_mesh(triggerIds=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], visible=True, arg3=0, delay=0, scale=0) # Jail
         self.set_user_value(key='LuminaArmyJoin', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return NpcMonologue01(self.ctx)
 
 
 # 연출 시작
-class NpcMonologue01(common.Trigger):
+class NpcMonologue01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -68,25 +68,25 @@ class NpcMonologue01(common.Trigger):
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.set_skip(state=CameraWalk02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return NpcMonologue02(self.ctx)
 
 
-class NpcMonologue02(common.Trigger):
+class NpcMonologue02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=1, spawnId=201, script='$02000295_BF__MAIN__0$', arg4=3, arg5=0)
         self.set_skip(state=CameraWalk02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return CameraWalk01(self.ctx)
 
 
 # 철창 안 노예 말풍선 연출
-class CameraWalk01(common.Trigger):
+class CameraWalk01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -106,12 +106,12 @@ class CameraWalk01(common.Trigger):
         self.add_balloon_talk(spawnId=327, msg='$02000295_BF__MAIN__12$', duration=3000, delayTick=4000) # Left
         self.add_balloon_talk(spawnId=330, msg='$02000295_BF__MAIN__13$', duration=3000, delayTick=5000) # Left
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return CameraWalk02(self.ctx)
 
 
-class CameraWalk02(common.Trigger):
+class CameraWalk02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -120,12 +120,12 @@ class CameraWalk02(common.Trigger):
         self.create_monster(spawnIds=[202], animationEffect=False)
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return CameraWalk03(self.ctx)
 
 
-class CameraWalk03(common.Trigger):
+class CameraWalk03(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -135,24 +135,24 @@ class CameraWalk03(common.Trigger):
         self.select_camera(triggerId=600, enable=True)
         self.set_skip(state=CameraWalk05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraWalk04(self.ctx)
 
 
-class CameraWalk04(common.Trigger):
+class CameraWalk04(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=1, spawnId=202, script='$02000295_BF__MAIN__14$', arg4=3, arg5=1)
         self.set_skip(state=CameraWalk05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return CameraWalk05(self.ctx)
 
 
-class CameraWalk05(common.Trigger):
+class CameraWalk05(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_202')
@@ -166,23 +166,23 @@ class CameraWalk05(common.Trigger):
         self.set_effect(triggerIds=[5001], visible=True) # TargetGuide
         self.set_effect(triggerIds=[5002], visible=True) # TargetGuide
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9001]):
             return BattleReady01(self.ctx)
 
 
 # 연출 종료
-class BattleReady01(common.Trigger):
+class BattleReady01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9000], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002951, textId=20002951, duration=5000) # 투기장의 포악한 야수들이 몰려옵니다. 모두 처치하세요.
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 트리거01웨이브(self.ctx)
 
 
-class 트리거01웨이브(common.Trigger):
+class 트리거01웨이브(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5000], visible=False) # TargetGuide
         self.set_effect(triggerIds=[5001], visible=False) # TargetGuide
@@ -190,45 +190,45 @@ class 트리거01웨이브(common.Trigger):
         self.set_mesh(triggerIds=[95001,95002,95003,95004,95005,95006], visible=False, arg3=0, delay=0, scale=2) # Stairs
         self.create_monster(spawnIds=[910,911], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 트리거02웨이브(self.ctx)
 
 
-class 트리거02웨이브(common.Trigger):
+class 트리거02웨이브(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[912,913], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 트리거03웨이브(self.ctx)
 
 
-class 트리거03웨이브(common.Trigger):
+class 트리거03웨이브(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[914,915], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 트리거04웨이브(self.ctx)
 
 
-class 트리거04웨이브(common.Trigger):
+class 트리거04웨이브(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[916,917], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[910,911,912,913,914,915,916,917]):
             return BossAct01(self.ctx)
 
 
-class BossAct01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class BossAct01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return BossAct02(self.ctx)
 
 
-class BossAct02(common.Trigger):
+class BossAct02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -236,30 +236,30 @@ class BossAct02(common.Trigger):
         self.set_effect(triggerIds=[5103], visible=True) # BossAct
         self.set_skip(state=BossAct03)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return BossAct03(self.ctx)
 
 
-class BossAct03(common.Trigger):
+class BossAct03(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=603, enable=False)
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return BossBattle01(self.ctx)
 
 
 # 보스 전투 돌입
-class BossBattle01(common.Trigger):
+class BossBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[4100]) # BossActor
         self.create_monster(spawnIds=[4101], animationEffect=True) # BossBattle
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LuminaArmyJoin', value=1):
             return BossBattle02(self.ctx)
         if self.monster_dead(boxIds=[4101]):
@@ -267,7 +267,7 @@ class BossBattle01(common.Trigger):
 
 
 # 보스 체력 30% 루미나 해방군 전투 합류
-class BossBattle02(common.Trigger):
+class BossBattle02(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
@@ -283,12 +283,12 @@ class BossBattle02(common.Trigger):
         self.change_monster(removeSpawnId=804, addSpawnId=814)
         self.change_monster(removeSpawnId=202, addSpawnId=203)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return BossBattle03(self.ctx)
 
 
-class BossBattle03(common.Trigger):
+class BossBattle03(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=810, patrolName='MS2PatrolData_800')
         self.move_npc(spawnId=811, patrolName='MS2PatrolData_801')
@@ -299,12 +299,12 @@ class BossBattle03(common.Trigger):
         self.set_conversation(type=1, spawnId=203, script='$02000295_BF__MAIN__16$', arg4=3, arg5=3)
         self.set_conversation(type=1, spawnId=203, script='$02000295_BF__MAIN__17$', arg4=4, arg5=7)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[4101]):
             return BattleEnd01(self.ctx)
 
 
-class BattleEnd01(common.Trigger):
+class BattleEnd01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8003], visible=False)
         self.set_agent(triggerIds=[8004], visible=False)
@@ -317,55 +317,55 @@ class BattleEnd01(common.Trigger):
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_204')
         self.set_conversation(type=1, spawnId=203, script='$02000295_BF__MAIN__18$', arg4=3, arg5=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return BattleEnd02(self.ctx)
 
 
-class BattleEnd02(common.Trigger):
+class BattleEnd02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return BattleEnd03(self.ctx)
 
 
-class BattleEnd03(common.Trigger):
+class BattleEnd03(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=2000295, portalId=3, boxId=9000) # 반경 150 영역
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return ReleaseSlaves01(self.ctx)
 
 
-class ReleaseSlaves01(common.Trigger):
+class ReleaseSlaves01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=602, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ReleaseSlaves02(self.ctx)
 
 
-class ReleaseSlaves02(common.Trigger):
+class ReleaseSlaves02(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045], visible=True, arg3=0, delay=0, scale=2) # Deck01_ClearOn
         self.set_mesh(triggerIds=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209,1210,1211,1212,1213,1214,1215,1216,1217,1218,1219,1220,1221,1222,1223,1224,1225,1226,1227,1228,1229,1230,1231,1232,1233,1234,1235,1236,1237,1238,1239,1240,1241,1242,1243,1244,1245,1246], visible=True, arg3=200, delay=30, scale=2) # Deck02_ClearOn
         self.set_effect(triggerIds=[5100], visible=True) # Wheel
         self.set_effect(triggerIds=[5101], visible=True) # MetalDoorOpen
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ReleaseSlaves03(self.ctx)
 
 
-class ReleaseSlaves03(common.Trigger):
+class ReleaseSlaves03(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159], visible=False, arg3=100, delay=0, scale=0) # Jail
         self.set_breakable(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], enable=True) # Jail_Mid
@@ -403,12 +403,12 @@ class ReleaseSlaves03(common.Trigger):
         self.change_monster(removeSpawnId=330, addSpawnId=430)
         self.change_monster(removeSpawnId=331, addSpawnId=431)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return ReleaseSlaves04(self.ctx)
 
 
-class ReleaseSlaves04(common.Trigger):
+class ReleaseSlaves04(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5102], visible=True) # MetalDoorClose
         self.set_effect(triggerIds=[5100], visible=False) # Wheel
@@ -457,12 +457,12 @@ class ReleaseSlaves04(common.Trigger):
         self.set_conversation(type=1, spawnId=430, script='$02000295_BF__MAIN__31$', arg4=3, arg5=3) # Left
         self.set_skip(state=ReleaseSlaves05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
             return ReleaseSlaves05(self.ctx)
 
 
-class ReleaseSlaves05(common.Trigger):
+class ReleaseSlaves05(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.create_monster(spawnIds=[200], animationEffect=True)
@@ -470,22 +470,22 @@ class ReleaseSlaves05(common.Trigger):
         self.select_camera(triggerId=602, enable=False)
         self.select_camera(triggerId=603, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return ToBeContinued01(self.ctx)
 
 
-class ToBeContinued01(common.Trigger):
+class ToBeContinued01(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000006, script='$02000295_BF__MAIN__32$', arg4=4)
         self.set_skip(state=Quit01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return Quit01(self.ctx)
 
 
-class Quit01(common.Trigger):
+class Quit01(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.remove_balloon_talk(spawnId=200)
@@ -493,21 +493,21 @@ class Quit01(common.Trigger):
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=603, enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit02(self.ctx)
 
 
-class Quit02(common.Trigger):
+class Quit02(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9000, type='trigger', achieve='ReleaseTheSlaves')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit03(self.ctx)
 
 
-class Quit03(common.Trigger):
+class Quit03(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9000, type='trigger', achieve='ClearKatramusfirst')
         self.set_ladder(triggerIds=[3002], visible=True, animationEffect=True, animationDelay=10)

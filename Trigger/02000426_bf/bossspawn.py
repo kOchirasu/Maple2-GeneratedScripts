@@ -1,8 +1,8 @@
 """ trigger/02000426_bf/bossspawn.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -11,13 +11,13 @@ class 시작(common.Trigger):
         self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0)
         self.set_user_value(key='ZakumBodyAppearance', value=0) # 이 변수 신호 받아서 자쿰 몸체 등장시키는데 사용함
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[199]):
             return 던전코드별보스등장(self.ctx)
 
 
-class 던전코드별보스등장(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 던전코드별보스등장(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_id(dungeonId=23040003):
             return 어려운난이도보스등장(self.ctx)
         if self.dungeon_id(dungeonId=23041003):
@@ -26,26 +26,26 @@ class 던전코드별보스등장(common.Trigger):
             return 어려운난이도보스등장(self.ctx)
 
 
-class 어려운난이도보스등장(common.Trigger):
+class 어려운난이도보스등장(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2001], animationEffect=False) # 어려운 난이도의 자쿰 등장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 대기(self.ctx)
 
 
-class 쉬운난이도보스등장(common.Trigger):
+class 쉬운난이도보스등장(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2002], animationEffect=False) # 쉬운 난이도의 자쿰 등장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 대기(self.ctx)
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ZakumBodyAppearance', value=1):
             return 자쿰몸체등장(self.ctx)
         if self.user_value(key='ZakumDungeonEnd', value=1):
@@ -56,11 +56,11 @@ class 대기(common.Trigger):
             return 던전실패(self.ctx)
 
 
-class 자쿰몸체등장(common.Trigger):
+class 자쿰몸체등장(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='ZakumBodyAppearance', value=0) # 이 변수 0 초기화 하여 무한루프 빠지는거 방지
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_id(dungeonId=23040003):
             return 어려운난이도_자쿰몸등장(self.ctx)
         if self.dungeon_id(dungeonId=23041003):
@@ -69,25 +69,25 @@ class 자쿰몸체등장(common.Trigger):
             return 어려운난이도_자쿰몸등장(self.ctx)
 
 
-class 어려운난이도_자쿰몸등장(common.Trigger):
+class 어려운난이도_자쿰몸등장(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2011], animationEffect=False) # 어려운 난이도의 자쿰몸 등장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 대기(self.ctx)
 
 
-class 쉬운난이도_자쿰몸등장(common.Trigger):
+class 쉬운난이도_자쿰몸등장(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2012], animationEffect=False) # 쉬운 난이도의 자쿰몸 등장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 대기(self.ctx)
 
 
-class 종료딜레이(common.Trigger):
+class 종료딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_set_end_time() # 시간 기능 종료시킴
         self.dungeon_close_timer()
@@ -102,14 +102,14 @@ class 종료딜레이(common.Trigger):
         self.remove_buff(boxId=199, skillId=50005301)
         self.remove_buff(boxId=199, skillId=50001450) # 죽음의 저주 걸렸을때 자쿰 클리어 하면, 해제함
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
             self.dungeon_clear()
             return 종료(self.ctx)
 
 
-class 던전실패(common.Trigger):
+class 던전실패(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_set_end_time() # 시간 기능 종료시킴, 이 기능 잘 작동시키려면 DungeonRoom.xlsx 의 제한 시간 만료 시(isExpireTimeOut) 빈칸 설정 해야 함
@@ -121,14 +121,14 @@ class 던전실패(common.Trigger):
         self.remove_buff(boxId=199, skillId=50005301)
         self.remove_buff(boxId=199, skillId=50001450) # 죽음의 저주 걸렸을때 자쿰 클리어 하면, 해제함
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
             self.dungeon_fail()
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_enable_give_up(isEnable='0')
 

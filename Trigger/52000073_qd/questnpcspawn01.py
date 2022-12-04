@@ -1,12 +1,12 @@
 """ trigger/52000073_qd/questnpcspawn01.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101], animationEffect=False) # 카트반
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[40002667], questStates=[3]): # 조사대원
             return NpcRemove01(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[40002667], questStates=[2]):
@@ -45,13 +45,13 @@ class Wait(common.Trigger):
             return NpcChange01(self.ctx)
 
 
-class NpcChange01(common.Trigger):
+class NpcChange01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[201], animationEffect=False)
 
 
-class NpcRemove01(common.Trigger):
+class NpcRemove01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[101])
 

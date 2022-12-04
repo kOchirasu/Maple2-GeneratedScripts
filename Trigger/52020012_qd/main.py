@@ -1,8 +1,8 @@
 """ trigger/52020012_qd/main.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
+class Idle(trigger_api.Trigger):
     pass
 
 

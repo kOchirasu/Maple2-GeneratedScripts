@@ -1,14 +1,14 @@
 """ trigger/66000002_gd/mainprocess_springbeach.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[302]):
             return 이벤트대기중(self.ctx)
 
 
-class 이벤트대기중(common.Trigger):
+class 이벤트대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=901, visible=True, enable=True, minimapVisible=True)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
@@ -17,104 +17,104 @@ class 이벤트대기중(common.Trigger):
         self.set_mesh(triggerIds=[701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832], visible=True)
         self.set_effect(triggerIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=302, boxId=50):
             return 준비멘트1(self.ctx)
         if self.wait_tick(waitTick=30000):
             return 준비멘트1(self.ctx)
 
 
-class 준비멘트1(common.Trigger):
+class 준비멘트1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11', seconds=6)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__0$', arg3='5000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11'):
             return 준비멘트2(self.ctx)
 
 
-class 준비멘트2(common.Trigger):
+class 준비멘트2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='12', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__1$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='12'):
             return 경기장입장(self.ctx)
 
 
-class 경기장입장(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 경기장입장(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             self.move_user(mapId=66000002, portalId=902, boxId=302)
             return 잠시대기(self.ctx)
 
 
-class 잠시대기(common.Trigger):
+class 잠시대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='13', seconds=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='13'):
             return 시작멘트1(self.ctx)
 
 
-class 시작멘트1(common.Trigger):
+class 시작멘트1(trigger_api.Trigger):
     def on_enter(self):
         self.set_mini_game_area_for_hack(boxId=301) # 해킹 보안용 시작 box 설정
         self.set_timer(timerId='13', seconds=5)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__2$', arg3='4000') # 로그에서 해당 이벤트에 참여한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='13'):
             return 시작멘트2(self.ctx)
 
 
-class 시작멘트2(common.Trigger):
+class 시작멘트2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='14', seconds=5)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__3$', arg3='4000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='14'):
             return 시작멘트3(self.ctx)
 
 
-class 시작멘트3(common.Trigger):
+class 시작멘트3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='15', seconds=5)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__4$', arg3='4000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='15'):
             return 라운드1(self.ctx)
 
 
 # 1라운드
-class 라운드1(common.Trigger):
+class 라운드1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='16', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__5$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='16'):
             return 게임시작1(self.ctx)
 
 
-class 게임시작1(common.Trigger):
+class 게임시작1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='17', seconds=6)
         self.set_event_ui(type=0, arg2='1,5')
         self.show_count_ui(text='$61000007_ME__MAINPROCESS_SPRINGBEACH__6$', stage=1, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='17'):
             return 스프링섞기01(self.ctx)
 
 
-class 스프링섞기01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스프링섞기01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=5):
             return 스프링공격01_1(self.ctx)
         if self.random_condition(rate=5):
@@ -197,7 +197,7 @@ class 스프링섞기01(common.Trigger):
             return 스프링공격40_1(self.ctx)
 
 
-class 공격중지01(common.Trigger):
+class 공격중지01(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='19', seconds=3)
         self.set_skill(triggerIds=[201], enable=False)
@@ -265,52 +265,52 @@ class 공격중지01(common.Trigger):
         self.set_skill(triggerIds=[263], enable=False)
         self.set_skill(triggerIds=[264], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='19'):
             return 생존자수색01(self.ctx)
         if not self.user_detected(boxIds=[301]):
             return 모두탈락(self.ctx)
 
 
-class 생존자수색01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 생존자수색01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 한숨돌리기01(self.ctx)
 
 
-class 한숨돌리기01(common.Trigger):
+class 한숨돌리기01(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='20', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='20'):
             return 라운드2(self.ctx)
 
 
 # 2라운드
-class 라운드2(common.Trigger):
+class 라운드2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='21', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__7$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='21'):
             return 게임시작2(self.ctx)
 
 
-class 게임시작2(common.Trigger):
+class 게임시작2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='22', seconds=6)
         self.set_event_ui(type=0, arg2='2,5')
         self.show_count_ui(text='$61000007_ME__MAINPROCESS_SPRINGBEACH__8$', stage=2, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='22'):
             return 스프링섞기02(self.ctx)
 
 
-class 스프링섞기02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스프링섞기02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=2):
             return 스프링공격01_2(self.ctx)
         if self.random_condition(rate=2):
@@ -393,7 +393,7 @@ class 스프링섞기02(common.Trigger):
             return 스프링공격40_2(self.ctx)
 
 
-class 공격중지02(common.Trigger):
+class 공격중지02(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='23', seconds=3)
         self.set_skill(triggerIds=[201], enable=False)
@@ -461,52 +461,52 @@ class 공격중지02(common.Trigger):
         self.set_skill(triggerIds=[263], enable=False)
         self.set_skill(triggerIds=[264], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='23'):
             return 생존자수색02(self.ctx)
         if not self.user_detected(boxIds=[301]):
             return 모두탈락(self.ctx)
 
 
-class 생존자수색02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 생존자수색02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 한숨돌리기02(self.ctx)
 
 
-class 한숨돌리기02(common.Trigger):
+class 한숨돌리기02(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='24', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='24'):
             return 라운드3(self.ctx)
 
 
 # 3라운드
-class 라운드3(common.Trigger):
+class 라운드3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='25', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__9$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='25'):
             return 게임시작3(self.ctx)
 
 
-class 게임시작3(common.Trigger):
+class 게임시작3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='26', seconds=6)
         self.set_event_ui(type=0, arg2='3,5')
         self.show_count_ui(text='$61000007_ME__MAINPROCESS_SPRINGBEACH__10$', stage=3, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='26'):
             return 스프링섞기03(self.ctx)
 
 
-class 스프링섞기03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스프링섞기03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=1):
             return 스프링공격01_3(self.ctx)
         if self.random_condition(rate=1):
@@ -589,7 +589,7 @@ class 스프링섞기03(common.Trigger):
             return 스프링공격40_3(self.ctx)
 
 
-class 공격중지03(common.Trigger):
+class 공격중지03(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='27', seconds=3)
         self.set_skill(triggerIds=[201], enable=False)
@@ -657,52 +657,52 @@ class 공격중지03(common.Trigger):
         self.set_skill(triggerIds=[263], enable=False)
         self.set_skill(triggerIds=[264], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='27'):
             return 생존자수색03(self.ctx)
         if not self.user_detected(boxIds=[301]):
             return 모두탈락(self.ctx)
 
 
-class 생존자수색03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 생존자수색03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 한숨돌리기03(self.ctx)
 
 
-class 한숨돌리기03(common.Trigger):
+class 한숨돌리기03(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='28', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='28'):
             return 라운드4(self.ctx)
 
 
 # 4라운드
-class 라운드4(common.Trigger):
+class 라운드4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='29', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__11$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='29'):
             return 게임시작4(self.ctx)
 
 
-class 게임시작4(common.Trigger):
+class 게임시작4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='30', seconds=6)
         self.set_event_ui(type=0, arg2='4,5')
         self.show_count_ui(text='$61000007_ME__MAINPROCESS_SPRINGBEACH__12$', stage=4, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='30'):
             return 스프링섞기04(self.ctx)
 
 
-class 스프링섞기04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스프링섞기04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=1):
             return 스프링공격01_4(self.ctx)
         if self.random_condition(rate=1):
@@ -785,7 +785,7 @@ class 스프링섞기04(common.Trigger):
             return 스프링공격40_4(self.ctx)
 
 
-class 공격중지04(common.Trigger):
+class 공격중지04(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='31', seconds=3)
         self.set_skill(triggerIds=[201], enable=False)
@@ -853,52 +853,52 @@ class 공격중지04(common.Trigger):
         self.set_skill(triggerIds=[263], enable=False)
         self.set_skill(triggerIds=[264], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='31'):
             return 생존자수색04(self.ctx)
         if not self.user_detected(boxIds=[301]):
             return 모두탈락(self.ctx)
 
 
-class 생존자수색04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 생존자수색04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 한숨돌리기04(self.ctx)
 
 
-class 한숨돌리기04(common.Trigger):
+class 한숨돌리기04(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='32', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='32'):
             return 라운드5(self.ctx)
 
 
 # 5라운드
-class 라운드5(common.Trigger):
+class 라운드5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='33', seconds=4)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__13$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='33'):
             return 게임시작5(self.ctx)
 
 
-class 게임시작5(common.Trigger):
+class 게임시작5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='34', seconds=6)
         self.set_event_ui(type=0, arg2='5,5')
         self.show_count_ui(text='$61000007_ME__MAINPROCESS_SPRINGBEACH__14$', stage=5, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='34'):
             return 스프링섞기05(self.ctx)
 
 
-class 스프링섞기05(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스프링섞기05(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=2):
             return 스프링공격16_5(self.ctx)
         if self.random_condition(rate=2):
@@ -951,7 +951,7 @@ class 스프링섞기05(common.Trigger):
             return 스프링공격40_5(self.ctx)
 
 
-class 공격중지05(common.Trigger):
+class 공격중지05(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='35', seconds=3)
         self.set_skill(triggerIds=[201], enable=False)
@@ -1019,82 +1019,82 @@ class 공격중지05(common.Trigger):
         self.set_skill(triggerIds=[263], enable=False)
         self.set_skill(triggerIds=[264], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='35'):
             return 생존자수색05(self.ctx)
         if not self.user_detected(boxIds=[301]):
             return 모두탈락(self.ctx)
 
 
-class 생존자수색05(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 생존자수색05(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 한숨돌리기05(self.ctx)
 
 
-class 한숨돌리기05(common.Trigger):
+class 한숨돌리기05(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='36', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='36'):
             return 보상단계(self.ctx)
 
 
-class 보상단계(common.Trigger):
+class 보상단계(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='37', seconds=7)
         self.set_event_ui(type=3, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__15$', arg3='5000', arg4='301')
         self.set_event_ui(type=6, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__16$', arg3='5000', arg4='303,304,305,306') # 로그에서 해당 이벤트에서 우승한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='37'):
             return 경험치지급(self.ctx)
 
 
-class 경험치지급(common.Trigger):
+class 경험치지급(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return 버프걸기(self.ctx)
 
 
-class 버프걸기(common.Trigger):
+class 버프걸기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='38', seconds=6)
         # action name="이벤트UI를설정한다" arg1="3" arg2="$61000007_ME__MAINPROCESS_SPRINGBEACH__17$" arg3="5000" arg4="301"/>
         # <action name="이벤트UI를설정한다" arg1="6" arg2="$61000007_ME__MAINPROCESS_SPRINGBEACH__18$" arg3="5000" arg4="303,304,305,306"/>
         # <action name="버프를걸어준다" arg1="301" arg2="70000019" arg3="1"/
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='38'):
             return 다리등장(self.ctx)
 
 
 # 생존자없음
-class 모두탈락(common.Trigger):
+class 모두탈락(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='40', seconds=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='40'):
             return 탈락멘트(self.ctx)
 
 
-class 탈락멘트(common.Trigger):
+class 탈락멘트(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='40', seconds=6)
         self.set_event_ui(type=5, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__21$', arg3='5000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='40'):
             return 다리등장(self.ctx)
 
 
 # 마무리
-class 다리등장(common.Trigger):
+class 다리등장(trigger_api.Trigger):
     def on_enter(self):
         self.unset_mini_game_area_for_hack() # 해킹 보안 종료
         self.set_timer(timerId='41', seconds=10)
@@ -1103,27 +1103,27 @@ class 다리등장(common.Trigger):
         self.set_mesh(triggerIds=[701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750,751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775,776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832], visible=False)
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__22$', arg3='10000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='41'):
             return 유저이동(self.ctx)
 
 
-class 유저이동(common.Trigger):
+class 유저이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__23$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=120000):
             self.move_user(mapId=0, portalId=0)
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 
 # 패턴 목록_라운드1
-class 스프링공격01_1(common.Trigger):
+class 스프링공격01_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[105,106,107,108,117,118,119,120,129,130,131,132,137,138,139,140,141,142,143,144,145,150,151,152,153,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1160,22 +1160,22 @@ class 스프링공격01_1(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_101(self.ctx)
 
 
-class 게임진행1_101(common.Trigger):
+class 게임진행1_101(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격02_1(common.Trigger):
+class 스프링공격02_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,137,138,139,140,150,151,152,153], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1212,22 +1212,22 @@ class 스프링공격02_1(common.Trigger):
         self.set_skill(triggerIds=[252], enable=True)
         self.set_skill(triggerIds=[253], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_102(self.ctx)
 
 
-class 게임진행1_102(common.Trigger):
+class 게임진행1_102(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격03_1(common.Trigger):
+class 스프링공격03_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,109,110,111,112,113,114,115,116,121,122,123,124,129,130,131,132,141,142,143,144,145,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1264,22 +1264,22 @@ class 스프링공격03_1(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_103(self.ctx)
 
 
-class 게임진행1_103(common.Trigger):
+class 게임진행1_103(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격04_1(common.Trigger):
+class 스프링공격04_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,117,118,119,120,121,127,128,129,133,134,135,137,138,139,147,148,149,150,151,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1306,22 +1306,22 @@ class 스프링공격04_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_104(self.ctx)
 
 
-class 게임진행1_104(common.Trigger):
+class 게임진행1_104(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격05_1(common.Trigger):
+class 스프링공격05_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[104,105,108,109,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,140,141,145,146,153,154,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1354,22 +1354,22 @@ class 스프링공격05_1(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_105(self.ctx)
 
 
-class 게임진행1_105(common.Trigger):
+class 게임진행1_105(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격06_1(common.Trigger):
+class 스프링공격06_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,108,109,110,111,112,113,114,115,116,117,120,121,128,129,131,132,133,142,143,144,145,146,155,156,157,158,159,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1408,22 +1408,22 @@ class 스프링공격06_1(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_106(self.ctx)
 
 
-class 게임진행1_106(common.Trigger):
+class 게임진행1_106(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격07_1(common.Trigger):
+class 스프링공격07_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,111,112,115,116,117,118,119,120,121,122,127,128,129,130,131,132,133,134,137,138,143,148,149,150,151,156,157,158,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1460,22 +1460,22 @@ class 스프링공격07_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_107(self.ctx)
 
 
-class 게임진행1_107(common.Trigger):
+class 게임진행1_107(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격08_1(common.Trigger):
+class 스프링공격08_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,151,152,155,156], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1512,22 +1512,22 @@ class 스프링공격08_1(common.Trigger):
         self.set_skill(triggerIds=[255], enable=True)
         self.set_skill(triggerIds=[256], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_108(self.ctx)
 
 
-class 게임진행1_108(common.Trigger):
+class 게임진행1_108(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격09_1(common.Trigger):
+class 스프링공격09_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,115,116,117,118,119,122,124,125,127,130,131,132,133,134,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1572,22 +1572,22 @@ class 스프링공격09_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_109(self.ctx)
 
 
-class 게임진행1_109(common.Trigger):
+class 게임진행1_109(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격10_1(common.Trigger):
+class 스프링공격10_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,110,111,112,113,114,115,118,131,134,135,136,137,138,139,142,143,144,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1628,22 +1628,22 @@ class 스프링공격10_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_110(self.ctx)
 
 
-class 게임진행1_110(common.Trigger):
+class 게임진행1_110(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격11_1(common.Trigger):
+class 스프링공격11_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1696,22 +1696,22 @@ class 스프링공격11_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_111(self.ctx)
 
 
-class 게임진행1_111(common.Trigger):
+class 게임진행1_111(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격12_1(common.Trigger):
+class 스프링공격12_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,107,108,113,114,115,116,119,120,125,126,127,128,131,132,138,140,142,146,147,148,149,151,153,155,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1748,22 +1748,22 @@ class 스프링공격12_1(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_112(self.ctx)
 
 
-class 게임진행1_112(common.Trigger):
+class 게임진행1_112(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격13_1(common.Trigger):
+class 스프링공격13_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1800,22 +1800,22 @@ class 스프링공격13_1(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_113(self.ctx)
 
 
-class 게임진행1_113(common.Trigger):
+class 게임진행1_113(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격14_1(common.Trigger):
+class 스프링공격14_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,106,108,109,111,114,116,117,119,120,121,122,124,125,127,128,129,130,132,133,135,138,139,142,143,145,146,148,150,153,154,157,159,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1856,22 +1856,22 @@ class 스프링공격14_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_114(self.ctx)
 
 
-class 게임진행1_114(common.Trigger):
+class 게임진행1_114(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격15_1(common.Trigger):
+class 스프링공격15_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,109,110,111,112,115,116,117,118,119,120,123,124,125,126,127,128,131,132,133,134,137,138,140,141,143,144,145,148,149,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1919,22 +1919,22 @@ class 스프링공격15_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_115(self.ctx)
 
 
-class 게임진행1_115(common.Trigger):
+class 게임진행1_115(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격16_1(common.Trigger):
+class 스프링공격16_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -1991,22 +1991,22 @@ class 스프링공격16_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_116(self.ctx)
 
 
-class 게임진행1_116(common.Trigger):
+class 게임진행1_116(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격17_1(common.Trigger):
+class 스프링공격17_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,119,120,121,122,125,126,127,128,129,130,131,132,135,136,138,139,140,142,143,146,147,148,149,151,152,153,155,156,157,158,159,160,161,162], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2059,22 +2059,22 @@ class 스프링공격17_1(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[262], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_117(self.ctx)
 
 
-class 게임진행1_117(common.Trigger):
+class 게임진행1_117(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격18_1(common.Trigger):
+class 스프링공격18_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,104,105,106,107,109,110,111,113,114,116,117,118,119,121,122,123,125,126,128,129,130,131,133,134,135,138,140,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2127,22 +2127,22 @@ class 스프링공격18_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_118(self.ctx)
 
 
-class 게임진행1_118(common.Trigger):
+class 게임진행1_118(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격19_1(common.Trigger):
+class 스프링공격19_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,138,139,142,143,144,145,146,147,148,150,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2199,22 +2199,22 @@ class 스프링공격19_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_119(self.ctx)
 
 
-class 게임진행1_119(common.Trigger):
+class 게임진행1_119(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격20_1(common.Trigger):
+class 스프링공격20_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,107,108,109,110,111,112,115,116,117,118,119,121,122,123,124,125,126,127,129,130,131,132,133,134,137,138,140,141,143,144,145,146,147,148,149,150,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2269,22 +2269,22 @@ class 스프링공격20_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_120(self.ctx)
 
 
-class 게임진행1_120(common.Trigger):
+class 게임진행1_120(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격21_1(common.Trigger):
+class 스프링공격21_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,111,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,138,140,141,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2345,22 +2345,22 @@ class 스프링공격21_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_121(self.ctx)
 
 
-class 게임진행1_121(common.Trigger):
+class 게임진행1_121(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격22_1(common.Trigger):
+class 스프링공격22_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,118,119,120,121,122,123,125,126,127,128,129,130,131,132,134,135,136,138,139,140,141,142,143,145,146,147,148,149,150,151,152,153,155,156,157,158,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2421,22 +2421,22 @@ class 스프링공격22_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_122(self.ctx)
 
 
-class 게임진행1_122(common.Trigger):
+class 게임진행1_122(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격23_1(common.Trigger):
+class 스프링공격23_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2497,22 +2497,22 @@ class 스프링공격23_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_123(self.ctx)
 
 
-class 게임진행1_123(common.Trigger):
+class 게임진행1_123(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격24_1(common.Trigger):
+class 스프링공격24_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2573,22 +2573,22 @@ class 스프링공격24_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_124(self.ctx)
 
 
-class 게임진행1_124(common.Trigger):
+class 게임진행1_124(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격25_1(common.Trigger):
+class 스프링공격25_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2652,22 +2652,22 @@ class 스프링공격25_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_125(self.ctx)
 
 
-class 게임진행1_125(common.Trigger):
+class 게임진행1_125(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격26_1(common.Trigger):
+class 스프링공격26_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,115,116,119,120,122,124,125,127,129,130,132,133,135,136,137,138,139,142,143,144,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2723,22 +2723,22 @@ class 스프링공격26_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_126(self.ctx)
 
 
-class 게임진행1_126(common.Trigger):
+class 게임진행1_126(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격27_1(common.Trigger):
+class 스프링공격27_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,117,120,121,122,123,124,125,126,127,130,132,133,134,135,136,137,138,139,140,141,142,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2795,22 +2795,22 @@ class 스프링공격27_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_127(self.ctx)
 
 
-class 게임진행1_127(common.Trigger):
+class 게임진행1_127(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격28_1(common.Trigger):
+class 스프링공격28_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,110,111,112,113,116,118,119,120,122,123,126,127,129,130,131,133,136,137,139,140,142,145,146,147,148,149,150,151,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2860,22 +2860,22 @@ class 스프링공격28_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_128(self.ctx)
 
 
-class 게임진행1_128(common.Trigger):
+class 게임진행1_128(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격29_1(common.Trigger):
+class 스프링공격29_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,109,110,112,113,115,117,118,119,120,122,124,125,127,129,130,131,132,134,136,137,138,143,146,147,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2926,22 +2926,22 @@ class 스프링공격29_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_129(self.ctx)
 
 
-class 게임진행1_129(common.Trigger):
+class 게임진행1_129(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격30_1(common.Trigger):
+class 스프링공격30_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,114,115,116,117,119,121,122,123,124,125,126,127,129,130,131,132,133,135,136,137,139,140,141,142,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -2994,22 +2994,22 @@ class 스프링공격30_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_130(self.ctx)
 
 
-class 게임진행1_130(common.Trigger):
+class 게임진행1_130(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격31_1(common.Trigger):
+class 스프링공격31_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,113,115,116,117,118,119,120,121,123,124,125,126,128,129,130,131,132,133,134,136,137,138,139,140,141,142,143,144,145,146,147,148,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3072,22 +3072,22 @@ class 스프링공격31_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_131(self.ctx)
 
 
-class 게임진행1_131(common.Trigger):
+class 게임진행1_131(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격32_1(common.Trigger):
+class 스프링공격32_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,120,121,122,123,124,125,126,127,128,129,131,132,133,134,135,136,137,138,140,141,143,144,145,146,147,148,149,150,152,153,154,155,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3150,22 +3150,22 @@ class 스프링공격32_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_132(self.ctx)
 
 
-class 게임진행1_132(common.Trigger):
+class 게임진행1_132(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격33_1(common.Trigger):
+class 스프링공격33_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,105,106,107,108,109,111,112,113,115,116,117,118,119,120,121,122,123,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,144,145,146,147,148,149,150,151,152,153,154,156,157,158,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3227,22 +3227,22 @@ class 스프링공격33_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_133(self.ctx)
 
 
-class 게임진행1_133(common.Trigger):
+class 게임진행1_133(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격34_1(common.Trigger):
+class 스프링공격34_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,118,119,121,122,123,124,125,126,127,128,130,131,133,134,135,136,137,138,139,140,141,142,143,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3300,22 +3300,22 @@ class 스프링공격34_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_134(self.ctx)
 
 
-class 게임진행1_134(common.Trigger):
+class 게임진행1_134(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격35_1(common.Trigger):
+class 스프링공격35_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,116,117,118,122,123,126,127,128,129,130,131,132,133,134,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3374,22 +3374,22 @@ class 스프링공격35_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_135(self.ctx)
 
 
-class 게임진행1_135(common.Trigger):
+class 게임진행1_135(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격36_1(common.Trigger):
+class 스프링공격36_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3454,22 +3454,22 @@ class 스프링공격36_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_136(self.ctx)
 
 
-class 게임진행1_136(common.Trigger):
+class 게임진행1_136(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격37_1(common.Trigger):
+class 스프링공격37_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3534,22 +3534,22 @@ class 스프링공격37_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_137(self.ctx)
 
 
-class 게임진행1_137(common.Trigger):
+class 게임진행1_137(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격38_1(common.Trigger):
+class 스프링공격38_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3614,22 +3614,22 @@ class 스프링공격38_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_138(self.ctx)
 
 
-class 게임진행1_138(common.Trigger):
+class 게임진행1_138(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격39_1(common.Trigger):
+class 스프링공격39_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,130,132,133,135,136,137,138,139,140,141,142,144,145,146,147,149,150,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3690,22 +3690,22 @@ class 스프링공격39_1(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_139(self.ctx)
 
 
-class 게임진행1_139(common.Trigger):
+class 게임진행1_139(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
-class 스프링공격40_1(common.Trigger):
+class 스프링공격40_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,112,113,114,116,117,119,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3766,23 +3766,23 @@ class 스프링공격40_1(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_140(self.ctx)
 
 
-class 게임진행1_140(common.Trigger):
+class 게임진행1_140(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지01(self.ctx)
 
 
 # 패턴 목록_라운드2
-class 스프링공격01_2(common.Trigger):
+class 스프링공격01_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[105,106,107,108,117,118,119,120,129,130,131,132,137,138,139,140,141,142,143,144,145,150,151,152,153,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3819,22 +3819,22 @@ class 스프링공격01_2(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_201(self.ctx)
 
 
-class 게임진행1_201(common.Trigger):
+class 게임진행1_201(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격02_2(common.Trigger):
+class 스프링공격02_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,137,138,139,140,150,151,152,153], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3871,22 +3871,22 @@ class 스프링공격02_2(common.Trigger):
         self.set_skill(triggerIds=[252], enable=True)
         self.set_skill(triggerIds=[253], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_202(self.ctx)
 
 
-class 게임진행1_202(common.Trigger):
+class 게임진행1_202(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격03_2(common.Trigger):
+class 스프링공격03_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,109,110,111,112,113,114,115,116,121,122,123,124,129,130,131,132,141,142,143,144,145,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3923,22 +3923,22 @@ class 스프링공격03_2(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_203(self.ctx)
 
 
-class 게임진행1_203(common.Trigger):
+class 게임진행1_203(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격04_2(common.Trigger):
+class 스프링공격04_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,117,118,119,120,121,127,128,129,133,134,135,137,138,139,147,148,149,150,151,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -3965,22 +3965,22 @@ class 스프링공격04_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_204(self.ctx)
 
 
-class 게임진행1_204(common.Trigger):
+class 게임진행1_204(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=2)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격05_2(common.Trigger):
+class 스프링공격05_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[104,105,108,109,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,140,141,145,146,153,154,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4013,22 +4013,22 @@ class 스프링공격05_2(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_205(self.ctx)
 
 
-class 게임진행1_205(common.Trigger):
+class 게임진행1_205(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격06_2(common.Trigger):
+class 스프링공격06_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,108,109,110,111,112,113,114,115,116,117,120,121,128,129,131,132,133,142,143,144,145,146,155,156,157,158,159,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4067,22 +4067,22 @@ class 스프링공격06_2(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_206(self.ctx)
 
 
-class 게임진행1_206(common.Trigger):
+class 게임진행1_206(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격07_2(common.Trigger):
+class 스프링공격07_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,111,112,115,116,117,118,119,120,121,122,127,128,129,130,131,132,133,134,137,138,143,148,149,150,151,156,157,158,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4119,22 +4119,22 @@ class 스프링공격07_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_207(self.ctx)
 
 
-class 게임진행1_207(common.Trigger):
+class 게임진행1_207(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격08_2(common.Trigger):
+class 스프링공격08_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,151,152,155,156], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4171,22 +4171,22 @@ class 스프링공격08_2(common.Trigger):
         self.set_skill(triggerIds=[255], enable=True)
         self.set_skill(triggerIds=[256], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_208(self.ctx)
 
 
-class 게임진행1_208(common.Trigger):
+class 게임진행1_208(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격09_2(common.Trigger):
+class 스프링공격09_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,115,116,117,118,119,122,124,125,127,130,131,132,133,134,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4231,22 +4231,22 @@ class 스프링공격09_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_209(self.ctx)
 
 
-class 게임진행1_209(common.Trigger):
+class 게임진행1_209(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격10_2(common.Trigger):
+class 스프링공격10_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,110,111,112,113,114,115,118,131,134,135,136,137,138,139,142,143,144,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4288,22 +4288,22 @@ class 스프링공격10_2(common.Trigger):
         self.set_skill(triggerIds=[264], enable=True)
         self.set_skill(triggerIds=[236], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_210(self.ctx)
 
 
-class 게임진행1_210(common.Trigger):
+class 게임진행1_210(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격11_2(common.Trigger):
+class 스프링공격11_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4356,22 +4356,22 @@ class 스프링공격11_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_211(self.ctx)
 
 
-class 게임진행1_211(common.Trigger):
+class 게임진행1_211(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격12_2(common.Trigger):
+class 스프링공격12_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,107,108,113,114,115,116,119,120,125,126,127,128,131,132,138,140,142,146,147,148,149,151,153,155,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4408,22 +4408,22 @@ class 스프링공격12_2(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_212(self.ctx)
 
 
-class 게임진행1_212(common.Trigger):
+class 게임진행1_212(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격13_2(common.Trigger):
+class 스프링공격13_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4460,22 +4460,22 @@ class 스프링공격13_2(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_213(self.ctx)
 
 
-class 게임진행1_213(common.Trigger):
+class 게임진행1_213(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격14_2(common.Trigger):
+class 스프링공격14_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,106,108,109,111,114,116,117,119,120,121,122,124,125,127,128,129,130,132,133,135,138,139,142,143,145,146,148,150,153,154,157,159,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4516,22 +4516,22 @@ class 스프링공격14_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_214(self.ctx)
 
 
-class 게임진행1_214(common.Trigger):
+class 게임진행1_214(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격15_2(common.Trigger):
+class 스프링공격15_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,109,110,111,112,115,116,117,118,119,120,123,124,125,126,127,128,131,132,133,134,137,138,140,141,143,144,145,148,149,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4579,22 +4579,22 @@ class 스프링공격15_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_215(self.ctx)
 
 
-class 게임진행1_215(common.Trigger):
+class 게임진행1_215(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격16_2(common.Trigger):
+class 스프링공격16_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4651,22 +4651,22 @@ class 스프링공격16_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_216(self.ctx)
 
 
-class 게임진행1_216(common.Trigger):
+class 게임진행1_216(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격17_2(common.Trigger):
+class 스프링공격17_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,119,120,121,122,125,126,127,128,129,130,131,132,135,136,138,139,140,142,143,146,147,148,149,151,152,153,155,156,157,158,159,160,161,162], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4719,22 +4719,22 @@ class 스프링공격17_2(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[262], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_217(self.ctx)
 
 
-class 게임진행1_217(common.Trigger):
+class 게임진행1_217(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격18_2(common.Trigger):
+class 스프링공격18_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,104,105,106,107,109,110,111,113,114,116,117,118,119,121,122,123,125,126,128,129,130,131,133,134,135,138,140,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4787,22 +4787,22 @@ class 스프링공격18_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_218(self.ctx)
 
 
-class 게임진행1_218(common.Trigger):
+class 게임진행1_218(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격19_2(common.Trigger):
+class 스프링공격19_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,138,139,142,143,144,145,146,147,148,150,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4859,22 +4859,22 @@ class 스프링공격19_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_219(self.ctx)
 
 
-class 게임진행1_219(common.Trigger):
+class 게임진행1_219(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격20_2(common.Trigger):
+class 스프링공격20_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,107,108,109,110,111,112,115,116,117,118,119,121,122,123,124,125,126,127,129,130,131,132,133,134,137,138,140,141,143,144,145,146,147,148,149,150,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -4929,22 +4929,22 @@ class 스프링공격20_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_220(self.ctx)
 
 
-class 게임진행1_220(common.Trigger):
+class 게임진행1_220(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격21_2(common.Trigger):
+class 스프링공격21_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,111,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,138,140,141,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5005,22 +5005,22 @@ class 스프링공격21_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_221(self.ctx)
 
 
-class 게임진행1_221(common.Trigger):
+class 게임진행1_221(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격22_2(common.Trigger):
+class 스프링공격22_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,118,119,120,121,122,123,125,126,127,128,129,130,131,132,134,135,136,138,139,140,141,142,143,145,146,147,148,149,150,151,152,153,155,156,157,158,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5081,22 +5081,22 @@ class 스프링공격22_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_222(self.ctx)
 
 
-class 게임진행1_222(common.Trigger):
+class 게임진행1_222(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격23_2(common.Trigger):
+class 스프링공격23_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5157,22 +5157,22 @@ class 스프링공격23_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_223(self.ctx)
 
 
-class 게임진행1_223(common.Trigger):
+class 게임진행1_223(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격24_2(common.Trigger):
+class 스프링공격24_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5233,22 +5233,22 @@ class 스프링공격24_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_224(self.ctx)
 
 
-class 게임진행1_224(common.Trigger):
+class 게임진행1_224(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격25_2(common.Trigger):
+class 스프링공격25_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5312,22 +5312,22 @@ class 스프링공격25_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_225(self.ctx)
 
 
-class 게임진행1_225(common.Trigger):
+class 게임진행1_225(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격26_2(common.Trigger):
+class 스프링공격26_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,115,116,119,120,122,124,125,127,129,130,132,133,135,136,137,138,139,142,143,144,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5383,22 +5383,22 @@ class 스프링공격26_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_226(self.ctx)
 
 
-class 게임진행1_226(common.Trigger):
+class 게임진행1_226(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격27_2(common.Trigger):
+class 스프링공격27_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,117,120,121,122,123,124,125,126,127,130,132,133,134,135,136,137,138,139,140,141,142,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5455,22 +5455,22 @@ class 스프링공격27_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_227(self.ctx)
 
 
-class 게임진행1_227(common.Trigger):
+class 게임진행1_227(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격28_2(common.Trigger):
+class 스프링공격28_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,110,111,112,113,116,118,119,120,122,123,126,127,129,130,131,133,136,137,139,140,142,145,146,147,148,149,150,151,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5520,22 +5520,22 @@ class 스프링공격28_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_228(self.ctx)
 
 
-class 게임진행1_228(common.Trigger):
+class 게임진행1_228(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격29_2(common.Trigger):
+class 스프링공격29_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,109,110,112,113,115,117,118,119,120,122,124,125,127,129,130,131,132,134,136,137,138,143,146,147,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5586,22 +5586,22 @@ class 스프링공격29_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_229(self.ctx)
 
 
-class 게임진행1_229(common.Trigger):
+class 게임진행1_229(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격30_2(common.Trigger):
+class 스프링공격30_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,114,115,116,117,119,121,122,123,124,125,126,127,129,130,131,132,133,135,136,137,139,140,141,142,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5654,22 +5654,22 @@ class 스프링공격30_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_230(self.ctx)
 
 
-class 게임진행1_230(common.Trigger):
+class 게임진행1_230(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격31_2(common.Trigger):
+class 스프링공격31_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,113,115,116,117,118,119,120,121,123,124,125,126,128,129,130,131,132,133,134,136,137,138,139,140,141,142,143,144,145,146,147,148,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5732,22 +5732,22 @@ class 스프링공격31_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_231(self.ctx)
 
 
-class 게임진행1_231(common.Trigger):
+class 게임진행1_231(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격32_2(common.Trigger):
+class 스프링공격32_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,120,121,122,123,124,125,126,127,128,129,131,132,133,134,135,136,137,138,140,141,143,144,145,146,147,148,149,150,152,153,154,155,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5810,22 +5810,22 @@ class 스프링공격32_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_232(self.ctx)
 
 
-class 게임진행1_232(common.Trigger):
+class 게임진행1_232(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격33_2(common.Trigger):
+class 스프링공격33_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,105,106,107,108,109,111,112,113,115,116,117,118,119,120,121,122,123,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,144,145,146,147,148,149,150,151,152,153,154,156,157,158,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5887,22 +5887,22 @@ class 스프링공격33_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_233(self.ctx)
 
 
-class 게임진행1_233(common.Trigger):
+class 게임진행1_233(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격34_2(common.Trigger):
+class 스프링공격34_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,118,119,121,122,123,124,125,126,127,128,130,131,133,134,135,136,137,138,139,140,141,142,143,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -5960,22 +5960,22 @@ class 스프링공격34_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_234(self.ctx)
 
 
-class 게임진행1_234(common.Trigger):
+class 게임진행1_234(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격35_2(common.Trigger):
+class 스프링공격35_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,116,117,118,122,123,126,127,128,129,130,131,132,133,134,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6034,22 +6034,22 @@ class 스프링공격35_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_235(self.ctx)
 
 
-class 게임진행1_235(common.Trigger):
+class 게임진행1_235(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격36_2(common.Trigger):
+class 스프링공격36_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6114,22 +6114,22 @@ class 스프링공격36_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_236(self.ctx)
 
 
-class 게임진행1_236(common.Trigger):
+class 게임진행1_236(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격37_2(common.Trigger):
+class 스프링공격37_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6194,22 +6194,22 @@ class 스프링공격37_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_237(self.ctx)
 
 
-class 게임진행1_237(common.Trigger):
+class 게임진행1_237(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격38_2(common.Trigger):
+class 스프링공격38_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6274,22 +6274,22 @@ class 스프링공격38_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_238(self.ctx)
 
 
-class 게임진행1_238(common.Trigger):
+class 게임진행1_238(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격39_2(common.Trigger):
+class 스프링공격39_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,130,132,133,135,136,137,138,139,140,141,142,144,145,146,147,149,150,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6350,22 +6350,22 @@ class 스프링공격39_2(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_239(self.ctx)
 
 
-class 게임진행1_239(common.Trigger):
+class 게임진행1_239(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
-class 스프링공격40_2(common.Trigger):
+class 스프링공격40_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,112,113,114,116,117,119,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6426,23 +6426,23 @@ class 스프링공격40_2(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_240(self.ctx)
 
 
-class 게임진행1_240(common.Trigger):
+class 게임진행1_240(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지02(self.ctx)
 
 
 # 패턴 목록_라운드3
-class 스프링공격01_3(common.Trigger):
+class 스프링공격01_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[105,106,107,108,117,118,119,120,129,130,131,132,137,138,139,140,141,142,143,144,145,150,151,152,153,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6479,22 +6479,22 @@ class 스프링공격01_3(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_301(self.ctx)
 
 
-class 게임진행1_301(common.Trigger):
+class 게임진행1_301(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격02_3(common.Trigger):
+class 스프링공격02_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,137,138,139,140,150,151,152,153], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6531,22 +6531,22 @@ class 스프링공격02_3(common.Trigger):
         self.set_skill(triggerIds=[252], enable=True)
         self.set_skill(triggerIds=[253], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_302(self.ctx)
 
 
-class 게임진행1_302(common.Trigger):
+class 게임진행1_302(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격03_3(common.Trigger):
+class 스프링공격03_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,109,110,111,112,113,114,115,116,121,122,123,124,129,130,131,132,141,142,143,144,145,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6583,22 +6583,22 @@ class 스프링공격03_3(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_303(self.ctx)
 
 
-class 게임진행1_303(common.Trigger):
+class 게임진행1_303(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격04_3(common.Trigger):
+class 스프링공격04_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,117,118,119,120,121,127,128,129,133,134,135,137,138,139,147,148,149,150,151,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6625,22 +6625,22 @@ class 스프링공격04_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_304(self.ctx)
 
 
-class 게임진행1_304(common.Trigger):
+class 게임진행1_304(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격05_3(common.Trigger):
+class 스프링공격05_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[104,105,108,109,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,140,141,145,146,153,154,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6673,22 +6673,22 @@ class 스프링공격05_3(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_305(self.ctx)
 
 
-class 게임진행1_305(common.Trigger):
+class 게임진행1_305(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격06_3(common.Trigger):
+class 스프링공격06_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,108,109,110,111,112,113,114,115,116,117,120,121,128,129,131,132,133,142,143,144,145,146,155,156,157,158,159,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6727,22 +6727,22 @@ class 스프링공격06_3(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_306(self.ctx)
 
 
-class 게임진행1_306(common.Trigger):
+class 게임진행1_306(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격07_3(common.Trigger):
+class 스프링공격07_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,111,112,115,116,117,118,119,120,121,122,127,128,129,130,131,132,133,134,137,138,143,148,149,150,151,156,157,158,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6779,22 +6779,22 @@ class 스프링공격07_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_307(self.ctx)
 
 
-class 게임진행1_307(common.Trigger):
+class 게임진행1_307(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격08_3(common.Trigger):
+class 스프링공격08_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,151,152,155,156], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6831,22 +6831,22 @@ class 스프링공격08_3(common.Trigger):
         self.set_skill(triggerIds=[255], enable=True)
         self.set_skill(triggerIds=[256], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_308(self.ctx)
 
 
-class 게임진행1_308(common.Trigger):
+class 게임진행1_308(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격09_3(common.Trigger):
+class 스프링공격09_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,115,116,117,118,119,122,124,125,127,130,131,132,133,134,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6891,22 +6891,22 @@ class 스프링공격09_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_309(self.ctx)
 
 
-class 게임진행1_309(common.Trigger):
+class 게임진행1_309(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격10_3(common.Trigger):
+class 스프링공격10_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,110,111,112,113,114,115,118,131,134,135,136,137,138,139,142,143,144,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -6947,22 +6947,22 @@ class 스프링공격10_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_310(self.ctx)
 
 
-class 게임진행1_310(common.Trigger):
+class 게임진행1_310(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격11_3(common.Trigger):
+class 스프링공격11_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7015,22 +7015,22 @@ class 스프링공격11_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_311(self.ctx)
 
 
-class 게임진행1_311(common.Trigger):
+class 게임진행1_311(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격12_3(common.Trigger):
+class 스프링공격12_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,107,108,113,114,115,116,119,120,125,126,127,128,131,132,138,140,142,146,147,148,149,151,153,155,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7067,22 +7067,22 @@ class 스프링공격12_3(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_312(self.ctx)
 
 
-class 게임진행1_312(common.Trigger):
+class 게임진행1_312(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격13_3(common.Trigger):
+class 스프링공격13_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7119,22 +7119,22 @@ class 스프링공격13_3(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_313(self.ctx)
 
 
-class 게임진행1_313(common.Trigger):
+class 게임진행1_313(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격14_3(common.Trigger):
+class 스프링공격14_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,106,108,109,111,114,116,117,119,120,121,122,124,125,127,128,129,130,132,133,135,138,139,142,143,145,146,148,150,153,154,157,159,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7175,22 +7175,22 @@ class 스프링공격14_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_314(self.ctx)
 
 
-class 게임진행1_314(common.Trigger):
+class 게임진행1_314(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격15_3(common.Trigger):
+class 스프링공격15_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,109,110,111,112,115,116,117,118,119,120,123,124,125,126,127,128,131,132,133,134,137,138,140,141,143,144,145,148,149,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7238,22 +7238,22 @@ class 스프링공격15_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_315(self.ctx)
 
 
-class 게임진행1_315(common.Trigger):
+class 게임진행1_315(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격16_3(common.Trigger):
+class 스프링공격16_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7310,22 +7310,22 @@ class 스프링공격16_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_316(self.ctx)
 
 
-class 게임진행1_316(common.Trigger):
+class 게임진행1_316(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격17_3(common.Trigger):
+class 스프링공격17_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,119,120,121,122,125,126,127,128,129,130,131,132,135,136,138,139,140,142,143,146,147,148,149,151,152,153,155,156,157,158,159,160,161,162], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7378,22 +7378,22 @@ class 스프링공격17_3(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[262], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_317(self.ctx)
 
 
-class 게임진행1_317(common.Trigger):
+class 게임진행1_317(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격18_3(common.Trigger):
+class 스프링공격18_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,104,105,106,107,109,110,111,113,114,116,117,118,119,121,122,123,125,126,128,129,130,131,133,134,135,138,140,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7446,22 +7446,22 @@ class 스프링공격18_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_318(self.ctx)
 
 
-class 게임진행1_318(common.Trigger):
+class 게임진행1_318(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격19_3(common.Trigger):
+class 스프링공격19_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,138,139,142,143,144,145,146,147,148,150,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7518,22 +7518,22 @@ class 스프링공격19_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_319(self.ctx)
 
 
-class 게임진행1_319(common.Trigger):
+class 게임진행1_319(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격20_3(common.Trigger):
+class 스프링공격20_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,107,108,109,110,111,112,115,116,117,118,119,121,122,123,124,125,126,127,129,130,131,132,133,134,137,138,140,141,143,144,145,146,147,148,149,150,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7588,22 +7588,22 @@ class 스프링공격20_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_320(self.ctx)
 
 
-class 게임진행1_320(common.Trigger):
+class 게임진행1_320(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격21_3(common.Trigger):
+class 스프링공격21_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,111,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,138,140,141,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7664,22 +7664,22 @@ class 스프링공격21_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_321(self.ctx)
 
 
-class 게임진행1_321(common.Trigger):
+class 게임진행1_321(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격22_3(common.Trigger):
+class 스프링공격22_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,118,119,120,121,122,123,125,126,127,128,129,130,131,132,134,135,136,138,139,140,141,142,143,145,146,147,148,149,150,151,152,153,155,156,157,158,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7740,22 +7740,22 @@ class 스프링공격22_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_322(self.ctx)
 
 
-class 게임진행1_322(common.Trigger):
+class 게임진행1_322(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격23_3(common.Trigger):
+class 스프링공격23_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7816,22 +7816,22 @@ class 스프링공격23_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_323(self.ctx)
 
 
-class 게임진행1_323(common.Trigger):
+class 게임진행1_323(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격24_3(common.Trigger):
+class 스프링공격24_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7892,22 +7892,22 @@ class 스프링공격24_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_324(self.ctx)
 
 
-class 게임진행1_324(common.Trigger):
+class 게임진행1_324(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격25_3(common.Trigger):
+class 스프링공격25_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -7971,22 +7971,22 @@ class 스프링공격25_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_325(self.ctx)
 
 
-class 게임진행1_325(common.Trigger):
+class 게임진행1_325(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격26_3(common.Trigger):
+class 스프링공격26_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,115,116,119,120,122,124,125,127,129,130,132,133,135,136,137,138,139,142,143,144,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8042,22 +8042,22 @@ class 스프링공격26_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_326(self.ctx)
 
 
-class 게임진행1_326(common.Trigger):
+class 게임진행1_326(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격27_3(common.Trigger):
+class 스프링공격27_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,117,120,121,122,123,124,125,126,127,130,132,133,134,135,136,137,138,139,140,141,142,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8114,22 +8114,22 @@ class 스프링공격27_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_327(self.ctx)
 
 
-class 게임진행1_327(common.Trigger):
+class 게임진행1_327(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격28_3(common.Trigger):
+class 스프링공격28_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,110,111,112,113,116,118,119,120,122,123,126,127,129,130,131,133,136,137,139,140,142,145,146,147,148,149,150,151,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8179,22 +8179,22 @@ class 스프링공격28_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_328(self.ctx)
 
 
-class 게임진행1_328(common.Trigger):
+class 게임진행1_328(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격29_3(common.Trigger):
+class 스프링공격29_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,109,110,112,113,115,117,118,119,120,122,124,125,127,129,130,131,132,134,136,137,138,143,146,147,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8245,22 +8245,22 @@ class 스프링공격29_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_329(self.ctx)
 
 
-class 게임진행1_329(common.Trigger):
+class 게임진행1_329(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격30_3(common.Trigger):
+class 스프링공격30_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,114,115,116,117,119,121,122,123,124,125,126,127,129,130,131,132,133,135,136,137,139,140,141,142,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8313,22 +8313,22 @@ class 스프링공격30_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_330(self.ctx)
 
 
-class 게임진행1_330(common.Trigger):
+class 게임진행1_330(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격31_3(common.Trigger):
+class 스프링공격31_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,113,115,116,117,118,119,120,121,123,124,125,126,128,129,130,131,132,133,134,136,137,138,139,140,141,142,143,144,145,146,147,148,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8391,22 +8391,22 @@ class 스프링공격31_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_331(self.ctx)
 
 
-class 게임진행1_331(common.Trigger):
+class 게임진행1_331(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격32_3(common.Trigger):
+class 스프링공격32_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,120,121,122,123,124,125,126,127,128,129,131,132,133,134,135,136,137,138,140,141,143,144,145,146,147,148,149,150,152,153,154,155,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8469,22 +8469,22 @@ class 스프링공격32_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_332(self.ctx)
 
 
-class 게임진행1_332(common.Trigger):
+class 게임진행1_332(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격33_3(common.Trigger):
+class 스프링공격33_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,105,106,107,108,109,111,112,113,115,116,117,118,119,120,121,122,123,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,144,145,146,147,148,149,150,151,152,153,154,156,157,158,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8546,22 +8546,22 @@ class 스프링공격33_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_333(self.ctx)
 
 
-class 게임진행1_333(common.Trigger):
+class 게임진행1_333(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격34_3(common.Trigger):
+class 스프링공격34_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,118,119,121,122,123,124,125,126,127,128,130,131,133,134,135,136,137,138,139,140,141,142,143,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8619,22 +8619,22 @@ class 스프링공격34_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_334(self.ctx)
 
 
-class 게임진행1_334(common.Trigger):
+class 게임진행1_334(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격35_3(common.Trigger):
+class 스프링공격35_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,116,117,118,122,123,126,127,128,129,130,131,132,133,134,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8693,22 +8693,22 @@ class 스프링공격35_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_335(self.ctx)
 
 
-class 게임진행1_335(common.Trigger):
+class 게임진행1_335(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격36_3(common.Trigger):
+class 스프링공격36_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8773,22 +8773,22 @@ class 스프링공격36_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_336(self.ctx)
 
 
-class 게임진행1_336(common.Trigger):
+class 게임진행1_336(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격37_3(common.Trigger):
+class 스프링공격37_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8853,22 +8853,22 @@ class 스프링공격37_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_337(self.ctx)
 
 
-class 게임진행1_337(common.Trigger):
+class 게임진행1_337(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격38_3(common.Trigger):
+class 스프링공격38_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -8933,22 +8933,22 @@ class 스프링공격38_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_338(self.ctx)
 
 
-class 게임진행1_338(common.Trigger):
+class 게임진행1_338(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격39_3(common.Trigger):
+class 스프링공격39_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,130,132,133,135,136,137,138,139,140,141,142,144,145,146,147,149,150,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9009,22 +9009,22 @@ class 스프링공격39_3(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_339(self.ctx)
 
 
-class 게임진행1_339(common.Trigger):
+class 게임진행1_339(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
-class 스프링공격40_3(common.Trigger):
+class 스프링공격40_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,112,113,114,116,117,119,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9085,23 +9085,23 @@ class 스프링공격40_3(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_340(self.ctx)
 
 
-class 게임진행1_340(common.Trigger):
+class 게임진행1_340(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지03(self.ctx)
 
 
 # 패턴 목록_라운드4
-class 스프링공격01_4(common.Trigger):
+class 스프링공격01_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[105,106,107,108,117,118,119,120,129,130,131,132,137,138,139,140,141,142,143,144,145,150,151,152,153,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9138,22 +9138,22 @@ class 스프링공격01_4(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_401(self.ctx)
 
 
-class 게임진행1_401(common.Trigger):
+class 게임진행1_401(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격02_4(common.Trigger):
+class 스프링공격02_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,137,138,139,140,150,151,152,153], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9190,22 +9190,22 @@ class 스프링공격02_4(common.Trigger):
         self.set_skill(triggerIds=[252], enable=True)
         self.set_skill(triggerIds=[253], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_402(self.ctx)
 
 
-class 게임진행1_402(common.Trigger):
+class 게임진행1_402(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격03_4(common.Trigger):
+class 스프링공격03_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,109,110,111,112,113,114,115,116,121,122,123,124,129,130,131,132,141,142,143,144,145,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9242,22 +9242,22 @@ class 스프링공격03_4(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_403(self.ctx)
 
 
-class 게임진행1_403(common.Trigger):
+class 게임진행1_403(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격04_4(common.Trigger):
+class 스프링공격04_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,117,118,119,120,121,127,128,129,133,134,135,137,138,139,147,148,149,150,151,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9284,22 +9284,22 @@ class 스프링공격04_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_404(self.ctx)
 
 
-class 게임진행1_404(common.Trigger):
+class 게임진행1_404(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격05_4(common.Trigger):
+class 스프링공격05_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[104,105,108,109,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,140,141,145,146,153,154,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9332,22 +9332,22 @@ class 스프링공격05_4(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_405(self.ctx)
 
 
-class 게임진행1_405(common.Trigger):
+class 게임진행1_405(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격06_4(common.Trigger):
+class 스프링공격06_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,108,109,110,111,112,113,114,115,116,117,120,121,128,129,131,132,133,142,143,144,145,146,155,156,157,158,159,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9386,22 +9386,22 @@ class 스프링공격06_4(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_406(self.ctx)
 
 
-class 게임진행1_406(common.Trigger):
+class 게임진행1_406(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격07_4(common.Trigger):
+class 스프링공격07_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,111,112,115,116,117,118,119,120,121,122,127,128,129,130,131,132,133,134,137,138,143,148,149,150,151,156,157,158,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9438,22 +9438,22 @@ class 스프링공격07_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_407(self.ctx)
 
 
-class 게임진행1_407(common.Trigger):
+class 게임진행1_407(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격08_4(common.Trigger):
+class 스프링공격08_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,151,152,155,156], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9490,22 +9490,22 @@ class 스프링공격08_4(common.Trigger):
         self.set_skill(triggerIds=[255], enable=True)
         self.set_skill(triggerIds=[256], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_408(self.ctx)
 
 
-class 게임진행1_408(common.Trigger):
+class 게임진행1_408(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격09_4(common.Trigger):
+class 스프링공격09_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,115,116,117,118,119,122,124,125,127,130,131,132,133,134,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9550,22 +9550,22 @@ class 스프링공격09_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_409(self.ctx)
 
 
-class 게임진행1_409(common.Trigger):
+class 게임진행1_409(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격10_4(common.Trigger):
+class 스프링공격10_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,110,111,112,113,114,115,118,131,134,135,136,137,138,139,142,143,144,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9606,22 +9606,22 @@ class 스프링공격10_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_410(self.ctx)
 
 
-class 게임진행1_410(common.Trigger):
+class 게임진행1_410(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격11_4(common.Trigger):
+class 스프링공격11_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9674,22 +9674,22 @@ class 스프링공격11_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_411(self.ctx)
 
 
-class 게임진행1_411(common.Trigger):
+class 게임진행1_411(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격12_4(common.Trigger):
+class 스프링공격12_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,107,108,113,114,115,116,119,120,125,126,127,128,131,132,138,140,142,146,147,148,149,151,153,155,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9726,22 +9726,22 @@ class 스프링공격12_4(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_412(self.ctx)
 
 
-class 게임진행1_412(common.Trigger):
+class 게임진행1_412(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격13_4(common.Trigger):
+class 스프링공격13_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9778,22 +9778,22 @@ class 스프링공격13_4(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_413(self.ctx)
 
 
-class 게임진행1_413(common.Trigger):
+class 게임진행1_413(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격14_4(common.Trigger):
+class 스프링공격14_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,106,108,109,111,114,116,117,119,120,121,122,124,125,127,128,129,130,132,133,135,138,139,142,143,145,146,148,150,153,154,157,159,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9834,22 +9834,22 @@ class 스프링공격14_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_414(self.ctx)
 
 
-class 게임진행1_414(common.Trigger):
+class 게임진행1_414(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격15_4(common.Trigger):
+class 스프링공격15_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,109,110,111,112,115,116,117,118,119,120,123,124,125,126,127,128,131,132,133,134,137,138,140,141,143,144,145,148,149,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9897,22 +9897,22 @@ class 스프링공격15_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_415(self.ctx)
 
 
-class 게임진행1_415(common.Trigger):
+class 게임진행1_415(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격16_4(common.Trigger):
+class 스프링공격16_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -9969,22 +9969,22 @@ class 스프링공격16_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_416(self.ctx)
 
 
-class 게임진행1_416(common.Trigger):
+class 게임진행1_416(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격17_4(common.Trigger):
+class 스프링공격17_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,119,120,121,122,125,126,127,128,129,130,131,132,135,136,138,139,140,142,143,146,147,148,149,151,152,153,155,156,157,158,159,160,161,162], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10037,22 +10037,22 @@ class 스프링공격17_4(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[262], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_417(self.ctx)
 
 
-class 게임진행1_417(common.Trigger):
+class 게임진행1_417(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격18_4(common.Trigger):
+class 스프링공격18_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,104,105,106,107,109,110,111,113,114,116,117,118,119,121,122,123,125,126,128,129,130,131,133,134,135,138,140,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10105,22 +10105,22 @@ class 스프링공격18_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_418(self.ctx)
 
 
-class 게임진행1_418(common.Trigger):
+class 게임진행1_418(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격19_4(common.Trigger):
+class 스프링공격19_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,138,139,142,143,144,145,146,147,148,150,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10177,22 +10177,22 @@ class 스프링공격19_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_419(self.ctx)
 
 
-class 게임진행1_419(common.Trigger):
+class 게임진행1_419(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격20_4(common.Trigger):
+class 스프링공격20_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,107,108,109,110,111,112,115,116,117,118,119,121,122,123,124,125,126,127,129,130,131,132,133,134,137,138,140,141,143,144,145,146,147,148,149,150,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10247,22 +10247,22 @@ class 스프링공격20_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_420(self.ctx)
 
 
-class 게임진행1_420(common.Trigger):
+class 게임진행1_420(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격21_4(common.Trigger):
+class 스프링공격21_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,111,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,138,140,141,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10323,22 +10323,22 @@ class 스프링공격21_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_421(self.ctx)
 
 
-class 게임진행1_421(common.Trigger):
+class 게임진행1_421(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격22_4(common.Trigger):
+class 스프링공격22_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,118,119,120,121,122,123,125,126,127,128,129,130,131,132,134,135,136,138,139,140,141,142,143,145,146,147,148,149,150,151,152,153,155,156,157,158,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10399,22 +10399,22 @@ class 스프링공격22_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_422(self.ctx)
 
 
-class 게임진행1_422(common.Trigger):
+class 게임진행1_422(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격23_4(common.Trigger):
+class 스프링공격23_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10475,22 +10475,22 @@ class 스프링공격23_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_423(self.ctx)
 
 
-class 게임진행1_423(common.Trigger):
+class 게임진행1_423(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격24_4(common.Trigger):
+class 스프링공격24_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10551,22 +10551,22 @@ class 스프링공격24_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_424(self.ctx)
 
 
-class 게임진행1_424(common.Trigger):
+class 게임진행1_424(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격25_4(common.Trigger):
+class 스프링공격25_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10630,22 +10630,22 @@ class 스프링공격25_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_425(self.ctx)
 
 
-class 게임진행1_425(common.Trigger):
+class 게임진행1_425(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격26_4(common.Trigger):
+class 스프링공격26_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,115,116,119,120,122,124,125,127,129,130,132,133,135,136,137,138,139,142,143,144,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10701,22 +10701,22 @@ class 스프링공격26_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_426(self.ctx)
 
 
-class 게임진행1_426(common.Trigger):
+class 게임진행1_426(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격27_4(common.Trigger):
+class 스프링공격27_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,117,120,121,122,123,124,125,126,127,130,132,133,134,135,136,137,138,139,140,141,142,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10773,22 +10773,22 @@ class 스프링공격27_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_427(self.ctx)
 
 
-class 게임진행1_427(common.Trigger):
+class 게임진행1_427(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격28_4(common.Trigger):
+class 스프링공격28_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,110,111,112,113,116,118,119,120,122,123,126,127,129,130,131,133,136,137,139,140,142,145,146,147,148,149,150,151,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10838,22 +10838,22 @@ class 스프링공격28_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_428(self.ctx)
 
 
-class 게임진행1_428(common.Trigger):
+class 게임진행1_428(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격29_4(common.Trigger):
+class 스프링공격29_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,109,110,112,113,115,117,118,119,120,122,124,125,127,129,130,131,132,134,136,137,138,143,146,147,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10904,22 +10904,22 @@ class 스프링공격29_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_429(self.ctx)
 
 
-class 게임진행1_429(common.Trigger):
+class 게임진행1_429(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격30_4(common.Trigger):
+class 스프링공격30_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,114,115,116,117,119,121,122,123,124,125,126,127,129,130,131,132,133,135,136,137,139,140,141,142,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -10972,22 +10972,22 @@ class 스프링공격30_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_430(self.ctx)
 
 
-class 게임진행1_430(common.Trigger):
+class 게임진행1_430(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격31_4(common.Trigger):
+class 스프링공격31_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,113,115,116,117,118,119,120,121,123,124,125,126,128,129,130,131,132,133,134,136,137,138,139,140,141,142,143,144,145,146,147,148,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11050,22 +11050,22 @@ class 스프링공격31_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_431(self.ctx)
 
 
-class 게임진행1_431(common.Trigger):
+class 게임진행1_431(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격32_4(common.Trigger):
+class 스프링공격32_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,120,121,122,123,124,125,126,127,128,129,131,132,133,134,135,136,137,138,140,141,143,144,145,146,147,148,149,150,152,153,154,155,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11128,22 +11128,22 @@ class 스프링공격32_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_432(self.ctx)
 
 
-class 게임진행1_432(common.Trigger):
+class 게임진행1_432(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격33_4(common.Trigger):
+class 스프링공격33_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,105,106,107,108,109,111,112,113,115,116,117,118,119,120,121,122,123,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,144,145,146,147,148,149,150,151,152,153,154,156,157,158,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11205,22 +11205,22 @@ class 스프링공격33_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_433(self.ctx)
 
 
-class 게임진행1_433(common.Trigger):
+class 게임진행1_433(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격34_4(common.Trigger):
+class 스프링공격34_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,118,119,121,122,123,124,125,126,127,128,130,131,133,134,135,136,137,138,139,140,141,142,143,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11278,22 +11278,22 @@ class 스프링공격34_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_434(self.ctx)
 
 
-class 게임진행1_434(common.Trigger):
+class 게임진행1_434(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격35_4(common.Trigger):
+class 스프링공격35_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,116,117,118,122,123,126,127,128,129,130,131,132,133,134,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11352,22 +11352,22 @@ class 스프링공격35_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_435(self.ctx)
 
 
-class 게임진행1_435(common.Trigger):
+class 게임진행1_435(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격36_4(common.Trigger):
+class 스프링공격36_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11432,22 +11432,22 @@ class 스프링공격36_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_436(self.ctx)
 
 
-class 게임진행1_436(common.Trigger):
+class 게임진행1_436(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격37_4(common.Trigger):
+class 스프링공격37_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11512,22 +11512,22 @@ class 스프링공격37_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_437(self.ctx)
 
 
-class 게임진행1_437(common.Trigger):
+class 게임진행1_437(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격38_4(common.Trigger):
+class 스프링공격38_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11592,22 +11592,22 @@ class 스프링공격38_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_438(self.ctx)
 
 
-class 게임진행1_438(common.Trigger):
+class 게임진행1_438(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격39_4(common.Trigger):
+class 스프링공격39_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,130,132,133,135,136,137,138,139,140,141,142,144,145,146,147,149,150,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11668,22 +11668,22 @@ class 스프링공격39_4(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_439(self.ctx)
 
 
-class 게임진행1_439(common.Trigger):
+class 게임진행1_439(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
-class 스프링공격40_4(common.Trigger):
+class 스프링공격40_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,112,113,114,116,117,119,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11744,23 +11744,23 @@ class 스프링공격40_4(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_440(self.ctx)
 
 
-class 게임진행1_440(common.Trigger):
+class 게임진행1_440(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지04(self.ctx)
 
 
 # 패턴 목록_라운드5
-class 스프링공격01_5(common.Trigger):
+class 스프링공격01_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[105,106,107,108,117,118,119,120,129,130,131,132,137,138,139,140,141,142,143,144,145,150,151,152,153,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11797,22 +11797,22 @@ class 스프링공격01_5(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_501(self.ctx)
 
 
-class 게임진행1_501(common.Trigger):
+class 게임진행1_501(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격02_5(common.Trigger):
+class 스프링공격02_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,137,138,139,140,150,151,152,153], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11849,22 +11849,22 @@ class 스프링공격02_5(common.Trigger):
         self.set_skill(triggerIds=[252], enable=True)
         self.set_skill(triggerIds=[253], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_502(self.ctx)
 
 
-class 게임진행1_502(common.Trigger):
+class 게임진행1_502(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격03_5(common.Trigger):
+class 스프링공격03_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,109,110,111,112,113,114,115,116,121,122,123,124,129,130,131,132,141,142,143,144,145,154,155,156,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11901,22 +11901,22 @@ class 스프링공격03_5(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_503(self.ctx)
 
 
-class 게임진행1_503(common.Trigger):
+class 게임진행1_503(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격04_5(common.Trigger):
+class 스프링공격04_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,117,118,119,120,121,127,128,129,133,134,135,137,138,139,147,148,149,150,151,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11943,22 +11943,22 @@ class 스프링공격04_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_504(self.ctx)
 
 
-class 게임진행1_504(common.Trigger):
+class 게임진행1_504(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격05_5(common.Trigger):
+class 스프링공격05_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[104,105,108,109,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,140,141,145,146,153,154,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -11991,22 +11991,22 @@ class 스프링공격05_5(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_505(self.ctx)
 
 
-class 게임진행1_505(common.Trigger):
+class 게임진행1_505(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격06_5(common.Trigger):
+class 스프링공격06_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,108,109,110,111,112,113,114,115,116,117,120,121,128,129,131,132,133,142,143,144,145,146,155,156,157,158,159,160,161], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12045,22 +12045,22 @@ class 스프링공격06_5(common.Trigger):
         self.set_skill(triggerIds=[260], enable=True)
         self.set_skill(triggerIds=[261], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_506(self.ctx)
 
 
-class 게임진행1_506(common.Trigger):
+class 게임진행1_506(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격07_5(common.Trigger):
+class 스프링공격07_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,111,112,115,116,117,118,119,120,121,122,127,128,129,130,131,132,133,134,137,138,143,148,149,150,151,156,157,158,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12097,22 +12097,22 @@ class 스프링공격07_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_507(self.ctx)
 
 
-class 게임진행1_507(common.Trigger):
+class 게임진행1_507(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격08_5(common.Trigger):
+class 스프링공격08_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[107,108,109,110,111,112,113,114,115,116,117,118,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,151,152,155,156], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12149,22 +12149,22 @@ class 스프링공격08_5(common.Trigger):
         self.set_skill(triggerIds=[255], enable=True)
         self.set_skill(triggerIds=[256], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_508(self.ctx)
 
 
-class 게임진행1_508(common.Trigger):
+class 게임진행1_508(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격09_5(common.Trigger):
+class 스프링공격09_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,115,116,117,118,119,122,124,125,127,130,131,132,133,134,136,137,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12209,22 +12209,22 @@ class 스프링공격09_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_509(self.ctx)
 
 
-class 게임진행1_509(common.Trigger):
+class 게임진행1_509(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격10_5(common.Trigger):
+class 스프링공격10_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,110,111,112,113,114,115,118,131,134,135,136,137,138,139,142,143,144,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12265,22 +12265,22 @@ class 스프링공격10_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_510(self.ctx)
 
 
-class 게임진행1_510(common.Trigger):
+class 게임진행1_510(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격11_5(common.Trigger):
+class 스프링공격11_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12333,22 +12333,22 @@ class 스프링공격11_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_511(self.ctx)
 
 
-class 게임진행1_511(common.Trigger):
+class 게임진행1_511(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격12_5(common.Trigger):
+class 스프링공격12_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,107,108,113,114,115,116,119,120,125,126,127,128,131,132,138,140,142,146,147,148,149,151,153,155,157,158,159,160], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12385,22 +12385,22 @@ class 스프링공격12_5(common.Trigger):
         self.set_skill(triggerIds=[259], enable=True)
         self.set_skill(triggerIds=[260], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_512(self.ctx)
 
 
-class 게임진행1_512(common.Trigger):
+class 게임진행1_512(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격13_5(common.Trigger):
+class 스프링공격13_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12437,22 +12437,22 @@ class 스프링공격13_5(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_513(self.ctx)
 
 
-class 게임진행1_513(common.Trigger):
+class 게임진행1_513(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격14_5(common.Trigger):
+class 스프링공격14_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,106,108,109,111,114,116,117,119,120,121,122,124,125,127,128,129,130,132,133,135,138,139,142,143,145,146,148,150,153,154,157,159,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12493,22 +12493,22 @@ class 스프링공격14_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_514(self.ctx)
 
 
-class 게임진행1_514(common.Trigger):
+class 게임진행1_514(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격15_5(common.Trigger):
+class 스프링공격15_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,109,110,111,112,115,116,117,118,119,120,123,124,125,126,127,128,131,132,133,134,137,138,140,141,143,144,145,148,149,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12556,22 +12556,22 @@ class 스프링공격15_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_515(self.ctx)
 
 
-class 게임진행1_515(common.Trigger):
+class 게임진행1_515(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격16_5(common.Trigger):
+class 스프링공격16_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,140,141,145,146,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12628,22 +12628,22 @@ class 스프링공격16_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_516(self.ctx)
 
 
-class 게임진행1_516(common.Trigger):
+class 게임진행1_516(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격17_5(common.Trigger):
+class 스프링공격17_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,119,120,121,122,125,126,127,128,129,130,131,132,135,136,138,139,140,142,143,146,147,148,149,151,152,153,155,156,157,158,159,160,161,162], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12696,22 +12696,22 @@ class 스프링공격17_5(common.Trigger):
         self.set_skill(triggerIds=[261], enable=True)
         self.set_skill(triggerIds=[262], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_517(self.ctx)
 
 
-class 게임진행1_517(common.Trigger):
+class 게임진행1_517(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격18_5(common.Trigger):
+class 스프링공격18_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,104,105,106,107,109,110,111,113,114,116,117,118,119,121,122,123,125,126,128,129,130,131,133,134,135,138,140,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12764,22 +12764,22 @@ class 스프링공격18_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_518(self.ctx)
 
 
-class 게임진행1_518(common.Trigger):
+class 게임진행1_518(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격19_5(common.Trigger):
+class 스프링공격19_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,138,139,142,143,144,145,146,147,148,150,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12836,22 +12836,22 @@ class 스프링공격19_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_519(self.ctx)
 
 
-class 게임진행1_519(common.Trigger):
+class 게임진행1_519(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격20_5(common.Trigger):
+class 스프링공격20_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,105,106,107,108,109,110,111,112,115,116,117,118,119,121,122,123,124,125,126,127,129,130,131,132,133,134,137,138,140,141,143,144,145,146,147,148,149,150,151,153,154,156,157,158,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12906,22 +12906,22 @@ class 스프링공격20_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_520(self.ctx)
 
 
-class 게임진행1_520(common.Trigger):
+class 게임진행1_520(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격21_5(common.Trigger):
+class 스프링공격21_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,111,112,113,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,136,137,138,140,141,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -12982,22 +12982,22 @@ class 스프링공격21_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_521(self.ctx)
 
 
-class 게임진행1_521(common.Trigger):
+class 게임진행1_521(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격22_5(common.Trigger):
+class 스프링공격22_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,111,112,113,114,115,116,118,119,120,121,122,123,125,126,127,128,129,130,131,132,134,135,136,138,139,140,141,142,143,145,146,147,148,149,150,151,152,153,155,156,157,158,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13058,22 +13058,22 @@ class 스프링공격22_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_522(self.ctx)
 
 
-class 게임진행1_522(common.Trigger):
+class 게임진행1_522(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격23_5(common.Trigger):
+class 스프링공격23_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13134,22 +13134,22 @@ class 스프링공격23_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_523(self.ctx)
 
 
-class 게임진행1_523(common.Trigger):
+class 게임진행1_523(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격24_5(common.Trigger):
+class 스프링공격24_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,124,125,127,128,129,130,131,132,133,134,135,136,138,139,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13210,22 +13210,22 @@ class 스프링공격24_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_524(self.ctx)
 
 
-class 게임진행1_524(common.Trigger):
+class 게임진행1_524(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격25_5(common.Trigger):
+class 스프링공격25_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,144,145,146,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13289,22 +13289,22 @@ class 스프링공격25_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_525(self.ctx)
 
 
-class 게임진행1_525(common.Trigger):
+class 게임진행1_525(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격26_5(common.Trigger):
+class 스프링공격26_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,115,116,119,120,122,124,125,127,129,130,132,133,135,136,137,138,139,142,143,144,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13360,22 +13360,22 @@ class 스프링공격26_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_526(self.ctx)
 
 
-class 게임진행1_526(common.Trigger):
+class 게임진행1_526(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격27_5(common.Trigger):
+class 스프링공격27_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,117,120,121,122,123,124,125,126,127,130,132,133,134,135,136,137,138,139,140,141,142,143,145,146,148,149,150,151,152,153,154,155,156,157,158,159,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13432,22 +13432,22 @@ class 스프링공격27_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_527(self.ctx)
 
 
-class 게임진행1_527(common.Trigger):
+class 게임진행1_527(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격28_5(common.Trigger):
+class 스프링공격28_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,108,109,110,111,112,113,116,118,119,120,122,123,126,127,129,130,131,133,136,137,139,140,142,145,146,147,148,149,150,151,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13497,22 +13497,22 @@ class 스프링공격28_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_528(self.ctx)
 
 
-class 게임진행1_528(common.Trigger):
+class 게임진행1_528(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격29_5(common.Trigger):
+class 스프링공격29_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,109,110,112,113,115,117,118,119,120,122,124,125,127,129,130,131,132,134,136,137,138,143,146,147,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13563,22 +13563,22 @@ class 스프링공격29_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_529(self.ctx)
 
 
-class 게임진행1_529(common.Trigger):
+class 게임진행1_529(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격30_5(common.Trigger):
+class 스프링공격30_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,112,113,114,115,116,117,119,121,122,123,124,125,126,127,129,130,131,132,133,135,136,137,139,140,141,142,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13631,22 +13631,22 @@ class 스프링공격30_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_530(self.ctx)
 
 
-class 게임진행1_530(common.Trigger):
+class 게임진행1_530(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격31_5(common.Trigger):
+class 스프링공격31_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,113,115,116,117,118,119,120,121,123,124,125,126,128,129,130,131,132,133,134,136,137,138,139,140,141,142,143,144,145,146,147,148,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13709,22 +13709,22 @@ class 스프링공격31_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_531(self.ctx)
 
 
-class 게임진행1_531(common.Trigger):
+class 게임진행1_531(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격32_5(common.Trigger):
+class 스프링공격32_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,120,121,122,123,124,125,126,127,128,129,131,132,133,134,135,136,137,138,140,141,143,144,145,146,147,148,149,150,152,153,154,155,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13787,22 +13787,22 @@ class 스프링공격32_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_532(self.ctx)
 
 
-class 게임진행1_532(common.Trigger):
+class 게임진행1_532(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격33_5(common.Trigger):
+class 스프링공격33_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,105,106,107,108,109,111,112,113,115,116,117,118,119,120,121,122,123,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,144,145,146,147,148,149,150,151,152,153,154,156,157,158,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13864,22 +13864,22 @@ class 스프링공격33_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_533(self.ctx)
 
 
-class 게임진행1_533(common.Trigger):
+class 게임진행1_533(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격34_5(common.Trigger):
+class 스프링공격34_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,110,111,112,113,114,116,118,119,121,122,123,124,125,126,127,128,130,131,133,134,135,136,137,138,139,140,141,142,143,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -13937,22 +13937,22 @@ class 스프링공격34_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_534(self.ctx)
 
 
-class 게임진행1_534(common.Trigger):
+class 게임진행1_534(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격35_5(common.Trigger):
+class 스프링공격35_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,116,117,118,122,123,126,127,128,129,130,131,132,133,134,136,137,138,139,140,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14011,22 +14011,22 @@ class 스프링공격35_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_535(self.ctx)
 
 
-class 게임진행1_535(common.Trigger):
+class 게임진행1_535(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격36_5(common.Trigger):
+class 스프링공격36_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14091,22 +14091,22 @@ class 스프링공격36_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_536(self.ctx)
 
 
-class 게임진행1_536(common.Trigger):
+class 게임진행1_536(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격37_5(common.Trigger):
+class 스프링공격37_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,116,117,119,120,121,122,123,124,125,126,127,128,129,130,132,133,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14171,22 +14171,22 @@ class 스프링공격37_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_537(self.ctx)
 
 
-class 게임진행1_537(common.Trigger):
+class 게임진행1_537(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격38_5(common.Trigger):
+class 스프링공격38_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,159,160,161,162,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14251,22 +14251,22 @@ class 스프링공격38_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_538(self.ctx)
 
 
-class 게임진행1_538(common.Trigger):
+class 게임진행1_538(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격39_5(common.Trigger):
+class 스프링공격39_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,130,132,133,135,136,137,138,139,140,141,142,144,145,146,147,149,150,151,152,153,154,155,156,158,159,160,161,162,163], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14327,22 +14327,22 @@ class 스프링공격39_5(common.Trigger):
         self.set_skill(triggerIds=[262], enable=True)
         self.set_skill(triggerIds=[263], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_539(self.ctx)
 
 
-class 게임진행1_539(common.Trigger):
+class 게임진행1_539(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 
 
-class 스프링공격40_5(common.Trigger):
+class 스프링공격40_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='99', seconds=2) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[102,103,104,105,106,107,108,109,110,112,113,114,116,117,119,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,139,140,141,142,143,144,145,146,147,148,149,151,152,153,154,155,156,157,158,159,160,161,162,163,164], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
@@ -14403,17 +14403,17 @@ class 스프링공격40_5(common.Trigger):
         self.set_skill(triggerIds=[263], enable=True)
         self.set_skill(triggerIds=[264], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='99'):
             return 게임진행1_540(self.ctx)
 
 
-class 게임진행1_540(common.Trigger):
+class 게임진행1_540(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='98', seconds=1)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='98'):
             return 공격중지05(self.ctx)
 

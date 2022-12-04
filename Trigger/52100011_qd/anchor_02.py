@@ -1,18 +1,18 @@
 """ trigger/52100011_qd/anchor_02.xml """
-import common
+import trigger_api
 
 
 # 플레이어 감지
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1505,1506,1507,1508,1509], visible=True, arg3=0, delay=0, scale=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002056], stateValue=0):
             return ready(self.ctx)
 
 
-class ready(common.Trigger):
+class ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1505,1506,1507,1508,1509], visible=False, arg3=0, delay=0, scale=10)
 

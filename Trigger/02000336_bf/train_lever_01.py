@@ -1,42 +1,42 @@
 """ trigger/02000336_bf/train_lever_01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False) # 안보이는 상태
         self.set_interact_object(triggerIds=[10000896], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000896], stateValue=0):
             return 작동_01(self.ctx)
         if self.count_users(boxId=708, boxId=1):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=113, textId=20003363, duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000896], stateValue=0):
             return 작동_01(self.ctx)
 
 
-class 작동_01(common.Trigger):
+class 작동_01(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=True, delay=300, scale=10) # 빨간 선이
         self.set_mesh(triggerIds=[8101,8102,8103,8104], visible=False, delay=300, scale=10) # 파란 선으로
         self.set_effect(triggerIds=[7010], visible=True)
         self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='3'):
             return 작동_02(self.ctx)
 
 
-class 작동_02(common.Trigger):
+class 작동_02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=106, textId=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.

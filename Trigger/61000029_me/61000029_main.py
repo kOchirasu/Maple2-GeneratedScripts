@@ -1,9 +1,9 @@
 """ trigger/61000029_me/61000029_main.xml """
-import common
+import trigger_api
 
 
 # None
-class StateNone(common.Trigger):
+class StateNone(trigger_api.Trigger):
     def on_enter(self):
         self.create_field_game(type='HideAndSeek', reset=True) # TriggerID 시작
         self.field_game_constant(key='BeginTriggerID', value='1') # TriggerID 끝
@@ -45,17 +45,17 @@ class StateNone(common.Trigger):
         self.field_game_constant(key='EventHideAndSeekStart', value='hideandseek_start') # 숨바꼭질 승리 이벤트
         self.field_game_constant(key='EventHideAndSeekWin', value='hideandseek_win')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WaitForEnterUser', value=1):
             return WaitForEnterUser(self.ctx)
 
 
 # 유저를 대기 한다.
-class WaitForEnterUser(common.Trigger):
+class WaitForEnterUser(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=60, startDelay=1, interval=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GameRuleNotice', value=1):
             return GameRuleNotice(self.ctx)
         if self.user_value(key='ShortOfUser', value=1):
@@ -70,21 +70,21 @@ class WaitForEnterUser(common.Trigger):
 
 
 # 게임룰을 설명한다.
-class GameRuleNotice(common.Trigger):
+class GameRuleNotice(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$61000023_ME__61000023_MAIN__1$', arg3='10000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DivideIntoTeams', value=1):
             return DivideIntoTeams(self.ctx)
 
 
 # 팀 나누기
-class DivideIntoTeams(common.Trigger):
+class DivideIntoTeams(trigger_api.Trigger):
     def on_enter(self):
         self.show_count_ui(text='$61000023_ME__61000023_MAIN__0$', stage=0, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MoveGameArea', value=1):
             return MoveGameArea(self.ctx)
         if self.user_value(key='ShortOfUser', value=1):
@@ -92,8 +92,8 @@ class DivideIntoTeams(common.Trigger):
 
 
 # 유저가 게임포탈로 이동할 동안 카메라 무빙
-class MoveGameArea(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MoveGameArea(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BeInHidingTeams', value=1):
             return BeInHidingTeams(self.ctx)
         if self.user_value(key='ShortOfUser', value=1):
@@ -101,13 +101,13 @@ class MoveGameArea(common.Trigger):
 
 
 # 사물로 숨기
-class BeInHidingTeams(common.Trigger):
+class BeInHidingTeams(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=30, startDelay=1, interval=1)
         self.field_game_message(custom=1, type='SetEventUI', script='$61000023_ME__61000023_MAIN__2$', duration=30000)
         self.field_game_message(custom=2, type='SetEventUI', script='$61000023_ME__61000023_MAIN__3$', duration=30000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LookingForATeams', value=1):
             return LookingForATeams(self.ctx)
         if self.user_value(key='TeamMatchResult', value=1):
@@ -118,11 +118,11 @@ class BeInHidingTeams(common.Trigger):
 
 
 # 술래잡기 시작
-class LookingForATeams(common.Trigger):
+class LookingForATeams(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=150, startDelay=1, interval=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TeamMatchResult', value=1):
             return TeamMatchResult(self.ctx)
 
@@ -131,34 +131,34 @@ class LookingForATeams(common.Trigger):
 
 
 # 숨바꼭질 승패 결정
-class TeamMatchResult(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class TeamMatchResult(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GameExitNotice', value=1):
             return GameExitNotice(self.ctx)
 
 
 # 게임종료를 설명한다.
-class GameExitNotice(common.Trigger):
+class GameExitNotice(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$61000023_ME__61000023_MAIN__4$', arg3='10000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='End', value=1):
             return End(self.ctx)
 
 
 # 플레이어 부족으로 방폭 메세지
-class ShortOfUser(common.Trigger):
+class ShortOfUser(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$61000023_ME__61000023_MAIN__5$', arg3='10000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='End', value=1):
             return End(self.ctx)
 
 
 # 게임종료
-class End(common.Trigger):
+class End(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 

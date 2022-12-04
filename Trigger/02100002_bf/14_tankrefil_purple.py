@@ -1,8 +1,8 @@
 """ trigger/02100002_bf/14_tankrefil_purple.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='ActivateTank', value=0) # 메인 트리거에서 받는 신호
         self.set_user_value(key='DungeonQuit', value=0) # 메인 트리거에서 받는 신호
@@ -12,19 +12,19 @@ class Wait(common.Trigger):
         self.set_effect(triggerIds=[5404], visible=False) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=False) # Tank_Fill_Above_Sound
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ActivateTank', value=1):
             return Gauge100(self.ctx)
 
 
-class Gauge100(common.Trigger):
+class Gauge100(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=104, key='Gauge', value=100)
         self.set_timer(timerId='100100', seconds=15, startDelay=1)
         self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Up
         self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Down
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='100100'):
             return Gauge75(self.ctx)
         if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
@@ -33,19 +33,19 @@ class Gauge100(common.Trigger):
             return Quit(self.ctx)
 
 
-class Gauge100_Refil(common.Trigger):
+class Gauge100_Refil(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
         self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
         self.reset_timer(timerId='100100')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Gauge100(self.ctx)
 
 
-class Gauge75(common.Trigger):
+class Gauge75(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=104, key='Gauge', value=75)
         self.reset_timer(timerId='100100')
@@ -53,7 +53,7 @@ class Gauge75(common.Trigger):
         self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_75') # Up
         self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_75') # Down
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10075'):
             return Gauge50(self.ctx)
         if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
@@ -62,19 +62,19 @@ class Gauge75(common.Trigger):
             return Quit(self.ctx)
 
 
-class Gauge75_Refil(common.Trigger):
+class Gauge75_Refil(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
         self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
         self.reset_timer(timerId='10075')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Gauge100(self.ctx)
 
 
-class Gauge50(common.Trigger):
+class Gauge50(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=104, key='Gauge', value=50)
         self.reset_timer(timerId='10075')
@@ -82,7 +82,7 @@ class Gauge50(common.Trigger):
         self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_50') # Up
         self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_50') # Down
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10050'):
             return Gauge25(self.ctx)
         if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
@@ -91,19 +91,19 @@ class Gauge50(common.Trigger):
             return Quit(self.ctx)
 
 
-class Gauge50_Refil(common.Trigger):
+class Gauge50_Refil(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
         self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
         self.reset_timer(timerId='10050')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Gauge75(self.ctx)
 
 
-class Gauge25(common.Trigger):
+class Gauge25(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=104, key='Gauge', value=25)
         self.reset_timer(timerId='10050')
@@ -111,7 +111,7 @@ class Gauge25(common.Trigger):
         self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_25') # Up
         self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_25') # Down
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10025'):
             return Gauge1(self.ctx)
         if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
@@ -120,44 +120,44 @@ class Gauge25(common.Trigger):
             return Quit(self.ctx)
 
 
-class Gauge25_Refil(common.Trigger):
+class Gauge25_Refil(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
         self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
         self.reset_timer(timerId='10025')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Gauge50(self.ctx)
 
 
-class Gauge1(common.Trigger):
+class Gauge1(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='10025')
         self.set_user_value(triggerId=104, key='Gauge', value=1)
         self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_1') # Up
         self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_1') # Down
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
             return Gauge1_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
             return Quit(self.ctx)
 
 
-class Gauge1_Refil(common.Trigger):
+class Gauge1_Refil(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
         self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
         self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Gauge25(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=104, key='StopSpawn', value=1)
 

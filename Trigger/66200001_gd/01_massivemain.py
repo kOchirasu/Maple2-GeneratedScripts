@@ -1,8 +1,8 @@
 """ trigger/66200001_gd/01_massivemain.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.create_field_game(type='GuildVsGame')
         self.user_tag_symbol(symbol1='guild_game_blue', symbol2='guild_game_red')
@@ -51,12 +51,12 @@ class Wait(common.Trigger):
         self.set_portal(portalId=9, visible=False, enable=False, minimapVisible=False) # LeavePortal_EndGame
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False) # LeavePortal_EndGame
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return EntryDelay(self.ctx)
 
 
-class EntryDelay(common.Trigger):
+class EntryDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_mini_game_area_for_hack(boxId=9001) # 해킹 보안용 시작 box 설정
         self.set_user_value(triggerId=9, key='MoveToTeamPortal', value=1) # 팀 대기 공간으로 이동 시작
@@ -64,14 +64,14 @@ class EntryDelay(common.Trigger):
         self.set_user_value(triggerId=11, key='BannerCheckIn', value=1) # 게임판 위 인원수 배너 표시
         self.set_timer(timerId='1', seconds=90) # 테스트 수정 가능 지점
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return IsGameStartOrNot(self.ctx)
 
 
 # 유효 게임 판정 (팀별 인원수 체크)
-class IsGameStartOrNot(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class IsGameStartOrNot(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=10, operator='GreaterEqual', userTagId=1):
             return IsGameStart_True01(self.ctx)
         if self.count_users(boxId=9000, boxId=10, operator='GreaterEqual', userTagId=2):
@@ -80,30 +80,30 @@ class IsGameStartOrNot(common.Trigger):
             return IsGameStart_False(self.ctx)
 
 
-class IsGameStart_True01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class IsGameStart_True01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=10, operator='GreaterEqual', userTagId=2):
             return MoveToTeamCamp(self.ctx)
         if self.count_users(boxId=9000, boxId=10, operator='Less', userTagId=2):
             return DefaultbyWin_BlueTeam(self.ctx)
 
 
-class IsGameStart_Ture02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class IsGameStart_Ture02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=10, operator='GreaterEqual', userTagId=1):
             return MoveToTeamCamp(self.ctx)
         if self.count_users(boxId=9000, boxId=10, operator='Less', userTagId=1):
             return DefaultbyWin_RedTeam(self.ctx)
 
 
-class IsGameStart_False(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class IsGameStart_False(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=10, operator='Less', userTagId=2):
             return GameCancel(self.ctx)
 
 
 # 팀 대기 공간으로 이동
-class MoveToTeamCamp(common.Trigger):
+class MoveToTeamCamp(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9, key='MoveToTeamPortal', value=2) # 팀 대기 공간으로 이동 종료 = 입장 종료
         self.move_to_portal(userTagId=1, portalId=21) # Tag1=Blue
@@ -111,13 +111,13 @@ class MoveToTeamCamp(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return GameGuide01(self.ctx)
 
 
 # 길드 미니게임 대전 게임 진행 방식 안내
-class GameGuide01(common.Trigger):
+class GameGuide01(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.set_user_value(triggerId=10, key='BannerCheckIn', value=0) # 대기 공간 인원 체크 종료
@@ -126,59 +126,59 @@ class GameGuide01(common.Trigger):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__0$', arg3='5000', arg4='0')
         self.set_achievement(triggerId=9000, type='trigger', achieve='guildminigame_start') # 이벤트 퀘스트 관련
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameGuide02(self.ctx)
 
 
-class GameGuide02(common.Trigger):
+class GameGuide02(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__1$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameGuide03(self.ctx)
 
 
-class GameGuide03(common.Trigger):
+class GameGuide03(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__2$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameGuide04(self.ctx)
 
 
-class GameGuide04(common.Trigger):
+class GameGuide04(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__3$', arg3='5000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return R01Ready(self.ctx)
 
 
-class R01Ready(common.Trigger):
+class R01Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Round', value=1) # 테스트 수정 가능 지점
         self.set_event_ui(type=0, arg2='1,5') # Round1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R01PlayerRandomPick01(self.ctx)
 
 
 # 무작위 이동 안내 전 안내 / 1 라운드 전용
-class R01PlayerRandomPick01(common.Trigger):
+class R01PlayerRandomPick01(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__67$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PlayerRandomPick02(self.ctx)
 
 
-class PlayerRandomPick02(common.Trigger):
+class PlayerRandomPick02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9000], sound='BattleField_Event')
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__5$', arg3='5000', arg4='0')
@@ -187,22 +187,22 @@ class PlayerRandomPick02(common.Trigger):
         self.set_effect(triggerIds=[8004], visible=True) # RedTeamBox
         self.set_effect(triggerIds=[8005], visible=True) # RedTeamArrow
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return PlayerRandomPickStartCount(self.ctx)
 
 
 # 무작위 이동 안내 / 라운드 공용
-class PlayerRandomPickStartCount(common.Trigger):
+class PlayerRandomPickStartCount(trigger_api.Trigger):
     def on_enter(self):
         self.show_count_ui(text='$66200001_GD__01_MASSIVEMAIN__6$', stage=0, count=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PlayerRandomPickMove(self.ctx)
 
 
-class PlayerRandomPickMove(common.Trigger):
+class PlayerRandomPickMove(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8002], visible=False) # BlueTeamBox
         self.set_effect(triggerIds=[8003], visible=False) # BlueTeamArrow
@@ -212,19 +212,19 @@ class PlayerRandomPickMove(common.Trigger):
         self.move_random_user(mapId=66200001, portalId=2, triggerId=9032, count=30) # 2번 포탈로 블루팀 최대 30명 이동
         self.play_system_sound_in_box(boxIds=[9000], sound='GuildBattle_MemberPick')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return CheckTheNumberOfPlayer(self.ctx)
         if not self.user_detected(boxIds=[9000]):
             return LeaveAll(self.ctx)
 
 
-class CheckTheNumberOfPlayer(common.Trigger):
+class CheckTheNumberOfPlayer(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=11, key='BannerCheckIn', value=1) # 게임판 위 인원수 배너 표시
         self.play_system_sound_in_box(boxIds=[9000], sound='BattleField_Event')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round', value=1):
             return R01Start(self.ctx)
         if self.user_value(key='Round', value=2):
@@ -238,7 +238,7 @@ class CheckTheNumberOfPlayer(common.Trigger):
 
 
 # R01 시작
-class R01Start(common.Trigger):
+class R01Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__7$', arg3='3000', arg4='0') # Voice 02000953
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancetime_01')
@@ -246,20 +246,20 @@ class R01Start(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R01DanceTime(self.ctx)
 
 
 # 댄스 패턴 / 라운드 공용
 # R01 DanceTime 패턴 랜덤
-class R01DanceTime(common.Trigger):
+class R01DanceTime(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
         self.set_user_value(key='DanceTime', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=30):
             return DancePattern01(self.ctx)
         if self.random_condition(rate=30):
@@ -280,54 +280,54 @@ class R01DanceTime(common.Trigger):
 
 
 # Dance 9000ms
-class DancePattern01(common.Trigger):
+class DancePattern01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001181], state=1) # 9000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=1) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=13000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 12000ms
-class DancePattern02(common.Trigger):
+class DancePattern02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001182], state=1) # 12000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=2) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=16000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 15000ms
-class DancePattern03(common.Trigger):
+class DancePattern03(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001183], state=1) # 15000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=3) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=19000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 7000ms+ 9000ms
-class DancePattern0401(common.Trigger):
+class DancePattern0401(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001180], state=1) # 7000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=41) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=11000):
             return DancePattern0402(self.ctx)
 
 
-class DancePattern0402(common.Trigger):
+class DancePattern0402(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__8$', arg3='1000') # Voice 02000958
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancerandom_01')
@@ -336,23 +336,23 @@ class DancePattern0402(common.Trigger):
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
         self.set_interact_object(triggerIds=[10001180], state=0) # 7000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DancePattern0403(self.ctx)
 
 
-class DancePattern0403(common.Trigger):
+class DancePattern0403(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__9$', arg3='1500', arg4='0')
         self.set_interact_object(triggerIds=[10001180], state=2) # 7000ms
         self.set_interact_object(triggerIds=[10001181], state=0) # 9000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return DancePattern0404(self.ctx)
 
 
-class DancePattern0404(common.Trigger):
+class DancePattern0404(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
@@ -360,24 +360,24 @@ class DancePattern0404(common.Trigger):
         self.set_interact_object(triggerIds=[10001181], state=1) # 9000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=42) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=12000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 9000ms+ 7000ms
-class DancePattern0501(common.Trigger):
+class DancePattern0501(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001181], state=1) # 9000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=51) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=13000):
             return DancePattern0502(self.ctx)
 
 
-class DancePattern0502(common.Trigger):
+class DancePattern0502(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__10$', arg3='1000') # Voice 02000982
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancerandom_02')
@@ -386,23 +386,23 @@ class DancePattern0502(common.Trigger):
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
         self.set_interact_object(triggerIds=[10001181], state=0) # 9000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DancePattern0503(self.ctx)
 
 
-class DancePattern0503(common.Trigger):
+class DancePattern0503(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__11$', arg3='1500', arg4='0')
         self.set_interact_object(triggerIds=[10001181], state=2) # 9000ms
         self.set_interact_object(triggerIds=[10001180], state=0) # 7000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return DancePattern0504(self.ctx)
 
 
-class DancePattern0504(common.Trigger):
+class DancePattern0504(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
@@ -410,24 +410,24 @@ class DancePattern0504(common.Trigger):
         self.set_interact_object(triggerIds=[10001180], state=1) # 7000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=52) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 12000ms+ 7000ms
-class DancePattern0601(common.Trigger):
+class DancePattern0601(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001182], state=1) # 12000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=61) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=16000):
             return DancePattern0602(self.ctx)
 
 
-class DancePattern0602(common.Trigger):
+class DancePattern0602(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__12$', arg3='1000') # Voice 02000983
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancerandom_03')
@@ -436,23 +436,23 @@ class DancePattern0602(common.Trigger):
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
         self.set_interact_object(triggerIds=[10001182], state=0) # 12000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DancePattern0603(self.ctx)
 
 
-class DancePattern0603(common.Trigger):
+class DancePattern0603(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__13$', arg3='1500', arg4='0')
         self.set_interact_object(triggerIds=[10001182], state=2) # 12000ms
         self.set_interact_object(triggerIds=[10001180], state=0) # 7000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return DancePattern0604(self.ctx)
 
 
-class DancePattern0604(common.Trigger):
+class DancePattern0604(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
@@ -460,24 +460,24 @@ class DancePattern0604(common.Trigger):
         self.set_interact_object(triggerIds=[10001180], state=1) # 7000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=62) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return CheckDanceRound(self.ctx)
 
 
 # Dance 7000ms+ 12000ms
-class DancePattern0701(common.Trigger):
+class DancePattern0701(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9001], sound='DDStop_Stage_Ready_01')
         self.set_interact_object(triggerIds=[10001180], state=1) # 7000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=71) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=11000):
             return DancePattern0702(self.ctx)
 
 
-class DancePattern0702(common.Trigger):
+class DancePattern0702(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__14$', arg3='1000') # Voice 02000984
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancerandom_04')
@@ -486,23 +486,23 @@ class DancePattern0702(common.Trigger):
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
         self.set_interact_object(triggerIds=[10001180], state=0) # 7000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DancePattern0703(self.ctx)
 
 
-class DancePattern0703(common.Trigger):
+class DancePattern0703(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__15$', arg3='1500', arg4='0')
         self.set_interact_object(triggerIds=[10001180], state=2) # 7000ms
         self.set_interact_object(triggerIds=[10001182], state=0) # 12000ms
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return DancePattern0704(self.ctx)
 
 
-class DancePattern0704(common.Trigger):
+class DancePattern0704(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
@@ -510,13 +510,13 @@ class DancePattern0704(common.Trigger):
         self.set_interact_object(triggerIds=[10001182], state=1) # 12000ms
         self.set_user_value(triggerId=6, key='DanceGuide', value=72) # 춤추기 가이드
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return CheckDanceRound(self.ctx)
 
 
-class CheckDanceRound(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckDanceRound(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DanceTime', value=1):
             return R01_GameStartDelay(self.ctx)
         if self.user_value(key='DanceTime', value=2):
@@ -532,18 +532,18 @@ class CheckDanceRound(common.Trigger):
         self.set_user_value(key='DanceTime', value=0)
 
 
-class R01_GameStartDelay(common.Trigger):
+class R01_GameStartDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # Dance
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R01_GameStart(self.ctx)
 
 
-class R01_GameStart(common.Trigger):
+class R01_GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=40000, enable=True) # Game
@@ -553,26 +553,26 @@ class R01_GameStart(common.Trigger):
         self.set_interact_object(triggerIds=[10001183], state=2) # 15000ms
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__16$', arg3='4000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R01_GameTimerStart(self.ctx)
 
 
-class R01_GameTimerStart(common.Trigger):
+class R01_GameTimerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11111', seconds=20, startDelay=1, interval=1, vOffset=-40) # Round1 / 20sec  / UI 표시
         self.set_user_value(triggerId=8, key='CheerUpTimer', value=1) # 이속 증가 버프
         self.set_user_value(triggerId=7, key='GameGuide', value=1) # 가이드 : 숫자 발판
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return R01G00Check(self.ctx)
 
 
 # R01 인원 체크 시작
 # 테스트 수정 가능 지점
-class R01G00Check(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R01G00Check(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=50, operator='Greater'):
             return G05P00_Random(self.ctx)
         if self.count_users(boxId=9001, boxId=40, operator='Greater'):
@@ -589,16 +589,16 @@ class R01G00Check(common.Trigger):
 
 # R01  인원 체크 끝
 # 패턴 그룹 2개 랜덤 / 라운드 공용
-class G05orG04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05orG04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=80):
             return G05P00_Random(self.ctx)
         if self.random_condition(rate=20):
             return G04P00_Random(self.ctx)
 
 
-class G03orG04orG05(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03orG04orG05(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=10):
             return G03P00_Random(self.ctx)
         if self.random_condition(rate=60):
@@ -607,8 +607,8 @@ class G03orG04orG05(common.Trigger):
             return G05P00_Random(self.ctx)
 
 
-class G02orG03orG04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02orG03orG04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=10):
             return G02P00_Random(self.ctx)
         if self.random_condition(rate=60):
@@ -617,16 +617,16 @@ class G02orG03orG04(common.Trigger):
             return G04P00_Random(self.ctx)
 
 
-class G02orG03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02orG03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=60):
             return G02P00_Random(self.ctx)
         if self.random_condition(rate=40):
             return G03P00_Random(self.ctx)
 
 
-class G01orG02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01orG02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=70):
             return G01P00_Random(self.ctx)
         if self.random_condition(rate=30):
@@ -634,8 +634,8 @@ class G01orG02(common.Trigger):
 
 
 # G05 패턴 랜덤 / 라운드 공용
-class G05P00_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P00_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=2):
             return G05P01_RoundCheckIn(self.ctx)
         if self.random_condition(rate=2):
@@ -739,8 +739,8 @@ class G05P00_Random(common.Trigger):
 
 
 # G04 패턴 랜덤
-class G04P00_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P00_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=5):
             return G04P01_RoundCheckIn(self.ctx)
         if self.random_condition(rate=5):
@@ -824,8 +824,8 @@ class G04P00_Random(common.Trigger):
 
 
 # G03 패턴 랜덤
-class G03P00_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P00_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=5):
             return G03P01_RoundCheckIn(self.ctx)
         if self.random_condition(rate=5):
@@ -889,8 +889,8 @@ class G03P00_Random(common.Trigger):
 
 
 # G02 패턴 랜덤
-class G02P00_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P00_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=5):
             return G02P01_RoundCheckIn(self.ctx)
         if self.random_condition(rate=5):
@@ -954,8 +954,8 @@ class G02P00_Random(common.Trigger):
 
 
 # G01 패턴 랜덤
-class G01P00_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P00_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=5):
             return G01P01_RoundCheckIn(self.ctx)
         if self.random_condition(rate=5):
@@ -1019,7 +1019,7 @@ class G01P00_Random(common.Trigger):
 
 
 # R01 종료
-class R01EndDelay(common.Trigger):
+class R01EndDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorEnd', value=1) # color reset
         self.set_user_value(triggerId=7120, key='ColorEnd', value=1) # color reset
@@ -1040,12 +1040,12 @@ class R01EndDelay(common.Trigger):
         self.set_user_value(triggerId=4, key='RoundScoreRecord', value=1) # 스코어 배너 기록
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, arg3=400, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return R01End(self.ctx)
 
 
-class R01End(common.Trigger):
+class R01End(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -1068,13 +1068,13 @@ class R01End(common.Trigger):
         self.set_user_value(triggerId=8440, key='Barrier44', value=10)
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, arg3=400, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return RoundResultNotice01(self.ctx)
 
 
-class RoundResultNotice01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundResultNotice01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             return RoundResult_BlueTeamWin01(self.ctx)
         if self.guild_vs_game_scored_team(teamId=2):
@@ -1083,45 +1083,45 @@ class RoundResultNotice01(common.Trigger):
             return RoundResult_Draw01(self.ctx)
 
 
-class RoundResult_BlueTeamWin01(common.Trigger):
+class RoundResult_BlueTeamWin01(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__17$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__18$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R01RoundScoreRecord(self.ctx)
 
 
-class RoundResult_RedTeamWin01(common.Trigger):
+class RoundResult_RedTeamWin01(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__19$', duration=4000, userTagId=2)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__20$', duration=4000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R01RoundScoreRecord(self.ctx)
 
 
-class RoundResult_Draw01(common.Trigger):
+class RoundResult_Draw01(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__21$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__22$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_Draw_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_Draw_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R01RoundScoreRecord(self.ctx)
 
 
 # R01 라운드 승패 판정
-class R01RoundScoreRecord(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R01RoundScoreRecord(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WinnerTeam', value=0):
             return EveryPlayerVacuumGuide(self.ctx)
         if self.user_value(key='WinnerTeam', value=1):
@@ -1131,21 +1131,21 @@ class R01RoundScoreRecord(common.Trigger):
 
 
 # 라운드 종료 멤버 리셋 / 라운드 공용
-class EveryPlayerVacuumGuide(common.Trigger):
+class EveryPlayerVacuumGuide(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__23$', arg3='4000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return EveryPlayerVacuumExecute(self.ctx)
 
 
-class EveryPlayerVacuumExecute(common.Trigger):
+class EveryPlayerVacuumExecute(trigger_api.Trigger):
     def on_enter(self):
         self.move_to_portal(boxId=9001, userTagId=1, portalId=21) # Tag1=Blue 통과자들 진영으로
         self.move_to_portal(boxId=9001, userTagId=2, portalId=22) # Tag2=Red 통과자들 진영으로
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round', value=1):
             return R02Ready(self.ctx)
         if self.user_value(key='Round', value=2):
@@ -1160,28 +1160,28 @@ class EveryPlayerVacuumExecute(common.Trigger):
 
 
 # R02 시작
-class R02Ready(common.Trigger):
+class R02Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Round', value=2)
         self.set_event_ui(type=0, arg2='2,5') # Round2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R02PlayerRandomPick01(self.ctx)
 
 
 # 무작위 이동 안내 전 안내 / 2,3,4 라운드 전용
-class R02PlayerRandomPick01(common.Trigger):
+class R02PlayerRandomPick01(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__4$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PlayerRandomPick02(self.ctx)
 
 
 # 무작위 이동 안내 / 라운드 공용
-class R02Start(common.Trigger):
+class R02Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__24$', arg3='3000', arg4='0') # Voice 02000954
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancetime_02')
@@ -1189,19 +1189,19 @@ class R02Start(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R02DanceTime(self.ctx)
 
 
 # R02 DanceTime 패턴 랜덤
-class R02DanceTime(common.Trigger):
+class R02DanceTime(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
         self.set_user_value(key='DanceTime', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=30):
             return DancePattern01(self.ctx)
         if self.random_condition(rate=30):
@@ -1219,18 +1219,18 @@ class R02DanceTime(common.Trigger):
 
 
 # DancePattern & CheckDanceRound
-class R02_GameStartDelay(common.Trigger):
+class R02_GameStartDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # Dance
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R02_GameStart(self.ctx)
 
 
-class R02_GameStart(common.Trigger):
+class R02_GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=40000, enable=True) # Game
@@ -1241,26 +1241,26 @@ class R02_GameStart(common.Trigger):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__25$', arg3='4000') # Voice 02000960
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Round_02')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R02_GameTimerStart(self.ctx)
 
 
-class R02_GameTimerStart(common.Trigger):
+class R02_GameTimerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11111', seconds=20, startDelay=1, interval=1, vOffset=-40) # Round2 / 20sec  / UI 표시
         self.set_user_value(triggerId=8, key='CheerUpTimer', value=1) # 이속 증가 버프
         self.set_user_value(triggerId=7, key='GameGuide', value=1) # 가이드 : 숫자 발판
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return R02G00Check(self.ctx)
 
 
 # R02 인원 체크 시작
 # 테스트 수정 가능 지점
-class R02G00Check(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R02G00Check(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=50, operator='Greater'):
             return G05P00_Random(self.ctx)
         if self.count_users(boxId=9001, boxId=40, operator='Greater'):
@@ -1276,7 +1276,7 @@ class R02G00Check(common.Trigger):
 
 
 # R02 인원 체크 끝
-class R02EndDelay(common.Trigger):
+class R02EndDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorEnd', value=1) # color reset
         self.set_user_value(triggerId=7120, key='ColorEnd', value=1) # color reset
@@ -1297,12 +1297,12 @@ class R02EndDelay(common.Trigger):
         self.set_user_value(triggerId=4, key='RoundScoreRecord', value=2) # 스코어 배너 기록
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, arg3=400, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return R02End(self.ctx)
 
 
-class R02End(common.Trigger):
+class R02End(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -1325,13 +1325,13 @@ class R02End(common.Trigger):
         self.set_user_value(triggerId=8440, key='Barrier44', value=10)
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, arg3=400, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return RoundResultNotice02(self.ctx)
 
 
-class RoundResultNotice02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundResultNotice02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             return RoundResult_BlueTeamWin02(self.ctx)
         if self.guild_vs_game_scored_team(teamId=2):
@@ -1340,45 +1340,45 @@ class RoundResultNotice02(common.Trigger):
             return RoundResult_Draw02(self.ctx)
 
 
-class RoundResult_BlueTeamWin02(common.Trigger):
+class RoundResult_BlueTeamWin02(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__26$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__27$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R02RoundScoreRecord(self.ctx)
 
 
-class RoundResult_RedTeamWin02(common.Trigger):
+class RoundResult_RedTeamWin02(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__28$', duration=4000, userTagId=2)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__29$', duration=4000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R02RoundScoreRecord(self.ctx)
 
 
-class RoundResult_Draw02(common.Trigger):
+class RoundResult_Draw02(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__30$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__31$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_Draw_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_Draw_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R02RoundScoreRecord(self.ctx)
 
 
 # R02 라운드 승패 판정
-class R02RoundScoreRecord(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R02RoundScoreRecord(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WinnerTeam', value=0):
             return EveryPlayerVacuumGuide(self.ctx)
         if self.user_value(key='WinnerTeam', value=1):
@@ -1389,17 +1389,17 @@ class R02RoundScoreRecord(common.Trigger):
 
 # 라운드 종료 멤버 리셋 / 라운드 공용
 # R03 시작
-class R03Ready(common.Trigger):
+class R03Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Round', value=3)
         self.set_event_ui(type=0, arg2='3,5') # Round3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R02PlayerRandomPick01(self.ctx)
 
 
-class R03Start(common.Trigger):
+class R03Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__32$', arg3='3000', arg4='0') # Voice 02000955
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancetime_03')
@@ -1407,19 +1407,19 @@ class R03Start(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R03DanceTime(self.ctx)
 
 
 # R03 DanceTime 패턴 랜덤
-class R03DanceTime(common.Trigger):
+class R03DanceTime(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
         self.set_user_value(key='DanceTime', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=30):
             return DancePattern01(self.ctx)
         if self.random_condition(rate=30):
@@ -1437,18 +1437,18 @@ class R03DanceTime(common.Trigger):
 
 
 # DancePattern & CheckDanceRound
-class R03_GameStartDelay(common.Trigger):
+class R03_GameStartDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # Dance
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R03_GameStart(self.ctx)
 
 
-class R03_GameStart(common.Trigger):
+class R03_GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=40000, enable=True) # Game
@@ -1459,26 +1459,26 @@ class R03_GameStart(common.Trigger):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__33$', arg3='4000') # Voice 02000961
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Round_03')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R03_GameTimerStart(self.ctx)
 
 
-class R03_GameTimerStart(common.Trigger):
+class R03_GameTimerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11111', seconds=20, startDelay=1, interval=1, vOffset=-40) # Round3 / 20sec  / UI 표시
         self.set_user_value(triggerId=8, key='CheerUpTimer', value=1) # 이속 증가 버프
         self.set_user_value(triggerId=7, key='GameGuide', value=1) # 가이드 : 숫자 발판
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return R03G00Check(self.ctx)
 
 
 # R03 인원 체크 시작
 # 테스트 수정 가능 지점
-class R03G00Check(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R03G00Check(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=50, operator='Greater'):
             return G05P00_Random(self.ctx)
         if self.count_users(boxId=9001, boxId=40, operator='Greater'):
@@ -1494,7 +1494,7 @@ class R03G00Check(common.Trigger):
 
 
 # R03 인원 체크 끝
-class R03EndDelay(common.Trigger):
+class R03EndDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorEnd', value=1) # color reset
         self.set_user_value(triggerId=7120, key='ColorEnd', value=1) # color reset
@@ -1515,12 +1515,12 @@ class R03EndDelay(common.Trigger):
         self.set_user_value(triggerId=4, key='RoundScoreRecord', value=3) # 스코어 배너 기록
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, arg3=400, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return R03End(self.ctx)
 
 
-class R03End(common.Trigger):
+class R03End(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -1543,13 +1543,13 @@ class R03End(common.Trigger):
         self.set_user_value(triggerId=8440, key='Barrier44', value=10)
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, arg3=400, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return RoundResultNotice03(self.ctx)
 
 
-class RoundResultNotice03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundResultNotice03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             return RoundResult_BlueTeamWin03(self.ctx)
         if self.guild_vs_game_scored_team(teamId=2):
@@ -1558,45 +1558,45 @@ class RoundResultNotice03(common.Trigger):
             return RoundResult_Draw03(self.ctx)
 
 
-class RoundResult_BlueTeamWin03(common.Trigger):
+class RoundResult_BlueTeamWin03(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__34$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__35$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R03RoundScoreRecord(self.ctx)
 
 
-class RoundResult_RedTeamWin03(common.Trigger):
+class RoundResult_RedTeamWin03(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__36$', duration=4000, userTagId=2)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__37$', duration=4000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R03RoundScoreRecord(self.ctx)
 
 
-class RoundResult_Draw03(common.Trigger):
+class RoundResult_Draw03(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__38$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__39$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_Draw_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_Draw_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R03RoundScoreRecord(self.ctx)
 
 
 # R03 라운드 승패 판정
-class R03RoundScoreRecord(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R03RoundScoreRecord(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WinnerTeam', value=0):
             return EveryPlayerVacuumGuide(self.ctx)
         if self.user_value(key='WinnerTeam', value=1):
@@ -1607,17 +1607,17 @@ class R03RoundScoreRecord(common.Trigger):
 
 # 라운드 종료 멤버 리셋 / 라운드 공용
 # R04 시작
-class R04Ready(common.Trigger):
+class R04Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Round', value=4)
         self.set_event_ui(type=0, arg2='4,5') # Round4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R02PlayerRandomPick01(self.ctx)
 
 
-class R04Start(common.Trigger):
+class R04Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__40$', arg3='3000', arg4='0') # Voice 02000956
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancetime_04')
@@ -1625,19 +1625,19 @@ class R04Start(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R04DanceTime(self.ctx)
 
 
 # R04 DanceTime 패턴 랜덤
-class R04DanceTime(common.Trigger):
+class R04DanceTime(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
         self.set_user_value(key='DanceTime', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=2):
             return DancePattern01(self.ctx)
         if self.random_condition(rate=3):
@@ -1655,19 +1655,19 @@ class R04DanceTime(common.Trigger):
 
 
 # DancePattern & CheckDanceRound
-class R04_GameStartDelay(common.Trigger):
+class R04_GameStartDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # Dance
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R04_GameStart(self.ctx)
 
 
 # R04 Normal Game
-class R04_GameStart(common.Trigger):
+class R04_GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=40000, enable=True) # Game
@@ -1678,26 +1678,26 @@ class R04_GameStart(common.Trigger):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__41$', arg3='4000') # Voice 02000962
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Round_04')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R04_GameTimerStart(self.ctx)
 
 
-class R04_GameTimerStart(common.Trigger):
+class R04_GameTimerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11111', seconds=20, startDelay=1, interval=1, vOffset=-40) # Round4 / 20sec  / UI 표시
         self.set_user_value(triggerId=8, key='CheerUpTimer', value=1) # 이속 증가 버프
         self.set_user_value(triggerId=7, key='GameGuide', value=1) # 가이드 : 숫자 발판
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return R04G00Check(self.ctx)
 
 
 # R04 인원 체크 시작
 # 테스트 수정 가능 지점
-class R04G00Check(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R04G00Check(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=50, operator='Greater'):
             return G05P00_Random(self.ctx)
         if self.count_users(boxId=9001, boxId=40, operator='Greater'):
@@ -1714,7 +1714,7 @@ class R04G00Check(common.Trigger):
 
 # R04 인원 체크 끝
 # R04 Normal End
-class R04EndDelay(common.Trigger):
+class R04EndDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorEnd', value=1) # color reset
         self.set_user_value(triggerId=7120, key='ColorEnd', value=1) # color reset
@@ -1735,12 +1735,12 @@ class R04EndDelay(common.Trigger):
         self.set_user_value(triggerId=4, key='RoundScoreRecord', value=4) # 스코어 배너 기록
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, arg3=400, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return R04End(self.ctx)
 
 
-class R04End(common.Trigger):
+class R04End(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -1763,13 +1763,13 @@ class R04End(common.Trigger):
         self.set_user_value(triggerId=8440, key='Barrier44', value=10)
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, arg3=400, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return RoundResultNotice04(self.ctx)
 
 
-class RoundResultNotice04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundResultNotice04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             return RoundResult_BlueTeamWin04(self.ctx)
         if self.guild_vs_game_scored_team(teamId=2):
@@ -1778,45 +1778,45 @@ class RoundResultNotice04(common.Trigger):
             return RoundResult_Draw04(self.ctx)
 
 
-class RoundResult_BlueTeamWin04(common.Trigger):
+class RoundResult_BlueTeamWin04(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__42$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__43$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R04RoundScoreRecord(self.ctx)
 
 
-class RoundResult_RedTeamWin04(common.Trigger):
+class RoundResult_RedTeamWin04(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__44$', duration=4000, userTagId=2)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__45$', duration=4000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R04RoundScoreRecord(self.ctx)
 
 
-class RoundResult_Draw04(common.Trigger):
+class RoundResult_Draw04(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__46$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__47$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_Draw_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_Draw_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return R04RoundScoreRecord(self.ctx)
 
 
 # R04 라운드 승패 판정
-class R04RoundScoreRecord(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R04RoundScoreRecord(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WinnerTeam', value=0):
             return EveryPlayerVacuumGuide(self.ctx)
         if self.user_value(key='WinnerTeam', value=1):
@@ -1827,27 +1827,27 @@ class R04RoundScoreRecord(common.Trigger):
 
 # 라운드 종료 멤버 리셋 / 라운드 공용
 # R05 시작
-class R05Ready(common.Trigger):
+class R05Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Round', value=5)
         self.set_event_ui(type=0, arg2='5,5') # Round5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R05PlayerRandomPick01(self.ctx)
 
 
 # 무작위 이동 안내 전 안내 / 5 라운드 전용
-class R05PlayerRandomPick01(common.Trigger):
+class R05PlayerRandomPick01(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__68$', arg3='3000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PlayerRandomPick02(self.ctx)
 
 
-class R05Start(common.Trigger):
+class R05Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__48$', arg3='3000', arg4='0') # Voice 02000957
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancetime_05')
@@ -1855,19 +1855,19 @@ class R05Start(common.Trigger):
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R05DanceTime(self.ctx)
 
 
 # R05 DanceTime 패턴 랜덤
-class R05DanceTime(common.Trigger):
+class R05DanceTime(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=20000, enable=True) # Dance
         self.set_user_value(key='DanceTime', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=2):
             return DancePattern01(self.ctx)
         if self.random_condition(rate=3):
@@ -1885,18 +1885,18 @@ class R05DanceTime(common.Trigger):
 
 
 # DancePattern & CheckDanceRound
-class R05_GameStartDelay(common.Trigger):
+class R05_GameStartDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=20000, enable=False) # Dance
         self.set_sound(triggerId=30000, enable=True) # Silence
         self.set_effect(triggerIds=[8000], visible=True) # Scratch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return R05_GameStart(self.ctx)
 
 
-class R05_GameStart(common.Trigger):
+class R05_GameStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=30000, enable=False) # Silence
         self.set_sound(triggerId=40000, enable=True) # Game
@@ -1907,26 +1907,26 @@ class R05_GameStart(common.Trigger):
         self.set_event_ui(type=1, arg2='$66200001_GD__01_MASSIVEMAIN__49$', arg3='4000') # Voice 02000963
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Round_05')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return R05_GameTimerStart(self.ctx)
 
 
-class R05_GameTimerStart(common.Trigger):
+class R05_GameTimerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='11111', seconds=20, startDelay=1, interval=1, vOffset=-40) # Round5 / 20sec  / UI 표시
         self.set_user_value(triggerId=8, key='CheerUpTimer', value=1) # 이속 증가 버프
         self.set_user_value(triggerId=7, key='GameGuide', value=1) # 가이드 : 숫자 발판
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return R05G05Check(self.ctx)
 
 
 # R05 인원 체크 시작
 # 테스트 수정 가능 지점
-class R05G05Check(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R05G05Check(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=50, operator='Greater'):
             return G05P00_Random(self.ctx)
         if self.count_users(boxId=9001, boxId=40, operator='Greater'):
@@ -1942,7 +1942,7 @@ class R05G05Check(common.Trigger):
 
 
 # R05 인원 체크 끝
-class R05EndDelay(common.Trigger):
+class R05EndDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorEnd', value=1) # color reset
         self.set_user_value(triggerId=7120, key='ColorEnd', value=1) # color reset
@@ -1963,12 +1963,12 @@ class R05EndDelay(common.Trigger):
         self.set_user_value(triggerId=4, key='RoundScoreRecord', value=5) # 스코어 배너 기록
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=True, arg3=400, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return R05End(self.ctx)
 
 
-class R05End(common.Trigger):
+class R05End(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -1991,13 +1991,13 @@ class R05End(common.Trigger):
         self.set_user_value(triggerId=8440, key='Barrier44', value=10)
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=False, arg3=400, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return RoundResultNotice05(self.ctx)
 
 
-class RoundResultNotice05(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundResultNotice05(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             return RoundResult_BlueTeamWin05(self.ctx)
         if self.guild_vs_game_scored_team(teamId=2):
@@ -2006,49 +2006,49 @@ class RoundResultNotice05(common.Trigger):
             return RoundResult_Draw05(self.ctx)
 
 
-class RoundResult_BlueTeamWin05(common.Trigger):
+class RoundResult_BlueTeamWin05(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__50$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__51$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameWrapUp_EveryPlayerVacuumExecute(self.ctx)
 
 
-class RoundResult_RedTeamWin05(common.Trigger):
+class RoundResult_RedTeamWin05(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__52$', duration=4000, userTagId=2)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__53$', duration=4000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameWrapUp_EveryPlayerVacuumExecute(self.ctx)
 
 
-class RoundResult_Draw05(common.Trigger):
+class RoundResult_Draw05(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__54$', duration=4000, userTagId=1)
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__55$', duration=4000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_Draw_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_Draw_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return GameWrapUp_EveryPlayerVacuumExecute(self.ctx)
 
 
 # 게임 종료 모든 팀원 각 진영으로
-class GameWrapUp_EveryPlayerVacuumExecute(common.Trigger):
+class GameWrapUp_EveryPlayerVacuumExecute(trigger_api.Trigger):
     def on_enter(self):
         self.move_to_portal(boxId=9001, userTagId=1, portalId=21) # Tag1=Blue 통과자들 진영으로
         self.move_to_portal(boxId=9001, userTagId=2, portalId=22) # Tag2=Red 통과자들 진영으로
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return R05RoundScoreRecord(self.ctx)
 
@@ -2057,8 +2057,8 @@ class GameWrapUp_EveryPlayerVacuumExecute(common.Trigger):
 
 
 # 최종 라운드 승패 판정
-class R05RoundScoreRecord(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class R05RoundScoreRecord(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_winner_team(teamId=1):
             return BlueTeamWin_GiveReward(self.ctx)
         if self.guild_vs_game_winner_team(teamId=2):
@@ -2068,52 +2068,52 @@ class R05RoundScoreRecord(common.Trigger):
 
 
 # 5 라운드 이전 승패 판정
-class BlueTeamWinAlreadyNotice(common.Trigger):
+class BlueTeamWinAlreadyNotice(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__56$', duration=3000, userTagId=1) # BlueTeam 승리
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__57$', duration=3000, userTagId=2)
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return BlueTeamWinWinAlready_VacuumExecute(self.ctx)
 
 
-class BlueTeamWinWinAlready_VacuumExecute(common.Trigger):
+class BlueTeamWinWinAlready_VacuumExecute(trigger_api.Trigger):
     def on_enter(self):
         self.move_to_portal(boxId=9001, userTagId=1, portalId=21) # Tag1=Blue 통과자들 진영으로
         self.move_to_portal(boxId=9001, userTagId=2, portalId=22) # Tag2=Red 통과자들 진영으로
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return BlueTeamWin_GiveReward(self.ctx)
 
 
-class RedTeamWinAlreadyNotice(common.Trigger):
+class RedTeamWinAlreadyNotice(trigger_api.Trigger):
     def on_enter(self):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__58$', duration=3000, userTagId=2) # RedTeam 승리
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__59$', duration=3000, userTagId=1)
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='System_YouWin_01')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='System_YouLose_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return RedTeamWinAlready_VacuumExecute(self.ctx)
 
 
-class RedTeamWinAlready_VacuumExecute(common.Trigger):
+class RedTeamWinAlready_VacuumExecute(trigger_api.Trigger):
     def on_enter(self):
         self.move_to_portal(boxId=9001, userTagId=1, portalId=21) # Tag1=Blue 통과자들 진영으로
         self.move_to_portal(boxId=9001, userTagId=2, portalId=22) # Tag2=Red 통과자들 진영으로
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return RedTeamWin_GiveReward(self.ctx)
 
 
 # 정상 게임 1팀 블루팀 승리
-class BlueTeamWin_GiveReward(common.Trigger):
+class BlueTeamWin_GiveReward(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_give_reward(type='fund', teamId=1, isWin=True) # BlueTeam 승리
         self.guild_vs_game_give_reward(type='exp', teamId=1, isWin=True) # BlueTeam 승리
@@ -2124,13 +2124,13 @@ class BlueTeamWin_GiveReward(common.Trigger):
         self.guild_vs_game_give_reward(type='guildCoin', teamId=2, isWin=False) # RedTeam 패배
         self.guild_vs_game_give_contribution(teamId=2, isWin=False) # RedTeam 패배
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return ResultPopUp_BlueTeamWin(self.ctx)
 
 
 # 정상 게임 2팀 레드팀 승리
-class RedTeamWin_GiveReward(common.Trigger):
+class RedTeamWin_GiveReward(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_give_reward(type='fund', teamId=2, isWin=True) # RedTeam 승리
         self.guild_vs_game_give_reward(type='exp', teamId=2, isWin=True) # RedTeam 승리
@@ -2141,13 +2141,13 @@ class RedTeamWin_GiveReward(common.Trigger):
         self.guild_vs_game_give_reward(type='guildCoin', teamId=1, isWin=False) # BlueTeam 패배
         self.guild_vs_game_give_contribution(teamId=1, isWin=False) # BlueTeam 패배
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return ResultPopUp_RedTeamWin(self.ctx)
 
 
 # 정상 게임 무승부
-class DrawGame_GiveReward(common.Trigger):
+class DrawGame_GiveReward(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_give_reward(type='fund', teamId=1, isWin=False) # BlueTeam 무승부
         self.guild_vs_game_give_reward(type='exp', teamId=1, isWin=False) # BlueTeam 무승부
@@ -2158,13 +2158,13 @@ class DrawGame_GiveReward(common.Trigger):
         self.guild_vs_game_give_reward(type='guildCoin', teamId=2, isWin=False) # RedTeam 무승부
         self.guild_vs_game_give_contribution(teamId=2, isWin=False) # RedTeam 무승부
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return ResultPopUp_Draw(self.ctx)
 
 
 # 블루팀 승리 결과창 팝업
-class ResultPopUp_BlueTeamWin(common.Trigger):
+class ResultPopUp_BlueTeamWin(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.guild_vs_game_result()
@@ -2174,13 +2174,13 @@ class ResultPopUp_BlueTeamWin(common.Trigger):
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return LeaveAll(self.ctx)
 
 
 # 레드팀 승리 결과창 팝업
-class ResultPopUp_RedTeamWin(common.Trigger):
+class ResultPopUp_RedTeamWin(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.guild_vs_game_result()
@@ -2190,13 +2190,13 @@ class ResultPopUp_RedTeamWin(common.Trigger):
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return LeaveAll(self.ctx)
 
 
 # 무승부 결과창 팝업
-class ResultPopUp_Draw(common.Trigger):
+class ResultPopUp_Draw(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.guild_vs_game_result()
@@ -2206,13 +2206,13 @@ class ResultPopUp_Draw(common.Trigger):
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return LeaveAll(self.ctx)
 
 
 # 1팀=블루팀 부전승
-class DefaultbyWin_BlueTeam(common.Trigger):
+class DefaultbyWin_BlueTeam(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__60$', duration=4000, userTagId=1)
@@ -2220,12 +2220,12 @@ class DefaultbyWin_BlueTeam(common.Trigger):
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='massive_success')
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='massive_fail')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DefaultbyWin_BlueTeam_GiveReward(self.ctx)
 
 
-class DefaultbyWin_BlueTeam_GiveReward(common.Trigger):
+class DefaultbyWin_BlueTeam_GiveReward(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_give_reward(type='fund', teamId=1, isWin=False) # BlueTeam 부전승
         self.guild_vs_game_give_reward(type='exp', teamId=1, isWin=False) # BlueTeam 부전승
@@ -2235,13 +2235,13 @@ class DefaultbyWin_BlueTeam_GiveReward(common.Trigger):
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.guild_vs_game_log_won_by_default(teamId=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return LeaveAll(self.ctx)
 
 
 # 2팀=레드팀 부전승
-class DefaultbyWin_RedTeam(common.Trigger):
+class DefaultbyWin_RedTeam(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='0,0')
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__62$', duration=4000, userTagId=2)
@@ -2249,12 +2249,12 @@ class DefaultbyWin_RedTeam(common.Trigger):
         self.play_system_sound_by_user_tag(userTagId=2, soundKey='massive_success')
         self.play_system_sound_by_user_tag(userTagId=1, soundKey='massive_fail')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return DefaultbyWin_RedTeam_GiveReward(self.ctx)
 
 
-class DefaultbyWin_RedTeam_GiveReward(common.Trigger):
+class DefaultbyWin_RedTeam_GiveReward(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_give_reward(type='fund', teamId=2, isWin=False) # RedTeam 부전승
         self.guild_vs_game_give_reward(type='exp', teamId=2, isWin=False) # RedTeam 부전승
@@ -2264,13 +2264,13 @@ class DefaultbyWin_RedTeam_GiveReward(common.Trigger):
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.guild_vs_game_log_won_by_default(teamId=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return LeaveAll(self.ctx)
 
 
 # 인원 미달 게임 취소
-class GameCancel(common.Trigger):
+class GameCancel(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True) # LeavePortal_EndGame
@@ -2280,12 +2280,12 @@ class GameCancel(common.Trigger):
         self.show_event_result(type='notice', text='$66200001_GD__01_MASSIVEMAIN__64$', duration=4000, triggerBoxId=9000, isOutside=False)
         self.play_system_sound_in_box(boxIds=[9000], sound='massive_fail')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return LeaveAll(self.ctx)
 
 
-class LeaveAll(common.Trigger):
+class LeaveAll(trigger_api.Trigger):
     def on_enter(self):
         self.guild_vs_game_end_game()
         self.unset_mini_game_area_for_hack() # 해킹 보안 종료
@@ -2294,23 +2294,23 @@ class LeaveAll(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Ending_03')
         self.set_sound(triggerId=10000, enable=False) # Intro
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 
 
 # 그룹별패턴 모음
 # G01 P01
-class G01P01_RoundCheckIn(common.Trigger):
+class G01P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P01Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P01_CleanUp(self.ctx)
 
@@ -2318,7 +2318,7 @@ class G01P01_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P01_CleanUp(common.Trigger):
+class G01P01_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2326,33 +2326,33 @@ class G01P01_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P01_Check(self.ctx)
 
 
-class G01P01_Check(common.Trigger):
+class G01P01_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P01TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P01_End(self.ctx)
 
 
-class G01P01_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P01_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P01End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P02
-class G01P02_RoundCheckIn(common.Trigger):
+class G01P02_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P02Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P02_CleanUp(self.ctx)
 
@@ -2360,7 +2360,7 @@ class G01P02_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P02_CleanUp(common.Trigger):
+class G01P02_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2368,33 +2368,33 @@ class G01P02_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P02_Check(self.ctx)
 
 
-class G01P02_Check(common.Trigger):
+class G01P02_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P02TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P02_End(self.ctx)
 
 
-class G01P02_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P02_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P02End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P03
-class G01P03_RoundCheckIn(common.Trigger):
+class G01P03_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P03Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P03_CleanUp(self.ctx)
 
@@ -2402,7 +2402,7 @@ class G01P03_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P03_CleanUp(common.Trigger):
+class G01P03_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2410,33 +2410,33 @@ class G01P03_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P03_Check(self.ctx)
 
 
-class G01P03_Check(common.Trigger):
+class G01P03_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P03TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P03_End(self.ctx)
 
 
-class G01P03_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P03_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P03End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P04
-class G01P04_RoundCheckIn(common.Trigger):
+class G01P04_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P04Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P04_CleanUp(self.ctx)
 
@@ -2444,7 +2444,7 @@ class G01P04_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P04_CleanUp(common.Trigger):
+class G01P04_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2452,33 +2452,33 @@ class G01P04_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P04_Check(self.ctx)
 
 
-class G01P04_Check(common.Trigger):
+class G01P04_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P04TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P04_End(self.ctx)
 
 
-class G01P04_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P04_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P04End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P05
-class G01P05_RoundCheckIn(common.Trigger):
+class G01P05_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P05Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P05_CleanUp(self.ctx)
 
@@ -2486,7 +2486,7 @@ class G01P05_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P05_CleanUp(common.Trigger):
+class G01P05_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2494,33 +2494,33 @@ class G01P05_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P05_Check(self.ctx)
 
 
-class G01P05_Check(common.Trigger):
+class G01P05_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P05TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P05_End(self.ctx)
 
 
-class G01P05_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P05_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P05End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P06
-class G01P06_RoundCheckIn(common.Trigger):
+class G01P06_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P06Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P06_CleanUp(self.ctx)
 
@@ -2528,7 +2528,7 @@ class G01P06_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P06_CleanUp(common.Trigger):
+class G01P06_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2536,33 +2536,33 @@ class G01P06_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P06_Check(self.ctx)
 
 
-class G01P06_Check(common.Trigger):
+class G01P06_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P06TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P06_End(self.ctx)
 
 
-class G01P06_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P06_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P06End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P07
-class G01P07_RoundCheckIn(common.Trigger):
+class G01P07_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P07Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P07_CleanUp(self.ctx)
 
@@ -2570,7 +2570,7 @@ class G01P07_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P07_CleanUp(common.Trigger):
+class G01P07_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2578,33 +2578,33 @@ class G01P07_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P07_Check(self.ctx)
 
 
-class G01P07_Check(common.Trigger):
+class G01P07_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P07TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P07_End(self.ctx)
 
 
-class G01P07_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P07_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P07End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P08
-class G01P08_RoundCheckIn(common.Trigger):
+class G01P08_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P08Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P08_CleanUp(self.ctx)
 
@@ -2612,7 +2612,7 @@ class G01P08_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P08_CleanUp(common.Trigger):
+class G01P08_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2620,33 +2620,33 @@ class G01P08_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P08_Check(self.ctx)
 
 
-class G01P08_Check(common.Trigger):
+class G01P08_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P08TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P08_End(self.ctx)
 
 
-class G01P08_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P08_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P08End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P09
-class G01P09_RoundCheckIn(common.Trigger):
+class G01P09_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P09Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P09_CleanUp(self.ctx)
 
@@ -2654,7 +2654,7 @@ class G01P09_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P09_CleanUp(common.Trigger):
+class G01P09_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2662,33 +2662,33 @@ class G01P09_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P09_Check(self.ctx)
 
 
-class G01P09_Check(common.Trigger):
+class G01P09_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P09TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P09_End(self.ctx)
 
 
-class G01P09_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P09_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P09End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P10
-class G01P10_RoundCheckIn(common.Trigger):
+class G01P10_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P10Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P10_CleanUp(self.ctx)
 
@@ -2696,7 +2696,7 @@ class G01P10_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P10_CleanUp(common.Trigger):
+class G01P10_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2704,33 +2704,33 @@ class G01P10_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P10_Check(self.ctx)
 
 
-class G01P10_Check(common.Trigger):
+class G01P10_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P10TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P10_End(self.ctx)
 
 
-class G01P10_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P10_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P10End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P11
-class G01P11_RoundCheckIn(common.Trigger):
+class G01P11_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P11Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P11_CleanUp(self.ctx)
 
@@ -2738,7 +2738,7 @@ class G01P11_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P11_CleanUp(common.Trigger):
+class G01P11_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2746,33 +2746,33 @@ class G01P11_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P11_Check(self.ctx)
 
 
-class G01P11_Check(common.Trigger):
+class G01P11_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P11TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P11_End(self.ctx)
 
 
-class G01P11_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P11_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P11End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P12
-class G01P12_RoundCheckIn(common.Trigger):
+class G01P12_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P12Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P12_CleanUp(self.ctx)
 
@@ -2780,7 +2780,7 @@ class G01P12_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P12_CleanUp(common.Trigger):
+class G01P12_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2788,33 +2788,33 @@ class G01P12_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P12_Check(self.ctx)
 
 
-class G01P12_Check(common.Trigger):
+class G01P12_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P12TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P12_End(self.ctx)
 
 
-class G01P12_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P12_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P12End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P13
-class G01P13_RoundCheckIn(common.Trigger):
+class G01P13_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P13Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P13_CleanUp(self.ctx)
 
@@ -2822,7 +2822,7 @@ class G01P13_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P13_CleanUp(common.Trigger):
+class G01P13_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2830,33 +2830,33 @@ class G01P13_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P13_Check(self.ctx)
 
 
-class G01P13_Check(common.Trigger):
+class G01P13_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P13TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P13_End(self.ctx)
 
 
-class G01P13_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P13_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P13End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P14
-class G01P14_RoundCheckIn(common.Trigger):
+class G01P14_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P14Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P14_CleanUp(self.ctx)
 
@@ -2864,7 +2864,7 @@ class G01P14_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P14_CleanUp(common.Trigger):
+class G01P14_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2872,33 +2872,33 @@ class G01P14_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P14_Check(self.ctx)
 
 
-class G01P14_Check(common.Trigger):
+class G01P14_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P14TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P14_End(self.ctx)
 
 
-class G01P14_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P14_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P14End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P15
-class G01P15_RoundCheckIn(common.Trigger):
+class G01P15_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P15Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P15_CleanUp(self.ctx)
 
@@ -2906,7 +2906,7 @@ class G01P15_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P15_CleanUp(common.Trigger):
+class G01P15_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2914,33 +2914,33 @@ class G01P15_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P15_Check(self.ctx)
 
 
-class G01P15_Check(common.Trigger):
+class G01P15_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P15TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P15_End(self.ctx)
 
 
-class G01P15_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P15_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P15End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P16
-class G01P16_RoundCheckIn(common.Trigger):
+class G01P16_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P16Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P16_CleanUp(self.ctx)
 
@@ -2948,7 +2948,7 @@ class G01P16_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P16_CleanUp(common.Trigger):
+class G01P16_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2956,33 +2956,33 @@ class G01P16_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P16_Check(self.ctx)
 
 
-class G01P16_Check(common.Trigger):
+class G01P16_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P16TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P16_End(self.ctx)
 
 
-class G01P16_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P16_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P16End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P17
-class G01P17_RoundCheckIn(common.Trigger):
+class G01P17_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P17Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P17_CleanUp(self.ctx)
 
@@ -2990,7 +2990,7 @@ class G01P17_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P17_CleanUp(common.Trigger):
+class G01P17_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -2998,33 +2998,33 @@ class G01P17_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P17_Check(self.ctx)
 
 
-class G01P17_Check(common.Trigger):
+class G01P17_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P17TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P17_End(self.ctx)
 
 
-class G01P17_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P17_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P17End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P18
-class G01P18_RoundCheckIn(common.Trigger):
+class G01P18_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P18Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P18_CleanUp(self.ctx)
 
@@ -3032,7 +3032,7 @@ class G01P18_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P18_CleanUp(common.Trigger):
+class G01P18_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3040,33 +3040,33 @@ class G01P18_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P18_Check(self.ctx)
 
 
-class G01P18_Check(common.Trigger):
+class G01P18_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P18TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P18_End(self.ctx)
 
 
-class G01P18_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P18_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P18End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P19
-class G01P19_RoundCheckIn(common.Trigger):
+class G01P19_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P19Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P19_CleanUp(self.ctx)
 
@@ -3074,7 +3074,7 @@ class G01P19_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P19_CleanUp(common.Trigger):
+class G01P19_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3082,33 +3082,33 @@ class G01P19_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P19_Check(self.ctx)
 
 
-class G01P19_Check(common.Trigger):
+class G01P19_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P19TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P19_End(self.ctx)
 
 
-class G01P19_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P19_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P19End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P20
-class G01P20_RoundCheckIn(common.Trigger):
+class G01P20_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P20Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P20_CleanUp(self.ctx)
 
@@ -3116,7 +3116,7 @@ class G01P20_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P20_CleanUp(common.Trigger):
+class G01P20_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3124,33 +3124,33 @@ class G01P20_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P20_Check(self.ctx)
 
 
-class G01P20_Check(common.Trigger):
+class G01P20_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P20TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P20_End(self.ctx)
 
 
-class G01P20_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P20_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P20End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P21
-class G01P21_RoundCheckIn(common.Trigger):
+class G01P21_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P21Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P21_CleanUp(self.ctx)
 
@@ -3158,7 +3158,7 @@ class G01P21_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P21_CleanUp(common.Trigger):
+class G01P21_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3166,33 +3166,33 @@ class G01P21_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P21_Check(self.ctx)
 
 
-class G01P21_Check(common.Trigger):
+class G01P21_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P21TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P21_End(self.ctx)
 
 
-class G01P21_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P21_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P21End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P22
-class G01P22_RoundCheckIn(common.Trigger):
+class G01P22_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P22Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P22_CleanUp(self.ctx)
 
@@ -3200,7 +3200,7 @@ class G01P22_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P22_CleanUp(common.Trigger):
+class G01P22_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3208,33 +3208,33 @@ class G01P22_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P22_Check(self.ctx)
 
 
-class G01P22_Check(common.Trigger):
+class G01P22_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P22TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P22_End(self.ctx)
 
 
-class G01P22_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P22_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P22End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P23
-class G01P23_RoundCheckIn(common.Trigger):
+class G01P23_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P23Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P23_CleanUp(self.ctx)
 
@@ -3242,7 +3242,7 @@ class G01P23_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P23_CleanUp(common.Trigger):
+class G01P23_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3250,33 +3250,33 @@ class G01P23_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P23_Check(self.ctx)
 
 
-class G01P23_Check(common.Trigger):
+class G01P23_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P23TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P23_End(self.ctx)
 
 
-class G01P23_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P23_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P23End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P24
-class G01P24_RoundCheckIn(common.Trigger):
+class G01P24_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P24Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P24_CleanUp(self.ctx)
 
@@ -3284,7 +3284,7 @@ class G01P24_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P24_CleanUp(common.Trigger):
+class G01P24_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3292,33 +3292,33 @@ class G01P24_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P24_Check(self.ctx)
 
 
-class G01P24_Check(common.Trigger):
+class G01P24_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P24TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P24_End(self.ctx)
 
 
-class G01P24_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P24_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P24End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P25
-class G01P25_RoundCheckIn(common.Trigger):
+class G01P25_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P25Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P25_CleanUp(self.ctx)
 
@@ -3326,7 +3326,7 @@ class G01P25_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P25_CleanUp(common.Trigger):
+class G01P25_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3334,33 +3334,33 @@ class G01P25_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P25_Check(self.ctx)
 
 
-class G01P25_Check(common.Trigger):
+class G01P25_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P25TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P25_End(self.ctx)
 
 
-class G01P25_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P25_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P25End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P26
-class G01P26_RoundCheckIn(common.Trigger):
+class G01P26_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P26Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P26_CleanUp(self.ctx)
 
@@ -3368,7 +3368,7 @@ class G01P26_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P26_CleanUp(common.Trigger):
+class G01P26_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3376,33 +3376,33 @@ class G01P26_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P26_Check(self.ctx)
 
 
-class G01P26_Check(common.Trigger):
+class G01P26_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P26TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P26_End(self.ctx)
 
 
-class G01P26_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P26_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P26End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P27
-class G01P27_RoundCheckIn(common.Trigger):
+class G01P27_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P27Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P27_CleanUp(self.ctx)
 
@@ -3410,7 +3410,7 @@ class G01P27_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P27_CleanUp(common.Trigger):
+class G01P27_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3418,33 +3418,33 @@ class G01P27_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P27_Check(self.ctx)
 
 
-class G01P27_Check(common.Trigger):
+class G01P27_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P27TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P27_End(self.ctx)
 
 
-class G01P27_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P27_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P27End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P28
-class G01P28_RoundCheckIn(common.Trigger):
+class G01P28_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P28Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P28_CleanUp(self.ctx)
 
@@ -3452,7 +3452,7 @@ class G01P28_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P28_CleanUp(common.Trigger):
+class G01P28_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3460,33 +3460,33 @@ class G01P28_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P28_Check(self.ctx)
 
 
-class G01P28_Check(common.Trigger):
+class G01P28_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P28TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P28_End(self.ctx)
 
 
-class G01P28_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P28_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P28End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P29
-class G01P29_RoundCheckIn(common.Trigger):
+class G01P29_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P29Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P29_CleanUp(self.ctx)
 
@@ -3494,7 +3494,7 @@ class G01P29_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P29_CleanUp(common.Trigger):
+class G01P29_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3502,33 +3502,33 @@ class G01P29_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P29_Check(self.ctx)
 
 
-class G01P29_Check(common.Trigger):
+class G01P29_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P29TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P29_End(self.ctx)
 
 
-class G01P29_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P29_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P29End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G01 P30
-class G01P30_RoundCheckIn(common.Trigger):
+class G01P30_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P30Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G01P30_CleanUp(self.ctx)
 
@@ -3536,7 +3536,7 @@ class G01P30_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G01P30_CleanUp(common.Trigger):
+class G01P30_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3544,33 +3544,33 @@ class G01P30_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G01P30_Check(self.ctx)
 
 
-class G01P30_Check(common.Trigger):
+class G01P30_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='G01P30TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G01P30_End(self.ctx)
 
 
-class G01P30_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G01P30_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G01P30End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P01
-class G02P01_RoundCheckIn(common.Trigger):
+class G02P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P01Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P01_CleanUp(self.ctx)
 
@@ -3578,7 +3578,7 @@ class G02P01_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P01_CleanUp(common.Trigger):
+class G02P01_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3586,33 +3586,33 @@ class G02P01_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P01_Check(self.ctx)
 
 
-class G02P01_Check(common.Trigger):
+class G02P01_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P01TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P01_End(self.ctx)
 
 
-class G02P01_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P01_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P01End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P02
-class G02P02_RoundCheckIn(common.Trigger):
+class G02P02_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P02Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P02_CleanUp(self.ctx)
 
@@ -3620,7 +3620,7 @@ class G02P02_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P02_CleanUp(common.Trigger):
+class G02P02_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3628,33 +3628,33 @@ class G02P02_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P02_Check(self.ctx)
 
 
-class G02P02_Check(common.Trigger):
+class G02P02_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P02TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P02_End(self.ctx)
 
 
-class G02P02_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P02_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P02End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P03
-class G02P03_RoundCheckIn(common.Trigger):
+class G02P03_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P03Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P03_CleanUp(self.ctx)
 
@@ -3662,7 +3662,7 @@ class G02P03_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P03_CleanUp(common.Trigger):
+class G02P03_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3670,33 +3670,33 @@ class G02P03_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P03_Check(self.ctx)
 
 
-class G02P03_Check(common.Trigger):
+class G02P03_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P03TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P03_End(self.ctx)
 
 
-class G02P03_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P03_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P03End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P04
-class G02P04_RoundCheckIn(common.Trigger):
+class G02P04_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P04Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P04_CleanUp(self.ctx)
 
@@ -3704,7 +3704,7 @@ class G02P04_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P04_CleanUp(common.Trigger):
+class G02P04_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3712,33 +3712,33 @@ class G02P04_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P04_Check(self.ctx)
 
 
-class G02P04_Check(common.Trigger):
+class G02P04_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P04TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P04_End(self.ctx)
 
 
-class G02P04_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P04_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P04End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P05
-class G02P05_RoundCheckIn(common.Trigger):
+class G02P05_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P05Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P05_CleanUp(self.ctx)
 
@@ -3746,7 +3746,7 @@ class G02P05_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P05_CleanUp(common.Trigger):
+class G02P05_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3754,33 +3754,33 @@ class G02P05_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P05_Check(self.ctx)
 
 
-class G02P05_Check(common.Trigger):
+class G02P05_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P05TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P05_End(self.ctx)
 
 
-class G02P05_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P05_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P05End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P06
-class G02P06_RoundCheckIn(common.Trigger):
+class G02P06_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P06Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P06_CleanUp(self.ctx)
 
@@ -3788,7 +3788,7 @@ class G02P06_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P06_CleanUp(common.Trigger):
+class G02P06_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3796,33 +3796,33 @@ class G02P06_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P06_Check(self.ctx)
 
 
-class G02P06_Check(common.Trigger):
+class G02P06_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P06TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P06_End(self.ctx)
 
 
-class G02P06_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P06_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P06End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P07
-class G02P07_RoundCheckIn(common.Trigger):
+class G02P07_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P07Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P07_CleanUp(self.ctx)
 
@@ -3830,7 +3830,7 @@ class G02P07_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P07_CleanUp(common.Trigger):
+class G02P07_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3838,33 +3838,33 @@ class G02P07_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P07_Check(self.ctx)
 
 
-class G02P07_Check(common.Trigger):
+class G02P07_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P07TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P07_End(self.ctx)
 
 
-class G02P07_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P07_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P07End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P08
-class G02P08_RoundCheckIn(common.Trigger):
+class G02P08_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P08Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P08_CleanUp(self.ctx)
 
@@ -3872,7 +3872,7 @@ class G02P08_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P08_CleanUp(common.Trigger):
+class G02P08_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3880,33 +3880,33 @@ class G02P08_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P08_Check(self.ctx)
 
 
-class G02P08_Check(common.Trigger):
+class G02P08_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P08TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P08_End(self.ctx)
 
 
-class G02P08_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P08_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P08End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P09
-class G02P09_RoundCheckIn(common.Trigger):
+class G02P09_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P09Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P09_CleanUp(self.ctx)
 
@@ -3914,7 +3914,7 @@ class G02P09_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P09_CleanUp(common.Trigger):
+class G02P09_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3922,33 +3922,33 @@ class G02P09_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P09_Check(self.ctx)
 
 
-class G02P09_Check(common.Trigger):
+class G02P09_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P09TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P09_End(self.ctx)
 
 
-class G02P09_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P09_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P09End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P10
-class G02P10_RoundCheckIn(common.Trigger):
+class G02P10_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P10Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P10_CleanUp(self.ctx)
 
@@ -3956,7 +3956,7 @@ class G02P10_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P10_CleanUp(common.Trigger):
+class G02P10_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -3964,33 +3964,33 @@ class G02P10_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P10_Check(self.ctx)
 
 
-class G02P10_Check(common.Trigger):
+class G02P10_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P10TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P10_End(self.ctx)
 
 
-class G02P10_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P10_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P10End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P11
-class G02P11_RoundCheckIn(common.Trigger):
+class G02P11_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P11Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P11_CleanUp(self.ctx)
 
@@ -3998,7 +3998,7 @@ class G02P11_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P11_CleanUp(common.Trigger):
+class G02P11_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4006,33 +4006,33 @@ class G02P11_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P11_Check(self.ctx)
 
 
-class G02P11_Check(common.Trigger):
+class G02P11_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P11TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P11_End(self.ctx)
 
 
-class G02P11_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P11_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P11End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P12
-class G02P12_RoundCheckIn(common.Trigger):
+class G02P12_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P12Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P12_CleanUp(self.ctx)
 
@@ -4040,7 +4040,7 @@ class G02P12_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P12_CleanUp(common.Trigger):
+class G02P12_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4048,33 +4048,33 @@ class G02P12_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P12_Check(self.ctx)
 
 
-class G02P12_Check(common.Trigger):
+class G02P12_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P12TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P12_End(self.ctx)
 
 
-class G02P12_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P12_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P12End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P13
-class G02P13_RoundCheckIn(common.Trigger):
+class G02P13_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P13Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P13_CleanUp(self.ctx)
 
@@ -4082,7 +4082,7 @@ class G02P13_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P13_CleanUp(common.Trigger):
+class G02P13_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4090,33 +4090,33 @@ class G02P13_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P13_Check(self.ctx)
 
 
-class G02P13_Check(common.Trigger):
+class G02P13_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P13TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P13_End(self.ctx)
 
 
-class G02P13_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P13_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P13End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P14
-class G02P14_RoundCheckIn(common.Trigger):
+class G02P14_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P14Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P14_CleanUp(self.ctx)
 
@@ -4124,7 +4124,7 @@ class G02P14_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P14_CleanUp(common.Trigger):
+class G02P14_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4132,33 +4132,33 @@ class G02P14_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P14_Check(self.ctx)
 
 
-class G02P14_Check(common.Trigger):
+class G02P14_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P14TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P14_End(self.ctx)
 
 
-class G02P14_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P14_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P14End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P15
-class G02P15_RoundCheckIn(common.Trigger):
+class G02P15_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P15Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P15_CleanUp(self.ctx)
 
@@ -4166,7 +4166,7 @@ class G02P15_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P15_CleanUp(common.Trigger):
+class G02P15_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4174,33 +4174,33 @@ class G02P15_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P15_Check(self.ctx)
 
 
-class G02P15_Check(common.Trigger):
+class G02P15_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P15TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P15_End(self.ctx)
 
 
-class G02P15_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P15_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P15End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P16
-class G02P16_RoundCheckIn(common.Trigger):
+class G02P16_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P16Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P16_CleanUp(self.ctx)
 
@@ -4208,7 +4208,7 @@ class G02P16_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P16_CleanUp(common.Trigger):
+class G02P16_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4216,33 +4216,33 @@ class G02P16_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P16_Check(self.ctx)
 
 
-class G02P16_Check(common.Trigger):
+class G02P16_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P16TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P16_End(self.ctx)
 
 
-class G02P16_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P16_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P16End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P17
-class G02P17_RoundCheckIn(common.Trigger):
+class G02P17_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P17Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P17_CleanUp(self.ctx)
 
@@ -4250,7 +4250,7 @@ class G02P17_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P17_CleanUp(common.Trigger):
+class G02P17_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4258,33 +4258,33 @@ class G02P17_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P17_Check(self.ctx)
 
 
-class G02P17_Check(common.Trigger):
+class G02P17_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P17TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P17_End(self.ctx)
 
 
-class G02P17_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P17_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P17End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P18
-class G02P18_RoundCheckIn(common.Trigger):
+class G02P18_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P18Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P18_CleanUp(self.ctx)
 
@@ -4292,7 +4292,7 @@ class G02P18_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P18_CleanUp(common.Trigger):
+class G02P18_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4300,33 +4300,33 @@ class G02P18_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P18_Check(self.ctx)
 
 
-class G02P18_Check(common.Trigger):
+class G02P18_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P18TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P18_End(self.ctx)
 
 
-class G02P18_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P18_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P18End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P19
-class G02P19_RoundCheckIn(common.Trigger):
+class G02P19_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P19Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P19_CleanUp(self.ctx)
 
@@ -4334,7 +4334,7 @@ class G02P19_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P19_CleanUp(common.Trigger):
+class G02P19_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4342,33 +4342,33 @@ class G02P19_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P19_Check(self.ctx)
 
 
-class G02P19_Check(common.Trigger):
+class G02P19_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P19TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P19_End(self.ctx)
 
 
-class G02P19_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P19_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P19End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P20
-class G02P20_RoundCheckIn(common.Trigger):
+class G02P20_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P20Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P20_CleanUp(self.ctx)
 
@@ -4376,7 +4376,7 @@ class G02P20_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P20_CleanUp(common.Trigger):
+class G02P20_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4384,33 +4384,33 @@ class G02P20_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P20_Check(self.ctx)
 
 
-class G02P20_Check(common.Trigger):
+class G02P20_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P20TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P20_End(self.ctx)
 
 
-class G02P20_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P20_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P20End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P21
-class G02P21_RoundCheckIn(common.Trigger):
+class G02P21_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P21Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P21_CleanUp(self.ctx)
 
@@ -4418,7 +4418,7 @@ class G02P21_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P21_CleanUp(common.Trigger):
+class G02P21_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4426,33 +4426,33 @@ class G02P21_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P21_Check(self.ctx)
 
 
-class G02P21_Check(common.Trigger):
+class G02P21_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P21TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P21_End(self.ctx)
 
 
-class G02P21_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P21_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P21End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P22
-class G02P22_RoundCheckIn(common.Trigger):
+class G02P22_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P22Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P22_CleanUp(self.ctx)
 
@@ -4460,7 +4460,7 @@ class G02P22_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P22_CleanUp(common.Trigger):
+class G02P22_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4468,33 +4468,33 @@ class G02P22_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P22_Check(self.ctx)
 
 
-class G02P22_Check(common.Trigger):
+class G02P22_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P22TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P22_End(self.ctx)
 
 
-class G02P22_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P22_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P22End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P23
-class G02P23_RoundCheckIn(common.Trigger):
+class G02P23_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P23Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P23_CleanUp(self.ctx)
 
@@ -4502,7 +4502,7 @@ class G02P23_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P23_CleanUp(common.Trigger):
+class G02P23_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4510,33 +4510,33 @@ class G02P23_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P23_Check(self.ctx)
 
 
-class G02P23_Check(common.Trigger):
+class G02P23_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P23TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P23_End(self.ctx)
 
 
-class G02P23_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P23_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P23End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P24
-class G02P24_RoundCheckIn(common.Trigger):
+class G02P24_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P24Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P24_CleanUp(self.ctx)
 
@@ -4544,7 +4544,7 @@ class G02P24_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P24_CleanUp(common.Trigger):
+class G02P24_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4552,33 +4552,33 @@ class G02P24_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P24_Check(self.ctx)
 
 
-class G02P24_Check(common.Trigger):
+class G02P24_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P24TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P24_End(self.ctx)
 
 
-class G02P24_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P24_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P24End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P25
-class G02P25_RoundCheckIn(common.Trigger):
+class G02P25_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P25Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P25_CleanUp(self.ctx)
 
@@ -4586,7 +4586,7 @@ class G02P25_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P25_CleanUp(common.Trigger):
+class G02P25_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4594,33 +4594,33 @@ class G02P25_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P25_Check(self.ctx)
 
 
-class G02P25_Check(common.Trigger):
+class G02P25_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P25TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P25_End(self.ctx)
 
 
-class G02P25_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P25_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P25End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P26
-class G02P26_RoundCheckIn(common.Trigger):
+class G02P26_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P26Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P26_CleanUp(self.ctx)
 
@@ -4628,7 +4628,7 @@ class G02P26_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P26_CleanUp(common.Trigger):
+class G02P26_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4636,33 +4636,33 @@ class G02P26_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P26_Check(self.ctx)
 
 
-class G02P26_Check(common.Trigger):
+class G02P26_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P26TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P26_End(self.ctx)
 
 
-class G02P26_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P26_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P26End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P27
-class G02P27_RoundCheckIn(common.Trigger):
+class G02P27_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P27Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P27_CleanUp(self.ctx)
 
@@ -4670,7 +4670,7 @@ class G02P27_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P27_CleanUp(common.Trigger):
+class G02P27_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4678,33 +4678,33 @@ class G02P27_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P27_Check(self.ctx)
 
 
-class G02P27_Check(common.Trigger):
+class G02P27_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P27TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P27_End(self.ctx)
 
 
-class G02P27_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P27_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P27End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P28
-class G02P28_RoundCheckIn(common.Trigger):
+class G02P28_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P28Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P28_CleanUp(self.ctx)
 
@@ -4712,7 +4712,7 @@ class G02P28_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P28_CleanUp(common.Trigger):
+class G02P28_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4720,33 +4720,33 @@ class G02P28_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P28_Check(self.ctx)
 
 
-class G02P28_Check(common.Trigger):
+class G02P28_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P28TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P28_End(self.ctx)
 
 
-class G02P28_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P28_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P28End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P29
-class G02P29_RoundCheckIn(common.Trigger):
+class G02P29_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P29Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P29_CleanUp(self.ctx)
 
@@ -4754,7 +4754,7 @@ class G02P29_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P29_CleanUp(common.Trigger):
+class G02P29_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4762,33 +4762,33 @@ class G02P29_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P29_Check(self.ctx)
 
 
-class G02P29_Check(common.Trigger):
+class G02P29_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P29TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P29_End(self.ctx)
 
 
-class G02P29_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P29_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P29End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G02 P30
-class G02P30_RoundCheckIn(common.Trigger):
+class G02P30_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P30Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G02P30_CleanUp(self.ctx)
 
@@ -4796,7 +4796,7 @@ class G02P30_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G02P30_CleanUp(common.Trigger):
+class G02P30_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4804,33 +4804,33 @@ class G02P30_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G02P30_Check(self.ctx)
 
 
-class G02P30_Check(common.Trigger):
+class G02P30_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=200, key='G02P30TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G02P30_End(self.ctx)
 
 
-class G02P30_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G02P30_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G02P30End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P01
-class G03P01_RoundCheckIn(common.Trigger):
+class G03P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P01Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P01_CleanUp(self.ctx)
 
@@ -4838,7 +4838,7 @@ class G03P01_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P01_CleanUp(common.Trigger):
+class G03P01_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4846,33 +4846,33 @@ class G03P01_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P01_Check(self.ctx)
 
 
-class G03P01_Check(common.Trigger):
+class G03P01_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P01TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P01_End(self.ctx)
 
 
-class G03P01_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P01_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P01End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P02
-class G03P02_RoundCheckIn(common.Trigger):
+class G03P02_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P02Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P02_CleanUp(self.ctx)
 
@@ -4880,7 +4880,7 @@ class G03P02_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P02_CleanUp(common.Trigger):
+class G03P02_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4888,33 +4888,33 @@ class G03P02_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P02_Check(self.ctx)
 
 
-class G03P02_Check(common.Trigger):
+class G03P02_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P02TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P02_End(self.ctx)
 
 
-class G03P02_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P02_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P02End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P03
-class G03P03_RoundCheckIn(common.Trigger):
+class G03P03_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P03Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P03_CleanUp(self.ctx)
 
@@ -4922,7 +4922,7 @@ class G03P03_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P03_CleanUp(common.Trigger):
+class G03P03_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4930,33 +4930,33 @@ class G03P03_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P03_Check(self.ctx)
 
 
-class G03P03_Check(common.Trigger):
+class G03P03_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P03TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P03_End(self.ctx)
 
 
-class G03P03_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P03_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P03End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P04
-class G03P04_RoundCheckIn(common.Trigger):
+class G03P04_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P04Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P04_CleanUp(self.ctx)
 
@@ -4964,7 +4964,7 @@ class G03P04_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P04_CleanUp(common.Trigger):
+class G03P04_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -4972,33 +4972,33 @@ class G03P04_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P04_Check(self.ctx)
 
 
-class G03P04_Check(common.Trigger):
+class G03P04_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P04TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P04_End(self.ctx)
 
 
-class G03P04_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P04_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P04End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P05
-class G03P05_RoundCheckIn(common.Trigger):
+class G03P05_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P05Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P05_CleanUp(self.ctx)
 
@@ -5006,7 +5006,7 @@ class G03P05_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P05_CleanUp(common.Trigger):
+class G03P05_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5014,33 +5014,33 @@ class G03P05_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P05_Check(self.ctx)
 
 
-class G03P05_Check(common.Trigger):
+class G03P05_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P05TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P05_End(self.ctx)
 
 
-class G03P05_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P05_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P05End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P06
-class G03P06_RoundCheckIn(common.Trigger):
+class G03P06_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P06Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P06_CleanUp(self.ctx)
 
@@ -5048,7 +5048,7 @@ class G03P06_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P06_CleanUp(common.Trigger):
+class G03P06_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5056,33 +5056,33 @@ class G03P06_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P06_Check(self.ctx)
 
 
-class G03P06_Check(common.Trigger):
+class G03P06_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P06TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P06_End(self.ctx)
 
 
-class G03P06_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P06_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P06End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P07
-class G03P07_RoundCheckIn(common.Trigger):
+class G03P07_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P07Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P07_CleanUp(self.ctx)
 
@@ -5090,7 +5090,7 @@ class G03P07_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P07_CleanUp(common.Trigger):
+class G03P07_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5098,33 +5098,33 @@ class G03P07_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P07_Check(self.ctx)
 
 
-class G03P07_Check(common.Trigger):
+class G03P07_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P07TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P07_End(self.ctx)
 
 
-class G03P07_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P07_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P07End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P08
-class G03P08_RoundCheckIn(common.Trigger):
+class G03P08_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P08Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P08_CleanUp(self.ctx)
 
@@ -5132,7 +5132,7 @@ class G03P08_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P08_CleanUp(common.Trigger):
+class G03P08_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5140,33 +5140,33 @@ class G03P08_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P08_Check(self.ctx)
 
 
-class G03P08_Check(common.Trigger):
+class G03P08_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P08TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P08_End(self.ctx)
 
 
-class G03P08_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P08_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P08End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P09
-class G03P09_RoundCheckIn(common.Trigger):
+class G03P09_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P09Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P09_CleanUp(self.ctx)
 
@@ -5174,7 +5174,7 @@ class G03P09_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P09_CleanUp(common.Trigger):
+class G03P09_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5182,33 +5182,33 @@ class G03P09_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P09_Check(self.ctx)
 
 
-class G03P09_Check(common.Trigger):
+class G03P09_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P09TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P09_End(self.ctx)
 
 
-class G03P09_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P09_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P09End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P10
-class G03P10_RoundCheckIn(common.Trigger):
+class G03P10_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P10Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P10_CleanUp(self.ctx)
 
@@ -5216,7 +5216,7 @@ class G03P10_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P10_CleanUp(common.Trigger):
+class G03P10_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5224,33 +5224,33 @@ class G03P10_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P10_Check(self.ctx)
 
 
-class G03P10_Check(common.Trigger):
+class G03P10_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P10TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P10_End(self.ctx)
 
 
-class G03P10_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P10_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P10End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P11
-class G03P11_RoundCheckIn(common.Trigger):
+class G03P11_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P11Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P11_CleanUp(self.ctx)
 
@@ -5258,7 +5258,7 @@ class G03P11_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P11_CleanUp(common.Trigger):
+class G03P11_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5266,33 +5266,33 @@ class G03P11_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P11_Check(self.ctx)
 
 
-class G03P11_Check(common.Trigger):
+class G03P11_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P11TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P11_End(self.ctx)
 
 
-class G03P11_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P11_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P11End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P12
-class G03P12_RoundCheckIn(common.Trigger):
+class G03P12_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P12Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P12_CleanUp(self.ctx)
 
@@ -5300,7 +5300,7 @@ class G03P12_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P12_CleanUp(common.Trigger):
+class G03P12_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5308,33 +5308,33 @@ class G03P12_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P12_Check(self.ctx)
 
 
-class G03P12_Check(common.Trigger):
+class G03P12_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P12TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P12_End(self.ctx)
 
 
-class G03P12_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P12_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P12End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P13
-class G03P13_RoundCheckIn(common.Trigger):
+class G03P13_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P13Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P13_CleanUp(self.ctx)
 
@@ -5342,7 +5342,7 @@ class G03P13_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P13_CleanUp(common.Trigger):
+class G03P13_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5350,33 +5350,33 @@ class G03P13_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P13_Check(self.ctx)
 
 
-class G03P13_Check(common.Trigger):
+class G03P13_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P13TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P13_End(self.ctx)
 
 
-class G03P13_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P13_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P13End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P14
-class G03P14_RoundCheckIn(common.Trigger):
+class G03P14_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P14Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P14_CleanUp(self.ctx)
 
@@ -5384,7 +5384,7 @@ class G03P14_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P14_CleanUp(common.Trigger):
+class G03P14_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5392,33 +5392,33 @@ class G03P14_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P14_Check(self.ctx)
 
 
-class G03P14_Check(common.Trigger):
+class G03P14_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P14TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P14_End(self.ctx)
 
 
-class G03P14_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P14_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P14End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P15
-class G03P15_RoundCheckIn(common.Trigger):
+class G03P15_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P15Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P15_CleanUp(self.ctx)
 
@@ -5426,7 +5426,7 @@ class G03P15_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P15_CleanUp(common.Trigger):
+class G03P15_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5434,33 +5434,33 @@ class G03P15_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P15_Check(self.ctx)
 
 
-class G03P15_Check(common.Trigger):
+class G03P15_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P15TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P15_End(self.ctx)
 
 
-class G03P15_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P15_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P15End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P16
-class G03P16_RoundCheckIn(common.Trigger):
+class G03P16_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P16Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P16_CleanUp(self.ctx)
 
@@ -5468,7 +5468,7 @@ class G03P16_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P16_CleanUp(common.Trigger):
+class G03P16_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5476,33 +5476,33 @@ class G03P16_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P16_Check(self.ctx)
 
 
-class G03P16_Check(common.Trigger):
+class G03P16_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P16TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P16_End(self.ctx)
 
 
-class G03P16_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P16_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P16End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P17
-class G03P17_RoundCheckIn(common.Trigger):
+class G03P17_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P17Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P17_CleanUp(self.ctx)
 
@@ -5510,7 +5510,7 @@ class G03P17_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P17_CleanUp(common.Trigger):
+class G03P17_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5518,33 +5518,33 @@ class G03P17_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P17_Check(self.ctx)
 
 
-class G03P17_Check(common.Trigger):
+class G03P17_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P17TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P17_End(self.ctx)
 
 
-class G03P17_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P17_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P17End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P18
-class G03P18_RoundCheckIn(common.Trigger):
+class G03P18_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P18Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P18_CleanUp(self.ctx)
 
@@ -5552,7 +5552,7 @@ class G03P18_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P18_CleanUp(common.Trigger):
+class G03P18_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5560,33 +5560,33 @@ class G03P18_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P18_Check(self.ctx)
 
 
-class G03P18_Check(common.Trigger):
+class G03P18_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P18TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P18_End(self.ctx)
 
 
-class G03P18_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P18_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P18End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P19
-class G03P19_RoundCheckIn(common.Trigger):
+class G03P19_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P19Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P19_CleanUp(self.ctx)
 
@@ -5594,7 +5594,7 @@ class G03P19_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P19_CleanUp(common.Trigger):
+class G03P19_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5602,33 +5602,33 @@ class G03P19_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P19_Check(self.ctx)
 
 
-class G03P19_Check(common.Trigger):
+class G03P19_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P19TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P19_End(self.ctx)
 
 
-class G03P19_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P19_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P19End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P20
-class G03P20_RoundCheckIn(common.Trigger):
+class G03P20_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P20Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P20_CleanUp(self.ctx)
 
@@ -5636,7 +5636,7 @@ class G03P20_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P20_CleanUp(common.Trigger):
+class G03P20_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5644,33 +5644,33 @@ class G03P20_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P20_Check(self.ctx)
 
 
-class G03P20_Check(common.Trigger):
+class G03P20_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P20TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P20_End(self.ctx)
 
 
-class G03P20_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P20_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P20End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P21
-class G03P21_RoundCheckIn(common.Trigger):
+class G03P21_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P21Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P21_CleanUp(self.ctx)
 
@@ -5678,7 +5678,7 @@ class G03P21_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P21_CleanUp(common.Trigger):
+class G03P21_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5686,33 +5686,33 @@ class G03P21_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P21_Check(self.ctx)
 
 
-class G03P21_Check(common.Trigger):
+class G03P21_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P21TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P21_End(self.ctx)
 
 
-class G03P21_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P21_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P21End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P22
-class G03P22_RoundCheckIn(common.Trigger):
+class G03P22_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P22Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P22_CleanUp(self.ctx)
 
@@ -5720,7 +5720,7 @@ class G03P22_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P22_CleanUp(common.Trigger):
+class G03P22_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5728,33 +5728,33 @@ class G03P22_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P22_Check(self.ctx)
 
 
-class G03P22_Check(common.Trigger):
+class G03P22_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P22TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P22_End(self.ctx)
 
 
-class G03P22_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P22_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P22End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P23
-class G03P23_RoundCheckIn(common.Trigger):
+class G03P23_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P23Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P23_CleanUp(self.ctx)
 
@@ -5762,7 +5762,7 @@ class G03P23_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P23_CleanUp(common.Trigger):
+class G03P23_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5770,33 +5770,33 @@ class G03P23_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P23_Check(self.ctx)
 
 
-class G03P23_Check(common.Trigger):
+class G03P23_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P23TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P23_End(self.ctx)
 
 
-class G03P23_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P23_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P23End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P24
-class G03P24_RoundCheckIn(common.Trigger):
+class G03P24_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P24Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P24_CleanUp(self.ctx)
 
@@ -5804,7 +5804,7 @@ class G03P24_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P24_CleanUp(common.Trigger):
+class G03P24_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5812,33 +5812,33 @@ class G03P24_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P24_Check(self.ctx)
 
 
-class G03P24_Check(common.Trigger):
+class G03P24_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P24TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P24_End(self.ctx)
 
 
-class G03P24_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P24_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P24End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P25
-class G03P25_RoundCheckIn(common.Trigger):
+class G03P25_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P25Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P25_CleanUp(self.ctx)
 
@@ -5846,7 +5846,7 @@ class G03P25_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P25_CleanUp(common.Trigger):
+class G03P25_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5854,33 +5854,33 @@ class G03P25_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P25_Check(self.ctx)
 
 
-class G03P25_Check(common.Trigger):
+class G03P25_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P25TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P25_End(self.ctx)
 
 
-class G03P25_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P25_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P25End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P26
-class G03P26_RoundCheckIn(common.Trigger):
+class G03P26_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P26Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P26_CleanUp(self.ctx)
 
@@ -5888,7 +5888,7 @@ class G03P26_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P26_CleanUp(common.Trigger):
+class G03P26_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5896,33 +5896,33 @@ class G03P26_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P26_Check(self.ctx)
 
 
-class G03P26_Check(common.Trigger):
+class G03P26_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P26TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P26_End(self.ctx)
 
 
-class G03P26_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P26_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P26End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P27
-class G03P27_RoundCheckIn(common.Trigger):
+class G03P27_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P27Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P27_CleanUp(self.ctx)
 
@@ -5930,7 +5930,7 @@ class G03P27_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P27_CleanUp(common.Trigger):
+class G03P27_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5938,33 +5938,33 @@ class G03P27_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P27_Check(self.ctx)
 
 
-class G03P27_Check(common.Trigger):
+class G03P27_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P27TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P27_End(self.ctx)
 
 
-class G03P27_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P27_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P27End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P28
-class G03P28_RoundCheckIn(common.Trigger):
+class G03P28_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P28Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P28_CleanUp(self.ctx)
 
@@ -5972,7 +5972,7 @@ class G03P28_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P28_CleanUp(common.Trigger):
+class G03P28_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -5980,33 +5980,33 @@ class G03P28_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P28_Check(self.ctx)
 
 
-class G03P28_Check(common.Trigger):
+class G03P28_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P28TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P28_End(self.ctx)
 
 
-class G03P28_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P28_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P28End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P29
-class G03P29_RoundCheckIn(common.Trigger):
+class G03P29_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P29Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P29_CleanUp(self.ctx)
 
@@ -6014,7 +6014,7 @@ class G03P29_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P29_CleanUp(common.Trigger):
+class G03P29_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6022,33 +6022,33 @@ class G03P29_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P29_Check(self.ctx)
 
 
-class G03P29_Check(common.Trigger):
+class G03P29_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P29TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P29_End(self.ctx)
 
 
-class G03P29_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P29_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P29End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G03 P30
-class G03P30_RoundCheckIn(common.Trigger):
+class G03P30_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P30Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G03P30_CleanUp(self.ctx)
 
@@ -6056,7 +6056,7 @@ class G03P30_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G03P30_CleanUp(common.Trigger):
+class G03P30_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6064,33 +6064,33 @@ class G03P30_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G03P30_Check(self.ctx)
 
 
-class G03P30_Check(common.Trigger):
+class G03P30_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300, key='G03P30TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G03P30_End(self.ctx)
 
 
-class G03P30_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G03P30_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G03P30End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P01
-class G04P01_RoundCheckIn(common.Trigger):
+class G04P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P01Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P01_CleanUp(self.ctx)
 
@@ -6098,7 +6098,7 @@ class G04P01_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P01_CleanUp(common.Trigger):
+class G04P01_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6106,33 +6106,33 @@ class G04P01_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P01_Check(self.ctx)
 
 
-class G04P01_Check(common.Trigger):
+class G04P01_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P01TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P01_End(self.ctx)
 
 
-class G04P01_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P01_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P01End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P02
-class G04P02_RoundCheckIn(common.Trigger):
+class G04P02_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P02Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P02_CleanUp(self.ctx)
 
@@ -6140,7 +6140,7 @@ class G04P02_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P02_CleanUp(common.Trigger):
+class G04P02_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6148,33 +6148,33 @@ class G04P02_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P02_Check(self.ctx)
 
 
-class G04P02_Check(common.Trigger):
+class G04P02_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P02TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P02_End(self.ctx)
 
 
-class G04P02_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P02_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P02End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P03
-class G04P03_RoundCheckIn(common.Trigger):
+class G04P03_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P03Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P03_CleanUp(self.ctx)
 
@@ -6182,7 +6182,7 @@ class G04P03_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P03_CleanUp(common.Trigger):
+class G04P03_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6190,33 +6190,33 @@ class G04P03_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P03_Check(self.ctx)
 
 
-class G04P03_Check(common.Trigger):
+class G04P03_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P03TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P03_End(self.ctx)
 
 
-class G04P03_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P03_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P03End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P04
-class G04P04_RoundCheckIn(common.Trigger):
+class G04P04_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P04Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P04_CleanUp(self.ctx)
 
@@ -6224,7 +6224,7 @@ class G04P04_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P04_CleanUp(common.Trigger):
+class G04P04_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6232,33 +6232,33 @@ class G04P04_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P04_Check(self.ctx)
 
 
-class G04P04_Check(common.Trigger):
+class G04P04_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P04TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P04_End(self.ctx)
 
 
-class G04P04_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P04_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P04End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P05
-class G04P05_RoundCheckIn(common.Trigger):
+class G04P05_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P05Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P05_CleanUp(self.ctx)
 
@@ -6266,7 +6266,7 @@ class G04P05_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P05_CleanUp(common.Trigger):
+class G04P05_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6274,33 +6274,33 @@ class G04P05_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P05_Check(self.ctx)
 
 
-class G04P05_Check(common.Trigger):
+class G04P05_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P05TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P05_End(self.ctx)
 
 
-class G04P05_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P05_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P05End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P06
-class G04P06_RoundCheckIn(common.Trigger):
+class G04P06_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P06Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P06_CleanUp(self.ctx)
 
@@ -6308,7 +6308,7 @@ class G04P06_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P06_CleanUp(common.Trigger):
+class G04P06_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6316,33 +6316,33 @@ class G04P06_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P06_Check(self.ctx)
 
 
-class G04P06_Check(common.Trigger):
+class G04P06_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P06TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P06_End(self.ctx)
 
 
-class G04P06_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P06_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P06End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P07
-class G04P07_RoundCheckIn(common.Trigger):
+class G04P07_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P07Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P07_CleanUp(self.ctx)
 
@@ -6350,7 +6350,7 @@ class G04P07_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P07_CleanUp(common.Trigger):
+class G04P07_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6358,33 +6358,33 @@ class G04P07_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P07_Check(self.ctx)
 
 
-class G04P07_Check(common.Trigger):
+class G04P07_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P07TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P07_End(self.ctx)
 
 
-class G04P07_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P07_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P07End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P08
-class G04P08_RoundCheckIn(common.Trigger):
+class G04P08_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P08Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P08_CleanUp(self.ctx)
 
@@ -6392,7 +6392,7 @@ class G04P08_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P08_CleanUp(common.Trigger):
+class G04P08_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6400,33 +6400,33 @@ class G04P08_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P08_Check(self.ctx)
 
 
-class G04P08_Check(common.Trigger):
+class G04P08_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P08TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P08_End(self.ctx)
 
 
-class G04P08_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P08_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P08End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P09
-class G04P09_RoundCheckIn(common.Trigger):
+class G04P09_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P09Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P09_CleanUp(self.ctx)
 
@@ -6434,7 +6434,7 @@ class G04P09_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P09_CleanUp(common.Trigger):
+class G04P09_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6442,33 +6442,33 @@ class G04P09_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P09_Check(self.ctx)
 
 
-class G04P09_Check(common.Trigger):
+class G04P09_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P09TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P09_End(self.ctx)
 
 
-class G04P09_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P09_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P09End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P10
-class G04P10_RoundCheckIn(common.Trigger):
+class G04P10_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P10Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P10_CleanUp(self.ctx)
 
@@ -6476,7 +6476,7 @@ class G04P10_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P10_CleanUp(common.Trigger):
+class G04P10_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6484,33 +6484,33 @@ class G04P10_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P10_Check(self.ctx)
 
 
-class G04P10_Check(common.Trigger):
+class G04P10_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P10TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P10_End(self.ctx)
 
 
-class G04P10_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P10_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P10End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P11
-class G04P11_RoundCheckIn(common.Trigger):
+class G04P11_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P11Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P11_CleanUp(self.ctx)
 
@@ -6518,7 +6518,7 @@ class G04P11_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P11_CleanUp(common.Trigger):
+class G04P11_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6526,33 +6526,33 @@ class G04P11_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P11_Check(self.ctx)
 
 
-class G04P11_Check(common.Trigger):
+class G04P11_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P11TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P11_End(self.ctx)
 
 
-class G04P11_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P11_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P11End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P12
-class G04P12_RoundCheckIn(common.Trigger):
+class G04P12_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P12Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P12_CleanUp(self.ctx)
 
@@ -6560,7 +6560,7 @@ class G04P12_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P12_CleanUp(common.Trigger):
+class G04P12_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6568,33 +6568,33 @@ class G04P12_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P12_Check(self.ctx)
 
 
-class G04P12_Check(common.Trigger):
+class G04P12_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P12TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P12_End(self.ctx)
 
 
-class G04P12_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P12_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P12End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P13
-class G04P13_RoundCheckIn(common.Trigger):
+class G04P13_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P13Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P13_CleanUp(self.ctx)
 
@@ -6602,7 +6602,7 @@ class G04P13_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P13_CleanUp(common.Trigger):
+class G04P13_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6610,33 +6610,33 @@ class G04P13_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P13_Check(self.ctx)
 
 
-class G04P13_Check(common.Trigger):
+class G04P13_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P13TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P13_End(self.ctx)
 
 
-class G04P13_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P13_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P13End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P14
-class G04P14_RoundCheckIn(common.Trigger):
+class G04P14_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P14Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P14_CleanUp(self.ctx)
 
@@ -6644,7 +6644,7 @@ class G04P14_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P14_CleanUp(common.Trigger):
+class G04P14_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6652,33 +6652,33 @@ class G04P14_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P14_Check(self.ctx)
 
 
-class G04P14_Check(common.Trigger):
+class G04P14_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P14TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P14_End(self.ctx)
 
 
-class G04P14_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P14_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P14End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P15
-class G04P15_RoundCheckIn(common.Trigger):
+class G04P15_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P15Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P15_CleanUp(self.ctx)
 
@@ -6686,7 +6686,7 @@ class G04P15_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P15_CleanUp(common.Trigger):
+class G04P15_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6694,33 +6694,33 @@ class G04P15_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P15_Check(self.ctx)
 
 
-class G04P15_Check(common.Trigger):
+class G04P15_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P15TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P15_End(self.ctx)
 
 
-class G04P15_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P15_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P15End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P16
-class G04P16_RoundCheckIn(common.Trigger):
+class G04P16_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P16Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P16_CleanUp(self.ctx)
 
@@ -6728,7 +6728,7 @@ class G04P16_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P16_CleanUp(common.Trigger):
+class G04P16_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6736,33 +6736,33 @@ class G04P16_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P16_Check(self.ctx)
 
 
-class G04P16_Check(common.Trigger):
+class G04P16_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P16TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P16_End(self.ctx)
 
 
-class G04P16_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P16_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P16End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P17
-class G04P17_RoundCheckIn(common.Trigger):
+class G04P17_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P17Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P17_CleanUp(self.ctx)
 
@@ -6770,7 +6770,7 @@ class G04P17_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P17_CleanUp(common.Trigger):
+class G04P17_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6778,33 +6778,33 @@ class G04P17_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P17_Check(self.ctx)
 
 
-class G04P17_Check(common.Trigger):
+class G04P17_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P17TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P17_End(self.ctx)
 
 
-class G04P17_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P17_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P17End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P18
-class G04P18_RoundCheckIn(common.Trigger):
+class G04P18_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P18Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P18_CleanUp(self.ctx)
 
@@ -6812,7 +6812,7 @@ class G04P18_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P18_CleanUp(common.Trigger):
+class G04P18_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6820,33 +6820,33 @@ class G04P18_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P18_Check(self.ctx)
 
 
-class G04P18_Check(common.Trigger):
+class G04P18_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P18TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P18_End(self.ctx)
 
 
-class G04P18_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P18_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P18End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P19
-class G04P19_RoundCheckIn(common.Trigger):
+class G04P19_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P19Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P19_CleanUp(self.ctx)
 
@@ -6854,7 +6854,7 @@ class G04P19_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P19_CleanUp(common.Trigger):
+class G04P19_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6862,33 +6862,33 @@ class G04P19_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P19_Check(self.ctx)
 
 
-class G04P19_Check(common.Trigger):
+class G04P19_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P19TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P19_End(self.ctx)
 
 
-class G04P19_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P19_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P19End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P20
-class G04P20_RoundCheckIn(common.Trigger):
+class G04P20_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P20Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P20_CleanUp(self.ctx)
 
@@ -6896,7 +6896,7 @@ class G04P20_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P20_CleanUp(common.Trigger):
+class G04P20_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6904,33 +6904,33 @@ class G04P20_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P20_Check(self.ctx)
 
 
-class G04P20_Check(common.Trigger):
+class G04P20_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P20TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P20_End(self.ctx)
 
 
-class G04P20_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P20_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P20End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P21
-class G04P21_RoundCheckIn(common.Trigger):
+class G04P21_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P21Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P21_CleanUp(self.ctx)
 
@@ -6938,7 +6938,7 @@ class G04P21_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P21_CleanUp(common.Trigger):
+class G04P21_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6946,33 +6946,33 @@ class G04P21_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P21_Check(self.ctx)
 
 
-class G04P21_Check(common.Trigger):
+class G04P21_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P21TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P21_End(self.ctx)
 
 
-class G04P21_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P21_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P21End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P22
-class G04P22_RoundCheckIn(common.Trigger):
+class G04P22_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P22Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P22_CleanUp(self.ctx)
 
@@ -6980,7 +6980,7 @@ class G04P22_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P22_CleanUp(common.Trigger):
+class G04P22_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -6988,33 +6988,33 @@ class G04P22_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P22_Check(self.ctx)
 
 
-class G04P22_Check(common.Trigger):
+class G04P22_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P22TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P22_End(self.ctx)
 
 
-class G04P22_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P22_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P22End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P23
-class G04P23_RoundCheckIn(common.Trigger):
+class G04P23_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P23Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P23_CleanUp(self.ctx)
 
@@ -7022,7 +7022,7 @@ class G04P23_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P23_CleanUp(common.Trigger):
+class G04P23_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7030,33 +7030,33 @@ class G04P23_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P23_Check(self.ctx)
 
 
-class G04P23_Check(common.Trigger):
+class G04P23_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P23TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P23_End(self.ctx)
 
 
-class G04P23_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P23_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P23End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P24
-class G04P24_RoundCheckIn(common.Trigger):
+class G04P24_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P24Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P24_CleanUp(self.ctx)
 
@@ -7064,7 +7064,7 @@ class G04P24_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P24_CleanUp(common.Trigger):
+class G04P24_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7072,33 +7072,33 @@ class G04P24_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P24_Check(self.ctx)
 
 
-class G04P24_Check(common.Trigger):
+class G04P24_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P24TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P24_End(self.ctx)
 
 
-class G04P24_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P24_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P24End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P25
-class G04P25_RoundCheckIn(common.Trigger):
+class G04P25_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P25Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P25_CleanUp(self.ctx)
 
@@ -7106,7 +7106,7 @@ class G04P25_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P25_CleanUp(common.Trigger):
+class G04P25_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7114,33 +7114,33 @@ class G04P25_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P25_Check(self.ctx)
 
 
-class G04P25_Check(common.Trigger):
+class G04P25_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P25TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P25_End(self.ctx)
 
 
-class G04P25_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P25_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P25End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P26
-class G04P26_RoundCheckIn(common.Trigger):
+class G04P26_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P26Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P26_CleanUp(self.ctx)
 
@@ -7148,7 +7148,7 @@ class G04P26_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P26_CleanUp(common.Trigger):
+class G04P26_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7156,33 +7156,33 @@ class G04P26_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P26_Check(self.ctx)
 
 
-class G04P26_Check(common.Trigger):
+class G04P26_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P26TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P26_End(self.ctx)
 
 
-class G04P26_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P26_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P26End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P27
-class G04P27_RoundCheckIn(common.Trigger):
+class G04P27_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P27Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P27_CleanUp(self.ctx)
 
@@ -7190,7 +7190,7 @@ class G04P27_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P27_CleanUp(common.Trigger):
+class G04P27_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7198,33 +7198,33 @@ class G04P27_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P27_Check(self.ctx)
 
 
-class G04P27_Check(common.Trigger):
+class G04P27_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P27TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P27_End(self.ctx)
 
 
-class G04P27_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P27_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P27End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P28
-class G04P28_RoundCheckIn(common.Trigger):
+class G04P28_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P28Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P28_CleanUp(self.ctx)
 
@@ -7232,7 +7232,7 @@ class G04P28_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P28_CleanUp(common.Trigger):
+class G04P28_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7240,33 +7240,33 @@ class G04P28_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P28_Check(self.ctx)
 
 
-class G04P28_Check(common.Trigger):
+class G04P28_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P28TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P28_End(self.ctx)
 
 
-class G04P28_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P28_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P28End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P29
-class G04P29_RoundCheckIn(common.Trigger):
+class G04P29_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P29Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P29_CleanUp(self.ctx)
 
@@ -7274,7 +7274,7 @@ class G04P29_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P29_CleanUp(common.Trigger):
+class G04P29_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7282,33 +7282,33 @@ class G04P29_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P29_Check(self.ctx)
 
 
-class G04P29_Check(common.Trigger):
+class G04P29_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P29TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P29_End(self.ctx)
 
 
-class G04P29_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P29_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P29End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P30
-class G04P30_RoundCheckIn(common.Trigger):
+class G04P30_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P30Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P30_CleanUp(self.ctx)
 
@@ -7316,7 +7316,7 @@ class G04P30_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P30_CleanUp(common.Trigger):
+class G04P30_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7324,33 +7324,33 @@ class G04P30_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P30_Check(self.ctx)
 
 
-class G04P30_Check(common.Trigger):
+class G04P30_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P30TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P30_End(self.ctx)
 
 
-class G04P30_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P30_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P30End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P31
-class G04P31_RoundCheckIn(common.Trigger):
+class G04P31_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P31Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P31_CleanUp(self.ctx)
 
@@ -7358,7 +7358,7 @@ class G04P31_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P31_CleanUp(common.Trigger):
+class G04P31_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7366,33 +7366,33 @@ class G04P31_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P31_Check(self.ctx)
 
 
-class G04P31_Check(common.Trigger):
+class G04P31_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P31TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P31_End(self.ctx)
 
 
-class G04P31_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P31_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P31End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P32
-class G04P32_RoundCheckIn(common.Trigger):
+class G04P32_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P32Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P32_CleanUp(self.ctx)
 
@@ -7400,7 +7400,7 @@ class G04P32_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P32_CleanUp(common.Trigger):
+class G04P32_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7408,33 +7408,33 @@ class G04P32_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P32_Check(self.ctx)
 
 
-class G04P32_Check(common.Trigger):
+class G04P32_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P32TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P32_End(self.ctx)
 
 
-class G04P32_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P32_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P32End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P33
-class G04P33_RoundCheckIn(common.Trigger):
+class G04P33_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P33Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P33_CleanUp(self.ctx)
 
@@ -7442,7 +7442,7 @@ class G04P33_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P33_CleanUp(common.Trigger):
+class G04P33_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7450,33 +7450,33 @@ class G04P33_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P33_Check(self.ctx)
 
 
-class G04P33_Check(common.Trigger):
+class G04P33_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P33TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P33_End(self.ctx)
 
 
-class G04P33_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P33_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P33End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P34
-class G04P34_RoundCheckIn(common.Trigger):
+class G04P34_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P34Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P34_CleanUp(self.ctx)
 
@@ -7484,7 +7484,7 @@ class G04P34_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P34_CleanUp(common.Trigger):
+class G04P34_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7492,33 +7492,33 @@ class G04P34_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P34_Check(self.ctx)
 
 
-class G04P34_Check(common.Trigger):
+class G04P34_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P34TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P34_End(self.ctx)
 
 
-class G04P34_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P34_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P34End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P35
-class G04P35_RoundCheckIn(common.Trigger):
+class G04P35_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P35Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P35_CleanUp(self.ctx)
 
@@ -7526,7 +7526,7 @@ class G04P35_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P35_CleanUp(common.Trigger):
+class G04P35_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7534,33 +7534,33 @@ class G04P35_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P35_Check(self.ctx)
 
 
-class G04P35_Check(common.Trigger):
+class G04P35_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P35TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P35_End(self.ctx)
 
 
-class G04P35_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P35_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P35End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P36
-class G04P36_RoundCheckIn(common.Trigger):
+class G04P36_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P36Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P36_CleanUp(self.ctx)
 
@@ -7568,7 +7568,7 @@ class G04P36_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P36_CleanUp(common.Trigger):
+class G04P36_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7576,33 +7576,33 @@ class G04P36_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P36_Check(self.ctx)
 
 
-class G04P36_Check(common.Trigger):
+class G04P36_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P36TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P36_End(self.ctx)
 
 
-class G04P36_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P36_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P36End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P37
-class G04P37_RoundCheckIn(common.Trigger):
+class G04P37_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P37Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P37_CleanUp(self.ctx)
 
@@ -7610,7 +7610,7 @@ class G04P37_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P37_CleanUp(common.Trigger):
+class G04P37_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7618,33 +7618,33 @@ class G04P37_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P37_Check(self.ctx)
 
 
-class G04P37_Check(common.Trigger):
+class G04P37_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P37TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P37_End(self.ctx)
 
 
-class G04P37_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P37_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P37End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P38
-class G04P38_RoundCheckIn(common.Trigger):
+class G04P38_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P38Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P38_CleanUp(self.ctx)
 
@@ -7652,7 +7652,7 @@ class G04P38_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P38_CleanUp(common.Trigger):
+class G04P38_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7660,33 +7660,33 @@ class G04P38_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P38_Check(self.ctx)
 
 
-class G04P38_Check(common.Trigger):
+class G04P38_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P38TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P38_End(self.ctx)
 
 
-class G04P38_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P38_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P38End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P39
-class G04P39_RoundCheckIn(common.Trigger):
+class G04P39_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P39Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P39_CleanUp(self.ctx)
 
@@ -7694,7 +7694,7 @@ class G04P39_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P39_CleanUp(common.Trigger):
+class G04P39_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7702,33 +7702,33 @@ class G04P39_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P39_Check(self.ctx)
 
 
-class G04P39_Check(common.Trigger):
+class G04P39_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P39TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P39_End(self.ctx)
 
 
-class G04P39_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P39_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P39End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G04 P40
-class G04P40_RoundCheckIn(common.Trigger):
+class G04P40_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P40Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G04P40_CleanUp(self.ctx)
 
@@ -7736,7 +7736,7 @@ class G04P40_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G04P40_CleanUp(common.Trigger):
+class G04P40_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7744,33 +7744,33 @@ class G04P40_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G04P40_Check(self.ctx)
 
 
-class G04P40_Check(common.Trigger):
+class G04P40_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=400, key='G04P40TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G04P40_End(self.ctx)
 
 
-class G04P40_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G04P40_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G04P40End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P01
-class G05P01_RoundCheckIn(common.Trigger):
+class G05P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P01Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P01_CleanUp(self.ctx)
 
@@ -7778,7 +7778,7 @@ class G05P01_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P01_CleanUp(common.Trigger):
+class G05P01_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7786,33 +7786,33 @@ class G05P01_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P01_Check(self.ctx)
 
 
-class G05P01_Check(common.Trigger):
+class G05P01_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P01TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P01_End(self.ctx)
 
 
-class G05P01_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P01_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P01End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P02
-class G05P02_RoundCheckIn(common.Trigger):
+class G05P02_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P02Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P02_CleanUp(self.ctx)
 
@@ -7820,7 +7820,7 @@ class G05P02_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P02_CleanUp(common.Trigger):
+class G05P02_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7828,33 +7828,33 @@ class G05P02_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P02_Check(self.ctx)
 
 
-class G05P02_Check(common.Trigger):
+class G05P02_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P02TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P02_End(self.ctx)
 
 
-class G05P02_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P02_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P02End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P03
-class G05P03_RoundCheckIn(common.Trigger):
+class G05P03_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P03Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P03_CleanUp(self.ctx)
 
@@ -7862,7 +7862,7 @@ class G05P03_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P03_CleanUp(common.Trigger):
+class G05P03_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7870,33 +7870,33 @@ class G05P03_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P03_Check(self.ctx)
 
 
-class G05P03_Check(common.Trigger):
+class G05P03_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P03TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P03_End(self.ctx)
 
 
-class G05P03_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P03_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P03End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P04
-class G05P04_RoundCheckIn(common.Trigger):
+class G05P04_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P04Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P04_CleanUp(self.ctx)
 
@@ -7904,7 +7904,7 @@ class G05P04_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P04_CleanUp(common.Trigger):
+class G05P04_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7912,33 +7912,33 @@ class G05P04_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P04_Check(self.ctx)
 
 
-class G05P04_Check(common.Trigger):
+class G05P04_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P04TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P04_End(self.ctx)
 
 
-class G05P04_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P04_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P04End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P05
-class G05P05_RoundCheckIn(common.Trigger):
+class G05P05_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P05Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P05_CleanUp(self.ctx)
 
@@ -7946,7 +7946,7 @@ class G05P05_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P05_CleanUp(common.Trigger):
+class G05P05_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7954,33 +7954,33 @@ class G05P05_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P05_Check(self.ctx)
 
 
-class G05P05_Check(common.Trigger):
+class G05P05_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P05TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P05_End(self.ctx)
 
 
-class G05P05_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P05_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P05End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P06
-class G05P06_RoundCheckIn(common.Trigger):
+class G05P06_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P06Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P06_CleanUp(self.ctx)
 
@@ -7988,7 +7988,7 @@ class G05P06_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P06_CleanUp(common.Trigger):
+class G05P06_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -7996,33 +7996,33 @@ class G05P06_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P06_Check(self.ctx)
 
 
-class G05P06_Check(common.Trigger):
+class G05P06_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P06TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P06_End(self.ctx)
 
 
-class G05P06_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P06_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P06End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P07
-class G05P07_RoundCheckIn(common.Trigger):
+class G05P07_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P07Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P07_CleanUp(self.ctx)
 
@@ -8030,7 +8030,7 @@ class G05P07_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P07_CleanUp(common.Trigger):
+class G05P07_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8038,33 +8038,33 @@ class G05P07_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P07_Check(self.ctx)
 
 
-class G05P07_Check(common.Trigger):
+class G05P07_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P07TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P07_End(self.ctx)
 
 
-class G05P07_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P07_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P07End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P08
-class G05P08_RoundCheckIn(common.Trigger):
+class G05P08_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P08Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P08_CleanUp(self.ctx)
 
@@ -8072,7 +8072,7 @@ class G05P08_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P08_CleanUp(common.Trigger):
+class G05P08_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8080,33 +8080,33 @@ class G05P08_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P08_Check(self.ctx)
 
 
-class G05P08_Check(common.Trigger):
+class G05P08_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P08TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P08_End(self.ctx)
 
 
-class G05P08_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P08_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P08End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P09
-class G05P09_RoundCheckIn(common.Trigger):
+class G05P09_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P09Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P09_CleanUp(self.ctx)
 
@@ -8114,7 +8114,7 @@ class G05P09_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P09_CleanUp(common.Trigger):
+class G05P09_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8122,33 +8122,33 @@ class G05P09_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P09_Check(self.ctx)
 
 
-class G05P09_Check(common.Trigger):
+class G05P09_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P09TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P09_End(self.ctx)
 
 
-class G05P09_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P09_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P09End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P10
-class G05P10_RoundCheckIn(common.Trigger):
+class G05P10_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P10Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P10_CleanUp(self.ctx)
 
@@ -8156,7 +8156,7 @@ class G05P10_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P10_CleanUp(common.Trigger):
+class G05P10_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8164,33 +8164,33 @@ class G05P10_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P10_Check(self.ctx)
 
 
-class G05P10_Check(common.Trigger):
+class G05P10_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P10TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P10_End(self.ctx)
 
 
-class G05P10_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P10_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P10End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P11
-class G05P11_RoundCheckIn(common.Trigger):
+class G05P11_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P11Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P11_CleanUp(self.ctx)
 
@@ -8198,7 +8198,7 @@ class G05P11_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P11_CleanUp(common.Trigger):
+class G05P11_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8206,33 +8206,33 @@ class G05P11_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P11_Check(self.ctx)
 
 
-class G05P11_Check(common.Trigger):
+class G05P11_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P11TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P11_End(self.ctx)
 
 
-class G05P11_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P11_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P11End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P12
-class G05P12_RoundCheckIn(common.Trigger):
+class G05P12_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P12Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P12_CleanUp(self.ctx)
 
@@ -8240,7 +8240,7 @@ class G05P12_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P12_CleanUp(common.Trigger):
+class G05P12_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8248,33 +8248,33 @@ class G05P12_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P12_Check(self.ctx)
 
 
-class G05P12_Check(common.Trigger):
+class G05P12_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P12TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P12_End(self.ctx)
 
 
-class G05P12_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P12_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P12End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P13
-class G05P13_RoundCheckIn(common.Trigger):
+class G05P13_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P13Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P13_CleanUp(self.ctx)
 
@@ -8282,7 +8282,7 @@ class G05P13_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P13_CleanUp(common.Trigger):
+class G05P13_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8290,33 +8290,33 @@ class G05P13_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P13_Check(self.ctx)
 
 
-class G05P13_Check(common.Trigger):
+class G05P13_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P13TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P13_End(self.ctx)
 
 
-class G05P13_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P13_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P13End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P14
-class G05P14_RoundCheckIn(common.Trigger):
+class G05P14_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P14Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P14_CleanUp(self.ctx)
 
@@ -8324,7 +8324,7 @@ class G05P14_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P14_CleanUp(common.Trigger):
+class G05P14_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8332,33 +8332,33 @@ class G05P14_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P14_Check(self.ctx)
 
 
-class G05P14_Check(common.Trigger):
+class G05P14_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P14TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P14_End(self.ctx)
 
 
-class G05P14_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P14_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P14End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P15
-class G05P15_RoundCheckIn(common.Trigger):
+class G05P15_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P15Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P15_CleanUp(self.ctx)
 
@@ -8366,7 +8366,7 @@ class G05P15_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P15_CleanUp(common.Trigger):
+class G05P15_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8374,33 +8374,33 @@ class G05P15_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P15_Check(self.ctx)
 
 
-class G05P15_Check(common.Trigger):
+class G05P15_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P15TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P15_End(self.ctx)
 
 
-class G05P15_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P15_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P15End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P16
-class G05P16_RoundCheckIn(common.Trigger):
+class G05P16_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P16Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P16_CleanUp(self.ctx)
 
@@ -8408,7 +8408,7 @@ class G05P16_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P16_CleanUp(common.Trigger):
+class G05P16_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8416,33 +8416,33 @@ class G05P16_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P16_Check(self.ctx)
 
 
-class G05P16_Check(common.Trigger):
+class G05P16_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P16TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P16_End(self.ctx)
 
 
-class G05P16_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P16_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P16End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P17
-class G05P17_RoundCheckIn(common.Trigger):
+class G05P17_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P17Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P17_CleanUp(self.ctx)
 
@@ -8450,7 +8450,7 @@ class G05P17_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P17_CleanUp(common.Trigger):
+class G05P17_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8458,33 +8458,33 @@ class G05P17_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P17_Check(self.ctx)
 
 
-class G05P17_Check(common.Trigger):
+class G05P17_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P17TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P17_End(self.ctx)
 
 
-class G05P17_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P17_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P17End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P18
-class G05P18_RoundCheckIn(common.Trigger):
+class G05P18_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P18Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P18_CleanUp(self.ctx)
 
@@ -8492,7 +8492,7 @@ class G05P18_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P18_CleanUp(common.Trigger):
+class G05P18_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8500,33 +8500,33 @@ class G05P18_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P18_Check(self.ctx)
 
 
-class G05P18_Check(common.Trigger):
+class G05P18_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P18TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P18_End(self.ctx)
 
 
-class G05P18_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P18_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P18End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P19
-class G05P19_RoundCheckIn(common.Trigger):
+class G05P19_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P19Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P19_CleanUp(self.ctx)
 
@@ -8534,7 +8534,7 @@ class G05P19_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P19_CleanUp(common.Trigger):
+class G05P19_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8542,33 +8542,33 @@ class G05P19_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P19_Check(self.ctx)
 
 
-class G05P19_Check(common.Trigger):
+class G05P19_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P19TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P19_End(self.ctx)
 
 
-class G05P19_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P19_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P19End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P20
-class G05P20_RoundCheckIn(common.Trigger):
+class G05P20_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P20Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P20_CleanUp(self.ctx)
 
@@ -8576,7 +8576,7 @@ class G05P20_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P20_CleanUp(common.Trigger):
+class G05P20_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8584,33 +8584,33 @@ class G05P20_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P20_Check(self.ctx)
 
 
-class G05P20_Check(common.Trigger):
+class G05P20_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P20TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P20_End(self.ctx)
 
 
-class G05P20_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P20_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P20End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P21
-class G05P21_RoundCheckIn(common.Trigger):
+class G05P21_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P21Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P21_CleanUp(self.ctx)
 
@@ -8618,7 +8618,7 @@ class G05P21_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P21_CleanUp(common.Trigger):
+class G05P21_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8626,33 +8626,33 @@ class G05P21_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P21_Check(self.ctx)
 
 
-class G05P21_Check(common.Trigger):
+class G05P21_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P21TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P21_End(self.ctx)
 
 
-class G05P21_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P21_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P21End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P22
-class G05P22_RoundCheckIn(common.Trigger):
+class G05P22_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P22Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P22_CleanUp(self.ctx)
 
@@ -8660,7 +8660,7 @@ class G05P22_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P22_CleanUp(common.Trigger):
+class G05P22_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8668,33 +8668,33 @@ class G05P22_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P22_Check(self.ctx)
 
 
-class G05P22_Check(common.Trigger):
+class G05P22_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P22TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P22_End(self.ctx)
 
 
-class G05P22_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P22_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P22End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P23
-class G05P23_RoundCheckIn(common.Trigger):
+class G05P23_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P23Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P23_CleanUp(self.ctx)
 
@@ -8702,7 +8702,7 @@ class G05P23_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P23_CleanUp(common.Trigger):
+class G05P23_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8710,33 +8710,33 @@ class G05P23_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P23_Check(self.ctx)
 
 
-class G05P23_Check(common.Trigger):
+class G05P23_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P23TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P23_End(self.ctx)
 
 
-class G05P23_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P23_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P23End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P24
-class G05P24_RoundCheckIn(common.Trigger):
+class G05P24_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P24Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P24_CleanUp(self.ctx)
 
@@ -8744,7 +8744,7 @@ class G05P24_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P24_CleanUp(common.Trigger):
+class G05P24_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8752,33 +8752,33 @@ class G05P24_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P24_Check(self.ctx)
 
 
-class G05P24_Check(common.Trigger):
+class G05P24_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P24TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P24_End(self.ctx)
 
 
-class G05P24_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P24_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P24End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P25
-class G05P25_RoundCheckIn(common.Trigger):
+class G05P25_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P25Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P25_CleanUp(self.ctx)
 
@@ -8786,7 +8786,7 @@ class G05P25_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P25_CleanUp(common.Trigger):
+class G05P25_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8794,33 +8794,33 @@ class G05P25_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P25_Check(self.ctx)
 
 
-class G05P25_Check(common.Trigger):
+class G05P25_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P25TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P25_End(self.ctx)
 
 
-class G05P25_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P25_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P25End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P26
-class G05P26_RoundCheckIn(common.Trigger):
+class G05P26_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P26Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P26_CleanUp(self.ctx)
 
@@ -8828,7 +8828,7 @@ class G05P26_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P26_CleanUp(common.Trigger):
+class G05P26_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8836,33 +8836,33 @@ class G05P26_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P26_Check(self.ctx)
 
 
-class G05P26_Check(common.Trigger):
+class G05P26_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P26TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P26_End(self.ctx)
 
 
-class G05P26_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P26_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P26End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P27
-class G05P27_RoundCheckIn(common.Trigger):
+class G05P27_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P27Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P27_CleanUp(self.ctx)
 
@@ -8870,7 +8870,7 @@ class G05P27_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P27_CleanUp(common.Trigger):
+class G05P27_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8878,33 +8878,33 @@ class G05P27_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P27_Check(self.ctx)
 
 
-class G05P27_Check(common.Trigger):
+class G05P27_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P27TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P27_End(self.ctx)
 
 
-class G05P27_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P27_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P27End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P28
-class G05P28_RoundCheckIn(common.Trigger):
+class G05P28_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P28Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P28_CleanUp(self.ctx)
 
@@ -8912,7 +8912,7 @@ class G05P28_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P28_CleanUp(common.Trigger):
+class G05P28_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8920,33 +8920,33 @@ class G05P28_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P28_Check(self.ctx)
 
 
-class G05P28_Check(common.Trigger):
+class G05P28_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P28TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P28_End(self.ctx)
 
 
-class G05P28_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P28_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P28End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P29
-class G05P29_RoundCheckIn(common.Trigger):
+class G05P29_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P29Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P29_CleanUp(self.ctx)
 
@@ -8954,7 +8954,7 @@ class G05P29_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P29_CleanUp(common.Trigger):
+class G05P29_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -8962,33 +8962,33 @@ class G05P29_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P29_Check(self.ctx)
 
 
-class G05P29_Check(common.Trigger):
+class G05P29_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P29TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P29_End(self.ctx)
 
 
-class G05P29_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P29_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P29End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P30
-class G05P30_RoundCheckIn(common.Trigger):
+class G05P30_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P30Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P30_CleanUp(self.ctx)
 
@@ -8996,7 +8996,7 @@ class G05P30_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P30_CleanUp(common.Trigger):
+class G05P30_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9004,33 +9004,33 @@ class G05P30_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P30_Check(self.ctx)
 
 
-class G05P30_Check(common.Trigger):
+class G05P30_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P30TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P30_End(self.ctx)
 
 
-class G05P30_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P30_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P30End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P31
-class G05P31_RoundCheckIn(common.Trigger):
+class G05P31_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P31Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P31_CleanUp(self.ctx)
 
@@ -9038,7 +9038,7 @@ class G05P31_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P31_CleanUp(common.Trigger):
+class G05P31_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9046,33 +9046,33 @@ class G05P31_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P31_Check(self.ctx)
 
 
-class G05P31_Check(common.Trigger):
+class G05P31_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P31TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P31_End(self.ctx)
 
 
-class G05P31_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P31_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P31End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P32
-class G05P32_RoundCheckIn(common.Trigger):
+class G05P32_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P32Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P32_CleanUp(self.ctx)
 
@@ -9080,7 +9080,7 @@ class G05P32_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P32_CleanUp(common.Trigger):
+class G05P32_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9088,33 +9088,33 @@ class G05P32_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P32_Check(self.ctx)
 
 
-class G05P32_Check(common.Trigger):
+class G05P32_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P32TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P32_End(self.ctx)
 
 
-class G05P32_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P32_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P32End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P33
-class G05P33_RoundCheckIn(common.Trigger):
+class G05P33_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P33Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P33_CleanUp(self.ctx)
 
@@ -9122,7 +9122,7 @@ class G05P33_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P33_CleanUp(common.Trigger):
+class G05P33_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9130,33 +9130,33 @@ class G05P33_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P33_Check(self.ctx)
 
 
-class G05P33_Check(common.Trigger):
+class G05P33_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P33TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P33_End(self.ctx)
 
 
-class G05P33_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P33_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P33End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P34
-class G05P34_RoundCheckIn(common.Trigger):
+class G05P34_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P34Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P34_CleanUp(self.ctx)
 
@@ -9164,7 +9164,7 @@ class G05P34_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P34_CleanUp(common.Trigger):
+class G05P34_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9172,33 +9172,33 @@ class G05P34_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P34_Check(self.ctx)
 
 
-class G05P34_Check(common.Trigger):
+class G05P34_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P34TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P34_End(self.ctx)
 
 
-class G05P34_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P34_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P34End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P35
-class G05P35_RoundCheckIn(common.Trigger):
+class G05P35_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P35Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P35_CleanUp(self.ctx)
 
@@ -9206,7 +9206,7 @@ class G05P35_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P35_CleanUp(common.Trigger):
+class G05P35_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9214,33 +9214,33 @@ class G05P35_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P35_Check(self.ctx)
 
 
-class G05P35_Check(common.Trigger):
+class G05P35_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P35TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P35_End(self.ctx)
 
 
-class G05P35_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P35_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P35End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P36
-class G05P36_RoundCheckIn(common.Trigger):
+class G05P36_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P36Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P36_CleanUp(self.ctx)
 
@@ -9248,7 +9248,7 @@ class G05P36_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P36_CleanUp(common.Trigger):
+class G05P36_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9256,33 +9256,33 @@ class G05P36_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P36_Check(self.ctx)
 
 
-class G05P36_Check(common.Trigger):
+class G05P36_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P36TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P36_End(self.ctx)
 
 
-class G05P36_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P36_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P36End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P37
-class G05P37_RoundCheckIn(common.Trigger):
+class G05P37_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P37Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P37_CleanUp(self.ctx)
 
@@ -9290,7 +9290,7 @@ class G05P37_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P37_CleanUp(common.Trigger):
+class G05P37_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9298,33 +9298,33 @@ class G05P37_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P37_Check(self.ctx)
 
 
-class G05P37_Check(common.Trigger):
+class G05P37_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P37TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P37_End(self.ctx)
 
 
-class G05P37_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P37_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P37End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P38
-class G05P38_RoundCheckIn(common.Trigger):
+class G05P38_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P38Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P38_CleanUp(self.ctx)
 
@@ -9332,7 +9332,7 @@ class G05P38_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P38_CleanUp(common.Trigger):
+class G05P38_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9340,33 +9340,33 @@ class G05P38_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P38_Check(self.ctx)
 
 
-class G05P38_Check(common.Trigger):
+class G05P38_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P38TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P38_End(self.ctx)
 
 
-class G05P38_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P38_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P38End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P39
-class G05P39_RoundCheckIn(common.Trigger):
+class G05P39_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P39Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P39_CleanUp(self.ctx)
 
@@ -9374,7 +9374,7 @@ class G05P39_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P39_CleanUp(common.Trigger):
+class G05P39_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9382,33 +9382,33 @@ class G05P39_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P39_Check(self.ctx)
 
 
-class G05P39_Check(common.Trigger):
+class G05P39_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P39TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P39_End(self.ctx)
 
 
-class G05P39_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P39_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P39End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P40
-class G05P40_RoundCheckIn(common.Trigger):
+class G05P40_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P40Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P40_CleanUp(self.ctx)
 
@@ -9416,7 +9416,7 @@ class G05P40_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P40_CleanUp(common.Trigger):
+class G05P40_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9424,33 +9424,33 @@ class G05P40_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P40_Check(self.ctx)
 
 
-class G05P40_Check(common.Trigger):
+class G05P40_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P40TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P40_End(self.ctx)
 
 
-class G05P40_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P40_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P40End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P41
-class G05P41_RoundCheckIn(common.Trigger):
+class G05P41_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P41Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P41_CleanUp(self.ctx)
 
@@ -9458,7 +9458,7 @@ class G05P41_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P41_CleanUp(common.Trigger):
+class G05P41_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9466,33 +9466,33 @@ class G05P41_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P41_Check(self.ctx)
 
 
-class G05P41_Check(common.Trigger):
+class G05P41_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P41TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P41_End(self.ctx)
 
 
-class G05P41_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P41_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P41End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P42
-class G05P42_RoundCheckIn(common.Trigger):
+class G05P42_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P42Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P42_CleanUp(self.ctx)
 
@@ -9500,7 +9500,7 @@ class G05P42_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P42_CleanUp(common.Trigger):
+class G05P42_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9508,33 +9508,33 @@ class G05P42_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P42_Check(self.ctx)
 
 
-class G05P42_Check(common.Trigger):
+class G05P42_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P42TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P42_End(self.ctx)
 
 
-class G05P42_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P42_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P42End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P43
-class G05P43_RoundCheckIn(common.Trigger):
+class G05P43_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P43Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P43_CleanUp(self.ctx)
 
@@ -9542,7 +9542,7 @@ class G05P43_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P43_CleanUp(common.Trigger):
+class G05P43_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9550,33 +9550,33 @@ class G05P43_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P43_Check(self.ctx)
 
 
-class G05P43_Check(common.Trigger):
+class G05P43_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P43TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P43_End(self.ctx)
 
 
-class G05P43_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P43_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P43End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P44
-class G05P44_RoundCheckIn(common.Trigger):
+class G05P44_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P44Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P44_CleanUp(self.ctx)
 
@@ -9584,7 +9584,7 @@ class G05P44_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P44_CleanUp(common.Trigger):
+class G05P44_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9592,33 +9592,33 @@ class G05P44_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P44_Check(self.ctx)
 
 
-class G05P44_Check(common.Trigger):
+class G05P44_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P44TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P44_End(self.ctx)
 
 
-class G05P44_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P44_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P44End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P45
-class G05P45_RoundCheckIn(common.Trigger):
+class G05P45_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P45Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P45_CleanUp(self.ctx)
 
@@ -9626,7 +9626,7 @@ class G05P45_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P45_CleanUp(common.Trigger):
+class G05P45_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9634,33 +9634,33 @@ class G05P45_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P45_Check(self.ctx)
 
 
-class G05P45_Check(common.Trigger):
+class G05P45_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P45TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P45_End(self.ctx)
 
 
-class G05P45_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P45_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P45End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P46
-class G05P46_RoundCheckIn(common.Trigger):
+class G05P46_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P46Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P46_CleanUp(self.ctx)
 
@@ -9668,7 +9668,7 @@ class G05P46_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P46_CleanUp(common.Trigger):
+class G05P46_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9676,33 +9676,33 @@ class G05P46_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P46_Check(self.ctx)
 
 
-class G05P46_Check(common.Trigger):
+class G05P46_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P46TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P46_End(self.ctx)
 
 
-class G05P46_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P46_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P46End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P47
-class G05P47_RoundCheckIn(common.Trigger):
+class G05P47_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P47Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P47_CleanUp(self.ctx)
 
@@ -9710,7 +9710,7 @@ class G05P47_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P47_CleanUp(common.Trigger):
+class G05P47_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9718,33 +9718,33 @@ class G05P47_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P47_Check(self.ctx)
 
 
-class G05P47_Check(common.Trigger):
+class G05P47_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P47TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P47_End(self.ctx)
 
 
-class G05P47_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P47_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P47End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P48
-class G05P48_RoundCheckIn(common.Trigger):
+class G05P48_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P48Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P48_CleanUp(self.ctx)
 
@@ -9752,7 +9752,7 @@ class G05P48_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P48_CleanUp(common.Trigger):
+class G05P48_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9760,33 +9760,33 @@ class G05P48_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P48_Check(self.ctx)
 
 
-class G05P48_Check(common.Trigger):
+class G05P48_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P48TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P48_End(self.ctx)
 
 
-class G05P48_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P48_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P48End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P49
-class G05P49_RoundCheckIn(common.Trigger):
+class G05P49_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P49Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P49_CleanUp(self.ctx)
 
@@ -9794,7 +9794,7 @@ class G05P49_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P49_CleanUp(common.Trigger):
+class G05P49_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9802,33 +9802,33 @@ class G05P49_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P49_Check(self.ctx)
 
 
-class G05P49_Check(common.Trigger):
+class G05P49_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P49TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P49_End(self.ctx)
 
 
-class G05P49_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P49_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P49End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
 # G05 P50
-class G05P50_RoundCheckIn(common.Trigger):
+class G05P50_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P50Set', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='11111'):
             return G05P50_CleanUp(self.ctx)
 
@@ -9836,7 +9836,7 @@ class G05P50_RoundCheckIn(common.Trigger):
         self.reset_timer(timerId='11111')
 
 
-class G05P50_CleanUp(common.Trigger):
+class G05P50_CleanUp(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.select_camera(triggerId=901, enable=True)
@@ -9844,46 +9844,46 @@ class G05P50_CleanUp(common.Trigger):
         self.play_system_sound_in_box(boxIds=[9000], sound='DJDD_Dancing_01')
         self.set_mesh(triggerIds=[601,602,603,604,605,606,607,608,609,610,611,612,613,614,615,616,617,618,619,620,621,622,623,624,625,626,627,628,629,630,631,632,633], visible=False, arg3=2000, delay=0, scale=2) # 스테이지 정리
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return G05P50_Check(self.ctx)
 
 
-class G05P50_Check(common.Trigger):
+class G05P50_Check(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=500, key='G05P50TimeLimit', value=1)
         self.play_system_sound_in_box(boxIds=[6901,6902,6903,6904,6905,6906], sound='DDStop_Stage_Fail_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return G05P50_End(self.ctx)
 
 
-class G05P50_End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class G05P50_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P50End', value=1):
             return RoundCheckOutDelay(self.ctx)
 
 
-class RoundCheckOutDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RoundCheckOutDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return RoundCheckOut(self.ctx)
 
 
-class RoundCheckOut(common.Trigger):
+class RoundCheckOut(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=11, key='BannerCheckIn', value=1) # 게임판 위 인원수 배너 표시
         self.guild_vs_game_score_by_user(boxId=9001, score=1) # 이긴팀에게 라운드 스코어 1점 부여
         self.set_mesh(triggerIds=[8900,8901,8902,8903,8904,8905,8906,8907,8908,8909,8910,8911,8912,8913,8914], visible=True, arg3=0, delay=0, scale=0) # Barrier
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CheckNextRound(self.ctx)
 
 
-class CheckNextRound(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckNextRound(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Round', value=1):
             return R01EndDelay(self.ctx)
         if self.user_value(key='Round', value=2):

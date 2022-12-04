@@ -1,31 +1,31 @@
 """ trigger/02000066_bf/npc07.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[605], visible=False)
         self.set_actor(triggerId=207, visible=False, initialSequence='Dead_A')
         self.set_interact_object(triggerIds=[10000375], state=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return NPC생성(self.ctx)
 
 
-class NPC생성(common.Trigger):
+class NPC생성(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.create_monster(spawnIds=[2007], animationEffect=False)
         self.set_interact_object(triggerIds=[10000375], state=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return NPC생성조건(self.ctx)
 
 
-class NPC생성조건(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class NPC생성조건(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2007]):
             self.set_effect(triggerIds=[605], visible=True)
             self.show_guide_summary(entityId=20000663, textId=20000663)
@@ -33,43 +33,43 @@ class NPC생성조건(common.Trigger):
             return NPC소멸(self.ctx)
 
 
-class NPC소멸(common.Trigger):
+class NPC소멸(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='3', seconds=3)
         self.destroy_monster(spawnIds=[2007])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='3'):
             self.hide_guide_summary(entityId=20000663)
             return 오브젝트반응(self.ctx)
 
 
-class 오브젝트반응(common.Trigger):
+class 오브젝트반응(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=207, visible=True, initialSequence='Dead_A')
         self.set_interact_object(triggerIds=[10000375], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000375], stateValue=0):
             return 부활(self.ctx)
 
 
-class 부활(common.Trigger):
+class 부활(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.create_monster(spawnIds=[2007], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return NPC대사(self.ctx)
 
 
-class NPC대사(common.Trigger):
+class NPC대사(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=207, visible=False, initialSequence='Dead_A')
         self.set_conversation(type=1, spawnId=2007, script='$02000066_BF__NPC07__1$', arg4=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2007]):
             return NPC생성조건(self.ctx)
 

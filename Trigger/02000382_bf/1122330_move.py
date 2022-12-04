@@ -1,8 +1,8 @@
 """ trigger/02000382_bf/1122330_move.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False) # Emergency
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # ElevatorHallRoof
@@ -78,24 +78,24 @@ class Wait(common.Trigger):
         self.set_user_value(key='DungeonClear', value=0)
         self.set_user_value(key='AgentOff', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ElevatorOn', value=1):
             return BoardApp01(self.ctx)
         if self.user_value(key='AgentOff', value=1):
             return AgentOff01(self.ctx)
 
 
-class BoardApp01(common.Trigger):
+class BoardApp01(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20038102, textId=20038102) # 스위치를 작동시켜보세요
         self.set_interact_object(triggerIds=[10001107], state=1) # IceSwitch
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001107], stateValue=0):
             return BoardGoUp01(self.ctx)
 
 
-class BoardGoUp01(common.Trigger):
+class BoardGoUp01(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20038102)
         self.set_interact_object(triggerIds=[10001107], state=2) # Lever
@@ -148,22 +148,22 @@ class BoardGoUp01(common.Trigger):
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=False, arg3=200, delay=0, scale=2) # VisibleRoof
         self.set_mesh(triggerIds=[3200,3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221], visible=False, arg3=200, delay=0, scale=2) # VisibleGround
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return BoardGoUp02(self.ctx)
 
 
-class BoardGoUp02(common.Trigger):
+class BoardGoUp02(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3000], visible=True, arg3=100, delay=0, scale=0) # ElevatorHallRoof
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=100, delay=0, scale=2) # VisibleRoof
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return BoardGoUp03(self.ctx)
 
 
-class BoardGoUp03(common.Trigger):
+class BoardGoUp03(trigger_api.Trigger):
     def on_enter(self):
         self.set_breakable(triggerIds=[4000], enable=False) # Move_GoUp
         self.set_breakable(triggerIds=[4001], enable=False) # Move_GoUp
@@ -230,18 +230,18 @@ class BoardGoUp03(common.Trigger):
         self.set_agent(triggerIds=[8018], visible=False)
         self.set_agent(triggerIds=[8019], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return EmergencyPortalOn(self.ctx)
 
 
-class EmergencyPortalOn(common.Trigger):
+class EmergencyPortalOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False) # Emergency
 
 
 # 좌우 상단 입장 시
-class AgentOff01(common.Trigger):
+class AgentOff01(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)

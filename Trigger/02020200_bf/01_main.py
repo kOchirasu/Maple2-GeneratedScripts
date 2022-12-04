@@ -1,8 +1,8 @@
 """ trigger/02020200_bf/01_main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.enable_spawn_point_pc(spawnId=0, isEnable=True)
@@ -42,28 +42,28 @@ class 대기(common.Trigger):
         self.set_user_value(triggerId=99990009, key='BombOn', value=0)
         self.set_user_value(triggerId=99990010, key='BombOn', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[901]):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[908]):
             return 가이드메시지(self.ctx)
 
 
-class 가이드메시지(common.Trigger):
+class 가이드메시지(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[12001], visible=True)
         self.show_guide_summary(entityId=111, textId=20110001) # 에네르 동력원을 전원부 위로 옮기세요.
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[911], itemId=30001286):
             return 엘리베이터_1(self.ctx)
 
 
-class 엘리베이터_1(common.Trigger):
+class 엘리베이터_1(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
@@ -73,33 +73,33 @@ class 엘리베이터_1(common.Trigger):
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032], visible=False, delay=80, scale=3)
         self.set_effect(triggerIds=[11001], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 엘리베이터_1_활성화_대기(self.ctx)
 
 
-class 엘리베이터_1_활성화_대기(common.Trigger):
+class 엘리베이터_1_활성화_대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008,10009], visible=True)
         self.set_effect(triggerIds=[11002], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_1_활성화(self.ctx)
 
 
-class 엘리베이터_1_활성화(common.Trigger):
+class 엘리베이터_1_활성화(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[4013,4015,4017,4019,4021], visible=False)
         self.set_visible_breakable_object(triggerIds=[5010,5011,5012,5013,5014], visible=True)
         self.set_breakable(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[902]):
             return 번방2(self.ctx)
 
 
-class 번방2(common.Trigger):
+class 번방2(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008,10009], visible=False)
         self.create_monster(spawnIds=[101,102,103,104], animationEffect=False)
@@ -108,12 +108,12 @@ class 번방2(common.Trigger):
         self.set_user_value(triggerId=99990003, key='BombOn', value=1)
         self.set_user_value(triggerId=99990004, key='BombOn', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101,102,103,104]):
             return 번방_클리어2(self.ctx)
 
 
-class 번방_클리어2(common.Trigger):
+class 번방_클리어2(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[12002], visible=True)
         self.set_user_value(triggerId=99990002, key='BombOn', value=2)
@@ -123,12 +123,12 @@ class 번방_클리어2(common.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_random_mesh(triggerIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032], visible=False, meshCount=32, delay=50)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[912], itemId=30001286):
             return 엘리베이터_2(self.ctx)
 
 
-class 엘리베이터_2(common.Trigger):
+class 엘리베이터_2(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.enable_spawn_point_pc(spawnId=2, isEnable=True)
@@ -138,33 +138,33 @@ class 엘리베이터_2(common.Trigger):
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,3160,3161,3162,3163,3164,3165,3166,3167,3168,3169,3170,3171,3172,3173,3174,3175,3176,3177,3178,3179,3180,3181,3182,3183,3184,3185,3186,3187,3188], visible=False, delay=50, scale=3)
         self.set_effect(triggerIds=[11003], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_2_활성화_대기(self.ctx)
 
 
-class 엘리베이터_2_활성화_대기(common.Trigger):
+class 엘리베이터_2_활성화_대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10010,10011,10012,10013,10014,10015,10016,10017,10018], visible=True)
         self.set_effect(triggerIds=[11004], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_2_활성화(self.ctx)
 
 
-class 엘리베이터_2_활성화(common.Trigger):
+class 엘리베이터_2_활성화(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[4133,4135,4137,4139,4141], visible=False)
         self.set_visible_breakable_object(triggerIds=[5110,5111,5112,5113,5114], visible=True)
         self.set_breakable(triggerIds=[5101,5102,5103,5104,5105,5106,5107,5108,5109,5110,5111,5112,5113,5114], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[903]):
             return 번방3(self.ctx)
 
 
-class 번방3(common.Trigger):
+class 번방3(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10010,10011,10012,10013,10014,10015,10016,10017,10018], visible=False)
         self.create_monster(spawnIds=[201,202,203,204,205], animationEffect=False)
@@ -173,12 +173,12 @@ class 번방3(common.Trigger):
         self.set_user_value(triggerId=99990006, key='BombOn', value=1)
         self.set_user_value(triggerId=99990007, key='BombOn', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[201,202,203,204,205]):
             return 번방_클리어3(self.ctx)
 
 
-class 번방_클리어3(common.Trigger):
+class 번방_클리어3(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[12003], visible=True)
         self.set_user_value(triggerId=99990005, key='BombOn', value=2)
@@ -188,12 +188,12 @@ class 번방_클리어3(common.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_random_mesh(triggerIds=[1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064], visible=False, meshCount=32, delay=50)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[913], itemId=30001286):
             return 엘리베이터_3(self.ctx)
 
 
-class 엘리베이터_3(common.Trigger):
+class 엘리베이터_3(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=2, isEnable=False)
         self.enable_spawn_point_pc(spawnId=3, isEnable=True)
@@ -203,33 +203,33 @@ class 엘리베이터_3(common.Trigger):
         self.set_mesh(triggerIds=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216,3217,3218,3219,3220,3221,3222,3223,3224,3225,3226,3227,3228,3229,3230,3231,3232,3233,3234,3235,3236,3237,3238,3239,3240,3241,3242,3243,3244,3245,3246,3247,3248,3249,3250,3251,3252,3253,3254,3255,3256,3257,3258,3259,3260,3261,3262,3263,3264,3265,3266,3267,3268,3269,3270,3271,3272,3273,3274,3275,3276,3277,3278,3279,3280,3281,3282,3283,3284,3285,3286,3287,3288,3289], visible=False, delay=50, scale=3)
         self.set_effect(triggerIds=[11005], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_3_활성화_대기(self.ctx)
 
 
-class 엘리베이터_3_활성화_대기(common.Trigger):
+class 엘리베이터_3_활성화_대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10019,10020,10021,10022,10023,10024,10025,10026,10027], visible=True)
         self.set_effect(triggerIds=[11006], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_3_활성화(self.ctx)
 
 
-class 엘리베이터_3_활성화(common.Trigger):
+class 엘리베이터_3_활성화(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[4232,4234,4236,4238,4240], visible=False)
         self.set_visible_breakable_object(triggerIds=[5210,5211,5212,5213,5214], visible=True)
         self.set_breakable(triggerIds=[5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[904]):
             return 번방4(self.ctx)
 
 
-class 번방4(common.Trigger):
+class 번방4(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[10019,10020,10021,10022,10023,10024,10025,10026,10027], visible=False)
         self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=False)
@@ -237,12 +237,12 @@ class 번방4(common.Trigger):
         self.set_user_value(triggerId=99990009, key='BombOn', value=1)
         self.set_user_value(triggerId=99990010, key='BombOn', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[301,302,303,304,305]):
             return 번방_클리어4(self.ctx)
 
 
-class 번방_클리어4(common.Trigger):
+class 번방_클리어4(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[12004], visible=True)
         self.set_user_value(triggerId=99990008, key='BombOn', value=2)
@@ -252,12 +252,12 @@ class 번방_클리어4(common.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_random_mesh(triggerIds=[1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096], visible=False, meshCount=32, delay=50)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[914], itemId=30001286):
             return 딜레이(self.ctx)
 
 
-class 딜레이(common.Trigger):
+class 딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[12004], visible=False)
         self.hide_guide_summary(entityId=111)
@@ -265,12 +265,12 @@ class 딜레이(common.Trigger):
         self.set_mesh(triggerIds=[3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3328,3329,3330,3331,3332,3333,3334,3335,3336,3337,3338,3339,3340,3341,3342,3343,3344,3345,3346,3347,3348,3349,3350,3351,3352,3353,3354,3355,3356,3357,3358,3359,3360,3361,3362,3363,3364,3365,3366,3367,3368,3369,3370,3371,3372,3373,3374,3375], visible=False, delay=50, scale=3)
         self.set_effect(triggerIds=[11007], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[11008], visible=True)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

@@ -1,9 +1,9 @@
 """ trigger/99999905/move.xml """
-import common
+import trigger_api
 
 
-class 이동(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 이동(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=102, boxId=10):
             return 이동(self.ctx)
 

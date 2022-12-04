@@ -1,11 +1,11 @@
 """ trigger/02000252_bf/start.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[151,152,153,154,155,156], visible=True)
         self.set_effect(triggerIds=[601], visible=False) # 벨라 음성
@@ -24,53 +24,53 @@ class 대기(common.Trigger):
         self.set_effect(triggerIds=[8011], visible=False)
         self.set_effect(triggerIds=[8012], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return 로딩딜레이(self.ctx)
 
 
-class 로딩딜레이(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 로딩딜레이(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20002521)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라소환(self.ctx)
 
 
-class 연출해제(common.Trigger):
+class 연출해제(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라소환(self.ctx)
 
 
-class 벨라소환(common.Trigger):
+class 벨라소환(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[8801,8802], returnView=False)
         self.create_monster(spawnIds=[1001])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 벨라대사(self.ctx)
 
 
-class 벨라대사(common.Trigger):
+class 벨라대사(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip(state=벨라스킬딜레이, action='nextState')
         self.set_skip(state=벨라스킬딜레이)
@@ -79,45 +79,45 @@ class 벨라대사(common.Trigger):
         self.set_conversation(type=2, spawnId=11000057, script='$02000252_BF__START__4$', arg4=3)
         # action name="스킵을설정한다" arg1="벨라스킬딜레이" /
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사2(self.ctx)
 
 
-class 벨라대사2(common.Trigger):
+class 벨라대사2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=8)
         # <action name="이펙트를설정한다" arg1="602" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000252_BF__START__5$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사3(self.ctx)
 
 
-class 벨라대사3(common.Trigger):
+class 벨라대사3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=4)
         self.set_scene_skip()
         # <action name="이펙트를설정한다" arg1="603" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000252_BF__START__6$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6243):
             return 벨라스킬딜레이(self.ctx)
 
 
-class 벨라스킬딜레이(common.Trigger):
+class 벨라스킬딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1')
         self.set_timer(timerId='1', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return 예고이펙트(self.ctx)
 
 
-class 예고이펙트(common.Trigger):
+class 예고이펙트(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[8804], returnView=True)
         self.set_cinematic_ui(type=0)
@@ -137,12 +137,12 @@ class 예고이펙트(common.Trigger):
         self.set_effect(triggerIds=[8012], visible=True)
         self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return 스킬시작대기(self.ctx)
 
 
-class 스킬시작대기(common.Trigger):
+class 스킬시작대기(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002522, textId=20002522)
@@ -161,13 +161,13 @@ class 스킬시작대기(common.Trigger):
         self.create_monster(spawnIds=[1062], animationEffect=False)
         self.set_timer(timerId='3', seconds=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='3'):
             self.destroy_monster(spawnIds=[1001])
             return 스킬시작대기2(self.ctx)
 
 
-class 스킬시작대기2(common.Trigger):
+class 스킬시작대기2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='2', seconds=2)
         self.set_effect(triggerIds=[8001], visible=False)
@@ -183,12 +183,12 @@ class 스킬시작대기2(common.Trigger):
         self.set_effect(triggerIds=[8011], visible=False)
         self.set_effect(triggerIds=[8012], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return 스킬To08(self.ctx)
 
 
-class 스킬To08(common.Trigger):
+class 스킬To08(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[515], enable=True)
@@ -204,12 +204,12 @@ class 스킬To08(common.Trigger):
         self.set_skill(triggerIds=[525], enable=True)
         self.set_skill(triggerIds=[526], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To07대기(self.ctx)
 
 
-class 스킬To07대기(common.Trigger):
+class 스킬To07대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[515], enable=False)
         self.set_skill(triggerIds=[516], enable=False)
@@ -224,12 +224,12 @@ class 스킬To07대기(common.Trigger):
         self.set_skill(triggerIds=[525], enable=False)
         self.set_skill(triggerIds=[526], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To07(self.ctx)
 
 
-class 스킬To07(common.Trigger):
+class 스킬To07(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[564], enable=True)
@@ -249,12 +249,12 @@ class 스킬To07(common.Trigger):
         self.set_skill(triggerIds=[530], enable=True)
         self.set_skill(triggerIds=[531], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To06대기(self.ctx)
 
 
-class 스킬To06대기(common.Trigger):
+class 스킬To06대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[564], enable=False)
         self.set_skill(triggerIds=[517], enable=False)
@@ -273,12 +273,12 @@ class 스킬To06대기(common.Trigger):
         self.set_skill(triggerIds=[530], enable=False)
         self.set_skill(triggerIds=[531], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To06(self.ctx)
 
 
-class 스킬To06(common.Trigger):
+class 스킬To06(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[565], enable=True)
@@ -299,12 +299,12 @@ class 스킬To06(common.Trigger):
         self.set_skill(triggerIds=[535], enable=True)
         self.set_skill(triggerIds=[536], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To05대기(self.ctx)
 
 
-class 스킬To05대기(common.Trigger):
+class 스킬To05대기(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20002522)
         self.set_skill(triggerIds=[565], enable=False)
@@ -325,12 +325,12 @@ class 스킬To05대기(common.Trigger):
         self.set_skill(triggerIds=[535], enable=False)
         self.set_skill(triggerIds=[536], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To05(self.ctx)
 
 
-class 스킬To05(common.Trigger):
+class 스킬To05(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[566], enable=True)
@@ -352,12 +352,12 @@ class 스킬To05(common.Trigger):
         self.set_skill(triggerIds=[538], enable=True)
         self.set_skill(triggerIds=[539], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To04대기(self.ctx)
 
 
-class 스킬To04대기(common.Trigger):
+class 스킬To04대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[566], enable=False)
         self.set_skill(triggerIds=[567], enable=False)
@@ -378,12 +378,12 @@ class 스킬To04대기(common.Trigger):
         self.set_skill(triggerIds=[538], enable=False)
         self.set_skill(triggerIds=[539], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To04(self.ctx)
 
 
-class 스킬To04(common.Trigger):
+class 스킬To04(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[566], enable=False)
@@ -405,12 +405,12 @@ class 스킬To04(common.Trigger):
         self.set_skill(triggerIds=[544], enable=True)
         self.set_skill(triggerIds=[545], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To03대기(self.ctx)
 
 
-class 스킬To03대기(common.Trigger):
+class 스킬To03대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[566], enable=False)
         self.set_skill(triggerIds=[567], enable=False)
@@ -431,12 +431,12 @@ class 스킬To03대기(common.Trigger):
         self.set_skill(triggerIds=[544], enable=False)
         self.set_skill(triggerIds=[545], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To03(self.ctx)
 
 
-class 스킬To03(common.Trigger):
+class 스킬To03(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[566], enable=True)
@@ -458,12 +458,12 @@ class 스킬To03(common.Trigger):
         self.set_skill(triggerIds=[550], enable=True)
         self.set_skill(triggerIds=[551], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To02대기(self.ctx)
 
 
-class 스킬To02대기(common.Trigger):
+class 스킬To02대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[566], enable=False)
         self.set_skill(triggerIds=[567], enable=False)
@@ -484,12 +484,12 @@ class 스킬To02대기(common.Trigger):
         self.set_skill(triggerIds=[550], enable=False)
         self.set_skill(triggerIds=[551], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To02(self.ctx)
 
 
-class 스킬To02(common.Trigger):
+class 스킬To02(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[540], enable=True)
@@ -511,12 +511,12 @@ class 스킬To02(common.Trigger):
         self.set_skill(triggerIds=[556], enable=True)
         self.set_skill(triggerIds=[557], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬To01대기(self.ctx)
 
 
-class 스킬To01대기(common.Trigger):
+class 스킬To01대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[540], enable=False)
         self.set_skill(triggerIds=[541], enable=False)
@@ -537,12 +537,12 @@ class 스킬To01대기(common.Trigger):
         self.set_skill(triggerIds=[556], enable=False)
         self.set_skill(triggerIds=[557], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬To01(self.ctx)
 
 
-class 스킬To01(common.Trigger):
+class 스킬To01(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[546], enable=True)
@@ -564,12 +564,12 @@ class 스킬To01(common.Trigger):
         self.set_skill(triggerIds=[562], enable=True)
         self.set_skill(triggerIds=[563], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬00대기(self.ctx)
 
 
-class 스킬00대기(common.Trigger):
+class 스킬00대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[546], enable=False)
         self.set_skill(triggerIds=[547], enable=False)
@@ -590,12 +590,12 @@ class 스킬00대기(common.Trigger):
         self.set_skill(triggerIds=[562], enable=False)
         self.set_skill(triggerIds=[563], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬00(self.ctx)
 
 
-class 스킬00(common.Trigger):
+class 스킬00(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[552], enable=True)
@@ -617,12 +617,12 @@ class 스킬00(common.Trigger):
         self.set_skill(triggerIds=[305], enable=True)
         self.set_skill(triggerIds=[306], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬0.5대기(self.ctx)
 
 
-class 스킬0.5대기(common.Trigger):
+class 스킬0.5대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[552], enable=False)
         self.set_skill(triggerIds=[553], enable=False)
@@ -643,12 +643,12 @@ class 스킬0.5대기(common.Trigger):
         self.set_skill(triggerIds=[305], enable=False)
         self.set_skill(triggerIds=[306], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬0.5(self.ctx)
 
 
-class 스킬0.5(common.Trigger):
+class 스킬0.5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[558], enable=True)
@@ -670,12 +670,12 @@ class 스킬0.5(common.Trigger):
         self.set_skill(triggerIds=[311], enable=True)
         self.set_skill(triggerIds=[312], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬01대기(self.ctx)
 
 
-class 스킬01대기(common.Trigger):
+class 스킬01대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[558], enable=False)
         self.set_skill(triggerIds=[559], enable=False)
@@ -696,12 +696,12 @@ class 스킬01대기(common.Trigger):
         self.set_skill(triggerIds=[311], enable=False)
         self.set_skill(triggerIds=[312], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬01(self.ctx)
 
 
-class 스킬01(common.Trigger):
+class 스킬01(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[301], enable=True)
@@ -724,12 +724,12 @@ class 스킬01(common.Trigger):
         self.set_skill(triggerIds=[318], enable=True)
         self.set_skill(triggerIds=[319], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬02대기(self.ctx)
 
 
-class 스킬02대기(common.Trigger):
+class 스킬02대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[301], enable=False)
         self.set_skill(triggerIds=[302], enable=False)
@@ -751,12 +751,12 @@ class 스킬02대기(common.Trigger):
         self.set_skill(triggerIds=[318], enable=False)
         self.set_skill(triggerIds=[319], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬02(self.ctx)
 
 
-class 스킬02(common.Trigger):
+class 스킬02(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[307], enable=True)
@@ -780,12 +780,12 @@ class 스킬02(common.Trigger):
         self.set_skill(triggerIds=[325], enable=True)
         self.set_skill(triggerIds=[326], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬03대기(self.ctx)
 
 
-class 스킬03대기(common.Trigger):
+class 스킬03대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[307], enable=False)
         self.set_skill(triggerIds=[308], enable=False)
@@ -808,12 +808,12 @@ class 스킬03대기(common.Trigger):
         self.set_skill(triggerIds=[325], enable=False)
         self.set_skill(triggerIds=[326], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬03(self.ctx)
 
 
-class 스킬03(common.Trigger):
+class 스킬03(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[313], enable=True)
@@ -838,12 +838,12 @@ class 스킬03(common.Trigger):
         self.set_skill(triggerIds=[332], enable=True)
         self.set_skill(triggerIds=[333], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬04대기(self.ctx)
 
 
-class 스킬04대기(common.Trigger):
+class 스킬04대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[313], enable=False)
         self.set_skill(triggerIds=[314], enable=False)
@@ -867,12 +867,12 @@ class 스킬04대기(common.Trigger):
         self.set_skill(triggerIds=[332], enable=False)
         self.set_skill(triggerIds=[333], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬04(self.ctx)
 
 
-class 스킬04(common.Trigger):
+class 스킬04(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[320], enable=True)
@@ -897,12 +897,12 @@ class 스킬04(common.Trigger):
         self.set_skill(triggerIds=[339], enable=True)
         self.set_skill(triggerIds=[340], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬05대기(self.ctx)
 
 
-class 스킬05대기(common.Trigger):
+class 스킬05대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[320], enable=False)
         self.set_skill(triggerIds=[321], enable=False)
@@ -926,12 +926,12 @@ class 스킬05대기(common.Trigger):
         self.set_skill(triggerIds=[339], enable=False)
         self.set_skill(triggerIds=[340], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬05(self.ctx)
 
 
-class 스킬05(common.Trigger):
+class 스킬05(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[327], enable=True)
@@ -955,12 +955,12 @@ class 스킬05(common.Trigger):
         self.set_skill(triggerIds=[345], enable=True)
         self.set_skill(triggerIds=[346], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬06대기(self.ctx)
 
 
-class 스킬06대기(common.Trigger):
+class 스킬06대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[327], enable=False)
         self.set_skill(triggerIds=[328], enable=False)
@@ -983,12 +983,12 @@ class 스킬06대기(common.Trigger):
         self.set_skill(triggerIds=[345], enable=False)
         self.set_skill(triggerIds=[346], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬06(self.ctx)
 
 
-class 스킬06(common.Trigger):
+class 스킬06(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[334], enable=True)
@@ -1011,12 +1011,12 @@ class 스킬06(common.Trigger):
         self.set_skill(triggerIds=[351], enable=True)
         self.set_skill(triggerIds=[352], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬07대기(self.ctx)
 
 
-class 스킬07대기(common.Trigger):
+class 스킬07대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[334], enable=False)
         self.set_skill(triggerIds=[335], enable=False)
@@ -1038,12 +1038,12 @@ class 스킬07대기(common.Trigger):
         self.set_skill(triggerIds=[351], enable=False)
         self.set_skill(triggerIds=[352], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬07(self.ctx)
 
 
-class 스킬07(common.Trigger):
+class 스킬07(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[341], enable=True)
@@ -1065,12 +1065,12 @@ class 스킬07(common.Trigger):
         self.set_skill(triggerIds=[357], enable=True)
         self.set_skill(triggerIds=[358], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬08대기(self.ctx)
 
 
-class 스킬08대기(common.Trigger):
+class 스킬08대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[341], enable=False)
         self.set_skill(triggerIds=[342], enable=False)
@@ -1091,23 +1091,23 @@ class 스킬08대기(common.Trigger):
         self.set_skill(triggerIds=[357], enable=False)
         self.set_skill(triggerIds=[358], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000409], stateValue=0):
             return 굳음(self.ctx)
         if self.true():
             return 스킬08(self.ctx)
 
 
-class 굳음(common.Trigger):
+class 굳음(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='20', seconds=20)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='20'):
             return 스킬08(self.ctx)
 
 
-class 스킬08(common.Trigger):
+class 스킬08(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1101,1102,1103,1104,1105,1106,1107,1108], visible=False, arg3=0, delay=100)
         self.set_timer(timerId='1', seconds=1)
@@ -1130,12 +1130,12 @@ class 스킬08(common.Trigger):
         self.set_skill(triggerIds=[363], enable=True)
         self.set_skill(triggerIds=[364], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬09대기(self.ctx)
 
 
-class 스킬09대기(common.Trigger):
+class 스킬09대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[347], enable=False)
         self.set_skill(triggerIds=[348], enable=False)
@@ -1156,12 +1156,12 @@ class 스킬09대기(common.Trigger):
         self.set_skill(triggerIds=[363], enable=False)
         self.set_skill(triggerIds=[364], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬09(self.ctx)
 
 
-class 스킬09(common.Trigger):
+class 스킬09(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[353], enable=True)
@@ -1183,12 +1183,12 @@ class 스킬09(common.Trigger):
         self.set_skill(triggerIds=[369], enable=True)
         self.set_skill(triggerIds=[370], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬10대기(self.ctx)
 
 
-class 스킬10대기(common.Trigger):
+class 스킬10대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[353], enable=False)
         self.set_skill(triggerIds=[354], enable=False)
@@ -1209,12 +1209,12 @@ class 스킬10대기(common.Trigger):
         self.set_skill(triggerIds=[369], enable=False)
         self.set_skill(triggerIds=[370], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬10(self.ctx)
 
 
-class 스킬10(common.Trigger):
+class 스킬10(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[359], enable=True)
@@ -1236,12 +1236,12 @@ class 스킬10(common.Trigger):
         self.set_skill(triggerIds=[375], enable=True)
         self.set_skill(triggerIds=[376], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬11대기(self.ctx)
 
 
-class 스킬11대기(common.Trigger):
+class 스킬11대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=0)
         self.set_skill(triggerIds=[359], enable=False)
@@ -1263,12 +1263,12 @@ class 스킬11대기(common.Trigger):
         self.set_skill(triggerIds=[375], enable=False)
         self.set_skill(triggerIds=[376], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬12(self.ctx)
 
 
-class 스킬12(common.Trigger):
+class 스킬12(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[365], enable=True)
@@ -1290,12 +1290,12 @@ class 스킬12(common.Trigger):
         self.set_skill(triggerIds=[381], enable=True)
         self.set_skill(triggerIds=[382], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬13대기(self.ctx)
 
 
-class 스킬13대기(common.Trigger):
+class 스킬13대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[365], enable=False)
         self.set_skill(triggerIds=[366], enable=False)
@@ -1316,12 +1316,12 @@ class 스킬13대기(common.Trigger):
         self.set_skill(triggerIds=[381], enable=False)
         self.set_skill(triggerIds=[382], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬13(self.ctx)
 
 
-class 스킬13(common.Trigger):
+class 스킬13(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[371], enable=True)
@@ -1343,12 +1343,12 @@ class 스킬13(common.Trigger):
         self.set_skill(triggerIds=[387], enable=True)
         self.set_skill(triggerIds=[388], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬14대기(self.ctx)
 
 
-class 스킬14대기(common.Trigger):
+class 스킬14대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[371], enable=False)
         self.set_skill(triggerIds=[372], enable=False)
@@ -1369,12 +1369,12 @@ class 스킬14대기(common.Trigger):
         self.set_skill(triggerIds=[387], enable=False)
         self.set_skill(triggerIds=[388], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬14(self.ctx)
 
 
-class 스킬14(common.Trigger):
+class 스킬14(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[377], enable=True)
@@ -1397,12 +1397,12 @@ class 스킬14(common.Trigger):
         self.set_skill(triggerIds=[394], enable=True)
         self.set_skill(triggerIds=[395], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬15대기(self.ctx)
 
 
-class 스킬15대기(common.Trigger):
+class 스킬15대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[377], enable=False)
         self.set_skill(triggerIds=[378], enable=False)
@@ -1424,12 +1424,12 @@ class 스킬15대기(common.Trigger):
         self.set_skill(triggerIds=[394], enable=False)
         self.set_skill(triggerIds=[395], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬15(self.ctx)
 
 
-class 스킬15(common.Trigger):
+class 스킬15(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[383], enable=True)
@@ -1453,12 +1453,12 @@ class 스킬15(common.Trigger):
         self.set_skill(triggerIds=[401], enable=True)
         self.set_skill(triggerIds=[402], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬16대기(self.ctx)
 
 
-class 스킬16대기(common.Trigger):
+class 스킬16대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[383], enable=False)
         self.set_skill(triggerIds=[384], enable=False)
@@ -1481,12 +1481,12 @@ class 스킬16대기(common.Trigger):
         self.set_skill(triggerIds=[401], enable=False)
         self.set_skill(triggerIds=[402], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬16(self.ctx)
 
 
-class 스킬16(common.Trigger):
+class 스킬16(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[389], enable=True)
@@ -1511,12 +1511,12 @@ class 스킬16(common.Trigger):
         self.set_skill(triggerIds=[408], enable=True)
         self.set_skill(triggerIds=[409], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬17대기(self.ctx)
 
 
-class 스킬17대기(common.Trigger):
+class 스킬17대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[389], enable=False)
         self.set_skill(triggerIds=[390], enable=False)
@@ -1540,12 +1540,12 @@ class 스킬17대기(common.Trigger):
         self.set_skill(triggerIds=[408], enable=False)
         self.set_skill(triggerIds=[409], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬17(self.ctx)
 
 
-class 스킬17(common.Trigger):
+class 스킬17(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[396], enable=True)
@@ -1570,12 +1570,12 @@ class 스킬17(common.Trigger):
         self.set_skill(triggerIds=[415], enable=True)
         self.set_skill(triggerIds=[416], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬18대기(self.ctx)
 
 
-class 스킬18대기(common.Trigger):
+class 스킬18대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[396], enable=False)
         self.set_skill(triggerIds=[397], enable=False)
@@ -1599,12 +1599,12 @@ class 스킬18대기(common.Trigger):
         self.set_skill(triggerIds=[415], enable=False)
         self.set_skill(triggerIds=[416], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬18(self.ctx)
 
 
-class 스킬18(common.Trigger):
+class 스킬18(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[403], enable=True)
@@ -1628,12 +1628,12 @@ class 스킬18(common.Trigger):
         self.set_skill(triggerIds=[421], enable=True)
         self.set_skill(triggerIds=[422], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬19대기(self.ctx)
 
 
-class 스킬19대기(common.Trigger):
+class 스킬19대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[403], enable=False)
         self.set_skill(triggerIds=[404], enable=False)
@@ -1656,12 +1656,12 @@ class 스킬19대기(common.Trigger):
         self.set_skill(triggerIds=[421], enable=False)
         self.set_skill(triggerIds=[422], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬19(self.ctx)
 
 
-class 스킬19(common.Trigger):
+class 스킬19(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[410], enable=True)
@@ -1684,12 +1684,12 @@ class 스킬19(common.Trigger):
         self.set_skill(triggerIds=[427], enable=True)
         self.set_skill(triggerIds=[428], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬20대기(self.ctx)
 
 
-class 스킬20대기(common.Trigger):
+class 스킬20대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[410], enable=False)
         self.set_skill(triggerIds=[411], enable=False)
@@ -1711,12 +1711,12 @@ class 스킬20대기(common.Trigger):
         self.set_skill(triggerIds=[427], enable=False)
         self.set_skill(triggerIds=[428], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬20(self.ctx)
 
 
-class 스킬20(common.Trigger):
+class 스킬20(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[417], enable=True)
@@ -1738,12 +1738,12 @@ class 스킬20(common.Trigger):
         self.set_skill(triggerIds=[433], enable=True)
         self.set_skill(triggerIds=[434], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬21대기(self.ctx)
 
 
-class 스킬21대기(common.Trigger):
+class 스킬21대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[417], enable=False)
         self.set_skill(triggerIds=[418], enable=False)
@@ -1764,12 +1764,12 @@ class 스킬21대기(common.Trigger):
         self.set_skill(triggerIds=[433], enable=False)
         self.set_skill(triggerIds=[434], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬21(self.ctx)
 
 
-class 스킬21(common.Trigger):
+class 스킬21(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[423], enable=True)
@@ -1791,12 +1791,12 @@ class 스킬21(common.Trigger):
         self.set_skill(triggerIds=[439], enable=True)
         self.set_skill(triggerIds=[440], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬22대기(self.ctx)
 
 
-class 스킬22대기(common.Trigger):
+class 스킬22대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[423], enable=False)
         self.set_skill(triggerIds=[424], enable=False)
@@ -1817,12 +1817,12 @@ class 스킬22대기(common.Trigger):
         self.set_skill(triggerIds=[439], enable=False)
         self.set_skill(triggerIds=[440], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬22(self.ctx)
 
 
-class 스킬22(common.Trigger):
+class 스킬22(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[429], enable=True)
@@ -1844,12 +1844,12 @@ class 스킬22(common.Trigger):
         self.set_skill(triggerIds=[445], enable=True)
         self.set_skill(triggerIds=[446], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬23대기(self.ctx)
 
 
-class 스킬23대기(common.Trigger):
+class 스킬23대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[429], enable=False)
         self.set_skill(triggerIds=[430], enable=False)
@@ -1870,12 +1870,12 @@ class 스킬23대기(common.Trigger):
         self.set_skill(triggerIds=[445], enable=False)
         self.set_skill(triggerIds=[446], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬23(self.ctx)
 
 
-class 스킬23(common.Trigger):
+class 스킬23(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[435], enable=True)
@@ -1897,12 +1897,12 @@ class 스킬23(common.Trigger):
         self.set_skill(triggerIds=[451], enable=True)
         self.set_skill(triggerIds=[452], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬24대기(self.ctx)
 
 
-class 스킬24대기(common.Trigger):
+class 스킬24대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[435], enable=False)
         self.set_skill(triggerIds=[436], enable=False)
@@ -1923,12 +1923,12 @@ class 스킬24대기(common.Trigger):
         self.set_skill(triggerIds=[451], enable=False)
         self.set_skill(triggerIds=[452], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬24(self.ctx)
 
 
-class 스킬24(common.Trigger):
+class 스킬24(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[441], enable=True)
@@ -1950,12 +1950,12 @@ class 스킬24(common.Trigger):
         self.set_skill(triggerIds=[457], enable=True)
         self.set_skill(triggerIds=[458], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬25대기(self.ctx)
 
 
-class 스킬25대기(common.Trigger):
+class 스킬25대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[441], enable=False)
         self.set_skill(triggerIds=[442], enable=False)
@@ -1976,12 +1976,12 @@ class 스킬25대기(common.Trigger):
         self.set_skill(triggerIds=[457], enable=False)
         self.set_skill(triggerIds=[458], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬25(self.ctx)
 
 
-class 스킬25(common.Trigger):
+class 스킬25(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[447], enable=True)
@@ -2003,12 +2003,12 @@ class 스킬25(common.Trigger):
         self.set_skill(triggerIds=[463], enable=True)
         self.set_skill(triggerIds=[464], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬26대기(self.ctx)
 
 
-class 스킬26대기(common.Trigger):
+class 스킬26대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[447], enable=False)
         self.set_skill(triggerIds=[448], enable=False)
@@ -2029,12 +2029,12 @@ class 스킬26대기(common.Trigger):
         self.set_skill(triggerIds=[463], enable=False)
         self.set_skill(triggerIds=[464], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬26(self.ctx)
 
 
-class 스킬26(common.Trigger):
+class 스킬26(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[453], enable=True)
@@ -2056,12 +2056,12 @@ class 스킬26(common.Trigger):
         self.set_skill(triggerIds=[469], enable=True)
         self.set_skill(triggerIds=[470], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬27대기(self.ctx)
 
 
-class 스킬27대기(common.Trigger):
+class 스킬27대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[453], enable=False)
         self.set_skill(triggerIds=[454], enable=False)
@@ -2082,12 +2082,12 @@ class 스킬27대기(common.Trigger):
         self.set_skill(triggerIds=[469], enable=False)
         self.set_skill(triggerIds=[470], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬27(self.ctx)
 
 
-class 스킬27(common.Trigger):
+class 스킬27(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[459], enable=True)
@@ -2110,12 +2110,12 @@ class 스킬27(common.Trigger):
         self.set_skill(triggerIds=[476], enable=True)
         self.set_skill(triggerIds=[477], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬28대기(self.ctx)
 
 
-class 스킬28대기(common.Trigger):
+class 스킬28대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[459], enable=False)
         self.set_skill(triggerIds=[460], enable=False)
@@ -2137,12 +2137,12 @@ class 스킬28대기(common.Trigger):
         self.set_skill(triggerIds=[476], enable=False)
         self.set_skill(triggerIds=[477], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬28(self.ctx)
 
 
-class 스킬28(common.Trigger):
+class 스킬28(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[465], enable=True)
@@ -2166,12 +2166,12 @@ class 스킬28(common.Trigger):
         self.set_skill(triggerIds=[483], enable=True)
         self.set_skill(triggerIds=[484], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬29대기(self.ctx)
 
 
-class 스킬29대기(common.Trigger):
+class 스킬29대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[465], enable=False)
         self.set_skill(triggerIds=[466], enable=False)
@@ -2194,12 +2194,12 @@ class 스킬29대기(common.Trigger):
         self.set_skill(triggerIds=[483], enable=False)
         self.set_skill(triggerIds=[484], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬29(self.ctx)
 
 
-class 스킬29(common.Trigger):
+class 스킬29(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[471], enable=True)
@@ -2223,12 +2223,12 @@ class 스킬29(common.Trigger):
         self.set_skill(triggerIds=[489], enable=True)
         self.set_skill(triggerIds=[490], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬30대기(self.ctx)
 
 
-class 스킬30대기(common.Trigger):
+class 스킬30대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[471], enable=False)
         self.set_skill(triggerIds=[472], enable=False)
@@ -2251,12 +2251,12 @@ class 스킬30대기(common.Trigger):
         self.set_skill(triggerIds=[489], enable=False)
         self.set_skill(triggerIds=[490], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬30(self.ctx)
 
 
-class 스킬30(common.Trigger):
+class 스킬30(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[478], enable=True)
@@ -2279,12 +2279,12 @@ class 스킬30(common.Trigger):
         self.set_skill(triggerIds=[495], enable=True)
         self.set_skill(triggerIds=[496], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬31대기(self.ctx)
 
 
-class 스킬31대기(common.Trigger):
+class 스킬31대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[478], enable=False)
         self.set_skill(triggerIds=[479], enable=False)
@@ -2306,12 +2306,12 @@ class 스킬31대기(common.Trigger):
         self.set_skill(triggerIds=[495], enable=False)
         self.set_skill(triggerIds=[496], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬31(self.ctx)
 
 
-class 스킬31(common.Trigger):
+class 스킬31(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[485], enable=True)
@@ -2333,12 +2333,12 @@ class 스킬31(common.Trigger):
         self.set_skill(triggerIds=[501], enable=True)
         self.set_skill(triggerIds=[502], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬32대기(self.ctx)
 
 
-class 스킬32대기(common.Trigger):
+class 스킬32대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[485], enable=False)
         self.set_skill(triggerIds=[486], enable=False)
@@ -2359,12 +2359,12 @@ class 스킬32대기(common.Trigger):
         self.set_skill(triggerIds=[501], enable=False)
         self.set_skill(triggerIds=[502], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬32(self.ctx)
 
 
-class 스킬32(common.Trigger):
+class 스킬32(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[491], enable=True)
@@ -2386,12 +2386,12 @@ class 스킬32(common.Trigger):
         self.set_skill(triggerIds=[507], enable=True)
         self.set_skill(triggerIds=[508], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킬33대기(self.ctx)
 
 
-class 스킬33대기(common.Trigger):
+class 스킬33대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=0)
         self.set_skill(triggerIds=[491], enable=False)
@@ -2413,12 +2413,12 @@ class 스킬33대기(common.Trigger):
         self.set_skill(triggerIds=[507], enable=False)
         self.set_skill(triggerIds=[508], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킬33(self.ctx)
 
 
-class 스킬33(common.Trigger):
+class 스킬33(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[497], enable=True)
@@ -2440,12 +2440,12 @@ class 스킬33(common.Trigger):
         self.set_skill(triggerIds=[513], enable=True)
         self.set_skill(triggerIds=[514], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 끝(self.ctx)
 
 
-class 끝(common.Trigger):
+class 끝(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[497], enable=False)
         self.set_skill(triggerIds=[498], enable=False)

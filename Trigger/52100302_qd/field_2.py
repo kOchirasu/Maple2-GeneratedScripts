@@ -1,8 +1,8 @@
 """ trigger/52100302_qd/field_2.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[12000507], state=2)
         self.set_interact_object(triggerIds=[12000508], state=2)
@@ -12,7 +12,7 @@ class 대기(common.Trigger):
         self.set_interact_object(triggerIds=[12000512], state=2)
         # <action name="SetVisibleBreakableObject" arg1="1001,1002,1003,1004,1005,1006,1007,1008,1009,1010" arg2="0" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block', value=1):
             self.set_user_value(triggerId=900003, key='Block', value=0)
             return ArriveBlock_1(self.ctx)
@@ -24,15 +24,15 @@ class 대기(common.Trigger):
             return ArriveBlock_3(self.ctx)
 
 
-class ArriveBlock_1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9001]):
             self.create_monster(spawnIds=[2001], animationEffect=False)
             return ArriveBlock_Delay_1(self.ctx)
 
 
-class ArriveBlock_Delay_1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_Delay_1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__0$', duration=3000)
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__1$', duration=4000)
@@ -57,8 +57,8 @@ class ArriveBlock_Delay_1(common.Trigger):
             return CableOn_07_08(self.ctx)
 
 
-class Block_1_01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_1_01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5167):
             self.create_monster(spawnIds=[1000001], animationEffect=False)
             return Block_1_02(self.ctx)
@@ -82,8 +82,8 @@ class Block_1_01(common.Trigger):
             return CableOn_07_08(self.ctx)
 
 
-class Block_1_02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_1_02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4067):
             self.create_monster(spawnIds=[1000002], animationEffect=False)
             return Block_1(self.ctx)
@@ -107,8 +107,8 @@ class Block_1_02(common.Trigger):
             return CableOn_07_08(self.ctx)
 
 
-class Block_1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1107,1203,1204,1213,1214,1215,1216,1217,1218]):
             self.set_ai_extra_data(key='BossDie', value=2)
             self.destroy_monster(spawnIds=[1000001], arg2=False)
@@ -129,15 +129,15 @@ class Block_1(common.Trigger):
             return CableOn_07_08(self.ctx)
 
 
-class ArriveBlock_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9002]):
             self.create_monster(spawnIds=[2002], animationEffect=False)
             return ArriveBlock_Delay_2(self.ctx)
 
 
-class ArriveBlock_Delay_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_Delay_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__2$', duration=3000)
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__3$', duration=4000)
@@ -162,8 +162,8 @@ class ArriveBlock_Delay_2(common.Trigger):
             return CableOn_09_10(self.ctx)
 
 
-class Block_2_01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_2_01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5167):
             self.create_monster(spawnIds=[1000003], animationEffect=False)
             return Block_2_02(self.ctx)
@@ -187,8 +187,8 @@ class Block_2_01(common.Trigger):
             return CableOn_09_10(self.ctx)
 
 
-class Block_2_02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_2_02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4067):
             self.create_monster(spawnIds=[1000004], animationEffect=False)
             return Block_2(self.ctx)
@@ -212,8 +212,8 @@ class Block_2_02(common.Trigger):
             return CableOn_09_10(self.ctx)
 
 
-class Block_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1108,1205,1206,1207,1208,1209,1210,1211,1212]):
             self.set_ai_extra_data(key='BossDie', value=2)
             self.destroy_monster(spawnIds=[1000003], arg2=False)
@@ -234,15 +234,15 @@ class Block_2(common.Trigger):
             return CableOn_09_10(self.ctx)
 
 
-class ArriveBlock_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9003]):
             self.create_monster(spawnIds=[2003], animationEffect=False)
             return ArriveBlock_Delay_3(self.ctx)
 
 
-class ArriveBlock_Delay_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ArriveBlock_Delay_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__4$', duration=3000)
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$52100302_QD__FIELD_2__5$', duration=4000)
@@ -267,8 +267,8 @@ class ArriveBlock_Delay_3(common.Trigger):
             return CableOn_11_12(self.ctx)
 
 
-class Block_3_01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_3_01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5167):
             self.create_monster(spawnIds=[1000005], animationEffect=False)
             return Block_3_02(self.ctx)
@@ -292,8 +292,8 @@ class Block_3_01(common.Trigger):
             return CableOn_11_12(self.ctx)
 
 
-class Block_3_02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_3_02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4067):
             self.create_monster(spawnIds=[1000006], animationEffect=False)
             return Block_3(self.ctx)
@@ -317,8 +317,8 @@ class Block_3_02(common.Trigger):
             return CableOn_11_12(self.ctx)
 
 
-class Block_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Block_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1109,1201,1202,1219,1220,1221,1222,1223,1224]):
             self.set_ai_extra_data(key='BossDie', value=2)
             self.destroy_monster(spawnIds=[1000005], arg2=False)
@@ -339,8 +339,8 @@ class Block_3(common.Trigger):
             return CableOn_11_12(self.ctx)
 
 
-class CableOn_07_08(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_07_08(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000507], stateValue=0):
             self.set_interact_object(triggerIds=[12000507], state=0)
             self.set_interact_object(triggerIds=[12000508], state=0)
@@ -355,8 +355,8 @@ class CableOn_07_08(common.Trigger):
             return CableDelay_08(self.ctx)
 
 
-class CableOn_09_10(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_09_10(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000509], stateValue=0):
             self.set_interact_object(triggerIds=[12000509], state=0)
             self.set_interact_object(triggerIds=[12000510], state=0)
@@ -371,8 +371,8 @@ class CableOn_09_10(common.Trigger):
             return CableDelay_10(self.ctx)
 
 
-class CableOn_11_12(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOn_11_12(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000511], stateValue=0):
             self.set_interact_object(triggerIds=[12000511], state=0)
             self.set_interact_object(triggerIds=[12000512], state=0)
@@ -387,177 +387,177 @@ class CableOn_11_12(common.Trigger):
             return CableDelay_12(self.ctx)
 
 
-class CableDelay_07(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_07(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__6$', arg3='3000')
             return CableDelay_07_2(self.ctx)
 
 
-class CableDelay_08(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_08(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__7$', arg3='3000')
             return CableDelay_08_2(self.ctx)
 
 
-class CableDelay_09(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_09(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__8$', arg3='3000')
             return CableDelay_09_2(self.ctx)
 
 
-class CableDelay_10(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_10(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__9$', arg3='3000')
             return CableDelay_10_2(self.ctx)
 
 
-class CableDelay_11(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_11(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__10$', arg3='3000')
             return CableDelay_11_2(self.ctx)
 
 
-class CableDelay_12(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_12(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__11$', arg3='3000')
             return CableDelay_12_2(self.ctx)
 
 
-class CableDelay_07_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_07_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__12$', arg3='1000')
             return CableDelay_07_3(self.ctx)
 
 
-class CableDelay_08_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_08_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__13$', arg3='1000')
             return CableDelay_08_3(self.ctx)
 
 
-class CableDelay_09_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_09_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__14$', arg3='1000')
             return CableDelay_09_3(self.ctx)
 
 
-class CableDelay_10_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_10_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__15$', arg3='1000')
             return CableDelay_10_3(self.ctx)
 
 
-class CableDelay_11_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_11_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__16$', arg3='1000')
             return CableDelay_11_3(self.ctx)
 
 
-class CableDelay_12_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_12_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__17$', arg3='1000')
             return CableDelay_12_3(self.ctx)
 
 
-class CableDelay_07_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_07_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__18$', arg3='1000')
             return CableDelay_07_4(self.ctx)
 
 
-class CableDelay_08_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_08_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__19$', arg3='1000')
             return CableDelay_08_4(self.ctx)
 
 
-class CableDelay_09_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_09_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__20$', arg3='1000')
             return CableDelay_09_4(self.ctx)
 
 
-class CableDelay_10_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_10_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__21$', arg3='1000')
             return CableDelay_10_4(self.ctx)
 
 
-class CableDelay_11_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_11_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__22$', arg3='1000')
             return CableDelay_11_4(self.ctx)
 
 
-class CableDelay_12_3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_12_3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__23$', arg3='1000')
             return CableDelay_12_4(self.ctx)
 
 
-class CableDelay_07_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_07_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__24$', arg3='1000')
             return CableDelay_07_5(self.ctx)
 
 
-class CableDelay_08_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_08_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__25$', arg3='1000')
             return CableDelay_08_5(self.ctx)
 
 
-class CableDelay_09_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_09_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__26$', arg3='1000')
             return CableDelay_09_5(self.ctx)
 
 
-class CableDelay_10_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_10_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__27$', arg3='1000')
             return CableDelay_10_5(self.ctx)
 
 
-class CableDelay_11_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_11_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.move_npc(spawnId=30010, patrolName='MS2PatrolData_110')
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__28$', arg3='1000')
             return CableDelay_11_5(self.ctx)
 
 
-class CableDelay_12_4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_12_4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_event_ui(type=1, arg2='$52100302_QD__FIELD_2__29$', arg3='1000')
             return CableDelay_12_5(self.ctx)
 
 
-class CableDelay_07_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_07_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__30$', duration=6000)
             self.move_npc(spawnId=30005, patrolName='MS2PatrolData_105')
@@ -565,8 +565,8 @@ class CableDelay_07_5(common.Trigger):
             return CableOff_07(self.ctx)
 
 
-class CableDelay_08_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_08_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__31$', duration=6000)
             self.move_npc(spawnId=30006, patrolName='MS2PatrolData_106')
@@ -575,8 +575,8 @@ class CableDelay_08_5(common.Trigger):
             return CableOff_08(self.ctx)
 
 
-class CableDelay_09_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_09_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__32$', duration=6000)
             self.move_npc(spawnId=30008, patrolName='MS2PatrolData_108')
@@ -584,8 +584,8 @@ class CableDelay_09_5(common.Trigger):
             return CableOff_09(self.ctx)
 
 
-class CableDelay_10_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_10_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__33$', duration=6000)
             self.move_npc(spawnId=30009, patrolName='MS2PatrolData_109')
@@ -593,8 +593,8 @@ class CableDelay_10_5(common.Trigger):
             return CableOff_10(self.ctx)
 
 
-class CableDelay_11_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_11_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__34$', duration=6000)
             self.move_npc(spawnId=30011, patrolName='MS2PatrolData_111')
@@ -603,8 +603,8 @@ class CableDelay_11_5(common.Trigger):
             return CableOff_11(self.ctx)
 
 
-class CableDelay_12_5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableDelay_12_5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__FIELD_2__35$', duration=6000)
             self.move_npc(spawnId=30012, patrolName='MS2PatrolData_112')
@@ -612,50 +612,50 @@ class CableDelay_12_5(common.Trigger):
             return CableOff_12(self.ctx)
 
 
-class CableOff_07(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_07(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=1)
             return End_02(self.ctx)
 
 
-class CableOff_08(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_08(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=2)
             return End_02(self.ctx)
 
 
-class CableOff_09(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_09(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=2)
             return End_02(self.ctx)
 
 
-class CableOff_10(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_10(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=3)
             return End_02(self.ctx)
 
 
-class CableOff_11(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_11(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=4)
             return End_02(self.ctx)
 
 
-class CableOff_12(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CableOff_12(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             self.set_user_value(triggerId=900004, key='Block', value=1)
             return End_02(self.ctx)
 
 
-class End_02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class End_02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 대기(self.ctx)
 

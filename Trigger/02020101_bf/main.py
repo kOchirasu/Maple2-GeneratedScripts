@@ -1,38 +1,38 @@
 """ trigger/02020101_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[1001]):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.remove_buff(boxId=1003, skillId=70002151, isPlayer=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[1002]):
             return 보스전_시작(self.ctx)
 
 
-class 보스전_시작(common.Trigger):
+class 보스전_시작(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=23501001, illust='Turned_Yuperia_normal', script='$02020101_BF__MAIN__0$', duration=5670, voice='ko/Npc/00002206')
         self.dungeon_reset_time(seconds=420)
         self.create_monster(spawnIds=[101])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5670):
             return 조건추가(self.ctx)
 
 
-class 조건추가(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 조건추가(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return 보스전_성공(self.ctx)
         if self.dungeon_check_play_time(playSeconds=420, operator='Equal'):
@@ -41,26 +41,26 @@ class 조건추가(common.Trigger):
             return 보스전_스킬브레이크실패(self.ctx)
 
 
-class 보스전_스킬브레이크실패(common.Trigger):
+class 보스전_스킬브레이크실패(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_stop_timer()
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 보스전_리셋세팅(self.ctx)
 
 
-class 보스전_타임어택실패(common.Trigger):
+class 보스전_타임어택실패(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 보스전_타임어택실패세팅(self.ctx)
 
 
-class 보스전_리셋세팅(common.Trigger):
+class 보스전_리셋세팅(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1])
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
@@ -68,31 +68,31 @@ class 보스전_리셋세팅(common.Trigger):
         self.remove_buff(boxId=1003, skillId=70002122, isPlayer=True)
         self.remove_buff(boxId=1003, skillId=70002151, isPlayer=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 대기(self.ctx)
 
 
-class 보스전_타임어택실패세팅(common.Trigger):
+class 보스전_타임어택실패세팅(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
         self.remove_buff(boxId=1003, skillId=70002151, isPlayer=True)
 
 
-class 보스전_성공(common.Trigger):
+class 보스전_성공(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_mission_complete(missionId=23038005)
         self.dungeon_set_end_time()
         # <action name="DungeonCloseTimer" />
         self.side_npc_talk(type='talk', npcId=23501001, illust='Turned_Yuperia_normal', script='$02020101_BF__MAIN__1$', duration=7940, voice='ko/Npc/00002207')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7940):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_clear()

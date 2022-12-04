@@ -1,8 +1,8 @@
 """ trigger/99999940_bgtest/sample.xml """
-import common
+import trigger_api
 
 
-class 시작대기(common.Trigger):
+class 시작대기(trigger_api.Trigger):
     pass
 
 

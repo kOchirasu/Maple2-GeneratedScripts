@@ -1,8 +1,8 @@
 """ trigger/52000120_qd/01_henesysdefense.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.destroy_monster(spawnIds=[101,102,201,202,203,204,290,210,211,212,213,214,215,220,221,222,223,224,225,240,241,242,243,244,245]) # NPC
@@ -27,14 +27,14 @@ class Wait(common.Trigger):
         self.set_effect(triggerIds=[5000], visible=False) # DarkCloud
         self.set_effect(triggerIds=[5001], visible=False) # DarkCloud
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[50001551], questStates=[1]):
             return LoadingDelay01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[50001551], questStates=[2]):
             return Quit(self.ctx)
 
 
-class LoadingDelay01(common.Trigger):
+class LoadingDelay01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -49,280 +49,280 @@ class LoadingDelay01(common.Trigger):
         self.create_monster(spawnIds=[710,711,712,713], animationEffect=False) # CannonForPC
         self.select_camera(triggerId=10, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return LoadingDelay02(self.ctx)
 
 
-class LoadingDelay02(common.Trigger):
+class LoadingDelay02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return LeadersTalk_Manovich01(self.ctx)
 
 
-class LeadersTalk_Manovich01(common.Trigger):
+class LeadersTalk_Manovich01(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__0$', duration=5000, align='center', illustId='Manovich_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=SetLocalTargetCamera01cskip, action='nextState')
         # action name="스킵을설정한다" arg1="LeadersTalk_Manovich01Skip"/
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return LeadersTalk_Manovich01Skip(self.ctx)
 
 
-class LeadersTalk_Manovich01Skip(common.Trigger):
+class LeadersTalk_Manovich01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
         self.remove_cinematic_talk()
         # action name="스킵을설정한다" arg1=""/
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return LeadersTalk_Osckal01(self.ctx)
 
 
-class LeadersTalk_Osckal01(common.Trigger):
+class LeadersTalk_Osckal01(trigger_api.Trigger):
     def on_enter(self):
         self.move_user_path(patrolName='MS2PatrolData_1000')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__1$', duration=4000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return LeadersTalk_Osckal01Skip(self.ctx)
 
 
-class LeadersTalk_Osckal01Skip(common.Trigger):
+class LeadersTalk_Osckal01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.select_camera(triggerId=11, enable=True)
         self.add_balloon_talk(spawnId=0, msg='$52000120_QD__01_HENESYSDEFENSE__2$', duration=2000, delayTick=1000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return LeadersLookAtPC01(self.ctx)
 
 
-class LeadersLookAtPC01(common.Trigger):
+class LeadersLookAtPC01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return LeadersLookAtPC02(self.ctx)
 
 
-class LeadersLookAtPC02(common.Trigger):
+class LeadersLookAtPC02(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_202')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return CameraChange01(self.ctx)
 
 
-class CameraChange01(common.Trigger):
+class CameraChange01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange02(self.ctx)
 
 
-class CameraChange02(common.Trigger):
+class CameraChange02(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=12, enable=True) # PC 등뒤에서
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange03(self.ctx)
 
 
-class CameraChange03(common.Trigger):
+class CameraChange03(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return PCTalk01(self.ctx)
 
 
-class PCTalk01(common.Trigger):
+class PCTalk01(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=0, msg='$52000120_QD__01_HENESYSDEFENSE__3$', duration=4000, align='center', illustId='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PCTalk01Skip(self.ctx)
 
 
-class PCTalk01Skip(common.Trigger):
+class PCTalk01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         # action name="스킵을설정한다" arg1=""/
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ManovichTalk01(self.ctx)
 
 
-class ManovichTalk01(common.Trigger):
+class ManovichTalk01(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__4$', duration=5000, align='center', illustId='Manovich_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ManovichTalk01Skip(self.ctx)
 
 
-class ManovichTalk01Skip(common.Trigger):
+class ManovichTalk01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCTalk02(self.ctx)
 
 
-class PCTalk02(common.Trigger):
+class PCTalk02(trigger_api.Trigger):
     def on_enter(self):
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000120_QD__01_HENESYSDEFENSE__5$', duration=4000, align='center', illustId='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PCTalk02Skip(self.ctx)
 
 
-class PCTalk02Skip(common.Trigger):
+class PCTalk02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ManovichTalk02(self.ctx)
 
 
-class ManovichTalk02(common.Trigger):
+class ManovichTalk02(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__6$', duration=4000, align='center', illustId='Manovich_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return ManovichTalk02Skip(self.ctx)
 
 
-class ManovichTalk02Skip(common.Trigger):
+class ManovichTalk02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return OskhalTalk02(self.ctx)
 
 
-class OskhalTalk02(common.Trigger):
+class OskhalTalk02(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__7$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return OskhalTalk02Skip(self.ctx)
 
 
-class OskhalTalk02Skip(common.Trigger):
+class OskhalTalk02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.remove_cinematic_talk()
         self.set_effect(triggerIds=[5000], visible=True) # DarkCloud
         self.set_effect(triggerIds=[5001], visible=True) # DarkCloud
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange05(self.ctx)
 
 
-class CameraChange05(common.Trigger):
+class CameraChange05(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=13, enable=True) # PC 등뒤에서
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return CameraChange06(self.ctx)
 
 
-class CameraChange06(common.Trigger):
+class CameraChange06(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=14, enable=True) # PC 등뒤에서
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return OskhalTalk03(self.ctx)
 
 
-class OskhalTalk03(common.Trigger):
+class OskhalTalk03(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__8$', duration=4000, align='center', illustId='Oskhal_serious') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return OskhalTalk03Skip(self.ctx)
 
 
-class OskhalTalk03Skip(common.Trigger):
+class OskhalTalk03Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return OskhalTalk04(self.ctx)
 
 
-class OskhalTalk04(common.Trigger):
+class OskhalTalk04(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__9$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return OskhalTalk04Skip(self.ctx)
 
 
-class OskhalTalk04Skip(common.Trigger):
+class OskhalTalk04Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return CameraChange11(self.ctx)
 
 
-class CameraChange11(common.Trigger):
+class CameraChange11(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange12(self.ctx)
 
 
-class CameraChange12(common.Trigger):
+class CameraChange12(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.move_user(mapId=52000120, portalId=10, boxId=9900)
@@ -330,12 +330,12 @@ class CameraChange12(common.Trigger):
         self.destroy_monster(spawnIds=[101,201]) # Actor_Unique
         self.create_monster(spawnIds=[102,202,210,211,212,213,214,215], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange13(self.ctx)
 
 
-class CameraChange13(common.Trigger):
+class CameraChange13(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -344,12 +344,12 @@ class CameraChange13(common.Trigger):
         self.set_breakable(triggerIds=[4000,4001,4002,4003,4004,4005], enable=True)
         self.set_visible_breakable_object(triggerIds=[4000,4001,4002,4003,4004,4005], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CameraChange14(self.ctx)
 
 
-class CameraChange14(common.Trigger):
+class CameraChange14(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4500, visible=True, initialSequence='Interaction_bridge_A01_off') # Bridge
         self.select_camera(triggerId=16, enable=True)
@@ -362,18 +362,18 @@ class CameraChange14(common.Trigger):
         self.move_npc(spawnId=215, patrolName='MS2PatrolData_215')
         self.set_user_value(triggerId=10, key='DefencePhase', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return CameraChange15(self.ctx)
 
 
-class CameraChange15(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CameraChange15(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return SetLocalTargetCamera01(self.ctx)
 
 
-class SetLocalTargetCamera01(common.Trigger):
+class SetLocalTargetCamera01(trigger_api.Trigger):
     def on_enter(self):
         self.set_breakable(triggerIds=[4000,4001,4002,4003,4004,4005], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000,4001,4002,4003,4004,4005], visible=False)
@@ -382,12 +382,12 @@ class SetLocalTargetCamera01(common.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return SetLocalTargetCamera02(self.ctx)
 
 
-class SetLocalTargetCamera01cskip(common.Trigger):
+class SetLocalTargetCamera01cskip(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=10, key='DefencePhase', value=1)
         self.move_user(mapId=52000120, portalId=10, boxId=9900)
@@ -399,65 +399,65 @@ class SetLocalTargetCamera01cskip(common.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return SetLocalTargetCamera02(self.ctx)
 
 
-class SetLocalTargetCamera02(common.Trigger):
+class SetLocalTargetCamera02(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8001], visible=True)
         self.set_agent(triggerIds=[8002], visible=True)
         self.set_agent(triggerIds=[8003], visible=True)
         self.reset_camera(interpolationTime=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return SetLocalTargetCamera03(self.ctx)
 
 
-class SetLocalTargetCamera03(common.Trigger):
+class SetLocalTargetCamera03(trigger_api.Trigger):
     def on_enter(self):
         self.set_local_camera(cameraId=10000, enable=True)
         self.set_cube(triggerIds=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], isVisible=True) # LiftUp_Bomb
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return SetLocalTargetCamera04(self.ctx)
 
 
-class SetLocalTargetCamera04(common.Trigger):
+class SetLocalTargetCamera04(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.create_monster(spawnIds=[901,902], animationEffect=False) # Battle_Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return BattleOnTheWallGuide01(self.ctx)
 
 
-class BattleOnTheWallGuide01(common.Trigger):
+class BattleOnTheWallGuide01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[202,210,211,212,213,214,215])
         self.create_monster(spawnIds=[203,220,221,222,223,224,225], animationEffect=False)
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__10$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=BattleOnTheWallGuide01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return BattleOnTheWallGuide01Skip(self.ctx)
 
 
-class BattleOnTheWallGuide01Skip(common.Trigger):
+class BattleOnTheWallGuide01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return BattleOnTheWallGuide02(self.ctx)
 
 
-class BattleOnTheWallGuide02(common.Trigger):
+class BattleOnTheWallGuide02(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.set_effect(triggerIds=[5000], visible=False) # DarkCloud
@@ -467,34 +467,34 @@ class BattleOnTheWallGuide02(common.Trigger):
         self.add_cinematic_talk(npcId=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__11$', duration=4000, align='center', illustId='Manovich_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=BattleOnTheWallGuide02Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return BattleOnTheWallGuide02Skip(self.ctx)
 
 
-class BattleOnTheWallGuide02Skip(common.Trigger):
+class BattleOnTheWallGuide02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return BattleOnTheWallGuide03(self.ctx)
 
 
-class BattleOnTheWallGuide03(common.Trigger):
+class BattleOnTheWallGuide03(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25101201, textId=25101201) # 가이드 : 자경단의 전투를 지원해주세요
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return BattleOnTheWallEnd01(self.ctx)
 
 
-class BattleOnTheWallEnd01(common.Trigger):
+class BattleOnTheWallEnd01(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=25101201)
         self.set_user_value(triggerId=4, key='NpcDown', value=1)
@@ -505,115 +505,115 @@ class BattleOnTheWallEnd01(common.Trigger):
         self.set_user_value(triggerId=9, key='NpcDown', value=1)
         self.create_monster(spawnIds=[905,906], animationEffect=False) # Battle_Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return BattleOnTheWallEnd02(self.ctx)
 
 
-class BattleOnTheWallEnd02(common.Trigger):
+class BattleOnTheWallEnd02(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[907,908], animationEffect=False) # Battle_Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return BattleOnTheWallEnd03(self.ctx)
 
 
-class BattleOnTheWallEnd03(common.Trigger):
+class BattleOnTheWallEnd03(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[909,910], animationEffect=False) # Battle_Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=12000):
             return CallingBackUp01(self.ctx)
 
 
-class CallingBackUp01(common.Trigger):
+class CallingBackUp01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__12$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=PCVolunteer05CSkip, action='nextState')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return CallingBackUp01Skip(self.ctx)
 
 
-class CallingBackUp01Skip(common.Trigger):
+class CallingBackUp01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCVolunteer01(self.ctx)
 
 
-class PCVolunteer01(common.Trigger):
+class PCVolunteer01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_local_camera(cameraId=10000, enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCVolunteer02(self.ctx)
 
 
-class PCVolunteer02(common.Trigger):
+class PCVolunteer02(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=52000120, portalId=20, boxId=9900)
         self.select_camera(triggerId=20, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCVolunteer03(self.ctx)
 
 
-class PCVolunteer03(common.Trigger):
+class PCVolunteer03(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return PCVolunteer04(self.ctx)
 
 
-class PCVolunteer04(common.Trigger):
+class PCVolunteer04(trigger_api.Trigger):
     def on_enter(self):
         self.move_user_path(patrolName='MS2PatrolData_1001')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return PCVolunteer05(self.ctx)
 
 
-class PCVolunteer05(common.Trigger):
+class PCVolunteer05(trigger_api.Trigger):
     def on_enter(self):
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000120_QD__01_HENESYSDEFENSE__13$', duration=4000, align='center', illustId='0')
         # action name="SetSceneSkip" arg1="Battle01End01Skip" arg2="exit" /
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return PCVolunteer05Skip(self.ctx)
 
 
-class PCVolunteer05Skip(common.Trigger):
+class PCVolunteer05Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
         self.remove_cinematic_talk()
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return Battle01Start01(self.ctx)
 
 
-class PCVolunteer05CSkip(common.Trigger):
+class PCVolunteer05CSkip(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=52000120, portalId=20, boxId=9900)
         self.set_user_value(triggerId=10, key='DefencePhase', value=2)
@@ -622,24 +622,24 @@ class PCVolunteer05CSkip(common.Trigger):
         self.destroy_monster(spawnIds=[901,902,903,904,905,906,907,908,909,910]) # Battle01_Mob
         self.reset_camera(interpolationTime=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return Battle01Start01(self.ctx)
 
 
-class Battle01Start01(common.Trigger):
+class Battle01Start01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_actor(triggerId=4500, visible=True, initialSequence='Interaction_bridge_A01_on') # Bridge
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01Start02(self.ctx)
 
 
-class Battle01Start02(common.Trigger):
+class Battle01Start02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cube(triggerIds=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010], isVisible=False) # LiftUp_Bomb
         self.destroy_monster(spawnIds=[701,702,703,704]) # Cannon
@@ -655,12 +655,12 @@ class Battle01Start02(common.Trigger):
         self.set_agent(triggerIds=[8002], visible=False)
         self.set_agent(triggerIds=[8003], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01Start03(self.ctx)
 
 
-class Battle01Start03(common.Trigger):
+class Battle01Start03(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -670,12 +670,12 @@ class Battle01Start03(common.Trigger):
         self.set_breakable(triggerIds=[4000,4001,4002,4003,4004,4005], enable=True)
         self.set_visible_breakable_object(triggerIds=[4000,4001,4002,4003,4004,4005], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01Start04(self.ctx)
 
 
-class Battle01Start04(common.Trigger):
+class Battle01Start04(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4500, visible=True, initialSequence='Interaction_bridge_A01_off') # Bridge
         self.move_user_path(patrolName='MS2PatrolData_1002')
@@ -686,22 +686,22 @@ class Battle01Start04(common.Trigger):
         self.move_npc(spawnId=244, patrolName='MS2PatrolData_244')
         self.move_npc(spawnId=245, patrolName='MS2PatrolData_245')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01Start05(self.ctx)
 
 
-class Battle01Start05(common.Trigger):
+class Battle01Start05(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=31, enable=True)
         self.set_user_value(triggerId=10, key='DefencePhase', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle01Start06(self.ctx)
 
 
-class Battle01Start06(common.Trigger):
+class Battle01Start06(trigger_api.Trigger):
     def on_enter(self):
         self.set_breakable(triggerIds=[4000,4001,4002,4003,4004,4005], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000,4001,4002,4003,4004,4005], visible=False)
@@ -709,12 +709,12 @@ class Battle01Start06(common.Trigger):
         self.set_actor(triggerId=4500, visible=True, initialSequence='Interaction_bridge_A01_on') # Bridge
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # BridgeBarrier_Invisible
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Battle01Start07(self.ctx)
 
 
-class Battle01Start07(common.Trigger):
+class Battle01Start07(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8001], visible=True)
         self.set_agent(triggerIds=[8002], visible=True)
@@ -732,12 +732,12 @@ class Battle01Start07(common.Trigger):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25101202, textId=25101202) # 가이드 : 남아있는 적군을 소탕하세요
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[901,902,903,904,905,906,907,908,909,910]):
             return Battle01End01(self.ctx)
 
 
-class Battle01End01(common.Trigger):
+class Battle01End01(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=25101202)
         self.set_cinematic_ui(type=1)
@@ -745,12 +745,12 @@ class Battle01End01(common.Trigger):
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__14$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=Battle01End01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle01End01Skip(self.ctx)
 
 
-class Battle01End01Skip(common.Trigger):
+class Battle01End01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.remove_cinematic_talk()
@@ -770,54 +770,54 @@ class Battle01End01Skip(common.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01End02(self.ctx)
 
 
-class Battle01End02(common.Trigger):
+class Battle01End02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25101203, textId=25101203, duration=5000) # 가이드 : 서둘러 부상당한 자경단원들을 치료해주세요!
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Battle02Start01(self.ctx)
 
 
-class Battle02Start01(common.Trigger):
+class Battle02Start01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[911,912], animationEffect=False) # Battle02Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle02Start02(self.ctx)
 
 
-class Battle02Start02(common.Trigger):
+class Battle02Start02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25101204, textId=25101204, duration=5000) # 가이드 : 자경단원들과 함께 적군을 모두 물리치세요!
         self.create_monster(spawnIds=[913,914], animationEffect=False) # Battle02Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[911,912,913,914]):
             return Battle02End01(self.ctx)
 
 
-class Battle02End01(common.Trigger):
+class Battle02End01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003319, msg='$52000120_QD__01_HENESYSDEFENSE__15$', duration=5000, align='center', illustId='Oskhal_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=Battle02End01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle02End01Skip(self.ctx)
 
 
-class Battle02End01Skip(common.Trigger):
+class Battle02End01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.remove_cinematic_talk()
@@ -838,48 +838,48 @@ class Battle02End01Skip(common.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Battle03Start01(self.ctx)
 
 
-class Battle03Start01(common.Trigger):
+class Battle03Start01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[921,922], animationEffect=False) # Battle03Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle03Start02(self.ctx)
 
 
-class Battle03Start02(common.Trigger):
+class Battle03Start02(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[923,924], animationEffect=False) # Battle03Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Battle03Start03(self.ctx)
 
 
-class Battle03Start03(common.Trigger):
+class Battle03Start03(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[925,926], animationEffect=False) # Battle03Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Battle03Start04(self.ctx)
 
 
-class Battle03Start04(common.Trigger):
+class Battle03Start04(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[927,928], animationEffect=False) # Battle03Wave
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[921,922,923,924,925,926,927,928]):
             return Battle03End01(self.ctx)
 
 
-class Battle03End01(common.Trigger):
+class Battle03End01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[290], animationEffect=False) # Turka
         self.destroy_monster(spawnIds=[921,922,923,924,925,926,927,928]) # Battle03_Mob
@@ -888,12 +888,12 @@ class Battle03End01(common.Trigger):
         self.select_camera(triggerId=40, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_1003')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return TurkaWalkIn01(self.ctx)
 
 
-class TurkaWalkIn01(common.Trigger):
+class TurkaWalkIn01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=230, patrolName='MS2PatrolData_230')
         self.move_npc(spawnId=231, patrolName='MS2PatrolData_231')
@@ -919,22 +919,22 @@ class TurkaWalkIn01(common.Trigger):
         self.create_monster(spawnIds=[205], animationEffect=True)
         self.move_user_path(patrolName='MS2PatrolData_1004')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return TurkaWalkIn02(self.ctx)
 
 
-class TurkaWalkIn02(common.Trigger):
+class TurkaWalkIn02(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_205')
         self.move_user_path(patrolName='MS2PatrolData_1003')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return TurkaTalk01(self.ctx)
 
 
-class TurkaTalk01(common.Trigger):
+class TurkaTalk01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -943,82 +943,82 @@ class TurkaTalk01(common.Trigger):
         self.add_cinematic_talk(npcId=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__16$', duration=5000, align='center', illustId='0') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
         self.set_scene_skip(state=ManovichTalk03_CSkip, action='exit')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return TurkaTalk01Skip(self.ctx)
 
 
-class TurkaTalk01Skip(common.Trigger):
+class TurkaTalk01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ChangeView01(self.ctx)
 
 
-class ChangeView01(common.Trigger):
+class ChangeView01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ChangeView02(self.ctx)
 
 
-class ChangeView02(common.Trigger):
+class ChangeView02(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=42, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return ChangeView03(self.ctx)
 
 
-class ChangeView03(common.Trigger):
+class ChangeView03(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return TurkaTalk02(self.ctx)
 
 
-class TurkaTalk02(common.Trigger):
+class TurkaTalk02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003226, msg='$52000120_QD__01_HENESYSDEFENSE__17$', duration=4000, align='center', illustId='Turka_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return TurkaTalk02Skip(self.ctx)
 
 
-class TurkaTalk02Skip(common.Trigger):
+class TurkaTalk02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.move_npc(spawnId=290, patrolName='MS2PatrolData_302')
         self.destroy_monster(spawnIds=[980,981,982,983,984,985,990,991,992,993,994,995])
         self.create_monster(spawnIds=[960,961,962,963,964,965,970,971,972,973,974,975], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EnemyRetreat01(self.ctx)
 
 
-class EnemyRetreat01(common.Trigger):
+class EnemyRetreat01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=43, enable=True) # 퇴각 연출
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return EnemyRetreat02(self.ctx)
 
 
-class EnemyRetreat02(common.Trigger):
+class EnemyRetreat02(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=144, patrolName='MS2PatrolData_2001') # DevilWitch
         self.move_npc(spawnId=145, patrolName='MS2PatrolData_2105') # DevilWitch
@@ -1038,12 +1038,12 @@ class EnemyRetreat02(common.Trigger):
         self.move_npc(spawnId=165, patrolName='MS2PatrolData_2205') # DevilJunior
         self.move_npc(spawnId=166, patrolName='MS2PatrolData_2204') # DevilJunior
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return EnemyRetreat03(self.ctx)
 
 
-class EnemyRetreat03(common.Trigger):
+class EnemyRetreat03(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=171, patrolName='MS2PatrolData_2101') # DevilJunior
         self.move_npc(spawnId=174, patrolName='MS2PatrolData_2103') # DevilJunior
@@ -1065,12 +1065,12 @@ class EnemyRetreat03(common.Trigger):
         self.move_npc(spawnId=168, patrolName='MS2PatrolData_2203') # DevilJunior
         self.move_npc(spawnId=169, patrolName='MS2PatrolData_2206') # DevilJunior
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return EnemyRetreat04(self.ctx)
 
 
-class EnemyRetreat04(common.Trigger):
+class EnemyRetreat04(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=191, patrolName='MS2PatrolData_2101') # DevilHornIronMace
         self.move_npc(spawnId=192, patrolName='MS2PatrolData_2103') # DevilHornIronMace
@@ -1084,12 +1084,12 @@ class EnemyRetreat04(common.Trigger):
         self.move_npc(spawnId=118, patrolName='MS2PatrolData_2206') # DevilHornIronMace
         self.move_npc(spawnId=110, patrolName='MS2PatrolData_2203') # DevilHuge
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return EnemyRetreat05(self.ctx)
 
 
-class EnemyRetreat05(common.Trigger):
+class EnemyRetreat05(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=111, patrolName='MS2PatrolData_2002') # DevilHuge
         self.move_npc(spawnId=187, patrolName='MS2PatrolData_2001') # DevilHornIronMace
@@ -1104,12 +1104,12 @@ class EnemyRetreat05(common.Trigger):
         self.move_npc(spawnId=125, patrolName='MS2PatrolData_2201') # DevilHornSpear
         self.move_npc(spawnId=126, patrolName='MS2PatrolData_2206') # DevilHornSpear
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return EnemyRetreat06(self.ctx)
 
 
-class EnemyRetreat06(common.Trigger):
+class EnemyRetreat06(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[112,144,145,146,147,170,172,178,179,180]) # Right Group1
         self.destroy_monster(spawnIds=[160,161,162,163,164,165,166]) # Left Group1
@@ -1127,12 +1127,12 @@ class EnemyRetreat06(common.Trigger):
         self.move_npc(spawnId=198, patrolName='MS2PatrolData_2206') # DevilHornIronMace
         self.move_npc(spawnId=199, patrolName='MS2PatrolData_2205') # DevilHornIronMace
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EnemyRetreat07(self.ctx)
 
 
-class EnemyRetreat07(common.Trigger):
+class EnemyRetreat07(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[171,174,175,176,177,150,151,152,153,154,155,156]) # Right Group2
         self.destroy_monster(spawnIds=[140,141,142,143,167,168,169]) # Left Group2
@@ -1154,42 +1154,42 @@ class EnemyRetreat07(common.Trigger):
         self.move_npc(spawnId=974, patrolName='MS2PatrolData_2001') # ShieldBarrierRight
         self.move_npc(spawnId=975, patrolName='MS2PatrolData_2001') # ShieldBarrierRight
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return EnemyRetreat08(self.ctx)
 
 
-class EnemyRetreat08(common.Trigger):
+class EnemyRetreat08(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[191,192,193,194,195]) # Right Group3
         self.destroy_monster(spawnIds=[114,115,116,117,118,110]) # Left Group3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return EnemyRetreat09(self.ctx)
 
 
-class EnemyRetreat09(common.Trigger):
+class EnemyRetreat09(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[111,187,188,189,190]) # Right Group4
         self.destroy_monster(spawnIds=[120,121,122,123,124,125,126]) # Left Group4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return EnemyRetreat10(self.ctx)
 
 
-class EnemyRetreat10(common.Trigger):
+class EnemyRetreat10(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[130,131,132,133,134,135,136,184]) # Right Group5
         self.destroy_monster(spawnIds=[113,196,197,198,199]) # Left Group5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return EnemyRetreat11(self.ctx)
 
 
-class EnemyRetreat11(common.Trigger):
+class EnemyRetreat11(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[181,182,183,184,185,186]) # Right Group6
         self.destroy_monster(spawnIds=[990,991,992,993,994,995]) # Left Group6
@@ -1197,61 +1197,61 @@ class EnemyRetreat11(common.Trigger):
         self.destroy_monster(spawnIds=[290]) # Turka
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Ending01(self.ctx)
 
 
-class Ending01(common.Trigger):
+class Ending01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=44, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return Ending02(self.ctx)
 
 
-class Ending02(common.Trigger):
+class Ending02(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ManovichTalk03(self.ctx)
 
 
-class ManovichTalk03(common.Trigger):
+class ManovichTalk03(trigger_api.Trigger):
     def on_enter(self):
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003221, msg='$52000120_QD__01_HENESYSDEFENSE__18$', duration=4000, align='center', illustId='Manovich_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return ManovichTalk03Skip(self.ctx)
 
 
-class ManovichTalk03_CSkip(common.Trigger):
+class ManovichTalk03_CSkip(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1]) # Turka
         self.select_camera(triggerId=44, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ManovichTalk03Skip(self.ctx)
 
 
-class ManovichTalk03Skip(common.Trigger):
+class ManovichTalk03Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_achievement(triggerId=9900, type='trigger', achieve='henesysinvasion')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -1259,16 +1259,16 @@ class Quit(common.Trigger):
         self.move_user(mapId=2000072, portalId=1)
         self.set_user_value(triggerId=10, key='DefencePhase', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Leave(self.ctx)
 
 
-class Leave(common.Trigger):
+class Leave(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=2000072, portalId=1) # 맵 튕기고 이동 명령 못 받을 상태를 대비한 스테이트
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Leave(self.ctx)
 

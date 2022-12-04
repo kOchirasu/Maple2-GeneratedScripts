@@ -1,11 +1,11 @@
 """ trigger/02000315_bf/battle_01.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5000], visible=False) # UI
@@ -34,21 +34,21 @@ class Setting(common.Trigger):
         self.enable_spawn_point_pc(spawnId=992, isEnable=False)
         self.enable_spawn_point_pc(spawnId=993, isEnable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
+class LoadingDelay(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[99], animationEffect=False) # arg2="0" 을 넣으면 보스 등장하자마자 바로 공격 상태가 되는 것을 막을 수 있음
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.set_cinematic_ui(type=1)
@@ -56,17 +56,17 @@ class DungeonStart(common.Trigger):
         self.select_camera_path(pathIds=[600,601], returnView=False)
         self.set_skip(state=CameraWalk01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return CameraWalk01(self.ctx)
 
 
-class CameraWalk01(common.Trigger):
+class CameraWalk01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[601,600], returnView=True)
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return FirstBattle(self.ctx)
 
@@ -80,17 +80,17 @@ class CameraWalk01(common.Trigger):
         self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_Barrier
 
 
-class FirstBattle(common.Trigger):
+class FirstBattle(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=3, key='CameraWalkEnd', value=1)
         self.create_monster(spawnIds=[901,902,903], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001043], stateValue=0):
             return FirstBridgeOn(self.ctx)
 
 
-class FirstBridgeOn(common.Trigger):
+class FirstBridgeOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
@@ -100,23 +100,23 @@ class FirstBridgeOn(common.Trigger):
         self.set_user_value(triggerId=101, key='BridgeOpen', value=1)
         self.set_user_value(triggerId=102, key='BridgeOpen', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[504]):
             return SecondBattle(self.ctx)
 
 
-class SecondBattle(common.Trigger):
+class SecondBattle(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=991, isEnable=True)
         self.create_monster(spawnIds=[904,905,906], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001044], stateValue=0):
             return SecondBridgeOn(self.ctx)
 
 
-class SecondBridgeOn(common.Trigger):
+class SecondBridgeOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8002], visible=False)
         self.set_agent(triggerIds=[8003], visible=False)
@@ -129,23 +129,23 @@ class SecondBridgeOn(common.Trigger):
         self.set_user_value(triggerId=104, key='BridgeOpen', value=2)
         self.set_user_value(triggerId=105, key='BridgeOpen', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[507]):
             return ThirdBattle(self.ctx)
 
 
-class ThirdBattle(common.Trigger):
+class ThirdBattle(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=991, isEnable=False)
         self.enable_spawn_point_pc(spawnId=993, isEnable=True)
         self.create_monster(spawnIds=[907,908,909], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001035], stateValue=0):
             return ThirdBridgeOn(self.ctx)
 
 
-class ThirdBridgeOn(common.Trigger):
+class ThirdBridgeOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[8004], visible=False)
         self.set_agent(triggerIds=[8005], visible=False)
@@ -160,17 +160,17 @@ class ThirdBridgeOn(common.Trigger):
         self.set_user_value(triggerId=106, key='BridgeOpen', value=3)
         self.set_user_value(triggerId=107, key='BridgeOpen', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[402]):
             return BossBattle01(self.ctx)
 
 
-class BossBattle01(common.Trigger):
+class BossBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=993, isEnable=False)
         self.enable_spawn_point_pc(spawnId=992, isEnable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[99]):
             return Success(self.ctx)
 
@@ -178,13 +178,13 @@ class BossBattle01(common.Trigger):
         self.destroy_monster(spawnIds=[99])
 
 
-class Success(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Success(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)

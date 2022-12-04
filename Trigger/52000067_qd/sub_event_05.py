@@ -1,9 +1,9 @@
 """ trigger/52000067_qd/sub_event_05.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=707, spawnIds=[751]):
             return NPC소멸751(self.ctx)
         if self.npc_detected(boxId=707, spawnIds=[752]):
@@ -32,119 +32,119 @@ class idle(common.Trigger):
             return NPC소멸592(self.ctx)
 
 
-class NPC소멸751(common.Trigger):
+class NPC소멸751(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[751])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸752(common.Trigger):
+class NPC소멸752(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[752])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸753(common.Trigger):
+class NPC소멸753(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[753])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸754(common.Trigger):
+class NPC소멸754(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[754])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸755(common.Trigger):
+class NPC소멸755(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[755])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸756(common.Trigger):
+class NPC소멸756(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[756])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸757(common.Trigger):
+class NPC소멸757(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[757])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸758(common.Trigger):
+class NPC소멸758(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[758])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸759(common.Trigger):
+class NPC소멸759(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[759])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸761(common.Trigger):
+class NPC소멸761(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[761])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸762(common.Trigger):
+class NPC소멸762(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[762])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸591(common.Trigger):
+class NPC소멸591(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[591])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 
 
-class NPC소멸592(common.Trigger):
+class NPC소멸592(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[592])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return idle(self.ctx)
 

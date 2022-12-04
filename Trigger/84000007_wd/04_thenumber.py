@@ -1,15 +1,15 @@
 """ trigger/84000007_wd/04_thenumber.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Wait(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BannerCheckIn', value=1):
             return BannerCheckIn(self.ctx)
 
 
-class BannerCheckIn(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class BannerCheckIn(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9001, boxId=70, operator='Equal'):
             self.set_user_value(triggerId=5, key='BannerNumber', value=70)
             self.set_user_value(triggerId=5, key='SetBanner', value=1)
@@ -296,12 +296,12 @@ class BannerCheckIn(common.Trigger):
             return Reset(self.ctx)
 
 
-class Reset(common.Trigger):
+class Reset(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='BannerCheckIn', value=0)
         self.set_user_value(key='BannerNumber', value=100)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 

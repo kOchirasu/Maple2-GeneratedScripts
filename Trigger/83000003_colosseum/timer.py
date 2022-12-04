@@ -1,10 +1,10 @@
 """ trigger/83000003_colosseum/timer.xml """
-import common
+import trigger_api
 
 
 # <라운드 시작하면서 5분 시간 제한 타이머>
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Timer', value=1):
             return 스테이지1(self.ctx)
         if self.user_value(key='Timer', value=2):
@@ -27,18 +27,18 @@ class 대기(common.Trigger):
             return 스테이지10(self.ctx)
 
 
-class 스테이지1(common.Trigger):
+class 스테이지1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="101" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크1(self.ctx)
 
 
-class 타이머체크1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             self.set_user_value(triggerId=900001, key='Fail', value=1)
             return 종료(self.ctx)
@@ -47,18 +47,18 @@ class 타이머체크1(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지2(common.Trigger):
+class 스테이지2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer2', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="102" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크2(self.ctx)
 
 
-class 타이머체크2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             self.set_user_value(triggerId=900001, key='Fail', value=1)
             return 종료(self.ctx)
@@ -67,18 +67,18 @@ class 타이머체크2(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지3(common.Trigger):
+class 스테이지3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer3', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="103" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크3(self.ctx)
 
 
-class 타이머체크3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             self.set_user_value(triggerId=900001, key='Fail', value=1)
             return 종료(self.ctx)
@@ -87,18 +87,18 @@ class 타이머체크3(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지4(common.Trigger):
+class 스테이지4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer4', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="104" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크4(self.ctx)
 
 
-class 타이머체크4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[104]):
@@ -106,18 +106,18 @@ class 타이머체크4(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지5(common.Trigger):
+class 스테이지5(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer5', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="105" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크5(self.ctx)
 
 
-class 타이머체크5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[105]):
@@ -125,18 +125,18 @@ class 타이머체크5(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지6(common.Trigger):
+class 스테이지6(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer6', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="106" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크6(self.ctx)
 
 
-class 타이머체크6(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크6(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[106]):
@@ -144,18 +144,18 @@ class 타이머체크6(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지7(common.Trigger):
+class 스테이지7(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer7', seconds=180, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="107" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크7(self.ctx)
 
 
-class 타이머체크7(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크7(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[107]):
@@ -163,18 +163,18 @@ class 타이머체크7(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지8(common.Trigger):
+class 스테이지8(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer8', seconds=300, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="108" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크8(self.ctx)
 
 
-class 타이머체크8(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크8(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[108]):
@@ -182,18 +182,18 @@ class 타이머체크8(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지9(common.Trigger):
+class 스테이지9(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer9', seconds=300, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="109" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크9(self.ctx)
 
 
-class 타이머체크9(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크9(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[109]):
@@ -201,18 +201,18 @@ class 타이머체크9(common.Trigger):
             return 종료(self.ctx)
 
 
-class 스테이지10(common.Trigger):
+class 스테이지10(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='LimitTimer10', seconds=300, startDelay=1)
         # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="110" durationTick="180000" npcHpStep="100" />
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 타이머체크10(self.ctx)
 
 
-class 타이머체크10(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머체크10(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='LimitTimer'):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[110]):
@@ -220,7 +220,7 @@ class 타이머체크10(common.Trigger):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='LimitTimer')
         self.reset_timer(timerId='LimitTimer2')
@@ -233,7 +233,7 @@ class 종료(common.Trigger):
         self.reset_timer(timerId='LimitTimer9')
         self.reset_timer(timerId='LimitTimer10')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 대기(self.ctx)
 

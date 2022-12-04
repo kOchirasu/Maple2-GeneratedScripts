@@ -1,8 +1,8 @@
 """ trigger/02000397_bf/3100_hidden_fireplace.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=False) # PortalOn
         self.set_actor(triggerId=4000, visible=True, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
@@ -18,24 +18,24 @@ class Wait(common.Trigger):
         self.set_interact_object(triggerIds=[10001140], state=0) # Fireplace
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='HiddenRouteOpen', value=1):
             return Opened(self.ctx)
         if self.user_value(key='HiddenRouteOpen', value=2):
             return Closed(self.ctx)
 
 
-class Opened(common.Trigger):
+class Opened(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4000, visible=False, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(triggerIds=[10001140], state=1) # Fireplace
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001140], stateValue=0):
             return LadderOn(self.ctx)
 
 
-class LadderOn(common.Trigger):
+class LadderOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0) # FireplaceInvisible
@@ -49,17 +49,17 @@ class LadderOn(common.Trigger):
         self.set_mesh(triggerIds=[3101], visible=False, arg3=0, delay=0, scale=3) # BehindFirePlaceCover
 
 
-class Closed(common.Trigger):
+class Closed(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4000, visible=False, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(triggerIds=[10001140], state=1) # Fireplace
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001140], stateValue=0):
             return NothingHappened(self.ctx)
 
 
-class NothingHappened(common.Trigger):
+class NothingHappened(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=4000, visible=True, initialSequence='he_in_prop_fireplace_A01_Opened') # FireplaceActor
 

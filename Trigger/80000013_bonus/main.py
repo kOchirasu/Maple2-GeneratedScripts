@@ -1,23 +1,23 @@
 """ trigger/80000013_bonus/main.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return start(self.ctx)
 
 
-class start(common.Trigger):
+class start(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[108], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=60000):
             return end(self.ctx)
 
 
-class end(common.Trigger):
+class end(trigger_api.Trigger):
     pass
 
 

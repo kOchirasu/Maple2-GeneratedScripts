@@ -1,8 +1,8 @@
 """ trigger/02010052_bf/torchlight_03.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=20499, visible=False, initialSequence='Closed')
         self.set_actor(triggerId=20501, visible=True, initialSequence='Closed') # 얼어붙은 문
@@ -10,7 +10,7 @@ class idle(common.Trigger):
         self.set_effect(triggerIds=[7002], visible=False) # 횃불에 불이 붙는 이펙트
         self.set_effect(triggerIds=[7003], visible=False) # 횃불에 불이 붙는 이펙트
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[102]):
             return burn_state_01(self.ctx)
         if self.monster_dead(boxIds=[103]):
@@ -31,11 +31,11 @@ class idle(common.Trigger):
         self.set_conversation(type=1, spawnId=993, script='$02010052_BF__TORCHLIGHT_03__0$', arg4=3) # 카나 말풍선 대사
 
 
-class burn_state_01(common.Trigger):
+class burn_state_01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[7002], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[103]):
             return burn_state_complete(self.ctx)
 
@@ -43,11 +43,11 @@ class burn_state_01(common.Trigger):
         self.set_effect(triggerIds=[7003], visible=True)
 
 
-class burn_state_02(common.Trigger):
+class burn_state_02(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[7003], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[102]):
             return burn_state_complete(self.ctx)
 
@@ -55,7 +55,7 @@ class burn_state_02(common.Trigger):
         self.set_effect(triggerIds=[7002], visible=True)
 
 
-class burn_state_complete(common.Trigger):
+class burn_state_complete(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[7503], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[6021,6022,6023,6024,6025,6026,6027,6028,6029,6030,6031,6032], visible=False, arg3=800, delay=100, scale=8) # 벽 해제
@@ -64,12 +64,12 @@ class burn_state_complete(common.Trigger):
         self.set_event_ui(type=1, arg2='$02010052_BF__TORCHLIGHT_03__2$', arg3='3000')
         self.set_timer(timerId='1', seconds=1, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return spawn_state(self.ctx)
 
 
-class spawn_state(common.Trigger):
+class spawn_state(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=299, textId=20105203) # 거대 다크 슬링을 처치하세요
         self.set_mesh(triggerIds=[5100,5101,5102,5103,5104,5105,5106,5107,5108,5109,5110], visible=False, arg3=800, delay=100, scale=8) # 카나 위에 있는 벽 해제
@@ -84,7 +84,7 @@ class spawn_state(common.Trigger):
         self.create_monster(spawnIds=[199], animationEffect=True) # 얼음이 녹으며 등장하는 몬스터들 (중간)
         self.create_monster(spawnIds=[321,322,323,324,325], animationEffect=True) # 얼음이 녹으며 등장하는 몬스터들
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return monsterkill(self.ctx)
 
@@ -92,7 +92,7 @@ class spawn_state(common.Trigger):
         self.hide_guide_summary(entityId=299)
 
 
-class monsterkill(common.Trigger):
+class monsterkill(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=20499, visible=True, initialSequence='Opening')
         self.set_actor(triggerId=20501, visible=False, initialSequence='Closed') # 얼어붙은 문

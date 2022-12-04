@@ -1,33 +1,33 @@
 """ trigger/02100004_bf/npc01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             return 소환대기(self.ctx)
 
 
-class 소환대기(common.Trigger):
+class 소환대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=999992, key='NpcSpawned01', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='NpcSpawn01', value=1):
             return 소환(self.ctx)
 
 
-class 소환(common.Trigger):
+class 소환(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=999992, key='NpcSpawned01', value=1)
         self.create_monster(spawnIds=[2001], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

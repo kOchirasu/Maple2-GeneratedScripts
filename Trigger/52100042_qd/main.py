@@ -1,54 +1,54 @@
 """ trigger/52100042_qd/main.xml """
-import common
+import trigger_api
 
 
-class ready(common.Trigger):
+class ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[6001], visible=False)
         self.set_mesh(triggerIds=[6002], visible=False)
         self.set_mesh(triggerIds=[6003], visible=False)
         self.set_mesh(triggerIds=[6004], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return roomCheck(self.ctx)
 
 
-class roomCheck(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class roomCheck(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
             return levelcheck(self.ctx)
         if not self.is_dungeon_room():
             return quest_raid(self.ctx)
 
 
-class levelcheck(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class levelcheck(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_level(level=2):
             return raid(self.ctx)
         if self.dungeon_level(level=3):
             return chaos_raid(self.ctx)
 
 
-class raid(common.Trigger):
+class raid(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[401], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExitPortal', value=1):
             return end(self.ctx)
 
 
-class chaos_raid(common.Trigger):
+class chaos_raid(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[402], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExitPortal', value=1):
             return end(self.ctx)
 
 
-class quest_raid(common.Trigger):
+class quest_raid(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=True) # 1층 피직
         self.set_ladder(triggerIds=[1101], visible=True, animationEffect=True, animationDelay=1)
@@ -163,43 +163,43 @@ class quest_raid(common.Trigger):
         self.create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,511], animationEffect=False)
         self.create_monster(spawnIds=[403], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExitPortal', value=1):
             return quest_end(self.ctx)
         if self.user_detected(boxIds=[720]):
             return npcSpawn(self.ctx)
 
 
-class npcSpawn(common.Trigger):
+class npcSpawn(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[510], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExitPortal', value=1):
             return quest_end(self.ctx)
 
 
-class end(common.Trigger):
+class end(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_achievement(triggerId=90000, type='trigger', achieve='Madracan03')
         self.set_achievement(triggerId=90000, type='trigger', achieve='Madracan_Q03')
 
 
-class quest_end(common.Trigger):
+class quest_end(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=1, spawnId=510, script='$52100042_QD__MAIN__0$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=510, script='$52100042_QD__MAIN__1$', arg4=2, arg5=2)
         self.set_achievement(triggerId=90000, type='trigger', achieve='Madracan_Q03')
         # <action name="포탈을설정한다" arg1="4" arg2="1" arg3="1" arg4="1"/>
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return QuestEnd_warp(self.ctx)
 
 
-class QuestEnd_warp(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class QuestEnd_warp(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return QuestEnd_warp_End(self.ctx)
 
@@ -207,7 +207,7 @@ class QuestEnd_warp(common.Trigger):
         self.move_user(mapId=52100043, portalId=0)
 
 
-class QuestEnd_warp_End(common.Trigger):
+class QuestEnd_warp_End(trigger_api.Trigger):
     pass
 
 

@@ -1,8 +1,8 @@
 """ trigger/02010040_bf/battlezone02.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[4201], visible=False)
@@ -20,21 +20,21 @@ class 대기(common.Trigger):
         self.set_agent(triggerIds=[3207], visible=True)
         self.set_agent(triggerIds=[3208], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9200]):
             return 전투시작(self.ctx)
 
 
-class 전투시작(common.Trigger):
+class 전투시작(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[301,302,303,304,305,306,401,402,403,404,405,406,407,408], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[301,302,303,304,305,306,401,402,403,404,405,406,407,408]):
             return 문열기(self.ctx)
 
 
-class 문열기(common.Trigger):
+class 문열기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1200], visible=False, arg3=0, delay=0, scale=0) # barrier
         self.set_mesh(triggerIds=[1201], visible=False, arg3=0, delay=0, scale=0) # barrier

@@ -1,8 +1,8 @@
 """ trigger/66200001_gd/04_banner_roundscorerecord.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[999], visible=True, arg3=0, delay=0, scale=0) # mark
         self.set_mesh(triggerIds=[1000], visible=True, arg3=0, delay=0, scale=0)
@@ -10,7 +10,7 @@ class Wait(common.Trigger):
         self.set_mesh(triggerIds=[1001,1002,1003], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[1100,1101,1102,1103], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return Enter(self.ctx)
 
@@ -19,7 +19,7 @@ class Wait(common.Trigger):
         self.set_mesh(triggerIds=[1100], visible=False, arg3=0, delay=0, scale=0)
 
 
-class Enter(common.Trigger):
+class Enter(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -29,12 +29,12 @@ class Enter(common.Trigger):
         self.set_user_value(key='BlueteamScore', value=0)
         self.set_user_value(key='RedteamScore', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RoundScoreRecord', value=1):
             return R01BannerUpdate(self.ctx)
 
 
-class R01BannerUpdate(common.Trigger):
+class R01BannerUpdate(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -42,12 +42,12 @@ class R01BannerUpdate(common.Trigger):
         self.user_value_to_number_mesh(key='RedteamScore', startMeshId=1100, digitCount=1)
         self.set_user_value(key='RoundScoreRecord', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RoundScoreRecord', value=2):
             return R02BannerUpdate(self.ctx)
 
 
-class R02BannerUpdate(common.Trigger):
+class R02BannerUpdate(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -55,12 +55,12 @@ class R02BannerUpdate(common.Trigger):
         self.user_value_to_number_mesh(key='RedteamScore', startMeshId=1100, digitCount=1)
         self.set_user_value(key='RoundScoreRecord', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RoundScoreRecord', value=3):
             return R03BannerUpdate(self.ctx)
 
 
-class R03BannerUpdate(common.Trigger):
+class R03BannerUpdate(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -68,7 +68,7 @@ class R03BannerUpdate(common.Trigger):
         self.user_value_to_number_mesh(key='RedteamScore', startMeshId=1100, digitCount=1)
         self.set_user_value(key='RoundScoreRecord', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BlueteamScore', value=3):
             return BlueTeamWin(self.ctx)
         if self.user_value(key='RedteamScore', value=3):
@@ -77,7 +77,7 @@ class R03BannerUpdate(common.Trigger):
             return R04BannerUpdate(self.ctx)
 
 
-class R04BannerUpdate(common.Trigger):
+class R04BannerUpdate(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -85,7 +85,7 @@ class R04BannerUpdate(common.Trigger):
         self.user_value_to_number_mesh(key='RedteamScore', startMeshId=1100, digitCount=1)
         self.set_user_value(key='RoundScoreRecord', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BlueteamScore', value=3):
             return BlueTeamWin(self.ctx)
         if self.user_value(key='RedteamScore', value=3):
@@ -94,7 +94,7 @@ class R04BannerUpdate(common.Trigger):
             return R05BannerUpdate(self.ctx)
 
 
-class R05BannerUpdate(common.Trigger):
+class R05BannerUpdate(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
@@ -102,7 +102,7 @@ class R05BannerUpdate(common.Trigger):
         self.user_value_to_number_mesh(key='RedteamScore', startMeshId=1100, digitCount=1)
         self.set_user_value(key='RoundScoreRecord', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BlueteamScore', value=3):
             return BlueTeamWin(self.ctx)
         if self.user_value(key='RedteamScore', value=3):
@@ -111,17 +111,17 @@ class R05BannerUpdate(common.Trigger):
             return EndGame(self.ctx)
 
 
-class BlueTeamWin(common.Trigger):
+class BlueTeamWin(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='WinnerTeam', value=1)
 
 
-class RedTeamWin(common.Trigger):
+class RedTeamWin(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='WinnerTeam', value=2)
 
 
-class EndGame(common.Trigger):
+class EndGame(trigger_api.Trigger):
     pass
 
 

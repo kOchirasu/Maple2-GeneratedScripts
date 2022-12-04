@@ -1,14 +1,14 @@
 """ trigger/99999840/debuffmob.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_variable(varId=801, value=0)
         self.dungeon_variable(varId=802, value=0)
         self.dungeon_variable(varId=803, value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -17,11 +17,11 @@ class 대기(common.Trigger):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='2', seconds=60)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -30,11 +30,11 @@ class 시작(common.Trigger):
             return 랜덤확률(self.ctx)
 
 
-class 랜덤확률(common.Trigger):
+class 랜덤확률(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='디버프 몬스터가 생성되었습니다.\n몬스터를 처치하면 상대팀에 디버프를 겁니다.', arg3='5000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -47,11 +47,11 @@ class 랜덤확률(common.Trigger):
             return C지역(self.ctx)
 
 
-class A지역(common.Trigger):
+class A지역(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[801], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -62,11 +62,11 @@ class A지역(common.Trigger):
             return 딜레이(self.ctx)
 
 
-class B지역(common.Trigger):
+class B지역(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[802], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -77,11 +77,11 @@ class B지역(common.Trigger):
             return 딜레이(self.ctx)
 
 
-class C지역(common.Trigger):
+class C지역(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[803], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -92,11 +92,11 @@ class C지역(common.Trigger):
             return 딜레이(self.ctx)
 
 
-class 딜레이(common.Trigger):
+class 딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=60)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
             return 종료(self.ctx)
         if self.dungeon_variable(varId=3, value=1):
@@ -105,7 +105,7 @@ class 딜레이(common.Trigger):
             return 대기(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

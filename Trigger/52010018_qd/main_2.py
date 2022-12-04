@@ -1,8 +1,8 @@
 """ trigger/52010018_qd/main_2.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
@@ -21,12 +21,12 @@ class 대기(common.Trigger):
         self.set_actor(triggerId=210, visible=False, initialSequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(triggerId=211, visible=False, initialSequence='Eff_MassiveEvent_Stair_Closed')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[100], questIds=[10002853], questStates=[1]):
             return 미카이동02(self.ctx)
 
 
-class 미카이동02(common.Trigger):
+class 미카이동02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -35,13 +35,13 @@ class 미카이동02(common.Trigger):
         self.create_monster(spawnIds=[1007], animationEffect=False)
         self.move_npc(spawnId=1007, patrolName='MS2PatrolData_1007_A')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=104, spawnIds=[1007]):
             return 다리생성대기(self.ctx)
 
 
-class 다리생성대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 다리생성대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=0, scale=0)
             self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0)
@@ -50,8 +50,8 @@ class 다리생성대기(common.Trigger):
             return 다리생성(self.ctx)
 
 
-class 다리생성(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 다리생성(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_actor(triggerId=201, visible=True, initialSequence='Eff_MassiveEvent_Door_Opened')
             self.set_actor(triggerId=202, visible=True, initialSequence='Eff_MassiveEvent_Stair_Opened')
@@ -67,36 +67,36 @@ class 다리생성(common.Trigger):
             return 미카대사02(self.ctx)
 
 
-class 미카대사02(common.Trigger):
+class 미카대사02(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001285, script='$52010018_QD__MAIN_2__0$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
             return 에레브대사02(self.ctx)
 
 
-class 에레브대사02(common.Trigger):
+class 에레브대사02(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000075, script='$52010018_QD__MAIN_2__1$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
             return 미카대사03(self.ctx)
 
 
-class 미카대사03(common.Trigger):
+class 미카대사03(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001285, script='$52010018_QD__MAIN_2__2$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             self.move_npc(spawnId=1007, patrolName='MS2PatrolData_1007_B')
             return 미카소멸(self.ctx)
 
 
-class 미카소멸(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 미카소멸(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
@@ -106,8 +106,8 @@ class 미카소멸(common.Trigger):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 종료(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_actor(triggerId=201, visible=False, initialSequence='Eff_MassiveEvent_Door_Vanished')
             self.set_actor(triggerId=202, visible=False, initialSequence='Eff_MassiveEvent_Stair_Closed')
@@ -123,7 +123,7 @@ class 종료(common.Trigger):
             return 종료2(self.ctx)
 
 
-class 종료2(common.Trigger):
+class 종료2(trigger_api.Trigger):
     pass
 
 

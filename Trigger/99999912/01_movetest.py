@@ -1,29 +1,29 @@
 """ trigger/99999912/01_movetest.xml """
-import common
+import trigger_api
 
 
-class Init(common.Trigger):
+class Init(trigger_api.Trigger):
     def on_enter(self):
         self.create_field_game(type='GuildVsGame')
         self.user_tag_symbol(symbol1='guild_game_red', symbol2='guild_game_blue')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=1, operator='>=', userTagId=1):
             return Wait(self.ctx)
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001129], state=1)
         self.set_interact_object(triggerIds=[10001130], state=1)
         self.set_interact_object(triggerIds=[10001131], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return Move01(self.ctx)
 
 
-class Move01(common.Trigger):
+class Move01(trigger_api.Trigger):
     def on_enter(self):
         self.debug_string(string='강제이동 트리거가 발동됩니다.')
         # <action name="MoveToPortal" boxId="9000" userTagId="1" portalId="1"  />
@@ -46,13 +46,13 @@ class Move01(common.Trigger):
         self.guild_vs_game_log_result(desc='로그를 남긴다')
         self.guild_vs_game_log_won_by_default(teamId=1, desc='1팀의 부전승 보상 로그를 남긴다.')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return PrintWinnerTeam(self.ctx)
 
 
-class PrintWinnerTeam(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PrintWinnerTeam(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.guild_vs_game_scored_team(teamId=1):
             self.debug_string(string='1팀이 득점 했습니다')
             return Reset(self.ctx)
@@ -64,11 +64,11 @@ class PrintWinnerTeam(common.Trigger):
             return Reset(self.ctx)
 
 
-class Reset(common.Trigger):
+class Reset(trigger_api.Trigger):
     def on_enter(self):
         self.debug_string(string='트리거 초기화')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 

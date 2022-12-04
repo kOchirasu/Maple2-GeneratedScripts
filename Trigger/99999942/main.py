@@ -1,8 +1,8 @@
 """ trigger/99999942/main.xml """
-import common
+import trigger_api
 
 
-class StateNone(common.Trigger):
+class StateNone(trigger_api.Trigger):
     def on_enter(self):
         self.create_field_game(type='WaterGunBattle', reset=True) # 데이터 셋팅
         self.field_game_constant(key='WaitUserTick', value='15000') # 유저이동의 arg2와 같도록
@@ -14,78 +14,78 @@ class StateNone(common.Trigger):
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WaitUser', value=1):
             return 유저대기중(self.ctx)
 
 
-class 유저대기중(common.Trigger):
+class 유저대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=15, startDelay=0, interval=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MoveUser', value=1):
             return 유저이동(self.ctx)
         if self.user_value(key='End', value=1):
             return 종료(self.ctx)
 
 
-class 유저이동(common.Trigger):
+class 유저이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=5, startDelay=0, interval=1)
         self.move_user(mapId=99999942, portalId=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Play', value=1):
             return 게임시작(self.ctx)
 
 
-class 게임시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 게임시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PlayRound1', value=1):
             return 라운드1(self.ctx)
 
 
-class 라운드1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 라운드1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PlayRound2', value=1):
             return 라운드2(self.ctx)
         if self.user_value(key='End', value=1):
             return 종료(self.ctx)
 
 
-class 라운드2(common.Trigger):
+class 라운드2(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28], visible=False, arg3=2, delay=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PlayRound3', value=1):
             return 라운드3(self.ctx)
         if self.user_value(key='End', value=1):
             return 종료(self.ctx)
 
 
-class 라운드3(common.Trigger):
+class 라운드3(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48], visible=False, arg3=2, delay=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PlayRound4', value=1):
             return 라운드4(self.ctx)
         if self.user_value(key='End', value=1):
             return 종료(self.ctx)
 
 
-class 라운드4(common.Trigger):
+class 라운드4(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[49,50,51,52,53,54,55,56,57,58,59,60], visible=False, arg3=2, delay=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='End', value=1):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64], visible=True, arg3=0, delay=0)
         # <action name="SetPortal" arg1="1" arg2="1" arg3="1" arg4="0"/>

@@ -1,8 +1,8 @@
 """ trigger/02000485_bf/01_abovewall.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # InvisibleMesh_forTransparancy
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -36,50 +36,50 @@ class Wait(common.Trigger):
         self.set_rope(triggerId=538, visible=False, animationEffect=False, animationDelay=0) # Rope
         self.set_rope(triggerId=539, visible=False, animationEffect=False, animationDelay=0) # Rope
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9000]):
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return GuideToMove(self.ctx)
 
 
-class GuideToMove(common.Trigger):
+class GuideToMove(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039901, textId=20039901, duration=3000) # 가이드 : 성벽을 따라 다음 탑으로 이동하세요.
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9100]):
             return MobActorSpawn(self.ctx)
 
 
-class MobActorSpawn(common.Trigger):
+class MobActorSpawn(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[901,902,903], animationEffect=False) # Mob
         self.set_conversation(type=1, spawnId=901, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
         self.set_conversation(type=1, spawnId=902, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
         self.set_conversation(type=1, spawnId=903, script='$02000485_BF__01_ABOVEWALL__0$', arg4=2, arg5=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return Battle01Start(self.ctx)
 
 
-class Battle01Start(common.Trigger):
+class Battle01Start(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[930,931,932], animationEffect=False) # Mob
         self.set_interact_object(triggerIds=[10002048], state=1) # LeverForLadder01
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002048], stateValue=0):
             return Battle02Start(self.ctx)
 
 
-class Battle02Start(common.Trigger):
+class Battle02Start(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039902, textId=20039902, duration=3000) # 가이드 : 사다리를 타고 위로 올라가세요.
@@ -91,23 +91,23 @@ class Battle02Start(common.Trigger):
         self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
         self.create_monster(spawnIds=[910,911,912], animationEffect=False) # Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9300]):
             return Battle03Start(self.ctx)
 
 
-class Battle03Start(common.Trigger):
+class Battle03Start(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=2, key='TireSpawn', value=1)
         self.create_monster(spawnIds=[920,921,922], animationEffect=False) # Mob
         self.set_interact_object(triggerIds=[10002049], state=1) # LeverForRope
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002049], stateValue=0):
             return RopeOn(self.ctx)
 
 
-class RopeOn(common.Trigger):
+class RopeOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_rope(triggerId=530, visible=True, animationEffect=True, animationDelay=2) # Rope
         self.set_rope(triggerId=531, visible=True, animationEffect=True, animationDelay=2) # Rope
@@ -122,47 +122,47 @@ class RopeOn(common.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039906, textId=20039906) # 가이드 : 로프를 타고 탑 위층으로 올라가세요.
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9200]):
             return Battle04Start(self.ctx)
 
 
-class Battle04Start(common.Trigger):
+class Battle04Start(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20039906)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9350]):
             return Battle04Start_2(self.ctx)
 
 
-class Battle04Start_2(common.Trigger):
+class Battle04Start_2(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039907, textId=20039907, duration=3000) # 주변 몬스터들을 처치하고 [b:레버]를 당기세요.
         self.create_monster(spawnIds=[940,941,942], animationEffect=False) # Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return Battle04End(self.ctx)
 
 
-class Battle04End(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Battle04End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[940,941,942]):
             return SwichOn(self.ctx)
 
 
-class SwichOn(common.Trigger):
+class SwichOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002050], state=1) # LeverForLadder01
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002050], stateValue=0):
             return PortalOn(self.ctx)
 
 
-class PortalOn(common.Trigger):
+class PortalOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
         self.set_ladder(triggerIds=[521], visible=True, animationEffect=True, animationDelay=2) # Ladder02

@@ -1,8 +1,8 @@
 """ trigger/61000008_me/g06p00_600.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110,111,112,113,114,115], visible=False, arg3=0, delay=0, scale=0) # 1,1 / Number 0 to 5
         self.set_mesh(triggerIds=[120,121,122,123,124,125], visible=False, arg3=0, delay=0, scale=0) # 1,2 / Number 0 to 5
@@ -25,7 +25,7 @@ class Wait(common.Trigger):
         self.set_mesh(triggerIds=[3207,3208,3209,32000,32005,32010,32020,32030], visible=False, arg3=0, delay=0, scale=0) # 3,2 / Large Number
         self.set_mesh(triggerIds=[3307,3308,3309,33000,33005,33010,33020,33030], visible=False, arg3=0, delay=0, scale=0) # 3,3 / Large Number
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P101Set', value=1):
             return NumberOnP101(self.ctx)
         if self.user_value(key='G06P102Set', value=1):
@@ -149,7 +149,7 @@ class Wait(common.Trigger):
 
 
 # G06 P101
-class NumberOnP101(common.Trigger):
+class NumberOnP101(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -201,12 +201,12 @@ class NumberOnP101(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=1)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P101TimeLimit', value=1):
             return CheckP101(self.ctx)
 
 
-class CheckP101(common.Trigger):
+class CheckP101(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
@@ -225,12 +225,12 @@ class CheckP101(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=1)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP101(self.ctx)
 
 
-class NumberOffP101(common.Trigger):
+class NumberOffP101(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -249,24 +249,24 @@ class NumberOffP101(common.Trigger):
         self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP101(self.ctx)
 
 
-class ResetP101(common.Trigger):
+class ResetP101(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P101End', value=1)
         self.set_user_value(key='G06P101Set', value=0)
         self.set_user_value(key='G06P101TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P102
-class NumberOnP102(common.Trigger):
+class NumberOnP102(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -318,12 +318,12 @@ class NumberOnP102(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=1)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P102TimeLimit', value=1):
             return CheckP102(self.ctx)
 
 
-class CheckP102(common.Trigger):
+class CheckP102(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
@@ -342,12 +342,12 @@ class CheckP102(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=1)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP102(self.ctx)
 
 
-class NumberOffP102(common.Trigger):
+class NumberOffP102(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -366,24 +366,24 @@ class NumberOffP102(common.Trigger):
         self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP102(self.ctx)
 
 
-class ResetP102(common.Trigger):
+class ResetP102(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P102End', value=1)
         self.set_user_value(key='G06P102Set', value=0)
         self.set_user_value(key='G06P102TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P103
-class NumberOnP103(common.Trigger):
+class NumberOnP103(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -435,12 +435,12 @@ class NumberOnP103(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P103TimeLimit', value=1):
             return CheckP103(self.ctx)
 
 
-class CheckP103(common.Trigger):
+class CheckP103(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -459,12 +459,12 @@ class CheckP103(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP103(self.ctx)
 
 
-class NumberOffP103(common.Trigger):
+class NumberOffP103(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -483,24 +483,24 @@ class NumberOffP103(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP103(self.ctx)
 
 
-class ResetP103(common.Trigger):
+class ResetP103(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P103End', value=1)
         self.set_user_value(key='G06P103Set', value=0)
         self.set_user_value(key='G06P103TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P104
-class NumberOnP104(common.Trigger):
+class NumberOnP104(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -552,12 +552,12 @@ class NumberOnP104(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P104TimeLimit', value=1):
             return CheckP104(self.ctx)
 
 
-class CheckP104(common.Trigger):
+class CheckP104(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
@@ -576,12 +576,12 @@ class CheckP104(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP104(self.ctx)
 
 
-class NumberOffP104(common.Trigger):
+class NumberOffP104(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -600,24 +600,24 @@ class NumberOffP104(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP104(self.ctx)
 
 
-class ResetP104(common.Trigger):
+class ResetP104(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P104End', value=1)
         self.set_user_value(key='G06P104Set', value=0)
         self.set_user_value(key='G06P104TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P105
-class NumberOnP105(common.Trigger):
+class NumberOnP105(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -669,12 +669,12 @@ class NumberOnP105(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P105TimeLimit', value=1):
             return CheckP105(self.ctx)
 
 
-class CheckP105(common.Trigger):
+class CheckP105(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -693,12 +693,12 @@ class CheckP105(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP105(self.ctx)
 
 
-class NumberOffP105(common.Trigger):
+class NumberOffP105(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -717,24 +717,24 @@ class NumberOffP105(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP105(self.ctx)
 
 
-class ResetP105(common.Trigger):
+class ResetP105(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P105End', value=1)
         self.set_user_value(key='G06P105Set', value=0)
         self.set_user_value(key='G06P105TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P106
-class NumberOnP106(common.Trigger):
+class NumberOnP106(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -786,12 +786,12 @@ class NumberOnP106(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P106TimeLimit', value=1):
             return CheckP106(self.ctx)
 
 
-class CheckP106(common.Trigger):
+class CheckP106(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
@@ -810,12 +810,12 @@ class CheckP106(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP106(self.ctx)
 
 
-class NumberOffP106(common.Trigger):
+class NumberOffP106(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -834,24 +834,24 @@ class NumberOffP106(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP106(self.ctx)
 
 
-class ResetP106(common.Trigger):
+class ResetP106(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P106End', value=1)
         self.set_user_value(key='G06P106Set', value=0)
         self.set_user_value(key='G06P106TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P107
-class NumberOnP107(common.Trigger):
+class NumberOnP107(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -903,12 +903,12 @@ class NumberOnP107(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P107TimeLimit', value=1):
             return CheckP107(self.ctx)
 
 
-class CheckP107(common.Trigger):
+class CheckP107(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -927,12 +927,12 @@ class CheckP107(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP107(self.ctx)
 
 
-class NumberOffP107(common.Trigger):
+class NumberOffP107(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -951,24 +951,24 @@ class NumberOffP107(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP107(self.ctx)
 
 
-class ResetP107(common.Trigger):
+class ResetP107(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P107End', value=1)
         self.set_user_value(key='G06P107Set', value=0)
         self.set_user_value(key='G06P107TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P108
-class NumberOnP108(common.Trigger):
+class NumberOnP108(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1020,12 +1020,12 @@ class NumberOnP108(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P108TimeLimit', value=1):
             return CheckP108(self.ctx)
 
 
-class CheckP108(common.Trigger):
+class CheckP108(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -1044,12 +1044,12 @@ class CheckP108(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP108(self.ctx)
 
 
-class NumberOffP108(common.Trigger):
+class NumberOffP108(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -1068,24 +1068,24 @@ class NumberOffP108(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP108(self.ctx)
 
 
-class ResetP108(common.Trigger):
+class ResetP108(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P108End', value=1)
         self.set_user_value(key='G06P108Set', value=0)
         self.set_user_value(key='G06P108TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P109
-class NumberOnP109(common.Trigger):
+class NumberOnP109(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1137,12 +1137,12 @@ class NumberOnP109(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P109TimeLimit', value=1):
             return CheckP109(self.ctx)
 
 
-class CheckP109(common.Trigger):
+class CheckP109(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -1161,12 +1161,12 @@ class CheckP109(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP109(self.ctx)
 
 
-class NumberOffP109(common.Trigger):
+class NumberOffP109(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -1185,24 +1185,24 @@ class NumberOffP109(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP109(self.ctx)
 
 
-class ResetP109(common.Trigger):
+class ResetP109(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P109End', value=1)
         self.set_user_value(key='G06P109Set', value=0)
         self.set_user_value(key='G06P109TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P110
-class NumberOnP110(common.Trigger):
+class NumberOnP110(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1255,12 +1255,12 @@ class NumberOnP110(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P110TimeLimit', value=1):
             return CheckP110(self.ctx)
 
 
-class CheckP110(common.Trigger):
+class CheckP110(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -1279,12 +1279,12 @@ class CheckP110(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP110(self.ctx)
 
 
-class NumberOffP110(common.Trigger):
+class NumberOffP110(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -1304,24 +1304,24 @@ class NumberOffP110(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP110(self.ctx)
 
 
-class ResetP110(common.Trigger):
+class ResetP110(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P110End', value=1)
         self.set_user_value(key='G06P110Set', value=0)
         self.set_user_value(key='G06P110TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P201
-class NumberOnP201(common.Trigger):
+class NumberOnP201(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1374,12 +1374,12 @@ class NumberOnP201(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P201TimeLimit', value=1):
             return CheckP201(self.ctx)
 
 
-class CheckP201(common.Trigger):
+class CheckP201(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -1398,12 +1398,12 @@ class CheckP201(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP201(self.ctx)
 
 
-class NumberOffP201(common.Trigger):
+class NumberOffP201(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -1423,24 +1423,24 @@ class NumberOffP201(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP201(self.ctx)
 
 
-class ResetP201(common.Trigger):
+class ResetP201(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P201End', value=1)
         self.set_user_value(key='G06P201Set', value=0)
         self.set_user_value(key='G06P201TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P202
-class NumberOnP202(common.Trigger):
+class NumberOnP202(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1492,12 +1492,12 @@ class NumberOnP202(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P202TimeLimit', value=1):
             return CheckP202(self.ctx)
 
 
-class CheckP202(common.Trigger):
+class CheckP202(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -1516,12 +1516,12 @@ class CheckP202(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP202(self.ctx)
 
 
-class NumberOffP202(common.Trigger):
+class NumberOffP202(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -1540,24 +1540,24 @@ class NumberOffP202(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP202(self.ctx)
 
 
-class ResetP202(common.Trigger):
+class ResetP202(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P202End', value=1)
         self.set_user_value(key='G06P202Set', value=0)
         self.set_user_value(key='G06P202TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P203
-class NumberOnP203(common.Trigger):
+class NumberOnP203(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1609,12 +1609,12 @@ class NumberOnP203(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P203TimeLimit', value=1):
             return CheckP203(self.ctx)
 
 
-class CheckP203(common.Trigger):
+class CheckP203(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -1633,12 +1633,12 @@ class CheckP203(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP203(self.ctx)
 
 
-class NumberOffP203(common.Trigger):
+class NumberOffP203(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -1657,24 +1657,24 @@ class NumberOffP203(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP203(self.ctx)
 
 
-class ResetP203(common.Trigger):
+class ResetP203(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P203End', value=1)
         self.set_user_value(key='G06P203Set', value=0)
         self.set_user_value(key='G06P203TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P204
-class NumberOnP204(common.Trigger):
+class NumberOnP204(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1727,12 +1727,12 @@ class NumberOnP204(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P204TimeLimit', value=1):
             return CheckP204(self.ctx)
 
 
-class CheckP204(common.Trigger):
+class CheckP204(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -1751,12 +1751,12 @@ class CheckP204(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP204(self.ctx)
 
 
-class NumberOffP204(common.Trigger):
+class NumberOffP204(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -1776,24 +1776,24 @@ class NumberOffP204(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP204(self.ctx)
 
 
-class ResetP204(common.Trigger):
+class ResetP204(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P204End', value=1)
         self.set_user_value(key='G06P204Set', value=0)
         self.set_user_value(key='G06P204TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P205
-class NumberOnP205(common.Trigger):
+class NumberOnP205(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1846,12 +1846,12 @@ class NumberOnP205(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P205TimeLimit', value=1):
             return CheckP205(self.ctx)
 
 
-class CheckP205(common.Trigger):
+class CheckP205(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
@@ -1870,12 +1870,12 @@ class CheckP205(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP205(self.ctx)
 
 
-class NumberOffP205(common.Trigger):
+class NumberOffP205(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -1895,24 +1895,24 @@ class NumberOffP205(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP205(self.ctx)
 
 
-class ResetP205(common.Trigger):
+class ResetP205(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P205End', value=1)
         self.set_user_value(key='G06P205Set', value=0)
         self.set_user_value(key='G06P205TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P206
-class NumberOnP206(common.Trigger):
+class NumberOnP206(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -1964,12 +1964,12 @@ class NumberOnP206(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P206TimeLimit', value=1):
             return CheckP206(self.ctx)
 
 
-class CheckP206(common.Trigger):
+class CheckP206(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
@@ -1988,12 +1988,12 @@ class CheckP206(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP206(self.ctx)
 
 
-class NumberOffP206(common.Trigger):
+class NumberOffP206(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -2012,24 +2012,24 @@ class NumberOffP206(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP206(self.ctx)
 
 
-class ResetP206(common.Trigger):
+class ResetP206(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P206End', value=1)
         self.set_user_value(key='G06P206Set', value=0)
         self.set_user_value(key='G06P206TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P207
-class NumberOnP207(common.Trigger):
+class NumberOnP207(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2081,12 +2081,12 @@ class NumberOnP207(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P207TimeLimit', value=1):
             return CheckP207(self.ctx)
 
 
-class CheckP207(common.Trigger):
+class CheckP207(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
@@ -2105,12 +2105,12 @@ class CheckP207(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP207(self.ctx)
 
 
-class NumberOffP207(common.Trigger):
+class NumberOffP207(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -2129,24 +2129,24 @@ class NumberOffP207(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP207(self.ctx)
 
 
-class ResetP207(common.Trigger):
+class ResetP207(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P207End', value=1)
         self.set_user_value(key='G06P207Set', value=0)
         self.set_user_value(key='G06P207TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P208
-class NumberOnP208(common.Trigger):
+class NumberOnP208(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2198,12 +2198,12 @@ class NumberOnP208(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P208TimeLimit', value=1):
             return CheckP208(self.ctx)
 
 
-class CheckP208(common.Trigger):
+class CheckP208(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -2222,12 +2222,12 @@ class CheckP208(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP208(self.ctx)
 
 
-class NumberOffP208(common.Trigger):
+class NumberOffP208(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2246,24 +2246,24 @@ class NumberOffP208(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP208(self.ctx)
 
 
-class ResetP208(common.Trigger):
+class ResetP208(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P208End', value=1)
         self.set_user_value(key='G06P208Set', value=0)
         self.set_user_value(key='G06P208TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P209
-class NumberOnP209(common.Trigger):
+class NumberOnP209(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2316,12 +2316,12 @@ class NumberOnP209(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P209TimeLimit', value=1):
             return CheckP209(self.ctx)
 
 
-class CheckP209(common.Trigger):
+class CheckP209(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -2340,12 +2340,12 @@ class CheckP209(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP209(self.ctx)
 
 
-class NumberOffP209(common.Trigger):
+class NumberOffP209(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2365,24 +2365,24 @@ class NumberOffP209(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP209(self.ctx)
 
 
-class ResetP209(common.Trigger):
+class ResetP209(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P209End', value=1)
         self.set_user_value(key='G06P209Set', value=0)
         self.set_user_value(key='G06P209TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P210
-class NumberOnP210(common.Trigger):
+class NumberOnP210(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2436,12 +2436,12 @@ class NumberOnP210(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P210TimeLimit', value=1):
             return CheckP210(self.ctx)
 
 
-class CheckP210(common.Trigger):
+class CheckP210(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -2460,12 +2460,12 @@ class CheckP210(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP210(self.ctx)
 
 
-class NumberOffP210(common.Trigger):
+class NumberOffP210(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2486,24 +2486,24 @@ class NumberOffP210(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP210(self.ctx)
 
 
-class ResetP210(common.Trigger):
+class ResetP210(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P210End', value=1)
         self.set_user_value(key='G06P210Set', value=0)
         self.set_user_value(key='G06P210TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P211
-class NumberOnP211(common.Trigger):
+class NumberOnP211(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2555,12 +2555,12 @@ class NumberOnP211(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=1)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P211TimeLimit', value=1):
             return CheckP211(self.ctx)
 
 
-class CheckP211(common.Trigger):
+class CheckP211(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
@@ -2579,12 +2579,12 @@ class CheckP211(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=1)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP211(self.ctx)
 
 
-class NumberOffP211(common.Trigger):
+class NumberOffP211(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -2603,24 +2603,24 @@ class NumberOffP211(common.Trigger):
         self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP211(self.ctx)
 
 
-class ResetP211(common.Trigger):
+class ResetP211(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P211End', value=1)
         self.set_user_value(key='G06P211Set', value=0)
         self.set_user_value(key='G06P211TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P212
-class NumberOnP212(common.Trigger):
+class NumberOnP212(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2672,12 +2672,12 @@ class NumberOnP212(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P212TimeLimit', value=1):
             return CheckP212(self.ctx)
 
 
-class CheckP212(common.Trigger):
+class CheckP212(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -2696,12 +2696,12 @@ class CheckP212(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP212(self.ctx)
 
 
-class NumberOffP212(common.Trigger):
+class NumberOffP212(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -2720,24 +2720,24 @@ class NumberOffP212(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP212(self.ctx)
 
 
-class ResetP212(common.Trigger):
+class ResetP212(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P212End', value=1)
         self.set_user_value(key='G06P212Set', value=0)
         self.set_user_value(key='G06P212TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P213
-class NumberOnP213(common.Trigger):
+class NumberOnP213(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2789,12 +2789,12 @@ class NumberOnP213(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P213TimeLimit', value=1):
             return CheckP213(self.ctx)
 
 
-class CheckP213(common.Trigger):
+class CheckP213(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -2813,12 +2813,12 @@ class CheckP213(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP213(self.ctx)
 
 
-class NumberOffP213(common.Trigger):
+class NumberOffP213(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -2837,24 +2837,24 @@ class NumberOffP213(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP213(self.ctx)
 
 
-class ResetP213(common.Trigger):
+class ResetP213(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P213End', value=1)
         self.set_user_value(key='G06P213Set', value=0)
         self.set_user_value(key='G06P213TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P214
-class NumberOnP214(common.Trigger):
+class NumberOnP214(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -2906,12 +2906,12 @@ class NumberOnP214(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P214TimeLimit', value=1):
             return CheckP214(self.ctx)
 
 
-class CheckP214(common.Trigger):
+class CheckP214(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -2930,12 +2930,12 @@ class CheckP214(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP214(self.ctx)
 
 
-class NumberOffP214(common.Trigger):
+class NumberOffP214(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2954,24 +2954,24 @@ class NumberOffP214(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP214(self.ctx)
 
 
-class ResetP214(common.Trigger):
+class ResetP214(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P214End', value=1)
         self.set_user_value(key='G06P214Set', value=0)
         self.set_user_value(key='G06P214TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P215
-class NumberOnP215(common.Trigger):
+class NumberOnP215(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3023,12 +3023,12 @@ class NumberOnP215(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=1)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P215TimeLimit', value=1):
             return CheckP215(self.ctx)
 
 
-class CheckP215(common.Trigger):
+class CheckP215(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -3047,12 +3047,12 @@ class CheckP215(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=1)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP215(self.ctx)
 
 
-class NumberOffP215(common.Trigger):
+class NumberOffP215(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3071,24 +3071,24 @@ class NumberOffP215(common.Trigger):
         self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP215(self.ctx)
 
 
-class ResetP215(common.Trigger):
+class ResetP215(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P215End', value=1)
         self.set_user_value(key='G06P215Set', value=0)
         self.set_user_value(key='G06P215TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P216
-class NumberOnP216(common.Trigger):
+class NumberOnP216(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3140,12 +3140,12 @@ class NumberOnP216(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P216TimeLimit', value=1):
             return CheckP216(self.ctx)
 
 
-class CheckP216(common.Trigger):
+class CheckP216(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
@@ -3164,12 +3164,12 @@ class CheckP216(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP216(self.ctx)
 
 
-class NumberOffP216(common.Trigger):
+class NumberOffP216(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -3188,24 +3188,24 @@ class NumberOffP216(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP216(self.ctx)
 
 
-class ResetP216(common.Trigger):
+class ResetP216(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P216End', value=1)
         self.set_user_value(key='G06P216Set', value=0)
         self.set_user_value(key='G06P216TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P217
-class NumberOnP217(common.Trigger):
+class NumberOnP217(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3258,12 +3258,12 @@ class NumberOnP217(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P217TimeLimit', value=1):
             return CheckP217(self.ctx)
 
 
-class CheckP217(common.Trigger):
+class CheckP217(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -3282,12 +3282,12 @@ class CheckP217(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP217(self.ctx)
 
 
-class NumberOffP217(common.Trigger):
+class NumberOffP217(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -3307,24 +3307,24 @@ class NumberOffP217(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP217(self.ctx)
 
 
-class ResetP217(common.Trigger):
+class ResetP217(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P217End', value=1)
         self.set_user_value(key='G06P217Set', value=0)
         self.set_user_value(key='G06P217TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P218
-class NumberOnP218(common.Trigger):
+class NumberOnP218(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3377,12 +3377,12 @@ class NumberOnP218(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P218TimeLimit', value=1):
             return CheckP218(self.ctx)
 
 
-class CheckP218(common.Trigger):
+class CheckP218(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -3401,12 +3401,12 @@ class CheckP218(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP218(self.ctx)
 
 
-class NumberOffP218(common.Trigger):
+class NumberOffP218(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3426,24 +3426,24 @@ class NumberOffP218(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP218(self.ctx)
 
 
-class ResetP218(common.Trigger):
+class ResetP218(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P218End', value=1)
         self.set_user_value(key='G06P218Set', value=0)
         self.set_user_value(key='G06P218TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P219
-class NumberOnP219(common.Trigger):
+class NumberOnP219(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3496,12 +3496,12 @@ class NumberOnP219(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P219TimeLimit', value=1):
             return CheckP219(self.ctx)
 
 
-class CheckP219(common.Trigger):
+class CheckP219(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -3520,12 +3520,12 @@ class CheckP219(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP219(self.ctx)
 
 
-class NumberOffP219(common.Trigger):
+class NumberOffP219(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3545,24 +3545,24 @@ class NumberOffP219(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP219(self.ctx)
 
 
-class ResetP219(common.Trigger):
+class ResetP219(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P219End', value=1)
         self.set_user_value(key='G06P219Set', value=0)
         self.set_user_value(key='G06P219TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P220
-class NumberOnP220(common.Trigger):
+class NumberOnP220(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3615,12 +3615,12 @@ class NumberOnP220(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=0)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P220TimeLimit', value=1):
             return CheckP220(self.ctx)
 
 
-class CheckP220(common.Trigger):
+class CheckP220(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -3639,12 +3639,12 @@ class CheckP220(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=0)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP220(self.ctx)
 
 
-class NumberOffP220(common.Trigger):
+class NumberOffP220(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -3664,24 +3664,24 @@ class NumberOffP220(common.Trigger):
         self.set_mesh(triggerIds=[430], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 0
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP220(self.ctx)
 
 
-class ResetP220(common.Trigger):
+class ResetP220(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P220End', value=1)
         self.set_user_value(key='G06P220Set', value=0)
         self.set_user_value(key='G06P220TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P301
-class NumberOnP301(common.Trigger):
+class NumberOnP301(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3735,12 +3735,12 @@ class NumberOnP301(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P301TimeLimit', value=1):
             return CheckP301(self.ctx)
 
 
-class CheckP301(common.Trigger):
+class CheckP301(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -3759,12 +3759,12 @@ class CheckP301(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP301(self.ctx)
 
 
-class NumberOffP301(common.Trigger):
+class NumberOffP301(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3785,24 +3785,24 @@ class NumberOffP301(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP301(self.ctx)
 
 
-class ResetP301(common.Trigger):
+class ResetP301(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P301End', value=1)
         self.set_user_value(key='G06P301Set', value=0)
         self.set_user_value(key='G06P301TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P302
-class NumberOnP302(common.Trigger):
+class NumberOnP302(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3855,12 +3855,12 @@ class NumberOnP302(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P302TimeLimit', value=1):
             return CheckP302(self.ctx)
 
 
-class CheckP302(common.Trigger):
+class CheckP302(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -3879,12 +3879,12 @@ class CheckP302(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP302(self.ctx)
 
 
-class NumberOffP302(common.Trigger):
+class NumberOffP302(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -3904,24 +3904,24 @@ class NumberOffP302(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP302(self.ctx)
 
 
-class ResetP302(common.Trigger):
+class ResetP302(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P302End', value=1)
         self.set_user_value(key='G06P302Set', value=0)
         self.set_user_value(key='G06P302TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P303
-class NumberOnP303(common.Trigger):
+class NumberOnP303(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -3974,12 +3974,12 @@ class NumberOnP303(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P303TimeLimit', value=1):
             return CheckP303(self.ctx)
 
 
-class CheckP303(common.Trigger):
+class CheckP303(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -3998,12 +3998,12 @@ class CheckP303(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP303(self.ctx)
 
 
-class NumberOffP303(common.Trigger):
+class NumberOffP303(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -4023,24 +4023,24 @@ class NumberOffP303(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP303(self.ctx)
 
 
-class ResetP303(common.Trigger):
+class ResetP303(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P303End', value=1)
         self.set_user_value(key='G06P303Set', value=0)
         self.set_user_value(key='G06P303TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P304
-class NumberOnP304(common.Trigger):
+class NumberOnP304(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4093,12 +4093,12 @@ class NumberOnP304(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P304TimeLimit', value=1):
             return CheckP304(self.ctx)
 
 
-class CheckP304(common.Trigger):
+class CheckP304(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -4117,12 +4117,12 @@ class CheckP304(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP304(self.ctx)
 
 
-class NumberOffP304(common.Trigger):
+class NumberOffP304(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4142,24 +4142,24 @@ class NumberOffP304(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP304(self.ctx)
 
 
-class ResetP304(common.Trigger):
+class ResetP304(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P304End', value=1)
         self.set_user_value(key='G06P304Set', value=0)
         self.set_user_value(key='G06P304TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P305
-class NumberOnP305(common.Trigger):
+class NumberOnP305(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4211,12 +4211,12 @@ class NumberOnP305(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P305TimeLimit', value=1):
             return CheckP305(self.ctx)
 
 
-class CheckP305(common.Trigger):
+class CheckP305(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -4235,12 +4235,12 @@ class CheckP305(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP305(self.ctx)
 
 
-class NumberOffP305(common.Trigger):
+class NumberOffP305(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -4259,24 +4259,24 @@ class NumberOffP305(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP305(self.ctx)
 
 
-class ResetP305(common.Trigger):
+class ResetP305(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P305End', value=1)
         self.set_user_value(key='G06P305Set', value=0)
         self.set_user_value(key='G06P305TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P306
-class NumberOnP306(common.Trigger):
+class NumberOnP306(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4330,12 +4330,12 @@ class NumberOnP306(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P306TimeLimit', value=1):
             return CheckP306(self.ctx)
 
 
-class CheckP306(common.Trigger):
+class CheckP306(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -4354,12 +4354,12 @@ class CheckP306(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP306(self.ctx)
 
 
-class NumberOffP306(common.Trigger):
+class NumberOffP306(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4380,24 +4380,24 @@ class NumberOffP306(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP306(self.ctx)
 
 
-class ResetP306(common.Trigger):
+class ResetP306(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P306End', value=1)
         self.set_user_value(key='G06P306Set', value=0)
         self.set_user_value(key='G06P306TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P307
-class NumberOnP307(common.Trigger):
+class NumberOnP307(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4450,12 +4450,12 @@ class NumberOnP307(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P307TimeLimit', value=1):
             return CheckP307(self.ctx)
 
 
-class CheckP307(common.Trigger):
+class CheckP307(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -4474,12 +4474,12 @@ class CheckP307(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP307(self.ctx)
 
 
-class NumberOffP307(common.Trigger):
+class NumberOffP307(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4499,24 +4499,24 @@ class NumberOffP307(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP307(self.ctx)
 
 
-class ResetP307(common.Trigger):
+class ResetP307(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P307End', value=1)
         self.set_user_value(key='G06P307Set', value=0)
         self.set_user_value(key='G06P307TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P308
-class NumberOnP308(common.Trigger):
+class NumberOnP308(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4568,12 +4568,12 @@ class NumberOnP308(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P308TimeLimit', value=1):
             return CheckP308(self.ctx)
 
 
-class CheckP308(common.Trigger):
+class CheckP308(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -4592,12 +4592,12 @@ class CheckP308(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP308(self.ctx)
 
 
-class NumberOffP308(common.Trigger):
+class NumberOffP308(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -4616,24 +4616,24 @@ class NumberOffP308(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP308(self.ctx)
 
 
-class ResetP308(common.Trigger):
+class ResetP308(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P308End', value=1)
         self.set_user_value(key='G06P308Set', value=0)
         self.set_user_value(key='G06P308TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P309
-class NumberOnP309(common.Trigger):
+class NumberOnP309(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4685,12 +4685,12 @@ class NumberOnP309(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P309TimeLimit', value=1):
             return CheckP309(self.ctx)
 
 
-class CheckP309(common.Trigger):
+class CheckP309(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -4709,12 +4709,12 @@ class CheckP309(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP309(self.ctx)
 
 
-class NumberOffP309(common.Trigger):
+class NumberOffP309(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -4733,24 +4733,24 @@ class NumberOffP309(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP309(self.ctx)
 
 
-class ResetP309(common.Trigger):
+class ResetP309(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P309End', value=1)
         self.set_user_value(key='G06P309Set', value=0)
         self.set_user_value(key='G06P309TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P310
-class NumberOnP310(common.Trigger):
+class NumberOnP310(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4802,12 +4802,12 @@ class NumberOnP310(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P310TimeLimit', value=1):
             return CheckP310(self.ctx)
 
 
-class CheckP310(common.Trigger):
+class CheckP310(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -4826,12 +4826,12 @@ class CheckP310(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP310(self.ctx)
 
 
-class NumberOffP310(common.Trigger):
+class NumberOffP310(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -4850,24 +4850,24 @@ class NumberOffP310(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP310(self.ctx)
 
 
-class ResetP310(common.Trigger):
+class ResetP310(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P310End', value=1)
         self.set_user_value(key='G06P310Set', value=0)
         self.set_user_value(key='G06P310TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P311
-class NumberOnP311(common.Trigger):
+class NumberOnP311(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -4921,12 +4921,12 @@ class NumberOnP311(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P311TimeLimit', value=1):
             return CheckP311(self.ctx)
 
 
-class CheckP311(common.Trigger):
+class CheckP311(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -4945,12 +4945,12 @@ class CheckP311(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP311(self.ctx)
 
 
-class NumberOffP311(common.Trigger):
+class NumberOffP311(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4971,24 +4971,24 @@ class NumberOffP311(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP311(self.ctx)
 
 
-class ResetP311(common.Trigger):
+class ResetP311(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P311End', value=1)
         self.set_user_value(key='G06P311Set', value=0)
         self.set_user_value(key='G06P311TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P312
-class NumberOnP312(common.Trigger):
+class NumberOnP312(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5042,12 +5042,12 @@ class NumberOnP312(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=1)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P312TimeLimit', value=1):
             return CheckP312(self.ctx)
 
 
-class CheckP312(common.Trigger):
+class CheckP312(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -5066,12 +5066,12 @@ class CheckP312(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=1)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP312(self.ctx)
 
 
-class NumberOffP312(common.Trigger):
+class NumberOffP312(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -5092,24 +5092,24 @@ class NumberOffP312(common.Trigger):
         self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP312(self.ctx)
 
 
-class ResetP312(common.Trigger):
+class ResetP312(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P312End', value=1)
         self.set_user_value(key='G06P312Set', value=0)
         self.set_user_value(key='G06P312TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P313
-class NumberOnP313(common.Trigger):
+class NumberOnP313(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5161,12 +5161,12 @@ class NumberOnP313(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P313TimeLimit', value=1):
             return CheckP313(self.ctx)
 
 
-class CheckP313(common.Trigger):
+class CheckP313(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -5185,12 +5185,12 @@ class CheckP313(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP313(self.ctx)
 
 
-class NumberOffP313(common.Trigger):
+class NumberOffP313(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -5209,24 +5209,24 @@ class NumberOffP313(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP313(self.ctx)
 
 
-class ResetP313(common.Trigger):
+class ResetP313(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P313End', value=1)
         self.set_user_value(key='G06P313Set', value=0)
         self.set_user_value(key='G06P313TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P314
-class NumberOnP314(common.Trigger):
+class NumberOnP314(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5278,12 +5278,12 @@ class NumberOnP314(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P314TimeLimit', value=1):
             return CheckP314(self.ctx)
 
 
-class CheckP314(common.Trigger):
+class CheckP314(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -5302,12 +5302,12 @@ class CheckP314(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP314(self.ctx)
 
 
-class NumberOffP314(common.Trigger):
+class NumberOffP314(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -5326,24 +5326,24 @@ class NumberOffP314(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP314(self.ctx)
 
 
-class ResetP314(common.Trigger):
+class ResetP314(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P314End', value=1)
         self.set_user_value(key='G06P314Set', value=0)
         self.set_user_value(key='G06P314TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P315
-class NumberOnP315(common.Trigger):
+class NumberOnP315(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5395,12 +5395,12 @@ class NumberOnP315(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P315TimeLimit', value=1):
             return CheckP315(self.ctx)
 
 
-class CheckP315(common.Trigger):
+class CheckP315(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -5419,12 +5419,12 @@ class CheckP315(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP315(self.ctx)
 
 
-class NumberOffP315(common.Trigger):
+class NumberOffP315(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -5443,24 +5443,24 @@ class NumberOffP315(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP315(self.ctx)
 
 
-class ResetP315(common.Trigger):
+class ResetP315(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P315End', value=1)
         self.set_user_value(key='G06P315Set', value=0)
         self.set_user_value(key='G06P315TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P316
-class NumberOnP316(common.Trigger):
+class NumberOnP316(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5512,12 +5512,12 @@ class NumberOnP316(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P316TimeLimit', value=1):
             return CheckP316(self.ctx)
 
 
-class CheckP316(common.Trigger):
+class CheckP316(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -5536,12 +5536,12 @@ class CheckP316(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP316(self.ctx)
 
 
-class NumberOffP316(common.Trigger):
+class NumberOffP316(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -5560,24 +5560,24 @@ class NumberOffP316(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP316(self.ctx)
 
 
-class ResetP316(common.Trigger):
+class ResetP316(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P316End', value=1)
         self.set_user_value(key='G06P316Set', value=0)
         self.set_user_value(key='G06P316TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P317
-class NumberOnP317(common.Trigger):
+class NumberOnP317(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5629,12 +5629,12 @@ class NumberOnP317(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P317TimeLimit', value=1):
             return CheckP317(self.ctx)
 
 
-class CheckP317(common.Trigger):
+class CheckP317(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -5653,12 +5653,12 @@ class CheckP317(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP317(self.ctx)
 
 
-class NumberOffP317(common.Trigger):
+class NumberOffP317(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -5677,24 +5677,24 @@ class NumberOffP317(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP317(self.ctx)
 
 
-class ResetP317(common.Trigger):
+class ResetP317(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P317End', value=1)
         self.set_user_value(key='G06P317Set', value=0)
         self.set_user_value(key='G06P317TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P318
-class NumberOnP318(common.Trigger):
+class NumberOnP318(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5746,12 +5746,12 @@ class NumberOnP318(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P318TimeLimit', value=1):
             return CheckP318(self.ctx)
 
 
-class CheckP318(common.Trigger):
+class CheckP318(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -5770,12 +5770,12 @@ class CheckP318(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP318(self.ctx)
 
 
-class NumberOffP318(common.Trigger):
+class NumberOffP318(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -5794,24 +5794,24 @@ class NumberOffP318(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP318(self.ctx)
 
 
-class ResetP318(common.Trigger):
+class ResetP318(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P318End', value=1)
         self.set_user_value(key='G06P318Set', value=0)
         self.set_user_value(key='G06P318TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P319
-class NumberOnP319(common.Trigger):
+class NumberOnP319(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5863,12 +5863,12 @@ class NumberOnP319(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P319TimeLimit', value=1):
             return CheckP319(self.ctx)
 
 
-class CheckP319(common.Trigger):
+class CheckP319(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -5887,12 +5887,12 @@ class CheckP319(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP319(self.ctx)
 
 
-class NumberOffP319(common.Trigger):
+class NumberOffP319(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -5911,24 +5911,24 @@ class NumberOffP319(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[440], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 0
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP319(self.ctx)
 
 
-class ResetP319(common.Trigger):
+class ResetP319(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P319End', value=1)
         self.set_user_value(key='G06P319Set', value=0)
         self.set_user_value(key='G06P319TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P320
-class NumberOnP320(common.Trigger):
+class NumberOnP320(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -5980,12 +5980,12 @@ class NumberOnP320(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P320TimeLimit', value=1):
             return CheckP320(self.ctx)
 
 
-class CheckP320(common.Trigger):
+class CheckP320(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -6004,12 +6004,12 @@ class CheckP320(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP320(self.ctx)
 
 
-class NumberOffP320(common.Trigger):
+class NumberOffP320(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -6028,24 +6028,24 @@ class NumberOffP320(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP320(self.ctx)
 
 
-class ResetP320(common.Trigger):
+class ResetP320(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P320End', value=1)
         self.set_user_value(key='G06P320Set', value=0)
         self.set_user_value(key='G06P320TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P401
-class NumberOnP401(common.Trigger):
+class NumberOnP401(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6097,12 +6097,12 @@ class NumberOnP401(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P401TimeLimit', value=1):
             return CheckP401(self.ctx)
 
 
-class CheckP401(common.Trigger):
+class CheckP401(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
@@ -6121,12 +6121,12 @@ class CheckP401(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP401(self.ctx)
 
 
-class NumberOffP401(common.Trigger):
+class NumberOffP401(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -6145,24 +6145,24 @@ class NumberOffP401(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP401(self.ctx)
 
 
-class ResetP401(common.Trigger):
+class ResetP401(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P401End', value=1)
         self.set_user_value(key='G06P401Set', value=0)
         self.set_user_value(key='G06P401TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P402
-class NumberOnP402(common.Trigger):
+class NumberOnP402(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6215,12 +6215,12 @@ class NumberOnP402(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=4)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P402TimeLimit', value=1):
             return CheckP402(self.ctx)
 
 
-class CheckP402(common.Trigger):
+class CheckP402(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -6239,12 +6239,12 @@ class CheckP402(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=4)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP402(self.ctx)
 
 
-class NumberOffP402(common.Trigger):
+class NumberOffP402(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -6264,24 +6264,24 @@ class NumberOffP402(common.Trigger):
         self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP402(self.ctx)
 
 
-class ResetP402(common.Trigger):
+class ResetP402(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P402End', value=1)
         self.set_user_value(key='G06P402Set', value=0)
         self.set_user_value(key='G06P402TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P403
-class NumberOnP403(common.Trigger):
+class NumberOnP403(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6334,12 +6334,12 @@ class NumberOnP403(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P403TimeLimit', value=1):
             return CheckP403(self.ctx)
 
 
-class CheckP403(common.Trigger):
+class CheckP403(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -6358,12 +6358,12 @@ class CheckP403(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP403(self.ctx)
 
 
-class NumberOffP403(common.Trigger):
+class NumberOffP403(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -6383,24 +6383,24 @@ class NumberOffP403(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP403(self.ctx)
 
 
-class ResetP403(common.Trigger):
+class ResetP403(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P403End', value=1)
         self.set_user_value(key='G06P403Set', value=0)
         self.set_user_value(key='G06P403TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P404
-class NumberOnP404(common.Trigger):
+class NumberOnP404(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6455,12 +6455,12 @@ class NumberOnP404(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=2)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P404TimeLimit', value=1):
             return CheckP404(self.ctx)
 
 
-class CheckP404(common.Trigger):
+class CheckP404(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -6479,12 +6479,12 @@ class CheckP404(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=2)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP404(self.ctx)
 
 
-class NumberOffP404(common.Trigger):
+class NumberOffP404(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -6506,24 +6506,24 @@ class NumberOffP404(common.Trigger):
         self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP404(self.ctx)
 
 
-class ResetP404(common.Trigger):
+class ResetP404(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P404End', value=1)
         self.set_user_value(key='G06P404Set', value=0)
         self.set_user_value(key='G06P404TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P405
-class NumberOnP405(common.Trigger):
+class NumberOnP405(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6575,12 +6575,12 @@ class NumberOnP405(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P405TimeLimit', value=1):
             return CheckP405(self.ctx)
 
 
-class CheckP405(common.Trigger):
+class CheckP405(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -6599,12 +6599,12 @@ class CheckP405(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP405(self.ctx)
 
 
-class NumberOffP405(common.Trigger):
+class NumberOffP405(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -6623,24 +6623,24 @@ class NumberOffP405(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP405(self.ctx)
 
 
-class ResetP405(common.Trigger):
+class ResetP405(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P405End', value=1)
         self.set_user_value(key='G06P405Set', value=0)
         self.set_user_value(key='G06P405TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P406
-class NumberOnP406(common.Trigger):
+class NumberOnP406(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6692,12 +6692,12 @@ class NumberOnP406(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=3)
         self.set_user_value(triggerId=8440, key='Barrier44', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P406TimeLimit', value=1):
             return CheckP406(self.ctx)
 
 
-class CheckP406(common.Trigger):
+class CheckP406(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -6716,12 +6716,12 @@ class CheckP406(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=3)
         self.set_user_value(triggerId=9440, key='Box44Check', value=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP406(self.ctx)
 
 
-class NumberOffP406(common.Trigger):
+class NumberOffP406(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -6740,24 +6740,24 @@ class NumberOffP406(common.Trigger):
         self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
         self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP406(self.ctx)
 
 
-class ResetP406(common.Trigger):
+class ResetP406(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P406End', value=1)
         self.set_user_value(key='G06P406Set', value=0)
         self.set_user_value(key='G06P406TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P407
-class NumberOnP407(common.Trigger):
+class NumberOnP407(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6809,12 +6809,12 @@ class NumberOnP407(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P407TimeLimit', value=1):
             return CheckP407(self.ctx)
 
 
-class CheckP407(common.Trigger):
+class CheckP407(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
@@ -6833,12 +6833,12 @@ class CheckP407(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP407(self.ctx)
 
 
-class NumberOffP407(common.Trigger):
+class NumberOffP407(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -6857,24 +6857,24 @@ class NumberOffP407(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP407(self.ctx)
 
 
-class ResetP407(common.Trigger):
+class ResetP407(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P407End', value=1)
         self.set_user_value(key='G06P407Set', value=0)
         self.set_user_value(key='G06P407TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P408
-class NumberOnP408(common.Trigger):
+class NumberOnP408(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -6928,12 +6928,12 @@ class NumberOnP408(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P408TimeLimit', value=1):
             return CheckP408(self.ctx)
 
 
-class CheckP408(common.Trigger):
+class CheckP408(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -6952,12 +6952,12 @@ class CheckP408(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP408(self.ctx)
 
 
-class NumberOffP408(common.Trigger):
+class NumberOffP408(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -6978,24 +6978,24 @@ class NumberOffP408(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP408(self.ctx)
 
 
-class ResetP408(common.Trigger):
+class ResetP408(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P408End', value=1)
         self.set_user_value(key='G06P408Set', value=0)
         self.set_user_value(key='G06P408TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P409
-class NumberOnP409(common.Trigger):
+class NumberOnP409(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -7047,12 +7047,12 @@ class NumberOnP409(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P409TimeLimit', value=1):
             return CheckP409(self.ctx)
 
 
-class CheckP409(common.Trigger):
+class CheckP409(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
@@ -7071,12 +7071,12 @@ class CheckP409(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP409(self.ctx)
 
 
-class NumberOffP409(common.Trigger):
+class NumberOffP409(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -7095,24 +7095,24 @@ class NumberOffP409(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP409(self.ctx)
 
 
-class ResetP409(common.Trigger):
+class ResetP409(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P409End', value=1)
         self.set_user_value(key='G06P409Set', value=0)
         self.set_user_value(key='G06P409TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 
 
 # G06 P410
-class NumberOnP410(common.Trigger):
+class NumberOnP410(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
@@ -7166,12 +7166,12 @@ class NumberOnP410(common.Trigger):
         self.set_user_value(triggerId=8430, key='Barrier43', value=5)
         self.set_user_value(triggerId=8440, key='Barrier44', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G06P410TimeLimit', value=1):
             return CheckP410(self.ctx)
 
 
-class CheckP410(common.Trigger):
+class CheckP410(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
@@ -7190,12 +7190,12 @@ class CheckP410(common.Trigger):
         self.set_user_value(triggerId=9430, key='Box43Check', value=5)
         self.set_user_value(triggerId=9440, key='Box44Check', value=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NumberOffP410(self.ctx)
 
 
-class NumberOffP410(common.Trigger):
+class NumberOffP410(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -7216,18 +7216,18 @@ class NumberOffP410(common.Trigger):
         self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
         self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ResetP410(self.ctx)
 
 
-class ResetP410(common.Trigger):
+class ResetP410(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='G06P410End', value=1)
         self.set_user_value(key='G06P410Set', value=0)
         self.set_user_value(key='G06P410TimeLimit', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return Wait(self.ctx)
 

@@ -1,20 +1,20 @@
 """ trigger/51000001_dg/round_03_skill.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
+class 시작대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3301], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3302], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3303], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 지역랜덤(self.ctx)
 
 
-class 지역랜덤(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 지역랜덤(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.random_condition(rate=33):
@@ -28,29 +28,29 @@ class 지역랜덤(common.Trigger):
             return C지역(self.ctx)
 
 
-class A지역(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class A지역(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10301]):
             return 스킬랜덤(self.ctx)
 
 
-class B지역(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class B지역(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10302]):
             return 스킬랜덤(self.ctx)
 
 
-class C지역(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class C지역(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10303]):
             return 스킬랜덤(self.ctx)
 
 
-class 스킬랜덤(common.Trigger):
+class 스킬랜덤(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=199, type='trigger', achieve='random_buff_box')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.random_condition(rate=40):
@@ -73,18 +73,18 @@ class 스킬랜덤(common.Trigger):
             return 대기시간(self.ctx)
 
 
-class 대기시간(common.Trigger):
+class 대기시간(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3301], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3302], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3303], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return 시작대기중(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

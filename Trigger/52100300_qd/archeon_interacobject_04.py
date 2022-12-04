@@ -1,30 +1,30 @@
 """ trigger/52100300_qd/archeon_interacobject_04.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[901]):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002289], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002289], stateValue=0):
             self.set_interact_object(triggerIds=[10002289], state=2)
             return 재활성대기(self.ctx)
 
 
-class 재활성대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 재활성대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
             return 시작(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

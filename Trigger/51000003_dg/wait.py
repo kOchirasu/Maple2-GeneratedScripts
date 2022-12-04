@@ -1,8 +1,8 @@
 """ trigger/51000003_dg/wait.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[11000018], state=2)
         self.set_interact_object(triggerIds=[11000019], state=2)

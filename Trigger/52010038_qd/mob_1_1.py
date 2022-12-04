@@ -1,9 +1,9 @@
 """ trigger/52010038_qd/mob_1_1.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='WaveStart', value=1):
             return 생성(self.ctx)
 
@@ -14,12 +14,12 @@ class 대기(common.Trigger):
         self.create_monster(spawnIds=[2011], animationEffect=True)
 
 
-class 생성(common.Trigger):
+class 생성(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2011], animationEffect=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return 생성(self.ctx)
         if self.user_value(key='WaveSlowDown', value=1):
@@ -28,19 +28,19 @@ class 생성(common.Trigger):
             return 종료(self.ctx)
 
 
-class 생성2(common.Trigger):
+class 생성2(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2011], animationEffect=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=14000):
             return 생성2(self.ctx)
         if self.user_value(key='WaveEnd', value=1):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

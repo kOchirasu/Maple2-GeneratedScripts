@@ -1,19 +1,19 @@
 """ trigger/80000016_bonus/prize.xml """
-import common
+import trigger_api
 
 
-class 입장(common.Trigger):
+class 입장(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=True)
         self.create_monster(spawnIds=[199], animationEffect=False)
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.create_item(spawnIds=[201])
         self.create_item(spawnIds=[202])
@@ -67,30 +67,30 @@ class 시작(common.Trigger):
         self.create_item(spawnIds=[266])
         self.create_item(spawnIds=[267])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 몬스터체크(self.ctx)
 
 
-class 몬스터체크(common.Trigger):
+class 몬스터체크(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈생성(self.ctx)
 
 
-class 포탈생성(common.Trigger):
+class 포탈생성(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 완료(self.ctx)
 
 
-class 완료(common.Trigger):
+class 완료(trigger_api.Trigger):
     pass
 
 

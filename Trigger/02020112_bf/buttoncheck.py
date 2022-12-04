@@ -1,8 +1,8 @@
 """ trigger/02020112_bf/buttoncheck.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=9901, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9902, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')
@@ -18,21 +18,21 @@ class 대기(common.Trigger):
         self.set_effect(triggerIds=[8001], visible=True)
         self.set_effect(triggerIds=[8002,8003,8004], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GravityRoom', value=1):
             return 작동(self.ctx)
 
 
-class 작동(common.Trigger):
+class 작동(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[916], skillId=70002104, level=1, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[911], jobCode=0):
             return 감지_1층(self.ctx)
 
 
-class 감지_1층(common.Trigger):
+class 감지_1층(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8001], visible=False)
         self.set_effect(triggerIds=[8002], visible=True)
@@ -48,41 +48,41 @@ class 감지_1층(common.Trigger):
         self.set_actor(triggerId=9904, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.add_buff(boxIds=[916], skillId=70002103, level=1, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimerReset', value=1):
             return 대기(self.ctx)
         if self.user_detected(boxIds=[912], jobCode=0):
             return 감지_2층(self.ctx)
 
 
-class 감지_2층(common.Trigger):
+class 감지_2층(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8002], visible=False)
         self.set_user_value(triggerId=99990016, key='respawn', value=1)
         self.add_buff(boxIds=[916], skillId=70002103, level=1, isSkillSet=False)
         self.set_actor(triggerId=9902, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimerReset', value=1):
             return 대기(self.ctx)
         if self.user_detected(boxIds=[913], jobCode=0):
             return 감지_3층(self.ctx)
 
 
-class 감지_3층(common.Trigger):
+class 감지_3층(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8003], visible=False)
         self.add_buff(boxIds=[916], skillId=70002103, level=1, isSkillSet=False)
         self.set_actor(triggerId=9903, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimerReset', value=1):
             return 대기(self.ctx)
         if self.user_detected(boxIds=[914], jobCode=0):
             return 감지_4층(self.ctx)
 
 
-class 감지_4층(common.Trigger):
+class 감지_4층(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8004], visible=False)
         self.set_actor(triggerId=9904, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')

@@ -1,8 +1,8 @@
 """ trigger/03100000_se_common/gettrophy.xml """
-import common
+import trigger_api
 
 
-class getTrophy(common.Trigger):
+class getTrophy(trigger_api.Trigger):
     pass
 
 

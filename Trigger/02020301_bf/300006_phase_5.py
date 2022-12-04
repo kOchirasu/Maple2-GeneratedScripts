@@ -1,32 +1,32 @@
 """ trigger/02020301_bf/300006_phase_5.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AI_Phase', value=5):
             return 패이즈_5_시작(self.ctx)
 
 
-class 패이즈_5_시작(common.Trigger):
+class 패이즈_5_시작(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[111])
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__300006_PHASE_5__0$', duration=3176)
         self.set_effect(triggerIds=[200021,200022,200023,200024,200025,200026,200027,200028], visible=False)
         self.set_user_value(key='AI_Phase', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Portal_On_04', value=1):
             return 포탈_오픈_대기(self.ctx)
 
 
-class 포탈_오픈_대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 포탈_오픈_대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 포탈_오픈(self.ctx)
 
 
-class 포탈_오픈(common.Trigger):
+class 포탈_오픈(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=3000051, key='Phase_4_Interect_01', value=0) # 페이즈4 장치 삭제
         self.set_user_value(triggerId=3000052, key='Phase_4_Interect_02', value=0)
@@ -36,12 +36,12 @@ class 포탈_오픈(common.Trigger):
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__300006_PHASE_5__1$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[1002]):
             return 엘리베이터_동작_대기(self.ctx)
 
 
-class 엘리베이터_동작_대기(common.Trigger):
+class 엘리베이터_동작_대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_ai_extra_data(key='Last_Phase', value=1, isModify=False)
         self.set_user_value(triggerId=3000051, key='Phase_4_Interect_01', value=0) # 초고속 플레이에 인해 트리거가 제거 되지 않는 문제를 항번더 입력
@@ -50,30 +50,30 @@ class 엘리베이터_동작_대기(common.Trigger):
         self.set_user_value(triggerId=3000054, key='Phase_4_Interect_04', value=0)
         self.set_effect(triggerIds=[200001,200002,200003,200004,200005,200006,200007,200008], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return 택스트_1(self.ctx)
 
 
-class 택스트_1(common.Trigger):
+class 택스트_1(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$02020301_BF__300006_PHASE_5__2$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 택스트_2(self.ctx)
 
 
-class 택스트_2(common.Trigger):
+class 택스트_2(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_normal', script='$02020301_BF__300006_PHASE_5__3$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 엘리베이터_동작(self.ctx)
 
 
-class 엘리베이터_동작(common.Trigger):
+class 엘리베이터_동작(trigger_api.Trigger):
     def on_enter(self):
         self.set_breakable(triggerIds=[5401,5402,5403,5404,5405,5406,5407,5408,5409,5410], enable=True) # 5페이즈 상하 엘리베이터 동작
         self.set_breakable(triggerIds=[5411,5412,5413,5414,5415,5416,5417,5418,5419,5420], enable=True)
@@ -84,12 +84,12 @@ class 엘리베이터_동작(common.Trigger):
         self.set_visible_breakable_object(triggerIds=[5421,5422,5423,5424,5425,5426,5427,5428,5429,5430], visible=True)
         self.set_visible_breakable_object(triggerIds=[5431,5432,5433,5434,5435,5436,5437,5438,5439,5440], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 엘리베이터_도착(self.ctx)
 
 
-class 엘리베이터_도착(common.Trigger):
+class 엘리베이터_도착(trigger_api.Trigger):
     def on_enter(self):
         self.set_visible_breakable_object(triggerIds=[5501,5502,5503,5504,5505,5506,5507,5508,5509,5510,5511,5512,5513,5514,5515,5516,5517,5518,5519,5520,5521,5522,5523,5524,5525,5526,5527,5528,5529,5530,5531,5532,5533,5534,5535,5536,5537,5538,5539,5540], visible=True) # 5페이즈 상하 엘리베이터 도착 나타나기
         self.set_breakable(triggerIds=[5401,5402,5403,5404,5405,5406,5407,5408,5409,5410], enable=False) # 5페이즈 상하 엘리베이터 멈춤
@@ -101,12 +101,12 @@ class 엘리베이터_도착(common.Trigger):
         self.set_visible_breakable_object(triggerIds=[5421,5422,5423,5424,5425,5426,5427,5428,5429,5430], visible=False)
         self.set_visible_breakable_object(triggerIds=[5431,5432,5433,5434,5435,5436,5437,5438,5439,5440], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 아르케온_탈것_생성(self.ctx)
 
 
-class 아르케온_탈것_생성(common.Trigger):
+class 아르케온_탈것_생성(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02020301_BF__300006_PHASE_5__4$', arg3='4000')
         self.set_user_value(triggerId=3000061, key='Phase_5_Interect_01', value=1) # 아르케온 탈것 페이즈로 이동
@@ -114,35 +114,35 @@ class 아르케온_탈것_생성(common.Trigger):
         self.set_user_value(triggerId=3000063, key='Phase_5_Interect_03', value=1)
         self.set_user_value(triggerId=3000064, key='Phase_5_Interect_04', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 길막열기(self.ctx)
 
 
-class 길막열기(common.Trigger):
+class 길막열기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[5641,5642,5643,5644], visible=False) # 4페이즈 상하좌우 엘리베이터 길막 열기
         self.set_agent(triggerIds=[1810000,1810001,1810002,1810003,1810004,1810005,1810006,1810007,1810008,1810009,1810010,1810011], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 종료(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 아르케온_탈것_리셋(self.ctx)
 
 
-class 아르케온_탈것_리셋(common.Trigger):
+class 아르케온_탈것_리셋(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=3000061, key='Phase_5_Interect_01', value=0) # 아르케온 탈것 리셋
         self.set_user_value(triggerId=3000062, key='Phase_5_Interect_02', value=0)
         self.set_user_value(triggerId=3000063, key='Phase_5_Interect_03', value=0)
         self.set_user_value(triggerId=3000064, key='Phase_5_Interect_04', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return None # Missing State: 게임_종료
 

@@ -1,8 +1,8 @@
 """ trigger/52000051_qd/04_puzzlemain.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='CorrectFirstPiece', value=0)
         self.set_user_value(key='CorrectSecondPiece', value=0)
@@ -16,12 +16,12 @@ class Wait(common.Trigger):
         self.set_mesh(triggerIds=[3001,3002,3003,3004], visible=False, arg3=0, delay=0, scale=0) # BaseRock
         self.set_mesh(triggerIds=[3020], visible=False, arg3=0, delay=0, scale=0) # LionStone
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PuzzleStart', value=1):
             return StartPuzzle(self.ctx)
 
 
-class StartPuzzle(common.Trigger):
+class StartPuzzle(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=5, key='PickFirstPiece', value=1) # 두 번째 문양은 첫 번째 뽑힌 문양을 제외하고 6번 트리거에서 뽑음 , 중복 2개 제한 장치
         self.set_user_value(triggerId=7, key='PickThirdPiece', value=1) # 네 번째 문양은 세 번째 뽑힌 문양을 제외하고 8번 트리거에서 뽑음 , 중복 2개 제한 장치
@@ -29,12 +29,12 @@ class StartPuzzle(common.Trigger):
         self.set_mesh(triggerIds=[3020], visible=True, arg3=0, delay=0, scale=0) # LionStone
         self.set_effect(triggerIds=[5002], visible=True) # 가이드 서머리 사운드 이펙트
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001023], stateValue=0):
             return CheckAnswer01(self.ctx)
 
 
-class CheckAnswer01(common.Trigger):
+class CheckAnswer01(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3020], visible=False, arg3=200, delay=0, scale=0) # LionStone
         self.set_user_value(triggerId=5, key='CheckFirstPiece', value=1)
@@ -42,14 +42,14 @@ class CheckAnswer01(common.Trigger):
         self.set_user_value(triggerId=7, key='CheckThirdPiece', value=1)
         self.set_user_value(triggerId=8, key='CheckFourthPiece', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=300):
             return CheckAnswer02(self.ctx)
 
 
 # 순차적으로 체크
-class CheckAnswer02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckAnswer02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CorrectFirstPiece', value=2):
             return Retry01(self.ctx)
         if self.user_value(key='CorrectSecondPiece', value=2):
@@ -62,8 +62,8 @@ class CheckAnswer02(common.Trigger):
             return CheckAnswer03(self.ctx)
 
 
-class CheckAnswer03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckAnswer03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CorrectFirstPiece', value=2):
             return Retry01(self.ctx)
         if self.user_value(key='CorrectSecondPiece', value=2):
@@ -76,8 +76,8 @@ class CheckAnswer03(common.Trigger):
             return CheckAnswer04(self.ctx)
 
 
-class CheckAnswer04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckAnswer04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CorrectFirstPiece', value=2):
             return Retry01(self.ctx)
         if self.user_value(key='CorrectSecondPiece', value=2):
@@ -90,8 +90,8 @@ class CheckAnswer04(common.Trigger):
             return CheckAnswer05(self.ctx)
 
 
-class CheckAnswer05(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckAnswer05(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CorrectFirstPiece', value=2):
             return Retry01(self.ctx)
         if self.user_value(key='CorrectSecondPiece', value=2):
@@ -105,7 +105,7 @@ class CheckAnswer05(common.Trigger):
 
 
 # 4개 중 하나라도 맞지 않으면 재시도
-class Retry01(common.Trigger):
+class Retry01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5002], visible=True) # 가이드 서머리 사운드 이펙트
         self.set_event_ui(type=1, arg2='$52000051_QD__04_PUZZLEMAIN__0$', arg3='3000', arg4='0')
@@ -118,17 +118,17 @@ class Retry01(common.Trigger):
         self.set_user_value(triggerId=7, key='ResetThirdPiece', value=1)
         self.set_user_value(triggerId=8, key='ResetFourthPiece', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Retry02(self.ctx)
 
 
-class Retry02(common.Trigger):
+class Retry02(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001023], state=1) # Lever
         self.set_mesh(triggerIds=[3020], visible=True, arg3=0, delay=0, scale=0) # LionStone
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001023], stateValue=0):
             return CheckAnswer01(self.ctx)
 
@@ -136,7 +136,7 @@ class Retry02(common.Trigger):
         self.hide_guide_summary(entityId=10036010)
 
 
-class PuzzleSolved(common.Trigger):
+class PuzzleSolved(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5003], visible=True) # Pattern_LightOn
         self.set_mesh(triggerIds=[3001,3002,3003,3004], visible=True, arg3=0, delay=0, scale=0) # BaseRock
@@ -147,12 +147,12 @@ class PuzzleSolved(common.Trigger):
         self.set_user_value(triggerId=8, key='LockFourthPiece', value=1)
         self.set_achievement(triggerId=9001, type='trigger', achieve='OrientPattern_Puzzle')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

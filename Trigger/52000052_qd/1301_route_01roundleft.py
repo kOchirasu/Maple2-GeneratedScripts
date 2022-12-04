@@ -1,8 +1,8 @@
 """ trigger/52000052_qd/1301_route_01roundleft.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[18011], visible=True)
         self.set_agent(triggerIds=[18012], visible=True)
@@ -15,23 +15,23 @@ class Wait(common.Trigger):
         self.set_user_value(key='MakeTrue', value=0)
         self.set_user_value(key='MakeFalse', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=1):
             return StartDazzling01(self.ctx)
 
 
-class StartDazzling01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class StartDazzling01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RouteSelected', value=1):
             return StartDazzlingRandom01(self.ctx)
 
 
 # 가짜 길이 깜빡이는 연출
-class StartDazzlingRandom01(common.Trigger):
+class StartDazzlingRandom01(trigger_api.Trigger):
     def on_enter(self):
         self.set_random_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=True, meshCount=8, arg4=100, delay=500) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return StartDazzlingRandom02(self.ctx)
         if self.user_value(key='MakeTrue', value=1):
@@ -43,11 +43,11 @@ class StartDazzlingRandom01(common.Trigger):
         self.set_random_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=False, meshCount=24, arg4=0, delay=0) # Fake
 
 
-class StartDazzlingRandom02(common.Trigger):
+class StartDazzlingRandom02(trigger_api.Trigger):
     def on_enter(self):
         self.set_random_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=True, meshCount=8, arg4=100, delay=500) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return StartDazzlingRandom01(self.ctx)
         if self.user_value(key='MakeTrue', value=1):
@@ -59,7 +59,7 @@ class StartDazzlingRandom02(common.Trigger):
         self.set_random_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=False, meshCount=24, arg4=0, delay=0) # Fake
 
 
-class MakeTrue(common.Trigger):
+class MakeTrue(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=True) # 01Round_BridgeApp
         self.set_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=False, arg3=0, delay=0, scale=5) # Fake
@@ -69,21 +69,21 @@ class MakeTrue(common.Trigger):
         self.set_agent(triggerIds=[18013], visible=False)
         self.set_agent(triggerIds=[18014], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
 
 
-class MakeFalse(common.Trigger):
+class MakeFalse(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[130100,130101,130102,130103,130104,130105,130106,130107,130108,130109,130110,130111,130112,130113,130114,130115,130116,130117,130118,130119,130120,130121,130122,130123], visible=False, arg3=0, delay=0, scale=5) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

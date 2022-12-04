@@ -1,8 +1,8 @@
 """ trigger/02000378_bf/1308_route_08roundleft.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_agent(triggerIds=[18081], visible=True)
         self.set_agent(triggerIds=[18082], visible=True)
@@ -15,23 +15,23 @@ class Wait(common.Trigger):
         self.set_user_value(key='MakeTrue', value=0)
         self.set_user_value(key='MakeFalse', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9000, boxId=1):
             return StartDazzling01(self.ctx)
 
 
-class StartDazzling01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class StartDazzling01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RouteSelected', value=1):
             return StartDazzlingRandom01(self.ctx)
 
 
 # 가짜 길이 깜빡이는 연출
-class StartDazzlingRandom01(common.Trigger):
+class StartDazzlingRandom01(trigger_api.Trigger):
     def on_enter(self):
         self.set_random_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=True, meshCount=6, arg4=100, delay=500) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return StartDazzlingRandom02(self.ctx)
         if self.user_value(key='MakeTrue', value=1):
@@ -43,11 +43,11 @@ class StartDazzlingRandom01(common.Trigger):
         self.set_random_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=False, meshCount=20, arg4=0, delay=0) # Fake
 
 
-class StartDazzlingRandom02(common.Trigger):
+class StartDazzlingRandom02(trigger_api.Trigger):
     def on_enter(self):
         self.set_random_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=True, meshCount=6, arg4=100, delay=500) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return StartDazzlingRandom01(self.ctx)
         if self.user_value(key='MakeTrue', value=1):
@@ -59,7 +59,7 @@ class StartDazzlingRandom02(common.Trigger):
         self.set_random_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=False, meshCount=20, arg4=0, delay=0) # Fake
 
 
-class MakeTrue(common.Trigger):
+class MakeTrue(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5008], visible=True) # 08Round_BridgeApp
         self.set_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=False, arg3=0, delay=0, scale=5) # Fake
@@ -69,21 +69,21 @@ class MakeTrue(common.Trigger):
         self.set_agent(triggerIds=[18083], visible=False)
         self.set_agent(triggerIds=[18084], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
 
 
-class MakeFalse(common.Trigger):
+class MakeFalse(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[130800,130801,130802,130803,130804,130805,130806,130807,130808,130809,130810,130811,130812,130813,130814,130815,130816,130817,130818,130819], visible=False, arg3=0, delay=0, scale=5) # Fake
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

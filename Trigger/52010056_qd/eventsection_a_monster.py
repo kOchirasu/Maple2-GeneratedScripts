@@ -1,14 +1,14 @@
 """ trigger/52010056_qd/eventsection_a_monster.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2002]):
             return Ready(self.ctx)
 
 
-class Ready(common.Trigger):
+class Ready(trigger_api.Trigger):
     def on_enter(self):
         self.add_balloon_talk(spawnId=201, msg='$52010056_QD__EventSection_A_Monster__0$', duration=2800, delayTick=0)
         self.create_monster(spawnIds=[201], animationEffect=True) # 크림슨 스피어: 29000386

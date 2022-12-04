@@ -1,15 +1,15 @@
 """ trigger/02020098_bf/clearcheck.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[10]):
             return 클리어성공유무체크시작(self.ctx)
 
 
-class 클리어성공유무체크시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 클리어성공유무체크시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossDead', value=1):
             return 연출딜레이(self.ctx)
         """
@@ -23,28 +23,28 @@ class 클리어성공유무체크시작(common.Trigger):
             return 던전실패(self.ctx)
 
 
-class 연출딜레이(common.Trigger):
+class 연출딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(achieve='BalrogMagicBursterKritiasClear') # arg3="BalrogMagicBursterKritiasClear" 는 퀘스트와 트로피 업적 당설 완료 조건 처리 키값임, arg1="??" arg2="trigger" 은 해당 트리거 안에 만 있으면 클리어 처리 할때 사용하는 것인데, 이거 생략하면 맵 안에만 있으면 무조건 퀘스트와 트로피 업적을 완료 처리함
         self.dungeon_set_end_time() # 시간 기능 종료시킴, 이 기능 잘 작동시키려면 DungeonRoom.xlsx 의 제한 시간 만료 시(isExpireTimeOut) 빈칸 설정 해야 함
         self.dungeon_close_timer()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return 연출종료(self.ctx)
 
 
-class 연출종료(common.Trigger):
+class 연출종료(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311], visible=False, arg3=0, delay=0, scale=0) # 스타트포인트 지점의 칸막이 트리거메쉬 제거하기
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 종료(self.ctx)
 
 
-class 던전실패(common.Trigger):
+class 던전실패(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_set_end_time() # 시간 기능 종료시킴, 이 기능 잘 작동시키려면 DungeonRoom.xlsx 의 제한 시간 만료 시(isExpireTimeOut) 빈칸 설정 해야 함
         self.dungeon_close_timer()
@@ -57,13 +57,13 @@ class 던전실패(common.Trigger):
         self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True) # 보스 죽이면 나가기 포탈 생성하기, 2페이지 12시 전투판에서 나가기 포탈
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True) # 보스 죽이면 나가기 포탈 생성하기, 마지막 전투판에서 나가기 포탈
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             self.dungeon_fail()
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_enable_give_up(isEnable='0')
 

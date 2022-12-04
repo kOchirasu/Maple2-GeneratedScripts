@@ -1,8 +1,8 @@
 """ trigger/02000290_bf/wind.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
+class 시작대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[701], enable=False)
         self.set_effect(triggerIds=[601], visible=False) # 스킬 준비 효과음
@@ -11,13 +11,13 @@ class 시작대기중(common.Trigger):
         self.set_effect(triggerIds=[604], visible=False) # 스킬 발동 이펙트
         self.set_effect(triggerIds=[605], visible=False) # 스킬 발동 이펙트
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[102]):
             return 스킬랜덤(self.ctx)
 
 
-class 스킬랜덤(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스킬랜덤(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.random_condition(rate=33):
@@ -28,8 +28,8 @@ class 스킬랜덤(common.Trigger):
             return C스킬작동(self.ctx)
 
 
-class A스킬작동(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class A스킬작동(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=4000):
@@ -38,8 +38,8 @@ class A스킬작동(common.Trigger):
             return 스킬발동(self.ctx)
 
 
-class B스킬작동(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class B스킬작동(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=6000):
@@ -48,8 +48,8 @@ class B스킬작동(common.Trigger):
             return 스킬발동(self.ctx)
 
 
-class C스킬작동(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class C스킬작동(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=8000):
@@ -58,8 +58,8 @@ class C스킬작동(common.Trigger):
             return 스킬발동(self.ctx)
 
 
-class 스킬발동(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스킬발동(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=4000):
@@ -72,7 +72,7 @@ class 스킬발동(common.Trigger):
             return 스킬랜덤(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20002906)
 

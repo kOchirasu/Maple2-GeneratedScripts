@@ -1,8 +1,8 @@
 """ trigger/52100301_qd/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=300002, key='Phase_1', value=0) # 페이즈별 트리거 실행 대기
         self.set_user_value(triggerId=300003, key='Phase_2', value=0)
@@ -54,12 +54,12 @@ class 대기(common.Trigger):
         self.set_portal(portalId=15, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=16, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[1001]):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[5241,5242,5243,5244], visible=True)
         self.side_npc_talk(type='talk', npcId=29500101, illust='ArcheonBlack_Normal', script='$52100301_QD__MAIN__0$', duration=5684)
@@ -78,13 +78,13 @@ class 시작(common.Trigger):
         self.set_portal(portalId=15, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=16, visible=False, enable=True, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 조건추가(self.ctx)
 
 
-class 조건추가(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 조건추가(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return 보스전_성공(self.ctx)
         """
@@ -94,7 +94,7 @@ class 조건추가(common.Trigger):
         """
 
 
-class 보스전_성공(common.Trigger):
+class 보스전_성공(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10003126], state=2) # 2페이즈 인터렉트 오브젝트 대기
         self.set_user_value(triggerId=3000061, key='Phase_5_Interect_01', value=0)
@@ -104,21 +104,21 @@ class 보스전_성공(common.Trigger):
         self.side_npc_talk(type='talk', npcId=29500101, illust='ArcheonBlack_Die', script='$52100301_QD__MAIN__1$', duration=3176)
         self.set_achievement(type='trigger', achieve='KillArcheon')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 추가대화(self.ctx)
 
 
-class 추가대화(common.Trigger):
+class 추가대화(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_normal', script='$52100301_QD__MAIN__2$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_clear()

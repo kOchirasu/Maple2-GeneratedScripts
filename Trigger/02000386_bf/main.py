@@ -1,8 +1,8 @@
 """ trigger/02000386_bf/main.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_gravity(gravity=55)
         self.remove_buff(boxId=701, skillId=99910080)
@@ -18,29 +18,29 @@ class idle(common.Trigger):
         self.set_local_camera(cameraId=8003, enable=False) # LocalTargetCamera
         self.set_interact_object(triggerIds=[10001087], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return ready(self.ctx)
 
 
-class ready(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return ready_02(self.ctx)
 
 
-class ready_02(common.Trigger):
+class ready_02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003861, textId=20003861) # 조종석에 탑승하세요
         self.set_mesh(triggerIds=[3002,3003], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001087], stateValue=0):
             return main(self.ctx)
 
 
-class main(common.Trigger):
+class main(trigger_api.Trigger):
     def on_enter(self):
         self.create_widget(type='ScoreBoard')
         self.widget_action(type='ScoreBoard', func='OpenBoard', widgetArg='1') # 스코어 창 열기  arg3는 위치 (1:중앙:다크스트림, 2:우상단:아케이드)
@@ -55,12 +55,12 @@ class main(common.Trigger):
         self.spawn_item_range(rangeIds=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416], randomPickCount=50)
         self.show_count_ui(text='$02000386_BF__MAIN__2$', stage=0, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return start(self.ctx)
 
 
-class start(common.Trigger):
+class start(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=901, patrolName='MS2PatrolData_2001')
         # <action name="SpawnNpcRange" rangeID="900-999" isAutoTargeting="1" randomPickCount="15" score="0"/>
@@ -72,31 +72,31 @@ class start(common.Trigger):
         self.set_breakable(triggerIds=[1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024], enable=True)
         self.set_breakable(triggerIds=[1025,1026,1027,1028,1029,1030,1031,1032], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[702]):
             return start_02(self.ctx)
 
 
-class start_02(common.Trigger):
+class start_02(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_achievement(triggerId=702, type='trigger', achieve='Clearpipi')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return end(self.ctx)
 
 
-class end(common.Trigger):
+class end(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 강제이동(self.ctx)
 
 
-class 강제이동(common.Trigger):
+class 강제이동(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=0, portalId=0)
 

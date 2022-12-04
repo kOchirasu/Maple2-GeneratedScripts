@@ -1,22 +1,22 @@
 """ trigger/02020070_bf/missiontypemonster_spawn.xml """
-import common
+import trigger_api
 
 
-class 루프1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 루프1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             self.start_combine_spawn(groupId=[526], isStart=True)
             return 루프2(self.ctx)
 
 
-class 루프2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 루프2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=150000):
             return 루프3(self.ctx)
 
 
-class 루프3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 루프3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=150000):
             return 루프2(self.ctx)
 

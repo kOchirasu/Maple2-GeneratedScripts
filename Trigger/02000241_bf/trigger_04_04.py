@@ -1,8 +1,8 @@
 """ trigger/02000241_bf/trigger_04_04.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[307], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[707,708], visible=True)
@@ -15,12 +15,12 @@ class 대기(common.Trigger):
         self.set_actor(triggerId=512, visible=True, initialSequence='Closed')
         self.destroy_monster(spawnIds=[607,608,609,610,611,612])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[407]):
             return 버튼눌림(self.ctx)
 
 
-class 버튼눌림(common.Trigger):
+class 버튼눌림(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[307], visible=False, arg3=0, delay=0, scale=0)
         self.set_actor(triggerId=511, visible=True, initialSequence='Opened')

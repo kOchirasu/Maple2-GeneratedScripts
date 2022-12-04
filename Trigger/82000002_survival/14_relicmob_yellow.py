@@ -1,28 +1,28 @@
 """ trigger/82000002_survival/14_relicmob_yellow.xml """
-import common
+import trigger_api
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[1400,1401,1402,1403,1404,1405,1406,1407,1408,1409])
         self.set_user_value(key='RelicMobSpawn', value=0)
         self.set_user_value(key='RelicMobRemove', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSpawn', value=1):
             return Delay(self.ctx)
 
 
-class Delay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Delay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
             return MobSpawnRandom(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawnRandom(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobSpawnRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=10):
             return MobSpawn01(self.ctx)
         if self.random_condition(rate=10):
@@ -47,126 +47,126 @@ class MobSpawnRandom(common.Trigger):
             return Quit(self.ctx)
 
 
-class MobSpawn01(common.Trigger):
+class MobSpawn01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1400], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1400]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn02(common.Trigger):
+class MobSpawn02(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1401], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1401]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn03(common.Trigger):
+class MobSpawn03(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1402], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1402]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn04(common.Trigger):
+class MobSpawn04(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1403], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1403]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn05(common.Trigger):
+class MobSpawn05(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1404], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1404]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn06(common.Trigger):
+class MobSpawn06(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1405], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1405]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn07(common.Trigger):
+class MobSpawn07(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1406], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1406]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn08(common.Trigger):
+class MobSpawn08(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1407], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1407]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn09(common.Trigger):
+class MobSpawn09(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1408], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1408]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class MobSpawn10(common.Trigger):
+class MobSpawn10(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1409], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1409]):
             return Notice(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class Notice(common.Trigger):
+class Notice(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=16, key='RelicMobYellowDie', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[1400,1401,1402,1403,1404,1405,1406,1407,1408,1409])
 

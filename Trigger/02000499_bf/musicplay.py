@@ -1,8 +1,8 @@
 """ trigger/02000499_bf/musicplay.xml """
-import common
+import trigger_api
 
 
-class wait(common.Trigger):
+class wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5101], visible=False) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=False) # PlayCello
@@ -12,25 +12,25 @@ class wait(common.Trigger):
         self.set_interact_object(triggerIds=[11000093], state=1, arg3=False)
         self.destroy_monster(spawnIds=[210])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[11000093], stateValue=0):
             return ready(self.ctx)
 
 
 # 
-class ready(common.Trigger):
+class ready(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MushkingLand_musicPlay') # 로그
         self.set_npc_emotion_loop(spawnId=201, sequenceName='Play_A', duration=30500)
         self.set_npc_emotion_loop(spawnId=202, sequenceName='Play_A', duration=30500)
         self.set_npc_emotion_loop(spawnId=203, sequenceName='Play_A', duration=30500)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCPlayMusic02(self.ctx)
 
 
-class PCPlayMusic02(common.Trigger):
+class PCPlayMusic02(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5101], visible=True) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=True) # PlayCello
@@ -42,12 +42,12 @@ class PCPlayMusic02(common.Trigger):
         self.set_npc_emotion_loop(spawnId=202, sequenceName='Play_A', duration=30500)
         self.set_npc_emotion_loop(spawnId=203, sequenceName='Play_A', duration=30500)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30500):
             return End(self.ctx)
 
 
-class End(common.Trigger):
+class End(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5101], visible=False) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=False) # PlayCello
@@ -56,7 +56,7 @@ class End(common.Trigger):
         self.set_effect(triggerIds=[5105], visible=False) # PlayBox
         self.destroy_monster(spawnIds=[210])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return wait(self.ctx)
 

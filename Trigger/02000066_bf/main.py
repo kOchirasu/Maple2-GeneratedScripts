@@ -1,11 +1,11 @@
 """ trigger/02000066_bf/main.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[602], visible=False) # 아노스 던전 시작01
         self.set_effect(triggerIds=[603], visible=False) # 아노스  소환
@@ -32,13 +32,13 @@ class 대기(common.Trigger):
         self.create_monster(spawnIds=[99], animationEffect=False)
         self.set_mesh(triggerIds=[9001], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DungeonStart(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count(value=4):
             return 연출시작(self.ctx)
         if self.dungeon_max_user_count(value=3):
@@ -60,40 +60,40 @@ class DungeonStart(common.Trigger):
             return 연출시작(self.ctx)
 
 
-class 연출시작(common.Trigger):
+class 연출시작(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=300, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=차어나운스03_1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차어나운스01_1(self.ctx)
 
 
-class 차어나운스01_1(common.Trigger):
+class 차어나운스01_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(visible=True)
         self.add_cinematic_talk(npcId=11000032, illustId='Anos_serious', msg='$02000066_BF__MAIN__4$', duration=5000, align='center')
         self.set_skip(state=차어나운스03_1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 차어나운스02_1(self.ctx)
 
 
-class 차어나운스02_1(common.Trigger):
+class 차어나운스02_1(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=11000032, illustId='Anos_serious', msg='$02000066_BF__MAIN__5$', duration=5000, align='center')
         self.set_skip(state=차어나운스03_1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 차어나운스03_1(self.ctx)
 
 
-class 차어나운스03_1(common.Trigger):
+class 차어나운스03_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.select_camera(triggerId=300, enable=False)
@@ -102,17 +102,17 @@ class 차어나운스03_1(common.Trigger):
         self.set_event_ui(type=0, arg2='1,3')
         self.show_count_ui(text='$02000066_BF__MAIN__6$', stage=1, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 차웨이브1(self.ctx)
 
 
-class 차웨이브1(common.Trigger):
+class 차웨이브1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='120', seconds=120, startDelay=0, interval=1, vOffset=0)
         self.create_monster(spawnIds=[900], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='120'):
             return 차웨이브성공1(self.ctx)
         if self.monster_dead(boxIds=[99]):
@@ -162,24 +162,24 @@ class 차웨이브1(common.Trigger):
         self.destroy_monster(spawnIds=[1604])
 
 
-class 차웨이브실패1(common.Trigger):
+class 차웨이브실패1(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[613], visible=True)
         self.set_event_ui(type=5, arg2='$02000066_BF__MAIN__7$', arg3='3000', arg4='0')
         self.destroy_monster(spawnIds=[900])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 실패(self.ctx)
 
 
-class 차웨이브성공1(common.Trigger):
+class 차웨이브성공1(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20000662, textId=20000662)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.destroy_monster(spawnIds=[900])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 차어나운스01_2(self.ctx)
         if self.monster_dead(boxIds=[99]):
@@ -189,12 +189,12 @@ class 차웨이브성공1(common.Trigger):
         self.hide_guide_summary(entityId=20000662)
 
 
-class 차어나운스01_2(common.Trigger):
+class 차어나운스01_2(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20000665, textId=20000665, duration=7000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return 차어나운스02_2(self.ctx)
         if self.monster_dead(boxIds=[99]):
@@ -204,24 +204,24 @@ class 차어나운스01_2(common.Trigger):
         self.hide_guide_summary(entityId=20000665)
 
 
-class 차어나운스02_2(common.Trigger):
+class 차어나운스02_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='2,3')
         self.show_count_ui(text='$02000066_BF__MAIN__10$', stage=2, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 차웨이브2(self.ctx)
         if self.monster_dead(boxIds=[99]):
             return 차웨이브실패1(self.ctx)
 
 
-class 차웨이브2(common.Trigger):
+class 차웨이브2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='120', seconds=120, startDelay=0, interval=1)
         self.create_monster(spawnIds=[901], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='120'):
             return 차웨이브성공2(self.ctx)
         if self.monster_dead(boxIds=[99]):
@@ -271,23 +271,23 @@ class 차웨이브2(common.Trigger):
         self.destroy_monster(spawnIds=[1604])
 
 
-class 차웨이브실패2(common.Trigger):
+class 차웨이브실패2(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=5, arg2='$02000066_BF__MAIN__11$', arg3='3000', arg4='0')
         self.destroy_monster(spawnIds=[901])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 실패(self.ctx)
 
 
-class 차웨이브성공2(common.Trigger):
+class 차웨이브성공2(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20000662, textId=20000662)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.destroy_monster(spawnIds=[901])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[99]):
             return 차웨이브실패2(self.ctx)
         if self.wait_tick(waitTick=5000):
@@ -297,12 +297,12 @@ class 차웨이브성공2(common.Trigger):
         self.hide_guide_summary(entityId=20000662)
 
 
-class 차어나운스01_3(common.Trigger):
+class 차어나운스01_3(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20000665, textId=20000665, duration=7000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[99]):
             return 차웨이브실패2(self.ctx)
         if self.wait_tick(waitTick=10000):
@@ -312,24 +312,24 @@ class 차어나운스01_3(common.Trigger):
         self.hide_guide_summary(entityId=20000665)
 
 
-class 차어나운스02_3(common.Trigger):
+class 차어나운스02_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=0, arg2='3,3')
         self.show_count_ui(text='$02000066_BF__MAIN__14$', stage=3, count=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[99]):
             return 차웨이브실패2(self.ctx)
         if self.wait_tick(waitTick=6000):
             return 차웨이브3(self.ctx)
 
 
-class 차웨이브3(common.Trigger):
+class 차웨이브3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='120', seconds=120, startDelay=0, interval=1)
         self.create_monster(spawnIds=[902], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='120'):
             return 차웨이브성공3(self.ctx)
         if self.monster_dead(boxIds=[99]):
@@ -379,17 +379,17 @@ class 차웨이브3(common.Trigger):
         self.destroy_monster(spawnIds=[1604])
 
 
-class 차웨이브실패3(common.Trigger):
+class 차웨이브실패3(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=5, arg2='$02000066_BF__MAIN__15$', arg3='3000', arg4='0')
         self.destroy_monster(spawnIds=[902])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 실패(self.ctx)
 
 
-class 차웨이브성공3(common.Trigger):
+class 차웨이브성공3(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=7, arg2='$02000066_BF__MAIN__33$', arg3='3000', arg4='0')
         self.set_event_ui(type=0, arg2='0,0')
@@ -402,7 +402,7 @@ class 차웨이브성공3(common.Trigger):
         self.destroy_monster(spawnIds=[99])
         self.set_npc_emotion_loop(spawnId=99, sequenceName='Attack_Idle_A', duration=1E+12)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             self.set_effect(triggerIds=[6003], visible=False)
             return 차승리연출랜덤3(self.ctx)
@@ -411,12 +411,12 @@ class 차웨이브성공3(common.Trigger):
         self.hide_guide_summary(entityId=20000662)
 
 
-class 차승리연출랜덤3(common.Trigger):
+class 차승리연출랜덤3(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=20):
             return 차승리연출01_3(self.ctx)
         if self.random_condition(rate=20):
@@ -429,57 +429,57 @@ class 차승리연출랜덤3(common.Trigger):
             return 차승리연출05_3(self.ctx)
 
 
-class 차승리연출01_3(common.Trigger):
+class 차승리연출01_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__17$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차승리연출종료3(self.ctx)
 
 
-class 차승리연출02_3(common.Trigger):
+class 차승리연출02_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__18$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차승리연출종료3(self.ctx)
 
 
-class 차승리연출03_3(common.Trigger):
+class 차승리연출03_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__19$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 차승리연출종료3(self.ctx)
 
 
-class 차승리연출04_3(common.Trigger):
+class 차승리연출04_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__20$', arg4=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 차승리연출종료3(self.ctx)
 
 
-class 차승리연출05_3(common.Trigger):
+class 차승리연출05_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__21$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5982):
             return 차승리연출종료3(self.ctx)
 
 
-class 차승리연출종료3(common.Trigger):
+class 차승리연출종료3(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 분기점(self.ctx)
 
@@ -487,7 +487,7 @@ class 차승리연출종료3(common.Trigger):
         self.set_achievement(triggerId=103, type='trigger', achieve='ClearAnosSOS') # ClearAnosSOS 퀘스트
 
 
-class 분기점(common.Trigger):
+class 분기점(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[612], visible=True)
         self.dungeon_clear()
@@ -498,7 +498,7 @@ class 분기점(common.Trigger):
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.show_guide_summary(entityId=20000666, textId=20000666)
             self.set_effect(triggerIds=[620], visible=True)
@@ -506,18 +506,18 @@ class 분기점(common.Trigger):
             return 완료(self.ctx)
 
 
-class 완료(common.Trigger):
+class 완료(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='woodsoflife', value=0)
 
 
-class 실패(common.Trigger):
+class 실패(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         # action name="스킵을설정한다" arg1="실패연출종료" /
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=15):
             return 실패연출01(self.ctx)
         if self.random_condition(rate=15):
@@ -534,93 +534,93 @@ class 실패(common.Trigger):
             return 실패연출07(self.ctx)
 
 
-class 실패연출01(common.Trigger):
+class 실패연출01(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__40$', arg4=3)
         self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='4'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출02(common.Trigger):
+class 실패연출02(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__41$', arg4=3)
         self.set_timer(timerId='4', seconds=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='4'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출03(common.Trigger):
+class 실패연출03(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__42$', arg4=5)
         self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='6'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출04(common.Trigger):
+class 실패연출04(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__43$', arg4=5)
         self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='6'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출05(common.Trigger):
+class 실패연출05(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__44$', arg4=5)
         self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='6'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출06(common.Trigger):
+class 실패연출06(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__45$', arg4=6)
         self.set_timer(timerId='7', seconds=7)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='7'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출07(common.Trigger):
+class 실패연출07(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__MAIN__46$', arg4=4)
         self.set_timer(timerId='6', seconds=6)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='6'):
             return 실패연출종료(self.ctx)
 
 
-class 실패연출종료(common.Trigger):
+class 실패연출종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 실패강제이동(self.ctx)
 
 
-class 실패강제이동(common.Trigger):
+class 실패강제이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
         self.move_user(mapId=0, portalId=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             self.move_user(mapId=0, portalId=0)
             return 대기(self.ctx)

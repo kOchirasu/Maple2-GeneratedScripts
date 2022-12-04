@@ -1,15 +1,15 @@
 """ trigger/52010033_qd/main_quest10003078.xml """
-import common
+import trigger_api
 
 
 # 페리온 병원 : 52010033
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003078], questStates=[2]):
             return 유저감지(self.ctx)
 
 
-class 유저감지(common.Trigger):
+class 유저감지(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -17,12 +17,12 @@ class 유저감지(common.Trigger):
         self.visible_my_pc(isVisible=False)
         self.move_user(mapId=52010033, portalId=6001)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 티나감사(self.ctx)
 
 
-class 티나감사(common.Trigger):
+class 티나감사(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip(state=나메드들어옴02, action='exit')
         self.set_cinematic_ui(type=1)
@@ -32,12 +32,12 @@ class 티나감사(common.Trigger):
         self.add_cinematic_talk(npcId=11003389, msg='$52010033_QD__MAIN_QUEST10003078__1$', duration=3000)
         self.add_cinematic_talk(npcId=11003420, msg='$52010033_QD__MAIN_QUEST10003078__2$', duration=2000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
             return 나메드들어옴(self.ctx)
 
 
-class 나메드들어옴(common.Trigger):
+class 나메드들어옴(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -52,21 +52,21 @@ class 나메드들어옴(common.Trigger):
         self.add_cinematic_talk(npcId=0, msg='$52010033_QD__MAIN_QUEST10003078__9$', duration=2000)
         self.add_cinematic_talk(npcId=11003389, msg='$52010033_QD__MAIN_QUEST10003078__10$', duration=4000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=22000):
             return 나메드들어옴_1(self.ctx)
 
 
-class 나메드들어옴_1(common.Trigger):
+class 나메드들어옴_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 나메드들어옴02(self.ctx)
 
 
-class 나메드들어옴02(common.Trigger):
+class 나메드들어옴02(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=52010032, portalId=1)
 

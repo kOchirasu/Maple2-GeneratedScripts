@@ -1,32 +1,32 @@
 """ trigger/02000400_bf/100_dualkill.xml """
-import common
+import trigger_api
 
 
-class 룸체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 룸체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
             return Wait(self.ctx)
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='CheckDualKill', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CheckDualKill', value=1):
             return CheckDualKill(self.ctx)
 
 
-class CheckDualKill(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CheckDualKill(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[900]):
             return LionBlueDead(self.ctx)
         if self.monster_dead(boxIds=[901]):
             return LionRedDead(self.ctx)
 
 
-class LionBlueDead(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LionBlueDead(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[901]):
             self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
             return Quit(self.ctx)
@@ -34,8 +34,8 @@ class LionBlueDead(common.Trigger):
             return Quit(self.ctx)
 
 
-class LionRedDead(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LionRedDead(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[900]):
             self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
             return Quit(self.ctx)
@@ -43,7 +43,7 @@ class LionRedDead(common.Trigger):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

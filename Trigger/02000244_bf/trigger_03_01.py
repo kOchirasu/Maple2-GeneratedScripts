@@ -1,8 +1,8 @@
 """ trigger/02000244_bf/trigger_03_01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[705,706], visible=False)
 

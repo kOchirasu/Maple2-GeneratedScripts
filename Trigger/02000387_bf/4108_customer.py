@@ -1,91 +1,91 @@
 """ trigger/02000387_bf/4108_customer.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001102], state=0) # Greeting
         self.set_user_value(key='CustomerEnter', value=0)
         self.set_user_value(key='ItemNumber', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CustomerEnter', value=1):
             return CustomerEnterDelay(self.ctx)
 
 
-class CustomerEnterDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CustomerEnterDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CustomerEnter(self.ctx)
 
 
-class CustomerEnter(common.Trigger):
+class CustomerEnter(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[4108], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9140, spawnIds=[0]):
             return Patrol03(self.ctx)
         if not self.npc_detected(boxId=9141, spawnIds=[0]):
             return Patrol01(self.ctx)
 
 
-class Patrol01(common.Trigger):
+class Patrol01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4108, patrolName='MS2PatrolData_401')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9142, spawnIds=[0]):
             return Patrol02Delay(self.ctx)
 
 
-class Patrol02Delay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Patrol02Delay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Patrol02(self.ctx)
 
 
-class Patrol02(common.Trigger):
+class Patrol02(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4108, patrolName='MS2PatrolData_402')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9143, spawnIds=[0]):
             return Patrol03Delay(self.ctx)
 
 
-class Patrol03Delay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Patrol03Delay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Patrol03(self.ctx)
 
 
-class Patrol03(common.Trigger):
+class Patrol03(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4108, patrolName='MS2PatrolData_403')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9143, spawnIds=[0]):
             return PatrolEndDelay(self.ctx)
 
 
-class PatrolEndDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PatrolEndDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PatrolEnd(self.ctx)
 
 
-class PatrolEnd(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PatrolEnd(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9143, spawnIds=[4108]):
             return WaitGreeting(self.ctx)
 
 
-class WaitGreeting(common.Trigger):
+class WaitGreeting(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001102], state=1) # Greeting
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001102], stateValue=0):
             return OrderRandomPick(self.ctx)
 
@@ -94,8 +94,8 @@ class WaitGreeting(common.Trigger):
 
 
 # 고객 주문 랜덤
-class OrderRandomPick(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class OrderRandomPick(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=1):
             return PickItem_30000641(self.ctx)
         if self.random_condition(rate=1):
@@ -107,19 +107,19 @@ class OrderRandomPick(common.Trigger):
 
 
 # 30000641
-class PickItem_30000641(common.Trigger):
+class PickItem_30000641(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000641)
         self.add_effect_nif(spawnId=4108, nifPath='Map/Henesys/Indoor/he_in_prop_kettle_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000641(self.ctx)
 
 
-class DetectItem_30000641(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000641(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000641):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000641):
@@ -127,19 +127,19 @@ class DetectItem_30000641(common.Trigger):
 
 
 # 30000647
-class PickItem_30000647(common.Trigger):
+class PickItem_30000647(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000647)
         self.add_effect_nif(spawnId=4108, nifPath='Map/UGC/Indoor/ugc_in_funct_alchemy_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000647(self.ctx)
 
 
-class DetectItem_30000647(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000647(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000647):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000647):
@@ -147,19 +147,19 @@ class DetectItem_30000647(common.Trigger):
 
 
 # 30000648
-class PickItem_30000648(common.Trigger):
+class PickItem_30000648(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000648)
         self.add_effect_nif(spawnId=4108, nifPath='Map/UGC/Indoor/ugc_in_funct_alchemy_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000648(self.ctx)
 
 
-class DetectItem_30000648(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000648(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000648):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000648):
@@ -167,19 +167,19 @@ class DetectItem_30000648(common.Trigger):
 
 
 # 30000711
-class PickItem_30000711(common.Trigger):
+class PickItem_30000711(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000711)
         self.add_effect_nif(spawnId=4108, nifPath='Map/UGC/Indoor/ugc_in_funct_workstone_G01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000711(self.ctx)
 
 
-class DetectItem_30000711(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000711(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000711):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000711):
@@ -187,7 +187,7 @@ class DetectItem_30000711(common.Trigger):
 
 
 # 미션 성공
-class RightItem(common.Trigger):
+class RightItem(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Right_01')
@@ -195,44 +195,44 @@ class RightItem(common.Trigger):
         self.set_conversation(type=1, spawnId=4108, script='$02000387_BF__4108_CUSTOMER__0$', arg4=3, arg5=0)
         self.add_buff(boxIds=[9900], skillId=70000112, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return CustomerLeave(self.ctx)
 
 
-class CustomerLeave(common.Trigger):
+class CustomerLeave(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4108, patrolName='MS2PatrolData_444')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9304, spawnIds=[4108]):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[4108])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Wait(self.ctx)
 
 
 # 잘못된 아이템을 내려놓으면
-class WrongItem(common.Trigger):
+class WrongItem(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Wrong_01')
         self.remove_effect_nif(spawnId=4108)
         self.set_conversation(type=1, spawnId=4108, script='$02000387_BF__4108_CUSTOMER__1$', arg4=3, arg5=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return WrongItemReturn(self.ctx)
 
 
-class WrongItemReturn(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class WrongItemReturn(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ItemNumber', value=30000641):
             return PickItem_30000641(self.ctx)
         if self.user_value(key='ItemNumber', value=30000647):

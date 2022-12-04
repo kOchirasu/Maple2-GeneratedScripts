@@ -1,14 +1,14 @@
 """ trigger/52010056_qd/eventsection_d_monster.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2003]):
             return Ready(self.ctx)
 
 
-class Ready(common.Trigger):
+class Ready(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[501], animationEffect=False) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[502], animationEffect=False) # 브라운 크림슨: 29000384

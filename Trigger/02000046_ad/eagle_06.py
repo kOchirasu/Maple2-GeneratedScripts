@@ -1,19 +1,19 @@
 """ trigger/02000046_ad/eagle_06.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
+class 시작대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000298], state=1)
         self.set_actor(triggerId=206, visible=True, initialSequence='Dead_A')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000298], stateValue=0):
             return 오브젝트반응(self.ctx)
 
 
-class 오브젝트반응(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 오브젝트반응(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return NPC이동(self.ctx)
 
@@ -22,22 +22,22 @@ class 오브젝트반응(common.Trigger):
         self.create_monster(spawnIds=[306], animationEffect=False)
 
 
-class NPC이동(common.Trigger):
+class NPC이동(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=306, patrolName='MS2PatrolData_206')
         self.set_conversation(type=1, spawnId=306, script='$02000046_AD__EAGLE_06__0$', arg4=2)
         self.set_timer(timerId='1', seconds=20)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return NPC소멸(self.ctx)
 
 
-class NPC소멸(common.Trigger):
+class NPC소멸(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[306])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 시작대기중(self.ctx)
 

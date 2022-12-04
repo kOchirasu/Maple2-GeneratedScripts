@@ -1,11 +1,11 @@
 """ trigger/02000312_bf/mobspawn_11.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3005,3006,3007,3008,3009,3010], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
         self.set_ladder(triggerIds=[510], visible=False, animationEffect=False) # LadderEnterance
@@ -23,18 +23,18 @@ class Setting(common.Trigger):
         self.set_effect(triggerIds=[5001], visible=False) # Vine
         self.set_user_value(key='MobWaveStop', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.set_cinematic_ui(type=1)
@@ -42,17 +42,17 @@ class DungeonStart(common.Trigger):
         self.select_camera(triggerId=600, enable=True)
         self.set_skip(state=CameraWalk01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return CameraWalk01(self.ctx)
 
 
-class CameraWalk01(common.Trigger):
+class CameraWalk01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=600, enable=False)
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01(self.ctx)
 
@@ -66,13 +66,13 @@ class CameraWalk01(common.Trigger):
         self.set_cinematic_ui(type=2)
 
 
-class Battle01(common.Trigger):
+class Battle01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101,102,103], animationEffect=False)
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031201, textId=20031201) # 몬스터를 모두 처치하기
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101,102,103]):
             return Battle02(self.ctx)
 
@@ -80,12 +80,12 @@ class Battle01(common.Trigger):
         self.destroy_monster(spawnIds=[101,102,103])
 
 
-class Battle02(common.Trigger):
+class Battle02(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20031201)
         self.create_monster(spawnIds=[111,112,113,114], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[111,112,113,114]):
             return Battle03(self.ctx)
 
@@ -93,13 +93,13 @@ class Battle02(common.Trigger):
         self.destroy_monster(spawnIds=[111,112,113,114])
 
 
-class Battle03(common.Trigger):
+class Battle03(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031202, textId=20031202) # 어둠의 씨앗 제거하기
         self.create_monster(spawnIds=[130], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[130]):
             return VineRemove01(self.ctx)
 
@@ -107,7 +107,7 @@ class Battle03(common.Trigger):
         self.destroy_monster(spawnIds=[130])
 
 
-class VineRemove01(common.Trigger):
+class VineRemove01(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20031202)
         self.set_effect(triggerIds=[5001], visible=True) # Vine
@@ -119,18 +119,18 @@ class VineRemove01(common.Trigger):
         self.set_mesh(triggerIds=[1140], visible=False, arg3=200, delay=0, scale=10) # 씨앗
         self.set_mesh_animation(triggerIds=[1140], visible=False, arg3=0, arg4=0) # 씨앗
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[102]):
             return MobWaveStart(self.ctx)
 
 
-class MobWaveStart(common.Trigger):
+class MobWaveStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031203, textId=20031203) # 어둠의 씨앗 모두 제거하기
         self.create_monster(spawnIds=[121,122,123,124,125,126,127,128], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[121,122,123,124,125,126,127,128]):
             return MobWaveDelayRandom(self.ctx)
         if self.user_value(key='MobWaveStop', value=1):
@@ -140,8 +140,8 @@ class MobWaveStart(common.Trigger):
         self.destroy_monster(spawnIds=[121,122,123,124,125,126,127,128])
 
 
-class MobWaveDelayRandom(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobWaveDelayRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=60):
             return MobWaveDelay01(self.ctx)
         if self.random_condition(rate=20):
@@ -152,31 +152,31 @@ class MobWaveDelayRandom(common.Trigger):
             return Quit(self.ctx)
 
 
-class MobWaveDelay01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobWaveDelay01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=12000):
             return MobWaveStart(self.ctx)
         if self.user_value(key='MobWaveStop', value=1):
             return Quit(self.ctx)
 
 
-class MobWaveDelay02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobWaveDelay02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=17000):
             return MobWaveStart(self.ctx)
         if self.user_value(key='MobWaveStop', value=1):
             return Quit(self.ctx)
 
 
-class MobWaveDelay03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobWaveDelay03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return MobWaveStart(self.ctx)
         if self.user_value(key='MobWaveStop', value=1):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20031203)
 

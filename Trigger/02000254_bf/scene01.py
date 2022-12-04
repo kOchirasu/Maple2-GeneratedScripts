@@ -1,8 +1,8 @@
 """ trigger/02000254_bf/scene01.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
+class 시작대기중(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101])
         self.create_monster(spawnIds=[107])
@@ -55,152 +55,152 @@ class 시작대기중(common.Trigger):
         self.set_effect(triggerIds=[437], visible=False)
         self.set_effect(triggerIds=[438], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=901, boxId=1):
             return 연출시작딜레이(self.ctx)
 
 
-class 연출시작딜레이(common.Trigger):
+class 연출시작딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
         self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 연출시작(self.ctx)
 
 
-class 연출시작(common.Trigger):
+class 연출시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=2)
         self.set_scene_skip(state=스킵벨라이동딜레이, action='nextState')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 대화시작(self.ctx)
 
 
-class 대화시작(common.Trigger):
+class 대화시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[401], visible=False)
         self.set_timer(timerId='1', seconds=6)
         # <action name="이펙트를설정한다" arg1="601" arg2="1"/>
         self.add_cinematic_talk(npcId=11000074, illustId='Karl_closeEye', msg='$02000254_BF__SCENE01__0$', duration=6000, align='center')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사1(self.ctx)
 
 
-class 벨라대사1(common.Trigger):
+class 벨라대사1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=4)
         # <action name="이펙트를설정한다" arg1="602" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__1$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사2(self.ctx)
 
 
-class 벨라대사2(common.Trigger):
+class 벨라대사2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=7)
         # <action name="이펙트를설정한다" arg1="603" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__2$', arg4=4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 칼대사1(self.ctx)
 
 
-class 칼대사1(common.Trigger):
+class 칼대사1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=5)
         # <action name="이펙트를설정한다" arg1="604" arg2="1"/>
         self.add_cinematic_talk(npcId=11000074, illustId='Karl_closeEye', msg='$02000254_BF__SCENE01__3$', duration=5000, align='center')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 칼대사2(self.ctx)
 
 
-class 칼대사2(common.Trigger):
+class 칼대사2(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=5)
         # <action name="이펙트를설정한다" arg1="605" arg2="1"/>
         self.add_cinematic_talk(npcId=11000074, illustId='Karl_closeEye', msg='$02000254_BF__SCENE01__4$', duration=5000, align='center')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사3(self.ctx)
 
 
-class 벨라대사3(common.Trigger):
+class 벨라대사3(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=6)
         # <action name="이펙트를설정한다" arg1="606" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__5$', arg4=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사4(self.ctx)
 
 
-class 벨라대사4(common.Trigger):
+class 벨라대사4(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=10)
         # <action name="이펙트를설정한다" arg1="607" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__6$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라이동(self.ctx)
 
 
-class 벨라이동딜레이(common.Trigger):
+class 벨라이동딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라이동(self.ctx)
 
 
-class 벨라이동(common.Trigger):
+class 벨라이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_1')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 카메라원위치(self.ctx)
 
 
-class 카메라원위치(common.Trigger):
+class 카메라원위치(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=2)
         self.select_camera_path(pathIds=[301], returnView=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 카메라원위치2(self.ctx)
 
 
-class 카메라원위치2(common.Trigger):
+class 카메라원위치2(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=902, boxId=1):
             return 쿠당탕(self.ctx)
 
 
-class 쿠당탕(common.Trigger):
+class 쿠당탕(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102])
@@ -242,40 +242,40 @@ class 쿠당탕(common.Trigger):
         self.set_effect(triggerIds=[437], visible=True)
         self.set_effect(triggerIds=[438], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true(arg1=True):
             return 벨라대사5(self.ctx)
 
 
-class 스킵벨라이동딜레이(common.Trigger):
+class 스킵벨라이동딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_timer(timerId='1', seconds=1)
         self.select_camera_path(pathIds=[301], returnView=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 스킵벨라이동(self.ctx)
 
 
-class 스킵벨라이동(common.Trigger):
+class 스킵벨라이동(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_1')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 스킵카메라원위치(self.ctx)
 
 
-class 스킵카메라원위치(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스킵카메라원위치(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=902, boxId=1):
             return 스킵쿠당탕(self.ctx)
 
 
-class 스킵쿠당탕(common.Trigger):
+class 스킵쿠당탕(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102])
@@ -317,21 +317,21 @@ class 스킵쿠당탕(common.Trigger):
         self.set_effect(triggerIds=[437], visible=True)
         self.set_effect(triggerIds=[438], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true(arg1=True):
             return 벨라대사5딜레이(self.ctx)
 
 
-class 벨라대사5딜레이(common.Trigger):
+class 벨라대사5딜레이(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='2', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return 벨라대사5(self.ctx)
 
 
-class 벨라대사5(common.Trigger):
+class 벨라대사5(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=301, enable=True)
         self.set_scene_skip(state=벨라이동2, action='nextState')
@@ -340,23 +340,23 @@ class 벨라대사5(common.Trigger):
         self.set_timer(timerId='1', seconds=6)
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__7$', arg4=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라대사6(self.ctx)
 
 
-class 벨라대사6(common.Trigger):
+class 벨라대사6(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=4)
         # <action name="이펙트를설정한다" arg1="608" arg2="1"/>
         self.set_conversation(type=2, spawnId=11000057, script='$02000254_BF__SCENE01__8$', arg4=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라이동2(self.ctx)
 
 
-class 벨라이동2(common.Trigger):
+class 벨라이동2(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.set_cinematic_ui(type=0)
@@ -366,45 +366,45 @@ class 벨라이동2(common.Trigger):
         self.set_timer(timerId='1', seconds=4)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 이펙트1(self.ctx)
 
 
-class 이펙트1(common.Trigger):
+class 이펙트1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=1)
         self.set_effect(triggerIds=[401], visible=True)
         self.destroy_monster(spawnIds=[102])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 벨라몬스터소환(self.ctx)
 
 
-class 벨라몬스터소환(common.Trigger):
+class 벨라몬스터소환(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=3)
         self.select_camera(triggerId=303, enable=True)
         self.create_monster(spawnIds=[106])
         self.create_monster(spawnIds=[103])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 끝(self.ctx)
 
 
-class 끝(common.Trigger):
+class 끝(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=2)
         self.select_camera_path(pathIds=[303], returnView=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 끝2(self.ctx)
 
 
-class 끝2(common.Trigger):
+class 끝2(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=301, enable=False)
         self.select_camera(triggerId=303, enable=False)

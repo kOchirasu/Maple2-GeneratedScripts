@@ -1,32 +1,32 @@
 """ trigger/02100000_bf/main.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return CheckUser10_GuildRaid(self.ctx)
 
 
-class CheckUser10_GuildRaid(common.Trigger):
+class CheckUser10_GuildRaid(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
             return MaxCount10_Start(self.ctx)
         if self.count_users(boxId=101, boxId=10, operator='Less'):
             return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Wait(common.Trigger):
+class MaxCount10_Wait(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
             return MaxCount10_Start(self.ctx)
         if self.time_expired(timerId='1'):
@@ -35,76 +35,76 @@ class MaxCount10_Wait(common.Trigger):
             return MaxCount10_Wait(self.ctx)
 
 
-class MaxCount10_Start(common.Trigger):
+class MaxCount10_Start(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='1')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return DungeonStart(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=904, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return ShowCaption01(self.ctx)
 
 
 # 설명문 출력
-class ShowCaption01(common.Trigger):
+class ShowCaption01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_intro(text='$02100000_BF__MAIN__0$')
         self.set_skip(state=ShowCaption01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return ShowCaption01Skip(self.ctx)
 
 
-class ShowCaption01Skip(common.Trigger):
+class ShowCaption01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ShowCaption02(self.ctx)
 
 
-class ShowCaption02(common.Trigger):
+class ShowCaption02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_intro(text='$02100000_BF__MAIN__1$')
         self.set_skip(state=ShowCaption02Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return ShowCaption02Skip(self.ctx)
 
 
-class ShowCaption02Skip(common.Trigger):
+class ShowCaption02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.remove_cinematic_talk()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return CloseCaptionSetting(self.ctx)
 
 
-class CloseCaptionSetting(common.Trigger):
+class CloseCaptionSetting(trigger_api.Trigger):
     def on_enter(self):
         self.close_cinematic()
         self.select_camera(triggerId=904, enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 대기(self.ctx)
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=False)
         self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=True)
@@ -188,37 +188,37 @@ class 대기(common.Trigger):
         self.set_skill(triggerIds=[940023], enable=True)
         self.set_skill(triggerIds=[940024], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 버프_2(self.ctx)
 
 
-class 버프_2(common.Trigger):
+class 버프_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__2$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[105]):
             return 바리케이트(self.ctx)
 
 
-class 바리케이트(common.Trigger):
+class 바리케이트(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__3$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
             return 닫기(self.ctx)
 
 
-class 닫기(common.Trigger):
+class 닫기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[8001], visible=True)
         self.set_effect(triggerIds=[8002], visible=True)
         self.set_effect(triggerIds=[8003], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return None
 

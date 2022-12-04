@@ -1,8 +1,8 @@
 """ trigger/02000297_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[6100])
         self.destroy_monster(spawnIds=[6200])
@@ -22,24 +22,24 @@ class 대기(common.Trigger):
         self.set_agent(triggerIds=[128], visible=False)
         self.set_user_value(key='BattleStart', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay01(self.ctx)
 
 
-class LoadingDelay01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BattleStart', value=1):
             return LoadingDelay02(self.ctx)
 
 
-class LoadingDelay02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return BossBattle01(self.ctx)
 
 
-class BossBattle01(common.Trigger):
+class BossBattle01(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9000], sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02000297_BF__MAIN__0$', arg3='5000', arg4='0')
@@ -58,21 +58,21 @@ class BossBattle01(common.Trigger):
         self.set_agent(triggerIds=[127], visible=True)
         self.set_agent(triggerIds=[128], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return BossBattle02(self.ctx)
 
 
-class BossBattle02(common.Trigger):
+class BossBattle02(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[6100])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[6200]):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

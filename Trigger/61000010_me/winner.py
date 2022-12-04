@@ -1,14 +1,14 @@
 """ trigger/61000010_me/winner.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[102]):
             return 업적(self.ctx)
 
 
-class 업적(common.Trigger):
+class 업적(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=102, type='trigger', achieve='WinSanghaiRunners')
 

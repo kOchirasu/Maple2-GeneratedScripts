@@ -1,8 +1,8 @@
 """ trigger/61000010_me/ladder01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[701], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[702], visible=False, animationEffect=False)
@@ -11,13 +11,13 @@ class 대기(common.Trigger):
         self.set_ladder(triggerIds=[721], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[722], visible=False, animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 랜덤(self.ctx)
 
 
-class 랜덤(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 랜덤(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=34):
             self.set_ladder(triggerIds=[701], visible=True, animationEffect=True)
             self.set_ladder(triggerIds=[702], visible=True, animationEffect=True)
@@ -32,7 +32,7 @@ class 랜덤(common.Trigger):
             return 종료(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

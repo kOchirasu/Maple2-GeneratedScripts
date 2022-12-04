@@ -1,8 +1,8 @@
 """ trigger/02010052_bf/torchlight_07.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     pass
 
 

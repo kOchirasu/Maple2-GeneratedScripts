@@ -1,91 +1,91 @@
 """ trigger/02000387_bf/4012_customer.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001095], state=0) # Greeting
         self.set_user_value(key='CustomerEnter', value=0)
         self.set_user_value(key='ItemNumber', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='CustomerEnter', value=1):
             return CustomerEnterDelay(self.ctx)
 
 
-class CustomerEnterDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class CustomerEnterDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CustomerEnter(self.ctx)
 
 
-class CustomerEnter(common.Trigger):
+class CustomerEnter(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[4012], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9140, spawnIds=[0]):
             return Patrol03(self.ctx)
         if not self.npc_detected(boxId=9141, spawnIds=[0]):
             return Patrol01(self.ctx)
 
 
-class Patrol01(common.Trigger):
+class Patrol01(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4012, patrolName='MS2PatrolData_401')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9142, spawnIds=[0]):
             return Patrol02Delay(self.ctx)
 
 
-class Patrol02Delay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Patrol02Delay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Patrol02(self.ctx)
 
 
-class Patrol02(common.Trigger):
+class Patrol02(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4012, patrolName='MS2PatrolData_402')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9143, spawnIds=[0]):
             return Patrol03Delay(self.ctx)
 
 
-class Patrol03Delay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Patrol03Delay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Patrol03(self.ctx)
 
 
-class Patrol03(common.Trigger):
+class Patrol03(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4012, patrolName='MS2PatrolData_403')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9143, spawnIds=[0]):
             return PatrolEndDelay(self.ctx)
 
 
-class PatrolEndDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PatrolEndDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PatrolEnd(self.ctx)
 
 
-class PatrolEnd(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PatrolEnd(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9143, spawnIds=[4012]):
             return WaitGreeting(self.ctx)
 
 
-class WaitGreeting(common.Trigger):
+class WaitGreeting(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001095], state=1) # Greeting
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001095], stateValue=0):
             return OrderRandomPick(self.ctx)
 
@@ -94,8 +94,8 @@ class WaitGreeting(common.Trigger):
 
 
 # 고객 주문 랜덤
-class OrderRandomPick(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class OrderRandomPick(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=1):
             return PickItem_30000617(self.ctx)
         if self.random_condition(rate=1):
@@ -299,19 +299,19 @@ class OrderRandomPick(common.Trigger):
 
 
 # 30000617
-class PickItem_30000617(common.Trigger):
+class PickItem_30000617(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000617)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Field/co_fi_prop_game_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000617(self.ctx)
 
 
-class DetectItem_30000617(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000617(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000617):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000617):
@@ -319,19 +319,19 @@ class DetectItem_30000617(common.Trigger):
 
 
 # 30000618
-class PickItem_30000618(common.Trigger):
+class PickItem_30000618(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000618)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Field/co_fi_prop_game_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000618(self.ctx)
 
 
-class DetectItem_30000618(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000618(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000618):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000618):
@@ -339,38 +339,38 @@ class DetectItem_30000618(common.Trigger):
 
 
 # 30000619
-class PickItem_30000619(common.Trigger):
+class PickItem_30000619(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000619)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Field/co_fi_prop_lamp_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000619(self.ctx)
 
 
-class DetectItem_30000619(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000619(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000619):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000619):
             return WrongItem(self.ctx)
 
 
-class PickItem_30000620(common.Trigger):
+class PickItem_30000620(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000620)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Henesys/Indoor/he_in_prop_fireplace_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000620(self.ctx)
 
 
-class DetectItem_30000620(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000620(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000620):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000620):
@@ -378,19 +378,19 @@ class DetectItem_30000620(common.Trigger):
 
 
 # 30000621
-class PickItem_30000621(common.Trigger):
+class PickItem_30000621(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000621)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_sandbag_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000621(self.ctx)
 
 
-class DetectItem_30000621(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000621(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000621):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000621):
@@ -398,19 +398,19 @@ class DetectItem_30000621(common.Trigger):
 
 
 # 30000622
-class PickItem_30000622(common.Trigger):
+class PickItem_30000622(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000622)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Iceland/Indoor/ic_in_prop_snowball_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000622(self.ctx)
 
 
-class DetectItem_30000622(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000622(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000622):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000622):
@@ -418,19 +418,19 @@ class DetectItem_30000622(common.Trigger):
 
 
 # 30000623
-class PickItem_30000623(common.Trigger):
+class PickItem_30000623(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000623)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_bath_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000623(self.ctx)
 
 
-class DetectItem_30000623(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000623(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000623):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000623):
@@ -438,19 +438,19 @@ class DetectItem_30000623(common.Trigger):
 
 
 # 30000624
-class PickItem_30000624(common.Trigger):
+class PickItem_30000624(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000624)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_bath_C01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000624(self.ctx)
 
 
-class DetectItem_30000624(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000624(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000624):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000624):
@@ -458,19 +458,19 @@ class DetectItem_30000624(common.Trigger):
 
 
 # 30000625
-class PickItem_30000625(common.Trigger):
+class PickItem_30000625(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000625)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_shower_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000625(self.ctx)
 
 
-class DetectItem_30000625(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000625(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000625):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000625):
@@ -478,19 +478,19 @@ class DetectItem_30000625(common.Trigger):
 
 
 # 30000626
-class PickItem_30000626(common.Trigger):
+class PickItem_30000626(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000626)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_fridge_C02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000626(self.ctx)
 
 
-class DetectItem_30000626(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000626(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000626):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000626):
@@ -498,19 +498,19 @@ class DetectItem_30000626(common.Trigger):
 
 
 # 30000627
-class PickItem_30000627(common.Trigger):
+class PickItem_30000627(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000627)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_fridge_D03.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000627(self.ctx)
 
 
-class DetectItem_30000627(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000627(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000627):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000627):
@@ -518,19 +518,19 @@ class DetectItem_30000627(common.Trigger):
 
 
 # 30000628
-class PickItem_30000628(common.Trigger):
+class PickItem_30000628(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000628)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_display_C01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000628(self.ctx)
 
 
-class DetectItem_30000628(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000628(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000628):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000628):
@@ -538,19 +538,19 @@ class DetectItem_30000628(common.Trigger):
 
 
 # 30000629
-class PickItem_30000629(common.Trigger):
+class PickItem_30000629(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000629)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_fridge_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000629(self.ctx)
 
 
-class DetectItem_30000629(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000629(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000629):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000629):
@@ -558,19 +558,19 @@ class DetectItem_30000629(common.Trigger):
 
 
 # 30000630
-class PickItem_30000630(common.Trigger):
+class PickItem_30000630(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000630)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_display_C02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000630(self.ctx)
 
 
-class DetectItem_30000630(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000630(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000630):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000630):
@@ -578,19 +578,19 @@ class DetectItem_30000630(common.Trigger):
 
 
 # 30000631
-class PickItem_30000631(common.Trigger):
+class PickItem_30000631(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000631)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_washstand_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000631(self.ctx)
 
 
-class DetectItem_30000631(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000631(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000631):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000631):
@@ -598,19 +598,19 @@ class DetectItem_30000631(common.Trigger):
 
 
 # 30000632
-class PickItem_30000632(common.Trigger):
+class PickItem_30000632(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000632)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_sink_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000632(self.ctx)
 
 
-class DetectItem_30000632(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000632(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000632):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000632):
@@ -618,19 +618,19 @@ class DetectItem_30000632(common.Trigger):
 
 
 # 30000633
-class PickItem_30000633(common.Trigger):
+class PickItem_30000633(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000633)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_sink_A03.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000633(self.ctx)
 
 
-class DetectItem_30000633(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000633(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000633):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000633):
@@ -638,19 +638,19 @@ class DetectItem_30000633(common.Trigger):
 
 
 # 30000634
-class PickItem_30000634(common.Trigger):
+class PickItem_30000634(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000634)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_tv_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000634(self.ctx)
 
 
-class DetectItem_30000634(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000634(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000634):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000634):
@@ -658,19 +658,19 @@ class DetectItem_30000634(common.Trigger):
 
 
 # 30000635
-class PickItem_30000635(common.Trigger):
+class PickItem_30000635(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000635)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_tv_C01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000635(self.ctx)
 
 
-class DetectItem_30000635(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000635(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000635):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000635):
@@ -678,19 +678,19 @@ class DetectItem_30000635(common.Trigger):
 
 
 # 30000636
-class PickItem_30000636(common.Trigger):
+class PickItem_30000636(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000636)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_toilet_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000636(self.ctx)
 
 
-class DetectItem_30000636(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000636(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000636):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000636):
@@ -698,19 +698,19 @@ class DetectItem_30000636(common.Trigger):
 
 
 # 30000637
-class PickItem_30000637(common.Trigger):
+class PickItem_30000637(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000637)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_washer_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000637(self.ctx)
 
 
-class DetectItem_30000637(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000637(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000637):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000637):
@@ -718,19 +718,19 @@ class DetectItem_30000637(common.Trigger):
 
 
 # 30000638
-class PickItem_30000638(common.Trigger):
+class PickItem_30000638(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000638)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_fan_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000638(self.ctx)
 
 
-class DetectItem_30000638(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000638(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000638):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000638):
@@ -738,19 +738,19 @@ class DetectItem_30000638(common.Trigger):
 
 
 # 30000639
-class PickItem_30000639(common.Trigger):
+class PickItem_30000639(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000639)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_machine_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000639(self.ctx)
 
 
-class DetectItem_30000639(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000639(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000639):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000639):
@@ -758,19 +758,19 @@ class DetectItem_30000639(common.Trigger):
 
 
 # 30000640
-class PickItem_30000640(common.Trigger):
+class PickItem_30000640(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000640)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_cutter_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000640(self.ctx)
 
 
-class DetectItem_30000640(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000640(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000640):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000640):
@@ -778,19 +778,19 @@ class DetectItem_30000640(common.Trigger):
 
 
 # 30000641
-class PickItem_30000641(common.Trigger):
+class PickItem_30000641(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000641)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Henesys/Indoor/he_in_prop_kettle_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000641(self.ctx)
 
 
-class DetectItem_30000641(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000641(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000641):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000641):
@@ -798,19 +798,19 @@ class DetectItem_30000641(common.Trigger):
 
 
 # 30000642
-class PickItem_30000642(common.Trigger):
+class PickItem_30000642(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000642)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_locker_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000642(self.ctx)
 
 
-class DetectItem_30000642(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000642(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000642):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000642):
@@ -818,19 +818,19 @@ class DetectItem_30000642(common.Trigger):
 
 
 # 30000643
-class PickItem_30000643(common.Trigger):
+class PickItem_30000643(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000643)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_locker_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000643(self.ctx)
 
 
-class DetectItem_30000643(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000643(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000643):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000643):
@@ -838,19 +838,19 @@ class DetectItem_30000643(common.Trigger):
 
 
 # 30000644
-class PickItem_30000644(common.Trigger):
+class PickItem_30000644(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000644)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Iceland/Indoor/ic_in_cubric_box_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000644(self.ctx)
 
 
-class DetectItem_30000644(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000644(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000644):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000644):
@@ -858,19 +858,19 @@ class DetectItem_30000644(common.Trigger):
 
 
 # 30000645
-class PickItem_30000645(common.Trigger):
+class PickItem_30000645(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000645)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Field/tr_fi_prop_swing_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000645(self.ctx)
 
 
-class DetectItem_30000645(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000645(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000645):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000645):
@@ -878,19 +878,19 @@ class DetectItem_30000645(common.Trigger):
 
 
 # 30000646
-class PickItem_30000646(common.Trigger):
+class PickItem_30000646(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000646)
         self.add_effect_nif(spawnId=4012, nifPath='Map/UGC/Indoor/ugc_in_funct_cook_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000646(self.ctx)
 
 
-class DetectItem_30000646(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000646(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000646):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000646):
@@ -898,19 +898,19 @@ class DetectItem_30000646(common.Trigger):
 
 
 # 30000647
-class PickItem_30000647(common.Trigger):
+class PickItem_30000647(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000647)
         self.add_effect_nif(spawnId=4012, nifPath='Map/UGC/Indoor/ugc_in_funct_alchemy_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000647(self.ctx)
 
 
-class DetectItem_30000647(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000647(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000647):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000647):
@@ -918,19 +918,19 @@ class DetectItem_30000647(common.Trigger):
 
 
 # 30000648
-class PickItem_30000648(common.Trigger):
+class PickItem_30000648(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000648)
         self.add_effect_nif(spawnId=4012, nifPath='Map/UGC/Indoor/ugc_in_funct_alchemy_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000648(self.ctx)
 
 
-class DetectItem_30000648(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000648(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000648):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000648):
@@ -938,19 +938,19 @@ class DetectItem_30000648(common.Trigger):
 
 
 # 30000649
-class PickItem_30000649(common.Trigger):
+class PickItem_30000649(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000649)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_mirror_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000649(self.ctx)
 
 
-class DetectItem_30000649(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000649(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000649):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000649):
@@ -958,19 +958,19 @@ class DetectItem_30000649(common.Trigger):
 
 
 # 30000650
-class PickItem_30000650(common.Trigger):
+class PickItem_30000650(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000650)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_easel_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000650(self.ctx)
 
 
-class DetectItem_30000650(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000650(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000650):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000650):
@@ -978,19 +978,19 @@ class DetectItem_30000650(common.Trigger):
 
 
 # 30000651
-class PickItem_30000651(common.Trigger):
+class PickItem_30000651(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000651)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_wardrop_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000651(self.ctx)
 
 
-class DetectItem_30000651(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000651(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000651):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000651):
@@ -998,19 +998,19 @@ class DetectItem_30000651(common.Trigger):
 
 
 # 30000652
-class PickItem_30000652(common.Trigger):
+class PickItem_30000652(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000652)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Indoor/co_in_prop_brazier_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000652(self.ctx)
 
 
-class DetectItem_30000652(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000652(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000652):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000652):
@@ -1018,19 +1018,19 @@ class DetectItem_30000652(common.Trigger):
 
 
 # 30000653
-class PickItem_30000653(common.Trigger):
+class PickItem_30000653(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000653)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_tray_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000653(self.ctx)
 
 
-class DetectItem_30000653(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000653(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000653):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000653):
@@ -1038,19 +1038,19 @@ class DetectItem_30000653(common.Trigger):
 
 
 # 30000654
-class PickItem_30000654(common.Trigger):
+class PickItem_30000654(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000654)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_sofa_E01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000654(self.ctx)
 
 
-class DetectItem_30000654(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000654(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000654):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000654):
@@ -1058,19 +1058,19 @@ class DetectItem_30000654(common.Trigger):
 
 
 # 30000655
-class PickItem_30000655(common.Trigger):
+class PickItem_30000655(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000655)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_amp_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000655(self.ctx)
 
 
-class DetectItem_30000655(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000655(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000655):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000655):
@@ -1078,19 +1078,19 @@ class DetectItem_30000655(common.Trigger):
 
 
 # 30000656
-class PickItem_30000656(common.Trigger):
+class PickItem_30000656(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000656)
         self.add_effect_nif(spawnId=4012, nifPath='Map/SF/Indoor/sf_in_prop_bed_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000656(self.ctx)
 
 
-class DetectItem_30000656(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000656(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000656):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000656):
@@ -1098,19 +1098,19 @@ class DetectItem_30000656(common.Trigger):
 
 
 # 30000657
-class PickItem_30000657(common.Trigger):
+class PickItem_30000657(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000657)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Iceland/Indoor/ic_in_prop_bed_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000657(self.ctx)
 
 
-class DetectItem_30000657(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000657(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000657):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000657):
@@ -1118,19 +1118,19 @@ class DetectItem_30000657(common.Trigger):
 
 
 # 30000658
-class PickItem_30000658(common.Trigger):
+class PickItem_30000658(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000658)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_ringer_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000658(self.ctx)
 
 
-class DetectItem_30000658(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000658(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000658):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000658):
@@ -1138,19 +1138,19 @@ class DetectItem_30000658(common.Trigger):
 
 
 # 30000659
-class PickItem_30000659(common.Trigger):
+class PickItem_30000659(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000659)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Indoor/co_in_prop_guestbook_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000659(self.ctx)
 
 
-class DetectItem_30000659(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000659(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000659):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000659):
@@ -1158,19 +1158,19 @@ class DetectItem_30000659(common.Trigger):
 
 
 # 30000660
-class PickItem_30000660(common.Trigger):
+class PickItem_30000660(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000660)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_display_B02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000660(self.ctx)
 
 
-class DetectItem_30000660(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000660(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000660):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000660):
@@ -1178,19 +1178,19 @@ class DetectItem_30000660(common.Trigger):
 
 
 # 30000661
-class PickItem_30000661(common.Trigger):
+class PickItem_30000661(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000661)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_cubric_fishtank_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000661(self.ctx)
 
 
-class DetectItem_30000661(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000661(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000661):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000661):
@@ -1198,19 +1198,19 @@ class DetectItem_30000661(common.Trigger):
 
 
 # 30000662
-class PickItem_30000662(common.Trigger):
+class PickItem_30000662(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000662)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_basketball_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000662(self.ctx)
 
 
-class DetectItem_30000662(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000662(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000662):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000662):
@@ -1218,19 +1218,19 @@ class DetectItem_30000662(common.Trigger):
 
 
 # 30000663
-class PickItem_30000663(common.Trigger):
+class PickItem_30000663(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000663)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_running_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000663(self.ctx)
 
 
-class DetectItem_30000663(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000663(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000663):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000663):
@@ -1238,19 +1238,19 @@ class DetectItem_30000663(common.Trigger):
 
 
 # 30000664
-class PickItem_30000664(common.Trigger):
+class PickItem_30000664(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000664)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_trampoline_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000664(self.ctx)
 
 
-class DetectItem_30000664(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000664(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000664):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000664):
@@ -1258,19 +1258,19 @@ class DetectItem_30000664(common.Trigger):
 
 
 # 30000665
-class PickItem_30000665(common.Trigger):
+class PickItem_30000665(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000665)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_baseballcart_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000665(self.ctx)
 
 
-class DetectItem_30000665(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000665(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000665):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000665):
@@ -1278,19 +1278,19 @@ class DetectItem_30000665(common.Trigger):
 
 
 # 30000666
-class PickItem_30000666(common.Trigger):
+class PickItem_30000666(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000666)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_basketball_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000666(self.ctx)
 
 
-class DetectItem_30000666(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000666(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000666):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000666):
@@ -1298,19 +1298,19 @@ class DetectItem_30000666(common.Trigger):
 
 
 # 30000667
-class PickItem_30000667(common.Trigger):
+class PickItem_30000667(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000667)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_handball_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000667(self.ctx)
 
 
-class DetectItem_30000667(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000667(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000667):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000667):
@@ -1318,19 +1318,19 @@ class DetectItem_30000667(common.Trigger):
 
 
 # 30000668
-class PickItem_30000668(common.Trigger):
+class PickItem_30000668(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000668)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_cranegame_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000668(self.ctx)
 
 
-class DetectItem_30000668(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000668(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000668):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000668):
@@ -1338,19 +1338,19 @@ class DetectItem_30000668(common.Trigger):
 
 
 # 30000669
-class PickItem_30000669(common.Trigger):
+class PickItem_30000669(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000669)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_chandelier_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000669(self.ctx)
 
 
-class DetectItem_30000669(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000669(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000669):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000669):
@@ -1358,19 +1358,19 @@ class DetectItem_30000669(common.Trigger):
 
 
 # 30000670
-class PickItem_30000670(common.Trigger):
+class PickItem_30000670(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000670)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_goalpost_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000670(self.ctx)
 
 
-class DetectItem_30000670(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000670(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000670):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000670):
@@ -1378,19 +1378,19 @@ class DetectItem_30000670(common.Trigger):
 
 
 # 30000671
-class PickItem_30000671(common.Trigger):
+class PickItem_30000671(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000671)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_photosticker_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000671(self.ctx)
 
 
-class DetectItem_30000671(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000671(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000671):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000671):
@@ -1398,19 +1398,19 @@ class DetectItem_30000671(common.Trigger):
 
 
 # 30000672
-class PickItem_30000672(common.Trigger):
+class PickItem_30000672(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000672)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_pingpong_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000672(self.ctx)
 
 
-class DetectItem_30000672(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000672(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000672):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000672):
@@ -1418,19 +1418,19 @@ class DetectItem_30000672(common.Trigger):
 
 
 # 30000673
-class PickItem_30000673(common.Trigger):
+class PickItem_30000673(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000673)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_pooltable_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000673(self.ctx)
 
 
-class DetectItem_30000673(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000673(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000673):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000673):
@@ -1438,19 +1438,19 @@ class DetectItem_30000673(common.Trigger):
 
 
 # 30000674
-class PickItem_30000674(common.Trigger):
+class PickItem_30000674(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000674)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_pump_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000674(self.ctx)
 
 
-class DetectItem_30000674(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000674(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000674):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000674):
@@ -1458,19 +1458,19 @@ class DetectItem_30000674(common.Trigger):
 
 
 # 30000675
-class PickItem_30000675(common.Trigger):
+class PickItem_30000675(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000675)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_sewingmachine_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000675(self.ctx)
 
 
-class DetectItem_30000675(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000675(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000675):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000675):
@@ -1478,19 +1478,19 @@ class DetectItem_30000675(common.Trigger):
 
 
 # 30000676
-class PickItem_30000676(common.Trigger):
+class PickItem_30000676(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000676)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_soccertable_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000676(self.ctx)
 
 
-class DetectItem_30000676(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000676(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000676):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000676):
@@ -1498,19 +1498,19 @@ class DetectItem_30000676(common.Trigger):
 
 
 # 30000677
-class PickItem_30000677(common.Trigger):
+class PickItem_30000677(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000677)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Field/ry_fi_prop_plane_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000677(self.ctx)
 
 
-class DetectItem_30000677(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000677(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000677):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000677):
@@ -1518,19 +1518,19 @@ class DetectItem_30000677(common.Trigger):
 
 
 # 30000678
-class PickItem_30000678(common.Trigger):
+class PickItem_30000678(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000678)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Field/ry_fi_prop_hammock_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000678(self.ctx)
 
 
-class DetectItem_30000678(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000678(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000678):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000678):
@@ -1538,19 +1538,19 @@ class DetectItem_30000678(common.Trigger):
 
 
 # 30000679
-class PickItem_30000679(common.Trigger):
+class PickItem_30000679(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000679)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Field/ry_fi_prop_yacht_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000679(self.ctx)
 
 
-class DetectItem_30000679(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000679(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000679):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000679):
@@ -1558,19 +1558,19 @@ class DetectItem_30000679(common.Trigger):
 
 
 # 30000680
-class PickItem_30000680(common.Trigger):
+class PickItem_30000680(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000680)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_grill_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000680(self.ctx)
 
 
-class DetectItem_30000680(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000680(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000680):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000680):
@@ -1578,19 +1578,19 @@ class DetectItem_30000680(common.Trigger):
 
 
 # 30000681
-class PickItem_30000681(common.Trigger):
+class PickItem_30000681(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000681)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Orient/Field/or_fi_prop_seesaw_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000681(self.ctx)
 
 
-class DetectItem_30000681(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000681(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000681):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000681):
@@ -1598,19 +1598,19 @@ class DetectItem_30000681(common.Trigger):
 
 
 # 30000682
-class PickItem_30000682(common.Trigger):
+class PickItem_30000682(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000682)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_display_E01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000682(self.ctx)
 
 
-class DetectItem_30000682(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000682(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000682):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000682):
@@ -1618,19 +1618,19 @@ class DetectItem_30000682(common.Trigger):
 
 
 # 30000683
-class PickItem_30000683(common.Trigger):
+class PickItem_30000683(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000683)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Orient/Field/or_fi_prop_ship_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000683(self.ctx)
 
 
-class DetectItem_30000683(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000683(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000683):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000683):
@@ -1638,19 +1638,19 @@ class DetectItem_30000683(common.Trigger):
 
 
 # 30000684
-class PickItem_30000684(common.Trigger):
+class PickItem_30000684(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000684)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Ludibrium/Field/lu_fi_prop_rocket_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000684(self.ctx)
 
 
-class DetectItem_30000684(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000684(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000684):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000684):
@@ -1658,19 +1658,19 @@ class DetectItem_30000684(common.Trigger):
 
 
 # 30000685
-class PickItem_30000685(common.Trigger):
+class PickItem_30000685(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000685)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Lith/Field/li_fi_prop_anchor_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000685(self.ctx)
 
 
-class DetectItem_30000685(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000685(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000685):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000685):
@@ -1678,19 +1678,19 @@ class DetectItem_30000685(common.Trigger):
 
 
 # 30000686
-class PickItem_30000686(common.Trigger):
+class PickItem_30000686(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000686)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Lith/Field/li_fi_prop_tube_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000686(self.ctx)
 
 
-class DetectItem_30000686(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000686(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000686):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000686):
@@ -1698,19 +1698,19 @@ class DetectItem_30000686(common.Trigger):
 
 
 # 30000687
-class PickItem_30000687(common.Trigger):
+class PickItem_30000687(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000687)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_beanbag_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000687(self.ctx)
 
 
-class DetectItem_30000687(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000687(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000687):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000687):
@@ -1718,19 +1718,19 @@ class DetectItem_30000687(common.Trigger):
 
 
 # 30000688
-class PickItem_30000688(common.Trigger):
+class PickItem_30000688(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000688)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_surgerylamp_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000688(self.ctx)
 
 
-class DetectItem_30000688(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000688(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000688):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000688):
@@ -1738,19 +1738,19 @@ class DetectItem_30000688(common.Trigger):
 
 
 # 30000689
-class PickItem_30000689(common.Trigger):
+class PickItem_30000689(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000689)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_surgery_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000689(self.ctx)
 
 
-class DetectItem_30000689(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000689(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000689):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000689):
@@ -1758,19 +1758,19 @@ class DetectItem_30000689(common.Trigger):
 
 
 # 30000690
-class PickItem_30000690(common.Trigger):
+class PickItem_30000690(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000690)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_sofa_D01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000690(self.ctx)
 
 
-class DetectItem_30000690(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000690(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000690):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000690):
@@ -1778,19 +1778,19 @@ class DetectItem_30000690(common.Trigger):
 
 
 # 30000691
-class PickItem_30000691(common.Trigger):
+class PickItem_30000691(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000691)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_paintbag_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000691(self.ctx)
 
 
-class DetectItem_30000691(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000691(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000691):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000691):
@@ -1798,19 +1798,19 @@ class DetectItem_30000691(common.Trigger):
 
 
 # 30000692
-class PickItem_30000692(common.Trigger):
+class PickItem_30000692(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000692)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_dresser_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000692(self.ctx)
 
 
-class DetectItem_30000692(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000692(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000692):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000692):
@@ -1818,19 +1818,19 @@ class DetectItem_30000692(common.Trigger):
 
 
 # 30000693
-class PickItem_30000693(common.Trigger):
+class PickItem_30000693(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000693)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_massage_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000693(self.ctx)
 
 
-class DetectItem_30000693(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000693(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000693):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000693):
@@ -1838,19 +1838,19 @@ class DetectItem_30000693(common.Trigger):
 
 
 # 30000694
-class PickItem_30000694(common.Trigger):
+class PickItem_30000694(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000694)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Indoor/ke_in_prop_catower_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000694(self.ctx)
 
 
-class DetectItem_30000694(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000694(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000694):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000694):
@@ -1858,19 +1858,19 @@ class DetectItem_30000694(common.Trigger):
 
 
 # 30000695
-class PickItem_30000695(common.Trigger):
+class PickItem_30000695(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000695)
         self.add_effect_nif(spawnId=4012, nifPath='Npc/Etc/UGC_SportsCar_Npc/UGC_SportsCar_Npc_02.nif', isOutline=True, scale=1.2, rotateZ=315)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000695(self.ctx)
 
 
-class DetectItem_30000695(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000695(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000695):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000695):
@@ -1878,19 +1878,19 @@ class DetectItem_30000695(common.Trigger):
 
 
 # 30000696
-class PickItem_30000696(common.Trigger):
+class PickItem_30000696(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000696)
         self.add_effect_nif(spawnId=4012, nifPath='Npc/Etc/UGC_F1RacingCar/UGC_F1RacingCar_01.nif', isOutline=True, scale=1.2, rotateZ=315)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000696(self.ctx)
 
 
-class DetectItem_30000696(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000696(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000696):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000696):
@@ -1898,19 +1898,19 @@ class DetectItem_30000696(common.Trigger):
 
 
 # 30000697
-class PickItem_30000697(common.Trigger):
+class PickItem_30000697(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000697)
         self.add_effect_nif(spawnId=4012, nifPath='Npc/Etc/UGC_Poclain/UGC_Poclain_01.nif', isOutline=True, scale=1.2, rotateZ=315)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000697(self.ctx)
 
 
-class DetectItem_30000697(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000697(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000697):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000697):
@@ -1918,19 +1918,19 @@ class DetectItem_30000697(common.Trigger):
 
 
 # 30000698
-class PickItem_30000698(common.Trigger):
+class PickItem_30000698(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000698)
         self.add_effect_nif(spawnId=4012, nifPath='Npc/Etc/UGC_FlameBike_Npc/UGC_FlameBike_03.nif', isOutline=True, scale=1.2, rotateZ=315)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000698(self.ctx)
 
 
-class DetectItem_30000698(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000698(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000698):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000698):
@@ -1938,19 +1938,19 @@ class DetectItem_30000698(common.Trigger):
 
 
 # 30000699
-class PickItem_30000699(common.Trigger):
+class PickItem_30000699(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000699)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Field/co_fi_prop_tent_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000699(self.ctx)
 
 
-class DetectItem_30000699(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000699(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000699):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000699):
@@ -1958,19 +1958,19 @@ class DetectItem_30000699(common.Trigger):
 
 
 # 30000700
-class PickItem_30000700(common.Trigger):
+class PickItem_30000700(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000700)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Royalcity/Indoor/ry_in_prop_djtable_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000700(self.ctx)
 
 
-class DetectItem_30000700(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000700(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000700):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000700):
@@ -1978,19 +1978,19 @@ class DetectItem_30000700(common.Trigger):
 
 
 # 30000701
-class PickItem_30000701(common.Trigger):
+class PickItem_30000701(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000701)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Indoor/co_in_prop_security_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000701(self.ctx)
 
 
-class DetectItem_30000701(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000701(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000701):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000701):
@@ -1998,19 +1998,19 @@ class DetectItem_30000701(common.Trigger):
 
 
 # 30000702
-class PickItem_30000702(common.Trigger):
+class PickItem_30000702(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000702)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Tria/Indoor/tr_in_prop_workit_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000702(self.ctx)
 
 
-class DetectItem_30000702(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000702(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000702):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000702):
@@ -2018,19 +2018,19 @@ class DetectItem_30000702(common.Trigger):
 
 
 # 30000703
-class PickItem_30000703(common.Trigger):
+class PickItem_30000703(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000703)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Steampunk/Field/sp_fi_prop_anvil_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000703(self.ctx)
 
 
-class DetectItem_30000703(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000703(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000703):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000703):
@@ -2038,19 +2038,19 @@ class DetectItem_30000703(common.Trigger):
 
 
 # 30000704
-class PickItem_30000704(common.Trigger):
+class PickItem_30000704(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000704)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Steampunk/Field/sp_fi_prop_bellows_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000704(self.ctx)
 
 
-class DetectItem_30000704(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000704(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000704):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000704):
@@ -2058,19 +2058,19 @@ class DetectItem_30000704(common.Trigger):
 
 
 # 30000705
-class PickItem_30000705(common.Trigger):
+class PickItem_30000705(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000705)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Steampunk/Field/sp_fi_prop_brazier_C01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000705(self.ctx)
 
 
-class DetectItem_30000705(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000705(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000705):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000705):
@@ -2078,19 +2078,19 @@ class DetectItem_30000705(common.Trigger):
 
 
 # 30000706
-class PickItem_30000706(common.Trigger):
+class PickItem_30000706(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000706)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Indoor/co_in_prop_icebox_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000706(self.ctx)
 
 
-class DetectItem_30000706(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000706(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000706):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000706):
@@ -2098,19 +2098,19 @@ class DetectItem_30000706(common.Trigger):
 
 
 # 30000707
-class PickItem_30000707(common.Trigger):
+class PickItem_30000707(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000707)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Henesys/Indoor/he_in_prop_cushiona_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000707(self.ctx)
 
 
-class DetectItem_30000707(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000707(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000707):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000707):
@@ -2118,19 +2118,19 @@ class DetectItem_30000707(common.Trigger):
 
 
 # 30000708
-class PickItem_30000708(common.Trigger):
+class PickItem_30000708(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000708)
         self.add_effect_nif(spawnId=4012, nifPath='Effect/BG/Liftup/co_liftup_piano_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000708(self.ctx)
 
 
-class DetectItem_30000708(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000708(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000708):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000708):
@@ -2138,19 +2138,19 @@ class DetectItem_30000708(common.Trigger):
 
 
 # 30000709
-class PickItem_30000709(common.Trigger):
+class PickItem_30000709(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000709)
         self.add_effect_nif(spawnId=4012, nifPath='Effect/BG/Liftup/co_liftup_vibraphone_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000709(self.ctx)
 
 
-class DetectItem_30000709(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000709(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000709):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000709):
@@ -2158,19 +2158,19 @@ class DetectItem_30000709(common.Trigger):
 
 
 # 30000710
-class PickItem_30000710(common.Trigger):
+class PickItem_30000710(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000710)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Common/Indoor/co_in_prop_camera_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000710(self.ctx)
 
 
-class DetectItem_30000710(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000710(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000710):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000710):
@@ -2178,19 +2178,19 @@ class DetectItem_30000710(common.Trigger):
 
 
 # 30000711
-class PickItem_30000711(common.Trigger):
+class PickItem_30000711(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000711)
         self.add_effect_nif(spawnId=4012, nifPath='Map/UGC/Indoor/ugc_in_funct_workstone_G01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000711(self.ctx)
 
 
-class DetectItem_30000711(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000711(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000711):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000711):
@@ -2198,19 +2198,19 @@ class DetectItem_30000711(common.Trigger):
 
 
 # 30000712
-class PickItem_30000712(common.Trigger):
+class PickItem_30000712(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000712)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Orient/Indoor/or_in_prop_incense_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000712(self.ctx)
 
 
-class DetectItem_30000712(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000712(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000712):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000712):
@@ -2218,19 +2218,19 @@ class DetectItem_30000712(common.Trigger):
 
 
 # 30000713
-class PickItem_30000713(common.Trigger):
+class PickItem_30000713(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000713)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Steampunk/Indoor/sp_in_prop_desk_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000713(self.ctx)
 
 
-class DetectItem_30000713(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000713(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000713):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000713):
@@ -2238,19 +2238,19 @@ class DetectItem_30000713(common.Trigger):
 
 
 # 30000714
-class PickItem_30000714(common.Trigger):
+class PickItem_30000714(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000714)
         self.add_effect_nif(spawnId=4012, nifPath='Map/SF/Field/sf_fi_prop_incubator_D01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000714(self.ctx)
 
 
-class DetectItem_30000714(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000714(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000714):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000714):
@@ -2258,19 +2258,19 @@ class DetectItem_30000714(common.Trigger):
 
 
 # 30000715
-class PickItem_30000715(common.Trigger):
+class PickItem_30000715(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000715)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Steampunk/Field/sp_fi_prop_brazier_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000715(self.ctx)
 
 
-class DetectItem_30000715(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000715(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000715):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000715):
@@ -2278,19 +2278,19 @@ class DetectItem_30000715(common.Trigger):
 
 
 # 30000716
-class PickItem_30000716(common.Trigger):
+class PickItem_30000716(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000716)
         self.add_effect_nif(spawnId=4012, nifPath='Map/Kerningcity/Field/ke_fi_prop_tire_A02.nif', isOutline=True, scale=1.2, rotateZ=225)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=0):
             return DetectItem_30000716(self.ctx)
 
 
-class DetectItem_30000716(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DetectItem_30000716(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9204], itemId=30000716):
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9204], itemId=30000716):
@@ -2298,7 +2298,7 @@ class DetectItem_30000716(common.Trigger):
 
 
 # 미션 성공
-class RightItem(common.Trigger):
+class RightItem(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Right_01')
@@ -2306,44 +2306,44 @@ class RightItem(common.Trigger):
         self.set_conversation(type=1, spawnId=4012, script='$02000387_BF__4012_CUSTOMER__0$', arg4=3, arg5=0)
         self.add_buff(boxIds=[9900], skillId=70000112, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return CustomerLeave(self.ctx)
 
 
-class CustomerLeave(common.Trigger):
+class CustomerLeave(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=4012, patrolName='MS2PatrolData_444')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9304, spawnIds=[4012]):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[4012])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Wait(self.ctx)
 
 
 # 잘못된 아이템을 내려놓으면
-class WrongItem(common.Trigger):
+class WrongItem(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5104], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Wrong_01')
         self.remove_effect_nif(spawnId=4012)
         self.set_conversation(type=1, spawnId=4012, script='$02000387_BF__4012_CUSTOMER__1$', arg4=3, arg5=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return WrongItemReturn(self.ctx)
 
 
-class WrongItemReturn(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class WrongItemReturn(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ItemNumber', value=30000617):
             return PickItem_30000617(self.ctx)
         if self.user_value(key='ItemNumber', value=30000618):

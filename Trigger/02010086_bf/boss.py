@@ -1,84 +1,84 @@
 """ trigger/02010086_bf/boss.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=799, boxId=1):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[995,999,998])
         self.create_monster(spawnIds=[199], animationEffect=True) # (임시) 보스몹 스폰
         self.set_timer(timerId='10', seconds=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
         if self.time_expired(timerId='10'):
             return 소환_01(self.ctx)
 
 
-class 소환_01(common.Trigger):
+class 소환_01(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[181,188], animationEffect=True) # (임시) 보스몹 스폰
         self.set_timer(timerId='10', seconds=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
         if self.time_expired(timerId='10'):
             return 소환_02(self.ctx)
 
 
-class 소환_02(common.Trigger):
+class 소환_02(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[182,187], animationEffect=True) # (임시) 보스몹 스폰
         self.set_timer(timerId='10', seconds=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
         if self.time_expired(timerId='10'):
             return 소환_03(self.ctx)
 
 
-class 소환_03(common.Trigger):
+class 소환_03(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[183,186], animationEffect=True) # (임시) 보스몹 스폰
         self.set_timer(timerId='10', seconds=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
         if self.time_expired(timerId='10'):
             return 소환_04(self.ctx)
 
 
-class 소환_04(common.Trigger):
+class 소환_04(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[184,185], animationEffect=True) # (임시) 보스몹 스폰
         self.set_timer(timerId='20', seconds=20)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
         if self.time_expired(timerId='20'):
             return 소환_05(self.ctx)
 
 
-class 소환_05(common.Trigger):
+class 소환_05(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[996], animationEffect=True) # (임시) 보스몹 스폰
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
 
 
-class 포탈_개방(common.Trigger):
+class 포탈_개방(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[181,182,183,184,185,186,187,188,997,996,995])
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')

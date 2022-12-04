@@ -1,25 +1,25 @@
 """ trigger/52020035_qd/main30000318.xml """
-import common
+import trigger_api
 
 
 # 퀘스트 수락 후 연출 시작
-class idle3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[703], questIds=[30000318], questStates=[2]):
             return 연출시작3(self.ctx)
 
 
 # 라딘과 대화 시작
-class 연출시작3(common.Trigger):
+class 연출시작3(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=8, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 연출시작3_1(self.ctx)
 
 
-class 연출시작3_1(common.Trigger):
+class 연출시작3_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -37,75 +37,75 @@ class 연출시작3_1(common.Trigger):
         self.create_monster(spawnIds=[121], animationEffect=False, animationDelay=0) # 연출카일
         self.select_camera_path(pathIds=[4026], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 뒷이야기(self.ctx)
 
 
-class 뒷이야기(common.Trigger):
+class 뒷이야기(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=8, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003754, msg='크크큭... 착한 연기 잘 하는군. 라딘.', duration=3000)
         self.set_scene_skip(state=끝, action='exit')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return 뒷이야기01(self.ctx)
 
 
-class 뒷이야기_02(common.Trigger):
+class 뒷이야기_02(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[4028], returnView=False)
         self.add_cinematic_talk(npcId=11003753, msg='...', duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return 뒷이야기01(self.ctx)
 
 
-class 뒷이야기01(common.Trigger):
+class 뒷이야기01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[4030], returnView=False)
         self.set_npc_emotion_sequence(spawnId=119, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003756, msg='훗. 생각보다 잘 넘어간 것 같군요.', duration=3000)
         self.add_cinematic_talk(npcId=11003759, msg='쳇, 복잡하게 만들지 말고 그냥 죽어버리면 되잖아?', duration=4000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return 뒷이야기02(self.ctx)
 
 
-class 뒷이야기02(common.Trigger):
+class 뒷이야기02(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[4026], returnView=False)
         self.add_cinematic_talk(npcId=11003754, msg='하렌. 그럼 우리도 다음 작전을 이야기 해 볼까.', duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 뒷이야기02_1(self.ctx)
 
 
-class 뒷이야기02_1(common.Trigger):
+class 뒷이야기02_1(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[4031], returnView=False)
         self.move_npc(spawnId=119, patrolName='MS2PatrolData_3008')
         self.add_cinematic_talk(npcId=11003756, msg='...후훗.', duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 끝(self.ctx)
 
 
-class 끝(common.Trigger):
+class 끝(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=9, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 초기화(self.ctx)
 
 
-class 초기화(common.Trigger):
+class 초기화(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=9, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)

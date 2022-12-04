@@ -1,14 +1,14 @@
 """ trigger/02000521_bf/normal.xml """
-import common
+import trigger_api
 
 
-class roomCheck2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class roomCheck2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return idle(self.ctx)
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101,102,103,104,105], animationEffect=False)
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=False) # 1층 피직
@@ -122,12 +122,12 @@ class idle(common.Trigger):
         self.set_ladder(triggerIds=[1617], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[1618], visible=False, animationEffect=False, animationDelay=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101,102,103,104,105]):
             return step_02(self.ctx)
 
 
-class step_02(common.Trigger):
+class step_02(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=True) # 1층 피직
         self.set_ladder(triggerIds=[1101], visible=True, animationEffect=True, animationDelay=1)
@@ -185,21 +185,21 @@ class step_02(common.Trigger):
         self.set_ladder(triggerIds=[1317], visible=True, animationEffect=True, animationDelay=16)
         self.set_ladder(triggerIds=[1318], visible=True, animationEffect=True, animationDelay=17)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[702]):
             return step_03(self.ctx)
 
 
-class step_03(common.Trigger):
+class step_03(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[201,202,203], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[201,202,203]):
             return step_04(self.ctx)
 
 
-class step_04(common.Trigger):
+class step_04(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[1401], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1402], visible=True, animationEffect=True, animationDelay=2)
@@ -238,27 +238,27 @@ class step_04(common.Trigger):
         self.set_ladder(triggerIds=[1517], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1518], visible=True, animationEffect=True, animationDelay=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[703]):
             return step_05(self.ctx)
 
 
-class step_05(common.Trigger):
+class step_05(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[301,302,303], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[301,302,303]):
             return step_06(self.ctx)
 
 
-class step_06(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class step_06(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LadderGoBossRoom', value=1):
             return step_07(self.ctx)
 
 
-class step_07(common.Trigger):
+class step_07(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1800,1801,1802,1803,1804,1805,1806,1807,1808,1809], visible=True) # 3층 피직
         self.set_ladder(triggerIds=[1601], visible=True, animationEffect=True, animationDelay=2)

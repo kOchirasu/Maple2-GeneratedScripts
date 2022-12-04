@@ -1,14 +1,14 @@
 """ trigger/02000213_bf/spawncheck.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=102, spawnIds=[1099]):
             return 잡몹소멸(self.ctx)
 
 
-class 잡몹소멸(common.Trigger):
+class 잡몹소멸(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[1001])
         self.destroy_monster(spawnIds=[1002])
@@ -41,7 +41,7 @@ class 잡몹소멸(common.Trigger):
         self.destroy_monster(spawnIds=[1029])
         self.destroy_monster(spawnIds=[1030])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1099]):
             return 대기(self.ctx)
 

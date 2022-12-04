@@ -1,11 +1,11 @@
 """ trigger/02100002_bf/01_maincontrol.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkuser10_guildraid.py
 from dungeon_common.checkuser10_guildraid import *
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=False) # RainbowSlime_Sound
         self.set_effect(triggerIds=[5002], visible=False) # PoopSlime_Sound
@@ -25,12 +25,12 @@ class Wait(common.Trigger):
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False) # 아래층에서 위 층으로 올라갈 수 있는 일방 포탈
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
+class LoadingDelay(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3700,3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716,3717,3718,3719,3720,3721,3722,3723,3724,3725,3726,3727,3728,3729,3730,3731,3732,3733,3734,3735,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3747,3748,3749,3750,3751,3752,3753,3754,3755,3756,3757,3758,3759,3760,3761,3762,3763,3764,3765,3766,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776,3777,3778,3779,3780,3781,3782,3783,3784,3785,3786,3787,3788,3789,3790,3791,3792,3793,3794,3795,3796,3797,3798,3799], visible=True, arg3=0, delay=0, scale=0) # 빨강 게이지 샘플
         self.set_mesh(triggerIds=[3800,3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816,3817,3818,3819], visible=True, arg3=0, delay=0, scale=0) # 용광로 더미 몬스터 : 슬라임 죽이기
@@ -47,14 +47,14 @@ class LoadingDelay(common.Trigger):
         self.widget_action(type='RainbowMonster', func='SetBadNpcScore', widgetArg='2-5', desc='2~5칸 게이지가 떨어진다')
         self.widget_action(type='RainbowMonster', func='SetBadNpcSoundKey', widgetArg='GuildRaid_RainbowSlimeFactory_ScreenWarning_01', desc='게이지가 떨어질때 플레이할 사운드')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return MaxGaugePattern_Random(self.ctx)
 
 
 # MaxGaugePatter_RandomPick
 # 5개의 그룹에서 100, 120, 140, 160, 180, 200 값 중 중복 없이 5개  Pick : 조합
-class MaxGaugePattern_Random(common.Trigger):
+class MaxGaugePattern_Random(trigger_api.Trigger):
     def on_enter(self):
         self.widget_action(type='RainbowMonster', func='InitRandomMaxScore', widgetArg='120,120,140,140,160,160')
         # <action name="WidgetAction" arg1="RainbowMonster" arg2="ShowMaxScore" />
@@ -64,155 +64,155 @@ class MaxGaugePattern_Random(common.Trigger):
         self.widget_action(type='RainbowMonster', func='InitScoreMesh', widgetArgNum=4, widgetArg='3500')
         self.widget_action(type='RainbowMonster', func='InitScoreMesh', widgetArgNum=5, widgetArg='3400')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return CheckUser10_GuildRaid(self.ctx)
 
 
-class DungeonStart(common.Trigger):
+class DungeonStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_intro()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ShowCaption01(self.ctx)
 
 
 # 설명문 출력
-class ShowCaption01(common.Trigger):
+class ShowCaption01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_intro(text='$02100002_BF__01_MAINCONTROL__0$')
         self.set_skip(state=ShowCaption01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return ShowCaption01Skip(self.ctx)
 
 
-class ShowCaption01Skip(common.Trigger):
+class ShowCaption01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ShowCaption02(self.ctx)
 
 
-class ShowCaption02(common.Trigger):
+class ShowCaption02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_intro(text='$02100002_BF__01_MAINCONTROL__1$')
         self.set_skip(state=ShowCaption02Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return ShowCaption02Skip(self.ctx)
 
 
-class ShowCaption02Skip(common.Trigger):
+class ShowCaption02Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ShowCaption03(self.ctx)
 
 
-class ShowCaption03(common.Trigger):
+class ShowCaption03(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=900, enable=True)
         self.set_cinematic_intro(text='$02100002_BF__01_MAINCONTROL__2$')
         self.set_skip(state=ShowCaption03Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return ShowCaption03Skip(self.ctx)
 
 
-class ShowCaption03Skip(common.Trigger):
+class ShowCaption03Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return ShowCaption04(self.ctx)
 
 
-class ShowCaption04(common.Trigger):
+class ShowCaption04(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=901, enable=True)
         self.set_cinematic_intro(text='$02100002_BF__01_MAINCONTROL__3$')
         self.set_skip(state=ShowCaption04Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return ShowCaption04Skip(self.ctx)
 
 
-class ShowCaption04Skip(common.Trigger):
+class ShowCaption04Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return ShowCaption05(self.ctx)
 
 
-class ShowCaption05(common.Trigger):
+class ShowCaption05(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=902, enable=True)
         self.set_cinematic_intro(text='$02100002_BF__01_MAINCONTROL__4$')
         self.set_skip(state=ShowCaption05Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=20000):
             return ShowCaption05Skip(self.ctx)
 
 
-class ShowCaption05Skip(common.Trigger):
+class ShowCaption05Skip(trigger_api.Trigger):
     def on_enter(self):
         self.set_skip()
         self.reset_camera(interpolationTime=1)
         self.set_user_value(triggerId=2, key='GuideNpcSpawn', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return CloseCaptionSetting(self.ctx)
 
 
-class CloseCaptionSetting(common.Trigger):
+class CloseCaptionSetting(trigger_api.Trigger):
     def on_enter(self):
         self.close_cinematic() # 컬러 게이지 샘플
         self.set_mesh(triggerIds=[3700,3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716,3717,3718,3719,3720,3721,3722,3723,3724,3725,3726,3727,3728,3729,3730,3731,3732,3733,3734,3735,3736,3737,3738,3739,3740,3741,3742,3743,3744,3745,3746,3747,3748,3749,3750,3751,3752,3753,3754,3755,3756,3757,3758,3759,3760,3761,3762,3763,3764,3765,3766,3767,3768,3769,3770,3771,3772,3773,3774,3775,3776,3777,3778,3779,3780,3781,3782,3783,3784,3785,3786,3787,3788,3789,3790,3791,3792,3793,3794,3795,3796,3797,3798,3799], visible=False, arg3=0, delay=0, scale=0) # 빨강 게이지 샘플
         self.set_mesh(triggerIds=[3800,3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816,3817,3818,3819], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Guide01(self.ctx)
 
 
-class Guide01(common.Trigger):
+class Guide01(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=99, key='PortalOn', value=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02100002_BF__01_MAINCONTROL__5$', arg3='5000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Guide02(self.ctx)
 
 
-class Guide02(common.Trigger):
+class Guide02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02100002_BF__01_MAINCONTROL__6$', arg3='3000') # 공장 가동하기
         self.set_interact_object(triggerIds=[10001239], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001239], stateValue=0):
             return Guide03(self.ctx)
 
 
-class Guide03(common.Trigger):
+class Guide03(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='GuildRaid_RainbowSlimeFactory_MachineOn_01')
         self.set_event_ui(type=1, arg2='$02100002_BF__01_MAINCONTROL__7$', arg3='2000')
@@ -228,29 +228,29 @@ class Guide03(common.Trigger):
         self.set_user_value(triggerId=24, key='ActivateHolder', value=1)
         self.set_user_value(triggerId=25, key='ActivateHolder', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return TimmerStart(self.ctx)
 
 
-class TimmerStart(common.Trigger):
+class TimmerStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=99, key='MissionStart', value=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01') # 제한 시간 10분
         self.set_timer(timerId='10000', seconds=600, startDelay=1, interval=1, vOffset=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=60000):
             return EnableCheckOutput(self.ctx)
 
 
-class EnableCheckOutput(common.Trigger):
+class EnableCheckOutput(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02100002_BF__01_MAINCONTROL__8$', arg3='3000') # 결과 출력하기 반응 오브젝트
         self.set_interact_object(triggerIds=[10001240], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001240], stateValue=0):
             return CheckSuccess(self.ctx)
         if self.time_expired(timerId='10000'):
@@ -272,11 +272,11 @@ class EnableCheckOutput(common.Trigger):
         self.set_interact_object(triggerIds=[10001234], state=0)
 
 
-class CheckSuccess(common.Trigger):
+class CheckSuccess(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='RainbowMonster', name='IsMissionSuccess', condition='19-21'):
             return HappyEndingStart(self.ctx)
         if not self.widget_condition(type='RainbowMonster', name='IsMissionSuccess', condition='19-21'):
@@ -284,7 +284,7 @@ class CheckSuccess(common.Trigger):
 
 
 # BadEnding 연출
-class BadEndingStart(common.Trigger):
+class BadEndingStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -292,29 +292,29 @@ class BadEndingStart(common.Trigger):
         self.play_system_sound_in_box(sound='GuildRaid_RainbowSlimeFactory_Result_01')
         self.move_user(mapId=2100002, portalId=2, boxId=9901) # 용광로 안에 있는 PC 안전한 곳으로 이동
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return BadEndingSpawn(self.ctx)
 
 
-class BadEndingSpawn(common.Trigger):
+class BadEndingSpawn(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=908, enable=True)
         self.set_effect(triggerIds=[5002], visible=True) # PoopSlime_Sound
         self.create_monster(spawnIds=[2000], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return BadEndingEnd(self.ctx)
 
 
-class BadEndingEnd(common.Trigger):
+class BadEndingEnd(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return MissionFail(self.ctx)
 
@@ -323,7 +323,7 @@ class BadEndingEnd(common.Trigger):
 
 
 # HappyEnding 연출
-class HappyEndingStart(common.Trigger):
+class HappyEndingStart(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -331,29 +331,29 @@ class HappyEndingStart(common.Trigger):
         self.play_system_sound_in_box(sound='GuildRaid_RainbowSlimeFactory_Result_01')
         self.move_user(mapId=2100002, portalId=2, boxId=9901) # 용광로 안에 있는 PC 안전한 곳으로 이동
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return HappyEndingSpawn(self.ctx)
 
 
-class HappyEndingSpawn(common.Trigger):
+class HappyEndingSpawn(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=908, enable=True)
         self.set_effect(triggerIds=[5001], visible=True) # RainbowSlime_Sound
         self.create_monster(spawnIds=[1000], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return HappyEndingEnd(self.ctx)
 
 
-class HappyEndingEnd(common.Trigger):
+class HappyEndingEnd(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return DungeonSuccess(self.ctx)
 
@@ -362,49 +362,49 @@ class HappyEndingEnd(common.Trigger):
 
 
 # 던전 클리어 선언
-class DungeonSuccess(common.Trigger):
+class DungeonSuccess(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_achievement(triggerId=9902, type='trigger', achieve='Find02100002')
         self.set_event_ui(type=7, arg2='$02100002_BF__01_MAINCONTROL__10$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ExitPortalOn(self.ctx)
 
 
-class MissionFail(common.Trigger):
+class MissionFail(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='10000')
         self.set_event_ui(type=5, arg2='$02100002_BF__01_MAINCONTROL__9$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return DungeonFail(self.ctx)
 
 
 # 던전 실패 선언
-class DungeonFail(common.Trigger):
+class DungeonFail(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_fail() # 아래층에서 위 층으로 올라갈 수 있는 일방 포탈
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ExitPortalOn(self.ctx)
 
 
-class ExitPortalOn(common.Trigger):
+class ExitPortalOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_user_value(triggerId=99, key='DungeonClear', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     pass
 
 

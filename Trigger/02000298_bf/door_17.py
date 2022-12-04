@@ -1,8 +1,8 @@
 """ trigger/02000298_bf/door_17.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=217, visible=True, initialSequence='Closed')
         self.set_mesh(triggerIds=[3171], visible=True, arg3=0, delay=0, scale=0)
@@ -11,12 +11,12 @@ class 시작(common.Trigger):
         self.set_agent(triggerIds=[9172], visible=True)
         self.set_agent(triggerIds=[9173], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[117]):
             return 문열림(self.ctx)
 
 
-class 문열림(common.Trigger):
+class 문열림(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=217, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3171], visible=False, arg3=0, delay=0, scale=5)

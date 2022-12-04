@@ -1,39 +1,39 @@
 """ trigger/52010056_qd/eventsection_d.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return Ready(self.ctx)
 
 
-class Ready(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=2005, spawnIds=[999]):
             return 연출준비(self.ctx)
 
 
-class 연출준비(common.Trigger):
+class 연출준비(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.select_camera_path(pathIds=[4006], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return 경비병_외침(self.ctx)
 
 
-class 경비병_외침(common.Trigger):
+class 경비병_외침(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_sequence(spawnId=999, sequenceName='Attack_01_B')
         self.add_cinematic_talk(npcId=11003816, msg='$52010056_QD__EventSection_D__0$', duration=3727)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3727):
             return 크림슨스피어_출동(self.ctx)
 
@@ -56,16 +56,16 @@ class 경비병_외침(common.Trigger):
         self.change_monster(removeSpawnId=999, addSpawnId=901)
 
 
-class 크림슨스피어_출동(common.Trigger):
+class 크림슨스피어_출동(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera_path(pathIds=[4007], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return 연출종료(self.ctx)
 
 
-class 연출종료(common.Trigger):
+class 연출종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

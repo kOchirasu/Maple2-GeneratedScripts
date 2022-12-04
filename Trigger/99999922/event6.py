@@ -1,36 +1,36 @@
 """ trigger/99999922/event6.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[2002])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[999910]):
             return 진행1(self.ctx)
 
 
-class 진행1(common.Trigger):
+class 진행1(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='300', seconds=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2002]):
             return 진행2(self.ctx)
 
 
-class 진행2(common.Trigger):
+class 진행2(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[999910], skillId=49179111, level=1, isSkillSet=True)
         self.set_timer(timerId='300', seconds=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='300'):
             return 시작10(self.ctx)
 
 
-class 시작10(common.Trigger):
+class 시작10(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='400', seconds=60)
 

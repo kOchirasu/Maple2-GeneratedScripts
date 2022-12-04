@@ -1,8 +1,8 @@
 """ trigger/02000245_bf/trigger_01_02.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[802], visible=True, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7021], enable=True)
@@ -46,12 +46,12 @@ class 대기(common.Trigger):
         self.set_effect(triggerIds=[939], visible=True)
         self.set_effect(triggerIds=[940], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[208]):
             return 단계1(self.ctx)
 
 
-class 단계1(common.Trigger):
+class 단계1(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[802], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7021], enable=False)

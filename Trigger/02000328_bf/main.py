@@ -1,11 +1,11 @@
 """ trigger/02000328_bf/main.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[7001], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[7002], visible=False, animationEffect=False)
@@ -41,18 +41,18 @@ class 대기(common.Trigger):
         self.create_monster(spawnIds=[1401,1402,1403,1404,1405], animationEffect=False)
         self.set_cube(triggerIds=[5001,5002,5003,5004], isVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[999998]):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DungeonStart(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 하층시작(self.ctx)
 
 
-class 하층시작(common.Trigger):
+class 하층시작(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[999998], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.show_guide_summary(entityId=20003285, textId=20003285, duration=5000)
@@ -60,16 +60,16 @@ class 하층시작(common.Trigger):
         self.select_camera(triggerId=60000, enable=True)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017], visible=False, arg3=500, delay=100, scale=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 카메라줌인(self.ctx)
 
 
-class 카메라줌인(common.Trigger):
+class 카메라줌인(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=60001, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
             self.show_guide_summary(entityId=20003286, textId=20003286, duration=5000)
@@ -78,35 +78,35 @@ class 카메라줌인(common.Trigger):
             return 웨폰오브젝트대기(self.ctx)
 
 
-class 웨폰오브젝트대기(common.Trigger):
+class 웨폰오브젝트대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_cube(triggerIds=[5001,5002,5003,5004], isVisible=True)
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[999997]):
             self.set_effect(triggerIds=[84002], visible=True)
             self.set_conversation(type=1, spawnId=2001, script='$02000328_BF__MAIN__6$', arg4=5, arg5=0)
             return 하층클리어대기(self.ctx)
 
 
-class 하층클리어대기(common.Trigger):
+class 하층클리어대기(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003286, textId=20003286, duration=5000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[10000,10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015]):
             return 상층시작딜레이(self.ctx)
 
 
-class 상층시작딜레이(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 상층시작딜레이(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 상층시작(self.ctx)
 
 
-class 상층시작(common.Trigger):
+class 상층시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_ladder(triggerIds=[7001], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[7002], visible=True, animationEffect=True)
@@ -122,25 +122,25 @@ class 상층시작(common.Trigger):
         self.show_guide_summary(entityId=20003282, textId=20003282)
         self.select_camera(triggerId=60002, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
             self.select_camera(triggerId=60002, enable=False)
             return 보스소환조건(self.ctx)
 
 
-class 보스소환조건(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 보스소환조건(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1101,1102,1103,1104,1201,1202,1203,1204,1205,1301,1302,1303,1304,1401,1402,1403,1404,1405,1105,1305]):
             return 보스소환딜레이(self.ctx)
 
 
-class 보스소환딜레이(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 보스소환딜레이(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 보스소환(self.ctx)
 
 
-class 보스소환(common.Trigger):
+class 보스소환(trigger_api.Trigger):
     def on_enter(self):
         self.hide_guide_summary(entityId=20003282)
         self.show_guide_summary(entityId=20003283, textId=20003283, duration=5000)
@@ -149,50 +149,50 @@ class 보스소환(common.Trigger):
         self.select_camera(triggerId=60003, enable=True)
         self.create_monster(spawnIds=[1501], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 진행3(self.ctx)
 
 
-class 진행3(common.Trigger):
+class 진행3(trigger_api.Trigger):
     def on_enter(self):
         self.remove_buff(boxId=999998, skillId=70000107)
         self.select_camera(triggerId=60003, enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1501]):
             return 진행4(self.ctx)
 
 
-class 진행4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 진행4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 진행5(self.ctx)
 
 
-class 진행5(common.Trigger):
+class 진행5(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=999996, key='clearafter', value=1)
         self.create_monster(spawnIds=[2000], animationEffect=False)
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData0')
         self.set_conversation(type=1, spawnId=2000, script='$02000328_BF__MAIN__5$', arg4=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 진행6(self.ctx)
 
 
-class 진행6(common.Trigger):
+class 진행6(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=60002, enable=True)
         self.set_conversation(type=1, spawnId=2000, script='$02000328_BF__MAIN__4$', arg4=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 진행7(self.ctx)
 
 
-class 진행7(common.Trigger):
+class 진행7(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[90000], visible=False)
         self.set_effect(triggerIds=[84000], visible=True)
@@ -247,19 +247,19 @@ class 진행7(common.Trigger):
         self.set_mesh(triggerIds=[452], visible=False, arg3=3800, delay=50, scale=2)
         self.set_mesh(triggerIds=[453], visible=False, arg3=3900, delay=50, scale=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
             self.select_camera(triggerId=60002, enable=False)
             return 진행8(self.ctx)
 
 
-class 진행8(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 진행8(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 진행9(self.ctx)
 
 
-class 진행9(common.Trigger):
+class 진행9(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=999998, type='trigger', achieve='ClearPollutedgarden') # ClearPollutedgarden 퀘스트
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
@@ -267,13 +267,13 @@ class 진행9(common.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003284, textId=20003284)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             self.hide_guide_summary(entityId=20003284)
             return 종료2(self.ctx)
 
 
-class 종료2(common.Trigger):
+class 종료2(trigger_api.Trigger):
     pass
 
 

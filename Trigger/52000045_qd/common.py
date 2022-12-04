@@ -1,9 +1,9 @@
 """ trigger/52000045_qd/common.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=702, spawnIds=[201]):
             return npc_exit_01(self.ctx)
         if self.npc_detected(boxId=702, spawnIds=[202]):
@@ -18,56 +18,56 @@ class idle(common.Trigger):
             return npc_exit_06(self.ctx)
 
 
-class npc_exit_01(common.Trigger):
+class npc_exit_01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[201])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 
 
-class npc_exit_02(common.Trigger):
+class npc_exit_02(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[202])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 
 
-class npc_exit_03(common.Trigger):
+class npc_exit_03(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[203])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 
 
-class npc_exit_04(common.Trigger):
+class npc_exit_04(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[204])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 
 
-class npc_exit_05(common.Trigger):
+class npc_exit_05(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[205])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 
 
-class npc_exit_06(common.Trigger):
+class npc_exit_06(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[206])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return idle(self.ctx)
 

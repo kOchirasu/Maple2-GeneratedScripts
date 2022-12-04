@@ -1,8 +1,8 @@
 """ trigger/02000241_bf/trigger_04_01.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     pass
 
 

@@ -1,12 +1,12 @@
 """ trigger/02000317_bf/vehicle.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001047], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001047], stateValue=0):
             return hide(self.ctx)
 
@@ -14,7 +14,7 @@ class idle(common.Trigger):
         self.set_interact_object(triggerIds=[10001047], state=2)
 
 
-class hide(common.Trigger):
+class hide(trigger_api.Trigger):
     pass
 
 

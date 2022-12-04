@@ -1,11 +1,11 @@
 """ trigger/02000471_bf/main.xml """
-import common
+import trigger_api
 
 #include dungeon_common/checkusercount.py
 from dungeon_common.checkusercount import *
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=2040314, key='TimerStart', value=0)
         self.set_user_value(triggerId=2040322, key='Boss', value=0)
@@ -27,18 +27,18 @@ class idle(common.Trigger):
         self.create_monster(spawnIds=[101,102,103,104], animationEffect=False)
         self.create_monster(spawnIds=[199], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return CheckUserCount(self.ctx)
 
 
-class DungeonStart(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class DungeonStart(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return Ready(self.ctx)
 
 
-class Ready(common.Trigger):
+class Ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -48,19 +48,19 @@ class Ready(common.Trigger):
         self.set_directional_light(diffuseColor=[10,10,10], specularColor=[0,0,0])
         self.add_buff(boxIds=[701], skillId=71000009, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return start(self.ctx)
 
 
-class start(common.Trigger):
+class start(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1801,1802], visible=False, arg3=0, delay=0, scale=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimerEnd', value=1):
             return dungeonfail(self.ctx)
         if self.user_value(key='InteractClear', value=1):
@@ -73,13 +73,13 @@ class start(common.Trigger):
         self.destroy_monster(spawnIds=[150,151,152,153,154,155,156])
 
 
-class dungeonfail(common.Trigger):
+class dungeonfail(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_fail()
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
 
-class boss_scene(common.Trigger):
+class boss_scene(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip(state=boss, action='exit')
         self.set_sound(triggerId=9900, enable=True) # 보스 등장하면 보스용 BGM으로 교체하기
@@ -96,29 +96,29 @@ class boss_scene(common.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return boss_scene_02(self.ctx)
 
 
-class boss_scene_02(common.Trigger):
+class boss_scene_02(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[8006,8007], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return boss_scene_03(self.ctx)
 
 
-class boss_scene_03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class boss_scene_03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return boss_scene_04(self.ctx)
 
 
-class boss_scene_04(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class boss_scene_04(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return boss(self.ctx)
 
@@ -126,7 +126,7 @@ class boss_scene_04(common.Trigger):
         self.reset_camera(interpolationTime=0)
 
 
-class boss(common.Trigger):
+class boss(trigger_api.Trigger):
     def on_enter(self):
         self.set_scene_skip()
         self.destroy_monster(spawnIds=[311,312,313,314,315,316,2000])
@@ -153,23 +153,23 @@ class boss(common.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__MAIN__0$', arg3='3000')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1999]):
             return dungeonClear_ready(self.ctx)
 
 
-class dungeonClear_ready(common.Trigger):
+class dungeonClear_ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=9900, enable=False)
         self.set_user_value(triggerId=2040324, key='respawn', value=2)
         self.destroy_monster(spawnIds=[301,302,303,304,305,306])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return dungeonClear(self.ctx)
 
 
-class dungeonClear(common.Trigger):
+class dungeonClear(trigger_api.Trigger):
     def on_enter(self):
         self.dungeon_clear()
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

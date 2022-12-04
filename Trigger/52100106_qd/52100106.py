@@ -1,16 +1,16 @@
 """ trigger/52100106_qd/52100106.xml """
-import common
+import trigger_api
 
 
-class Ready(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[91000880], questStates=[3]):
             return 들킴(self.ctx)
         if self.quest_user_detected(boxIds=[2001], questIds=[91000890], questStates=[2]):
             return 들킴(self.ctx)
 
 
-class 들킴(common.Trigger):
+class 들킴(trigger_api.Trigger):
     def on_enter(self):
         self.set_ambient_light(primary=[232,92,53])
         self.set_directional_light(diffuseColor=[41,21,18], specularColor=[130,130,130])

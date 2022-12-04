@@ -1,18 +1,18 @@
 """ trigger/02020111_bf/message.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Message', value=0):
             return 메세지출력(self.ctx)
 
 
-class 메세지출력(common.Trigger):
+class 메세지출력(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02020111_BF__MESSAGE__0$', arg3='4000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Message', value=1):
             return 시작(self.ctx)
 

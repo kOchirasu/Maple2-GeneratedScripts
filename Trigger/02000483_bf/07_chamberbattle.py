@@ -1,8 +1,8 @@
 """ trigger/02000483_bf/07_chamberbattle.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False) # ToNextMap
         self.set_interact_object(triggerIds=[10002046], state=0) # Chair
@@ -13,73 +13,73 @@ class Wait(common.Trigger):
         self.set_mesh(triggerIds=[3920], visible=False, arg3=0, delay=0, scale=0) # RockOpened
         self.set_effect(triggerIds=[5300], visible=False) # StoneGate
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9400]):
             return LoadingDelay(self.ctx)
 
 
-class LoadingDelay(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class LoadingDelay(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return GuideFindPortal(self.ctx)
 
 
-class GuideFindPortal(common.Trigger):
+class GuideFindPortal(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039706, textId=20039706) # 가이드 : 다른 방으로 이동할 단서를 찾으세요
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return MobTrapOn(self.ctx)
 
 
-class MobTrapOn(common.Trigger):
+class MobTrapOn(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[940,941,942], animationEffect=False) # Mob
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return MobTrapOnEnd(self.ctx)
 
 
-class MobTrapOnEnd(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class MobTrapOnEnd(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[940,941,942]):
             return SwichOn(self.ctx)
 
 
-class SwichOn(common.Trigger):
+class SwichOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002046], state=1) # LeverForLadder01
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002046], stateValue=0):
             return RockMove01(self.ctx)
 
 
-class RockMove01(common.Trigger):
+class RockMove01(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3910], visible=False, arg3=100, delay=0, scale=2) # RockClosed
         self.set_breakable(triggerIds=[6200], enable=True) # Rock
         self.set_visible_breakable_object(triggerIds=[6200], visible=True) # Rock
         self.set_effect(triggerIds=[5300], visible=True) # StoneGate
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return RockMove02(self.ctx)
 
 
-class RockMove02(common.Trigger):
+class RockMove02(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=False) # ToNextMap
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return RockMove03(self.ctx)
 
 
-class RockMove03(common.Trigger):
+class RockMove03(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3920], visible=True, arg3=0, delay=0, scale=0) # RockOpened
         self.set_breakable(triggerIds=[6200], enable=False) # Rock

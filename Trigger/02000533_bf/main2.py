@@ -1,15 +1,15 @@
 """ trigger/02000533_bf/main2.xml """
-import common
+import trigger_api
 
 
 # 플레이어 감지
-class idle(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[703], jobCode=0):
             return 서브몬스터1(self.ctx)
 
 
-class 서브몬스터1(common.Trigger):
+class 서브몬스터1(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[601,602,607,608,609,610], animationEffect=False)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_5000')
@@ -22,25 +22,25 @@ class 서브몬스터1(common.Trigger):
         self.add_balloon_talk(spawnId=601, msg='$02000533_BF__MAIN2__2$', duration=3500, delayTick=1500)
         self.add_balloon_talk(spawnId=607, msg='$02000533_BF__MAIN2__3$', duration=3500, delayTick=500)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3500):
             return 서브몬스터2(self.ctx)
 
 
-class 서브몬스터2(common.Trigger):
+class 서브몬스터2(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[601,602,607,608,609,610])
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 서브몬스터3(self.ctx)
 
 
-class 서브몬스터3(common.Trigger):
+class 서브몬스터3(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[6601,6602,6607,6608,6609,6610], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[6601,6602,6607,6608,6609,6610]):
             return None # Missing State: 
 

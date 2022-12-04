@@ -1,9 +1,9 @@
 """ trigger/52100013_qd/main.xml """
-import common
+import trigger_api
 
 
 # 플레이어 감지
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[7001], visible=False)
         self.enable_spawn_point_pc(spawnId=11001, isEnable=True)
@@ -15,20 +15,20 @@ class idle(common.Trigger):
         self.move_user(mapId=52100013, portalId=2)
         self.set_local_camera(cameraId=8001, enable=True) # LocalTargetCamera
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
             return ready(self.ctx)
 
 
-class ready(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
             return dungeonReady(self.ctx)
         if not self.is_dungeon_room():
             return questReady(self.ctx)
 
 
-class dungeonReady(common.Trigger):
+class dungeonReady(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_local_camera(cameraId=8001, enable=True) # LocalTargetCamera
@@ -37,12 +37,12 @@ class dungeonReady(common.Trigger):
         self.enable_spawn_point_pc(spawnId=11001, isEnable=False)
         self.enable_spawn_point_pc(spawnId=11002, isEnable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return scene_01(self.ctx)
 
 
-class questReady(common.Trigger):
+class questReady(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_local_camera(cameraId=8001, enable=True) # LocalTargetCamera
@@ -51,7 +51,7 @@ class questReady(common.Trigger):
         self.enable_spawn_point_pc(spawnId=11001, isEnable=False)
         self.enable_spawn_point_pc(spawnId=11002, isEnable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return scene_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[50100080], questStates=[2]):
@@ -60,22 +60,22 @@ class questReady(common.Trigger):
             return QuestEnd(self.ctx)
 
 
-class QuestEnd(common.Trigger):
+class QuestEnd(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[210,501,502,503,504,505,506,507,508,509,510]) # 수중 위 몬스터 제거
 
 
-class scene_01(common.Trigger):
+class scene_01(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=1, spawnId=102, script='$52100013_QD__MAIN__0$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=101, script='$52100013_QD__MAIN__1$', arg4=2, arg5=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return scene_02(self.ctx)
 
 
-class scene_02(common.Trigger):
+class scene_02(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=1, spawnId=102, script='$52100013_QD__MAIN__2$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$52100013_QD__MAIN__3$', arg4=2, arg5=0)

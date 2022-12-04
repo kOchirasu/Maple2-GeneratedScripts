@@ -1,14 +1,14 @@
 """ trigger/61000008_me/sensor_9320.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Box32Check', value=10)
         self.set_mesh(triggerIds=[532], visible=True, arg3=0, delay=0, scale=0) # 32 / Ground outter
         self.set_mesh(triggerIds=[5320], visible=True, arg3=0, delay=0, scale=0) # 32 / Ground inner
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Box32Check', value=0):
             return Sensor0(self.ctx)
         if self.user_value(key='Box32Check', value=1):
@@ -39,128 +39,128 @@ class Wait(common.Trigger):
             return Sensor30(self.ctx)
 
 
-class Sensor0(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor0(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return Fail(self.ctx)
 
 
-class Sensor1(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor1(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=1, operator='Equal'):
             return NormalPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=1, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=2, operator='Equal'):
             return NormalPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor3(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor3(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=3, operator='Equal'):
             return NormalPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor4(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor4(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=4, operator='Equal'):
             return NormalPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor5(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor5(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=5, operator='Equal'):
             return NormalPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor7(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor7(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=7, operator='Equal'):
             return GamblePass(self.ctx)
         if not self.count_users(boxId=9320, boxId=7, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor8(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor8(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=8, operator='Equal'):
             return GamblePass(self.ctx)
         if not self.count_users(boxId=9320, boxId=8, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor9(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor9(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=9, operator='Equal'):
             return GamblePass(self.ctx)
         if not self.count_users(boxId=9320, boxId=9, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor10(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor10(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=10, operator='Equal'):
             return GamblePass(self.ctx)
         if not self.count_users(boxId=9320, boxId=10, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor15(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor15(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=15, operator='Equal'):
             return JackpotPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=15, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor20(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor20(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=20, operator='Equal'):
             return JackpotPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=20, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor25(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor25(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=25, operator='Equal'):
             return JackpotPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=25, operator='Equal'):
             return Fail(self.ctx)
 
 
-class Sensor30(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Sensor30(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=9320, boxId=30, operator='Equal'):
             return JackpotPass(self.ctx)
         if not self.count_users(boxId=9320, boxId=30, operator='Equal'):
             return Fail(self.ctx)
 
 
-class NormalPass(common.Trigger):
+class NormalPass(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Pass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return Reset(self.ctx)
 
 
-class GamblePass(common.Trigger):
+class GamblePass(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_GamblePass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
@@ -168,12 +168,12 @@ class GamblePass(common.Trigger):
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.write_log(logName='dancedancestop', triggerId=9320, event='char_event', arg4=4, subEvent='gamble')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return GambleReset(self.ctx)
 
 
-class JackpotPass(common.Trigger):
+class JackpotPass(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Pass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
@@ -181,50 +181,50 @@ class JackpotPass(common.Trigger):
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.write_log(logName='dancedancestop', triggerId=9320, event='char_event', arg4=4, subEvent='jackpot')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return JackpotReset(self.ctx)
 
 
-class Fail(common.Trigger):
+class Fail(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Fail_01')
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.set_mesh(triggerIds=[5320], visible=False, arg3=0, delay=0, scale=0) # 32 / Ground inner
         self.set_user_value(triggerId=7320, key='Color32', value=4) # color clear
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return Reset(self.ctx)
 
 
-class GambleReset(common.Trigger):
+class GambleReset(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9320, type='trigger', achieve='ddstop_gamble')
         self.mini_game_give_exp(boxId=9320, expRate=0.1, isOutside=False) # Gamble Pass Bonus For challenger
         self.set_user_value(key='Box32Check', value=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 
 
-class JackpotReset(common.Trigger):
+class JackpotReset(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9320, type='trigger', achieve='ddstop_gamble')
         self.mini_game_give_exp(boxId=9320, expRate=0.3, isOutside=False) # Jackpot Pass Bonus For challenger
         self.set_user_value(key='Box32Check', value=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 
 
-class Reset(common.Trigger):
+class Reset(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='Box32Check', value=10)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 

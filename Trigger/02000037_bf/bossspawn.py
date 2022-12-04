@@ -1,8 +1,8 @@
 """ trigger/02000037_bf/bossspawn.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
+class 시작대기중(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000931], state=2)
         self.set_mesh(triggerIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4009], visible=False, arg3=0, delay=0, scale=0) # Stairs 10
@@ -13,55 +13,55 @@ class 시작대기중(common.Trigger):
         self.set_effect(triggerIds=[5000], visible=False) # StairsAppear
         self.set_effect(triggerIds=[5001], visible=False) # Vibrate
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             return 난이도체크(self.ctx)
 
 
-class 난이도체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 난이도체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_level(level=2):
             return 레이드(self.ctx)
         if self.dungeon_level(level=3):
             return 카오스레이드(self.ctx)
 
 
-class 레이드(common.Trigger):
+class 레이드(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2000], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2000]):
             return 연출딜레이(self.ctx)
 
 
-class 카오스레이드(common.Trigger):
+class 카오스레이드(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2001]):
             return 연출딜레이(self.ctx)
 
 
-class 연출딜레이(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 연출딜레이(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 연출종료(self.ctx)
 
 
-class 연출종료(common.Trigger):
+class 연출종료(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000931], state=1)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.dungeon_clear()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000931]):
             return 사념등장01(self.ctx)
 
 
-class 사념등장01(common.Trigger):
+class 사념등장01(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[4050], visible=False, arg3=0, delay=0, scale=0) # invisible barrier
         self.set_effect(triggerIds=[5000], visible=True) # StairsAppear

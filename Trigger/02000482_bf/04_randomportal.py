@@ -1,8 +1,8 @@
 """ trigger/02000482_bf/04_randomportal.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002035], state=0) # ToWall_True
         self.set_interact_object(triggerIds=[10002036], state=0) # ToRoom_True
@@ -17,14 +17,14 @@ class Wait(common.Trigger):
         self.set_portal(portalId=30, visible=False, enable=False, minimapVisible=False) # ToTower
         self.set_user_value(key='SearchStart', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SearchStart', value=1):
             return PickRandomPortal(self.ctx)
 
 
 # 3개의 문 중에서 하나 뽑기
-class PickRandomPortal(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class PickRandomPortal(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=30):
             return ToWall01(self.ctx)
         if self.random_condition(rate=30):
@@ -34,112 +34,112 @@ class PickRandomPortal(common.Trigger):
 
 
 # 테라스로 나가서 성 외벽으로
-class ToWall01(common.Trigger):
+class ToWall01(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002035], state=1) # ToWall_True
         self.set_user_value(triggerId=6, key='ToRoomFalse', value=1) # ToRoom_False
         self.set_user_value(triggerId=7, key='ToTowerFalse', value=1) # ToTowerFalse
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002035], stateValue=0):
             return ToWall02(self.ctx)
 
 
-class ToWall02(common.Trigger):
+class ToWall02(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3200], visible=False, arg3=0, delay=0, scale=0) # CurtainBarrier
         self.set_mesh(triggerIds=[3201,3202], visible=False, arg3=0, delay=0, scale=3) # CurtainOpen
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False) # ToWall
         self.set_event_ui(type=1, arg2='$02000482_BF__04_RANDOMPORTAL__0$', arg3='2000', arg4='0')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ToWallGuide01(self.ctx)
 
 
-class ToWallGuide01(common.Trigger):
+class ToWallGuide01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000006, script='$02000482_BF__04_RANDOMPORTAL__1$', arg4=5) # 블랙아이
         self.set_skip(state=ToWallGuide01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ToWallGuide01Skip(self.ctx)
 
 
-class ToWallGuide01Skip(common.Trigger):
+class ToWallGuide01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
 # 문을 통해 다른 방으로
-class ToRoom01(common.Trigger):
+class ToRoom01(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10002036], state=1) # ToRoom_True
         self.set_user_value(triggerId=5, key='ToWallFalse', value=1) # ToWall_False
         self.set_user_value(triggerId=7, key='ToTowerFalse', value=1) # ToTowerFalse
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002036], stateValue=0):
             return ToRoom02(self.ctx)
 
 
-class ToRoom02(common.Trigger):
+class ToRoom02(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000482_BF__04_RANDOMPORTAL__2$', arg3='2000', arg4='0')
         self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False) # ToRoom
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ToRoomGuide01(self.ctx)
 
 
-class ToRoomGuide01(common.Trigger):
+class ToRoomGuide01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000006, script='$02000482_BF__04_RANDOMPORTAL__3$', arg4=5) # 블랙아이
         self.set_skip(state=ToRoomGuide01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ToRoomGuide01Skip(self.ctx)
 
 
-class ToRoomGuide01Skip(common.Trigger):
+class ToRoomGuide01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
 # 계단을 통해 탑으로
-class ToTower01(common.Trigger):
+class ToTower01(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=5, key='ToWallFalse', value=1) # ToWall_False
         self.set_user_value(triggerId=6, key='ToRoomFalse', value=1) # ToRoom_False
         self.set_interact_object(triggerIds=[10002037], state=1) # ToTower_True
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002037], stateValue=0):
             return ToTower02(self.ctx)
 
 
-class ToTower02(common.Trigger):
+class ToTower02(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000482_BF__04_RANDOMPORTAL__4$', arg3='2000', arg4='0')
         self.set_mesh(triggerIds=[3300], visible=False, arg3=0, delay=0, scale=0) # ToTowerDoorBarrier
@@ -147,36 +147,36 @@ class ToTower02(common.Trigger):
         self.set_actor(triggerId=4000, visible=True, initialSequence='Opened') # NextMap
         self.set_portal(portalId=30, visible=True, enable=True, minimapVisible=False) # ToTower
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ToTowerGuide01(self.ctx)
 
 
-class ToTowerGuide01(common.Trigger):
+class ToTowerGuide01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000006, script='$02000482_BF__04_RANDOMPORTAL__5$', arg4=5) # 블랙아이
         self.set_skip(state=ToTowerGuide01Skip)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ToTowerGuide01Skip(self.ctx)
 
 
-class ToTowerGuide01Skip(common.Trigger):
+class ToTowerGuide01Skip(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=1, key='FindWay', value=1)
 

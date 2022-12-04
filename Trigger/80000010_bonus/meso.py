@@ -1,17 +1,17 @@
 """ trigger/80000010_bonus/meso.xml """
-import common
+import trigger_api
 
 
-class 입장(common.Trigger):
+class 입장(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             return 완료(self.ctx)
 
 
-class 완료(common.Trigger):
+class 완료(trigger_api.Trigger):
     def on_enter(self):
         self.create_item(spawnIds=[201])
         self.create_item(spawnIds=[202])
@@ -86,12 +86,12 @@ class 완료(common.Trigger):
         self.create_item(spawnIds=[9001,9002,9003,9004,9005])
         self.set_timer(timerId='1', seconds=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 완료2(self.ctx)
 
 
-class 완료2(common.Trigger):
+class 완료2(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=False)
 

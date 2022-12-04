@@ -1,8 +1,8 @@
 """ trigger/02000335_bf/boss.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=991, isEnable=True)
@@ -11,17 +11,17 @@ class 대기(common.Trigger):
         self.set_effect(triggerIds=[6921], visible=False) # BG\Common\Eff_Com_ObjectShake.xml
         self.create_monster(spawnIds=[149], animationEffect=False) # 기본 배치 될 NPC 등장
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=710, boxId=1):
             return 시작(self.ctx)
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=105, textId=20003361) # 키 몬스터를 처치하세요.
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[149]):
             return 화물문_개방(self.ctx)
 
@@ -29,7 +29,7 @@ class 시작(common.Trigger):
         self.hide_guide_summary(entityId=105)
 
 
-class 화물문_개방(common.Trigger):
+class 화물문_개방(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=991, isEnable=False)
@@ -39,7 +39,7 @@ class 화물문_개방(common.Trigger):
         self.set_mesh(triggerIds=[7991,7992,7993], visible=False, delay=0, scale=0) # 문 파괴
         self.set_timer(timerId='3', seconds=3, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='3'):
             return 화물문_개방_종료(self.ctx)
         if self.count_users(boxId=711, boxId=1):
@@ -49,24 +49,24 @@ class 화물문_개방(common.Trigger):
         self.hide_guide_summary(entityId=106)
 
 
-class 화물문_개방_종료(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 화물문_개방_종료(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=711, boxId=1):
             return 보스등장연출_00(self.ctx)
 
 
-class 보스등장연출_00(common.Trigger):
+class 보스등장연출_00(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02000335_BF__BOSS__0$', arg3='3000')
         self.set_effect(triggerIds=[6921], visible=True) # BG\Common\Eff_Com_ObjectShake.xml
         self.set_timer(timerId='3', seconds=3, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='3'):
             return 보스등장연출_01(self.ctx)
 
 
-class 보스등장연출_01(common.Trigger):
+class 보스등장연출_01(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[141,142,143,144,145,146,147,148]) # 기본 배치 된 NPC 삭제
         self.set_skill(triggerIds=[5801], enable=True) # 벽 날리는 스킬
@@ -77,14 +77,14 @@ class 보스등장연출_01(common.Trigger):
         self.move_npc(spawnId=199, patrolName='MS2PatrolData_1003')
         self.set_timer(timerId='1', seconds=1, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 보스등장연출_02(self.ctx)
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
 
 
-class 보스등장연출_02(common.Trigger):
+class 보스등장연출_02(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[5803], enable=True) # 벽 날리는 스킬
         self.set_skill(triggerIds=[5804], enable=True) # 벽 날리는 스킬
@@ -92,14 +92,14 @@ class 보스등장연출_02(common.Trigger):
         self.set_effect(triggerIds=[6914], visible=True)
         self.set_timer(timerId='1', seconds=1, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 보스등장연출_03(self.ctx)
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
 
 
-class 보스등장연출_03(common.Trigger):
+class 보스등장연출_03(trigger_api.Trigger):
     def on_enter(self):
         self.set_skill(triggerIds=[5805], enable=True) # 벽 날리는 스킬
         self.set_skill(triggerIds=[5806], enable=True) # 벽 날리는 스킬
@@ -107,12 +107,12 @@ class 보스등장연출_03(common.Trigger):
         self.set_effect(triggerIds=[6916], visible=True)
         self.set_timer(timerId='1', seconds=1, interval=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[199]):
             return 포탈_개방(self.ctx)
 
 
-class 포탈_개방(common.Trigger):
+class 포탈_개방(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=112, textId=40009) # 포탈을 타세요

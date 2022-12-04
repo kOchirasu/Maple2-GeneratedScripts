@@ -1,8 +1,8 @@
 """ trigger/52000040_qd/common.xml """
-import common
+import trigger_api
 
 
-class end_01(common.Trigger):
+class end_01(trigger_api.Trigger):
     pass
 
 

@@ -1,12 +1,12 @@
 """ trigger/02000420_bf/barricade.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[301], visible=False, arg3=0, delay=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(boxIds=[99]):
             return None # Missing State: 카운트
 

@@ -1,30 +1,30 @@
 """ trigger/02000410_bf/etcset.xml """
-import common
+import trigger_api
 
 
-class Ready(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class Ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=750, boxId=1):
             return 타이머(self.ctx)
 
 
-class 타이머(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 타이머(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=28000):
             self.set_event_ui(type=1, arg2='$02000410_BF__BARRICADE_GIVEUP_0$', arg3='5000')
             self.dungeon_enable_give_up(isEnable='1')
             return 입구포탈제거(self.ctx)
 
 
-class 입구포탈제거(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 입구포탈제거(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
             self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
             return 보스HP체크(self.ctx)
 
 
-class 보스HP체크(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 보스HP체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_npc_damage(spawnId=102, damageRate=1):
             self.add_buff(boxIds=[102], skillId=50004522, level=1, isPlayer=True)
             self.dungeon_mission_complete(feature='DungeonRankBalance_01', missionId=24090004)
@@ -44,11 +44,11 @@ class 보스HP체크(common.Trigger):
         """
 
 
-class 메시지알림(common.Trigger):
+class 메시지알림(trigger_api.Trigger):
     def on_enter(self):
         self.show_guide_summary(entityId=20041005, textId=20041005) # 인페르녹의 쉴드가 사라졌다는 것을 메시지로 알려줌
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
             return 종료(self.ctx)
 
@@ -56,7 +56,7 @@ class 메시지알림(common.Trigger):
         self.hide_guide_summary(entityId=20041005)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

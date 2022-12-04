@@ -1,13 +1,13 @@
 """ trigger/52010028_qd/view.xml """
-import common
+import trigger_api
 
 
-class 진동설정(common.Trigger):
+class 진동설정(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=301, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=401, enable=False, path='BG/sound/Eff_ShakeLand_01.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2003]):
             return 흔들흔들(self.ctx)
         if self.user_detected(boxIds=[2006]):
@@ -16,12 +16,12 @@ class 진동설정(common.Trigger):
             return 흔들흔들(self.ctx)
 
 
-class 흔들흔들(common.Trigger):
+class 흔들흔들(trigger_api.Trigger):
     def on_enter(self):
         self.set_onetime_effect(id=301, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=401, enable=True, path='BG/sound/Eff_ShakeLand_01.xml')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 진동설정(self.ctx)
 

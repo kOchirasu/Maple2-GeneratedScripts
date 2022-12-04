@@ -1,14 +1,14 @@
 """ trigger/02000551_bf/portalspeedracingmode.xml """
-import common
+import trigger_api
 
 
-class 시작대기중(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 시작대기중(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
             return 순간이동포탈감추기(self.ctx)
 
 
-class 순간이동포탈감추기(common.Trigger):
+class 순간이동포탈감추기(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=12000, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=3000, visible=False, enable=False, minimapVisible=False)
@@ -31,14 +31,14 @@ class 순간이동포탈감추기(common.Trigger):
         self.set_portal(portalId=13061, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=13091, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SpeedRacingMode', value=1):
             return 순간이동포탈등장(self.ctx)
         if self.user_value(key='SpeedRacingMode', value=2):
             return 종료딜레이(self.ctx)
 
 
-class 순간이동포탈등장(common.Trigger):
+class 순간이동포탈등장(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=12000, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=3000, visible=True, enable=True, minimapVisible=True)
@@ -61,24 +61,24 @@ class 순간이동포탈등장(common.Trigger):
         self.set_portal(portalId=13061, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=13091, visible=True, enable=True, minimapVisible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SpeedRacingMode', value=0):
             return 잠시대기(self.ctx)
 
 
-class 잠시대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 잠시대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 순간이동포탈감추기(self.ctx)
 
 
-class 종료딜레이(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 종료딜레이(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3800):
             return 순간이동포탈등장(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     pass
 
 

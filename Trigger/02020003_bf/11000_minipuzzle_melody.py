@@ -1,8 +1,8 @@
 """ trigger/02020003_bf/11000_minipuzzle_melody.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='1')
         self.reset_timer(timerId='2')
@@ -47,17 +47,17 @@ class Wait(common.Trigger):
         self.set_effect(triggerIds=[11301], visible=False) # Right Sound Effect
         self.set_effect(triggerIds=[11302], visible=False) # Wrong Sound Effect
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn', value=1):
             return Setting(self.ctx)
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.enable_local_camera(isEnable=True) # 로컬카메라 전체 ON
         self.set_interact_object(triggerIds=[12000074], state=1) # AntiqueMap
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000074], stateValue=0):
             self.set_timer(timerId='1', seconds=120, startDelay=1, interval=0, vOffset=0)
             return StartMelodyQuiz_Delay01(self.ctx)
@@ -65,7 +65,7 @@ class Setting(common.Trigger):
             return Wait(self.ctx)
 
 
-class StartMelodyQuiz_Delay01(common.Trigger):
+class StartMelodyQuiz_Delay01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[11301], visible=True) # Right Sound Effect
         self.set_actor(triggerId=11001, visible=True, initialSequence='ks_quest_musical_B01_red') # Bell C
@@ -77,12 +77,12 @@ class StartMelodyQuiz_Delay01(common.Trigger):
         self.set_actor(triggerId=11007, visible=True, initialSequence='ks_quest_musical_B01_purple') # Bell B
         self.set_actor(triggerId=11008, visible=True, initialSequence='ks_quest_musical_B01_pink') # Bell HighC
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return StartMelodyQuiz_Delay02(self.ctx)
 
 
-class StartMelodyQuiz_Delay02(common.Trigger):
+class StartMelodyQuiz_Delay02(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=11001, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell C
         self.set_actor(triggerId=11002, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell D
@@ -93,14 +93,14 @@ class StartMelodyQuiz_Delay02(common.Trigger):
         self.set_actor(triggerId=11007, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell B
         self.set_actor(triggerId=11008, visible=True, initialSequence='ks_quest_musical_B01_off') # Bell HighC
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return StartMelodyQuiz_Random(self.ctx)
 
 
 # 패턴 랜덤픽
-class StartMelodyQuiz_Random(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class StartMelodyQuiz_Random(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=50):
             return MelodyQuizPattern01(self.ctx)
         if self.random_condition(rate=50):
@@ -144,12 +144,12 @@ class StartMelodyQuiz_Random(common.Trigger):
 
 
 # 패턴 모음
-class MelodyQuizPattern01(common.Trigger):
+class MelodyQuizPattern01(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=101) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=101, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -162,12 +162,12 @@ class MelodyQuizPattern01(common.Trigger):
 
 
 # 패턴 추가
-class MelodyQuizPattern02(common.Trigger):
+class MelodyQuizPattern02(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=102) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=102, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -179,12 +179,12 @@ class MelodyQuizPattern02(common.Trigger):
         self.set_user_value(triggerId=102, key='Reset', value=1)
 
 
-class MelodyQuizPattern03(common.Trigger):
+class MelodyQuizPattern03(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=103) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=103, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -196,12 +196,12 @@ class MelodyQuizPattern03(common.Trigger):
         self.set_user_value(triggerId=103, key='Reset', value=1)
 
 
-class MelodyQuizPattern04(common.Trigger):
+class MelodyQuizPattern04(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=104) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=104, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -213,12 +213,12 @@ class MelodyQuizPattern04(common.Trigger):
         self.set_user_value(triggerId=104, key='Reset', value=1)
 
 
-class MelodyQuizPattern05(common.Trigger):
+class MelodyQuizPattern05(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=105) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=105, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -230,12 +230,12 @@ class MelodyQuizPattern05(common.Trigger):
         self.set_user_value(triggerId=105, key='Reset', value=1)
 
 
-class MelodyQuizPattern06(common.Trigger):
+class MelodyQuizPattern06(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=106) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=106, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -247,12 +247,12 @@ class MelodyQuizPattern06(common.Trigger):
         self.set_user_value(triggerId=106, key='Reset', value=1)
 
 
-class MelodyQuizPattern07(common.Trigger):
+class MelodyQuizPattern07(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=107) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=107, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -264,12 +264,12 @@ class MelodyQuizPattern07(common.Trigger):
         self.set_user_value(triggerId=107, key='Reset', value=1)
 
 
-class MelodyQuizPattern08(common.Trigger):
+class MelodyQuizPattern08(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=108) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=108, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -281,12 +281,12 @@ class MelodyQuizPattern08(common.Trigger):
         self.set_user_value(triggerId=108, key='Reset', value=1)
 
 
-class MelodyQuizPattern09(common.Trigger):
+class MelodyQuizPattern09(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=109) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=109, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -298,12 +298,12 @@ class MelodyQuizPattern09(common.Trigger):
         self.set_user_value(triggerId=109, key='Reset', value=1)
 
 
-class MelodyQuizPattern10(common.Trigger):
+class MelodyQuizPattern10(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=110) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=110, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -315,12 +315,12 @@ class MelodyQuizPattern10(common.Trigger):
         self.set_user_value(triggerId=110, key='Reset', value=1)
 
 
-class MelodyQuizPattern11(common.Trigger):
+class MelodyQuizPattern11(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=111) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=111, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -332,12 +332,12 @@ class MelodyQuizPattern11(common.Trigger):
         self.set_user_value(triggerId=111, key='Reset', value=1)
 
 
-class MelodyQuizPattern12(common.Trigger):
+class MelodyQuizPattern12(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=112) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=112, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -349,12 +349,12 @@ class MelodyQuizPattern12(common.Trigger):
         self.set_user_value(triggerId=112, key='Reset', value=1)
 
 
-class MelodyQuizPattern13(common.Trigger):
+class MelodyQuizPattern13(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=113) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=113, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -366,12 +366,12 @@ class MelodyQuizPattern13(common.Trigger):
         self.set_user_value(triggerId=113, key='Reset', value=1)
 
 
-class MelodyQuizPattern14(common.Trigger):
+class MelodyQuizPattern14(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=114) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=114, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -383,12 +383,12 @@ class MelodyQuizPattern14(common.Trigger):
         self.set_user_value(triggerId=114, key='Reset', value=1)
 
 
-class MelodyQuizPattern15(common.Trigger):
+class MelodyQuizPattern15(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=115) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=115, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -400,12 +400,12 @@ class MelodyQuizPattern15(common.Trigger):
         self.set_user_value(triggerId=115, key='Reset', value=1)
 
 
-class MelodyQuizPattern16(common.Trigger):
+class MelodyQuizPattern16(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=116) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=116, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -417,12 +417,12 @@ class MelodyQuizPattern16(common.Trigger):
         self.set_user_value(triggerId=116, key='Reset', value=1)
 
 
-class MelodyQuizPattern17(common.Trigger):
+class MelodyQuizPattern17(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=117) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=117, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -434,12 +434,12 @@ class MelodyQuizPattern17(common.Trigger):
         self.set_user_value(triggerId=117, key='Reset', value=1)
 
 
-class MelodyQuizPattern18(common.Trigger):
+class MelodyQuizPattern18(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=118) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=118, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -451,12 +451,12 @@ class MelodyQuizPattern18(common.Trigger):
         self.set_user_value(triggerId=118, key='Reset', value=1)
 
 
-class MelodyQuizPattern19(common.Trigger):
+class MelodyQuizPattern19(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=119) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=119, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -468,12 +468,12 @@ class MelodyQuizPattern19(common.Trigger):
         self.set_user_value(triggerId=119, key='Reset', value=1)
 
 
-class MelodyQuizPattern20(common.Trigger):
+class MelodyQuizPattern20(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='PatternPick', value=120) # 틀린 경우, 동일한 퀴즈를 다시 들려주기 위해 현재 트리거에서도 선택된 퍼즐 패턴을 기억
         self.set_user_value(triggerId=120, key='PatternPick', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AnswerIsRight', value=1):
             return EndMelodyQuiz_Success(self.ctx)
         if self.user_value(key='AnswerIsWrong', value=1):
@@ -486,14 +486,14 @@ class MelodyQuizPattern20(common.Trigger):
 
 
 # 퍼즐 성공 후 종료
-class EndMelodyQuiz_Success(common.Trigger):
+class EndMelodyQuiz_Success(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[11901], skillId=71001012, level=1, isPlayer=False, isSkillSet=False)
         self.set_effect(triggerIds=[11300], visible=True) # Success Sound Effect
         self.set_interact_object(triggerIds=[12000202], state=1) # RareBox 맵 별로 유니크하도록 변경해야 하는 값
         self.set_timer(timerId='2', seconds=60, startDelay=1, interval=0, vOffset=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000202], stateValue=0):
             return MelodyQuiz_Success_Quit(self.ctx)
         if self.time_expired(timerId='2'):
@@ -504,11 +504,11 @@ class EndMelodyQuiz_Success(common.Trigger):
 
 
 # 퍼즐 실패 후 재도전
-class EndMelodyQuiz_Fail(common.Trigger):
+class EndMelodyQuiz_Fail(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[11302], visible=True) # Wrong Sound Effect
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TimeEventOn', value=0):
             return EndMelodyQuiz_Fail_2(self.ctx)
         if self.time_expired(timerId='1'):
@@ -517,19 +517,19 @@ class EndMelodyQuiz_Fail(common.Trigger):
             return MelodyQuiz_Retry(self.ctx)
 
 
-class EndMelodyQuiz_Fail_2(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class EndMelodyQuiz_Fail_2(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return Wait(self.ctx)
         if self.wait_tick(waitTick=2000):
             return MelodyQuiz_Retry(self.ctx)
 
 
-class MelodyQuiz_Retry(common.Trigger):
+class MelodyQuiz_Retry(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='AnswerIsWrong', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PatternPick', value=101):
             return MelodyQuizPattern01(self.ctx)
         if self.user_value(key='PatternPick', value=102):
@@ -572,24 +572,24 @@ class MelodyQuiz_Retry(common.Trigger):
             return MelodyQuizPattern20(self.ctx)
 
 
-class MelodyQuiz_Fail_Quit(common.Trigger):
+class MelodyQuiz_Fail_Quit(trigger_api.Trigger):
     def on_enter(self):
         self.reset_timer(timerId='1') # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001011 지속시간 동일
         self.reset_timer(timerId='2')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 
 
-class MelodyQuiz_Success_Quit(common.Trigger):
+class MelodyQuiz_Success_Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='TimeEventOn', value=0)
         # <action name="버프를삭제한다" arg1="9001" arg2="71001011" arg3="true"/>
         self.reset_timer(timerId='1') # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001011 지속시간 동일
         self.reset_timer(timerId='2')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Wait(self.ctx)
 

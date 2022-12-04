@@ -1,8 +1,8 @@
 """ trigger/52010056_qd/eventsection_e.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
+class Idle(trigger_api.Trigger):
     pass
 
 

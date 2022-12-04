@@ -1,8 +1,8 @@
 """ trigger/52010022_qd/main.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[1003,1004], visible=True, arg3=0, delay=0, scale=0)
 

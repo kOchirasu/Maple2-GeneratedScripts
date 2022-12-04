@@ -1,8 +1,8 @@
 """ trigger/02000397_bf/3200_hidden_bookcase.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5002], visible=False) # PortalOn
         self.set_ladder(triggerIds=[520], visible=False, animationEffect=False, animationDelay=0) # Ladder
@@ -17,24 +17,24 @@ class Wait(common.Trigger):
         self.set_interact_object(triggerIds=[10001141], state=0) # Bookcase
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='HiddenRouteOpen', value=1):
             return Opened(self.ctx)
         if self.user_value(key='HiddenRouteOpen', value=2):
             return Closed(self.ctx)
 
 
-class Opened(common.Trigger):
+class Opened(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3202], visible=False, arg3=0, delay=0, scale=0) # Bookcase
         self.set_interact_object(triggerIds=[10001141], state=1) # Bookcase
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001141], stateValue=0):
             return LadderOn(self.ctx)
 
 
-class LadderOn(common.Trigger):
+class LadderOn(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5002], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3203], visible=False, arg3=0, delay=0, scale=0) # BookcaseInvisible
@@ -47,17 +47,17 @@ class LadderOn(common.Trigger):
         self.set_mesh(triggerIds=[3201], visible=False, arg3=0, delay=0, scale=3) # BehindBookcaseCover
 
 
-class Closed(common.Trigger):
+class Closed(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3202], visible=False, arg3=0, delay=0, scale=0) # Bookcase
         self.set_interact_object(triggerIds=[10001141], state=1) # Bookcase
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001141], stateValue=0):
             return NothingHappened(self.ctx)
 
 
-class NothingHappened(common.Trigger):
+class NothingHappened(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[3202], visible=True, arg3=0, delay=0, scale=0) # Bookcase
 

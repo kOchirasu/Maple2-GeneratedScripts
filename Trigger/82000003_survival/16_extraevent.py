@@ -1,8 +1,8 @@
 """ trigger/82000003_survival/16_extraevent.xml """
-import common
+import trigger_api
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[9000], skillId=70001101, level=1, isPlayer=False, isSkillSet=False) # 변신 탈 것 해제용 버프
         self.set_gravity(gravity=0)
@@ -13,15 +13,15 @@ class Setting(common.Trigger):
         self.set_user_value(key='ExtraEventOff', value=0)
         self.set_user_value(key='ExtraEventTestOn', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventTestOn', value=1): # ExtraEventOn / ExtraEventRandomDelay01 / ExtraEvent01_Fast / ExtraEvent02_MapHack / ExtraEvent03_RobotSpawn / ExtraEvent04_DogEverywhere / ExtraEvent05_SkillCoolDownTimeReduce / ExtraEvent06_NoMoreFarming
             return ExtraEventOn(self.ctx)
         if self.user_value(key='ExtraEventCheck', value=1):
             return ExtraEventOccurrenceProbability(self.ctx)
 
 
-class ExtraEventOccurrenceProbability(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ExtraEventOccurrenceProbability(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=60):
             return ExtraEventOff(self.ctx)
         if self.random_condition(rate=40):
@@ -30,22 +30,22 @@ class ExtraEventOccurrenceProbability(common.Trigger):
             return Quit(self.ctx)
 
 
-class ExtraEventOff(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ExtraEventOff(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEventOn(common.Trigger):
+class ExtraEventOn(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEventOn') # 모쿰 이벤트 로그 - 모쿰 소환 됨
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return RelicLeft05(self.ctx)
 
 
-class RelicLeft05(common.Trigger):
+class RelicLeft05(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=11, key='RelicMobSpawn', value=1)
         self.set_user_value(triggerId=12, key='RelicMobSpawn', value=1)
@@ -53,7 +53,7 @@ class RelicLeft05(common.Trigger):
         self.set_user_value(triggerId=14, key='RelicMobSpawn', value=1)
         self.set_user_value(triggerId=15, key='RelicMobSpawn', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft04_NoRed(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -75,11 +75,11 @@ class RelicLeft05(common.Trigger):
 
 
 # 4 마리 남음
-class RelicLeft04_NoRed(common.Trigger):
+class RelicLeft04_NoRed(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumKill_01') # 모쿰 이벤트 로그 - 4마리 남음
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft03_NoRed_NoSkyblue(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -98,8 +98,8 @@ class RelicLeft04_NoRed(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
-class RelicLeft04_NoSkyblue(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft04_NoSkyblue(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft03_NoRed_NoSkyblue(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -118,8 +118,8 @@ class RelicLeft04_NoSkyblue(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
-class RelicLeft04_NoGreen(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft04_NoGreen(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft03_NoRed_NoGreen(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -138,8 +138,8 @@ class RelicLeft04_NoGreen(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
-class RelicLeft04_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft04_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft03_NoRed_NoYellow(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -158,8 +158,8 @@ class RelicLeft04_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
-class RelicLeft04_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft04_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft03_NoRed_NoGrey(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -179,11 +179,11 @@ class RelicLeft04_NoGrey(common.Trigger):
 
 
 # 3 마리 남음
-class RelicLeft03_NoRed_NoSkyblue(common.Trigger):
+class RelicLeft03_NoRed_NoSkyblue(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumKill_02') # 모쿰 이벤트 로그 - 3마리 남음
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobGreenDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoGreen(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -200,8 +200,8 @@ class RelicLeft03_NoRed_NoSkyblue(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoRed_NoGreen(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoRed_NoGreen(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoGreen(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -218,8 +218,8 @@ class RelicLeft03_NoRed_NoGreen(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoRed_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoRed_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoYellow(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -236,8 +236,8 @@ class RelicLeft03_NoRed_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoRed_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoRed_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoGrey(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -254,8 +254,8 @@ class RelicLeft03_NoRed_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoSkyblue_NoGreen(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoSkyblue_NoGreen(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoGreen(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -272,8 +272,8 @@ class RelicLeft03_NoSkyblue_NoGreen(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoSkyblue_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoSkyblue_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoYellow(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -290,8 +290,8 @@ class RelicLeft03_NoSkyblue_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoSkyblue_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoSkyblue_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoSkyblue_NoGrey(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -308,8 +308,8 @@ class RelicLeft03_NoSkyblue_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoGreen_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoGreen_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoGreen_NoYellow(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -326,8 +326,8 @@ class RelicLeft03_NoGreen_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoGreen_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoGreen_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoGreen_NoGrey(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -344,8 +344,8 @@ class RelicLeft03_NoGreen_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
-class RelicLeft03_NoYellow_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft03_NoYellow_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft02_NoRed_NoYellow_NoGrey(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -363,11 +363,11 @@ class RelicLeft03_NoYellow_NoGrey(common.Trigger):
 
 
 # 2 마리 남음
-class RelicLeft02_NoRed_NoSkyblue_NoGreen(common.Trigger):
+class RelicLeft02_NoRed_NoSkyblue_NoGreen(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumKill_03') # 모쿰 이벤트 로그 - 2마리 남음
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobYellowDie', value=1):
             return RelicLeft01_OnlyGrey(self.ctx)
         if self.user_value(key='RelicMobGreyDie', value=1):
@@ -382,8 +382,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoGreen(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoRed_NoSkyblue_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoRed_NoSkyblue_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobGreenDie', value=1):
             return RelicLeft01_OnlyGrey(self.ctx)
         if self.user_value(key='RelicMobGreyDie', value=1):
@@ -398,8 +398,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoRed_NoSkyblue_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoRed_NoSkyblue_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobGreenDie', value=1):
             return RelicLeft01_OnlyYellow(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -414,8 +414,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoRed_NoGreen_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoRed_NoGreen_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft01_OnlyGrey(self.ctx)
         if self.user_value(key='RelicMobGreyDie', value=1):
@@ -430,8 +430,8 @@ class RelicLeft02_NoRed_NoGreen_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoRed_NoGreen_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoRed_NoGreen_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft01_OnlyYellow(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -446,8 +446,8 @@ class RelicLeft02_NoRed_NoGreen_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoRed_NoYellow_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoRed_NoYellow_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return RelicLeft01_OnlyGreen(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -462,8 +462,8 @@ class RelicLeft02_NoRed_NoYellow_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoSkyblue_NoGreen_NoYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoSkyblue_NoGreen_NoYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft01_OnlyGrey(self.ctx)
         if self.user_value(key='RelicMobGreyDie', value=1):
@@ -478,8 +478,8 @@ class RelicLeft02_NoSkyblue_NoGreen_NoYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoSkyblue_NoGreen_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoSkyblue_NoGreen_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft01_OnlyYellow(self.ctx)
         if self.user_value(key='RelicMobYellowDie', value=1):
@@ -494,8 +494,8 @@ class RelicLeft02_NoSkyblue_NoGreen_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoSkyblue_NoYellow_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoSkyblue_NoYellow_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft01_OnlyGreen(self.ctx)
         if self.user_value(key='RelicMobGreenDie', value=1):
@@ -510,8 +510,8 @@ class RelicLeft02_NoSkyblue_NoYellow_NoGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
-class RelicLeft02_NoGreen_NoYellow_NoGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft02_NoGreen_NoYellow_NoGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return RelicLeft01_OnlySkyblue(self.ctx)
         if self.user_value(key='RelicMobSkyblueDie', value=1):
@@ -527,11 +527,11 @@ class RelicLeft02_NoGreen_NoYellow_NoGrey(common.Trigger):
 
 
 # 1 마리 남음
-class RelicLeft01_OnlyRed(common.Trigger):
+class RelicLeft01_OnlyRed(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumKill_04') # 모쿰 이벤트 로그 - 1마리 남음
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobRedDie', value=1):
             return ExtraEventRandomDelay01(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
@@ -544,8 +544,8 @@ class RelicLeft01_OnlyRed(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
-class RelicLeft01_OnlySkyblue(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft01_OnlySkyblue(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobSkyblueDie', value=1):
             return ExtraEventRandomDelay01(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
@@ -558,8 +558,8 @@ class RelicLeft01_OnlySkyblue(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
-class RelicLeft01_OnlyGreen(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft01_OnlyGreen(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobGreenDie', value=1):
             return ExtraEventRandomDelay01(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
@@ -572,8 +572,8 @@ class RelicLeft01_OnlyGreen(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
-class RelicLeft01_OnlyYellow(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft01_OnlyYellow(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobYellowDie', value=1):
             return ExtraEventRandomDelay01(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
@@ -586,8 +586,8 @@ class RelicLeft01_OnlyYellow(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
-class RelicLeft01_OnlyGrey(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class RelicLeft01_OnlyGrey(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RelicMobGreyDie', value=1):
             return ExtraEventRandomDelay01(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
@@ -600,41 +600,41 @@ class RelicLeft01_OnlyGrey(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
-class ExtraEventRandomDelay01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ExtraEventRandomDelay01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return ExtraEventRandomDelay02(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEventRandomDelay02(common.Trigger):
+class ExtraEventRandomDelay02(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_Mokum_Message_01')
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=8000, script='$82000002_survival__16_ExtraEvent__5$')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ExtraEventRandomDelay03(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEventRandomDelay03(common.Trigger):
+class ExtraEventRandomDelay03(trigger_api.Trigger):
     def on_enter(self):
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.show_guide_summary(entityId=28200007, textId=28200007, duration=4000) # 가이드 : 모쿰의 장난이 시작됩니다!
         self.write_log(logName='Survival', event='MokumEventStart') # 모쿰 이벤트 로그 - 이벤트 시작
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return ExtraEventRandom(self.ctx)
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEventRandom(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class ExtraEventRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=20):
             return ExtraEvent01_Fast(self.ctx)
         if self.random_condition(rate=20):
@@ -649,7 +649,7 @@ class ExtraEventRandom(common.Trigger):
             return Quit(self.ctx)
 
 
-class ExtraEvent01_Fast(common.Trigger):
+class ExtraEvent01_Fast(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEvent_01') # 모쿰 이벤트 로그 1
         self.play_system_sound_in_box(sound='System_Mokum_Completion_01')
@@ -657,12 +657,12 @@ class ExtraEvent01_Fast(common.Trigger):
         self.add_buff(boxIds=[9000], skillId=71000075, level=1, isPlayer=False, isSkillSet=False)
         self.set_gravity(gravity=30)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEvent02_MapHack(common.Trigger):
+class ExtraEvent02_MapHack(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEvent_02') # 모쿰 이벤트 로그 2
         self.remove_buff(boxId=9000, skillId=71000052)
@@ -670,19 +670,19 @@ class ExtraEvent02_MapHack(common.Trigger):
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=8000, script='$82000002_survival__16_ExtraEvent__7$')
         self.add_buff(boxIds=[9000], skillId=71000052, level=2, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEvent03_RobotSpawn(common.Trigger):
+class ExtraEvent03_RobotSpawn(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEvent_03') # 모쿰 이벤트 로그 3
         self.play_system_sound_in_box(sound='System_Mokum_Completion_01')
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=8000, script='$82000002_survival__16_ExtraEvent__8$')
         self.set_user_value(triggerId=10, key='BattleRidingOnCount', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
@@ -690,19 +690,19 @@ class ExtraEvent03_RobotSpawn(common.Trigger):
         self.set_user_value(triggerId=10, key='BattleRidingOff', value=1)
 
 
-class ExtraEvent04_SkillCoolDownTimeReduce(common.Trigger):
+class ExtraEvent04_SkillCoolDownTimeReduce(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEvent_04') # 모쿰 이벤트 로그 4
         self.play_system_sound_in_box(sound='System_Mokum_Completion_01')
         self.side_npc_talk(npcId=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=8000, script='$82000002_survival__16_ExtraEvent__9$')
         self.add_buff(boxIds=[9000], skillId=71000076, level=1, isPlayer=False, isSkillSet=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class ExtraEvent05_NoMoreFarming(common.Trigger):
+class ExtraEvent05_NoMoreFarming(trigger_api.Trigger):
     def on_enter(self):
         self.write_log(logName='Survival', event='MokumEvent_05') # 모쿰 이벤트 로그 5
         self.play_system_sound_in_box(sound='System_Mokum_Completion_01')
@@ -715,12 +715,12 @@ class ExtraEvent05_NoMoreFarming(common.Trigger):
         self.set_user_value(triggerId=8, key='RareMobOff', value=1)
         self.set_user_value(triggerId=9, key='NormaBoxOff', value=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExtraEventOff', value=1):
             return Quit(self.ctx)
 
 
-class Quit(common.Trigger):
+class Quit(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=11, key='RelicMobRemove', value=1)
         self.set_user_value(triggerId=12, key='RelicMobRemove', value=1)

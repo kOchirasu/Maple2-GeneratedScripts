@@ -1,17 +1,17 @@
 """ trigger/52100301_qd/300005_phase_4.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[200001,200002,200003,200004,200005,200006,200007,200008], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='AI_Phase', value=4):
             return 패이즈_4_시작(self.ctx)
 
 
-class 패이즈_4_시작(common.Trigger):
+class 패이즈_4_시작(trigger_api.Trigger):
     def on_enter(self):
         self.add_buff(boxIds=[1003], skillId=62100169, level=1) # 포탑 기절 이뮨 제거
         self.set_effect(triggerIds=[200011,200012,200013,200014,200015,200016,200017,200018], visible=False) # 페이즈3 포탑 가이드 제거
@@ -23,30 +23,30 @@ class 패이즈_4_시작(common.Trigger):
         self.set_user_value(triggerId=3000042, key='Phase_3_Interect_02', value=0)
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300005_PHASE_4__0$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 추가대화(self.ctx)
 
 
-class 추가대화(common.Trigger):
+class 추가대화(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=29500101, illust='ArcheonBlack_Angry', script='$52100301_QD__300005_PHASE_4__1$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 추가대화_2(self.ctx)
 
 
-class 추가대화_2(common.Trigger):
+class 추가대화_2(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300005_PHASE_4__2$', duration=3176)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 엘리베이터_대기(self.ctx)
 
 
-class 엘리베이터_대기(common.Trigger):
+class 엘리베이터_대기(trigger_api.Trigger):
     def on_enter(self):
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300005_PHASE_4__3$', duration=3176)
         self.set_user_value(key='AI_Phase', value=0)
@@ -61,12 +61,12 @@ class 엘리베이터_대기(common.Trigger):
         self.set_breakable(triggerIds=[5121,5122,5123,5124,5125,5126,5127,5128,5129,5130], enable=True)
         self.set_breakable(triggerIds=[5131,5132,5133,5134,5135,5136,5137,5138,5139,5140], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
             return 엘리베이터_도착(self.ctx)
 
 
-class 엘리베이터_도착(common.Trigger):
+class 엘리베이터_도착(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(key='AI_Phase', value=0)
         self.set_visible_breakable_object(triggerIds=[5301,5302,5303,5304,5305,5306,5307,5308,5309,5310,5311,5312,5313,5314,5315,5316,5317,5318,5319,5320,5321,5322,5323,5324,5325,5326,5327,5328,5329,5330,5331,5332,5333,5334,5335,5336,5337,5338,5339,5340], visible=True) # 4페이즈 상하 엘리베이터 보이기
@@ -83,30 +83,30 @@ class 엘리베이터_도착(common.Trigger):
         self.set_breakable(triggerIds=[5121,5122,5123,5124,5125,5126,5127,5128,5129,5130], enable=False)
         self.set_breakable(triggerIds=[5131,5132,5133,5134,5135,5136,5137,5138,5139,5140], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 폭발물제어장치_생성(self.ctx)
 
 
-class 폭발물제어장치_생성(common.Trigger):
+class 폭발물제어장치_생성(trigger_api.Trigger):
     def on_enter(self):
         self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=14, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=15, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=16, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return 길막열기(self.ctx)
 
 
-class 길막열기(common.Trigger):
+class 길막열기(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$52100301_QD__300005_PHASE_4__4$', arg3='4000')
         self.set_mesh(triggerIds=[5241,5242,5243,5244], visible=False) # 4페이즈 상하좌우 엘리베이터 길막 열기
         self.set_agent(triggerIds=[1800000,1800001,1800002,1800003,1800004,1800005,1800006,1800007,1800008,1800009,1800010,1800011], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return None # Missing State: 완료
 

@@ -1,9 +1,9 @@
 """ trigger/99999896/02_coin.xml """
-import common
+import trigger_api
 
 
-class 동전생성01(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 동전생성01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             self.set_timer(timerId='1', seconds=2)
             self.create_item(spawnIds=[4,5,6,7,8,9,10,11,12])
@@ -11,16 +11,16 @@ class 동전생성01(common.Trigger):
             return 동전생성02(self.ctx)
 
 
-class 동전생성02(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 동전생성02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[102]):
             self.create_item(spawnIds=[13,14,15,16,17,18,19,20,21])
             self.set_event_ui(type=1, arg2='$99999896__02_COIN__1$', arg3='2000')
             return 동전생성03(self.ctx)
 
 
-class 동전생성03(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 동전생성03(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             self.set_event_ui(type=1, arg2='$99999896__02_COIN__2$', arg3='2000')
             self.create_item(spawnIds=[22,23,24,25,26,27,28,29,30])
@@ -29,7 +29,7 @@ class 동전생성03(common.Trigger):
             return 완료(self.ctx)
 
 
-class 완료(common.Trigger):
+class 완료(trigger_api.Trigger):
     pass
 
 

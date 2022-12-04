@@ -1,32 +1,32 @@
 """ trigger/52020020_qd/main_b.xml """
-import common
+import trigger_api
 
 
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[60200135], questStates=[2]):
             return ready(self.ctx)
         if self.quest_user_detected(boxIds=[2001], questIds=[60200135,60200136,60200137,60200138,60200139,60200140], questStates=[3]):
             return EndReady(self.ctx)
 
 
-class ready(common.Trigger):
+class ready(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52020020, portalId=6002)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Monologue_01(self.ctx)
 
 
-class Monologue_01(common.Trigger):
+class Monologue_01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -34,25 +34,25 @@ class Monologue_01(common.Trigger):
         self.set_pc_emotion_loop(sequenceName='Object_React_H', duration=16000)
         self.set_scene_skip(state=EndReady, action='exit')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return Monologue_02(self.ctx)
 
 
-class Monologue_02(common.Trigger):
+class Monologue_02(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=0, msg='그럼 여기가 $map:02000001$$pp:라는,이라는$거야?', duration=2500)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return Monologue_03(self.ctx)
 
 
-class Monologue_03(common.Trigger):
+class Monologue_03(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=0, msg='분명 알현식은 취소되었을텐데?', duration=3000)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return Walk(self.ctx)
 
@@ -60,66 +60,66 @@ class Monologue_03(common.Trigger):
         self.set_cinematic_ui(type=4)
 
 
-class Walk(common.Trigger):
+class Walk(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return Door(self.ctx)
 
 
-class Door(common.Trigger):
+class Door(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5002], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return EventTalk_01(self.ctx)
 
 
-class EventTalk_01(common.Trigger):
+class EventTalk_01(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=11003590, msg='앗! 일어나 계셨습니까?', duration=2500)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return EventTalk_02(self.ctx)
 
 
-class EventTalk_02(common.Trigger):
+class EventTalk_02(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=0, msg='설마....', duration=2500, align='Right')
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return EventTalk_03(self.ctx)
 
 
-class EventTalk_03(common.Trigger):
+class EventTalk_03(trigger_api.Trigger):
     def on_enter(self):
         self.add_cinematic_talk(npcId=0, msg='설마.... 그럴리가 없어....', duration=3000)
         self.set_scene_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return EndReady(self.ctx)
 
 
-class EndReady(common.Trigger):
+class EndReady(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=4)
         self.set_sound(triggerId=7001, enable=True)
         self.set_pc_emotion_loop(sequenceName='Idle_A', duration=100)
         self.create_monster(spawnIds=[201], animationEffect=True) # 조디
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return exit(self.ctx)
 
 
-class exit(common.Trigger):
+class exit(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

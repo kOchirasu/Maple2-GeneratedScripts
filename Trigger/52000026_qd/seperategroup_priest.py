@@ -1,8 +1,8 @@
 """ trigger/52000026_qd/seperategroup_priest.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_sound(triggerId=10000, enable=False) # TriaAttack
         self.set_effect(triggerIds=[5000], visible=False) # LeftDoorOpen
@@ -23,19 +23,19 @@ class 대기(common.Trigger):
         self.set_effect(triggerIds=[6104], visible=False) # Ishura Voice 00001155 / in case Assassin, Berserker, Heavygunner, Knight, Priest, Ranger, Thief, Wizard
         self.set_effect(triggerIds=[6105], visible=False) # Ishura Voice 00001159 / in case Assassin, Berserker, Heavygunner, Knight, Priest, Ranger, Thief, Wizard
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[10002953], questStates=[1], jobCode=40):
             return 연출준비01(self.ctx)
 
 
-class 연출준비01(common.Trigger):
+class 연출준비01(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
         self.select_camera(triggerId=3000, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 연출준비02(self.ctx)
 
@@ -44,93 +44,93 @@ class 연출준비01(common.Trigger):
         self.set_cinematic_ui(type=2)
 
 
-class 연출준비02(common.Trigger):
+class 연출준비02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 유저이동01(self.ctx)
 
 
-class 유저이동01(common.Trigger):
+class 유저이동01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3001, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_2000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6500):
             return 차입장01_1(self.ctx)
 
 
-class 차입장01_1(common.Trigger):
+class 차입장01_1(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[101,201], animationEffect=True)
         self.set_effect(triggerIds=[5000], visible=True) # LeftDoorOpen
         self.move_user_path(patrolName='MS2PatrolData_2001')
         self.select_camera(triggerId=3002, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차입장02_1(self.ctx)
 
 
-class 차입장02_1(common.Trigger):
+class 차입장02_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5001], visible=True) # LeftDoorClose
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.select_camera_path(pathIds=[3003], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장03_1(self.ctx)
 
 
-class 차입장03_1(common.Trigger):
+class 차입장03_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001578, script='$52000026_QD__SEPERATEGROUP_PRIEST__0$', arg4=4, arg5=0)
         self.set_skip(state=차입장04_1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장04_1(self.ctx)
 
 
-class 차입장04_1(common.Trigger):
+class 차입장04_1(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장05_1(self.ctx)
 
 
-class 차입장05_1(common.Trigger):
+class 차입장05_1(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__1$', arg4=4, arg5=0)
         self.set_skip(state=차입장01_2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장01_2(self.ctx)
 
 
-class 차입장01_2(common.Trigger):
+class 차입장01_2(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_effect(triggerIds=[5002], visible=True) # RightDoorOpen
         self.select_camera(triggerId=3100, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장02_2(self.ctx)
 
 
-class 차입장02_2(common.Trigger):
+class 차입장02_2(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[301], animationEffect=True)
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_301')
@@ -139,53 +139,53 @@ class 차입장02_2(common.Trigger):
         self.move_user_path(patrolName='MS2PatrolData_2002')
         self.set_effect(triggerIds=[5003], visible=True) # RightDoorClose
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장03_2(self.ctx)
 
 
-class 차입장03_2(common.Trigger):
+class 차입장03_2(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[401], animationEffect=True)
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_401')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차입장04_2(self.ctx)
 
 
-class 차입장04_2(common.Trigger):
+class 차입장04_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6104], visible=True) # 음성 코드 00001155
         self.set_conversation(type=2, spawnId=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__2$', arg4=3, arg5=0) # 음성 코드 00001155
         self.set_skip(state=차입장05_2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 차입장05_2(self.ctx)
 
 
-class 차입장05_2(common.Trigger):
+class 차입장05_2(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장06_2(self.ctx)
 
 
-class 차입장06_2(common.Trigger):
+class 차입장06_2(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__3$', arg4=4, arg5=0)
         self.set_skip(state=차입장07_2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장07_2(self.ctx)
 
 
-class 차입장07_2(common.Trigger):
+class 차입장07_2(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -195,46 +195,46 @@ class 차입장07_2(common.Trigger):
         self.move_user_path(patrolName='MS2PatrolData_2003')
         self.select_camera(triggerId=3101, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장01_3(self.ctx)
 
 
-class 차입장01_3(common.Trigger):
+class 차입장01_3(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5002], visible=True) # RightDoorOpen
         self.create_monster(spawnIds=[501], animationEffect=True)
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_501')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장02_3(self.ctx)
 
 
-class 차입장02_3(common.Trigger):
+class 차입장02_3(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[601], animationEffect=True)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_601')
         self.set_effect(triggerIds=[5003], visible=True) # RightDoorClose
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장03_3(self.ctx)
 
 
-class 차입장03_3(common.Trigger):
+class 차입장03_3(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3102, enable=True)
         self.set_effect(triggerIds=[6001], visible=True) # Asimov Voice 00000553
         self.set_conversation(type=2, spawnId=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__4$', arg4=7, arg5=0) # 음성 코드 00000553
         self.set_skip(state=차입장01_4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return 차입장01_4(self.ctx)
 
 
-class 차입장01_4(common.Trigger):
+class 차입장01_4(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -242,34 +242,34 @@ class 차입장01_4(common.Trigger):
         self.select_camera(triggerId=3200, enable=True)
         self.set_effect(triggerIds=[5002], visible=True) # RightDoorOpen
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장02_4(self.ctx)
 
 
-class 차입장02_4(common.Trigger):
+class 차입장02_4(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3210, enable=True)
         self.create_monster(spawnIds=[701], animationEffect=True)
         self.move_npc(spawnId=701, patrolName='MS2PatrolData_701')
         self.set_effect(triggerIds=[5003], visible=True) # RightDoorClose
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차입장03_4(self.ctx)
 
 
-class 차입장03_4(common.Trigger):
+class 차입장03_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001581, script='$52000026_QD__SEPERATEGROUP_PRIEST__5$', arg4=4, arg5=0)
         self.set_skip(state=차입장04_4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장04_4(self.ctx)
 
 
-class 차입장04_4(common.Trigger):
+class 차입장04_4(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -277,63 +277,63 @@ class 차입장04_4(common.Trigger):
         self.create_monster(spawnIds=[801], animationEffect=True)
         self.move_npc(spawnId=801, patrolName='MS2PatrolData_801')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 차입장05_4(self.ctx)
 
 
-class 차입장05_4(common.Trigger):
+class 차입장05_4(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__6$', arg4=4, arg5=0)
         self.set_skip(state=차입장06_4)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장06_4(self.ctx)
 
 
-class 차입장06_4(common.Trigger):
+class 차입장06_4(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장01_5(self.ctx)
 
 
-class 차입장01_5(common.Trigger):
+class 차입장01_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5004], visible=True) # blastjump
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장02_5(self.ctx)
 
 
-class 차입장02_5(common.Trigger):
+class 차입장02_5(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=701, patrolName='MS2PatrolData_702')
         self.select_camera(triggerId=3300, enable=True)
         self.create_monster(spawnIds=[901], animationEffect=True)
         self.move_npc(spawnId=901, patrolName='MS2PatrolData_901')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장03_5(self.ctx)
 
 
-class 차입장03_5(common.Trigger):
+class 차입장03_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001583, script='$52000026_QD__SEPERATEGROUP_PRIEST__7$', arg4=3, arg5=0)
         self.set_skip(state=차입장04_5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장04_5(self.ctx)
 
 
-class 차입장04_5(common.Trigger):
+class 차입장04_5(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -341,22 +341,22 @@ class 차입장04_5(common.Trigger):
         self.create_monster(spawnIds=[1001], animationEffect=True)
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 차입장05_5(self.ctx)
 
 
-class 차입장05_5(common.Trigger):
+class 차입장05_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__8$', arg4=4, arg5=0)
         self.set_skip(state=차입장06_5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장06_5(self.ctx)
 
 
-class 차입장06_5(common.Trigger):
+class 차입장06_5(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -364,22 +364,22 @@ class 차입장06_5(common.Trigger):
         self.create_monster(spawnIds=[1101], animationEffect=True)
         self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1101')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차입장07_5(self.ctx)
 
 
-class 차입장07_5(common.Trigger):
+class 차입장07_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__9$', arg4=3, arg5=0)
         self.set_skip(state=차입장08_5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 차입장08_5(self.ctx)
 
 
-class 차입장08_5(common.Trigger):
+class 차입장08_5(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -387,166 +387,166 @@ class 차입장08_5(common.Trigger):
         self.select_camera(triggerId=3303, enable=True)
         self.create_monster(spawnIds=[1201], animationEffect=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 차입장09_5(self.ctx)
 
 
-class 차입장09_5(common.Trigger):
+class 차입장09_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5003], visible=True) # RightDoorClose
         self.move_npc(spawnId=1201, patrolName='MS2PatrolData_1201')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return 차입장10_5(self.ctx)
 
 
-class 차입장10_5(common.Trigger):
+class 차입장10_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__10$', arg4=3, arg5=0)
         self.set_skip(state=차입장11_5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 차입장11_5(self.ctx)
 
 
-class 차입장11_5(common.Trigger):
+class 차입장11_5(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.select_camera(triggerId=3304, enable=True)
         self.move_npc(spawnId=801, patrolName='MS2PatrolData_802')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 차입장12_5(self.ctx)
 
 
-class 차입장12_5(common.Trigger):
+class 차입장12_5(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__11$', arg4=3, arg5=0)
         self.set_skip(state=입장완료01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 입장완료01(self.ctx)
 
 
-class 입장완료01(common.Trigger):
+class 입장완료01(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_sound(triggerId=10000, enable=True) # TriaAttack
         self.select_camera_path(pathIds=[3400,3401,3402,3403], returnView=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 정렬01(self.ctx)
 
 
-class 정렬01(common.Trigger):
+class 정렬01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6002], visible=True) # Asimov Voice 00001338
         self.set_conversation(type=2, spawnId=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__12$', arg4=5, arg5=0) # 음성 코드 00001338
         self.set_skip(state=정렬02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 정렬02(self.ctx)
 
 
-class 정렬02(common.Trigger):
+class 정렬02(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_502')
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_602')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 정렬03(self.ctx)
 
 
-class 정렬03(common.Trigger):
+class 정렬03(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1002')
         self.move_npc(spawnId=1201, patrolName='MS2PatrolData_1202')
         self.move_npc(spawnId=901, patrolName='MS2PatrolData_902')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 정렬04(self.ctx)
 
 
-class 정렬04(common.Trigger):
+class 정렬04(trigger_api.Trigger):
     def on_enter(self):
         self.move_user_path(patrolName='MS2PatrolData_2004')
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_303')
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_403')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 정렬05(self.ctx)
 
 
-class 정렬05(common.Trigger):
+class 정렬05(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_103')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_203')
         self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1102')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 정렬06(self.ctx)
 
 
-class 정렬06(common.Trigger):
+class 정렬06(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6002], visible=False) # Asimov Voice 00001338
         self.move_npc(spawnId=701, patrolName='MS2PatrolData_703')
         self.move_npc(spawnId=801, patrolName='MS2PatrolData_803')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 본론01(self.ctx)
 
 
-class 본론01(common.Trigger):
+class 본론01(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6003], visible=True) # Asimov Voice 00001339
         self.set_conversation(type=2, spawnId=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__13$', arg4=10, arg5=0) # 음성 코드 00001339
         self.set_skip(state=본론02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return 본론02(self.ctx)
 
 
-class 본론02(common.Trigger):
+class 본론02(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 본론03(self.ctx)
 
 
-class 본론03(common.Trigger):
+class 본론03(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6003], visible=False) # Asimov Voice 00001339
         self.set_effect(triggerIds=[6004], visible=True) # Asimov Voice 00001340
         self.set_conversation(type=2, spawnId=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__14$', arg4=6, arg5=0) # 음성 코드 00001340
         self.set_skip(state=본론04)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 본론04(self.ctx)
 
 
-class 본론04(common.Trigger):
+class 본론04(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -555,42 +555,42 @@ class 본론04(common.Trigger):
         self.set_effect(triggerIds=[6004], visible=False) # Asimov Voice 00001340
         self.select_camera(triggerId=3500, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 본론05(self.ctx)
 
 
-class 본론05(common.Trigger):
+class 본론05(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_304')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 본론06(self.ctx)
 
 
-class 본론06(common.Trigger):
+class 본론06(trigger_api.Trigger):
     def on_enter(self):
         self.move_user_path(patrolName='MS2PatrolData_2005')
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_404')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
             return 본론07(self.ctx)
 
 
-class 본론07(common.Trigger):
+class 본론07(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6102], visible=True) # Ishura Voice 00001292
         self.set_conversation(type=2, spawnId=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__15$', arg4=5, arg5=0) # 음성 코드 00001292
         self.set_skip(state=영상01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 영상01(self.ctx)
 
 
-class 영상01(common.Trigger):
+class 영상01(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -599,255 +599,255 @@ class 영상01(common.Trigger):
         self.set_cinematic_ui(type=4)
         self.set_effect(triggerIds=[6102], visible=False) # Ishura Voice 00001292
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 영상02(self.ctx)
 
 
-class 영상02(common.Trigger):
+class 영상02(trigger_api.Trigger):
     def on_enter(self):
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Royal_IshuraRemember.swf', movieId=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return 영상03(self.ctx)
 
 
-class 영상03(common.Trigger):
+class 영상03(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 영상04(self.ctx)
 
 
-class 영상04(common.Trigger):
+class 영상04(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 정리01(self.ctx)
 
 
-class 정리01(common.Trigger):
+class 정리01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3600, enable=True)
         self.set_effect(triggerIds=[6105], visible=True) # 음성 코드 00001159
         self.set_conversation(type=2, spawnId=11001244, script='$52000026_QD__SEPERATEGROUP_PRIEST__16$', arg4=6, arg5=0) # 음성 코드 00001159
         self.set_skip(state=정리02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return 정리02(self.ctx)
 
 
-class 정리02(common.Trigger):
+class 정리02(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.set_effect(triggerIds=[6103], visible=False) # Ishura Voice 00001293
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 반대01(self.ctx)
 
 
-class 반대01(common.Trigger):
+class 반대01(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000076, script='$52000026_QD__SEPERATEGROUP_PRIEST__17$', arg4=4, arg5=0)
         self.set_skip(state=반대02)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 반대02(self.ctx)
 
 
-class 반대02(common.Trigger):
+class 반대02(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.select_camera(triggerId=3601, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 반대03(self.ctx)
 
 
-class 반대03(common.Trigger):
+class 반대03(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001586, script='$52000026_QD__SEPERATEGROUP_PRIEST__18$', arg4=4, arg5=0)
         self.set_skip(state=반대04)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 반대04(self.ctx)
 
 
-class 반대04(common.Trigger):
+class 반대04(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.move_npc(spawnId=1201, patrolName='MS2PatrolData_1203')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 반대05(self.ctx)
 
 
-class 반대05(common.Trigger):
+class 반대05(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3602, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 반대06(self.ctx)
 
 
-class 반대06(common.Trigger):
+class 반대06(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11001584, script='$52000026_QD__SEPERATEGROUP_PRIEST__19$', arg4=4, arg5=0)
         self.set_skip(state=반대07)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 반대07(self.ctx)
 
 
-class 반대07(common.Trigger):
+class 반대07(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1003')
         self.select_camera(triggerId=3603, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 반대08(self.ctx)
 
 
-class 반대08(common.Trigger):
+class 반대08(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3604, enable=True)
         self.set_conversation(type=2, spawnId=11000015, script='$52000026_QD__SEPERATEGROUP_PRIEST__20$', arg4=4, arg5=0)
         self.set_skip(state=반대09)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 반대09(self.ctx)
 
 
-class 반대09(common.Trigger):
+class 반대09(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.destroy_monster(spawnIds=[1201,1001])
         self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1103')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 반대10(self.ctx)
 
 
-class 반대10(common.Trigger):
+class 반대10(trigger_api.Trigger):
     def on_enter(self):
         self.move_npc(spawnId=901, patrolName='MS2PatrolData_903')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 요약01(self.ctx)
 
 
-class 요약01(common.Trigger):
+class 요약01(trigger_api.Trigger):
     def on_enter(self):
         self.select_camera(triggerId=3700, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 요약02(self.ctx)
 
 
-class 요약02(common.Trigger):
+class 요약02(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[1101,901])
         self.set_conversation(type=2, spawnId=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__21$', arg4=3, arg5=0)
         self.set_skip(state=요약03)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 요약03(self.ctx)
 
 
-class 요약03(common.Trigger):
+class 요약03(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 요약04(self.ctx)
 
 
-class 요약04(common.Trigger):
+class 요약04(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__22$', arg4=4, arg5=0)
         self.set_skip(state=요약05)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 요약05(self.ctx)
 
 
-class 요약05(common.Trigger):
+class 요약05(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.select_camera(triggerId=3800, enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 요약06(self.ctx)
 
 
-class 요약06(common.Trigger):
+class 요약06(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6005], visible=True) # Asimov Voice 00001341
         self.set_conversation(type=2, spawnId=11000031, script='$52000026_QD__SEPERATEGROUP_PRIEST__23$', arg4=9, arg5=0) # 음성 코드 00001341
         self.set_skip(state=요약07)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
             return 요약07(self.ctx)
 
 
-class 요약07(common.Trigger):
+class 요약07(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
         self.select_camera(triggerId=3802, enable=True)
         self.set_effect(triggerIds=[6005], visible=False) # Asimov Voice 00001341
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 요약08(self.ctx)
 
 
-class 요약08(common.Trigger):
+class 요약08(trigger_api.Trigger):
     def on_enter(self):
         self.set_conversation(type=2, spawnId=11000601, script='$52000026_QD__SEPERATEGROUP_PRIEST__24$', arg4=5, arg5=0)
         self.set_skip(state=연출종료01)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 연출종료01(self.ctx)
 
 
-class 연출종료01(common.Trigger):
+class 연출종료01(trigger_api.Trigger):
     def on_enter(self):
         self.remove_cinematic_talk()
         self.set_skip()
@@ -856,32 +856,32 @@ class 연출종료01(common.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 연출종료02(self.ctx)
 
 
-class 연출종료02(common.Trigger):
+class 연출종료02(trigger_api.Trigger):
     def on_enter(self):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=3801, enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 업적발생(self.ctx)
 
 
-class 업적발생(common.Trigger):
+class 업적발생(trigger_api.Trigger):
     def on_enter(self):
         self.set_achievement(triggerId=9001, type='trigger', achieve='SeperateGroup')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 강제퇴장(self.ctx)
 
 
-class 강제퇴장(common.Trigger):
+class 강제퇴장(trigger_api.Trigger):
     def on_enter(self):
         self.move_user(mapId=2000001, portalId=17, boxId=9001)
 

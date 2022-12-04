@@ -1,8 +1,8 @@
 """ trigger/02000318_bf/shipmove_02.xml """
-import common
+import trigger_api
 
 
-class Setting(common.Trigger):
+class Setting(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001046], state=0) # Wheel
         self.set_skill(triggerIds=[7000], enable=False)
@@ -242,12 +242,12 @@ class Setting(common.Trigger):
         self.set_visible_breakable_object(triggerIds=[4115], visible=False) # Move_Ship
         self.set_user_value(key='ShipSet', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ShipSet', value=1):
             return MoveShip01(self.ctx)
 
 
-class MoveShip01(common.Trigger):
+class MoveShip01(trigger_api.Trigger):
     def on_enter(self):
         self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4001], visible=True) # Move_Ship
@@ -369,12 +369,12 @@ class MoveShip01(common.Trigger):
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20031803, textId=20031803) # 키를 작동시켜 배를 움직이면 다음 지역으로 넘어갈 수 있습니다
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001046], stateValue=0):
             return ShipMove02(self.ctx)
 
 
-class ShipMove02(common.Trigger):
+class ShipMove02(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6001], visible=True)
         self.hide_guide_summary(entityId=20031803)
@@ -496,23 +496,23 @@ class ShipMove02(common.Trigger):
         self.set_breakable(triggerIds=[4114], enable=True) # Move_Ship
         self.set_breakable(triggerIds=[4115], enable=True) # Move_Ship
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return ShipMove03(self.ctx)
 
 
-class ShipMove03(common.Trigger):
+class ShipMove03(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[6001], visible=False)
         self.set_skill(triggerIds=[7000], enable=True)
         self.set_effect(triggerIds=[6000], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=19000):
             return ResetShip00(self.ctx)
 
 
-class ResetShip00(common.Trigger):
+class ResetShip00(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10001046], state=0) # Wheel
         self.set_breakable(triggerIds=[4000], enable=False) # Move_Ship
@@ -748,12 +748,12 @@ class ResetShip00(common.Trigger):
         self.set_visible_breakable_object(triggerIds=[4114], visible=False) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4115], visible=False) # Move_Ship
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return ResetShip01(self.ctx)
 
 
-class ResetShip01(common.Trigger):
+class ResetShip01(trigger_api.Trigger):
     def on_enter(self):
         self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4001], visible=True) # Move_Ship
@@ -873,12 +873,12 @@ class ResetShip01(common.Trigger):
         self.set_visible_breakable_object(triggerIds=[4115], visible=True) # Move_Ship
         self.set_interact_object(triggerIds=[10001046], state=1) # Wheel
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001046], stateValue=0):
             return ResetShip02(self.ctx)
 
 
-class ResetShip02(common.Trigger):
+class ResetShip02(trigger_api.Trigger):
     def on_enter(self):
         self.set_breakable(triggerIds=[4000], enable=True) # Move_Ship
         self.set_breakable(triggerIds=[4001], enable=True) # Move_Ship
@@ -997,7 +997,7 @@ class ResetShip02(common.Trigger):
         self.set_breakable(triggerIds=[4114], enable=True) # Move_Ship
         self.set_breakable(triggerIds=[4115], enable=True) # Move_Ship
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=24000):
             return ResetShip01(self.ctx)
 

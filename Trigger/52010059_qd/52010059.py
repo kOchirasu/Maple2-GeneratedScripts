@@ -1,8 +1,8 @@
 """ trigger/52010059_qd/52010059.xml """
-import common
+import trigger_api
 
 
-class Wait(common.Trigger):
+class Wait(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[201], animationEffect=False) # 콘대르
         self.create_monster(spawnIds=[202], animationEffect=False) # 샤텐

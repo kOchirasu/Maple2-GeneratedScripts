@@ -1,39 +1,39 @@
 """ trigger/02020101_bf/gimmick2.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Plant', value=1):
             return 몬스터소환(self.ctx)
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
 
 
-class 몬스터소환(common.Trigger):
+class 몬스터소환(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[301,302,303,304], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=1000):
             return 힌트(self.ctx)
 
 
-class 힌트(common.Trigger):
+class 힌트(trigger_api.Trigger):
     def on_enter(self):
         self.set_event_ui(type=1, arg2='$02020101_BF__GIMMICK2__0$', arg3='3000')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=4000):
             return 알림(self.ctx)
 
 
-class 알림(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 알림(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=25000):
@@ -44,13 +44,13 @@ class 알림(common.Trigger):
             return 대기(self.ctx)
 
 
-class 종료(common.Trigger):
+class 종료(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[301,302,303,304], arg2=False)
         self.set_user_value(triggerId=900004, key='Plant', value=0)
         self.set_user_value(triggerId=900009, key='Seed', value=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 대기(self.ctx)
 

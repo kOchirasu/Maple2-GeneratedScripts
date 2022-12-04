@@ -1,8 +1,8 @@
 """ trigger/02020112_bf/jumproom.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.set_effect(triggerIds=[8005], visible=False)
@@ -19,26 +19,26 @@ class 대기(common.Trigger):
         self.set_actor(triggerId=9907, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9908, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(boxId=931, boxId=4, operator='GreaterEqual'):
             return 감지(self.ctx)
         if self.user_detected(boxIds=[931], jobCode=0):
             return 감지(self.ctx)
 
 
-class 감지(common.Trigger):
+class 감지(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[8005], visible=True)
         self.set_effect(triggerIds=[8006], visible=True)
         self.set_effect(triggerIds=[8007], visible=True)
         self.set_effect(triggerIds=[8008], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.all_of():
             return 성공(self.ctx)
 
 
-class 성공(common.Trigger):
+class 성공(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=99990021, key='Reconnect', value=2) # <재접속 유저를 위해 버프 지속적으로 쏴주기 캔슬>
         self.set_event_ui(type=1, arg2='$02020112_BF__JUMPROOM__0$', arg3='5000')
@@ -64,7 +64,7 @@ class 성공(common.Trigger):
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[152,153,154,155]):
             self.set_user_value(triggerId=99990001, key='MonsterDead', value=1)
             return None

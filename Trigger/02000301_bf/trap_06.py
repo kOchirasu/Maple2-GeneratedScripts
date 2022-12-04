@@ -1,8 +1,8 @@
 """ trigger/02000301_bf/trap_06.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=212, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_actor(triggerId=213, visible=True, initialSequence='sf_quest_light_A01_Off')
@@ -13,7 +13,7 @@ class 시작(common.Trigger):
         self.set_mesh(triggerIds=[3061,3062,3063,3064,3065,3066], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4601,4602,4603,4604,4605,4606,4607,4608,4609,4610,4611,4612,4613,4614], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[106]):
             return 경보(self.ctx)
         if self.user_detected(boxIds=[10601]):
@@ -30,7 +30,7 @@ class 시작(common.Trigger):
             return 해제(self.ctx)
 
 
-class 경보(common.Trigger):
+class 경보(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=212, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=213, visible=True, initialSequence='sf_quest_light_A01_On')
@@ -44,7 +44,7 @@ class 경보(common.Trigger):
         self.set_mesh(triggerIds=[3061,3062,3063,3064,3065,3066], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4601,4602,4603,4604,4605,4606,4607,4608,4609,4610,4611,4612,4613,4614], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2007]):
             self.hide_guide_summary(entityId=20003001)
             self.set_effect(triggerIds=[610], visible=False)
@@ -53,7 +53,7 @@ class 경보(common.Trigger):
             return 해제(self.ctx)
 
 
-class 해제(common.Trigger):
+class 해제(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[2007])
         self.set_mesh(triggerIds=[3061,3062,3063,3064,3065,3066], visible=False, arg3=0, delay=0, scale=5)

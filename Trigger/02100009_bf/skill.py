@@ -1,8 +1,8 @@
 """ trigger/02100009_bf/skill.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_user_value(triggerId=100, key='Fencebreak', value=0)
         self.set_mesh(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008], visible=True, arg3=0, delay=0, scale=0)
@@ -59,24 +59,24 @@ class 대기(common.Trigger):
         self.set_skill(triggerIds=[1000047], enable=True)
         self.set_skill(triggerIds=[1000048], enable=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 유저감지(self.ctx)
 
 
-class 유저감지(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 유저감지(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             return 스킬사용(self.ctx)
 
 
-class 스킬사용(common.Trigger):
-    def on_tick(self) -> common.Trigger:
+class 스킬사용(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='FenceBreak', value=1):
             return 길막삭제(self.ctx)
 
 
-class 길막삭제(common.Trigger):
+class 길막삭제(trigger_api.Trigger):
     def on_enter(self):
         self.set_mesh(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[1000001], enable=False)
@@ -132,7 +132,7 @@ class 길막삭제(common.Trigger):
         self.set_skill(triggerIds=[1000047], enable=False)
         self.set_skill(triggerIds=[1000048], enable=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return None # Missing State: 끝1
 

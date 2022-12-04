@@ -1,8 +1,8 @@
 """ trigger/52010056_qd/eventsection_e_monster.xml """
-import common
+import trigger_api
 
 
-class Idle(common.Trigger):
+class Idle(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5501], visible=False)
         self.set_effect(triggerIds=[5502], visible=False)
@@ -55,12 +55,12 @@ class Idle(common.Trigger):
         self.set_effect(triggerIds=[5549], visible=False)
         self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2009], questIds=[91000053], questStates=[2]):
             return Ready(self.ctx)
 
 
-class Ready(common.Trigger):
+class Ready(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[601], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[602], animationEffect=True) # 크림슨 스피어: 29000386
@@ -69,21 +69,21 @@ class Ready(common.Trigger):
         self.create_monster(spawnIds=[605], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[606], animationEffect=True) # 크림슨 스피어: 29000386
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 크림슨발록_지시(self.ctx)
 
 
-class 크림슨발록_지시(common.Trigger):
+class 크림슨발록_지시(trigger_api.Trigger):
     def on_enter(self):
         self.add_balloon_talk(spawnId=603, msg='$52010056_QD__EventSection_E_Monster__0$', duration=2000, delayTick=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 크림슨스피어_대답(self.ctx)
 
 
-class 크림슨스피어_대답(common.Trigger):
+class 크림슨스피어_대답(trigger_api.Trigger):
     def on_enter(self):
         self.add_balloon_talk(spawnId=601, msg='$52010056_QD__EventSection_E_Monster__1$', duration=1500, delayTick=0)
         self.add_balloon_talk(spawnId=602, msg='$52010056_QD__EventSection_E_Monster__1$', duration=1500, delayTick=0)
@@ -141,12 +141,12 @@ class 크림슨스피어_대답(common.Trigger):
         self.set_effect(triggerIds=[5548], visible=True)
         self.set_effect(triggerIds=[5549], visible=True)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[601,602,603,604,605]):
             return MeshOff(self.ctx)
 
 
-class MeshOff(common.Trigger):
+class MeshOff(trigger_api.Trigger):
     def on_enter(self):
         self.set_effect(triggerIds=[5501], visible=False)
         self.set_effect(triggerIds=[5502], visible=False)

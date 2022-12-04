@@ -1,8 +1,8 @@
 """ trigger/02000282_bf/main.xml """
-import common
+import trigger_api
 
 
-class 대기(common.Trigger):
+class 대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000424], state=0)
         self.set_interact_object(triggerIds=[10000425], state=0)
@@ -23,12 +23,12 @@ class 대기(common.Trigger):
         self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
             return 준비(self.ctx)
 
 
-class 준비(common.Trigger):
+class 준비(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.create_monster(spawnIds=[1002], animationEffect=False)
@@ -50,7 +50,7 @@ class 준비(common.Trigger):
         self.create_monster(spawnIds=[1020], animationEffect=False)
         self.create_monster(spawnIds=[1021], animationEffect=False)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=33):
             return 번생성4(self.ctx)
         if self.random_condition(rate=33):
@@ -59,22 +59,22 @@ class 준비(common.Trigger):
             return 번생성6(self.ctx)
 
 
-class 번생성4(common.Trigger):
+class 번생성4(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000424], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000424], stateValue=0):
             return 번몬스터4(self.ctx)
 
 
-class 번몬스터4(common.Trigger):
+class 번몬스터4(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2004]):
             self.show_guide_summary(entityId=20002812, textId=20002812, duration=5000)
             self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -85,22 +85,22 @@ class 번몬스터4(common.Trigger):
             return 소멸대기(self.ctx)
 
 
-class 번생성5(common.Trigger):
+class 번생성5(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000425], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000425], stateValue=0):
             return 번몬스터5(self.ctx)
 
 
-class 번몬스터5(common.Trigger):
+class 번몬스터5(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2005], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2005]):
             self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
             self.show_guide_summary(entityId=20002812, textId=20002812, duration=5000)
@@ -111,22 +111,22 @@ class 번몬스터5(common.Trigger):
             return 소멸대기(self.ctx)
 
 
-class 번생성6(common.Trigger):
+class 번생성6(trigger_api.Trigger):
     def on_enter(self):
         self.set_interact_object(triggerIds=[10000426], state=1)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000426], stateValue=0):
             return 번몬스터6(self.ctx)
 
 
-class 번몬스터6(common.Trigger):
+class 번몬스터6(trigger_api.Trigger):
     def on_enter(self):
         self.create_monster(spawnIds=[2006], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2006]):
             self.show_guide_summary(entityId=20002812, textId=20002812, duration=5000)
             self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -137,16 +137,16 @@ class 번몬스터6(common.Trigger):
             return 소멸대기(self.ctx)
 
 
-class 소멸대기(common.Trigger):
+class 소멸대기(trigger_api.Trigger):
     def on_enter(self):
         self.set_timer(timerId='5', seconds=5)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 소멸(self.ctx)
 
 
-class 소멸(common.Trigger):
+class 소멸(trigger_api.Trigger):
     pass
 
 

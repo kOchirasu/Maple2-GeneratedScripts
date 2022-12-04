@@ -1,8 +1,8 @@
 """ trigger/02000301_bf/trap_08.xml """
-import common
+import trigger_api
 
 
-class 시작(common.Trigger):
+class 시작(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=216, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_actor(triggerId=217, visible=True, initialSequence='sf_quest_light_A01_Off')
@@ -13,7 +13,7 @@ class 시작(common.Trigger):
         self.set_mesh(triggerIds=[3081,3082,3083,3084,3085,3086], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4801,4802,4803,4804,4805,4806,4807,4808,4809,4810,4811,4812,4813,4814,4815,4816,4817,4818], visible=True, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[108]):
             return 경보(self.ctx)
         if self.user_detected(boxIds=[10801]):
@@ -32,7 +32,7 @@ class 시작(common.Trigger):
             return 해제(self.ctx)
 
 
-class 경보(common.Trigger):
+class 경보(trigger_api.Trigger):
     def on_enter(self):
         self.set_actor(triggerId=216, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=217, visible=True, initialSequence='sf_quest_light_A01_On')
@@ -46,7 +46,7 @@ class 경보(common.Trigger):
         self.set_mesh(triggerIds=[3081,3082,3083,3084,3085,3086], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[4801,4802,4803,4804,4805,4806,4807,4808,4809,4810,4811,4812,4813,4814,4815,4816,4817,4818], visible=False, arg3=0, delay=0, scale=0)
 
-    def on_tick(self) -> common.Trigger:
+    def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2009]):
             self.hide_guide_summary(entityId=20003001)
             self.set_effect(triggerIds=[610], visible=False)
@@ -55,7 +55,7 @@ class 경보(common.Trigger):
             return 해제(self.ctx)
 
 
-class 해제(common.Trigger):
+class 해제(trigger_api.Trigger):
     def on_enter(self):
         self.destroy_monster(spawnIds=[2009])
         self.set_mesh(triggerIds=[3081,3082,3083,3084,3085,3086], visible=False, arg3=0, delay=0, scale=5)

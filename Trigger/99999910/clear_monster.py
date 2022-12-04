@@ -1,9 +1,9 @@
 """ trigger/99999910/clear_monster.xml """
-import common
+import trigger_api
 
 
 # 플레이어 감지
-class idle(common.Trigger):
+class idle(trigger_api.Trigger):
     pass
 
 
