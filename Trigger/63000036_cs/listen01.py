@@ -84,8 +84,7 @@ class Dialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=True) # Voice_Kandura_00001863
         self.set_dialogue(type=2, spawn_id=11001559, script='$63000036_CS__LISTEN01__1$', time=11) # 칸두라 00001863
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):

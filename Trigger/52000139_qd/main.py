@@ -206,10 +206,8 @@ class 기사와대화_08(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5772):
-            return None # Missing State: 기사와대화_09
-
+            return 기사와대화_09(self.ctx)
 """
-
 
 """
 class 기사와대화_09(trigger_api.Trigger):
@@ -219,14 +217,11 @@ class 기사와대화_09(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 퀘스트수락_01(self.ctx)
-
 """
-
 
 class 퀘스트수락_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=2)
         self.set_cinematic_ui(type=0) # 유저 이동 가능하게
         self.set_cinematic_ui(type=2) # UI 원상복구
@@ -389,8 +384,7 @@ class 부상병과대화_08(trigger_api.Trigger):
 
 class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

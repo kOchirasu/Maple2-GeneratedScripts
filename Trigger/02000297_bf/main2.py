@@ -119,8 +119,7 @@ class 카메라복귀(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=888888, enable=False)
@@ -181,8 +180,7 @@ class 연출종료2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=888888, enable=False)
         self.destroy_monster(spawn_ids=[1005])
         self.destroy_monster(spawn_ids=[1008])

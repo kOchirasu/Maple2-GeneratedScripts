@@ -27,10 +27,8 @@ class idle(trigger_api.Trigger):
         self.set_actor(trigger_id=8003, visible=False, initial_sequence='Dmg_A')
         self.set_actor(trigger_id=8004, visible=False, initial_sequence='Dmg_A')
         self.set_actor(trigger_id=8005, visible=False, initial_sequence='Dmg_A')
-        self.spawn_monster(spawn_ids=[301,302,303,304,305], auto_target=False)
-        # 기본 배치 될 몬스터 등장
-        self.set_dialogue(type=1, spawn_id=993, script='$02010052_BF__TORCHLIGHT_03__0$', time=3)
-        # 카나 말풍선 대사
+        self.spawn_monster(spawn_ids=[301,302,303,304,305], auto_target=False) # 기본 배치 될 몬스터 등장
+        self.set_dialogue(type=1, spawn_id=993, script='$02010052_BF__TORCHLIGHT_03__0$', time=3) # 카나 말풍선 대사
 
 
 class burn_state_01(trigger_api.Trigger):

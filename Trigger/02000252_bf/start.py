@@ -98,8 +98,7 @@ class 벨라대사2(trigger_api.Trigger):
 class 벨라대사3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=4)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         # self.set_effect(trigger_ids=[603], visible=True)
         self.set_dialogue(type=2, spawn_id=11000057, script='$02000252_BF__START__6$', time=4)
 

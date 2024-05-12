@@ -146,8 +146,7 @@ class ErebTalk02(trigger_api.Trigger):
 class ErebTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -269,8 +268,7 @@ class ErebTalk11(trigger_api.Trigger):
 class ErebTalk12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -286,10 +284,8 @@ class ErebTalk13(trigger_api.Trigger):
             return PCtoLeave01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5000], visible=False)
-        # SpotLight_01
-        self.set_effect(trigger_ids=[5001], visible=False)
-        # SpotLight_02
+        self.set_effect(trigger_ids=[5000], visible=False) # SpotLight_01
+        self.set_effect(trigger_ids=[5001], visible=False) # SpotLight_02
 
 
 class PCtoLeave01(trigger_api.Trigger):

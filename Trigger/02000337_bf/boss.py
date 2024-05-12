@@ -169,8 +169,7 @@ class 웨이홍_대사03(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear() # 해당 던전은 클리어 처리 됨
-        # self.show_guide_summary(entity_id=112, text_id=40009)
-        # 포탈을 타세요
+        # self.show_guide_summary(entity_id=112, text_id=40009) # 포탈을 타세요
         self.select_camera(trigger_id=8001, enable=False)
         self.set_dialogue(type=1, spawn_id=199, script='$02000337_BF__BOSS__3$', time=3, arg5=2) # 웨이홍 말풍선 대사
         self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=True) # 보상으로 연결되는 포탈 제어 (켬)

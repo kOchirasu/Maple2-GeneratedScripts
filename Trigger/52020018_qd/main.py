@@ -104,8 +104,7 @@ class EventScene_07(trigger_api.Trigger):
         self.add_balloon_talk(spawn_id=105, msg='우리하고 평생 여기 있자.', duration=2000, delay_tick=1500)
         self.add_balloon_talk(spawn_id=0, msg='이건 사실이 아니야!!!', duration=2000, delay_tick=3000)
         self.set_pc_emotion_loop(sequence_name='Emotion_Failure_Idle_A', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

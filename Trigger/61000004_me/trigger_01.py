@@ -91,9 +91,11 @@ class 어나운스0(trigger_api.Trigger):
             return 어나운스1(self.ctx)
 
 
-# 전체 box : 105
-# 대기 box : 101
-# 승자 box : 102
+"""
+전체 box : 105
+대기 box : 101
+승자 box : 102
+"""
 class 어나운스1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', stage=0, count=5)

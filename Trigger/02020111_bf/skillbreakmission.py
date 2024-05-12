@@ -21,8 +21,10 @@ class 던전미션1차_체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SkillBreakMissionReset') >= 0:
             return 대기(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
-        # all_of:  <스킬 브레이크 성공 애디셔널>
+        """
+        all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
+        all_of:  <스킬 브레이크 성공 애디셔널>
+        """
         if self.npc_extra_data(spawn_point_id='111', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002171, level=1):
             return 던전미션1차_스킬브레이크저지_성공(self.ctx)
         if self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002181, level=1):
@@ -62,8 +64,10 @@ class 던전미션2차_체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SkillBreakMissionReset') >= 0:
             return 대기(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
-        # all_of:  <스킬 브레이크 성공 애디셔널>
+        """
+        all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
+        all_of:  <스킬 브레이크 성공 애디셔널>
+        """
         if self.npc_extra_data(spawn_point_id='115', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002171, level=1):
             return 던전미션2차_스킬브레이크저지_성공(self.ctx)
         if self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002181, level=1):

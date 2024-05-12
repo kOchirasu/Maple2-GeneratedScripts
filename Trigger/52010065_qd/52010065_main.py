@@ -243,8 +243,7 @@ class 스킵1_01(trigger_api.Trigger):
 
 class 용암건너기_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=1)
         self.set_mesh(trigger_ids=[4026], visible=True, start_delay=0, interval=0, fade=0)
         self.set_cinematic_ui(type=0)
@@ -374,8 +373,7 @@ class 검마퇴장_06(trigger_api.Trigger):
 
 class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

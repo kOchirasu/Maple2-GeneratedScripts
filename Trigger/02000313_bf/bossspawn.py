@@ -674,8 +674,7 @@ class 퀘스트연출_마지막전투_07(trigger_api.Trigger):
 
 class 퀘스트연출_마지막전투_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

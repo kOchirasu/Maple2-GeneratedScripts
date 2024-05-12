@@ -16,46 +16,40 @@ class 대기(trigger_api.Trigger):
 class 퀘스트조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001562], quest_states=[2]):
-            return None # Missing State: 다음맵으로
+            return 다음맵으로(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001562], quest_states=[1]):
-            return None # Missing State: 연출준비00
+            return 연출준비00(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001561], quest_states=[3]):
-            return None # Missing State: 아르마노있음
+            return 아르마노있음(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001561], quest_states=[2]):
-            return None # Missing State: 아르마노있음
+            return 아르마노있음(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001561], quest_states=[1]):
-            return None # Missing State: 아르마노있음
+            return 아르마노있음(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001560], quest_states=[3]):
-            return None # Missing State: 아르마노있음
+            return 아르마노있음(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001560], quest_states=[2]):
-            return None # Missing State: 아르마노있음
+            return 아르마노있음(self.ctx)
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001560], quest_states=[1]):
-            return None # Missing State: 기본상태
-
+            return 기본상태(self.ctx)
 """
-
 
 """
 class 기본상태(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9000]):
-            return None # Missing State: 퀘스트조건체크
-
+            return 퀘스트조건체크(self.ctx)
 """
-
 
 """
 class 아르마노있음(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001562], quest_states=[1]):
-            return None # Missing State: 연출준비
+            return 연출준비(self.ctx)
         if not self.quest_user_detected(box_ids=[9000], quest_ids=[50001562], quest_states=[1]):
-            return None # Missing State: 퀘스트조건체크
+            return 퀘스트조건체크(self.ctx)
         if self.wait_tick(wait_tick=100):
             return 종료(self.ctx)
-
 """
-
 
 """
 class 다음맵으로(trigger_api.Trigger):
@@ -66,9 +60,7 @@ class 다음맵으로(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
             return 종료(self.ctx)
-
 """
-
 
 """
 class 연출준비00(trigger_api.Trigger):
@@ -79,10 +71,8 @@ class 연출준비00(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
-            return None # Missing State: 연출준비
-
+            return 연출준비(self.ctx)
 """
-
 
 """
 class 연출준비(trigger_api.Trigger):
@@ -92,10 +82,8 @@ class 연출준비(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
-            return None # Missing State: 티니에등장
-
+            return 티니에등장(self.ctx)
 """
-
 
 """
 class 티니에등장(trigger_api.Trigger):
@@ -107,10 +95,8 @@ class 티니에등장(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 티니에이동01
-
+            return 티니에이동01(self.ctx)
 """
-
 
 """
 class 티니에이동01(trigger_api.Trigger):
@@ -121,10 +107,8 @@ class 티니에이동01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
-            return None # Missing State: 아르마노대사01
-
+            return 아르마노대사01(self.ctx)
 """
-
 
 """
 class 아르마노대사01(trigger_api.Trigger):
@@ -137,23 +121,18 @@ class 아르마노대사01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
-            return None # Missing State: 티니에대사01
-
+            return 티니에대사01(self.ctx)
 """
-
 
 """
 class 아르마노대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
-        return None # Missing State: 티니에대사01
-
+        return 티니에대사01(self.ctx)
 """
-
 
 """
 class 티니에대사09(trigger_api.Trigger):
@@ -163,10 +142,8 @@ class 티니에대사09(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            return None # Missing State: 연출종료
-
+            return 연출종료(self.ctx)
 """
-
 
 """
 class 연출종료(trigger_api.Trigger):
@@ -179,9 +156,7 @@ class 연출종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 종료(self.ctx)
-
 """
-
 
 class 종료(trigger_api.Trigger):
     pass

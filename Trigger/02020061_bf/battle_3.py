@@ -26,8 +26,7 @@ class 보스_추가대사(trigger_api.Trigger):
 
 class 보스랜덤픽(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(box_ids=[9002], skill_id=70002371, level=1, is_skill_set=False)
-        # <유저 웨폰 오브젝트 떨구기>
+        self.add_buff(box_ids=[9002], skill_id=70002371, level=1, is_skill_set=False) # <유저 웨폰 오브젝트 떨구기>
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=17):

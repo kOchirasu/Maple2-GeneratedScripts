@@ -174,8 +174,7 @@ class 마리엔등장_11(trigger_api.Trigger):
 
 class 마리엔퇴장_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[201])
         self.set_effect(trigger_ids=[5003], visible=True)
 
@@ -197,8 +196,7 @@ class 마리엔퇴장_02(trigger_api.Trigger):
 
 class 스킵종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.face_emotion(spawn_id=0)
         self.set_cinematic_ui(type=0)
@@ -212,8 +210,7 @@ class 스킵종료(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_effect(trigger_ids=[5003], visible=False)
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 

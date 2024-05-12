@@ -405,8 +405,7 @@ class 첫번째무너짐연출종료01(trigger_api.Trigger):
         self.select_camera(trigger_id=802, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -448,8 +447,7 @@ class 첫번째덤불등장01(trigger_api.Trigger):
             return 첫번째덤불제거01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[777401], visible=True)
-        # 덤불 제거01 사운드
+        self.set_effect(trigger_ids=[777401], visible=True) # 덤불 제거01 사운드
         self.hide_guide_summary(entity_id=20003312)
 
 
@@ -474,10 +472,8 @@ class 첫번째꼬마찾기시작(trigger_api.Trigger):
             return 첫번째꼬마랜덤(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=92220, visible=False, initial_sequence='Dead_A')
-        # 첫번째장벽 덤불 제거
-        self.set_effect(trigger_ids=[777401], visible=False)
-        # 덤불 제거01 사운드
+        self.set_actor(trigger_id=92220, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불 제거
+        self.set_effect(trigger_ids=[777401], visible=False) # 덤불 제거01 사운드
 
 
 class 첫번째꼬마랜덤(trigger_api.Trigger):
@@ -506,8 +502,8 @@ class 첫번째힌트발견01(trigger_api.Trigger):
             return 첫번째힌트수색01(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 첫번째힌트수색01(trigger_api.Trigger):
@@ -575,8 +571,8 @@ class 첫번째힌트발견02(trigger_api.Trigger):
             return 첫번째힌트수색02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 첫번째힌트수색02(trigger_api.Trigger):
@@ -644,8 +640,8 @@ class 첫번째힌트발견03(trigger_api.Trigger):
             return 첫번째힌트수색03(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 첫번째힌트수색03(trigger_api.Trigger):
@@ -713,8 +709,8 @@ class 첫번째힌트발견04(trigger_api.Trigger):
             return 첫번째힌트수색04(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 첫번째힌트수색04(trigger_api.Trigger):
@@ -768,8 +764,10 @@ class 첫번째꼬마교체04(trigger_api.Trigger):
             return 몬스터출현02_생성랜덤01(self.ctx)
 
 
-# 첫번째 꼬마 찾기 랜덤 스테이트 종료
-# 두번째 꼬마 찾기 전에 전투용 몬스터 미리 스폰
+"""
+첫번째 꼬마 찾기 랜덤 스테이트 종료
+두번째 꼬마 찾기 전에 전투용 몬스터 미리 스폰
+"""
 class 몬스터출현02_생성랜덤01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=25):
@@ -838,8 +836,7 @@ class 두번째덤불등장01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20003312)
-        self.set_effect(trigger_ids=[777402], visible=True)
-        # 덤불 제거02 사운드
+        self.set_effect(trigger_ids=[777402], visible=True) # 덤불 제거02 사운드
 
 
 class 두번째덤불제거01(trigger_api.Trigger):
@@ -864,8 +861,7 @@ class 두번째꼬마찾기시작(trigger_api.Trigger):
             return 두번째몬스터발견01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=93330, visible=False, initial_sequence='Dead_A')
-        # 첫번째장벽 덤불
+        self.set_actor(trigger_id=93330, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
 
 class 두번째몬스터발견01(trigger_api.Trigger):
@@ -913,8 +909,8 @@ class 두번째힌트발견01(trigger_api.Trigger):
             return 두번째힌트수색01(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 두번째힌트수색01(trigger_api.Trigger):
@@ -1019,8 +1015,8 @@ class 두번째힌트발견02(trigger_api.Trigger):
             return 두번째힌트수색02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 두번째힌트수색02(trigger_api.Trigger):
@@ -1125,8 +1121,8 @@ class 두번째힌트발견03(trigger_api.Trigger):
             return 두번째힌트수색03(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 두번째힌트수색03(trigger_api.Trigger):
@@ -1231,8 +1227,8 @@ class 두번째힌트발견04(trigger_api.Trigger):
             return 두번째힌트수색04(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 두번째힌트수색04(trigger_api.Trigger):
@@ -1336,8 +1332,8 @@ class 두번째힌트발견05(trigger_api.Trigger):
             return 두번째힌트수색05(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003313, text_id=20003313)
         # 가이드 : 발자국을 따라가서 친구를 찾아 보세요.
+        self.show_guide_summary(entity_id=20003313, text_id=20003313)
 
 
 class 두번째힌트수색05(trigger_api.Trigger):
@@ -1460,8 +1456,7 @@ class 세번째덤불등장01(trigger_api.Trigger):
             return 세번째덤불등장02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[777403], visible=True)
-        # 덤불 제거03 사운드
+        self.set_effect(trigger_ids=[777403], visible=True) # 덤불 제거03 사운드
 
 
 class 세번째덤불등장02(trigger_api.Trigger):
@@ -1481,8 +1476,7 @@ class 세번째덤불등장02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20003312)
-        self.set_effect(trigger_ids=[777404], visible=True)
-        # 덤불 제거04 사운드
+        self.set_effect(trigger_ids=[777404], visible=True) # 덤불 제거04 사운드
 
 
 class 세번째덤불등장03(trigger_api.Trigger):
@@ -1511,8 +1505,7 @@ class 세번째꼬마찾기시작(trigger_api.Trigger):
             return 꼬마셋대화연출01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(trigger_id=94450, visible=False, initial_sequence='Dead_A')
-        # 첫번째장벽 덤불
+        self.set_actor(trigger_id=94450, visible=False, initial_sequence='Dead_A') # 첫번째장벽 덤불
 
 
 class 꼬마셋대화연출01(trigger_api.Trigger):
@@ -1591,8 +1584,8 @@ class 구출안내01_01(trigger_api.Trigger):
             return 구출안내01_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003314, text_id=20003314)
         # 가이드 : 주변에서 레버를 찾아 당겨 보세요.
+        self.show_guide_summary(entity_id=20003314, text_id=20003314)
 
 
 class 구출안내01_02(trigger_api.Trigger):
@@ -1671,8 +1664,8 @@ class 구출안내02_01(trigger_api.Trigger):
             return 구출안내02_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003314, text_id=20003314)
         # 가이드 : 주변에서 레버를 찾아 당겨 보세요.
+        self.show_guide_summary(entity_id=20003314, text_id=20003314)
 
 
 class 구출안내02_02(trigger_api.Trigger):
@@ -1751,8 +1744,8 @@ class 구출안내03_01(trigger_api.Trigger):
             return 구출안내03_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003314, text_id=20003314)
         # 가이드 : 주변에서 레버를 찾아 당겨 보세요.
+        self.show_guide_summary(entity_id=20003314, text_id=20003314)
 
 
 class 구출안내03_02(trigger_api.Trigger):
@@ -1831,8 +1824,8 @@ class 구출안내04_01(trigger_api.Trigger):
             return 구출안내04_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003314, text_id=20003314)
         # 가이드 : 주변에서 레버를 찾아 당겨 보세요.
+        self.show_guide_summary(entity_id=20003314, text_id=20003314)
 
 
 class 구출안내04_02(trigger_api.Trigger):
@@ -1911,8 +1904,8 @@ class 구출안내05_01(trigger_api.Trigger):
             return 구출안내05_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.show_guide_summary(entity_id=20003314, text_id=20003314)
         # 가이드 : 주변에서 레버를 찾아 당겨 보세요.
+        self.show_guide_summary(entity_id=20003314, text_id=20003314)
 
 
 class 구출안내05_02(trigger_api.Trigger):
@@ -2031,8 +2024,7 @@ class 네번째덤불등장01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20003312)
-        self.set_effect(trigger_ids=[777405], visible=True)
-        # 덤불 제거05 사운드
+        self.set_effect(trigger_ids=[777405], visible=True) # 덤불 제거05 사운드
 
 
 class 네번째덤불제거01(trigger_api.Trigger):
@@ -2725,8 +2717,7 @@ class 보스등장연출중01(trigger_api.Trigger):
 
 class 보스등장연출중01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 보스등장연출중02(self.ctx)
@@ -2750,8 +2741,7 @@ class 보스등장연출중02(trigger_api.Trigger):
 
 class 보스등장연출중02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 보스등장연출중03(self.ctx)
@@ -2775,8 +2765,7 @@ class 보스등장연출중03(trigger_api.Trigger):
 
 class 보스등장연출중03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 보스등장연출중04(self.ctx)
@@ -2798,8 +2787,7 @@ class 보스등장연출중04(trigger_api.Trigger):
 class 보스등장연출끝01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=808, enable=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_effect(trigger_ids=[777802], visible=False) # 길 없어짐02 사운드 /  외다리
@@ -3736,8 +3724,7 @@ class 마지막연출_준비01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20003315)
-        self.set_interact_object(trigger_ids=[10000776], state=0)
-        # 마지막꼬마 CAGE 열수있는 철창 켜기
+        self.set_interact_object(trigger_ids=[10000776], state=0) # 마지막꼬마 CAGE 열수있는 철창 켜기
 
 
 class 마지막연출_포털출현01(trigger_api.Trigger):
@@ -3821,10 +3808,8 @@ class 던전클리어01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.dungeon_clear()
-        self.set_achievement(trigger_id=99998, type='trigger', achieve='ClearHideandSeek')
-        # ClearHideandSeek 퀘스트
-        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
-        # 클리어포털 나타남
+        self.set_achievement(trigger_id=99998, type='trigger', achieve='ClearHideandSeek') # ClearHideandSeek 퀘스트
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True) # 클리어포털 나타남
 
 
 class 퇴장시작01(trigger_api.Trigger):

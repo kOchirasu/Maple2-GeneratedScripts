@@ -140,7 +140,8 @@ class 인페르녹처치성공(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 인페르녹 죽이면 제일 먼저 던전 시간 멈추게 하기
         self.dungeon_stop_timer()
-        # <action name="DungeonMissionComplete" missionID="23040000" />  DungeonMission.xml 에 등록된 숫자 코드 미션 완료 처리하기, 던전 클리어 미션 달성임
+        # # DungeonMission.xml 에 등록된 숫자 코드 미션 완료 처리하기, 던전 클리어 미션 달성임
+        self.dungeon_mission_complete(mission_id=23040000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

@@ -129,8 +129,7 @@ class 목격_08(trigger_api.Trigger):
 
 class 삼자대화_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -317,8 +316,7 @@ class 삼자대화_20(trigger_api.Trigger):
 
 class 하스터와전투_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -404,8 +402,7 @@ class 전투후대화_01(trigger_api.Trigger):
 
 class 전투후대화_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_2005')
 
@@ -426,8 +423,7 @@ class 전투후대화_03(trigger_api.Trigger):
 
 class 전투후대화_03_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -448,8 +444,7 @@ class 전투후대화_04(trigger_api.Trigger):
 
 class 전투후대화_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Bore_A')
 
@@ -516,8 +511,7 @@ class 전투후대화_11(trigger_api.Trigger):
 
 class 전투후대화_12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_2007')
 

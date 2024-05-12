@@ -62,8 +62,7 @@ class 열림(trigger_api.Trigger):
         # self.set_cinematic_ui(type=0)
         # self.set_cinematic_ui(type=2)
         # self.set_cinematic_ui(type=7)
-        self.set_mesh(trigger_ids=[6003], visible=False, interval=0, fade=10)
-        # 벽 해제
+        self.set_mesh(trigger_ids=[6003], visible=False, interval=0, fade=10) # 벽 해제
 
 
 class 열림_끝(trigger_api.Trigger):

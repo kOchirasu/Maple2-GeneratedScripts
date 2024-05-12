@@ -48,8 +48,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004], visible=False, start_delay=0, interval=0, fade=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -226,8 +225,7 @@ class 룬블레이더이동(trigger_api.Trigger):
 class 던전종료연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[1920,1921,1922], arg2=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0)
@@ -241,12 +239,10 @@ class 던전종료연출종료(trigger_api.Trigger):
 class 룸체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
-            return None # Missing State: 던전종료
+            return 던전종료(self.ctx)
         if not self.is_dungeon_room():
             return 퀘스트던전종료(self.ctx)
-
 """
-
 
 """
 class 던전종료(trigger_api.Trigger):
@@ -260,9 +256,7 @@ class 던전종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
-
 """
-
 
 class 퀘스트던전종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

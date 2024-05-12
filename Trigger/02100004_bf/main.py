@@ -65,8 +65,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class Caption01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 시작(self.ctx)
@@ -77,8 +76,7 @@ class 시작(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
         self.close_cinematic()
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[601], visible=True)
         self.show_guide_summary(entity_id=20002411, text_id=20002411)
         self.set_user_value(trigger_id=999993, key='BattleStart', value=1)
@@ -368,8 +366,7 @@ class 라운드10(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.set_event_ui(type=0, arg2='0,0')
-        self.set_user_value(trigger_id=999995, key='LastRoundEnd', value=1)
-        # 트로피 전용
+        self.set_user_value(trigger_id=999995, key='LastRoundEnd', value=1) # 트로피 전용
 
 
 class 성공(trigger_api.Trigger):

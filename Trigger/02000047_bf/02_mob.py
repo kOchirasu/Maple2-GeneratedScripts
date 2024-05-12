@@ -30,7 +30,7 @@ class 우레우스대사(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         """
         <onExit>
-        <action name="몬스터를생성한다" arg1="102"/>
+            <action name="몬스터를생성한다" arg1="102"/>
         </onExit>
         """
         if self.time_expired(timer_id='1'):
@@ -46,9 +46,7 @@ class 휴지(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
             return 몬스터와전투(self.ctx)
-
 """
-
 
 class 몬스터와전투(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:

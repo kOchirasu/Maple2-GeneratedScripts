@@ -277,8 +277,7 @@ class 투르카대면_16(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4018], return_view=False)
         self.add_cinematic_talk(npc_id=0, illust_id='0', msg='$52100208_QD__52100208__24$', duration=3000)
         self.add_cinematic_talk(npc_id=11004679, illust_id='Mason_closeEye', align='right', msg='$52100208_QD__52100208__25$', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):

@@ -97,8 +97,7 @@ class EveTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LennonTalk01(self.ctx)
@@ -119,8 +118,7 @@ class LennonTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return EveTalk02(self.ctx)
@@ -141,8 +139,7 @@ class EveTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -151,8 +148,7 @@ class EveTalk02Skip(trigger_api.Trigger):
 
 class TalkEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.select_camera(trigger_id=600, enable=False)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)

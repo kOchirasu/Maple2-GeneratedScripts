@@ -66,16 +66,15 @@ class Round02_Start(trigger_api.Trigger):
             return Round02_Sucess02(self.ctx)
 
 
-# 20170223 업데이트 던전 개편 단축 			
-#     <state name="Round02_Sucess01" >	
-#         <onEnter>				
-# 				</onEnter>		
-# 			<condition name="NPC를감지했으면" arg1="9002" arg2="2202">	
-# 			<transition state="Round02_Sucess02"/>	
-# 		</condition> 		
-#     <onExit> 
-#     </onExit>	
-#     </state>
+# 20170223 업데이트 던전 개편 단축
+
+"""
+class Round02_Sucess01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.npc_detected(box_id=9002, spawn_ids=[2202]):
+            return Round02_Sucess02(self.ctx)
+"""
+
 class Round02_Sucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.move_npc(spawn_id=2202, patrol_name='MS2PatrolData_2002')
@@ -83,9 +82,9 @@ class Round02_Sucess02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1002])
         self.spawn_monster(spawn_ids=[102], auto_target=False) # 연출용 틴차이
         self.set_mesh(trigger_ids=[3002], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        # <action name="메쉬를설정한다" arg1="3102" arg2="1" arg3="0" arg4="0" arg5="0" />  CrystalOn
+        # self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
         self.set_mesh_animation(trigger_ids=[3002], visible=False, start_delay=0, interval=0) # CrystalOff
-        # <action name="메쉬애니를설정한다" arg1="3102" arg2="1" arg3="0" arg4="0" />  CrystalOn
+        # self.set_mesh_animation(trigger_ids=[3102], visible=True, start_delay=0, interval=0) # CrystalOn
         self.set_effect(trigger_ids=[5202], visible=True) # Sound_CrystalOn
         self.set_portal(portal_id=24, visible=True, enable=True, minimap_visible=False)
         self.set_dialogue(type=1, spawn_id=102, script='$02000378_BF__02_FINDWAY__4$', time=2, arg5=1) # 틴차이
@@ -105,11 +104,11 @@ class Round02_RouteSelect(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         """
         if self.random_condition(weight=50):
-            return None # Missing State: Round02_PickRoute_Left
+            return Round02_PickRoute_Left(self.ctx)
         """
         """
         if self.random_condition(weight=50):
-            return None # Missing State: Round02_PickRoute_Right
+            return Round02_PickRoute_Right(self.ctx)
         """
         if self.wait_tick(wait_tick=500):
             return GoToRound12(self.ctx)

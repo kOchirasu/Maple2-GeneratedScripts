@@ -260,8 +260,10 @@ class R01Start(trigger_api.Trigger):
             return R01DanceTime(self.ctx)
 
 
-# 댄스 패턴 / 라운드 공용
-# R01 DanceTime 패턴 랜덤
+"""
+댄스 패턴 / 라운드 공용
+R01 DanceTime 패턴 랜덤
+"""
 class R01DanceTime(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(trigger_id=30000, enable=False) # Silence
@@ -285,8 +287,7 @@ class R01DanceTime(trigger_api.Trigger):
             return DancePattern0701(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10001180], state=2)
-        # 7000ms
+        self.set_interact_object(trigger_ids=[10001180], state=2) # 7000ms
 
 
 # Dance 9000ms
@@ -578,8 +579,10 @@ class R01_GameTimerStart(trigger_api.Trigger):
         return R01G00Check(self.ctx)
 
 
-# R01 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R01 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R01G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 50:
@@ -596,8 +599,10 @@ class R01G00Check(trigger_api.Trigger):
             return G01orG02(self.ctx)
 
 
-# R01  인원 체크 끝
-# 패턴 그룹 2개 랜덤 / 라운드 공용
+"""
+R01  인원 체크 끝
+패턴 그룹 2개 랜덤 / 라운드 공용
+"""
 class G05orG04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=80):
@@ -1168,8 +1173,7 @@ class EveryPlayerVacuumExecute(trigger_api.Trigger):
             return R05Ready(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_user_value(trigger_id=11, key='BannerCheckIn', value=1)
-        # 게임판 위 인원수 배너 표시
+        self.set_user_value(trigger_id=11, key='BannerCheckIn', value=1) # 게임판 위 인원수 배너 표시
 
 
 # R02 시작
@@ -1269,8 +1273,10 @@ class R02_GameTimerStart(trigger_api.Trigger):
         return R02G00Check(self.ctx)
 
 
-# R02 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R02 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R02G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 50:
@@ -1402,8 +1408,10 @@ class R02RoundScoreRecord(trigger_api.Trigger):
             return RedTeamWinAlreadyNotice(self.ctx)
 
 
-# 라운드 종료 멤버 리셋 / 라운드 공용
-# R03 시작
+"""
+라운드 종료 멤버 리셋 / 라운드 공용
+R03 시작
+"""
 class R03Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=3)
@@ -1490,8 +1498,10 @@ class R03_GameTimerStart(trigger_api.Trigger):
         return R03G00Check(self.ctx)
 
 
-# R03 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R03 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R03G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 50:
@@ -1623,8 +1633,10 @@ class R03RoundScoreRecord(trigger_api.Trigger):
             return RedTeamWinAlreadyNotice(self.ctx)
 
 
-# 라운드 종료 멤버 리셋 / 라운드 공용
-# R04 시작
+"""
+라운드 종료 멤버 리셋 / 라운드 공용
+R04 시작
+"""
 class R04Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=4)
@@ -1711,8 +1723,10 @@ class R04_GameTimerStart(trigger_api.Trigger):
         return R04G00Check(self.ctx)
 
 
-# R04 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R04 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R04G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 50:
@@ -1729,8 +1743,10 @@ class R04G00Check(trigger_api.Trigger):
             return G01orG02(self.ctx)
 
 
-# R04 인원 체크 끝
-# R04 Normal End
+"""
+R04 인원 체크 끝
+R04 Normal End
+"""
 class R04EndDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=7110, key='ColorEnd', value=1) # color reset
@@ -1845,8 +1861,10 @@ class R04RoundScoreRecord(trigger_api.Trigger):
             return RedTeamWinAlreadyNotice(self.ctx)
 
 
-# 라운드 종료 멤버 리셋 / 라운드 공용
-# R05 시작
+"""
+라운드 종료 멤버 리셋 / 라운드 공용
+R05 시작
+"""
 class R05Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=5)
@@ -1942,8 +1960,10 @@ class R05_GameTimerStart(trigger_api.Trigger):
         return R05G05Check(self.ctx)
 
 
-# R05 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R05 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R05G05Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 50:
@@ -2075,8 +2095,7 @@ class GameWrapUp_EveryPlayerVacuumExecute(trigger_api.Trigger):
             return R05RoundScoreRecord(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_user_value(trigger_id=11, key='BannerCheckIn', value=1)
-        # 게임판 위 인원수 배너 표시
+        self.set_user_value(trigger_id=11, key='BannerCheckIn', value=1) # 게임판 위 인원수 배너 표시
 
 
 # 최종 라운드 승패 판정
@@ -2327,8 +2346,10 @@ class Quit(trigger_api.Trigger):
         self.move_user(map_id=0, portal_id=0)
 
 
-# 그룹별패턴 모음
-# G01 P01
+"""
+그룹별패턴 모음
+G01 P01
+"""
 class G01P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=100, key='G01P01Set', value=1)

@@ -95,8 +95,7 @@ class 제이든등장(trigger_api.Trigger):
 class skip01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 제이든보고_스킵완료(self.ctx)
@@ -111,10 +110,8 @@ class 케이틀린탈주01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 케이틀린탈주02
-
+            return 케이틀린탈주02(self.ctx)
 """
-
 
 """
 class 케이틀린탈주02(trigger_api.Trigger):
@@ -123,10 +120,8 @@ class 케이틀린탈주02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 케이틀린탈주03
-
+            return 케이틀린탈주03(self.ctx)
 """
-
 
 """
 class 케이틀린탈주03(trigger_api.Trigger):
@@ -135,10 +130,8 @@ class 케이틀린탈주03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: PC멈칫
-
+            return PC멈칫(self.ctx)
 """
-
 
 """
 class PC멈칫(trigger_api.Trigger):
@@ -148,10 +141,8 @@ class PC멈칫(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 앤대사03
-
+            return 앤대사03(self.ctx)
 """
-
 
 """
 class 앤대사03(trigger_api.Trigger):
@@ -163,9 +154,7 @@ class 앤대사03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4022):
             return 연출종료(self.ctx)
-
 """
-
 
 class 제이든보고_스킵완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

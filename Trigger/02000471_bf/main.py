@@ -128,8 +128,7 @@ class boss_scene_04(trigger_api.Trigger):
 
 class boss(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[311,312,313,314,315,316,2000])
         self.spawn_monster(spawn_ids=[1999], auto_target=False)
         self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)

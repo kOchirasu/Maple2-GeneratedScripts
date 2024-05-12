@@ -90,8 +90,7 @@ class EventTalk_01(trigger_api.Trigger):
 class EventTalk_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=0, msg='설마....', duration=2500, align='Right')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -101,8 +100,7 @@ class EventTalk_02(trigger_api.Trigger):
 class EventTalk_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=0, msg='설마.... 그럴리가 없어....', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

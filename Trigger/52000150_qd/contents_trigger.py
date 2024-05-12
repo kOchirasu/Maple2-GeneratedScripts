@@ -167,8 +167,7 @@ class 컨텐츠종료01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.5, duration=10, interpolator=1) # 2초간 느려지기 시작
         # self.set_achievement(trigger_id=10010, type='trigger', achieve='ProtectFinish')
-        # self.set_user_value(trigger_id=10000, key='52000150monster', value=1)
-        # 통신 : 몬스터 다 잡으면 쏴주는 신호
+        # self.set_user_value(trigger_id=10000, key='52000150monster', value=1) # 통신 : 몬스터 다 잡으면 쏴주는 신호
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

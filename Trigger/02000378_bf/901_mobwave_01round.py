@@ -159,47 +159,39 @@ class ThirdWaveDelayRandom(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=30):
-            return None # Missing State: ThirdWaveDelay3000
+            return ThirdWaveDelay3000(self.ctx)
         if self.random_condition(weight=30):
-            return None # Missing State: ThirdWaveDelay4000
+            return ThirdWaveDelay4000(self.ctx)
         if self.random_condition(weight=30):
-            return None # Missing State: ThirdWaveDelay5000
-
+            return ThirdWaveDelay5000(self.ctx)
 """
-
 
 """
 class ThirdWaveDelay3000(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: FourthWaveStart
+            return FourthWaveStart(self.ctx)
         if self.monster_dead(spawn_ids=[1001]):
             return NpcDownPenaltyStart(self.ctx)
-
 """
-
 
 """
 class ThirdWaveDelay4000(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
-            return None # Missing State: FourthWaveStart
+            return FourthWaveStart(self.ctx)
         if self.monster_dead(spawn_ids=[1001]):
             return NpcDownPenaltyStart(self.ctx)
-
 """
-
 
 """
 class ThirdWaveDelay5000(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            return None # Missing State: FourthWaveStart
+            return FourthWaveStart(self.ctx)
         if self.monster_dead(spawn_ids=[1001]):
             return NpcDownPenaltyStart(self.ctx)
-
 """
-
 
 """
 class FourthWaveStart(trigger_api.Trigger):
@@ -209,12 +201,10 @@ class FourthWaveStart(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: FourthWaveDelay
+            return FourthWaveDelay(self.ctx)
         if self.monster_dead(spawn_ids=[1001]):
             return NpcDownPenaltyStart(self.ctx)
-
 """
-
 
 """
 class FourthWaveDelay(trigger_api.Trigger):
@@ -226,9 +216,7 @@ class FourthWaveDelay(trigger_api.Trigger):
             return DefenceSucess01(self.ctx)
         if self.monster_dead(spawn_ids=[1001]):
             return NpcDownPenaltyStart(self.ctx)
-
 """
-
 
 class FifthWaveStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

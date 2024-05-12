@@ -36,10 +36,8 @@ class 카메라300(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            return None # Missing State: 연출시작
-
+            return 연출시작(self.ctx)
 """
-
 
 """
 class 연출시작(trigger_api.Trigger):
@@ -51,10 +49,8 @@ class 연출시작(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 카메라302
-
+            return 카메라302(self.ctx)
 """
-
 
 """
 class 카메라302(trigger_api.Trigger):
@@ -65,10 +61,8 @@ class 카메라302(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 카메라303
-
+            return 카메라303(self.ctx)
 """
-
 
 """
 class 카메라303(trigger_api.Trigger):
@@ -82,9 +76,7 @@ class 카메라303(trigger_api.Trigger):
         if self.time_expired(timer_id='1'):
             self.select_camera(trigger_id=303, enable=False)
             return PvP시작(self.ctx)
-
 """
-
 
 """
 class PvP시작(trigger_api.Trigger):
@@ -96,9 +88,7 @@ class PvP시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 종료(self.ctx)
-
 """
-
 
 class 종료(trigger_api.Trigger):
     pass

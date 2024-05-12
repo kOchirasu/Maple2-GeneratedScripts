@@ -64,16 +64,15 @@ class Round08_Start(trigger_api.Trigger):
             return Round08_Sucess02(self.ctx)
 
 
+# 20170223 업데이트 던전 개편 단축
+
 """
 class Round08_Sucess01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9008, spawn_ids=[2208]):
             return Round08_Sucess02(self.ctx)
-
 """
 
-
-# 20170223 업데이트 던전 개편 단축
 class Round08_Sucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=2008, patrol_name='MS2PatrolData_2008')
@@ -81,9 +80,9 @@ class Round08_Sucess02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1008])
         self.spawn_monster(spawn_ids=[108], auto_target=False) # 연출용 틴차이
         self.set_mesh(trigger_ids=[3008], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        # <action name="메쉬를설정한다" arg1="3108" arg2="1" arg3="0" arg4="0" arg5="0" />  CrystalOn
+        # self.set_mesh(trigger_ids=[3108], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
         self.set_mesh_animation(trigger_ids=[3008], visible=False, start_delay=0, interval=0) # CrystalOff
-        # <action name="메쉬애니를설정한다" arg1="3108" arg2="1" arg3="0" arg4="0" /> CrystalOn
+        # self.set_mesh_animation(trigger_ids=[3108], visible=True, start_delay=0, interval=0) # CrystalOn
         self.set_effect(trigger_ids=[5208], visible=True) # Sound_CrystalOn
         self.set_portal(portal_id=23, visible=True, enable=True, minimap_visible=False) # 20170223 업데이트 던전 개편 단축
         self.set_dialogue(type=1, spawn_id=108, script='$52000052_QD__04_FINDWAY__3$', time=2, arg5=1) # 틴차이

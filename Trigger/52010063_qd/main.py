@@ -87,8 +87,7 @@ class 연출시작(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Dead_A', duration=999999)
-        # self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_02_B', duration=999999)
-        # 트리스탄 기빨림 모션
+        # self.set_npc_emotion_loop(spawn_id=101, sequence_name='Attack_02_B', duration=999999) # 트리스탄 기빨림 모션
         self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_02_D', duration=17000) # 인페르녹 기빨기 모션
         self.set_effect(trigger_ids=[6000,6003], visible=True) # 인페르녹 기빨기 이펙트
         self.set_effect(trigger_ids=[6001], visible=True) # 트리스탄 바닥 이펙트
@@ -154,8 +153,8 @@ class 인페르녹줌인02(trigger_api.Trigger):
 class 인페르녹줌인03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # action name="카메라경로를선택한다" arg1="8004" arg2="0"/>
-        self.add_cinematic_talk(npc_id=11003832, illust_id='infernog_nomal', msg='$52010063_QD__main__2$', duration=5000, align='right')
         # 네놈은 누구인가.\n대체 어떻게 이곳에 들어올 수 있었단 말인가.
+        self.add_cinematic_talk(npc_id=11003832, illust_id='infernog_nomal', msg='$52010063_QD__main__2$', duration=5000, align='right')
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Attack_03_F')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,8 +236,7 @@ class 인페르녹대사03(trigger_api.Trigger):
 class 인페르녹대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003832, illust_id='infernog_nomal', msg='$52010063_QD__main__9$', duration=5000, align='right')
-        # self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_01_C, Attack_01_E', duration=4000)
-        # 인페르녹
+        # self.set_npc_emotion_loop(spawn_id=102, sequence_name='Attack_01_C, Attack_01_E', duration=4000) # 인페르녹
         # 나의 충실한 종복들이여. 실수를 만회할 기회를 주겠노라.\n침입자를 깨끗하게 정리하라." />
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Attack_03_D')
         # 인페르녹 뒤로
@@ -275,8 +273,8 @@ class 부하들준비00(trigger_api.Trigger):
 class 부하들등장00(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
 
@@ -381,7 +379,7 @@ class 트리스탄구출01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[103], auto_target=False) # 퀘스트용 트리스탄
         self.move_user(map_id=52010063, portal_id=20) # 유저 전투 시작 위치로
         self.set_effect(trigger_ids=[6001,6002], visible=False) # 트리스탄 바닥 이펙트
-        # <action name="SetTimeScale" enable="1" startScale="1.0" endScale="0.1" duration="10.0" interpolator="1" />  10초간 느려지기 시작
+        # self.set_time_scale(enable=True, start_scale=1, end_scale=0.1, duration=10, interpolator=1) # 10초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -422,8 +420,8 @@ class 트리스탄구출04(trigger_api.Trigger):
         self.set_npc_emotion_loop(spawn_id=103, sequence_name='ChatUp_A', duration=3000) # 트리스탄
         self.set_effect(trigger_ids=[6004], visible=False)
         self.set_effect(trigger_ids=[6011], visible=False) # 인페르녹 붉은 안개 꺼짐
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
 

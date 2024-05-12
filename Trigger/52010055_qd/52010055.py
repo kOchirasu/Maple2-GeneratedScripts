@@ -218,8 +218,7 @@ class 함교비춤5(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010055_QD__52010055__14$', duration=2000, align='right')
         self.add_cinematic_talk(npc_id=11003682, illust_id='Bliche_closeEye', msg='$52010055_QD__52010055__15$', duration=2000, align='right')
         self.add_cinematic_talk(npc_id=11003533, illust_id='Bliche_normal', msg='$52010055_QD__52010055__16$', duration=2000, align='right')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):
@@ -361,10 +360,8 @@ class 공습준비대사1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
-            return None # Missing State: 공습준비연출2
-
+            return 공습준비연출2(self.ctx)
 """
-
 
 """
 class 공습준비연출1(trigger_api.Trigger):
@@ -375,10 +372,8 @@ class 공습준비연출1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 공습준비연출2
-
+            return 공습준비연출2(self.ctx)
 """
-
 
 """
 class 공습준비연출2(trigger_api.Trigger):
@@ -391,10 +386,8 @@ class 공습준비연출2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 공습준비연출3
-
+            return 공습준비연출3(self.ctx)
 """
-
 
 """
 class 공습준비연출3(trigger_api.Trigger):
@@ -403,10 +396,8 @@ class 공습준비연출3(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습준비연출4
-
+            return 공습준비연출4(self.ctx)
 """
-
 
 """
 class 공습준비연출4(trigger_api.Trigger):
@@ -415,10 +406,8 @@ class 공습준비연출4(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 공습준비
-
+            return 공습준비(self.ctx)
 """
-
 
 """
 class 공습준비(trigger_api.Trigger):
@@ -428,10 +417,8 @@ class 공습준비(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 공습1
-
+            return 공습1(self.ctx)
 """
-
 
 """
 class 공습1(trigger_api.Trigger):
@@ -444,10 +431,8 @@ class 공습1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습1이동
-
+            return 공습1이동(self.ctx)
 """
-
 
 """
 class 공습1이동(trigger_api.Trigger):
@@ -458,10 +443,8 @@ class 공습1이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습2
-
+            return 공습2(self.ctx)
 """
-
 
 """
 class 공습2(trigger_api.Trigger):
@@ -472,10 +455,8 @@ class 공습2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습2이동
-
+            return 공습2이동(self.ctx)
 """
-
 
 """
 class 공습2이동(trigger_api.Trigger):
@@ -486,10 +467,8 @@ class 공습2이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습3
-
+            return 공습3(self.ctx)
 """
-
 
 """
 class 공습3(trigger_api.Trigger):
@@ -500,10 +479,8 @@ class 공습3(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습3이동
-
+            return 공습3이동(self.ctx)
 """
-
 
 """
 class 공습3이동(trigger_api.Trigger):
@@ -514,12 +491,10 @@ class 공습3이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[999]):
-            return None # Missing State: 실패선언
+            return 실패선언(self.ctx)
         if self.monster_dead(spawn_ids=[600,601,602,500,501,502,400,401,402]):
-            return None # Missing State: 공습4
-
+            return 공습4(self.ctx)
 """
-
 
 """
 class 공습4(trigger_api.Trigger):
@@ -536,10 +511,8 @@ class 공습4(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습4이동
-
+            return 공습4이동(self.ctx)
 """
-
 
 """
 class 공습4이동(trigger_api.Trigger):
@@ -558,10 +531,8 @@ class 공습4이동(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[999]):
             return 준비(self.ctx)
         if self.monster_dead(spawn_ids=[600,601,602,500,501,502,400,401,402]):
-            return None # Missing State: 공습5
-
+            return 공습5(self.ctx)
 """
-
 
 """
 class 공습5(trigger_api.Trigger):
@@ -578,10 +549,8 @@ class 공습5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 공습5이동
-
+            return 공습5이동(self.ctx)
 """
-
 
 """
 class 공습5이동(trigger_api.Trigger):
@@ -598,12 +567,10 @@ class 공습5이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[999]):
-            return None # Missing State: 실패선언
+            return 실패선언(self.ctx)
         if self.monster_dead(spawn_ids=[600,601,602,500,501,502,400,401,402]):
-            return None # Missing State: 공습종료
-
+            return 공습종료(self.ctx)
 """
-
 
 """
 class 공습종료(trigger_api.Trigger):
@@ -613,9 +580,7 @@ class 공습종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return 보스전연출준비(self.ctx)
-
 """
-
 
 class 보스전연출준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -827,9 +792,7 @@ class 엔딩연출크림슨발록대사1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 크림슨대사준비1(self.ctx)
-
 """
-
 
 class 크림슨대사준비1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -991,8 +954,7 @@ class 엔딩대사블리체1(trigger_api.Trigger):
 class 엔딩연출종료1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[-1])
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

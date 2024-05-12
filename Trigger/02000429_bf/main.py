@@ -141,7 +141,8 @@ class 인페르녹처치성공(trigger_api.Trigger):
         # arg3="infernogout" 는 퀘스트 완료 조건 처리 키값임
         self.set_achievement(trigger_id=750, type='trigger', achieve='infernogout')
         # arg1="750"는 MS2TriggerBox   TriggerObjectID = 750  이것으로 02000410 맵에 트리거 박스가 2개 있는데(700, 750)  750이 안전부활 장소까지 포함되는 범위라서 이거 사용함
-        # <action name="DungeonMissionComplete" missionID="23040000" />  DungeonMission.xml 에 등록된 숫자 코드 미션 완료 처리하기, 던전 클리어 미션 달성임
+        # # DungeonMission.xml 에 등록된 숫자 코드 미션 완료 처리하기, 던전 클리어 미션 달성임
+        self.dungeon_mission_complete(mission_id=23040000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -208,8 +209,7 @@ class 최종성공처리(trigger_api.Trigger):
             return 종료(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entity_id=20041012)
-        # 인페르녹 몰아내기 성공 알림 메시지
+        self.hide_guide_summary(entity_id=20041012) # 인페르녹 몰아내기 성공 알림 메시지
 
 
 class 종료(trigger_api.Trigger):

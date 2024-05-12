@@ -8,8 +8,7 @@ class idle(trigger_api.Trigger):
             return start_sound(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[9000005], visible=True)
-        # TeleportSound EFfect On
+        self.set_effect(trigger_ids=[9000005], visible=True) # TeleportSound EFfect On
 
 
 class start_sound(trigger_api.Trigger):
@@ -21,8 +20,7 @@ class start_sound(trigger_api.Trigger):
             return idle(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[9000005], visible=False)
-        # TeleportSound EFfect On
+        self.set_effect(trigger_ids=[9000005], visible=False) # TeleportSound EFfect On
 
 
 initial_state = idle

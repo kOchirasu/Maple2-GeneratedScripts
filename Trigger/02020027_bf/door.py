@@ -24,8 +24,8 @@ class 문열림(trigger_api.Trigger):
 class 문닫힘(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[9001,9002,9003,9004,9005,9006], visible=True, start_delay=0, interval=0, fade=10)
-        self.set_mesh(trigger_ids=[9007], visible=True, start_delay=0, interval=0, fade=0)
         # <두번째 방 튀어나갈 사람에 대한 예외처리로 페이드없이 바로 생기는 투명 메쉬>
+        self.set_mesh(trigger_ids=[9007], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)

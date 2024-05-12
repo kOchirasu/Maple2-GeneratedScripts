@@ -189,8 +189,7 @@ class 삼자대면_04_02(trigger_api.Trigger):
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=8000)
         self.add_cinematic_talk(npc_id=11004614, msg='$52100109_QD__MAIN__21$', align='left', illust_id='Eone_smile', duration=4000)
         self.add_cinematic_talk(npc_id=11004615, msg='$52100109_QD__MAIN__22$', align='right', illust_id='siman_normal', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):

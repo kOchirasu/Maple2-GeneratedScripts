@@ -85,8 +85,7 @@ class 연출해제(trigger_api.Trigger):
 
 class 인트로연출스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.reset_camera(interpolation_time=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -99,8 +98,7 @@ class 인트로연출스킵(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_buff(box_id=199, skill_id=70000107)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entity_id=20105407, text_id=20105407, duration=3500)

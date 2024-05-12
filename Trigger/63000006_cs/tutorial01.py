@@ -132,9 +132,7 @@ class 영상딜레이(trigger_api.Trigger):
             return 플레이준비(self.ctx)
         if self.user_detected(box_ids=[9050,9051,9052,9053]):
             return 로딩딜레이(self.ctx)
-
 """
-
 
 class 키타입설정안내01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -208,8 +206,7 @@ class 움직이기01(trigger_api.Trigger):
             return 움직이기02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5060], visible=False)
-        # 이슈라 음성 사운드 이펙트 01
+        self.set_effect(trigger_ids=[5060], visible=False) # 이슈라 음성 사운드 이펙트 01
 
 
 class 움직이기02(trigger_api.Trigger):
@@ -221,8 +218,7 @@ class 움직이기02(trigger_api.Trigger):
             return 이동완료01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5051], visible=True)
-        # 미션 완료 사운드 이펙트
+        self.set_effect(trigger_ids=[5051], visible=True) # 미션 완료 사운드 이펙트
         self.hide_guide_summary(entity_id=10010000)
 
 
@@ -236,8 +232,7 @@ class 이동완료01(trigger_api.Trigger):
         return 이동전대화01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5050], visible=False)
-        # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5050], visible=False) # 가이드 서머리 사운드 이펙트
 
 
 class 이동전대화01(trigger_api.Trigger):
@@ -414,27 +409,20 @@ class 다리붕괴01(trigger_api.Trigger):
             return 다리붕괴02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0)
         # bridge 3rd guide barrier ON
-        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0)
         # bridge left guide barrier OFF
-        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0)
         # bridge right guide barrier OFF
+        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=0, interval=0, fade=0)
         self.hide_guide_summary(entity_id=10010020)
-        self.set_effect(trigger_ids=[5050], visible=False)
-        # 가이드 서머리 사운드 이펙트
-        self.set_effect(trigger_ids=[5052], visible=False)
-        # 화살표  안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5011], visible=False)
-        # bridge enter 01
-        self.set_effect(trigger_ids=[5012], visible=False)
-        # bridge enter 02
-        self.set_effect(trigger_ids=[5013], visible=False)
-        # bridge enter 03
-        self.set_effect(trigger_ids=[5014], visible=False)
-        # bridge enter 04
-        self.set_effect(trigger_ids=[5015], visible=False)
-        # bridge enter 05
+        self.set_effect(trigger_ids=[5050], visible=False) # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5052], visible=False) # 화살표  안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5011], visible=False) # bridge enter 01
+        self.set_effect(trigger_ids=[5012], visible=False) # bridge enter 02
+        self.set_effect(trigger_ids=[5013], visible=False) # bridge enter 03
+        self.set_effect(trigger_ids=[5014], visible=False) # bridge enter 04
+        self.set_effect(trigger_ids=[5015], visible=False) # bridge enter 05
 
 
 class 다리붕괴02(trigger_api.Trigger):
@@ -478,10 +466,9 @@ class 다리붕괴05(trigger_api.Trigger):
         self.set_skill(trigger_ids=[901], enable=False)
         self.set_skill(trigger_ids=[902], enable=False)
         self.set_skill(trigger_ids=[903], enable=False)
-        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
-        # bridge barrier OFF
-        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # bridge barrier OFF
         # bridge 3rd guide barrier OFF
+        self.set_mesh(trigger_ids=[3004], visible=False, start_delay=0, interval=0, fade=0)
 
 
 class 수영안내01(trigger_api.Trigger):
@@ -545,8 +532,7 @@ class 이슈라교체(trigger_api.Trigger):
             return 연출05종료(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5066], visible=False)
-        # 이슈라 음성 사운드 이펙트 07
+        self.set_effect(trigger_ids=[5066], visible=False) # 이슈라 음성 사운드 이펙트 07
 
 
 class 연출05종료(trigger_api.Trigger):
@@ -635,38 +621,22 @@ class 퀘스트수락유도01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10010060)
-        self.set_effect(trigger_ids=[5040], visible=False)
-        # toward portal 01
-        self.set_effect(trigger_ids=[5041], visible=False)
-        # toward portal 02
-        self.set_effect(trigger_ids=[5042], visible=False)
-        # toward portal 03
-        self.set_effect(trigger_ids=[5043], visible=False)
-        # toward portal 04
-        self.set_effect(trigger_ids=[5044], visible=False)
-        # toward portal 05
-        self.set_effect(trigger_ids=[5045], visible=False)
-        # toward portal 06
-        self.set_effect(trigger_ids=[5046], visible=False)
-        # toward portal 07
-        self.set_effect(trigger_ids=[5020], visible=False)
-        # after swim 01
-        self.set_effect(trigger_ids=[5021], visible=False)
-        # after swim 02
-        self.set_effect(trigger_ids=[5022], visible=False)
-        # after swim 03
-        self.set_effect(trigger_ids=[5023], visible=False)
-        # after swim 04
-        self.set_effect(trigger_ids=[5024], visible=False)
-        # after swim 05
-        self.set_effect(trigger_ids=[5025], visible=False)
-        # after swim 06
-        self.set_effect(trigger_ids=[5026], visible=False)
-        # after swim 07
-        self.set_effect(trigger_ids=[5027], visible=False)
-        # after swim 08
-        self.set_effect(trigger_ids=[5028], visible=False)
-        # after swim 09
+        self.set_effect(trigger_ids=[5040], visible=False) # toward portal 01
+        self.set_effect(trigger_ids=[5041], visible=False) # toward portal 02
+        self.set_effect(trigger_ids=[5042], visible=False) # toward portal 03
+        self.set_effect(trigger_ids=[5043], visible=False) # toward portal 04
+        self.set_effect(trigger_ids=[5044], visible=False) # toward portal 05
+        self.set_effect(trigger_ids=[5045], visible=False) # toward portal 06
+        self.set_effect(trigger_ids=[5046], visible=False) # toward portal 07
+        self.set_effect(trigger_ids=[5020], visible=False) # after swim 01
+        self.set_effect(trigger_ids=[5021], visible=False) # after swim 02
+        self.set_effect(trigger_ids=[5022], visible=False) # after swim 03
+        self.set_effect(trigger_ids=[5023], visible=False) # after swim 04
+        self.set_effect(trigger_ids=[5024], visible=False) # after swim 05
+        self.set_effect(trigger_ids=[5025], visible=False) # after swim 06
+        self.set_effect(trigger_ids=[5026], visible=False) # after swim 07
+        self.set_effect(trigger_ids=[5027], visible=False) # after swim 08
+        self.set_effect(trigger_ids=[5028], visible=False) # after swim 09
 
 
 class 포털생성01(trigger_api.Trigger):
@@ -693,8 +663,7 @@ class 이슈라퇴장01(trigger_api.Trigger):
             return 이슈라퇴장02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5050], visible=False)
-        # 가이드 서머리 사운드 이펙트
+        self.set_effect(trigger_ids=[5050], visible=False) # 가이드 서머리 사운드 이펙트
 
 
 class 이슈라퇴장02(trigger_api.Trigger):

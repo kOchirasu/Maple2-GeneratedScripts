@@ -99,8 +99,7 @@ class 벨라스킬(trigger_api.Trigger):
 class 벨라스킬2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=2)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_4')
 
     def on_tick(self) -> trigger_api.Trigger:

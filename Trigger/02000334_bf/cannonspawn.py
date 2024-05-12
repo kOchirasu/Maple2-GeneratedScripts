@@ -34,8 +34,7 @@ class CannonSpawn_start(trigger_api.Trigger):
             return Clear(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entity_id=102)
-        # 대포를 쏘세요
+        self.hide_guide_summary(entity_id=102) # 대포를 쏘세요
 
 
 class Clear(trigger_api.Trigger):

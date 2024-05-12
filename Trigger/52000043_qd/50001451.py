@@ -59,8 +59,7 @@ class 준타대사01(trigger_api.Trigger):
 class 준타대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 틴차이대사01(self.ctx)
@@ -79,8 +78,7 @@ class 틴차이대사01(trigger_api.Trigger):
 class 틴차이대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 준타대사02(self.ctx)
@@ -99,8 +97,7 @@ class 준타대사02(trigger_api.Trigger):
 class 준타대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 준타대사03(self.ctx)
@@ -121,8 +118,7 @@ class 준타대사03스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[601], visible=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 틴차이대사02(self.ctx)
@@ -141,8 +137,7 @@ class 틴차이대사02(trigger_api.Trigger):
 class 틴차이대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 준타대사04(self.ctx)
@@ -163,8 +158,7 @@ class 준타대사04스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[602], visible=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 연출종료(self.ctx)

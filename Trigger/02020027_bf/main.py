@@ -89,8 +89,7 @@ class 카메라_메이슨설명2(trigger_api.Trigger):
 class 카메라_메이슨설명3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=24120006, illust_id='Mason_normal', msg='$02020027_BF__main__6$', duration=4000, align='left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

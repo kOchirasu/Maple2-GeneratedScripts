@@ -16,7 +16,7 @@ class 시작대기중(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121], visible=False, start_delay=0, interval=0, fade=0)
         self.set_mesh(trigger_ids=[201,202,203,204,205,206,207], visible=False, start_delay=0, interval=0, fade=0) # 계단 트리거메쉬 초기화 감추기
         self.set_mesh(trigger_ids=[211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239], visible=False, start_delay=0, interval=0, fade=0) # 계단 트리거메쉬 초기화 감추기
-        # <action name="SetUserValue" key="DungeonReset" value="0" /> 변수
+        # self.set_user_value(key='DungeonReset', value=0) # 변수
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[10]):

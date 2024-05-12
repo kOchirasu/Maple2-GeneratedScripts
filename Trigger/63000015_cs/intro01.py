@@ -156,8 +156,7 @@ class WeiHongTalk01(trigger_api.Trigger):
             return WeiHongTalk02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6000], visible=False)
-        # VoiceGangster
+        self.set_effect(trigger_ids=[6000], visible=False) # VoiceGangster
 
 
 class WeiHongTalk02(trigger_api.Trigger):
@@ -175,8 +174,7 @@ class WeiHongTalk02(trigger_api.Trigger):
 class WeiHongTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8000], visible=False) # WeiHong 00001390
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -197,8 +195,7 @@ class WeiHongTalk04(trigger_api.Trigger):
 class WeiHongTalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8001], visible=False) # WeiHong 00001391
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,8 +216,7 @@ class WeiHongTalk06(trigger_api.Trigger):
 class WeiHongTalk07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8002], visible=False) # WeiHong 00001392
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -326,8 +322,7 @@ class WeiHongTalk11(trigger_api.Trigger):
 class WeiHongTalk12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8005], visible=False) # WeiHong 00000480
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -350,8 +345,7 @@ class WeiHongTalk13(trigger_api.Trigger):
 class WeiHongTalk14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8003], visible=False) # WeiHong 00001393
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -393,8 +387,7 @@ class MafiaTalk12(trigger_api.Trigger):
             return WeiHongTalk20(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6000], visible=False)
-        # VoiceGangster
+        self.set_effect(trigger_ids=[6000], visible=False) # VoiceGangster
 
 
 class WeiHongTalk20(trigger_api.Trigger):
@@ -412,8 +405,7 @@ class WeiHongTalk20(trigger_api.Trigger):
 class WeiHongQuest01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8004], visible=False) # WeiHong 00001394
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[102], auto_target=False)

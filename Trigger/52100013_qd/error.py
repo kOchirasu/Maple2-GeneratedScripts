@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 플레이어 감지
-# 슈팅전 체크 에디셔널 이펙트를 계속 걸어줌
+"""
+플레이어 감지
+슈팅전 체크 에디셔널 이펙트를 계속 걸어줌
+"""
 class ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():

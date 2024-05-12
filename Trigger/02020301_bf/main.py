@@ -87,7 +87,7 @@ class 조건추가(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         """
         if self.dungeon_play_time() == 420:
-            return None # Missing State: 보스전_타임어택실패
+            return 보스전_타임어택실패(self.ctx)
         """
         # all_of: 	<condition name="DungeonCheckPlayTime" playSeconds="420" operator="Less" />
         if self.monster_dead(spawn_ids=[101]):
@@ -102,19 +102,15 @@ class 보스전_타임어택실패(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 보스전_타임어택실패세팅
-
+            return 보스전_타임어택실패세팅(self.ctx)
 """
-
 
 """
 class 보스전_타임어택실패세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
-
 """
-
 
 class 보스전_성공(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

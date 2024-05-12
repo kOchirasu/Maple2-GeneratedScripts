@@ -113,8 +113,7 @@ class GameGuide04(trigger_api.Trigger):
             return R01Start(self.ctx) # 테스트 수정 가능 지점
 
     def on_exit(self) -> None:
-        self.set_user_value(key='Round', value=1)
-        # 테스트 수정 가능 지점
+        self.set_user_value(key='Round', value=1) # 테스트 수정 가능 지점
 
 
 # R01 시작
@@ -156,8 +155,7 @@ class R01DanceTime(trigger_api.Trigger):
             return R01DancePattern0701(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10000933], state=2)
-        # 7000ms
+        self.set_interact_object(trigger_ids=[10000933], state=2) # 7000ms
 
 
 # R01 Dance 9000ms
@@ -433,8 +431,10 @@ class R01_GameTimerStart(trigger_api.Trigger):
         return R01G00Check(self.ctx)
 
 
-# R01 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R01 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R01G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -449,8 +449,10 @@ class R01G00Check(trigger_api.Trigger):
             return G01orG02(self.ctx)
 
 
-# R01  인원 체크 끝
-# 패턴 그룹 2개 랜덤
+"""
+R01  인원 체크 끝
+패턴 그룹 2개 랜덤
+"""
 class G05orG04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=80):
@@ -920,8 +922,10 @@ class R01End(trigger_api.Trigger):
             return FailAll(self.ctx)
 
 
-# R01 종료 후 생존자 인원수에 따른 전체 보상 지급
-# R02 시작
+"""
+R01 종료 후 생존자 인원수에 따른 전체 보상 지급
+R02 시작
+"""
 class R02Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=2)
@@ -1262,8 +1266,10 @@ class R02_GameTimerStart(trigger_api.Trigger):
         return R02G00Check(self.ctx)
 
 
-# R02 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R02 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R02G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -1318,8 +1324,10 @@ class R02End(trigger_api.Trigger):
             return FailAll(self.ctx)
 
 
-# R02 종료 후 생존자 인원수에 따른 전체 보상 지급
-# R03 시작
+"""
+R02 종료 후 생존자 인원수에 따른 전체 보상 지급
+R03 시작
+"""
 class R03Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=3)
@@ -1660,8 +1668,10 @@ class R03_GameTimerStart(trigger_api.Trigger):
         return R03G00Check(self.ctx)
 
 
-# R03 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R03 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R03G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -1716,8 +1726,10 @@ class R03End(trigger_api.Trigger):
             return FailAll(self.ctx)
 
 
-# R03 종료 후 생존자 인원수에 따른 전체 보상 지급
-# R04 시작
+"""
+R03 종료 후 생존자 인원수에 따른 전체 보상 지급
+R04 시작
+"""
 class R04Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=4)
@@ -2032,8 +2044,10 @@ class R04_GameStartDelay(trigger_api.Trigger):
             return R04_GambleOrNormal00(self.ctx)
 
 
-# R04 Gamble Or Normal 00
-# 테스트 수정 가능 지점
+"""
+R04 Gamble Or Normal 00
+테스트 수정 가능 지점
+"""
 class R04_GambleOrNormal00(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) >= 20:
@@ -2100,8 +2114,10 @@ class R04_GambleTimerStart(trigger_api.Trigger):
         return R04GambleCheck(self.ctx)
 
 
-# R04 Gamble 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R04 Gamble 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R04GambleCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -2117,8 +2133,10 @@ class R04GambleCheck(trigger_api.Trigger):
             return G06P100_Random(self.ctx)
 
 
-# R04 Gamble 인원 체크 끝
-# G06 Gamble Random Pattern 40
+"""
+R04 Gamble 인원 체크 끝
+G06 Gamble Random Pattern 40
+"""
 class G06P400_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=10):
@@ -2296,8 +2314,10 @@ class R04_JackpotTimerStart(trigger_api.Trigger):
         return R04JackpotCheck(self.ctx)
 
 
-# R04 Jackpot 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R04 Jackpot 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R04JackpotCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -2311,8 +2331,10 @@ class R04JackpotCheck(trigger_api.Trigger):
             return G07P200_Random(self.ctx)
 
 
-# R04 Jackpot 인원 체크 끝
-# G07 Jackpot Random Pattern 400
+"""
+R04 Jackpot 인원 체크 끝
+G07 Jackpot Random Pattern 400
+"""
 class G07P400_Random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=10):
@@ -2526,8 +2548,10 @@ class R04_GameTimerStart(trigger_api.Trigger):
         return R04G00Check(self.ctx)
 
 
-# R04 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R04 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R04G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -2595,8 +2619,10 @@ class R04End(trigger_api.Trigger):
             return FailAll(self.ctx)
 
 
-# R04 종료 후 생존자 인원수에 따른 전체 보상 지급
-# R05 시작
+"""
+R04 종료 후 생존자 인원수에 따른 전체 보상 지급
+R05 시작
+"""
 class R05Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Round', value=5)
@@ -2937,8 +2963,10 @@ class R05_GameTimerStart(trigger_api.Trigger):
         return R05G05Check(self.ctx)
 
 
-# R05 인원 체크 시작
-# 테스트 수정 가능 지점
+"""
+R05 인원 체크 시작
+테스트 수정 가능 지점
+"""
 class R05G05Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=9001) > 40:
@@ -3052,10 +3080,8 @@ class GiveReward(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.mini_game_give_reward(winner_box_id=9001, content_type='miniGame')
         self.end_mini_game(winner_box_id=9001, game_name='christmasdancedancestop')
-        # self.create_item(spawn_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023,7024,7025,7026,7027,7028,7029,7030,7031,7032,7033,7034,7035,7036,7037,7038,7039,7040,7041,7042,7043,7044,7045,7046,7047,7048,7049,7050,7051,7052,7053,7054,7055,7056,7057,7058,7059,7060,7061,7062,7063,7064,7065,7066,7067,7068,7069,7070,7071,7072,7073,7074,7075,7076,7077,7078,7079,7080,7081,7082,7083,7084])
-        # Win
-        # self.create_item(spawn_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010,6011,6012,6013,6014,6015,6016,6017,6018,6019,6020,6021,6022,6023,6024,6025,6026,6027,6028,6029,6030,6031,6032,6033,6034,6035,6036,6037,6038,6039,6040,6041,6042,6043,6044,6045,6046,6047,6048,6049,6050,6051,6052,6053,6054,6055,6056])
-        # Lose
+        # self.create_item(spawn_ids=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023,7024,7025,7026,7027,7028,7029,7030,7031,7032,7033,7034,7035,7036,7037,7038,7039,7040,7041,7042,7043,7044,7045,7046,7047,7048,7049,7050,7051,7052,7053,7054,7055,7056,7057,7058,7059,7060,7061,7062,7063,7064,7065,7066,7067,7068,7069,7070,7071,7072,7073,7074,7075,7076,7077,7078,7079,7080,7081,7082,7083,7084]) # Win
+        # self.create_item(spawn_ids=[6000,6001,6002,6003,6004,6005,6006,6007,6008,6009,6010,6011,6012,6013,6014,6015,6016,6017,6018,6019,6020,6021,6022,6023,6024,6025,6026,6027,6028,6029,6030,6031,6032,6033,6034,6035,6036,6037,6038,6039,6040,6041,6042,6043,6044,6045,6046,6047,6048,6049,6050,6051,6052,6053,6054,6055,6056]) # Lose
         self.add_buff(box_ids=[9001], skill_id=70000019, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -3133,8 +3159,10 @@ class Quit(trigger_api.Trigger):
         self.move_user(map_id=0, portal_id=0)
 
 
-# 그룹별패턴 모음
-# G01 P01
+"""
+그룹별패턴 모음
+G01 P01
+"""
 class G01P01_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=100, key='G01P01Set', value=1)
@@ -10694,8 +10722,10 @@ class G05P50_End(trigger_api.Trigger):
             return RoundCheckOut(self.ctx)
 
 
-# GambleGame Pattern
-# G06 P101
+"""
+GambleGame Pattern
+G06 P101
+"""
 class G06P101_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=600, key='G06P101Set', value=1)
@@ -13215,8 +13245,10 @@ class G06P410_End(trigger_api.Trigger):
             return RoundCheckOut(self.ctx)
 
 
-# JackpotGame Pattern
-# G07 P201
+"""
+JackpotGame Pattern
+G07 P201
+"""
 class G07P201_RoundCheckIn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=700, key='G07P201Set', value=1)

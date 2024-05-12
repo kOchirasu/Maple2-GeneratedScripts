@@ -148,8 +148,7 @@ class Dialogue02(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7000], visible=False) # Voice Bravo 00001460
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue03(self.ctx)
@@ -173,8 +172,7 @@ class Dialogue04(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7100], visible=False) # Voice Jabeth 00001548
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue05(self.ctx)
@@ -198,8 +196,7 @@ class Dialogue06(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7001], visible=False) # Voice Bravo 00001461
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue07(self.ctx)
@@ -220,8 +217,7 @@ class Dialogue08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue09(self.ctx)
@@ -245,8 +241,7 @@ class Dialogue10(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7101], visible=False) # Voice Jabeth 00001549
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue11(self.ctx)
@@ -270,8 +265,7 @@ class Dialogue12(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7002], visible=False) # Voice Bravo 00001462
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue13(self.ctx)
@@ -295,8 +289,7 @@ class Dialogue14(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7102], visible=False) # Voice Jabeth 00001550
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue15(self.ctx)
@@ -319,8 +312,7 @@ class Dialogue16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue17(self.ctx)
@@ -342,8 +334,7 @@ class Dialogue18(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7003], visible=False) # Voice Bravo 00001463
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue19(self.ctx)
@@ -366,8 +357,7 @@ class Dialogue20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue21(self.ctx)
@@ -389,8 +379,7 @@ class Dialogue22(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7103], visible=False) # Voice Jabeth 00001551
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -456,8 +445,7 @@ class JaceyTalk04(trigger_api.Trigger):
 class JaceyTalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return JaceyLeave01(self.ctx)

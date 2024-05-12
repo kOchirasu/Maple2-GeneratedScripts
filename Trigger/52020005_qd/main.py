@@ -220,8 +220,8 @@ class 일어나07(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='…눈을 떴군.', duration=2000)
         self.set_pc_emotion_loop(sequence_name='Emotion_Surprise_A', duration=3000)
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
@@ -328,8 +328,8 @@ class 마무리(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8002], return_view=False)
         self.add_cinematic_talk(npc_id=11003572, illust_id='Eone_normal', msg='1월까지 완료될 것이다.', duration=3000)
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close

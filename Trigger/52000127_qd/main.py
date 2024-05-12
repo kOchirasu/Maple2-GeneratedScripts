@@ -183,8 +183,7 @@ class scene_07(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4004], return_view=False)
         self.face_emotion(spawn_id=0, emotion_name='Ride_Sp_Run_005')
         self.add_cinematic_talk(npc_id=11003218, msg='$52000127_QD__MAIN__11$', duration=3000, align='Right')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

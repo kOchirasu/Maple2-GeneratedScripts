@@ -73,8 +73,7 @@ class 룬블즈_일어남_04_01(trigger_api.Trigger):
         self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.5, duration=5, interpolator=1)
         self.set_npc_emotion_loop(spawn_id=109, sequence_name='Attack_Idle_A', duration=4000)
         self.set_effect(trigger_ids=[5001], visible=True)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -139,8 +138,7 @@ class 룬블즈_일어남_09(trigger_api.Trigger):
 class 룬블즈_일어남_09_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -228,8 +226,7 @@ class 에레브흑화_05(trigger_api.Trigger):
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(file_name='ProphecyofFall.swf', movie_id=1)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_value(type='SceneMovie', name='IsStop') == 1:

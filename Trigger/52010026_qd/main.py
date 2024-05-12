@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 치유의 숲 : 52010026
-# 들어오자마자 앉아있는 상태 연출
+"""
+치유의 숲 : 52010026
+들어오자마자 앉아있는 상태 연출
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False)
@@ -230,8 +232,7 @@ class 첫번째연출_조디대사06(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_sound(trigger_id=7001, enable=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
 
 class 두번째연출_ready(trigger_api.Trigger):
@@ -282,8 +283,7 @@ class 두번째연출_피치발견02(trigger_api.Trigger):
         self.set_onetime_effect(id=201, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.add_balloon_talk(spawn_id=0, msg='$52010026_QD__MAIN__47$', duration=1000, delay_tick=0)
         self.select_camera_path(path_ids=[4501,4502], return_view=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -426,8 +426,7 @@ class 세번째연출_포털개방02(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[123], auto_target=False, delay=5000)
         self.spawn_monster(spawn_ids=[124], auto_target=False, delay=5000)
         self.spawn_monster(spawn_ids=[125], auto_target=False, delay=5000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -490,8 +489,7 @@ class 세번째연출_대사02_1(trigger_api.Trigger):
 
 class 다섯번째연출_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -504,8 +502,7 @@ class 다섯번째연출_ready(trigger_api.Trigger):
 
 class skip_a(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[131], auto_target=True, delay=0)
         self.set_cinematic_ui(type=4)
 
@@ -597,8 +594,7 @@ class 다섯번째연출_의문의목소리암전(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npc_id=11003145, msg='$52010026_QD__MAIN__45$', duration=3000)
         self.add_cinematic_talk(npc_id=11003145, msg='$52010026_QD__MAIN__46$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):

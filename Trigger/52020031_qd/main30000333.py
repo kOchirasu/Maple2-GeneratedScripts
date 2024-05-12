@@ -2,10 +2,12 @@
 import trigger_api
 
 
-# 제단 입장
-# 예상치 못한 인물 하렌(11003747) - spawnpoint : 1 
-# 한순간의 방심 하렌(11003749) - spawnpoint : 2
-# 연출용 하렌(11003756) - spawnpoint : 101
+"""
+제단 입장
+예상치 못한 인물 하렌(11003747) - spawnpoint : 1 
+한순간의 방심 하렌(11003749) - spawnpoint : 2
+연출용 하렌(11003756) - spawnpoint : 101
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=False)

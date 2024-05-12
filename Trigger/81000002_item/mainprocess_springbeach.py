@@ -69,8 +69,8 @@ class 시작멘트1(trigger_api.Trigger):
         self.play_system_sound_in_box(sound='ME_Mainprocess_Springbeach_02')
         # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값
         # self.set_achievement(trigger_id=301, type='trigger', achieve='springbeach_start')
-        # self.set_achievement(trigger_id=301, type='trigger', achieve='dailyquest_start')
-        # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        # # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        self.set_achievement(trigger_id=301, type='trigger', achieve='dailyquest_start')
         # self.give_guild_exp(box_id=0, type=2)
 
     def on_tick(self) -> trigger_api.Trigger:

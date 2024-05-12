@@ -152,8 +152,7 @@ class B_Event_07(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
-        self.set_achievement(trigger_id=701, type='trigger', achieve='Hope_Lumieragon')
-        # Hope_Lumieragon
+        self.set_achievement(trigger_id=701, type='trigger', achieve='Hope_Lumieragon') # Hope_Lumieragon
 
 
 class B_Event_08_IDLE(trigger_api.Trigger):
@@ -335,8 +334,7 @@ class Event_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11000075, script='$52010003_QD__MAIN__9$', time=4)
         self.set_timer(timer_id='4', seconds=4)
-        # Missing State: Event_11
-        self.set_skip()
+        self.set_skip() # Missing State: Event_11
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):

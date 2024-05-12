@@ -42,8 +42,7 @@ class 스위치켜기(trigger_api.Trigger):
             return 외다리재생성(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7775], visible=True)
-        # 레버 작동 사운드
+        self.set_effect(trigger_ids=[7775], visible=True) # 레버 작동 사운드
 
 
 class 외다리재생성(trigger_api.Trigger):

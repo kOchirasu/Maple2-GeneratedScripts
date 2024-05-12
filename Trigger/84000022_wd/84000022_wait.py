@@ -99,8 +99,8 @@ class 결혼시작체크(trigger_api.Trigger):
             return 강퇴안내(self.ctx)
 
     def on_exit(self) -> None:
-        self.wedding_move_user(entry_type='Guest', map_id=84000022, portal_ids=[22,23], box_id=701)
         # 701번 박스(버진로드)에 있는 하객들은 21,22,23번으로 랜덤이동
+        self.wedding_move_user(entry_type='Guest', map_id=84000022, portal_ids=[22,23], box_id=701)
 
 
 class 강퇴안내(trigger_api.Trigger):

@@ -177,8 +177,7 @@ class 제이시대사01(trigger_api.Trigger):
 class 연출01종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=301, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

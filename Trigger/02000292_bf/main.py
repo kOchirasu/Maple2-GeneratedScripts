@@ -58,8 +58,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 class CameraWalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=601, enable=False)
         self.select_camera(trigger_id=600, enable=False)
         self.set_cinematic_ui(type=0)

@@ -166,8 +166,7 @@ class Dialogue02(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.set_effect(trigger_ids=[7000], visible=False) # Voice Jabeth 00001545
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue03(self.ctx)
@@ -199,8 +198,7 @@ class Dialogue05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7100], visible=False) # Voice Bravo 00001457
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -223,8 +221,7 @@ class Dialogue07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7001], visible=False) # Voice Jabeth 00001546
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return JaceyWalkIn01(self.ctx)
@@ -262,8 +259,7 @@ class Trialogue01(trigger_api.Trigger):
 class Trialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=602, enable=True)
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
@@ -291,8 +287,7 @@ class Trialogue04(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7101], visible=False) # Voice Bravo 00001458
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Trialogue05(self.ctx)
@@ -316,8 +311,7 @@ class Trialogue06(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7002], visible=False) # Voice Jabeth 00001547
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Trialogue07(self.ctx)
@@ -341,8 +335,7 @@ class Trialogue08(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7102], visible=False) # Voice Bravo 00001459
         self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Trialogue09(self.ctx)
@@ -362,8 +355,7 @@ class Trialogue09(trigger_api.Trigger):
 class Trialogue10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TwoMenWalkOut01(self.ctx)
@@ -496,8 +488,7 @@ class JaceyTalk02(trigger_api.Trigger):
 class JaceyTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return JaceyTalk04(self.ctx)
@@ -517,8 +508,7 @@ class JaceyTalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[201,301])
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=703, enable=False)
@@ -588,8 +578,7 @@ class CallNextRoom03(trigger_api.Trigger):
 class CallNextRoom04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CallNextRoom05(self.ctx)
@@ -609,8 +598,7 @@ class CallNextRoom05(trigger_api.Trigger):
 class CallNextRoom06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return SayGoodBye01(self.ctx)
@@ -641,8 +629,7 @@ class SayGoodBye02(trigger_api.Trigger):
 class SayGoodBye03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[103])
         self.spawn_monster(spawn_ids=[104], auto_target=False)
         self.set_cinematic_ui(type=0)

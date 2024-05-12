@@ -210,8 +210,7 @@ class NPC_Attack_Move(trigger_api.Trigger):
 
 class teleport02000487(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[-1])
         self.visible_my_pc(is_visible=True)
         # 프론티어 재단 저택 맵 3번 회의실 앞 포탈

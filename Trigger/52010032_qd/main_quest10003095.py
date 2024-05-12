@@ -131,8 +131,7 @@ class 의식종료_01(trigger_api.Trigger):
         self.move_user_path(patrol_name='MS2PatrolData_3007')
         self.add_cinematic_talk(npc_id=0, msg='$52010032_QD__MAIN_QUEST10003095__12$', duration=3000)
         self.add_cinematic_talk(npc_id=11003389, msg='$52010032_QD__MAIN_QUEST10003095__13$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -142,8 +141,7 @@ class 의식종료_01(trigger_api.Trigger):
 class 의식종료_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(trigger_id=2001, type='trigger', achieve='Namid2')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

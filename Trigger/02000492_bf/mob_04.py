@@ -26,7 +26,8 @@ class 전투01(trigger_api.Trigger):
 class 전투02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_mesh(trigger_ids=[3004], visible=True, start_delay=0, interval=0, fade=0)
-        # <action name="스킬을설정한다" arg1="7401" arg2="1"/>   길 끊고 벽 막는 기능 여기 4인 던전에서는 사용하지 않음
+        # # 길 끊고 벽 막는 기능 여기 4인 던전에서는 사용하지 않음
+        self.set_skill(trigger_ids=[7401], enable=True)
         self.spawn_monster(spawn_ids=[402], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:

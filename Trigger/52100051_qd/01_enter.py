@@ -60,8 +60,7 @@ class NpcTalk01(trigger_api.Trigger):
 class NpcTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return NpcTalk02(self.ctx)
@@ -81,8 +80,7 @@ class NpcTalk02(trigger_api.Trigger):
 class NpcTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

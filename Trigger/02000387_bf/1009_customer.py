@@ -96,8 +96,7 @@ class WaitGreeting(trigger_api.Trigger):
             return OrderRandomPick(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10001092], state=2)
-        # Greeting
+        self.set_interact_object(trigger_ids=[10001092], state=2) # Greeting
 
 
 # 고객 주문 랜덤

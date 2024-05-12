@@ -50,8 +50,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004], visible=False, start_delay=0, interval=0, fade=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -224,8 +223,7 @@ class 던전종료연출02(trigger_api.Trigger):
 
 class 던전종료연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0)

@@ -288,14 +288,11 @@ class 아르마노대사01(trigger_api.Trigger):
 class 아르마노대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사02(self.ctx)
-
 """
-
 
 class 아르마노대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -312,14 +309,11 @@ class 아르마노대사02(trigger_api.Trigger):
 class 아르마노대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 오스칼대사01(self.ctx)
-
 """
-
 
 class 오스칼대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -337,14 +331,11 @@ class 오스칼대사01(trigger_api.Trigger):
 class 오스칼대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사03(self.ctx)
-
 """
-
 
 class 아르마노대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -361,14 +352,11 @@ class 아르마노대사03(trigger_api.Trigger):
 class 아르마노대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 오스칼대사02(self.ctx)
-
 """
-
 
 class 오스칼대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -386,14 +374,11 @@ class 오스칼대사02(trigger_api.Trigger):
 class 오스칼대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 오스칼대사03(self.ctx)
-
 """
-
 
 class 오스칼대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -411,14 +396,11 @@ class 오스칼대사03(trigger_api.Trigger):
 class 오스칼대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 오스칼대사04(self.ctx)
-
 """
-
 
 class 오스칼대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -435,14 +417,11 @@ class 오스칼대사04(trigger_api.Trigger):
 class 오스칼대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사04(self.ctx)
-
 """
-
 
 class 아르마노대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -459,14 +438,11 @@ class 아르마노대사04(trigger_api.Trigger):
 class 아르마노대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사05(self.ctx)
-
 """
-
 
 class 아르마노대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -482,14 +458,11 @@ class 아르마노대사05(trigger_api.Trigger):
 class 아르마노대사05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 프레이대사01(self.ctx)
-
 """
-
 
 class 프레이대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -507,14 +480,11 @@ class 프레이대사01(trigger_api.Trigger):
 class 프레이대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사06(self.ctx)
-
 """
-
 
 class 아르마노대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -531,14 +501,11 @@ class 아르마노대사06(trigger_api.Trigger):
 class 아르마노대사06_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 프레이대사02(self.ctx)
-
 """
-
 
 class 프레이대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -556,14 +523,11 @@ class 프레이대사02(trigger_api.Trigger):
 class 프레이대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사07(self.ctx)
-
 """
-
 
 class 아르마노대사07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -581,14 +545,11 @@ class 아르마노대사07(trigger_api.Trigger):
 class 아르마노대사07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사08(self.ctx)
-
 """
-
 
 class 아르마노대사08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -606,14 +567,11 @@ class 아르마노대사08(trigger_api.Trigger):
 class 아르마노대사08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노탈주(self.ctx)
-
 """
-
 
 class 아르마노탈주(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -664,14 +622,11 @@ class 조디대사01(trigger_api.Trigger):
 class 조디대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 조디대사02(self.ctx)
-
 """
-
 
 class 조디대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -689,14 +644,11 @@ class 조디대사02(trigger_api.Trigger):
 class 조디대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC안녕(self.ctx)
-
 """
-
 
 class PC안녕(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -710,8 +662,8 @@ class PC안녕(trigger_api.Trigger):
 class 조디대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11003247, script='$02000072_IN__MAIN__18$', time=3, arg5=0)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
 

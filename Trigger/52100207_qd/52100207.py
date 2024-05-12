@@ -64,8 +64,7 @@ class 요랑의방_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4005], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='$52100207_QD__52100207__3$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

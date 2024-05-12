@@ -32,8 +32,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class 카메라이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=300, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -133,7 +133,7 @@ class Gauge_SpawnRamdom(trigger_api.Trigger):
             return Spawn_Eater(self.ctx)
         """
         if self.random_condition(weight=1, desc='BigMom'):
-            return None # Missing State: Spawn_BigMom
+            return Spawn_BigMom(self.ctx)
         """
         if self.random_condition(weight=10, desc='Runner'):
             return Spawn_Runner(self.ctx)
@@ -175,11 +175,10 @@ class Spawn_BigMom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return BackToGaugeState(self.ctx)
-
 """
 
-
 # 게이지 상태 체크로 돌아가기 공용
+
 class BackToGaugeState(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Gauge') >= 100:

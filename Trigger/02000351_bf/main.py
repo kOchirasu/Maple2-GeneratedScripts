@@ -40,8 +40,7 @@ class DungeonStart(trigger_api.Trigger):
             return Start(self.ctx)
 
     def on_exit(self) -> None:
-        self.remove_cinematic_talk()
-        # 레터박스, 플레이어 조작 불가능 해제
+        self.remove_cinematic_talk() # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)

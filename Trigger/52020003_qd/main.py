@@ -182,8 +182,8 @@ class 전투대기00(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawn_ids=[111,112,113])
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
@@ -296,8 +296,8 @@ class 제이든대사02(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8021,8022], return_view=False)
         self.add_cinematic_talk(npc_id=11003541, msg='무슨 일 있었어?', duration=3000, align='left')
         self.move_npc(spawn_id=101, patrol_name='101_MS2PatrolData_Jaiden_Walkin')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close

@@ -20,8 +20,7 @@ class Wait(trigger_api.Trigger):
 class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4022], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
-        # self.spawn_monster(spawn_ids=[901,902,903], auto_target=False)
-        # 레이저 토템
+        # self.spawn_monster(spawn_ids=[901,902,903], auto_target=False) # 레이저 토템
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_102')
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
         self.set_dialogue(type=1, spawn_id=201, script='$52000052_QD__02_FINDWAY__0$', time=2, arg5=0) # 준타
@@ -140,8 +139,7 @@ class GoToRound07(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.destroy_monster(spawn_ids=[901,902,903])
-        # 레이저 토템
+        # self.destroy_monster(spawn_ids=[901,902,903]) # 레이저 토템
         pass
 
 

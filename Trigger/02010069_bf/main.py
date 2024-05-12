@@ -108,8 +108,7 @@ class 연출24(trigger_api.Trigger):
 class 연출25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

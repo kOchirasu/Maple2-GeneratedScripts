@@ -43,8 +43,7 @@ class 시작준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mini_game_area_for_hack(box_id=105) # 해킹 보안용 시작 box 설정
         self.widget_action(type='OxQuiz', func='DevMode', widget_arg='0') # 개발자 모드 On (문제에 정답이 보인다)
-        # self.widget_action(type='OxQuiz', func='ReserveQuiz', widget_arg='1916')
-        # 특정 문제만 먼저 뽑을 때 사용
+        # self.widget_action(type='OxQuiz', func='ReserveQuiz', widget_arg='1916') # 특정 문제만 먼저 뽑을 때 사용
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

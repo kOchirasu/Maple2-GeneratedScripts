@@ -11,8 +11,8 @@ class idle(trigger_api.Trigger):
 class 레논등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         """
-        연출 3 : 레터박스
-        연출 1 : 플레이어 조작 뺏기
+        연출 3 : 레터박스 
+            연출 1 : 플레이어 조작 뺏기
         """
         self.set_onetime_effect(id=1, enable=True, path='BG\\weather\\Eff_monochrome_03.xml')
         self.set_sound(trigger_id=7001, enable=True)
@@ -215,8 +215,7 @@ class 의미심장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11001024, msg='$52000073_QD__MAIN__14$', duration=3000, align='center')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

@@ -38,8 +38,7 @@ class LadderOn(trigger_api.Trigger):
 class CameraWalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[601,600], return_view=True)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -48,16 +47,11 @@ class CameraWalk01(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_ladder(trigger_ids=[510], visible=True, enable=True)
-        # LadderEnterance
-        self.set_ladder(trigger_ids=[511], visible=True, enable=True)
-        # LadderEnterance
-        self.set_ladder(trigger_ids=[512], visible=True, enable=True)
-        # LadderEnterance
-        self.set_ladder(trigger_ids=[513], visible=True, enable=True)
-        # LadderEnterance
-        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0)
-        # Invisible_Barrier
+        self.set_ladder(trigger_ids=[510], visible=True, enable=True) # LadderEnterance
+        self.set_ladder(trigger_ids=[511], visible=True, enable=True) # LadderEnterance
+        self.set_ladder(trigger_ids=[512], visible=True, enable=True) # LadderEnterance
+        self.set_ladder(trigger_ids=[513], visible=True, enable=True) # LadderEnterance
+        self.set_mesh(trigger_ids=[3000,3001], visible=False, start_delay=0, interval=0, fade=0) # Invisible_Barrier
 
 
 class FirstBattle(trigger_api.Trigger):

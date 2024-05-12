@@ -73,8 +73,8 @@ class RelicLeft05(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200002, text_id=28200002, duration=4000)
         # 가이드 : [b:첫 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200002, text_id=28200002, duration=4000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__0$')
 
 
@@ -98,8 +98,8 @@ class RelicLeft04_NoRed(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         # 가이드 : [b:두 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
@@ -119,8 +119,8 @@ class RelicLeft04_NoSkyblue(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         # 가이드 : [b:두 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
@@ -140,8 +140,8 @@ class RelicLeft04_NoGreen(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         # 가이드 : [b:두 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
@@ -161,8 +161,8 @@ class RelicLeft04_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         # 가이드 : [b:두 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
@@ -182,8 +182,8 @@ class RelicLeft04_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         # 가이드 : [b:두 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200003, text_id=28200003, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__1$')
 
 
@@ -205,8 +205,8 @@ class RelicLeft03_NoRed_NoSkyblue(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -224,8 +224,8 @@ class RelicLeft03_NoRed_NoGreen(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -243,8 +243,8 @@ class RelicLeft03_NoRed_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -262,8 +262,8 @@ class RelicLeft03_NoRed_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -281,8 +281,8 @@ class RelicLeft03_NoSkyblue_NoGreen(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -300,8 +300,8 @@ class RelicLeft03_NoSkyblue_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -319,8 +319,8 @@ class RelicLeft03_NoSkyblue_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -338,8 +338,8 @@ class RelicLeft03_NoGreen_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -357,8 +357,8 @@ class RelicLeft03_NoGreen_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -376,8 +376,8 @@ class RelicLeft03_NoYellow_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         # 가이드 : [b:세 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200004, text_id=28200004, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__2$')
 
 
@@ -397,8 +397,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoGreen(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -414,8 +414,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -431,8 +431,8 @@ class RelicLeft02_NoRed_NoSkyblue_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -448,8 +448,8 @@ class RelicLeft02_NoRed_NoGreen_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -465,8 +465,8 @@ class RelicLeft02_NoRed_NoGreen_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -482,8 +482,8 @@ class RelicLeft02_NoRed_NoYellow_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -499,8 +499,8 @@ class RelicLeft02_NoSkyblue_NoGreen_NoYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -516,8 +516,8 @@ class RelicLeft02_NoSkyblue_NoGreen_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -533,8 +533,8 @@ class RelicLeft02_NoSkyblue_NoYellow_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -550,8 +550,8 @@ class RelicLeft02_NoGreen_NoYellow_NoGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         # 가이드 : [b:네 번째] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200005, text_id=28200005, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__3$')
 
 
@@ -569,8 +569,8 @@ class RelicLeft01_OnlyRed(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         # 가이드 : [b:마지막] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
@@ -584,8 +584,8 @@ class RelicLeft01_OnlySkyblue(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         # 가이드 : [b:마지막] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
@@ -599,8 +599,8 @@ class RelicLeft01_OnlyGreen(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         # 가이드 : [b:마지막] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
@@ -614,8 +614,8 @@ class RelicLeft01_OnlyYellow(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         # 가이드 : [b:마지막] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 
@@ -629,8 +629,8 @@ class RelicLeft01_OnlyGrey(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_Mokum_Popup_UI_01')
         self.play_system_sound_in_box(sound='System_Mokum_Die_01')
-        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         # 가이드 : [b:마지막] 모쿰이 잡혔습니다!
+        self.show_guide_summary(entity_id=28200006, text_id=28200006, duration=3000)
         self.side_npc_talk(npc_id=21001019, type='talkbottom', illust='MushroomRichPorter_normal', duration=5000, script='$82000002_survival__16_ExtraEvent__4$')
 
 

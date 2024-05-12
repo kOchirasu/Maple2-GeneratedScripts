@@ -17,8 +17,8 @@ class 준비(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[7002])
         self.spawn_monster(spawn_ids=[7003])
         self.spawn_monster(spawn_ids=[7004])
-        # <action name="메쉬를설정한다" arg1="4000" arg2="0" /> 공습용 공중 발판 끄기1
-        # <action name="메쉬를설정한다" arg1="4001" arg2="0" /> 공습용 공중 발판 끄기1
+        # self.set_mesh(trigger_ids=[4000], visible=False) # 공습용 공중 발판 끄기1
+        # self.set_mesh(trigger_ids=[4001], visible=False) # 공습용 공중 발판 끄기1
         self.set_mesh(trigger_ids=[4002], visible=False) # 공습용 공중 발판 끄기1
         self.spawn_monster(spawn_ids=[201], auto_target=False) # 구르는 천둥
         self.spawn_monster(spawn_ids=[901], auto_target=False) # 시끄러운 주먹
@@ -172,8 +172,7 @@ class 크림슨발록오프닝대사(trigger_api.Trigger):
 class 콘대르등장카메라(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=3002, enable=True)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=0):
@@ -881,8 +880,7 @@ class 트리스탄엔딩대사2(trigger_api.Trigger):
 class 엔딩카메라2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[3007,3016], return_view=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

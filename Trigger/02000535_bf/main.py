@@ -44,8 +44,7 @@ class ready(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[506,507,508,509,510,511,512,513,519,518,517,516,515,514,670,671], auto_target=True)
         self.spawn_monster(spawn_ids=[5532], auto_target=True)
         self.move_npc(spawn_id=5532, patrol_name='MS2PatrolData_8000')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):

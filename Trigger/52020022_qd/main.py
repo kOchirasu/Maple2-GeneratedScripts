@@ -164,8 +164,8 @@ class 레지스탕스_마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[102,103,104])
         # self.spawn_monster(spawn_ids=[101])
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
@@ -280,8 +280,8 @@ class 아르망_마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101,111])
         self.spawn_monster(spawn_ids=[111])
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close
@@ -364,8 +364,8 @@ class 세리하_연출02(trigger_api.Trigger):
 class 세리하_마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[115])
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 3 close
+        # Missing State: State,  setsceneskip 3 close
+        self.set_scene_skip()
         # setsceneskip 3 close
         # setsceneskip 3 close
         # setsceneskip 3 close

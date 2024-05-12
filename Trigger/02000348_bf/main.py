@@ -5,8 +5,10 @@ import trigger_api
 from dungeon_common.checkusercount import *
 
 
-# 플레이어 감지
-# 60002 : 모든 영역
+"""
+플레이어 감지
+60002 : 모든 영역
+"""
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(trigger_id=34808, key='cage_01', value=0)

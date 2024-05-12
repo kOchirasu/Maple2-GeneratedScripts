@@ -7,9 +7,7 @@ class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9900], quest_ids=[50001681], quest_states=[2]):
             return 대원등장(self.ctx)
-
 """
-
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,8 +97,7 @@ class 카트반대사(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

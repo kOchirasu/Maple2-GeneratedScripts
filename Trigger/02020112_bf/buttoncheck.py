@@ -89,12 +89,11 @@ class 감지_4층(trigger_api.Trigger):
         self.add_buff(box_ids=[916], skill_id=70002105, level=1, is_skill_set=False)
         self.set_gravity(gravity=-32)
         self.set_event_ui(type=1, arg2='$02020112_BF__BUTTONCHECK__0$', arg3='5000')
-        self.set_user_value(trigger_id=99990016, key='respawn', value=2)
-        # <1층 스폰 중지>
+        self.set_user_value(trigger_id=99990016, key='respawn', value=2) # <1층 스폰 중지>
         self.set_user_value(trigger_id=99990003, key='Timer', value=2)
         self.set_user_value(trigger_id=99990001, key='GravityRoom', value=2)
-        self.set_user_value(trigger_id=99990021, key='Reconnect', value=1)
         # <재접속 유저를 위해 버프 지속적으로 쏴주기>
+        self.set_user_value(trigger_id=99990021, key='Reconnect', value=1)
         self.set_actor(trigger_id=9901, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(trigger_id=9902, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(trigger_id=9903, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_Off')

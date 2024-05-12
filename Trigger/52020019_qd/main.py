@@ -38,8 +38,7 @@ class Camera_Work_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(path_ids=[4002,4003], return_view=False)
-        # Missing State: State
-        self.set_scene_skip(action='nextState')
+        self.set_scene_skip(action='nextState') # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

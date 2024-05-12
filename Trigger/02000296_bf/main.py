@@ -132,8 +132,7 @@ class LennonLeave02(trigger_api.Trigger):
         self.remove_balloon_talk(spawn_id=5007)
         self.set_dialogue(type=1, spawn_id=5013, script='$02000296_BF__MAIN__5$', time=4, arg5=1) # Lennon_Actor
         self.move_npc(spawn_id=5013, patrol_name='MS2PatrolData_5009')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):

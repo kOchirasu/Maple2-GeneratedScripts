@@ -10,8 +10,7 @@ class 대기(trigger_api.Trigger):
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
         self.set_interact_object(trigger_ids=[10002185], state=0) # 엘리베이터 발판
-        self.enable_spawn_point_pc(spawn_id=100, is_enable=True)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=100, is_enable=True) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=101, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
 
@@ -100,8 +99,7 @@ class 연출시작_6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawn_ids=[351], arg2=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -135,6 +133,8 @@ class 연출시작_7(trigger_api.Trigger):
             return 추가대사_01(self.ctx)
 
 
+# 연출끝
+
 """
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,11 +142,8 @@ class 시작(trigger_api.Trigger):
             self.set_event_ui(type=1, arg2='$52100300_QD__MAIN__0$', arg3='5000')
             self.spawn_monster(spawn_ids=[101,102,103], auto_target=False)
             return 추가대사_01(self.ctx)
-
 """
 
-
-# 연출끝
 class 추가대사_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -214,8 +211,7 @@ class 갈림길_전투(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[201,202,203,204], auto_target=False)
         self.set_actor(trigger_id=9001, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_end')
         self.set_mesh(trigger_ids=[1001], visible=True)
-        self.enable_spawn_point_pc(spawn_id=100, is_enable=False)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=100, is_enable=False) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=101, is_enable=True)
         self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
 
@@ -270,8 +266,7 @@ class 길열림(trigger_api.Trigger):
 
 class 지뢰방_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=100, is_enable=False)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=100, is_enable=False) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=101, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=102, is_enable=True)
         self.set_actor(trigger_id=9002, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_end')

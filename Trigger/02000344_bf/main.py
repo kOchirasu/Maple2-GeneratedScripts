@@ -5,8 +5,10 @@ import trigger_api
 from dungeon_common.checkusercount import *
 
 
-# 플레이어 감지
-# 60002 : 모든 영역
+"""
+플레이어 감지
+60002 : 모든 영역
+"""
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(trigger_id=8011, visible=False, initial_sequence='Dead_A')

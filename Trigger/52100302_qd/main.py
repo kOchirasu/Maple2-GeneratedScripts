@@ -157,8 +157,7 @@ class 마를레네대사(trigger_api.Trigger):
 
 class 카메라종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -358,8 +357,8 @@ class End_01(trigger_api.Trigger):
         if self.wait_tick(wait_tick=5000):
             # self.set_visible_breakable_object(trigger_ids=[1001], visible=False)
             # self.set_visible_breakable_object(trigger_ids=[1002], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1003], visible=False)
-            # <transition state="대기"/>
+            # # <transition state="대기"/>
+            self.set_visible_breakable_object(trigger_ids=[1003], visible=False)
             pass
 
 

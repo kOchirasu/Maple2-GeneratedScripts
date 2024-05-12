@@ -145,8 +145,7 @@ class 요정잡담_10(trigger_api.Trigger):
 
 class 요정잡담종료_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -529,8 +528,7 @@ class 미아등장_16(trigger_api.Trigger):
 
 class 미아등장_17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[142])
         self.reset_camera(interpolation_time=0)
 
@@ -550,8 +548,7 @@ class 미아등장_18(trigger_api.Trigger):
 class 연출종료_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:

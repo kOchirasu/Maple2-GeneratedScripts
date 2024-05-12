@@ -141,8 +141,7 @@ class 이슈라대화02(trigger_api.Trigger):
             return 변절자대화01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6001], visible=False)
-        # 이슈라 음성 사운드 이펙트 02
+        self.set_effect(trigger_ids=[6001], visible=False) # 이슈라 음성 사운드 이펙트 02
 
 
 class 변절자대화01(trigger_api.Trigger):
@@ -170,8 +169,7 @@ class 이슈라대화03(trigger_api.Trigger):
         self.set_effect(trigger_ids=[6100], visible=False) # 변절한 칼리브 8검 음성 사운드 이펙트 01
         self.set_effect(trigger_ids=[6002], visible=True) # 이슈라 음성 사운드 이펙트 03
         self.set_dialogue(type=2, spawn_id=11001244, script='$52000015_QD__TUTORIAL03__3$', time=3)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='11'):
@@ -207,8 +205,7 @@ class 이슈라대화04(trigger_api.Trigger):
         return HP가이드01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6002], visible=False)
-        # 이슈라 음성 사운드 이펙트 03
+        self.set_effect(trigger_ids=[6002], visible=False) # 이슈라 음성 사운드 이펙트 03
 
 
 # HP 가칼이드
@@ -302,8 +299,7 @@ class 위기상황종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5002], visible=False)
-        # 위험 연출 사운드 이펙트
+        self.set_effect(trigger_ids=[5002], visible=False) # 위험 연출 사운드 이펙트
 
 
 initial_state = 대기

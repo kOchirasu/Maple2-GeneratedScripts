@@ -204,8 +204,7 @@ class 크림슨스피어_대사_B(trigger_api.Trigger):
             return 인트로_종료(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # 페이드 아웃 켬
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 페이드 아웃 켬
 
 
 class 인트로_종료(trigger_api.Trigger):
@@ -213,8 +212,8 @@ class 인트로_종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        # Missing State: State
-        self.set_scene_skip() # 스킵 기능 끊어주기
+        # Missing State: State,  스킵 기능 끊어주기
+        self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -360,10 +359,8 @@ class 의외의효능_화면끔(trigger_api.Trigger):
             return 의외의효능_준비(self.ctx)
 
     def on_exit(self) -> None:
-        self.visible_my_pc(is_visible=False)
-        # 유저 투명화
-        self.spawn_monster(spawn_ids=[102], auto_target=False)
-        # 트리스탄: 11003812
+        self.visible_my_pc(is_visible=False) # 유저 투명화
+        self.spawn_monster(spawn_ids=[102], auto_target=False) # 트리스탄: 11003812
         self.destroy_monster(spawn_ids=[111])
         self.destroy_monster(spawn_ids=[112])
         self.destroy_monster(spawn_ids=[121])
@@ -473,8 +470,7 @@ class 크림슨발록분노(trigger_api.Trigger):
             return 트리스탄대사_A(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # 페이드 아웃 켬
+        self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 페이드 아웃 켬
 
 
 class 트리스탄대사_A(trigger_api.Trigger):
@@ -506,8 +502,7 @@ class 크림슨발록대사_A(trigger_api.Trigger):
             return 인페르녹의혼_흡수연출_A(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # 페이드 아웃 끔
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 페이드 아웃 끔
 
 
 class 인페르녹의혼_흡수연출_A(trigger_api.Trigger):
@@ -635,8 +630,7 @@ class 인페르녹의혼_흡수연출_N(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4013], return_view=False)
         self.add_cinematic_talk(npc_id=11003821, msg='$52010056_QD__EventSection__38$', duration=2800)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -1327,8 +1321,7 @@ class 크림슨발록_대사_L(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[103])
-        self.spawn_monster(spawn_ids=[104], auto_target=True)
-        # 트리스탄
+        self.spawn_monster(spawn_ids=[104], auto_target=True) # 트리스탄
 
 
 class 마지막연출_세팅(trigger_api.Trigger):
@@ -1413,8 +1406,7 @@ class 마지막연출_온(trigger_api.Trigger):
 class 트리스탄_대사F(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003812, msg='$52010056_QD__EventSection__51$', duration=2800, illust_id='Tristan_normal', align='Center')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

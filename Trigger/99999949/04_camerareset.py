@@ -47,9 +47,7 @@ class CameraWalk02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             return CameraWalk03(self.ctx)
-
 """
-
 
 class CameraWalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

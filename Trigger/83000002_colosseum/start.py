@@ -2,13 +2,13 @@
 import trigger_api
 
 
-# <state name="대기">
-# <onEnter>
-# </onEnter>
-# <condition name="UserValue" key="CameraStart" value="1">
-# <transition state="유저감지"/>
-# </condition>
-# </state>
+"""
+class 대기(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.user_value(key='CameraStart') >= 1:
+            return 유저감지(self.ctx)
+"""
+
 class 유저감지(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_user_value(trigger_id=1001, key='CameraStart', value=0)
@@ -83,8 +83,7 @@ class 연출_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4007,4008], return_view=False)
         self.show_caption(type='VerticalCaption', title='$83000002_COLOSSEUM__START__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=5000, scale=2.5)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -142,4 +141,4 @@ class ContinueGame(trigger_api.Trigger):
         self.set_user_value(trigger_id=900001, key='MainStart', value=2)
 
 
-initial_state = 유저감지
+initial_state = 대기

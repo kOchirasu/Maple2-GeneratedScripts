@@ -35,8 +35,7 @@ class 인원수체크(trigger_api.Trigger):
 
 class 반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=20040104, text_id=20040104, duration=2500)

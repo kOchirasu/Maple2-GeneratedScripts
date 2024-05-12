@@ -77,8 +77,7 @@ class 보스전투끝(trigger_api.Trigger):
             return 닭장오픈(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_achievement(trigger_id=106, type='trigger', achieve='ClearSavetheChicken')
-        # ClearSavetheChicken 퀘스트
+        self.set_achievement(trigger_id=106, type='trigger', achieve='ClearSavetheChicken') # ClearSavetheChicken 퀘스트
 
 
 class 닭장오픈(trigger_api.Trigger):

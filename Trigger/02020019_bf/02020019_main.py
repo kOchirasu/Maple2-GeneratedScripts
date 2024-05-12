@@ -21,8 +21,7 @@ class 카메라_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카메라_종료, action='exit')
         self.move_user(map_id=2020019, portal_id=1)
-        self.spawn_monster(spawn_ids=[101,102,103], auto_target=False)
-        # <네이린과 대포 스폰(아군)>
+        self.spawn_monster(spawn_ids=[101,102,103], auto_target=False) # <네이린과 대포 스폰(아군)>
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -65,8 +64,7 @@ class 카메라_네이린설명2(trigger_api.Trigger):
 class 카메라_네이린설명3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=24100001, illust_id='Neirin_normal', msg='$02020019_BF__02020019_main__5$', duration=4000, align='left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

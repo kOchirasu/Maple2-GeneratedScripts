@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 바람의 골짜기 : 52010027
-# 중간 보스 사라짐
+"""
+바람의 골짜기 : 52010027
+중간 보스 사라짐
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5004], visible=False)
@@ -121,8 +123,7 @@ class 전투종료01(trigger_api.Trigger):
 
 class 전투종료02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

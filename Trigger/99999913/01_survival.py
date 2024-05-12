@@ -25,8 +25,7 @@ class Setting(trigger_api.Trigger):
             return Wait01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True)
-        # SafeZone Barrier Effect
+        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True) # SafeZone Barrier Effect
 
 
 class Wait01(trigger_api.Trigger):

@@ -30,14 +30,14 @@ class 보스HP체크(trigger_api.Trigger):
         """
         condition name="CheckNpcDamage"   파라미터 기능 설명
         
-        spawnPointID: 체크할 NPC스폰포인트ID 스포너 안에 여러 NPC가 있을 경우 맨 첫 NPC를 체크합니다.
-        damageRate: 누적 대미지 기준 값 1.0 일경우 해당 npc의 maxHP 0.5의 경우 50%
-        operator: 연산자 기준 입니다 생략시 해당 값 이상 (GreaterEqual 이며) 다음 옵션을 사용 가능합니다.
-        Greater,
-        GreaterEqual,
-        Equal,
-        LessEqual,
-        Less,
+                    spawnPointID: 체크할 NPC스폰포인트ID 스포너 안에 여러 NPC가 있을 경우 맨 첫 NPC를 체크합니다. 
+                    damageRate: 누적 대미지 기준 값 1.0 일경우 해당 npc의 maxHP 0.5의 경우 50% 
+                    operator: 연산자 기준 입니다 생략시 해당 값 이상 (GreaterEqual 이며) 다음 옵션을 사용 가능합니다. 
+                    Greater,
+                    GreaterEqual,
+                    Equal,
+                    LessEqual,
+                    Less,
         """
         if self.npc_damage(spawn_id=102) >= 1:
             # 인페르녹 보스 스폰하기, 스폰ID : 102

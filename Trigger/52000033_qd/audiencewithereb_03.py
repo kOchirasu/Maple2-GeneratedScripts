@@ -142,8 +142,7 @@ class ErebTalk_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11001663, illust_id='Ereb_closeEye', msg='$52000033_QD__AUDIENCEWITHEREB_03__9$', duration=3000, delay_tick=0, align='left') # 에레브
         self.destroy_monster(spawn_ids=[601])
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

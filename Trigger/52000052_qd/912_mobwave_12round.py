@@ -527,524 +527,449 @@ class FourthWaveDelay(trigger_api.Trigger):
             return NpcDownPenaltyStart(self.ctx)
 
 
-# <state name="4thWaveDelayRandom">	
-# 		<onEnter>						
-# 		</onEnter>
-# 				<condition name="랜덤조건" arg1="30">	
-# 					<transition state="4thWaveDelay6000"/>
-# 				</condition> 
-# 				<condition name="랜덤조건" arg1="30"> 
-# 					<transition state="4thWaveDelay4000" />	
-# 				</condition>	
-# 				<condition name="랜덤조건" arg1="30"> 
-# 					<transition state="4thWaveDelay5000" />
-# 				</condition>				
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>	
-#     <state name="4thWaveDelay6000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="6000">
-# 					<transition state="5thWaveStart"/>
-# 				</condition>				
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>		
-#     <state name="4thWaveDelay4000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="4000">
-# 					<transition state="5thWaveStart"/>
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>		
-#     <state name="4thWaveDelay5000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="5000">
-# 					<transition state="5thWaveStart"/>
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>		
-# 
-#     <state name="5thWaveStart" >	
-#         <onEnter>				
-# 			<action name="SetUserValue" triggerID="713" key="TotemApp" value="1" /> 				
-# 			<action name="SetUserValue" key="WaveTime" value="5" /> 				
-# 				</onEnter>	
-# 				<condition name="무조건" >
-# 			<transition state="5thWaveDirectionRandom"/>	
-# 		</condition> 				
-#     <onExit> 
-#     </onExit>	
-#     </state>	
-# 
-#     <state name="5thWaveDirectionRandom" >	
-#         <onEnter>			
-# 				</onEnter>	
-# 				<condition name="랜덤조건" arg1="20">	
-# 					<transition state="5thWaveDirection10"/>
-# 				</condition> 
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="5thWaveDirection20" />	
-# 				</condition>	
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="5thWaveDirection30" />
-# 				</condition>			
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="5thWaveDirection40" />
-# 				</condition>		
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="5thWaveDirection50" />
-# 				</condition>			
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="5thWaveDirection60" />
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>	
-# 
-# 
+"""
+class FourthWaveDelayRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.random_condition(weight=30):
+            return FourthWaveDelay6000(self.ctx)
+        if self.random_condition(weight=30):
+            return FourthWaveDelay4000(self.ctx)
+        if self.random_condition(weight=30):
+            return FourthWaveDelay5000(self.ctx)
+"""
+
+"""
+class FourthWaveDelay6000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=6000):
+            return FifthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FourthWaveDelay4000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=4000):
+            return FifthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FourthWaveDelay5000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=5000):
+            return FifthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveStart(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_user_value(trigger_id=713, key='TotemApp', value=1)
+        self.set_user_value(key='WaveTime', value=5)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        return FifthWaveDirectionRandom(self.ctx)
+"""
+
+"""
+class FifthWaveDirectionRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.random_condition(weight=20):
+            return FifthWaveDirection10(self.ctx)
+        if self.random_condition(weight=20):
+            return FifthWaveDirection20(self.ctx)
+        if self.random_condition(weight=20):
+            return FifthWaveDirection30(self.ctx)
+        if self.random_condition(weight=20):
+            return FifthWaveDirection40(self.ctx)
+        if self.random_condition(weight=20):
+            return FifthWaveDirection50(self.ctx)
+        if self.random_condition(weight=20):
+            return FifthWaveDirection60(self.ctx)
+"""
+
 # 왼쪽 위
-# 	<state name="5thWaveDirection10">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91220,91222,91224,91226,91228" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection11"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection11">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91221,91223,91225,91227,91229" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 			
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 
-# 오른쪽 위	
-# 	<state name="5thWaveDirection20">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91230,91232,91234,91236,91238" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection21"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection21">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91231,91233,91235,91237,91239" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 
+
+"""
+class FifthWaveDirection10(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91220,91222,91224,91226,91228], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection11(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection11(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91221,91223,91225,91227,91229], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+# 오른쪽 위
+
+"""
+class FifthWaveDirection20(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91230,91232,91234,91236,91238], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection21(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection21(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91231,91233,91235,91237,91239], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 왼쪽 중앙
-# 	<state name="5thWaveDirection30">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91240,91242,91244,91246,91248" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection31"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection31">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91241,91243,91245,91247,91249" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 
+
+"""
+class FifthWaveDirection30(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91240,91242,91244,91246,91248], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection31(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection31(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91241,91243,91245,91247,91249], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 오른쪽 중앙
-# 	<state name="5thWaveDirection40">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91250,91252,91254,91256,91258" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection41"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection41">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91251,91253,91255,91257,91259" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 	
-#  왼쪽 아래
-# 	<state name="5thWaveDirection50">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91260,91262,91264,91266,91268" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection51"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection51">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91261,91263,91265,91267,91269" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 	
+
+"""
+class FifthWaveDirection40(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91250,91252,91254,91256,91258], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection41(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection41(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91251,91253,91255,91257,91259], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+# 왼쪽 아래
+
+"""
+class FifthWaveDirection50(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91260,91262,91264,91266,91268], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection51(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection51(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91261,91263,91265,91267,91269], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 오른쪽 아래
-# 	<state name="5thWaveDirection60">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91270,91272,91274,91276,91278" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="5thWaveDirection61"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="5thWaveDirection61">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91271,91273,91275,91277,91279" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="5thWaveDelayRandom"/>	
-# 		</condition> 			
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 
-# 
-# 	
-# 	<state name="5thWaveDelayRandom">	
-# 		<onEnter>						
-# 		</onEnter>
-# 				<condition name="랜덤조건" arg1="30">	
-# 					<transition state="5thWaveDelay6000"/>
-# 				</condition> 
-# 				<condition name="랜덤조건" arg1="30"> 
-# 					<transition state="5thWaveDelay4000" />	
-# 				</condition>	
-# 				<condition name="랜덤조건" arg1="30"> 
-# 					<transition state="5thWaveDelay5000" />
-# 				</condition>				
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>	
-#     <state name="5thWaveDelay6000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="6000">
-# 					<transition state="6thWaveStart"/>
-# 				</condition>				
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>		
-#     <state name="5thWaveDelay4000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="4000">
-# 					<transition state="6thWaveStart"/>
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>		
-#     <state name="5thWaveDelay5000" >
-#         <onEnter>					
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="5000">
-# 					<transition state="6thWaveStart"/>
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>			
-# 
-# 
-#     <state name="6thWaveStart" >	
-#         <onEnter>				
-# 			<action name="SetUserValue" key="WaveTime" value="6" /> 			
-# 				</onEnter>	
-# 				<condition name="무조건" >
-# 			<transition state="6thWaveDirectionRandom"/>	
-# 		</condition> 				
-#     <onExit> 
-#     </onExit>	
-#     </state>	
-# 
-#     <state name="6thWaveDirectionRandom" >	
-#         <onEnter>			
-# 				</onEnter>	
-# 				<condition name="랜덤조건" arg1="20">	
-# 					<transition state="6thWaveDirection10"/>
-# 				</condition> 
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="6thWaveDirection20" />	
-# 				</condition>	
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="6thWaveDirection30" />
-# 				</condition>			
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="6thWaveDirection40" />
-# 				</condition>		
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="6thWaveDirection50" />
-# 				</condition>			
-# 				<condition name="랜덤조건" arg1="20"> 
-# 					<transition state="6thWaveDirection60" />
-# 				</condition>						
-#     <onExit> 
-#     </onExit>	
-#     </state>	
-# 
-# 
+
+"""
+class FifthWaveDirection60(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91270,91272,91274,91276,91278], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return FifthWaveDirection61(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDirection61(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91271,91273,91275,91277,91279], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return FifthWaveDelayRandom(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDelayRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.random_condition(weight=30):
+            return FifthWaveDelay6000(self.ctx)
+        if self.random_condition(weight=30):
+            return FifthWaveDelay4000(self.ctx)
+        if self.random_condition(weight=30):
+            return FifthWaveDelay5000(self.ctx)
+"""
+
+"""
+class FifthWaveDelay6000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=6000):
+            return SixthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDelay4000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=4000):
+            return SixthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class FifthWaveDelay5000(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=5000):
+            return SixthWaveStart(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveStart(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_user_value(key='WaveTime', value=6)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        return SixthWaveDirectionRandom(self.ctx)
+"""
+
+"""
+class SixthWaveDirectionRandom(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.random_condition(weight=20):
+            return SixthWaveDirection10(self.ctx)
+        if self.random_condition(weight=20):
+            return SixthWaveDirection20(self.ctx)
+        if self.random_condition(weight=20):
+            return SixthWaveDirection30(self.ctx)
+        if self.random_condition(weight=20):
+            return SixthWaveDirection40(self.ctx)
+        if self.random_condition(weight=20):
+            return SixthWaveDirection50(self.ctx)
+        if self.random_condition(weight=20):
+            return SixthWaveDirection60(self.ctx)
+"""
+
 # 왼쪽 위
-# 	<state name="6thWaveDirection10">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91220,91222,91224,91226,91228" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection11"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection11">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91221,91223,91225,91227,91229" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 			
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 
-#  오른쪽 위 	
-# 	<state name="6thWaveDirection20">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91230,91232,91234,91236,91238" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection21"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection21">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91231,91233,91235,91237,91239" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 
-# 왼쪽 중앙 	
-# 	<state name="6thWaveDirection30">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91240,91242,91244,91246,91248" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection31"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection31">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91241,91243,91245,91247,91249" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 
+
+"""
+class SixthWaveDirection10(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91220,91222,91224,91226,91228], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection11(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection11(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91221,91223,91225,91227,91229], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+# 오른쪽 위
+
+"""
+class SixthWaveDirection20(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91230,91232,91234,91236,91238], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection21(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection21(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91231,91233,91235,91237,91239], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+# 왼쪽 중앙
+
+"""
+class SixthWaveDirection30(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91240,91242,91244,91246,91248], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection31(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection31(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91241,91243,91245,91247,91249], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 오른쪽 중앙
-# 	<state name="6thWaveDirection40">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91250,91252,91254,91256,91258" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection41"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection41">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91251,91253,91255,91257,91259" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 	
-# 왼쪽 아래	
-# 	<state name="6thWaveDirection50">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91260,91262,91264,91266,91268" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection51"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection51">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91261,91263,91265,91267,91269" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>	
-# 	
+
+"""
+class SixthWaveDirection40(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91250,91252,91254,91256,91258], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection41(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection41(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91251,91253,91255,91257,91259], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+# 왼쪽 아래
+
+"""
+class SixthWaveDirection50(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91260,91262,91264,91266,91268], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection51(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection51(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91261,91263,91265,91267,91269], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 오른쪽 아래
-# 	<state name="6thWaveDirection60">
-# 		<onEnter>
-# 			<action name="몬스터를생성한다" arg1="91270,91272,91274,91276,91278" arg2="0" /> 							
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="1000">		
-# 					<transition state="6thWaveDirection61"/>	
-# 				</condition>		
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 
-# 	</state>		
-# 	<state name="6thWaveDirection61">
-# 		<onEnter>		
-# 			<action name="몬스터를생성한다" arg1="91271,91273,91275,91277,91279" arg2="0" /> 					
-# 		</onEnter>
-# 				<condition name="WaitTick" waitTick="3000">	
-# 			<transition state="DefenceSucess01"/>	
-# 		</condition> 			
-# 				<condition name="몬스터가죽어있으면" arg1="1012" >		
-# 					<transition state="NpcDownPenaltyStart"/>	
-# 				</condition>						
-# 		<onExit> 
-# 		</onExit> 	
-# 	</state>
+
+"""
+class SixthWaveDirection60(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91270,91272,91274,91276,91278], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return SixthWaveDirection61(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
+"""
+class SixthWaveDirection61(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.spawn_monster(spawn_ids=[91271,91273,91275,91277,91279], auto_target=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=3000):
+            return DefenceSucess01(self.ctx)
+        if self.monster_dead(spawn_ids=[1012]):
+            return NpcDownPenaltyStart(self.ctx)
+"""
+
 # 추가 웨이브 경험치 없음
+
 class SeventhWaveStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='WaveTime', value=7) # 웨이브 진행 순서 기억
@@ -1128,7 +1053,7 @@ class ReturnToWave(trigger_api.Trigger):
             return FourthWaveStart(self.ctx)
         """
         if self.user_value(key='WaveTime') >= 5:
-            return None # Missing State: SixthWaveStart
+            return SixthWaveStart(self.ctx)
         """
         """
         if self.user_value(key='WaveTime') >= 6:

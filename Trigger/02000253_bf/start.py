@@ -38,10 +38,8 @@ class 벨라소환(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
-            return None # Missing State: 벨라대사
-
+            return 벨라대사(self.ctx)
 """
-
 
 """
 class 벨라대사(trigger_api.Trigger):
@@ -51,10 +49,8 @@ class 벨라대사(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
             self.move_npc(spawn_id=1004, patrol_name='MS2PatrolData_5')
-            return None # Missing State: 벨라스킬딜레이
-
+            return 벨라스킬딜레이(self.ctx)
 """
-
 
 """
 class 벨라스킬딜레이(trigger_api.Trigger):
@@ -64,9 +60,7 @@ class 벨라스킬딜레이(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
             return 예고이펙트(self.ctx)
-
 """
-
 
 class 예고이펙트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

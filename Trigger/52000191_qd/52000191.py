@@ -128,8 +128,7 @@ class 전투준비(trigger_api.Trigger):
 class 전투준비_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -335,8 +334,7 @@ class 고마해_06(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4013,4014], return_view=False)
         self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__19$', duration=4000)
         self.add_cinematic_talk(npc_id=11004787, msg='$52000191_QD__52000191__20$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):

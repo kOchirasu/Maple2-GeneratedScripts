@@ -409,8 +409,7 @@ class 해명에도불구_03(trigger_api.Trigger):
 
 class 벌칙_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=999, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -534,8 +533,7 @@ class 벌칙_10(trigger_api.Trigger):
 
 class 수호사제찾기_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=25201424, text_id=25201424)
@@ -824,8 +822,7 @@ class 란스구하기_20(trigger_api.Trigger):
 class 란스구하기_21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11003401, msg='$52000142_QD__52000142_MAIN__50$', duration=3000, illust_id='Robe_normal', align='right')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3500):

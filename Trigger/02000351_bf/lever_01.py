@@ -29,8 +29,7 @@ class 열림상태(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
-        # self.select_camera(trigger_id=8001, enable=True)
-        # 연출 카메라
+        # self.select_camera(trigger_id=8001, enable=True) # 연출 카메라
         self.set_timer(timer_id='2', seconds=2)
         self.set_mesh(trigger_ids=[6010,6011,6012,6013,6014,6015,6016], visible=False, interval=200, fade=15) # 벽 해제
         self.set_mesh(trigger_ids=[6020,6021,6022,6023,6024,6025,6026], visible=True, interval=200, fade=15) # 벽 해제

@@ -13,7 +13,8 @@ class 전투시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_play_time() >= 540:
             # 아직도 인페르녹의 전함 전투 중인데 플레이 시간이 9분 되면
-            # <action name="SetAiExtraData" key="AirshipBalrogCrimsonFlameKillPlayer" value="1" />	 이 신호를 지속적으로 보내 파티원 강제로 죽이는 스킬 사용하도록 설정하기, NA 버전에서는 이 트리거 xml 사용 안함
+            # # 이 신호를 지속적으로 보내 파티원 강제로 죽이는 스킬 사용하도록 설정하기, NA 버전에서는 이 트리거 xml 사용 안함
+            self.set_ai_extra_data(key='AirshipBalrogCrimsonFlameKillPlayer', value=1)
             return 종료(self.ctx)
 
 

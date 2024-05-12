@@ -63,8 +63,7 @@ class GuideTalk01(trigger_api.Trigger):
 class GuideTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return GuideTalk02(self.ctx)
@@ -83,8 +82,7 @@ class GuideTalk02(trigger_api.Trigger):
 class GuideTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return GuideTalk03(self.ctx)
@@ -103,8 +101,7 @@ class GuideTalk03(trigger_api.Trigger):
 class GuideTalk03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return GuideTalk04(self.ctx)
@@ -123,8 +120,7 @@ class GuideTalk04(trigger_api.Trigger):
 class GuideTalk04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -700,8 +696,7 @@ class GameEndNotice01(trigger_api.Trigger):
 class GameEndNotice01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_user_value(trigger_id=10, key='DungeonClear', value=1)

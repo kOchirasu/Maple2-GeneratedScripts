@@ -172,8 +172,7 @@ class 감시_03(trigger_api.Trigger):
 
 class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_0sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

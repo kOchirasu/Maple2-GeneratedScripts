@@ -153,8 +153,7 @@ class 챕터10에필로그연출02(trigger_api.Trigger):
 class 챕터10에필로그연출02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출03(self.ctx)
@@ -173,8 +172,7 @@ class 챕터10에필로그연출03(trigger_api.Trigger):
 class 챕터10에필로그연출03스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출05(self.ctx)
@@ -193,8 +191,7 @@ class 챕터10에필로그연출05(trigger_api.Trigger):
 class 챕터10에필로그연출05스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출05b(self.ctx)
@@ -225,8 +222,7 @@ class 챕터10에필로그연출06(trigger_api.Trigger):
 class 챕터10에필로그연출06스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출07(self.ctx)
@@ -246,8 +242,7 @@ class 챕터10에필로그연출07(trigger_api.Trigger):
 class 챕터10에필로그연출07스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출08(self.ctx)
@@ -267,8 +262,7 @@ class 챕터10에필로그연출08(trigger_api.Trigger):
 class 챕터10에필로그연출08스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출09(self.ctx)
@@ -288,8 +282,7 @@ class 챕터10에필로그연출09(trigger_api.Trigger):
 class 챕터10에필로그연출9스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출10(self.ctx)
@@ -312,8 +305,7 @@ class 챕터10에필로그연출10(trigger_api.Trigger):
 class 챕터10에필로그연출10스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출11(self.ctx)
@@ -333,8 +325,7 @@ class 챕터10에필로그연출11(trigger_api.Trigger):
 class 챕터10에필로그연출11스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출12(self.ctx)
@@ -354,8 +345,7 @@ class 챕터10에필로그연출12(trigger_api.Trigger):
 class 챕터10에필로그연출12스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출13(self.ctx)
@@ -375,8 +365,7 @@ class 챕터10에필로그연출13(trigger_api.Trigger):
 class 챕터10에필로그연출13스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출13_b(self.ctx)
@@ -399,8 +388,7 @@ class 챕터10에필로그연출13_b(trigger_api.Trigger):
 class 챕터10에필로그연출13b스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출14(self.ctx)
@@ -420,8 +408,7 @@ class 챕터10에필로그연출14(trigger_api.Trigger):
 class 챕터10에필로그연출14스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출15(self.ctx)
@@ -441,8 +428,7 @@ class 챕터10에필로그연출15(trigger_api.Trigger):
 class 챕터10에필로그연출15스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출16(self.ctx)
@@ -462,8 +448,7 @@ class 챕터10에필로그연출16(trigger_api.Trigger):
 class 챕터10에필로그연출16스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출17(self.ctx)
@@ -488,8 +473,7 @@ class 챕터10에필로그연출18(trigger_api.Trigger):
 class 챕터10에필로그연출18스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출18b(self.ctx)
@@ -508,8 +492,7 @@ class 챕터10에필로그연출18b(trigger_api.Trigger):
 class 챕터10에필로그연출18b스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출19(self.ctx)
@@ -528,8 +511,7 @@ class 챕터10에필로그연출19(trigger_api.Trigger):
 class 챕터10에필로그연출19스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출20(self.ctx)
@@ -548,8 +530,7 @@ class 챕터10에필로그연출20(trigger_api.Trigger):
 class 챕터10에필로그연출20스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 챕터10에필로그연출21(self.ctx)
@@ -568,8 +549,7 @@ class 챕터10에필로그연출21(trigger_api.Trigger):
 class 챕터10에필로그연출22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

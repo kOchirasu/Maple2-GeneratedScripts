@@ -69,16 +69,11 @@ class MoveToWeiHong01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10024010)
-        self.set_effect(trigger_ids=[5100], visible=False)
-        # 제 1경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False)
-        # 제 1경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False)
-        # 제 1경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False)
-        # 제 1경로 안내
-        self.set_effect(trigger_ids=[5300], visible=False)
-        # 목표지점 바닥 웨이홍 앞
+        self.set_effect(trigger_ids=[5100], visible=False) # 제 1경로 안내
+        self.set_effect(trigger_ids=[5101], visible=False) # 제 1경로 안내
+        self.set_effect(trigger_ids=[5102], visible=False) # 제 1경로 안내
+        self.set_effect(trigger_ids=[5103], visible=False) # 제 1경로 안내
+        self.set_effect(trigger_ids=[5300], visible=False) # 목표지점 바닥 웨이홍 앞
 
 
 class TalkToWeiHong01(trigger_api.Trigger):
@@ -123,16 +118,11 @@ class MoveToBartender01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10024040)
-        self.set_effect(trigger_ids=[5400], visible=False)
-        # 목표지점 바닥 바텐더 앞
-        self.set_effect(trigger_ids=[5001], visible=False)
-        # 화살표 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False)
-        # 제 2경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False)
-        # 제 2경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False)
-        # 제 2경로 안내
+        self.set_effect(trigger_ids=[5400], visible=False) # 목표지점 바닥 바텐더 앞
+        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 사운드 이펙트
+        self.set_effect(trigger_ids=[5200], visible=False) # 제 2경로 안내
+        self.set_effect(trigger_ids=[5201], visible=False) # 제 2경로 안내
+        self.set_effect(trigger_ids=[5202], visible=False) # 제 2경로 안내
 
 
 class MoveToBartender02(trigger_api.Trigger):
@@ -184,8 +174,7 @@ class WeiHongTalk01(trigger_api.Trigger):
 class WeiHongTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8000], visible=False) # WeiHong 00001395
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -207,8 +196,7 @@ class WeiHongTalk03(trigger_api.Trigger):
 class WeiHongTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8001], visible=False) # VasaraChen 00001348
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -230,8 +218,7 @@ class WeiHongTalk05(trigger_api.Trigger):
 class MovingDelay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[8002], visible=False) # WeiHong 00001396
 
     def on_tick(self) -> trigger_api.Trigger:

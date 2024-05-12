@@ -34,8 +34,7 @@ class 미카대사01(trigger_api.Trigger):
 
 class 미카대사02_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,8 +53,7 @@ class 미카대사02(trigger_api.Trigger):
 
 class 몬스터생성_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,8 +62,7 @@ class 몬스터생성_0(trigger_api.Trigger):
 
 class 몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001_A')
@@ -120,8 +117,7 @@ class 카보대사01(trigger_api.Trigger):
 
 class 카보대사02_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,8 +140,7 @@ class 카보대사02(trigger_api.Trigger):
 
 class 미카친구들소환_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -154,8 +149,7 @@ class 미카친구들소환_0(trigger_api.Trigger):
 
 class 미카친구들소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[1003,1004,1005], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,8 +174,7 @@ class 스타츠대사01(trigger_api.Trigger):
 
 class 둔바대사01_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,8 +193,7 @@ class 둔바대사01(trigger_api.Trigger):
 
 class 타라대사01_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,8 +212,7 @@ class 타라대사01(trigger_api.Trigger):
 
 class 카보대사03_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,8 +236,7 @@ class 카보대사03(trigger_api.Trigger):
 
 class 카보소환_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -255,8 +245,7 @@ class 카보소환_0(trigger_api.Trigger):
 
 class 카보소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[1002])
         self.spawn_monster(spawn_ids=[2002], auto_target=False)
 
@@ -281,8 +270,7 @@ class 카보대사04(trigger_api.Trigger):
 
 class 카보대사05_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,8 +291,7 @@ class 카보대사05(trigger_api.Trigger):
 
 class 사슬해제_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -313,8 +300,7 @@ class 사슬해제_0(trigger_api.Trigger):
 
 class 사슬해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=1003, patrol_name='MS2PatrolData_1003_B')
@@ -344,8 +330,7 @@ class 스타츠대사02(trigger_api.Trigger):
 
 class 스타츠대사03_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -364,8 +349,7 @@ class 스타츠대사03(trigger_api.Trigger):
 
 class 스타츠대사04_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -386,8 +370,7 @@ class 스타츠대사04(trigger_api.Trigger):
 
 class 업적이벤트발생_0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -396,8 +379,7 @@ class 업적이벤트발생_0(trigger_api.Trigger):
 
 class 업적이벤트발생(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_achievement(trigger_id=103, type='trigger', achieve='RescueMika')
 
     def on_tick(self) -> trigger_api.Trigger:

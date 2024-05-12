@@ -39,8 +39,7 @@ class 준비(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_user_value(trigger_id=999001, key='GaugeOpen', value=1)
         self.set_user_value(trigger_id=992001, key='WaveStart', value=1)
         self.set_user_value(trigger_id=999004, key='AllertStart', value=1)
@@ -98,8 +97,7 @@ class 연출02종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.side_npc_talk(npc_id=11003537, illust='Mason_closeEye', duration=7000, script='$52010038_QD__main__5$', voice='ko/Npc/00002095')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -186,8 +184,7 @@ class 보스연출종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[2098])
         self.spawn_monster(spawn_ids=[2099], auto_target=True)
         self.spawn_monster(spawn_ids=[1099], auto_target=False)

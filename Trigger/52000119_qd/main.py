@@ -2,9 +2,11 @@
 import trigger_api
 
 
-# 골든타워 8층 : 60100030
-# 랄프:11003187 / 조디:11003169 / 코쿤:11003171
-# 오프닝 연출
+"""
+골든타워 8층 : 60100030
+랄프:11003187 / 조디:11003169 / 코쿤:11003171
+오프닝 연출
+"""
 class intro(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920], auto_target=True) # 기본 배치 몬스터
@@ -106,8 +108,7 @@ class eventscene_06(trigger_api.Trigger):
         self.set_dialogue(type=2, spawn_id=11003171, script='$52000119_QD__MAIN__7$', time=3, arg5=0) # 코쿤
         self.set_dialogue(type=2, spawn_id=11003171, script='$52000119_QD__MAIN__8$', time=3, arg5=3) # 코쿤
         self.set_dialogue(type=1, spawn_id=102, script='$52000119_QD__MAIN__9$', time=2, arg5=4) # 코쿤
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):
@@ -281,8 +282,7 @@ class bossscene_07(trigger_api.Trigger):
         self.set_pc_emotion_loop(sequence_name='Attack_Idle_A', duration=4000)
         self.face_emotion(spawn_id=0, emotion_name='Object_React_A')
         self.set_dialogue(type=2, spawn_id=11003171, script='$52000119_QD__MAIN__20$', time=3, arg5=0) # 코쿤
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

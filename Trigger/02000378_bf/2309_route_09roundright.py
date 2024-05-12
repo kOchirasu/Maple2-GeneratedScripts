@@ -33,8 +33,7 @@ class StartDazzlingRandom01(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[230900,230901,230902,230903,230904,230905,230906,230907,230908,230909], visible=False, start_delay=10, interval=0, fade=0)
-        # Fake
+        self.set_random_mesh(trigger_ids=[230900,230901,230902,230903,230904,230905,230906,230907,230908,230909], visible=False, start_delay=10, interval=0, fade=0) # Fake
 
 
 class StartDazzlingRandom02(trigger_api.Trigger):
@@ -50,8 +49,7 @@ class StartDazzlingRandom02(trigger_api.Trigger):
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_random_mesh(trigger_ids=[230900,230901,230902,230903,230904,230905,230906,230907,230908,230909], visible=False, start_delay=10, interval=0, fade=0)
-        # Fake
+        self.set_random_mesh(trigger_ids=[230900,230901,230902,230903,230904,230905,230906,230907,230908,230909], visible=False, start_delay=10, interval=0, fade=0) # Fake
 
 
 class MakeTrue(trigger_api.Trigger):

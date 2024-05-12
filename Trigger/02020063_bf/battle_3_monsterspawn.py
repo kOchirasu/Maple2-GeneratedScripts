@@ -24,8 +24,8 @@ class 대기(trigger_api.Trigger):
 # 시작
 class 스폰_1_SE(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.score_board_create(max_score=900)
         # <ShadowExpedition 기능을 대체함>
+        self.score_board_create(max_score=900)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

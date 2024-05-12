@@ -42,7 +42,10 @@ class A지역1(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="1" >
+        """
+        if self.time_expired(timer_id='1'):
+            pass
+        """
         if self.score_board_score() >= 100:
             return 지역선택2_1(self.ctx)
 
@@ -56,7 +59,10 @@ class B지역1(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="1" >
+        """
+        if self.time_expired(timer_id='1'):
+            pass
+        """
         if self.score_board_score() >= 100:
             return 지역선택2_2(self.ctx)
 
@@ -70,7 +76,10 @@ class C지역1(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="1" >
+        """
+        if self.time_expired(timer_id='1'):
+            pass
+        """
         if self.score_board_score() >= 100:
             return 지역선택2_1(self.ctx)
 
@@ -132,7 +141,10 @@ class A지역2(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="2" >
+        """
+        if self.time_expired(timer_id='2'):
+            pass
+        """
         if self.score_board_score() >= 240:
             self.score_board_remove()
             return 지역선택3_1(self.ctx)
@@ -147,7 +159,10 @@ class B지역2(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="2" >
+        """
+        if self.time_expired(timer_id='2'):
+            pass
+        """
         if self.score_board_score() >= 240:
             self.score_board_remove()
             return 지역선택3_2(self.ctx)
@@ -162,7 +177,10 @@ class C지역2(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.object_interacted(interact_ids=[10002178], state=0):
             return 시작_보스전(self.ctx)
-        # <condition name="시간이경과했으면" arg1="2" >
+        """
+        if self.time_expired(timer_id='2'):
+            pass
+        """
         if self.score_board_score() >= 240:
             self.score_board_remove()
             return 지역선택3_3(self.ctx)

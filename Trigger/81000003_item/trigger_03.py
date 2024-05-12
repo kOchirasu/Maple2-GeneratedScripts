@@ -52,8 +52,8 @@ class 시작(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[501,502,503,504,505,506,507,508,509], visible=False)
         self.set_interact_object(trigger_ids=[10000224], state=1)
         self.set_interact_object(trigger_ids=[10000214], state=1)
-        # self.set_achievement(trigger_id=402, type='trigger', achieve='dailyquest_start')
-        # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        # # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        self.set_achievement(trigger_id=402, type='trigger', achieve='dailyquest_start')
         # self.give_guild_exp(box_id=0, type=2)
         self.start_mini_game(is_show_result_ui=False, box_id=499, round=1, game_name='UserMassive_Crazyrunner')
         self.start_mini_game_round(box_id=499, round=1)

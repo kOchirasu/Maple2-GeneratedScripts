@@ -136,8 +136,7 @@ class 라오즈대사01(trigger_api.Trigger):
 class 라오즈대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 라오즈대사02(self.ctx)
@@ -156,8 +155,7 @@ class 라오즈대사02(trigger_api.Trigger):
 class 라오즈대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 라오즈대사03(self.ctx)
@@ -177,8 +175,7 @@ class 라오즈대사03(trigger_api.Trigger):
 class 라오즈대사03스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 퀘스트완료(self.ctx)

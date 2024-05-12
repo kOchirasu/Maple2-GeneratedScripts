@@ -35,8 +35,7 @@ class 가이드_01(trigger_api.Trigger):
             return 가이드_01_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entity_id=101)
-        # 폭탄을 던지세요
+        self.hide_guide_summary(entity_id=101) # 폭탄을 던지세요
 
 
 class 가이드_01_02(trigger_api.Trigger):

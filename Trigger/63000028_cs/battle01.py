@@ -188,8 +188,7 @@ class TinChaiTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[6000], visible=True) # Voice_Tinchai_00001684
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000028_CS__BATTLE01__2$', time=5) # 틴차이 00001684
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -199,8 +198,7 @@ class TinChaiTalk01(trigger_api.Trigger):
 class TinChaiTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ReadyToBattle01(self.ctx)
@@ -442,8 +440,7 @@ class TinChaiDesperate01(trigger_api.Trigger):
 class TinChaiDesperate02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -504,8 +501,7 @@ class JuntaApp04(trigger_api.Trigger):
             return JuntaTalk01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_skill(trigger_ids=[7000], enable=True)
-        # 올킬
+        self.set_skill(trigger_ids=[7000], enable=True) # 올킬
 
 
 class JuntaTalk01(trigger_api.Trigger):
@@ -549,8 +545,7 @@ class MeetJunta03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return MeetJunta04(self.ctx)
@@ -782,8 +777,7 @@ class TimeToLeave01(trigger_api.Trigger):
         self.select_camera(trigger_id=602, enable=True)
         self.set_effect(trigger_ids=[6004], visible=True) # Voice_Tinchai_00001687
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000028_CS__BATTLE01__11$', time=4) # 틴차이 00001687
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

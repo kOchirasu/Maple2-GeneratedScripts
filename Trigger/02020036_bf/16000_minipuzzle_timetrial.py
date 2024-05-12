@@ -94,22 +94,19 @@ class TimeTrial_TimerReset01(trigger_api.Trigger):
             return TimeTrial_Start(self.ctx)
 
 
-# <state name="TimeTrial_TimerReset02">
-# <onEnter>
-# </onEnter>
-# <condition name="오브젝트가반응했으면" arg1="12000098" arg2="0">
-# <transition state="TimeTrial_TimerReset01"/>
-# </condition>
-# <condition name="CheckAnyUserAdditionalEffect" triggerBoxID="16100" additionalEffectID="71001271" level="1">
-# <transition state="TimeTrial_Success"/>
-# </condition>
-# <condition name="시간이경과했으면" arg1="1">
-# <transition state="TimeTrial_Fail"/>
-# </condition>
-# <onExit>
-# </onExit>
-# </state>
+"""
+class TimeTrial_TimerReset02(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.object_interacted(interact_ids=[12000098], state=0):
+            return TimeTrial_TimerReset01(self.ctx)
+        if self.check_any_user_additional_effect(box_id=16100, additional_effect_id=71001271, level=1):
+            return TimeTrial_Success(self.ctx)
+        if self.time_expired(timer_id='1'):
+            return TimeTrial_Fail(self.ctx)
+"""
+
 # 목표 지점에 도착 성공
+
 class TimeTrial_Success(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.remove_buff(box_id=16100, skill_id=71001271)

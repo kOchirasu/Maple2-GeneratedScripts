@@ -84,38 +84,22 @@ class Wait(trigger_api.Trigger):
             return NumberOnP30(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_user_value(trigger_id=7110, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7120, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7130, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7140, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7210, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7220, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7230, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7240, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7310, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7320, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7330, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7340, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7410, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7420, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7430, key='ColorStart', value=1)
-        # start
-        self.set_user_value(trigger_id=7440, key='ColorStart', value=1)
-        # start
+        self.set_user_value(trigger_id=7110, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7120, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7130, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7140, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7210, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7220, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7230, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7240, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7310, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7320, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7330, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7340, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7410, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7420, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7430, key='ColorStart', value=1) # start
+        self.set_user_value(trigger_id=7440, key='ColorStart', value=1) # start
 
 
 # G01 P01

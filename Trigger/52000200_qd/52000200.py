@@ -173,8 +173,7 @@ class 음모_03(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11000264, msg='$52000200_QD__52000200__29$', align='left', illust_id='Radin_normal', duration=4000)
         self.add_cinematic_talk(npc_id=11004778, msg='$52000200_QD__52000200__30$', align='right', illust_id='Karl_normal', duration=4000)
         self.add_cinematic_talk(npc_id=11000264, msg='$52000200_QD__52000200__31$', align='left', illust_id='Radin_normal', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=29000):

@@ -188,10 +188,8 @@ class MoveToFindStone02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10032020)
-        self.set_effect(trigger_ids=[5400], visible=False)
-        # 결계석 화살표
-        self.set_effect(trigger_ids=[5001], visible=False)
-        # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5400], visible=False) # 결계석 화살표
+        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
 
 
 class SecondQuestEnd01(trigger_api.Trigger):

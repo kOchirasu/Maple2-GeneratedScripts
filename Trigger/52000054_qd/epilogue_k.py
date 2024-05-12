@@ -87,8 +87,7 @@ class CityWarfareTalk1(trigger_api.Trigger):
 class CityWarfareTalk2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk3(self.ctx)
@@ -108,8 +107,7 @@ class CityWarfareTalk3(trigger_api.Trigger):
 class CityWarfareTalk4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk5(self.ctx)
@@ -132,8 +130,7 @@ class CityWarfareTalk5(trigger_api.Trigger):
 class CityWarfareTalk6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk7(self.ctx)
@@ -155,8 +152,7 @@ class CityWarfareTalk7(trigger_api.Trigger):
 class CityWarfareTalk8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk9(self.ctx)
@@ -176,8 +172,7 @@ class CityWarfareTalk9(trigger_api.Trigger):
 class CityWarfareTalk10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk11(self.ctx)
@@ -198,8 +193,7 @@ class CityWarfareTalk11(trigger_api.Trigger):
 class CityWarfareTalk12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk13(self.ctx)
@@ -219,8 +213,7 @@ class CityWarfareTalk13(trigger_api.Trigger):
 class CityWarfareTalk14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk15(self.ctx)
@@ -241,8 +234,7 @@ class CityWarfareTalk15(trigger_api.Trigger):
 class CityWarfareTalk16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk17(self.ctx)
@@ -263,8 +255,7 @@ class CityWarfareTalk17(trigger_api.Trigger):
 class CityWarfareTalk18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk19(self.ctx)
@@ -285,8 +276,7 @@ class CityWarfareTalk19(trigger_api.Trigger):
 class CityWarfareTalk20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk21(self.ctx)
@@ -307,8 +297,7 @@ class CityWarfareTalk21(trigger_api.Trigger):
 class CityWarfareTalk22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk23(self.ctx)
@@ -329,8 +318,7 @@ class CityWarfareTalk23(trigger_api.Trigger):
 class CityWarfareTalk24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk25(self.ctx)
@@ -351,8 +339,7 @@ class CityWarfareTalk25(trigger_api.Trigger):
 class CityWarfareTalk26(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk27(self.ctx)
@@ -371,8 +358,7 @@ class CityWarfareTalk27(trigger_api.Trigger):
 class CityWarfareTalk28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk29(self.ctx)
@@ -392,8 +378,7 @@ class CityWarfareTalk29(trigger_api.Trigger):
 class CityWarfareTalk30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk31(self.ctx)
@@ -414,8 +399,7 @@ class CityWarfareTalk31(trigger_api.Trigger):
 class CityWarfareTalk32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk33(self.ctx)
@@ -436,8 +420,7 @@ class CityWarfareTalk33(trigger_api.Trigger):
 class CityWarfareTalk34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk35(self.ctx)
@@ -457,8 +440,7 @@ class CityWarfareTalk35(trigger_api.Trigger):
 class CityWarfareTalk36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk37(self.ctx)
@@ -479,8 +461,7 @@ class CityWarfareTalk37(trigger_api.Trigger):
 class CityWarfareTalk38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk39(self.ctx)
@@ -500,8 +481,7 @@ class CityWarfareTalk39(trigger_api.Trigger):
 class CityWarfareTalk40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk41(self.ctx)
@@ -522,8 +502,7 @@ class CityWarfareTalk41(trigger_api.Trigger):
 class CityWarfareTalk42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk43(self.ctx)
@@ -544,8 +523,7 @@ class CityWarfareTalk43(trigger_api.Trigger):
 class CityWarfareTalk44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk45(self.ctx)
@@ -566,8 +544,7 @@ class CityWarfareTalk45(trigger_api.Trigger):
 class CityWarfareTalk46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk47(self.ctx)
@@ -589,8 +566,7 @@ class CityWarfareTalk47(trigger_api.Trigger):
 class CityWarfareTalk48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk49(self.ctx)
@@ -612,8 +588,7 @@ class CityWarfareTalk49(trigger_api.Trigger):
 class CityWarfareTalk50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk51(self.ctx)
@@ -633,8 +608,7 @@ class CityWarfareTalk51(trigger_api.Trigger):
 class CityWarfareTalk52(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk53(self.ctx)
@@ -655,8 +629,7 @@ class CityWarfareTalk53(trigger_api.Trigger):
 class CityWarfareTalk54(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk55(self.ctx)
@@ -677,8 +650,7 @@ class CityWarfareTalk55(trigger_api.Trigger):
 class CityWarfareTalk56(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk57(self.ctx)
@@ -700,8 +672,7 @@ class CityWarfareTalk57(trigger_api.Trigger):
 class CityWarfareTalk58(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CityWarfareTalk59(self.ctx)
@@ -719,8 +690,7 @@ class CityWarfareTalk59(trigger_api.Trigger):
 
 class CityWarfareTalk60(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

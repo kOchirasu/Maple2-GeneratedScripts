@@ -64,22 +64,14 @@ class Enter02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10033010)
-        self.set_effect(trigger_ids=[5100], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5101], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5102], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5103], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5104], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5105], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5106], visible=False)
-        # 경로 안내
-        self.set_effect(trigger_ids=[5107], visible=False)
-        # 경로 안내
+        self.set_effect(trigger_ids=[5100], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5101], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5102], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5103], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5104], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5105], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5106], visible=False) # 경로 안내
+        self.set_effect(trigger_ids=[5107], visible=False) # 경로 안내
 
 
 class OnTheBridge01(trigger_api.Trigger):
@@ -176,8 +168,7 @@ class TinChaiTalk01(trigger_api.Trigger):
 class TinChaiTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TinChaiTalk03(self.ctx)
@@ -252,8 +243,7 @@ class ReadyToBattle01(trigger_api.Trigger):
 class ReadyToBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera_path(path_ids=[700,701], return_view=False)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_102')
 
@@ -327,8 +317,7 @@ class PCFaint03(trigger_api.Trigger):
 class PCFaint04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[102])
         self.spawn_monster(spawn_ids=[103], auto_target=False)
 
@@ -359,8 +348,7 @@ class TinChaiGoToFight02(trigger_api.Trigger):
 
 class TinChaiGoToFight03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_agent(trigger_ids=[8000], visible=False)
         self.set_agent(trigger_ids=[8001], visible=False)
         self.set_agent(trigger_ids=[8002], visible=False)

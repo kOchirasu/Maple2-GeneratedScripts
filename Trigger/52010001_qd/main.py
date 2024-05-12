@@ -13,8 +13,7 @@ class idle(trigger_api.Trigger):
             return Event_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_achievement(trigger_id=701, type='trigger', achieve='Firepotoff')
-        # Firepotoff
+        self.set_achievement(trigger_id=701, type='trigger', achieve='Firepotoff') # Firepotoff
 
 
 class Event_02(trigger_api.Trigger):

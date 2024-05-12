@@ -165,8 +165,7 @@ class RemoveTotem01(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[101,201])
         self.destroy_monster(spawn_ids=[102,202])
-        self.destroy_monster(spawn_ids=[103,203])
-        # 전투
+        self.destroy_monster(spawn_ids=[103,203]) # 전투
         self.spawn_monster(spawn_ids=[105,205], auto_target=False)
         self.remove_balloon_talk(spawn_id=203)
         self.remove_balloon_talk(spawn_id=103)
@@ -323,8 +322,7 @@ class ShadowApp04(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[106,206])
-        self.spawn_monster(spawn_ids=[104,204], auto_target=False)
-        # 연출용 NPC
+        self.spawn_monster(spawn_ids=[104,204], auto_target=False) # 연출용 NPC
 
 
 class StartPuzzle01(trigger_api.Trigger):

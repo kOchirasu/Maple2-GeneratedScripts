@@ -5,8 +5,10 @@ import trigger_api
 from dungeon_common.checkusercount import *
 
 
-# 플레이어 감지
-# 60002 : 모든 영역
+"""
+플레이어 감지
+60002 : 모든 영역
+"""
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[2001,2002], visible=True, start_delay=1, interval=1)
@@ -258,8 +260,7 @@ class 오브젝티브_01(trigger_api.Trigger):
 
 class 오브젝티브_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8001,8002], return_view=True)
-        # 연출 카메라
+        self.select_camera_path(path_ids=[8001,8002], return_view=True) # 연출 카메라
         self.spawn_monster(spawn_ids=[101], auto_target=True) # 보스 등장
         self.set_cinematic_ui(type=1)
         # self.move_user(map_id=2000345, portal_id=3)

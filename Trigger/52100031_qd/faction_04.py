@@ -35,8 +35,7 @@ class 인원수체크(trigger_api.Trigger):
 
 class 반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entity_id=20040104, text_id=20040104, duration=2500)
@@ -55,12 +54,10 @@ class 반응대기(trigger_api.Trigger):
 class 룸체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
-            return None # Missing State: 던전
+            return 던전(self.ctx)
         if not self.is_dungeon_room():
             return 퀘스트(self.ctx)
-
 """
-
 
 """
 class 던전(trigger_api.Trigger):
@@ -71,9 +68,7 @@ class 던전(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
             return 보스소환(self.ctx)
-
 """
-
 
 class 퀘스트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

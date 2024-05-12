@@ -283,8 +283,7 @@ class Dialogue01(trigger_api.Trigger):
 class Dialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue03(self.ctx)
@@ -304,8 +303,7 @@ class Dialogue03(trigger_api.Trigger):
 class Dialogue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue05(self.ctx)
@@ -325,8 +323,7 @@ class Dialogue05(trigger_api.Trigger):
 class Dialogue06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue07(self.ctx)
@@ -346,8 +343,7 @@ class Dialogue07(trigger_api.Trigger):
 class Dialogue08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue09(self.ctx)
@@ -366,8 +362,7 @@ class Dialogue09(trigger_api.Trigger):
 class Dialogue10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=502, enable=False)
@@ -499,20 +494,13 @@ class SecondQuestEnd01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10031050)
-        self.set_effect(trigger_ids=[5500], visible=False)
-        # NPC 경로 안내
-        self.set_effect(trigger_ids=[5501], visible=False)
-        # NPC 경로 안내
-        self.set_effect(trigger_ids=[5502], visible=False)
-        # NPC 경로 안내
-        self.set_effect(trigger_ids=[5503], visible=False)
-        # NPC 경로 안내
-        self.set_effect(trigger_ids=[5504], visible=False)
-        # NPC 경로 안내
-        self.set_effect(trigger_ids=[5001], visible=False)
-        # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5203], visible=False)
-        # 점프 경로 안내
+        self.set_effect(trigger_ids=[5500], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5501], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5502], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5503], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5504], visible=False) # NPC 경로 안내
+        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5203], visible=False) # 점프 경로 안내
 
 
 class SecondQuestEnd02(trigger_api.Trigger):
@@ -610,8 +598,7 @@ class FeelStrange01(trigger_api.Trigger):
 class FeelStrange02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange03(self.ctx)
@@ -631,8 +618,7 @@ class FeelStrange03(trigger_api.Trigger):
 class FeelStrange04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange05(self.ctx)
@@ -654,8 +640,7 @@ class FeelStrange06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=205, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange07(self.ctx)
@@ -677,8 +662,7 @@ class FeelStrange08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=105, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange09(self.ctx)
@@ -700,8 +684,7 @@ class FeelStrange10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=205, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange11(self.ctx)
@@ -723,8 +706,7 @@ class FeelStrange12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=105, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange13(self.ctx)
@@ -746,8 +728,7 @@ class FeelStrange14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=205, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange15(self.ctx)
@@ -769,8 +750,7 @@ class FeelStrange16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=105, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FeelStrange17(self.ctx)
@@ -789,8 +769,7 @@ class FeelStrange17(trigger_api.Trigger):
 class FeelStrange18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=601, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -843,8 +822,7 @@ class MinimapGuide02(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.set_npc_emotion_sequence(spawn_id=106, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return MinimapGuide03(self.ctx)
@@ -949,8 +927,7 @@ class Monologue04(trigger_api.Trigger):
 
 class NpcLeave01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[107])
         self.move_user(map_id=63000025, portal_id=40, box_id=9900)
 

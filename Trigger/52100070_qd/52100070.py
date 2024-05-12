@@ -170,8 +170,7 @@ class 연출끝(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5007], visible=False)
         self.set_time_scale(enable=False, start_scale=0.5, end_scale=0.5, duration=50, interpolator=1)
         self.destroy_monster(spawn_ids=[101,102,103], arg2=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=0)

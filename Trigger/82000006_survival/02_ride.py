@@ -72,8 +72,8 @@ class Ride01_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[110])
-        self.set_effect(trigger_ids=[6100], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6100], visible=True)
 
 
 # South_To_North
@@ -110,8 +110,8 @@ class Ride02_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[120])
-        self.set_effect(trigger_ids=[6200], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6200], visible=True)
 
 
 # East_To_West
@@ -148,8 +148,8 @@ class Ride03_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[130])
-        self.set_effect(trigger_ids=[6300], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6300], visible=True)
 
 
 # West_To_East
@@ -186,8 +186,8 @@ class Ride04_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[140])
-        self.set_effect(trigger_ids=[6400], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6400], visible=True)
 
 
 # West_To_East
@@ -224,8 +224,8 @@ class Ride05_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[150])
-        self.set_effect(trigger_ids=[6500], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6500], visible=True)
 
 
 # NorthEast_To_SouthWest
@@ -262,8 +262,8 @@ class Ride06_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[160])
-        self.set_effect(trigger_ids=[6600], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6600], visible=True)
 
 
 # SouthWest_To_NorthEast
@@ -300,8 +300,8 @@ class Ride07_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[170])
-        self.set_effect(trigger_ids=[6700], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6700], visible=True)
 
 
 # SouthEast_To_NorthWest
@@ -338,8 +338,8 @@ class Ride08_StartPatrol(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[180])
-        self.set_effect(trigger_ids=[6800], visible=True)
         # MushBalloon Disappear Sound
+        self.set_effect(trigger_ids=[6800], visible=True)
 
 
 class Quit(trigger_api.Trigger):

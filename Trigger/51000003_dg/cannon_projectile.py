@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 플레이어 감지
-# 큐브스킬형 캐논 발사체
+"""
+플레이어 감지
+큐브스킬형 캐논 발사체
+"""
 class Round_check(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[111,112,113,114,115,116,117,118])

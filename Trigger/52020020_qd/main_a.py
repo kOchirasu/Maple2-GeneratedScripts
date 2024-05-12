@@ -59,8 +59,7 @@ class Monologue_04(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='잠깐! 여기는?!', duration=3000, align='Right')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):

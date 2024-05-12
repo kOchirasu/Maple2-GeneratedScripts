@@ -56,10 +56,8 @@ class start_1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 마드라칸연출01
-
+            return 마드라칸연출01(self.ctx)
 """
-
 
 """
 class 마드라칸연출01(trigger_api.Trigger):
@@ -69,10 +67,8 @@ class 마드라칸연출01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            return None # Missing State: 마드라칸연출02
-
+            return 마드라칸연출02(self.ctx)
 """
-
 
 """
 class 마드라칸연출02(trigger_api.Trigger):
@@ -82,10 +78,8 @@ class 마드라칸연출02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):
-            return None # Missing State: 마드라칸연출03
-
+            return 마드라칸연출03(self.ctx)
 """
-
 
 """
 class 마드라칸연출03(trigger_api.Trigger):
@@ -94,10 +88,8 @@ class 마드라칸연출03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=18000):
-            return None # Missing State: 마드라칸연출04
-
+            return 마드라칸연출04(self.ctx)
 """
-
 
 """
 class 마드라칸연출04(trigger_api.Trigger):
@@ -106,10 +98,8 @@ class 마드라칸연출04(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            return None # Missing State: 마드라칸연출05
-
+            return 마드라칸연출05(self.ctx)
 """
-
 
 """
 class 마드라칸연출05(trigger_api.Trigger):
@@ -121,9 +111,7 @@ class 마드라칸연출05(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return ready2(self.ctx)
-
 """
-
 
 class ready2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -218,8 +206,7 @@ class scene_06(trigger_api.Trigger):
 class scene_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -236,8 +223,7 @@ class scene_08(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # self.set_local_camera(camera_id=8011, enable=True)
-        # LocalTargetCamera
+        # self.set_local_camera(camera_id=8011, enable=True) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -350,8 +336,7 @@ class phase_b_scene_04(trigger_api.Trigger):
 
 class phase_b_scene_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[122], arg2=True)
         self.destroy_monster(spawn_ids=[123], arg2=True)
         self.spawn_monster(spawn_ids=[124], auto_target=True)
@@ -953,8 +938,7 @@ class phase_b_skip_5(trigger_api.Trigger):
 
 class phase_b_skip_end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_local_camera(camera_id=8023, enable=False) # LocalTargetCamera

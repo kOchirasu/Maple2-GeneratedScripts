@@ -2,10 +2,12 @@
 import trigger_api
 
 
-# 제단 입장
-# 예상치 못한 인물 하렌(11003747) - spawnpoint : 1 
-# 한순간의 방심 하렌(11003749) - spawnpoint : 2
-# 연출용 하렌(11003756) - spawnpoint : 101
+"""
+제단 입장
+예상치 못한 인물 하렌(11003747) - spawnpoint : 1 
+한순간의 방심 하렌(11003749) - spawnpoint : 2
+연출용 하렌(11003756) - spawnpoint : 101
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=False)
@@ -27,7 +29,7 @@ class 세번째전투끝나고(trigger_api.Trigger):
 class 세번째전투끝나고1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.spawn_monster(spawn_ids=[101], auto_target=False)
-        # <action name="SetNpcEmotionLoop" arg1="101" arg2="Sit_Down_A" arg3="12000" /> 쓰러져있는 연출용 하렌
+        # self.set_npc_emotion_loop(spawn_id=101, sequence_name='Sit_Down_A', duration=12000) # 쓰러져있는 연출용 하렌
         self.select_camera_path(path_ids=[4003], return_view=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)

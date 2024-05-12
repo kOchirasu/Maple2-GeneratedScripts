@@ -53,8 +53,7 @@ class CameraWalk01(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=600, enable=False)
         self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006], visible=False, start_delay=0, interval=100, fade=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

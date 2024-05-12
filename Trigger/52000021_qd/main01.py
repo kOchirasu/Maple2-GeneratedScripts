@@ -113,14 +113,10 @@ class 주문석반응대기(trigger_api.Trigger):
             return 보호막설정01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10000831], state=2)
-        # 보호 룬 주문석 : Shield ON
-        self.set_interact_object(trigger_ids=[10000832], state=0)
-        # 보호 룬 주문석 : Shield OFF
-        self.set_effect(trigger_ids=[6000], visible=True)
-        # 보호막 이펙트
-        self.set_mesh(trigger_ids=[4000,4001,4002,4003], visible=True, start_delay=0, interval=0, fade=0)
-        # 보호막 영역 탈출 제한
+        self.set_interact_object(trigger_ids=[10000831], state=2) # 보호 룬 주문석 : Shield ON
+        self.set_interact_object(trigger_ids=[10000832], state=0) # 보호 룬 주문석 : Shield OFF
+        self.set_effect(trigger_ids=[6000], visible=True) # 보호막 이펙트
+        self.set_mesh(trigger_ids=[4000,4001,4002,4003], visible=True, start_delay=0, interval=0, fade=0) # 보호막 영역 탈출 제한
 
 
 # 유저가 영역 안에 들어온 상태
@@ -238,8 +234,7 @@ class 탈출가능01(trigger_api.Trigger):
             return 보호막해제01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10000832], state=2)
-        # 보호 룬 주문석 : Shield OFF
+        self.set_interact_object(trigger_ids=[10000832], state=2) # 보호 룬 주문석 : Shield OFF
 
 
 # 유저가 영역을 벗어남
@@ -260,16 +255,11 @@ class 보호막해제01(trigger_api.Trigger):
             return 홀슈타트연출01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[6200], visible=False)
-        # 홀슈타트 아이스 쉴드 이펙트
-        self.set_effect(trigger_ids=[6201], visible=False)
-        # 홀슈타트 아이스 드라이브 이펙트
-        self.set_effect(trigger_ids=[6300], visible=False)
-        # 이슈라 플레임 쉴드 이펙트
-        self.set_effect(trigger_ids=[6301], visible=False)
-        # 이슈라 플레임 드라이브 이펙트
-        self.set_effect(trigger_ids=[6100], visible=False)
-        # 전투영역 배리어 룬 쉴드 이펙트
+        self.set_effect(trigger_ids=[6200], visible=False) # 홀슈타트 아이스 쉴드 이펙트
+        self.set_effect(trigger_ids=[6201], visible=False) # 홀슈타트 아이스 드라이브 이펙트
+        self.set_effect(trigger_ids=[6300], visible=False) # 이슈라 플레임 쉴드 이펙트
+        self.set_effect(trigger_ids=[6301], visible=False) # 이슈라 플레임 드라이브 이펙트
+        self.set_effect(trigger_ids=[6100], visible=False) # 전투영역 배리어 룬 쉴드 이펙트
 
 
 class 홀슈타트연출01(trigger_api.Trigger):

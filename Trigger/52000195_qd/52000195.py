@@ -95,8 +95,7 @@ class CameraEffect03_7(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__1$', align='left', illust_id='Ereb_surprise', duration=3000)
         self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__2$', align='left', illust_id='Ereb_serious', duration=3000)
         self.add_cinematic_talk(npc_id=11001302, msg='$52000195_QD__52000195__3$', align='left', illust_id='Ereb_serious', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
@@ -243,8 +242,7 @@ class 과거장면_10(trigger_api.Trigger):
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npc_id=11004785, msg='$52000195_QD__52000195__10$', illust_id='Ereb_surprise', duration=4000)
         self.add_cinematic_talk(npc_id=11004785, msg='$52000195_QD__52000195__11$', illust_id='Ereb_surprise', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8000):

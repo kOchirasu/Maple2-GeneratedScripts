@@ -60,8 +60,7 @@ class 대화_1(trigger_api.Trigger):
 class 대화_1_스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대화_2(self.ctx)
@@ -80,8 +79,7 @@ class 대화_2(trigger_api.Trigger):
 class 대화_2_스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 연출끝_1(self.ctx)
@@ -112,8 +110,7 @@ class 돌사운드_1(trigger_api.Trigger):
             return 다리사운드_1(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[100000001], visible=True)
-        # wall01 사라짐
+        self.set_effect(trigger_ids=[100000001], visible=True) # wall01 사라짐
 
 
 class 다리사운드_1(trigger_api.Trigger):
@@ -122,8 +119,7 @@ class 다리사운드_1(trigger_api.Trigger):
             return 몬스터등장_1(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[100000002], visible=True)
-        # 다리 생성
+        self.set_effect(trigger_ids=[100000002], visible=True) # 다리 생성
 
 
 class 몬스터등장_1(trigger_api.Trigger):
@@ -198,8 +194,7 @@ class 돌사운드_2(trigger_api.Trigger):
             return 다리사운드_2(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[100000004], visible=True)
-        # wall01 사라짐
+        self.set_effect(trigger_ids=[100000004], visible=True) # wall01 사라짐
 
 
 class 다리사운드_2(trigger_api.Trigger):
@@ -208,8 +203,7 @@ class 다리사운드_2(trigger_api.Trigger):
             return 유저감지_3(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[100000005], visible=True)
-        # 다리 생성
+        self.set_effect(trigger_ids=[100000005], visible=True) # 다리 생성
 
 
 class 유저감지_3(trigger_api.Trigger):
@@ -280,8 +274,7 @@ class 대화_3(trigger_api.Trigger):
 class 대화_3_스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 연출끝_2(self.ctx)

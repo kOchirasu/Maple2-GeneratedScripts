@@ -187,7 +187,7 @@ class act2_wave1(trigger_api.Trigger):
         self.set_actor(trigger_id=1024, visible=True, initial_sequence='sf_quest_light_A01_On')
         self.set_dialogue(type=1, spawn_id=110, script='$52000138_QD__MAIN__5$', time=2, arg5=0)
         self.set_dialogue(type=1, spawn_id=111, script='$52000138_QD__MAIN__6$', time=3, arg5=1)
-        # <action name="대화를설정한다" arg1="1" arg2="123" arg3="아니라고 말해줘! 아니라고 말해달라고!" arg4="4" arg5="3"/> 블랙아이 대사
+        # self.set_dialogue(type=1, spawn_id=123, script='아니라고 말해줘! 아니라고 말해달라고!', time=4, arg5=3) # 블랙아이 대사
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1):
@@ -369,8 +369,7 @@ class scheme4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawn_id=122, sequence_name='Talk_A', duration=1500)
         self.set_dialogue(type=1, spawn_id=122, script='$52000138_QD__MAIN__17$', time=5, arg5=0)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):

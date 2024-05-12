@@ -62,8 +62,7 @@ class 대사_01_테모로(trigger_api.Trigger):
 class 대사_01_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_02_테모로(self.ctx)
@@ -82,8 +81,7 @@ class 대사_02_테모로(trigger_api.Trigger):
 class 대사_02_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_03_PC(self.ctx)
@@ -111,8 +109,7 @@ class 대사_04_테모로(trigger_api.Trigger):
 class 대사_04_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_05_테모로(self.ctx)
@@ -131,8 +128,7 @@ class 대사_05_테모로(trigger_api.Trigger):
 class 대사_05_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_06_PC(self.ctx)
@@ -160,8 +156,7 @@ class 대사_07_테모로(trigger_api.Trigger):
 class 대사_07_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_08_테모로(self.ctx)
@@ -180,8 +175,7 @@ class 대사_08_테모로(trigger_api.Trigger):
 class 대사_08_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_09_PC(self.ctx)
@@ -209,8 +203,7 @@ class 대사_10_테모로(trigger_api.Trigger):
 class 대사_10_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_11_테모로(self.ctx)
@@ -229,8 +222,7 @@ class 대사_11_테모로(trigger_api.Trigger):
 class 대사_11_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_12_PC(self.ctx)
@@ -258,8 +250,7 @@ class 대사_13_테모로(trigger_api.Trigger):
 class 대사_13_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 영상준비(self.ctx)
@@ -312,8 +303,7 @@ class 대사_15_테모로(trigger_api.Trigger):
 class 대사_15_테모로skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_16_테모로(self.ctx)
@@ -353,8 +343,7 @@ class 대사_17_덴덴(trigger_api.Trigger):
 class 대사_17_덴덴skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_18_PC(self.ctx)
@@ -382,8 +371,7 @@ class 대사_19_덴덴(trigger_api.Trigger):
 class 대사_19_덴덴skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 대사_20_PC(self.ctx)
@@ -411,8 +399,7 @@ class 대사_21_덴덴(trigger_api.Trigger):
 class 대사_21_덴덴skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 종료(self.ctx)

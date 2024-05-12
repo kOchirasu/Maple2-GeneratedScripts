@@ -31,8 +31,7 @@ class Step01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_1_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_1_end') # 서바이벌 스톰 로그
 
 
 class Step02(trigger_api.Trigger):
@@ -46,8 +45,7 @@ class Step02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_2_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_2_end') # 서바이벌 스톰 로그
 
 
 class Step03(trigger_api.Trigger):
@@ -61,8 +59,7 @@ class Step03(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_3_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_3_end') # 서바이벌 스톰 로그
 
 
 class Step04(trigger_api.Trigger):
@@ -76,8 +73,7 @@ class Step04(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_4_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_4_end') # 서바이벌 스톰 로그
 
 
 class Step05(trigger_api.Trigger):
@@ -91,8 +87,7 @@ class Step05(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_5_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_5_end') # 서바이벌 스톰 로그
 
 
 class Step06(trigger_api.Trigger):
@@ -106,8 +101,7 @@ class Step06(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_6_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_6_end') # 서바이벌 스톰 로그
 
 
 class Step07(trigger_api.Trigger):
@@ -121,8 +115,7 @@ class Step07(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_7_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_7_end') # 서바이벌 스톰 로그
 
 
 class Step08(trigger_api.Trigger):
@@ -136,8 +129,7 @@ class Step08(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.widget_action(type='SurvivalContents', func='ExitStep', widget_arg='1')
-        self.write_log(log_name='Survival', event='Storm_Step_8_end')
-        # 서바이벌 스톰 로그
+        self.write_log(log_name='Survival', event='Storm_Step_8_end') # 서바이벌 스톰 로그
 
 
 class Quit(trigger_api.Trigger):

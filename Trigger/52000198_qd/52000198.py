@@ -79,8 +79,7 @@ class 도망쳐_01(trigger_api.Trigger):
 class 도망쳐_01_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=0, msg='$52000198_QD__52000198__4$', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -212,8 +211,7 @@ class 도망쳐_10_02(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=0, msg='$52000198_QD__52000198__11$', duration=4500)
         self.add_cinematic_talk(npc_id=11001302, msg='$52000198_QD__52000198__12$', align='right', illust_id='Ereb_closeEye', duration=1800)
         self.add_cinematic_talk(npc_id=11001302, msg='$52000198_QD__52000198__13$', align='right', illust_id='Ereb_serious', duration=4500)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10800):
@@ -372,8 +370,7 @@ class 도망쳐_24(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.reset_camera(interpolation_time=0)
         self.add_cinematic_talk(npc_id=11001302, msg='$52000198_QD__52000198__23$', align='right', illust_id='Ereb_serious', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

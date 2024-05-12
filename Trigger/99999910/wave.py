@@ -14,11 +14,10 @@ class ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return random(self.ctx)
-
 """
 
-
 # 몬스터 랜덤 생성
+
 class random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=12):

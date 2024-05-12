@@ -132,8 +132,7 @@ class 빅스소개_03(trigger_api.Trigger):
 
 class 제시소개_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.select_camera_path(path_ids=[8002,8003], return_view=False)
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_2003')
 
@@ -163,8 +162,7 @@ class 제시소개_03(trigger_api.Trigger):
 
 class 카일소개_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.select_camera_path(path_ids=[8003,8004], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -203,8 +201,7 @@ class 카일소개_04(trigger_api.Trigger):
 
 class 퀘스트시작_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=2)
@@ -358,8 +355,7 @@ class 교도관등장_05(trigger_api.Trigger):
 
 class 교도관등장_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.move_user_path(patrol_name='MS2PatrolData_2013')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -512,8 +508,7 @@ class 벨마등장_05(trigger_api.Trigger):
 
 class 벨마등장_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.reset_camera(interpolation_time=0)
 
@@ -632,8 +627,7 @@ class 탈출_03(trigger_api.Trigger):
 
 class 마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 

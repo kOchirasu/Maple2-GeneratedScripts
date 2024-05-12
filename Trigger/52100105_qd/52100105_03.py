@@ -134,8 +134,7 @@ class 투르카공격지시1(trigger_api.Trigger):
 
 class 암전1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=401, patrol_name='PatrolData_401_1')
         self.move_npc(spawn_id=402, patrol_name='PatrolData_402_1')
         self.move_npc(spawn_id=403, patrol_name='PatrolData_403_1')
@@ -232,8 +231,7 @@ class 투르카도망5(trigger_api.Trigger):
 
 class 연출끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[-1], arg2=False)
         self.set_effect(trigger_ids=[600], visible=False)
         self.set_cinematic_ui(type=0)

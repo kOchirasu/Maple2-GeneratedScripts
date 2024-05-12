@@ -28,12 +28,10 @@ class 석궁준비(trigger_api.Trigger):
 class 룸체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.is_dungeon_room():
-            return None # Missing State: 던전
+            return 던전(self.ctx)
         if not self.is_dungeon_room():
             return 퀘스트(self.ctx)
-
 """
-
 
 """
 class 던전(trigger_api.Trigger):
@@ -46,9 +44,7 @@ class 던전(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
             return 종료체크(self.ctx)
-
 """
-
 
 class 퀘스트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

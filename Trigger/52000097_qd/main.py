@@ -5,9 +5,7 @@ import trigger_api
 """
 class test(trigger_api.Trigger):
     pass
-
 """
-
 
 class main(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

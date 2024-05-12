@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 시련의 동굴 : 52010030
-# 에바고르 좌절씬
+"""
+시련의 동굴 : 52010030
+에바고르 좌절씬
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(is_visible=False)
@@ -142,8 +144,7 @@ class 잠시뒤(trigger_api.Trigger):
 
 class 잠시뒤_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

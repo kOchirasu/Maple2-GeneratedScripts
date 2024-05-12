@@ -16,10 +16,8 @@ class 입장(trigger_api.Trigger):
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.set_user_value(trigger_id=99990004, key='Timer', value=0)
-        # <일반 5분 타이머>
-        self.set_user_value(trigger_id=99990006, key='SpecialTimer', value=0)
-        # <3분내 클리어 특별 타이머>
+        self.set_user_value(trigger_id=99990004, key='Timer', value=0) # <일반 5분 타이머>
+        self.set_user_value(trigger_id=99990006, key='SpecialTimer', value=0) # <3분내 클리어 특별 타이머>
         self.set_user_value(trigger_id=99990002, key='battlesetting', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,8 +107,7 @@ class 카메라_콘대르설명3(trigger_api.Trigger):
 class 카메라_콘대르설명4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=24110001, illust_id='Conder_normal', msg='$02020025_BF__main__7$', duration=4000, align='left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

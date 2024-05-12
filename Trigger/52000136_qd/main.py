@@ -125,14 +125,11 @@ class 케이틀린대사01(trigger_api.Trigger):
 class 케이틀린대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC대사01(self.ctx)
-
 """
-
 
 class PC대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

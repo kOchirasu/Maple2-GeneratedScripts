@@ -61,8 +61,7 @@ class 시작_03(trigger_api.Trigger):
             return 시작_04(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[6401,6402,6403,6404], visible=False, interval=0, fade=10)
-        # 벽 해제
+        self.set_mesh(trigger_ids=[6401,6402,6403,6404], visible=False, interval=0, fade=10) # 벽 해제
 
 
 class 시작_04(trigger_api.Trigger):

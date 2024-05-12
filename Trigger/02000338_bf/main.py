@@ -137,8 +137,7 @@ class CameraWalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[5000], auto_target=False)
         self.move_npc(spawn_id=5000, patrol_name='MS2PatrolData5000')
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
@@ -184,8 +183,7 @@ class GroundFall01(trigger_api.Trigger):
 
 class 차어나운스3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.reset_camera(interpolation_time=1)
 
     def on_tick(self) -> trigger_api.Trigger:

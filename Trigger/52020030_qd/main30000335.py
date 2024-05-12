@@ -51,8 +51,7 @@ class 투르카의등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4031], return_view=False)
         self.add_cinematic_talk(npc_id=11003762, msg='천공의 심장을 손에 넣었군.', duration=3000)
-        # Missing State: 공명준비
-        self.set_scene_skip(action='exit')
+        self.set_scene_skip(action='exit') # Missing State: 공명준비
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -188,8 +188,10 @@ class 흑성회입장_02(trigger_api.Trigger):
             return 손님맞이(self.ctx)
 
 
-# 흑성회와 대화
-# 앞으로의 계획 이야기
+"""
+흑성회와 대화
+앞으로의 계획 이야기
+"""
 class 손님맞이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=109, patrol_name='MS2PatrolData_3001')
@@ -428,8 +430,7 @@ class 흑성회와이야기시작04_라딘과웨이홍_08(trigger_api.Trigger):
 
 class 흑성회와이야기시작04_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

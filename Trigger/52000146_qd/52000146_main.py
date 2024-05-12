@@ -159,8 +159,7 @@ class 멈춰서대화_02(trigger_api.Trigger):
 
 class 전투_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[102,103,104,105,106])
@@ -191,9 +190,7 @@ class 전투_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[107,108,109,110,111]):
             return 전투종료_01(self.ctx)
-
 """
-
 
 class 전투종료_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -305,8 +302,7 @@ class 전투후대화_08(trigger_api.Trigger):
 
 class 스킵도착_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawn_ids=[113])
         self.remove_cinematic_talk()
@@ -359,8 +355,7 @@ class 전투후대화_11(trigger_api.Trigger):
 
 class 하스터찾기_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

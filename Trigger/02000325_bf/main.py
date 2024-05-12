@@ -815,9 +815,7 @@ class 어나운스05_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
             return 라운드카운트3(self.ctx)
-
 """
-
 
 class 라운드카운트3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

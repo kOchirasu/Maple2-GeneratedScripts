@@ -191,8 +191,8 @@ class End_01(trigger_api.Trigger):
         if self.wait_tick(wait_tick=5000):
             # self.set_visible_breakable_object(trigger_ids=[1001], visible=False)
             # self.set_visible_breakable_object(trigger_ids=[1002], visible=False)
-            # self.set_visible_breakable_object(trigger_ids=[1003], visible=False)
-            # <transition state="대기"/>
+            # # <transition state="대기"/>
+            self.set_visible_breakable_object(trigger_ids=[1003], visible=False)
             pass
 
 

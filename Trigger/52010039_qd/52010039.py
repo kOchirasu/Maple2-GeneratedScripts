@@ -39,10 +39,8 @@ class 대사01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사02
-
+            return 대사02(self.ctx)
 """
-
 
 """
 class 대사02(trigger_api.Trigger):
@@ -51,10 +49,8 @@ class 대사02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사03
-
+            return 대사03(self.ctx)
 """
-
 
 """
 class 대사03(trigger_api.Trigger):
@@ -63,10 +59,8 @@ class 대사03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사04_B
-
+            return 대사04_B(self.ctx)
 """
-
 
 """
 class 대사04_B(trigger_api.Trigger):
@@ -75,10 +69,8 @@ class 대사04_B(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사04
-
+            return 대사04(self.ctx)
 """
-
 
 """
 class 대사04(trigger_api.Trigger):
@@ -87,10 +79,8 @@ class 대사04(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사05
-
+            return 대사05(self.ctx)
 """
-
 
 """
 class 대사05(trigger_api.Trigger):
@@ -99,10 +89,8 @@ class 대사05(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사06
-
+            return 대사06(self.ctx)
 """
-
 
 """
 class 대사06(trigger_api.Trigger):
@@ -111,10 +99,8 @@ class 대사06(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
-            return None # Missing State: 대사07
-
+            return 대사07(self.ctx)
 """
-
 
 """
 class 대사07(trigger_api.Trigger):
@@ -124,9 +110,7 @@ class 대사07(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 연출종료01(self.ctx)
-
 """
-
 
 class 연출종료01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,8 +159,7 @@ class 스카이포트리스전경씬04(trigger_api.Trigger):
 
 class 스카이포트리스전경씬04_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

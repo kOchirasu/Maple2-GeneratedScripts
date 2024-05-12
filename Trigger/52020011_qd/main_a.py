@@ -70,8 +70,7 @@ class scene_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='NameCaption', title='$NpcName:11003599$', desc='크리티아스 왕녀', align='centerLeft', offset_rate_x=0.05, offset_rate_y=0.15, duration=3000, scale=2)
         self.add_cinematic_talk(npc_id=11003599, msg='그래, 반갑구나.', duration=2800)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

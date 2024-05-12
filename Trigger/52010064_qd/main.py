@@ -113,8 +113,8 @@ class 마무리줌아웃(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8003], return_view=False)
         self.set_cinematic_ui(type=0)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
 
     def on_tick(self) -> trigger_api.Trigger:

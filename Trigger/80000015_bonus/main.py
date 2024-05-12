@@ -32,7 +32,10 @@ class 시작(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$80000015_bonus__main__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        # <condition name="WaitTick" waitTick="1500">
+        """
+        if self.wait_tick(wait_tick=1500):
+            pass
+        """
         if self.user_value(key='Dead_A') >= 1 and self.user_value(key='Dead_B') >= 1:
             return 보스소환대기(self.ctx)
 

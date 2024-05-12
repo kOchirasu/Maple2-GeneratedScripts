@@ -26,8 +26,7 @@ class openingscene_start(trigger_api.Trigger):
             return openingscene_1_1(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        # 불끄기
+        self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불끄기
 
 
 class openingscene_1_1(trigger_api.Trigger):
@@ -63,12 +62,10 @@ class openingscene_1_3(trigger_api.Trigger):
             return openingscene_2(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[102], auto_target=False)
-        # 연출용 NPC : 마리엔 등장
+        self.spawn_monster(spawn_ids=[102], auto_target=False) # 연출용 NPC : 마리엔 등장
         self.set_effect(trigger_ids=[5001], visible=True)
         self.select_camera_path(path_ids=[8002], return_view=False)
-        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
-        # 불끄기
+        self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불끄기
 
 
 class openingscene_2(trigger_api.Trigger):
@@ -105,8 +102,7 @@ class openingscene_3(trigger_api.Trigger):
 class openingscene_end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolation_time=2)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -245,8 +241,7 @@ class endingscene_end(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[103])
         self.destroy_monster(spawn_ids=[104])
         self.set_effect(trigger_ids=[5006], visible=True)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

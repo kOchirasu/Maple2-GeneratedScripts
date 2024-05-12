@@ -180,9 +180,7 @@ class 몬스터전멸(trigger_api.Trigger):
             return 몬스터생성(self.ctx)
         if self.time_expired(timer_id='110'):
             return 실패(self.ctx)
-
 """
-
 
 class 실패(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

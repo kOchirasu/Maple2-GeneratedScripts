@@ -113,8 +113,7 @@ class GateOpen01(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
         self.set_actor(trigger_id=900, visible=True, initial_sequence='Opened')
         self.set_mesh(trigger_ids=[300], visible=False, start_delay=0, interval=0, fade=0) # InvisibleEnterBarrier
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

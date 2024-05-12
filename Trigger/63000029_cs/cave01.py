@@ -410,8 +410,7 @@ class LaozApp01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[6400], visible=True)
         self.set_dialogue(type=1, spawn_id=202, script='$63000029_CS__CAVE01__3$', time=2, arg5=0) # Voice 둘이 함께 00001873
         self.set_dialogue(type=1, spawn_id=102, script='$63000029_CS__CAVE01__4$', time=2, arg5=0)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -748,8 +747,7 @@ class MeetKahn04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=303, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=620, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -829,8 +827,7 @@ class LaozTalkToJuntaNTinChai08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=303, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=611, enable=True)
         self.spawn_monster(spawn_ids=[945,946], auto_target=False)
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_402')
@@ -897,8 +894,7 @@ class LaozNKahnTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=303, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LaozNKahnTalk03(self.ctx)
@@ -940,8 +936,7 @@ class LaozNKahnTalk06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=401, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=300):
@@ -1045,8 +1040,7 @@ class LaozNKahnTalk15(trigger_api.Trigger):
 class LaozNKahnTalk16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LaozNKahnTalk17(self.ctx)
@@ -1496,8 +1490,7 @@ class CollapaseGround01(trigger_api.Trigger):
 
 class CollapaseGround02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         # LaozVsKandura_FightBlending
         self.set_effect(trigger_ids=[5820], visible=False)
         # LaozVsKandura_FightExplosion

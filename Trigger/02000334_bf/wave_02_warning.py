@@ -38,8 +38,7 @@ class 카메라_복구(trigger_api.Trigger):
         self.add_buff(box_ids=[90001], skill_id=70000068, level=1) # 이속 버프를 걸어준다
         self.move_npc(spawn_id=199, patrol_name='MS2PatrolData_3502') # 오스칼 대응 모션
         self.set_dialogue(type=1, spawn_id=199, script='$02000334_BF__WAVE__3$', time=3) # 오스칼 대사
-        self.select_camera_path(path_ids=[8017], return_view=False)
-        # 사이드뷰 카메라
+        self.select_camera_path(path_ids=[8017], return_view=False) # 사이드뷰 카메라
         self.set_timer(timer_id='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,8 +66,7 @@ class 카메라_복구2(trigger_api.Trigger):
         self.add_buff(box_ids=[90001], skill_id=70000068, level=1) # 이속 버프를 걸어준다
         self.move_npc(spawn_id=199, patrol_name='MS2PatrolData_3502') # 오스칼 대응 모션
         self.set_dialogue(type=1, spawn_id=199, script='$02000334_BF__WAVE__5$', time=3) # 오스칼 대사
-        self.select_camera_path(path_ids=[8017], return_view=False)
-        # 사이드뷰 카메라
+        self.select_camera_path(path_ids=[8017], return_view=False) # 사이드뷰 카메라
 
 
 initial_state = 시작

@@ -187,8 +187,7 @@ class 연출_습격현장_PC연출(trigger_api.Trigger):
 
 class 연출_습격현장_PC연출_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -288,8 +287,7 @@ class 차_전투_보스소환연출2(trigger_api.Trigger):
 
 class 차_전투_보스소환연출_1_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -509,8 +507,7 @@ class 연출_페리온영웅과대화_05(trigger_api.Trigger):
 
 class 연출_페리온영웅과대화_05_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

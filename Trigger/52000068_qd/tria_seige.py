@@ -223,8 +223,7 @@ class 레논대사03(trigger_api.Trigger):
 
 class 레논대사03_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -233,8 +232,7 @@ class 레논대사03_1(trigger_api.Trigger):
 
 class Skip_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=4)
         self.reset_camera(interpolation_time=0.5)
 
@@ -283,8 +281,7 @@ class 임무01(trigger_api.Trigger):
 
 class 임무01반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -341,8 +338,7 @@ class 임무02(trigger_api.Trigger):
 
 class 대사스킵용01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -351,8 +347,7 @@ class 대사스킵용01(trigger_api.Trigger):
 
 class 임무02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_agent(trigger_ids=[8005], visible=False)
         self.set_agent(trigger_ids=[8006], visible=False)
         self.set_agent(trigger_ids=[8007], visible=False)
@@ -382,8 +377,7 @@ class 임무02_2(trigger_api.Trigger):
 
 class 임무02종료대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -456,8 +450,7 @@ class 조디대화(trigger_api.Trigger):
 
 class 대사스킵용02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -466,8 +459,7 @@ class 대사스킵용02(trigger_api.Trigger):
 
 class 조디대화2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_dialogue(type=2, spawn_id=11001838, script='$52000068_QD__TRIA_SEIGE__10$', time=4)
         self.set_scene_skip(state=벽파괴종료)
 
@@ -478,8 +470,7 @@ class 조디대화2(trigger_api.Trigger):
 
 class 벽파괴종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.set_portal(portal_id=2, visible=False, enable=True, minimap_visible=True)
         self.destroy_monster(spawn_ids=[2101,2102,2103,2104])

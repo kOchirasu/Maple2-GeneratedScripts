@@ -116,8 +116,7 @@ class scene_07(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Emotion_Angry_A')
         self.add_cinematic_talk(npc_id=29000266, msg='$52000020_QD__MAIN_01__8$', duration=2000, align='left')
         self.add_balloon_talk(spawn_id=202, msg='$52000020_QD__MAIN_01__9$', duration=2000, delay_tick=1000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

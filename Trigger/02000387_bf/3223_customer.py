@@ -96,8 +96,7 @@ class WaitGreeting(trigger_api.Trigger):
             return PickItem_30000658(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[10001090], state=2)
-        # Greeting
+        self.set_interact_object(trigger_ids=[10001090], state=2) # Greeting
 
 
 # 30000658

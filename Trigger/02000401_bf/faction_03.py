@@ -61,8 +61,7 @@ class 퀘스트(trigger_api.Trigger):
 
 class 종료체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.show_guide_summary(entity_id=20040106, text_id=20040106, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.remove_buff(box_id=199, skill_id=70000107)

@@ -14,13 +14,13 @@ class 대기(trigger_api.Trigger):
             return PC_MOVE_01(self.ctx)
 
 
-# <state name="PC_01" >
-# <onEnter>
-# </onEnter>
-# <condition name="WaitTick" waitTick="2000" >
-# <transition state="PC_02"/>
-# </condition>
-# </state>
+"""
+class PC_01(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=2000):
+            return PC_02(self.ctx)
+"""
+
 class PC_MOVE_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

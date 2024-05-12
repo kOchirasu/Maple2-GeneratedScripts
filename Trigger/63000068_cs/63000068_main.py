@@ -150,8 +150,7 @@ class 마리엔등장_09(trigger_api.Trigger):
 
 class 마리엔등장_10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.select_camera_path(path_ids=[8003], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -376,8 +375,7 @@ class 마리엔재등장_07(trigger_api.Trigger):
 
 class 재등장연출완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=2)

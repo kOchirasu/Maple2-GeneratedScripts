@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 탑 입장
-# 크란츠 - 101
+"""
+탑 입장
+크란츠 - 101
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[5001], visible=False)

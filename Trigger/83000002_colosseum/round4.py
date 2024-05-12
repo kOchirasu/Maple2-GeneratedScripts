@@ -71,22 +71,26 @@ class 카운트(trigger_api.Trigger):
             return 전투시작(self.ctx)
 
 
-# <state name="카운트2">
-# <onEnter>
-# <action name="이벤트UI를설정한다" arg1="1" arg2="2" arg3="1000" />
-# </onEnter>
-# <condition name="WaitTick" waitTick="1000" >
-# <transition state="카운트3"/>
-# </condition>
-# </state>
-# <state name="카운트3">
-# <onEnter>
-# <action name="이벤트UI를설정한다" arg1="1" arg2="1" arg3="1000" />
-# </onEnter>
-# <condition name="WaitTick" waitTick="2000" >
-# <transition state="전투시작"/>
-# </condition>
-# </state>
+"""
+class 카운트2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_event_ui(type=1, arg2='2', arg3='1000')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=1000):
+            return 카운트3(self.ctx)
+"""
+
+"""
+class 카운트3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_event_ui(type=1, arg2='1', arg3='1000')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=2000):
+            return 전투시작(self.ctx)
+"""
+
 class 전투시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.lock_my_pc(is_lock=False)

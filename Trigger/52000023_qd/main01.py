@@ -280,8 +280,7 @@ class 수색시작(trigger_api.Trigger):
             return 수색종료01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5001], visible=True)
-        # 종이문서 발견 사운드 이펙트
+        self.set_effect(trigger_ids=[5001], visible=True) # 종이문서 발견 사운드 이펙트
         self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
 
 

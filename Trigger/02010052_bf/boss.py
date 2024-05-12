@@ -203,8 +203,7 @@ class burn_state_03(trigger_api.Trigger):
             return Boss_04_idle(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[123,124], auto_target=False)
-        # 마지막 두 화로
+        self.spawn_monster(spawn_ids=[123,124], auto_target=False) # 마지막 두 화로
 
 
 class Boss_04_idle(trigger_api.Trigger):
@@ -227,8 +226,7 @@ class Boss_04_idle_A(trigger_api.Trigger):
             return burn_state_04(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7035], visible=True)
-        # 횃불에 불이 붙는 이펙트
+        self.set_effect(trigger_ids=[7035], visible=True) # 횃불에 불이 붙는 이펙트
 
 
 class Boss_04_idle_B(trigger_api.Trigger):
@@ -240,8 +238,7 @@ class Boss_04_idle_B(trigger_api.Trigger):
             return burn_state_04(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7034], visible=True)
-        # 횃불에 불이 붙는 이펙트
+        self.set_effect(trigger_ids=[7034], visible=True) # 횃불에 불이 붙는 이펙트
 
 
 class burn_state_04(trigger_api.Trigger):
@@ -264,8 +261,7 @@ class burn_state_04(trigger_api.Trigger):
             return Boss_battle_01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_mesh(trigger_ids=[6890,6891,6892,6893,6894,6895], visible=True, start_delay=50, interval=70, fade=0)
-        # 벽 생성
+        self.set_mesh(trigger_ids=[6890,6891,6892,6893,6894,6895], visible=True, start_delay=50, interval=70, fade=0) # 벽 생성
         # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -312,18 +308,15 @@ class Clear_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
-        self.set_effect(trigger_ids=[7998], visible=True)
-        # 텔레포트
-        self.destroy_monster(spawn_ids=[9998])
-        # 카나 사라짐 (998)
+        self.set_effect(trigger_ids=[7998], visible=True) # 텔레포트
+        self.destroy_monster(spawn_ids=[9998]) # 카나 사라짐 (998)
         self.select_camera(trigger_id=80006, enable=False)
 
 
 class Clear(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_event_ui(type=7, arg2='미션 성공!', arg3='3000', arg4='0')
-        # self.show_guide_summary(entity_id=112, text_id=40009)
-        # 포탈을 타세요
+        # self.show_guide_summary(entity_id=112, text_id=40009) # 포탈을 타세요
         pass
 
     def on_tick(self) -> trigger_api.Trigger:

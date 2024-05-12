@@ -82,19 +82,20 @@ class 카메라_블리체대사1(trigger_api.Trigger):
             return 블리체_전투시작대사(self.ctx)
 
 
-# <state name="블리체_블리체대사2">
-# 		<onEnter>
-# 			<action name="AddCinematicTalk" npcID="23200083" illustID="Bliche_normal" msg="$02020023_BF__main__2$" duration="4000" align="left">
-# 		</onEnter>
-# 		<condition name="WaitTick" waitTick="4000" >
-# 			<transition state="블리체_전투시작대사"/>
-# 		</condition>
-# 	</state>
+"""
+<state name="블리체_블리체대사2">
+        <onEnter>
+            <action name="AddCinematicTalk" npcID="23200083" illustID="Bliche_normal" msg="$02020023_BF__main__2$" duration="4000" align="left">
+        </onEnter>
+        <condition name="WaitTick" waitTick="4000" >
+            <transition state="블리체_전투시작대사"/>
+        </condition>
+    </state>
+"""
 class 블리체_전투시작대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=23200083, illust_id='Bliche_normal', msg='$02020023_BF__main__5$', duration=4000, align='left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

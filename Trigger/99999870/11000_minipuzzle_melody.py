@@ -505,7 +505,10 @@ class EndMelodyQuiz_Success(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000066], state=0):
             # RareBox 맵 별로 유니크하도록 변경해야 하는 값
             return MelodyQuiz_Success_Quit(self.ctx)
-        # <condition name="UserValue" key="TimeEventOn" value="0">
+        """
+        if self.user_value(key='TimeEventOn') >= 0:
+            pass
+        """
         if self.time_expired(timer_id='2'):
             return MelodyQuiz_Success_Quit(self.ctx)
 

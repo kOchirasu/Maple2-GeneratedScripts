@@ -168,10 +168,8 @@ class 마지막전투_2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4400):
-            return None # Missing State: 타이머시작
-
+            return 타이머시작(self.ctx)
 """
-
 
 """
 class 타이머시작(trigger_api.Trigger):
@@ -180,10 +178,8 @@ class 타이머시작(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):
-            return None # Missing State: 긴급대화
-
+            return 긴급대화(self.ctx)
 """
-
 
 """
 class 긴급대화(trigger_api.Trigger):
@@ -192,10 +188,8 @@ class 긴급대화(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=15000):
-            return None # Missing State: 시간종료
-
+            return 시간종료(self.ctx)
 """
-
 
 """
 class 시간종료(trigger_api.Trigger):
@@ -211,9 +205,7 @@ class 시간종료(trigger_api.Trigger):
         self.set_user_value(trigger_id=912, key='respawn_phase_4_end', value=1)
         self.set_user_value(trigger_id=913, key='respawn_phase_4_end', value=1)
         self.set_user_value(trigger_id=914, key='respawn_phase_4_end', value=1)
-
 """
-
 
 class 긴급대화_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

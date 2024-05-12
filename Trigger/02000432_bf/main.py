@@ -203,8 +203,7 @@ class 자매대화06(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[1098,1099])
         self.destroy_monster(spawn_ids=[1096,1097])
         self.spawn_monster(spawn_ids=[1096,1097], auto_target=False)

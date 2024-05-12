@@ -139,8 +139,7 @@ class scene_04(trigger_api.Trigger):
         self.set_local_camera(camera_id=8100, enable=True)
         self.set_breakable(trigger_ids=[1801,1802,1803,1804,1805,1806,1807,1808,1809,1810,1811,1812,1813,1814,1815,1816,1817,1818,1819,1820,1821], enable=True)
         self.set_effect(trigger_ids=[7101], visible=True)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2001')
@@ -198,8 +197,7 @@ class open_door_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolation_time=0)
         self.set_local_camera(camera_id=8100, enable=True)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_2006')
@@ -297,8 +295,7 @@ class ending(trigger_api.Trigger):
 
 class ending_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:

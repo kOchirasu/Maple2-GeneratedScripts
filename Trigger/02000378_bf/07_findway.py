@@ -18,6 +18,8 @@ class Wait(trigger_api.Trigger):
             return ReadyToWalkIn_FromPortal(self.ctx)
 
 
+# 20170223 업데이트 던전 개편 단축
+
 """
 class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -28,10 +30,8 @@ class ReadyToWalkIn01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: ReadyToWalkIn02
-
+            return ReadyToWalkIn02(self.ctx)
 """
-
 
 """
 class ReadyToWalkIn02(trigger_api.Trigger):
@@ -41,10 +41,8 @@ class ReadyToWalkIn02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: ReadyToWalkIn03
-
+            return ReadyToWalkIn03(self.ctx)
 """
-
 
 """
 class ReadyToWalkIn03(trigger_api.Trigger):
@@ -57,12 +55,10 @@ class ReadyToWalkIn03(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[102,202])
-
 """
 
-
-# 20170223 업데이트 던전 개편 단축
 # 포탈로 진입
+
 class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4027], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
@@ -75,8 +71,7 @@ class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.spawn_monster(spawn_ids=[107], auto_target=False)
-        self.spawn_monster(spawn_ids=[2007], auto_target=False)
-        # 전투용 준타
+        self.spawn_monster(spawn_ids=[2007], auto_target=False) # 전투용 준타
 
 
 class ReadyToWalkIn_FromPortal02(trigger_api.Trigger):
@@ -102,16 +97,15 @@ class Round07_Start(trigger_api.Trigger):
             return Round07_Sucess02(self.ctx)
 
 
+# 20170223 업데이트 던전 개편 단축
+
 """
 class Round07_Sucess01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(box_id=9007, spawn_ids=[2207]):
             return Round07_Sucess02(self.ctx)
-
 """
 
-
-# 20170223 업데이트 던전 개편 단축
 class Round07_Sucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=2007, patrol_name='MS2PatrolData_2007')
@@ -119,9 +113,9 @@ class Round07_Sucess02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1007])
         self.spawn_monster(spawn_ids=[107], auto_target=False) # 연출용 틴차이
         self.set_mesh(trigger_ids=[3007], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
-        # <action name="메쉬를설정한다" arg1="3107" arg2="1" arg3="0" arg4="0" arg5="0" />  CrystalOn
+        # self.set_mesh(trigger_ids=[3107], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
         self.set_mesh_animation(trigger_ids=[3007], visible=False, start_delay=0, interval=0) # CrystalOff
-        # <action name="메쉬애니를설정한다" arg1="3107" arg2="1" arg3="0" arg4="0" />  CrystalOn
+        # self.set_mesh_animation(trigger_ids=[3107], visible=True, start_delay=0, interval=0) # CrystalOn
         self.set_effect(trigger_ids=[5207], visible=True) # Sound_CrystalOn
         self.set_portal(portal_id=22, visible=True, enable=True, minimap_visible=False)
         self.set_dialogue(type=1, spawn_id=107, script='$02000378_BF__07_FINDWAY__3$', time=2, arg5=1) # 틴차이
@@ -141,11 +135,11 @@ class Round07_RouteSelect(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         """
         if self.random_condition(weight=50):
-            return None # Missing State: Round07_PickRoute_Left
+            return Round07_PickRoute_Left(self.ctx)
         """
         """
         if self.random_condition(weight=50):
-            return None # Missing State: Round07_PickRoute_Right
+            return Round07_PickRoute_Right(self.ctx)
         """
         if self.wait_tick(wait_tick=500):
             return GoToRound12(self.ctx)

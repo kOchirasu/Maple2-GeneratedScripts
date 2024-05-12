@@ -130,8 +130,7 @@ class TalkWeiHong04(trigger_api.Trigger):
 class TalkWeiHong05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.move_user_path(patrol_name='MS2PatrolData_1000')
 
@@ -155,8 +154,7 @@ class TalkWeiHong06(trigger_api.Trigger):
 class TalkWeiHong07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,8 +174,7 @@ class TalkWeiHong08(trigger_api.Trigger):
 class TalkWeiHong09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TalkWeiHong10(self.ctx)
@@ -197,8 +194,7 @@ class TalkWeiHong10(trigger_api.Trigger):
 class TalkWeiHong11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=501, enable=False)

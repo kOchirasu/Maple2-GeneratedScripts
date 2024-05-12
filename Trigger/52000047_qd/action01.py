@@ -314,8 +314,7 @@ class WeihongTalk01(trigger_api.Trigger):
 class WeihongTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_user_value(trigger_id=500, key='NpcRemove', value=1)
         self.set_user_value(trigger_id=501, key='NpcRemove', value=1)
         self.set_user_value(trigger_id=502, key='NpcRemove', value=1)
@@ -346,8 +345,7 @@ class WeihongTalk02(trigger_api.Trigger):
 class WeihongTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(trigger_id=602, enable=True)
@@ -721,8 +719,7 @@ class WeihongOrder02(trigger_api.Trigger):
 class WeihongOrder02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -772,8 +769,7 @@ class VasaraTalk10(trigger_api.Trigger):
 class VasaraTalk10Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return VasaraPushAgain01(self.ctx)
@@ -855,8 +851,7 @@ class VasaraLastAttack03(trigger_api.Trigger):
             return VasaraTalk20(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5220], visible=True)
-        # SandFlow
+        self.set_effect(trigger_ids=[5220], visible=True) # SandFlow
 
 
 class VasaraTalk20(trigger_api.Trigger):
@@ -872,8 +867,7 @@ class VasaraTalk20(trigger_api.Trigger):
 class VasaraTalk20Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return VasaraTalk21(self.ctx)
@@ -892,8 +886,7 @@ class VasaraTalk21(trigger_api.Trigger):
 class VasaraTalk21Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=731, enable=False)

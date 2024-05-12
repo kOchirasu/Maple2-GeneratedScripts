@@ -2,12 +2,14 @@
 import trigger_api
 
 
-# [출연진]
-# 101 : 준타 (퀘스트)
-# 111,121 : 준타 (연출)
-# 102,122 : 틴차이 (퀘스트)
-# 112 : 틴차이 (연출)
-# 103 : 애니마르 에너지
+"""
+[출연진]
+101 : 준타 (퀘스트)
+111,121 : 준타 (연출)
+102,122 : 틴차이 (퀘스트)
+112 : 틴차이 (연출)
+103 : 애니마르 에너지
+"""
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7011], visible=False) # 참새 조용함

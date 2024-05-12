@@ -97,10 +97,8 @@ class 전투03(trigger_api.Trigger):
 class 사다리감지대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[1002]):
-            return None # Missing State: 붕괴시작
-
+            return 붕괴시작(self.ctx)
 """
-
 
 """
 class 붕괴시작(trigger_api.Trigger):
@@ -110,10 +108,8 @@ class 붕괴시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3033,3034,3035,3036,3037,3038,3039,3040,3041,3042,3043,3044,3045,3046,3047,3048,3049,3050,3051,3052,3053,3054,3055,3056], visible=False, start_delay=0, interval=50, fade=1)
-            return None # Missing State: 붕괴02
-
+            return 붕괴02(self.ctx)
 """
-
 
 """
 class 붕괴02(trigger_api.Trigger):
@@ -132,20 +128,16 @@ class 붕괴02(trigger_api.Trigger):
             self.set_ladder(trigger_ids=[3111], visible=False, enable=False, fade=0)
             self.set_ladder(trigger_ids=[3112], visible=False, enable=False, fade=0)
             self.set_skill(trigger_ids=[7001], enable=True)
-            return None # Missing State: 붕괴03
-
+            return 붕괴03(self.ctx)
 """
-
 
 """
 class 붕괴03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             self.set_skill(trigger_ids=[7002], enable=True)
-            return None # Missing State: 붕괴04
-
+            return 붕괴04(self.ctx)
 """
-
 
 """
 class 붕괴04(trigger_api.Trigger):
@@ -153,9 +145,7 @@ class 붕괴04(trigger_api.Trigger):
         if self.wait_tick(wait_tick=2000):
             self.set_skill(trigger_ids=[7003], enable=True)
             return 전투04(self.ctx)
-
 """
-
 
 class 전투04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

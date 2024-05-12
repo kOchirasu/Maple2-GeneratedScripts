@@ -162,8 +162,7 @@ class Ending_Talk_7(trigger_api.Trigger):
 
 class narration01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[-1])
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__7$')
@@ -221,8 +220,7 @@ class narration06(trigger_api.Trigger):
 
 class Map_Warf(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[-1])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

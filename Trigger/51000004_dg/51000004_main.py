@@ -66,8 +66,8 @@ class 인트로02(trigger_api.Trigger):
 
 class 인트로03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         self.select_camera_path(path_ids=[8003,8004], return_view=False)
@@ -104,8 +104,8 @@ class 게임시작_대기(trigger_api.Trigger):
         self.set_achievement(trigger_id=9000, type='trigger', achieve='PinkBeanThreeTwoOne_start')
         self.write_log(log_name='PinkBeanThreeTwoOne_log', trigger_id=9000, event='char_event', sub_event='gamestart') # lifeCount : 최대 사망 횟수
         self.arcade_three_two_one(type='StartGame', life_count=5, init_score=10000)
-        # self.set_event_ui(type=0, arg2='1,1', arg4='120')
-        # 셋둘하나는 1라운드 내에서 무한루핑이므로 라운드 ui를 표시하지 않아 이 행을 넣지 않음
+        # # 셋둘하나는 1라운드 내에서 무한루핑이므로 라운드 ui를 표시하지 않아 이 행을 넣지 않음
+        self.set_event_ui(type=0, arg2='1,1', arg4='120')
         self.set_user_value(trigger_id=4001, key='Fail', value=1) # Fail Event on
         self.add_balloon_talk(spawn_id=0, msg='$51000004_DG__51000004_MAIN__4$', duration=3000) # 좋아, 붙어 보자!
         # 시작 효과음 / 레디-고! 음성 포함 02100323
@@ -199,8 +199,8 @@ class 결과연출(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ThreeTwoOneResult') >= 1:
             # ThreeTwoOneResult 1 = 유저승리 = 다른방향
-            # self.show_guide_summary(entity_id=2, text_id=26300737, duration=3000)
-            # 26300737 가이드 텍스트 ON : 승리
+            # # 26300737 가이드 텍스트 ON : 승리
+            self.show_guide_summary(entity_id=2, text_id=26300737, duration=3000)
             self.set_npc_emotion_loop(spawn_id=101, sequence_name='Failure_A', duration=2700) # 핑크빈 패배 1400
             self.set_pc_emotion_loop(sequence_name='Emotion_Dance_V', duration=2450) # PC 신남
             self.add_balloon_talk(spawn_id=101, msg='$51000004_DG__51000004_MAIN__6$', duration=3000) # …핑크빈 : 이런 꼬맹이 녀석한테 지다니!
@@ -209,8 +209,8 @@ class 결과연출(trigger_api.Trigger):
             return 결과정산(self.ctx)
         if self.user_value(key='ThreeTwoOneResult') >= 0:
             # ThreeTwoOneResult 0 = 유저패배 = 같은방향
-            # self.show_guide_summary(entity_id=3, text_id=26300738, duration=3000)
-            # 26300738 가이드 텍스트 ON : 패배
+            # # 26300738 가이드 텍스트 ON : 패배
+            self.show_guide_summary(entity_id=3, text_id=26300738, duration=3000)
             self.set_npc_emotion_loop(spawn_id=101, sequence_name='Dance_A', duration=2700) # 핑크빈 신난다 3067
             self.set_pc_emotion_sequence(sequence_names=['Emotion_Fuss_A']) # PC 아파
             self.add_balloon_talk(spawn_id=101, msg='$51000004_DG__51000004_MAIN__8$', duration=3000) # …핑크빈 : 오예~ 이겼다!

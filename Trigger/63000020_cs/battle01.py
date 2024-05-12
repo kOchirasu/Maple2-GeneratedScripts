@@ -112,8 +112,7 @@ class TalkKay04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7205], visible=False) # Voice Speenchi 03000907
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TalkKay10(self.ctx)
@@ -135,8 +134,7 @@ class TalkKay11(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.set_effect(trigger_ids=[7206], visible=False) # Voice Speenchi 03000908
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -227,8 +225,7 @@ class FirstBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
@@ -361,8 +358,7 @@ class SecondBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
@@ -495,8 +491,7 @@ class ThirdBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7210], visible=False) # Voice Speenchi 03000912
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=700, enable=False)
@@ -565,8 +560,7 @@ class TalkKay22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(map_id=63000020, portal_id=6)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[7211], visible=False) # Voice Speenchi 03000913
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -669,8 +663,7 @@ class TalkKay23(trigger_api.Trigger):
 class TalkKay24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_user(map_id=63000020, portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -706,8 +699,7 @@ class TalkKay27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[7201], visible=False) # Voice Speenchi 03000903
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -734,8 +726,7 @@ class TalkKay29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7202], visible=False) # Voice Speenchi 03000904
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LastChampoin01(self.ctx)
@@ -845,8 +836,7 @@ class LastBattle02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7204], visible=False) # Voice Speenchi 03000906
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=701, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1097,8 +1087,7 @@ class TalkChen02(trigger_api.Trigger):
         # Voice VasaraChen 00001350
         self.set_effect(trigger_ids=[7101], visible=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TalkChen03(self.ctx)
@@ -1121,8 +1110,7 @@ class TalkChen04(trigger_api.Trigger):
         # Voice VasaraChen 00001374
         self.set_effect(trigger_ids=[7103], visible=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TalkChen05(self.ctx)
@@ -1150,8 +1138,7 @@ class TalkChen06(trigger_api.Trigger):
         # Voice VasaraChen 00001351
         self.set_effect(trigger_ids=[7102], visible=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):

@@ -107,8 +107,7 @@ class 들킴_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4009], return_view=False)
         self.add_cinematic_talk(npc_id=0, msg='$52100108_QD__MAIN__7$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

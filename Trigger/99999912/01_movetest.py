@@ -27,13 +27,9 @@ class Wait(trigger_api.Trigger):
 class Move01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='강제이동 트리거가 발동됩니다.')
-        """
-        
-        <action name="MoveToPortal" boxId="9000" userTagId="1" portalId="1"  />
-        <action name="MoveToPortal" boxId="9000" userTagId="2" portalId="2"  />
-        desc 속성은 설명을 위해서 적어둔 것이니 사용할때는 지우고 사용해주시면 됩니다.
-        
-        """
+        # self.move_to_portal(box_id=9000, user_tag_id=1, portal_id=1)
+        # # desc 속성은 설명을 위해서 적어둔 것이니 사용할때는 지우고 사용해주시면 됩니다.
+        self.move_to_portal(box_id=9000, user_tag_id=2, portal_id=2)
         self.move_to_portal(user_tag_id=1, portal_id=1)
         self.move_to_portal(user_tag_id=2, portal_id=2)
         self.show_event_result(type='notice', text='1팀 안녕?\\n줄바꿈확인', duration=3000, user_tag_id=1)

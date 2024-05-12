@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 치유의 숲 : 52010026
-# 들어오자마자 앉아있는 상태 연출
+"""
+치유의 숲 : 52010026
+들어오자마자 앉아있는 상태 연출
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -242,8 +244,7 @@ class 차전투시작_02_1(trigger_api.Trigger):
 
 class 차전투시작_02_1_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -406,8 +407,7 @@ class 차전투시작_03_2(trigger_api.Trigger):
 
 class 차전투시작_03_1_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -501,8 +501,7 @@ class 차전투시작_01_3(trigger_api.Trigger):
 
 class 차전투시작_01_1_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -741,8 +740,7 @@ class 에바고르전투_01(trigger_api.Trigger):
 
 class 에바고르전투_01_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -888,8 +886,7 @@ class 훈계_05(trigger_api.Trigger):
 
 class 훈계_06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

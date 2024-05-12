@@ -11,19 +11,22 @@ class ready(trigger_api.Trigger):
             return chaos_raid(self.ctx)
 
 
-# <state name="levelcheck">
-# <condition name="DungeonLevel" level="2">
-# <transition state="raid" />
-# </condition>
-# <condition name="DungeonLevel" level="3">
-# <transition state="chaos_raid" />
-# </condition>
-# </state>
-# <state name="raid">
-# <onEnter>
-# </onEnter>
-# </state>
+"""
+class levelcheck(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.dungeon_level() == 2:
+            return raid(self.ctx)
+        if self.dungeon_level() == 3:
+            return chaos_raid(self.ctx)
+"""
+
+"""
+class raid(trigger_api.Trigger):
+    pass
+"""
+
 # 카오스 레벨이면 벽 생성
+
 class chaos_raid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000384_BF__BARRICADE__0$', arg3='3000')

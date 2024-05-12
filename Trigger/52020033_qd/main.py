@@ -125,8 +125,8 @@ class 소개_가로줌인01(trigger_api.Trigger):
         self.move_user_path(patrol_name='MS2PatrolData_PC_Walking')
         self.add_balloon_talk(spawn_id=0, msg='흠…', duration=2000, delay_tick=0)
         self.add_balloon_talk(spawn_id=101, msg='…네, 현재까지 이상 없습니다.', duration=2000, delay_tick=5)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close
@@ -281,8 +281,8 @@ class 자막구간_02(trigger_api.Trigger):
 class 자막구간_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='안개 사이로 찢어진 땅이 보인다….\\n저곳으로 내려가, 크리티아스로 들어갈 방법을 찾아보자!')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close

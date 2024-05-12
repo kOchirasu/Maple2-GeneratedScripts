@@ -63,8 +63,7 @@ class 퀘스트죽음대기(trigger_api.Trigger):
         self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2101]):
@@ -99,8 +98,7 @@ class 죽음대기(trigger_api.Trigger):
         self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):

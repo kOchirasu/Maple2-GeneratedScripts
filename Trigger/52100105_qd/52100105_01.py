@@ -18,10 +18,8 @@ class wait_02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
-            return None # Missing State: 연출끝
-
+            return 연출끝(self.ctx)
 """
-
 
 class wait_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -151,8 +149,7 @@ class 장치가동_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[4002,4008], return_view=False)
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Quest_Effect_A', duration=12000) # 클라디아
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):

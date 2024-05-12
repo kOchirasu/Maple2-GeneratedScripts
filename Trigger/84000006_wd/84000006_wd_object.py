@@ -59,15 +59,16 @@ class Over30(trigger_api.Trigger):
         self.set_timer(timer_id='2', seconds=60, interval=0) # 테스트 수정 가능 지점
         self.set_interact_object(trigger_ids=[10001442], state=1)
         self.set_interact_object(trigger_ids=[10001443], state=1)
-        # self.set_interact_object(trigger_ids=[10001444], state=1)
-        # 난이도 조절로 꺼둠
+        # self.set_interact_object(trigger_ids=[10001444], state=1) # 난이도 조절로 꺼둠
         self.set_interact_object(trigger_ids=[10001445], state=1) # 테스트용 1개
         self.set_mesh(trigger_ids=[800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        # all_of: condition name="오브젝트가반응했으면" arg1="10001444" ar2="2" /
-        # all_of: 난이도 조절로 꺼둠
-        # all_of: 테스트용 1개
+        """
+        all_of: condition name="오브젝트가반응했으면" arg1="10001444" ar2="2" /
+        all_of: 난이도 조절로 꺼둠
+        all_of: 테스트용 1개
+        """
         if self.object_interacted(interact_ids=[10001442], state=2) and self.object_interacted(interact_ids=[10001443], state=2) and self.object_interacted(interact_ids=[10001445], state=2):
             self.add_buff(box_ids=[9002], skill_id=99940045, level=1, is_player=False, is_skill_set=True) # 달팽이 스킬셋 30Up 제공
             self.set_user_value(trigger_id=1001, key='Steal', value=1) # 전투 페이즈2 이동 UV발사
@@ -83,19 +84,19 @@ class Under30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='2', seconds=60, interval=0) # 테스트 수정 가능 지점
         self.set_interact_object(trigger_ids=[10001442], state=1)
-        # self.set_interact_object(trigger_ids=[10001443], state=1)
-        # 난이도 조절로 꺼둠
-        # self.set_interact_object(trigger_ids=[10001444], state=1)
-        # 난이도 조절로 꺼둠
+        # self.set_interact_object(trigger_ids=[10001443], state=1) # 난이도 조절로 꺼둠
+        # self.set_interact_object(trigger_ids=[10001444], state=1) # 난이도 조절로 꺼둠
         self.set_interact_object(trigger_ids=[10001445], state=1) # 테스트용 꼬다리 1개
         self.set_mesh(trigger_ids=[800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826,827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        # all_of: condition name="오브젝트가반응했으면" arg1="10001443" ar2="2" /
-        # all_of: 난이도 조절로 꺼둠
-        # all_of: condition name="오브젝트가반응했으면" arg1="10001444" ar2="2" /
-        # all_of: 난이도 조절로 꺼둠
-        # all_of: 테스트용 꼬다리 1개
+        """
+        all_of: condition name="오브젝트가반응했으면" arg1="10001443" ar2="2" /
+        all_of: 난이도 조절로 꺼둠
+        all_of: condition name="오브젝트가반응했으면" arg1="10001444" ar2="2" /
+        all_of: 난이도 조절로 꺼둠
+        all_of: 테스트용 꼬다리 1개
+        """
         if self.object_interacted(interact_ids=[10001442], state=2) and self.object_interacted(interact_ids=[10001445], state=2):
             self.add_buff(box_ids=[9002], skill_id=99940043, level=1, is_player=False, is_skill_set=True) # 달팽이 스킬셋 30Under 제공
             self.set_user_value(trigger_id=1001, key='Steal', value=1) # 전투 페이즈2 이동 UV발사

@@ -57,8 +57,7 @@ class ShowCaption01(trigger_api.Trigger):
 
 class ShowCaption01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption02(self.ctx)
@@ -76,8 +75,7 @@ class ShowCaption02(trigger_api.Trigger):
 
 class ShowCaption02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CloseCaptionSetting(self.ctx)
@@ -125,8 +123,7 @@ class CinematicTalk01(trigger_api.Trigger):
 
 class CinematicTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,8 +142,7 @@ class CinematicTalk02(trigger_api.Trigger):
 
 class CinematicTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,11 +167,13 @@ class TimmerStart(trigger_api.Trigger):
         self.set_timer(timer_id='10000', seconds=300, start_delay=1, interval=1, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        # all_of:  Red
-        # all_of:  Blue
-        # all_of:  Grey
-        # all_of:  Green
-        # all_of:  Yellow
+        """
+        all_of:  Red
+        all_of:  Blue
+        all_of:  Grey
+        all_of:  Green
+        all_of:  Yellow
+        """
         if self.object_interacted(interact_ids=[10001234], state=0) and self.object_interacted(interact_ids=[10001235], state=0) and self.object_interacted(interact_ids=[10001236], state=0) and self.object_interacted(interact_ids=[10001237], state=0) and self.object_interacted(interact_ids=[10001238], state=0):
             return MissionComplete(self.ctx)
         if self.time_expired(timer_id='10000'):
@@ -234,8 +232,7 @@ class BadEndingTalk01(trigger_api.Trigger):
 
 class BadEndingTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -310,8 +307,7 @@ class HappyEndingTalk01(trigger_api.Trigger):
 
 class HappyEndingTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:

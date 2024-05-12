@@ -175,8 +175,7 @@ class 전투_4라운드시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[231,232,233,234,235,236,237], auto_target=True)
         self.side_npc_talk(npc_id=24100001, illust='Neirin_normal', duration=5000, script='$02020019_BF__02020019_battle__5$', voice='ko/Npc/00002243')
-        self.set_ai_extra_data(key='Autofire', value=1)
-        # <대포 쏘기 시작 AI에 신호쏴주기>
+        self.set_ai_extra_data(key='Autofire', value=1) # <대포 쏘기 시작 AI에 신호쏴주기>
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_hp(spawn_id=231, is_relative=True) <= 50:
@@ -282,16 +281,15 @@ class 전투_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
-        self.set_ai_extra_data(key='Autofire', value=0)
-        # <대포 쏘기 중지 AI에 신호쏴주기>
+        self.set_ai_extra_data(key='Autofire', value=0) # <대포 쏘기 중지 AI에 신호쏴주기>
         self.set_event_ui(type=0, arg2='0,0')
         self.init_npc_rotation(spawn_ids=[102,103])
         self.destroy_monster(spawn_ids=[201])
         self.destroy_monster(spawn_ids=[211])
         self.destroy_monster(spawn_ids=[221,222,223,224,225,226,227])
         self.destroy_monster(spawn_ids=[231,232,233,234,235,236,237])
-        self.destroy_monster(spawn_ids=[241,242,243,244,245,246,247,248])
         # <네이린이랑 대포가 NPC이기 때문에 선택적으로 소멸시킴>
+        self.destroy_monster(spawn_ids=[241,242,243,244,245,246,247,248])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

@@ -79,8 +79,7 @@ class 카메라_샤텐대사4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[507,508], return_view=False)
         self.add_cinematic_talk(npc_id=23200085, illust_id='Schatten_normal', msg='$02020021_BF__main__5$', duration=4000, align='left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

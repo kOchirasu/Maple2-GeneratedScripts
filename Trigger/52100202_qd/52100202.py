@@ -79,8 +79,7 @@ class 티마이온_04(trigger_api.Trigger):
         self.face_emotion(spawn_id=0, emotion_name='Trigger_serious')
         self.add_cinematic_talk(npc_id=0, msg='$52100202_QD__52100202__1$', duration=4500)
         self.add_cinematic_talk(npc_id=0, msg='$52100202_QD__52100202__2$', duration=4500)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):

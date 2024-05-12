@@ -72,10 +72,8 @@ class 안내02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 안내03
-
+            return 안내03(self.ctx)
 """
-
 
 """
 class 안내03(trigger_api.Trigger):
@@ -84,10 +82,8 @@ class 안내03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='2'):
-            return None # Missing State: 진동대기
-
+            return 진동대기(self.ctx)
 """
-
 
 """
 class 진동대기(trigger_api.Trigger):
@@ -97,10 +93,8 @@ class 진동대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 유저감지
-
+            return 유저감지(self.ctx)
 """
-
 
 """
 class 유저감지(trigger_api.Trigger):
@@ -116,10 +110,8 @@ class 유저감지(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[101]):
-            return None # Missing State: 라운드대기1
-
+            return 라운드대기1(self.ctx)
 """
-
 
 """
 class 라운드대기1(trigger_api.Trigger):
@@ -134,10 +126,8 @@ class 라운드대기1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 라운드1
-
+            return 라운드1(self.ctx)
 """
-
 
 """
 class 라운드1(trigger_api.Trigger):
@@ -148,10 +138,8 @@ class 라운드1(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[101001]):
             self.dark_stream(type='ClearRound', round=1)
             self.set_achievement(trigger_id=101, type='trigger', achieve='1roundpass')
-            return None # Missing State: 라운드대기2
-
+            return 라운드대기2(self.ctx)
 """
-
 
 """
 class 라운드대기2(trigger_api.Trigger):
@@ -162,10 +150,8 @@ class 라운드대기2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 라운드2
-
+            return 라운드2(self.ctx)
 """
-
 
 """
 class 라운드2(trigger_api.Trigger):
@@ -176,10 +162,8 @@ class 라운드2(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[102001]):
             self.dark_stream(type='ClearRound', round=2)
             self.set_achievement(trigger_id=101, type='trigger', achieve='2roundpass')
-            return None # Missing State: 라운드대기3
-
+            return 라운드대기3(self.ctx)
 """
-
 
 """
 class 라운드대기3(trigger_api.Trigger):
@@ -190,10 +174,8 @@ class 라운드대기3(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 라운드3
-
+            return 라운드3(self.ctx)
 """
-
 
 """
 class 라운드3(trigger_api.Trigger):
@@ -204,10 +186,8 @@ class 라운드3(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[103001]):
             self.dark_stream(type='ClearRound', round=3)
             self.set_achievement(trigger_id=101, type='trigger', achieve='3roundpass')
-            return None # Missing State: 라운드대기4
-
+            return 라운드대기4(self.ctx)
 """
-
 
 """
 class 라운드대기4(trigger_api.Trigger):
@@ -220,10 +200,8 @@ class 라운드대기4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             self.set_event_ui(type=0, arg2='4,5,1')
-            return None # Missing State: 라운드4
-
+            return 라운드4(self.ctx)
 """
-
 
 """
 class 라운드4(trigger_api.Trigger):
@@ -237,10 +215,8 @@ class 라운드4(trigger_api.Trigger):
             self.reset_timer(timer_id='30')
             self.dark_stream(type='ClearRound', round=4)
             self.set_achievement(trigger_id=101, type='trigger', achieve='4roundpass')
-            return None # Missing State: 라운드대기5
-
+            return 라운드대기5(self.ctx)
 """
-
 
 """
 class 라운드대기5(trigger_api.Trigger):
@@ -252,10 +228,8 @@ class 라운드대기5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
-            return None # Missing State: 라운드5
-
+            return 라운드5(self.ctx)
 """
-
 
 """
 class 라운드5(trigger_api.Trigger):
@@ -266,10 +240,8 @@ class 라운드5(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[105001]):
             self.dark_stream(type='ClearRound', round=5)
             self.set_achievement(trigger_id=101, type='trigger', achieve='5roundpass')
-            return None # Missing State: 바닥부심
-
+            return 바닥부심(self.ctx)
 """
-
 
 """
 class 바닥부심(trigger_api.Trigger):
@@ -288,9 +260,7 @@ class 바닥부심(trigger_api.Trigger):
             self.set_mesh(trigger_ids=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146], visible=False, start_delay=0, interval=0, fade=0)
             self.set_event_ui(type=0, arg2='0,0')
             return 종료(self.ctx)
-
 """
-
 
 class 종료(trigger_api.Trigger):
     pass

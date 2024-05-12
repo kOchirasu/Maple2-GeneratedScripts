@@ -212,8 +212,7 @@ class 경보끝_03(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11004434, illust_id='Bliche_closeEye', align='left', msg='$52020040_QD__52020040__42$', duration=3000)
         self.add_cinematic_talk(npc_id=11004434, illust_id='Bliche_normal', align='left', msg='$52020040_QD__52020040__43$', duration=3000)
         self.add_cinematic_talk(npc_id=0, msg='$52020040_QD__52020040__44$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=33200):

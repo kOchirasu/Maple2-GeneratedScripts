@@ -38,8 +38,7 @@ class 레버체크완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
-        # self.select_camera(trigger_id=8002, enable=True)
-        # 연출 카메라
+        # self.select_camera(trigger_id=8002, enable=True) # 연출 카메라
         # self.set_skip(state=열림)
         self.set_timer(timer_id='3', seconds=3)
 
@@ -66,8 +65,7 @@ class 열림(trigger_api.Trigger):
 
 class 열림_끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.select_camera(trigger_id=8002, enable=False)
-        # 연출 카메라
+        # self.select_camera(trigger_id=8002, enable=False) # 연출 카메라
         self.set_timer(timer_id='3', seconds=3)
         # self.set_event_ui(type=1, arg2='관문이 개방되었습니다. \\n다음 지역으로 이동하십시오.', arg3='3000')
 

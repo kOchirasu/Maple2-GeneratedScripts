@@ -180,8 +180,8 @@ class 세리하와아르망_연출03(trigger_api.Trigger):
 class 세리하와아르망_마무리(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[102])
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
@@ -280,8 +280,8 @@ class 세리하와함께전투_연출03(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[111], auto_target=False)
         self.select_camera_path(path_ids=[8010], return_view=False)
         self.add_cinematic_talk(npc_id=29000335, illust_id='Seriha_normal', msg='간다!', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close
@@ -307,8 +307,7 @@ class 전투대기01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolation_time=2)
         # self.add_cinematic_talk(npc_id=29000251, illust_id='11000015', msg='$52000121_QD__MAIN__17$', duration=2000, align='left')
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -396,8 +395,8 @@ class 전투후제이든등장_03_제이든등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[105], auto_target=False)
         self.add_cinematic_talk(npc_id=11003677, illust_id='Jaiden_normal', msg='무사했구나, $MyPCName$.', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 3 close
+        # Missing State: State,  setsceneskip 3 close
+        self.set_scene_skip()
         # setsceneskip 3 close
         # setsceneskip 3 close
         # setsceneskip 3 close

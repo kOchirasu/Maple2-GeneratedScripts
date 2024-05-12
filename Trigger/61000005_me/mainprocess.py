@@ -364,8 +364,10 @@ class 유저이동(trigger_api.Trigger):
         return 종료(self.ctx)
 
 
-# 퍼즐 패턴 시작
-# 밖에서 안으로 없어지면서 들어온다. 살아남는 건 가운데 4개
+"""
+퍼즐 패턴 시작
+밖에서 안으로 없어지면서 들어온다. 살아남는 건 가운데 4개
+"""
 class 퍼즐패턴1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # arg3:start delay / arg4:떨어지는 간격 / 모두  1/1000초 단위

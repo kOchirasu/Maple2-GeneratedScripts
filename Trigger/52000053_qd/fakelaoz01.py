@@ -100,8 +100,7 @@ class ZoomInLamp02(trigger_api.Trigger):
 class ZoomInLamp02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return MoveToLamp01(self.ctx)
@@ -212,8 +211,7 @@ class KanduraApp03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrol_name='MS2PatrolData_1002')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -236,8 +234,7 @@ class KanduraApp04(trigger_api.Trigger):
 class KanduraApp04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=520, enable=True)
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_113')
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_213')
@@ -310,8 +307,7 @@ class KanduraSummon02(trigger_api.Trigger):
 class KanduraSummon03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=602, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -361,8 +357,7 @@ class FakeLaozApp04(trigger_api.Trigger):
 class FakeLaozApp04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ReachToLamp01(self.ctx)
@@ -381,8 +376,7 @@ class ReachToLamp01(trigger_api.Trigger):
 class ReachToLamp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ReachToLamp03(self.ctx)
@@ -489,8 +483,7 @@ class LampLightUp01(trigger_api.Trigger):
 
 class LampLightUp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LampLightUp03(self.ctx)
@@ -510,8 +503,7 @@ class LampLightUp03(trigger_api.Trigger):
 
 class LampLightUp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LampLightUp05(self.ctx)
@@ -603,8 +595,7 @@ class KanduraAppAgain03(trigger_api.Trigger):
         self.select_camera(trigger_id=710, enable=True)
         self.move_npc(spawn_id=302, patrol_name='MS2PatrolData_303')
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -624,8 +615,7 @@ class NoticeLampDisapp01(trigger_api.Trigger):
 class NoticeLampDisapp01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return NoticeLampDisapp02(self.ctx)
@@ -645,8 +635,7 @@ class NoticeLampDisapp02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=711, enable=True)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -676,8 +665,7 @@ class KanduraReadyToLeave02(trigger_api.Trigger):
 class KanduraReadyToLeave03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[840,841,842,843,844,845,846,847,848,849,850,851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -776,8 +764,7 @@ class RealLaozApp01(trigger_api.Trigger):
 class RealLaozApp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[400], auto_target=False)
         self.spawn_monster(spawn_ids=[940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960,961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999], auto_target=False)
 

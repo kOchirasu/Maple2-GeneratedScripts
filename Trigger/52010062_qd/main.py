@@ -293,8 +293,8 @@ class 인페르녹대사06(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4022,4023], return_view=False)
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.add_cinematic_talk(npc_id=11003831, illust_id='infernog_nomal', msg='$52010062_QD__main__12$', duration=4000, align='right')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         self.set_effect(trigger_ids=[6000], visible=True) # 흔들림 on
 

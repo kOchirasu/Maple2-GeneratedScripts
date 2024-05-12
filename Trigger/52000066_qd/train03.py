@@ -14,8 +14,7 @@ class Wait(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entity_id=25200663, text_id=25200663)
-        # 가이드 : 레버를 당겨 보세요.
+        self.show_guide_summary(entity_id=25200663, text_id=25200663) # 가이드 : 레버를 당겨 보세요.
 
 
 class FourthPhaseChase01(trigger_api.Trigger):
@@ -89,10 +88,8 @@ class Reset(trigger_api.Trigger):
             return FourthPhaseChase01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[5001], visible=True)
-        # DownArrow
-        self.set_interact_object(trigger_ids=[10001072], state=1)
-        # TrainLever
+        self.set_effect(trigger_ids=[5001], visible=True) # DownArrow
+        self.set_interact_object(trigger_ids=[10001072], state=1) # TrainLever
 
 
 initial_state = Wait

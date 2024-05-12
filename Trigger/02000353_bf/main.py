@@ -160,8 +160,7 @@ class 관문_02_스킵(trigger_api.Trigger):
         self.set_skill(trigger_ids=[2002], enable=True)
         self.set_skill(trigger_ids=[2003], enable=True)
         self.set_skill(trigger_ids=[2004], enable=True)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.reset_camera(interpolation_time=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

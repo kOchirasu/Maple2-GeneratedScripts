@@ -177,10 +177,8 @@ class Start_10(trigger_api.Trigger):
             return Start_11(self.ctx)
 
     def on_exit(self) -> None:
-        # self.select_camera_path(path_ids=[8001], return_view=False)
-        # 카메라 뒤로 당김
-        self.select_camera(trigger_id=8001, enable=False)
-        # 카메라 초기화
+        # self.select_camera_path(path_ids=[8001], return_view=False) # 카메라 뒤로 당김
+        self.select_camera(trigger_id=8001, enable=False) # 카메라 초기화
 
 
 class Start_11(trigger_api.Trigger):

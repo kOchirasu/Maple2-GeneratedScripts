@@ -24,8 +24,7 @@ class 시작(trigger_api.Trigger):
 
 class 보스전_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(trigger_id=900012, key='SkillBreakMissionReset', value=1)
-        # <스킬브레이크 던전 미션 체크시작>
+        self.set_user_value(trigger_id=900012, key='SkillBreakMissionReset', value=1) # <스킬브레이크 던전 미션 체크시작>
         self.side_npc_talk(type='talk', npc_id=23501011, illust='Turned_Renduebian_normal', script='$02020111_BF__MAIN__0$', duration=5684, voice='ko/Npc/00002201')
         self.dungeon_reset_time(seconds=420)
         self.spawn_monster(spawn_ids=[101])
@@ -66,8 +65,7 @@ class 보스전_타임어택실패(trigger_api.Trigger):
 
 class 보스전_리셋세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(trigger_id=900012, key='SkillBreakMissionReset', value=0)
-        # <스킬브레이크 던전 미션 리셋>
+        self.set_user_value(trigger_id=900012, key='SkillBreakMissionReset', value=0) # <스킬브레이크 던전 미션 리셋>
         self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)

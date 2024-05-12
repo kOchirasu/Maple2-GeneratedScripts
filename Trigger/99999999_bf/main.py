@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 심연의 성채
-# 플레이어 감지
+"""
+심연의 성채
+플레이어 감지
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[5000], visible=True)

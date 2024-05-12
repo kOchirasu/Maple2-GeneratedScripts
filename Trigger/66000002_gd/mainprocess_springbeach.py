@@ -1092,9 +1092,7 @@ class 돈벼락(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='39'):
             return 다리등장(self.ctx)
-
 """
-
 
 # 생존자없음
 class 모두탈락(trigger_api.Trigger):

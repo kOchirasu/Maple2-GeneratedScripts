@@ -17,9 +17,7 @@ class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_hp(spawn_id=100000001, is_relative=True) <= 5:
             return 끝3(self.ctx)
-
 """
-
 
 class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:

@@ -20,8 +20,7 @@ class 전투_1라운드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_reset_time(seconds=300)
         self.set_npc_duel_hp_bar(is_open=True, spawn_id=[201], duration_tick=300000, npc_hp_step=100)
-        self.set_ai_extra_data(key='Phase', value=1)
-        # <샤텐 AI 제어>
+        self.set_ai_extra_data(key='Phase', value=1) # <샤텐 AI 제어>
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
@@ -35,8 +34,7 @@ class 전투_1라운드(trigger_api.Trigger):
 class 전투_2라운드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npc_id=23200085, illust='Schatten_normal', duration=4000, script='$02020021_BF__battle__0$', voice='ko/Npc/00002245')
-        self.spawn_monster(spawn_ids=[301], auto_target=False)
-        # <독바닥 깔기 몬스터 생성>
+        self.spawn_monster(spawn_ids=[301], auto_target=False) # <독바닥 깔기 몬스터 생성>
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
@@ -59,10 +57,8 @@ class 전투_3라운드(trigger_api.Trigger):
 class 전투_3라운드_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[301])
-        self.spawn_monster(spawn_ids=[302], auto_target=False)
-        # <독바닥 깔기 제어>
-        self.set_ai_extra_data(key='Phase', value=2)
-        # <샤텐 AI 제어>
+        self.spawn_monster(spawn_ids=[302], auto_target=False) # <독바닥 깔기 제어>
+        self.set_ai_extra_data(key='Phase', value=2) # <샤텐 AI 제어>
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
@@ -85,8 +81,7 @@ class 전투_4라운드(trigger_api.Trigger):
 class 전투_4라운드_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[302])
-        self.spawn_monster(spawn_ids=[303], auto_target=False)
-        # <독바닥 깔기 제어>
+        self.spawn_monster(spawn_ids=[303], auto_target=False) # <독바닥 깔기 제어>
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_play_time() <= 180 and self.monster_dead(spawn_ids=[201]):

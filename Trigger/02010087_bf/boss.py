@@ -21,8 +21,7 @@ class 시작(trigger_api.Trigger):
             return 폭발예고(self.ctx)
 
     def on_exit(self) -> None:
-        self.add_buff(box_ids=[706], skill_id=50000453, level=1)
-        # 이속 버프를 걸어준다
+        self.add_buff(box_ids=[706], skill_id=50000453, level=1) # 이속 버프를 걸어준다
 
 
 class 폭발예고(trigger_api.Trigger):

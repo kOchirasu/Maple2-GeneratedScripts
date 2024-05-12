@@ -21,8 +21,7 @@ class ready(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,9 +115,7 @@ class 금고찾기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10003147], state=0):
             return 던전클리어(self.ctx)
-
 """
-
 
 class 던전클리어(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

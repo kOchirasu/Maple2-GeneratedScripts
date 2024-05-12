@@ -20,34 +20,32 @@ class 퀘스트체크(trigger_api.Trigger):
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100960], quest_states=[2]):
             return 연출시작체크(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100960], quest_states=[1]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100950], quest_states=[3]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100950], quest_states=[2]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100950], quest_states=[1]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100940], quest_states=[3]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100940], quest_states=[2]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100940], quest_states=[1]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100930], quest_states=[3]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100930], quest_states=[2]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100930], quest_states=[1]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100920], quest_states=[3]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100920], quest_states=[2]):
-            return None # Missing State: 퀘스트용NPC소환준비
+            return 퀘스트용NPC소환준비(self.ctx)
         if self.quest_user_detected(box_ids=[10000], quest_ids=[50100920], quest_states=[1]):
-            return None # Missing State: 퀘스트용NPC소환
-
+            return 퀘스트용NPC소환(self.ctx)
 """
-
 
 """
 class 퀘스트용NPC소환준비(trigger_api.Trigger):
@@ -58,10 +56,8 @@ class 퀘스트용NPC소환준비(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
-            return None # Missing State: 퀘스트용NPC소환
-
+            return 퀘스트용NPC소환(self.ctx)
 """
-
 
 """
 class 퀘스트용NPC소환(trigger_api.Trigger):
@@ -72,9 +68,7 @@ class 퀘스트용NPC소환(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return 연출시작체크(self.ctx)
-
 """
-
 
 class 연출시작체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -436,8 +430,7 @@ class 마를레네생성(trigger_api.Trigger):
         self.set_effect(trigger_ids=[600], visible=False)
         self.set_effect(trigger_ids=[700], visible=False)
         self.spawn_monster(spawn_ids=[1], auto_target=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -250,8 +250,7 @@ class 암전(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.visible_my_pc(is_visible=True) # 캐릭터 숨김
         self.set_ai_extra_data(key='getBack', value=1)
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -447,8 +446,7 @@ class 에드다마저이동(trigger_api.Trigger):
 
 class 사망연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawn_ids=[1101,1102])
         self.spawn_monster(spawn_ids=[10000,10001,10002])

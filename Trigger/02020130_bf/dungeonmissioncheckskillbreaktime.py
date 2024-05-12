@@ -33,27 +33,35 @@ class 던전미션_체크(trigger_api.Trigger):
         # 3마리 보스 스킬브레이크 동시에 시간 이내 막을 경우에 대해서 보스 3명 복수 조건 체크 하기
         if self.user_value(key='IshuraSkillBreakClear') >= 1 and self.user_value(key='YuperiaSkillBreakClear') >= 1 and self.user_value(key='RenduebianSkillBreakClear') >= 1:
             return 던전미션_스킬브레이크저지_성공(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
-        # all_of:  이슈라는 스폰포인트ID : 701, 이 애디셔널은 이슈라가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
-        # all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
-        # all_of:  유페리아는 스폰포인트ID : 702, 이 애디셔널은 유페리아가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
-        # all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
-        # all_of:  렌듀비앙는 스폰포인트ID : 703, 이 애디셔널은 렌듀비앙가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
+        """
+        all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
+        all_of:  이슈라는 스폰포인트ID : 701, 이 애디셔널은 이슈라가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
+        all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
+        all_of:  유페리아는 스폰포인트ID : 702, 이 애디셔널은 유페리아가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
+        all_of:  <쉴드가 깨지기까지 6초보다 많은 시간이 남은 경우 = 8초 이내로 파괴>
+        all_of:  렌듀비앙는 스폰포인트ID : 703, 이 애디셔널은 렌듀비앙가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시켰음
+        """
         # 이슈라 경우에만 스킬브레이크 시간 이내 클리어  체크하는 로직
         if self.npc_extra_data(spawn_point_id='701', extra_data_key='brokenShieldRemainTick') >= '6000' and self.check_npc_additional_effect(spawn_id=701, additional_effect_id=70002171, level=1) and self.npc_extra_data(spawn_point_id='702', extra_data_key='brokenShieldRemainTick') >= '6000' and self.check_npc_additional_effect(spawn_id=702, additional_effect_id=70002171, level=1) and self.npc_extra_data(spawn_point_id='703', extra_data_key='brokenShieldRemainTick') >= '6000' and self.check_npc_additional_effect(spawn_id=703, additional_effect_id=70002171, level=1):
             return 던전미션_3개변수1셋팅(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
-        # all_of:  이슈라는 스폰포인트ID : 701, 이 애디셔널은 이슈라가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
+        all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
+        all_of:  이슈라는 스폰포인트ID : 701, 이 애디셔널은 이슈라가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
         # 유페리아 경우에만 스킬브레이크 시간 이내 클리어  체크하는 로직
         if self.npc_extra_data(spawn_point_id='701', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=701, additional_effect_id=70002171, level=1):
             return 이슈라미션_변수1셋팅(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
-        # all_of:  유페리아는 스폰포인트ID : 702, 이 애디셔널은 유페리아가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
+        all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
+        all_of:  유페리아는 스폰포인트ID : 702, 이 애디셔널은 유페리아가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
         # 렌듀비앙 경우에만 스킬브레이크 시간 이내 클리어  체크하는 로직
         if self.npc_extra_data(spawn_point_id='702', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=702, additional_effect_id=70002171, level=1):
             return 유페리아미션_변수1셋팅(self.ctx)
-        # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
-        # all_of:  렌듀비앙는 스폰포인트ID : 703, 이 애디셔널은 렌듀비앙가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
+        all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
+        all_of:  렌듀비앙는 스폰포인트ID : 703, 이 애디셔널은 렌듀비앙가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
+        """
         # 3마리 보스 중 하나라도 극 광역공격 실행하면 무조건 실패해서 트리거 처음으로 돌려놓기, 실패 체크 단계는 맨 마지막 쪽에 하는 것이 안정적임
         if self.npc_extra_data(spawn_point_id='703', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=703, additional_effect_id=70002171, level=1):
             return 렌듀비앙미션_변수1셋팅(self.ctx)

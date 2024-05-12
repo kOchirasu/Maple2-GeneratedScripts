@@ -163,16 +163,15 @@ class PassingThroughRing_SuccessDelay(trigger_api.Trigger):
             return ResetTimer(self.ctx)
 
 
-# <state name="PassingThroughRing_End" >
-# <onEnter>
-# </onEnter>
-# <condition name="시간이경과했으면" arg1="1">
-# <transition state="ResetTimer"/>
-# </condition>
-# <onExit>
-# </onExit>
-# </state>
+"""
+class PassingThroughRing_End(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.time_expired(timer_id='1'):
+            return ResetTimer(self.ctx)
+"""
+
 # 제한 시간 종료
+
 class PassingThroughRing_Fail(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):

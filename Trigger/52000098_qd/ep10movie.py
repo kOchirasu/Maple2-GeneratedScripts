@@ -68,8 +68,7 @@ class Epilogue10Talk3(trigger_api.Trigger):
 class Epilogue10Talk4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk5(self.ctx)
@@ -90,8 +89,7 @@ class Epilogue10Talk5(trigger_api.Trigger):
 class Epilogue10Talk6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk7(self.ctx)
@@ -111,8 +109,7 @@ class Epilogue10Talk7(trigger_api.Trigger):
 class Epilogue10Talk8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk9(self.ctx)
@@ -132,8 +129,7 @@ class Epilogue10Talk9(trigger_api.Trigger):
 class Epilogue10Talk10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk11(self.ctx)
@@ -154,8 +150,7 @@ class Epilogue10Talk11(trigger_api.Trigger):
 class Epilogue10Talk12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk13(self.ctx)
@@ -175,8 +170,7 @@ class Epilogue10Talk13(trigger_api.Trigger):
 class Epilogue10Talk14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk16(self.ctx)
@@ -197,8 +191,7 @@ class Epilogue10Talk17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk18(self.ctx)
@@ -218,8 +211,7 @@ class Epilogue10Talk18(trigger_api.Trigger):
 class Epilogue10Talk19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk20(self.ctx)
@@ -239,8 +231,7 @@ class Epilogue10Talk20(trigger_api.Trigger):
 class Epilogue10Talk21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk22(self.ctx)
@@ -260,8 +251,7 @@ class Epilogue10Talk22(trigger_api.Trigger):
 class Epilogue10Talk23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk24(self.ctx)
@@ -282,8 +272,7 @@ class Epilogue10Talk24(trigger_api.Trigger):
 class Epilogue10Talk25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk27(self.ctx)
@@ -303,8 +292,7 @@ class Epilogue10Talk27(trigger_api.Trigger):
 class Epilogue10Talk28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk29(self.ctx)
@@ -324,8 +312,7 @@ class Epilogue10Talk29(trigger_api.Trigger):
 class Epilogue10Talk30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk31(self.ctx)
@@ -345,8 +332,7 @@ class Epilogue10Talk31(trigger_api.Trigger):
 class Epilogue10Talk32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk33(self.ctx)
@@ -366,8 +352,7 @@ class Epilogue10Talk33(trigger_api.Trigger):
 class Epilogue10Talk34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue10Talk35(self.ctx)

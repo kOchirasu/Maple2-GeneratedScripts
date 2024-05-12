@@ -192,7 +192,15 @@ class 단계_튜브대미지필드_제거2(trigger_api.Trigger):
             return 단계_튜브대미지필드_처음단계2(self.ctx)
 
 
-# 이 트리거에서는  <state name="종료"> 로 올일 없음
+# 이 트리거에서는
+
+"""
+class 종료(trigger_api.Trigger):
+    pass
+"""
+
+# 로 올일 없음
+
 class 종료(trigger_api.Trigger):
     pass
 

@@ -15,12 +15,10 @@ class 대기(trigger_api.Trigger):
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_level() == 2:
-            return None # Missing State: 레이드
+            return 레이드(self.ctx)
         if self.dungeon_level() == 3:
             return 카오스레이드(self.ctx)
-
 """
-
 
 """
 class 레이드(trigger_api.Trigger):
@@ -30,9 +28,7 @@ class 레이드(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[2001]):
             return 초대기2(self.ctx)
-
 """
-
 
 class 카오스레이드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

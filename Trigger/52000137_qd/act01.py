@@ -96,8 +96,7 @@ class AsimovTalk01(trigger_api.Trigger):
 class AsimovTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ZoominAnos01(self.ctx)
@@ -146,8 +145,7 @@ class AnosTalk01(trigger_api.Trigger):
 class AnosTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CameraChange00(self.ctx)
@@ -186,8 +184,7 @@ class PCTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Idle_A'])
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return AsimovTalk02(self.ctx)
@@ -210,8 +207,7 @@ class AsimovTalk02(trigger_api.Trigger):
 class AsimovTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return AsimovTalk03(self.ctx)
@@ -232,8 +228,7 @@ class AsimovTalk03(trigger_api.Trigger):
 class AsimovTalk03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CameraChange02(self.ctx)
@@ -270,8 +265,7 @@ class PCTalk02(trigger_api.Trigger):
 class PCTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CameraChange04(self.ctx)
@@ -390,8 +384,7 @@ class AsimovTalk04(trigger_api.Trigger):
 class AsimovTalk04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         # 임시 - 기절하는 동작 제작되면 타이밍 맞추기
         self.set_npc_emotion_sequence(spawn_id=202, sequence_name='Event_02_A,Down_Idle_A,Down_Idle_A,Down_Idle_A,Down_Idle_A')
 
@@ -462,8 +455,7 @@ class DarkAnosTalk02(trigger_api.Trigger):
 class DarkAnosTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PCTalk03(self.ctx)
@@ -473,8 +465,7 @@ class PCTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequence_name='Talk_A', duration=4000)
         self.add_cinematic_talk(npc_id=0, msg='$52000137_QD__ACT01__10$', duration=5000, align='center', illust_id='0')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -485,8 +476,7 @@ class PCTalk03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Idle_A'])
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return DarkAnosTalk03(self.ctx)
@@ -531,8 +521,7 @@ class DarkAnosTalk01CSkip(trigger_api.Trigger):
 class DarkAnosTalk03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -719,8 +708,7 @@ class KanduraTalk01(trigger_api.Trigger):
 class KanduraTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PCTalk04(self.ctx)
@@ -739,8 +727,7 @@ class PCTalk04(trigger_api.Trigger):
 class PCTalk04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return KanduraMoveToDarkAnos01(self.ctx)
@@ -771,8 +758,7 @@ class KanduraTalk02(trigger_api.Trigger):
 class KanduraTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return KanduraReadyToDisapp01(self.ctx)
@@ -839,8 +825,7 @@ class ShowCaption02(trigger_api.Trigger):
 
 class ShowCaption02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption03(self.ctx)
@@ -858,8 +843,7 @@ class ShowCaption03(trigger_api.Trigger):
 
 class ShowCaption03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption04(self.ctx)
@@ -876,8 +860,7 @@ class ShowCaption04(trigger_api.Trigger):
 
 class ShowCaption04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Quit01(self.ctx)

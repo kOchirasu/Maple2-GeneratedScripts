@@ -114,8 +114,7 @@ class 차입장03_1(trigger_api.Trigger):
 class 차입장01_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
         self.select_camera(trigger_id=3100, enable=True)
 
@@ -162,8 +161,7 @@ class 차입장04_2(trigger_api.Trigger):
 class 차입장05_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -183,8 +181,7 @@ class 차입장06_2(trigger_api.Trigger):
 class 차입장07_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[6101], visible=False) # Ishura Voice 00001291
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_302')
         self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_402')
@@ -233,8 +230,7 @@ class 차입장03_3(trigger_api.Trigger):
 class 차입장01_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[6001], visible=False) # Asimov Voice 00000553
         self.select_camera(trigger_id=3200, enable=True)
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
@@ -269,8 +265,7 @@ class 차입장03_4(trigger_api.Trigger):
 class 차입장04_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=3201, enable=True)
         self.spawn_monster(spawn_ids=[801], auto_target=True)
         self.move_npc(spawn_id=801, patrol_name='MS2PatrolData_801')
@@ -293,8 +288,7 @@ class 차입장05_4(trigger_api.Trigger):
 class 차입장06_4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -335,8 +329,7 @@ class 차입장03_5(trigger_api.Trigger):
 class 차입장04_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=3301, enable=True)
         self.spawn_monster(spawn_ids=[1001], auto_target=True)
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1001')
@@ -359,8 +352,7 @@ class 차입장05_5(trigger_api.Trigger):
 class 차입장06_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=3302, enable=True)
         self.spawn_monster(spawn_ids=[1101], auto_target=True)
         self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_1101')
@@ -383,8 +375,7 @@ class 차입장07_5(trigger_api.Trigger):
 class 차입장08_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[5002], visible=True) # RightDoorOpen
         self.select_camera(trigger_id=3303, enable=True)
         self.spawn_monster(spawn_ids=[1201], auto_target=True)
@@ -417,8 +408,7 @@ class 차입장10_5(trigger_api.Trigger):
 class 차입장11_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -438,8 +428,7 @@ class 차입장12_5(trigger_api.Trigger):
 class 차입장13_5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=3304, enable=True)
         self.move_npc(spawn_id=801, patrol_name='MS2PatrolData_802')
 
@@ -461,8 +450,7 @@ class 차입장14_5(trigger_api.Trigger):
 class 입장완료01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_sound(trigger_id=10000, enable=True) # TriaAttack
         self.select_camera_path(path_ids=[3400,3401,3402,3403], return_view=False)
 
@@ -485,8 +473,7 @@ class 정렬01(trigger_api.Trigger):
 class 정렬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=501, patrol_name='MS2PatrolData_502')
         self.move_npc(spawn_id=601, patrol_name='MS2PatrolData_602')
 
@@ -553,8 +540,7 @@ class 본론01(trigger_api.Trigger):
 class 본론02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -576,8 +562,7 @@ class 본론03(trigger_api.Trigger):
 class 본론04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[6004], visible=False) # Asimov Voice 00001340
         self.select_camera(trigger_id=3500, enable=True)
 
@@ -619,8 +604,7 @@ class 본론07(trigger_api.Trigger):
 class 영상01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -677,8 +661,7 @@ class 정리01(trigger_api.Trigger):
 class 정리02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_effect(trigger_ids=[6103], visible=False) # Ishura Voice 00001293
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -699,8 +682,7 @@ class 반대01(trigger_api.Trigger):
 class 반대02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=3601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -721,8 +703,7 @@ class 반대03(trigger_api.Trigger):
 class 반대04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -742,8 +723,7 @@ class 반대05(trigger_api.Trigger):
 class 반대06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=1201, patrol_name='MS2PatrolData_1203')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -773,8 +753,7 @@ class 반대08(trigger_api.Trigger):
 class 반대09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=1001, patrol_name='MS2PatrolData_1003')
         self.select_camera(trigger_id=3603, enable=True)
 
@@ -849,8 +828,7 @@ class 강제퇴장(trigger_api.Trigger):
         self.move_user(map_id=2000001, portal_id=17, box_id=9001)
 
     def on_exit(self) -> None:
-        self.set_sound(trigger_id=10000, enable=False)
-        # TriaAttack
+        self.set_sound(trigger_id=10000, enable=False) # TriaAttack
 
 
 initial_state = 대기

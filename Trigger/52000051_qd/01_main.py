@@ -77,8 +77,7 @@ class NpcCinematic01(trigger_api.Trigger):
 class NpcCinematic01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return NpcCinematic02(self.ctx)
@@ -97,8 +96,7 @@ class NpcCinematic02(trigger_api.Trigger):
 class NpcCinematic02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return NpcCinematic03(self.ctx)
@@ -138,8 +136,7 @@ class NpcCinematic05(trigger_api.Trigger):
 class NpcCinematic05Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=601, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -258,8 +255,7 @@ class RemoveTotem01(trigger_api.Trigger):
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[101,201])
         self.destroy_monster(spawn_ids=[102,202])
-        self.destroy_monster(spawn_ids=[103,203])
-        # 전투
+        self.destroy_monster(spawn_ids=[103,203]) # 전투
         self.spawn_monster(spawn_ids=[105,205], auto_target=False)
         self.remove_balloon_talk(spawn_id=203)
         self.remove_balloon_talk(spawn_id=103)
@@ -429,8 +425,7 @@ class ShadowApp04(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[106,206])
-        self.spawn_monster(spawn_ids=[104,204], auto_target=False)
-        # 연출용 NPC
+        self.spawn_monster(spawn_ids=[104,204], auto_target=False) # 연출용 NPC
 
 
 class StartPuzzle01(trigger_api.Trigger):

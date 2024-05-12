@@ -27,12 +27,10 @@ class Setting(trigger_api.Trigger):
             return Wait_Talk01(self.ctx) # test용 수정 가능 지점
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True)
-        # SafeZone Barrier Effect
-        self.set_timer(timer_id='1', seconds=59, start_delay=1, interval=1, v_offset=-80)
+        self.set_effect(trigger_ids=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True) # SafeZone Barrier Effect
         # test용 수정 가능 지점 / arg2="30" / arg2 시간 더 짧게 가능  arg2="10"
-        self.write_log(log_name='Survival', event='Waiting_Start')
-        # 서바이벌 대기 시작
+        self.set_timer(timer_id='1', seconds=59, start_delay=1, interval=1, v_offset=-80)
+        self.write_log(log_name='Survival', event='Waiting_Start') # 서바이벌 대기 시작
 
 
 class Wait_Talk01(trigger_api.Trigger):
@@ -250,7 +248,7 @@ class CheckTheNumberOfPlayers(trigger_api.Trigger):
 
 class MatchingSuccessDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # <action name="SetUserValue" triggerID="7" key="HidePartyUI" value="1" />		팀 모드에서 사용하지 않음
+        # self.set_user_value(trigger_id=7, key='HidePartyUI', value=1) # 팀 모드에서 사용하지 않음
         self.play_system_sound_in_box(sound='GuildBattle_Enter')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -293,7 +291,8 @@ class AreaOpen(trigger_api.Trigger):
         self.set_user_value(trigger_id=8, key='RareMobOnCount', value=1)
         self.set_user_value(trigger_id=9, key='NormaBoxOnCount', value=1)
         self.set_user_value(trigger_id=16, key='ExtraEventCheck', value=1)
-        # <action name="SetUserValue" triggerID="16" key="ExtraEventTestOn" value="1" />	 test용 수정 가능 지점 : 이벤트 즉시 발동
+        # # test용 수정 가능 지점 : 이벤트 즉시 발동
+        self.set_user_value(trigger_id=16, key='ExtraEventTestOn', value=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_user_value(trigger_id=4, key='InvincibleOff', value=1)
         self.add_buff(box_ids=[9000], skill_id=71000053, level=1, is_player=False, is_skill_set=False) # 31초 무적 버프

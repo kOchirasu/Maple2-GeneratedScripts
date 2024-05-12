@@ -102,8 +102,7 @@ class talk_08(trigger_api.Trigger):
 class talk_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=0, msg='$63000042_CS__WAKEUP02__8$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -155,8 +154,7 @@ class pray(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align='centerRight', offset_rate_x=0.5, duration=4000)
         self.select_camera_path(path_ids=[502,503], return_view=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

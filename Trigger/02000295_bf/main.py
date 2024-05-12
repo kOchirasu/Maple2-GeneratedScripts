@@ -120,8 +120,7 @@ class CameraWalk02(trigger_api.Trigger):
         self.select_camera(trigger_id=601, enable=False)
         self.destroy_monster(spawn_ids=[201])
         self.spawn_monster(spawn_ids=[202], auto_target=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -158,8 +157,7 @@ class CameraWalk04(trigger_api.Trigger):
 
 class CameraWalk05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_202')
         self.set_dialogue(type=1, spawn_id=202, script='$02000295_BF__MAIN__15$', time=5, arg5=0)
         self.set_cinematic_ui(type=0)
@@ -252,8 +250,7 @@ class BossAct03(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=603, enable=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -471,8 +468,7 @@ class ReleaseSlaves04(trigger_api.Trigger):
 
 class ReleaseSlaves05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[200], auto_target=True)
         self.move_npc(spawn_id=200, patrol_name='MS2PatrolData_199')
         self.select_camera(trigger_id=602, enable=False)
@@ -495,8 +491,7 @@ class ToBeContinued01(trigger_api.Trigger):
 
 class Quit01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.remove_balloon_talk(spawn_id=200)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

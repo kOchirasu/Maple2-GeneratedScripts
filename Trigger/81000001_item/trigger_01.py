@@ -94,9 +94,11 @@ class 어나운스0(trigger_api.Trigger):
             return 어나운스1(self.ctx)
 
 
-# 전체 box : 105
-# 대기 box : 101
-# 승자 box : 102
+"""
+전체 box : 105
+대기 box : 101
+승자 box : 102
+"""
 class 어나운스1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', stage=0, count=5)
@@ -104,8 +106,8 @@ class 어나운스1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5500):
             self.set_mesh(trigger_ids=[301,302,303], visible=False, start_delay=12, interval=0)
-            # self.set_achievement(trigger_id=101, type='trigger', achieve='dailyquest_start')
-            # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+            # # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+            self.set_achievement(trigger_id=101, type='trigger', achieve='dailyquest_start')
             # self.give_guild_exp(box_id=0, type=2)
             self.start_mini_game(is_show_result_ui=False, box_id=105, round=1, game_name='UserMassive_Escape')
             self.start_mini_game_round(box_id=105, round=1)

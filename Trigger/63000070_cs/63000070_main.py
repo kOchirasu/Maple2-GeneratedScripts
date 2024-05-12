@@ -213,8 +213,8 @@ class scene1_readytofight(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolation_time=2)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
 
@@ -371,8 +371,8 @@ class scene2_girltalk(trigger_api.Trigger):
 class scene2_casezoomin(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npc_id=11004308, align='right', msg='$63000070_CS__63000070_MAIN__11$', duration=3000) # 진실을 확인할 시간
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
 
@@ -491,8 +491,8 @@ class scene3_girldisappears(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[105]) # NPC 마리엔 소멸
         self.set_effect(trigger_ids=[605], visible=True)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 3 close
+        # Missing State: State,  setsceneskip 3 close
+        self.set_scene_skip()
         # setsceneskip 3 close
         # setsceneskip 3 close
 

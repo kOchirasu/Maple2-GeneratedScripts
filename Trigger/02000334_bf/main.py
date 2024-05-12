@@ -75,12 +75,13 @@ class 시작_03(trigger_api.Trigger):
         self.set_cinematic_ui(type=4)
 
 
-# 해당 단계에서 플레이어의 위치를 조명해줌
-# 1 단계 시작 카운트
+"""
+해당 단계에서 플레이어의 위치를 조명해줌
+1 단계 시작 카운트
+"""
 class 단계_시작1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(path_ids=[8013,8015], return_view=False)
-        # 사이드뷰 카메라
+        self.select_camera_path(path_ids=[8013,8015], return_view=False) # 사이드뷰 카메라
         self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,8 +152,7 @@ class 단계_타이머1(trigger_api.Trigger):
             return 클리어(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[90022], visible=False)
-        # 점프 뛰는 소리 OFF
+        self.set_effect(trigger_ids=[90022], visible=False) # 점프 뛰는 소리 OFF
 
 
 class 단계_준비2(trigger_api.Trigger):
@@ -207,8 +207,7 @@ class 단계_타이머2(trigger_api.Trigger):
             return 게임오버(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[90022], visible=False)
-        # 점프 뛰는 소리 OFF
+        self.set_effect(trigger_ids=[90022], visible=False) # 점프 뛰는 소리 OFF
 
 
 class 단계_준비3(trigger_api.Trigger):
@@ -260,8 +259,7 @@ class 단계_타이머3(trigger_api.Trigger):
             return 게임오버(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[90022], visible=False)
-        # 점프 뛰는 소리 OFF
+        self.set_effect(trigger_ids=[90022], visible=False) # 점프 뛰는 소리 OFF
 
 
 class 단계_준비_01_4(trigger_api.Trigger):
@@ -310,8 +308,7 @@ class 단계_시작4(trigger_api.Trigger):
             return 게임오버(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_monster(spawn_ids=[150,151], auto_target=False)
-        # 1,2차 웨이브 몬스터 작동 장치
+        self.spawn_monster(spawn_ids=[150,151], auto_target=False) # 1,2차 웨이브 몬스터 작동 장치
 
 
 # 4 단계 시작
@@ -329,8 +326,7 @@ class 단계_타이머4(trigger_api.Trigger):
             return 클리어(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[90022], visible=False)
-        # 점프 뛰는 소리 OFF
+        self.set_effect(trigger_ids=[90022], visible=False) # 점프 뛰는 소리 OFF
 
 
 # 게임 오버 스테이트
@@ -453,8 +449,7 @@ class 클리어_보상_02(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
         self.set_dialogue(type=2, spawn_id=11000015, script='$02000334_BF__MAIN__18$', time=3) # 오스칼 대사
         self.set_timer(timer_id='3', seconds=3)
-        # self.set_interact_object(trigger_ids=[13000012], state=1)
-        # 보상 상태 개방
+        # self.set_interact_object(trigger_ids=[13000012], state=1) # 보상 상태 개방
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):

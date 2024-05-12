@@ -41,8 +41,8 @@ class 감지(trigger_api.Trigger):
 
 class 성공(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(trigger_id=99990021, key='Reconnect', value=2)
         # <재접속 유저를 위해 버프 지속적으로 쏴주기 캔슬>
+        self.set_user_value(trigger_id=99990021, key='Reconnect', value=2)
         self.set_event_ui(type=1, arg2='$02020112_BF__JUMPROOM__0$', arg3='5000')
         self.set_gravity(gravity=0)
         self.set_effect(trigger_ids=[8005], visible=False)
@@ -68,8 +68,7 @@ class 성공(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[152,153,154,155]):
-            self.set_user_value(trigger_id=99990001, key='MonsterDead', value=1)
-            # <점프방 몬스터 체크>
+            self.set_user_value(trigger_id=99990001, key='MonsterDead', value=1) # <점프방 몬스터 체크>
 
 
 initial_state = 대기

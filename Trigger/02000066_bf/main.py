@@ -100,8 +100,7 @@ class 차어나운스02_1(trigger_api.Trigger):
 
 class 차어나운스03_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=300, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -490,8 +489,7 @@ class 차승리연출종료3(trigger_api.Trigger):
             return 분기점(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_achievement(trigger_id=103, type='trigger', achieve='ClearAnosSOS')
-        # ClearAnosSOS 퀘스트
+        self.set_achievement(trigger_id=103, type='trigger', achieve='ClearAnosSOS') # ClearAnosSOS 퀘스트
 
 
 class 분기점(trigger_api.Trigger):
@@ -533,10 +531,8 @@ class 분기점01(trigger_api.Trigger):
             self.destroy_monster(spawn_ids=[903])
             self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
             self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
-            return None # Missing State: 차어나운스01_4
-
+            return 차어나운스01_4(self.ctx)
 """
-
 
 """
 class 차어나운스01_4(trigger_api.Trigger):
@@ -547,10 +543,8 @@ class 차어나운스01_4(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='6'):
-            return None # Missing State: 차웨이브4
-
+            return 차웨이브4(self.ctx)
 """
-
 
 """
 class 차웨이브4(trigger_api.Trigger):
@@ -561,12 +555,10 @@ class 차웨이브4(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='120'):
-            return None # Missing State: 차웨이브성공4
+            return 차웨이브성공4(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패4
-
+            return 차웨이브실패4(self.ctx)
 """
-
 
 """
 class 차웨이브실패4(trigger_api.Trigger):
@@ -578,9 +570,7 @@ class 차웨이브실패4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 실패(self.ctx)
-
 """
-
 
 """
 class 차웨이브성공4(trigger_api.Trigger):
@@ -591,15 +581,13 @@ class 차웨이브성공4(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패4
+            return 차웨이브실패4(self.ctx)
         if self.time_expired(timer_id='5'):
-            return None # Missing State: 차어나운스01_5
+            return 차어나운스01_5(self.ctx)
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20000662)
-
 """
-
 
 """
 class 차어나운스01_5(trigger_api.Trigger):
@@ -609,12 +597,10 @@ class 차어나운스01_5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패4
+            return 차웨이브실패4(self.ctx)
         if self.time_expired(timer_id='10'):
-            return None # Missing State: 차어나운스02_5
-
+            return 차어나운스02_5(self.ctx)
 """
-
 
 """
 class 차어나운스02_5(trigger_api.Trigger):
@@ -625,10 +611,8 @@ class 차어나운스02_5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='6'):
-            return None # Missing State: 차웨이브5
-
+            return 차웨이브5(self.ctx)
 """
-
 
 """
 class 차웨이브5(trigger_api.Trigger):
@@ -638,12 +622,10 @@ class 차웨이브5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='120'):
-            return None # Missing State: 차웨이브성공5
+            return 차웨이브성공5(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패5
-
+            return 차웨이브실패5(self.ctx)
 """
-
 
 """
 class 차웨이브실패5(trigger_api.Trigger):
@@ -655,9 +637,7 @@ class 차웨이브실패5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 실패(self.ctx)
-
 """
-
 
 """
 class 차웨이브성공5(trigger_api.Trigger):
@@ -668,15 +648,13 @@ class 차웨이브성공5(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            return None # Missing State: 차어나운스01_6
+            return 차어나운스01_6(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패5
+            return 차웨이브실패5(self.ctx)
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20000662)
-
 """
-
 
 """
 class 차어나운스01_6(trigger_api.Trigger):
@@ -686,12 +664,10 @@ class 차어나운스01_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='10'):
-            return None # Missing State: 차어나운스02_6
+            return 차어나운스02_6(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패5
-
+            return 차웨이브실패5(self.ctx)
 """
-
 
 """
 class 차어나운스02_6(trigger_api.Trigger):
@@ -702,12 +678,10 @@ class 차어나운스02_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='6'):
-            return None # Missing State: 차웨이브6
+            return 차웨이브6(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패5
-
+            return 차웨이브실패5(self.ctx)
 """
-
 
 """
 class 차웨이브6(trigger_api.Trigger):
@@ -717,9 +691,9 @@ class 차웨이브6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='120'):
-            return None # Missing State: 차웨이브성공6
+            return 차웨이브성공6(self.ctx)
         if self.monster_dead(spawn_ids=[99]):
-            return None # Missing State: 차웨이브실패6
+            return 차웨이브실패6(self.ctx)
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[1001])
@@ -763,9 +737,7 @@ class 차웨이브6(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[1602])
         self.destroy_monster(spawn_ids=[1603])
         self.destroy_monster(spawn_ids=[1604])
-
 """
-
 
 """
 class 차웨이브실패6(trigger_api.Trigger):
@@ -777,9 +749,7 @@ class 차웨이브실패6(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 실패(self.ctx)
-
 """
-
 
 """
 class 차웨이브성공6(trigger_api.Trigger):
@@ -794,36 +764,31 @@ class 차웨이브성공6(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
             self.set_effect(trigger_ids=[6003], visible=False)
-            return None # Missing State: 차승리연출랜덤6
+            return 차승리연출랜덤6(self.ctx)
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=20000662)
-
 """
-
 
 """
 class 차승리연출랜덤6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        # Missing State: 차승리연출종료6
-        self.set_skip()
+        self.set_skip() # Missing State: 차승리연출종료6
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(weight=20):
-            return None # Missing State: 차승리연출01_6
+            return 차승리연출01_6(self.ctx)
         if self.random_condition(weight=20):
-            return None # Missing State: 차승리연출02_6
+            return 차승리연출02_6(self.ctx)
         if self.random_condition(weight=20):
-            return None # Missing State: 차승리연출03_6
+            return 차승리연출03_6(self.ctx)
         if self.random_condition(weight=20):
-            return None # Missing State: 차승리연출04_6
+            return 차승리연출04_6(self.ctx)
         if self.random_condition(weight=20):
-            return None # Missing State: 차승리연출05_6
-
+            return 차승리연출05_6(self.ctx)
 """
-
 
 """
 class 차승리연출01_6(trigger_api.Trigger):
@@ -834,10 +799,8 @@ class 차승리연출01_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):
-            return None # Missing State: 차승리연출종료6
-
+            return 차승리연출종료6(self.ctx)
 """
-
 
 """
 class 차승리연출02_6(trigger_api.Trigger):
@@ -848,10 +811,8 @@ class 차승리연출02_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='4'):
-            return None # Missing State: 차승리연출종료6
-
+            return 차승리연출종료6(self.ctx)
 """
-
 
 """
 class 차승리연출03_6(trigger_api.Trigger):
@@ -862,10 +823,8 @@ class 차승리연출03_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            return None # Missing State: 차승리연출종료6
-
+            return 차승리연출종료6(self.ctx)
 """
-
 
 """
 class 차승리연출04_6(trigger_api.Trigger):
@@ -876,10 +835,8 @@ class 차승리연출04_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='6'):
-            return None # Missing State: 차승리연출종료6
-
+            return 차승리연출종료6(self.ctx)
 """
-
 
 """
 class 차승리연출05_6(trigger_api.Trigger):
@@ -890,10 +847,8 @@ class 차승리연출05_6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='5'):
-            return None # Missing State: 차승리연출종료6
-
+            return 차승리연출종료6(self.ctx)
 """
-
 
 """
 class 차승리연출종료6(trigger_api.Trigger):
@@ -904,10 +859,8 @@ class 차승리연출종료6(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
-            return None # Missing State: 분기점03
-
+            return 분기점03(self.ctx)
 """
-
 
 """
 class 분기점03(trigger_api.Trigger):
@@ -923,9 +876,7 @@ class 분기점03(trigger_api.Trigger):
         if self.time_expired(timer_id='60'):
             self.destroy_monster(spawn_ids=[907])
             return 완료(self.ctx)
-
 """
-
 
 class 실패(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

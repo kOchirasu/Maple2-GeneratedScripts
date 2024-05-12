@@ -143,8 +143,7 @@ class 정리_02(trigger_api.Trigger):
         self.reset_camera(interpolation_time=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -333,8 +332,7 @@ class 잠시후_5(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11004421, msg='$52100101_QD__52100101__20$', duration=3000)
         self.add_cinematic_talk(npc_id=11004421, msg='$52100101_QD__52100101__21$', duration=3000)
         self.add_cinematic_talk(npc_id=11004421, msg='$52100101_QD__52100101__22$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):

@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 플레이어 감지
-# 60002 : 모든 영역
+"""
+플레이어 감지
+60002 : 모든 영역
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[6701,6702,6703,6704,6705], visible=True, start_delay=0, interval=0) # 가림막

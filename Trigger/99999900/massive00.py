@@ -133,9 +133,11 @@ class 중지버튼(trigger_api.Trigger):
         self.reset_timer(timer_id='1000')
 
 
-# 퍼즐 패턴 시작
-# 9시->12시 방향 패턴
-# 9시->12시 방향, 한줄씩 사라지는 패턴
+"""
+퍼즐 패턴 시작
+9시->12시 방향 패턴
+9시->12시 방향, 한줄씩 사라지는 패턴
+"""
 class 퍼즐패턴10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -201,8 +203,10 @@ class 퍼즐패턴18(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[10,9,8,7,6,5,4,3,2,1,11,12,13,14,15,16,17,18,19,20,30,29,28,27,26,25,24,23,22,21,31,32,33,34,35,36,37,38,39,40,50,49,48,47,46,45,44,43,42,41,51,52,53,54,55,56,57,58,59,60,70,69,68,67,66,65,64,63,62,61,71,72,73,74,75,76,77,78,79,80,90,89,88,87,86,85,84,83,82,81,91,92,93,94,95,96,97,98,99,100], visible=True, start_delay=1200, interval=100)
 
 
-# 9시->12시 방향과 12시->9시방향 중앙 동시 패턴
-# 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 S자로 차례대로 사라지는 패턴
+"""
+9시->12시 방향과 12시->9시방향 중앙 동시 패턴
+9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 S자로 차례대로 사라지는 패턴
+"""
 class 퍼즐패턴19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -252,8 +256,10 @@ class 퍼즐패턴24(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True, start_delay=1200, interval=100)
 
 
-# 같은 색상 별로 띄엄띄엄 사라짐 패턴
-# 같은 색상 별로 띄엄띄엄 사라짐, 12시 방향에서 6시 방향으로 노란색이 사라짐
+"""
+같은 색상 별로 띄엄띄엄 사라짐 패턴
+같은 색상 별로 띄엄띄엄 사라짐, 12시 방향에서 6시 방향으로 노란색이 사라짐
+"""
 class 퍼즐패턴25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -302,8 +308,10 @@ class 퍼즐패턴27(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[11,31,51,71,91], visible=False, start_delay=4500, interval=0)
 
 
-# 12시 방향에서 쭉 내려오는 패턴
-# 12시 방향에서 쭉 내려오는 패턴, 한 줄로 사라지면서 다시 나타나는 패턴
+"""
+12시 방향에서 쭉 내려오는 패턴
+12시 방향에서 쭉 내려오는 패턴, 한 줄로 사라지면서 다시 나타나는 패턴
+"""
 class 퍼즐패턴28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -471,8 +479,10 @@ class 퍼즐패턴33(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[1,11,21,31,41,51,61,71,81], visible=False, start_delay=4500, interval=0)
 
 
-# 안쪽 사각형 부터 사라지는 패턴
-# 안쪽 사각형 부터 사라지는 패턴, 안쪽부터 소용돌이 모양을 그리며 바깥쪽으로 빠지는 패턴
+"""
+안쪽 사각형 부터 사라지는 패턴
+안쪽 사각형 부터 사라지는 패턴, 안쪽부터 소용돌이 모양을 그리며 바깥쪽으로 빠지는 패턴
+"""
 class 퍼즐패턴34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -500,8 +510,10 @@ class 퍼즐패턴37(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[46,56,55,45,64,54,44,34,35,36,37,47,57,67,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,23,82,72,62,52,42,32,22,12,13,14,15,16,17,18,19,29,39,49,59,69,79,89,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,1], visible=False, start_delay=0, interval=100)
 
 
-# 가운데서 사방으로 퍼져나가는 패턴
-# 가운데서 사방으로 퍼져나가는 패턴, 가운데서 사방으로 퍼져가면서 v자 모양으로 사라짐
+"""
+가운데서 사방으로 퍼져나가는 패턴
+가운데서 사방으로 퍼져나가는 패턴, 가운데서 사방으로 퍼져가면서 v자 모양으로 사라짐
+"""
 class 퍼즐패턴38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)
@@ -589,8 +601,10 @@ class 퍼즐패턴39(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[90], visible=False, start_delay=2500, interval=100)
 
 
-# 12시->6시방향으로 사라짐
-# 12시->6시방향으로 사라짐, 한 줄로 땅이 갈라진 후 바깥쪽으로 확대되는 패턴
+"""
+12시->6시방향으로 사라짐
+12시->6시방향으로 사라짐, 한 줄로 땅이 갈라진 후 바깥쪽으로 확대되는 패턴
+"""
 class 퍼즐패턴40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=14)

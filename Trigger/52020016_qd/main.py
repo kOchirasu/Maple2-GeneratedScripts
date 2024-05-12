@@ -359,10 +359,8 @@ class 몬스터등장_2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 타이머시작
-
+            return 타이머시작(self.ctx)
 """
-
 
 """
 class 타이머시작(trigger_api.Trigger):
@@ -372,10 +370,8 @@ class 타이머시작(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
-            return None # Missing State: 대화
-
+            return 대화(self.ctx)
 """
-
 
 """
 class 대화(trigger_api.Trigger):
@@ -384,34 +380,28 @@ class 대화(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2500):
-            return None # Missing State: 시간종료
-
+            return 시간종료(self.ctx)
 """
-
 
 """
 class 시간종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='100'):
-            return None # Missing State: 시간종료_2
+            return 시간종료_2(self.ctx)
 
     def on_exit(self) -> None:
         self.set_user_value(trigger_id=905, key='respawn_phase_2_end', value=1)
         self.set_user_value(trigger_id=906, key='respawn_phase_2_end', value=1)
         self.set_user_value(trigger_id=907, key='respawn_phase_2_end', value=1)
         self.set_user_value(trigger_id=908, key='respawn_phase_2_end', value=1)
-
 """
-
 
 """
 class 시간종료_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return 시간종료_3(self.ctx)
-
 """
-
 
 class 시간종료_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

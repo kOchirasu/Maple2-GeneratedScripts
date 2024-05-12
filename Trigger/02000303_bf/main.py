@@ -102,8 +102,8 @@ class 또다른연출종료(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
+        # self.set_interact_object(trigger_ids=[13000008], state=1)
         # self.create_item(spawn_ids=[9001], trigger_id=101)
-        # action name="오브젝트반응설정한다" arg1="13000008" arg2="1" /
         return 이동대기(self.ctx)
 
 

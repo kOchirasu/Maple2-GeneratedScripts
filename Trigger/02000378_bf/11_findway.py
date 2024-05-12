@@ -17,45 +17,47 @@ class Wait(trigger_api.Trigger):
             return ReadyToWalkIn_FromPortal(self.ctx)
 
 
-# 왼쪽에서 진입 	
-#     <state name="ReadyToWalkIn01" >	
-#         <onEnter>		
-# 			<action name="메쉬를설정한다" arg1="4031" arg2="0" arg3="0" arg4="0" arg5="0" /> 			
-# 			<action name="NPC를이동시킨다" arg1="108" arg2="MS2PatrolData_111" />			
-# 			<action name="NPC를이동시킨다" arg1="208" arg2="MS2PatrolData_211" />	
-# 			<action name="대화를설정한다" arg1="1" arg2="208" arg3="$02000378_BF__11_FINDWAY__0$" arg4="2" arg5="0" />	  				
-# 				</onEnter>	
-# 				<condition name="WaitTick" waitTick="2000">  
-# 					<transition state="ReadyToWalkIn02"/>  
-# 				</condition>					
-#     <onExit> 
-#     </onExit>
-#     </state>	
-# 	
-#     <state name="ReadyToWalkIn02" > 
-#         <onEnter>			
-# 			<action name="SetUserValue" triggerID="1311" key="RouteSelected" value="1" /> 		
-# 			<action name="SetUserValue" triggerID="2311" key="RouteSelected" value="1" /> 						
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="2000">  
-# 					<transition state="ReadyToWalkIn03"/>
-# 				</condition>		
-#     <onExit> 
-#     </onExit>
-#     </state>		
-# 
-#     <state name="ReadyToWalkIn03" > 	
-#         <onEnter>			
-# 			<action name="대화를설정한다" arg1="1" arg2="108" arg3="$02000378_BF__11_FINDWAY__1$" arg4="2" arg5="2" />	    						
-# 				</onEnter>		
-# 				<condition name="WaitTick" waitTick="5000">  
-# 					<transition state="Round11_Start"/>
-# 				</condition>		
-#     <onExit> 
-# 			<action name="몬스터소멸시킨다" arg1="108,208" />		
-#     </onExit>
-#     </state>
+# 왼쪽에서 진입
+
+"""
+class ReadyToWalkIn01(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_mesh(trigger_ids=[4031], visible=False, start_delay=0, interval=0, fade=0)
+        self.move_npc(spawn_id=108, patrol_name='MS2PatrolData_111')
+        self.move_npc(spawn_id=208, patrol_name='MS2PatrolData_211')
+        self.set_dialogue(type=1, spawn_id=208, script='$02000378_BF__11_FINDWAY__0$', time=2, arg5=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=2000):
+            return ReadyToWalkIn02(self.ctx)
+"""
+
+"""
+class ReadyToWalkIn02(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_user_value(trigger_id=1311, key='RouteSelected', value=1)
+        self.set_user_value(trigger_id=2311, key='RouteSelected', value=1)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=2000):
+            return ReadyToWalkIn03(self.ctx)
+"""
+
+"""
+class ReadyToWalkIn03(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_dialogue(type=1, spawn_id=108, script='$02000378_BF__11_FINDWAY__1$', time=2, arg5=2)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=5000):
+            return Round11_Start(self.ctx)
+
+    def on_exit(self) -> None:
+        self.destroy_monster(spawn_ids=[108,208])
+"""
+
 # 포탈로 진입
+
 class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(trigger_ids=[4031], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
@@ -68,8 +70,7 @@ class ReadyToWalkIn_FromPortal(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.spawn_monster(spawn_ids=[111], auto_target=False)
-        self.spawn_monster(spawn_ids=[2011], auto_target=False)
-        # 전투용 준타
+        self.spawn_monster(spawn_ids=[2011], auto_target=False) # 전투용 준타
 
 
 class ReadyToWalkIn_FromPortal02(trigger_api.Trigger):

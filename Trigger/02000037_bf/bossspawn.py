@@ -50,16 +50,18 @@ class 연출딜레이(trigger_api.Trigger):
             return 연출종료(self.ctx)
 
 
-# <state name="연출시작">
-# <onEnter>
-# <action name="연출UI를설정한다" arg1="1"/>
-# <action name="연출UI를설정한다" arg1="3"/>
-# <action name="대화를설정한다" arg1="2" arg2="11000144" arg3="$02000037_BF__BOSSSPAWN__0$" arg4="5"/>
-# </onEnter>
-# <condition name="WaitTick" waitTick="5000">
-# <transition state="연출종료"/>
-# </condition>
-# </state>
+"""
+class 연출시작(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_dialogue(type=2, spawn_id=11000144, script='$02000037_BF__BOSSSPAWN__0$', time=5)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(wait_tick=5000):
+            return 연출종료(self.ctx)
+"""
+
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_cinematic_ui(type=0)

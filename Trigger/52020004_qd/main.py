@@ -236,8 +236,8 @@ class 마무리(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8002], return_view=False)
         self.add_cinematic_talk(npc_id=11003674, illust_id='Eone_normal', msg='연출을 보강할 예정이니 기다려 달라.\\n이 연출엔 대사가 추가될 것이다.', duration=3000)
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
@@ -341,8 +341,8 @@ class 제이든짜증03(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8012], return_view=False)
         self.add_cinematic_talk(npc_id=11003541, illust_id='Jaiden_normal', msg='빨리 이쪽으로 넘어와! 어서!', duration=2000)
         self.set_npc_emotion_loop(spawn_id=110, sequence_name='Talk_A', duration=3000)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
         # setsceneskip 2 close
@@ -728,8 +728,8 @@ class 자막구간_02(trigger_api.Trigger):
 class 자막구간_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='나는 달려야 했다.\\n오직 살아남는 것만을 생각하면서.')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 3 close
+        # Missing State: State,  setsceneskip 3 close
+        self.set_scene_skip()
         # setsceneskip 3 close
         # setsceneskip 3 close
         # setsceneskip 3 close

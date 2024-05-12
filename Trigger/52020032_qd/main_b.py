@@ -236,8 +236,7 @@ class Event_C_15(trigger_api.Trigger):
         self.set_pc_emotion_loop(sequence_name='Down_Idle_A', duration=3000)
         self.reset_camera(interpolation_time=2)
         self.set_achievement(trigger_id=2001, type='trigger', achieve='Eavesdrop')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

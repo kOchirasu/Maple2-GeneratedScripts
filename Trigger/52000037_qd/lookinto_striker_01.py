@@ -217,8 +217,7 @@ class Dialogue01(trigger_api.Trigger):
 class Dialogue02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Dialogue03(self.ctx)
@@ -238,8 +237,7 @@ class Dialogue03(trigger_api.Trigger):
 class Dialogue04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=701, enable=False)
@@ -295,8 +293,7 @@ class TalkJabethNBravo01(trigger_api.Trigger):
 class TalkJabethNBravo02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return TalkJabethNBravo03(self.ctx)
@@ -315,8 +312,7 @@ class TalkJabethNBravo03(trigger_api.Trigger):
 class TalkJabethNBravo04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -367,8 +363,7 @@ class ReadyToLeave01(trigger_api.Trigger):
 class ReadyToLeave02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)

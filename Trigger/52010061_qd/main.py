@@ -2,11 +2,13 @@
 import trigger_api
 
 
-# 룬블레이더 떡밥
-# 11003843 - 렌듀비앙(101)
-# 11003844 - 유페리아(102)
-# 11003845 - 이슈라(104)
-# 11003846 - 레잔(103)
+"""
+룬블레이더 떡밥
+11003843 - 렌듀비앙(101)
+11003844 - 유페리아(102)
+11003845 - 이슈라(104)
+11003846 - 레잔(103)
+"""
 class 입장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[6001], quest_ids=[91000076], quest_states=[3]):

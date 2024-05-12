@@ -10,8 +10,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990005, key='elevator', value=0)
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
         self.set_interact_object(trigger_ids=[10002185], state=0) # 엘리베이터 발판
-        self.enable_spawn_point_pc(spawn_id=100, is_enable=True)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=100, is_enable=True) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=101, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
 
@@ -82,8 +81,7 @@ class 아르케온_탑승_가이드(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[711]):
             self.set_user_value(trigger_id=99990005, key='elevator', value=1)
-            self.enable_spawn_point_pc(spawn_id=100, is_enable=False)
-            # <시작 위치 세팅>
+            self.enable_spawn_point_pc(spawn_id=100, is_enable=False) # <시작 위치 세팅>
             self.enable_spawn_point_pc(spawn_id=101, is_enable=True)
             self.enable_spawn_point_pc(spawn_id=102, is_enable=False)
             return 레이저_패턴_시작(self.ctx)
@@ -152,8 +150,7 @@ class 길열림(trigger_api.Trigger):
 
 class 지뢰방_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.enable_spawn_point_pc(spawn_id=100, is_enable=False)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=100, is_enable=False) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=101, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=102, is_enable=True)
         self.set_actor(trigger_id=9002, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_end')

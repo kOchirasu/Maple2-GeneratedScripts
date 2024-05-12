@@ -187,8 +187,8 @@ class scene_readytoend(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
         self.set_mesh(trigger_ids=[4001], visible=False)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip close
+        # Missing State: State,  setsceneskip close
+        self.set_scene_skip()
         # setsceneskip close
         # setsceneskip close
 

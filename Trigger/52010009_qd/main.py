@@ -35,8 +35,7 @@ class Event_01(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=110)
-        self.set_interact_object(trigger_ids=[10000866], state=1)
-        # 컨테이너를 반응 가능한 상태로 변경
+        self.set_interact_object(trigger_ids=[10000866], state=1) # 컨테이너를 반응 가능한 상태로 변경
 
 
 class Event_02(trigger_api.Trigger):
@@ -51,8 +50,7 @@ class Event_02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=111)
-        self.spawn_monster(spawn_ids=[111], auto_target=False)
-        # 그 안에 숨어있던 수리공 NPC들이 리젠
+        self.spawn_monster(spawn_ids=[111], auto_target=False) # 그 안에 숨어있던 수리공 NPC들이 리젠
         self.set_dialogue(type=1, spawn_id=111, script='$52010009_QD__MAIN__0$', time=3, arg5=1)
         self.move_npc(spawn_id=111, patrol_name='MS2PatrolData0_1001')
 
@@ -70,8 +68,7 @@ class Event_03(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=110)
-        self.set_interact_object(trigger_ids=[10000880], state=1)
-        # 컨테이너를 반응 가능한 상태로 변경
+        self.set_interact_object(trigger_ids=[10000880], state=1) # 컨테이너를 반응 가능한 상태로 변경
 
 
 class Event_04(trigger_api.Trigger):
@@ -86,8 +83,7 @@ class Event_04(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=111)
-        self.spawn_monster(spawn_ids=[112], auto_target=False)
-        # 그 안에 숨어있던 수리공 NPC들이 리젠
+        self.spawn_monster(spawn_ids=[112], auto_target=False) # 그 안에 숨어있던 수리공 NPC들이 리젠
         self.set_dialogue(type=1, spawn_id=112, script='$52010009_QD__MAIN__1$', time=3, arg5=1)
         self.move_npc(spawn_id=112, patrol_name='MS2PatrolData0_1001')
 
@@ -105,8 +101,7 @@ class Event_05(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=110)
-        self.set_interact_object(trigger_ids=[10000915], state=1)
-        # 컨테이너를 반응 가능한 상태로 변경
+        self.set_interact_object(trigger_ids=[10000915], state=1) # 컨테이너를 반응 가능한 상태로 변경
 
 
 class Event_06(trigger_api.Trigger):
@@ -121,8 +116,7 @@ class Event_06(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=111)
-        self.spawn_monster(spawn_ids=[113], auto_target=False)
-        # 그 안에 숨어있던 수리공 NPC들이 리젠
+        self.spawn_monster(spawn_ids=[113], auto_target=False) # 그 안에 숨어있던 수리공 NPC들이 리젠
         self.set_dialogue(type=1, spawn_id=113, script='$52010009_QD__MAIN__2$', time=3, arg5=1)
         self.move_npc(spawn_id=113, patrol_name='MS2PatrolData0_1001')
 

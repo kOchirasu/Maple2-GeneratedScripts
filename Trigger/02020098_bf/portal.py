@@ -41,9 +41,9 @@ class 포탈체크대기중(trigger_api.Trigger):
         if self.user_value(key='BossOnePhaseEnd') >= 1:
             return 순간이동포탈OFF(self.ctx)
         """
-        중요: 보스 죽음 체크를 <condition name="몬스터가죽어있으면" arg1="98">   <condition name="몬스터가죽어있으면" arg1="99"> 방식을 사용하지 않는 이유는
-        이 맵은 한맵에 2개 난이도가 존재하는데, 만약 스폰포인트 99로 보스가 등장할 하여 트리거가 이 단계에 오면 98 스폰 포인트의 보스가 죽은 것으로 처리해 버리기 때문에
-        보스AI에서 죽을때 변수 신호 보내는 방식을 사용하였음
+        중요: 보스 죽음 체크를 <condition name="몬스터가죽어있으면" arg1="98">   <condition name="몬스터가죽어있으면" arg1="99"> 방식을 사용하지 않는 이유는 
+                이 맵은 한맵에 2개 난이도가 존재하는데, 만약 스폰포인트 99로 보스가 등장할 하여 트리거가 이 단계에 오면 98 스폰 포인트의 보스가 죽은 것으로 처리해 버리기 때문에 
+                 보스AI에서 죽을때 변수 신호 보내는 방식을 사용하였음
         """
         if self.user_value(key='BossDead') >= 1:
             return 나가기포탈생성잠시대기(self.ctx)

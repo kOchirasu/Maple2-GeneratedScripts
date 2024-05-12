@@ -166,8 +166,7 @@ class sb_ready_b_06(trigger_api.Trigger):
 class sb_ready_b_07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return sb_ready_b_07(self.ctx)
@@ -187,8 +186,7 @@ class sb_ready_b_07(trigger_api.Trigger):
 class sb_ready_b_08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return sb_ready_b_08(self.ctx)
@@ -208,8 +206,7 @@ class sb_ready_b_08(trigger_api.Trigger):
 class sb_ready_b_09_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return sb_ready_b_09(self.ctx)
@@ -229,8 +226,7 @@ class sb_ready_b_09(trigger_api.Trigger):
 class sb_ready_b_10_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return sb_ready_b_10(self.ctx)
@@ -300,8 +296,7 @@ class ready_03(trigger_api.Trigger):
 class ready_04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_04(self.ctx)
@@ -321,8 +316,7 @@ class ready_04(trigger_api.Trigger):
 class ready_05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_05(self.ctx)
@@ -342,8 +336,7 @@ class ready_05(trigger_api.Trigger):
 class ready_06_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_06(self.ctx)
@@ -363,8 +356,7 @@ class ready_06(trigger_api.Trigger):
 class ready_07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_07(self.ctx)
@@ -384,8 +376,7 @@ class ready_07(trigger_api.Trigger):
 class ready_08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_08(self.ctx)
@@ -405,8 +396,7 @@ class ready_08(trigger_api.Trigger):
 class ready_09_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_09(self.ctx)
@@ -426,8 +416,7 @@ class ready_09(trigger_api.Trigger):
 class ready_10_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ready_10(self.ctx)
@@ -479,8 +468,7 @@ class start_02(trigger_api.Trigger):
 class start_02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_03(self.ctx)
@@ -499,8 +487,7 @@ class start_03(trigger_api.Trigger):
 class start_03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_04(self.ctx)
@@ -519,8 +506,7 @@ class start_04(trigger_api.Trigger):
 class start_04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_05(self.ctx)
@@ -540,8 +526,7 @@ class start_05(trigger_api.Trigger):
 class start_05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_06(self.ctx)
@@ -560,8 +545,7 @@ class start_06(trigger_api.Trigger):
 class start_06_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_07(self.ctx)
@@ -580,8 +564,7 @@ class start_07(trigger_api.Trigger):
 class start_07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_08(self.ctx)
@@ -601,8 +584,7 @@ class start_08(trigger_api.Trigger):
 class start_08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_09(self.ctx)
@@ -621,8 +603,7 @@ class start_09(trigger_api.Trigger):
 class start_09_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_10(self.ctx)
@@ -641,8 +622,7 @@ class start_10(trigger_api.Trigger):
 class start_10_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_11(self.ctx)
@@ -661,8 +641,7 @@ class start_11(trigger_api.Trigger):
 class start_11_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_12(self.ctx)
@@ -681,8 +660,7 @@ class start_12(trigger_api.Trigger):
 class start_12_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_13(self.ctx)
@@ -701,8 +679,7 @@ class start_13(trigger_api.Trigger):
 class start_13_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_14(self.ctx)
@@ -721,8 +698,7 @@ class start_14(trigger_api.Trigger):
 class start_14_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_15(self.ctx)
@@ -741,8 +717,7 @@ class start_15(trigger_api.Trigger):
 class start_15_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_16(self.ctx)
@@ -761,8 +736,7 @@ class start_16(trigger_api.Trigger):
 class start_16_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return start_17(self.ctx)

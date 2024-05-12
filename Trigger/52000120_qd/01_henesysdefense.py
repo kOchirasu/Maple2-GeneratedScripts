@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[710,711,712,713]) # CannonForPC
         self.spawn_monster(spawn_ids=[110,111,112,120,121,122,123,124,125,126,130,131,132,133,134,135,136,140,141,142,143,144,145,146,147,150,151,152,153,154,155,156,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,185,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,113,114,115,116,117,118], auto_target=False) # MobActor
         self.set_mesh(trigger_ids=[3100,3101,3102,3103,3104,3105], visible=True, start_delay=0, interval=0, fade=0) # GratingDown
-        # <action name="메쉬를설정한다" arg1="3110-3112" arg2="0" arg3="0" arg4="0" arg5="0" />   GratingUp 사용 안함
+        # self.set_mesh(trigger_ids=[3110,3111,3112], visible=False, start_delay=0, interval=0, fade=0) # GratingUp 사용 안함
         self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0) # BridgeMesh_forTOK
         self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # BridgeBarrier_Invisible
         self.set_actor(trigger_id=4500, visible=True, initial_sequence='Interaction_bridge_A01_on') # Bridge
@@ -89,8 +89,7 @@ class LeadersTalk_Manovich01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.remove_cinematic_talk()
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LeadersTalk_Osckal01(self.ctx)
@@ -179,8 +178,7 @@ class PCTalk01(trigger_api.Trigger):
 class PCTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        # self.set_skip()
+        # self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ManovichTalk01(self.ctx)
@@ -340,8 +338,7 @@ class CameraChange11(trigger_api.Trigger):
 
 class CameraChange12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.move_user(map_id=52000120, portal_id=10, box_id=9900)
         self.select_camera(trigger_id=15, enable=True)
         self.destroy_monster(spawn_ids=[101,201]) # Actor_Unique
@@ -477,8 +474,7 @@ class BattleOnTheWallGuide01Skip(trigger_api.Trigger):
 
 class BattleOnTheWallGuide02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_effect(trigger_ids=[5000], visible=False) # DarkCloud
         self.set_effect(trigger_ids=[5001], visible=False) # DarkCloud
         self.spawn_monster(spawn_ids=[903,904], auto_target=False) # Battle_Mob
@@ -495,8 +491,7 @@ class BattleOnTheWallGuide02(trigger_api.Trigger):
 
 class BattleOnTheWallGuide02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.remove_cinematic_talk()
@@ -631,8 +626,7 @@ class PCVolunteer05Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequence_names=['Idle_A'])
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Battle01Start01(self.ctx)
@@ -778,8 +772,7 @@ class Battle01End01(trigger_api.Trigger):
 
 class Battle01End01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.destroy_monster(spawn_ids=[901,902,903,904,905,906,907,908,909,910]) # Battle01_Mob
         self.move_npc(spawn_id=230, patrol_name='MS2PatrolData_230')
@@ -850,8 +843,7 @@ class Battle02End01(trigger_api.Trigger):
 
 class Battle02End01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.destroy_monster(spawn_ids=[911,912,913,914]) # Battle02_Mob
         self.move_npc(spawn_id=204, patrol_name='MS2PatrolData_203')

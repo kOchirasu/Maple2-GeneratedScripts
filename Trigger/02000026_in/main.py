@@ -146,8 +146,7 @@ class 아노스대사01(trigger_api.Trigger):
 class 아노스대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 카메라이동_라딘01(self.ctx)
@@ -178,8 +177,7 @@ class 라딘대사01(trigger_api.Trigger):
 class 라딘대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사02(self.ctx)
@@ -200,8 +198,7 @@ class 아노스대사02(trigger_api.Trigger):
 class 아노스대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 라딘대사02(self.ctx)
@@ -222,8 +219,7 @@ class 라딘대사02(trigger_api.Trigger):
 class 라딘대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 카메라이동_아노스01(self.ctx)
@@ -253,8 +249,7 @@ class 아노스대사03(trigger_api.Trigger):
 class 아노스대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사04(self.ctx)
@@ -274,8 +269,7 @@ class 아노스대사04(trigger_api.Trigger):
 class 아노스대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 라딘대사03(self.ctx)
@@ -296,8 +290,7 @@ class 라딘대사03(trigger_api.Trigger):
 class 라딘대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC안녕(self.ctx)
@@ -327,8 +320,7 @@ class 아노스대사05(trigger_api.Trigger):
 class 아노스대사05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사06(self.ctx)
@@ -339,8 +331,8 @@ class 아노스대사06(trigger_api.Trigger):
         self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=3000)
         self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__11$', time=3, arg5=0)
         self.show_caption(type='NameCaption', title='$02000026_IN__MAIN__12$', desc='$02000026_IN__MAIN__13$', align='centerLeft', offset_rate_x=0.05, offset_rate_y=0.15, duration=5000, scale=2)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
 

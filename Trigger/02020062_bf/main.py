@@ -7,8 +7,7 @@ class 대기(trigger_api.Trigger):
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
         self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=True)
-        # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawn_id=0, is_enable=True) # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawn_id=1, is_enable=True)
         self.enable_spawn_point_pc(spawn_id=2, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=3, is_enable=False)
@@ -16,13 +15,10 @@ class 대기(trigger_api.Trigger):
         self.reset_timer(timer_id='2')
         self.reset_timer(timer_id='3')
         self.set_effect(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=True)
-        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048], visible=True)
-        # <가두기 트리거 메쉬_spawnpoin0>
+        self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048], visible=True) # <가두기 트리거 메쉬_spawnpoin0>
         self.set_effect(trigger_ids=[2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116], visible=True)
-        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148], visible=True)
-        # <가두기 트리거 메쉬_spawnpoin1>
-        self.set_actor(trigger_id=1901, visible=True, initial_sequence='Idle_A')
-        # <연출용 액터>
+        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148], visible=True) # <가두기 트리거 메쉬_spawnpoin1>
+        self.set_actor(trigger_id=1901, visible=True, initial_sequence='Idle_A') # <연출용 액터>
         self.shadow_expedition(type='CloseBossGauge')
         self.set_user_value(trigger_id=99990002, key='SpawnStart', value=0)
         self.set_user_value(trigger_id=99990003, key='ObjectPhase', value=0)
@@ -81,8 +77,7 @@ class 시작(trigger_api.Trigger):
         self.set_effect(trigger_ids=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=False)
         self.set_mesh(trigger_ids=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048], visible=False)
         self.set_effect(trigger_ids=[2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116], visible=False)
-        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148], visible=False)
-        # <가두기 트리거 메쉬 제거>
+        self.set_mesh(trigger_ids=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148], visible=False) # <가두기 트리거 메쉬 제거>
         self.reset_camera(interpolation_time=1)
         self.set_event_ui(type=0, arg2='1,3')
         self.set_event_ui(type=1, arg2='$02020062_BF__MAIN__2$', arg3='5000')
@@ -90,8 +85,7 @@ class 시작(trigger_api.Trigger):
         self.shadow_expedition(type='OpenBossGauge', max_gauge_point=750)
         self.set_user_value(trigger_id=99990002, key='SpawnStart', value=1)
         self.set_actor(trigger_id=1901, visible=False, initial_sequence='Idle_A')
-        self.spawn_monster(spawn_ids=[701], auto_target=False)
-        # <무적 오브젝트 생성>
+        self.spawn_monster(spawn_ids=[701], auto_target=False) # <무적 오브젝트 생성>
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GaugeClear') >= 1:
@@ -110,10 +104,8 @@ class 오브젝트페이즈(trigger_api.Trigger):
         self.set_event_ui(type=0, arg2='2,3')
         self.reset_timer(timer_id='1')
         self.set_user_value(trigger_id=99990003, key='ObjectPhase', value=1)
-        self.set_timer(timer_id='2', seconds=180, start_delay=1, interval=1, v_offset=60)
-        # <2라운드 게임 플레이 타임 설정>
-        self.enable_spawn_point_pc(spawn_id=0, is_enable=False)
-        # <부활 지점 세팅>
+        self.set_timer(timer_id='2', seconds=180, start_delay=1, interval=1, v_offset=60) # <2라운드 게임 플레이 타임 설정>
+        self.enable_spawn_point_pc(spawn_id=0, is_enable=False) # <부활 지점 세팅>
         self.enable_spawn_point_pc(spawn_id=1, is_enable=False)
         self.enable_spawn_point_pc(spawn_id=2, is_enable=True)
         self.enable_spawn_point_pc(spawn_id=3, is_enable=True)
@@ -135,8 +127,7 @@ class 보스페이즈(trigger_api.Trigger):
         self.reset_timer(timer_id='2')
         self.set_event_ui(type=0, arg2='3,3')
         self.set_user_value(trigger_id=99990008, key='BossPhase', value=1)
-        self.set_timer(timer_id='3', seconds=180, start_delay=1, interval=1, v_offset=60)
-        # <3라운드 게임 플레이 타임 설정>
+        self.set_timer(timer_id='3', seconds=180, start_delay=1, interval=1, v_offset=60) # <3라운드 게임 플레이 타임 설정>
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossClear') >= 1:

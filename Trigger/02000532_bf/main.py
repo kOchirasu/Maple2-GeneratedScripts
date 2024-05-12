@@ -23,8 +23,7 @@ class ready(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.spawn_monster(spawn_ids=[216,101,102,103,104,105,106,107,108,109,111,112,113], auto_target=True)
         self.spawn_monster(spawn_ids=[110,111], auto_target=True)
         self.move_npc(spawn_id=110, patrol_name='MS2PatrolData_8000')
@@ -88,8 +87,7 @@ class 문이열림(trigger_api.Trigger):
         self.set_npc_emotion_loop(spawn_id=112, sequence_name='Talk_A', duration=10000)
         self.set_effect(trigger_ids=[7001], visible=True)
         self.set_mesh(trigger_ids=[3000,3001], visible=False)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[702], job_code=0):

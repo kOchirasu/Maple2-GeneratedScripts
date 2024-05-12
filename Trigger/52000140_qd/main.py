@@ -45,9 +45,7 @@ class 카메라연출_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             return 카메라연출_04(self.ctx)
-
 """
-
 
 class 카메라연출_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -103,8 +101,7 @@ class 삼자대화_03(trigger_api.Trigger):
 
 class 투르카소멸_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_effect(trigger_ids=[5001], visible=True)
         self.destroy_monster(spawn_ids=[102])
 
@@ -318,8 +315,7 @@ class 차삼자대화_08_2(trigger_api.Trigger):
 
 class 투르카와전투_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=2)
         self.set_cinematic_ui(type=0) # 유저 이동 가능하게
         self.set_cinematic_ui(type=2) # UI 숨기기 초기화

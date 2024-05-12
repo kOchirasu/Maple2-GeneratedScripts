@@ -244,8 +244,7 @@ class scene_05_a(trigger_api.Trigger):
 
 class scene_05_b(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.1, duration=1, interpolator=0)
-        # 1초 정지
+        # self.set_time_scale(enable=True, start_scale=0.1, end_scale=0.1, duration=1, interpolator=0) # 1초 정지
         pass
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -298,8 +297,7 @@ class scene_08(trigger_api.Trigger):
 class scene_09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=2, spawn_id=11001897, script='$52000067_QD__MAIN__6$', time=3)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -352,8 +350,7 @@ class fadeout(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_2002')
         self.set_effect(trigger_ids=[7005], visible=True) # mask_black
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
@@ -448,8 +445,7 @@ class boss_event_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(path_ids=[8010,8011], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=999, sequence_name='AttackReady_A')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -702,8 +698,7 @@ class ending_17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7309], visible=True) # 로봇 움직임 음
         self.set_actor(trigger_id=4002, visible=True, initial_sequence='Dead_Damg_A')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

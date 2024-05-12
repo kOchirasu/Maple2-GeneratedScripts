@@ -72,14 +72,11 @@ class 아노스대사01(trigger_api.Trigger):
 class 아노스대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사02(self.ctx)
-
 """
-
 
 class 아노스대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -95,8 +92,7 @@ class 아노스대사02(trigger_api.Trigger):
 class 아노스대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사03(self.ctx)
@@ -108,8 +104,8 @@ class 아노스대사03(trigger_api.Trigger):
         self.add_cinematic_talk(npc_id=11003251, illust_id='0', msg='$52000135_QD__MAIN__2$', duration=3000, align='right')
         self.set_npc_emotion_loop(spawn_id=101, sequence_name='ChatUp_A', duration=5400)
         self.move_user_path(patrol_name='MS2PatrolData_PC_03')
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 1 close
+        # Missing State: State,  setsceneskip 1 close
+        self.set_scene_skip()
         # setsceneskip 1 close
         # setsceneskip 1 close
 
@@ -175,14 +171,11 @@ class 아노스대사04(trigger_api.Trigger):
 class 아노스대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사05(self.ctx)
-
 """
-
 
 class 아노스대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -199,8 +192,7 @@ class 아노스대사05(trigger_api.Trigger):
 class 아노스대사05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사06(self.ctx)
@@ -221,8 +213,7 @@ class 아노스대사06(trigger_api.Trigger):
 class 아노스대사06_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사07(self.ctx)
@@ -243,8 +234,7 @@ class 아노스대사07(trigger_api.Trigger):
 class 아노스대사07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 크리스탈끄기(self.ctx)
@@ -290,8 +280,7 @@ class 아노스대사08(trigger_api.Trigger):
 class 아노스대사08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아시모프대사01(self.ctx)
@@ -312,8 +301,7 @@ class 아시모프대사01(trigger_api.Trigger):
 class 아시모프대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아노스대사09(self.ctx)
@@ -334,8 +322,7 @@ class 아노스대사09(trigger_api.Trigger):
 class 아노스대사09_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC크리스탈접근(self.ctx)
@@ -398,8 +385,7 @@ class 아노스대사10(trigger_api.Trigger):
 class 아노스대사10_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC대사(self.ctx)
@@ -445,8 +431,7 @@ class 아노스대사11(trigger_api.Trigger):
 class 아노스대사11_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아시모프대사02(self.ctx)
@@ -457,8 +442,8 @@ class 아시모프대사02(trigger_api.Trigger):
         self.select_camera_path(path_ids=[8010], return_view=False)
         self.add_cinematic_talk(npc_id=11003250, illust_id='Asimov_normal', msg='$52000135_QD__MAIN__17$', duration=3000, align='left')
         self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=8600)
-        # Missing State: State
-        self.set_scene_skip() # setsceneskip 2 close
+        # Missing State: State,  setsceneskip 2 close
+        self.set_scene_skip()
         # setsceneskip 2 close
         # setsceneskip 2 close
 

@@ -129,8 +129,7 @@ class scene_06(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4009], return_view=False)
         self.set_npc_emotion_sequence(spawn_id=301, sequence_name='Attack_01_A')
         self.add_cinematic_talk(npc_id=11003214, msg='$52000126_QD__MAIN__7$', duration=3000, align='Left')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

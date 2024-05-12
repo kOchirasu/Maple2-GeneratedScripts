@@ -222,8 +222,7 @@ class 고마해_03(trigger_api.Trigger):
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_long.xml')
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__13$', duration=4500)
         self.add_cinematic_talk(npc_id=0, msg='$52000202_QD__52000202__14$', duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=8500):

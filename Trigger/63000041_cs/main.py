@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 플레이어 감지
-# 60002 : 모든 영역
+"""
+플레이어 감지
+60002 : 모든 영역
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
@@ -296,8 +298,7 @@ class scene_09_2(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[401])
         self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__55$', duration=3000, delay_tick=0)
         self.add_balloon_talk(spawn_id=0, msg='$63000041_CS__MAIN__21$', duration=3000, delay_tick=1000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -749,12 +750,11 @@ class scene_8_4(trigger_api.Trigger):
             return scene_9_4(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(trigger_ids=[7310], visible=False)
         # Eff_Object_PC_Regen_01_off
-        self.set_effect(trigger_ids=[7311], visible=False)
+        self.set_effect(trigger_ids=[7310], visible=False)
         # Eff_Object_ButterFly_01_off
-        self.set_effect(trigger_ids=[7312], visible=False)
-        # Eff_Object_Light_01_off
+        self.set_effect(trigger_ids=[7311], visible=False)
+        self.set_effect(trigger_ids=[7312], visible=False) # Eff_Object_Light_01_off
 
 
 class scene_9_4(trigger_api.Trigger):
@@ -762,8 +762,7 @@ class scene_9_4(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -893,8 +892,7 @@ class scene_20_4(trigger_api.Trigger):
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(trigger_ids=[7005], visible=True) # mask_black
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

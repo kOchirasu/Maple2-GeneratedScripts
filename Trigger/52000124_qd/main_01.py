@@ -105,8 +105,7 @@ class scene_08(trigger_api.Trigger):
 # 전투 씬
 class battle_ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawn_ids=[401,402]) # 레논 추종자
 

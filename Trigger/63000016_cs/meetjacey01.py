@@ -117,8 +117,7 @@ class JaceyTalk01(trigger_api.Trigger):
 class JaceyTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -140,8 +139,7 @@ class JaceyTalk03(trigger_api.Trigger):
 class JaceyTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -161,8 +159,7 @@ class JaceyTalk05(trigger_api.Trigger):
 class JaceyTalk06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=602, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -205,8 +202,7 @@ class JaceyTalk10(trigger_api.Trigger):
 class JaceyTalk11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -226,8 +222,7 @@ class JaceyTalk12(trigger_api.Trigger):
 class JaceyTalk13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -314,8 +309,7 @@ class CallNextRoom03(trigger_api.Trigger):
 class CallNextRoom04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawn_ids=[101])
@@ -364,8 +358,7 @@ class JaceyQuest02(trigger_api.Trigger):
 class JaceyQuest03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -387,8 +380,7 @@ class JaceyQuest04(trigger_api.Trigger):
 class JaceyQuest05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -408,8 +400,7 @@ class AboutPotion01(trigger_api.Trigger):
 class AboutPotion02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -429,8 +420,7 @@ class AboutPotion03(trigger_api.Trigger):
 class AboutPotion04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_301')
@@ -440,8 +430,7 @@ class AboutPotion04(trigger_api.Trigger):
             return JaceyLeve01(self.ctx)
 
     def on_exit(self) -> None:
-        self.guide_event(event_id=10021120)
-        # 트리거 To가이드 : PC 컨트롤 불가
+        self.guide_event(event_id=10021120) # 트리거 To가이드 : PC 컨트롤 불가
 
 
 class JaceyLeve01(trigger_api.Trigger):

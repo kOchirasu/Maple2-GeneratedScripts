@@ -395,9 +395,7 @@ class 돈벼락(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.reset_timer(timer_id='1')
-
 """
-
 
 class 퍼즐종료계단보이기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

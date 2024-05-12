@@ -96,8 +96,7 @@ class Epilogue5Talk1(trigger_api.Trigger):
 class Epilogue5Talk2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk3(self.ctx)
@@ -118,8 +117,7 @@ class Epilogue5Talk3(trigger_api.Trigger):
 class Epilogue5Talk4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk5(self.ctx)
@@ -142,8 +140,7 @@ class Epilogue5Talk6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk7(self.ctx)
@@ -164,8 +161,7 @@ class Epilogue5Talk7(trigger_api.Trigger):
 class Epilogue5Talk8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk9(self.ctx)
@@ -187,8 +183,7 @@ class Epilogue5Talk9(trigger_api.Trigger):
 class Epilogue5Talk10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk11(self.ctx)
@@ -211,8 +206,7 @@ class Epilogue5Talk11(trigger_api.Trigger):
 class Epilogue5Talk12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk13(self.ctx)
@@ -232,8 +226,7 @@ class Epilogue5Talk13(trigger_api.Trigger):
 class Epilogue5Talk14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk16(self.ctx)
@@ -255,8 +248,7 @@ class Epilogue5Talk17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk18(self.ctx)
@@ -278,8 +270,7 @@ class Epilogue5Talk19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.move_npc(spawn_id=5200, patrol_name='MS2PatrolData_TurkaReturn') # 11001957,투르카 원복
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk20(self.ctx)
@@ -302,8 +293,7 @@ class Epilogue5Talk21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk22(self.ctx)
@@ -325,8 +315,7 @@ class Epilogue5Talk22(trigger_api.Trigger):
 class Epilogue5Talk23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk24(self.ctx)
@@ -346,8 +335,7 @@ class Epilogue5Talk24(trigger_api.Trigger):
 class Epilogue5Talk25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk27(self.ctx)
@@ -369,8 +357,7 @@ class Epilogue5Talk28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk29(self.ctx)
@@ -391,8 +378,7 @@ class Epilogue5Talk29(trigger_api.Trigger):
 class Epilogue5Talk30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk31(self.ctx)
@@ -412,8 +398,7 @@ class Epilogue5Talk31(trigger_api.Trigger):
 class Epilogue5Talk32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk33(self.ctx)
@@ -434,8 +419,7 @@ class Epilogue5Talk33(trigger_api.Trigger):
 class Epilogue5Talk34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk35(self.ctx)
@@ -455,8 +439,7 @@ class Epilogue5Talk35(trigger_api.Trigger):
 class Epilogue5Talk36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk37(self.ctx)
@@ -477,8 +460,7 @@ class Epilogue5Talk37(trigger_api.Trigger):
 class Epilogue5Talk38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk39(self.ctx)
@@ -499,8 +481,7 @@ class Epilogue5Talk40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk41(self.ctx)
@@ -521,8 +502,7 @@ class Epilogue5Talk41(trigger_api.Trigger):
 class Epilogue5Talk42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk43(self.ctx)
@@ -544,8 +524,7 @@ class Epilogue5Talk43(trigger_api.Trigger):
 class Epilogue5Talk44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk45(self.ctx)
@@ -566,8 +545,7 @@ class Epilogue5Talk45(trigger_api.Trigger):
 class Epilogue5Talk46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk47(self.ctx)
@@ -587,8 +565,7 @@ class Epilogue5Talk47(trigger_api.Trigger):
 class Epilogue5Talk48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk49(self.ctx)
@@ -609,8 +586,7 @@ class Epilogue5Talk49(trigger_api.Trigger):
 class Epilogue5Talk50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk51(self.ctx)
@@ -630,8 +606,7 @@ class Epilogue5Talk51(trigger_api.Trigger):
 class Epilogue5Talk52(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk53(self.ctx)
@@ -651,8 +626,7 @@ class Epilogue5Talk53(trigger_api.Trigger):
 class Epilogue5Talk54(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk55(self.ctx)
@@ -674,8 +648,7 @@ class Epilogue5Talk56(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2100275, enable=False, path='BG/Common/Sound/Eff_System_DarkLord_Breathing.xml') # 11001957 호흡기
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk57(self.ctx)
@@ -697,8 +670,7 @@ class Epilogue5Talk58(trigger_api.Trigger):
         self.remove_cinematic_talk()
         self.move_npc(spawn_id=5300, patrol_name='MS2PatrolData_bellaOUT') # 벨라 퇴장
         self.set_onetime_effect(id=2100282, enable=True, path='BG/Common/Sound/Eff_System_Chapter5_Bella_Foosteps_01.xml')
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk59(self.ctx)
@@ -718,8 +690,7 @@ class Epilogue5Talk59(trigger_api.Trigger):
 class Epilogue5Talk60(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk61(self.ctx)
@@ -740,8 +711,7 @@ class Epilogue5Talk62(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=10, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk63(self.ctx)
@@ -762,8 +732,7 @@ class Epilogue5Talk63(trigger_api.Trigger):
 class Epilogue5Talk64(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_onetime_effect(id=2100282, enable=False, path='BG/Common/Sound/Eff_System_Chapter5_Bella_Foosteps_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -784,8 +753,7 @@ class Epilogue5Talk65(trigger_api.Trigger):
 class Epilogue5Talk66(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return Epilogue5Talk67(self.ctx)
@@ -803,8 +771,7 @@ class Epilogue5Talk67(trigger_api.Trigger):
 
 class Epilogue5Talk68(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

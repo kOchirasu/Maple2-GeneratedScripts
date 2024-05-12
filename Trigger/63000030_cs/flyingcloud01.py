@@ -252,8 +252,7 @@ class LookAround06(trigger_api.Trigger):
         self.move_npc(spawn_id=926, patrol_name='MS2PatrolData_926')
         self.move_npc(spawn_id=929, patrol_name='MS2PatrolData_929')
         self.move_npc(spawn_id=930, patrol_name='MS2PatrolData_930')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -538,8 +537,7 @@ class Dialogue10(trigger_api.Trigger):
         self.set_effect(trigger_ids=[6004], visible=True) # Voice_Tinchai_00001694
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='Talk_A')
         self.set_dialogue(type=2, spawn_id=11001708, script='$63000030_CS__FLYINGCLOUD01__11$', time=5) # 틴차이 00001694
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
@@ -551,8 +549,7 @@ class DialogueSkip10(trigger_api.Trigger):
         self.set_npc_emotion_sequence(spawn_id=103, sequence_name='Idle_A')
         self.select_camera(trigger_id=501, enable=False)
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -698,8 +695,7 @@ class ShadowApp03(trigger_api.Trigger):
 class ShadowApp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_dialogue(type=1, spawn_id=104, script='$63000030_CS__FLYINGCLOUD01__18$', time=2, arg5=0)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
@@ -729,8 +725,7 @@ class FightBack01(trigger_api.Trigger):
 class FightBack02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return FightBack03(self.ctx)
@@ -750,8 +745,7 @@ class FightBack03(trigger_api.Trigger):
 class FightBack04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -826,22 +820,14 @@ class GotoTria02(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.hide_guide_summary(entity_id=10037030)
-        self.set_effect(trigger_ids=[5100], visible=False)
-        # DownArrow
-        self.set_effect(trigger_ids=[5001], visible=False)
-        # 화살표 안내 사운드 이펙트
-        self.set_effect(trigger_ids=[5200], visible=False)
-        # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5201], visible=False)
-        # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5202], visible=False)
-        # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5203], visible=False)
-        # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5204], visible=False)
-        # 구름터 경로 안내
-        self.set_effect(trigger_ids=[5205], visible=False)
-        # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5100], visible=False) # DownArrow
+        self.set_effect(trigger_ids=[5001], visible=False) # 화살표 안내 사운드 이펙트
+        self.set_effect(trigger_ids=[5200], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5201], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5202], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5203], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5204], visible=False) # 구름터 경로 안내
+        self.set_effect(trigger_ids=[5205], visible=False) # 구름터 경로 안내
 
 
 class TakeOffFlyingCloud01(trigger_api.Trigger):

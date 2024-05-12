@@ -55,8 +55,8 @@ class 카메라_발판점프대(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카메라_종료, action='exit')
         self.set_user_value(trigger_id=99990020, key='GravityRoom', value=1)
-        self.set_user_value(trigger_id=99990002, key='JumpFloor', value=1)
         # <점프 발판 활성화, Floor.xml 참조>
+        self.set_user_value(trigger_id=99990002, key='JumpFloor', value=1)
         self.set_user_value(trigger_id=99990017, key='JumpFloor', value=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -69,8 +69,7 @@ class 카메라_발판점프대(trigger_api.Trigger):
 
 class 카메라_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

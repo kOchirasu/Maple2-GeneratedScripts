@@ -116,8 +116,7 @@ class 영상재생(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(file_name='common\\Kritias_03.usm', movie_id=1)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_value(type='SceneMovie', name='IsStop') == 1:

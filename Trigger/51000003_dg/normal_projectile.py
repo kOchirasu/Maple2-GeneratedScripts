@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 플레이어 감지
-# 직사형 일반발사체
+"""
+플레이어 감지
+직사형 일반발사체
+"""
 class Round_check(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[301,302,303,304,305,306,307,308,309,310,311,312,351,352,353,354,355,356,357,358,359,360,361,362])

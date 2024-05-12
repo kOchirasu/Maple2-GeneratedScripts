@@ -57,8 +57,8 @@ class 인페르녹전함파괴연출2(trigger_api.Trigger):
             return 두번째페이즈_인페르녹전함(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entity_id=20041003)
         # 1인 퀘스트용 던전은 5분 추가 정보가 필요 없어서 이거 사용함, 참고로 10인 카오스 던전에서는 "20041010" 이거 사용함
+        self.hide_guide_summary(entity_id=20041003)
 
 
 class 두번째페이즈_인페르녹전함(trigger_api.Trigger):
@@ -80,8 +80,8 @@ class 인페르녹전함파괴_인페르녹등장연출(trigger_api.Trigger):
             return 인페르녹전함파괴_인페르녹등장연출2(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entity_id=20041004)
         # 1인 퀘스트용 던전은 5분 추가 정보가 필요 없어서 이거 사용함, 참고로 10인 카오스 던전에서는 "20041011" 이거 사용함
+        self.hide_guide_summary(entity_id=20041004)
 
 
 class 인페르녹전함파괴_인페르녹등장연출2(trigger_api.Trigger):

@@ -124,8 +124,7 @@ class LookAround04(trigger_api.Trigger):
 class VisionApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(trigger_id=600, enable=True)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
@@ -156,8 +155,7 @@ class VisionTalk01(trigger_api.Trigger):
 class VisionTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return VisionTalk03(self.ctx)
@@ -176,8 +174,7 @@ class VisionTalk03(trigger_api.Trigger):
 class VisionTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[101])
         self.spawn_monster(spawn_ids=[102], auto_target=False)
         self.select_camera(trigger_id=601, enable=False)
@@ -309,8 +306,7 @@ class VisionSayGoodbye02(trigger_api.Trigger):
 class VisionSayGoodbye03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=103, patrol_name='MS2PatrolData_102')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

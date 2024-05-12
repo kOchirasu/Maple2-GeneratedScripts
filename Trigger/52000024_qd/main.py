@@ -65,8 +65,7 @@ class Start_04(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.destroy_monster(spawn_ids=[103])
-        self.spawn_monster(spawn_ids=[104], auto_target=False)
-        # 이슈라
+        self.spawn_monster(spawn_ids=[104], auto_target=False) # 이슈라
 
 
 class Start_05(trigger_api.Trigger):
@@ -95,9 +94,7 @@ class Start_06(trigger_api.Trigger):
             return startB_01(self.ctx)
         if self.count_users(box_id=702) >= 1:
             return startB_01(self.ctx)
-
 """
-
 
 class startB_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -129,9 +126,7 @@ class startB_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
             return startB_04(self.ctx)
-
 """
-
 
 class startB_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -151,10 +146,8 @@ class startB_05(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
-            return None # Missing State: startB_06
-
+            return startB_06(self.ctx)
 """
-
 
 """
 class startB_06(trigger_api.Trigger):
@@ -165,9 +158,7 @@ class startB_06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
             return startB_07(self.ctx)
-
 """
-
 
 class startB_07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

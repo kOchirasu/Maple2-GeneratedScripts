@@ -2,8 +2,10 @@
 import trigger_api
 
 
-# 치유의 숲 : 52010032
-# 들어오자마자 앉아있는 상태 연출
+"""
+치유의 숲 : 52010032
+들어오자마자 앉아있는 상태 연출
+"""
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_monster(spawn_ids=[202], auto_target=True) # 퀘스트 나메드: 11000039

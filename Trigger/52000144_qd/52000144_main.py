@@ -152,8 +152,7 @@ class 로베와대화_09(trigger_api.Trigger):
 
 class 스킵도착_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
         self.select_camera_path(path_ids=[8003], return_view=False)
 

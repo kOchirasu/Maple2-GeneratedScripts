@@ -63,21 +63,21 @@ class LoadingDelay(trigger_api.Trigger):
             return MaxGaugePattern_Random(self.ctx)
 
 
-# MaxGaugePatter_RandomPick
-# 5개의 그룹에서 100, 120, 140, 160, 180, 200 값 중 중복 없이 5개  Pick : 조합
+"""
+MaxGaugePatter_RandomPick
+5개의 그룹에서 100, 120, 140, 160, 180, 200 값 중 중복 없이 5개  Pick : 조합
+"""
 class MaxGaugePattern_Random(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        """
-        n번째 그룹에 100퍼센트를 X마리로 설정 : (N/20)값이 게이지 한 칸에 해당됨
-        <action name="WidgetAction" arg1="RainbowMonster" arg2="InitMaxScore" widgetArgNum="1" arg3="100"/>
-        <action name="WidgetAction" arg1="RainbowMonster" arg2="InitMaxScore" widgetArgNum="2" arg3="120"/>
-        <action name="WidgetAction" arg1="RainbowMonster" arg2="InitMaxScore" widgetArgNum="3" arg3="140"/>
-        <action name="WidgetAction" arg1="RainbowMonster" arg2="InitMaxScore" widgetArgNum="4" arg3="100"/>
-        <action name="WidgetAction" arg1="RainbowMonster" arg2="InitMaxScore" widgetArgNum="5" arg3="120"/>
-        """
+        # n번째 그룹에 100퍼센트를 X마리로 설정 : (N/20)값이 게이지 한 칸에 해당됨
+        # self.widget_action(type='RainbowMonster', func='InitMaxScore', widget_arg_num=1, widget_arg='100')
+        # self.widget_action(type='RainbowMonster', func='InitMaxScore', widget_arg_num=2, widget_arg='120')
+        # self.widget_action(type='RainbowMonster', func='InitMaxScore', widget_arg_num=3, widget_arg='140')
+        # self.widget_action(type='RainbowMonster', func='InitMaxScore', widget_arg_num=4, widget_arg='100')
+        # self.widget_action(type='RainbowMonster', func='InitMaxScore', widget_arg_num=5, widget_arg='120')
         self.widget_action(type='RainbowMonster', func='InitRandomMaxScore', widget_arg='120,120,140,140,160,160')
-        # self.widget_action(type='RainbowMonster', func='ShowMaxScore')
-        # 점수를 게이지로 변환하여 매쉬 제어 : 1번 그룹에 3100부터 24번까지 메시를 스코어와 연결
+        # # 점수를 게이지로 변환하여 매쉬 제어 : 1번 그룹에 3100부터 24번까지 메시를 스코어와 연결
+        self.widget_action(type='RainbowMonster', func='ShowMaxScore')
         self.widget_action(type='RainbowMonster', func='InitScoreMesh', widget_arg_num=1, widget_arg='3100')
         self.widget_action(type='RainbowMonster', func='InitScoreMesh', widget_arg_num=2, widget_arg='3200')
         self.widget_action(type='RainbowMonster', func='InitScoreMesh', widget_arg_num=3, widget_arg='3300')
@@ -111,8 +111,7 @@ class ShowCaption01(trigger_api.Trigger):
 
 class ShowCaption01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption02(self.ctx)
@@ -130,8 +129,7 @@ class ShowCaption02(trigger_api.Trigger):
 
 class ShowCaption02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption03(self.ctx)
@@ -150,8 +148,7 @@ class ShowCaption03(trigger_api.Trigger):
 
 class ShowCaption03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -171,8 +168,7 @@ class ShowCaption04(trigger_api.Trigger):
 
 class ShowCaption04Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return ShowCaption05(self.ctx)
@@ -191,8 +187,7 @@ class ShowCaption05(trigger_api.Trigger):
 
 class ShowCaption05Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.reset_camera(interpolation_time=1)
         self.set_user_value(trigger_id=2, key='GuideNpcSpawn', value=1)
 
@@ -290,10 +285,8 @@ class EnableCheckOutput(trigger_api.Trigger):
         self.set_user_value(trigger_id=22, key='DungeonQuit', value=1)
         self.set_user_value(trigger_id=23, key='DungeonQuit', value=1)
         self.set_user_value(trigger_id=24, key='DungeonQuit', value=1)
-        self.set_user_value(trigger_id=25, key='DungeonQuit', value=1)
-        # 용광로 소멸
-        self.destroy_monster(spawn_ids=[900])
-        # 입구 포탈
+        self.set_user_value(trigger_id=25, key='DungeonQuit', value=1) # 용광로 소멸
+        self.destroy_monster(spawn_ids=[900]) # 입구 포탈
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
         self.set_interact_object(trigger_ids=[10001234], state=0)
 

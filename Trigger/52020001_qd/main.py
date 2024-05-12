@@ -120,10 +120,8 @@ class 대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
-            return None # Missing State: 대기_2
-
+            return 대기_2(self.ctx)
 """
-
 
 """
 class 대기_2(trigger_api.Trigger):
@@ -133,10 +131,8 @@ class 대기_2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
-            return None # Missing State: 대기_초기화
-
+            return 대기_초기화(self.ctx)
 """
-
 
 """
 class 대기_초기화(trigger_api.Trigger):
@@ -148,9 +144,7 @@ class 대기_초기화(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             return 알림(self.ctx)
-
 """
-
 
 class 몬스터출현_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

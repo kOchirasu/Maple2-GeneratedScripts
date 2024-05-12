@@ -45,8 +45,7 @@ class Dialogue01(trigger_api.Trigger):
 
 class Dialogue01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.select_camera(trigger_id=500, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:

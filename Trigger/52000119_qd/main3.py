@@ -2,9 +2,11 @@
 import trigger_api
 
 
-# 골든타워 8층 : 60100030
-# 랄프:11003187 / 조디:11003169 / 코쿤:11003171
-# 오프닝 연출
+"""
+골든타워 8층 : 60100030
+랄프:11003187 / 조디:11003169 / 코쿤:11003171
+오프닝 연출
+"""
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[2001], quest_ids=[60100070], quest_states=[2]):
@@ -171,8 +173,7 @@ class scene_07(trigger_api.Trigger):
         self.select_camera_path(path_ids=[4019,4022], return_view=False)
         self.move_npc(spawn_id=106, patrol_name='MS2PatrolData_3001')
         self.set_dialogue(type=2, spawn_id=11003171, script='$52000119_QD__MAIN3__13$', time=3, arg5=0) # 코쿤
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):

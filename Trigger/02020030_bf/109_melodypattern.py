@@ -177,8 +177,7 @@ class CheckAnswer01_Delay(trigger_api.Trigger):
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[12000060], state=1)
-        # Lever F
+        self.set_interact_object(trigger_ids=[12000060], state=1) # Lever F
 
 
 class CheckAnswer02_Start(trigger_api.Trigger):
@@ -220,8 +219,7 @@ class CheckAnswer02_Delay(trigger_api.Trigger):
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[12000062], state=1)
-        # Lever D
+        self.set_interact_object(trigger_ids=[12000062], state=1) # Lever D
 
 
 class CheckAnswer03_Start(trigger_api.Trigger):
@@ -263,8 +261,7 @@ class CheckAnswer03_Delay(trigger_api.Trigger):
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[12000059], state=1)
-        # Lever A
+        self.set_interact_object(trigger_ids=[12000059], state=1) # Lever A
 
 
 class CheckAnswer04_Start(trigger_api.Trigger):
@@ -306,8 +303,7 @@ class CheckAnswer04_Delay(trigger_api.Trigger):
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[12000062], state=1)
-        # Lever B
+        self.set_interact_object(trigger_ids=[12000062], state=1) # Lever B
 
 
 class CheckAnswer05_Start(trigger_api.Trigger):
@@ -349,8 +345,7 @@ class CheckAnswer05_Delay(trigger_api.Trigger):
             return AnswerIsRight(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_interact_object(trigger_ids=[12000060], state=1)
-        # Lever B
+        self.set_interact_object(trigger_ids=[12000060], state=1) # Lever B
 
 
 # 정답

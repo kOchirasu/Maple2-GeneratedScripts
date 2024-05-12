@@ -211,8 +211,7 @@ class 에르다대사05(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[1001,1002,1003])
         self.spawn_monster(spawn_ids=[1004,1005], auto_target=False)
         self.set_npc_emotion_loop(spawn_id=1004, sequence_name='Stun_A', duration=1E+12)
@@ -318,8 +317,7 @@ class 비에른대사05(trigger_api.Trigger):
 
 class 차연출종료2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_portal(portal_id=91, visible=False, enable=False, minimap_visible=False)
         self.destroy_monster(spawn_ids=[1006])
         self.spawn_monster(spawn_ids=[2099], auto_target=False)

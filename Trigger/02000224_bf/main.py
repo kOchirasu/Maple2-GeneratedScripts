@@ -117,8 +117,7 @@ class 아르마노대사01(trigger_api.Trigger):
 class 아르마노대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에대사01(self.ctx)
@@ -139,8 +138,7 @@ class 티니에대사01(trigger_api.Trigger):
 class 티니에대사01_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사02(self.ctx)
@@ -162,8 +160,7 @@ class 아르마노대사02(trigger_api.Trigger):
 class 아르마노대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에대사02(self.ctx)
@@ -184,8 +181,7 @@ class 티니에대사02(trigger_api.Trigger):
 class 티니에대사02_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에이동02(self.ctx)
@@ -216,8 +212,7 @@ class 티니에대사03(trigger_api.Trigger):
 class 티니에대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사03(self.ctx)
@@ -238,8 +233,7 @@ class 아르마노대사03(trigger_api.Trigger):
 class 아르마노대사03_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에대사04(self.ctx)
@@ -259,8 +253,7 @@ class 티니에대사04(trigger_api.Trigger):
 class 티니에대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사04(self.ctx)
@@ -280,8 +273,7 @@ class 아르마노대사04(trigger_api.Trigger):
 class 아르마노대사04_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노대사05(self.ctx)
@@ -302,8 +294,7 @@ class 아르마노대사05(trigger_api.Trigger):
 class 아르마노대사05_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 아르마노탈주(self.ctx)
@@ -346,8 +337,7 @@ class 티니에대사06(trigger_api.Trigger):
 class 티니에대사06_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return PC대사01(self.ctx)
@@ -377,8 +367,7 @@ class 티니에대사07(trigger_api.Trigger):
 class 티니에대사07_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에대사08(self.ctx)
@@ -408,8 +397,7 @@ class 티니에대사08(trigger_api.Trigger):
 class 티니에대사08_skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 티니에대사09(self.ctx)

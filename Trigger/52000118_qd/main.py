@@ -261,8 +261,7 @@ class talk_12(trigger_api.Trigger):
         self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_3003') # 조디 비켜줌
         self.add_balloon_talk(spawn_id=102, msg='$52000118_QD__MAIN__22$', duration=4000)
         self.add_cinematic_talk(npc_id=11003167, msg='$52000118_QD__MAIN__23$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=6000):

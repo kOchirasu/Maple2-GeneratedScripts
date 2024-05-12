@@ -55,8 +55,7 @@ class BlackeyeApp02(trigger_api.Trigger):
 class BlackeyeApp02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawn_id=101)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return BlackeyeApp03(self.ctx)
@@ -75,8 +74,7 @@ class BlackeyeApp03(trigger_api.Trigger):
 class BlackeyeApp03Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawn_id=101)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return EnemyApp01(self.ctx)
@@ -114,8 +112,7 @@ class EnemyApp03Skip(trigger_api.Trigger):
         self.remove_balloon_talk(spawn_id=901)
         self.remove_balloon_talk(spawn_id=902)
         self.remove_balloon_talk(spawn_id=903)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return EnemyApp03(self.ctx)
@@ -148,8 +145,7 @@ class BlackeyeAction01(trigger_api.Trigger):
 class BlackeyeAction01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolation_time=1)
@@ -215,8 +211,7 @@ class MoveToUpstairs02(trigger_api.Trigger):
 class MoveToUpstairs02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')

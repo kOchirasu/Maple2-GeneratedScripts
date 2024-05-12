@@ -2,9 +2,11 @@
 import trigger_api
 
 
-# ME공통 대기설정
-# 대기 페이즈1&2 반복하다 시간 경과 or 인원 충족 시 게임 시작
-# 대기 시작
+"""
+ME공통 대기설정
+대기 페이즈1&2 반복하다 시간 경과 or 인원 충족 시 게임 시작
+대기 시작
+"""
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timer_id='1', seconds=40, start_delay=1, interval=0) # 테스트 수정 가능 지점

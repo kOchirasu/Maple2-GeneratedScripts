@@ -240,9 +240,7 @@ class Round_2_07(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):
             return Round_2_08(self.ctx)
-
 """
-
 
 class Round_2_08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
@@ -332,9 +330,7 @@ class Round_3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.count_users(box_id=708) >= 1:
             return Round_3_02(self.ctx)
-
 """
-
 
 class Round_3_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

@@ -152,8 +152,7 @@ class Reset(trigger_api.Trigger):
             return Wait(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_user_value(key='ColorEnd', value=0)
-        # Main Trigger
+        self.set_user_value(key='ColorEnd', value=0) # Main Trigger
 
 
 initial_state = Wait

@@ -89,8 +89,7 @@ class CameraAct02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return CameraAct03(self.ctx)
@@ -114,8 +113,7 @@ class CameraAct04(trigger_api.Trigger):
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(trigger_id=600, enable=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
@@ -198,8 +196,7 @@ class CameraAct13(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(trigger_id=601, enable=False)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=500):
@@ -254,8 +251,7 @@ class FakeLaozApp04(trigger_api.Trigger):
         self.select_camera(trigger_id=602, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=301, patrol_name='MS2PatrolData_301')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -314,8 +310,7 @@ class LampLightUp01(trigger_api.Trigger):
 
 class LampLightUp02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         # 유저 위치 보정, 계단에 끼이는 문제 해결을 위한 장치
         self.move_user(map_id=2000379, portal_id=11, box_id=9900)
 
@@ -336,8 +331,7 @@ class LampLightUp03(trigger_api.Trigger):
 
 class LampLightUp04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return LampLightUp05(self.ctx)
@@ -361,8 +355,7 @@ class TimeToLeave01(trigger_api.Trigger):
         self.select_camera(trigger_id=700, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2000):

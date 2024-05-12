@@ -349,8 +349,7 @@ class 프리스트의독백_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawn_id=0)
         self.add_cinematic_talk(npc_id=0, msg='$52000141_QD__MAIN__28$', duration=3000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

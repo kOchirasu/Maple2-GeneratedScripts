@@ -6,10 +6,8 @@ import trigger_api
 class start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001536], quest_states=[1]):
-            return None # Missing State: 연출대기
-
+            return 연출대기(self.ctx)
 """
-
 
 class 연출출력체크50001536(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,10 +63,8 @@ class 조건체크04(trigger_api.Trigger):
         if self.quest_user_detected(box_ids=[9000], quest_ids=[50001537], quest_states=[2]):
             return 연출이후(self.ctx)
         if not self.quest_user_detected(box_ids=[9000], quest_ids=[50001537], quest_states=[2]):
-            return None # Missing State: 빈방
-
+            return 빈방(self.ctx)
 """
-
 
 class 연출이후(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':

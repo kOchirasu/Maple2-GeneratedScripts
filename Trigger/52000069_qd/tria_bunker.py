@@ -72,8 +72,7 @@ class 카메라이동(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.add_buff(box_ids=[199], skill_id=70000109, level=1, is_player=False, is_skill_set=False) # 초생회
         self.select_camera(trigger_id=301, enable=False)
         self.set_cinematic_ui(type=0)
@@ -113,8 +112,7 @@ class 프레이대사01(trigger_api.Trigger):
 
 class 대사스킵용01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,8 +121,7 @@ class 대사스킵용01(trigger_api.Trigger):
 
 class 돌격(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.select_camera(trigger_id=304, enable=True)
         self.set_agent(trigger_ids=[8004], visible=False)
         self.set_agent(trigger_ids=[8005], visible=False)
@@ -513,8 +510,7 @@ class 마드리아대사02(trigger_api.Trigger):
 
 class NPC교체2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
         self.remove_buff(box_id=199, skill_id=70000109)
         self.set_effect(trigger_ids=[601], visible=False)
         self.set_effect(trigger_ids=[607], visible=False)

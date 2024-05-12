@@ -177,8 +177,7 @@ class 칸두라대사01(trigger_api.Trigger):
 class 칸두라대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사02(self.ctx)
@@ -197,8 +196,7 @@ class 칸두라대사02(trigger_api.Trigger):
 class 칸두라대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라공격(self.ctx)
@@ -265,8 +263,7 @@ class NPC대사01(trigger_api.Trigger):
 class NPC대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return NPC대사02(self.ctx)
@@ -287,8 +284,7 @@ class NPC대사02(trigger_api.Trigger):
 class NPC대사02스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사03(self.ctx)
@@ -308,8 +304,7 @@ class 칸두라대사03(trigger_api.Trigger):
 class 칸두라대사03스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸투라이동(self.ctx)
@@ -339,8 +334,7 @@ class 칸두라대사01_소울바인더(trigger_api.Trigger):
 class 칸두라대사01스킵_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사02_소울바인더(self.ctx)
@@ -359,8 +353,7 @@ class 칸두라대사02_소울바인더(trigger_api.Trigger):
 class 칸두라대사02스킵_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라공격_소울바인더(self.ctx)
@@ -427,8 +420,7 @@ class 칸두라대사03_소울바인더(trigger_api.Trigger):
 class 칸두라대사03스킵_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사04_소울바인더(self.ctx)
@@ -449,8 +441,7 @@ class 칸두라대사04_소울바인더(trigger_api.Trigger):
 class 칸두라대사04스킵_소울바인더_소울바인더(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸투라이동(self.ctx)
@@ -631,8 +622,7 @@ class 준타대사01(trigger_api.Trigger):
 class 준타대사01스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사05(self.ctx)
@@ -654,8 +644,7 @@ class 칸두라대사05(trigger_api.Trigger):
 class 칸두라대사05스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 칸두라대사06(self.ctx)
@@ -674,8 +663,7 @@ class 칸두라대사06(trigger_api.Trigger):
 class 칸두라대사06스킵(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         return 비전등장(self.ctx)

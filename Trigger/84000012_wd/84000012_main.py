@@ -339,7 +339,7 @@ class 결혼종료확인(trigger_api.Trigger):
             return 종료알림(self.ctx)
         """
         if self.time_expired(timer_id='8400131'):
-            return None # Missing State: 강퇴안내
+            return 강퇴안내(self.ctx)
         """
         if not self.wedding_mutual_agree_result(agree_type='endActing'):
             # 결혼식 종료에 동의 안했으면 안내메시지 출력하면서 종료 체크 계속 하도록 직전 스테이트로 돌려보냄

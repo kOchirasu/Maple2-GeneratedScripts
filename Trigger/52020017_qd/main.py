@@ -61,8 +61,7 @@ class Event_Start(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npc_id=11003624, msg='아아…. 드디어 극의 주인공을 찾은 것 같네.', duration=2800, align='left')
-        # Missing State: State
-        self.set_scene_skip(action='nextState')
+        self.set_scene_skip(action='nextState') # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):

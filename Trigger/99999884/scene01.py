@@ -4,7 +4,8 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # for test      <action name="몬스터를생성한다" arg1="201"/>
+        # for test
+        # self.spawn_monster(spawn_ids=[201])
         self.set_effect(trigger_ids=[401], visible=False)
         self.set_effect(trigger_ids=[402], visible=False)
         self.set_effect(trigger_ids=[403], visible=False)

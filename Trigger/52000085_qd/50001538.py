@@ -354,8 +354,7 @@ class 에르다대사06(trigger_api.Trigger):
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.destroy_monster(spawn_ids=[1001,1002,1003,1004])
         self.spawn_monster(spawn_ids=[2001,2002], auto_target=True)
         self.set_cinematic_ui(type=0)
@@ -441,8 +440,7 @@ class 에르다공중부양준비(trigger_api.Trigger):
 
 class 에르다공중부양(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.move_npc(spawn_id=1006, patrol_name='MS2PatrolData_1006')
         self.add_cinematic_talk(npc_id=11003068, illust_id='Seolnunyi_normal', msg='$52000085_QD__50001538__27$', align='right', duration=3000)
 
@@ -596,8 +594,7 @@ class 설눈이대사07(trigger_api.Trigger):
 
 class 종료연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # Missing State: State
-        self.set_skip()
+        self.set_skip() # Missing State: State
         self.set_npc_emotion_loop(spawn_id=1005, sequence_name='Idle_A', duration=1E+12)
         self.set_pc_emotion_loop(sequence_name='Idle_A', duration=1000)
         self.destroy_monster(spawn_ids=[1005,1006,1007])

@@ -35,8 +35,8 @@ class 몬스터체크(trigger_api.Trigger):
 
 class 길을열어라(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.hide_guide_summary(entity_id=1)
-        # 가이드 텍스트 OFF : 슈퍼파워 핑크빈의 용병, 험상궂은 우르자들을 처치하세요!
+        # # 가이드 텍스트 OFF : 슈퍼파워 핑크빈의 용병, 험상궂은 우르자들을 처치하세요!
+        self.hide_guide_summary(entity_id=1)
         self.set_npc_emotion_sequence(spawn_id=105, sequence_name='Dead_A') # 핑크빈 빠잉
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True) # 출구포털 / 활성화
         self.create_item(spawn_ids=[5001]) # 초록코인

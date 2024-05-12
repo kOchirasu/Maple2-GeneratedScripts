@@ -146,8 +146,7 @@ class lol(trigger_api.Trigger):
 class run(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawn_id=104, patrol_name='MS2PatrolData_3004')
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
@@ -193,8 +192,7 @@ class thank(trigger_api.Trigger):
 class endready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(scale=2.3, type='NameCaption', title='$52000116_QD__MAIN__8$', desc='$52000116_QD__MAIN__9$', align='centerLeft', offset_rate_x=-0.15, duration=4000)
-        # Missing State: State
-        self.set_scene_skip()
+        self.set_scene_skip() # Missing State: State
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=4000):
