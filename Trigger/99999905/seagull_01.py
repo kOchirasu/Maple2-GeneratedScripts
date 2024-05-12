@@ -4,20 +4,20 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2001], animationEffect=False)
+        self.spawn_monster(spawn_ids=[2001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10501]):
+        if self.user_detected(box_ids=[10501]):
             return 이동(self.ctx)
 
 
 class 이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='2', seconds=2)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
-            self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001')
+        if self.time_expired(timer_id='2'):
+            self.move_npc(spawn_id=2001, patrol_name='MS2PatrolData_2001')
             return None # Missing State: 종료
 
 

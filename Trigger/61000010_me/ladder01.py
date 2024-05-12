@@ -4,31 +4,30 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[701], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[702], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[711], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[712], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[721], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[722], visible=False, animationEffect=False)
+        self.set_ladder(trigger_ids=[701], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[702], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[711], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[712], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[721], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[722], visible=False, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 랜덤(self.ctx)
+        return 랜덤(self.ctx)
 
 
 class 랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(rate=34):
-            self.set_ladder(triggerIds=[701], visible=True, animationEffect=True)
-            self.set_ladder(triggerIds=[702], visible=True, animationEffect=True)
+        if self.random_condition(weight=34):
+            self.set_ladder(trigger_ids=[701], visible=True, enable=True)
+            self.set_ladder(trigger_ids=[702], visible=True, enable=True)
             return 종료(self.ctx)
-        if self.random_condition(rate=33):
-            self.set_ladder(triggerIds=[711], visible=True, animationEffect=True)
-            self.set_ladder(triggerIds=[712], visible=True, animationEffect=True)
+        if self.random_condition(weight=33):
+            self.set_ladder(trigger_ids=[711], visible=True, enable=True)
+            self.set_ladder(trigger_ids=[712], visible=True, enable=True)
             return 종료(self.ctx)
-        if self.random_condition(rate=33):
-            self.set_ladder(triggerIds=[721], visible=True, animationEffect=True)
-            self.set_ladder(triggerIds=[722], visible=True, animationEffect=True)
+        if self.random_condition(weight=33):
+            self.set_ladder(trigger_ids=[721], visible=True, enable=True)
+            self.set_ladder(trigger_ids=[722], visible=True, enable=True)
             return 종료(self.ctx)
 
 

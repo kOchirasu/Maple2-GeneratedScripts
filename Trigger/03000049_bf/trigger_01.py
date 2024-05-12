@@ -4,21 +4,21 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000289], state=1)
-        self.set_effect(triggerIds=[101], visible=False)
+        self.set_interact_object(trigger_ids=[10000289], state=1)
+        self.set_effect(trigger_ids=[101], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000289], stateValue=0):
+        if self.object_interacted(interact_ids=[10000289], state=0):
             return 비내림(self.ctx)
 
 
 class 비내림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[101], visible=True)
-        self.set_timer(timerId='1', seconds=10)
+        self.set_effect(trigger_ids=[101], visible=True)
+        self.set_timer(timer_id='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 대기(self.ctx)
 
 

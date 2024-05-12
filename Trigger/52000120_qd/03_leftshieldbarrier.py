@@ -4,9 +4,9 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3201], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
-        self.destroy_monster(spawnIds=[990,991,992,993,994,995])
-        self.set_skill(triggerIds=[7001], enable=False) # Push
+        self.set_mesh(trigger_ids=[3201], visible=True, start_delay=0, interval=0, fade=0) # Invisible_Barrier
+        self.destroy_monster(spawn_ids=[990,991,992,993,994,995])
+        self.set_skill(trigger_ids=[7001], enable=False) # Push
         # self.set_user_value(key='PushStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,31 +16,31 @@ class Wait(trigger_api.Trigger):
 
 class ActivateShiled01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[990,991,992,993,994,995], animationEffect=False)
+        self.spawn_monster(spawn_ids=[990,991,992,993,994,995], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9201]):
+        if self.user_detected(box_ids=[9201]):
             return Push01(self.ctx)
 
 
 class Push01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=990, sequenceName='Attack_01_A')
-        self.set_npc_emotion_sequence(spawnId=991, sequenceName='Attack_01_A')
-        self.set_npc_emotion_sequence(spawnId=992, sequenceName='Attack_01_A')
-        self.set_npc_emotion_sequence(spawnId=993, sequenceName='Attack_01_A')
-        self.set_npc_emotion_sequence(spawnId=994, sequenceName='Attack_01_A')
-        self.set_npc_emotion_sequence(spawnId=995, sequenceName='Attack_01_A')
-        self.set_skill(triggerIds=[7001], enable=True) # Push
+        self.set_npc_emotion_sequence(spawn_id=990, sequence_name='Attack_01_A')
+        self.set_npc_emotion_sequence(spawn_id=991, sequence_name='Attack_01_A')
+        self.set_npc_emotion_sequence(spawn_id=992, sequence_name='Attack_01_A')
+        self.set_npc_emotion_sequence(spawn_id=993, sequence_name='Attack_01_A')
+        self.set_npc_emotion_sequence(spawn_id=994, sequence_name='Attack_01_A')
+        self.set_npc_emotion_sequence(spawn_id=995, sequence_name='Attack_01_A')
+        self.set_skill(trigger_ids=[7001], enable=True) # Push
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1333):
+        if self.wait_tick(wait_tick=1333):
             return Reset01(self.ctx)
 
 
 class Reset01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9201]):
+        if self.user_detected(box_ids=[9201]):
             return Push01(self.ctx)
 
 

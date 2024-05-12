@@ -5,54 +5,54 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # InvisibleBarrier_AlwaysOn
-        self.set_mesh(triggerIds=[3800,3900], visible=True, arg3=0, delay=0, scale=0)
-        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
-        self.set_interact_object(triggerIds=[10001147], state=0) # Key
-        self.destroy_monster(spawnIds=[901,902,903]) # Mob
+        self.set_mesh(trigger_ids=[3800,3900], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_interact_object(trigger_ids=[10001147], state=0) # Key
+        self.destroy_monster(spawn_ids=[901,902,903]) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9300]):
+        if self.user_detected(box_ids=[9300]):
             # 복도 진입
             return LoadingDelay(self.ctx)
 
 
 class LoadingDelay(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[901,902,903], animationEffect=False) # Mob
+        self.spawn_monster(spawn_ids=[901,902,903], auto_target=False) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return MobTrapOn01(self.ctx)
 
 
 class MobTrapOn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=901, script='$02000397_BF__04_HALLWAYBATTLE__0$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=902, script='$02000397_BF__04_HALLWAYBATTLE__1$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=903, script='$02000397_BF__04_HALLWAYBATTLE__2$', arg4=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=901, script='$02000397_BF__04_HALLWAYBATTLE__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=902, script='$02000397_BF__04_HALLWAYBATTLE__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=903, script='$02000397_BF__04_HALLWAYBATTLE__2$', time=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return MobTrapOn02(self.ctx)
 
 
 class MobTrapOn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=5, key='MobWave', value=1)
+        self.set_user_value(trigger_id=5, key='MobWave', value=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039704, textId=20039704, duration=2000) # 가이드 : 적군이 몰려옵니다!
+        self.show_guide_summary(entity_id=20039704, text_id=20039704, duration=2000) # 가이드 : 적군이 몰려옵니다!
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return MobTrapOn03(self.ctx)
 
 
 class MobTrapOn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=6, key='BlockEnable', value=1)
+        self.set_user_value(trigger_id=6, key='BlockEnable', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return GuideUseKey(self.ctx)
 
 
@@ -60,18 +60,18 @@ class GuideUseKey(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         # 가이드 : 다른 방으로 이동할 단서를 찾으세요
-        self.show_guide_summary(entityId=20039705, textId=20039705)
-        self.set_interact_object(triggerIds=[10001147], state=1) # Key
+        self.show_guide_summary(entity_id=20039705, text_id=20039705)
+        self.set_interact_object(trigger_ids=[10001147], state=1) # Key
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001147], stateValue=0):
+        if self.object_interacted(interact_ids=[10001147], state=0):
             return PortalOn(self.ctx)
 
 
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.hide_guide_summary(entityId=20039705)
-        self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False)
+        self.hide_guide_summary(entity_id=20039705)
+        self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=False)
 
 
 initial_state = Wait

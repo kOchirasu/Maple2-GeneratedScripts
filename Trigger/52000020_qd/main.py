@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[701], questIds=[60001022], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[60001022], quest_states=[1]):
             return camera_01(self.ctx)
 
 
@@ -12,25 +12,25 @@ class camera_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_timer(timerId='1', seconds=1)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return monster_spawn_01(self.ctx)
 
 
 class monster_spawn_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_guide_summary(entityId=110, textId=40010) # 적을 모두 처치하세요
-        self.create_monster(spawnIds=[111,112,113,114], animationEffect=True) # 1차 스폰
-        self.set_conversation(type=1, spawnId=111, script='$52000020_QD__MAIN__2$', arg4=5)
-        self.set_conversation(type=1, spawnId=112, script='$52000020_QD__MAIN__3$', arg4=5)
-        self.set_timer(timerId='1', seconds=1)
+        self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
+        self.spawn_monster(spawn_ids=[111,112,113,114], auto_target=True) # 1차 스폰
+        self.set_dialogue(type=1, spawn_id=111, script='$52000020_QD__MAIN__2$', time=5)
+        self.set_dialogue(type=1, spawn_id=112, script='$52000020_QD__MAIN__3$', time=5)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return battle_01(self.ctx)
-        if self.monster_dead(boxIds=[111,112,113,114]):
+        if self.monster_dead(spawn_ids=[111,112,113,114]):
             return camera_02(self.ctx)
 
     def on_exit(self) -> None:
@@ -42,37 +42,37 @@ class monster_spawn_01(trigger_api.Trigger):
 
 class battle_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[111,112,113,114]):
+        if self.monster_dead(spawn_ids=[111,112,113,114]):
             return camera_02(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entityId=110)
+        self.hide_guide_summary(entity_id=110)
 
 
 class camera_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_timer(timerId='1', seconds=1)
-        self.select_camera_path(pathIds=[8003,8004], returnView=True)
+        self.set_timer(timer_id='1', seconds=1)
+        self.select_camera_path(path_ids=[8003,8004], return_view=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return monster_spawn_02(self.ctx)
 
 
 class monster_spawn_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_guide_summary(entityId=110, textId=40010) # 적을 모두 처치하세요
-        self.create_monster(spawnIds=[121,122,123,124,125,126], animationEffect=True) # 2차 스폰
-        self.set_conversation(type=1, spawnId=121, script='$52000020_QD__MAIN__4$', arg4=5)
-        self.set_conversation(type=1, spawnId=124, script='$52000020_QD__MAIN__5$', arg4=5)
-        self.set_timer(timerId='1', seconds=1)
+        self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
+        self.spawn_monster(spawn_ids=[121,122,123,124,125,126], auto_target=True) # 2차 스폰
+        self.set_dialogue(type=1, spawn_id=121, script='$52000020_QD__MAIN__4$', time=5)
+        self.set_dialogue(type=1, spawn_id=124, script='$52000020_QD__MAIN__5$', time=5)
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return battle_02(self.ctx)
-        if self.monster_dead(boxIds=[121,122,123,124,125,126]):
+        if self.monster_dead(spawn_ids=[121,122,123,124,125,126]):
             return camera_03(self.ctx)
 
     def on_exit(self) -> None:
@@ -84,40 +84,40 @@ class monster_spawn_02(trigger_api.Trigger):
 
 class battle_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[121,122,123,124,125,126]):
+        if self.monster_dead(spawn_ids=[121,122,123,124,125,126]):
             return camera_03(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entityId=110)
+        self.hide_guide_summary(entity_id=110)
 
 
 class camera_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_timer(timerId='1', seconds=1)
-        self.select_camera_path(pathIds=[8005,8006], returnView=True)
+        self.set_timer(timer_id='1', seconds=1)
+        self.select_camera_path(path_ids=[8005,8006], return_view=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return monster_spawn_03(self.ctx)
 
 
 class monster_spawn_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_guide_summary(entityId=110, textId=40010) # 적을 모두 처치하세요
-        self.create_monster(spawnIds=[131,132,133,134,135,136], animationEffect=True) # 3차 스폰
-        self.set_timer(timerId='1', seconds=1)
+        self.show_guide_summary(entity_id=110, text_id=40010) # 적을 모두 처치하세요
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True) # 3차 스폰
+        self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return battle_03(self.ctx)
-        if self.monster_dead(boxIds=[131,132,133,134,135,136]):
+        if self.monster_dead(spawn_ids=[131,132,133,134,135,136]):
             return complete(self.ctx)
 
     def on_exit(self) -> None:
         # 레터박스, 플레이어 조작 불가능 해제
-        self.set_conversation(type=1, spawnId=131, script='$52000020_QD__MAIN__1$', arg4=5)
+        self.set_dialogue(type=1, spawn_id=131, script='$52000020_QD__MAIN__1$', time=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
@@ -125,11 +125,11 @@ class monster_spawn_03(trigger_api.Trigger):
 
 class battle_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[131,132,133,134,135,136]):
+        if self.monster_dead(spawn_ids=[131,132,133,134,135,136]):
             return complete(self.ctx)
 
     def on_exit(self) -> None:
-        self.hide_guide_summary(entityId=110)
+        self.hide_guide_summary(entity_id=110)
 
 
 class complete(trigger_api.Trigger):

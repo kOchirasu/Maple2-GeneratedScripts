@@ -6,11 +6,11 @@ class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ActivateTank', value=0) # 메인 트리거에서 받는 신호
         self.set_user_value(key='DungeonQuit', value=0) # 메인 트리거에서 받는 신호
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Down
-        self.set_effect(triggerIds=[5304], visible=False) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=False) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=False) # Tank_Fill_Above_Sound
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_100') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_100') # Down
+        self.set_effect(trigger_ids=[5304], visible=False) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=False) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=False) # Tank_Fill_Above_Sound
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ActivateTank', value=1):
@@ -19,15 +19,15 @@ class Wait(trigger_api.Trigger):
 
 class Gauge100(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=104, key='Gauge', value=100)
-        self.set_timer(timerId='100100', seconds=15, startDelay=1)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_100') # Down
+        self.set_user_value(trigger_id=104, key='Gauge', value=100)
+        self.set_timer(timer_id='100100', seconds=15, start_delay=1)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_100') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_100') # Down
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='100100'):
+        if self.time_expired(timer_id='100100'):
             return Gauge75(self.ctx)
-        if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
+        if self.detect_liftable_object(box_ids=[2004], item_id=30000886):
             # 같은색 물감통이면
             return Gauge100_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
@@ -36,28 +36,28 @@ class Gauge100(trigger_api.Trigger):
 
 class Gauge100_Refil(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
-        self.reset_timer(timerId='100100')
+        self.set_effect(trigger_ids=[5304], visible=True) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=True) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=True) # Tank_Fill_Above_Sound
+        self.reset_timer(timer_id='100100')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Gauge100(self.ctx)
 
 
 class Gauge75(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=104, key='Gauge', value=75)
-        self.reset_timer(timerId='100100')
-        self.set_timer(timerId='10075', seconds=15, startDelay=1)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_75') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_75') # Down
+        self.set_user_value(trigger_id=104, key='Gauge', value=75)
+        self.reset_timer(timer_id='100100')
+        self.set_timer(timer_id='10075', seconds=15, start_delay=1)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_75') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_75') # Down
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10075'):
+        if self.time_expired(timer_id='10075'):
             return Gauge50(self.ctx)
-        if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
+        if self.detect_liftable_object(box_ids=[2004], item_id=30000886):
             # 같은색 물감통이면
             return Gauge75_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
@@ -66,28 +66,28 @@ class Gauge75(trigger_api.Trigger):
 
 class Gauge75_Refil(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
-        self.reset_timer(timerId='10075')
+        self.set_effect(trigger_ids=[5304], visible=True) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=True) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=True) # Tank_Fill_Above_Sound
+        self.reset_timer(timer_id='10075')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Gauge100(self.ctx)
 
 
 class Gauge50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=104, key='Gauge', value=50)
-        self.reset_timer(timerId='10075')
-        self.set_timer(timerId='10050', seconds=15, startDelay=1)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_50') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_50') # Down
+        self.set_user_value(trigger_id=104, key='Gauge', value=50)
+        self.reset_timer(timer_id='10075')
+        self.set_timer(timer_id='10050', seconds=15, start_delay=1)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_50') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_50') # Down
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10050'):
+        if self.time_expired(timer_id='10050'):
             return Gauge25(self.ctx)
-        if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
+        if self.detect_liftable_object(box_ids=[2004], item_id=30000886):
             # 같은색 물감통이면
             return Gauge50_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
@@ -96,28 +96,28 @@ class Gauge50(trigger_api.Trigger):
 
 class Gauge50_Refil(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
-        self.reset_timer(timerId='10050')
+        self.set_effect(trigger_ids=[5304], visible=True) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=True) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=True) # Tank_Fill_Above_Sound
+        self.reset_timer(timer_id='10050')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Gauge75(self.ctx)
 
 
 class Gauge25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=104, key='Gauge', value=25)
-        self.reset_timer(timerId='10050')
-        self.set_timer(timerId='10025', seconds=15, startDelay=1)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_25') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_25') # Down
+        self.set_user_value(trigger_id=104, key='Gauge', value=25)
+        self.reset_timer(timer_id='10050')
+        self.set_timer(timer_id='10025', seconds=15, start_delay=1)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_25') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_25') # Down
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10025'):
+        if self.time_expired(timer_id='10025'):
             return Gauge1(self.ctx)
-        if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
+        if self.detect_liftable_object(box_ids=[2004], item_id=30000886):
             # 같은색 물감통이면
             return Gauge25_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
@@ -126,25 +126,25 @@ class Gauge25(trigger_api.Trigger):
 
 class Gauge25_Refil(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
-        self.reset_timer(timerId='10025')
+        self.set_effect(trigger_ids=[5304], visible=True) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=True) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=True) # Tank_Fill_Above_Sound
+        self.reset_timer(timer_id='10025')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Gauge50(self.ctx)
 
 
 class Gauge1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='10025')
-        self.set_user_value(triggerId=104, key='Gauge', value=1)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Interaction_tankpurple_A01_1') # Up
-        self.set_actor(triggerId=4104, visible=True, initialSequence='Interaction_tankpurple_A01_1') # Down
+        self.reset_timer(timer_id='10025')
+        self.set_user_value(trigger_id=104, key='Gauge', value=1)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Interaction_tankpurple_A01_1') # Up
+        self.set_actor(trigger_id=4104, visible=True, initial_sequence='Interaction_tankpurple_A01_1') # Down
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.detect_liftable_object(boxIds=[2004], itemId=30000886):
+        if self.detect_liftable_object(box_ids=[2004], item_id=30000886):
             # 같은색 물감통이면
             return Gauge1_Refil(self.ctx)
         if self.user_value(key='DungeonQuit', value=1):
@@ -153,18 +153,18 @@ class Gauge1(trigger_api.Trigger):
 
 class Gauge1_Refil(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5304], visible=True) # Paint_Add_Sound
-        self.set_effect(triggerIds=[5404], visible=True) # Tank_Fill_Under_Sound
-        self.set_effect(triggerIds=[5504], visible=True) # Tank_Fill_Above_Sound
+        self.set_effect(trigger_ids=[5304], visible=True) # Paint_Add_Sound
+        self.set_effect(trigger_ids=[5404], visible=True) # Tank_Fill_Under_Sound
+        self.set_effect(trigger_ids=[5504], visible=True) # Tank_Fill_Above_Sound
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Gauge25(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=104, key='StopSpawn', value=1)
+        self.set_user_value(trigger_id=104, key='StopSpawn', value=1)
 
 
 initial_state = Wait

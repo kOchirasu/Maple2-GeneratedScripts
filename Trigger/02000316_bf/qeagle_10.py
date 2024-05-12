@@ -4,36 +4,36 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000202], state=1)
-        self.set_actor(triggerId=919, visible=False, initialSequence='Attack_Idle_A')
-        self.set_effect(triggerIds=[920], visible=False)
+        self.set_interact_object(trigger_ids=[10000202], state=1)
+        self.set_actor(trigger_id=919, visible=False, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[920], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000202], stateValue=0):
+        if self.object_interacted(interact_ids=[10000202], state=0):
             return 오브젝트반응(self.ctx)
 
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=919, visible=True, initialSequence='Attack_Idle_A')
-        self.set_effect(triggerIds=[920], visible=True)
-        self.set_timer(timerId='1', seconds=2)
+        self.set_actor(trigger_id=919, visible=True, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[920], visible=True)
+        self.set_timer(timer_id='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 그리폰제거(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(triggerId=919, visible=False, initialSequence='Attack_Idle_A')
-        self.set_effect(triggerIds=[920], visible=False)
+        self.set_actor(trigger_id=919, visible=False, initial_sequence='Attack_Idle_A')
+        self.set_effect(trigger_ids=[920], visible=False)
 
 
 class 그리폰제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=600)
+        self.set_timer(timer_id='1', seconds=600)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 시작대기중(self.ctx)
 
 

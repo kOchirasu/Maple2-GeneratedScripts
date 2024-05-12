@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[405], visible=True)
+        self.set_mesh(trigger_ids=[405], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000106], stateValue=0):
+        if self.object_interacted(interact_ids=[10000106], state=0):
             return 로봇사라짐(self.ctx)
 
 
 class 로봇사라짐(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[405], visible=False)
+        self.set_mesh(trigger_ids=[405], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000106], stateValue=1):
+        if self.object_interacted(interact_ids=[10000106], state=1):
             return 대기(self.ctx)
 
 

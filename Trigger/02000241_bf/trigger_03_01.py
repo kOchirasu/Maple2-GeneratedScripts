@@ -4,27 +4,27 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[705,706], visible=False)
-        self.destroy_monster(spawnIds=[622,623,624,625,626,627,628,629,630])
+        self.set_mesh(trigger_ids=[705,706], visible=False)
+        self.destroy_monster(spawn_ids=[622,623,624,625,626,627,628,629,630])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[203]):
+        if self.user_detected(box_ids=[203]):
             return 몹생성(self.ctx)
 
 
 class 몹생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[622,623,624,625,626,627,628,629,630], animationEffect=False)
+        self.spawn_monster(spawn_ids=[622,623,624,625,626,627,628,629,630], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[622,623,624,625,626,627,628,629,630]):
-            self.hide_guide_summary(entityId=110)
+        if self.monster_dead(spawn_ids=[622,623,624,625,626,627,628,629,630]):
+            self.hide_guide_summary(entity_id=110)
             return 통과(self.ctx)
 
 
 class 통과(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=180)
+        self.set_timer(timer_id='1', seconds=180)
 
 
 initial_state = 대기

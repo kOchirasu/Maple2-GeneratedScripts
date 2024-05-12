@@ -8,16 +8,16 @@ class 대기(trigger_api.Trigger):
             return 생성(self.ctx)
 
     def on_exit(self) -> None:
-        self.spawn_npc_range(rangeIds=[2005,2006,2007], isAutoTargeting=True)
+        self.spawn_npc_range(range_ids=[2005,2006,2007], is_auto_targeting=True)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[4000], animationEffect=False)
-        self.spawn_npc_range(rangeIds=[2005,2006,2007], isAutoTargeting=True, randomPickCount=1)
+        self.spawn_monster(spawn_ids=[4000], auto_target=False)
+        self.spawn_npc_range(range_ids=[2005,2006,2007], is_auto_targeting=True, random_pick_count=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 생성(self.ctx)
         if self.user_value(key='WaveEnd', value=1):
             return 종료(self.ctx)

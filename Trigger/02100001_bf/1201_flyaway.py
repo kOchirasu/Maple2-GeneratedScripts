@@ -13,19 +13,19 @@ class Wait(trigger_api.Trigger):
 
 class FlyAway(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.change_monster(removeSpawnId=201, addSpawnId=1201)
+        self.change_monster(from_spawn_id=201, to_spawn_id=1201)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Quit(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[1201])
+        self.destroy_monster(spawn_ids=[1201])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Wait(self.ctx)
 
 

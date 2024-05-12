@@ -10,115 +10,114 @@ class idle(trigger_api.Trigger):
 
 class respawn_timer1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='respawntimer1', seconds=120, startDelay=1, interval=0, vOffset=0)
+        self.set_timer(timer_id='respawntimer1', seconds=120, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if self.time_expired(timerId='respawntimer1'):
+        if self.time_expired(timer_id='respawntimer1'):
             return respawn1(self.ctx)
 
 
 class respawn1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='respawntimer1')
-        self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
+        self.reset_timer(timer_id='respawntimer1')
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if not self.monster_dead(boxIds=[1999]):
+        if not self.monster_dead(spawn_ids=[1999]):
             return respawn_timer2(self.ctx)
 
 
 class respawn_timer2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='respawntimer2', seconds=120, startDelay=1, interval=0, vOffset=0)
+        self.set_timer(timer_id='respawntimer2', seconds=120, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if self.time_expired(timerId='respawntimer2'):
+        if self.time_expired(timer_id='respawntimer2'):
             return respawn2(self.ctx)
 
 
 class respawn2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='respawntimer2')
-        self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
+        self.reset_timer(timer_id='respawntimer2')
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if not self.monster_dead(boxIds=[1999]):
+        if not self.monster_dead(spawn_ids=[1999]):
             return respawn_timer3(self.ctx)
 
 
 class respawn_timer3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='respawntimer3', seconds=120, startDelay=1, interval=0, vOffset=0)
+        self.set_timer(timer_id='respawntimer3', seconds=120, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if self.time_expired(timerId='respawntimer3'):
+        if self.time_expired(timer_id='respawntimer3'):
             return respawn3(self.ctx)
 
 
 class respawn3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='respawntimer3')
-        self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
+        self.reset_timer(timer_id='respawntimer3')
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if not self.monster_dead(boxIds=[1999]):
+        if not self.monster_dead(spawn_ids=[1999]):
             return respawn_timer4(self.ctx)
 
 
 class respawn_timer4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='respawntimer4', seconds=120, startDelay=1, interval=0, vOffset=0)
+        self.set_timer(timer_id='respawntimer4', seconds=120, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if self.time_expired(timerId='respawntimer4'):
+        if self.time_expired(timer_id='respawntimer4'):
             return respawn4(self.ctx)
 
 
 class respawn4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='respawntimer4')
-        self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
+        self.reset_timer(timer_id='respawntimer4')
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if not self.monster_dead(boxIds=[1999]):
+        if not self.monster_dead(spawn_ids=[1999]):
             return respawn_timer5(self.ctx)
 
 
 class respawn_timer5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='respawntimer5', seconds=120, startDelay=1, interval=0, vOffset=0)
+        self.set_timer(timer_id='respawntimer5', seconds=120, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='respawn', value=2):
             return end(self.ctx)
-        if self.time_expired(timerId='respawntimer5'):
+        if self.time_expired(timer_id='respawntimer5'):
             return respawn5(self.ctx)
 
 
 class respawn5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='respawntimer5')
-        self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
+        self.reset_timer(timer_id='respawntimer5')
+        self.spawn_monster(spawn_ids=[301,302,303,304,305,306], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return end(self.ctx)
+        return end(self.ctx)
 
 
 class end(trigger_api.Trigger):

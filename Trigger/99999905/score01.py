@@ -4,21 +4,21 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[604], visible=False)
+        self.set_effect(trigger_ids=[604], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000413], stateValue=0):
+        if self.object_interacted(interact_ids=[10000413], state=0):
             return 점수(self.ctx)
 
 
 class 점수(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=1)
-        self.set_effect(triggerIds=[604], visible=True)
-        # self.전장점수를준다(arg1='104', arg2='50')
+        self.set_timer(timer_id='1', seconds=1)
+        self.set_effect(trigger_ids=[604], visible=True)
+        # self.allocate_battlefield_points(box_id=104, points=50)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 대기(self.ctx)
 
 

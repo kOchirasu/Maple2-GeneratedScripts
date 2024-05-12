@@ -4,7 +4,7 @@ import trigger_api
 
 class wait_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[2001]):
+        if self.user_detected(box_ids=[2001]):
             return wait_01_준비(self.ctx)
 
 
@@ -13,19 +13,19 @@ class wait_01_준비(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return wait_01_02(self.ctx)
 
 
 class wait_01_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.create_monster(spawnIds=[101], animationEffect=False)
-        self.move_user(mapId=52000173, portalId=1)
-        self.select_camera_path(pathIds=[401,402], returnView=False)
+        self.spawn_monster(spawn_ids=[101], auto_target=False)
+        self.move_user(map_id=52000173, portal_id=1)
+        self.select_camera_path(path_ids=[401,402], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 이도공간전경_01(self.ctx)
 
 
@@ -35,16 +35,16 @@ class 이도공간전경_01(trigger_api.Trigger):
         self.set_scene_skip(state=Skip_1, action='nextState')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 이도공간전경_02(self.ctx)
 
 
 class 이도공간전경_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000173_QD__52000173__0$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000173_QD__52000173__0$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=3000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 정리_01(self.ctx)
 
 
@@ -53,7 +53,7 @@ class 정리_01(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 정리_02(self.ctx)
 
 
@@ -64,7 +64,7 @@ class 정리_02(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 정리_03(self.ctx)
 
 
@@ -75,18 +75,18 @@ class Skip_1(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 정리_03(self.ctx)
 
 
 class 정리_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolationTime=0)
+        self.reset_camera(interpolation_time=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2001], questIds=[40002770], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[40002770], quest_states=[3]):
             return 이동2_01(self.ctx)
 
 
@@ -96,13 +96,13 @@ class 이동2_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 이동2_02(self.ctx)
 
 
 class 이동2_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000174, portalId=2)
+        self.move_user(map_id=52000174, portal_id=2)
 
 
 initial_state = wait_01

@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[301], visible=False, arg3=0, delay=0)
+        self.set_mesh(trigger_ids=[301], visible=False, start_delay=0, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_in_combat(boxIds=[99]):
+        if self.monster_in_combat(spawn_ids=[99]):
             return None # Missing State: 카운트
 
 

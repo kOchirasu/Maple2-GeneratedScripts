@@ -4,86 +4,86 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3101], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3103], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[101]):
+        if self.user_detected(box_ids=[101]):
             return 지역랜덤(self.ctx)
 
 
 class 지역랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[101]):
+        if not self.user_detected(box_ids=[101]):
             return 종료(self.ctx)
-        if self.random_condition(rate=33):
-            self.set_mesh(triggerIds=[3101], visible=True, arg3=0, delay=0, scale=0)
+        if self.random_condition(weight=33):
+            self.set_mesh(trigger_ids=[3101], visible=True, start_delay=0, interval=0, fade=0)
             return A지역(self.ctx)
-        if self.random_condition(rate=33):
-            self.set_mesh(triggerIds=[3102], visible=True, arg3=0, delay=0, scale=0)
+        if self.random_condition(weight=33):
+            self.set_mesh(trigger_ids=[3102], visible=True, start_delay=0, interval=0, fade=0)
             return B지역(self.ctx)
-        if self.random_condition(rate=34):
-            self.set_mesh(triggerIds=[3103], visible=True, arg3=0, delay=0, scale=0)
+        if self.random_condition(weight=34):
+            self.set_mesh(trigger_ids=[3103], visible=True, start_delay=0, interval=0, fade=0)
             return C지역(self.ctx)
 
 
 class A지역(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10101]):
+        if self.user_detected(box_ids=[10101]):
             return 스킬랜덤(self.ctx)
 
 
 class B지역(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10102]):
+        if self.user_detected(box_ids=[10102]):
             return 스킬랜덤(self.ctx)
 
 
 class C지역(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10103]):
+        if self.user_detected(box_ids=[10103]):
             return 스킬랜덤(self.ctx)
 
 
 class 스킬랜덤(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_achievement(triggerId=199, type='trigger', achieve='random_buff_box')
+        self.set_achievement(trigger_id=199, type='trigger', achieve='random_buff_box')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[101]):
+        if not self.user_detected(box_ids=[101]):
             return 종료(self.ctx)
         """
-        if self.random_condition(rate=20): # 소형화 사용 안함
-            self.add_buff(boxIds=[199], skillId=49179081, level=1, isPlayer=False, isSkillSet=False)
+        if self.random_condition(weight=20): # 소형화 사용 안함
+            self.add_buff(box_ids=[199], skill_id=49179081, level=1, is_player=False, is_skill_set=False)
             return 대기시간(self.ctx)
         """
-        if self.random_condition(rate=40):
+        if self.random_condition(weight=40):
             # 이속증가
-            self.add_buff(boxIds=[199], skillId=49179051, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(box_ids=[199], skill_id=49179051, level=1, is_player=False, is_skill_set=False)
             return 대기시간(self.ctx)
-        if self.random_condition(rate=30):
+        if self.random_condition(weight=30):
             # 무적 20
-            self.add_buff(boxIds=[199], skillId=70000085, level=1, isSkillSet=False)
+            self.add_buff(box_ids=[199], skill_id=70000085, level=1, is_skill_set=False)
             return 대기시간(self.ctx)
-        if self.random_condition(rate=15):
+        if self.random_condition(weight=15):
             # 이속감소 10
-            self.add_buff(boxIds=[199], skillId=49179061, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(box_ids=[199], skill_id=49179061, level=1, is_player=False, is_skill_set=False)
             return 대기시간(self.ctx)
-        if self.random_condition(rate=15):
+        if self.random_condition(weight=15):
             # 혼란 10
-            self.add_buff(boxIds=[199], skillId=49179071, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(box_ids=[199], skill_id=49179071, level=1, is_player=False, is_skill_set=False)
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3101], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3103], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3101], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=20000):
+        if self.wait_tick(wait_tick=20000):
             return 시작대기중(self.ctx)
 
 

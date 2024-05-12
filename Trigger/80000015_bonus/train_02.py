@@ -4,12 +4,12 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3200,3210], visible=True, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3704,3705,3706], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3200,3210], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3704,3705,3706], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[123]):
+        if self.user_detected(box_ids=[123]):
             return 아이템체크(self.ctx)
 
 
@@ -17,72 +17,72 @@ class 아이템체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='itemSpawn', value=1):
             return 생성(self.ctx)
-        if self.wait_tick(waitTick=200):
-            self.create_item(spawnIds=[9026,9027,9028,9029,9030,9031], arg5=15)
+        if self.wait_tick(wait_tick=200):
+            self.create_item(spawn_ids=[9026,9027,9028,9029,9030,9031], arg5=15)
             self.set_user_value(key='itemSpawn', value=1)
             return 생성(self.ctx)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1201], animationEffect=False)
-        self.set_mesh(triggerIds=[3200], visible=False, arg3=500, delay=0, scale=0)
-        self.add_buff(boxIds=[1201], skillId=60170051, level=1, isPlayer=True, isSkillSet=True)
+        self.spawn_monster(spawn_ids=[1201], auto_target=False)
+        self.set_mesh(trigger_ids=[3200], visible=False, start_delay=500, interval=0, fade=0)
+        self.add_buff(box_ids=[1201], skill_id=60170051, level=1, is_player=True, is_skill_set=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 삼(self.ctx)
 
 
 class 삼(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3706], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3706], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 이(self.ctx)
 
 
 class 이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3706], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3705], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3706], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3705], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 일(self.ctx)
 
 
 class 일(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3705], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3704], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3705], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3704], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 출발(self.ctx)
 
 
 class 출발(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3704], visible=False, arg3=0, delay=0, scale=0)
-        self.move_npc(spawnId=1201, patrolName='MS2PatrolData1201A')
+        self.set_mesh(trigger_ids=[3704], visible=False, start_delay=0, interval=0, fade=0)
+        self.move_npc(spawn_id=1201, patrol_name='MS2PatrolData1201A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=124, spawnIds=[1201]):
+        if self.npc_detected(box_id=124, spawn_ids=[1201]):
             return 소멸(self.ctx)
 
 
 class 소멸(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
-            self.destroy_monster(spawnIds=[1201])
+        if self.wait_tick(wait_tick=1000):
+            self.destroy_monster(spawn_ids=[1201])
             return 딜레이(self.ctx)
 
 
 class 딜레이(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return 대기(self.ctx)
 
 

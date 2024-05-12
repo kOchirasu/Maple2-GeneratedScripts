@@ -8,23 +8,23 @@ class Wait(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9001]):
+        if self.user_detected(box_ids=[9001]):
             return 전경씬01(self.ctx)
 
 
 class 전경씬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[500], animationEffect=False) # 바사라첸
-        self.create_monster(spawnIds=[501], animationEffect=False) # 바사라첸
-        self.create_monster(spawnIds=[502], animationEffect=False) # 바사라첸
-        self.move_user(mapId=52000169, portalId=50)
+        self.spawn_monster(spawn_ids=[500], auto_target=False) # 바사라첸
+        self.spawn_monster(spawn_ids=[501], auto_target=False) # 바사라첸
+        self.spawn_monster(spawn_ids=[502], auto_target=False) # 바사라첸
+        self.move_user(map_id=52000169, portal_id=50)
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera_path(pathIds=[4000,4001,4002], returnView=False)
+        self.select_camera_path(path_ids=[4000,4001,4002], return_view=False)
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 전경씬02(self.ctx)
 
 
@@ -33,7 +33,7 @@ class 전경씬02(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Quit01(self.ctx)
 
 
@@ -44,7 +44,7 @@ class Quit01(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit02(self.ctx)
 
 
@@ -55,7 +55,7 @@ class Skip_1(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit02(self.ctx)
 
 
@@ -63,11 +63,11 @@ class Quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolationTime=0)
-        self.show_guide_summary(entityId=52001691, textId=52001691, duration=10000)
+        self.reset_camera(interpolation_time=0)
+        self.show_guide_summary(entity_id=52001691, text_id=52001691, duration=10000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9001], questIds=[20002376], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[20002376], quest_states=[3]):
             return 프론티어재단으로01(self.ctx)
 
 
@@ -77,13 +77,13 @@ class 프론티어재단으로01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 프론티어재단으로02(self.ctx)
 
 
 class 프론티어재단으로02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000186, portalId=1)
+        self.move_user(map_id=52000186, portal_id=1)
 
 
 initial_state = Wait

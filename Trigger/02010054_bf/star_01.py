@@ -4,21 +4,21 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3301,3302,3303,3304,3305], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3301,3302,3303,3304,3305], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000856], stateValue=0):
+        if self.object_interacted(interact_ids=[10000856], state=0):
             return 소멸(self.ctx)
 
 
 class 소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3301,3302,3303,3304,3305], visible=True, arg3=0, delay=500, scale=3)
-        self.set_timer(timerId='3', seconds=3)
+        self.set_mesh(trigger_ids=[3301,3302,3303,3304,3305], visible=True, start_delay=0, interval=500, fade=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
-            self.set_mesh(triggerIds=[3301,3302,3303,3304,3305], visible=False, arg3=0, delay=900, scale=2)
+        if self.time_expired(timer_id='3'):
+            self.set_mesh(trigger_ids=[3301,3302,3303,3304,3305], visible=False, start_delay=0, interval=900, fade=2)
             return 종료(self.ctx)
 
 

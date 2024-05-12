@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[103], questIds=[50001642], questStates=[2]):
+        if self.quest_user_detected(box_ids=[103], quest_ids=[50001642], quest_states=[2]):
             return 포털활성화(self.ctx)
 
 
@@ -19,10 +19,10 @@ class 포털활성화(trigger_api.Trigger):
 
 class 가이드활성화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.guide_event(eventId=10003067)
+        self.guide_event(event_id=10003067)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return 종료(self.ctx)
 
 

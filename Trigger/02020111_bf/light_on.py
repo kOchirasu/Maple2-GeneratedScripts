@@ -12,14 +12,14 @@ class 시작(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 라이트_변경(self.ctx)
 
 
 class 라이트_변경(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[183,189,201])
-        self.set_directional_light(diffuseColor=[192,210,211], specularColor=[170,170,170])
+        self.set_directional_light(diffuse_color=[192,210,211], specular_color=[170,170,170])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Light_On_1', value=1) and self.user_value(key='Light_On_2', value=1) and self.user_value(key='Light_On_3', value=1) and self.user_value(key='Light_On_4', value=1):

@@ -4,56 +4,56 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3107,3108,3109,3110,3111,3112], visible=True, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[3115,3116], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000989], state=2)
-        self.set_interact_object(triggerIds=[10000990], state=2)
-        self.set_interact_object(triggerIds=[10000991], state=2)
-        self.set_interact_object(triggerIds=[10000992], state=2)
-        self.set_interact_object(triggerIds=[10000993], state=2)
-        self.set_interact_object(triggerIds=[10000994], state=2)
-        self.set_interact_object(triggerIds=[10000997], state=2)
-        self.set_interact_object(triggerIds=[10000998], state=2)
+        self.set_mesh(trigger_ids=[3107,3108,3109,3110,3111,3112], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[3115,3116], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000989], state=2)
+        self.set_interact_object(trigger_ids=[10000990], state=2)
+        self.set_interact_object(trigger_ids=[10000991], state=2)
+        self.set_interact_object(trigger_ids=[10000992], state=2)
+        self.set_interact_object(trigger_ids=[10000993], state=2)
+        self.set_interact_object(trigger_ids=[10000994], state=2)
+        self.set_interact_object(trigger_ids=[10000997], state=2)
+        self.set_interact_object(trigger_ids=[10000998], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[1002]):
+        if self.user_detected(box_ids=[1002]):
             return 전투01(self.ctx)
 
 
 class 전투01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[21101,21102,21103,21104,21105,21106,21107,21201,21202,21203,21204,21205], animationEffect=False)
+        self.spawn_monster(spawn_ids=[21101,21102,21103,21104,21105,21106,21107,21201,21202,21203,21204,21205], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[21101,21102,21103,21104,21105,21106,21107,21201,21202,21203,21204,21205]):
+        if self.monster_dead(spawn_ids=[21101,21102,21103,21104,21105,21106,21107,21201,21202,21203,21204,21205]):
             return 전투02(self.ctx)
 
 
 class 전투02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3107,3108], visible=False, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000989], state=1)
-        self.set_interact_object(triggerIds=[10000990], state=1)
-        self.create_monster(spawnIds=[22101,22102,22103,22104,22105,22106,22107,22201,22202,22203,22204,22205,22206], animationEffect=False)
+        self.set_mesh(trigger_ids=[3107,3108], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000989], state=1)
+        self.set_interact_object(trigger_ids=[10000990], state=1)
+        self.spawn_monster(spawn_ids=[22101,22102,22103,22104,22105,22106,22107,22201,22202,22203,22204,22205,22206], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[22101,22102,22103,22104,22105,22106,22107,22201,22202,22203,22204,22205,22206]):
+        if self.monster_dead(spawn_ids=[22101,22102,22103,22104,22105,22106,22107,22201,22202,22203,22204,22205,22206]):
             return 전투03(self.ctx)
 
 
 class 전투03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3109,3110], visible=False, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000991], state=1)
-        self.set_interact_object(triggerIds=[10000992], state=1)
-        self.create_monster(spawnIds=[23101,23102,23103,23104,23105,23106,23107,23108,23201,23202,23203,23204,23205], animationEffect=False)
+        self.set_mesh(trigger_ids=[3109,3110], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000991], state=1)
+        self.set_interact_object(trigger_ids=[10000992], state=1)
+        self.spawn_monster(spawn_ids=[23101,23102,23103,23104,23105,23106,23107,23108,23201,23202,23203,23204,23205], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[23101,23102,23103,23104,23105,23106,23107,23108,23201,23202,23203,23204,23205]):
-            self.set_mesh(triggerIds=[3111,3112], visible=False, arg3=0, delay=0, scale=0)
-            self.set_interact_object(triggerIds=[10000993], state=1)
-            self.set_interact_object(triggerIds=[10000994], state=1)
-            self.set_user_value(triggerId=9999901, key='main', value=1)
+        if self.monster_dead(spawn_ids=[23101,23102,23103,23104,23105,23106,23107,23108,23201,23202,23203,23204,23205]):
+            self.set_mesh(trigger_ids=[3111,3112], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_interact_object(trigger_ids=[10000993], state=1)
+            self.set_interact_object(trigger_ids=[10000994], state=1)
+            self.set_user_value(trigger_id=9999901, key='main', value=1)
             return 합류대기(self.ctx)
 
 
@@ -65,13 +65,13 @@ class 합류대기(trigger_api.Trigger):
 
 class 전투04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[51101,51102,51103,51104,51105,51106,51107,51108,51201,51202,51203,51204,51205,51206], animationEffect=False)
+        self.spawn_monster(spawn_ids=[51101,51102,51103,51104,51105,51106,51107,51108,51201,51202,51203,51204,51205,51206], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[51101,51102,51103,51104,51105,51106,51107,51108,51201,51202,51203,51204,51205,51206]):
-            self.set_mesh(triggerIds=[3115,3116], visible=False, arg3=0, delay=0, scale=0)
-            self.set_interact_object(triggerIds=[10000997], state=1)
-            self.set_interact_object(triggerIds=[10000998], state=1)
+        if self.monster_dead(spawn_ids=[51101,51102,51103,51104,51105,51106,51107,51108,51201,51202,51203,51204,51205,51206]):
+            self.set_mesh(trigger_ids=[3115,3116], visible=False, start_delay=0, interval=0, fade=0)
+            self.set_interact_object(trigger_ids=[10000997], state=1)
+            self.set_interact_object(trigger_ids=[10000998], state=1)
             return 종료(self.ctx)
 
 

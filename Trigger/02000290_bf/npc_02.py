@@ -4,38 +4,38 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000459], state=1)
-        self.create_monster(spawnIds=[902])
+        self.set_interact_object(trigger_ids=[10000459], state=1)
+        self.spawn_monster(spawn_ids=[902])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000459], stateValue=0):
+        if self.object_interacted(interact_ids=[10000459], state=0):
             return NPC대사(self.ctx)
 
 
 class NPC대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='2', seconds=2)
-        self.set_conversation(type=1, spawnId=902, script='$02000290_BF__NPC_02__0$', arg4=2)
+        self.set_timer(timer_id='2', seconds=2)
+        self.set_dialogue(type=1, spawn_id=902, script='$02000290_BF__NPC_02__0$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return NPC이동(self.ctx)
 
 
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='3', seconds=3)
-        self.move_npc(spawnId=902, patrolName='MS2PatrolData902')
-        self.set_conversation(type=1, spawnId=902, script='$02000290_BF__NPC_02__1$', arg4=2)
+        self.set_timer(timer_id='3', seconds=3)
+        self.move_npc(spawn_id=902, patrol_name='MS2PatrolData902')
+        self.set_dialogue(type=1, spawn_id=902, script='$02000290_BF__NPC_02__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return NPC소멸(self.ctx)
 
 
 class NPC소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[902])
+        self.destroy_monster(spawn_ids=[902])
 
 
 initial_state = 시작대기중

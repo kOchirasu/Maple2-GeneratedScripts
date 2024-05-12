@@ -24,10 +24,10 @@ class Play(trigger_api.Trigger):
 
 class RemoveLight01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(boxIds=[9001], skillId=70000103, level=1)
+        self.add_buff(box_ids=[9001], skill_id=70000103, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Wait(self.ctx)
 
 

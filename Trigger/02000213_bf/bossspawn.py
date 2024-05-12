@@ -4,29 +4,29 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
-        self.set_interact_object(triggerIds=[10000259,10000260,10000261], state=1)
+        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
+        self.set_interact_object(trigger_ids=[10000259,10000260,10000261], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000259,10000260,10000261], stateValue=2):
+        if self.object_interacted(interact_ids=[10000259,10000260,10000261], state=2):
             return 보스등장(self.ctx)
 
 
 class 보스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1099])
+        self.spawn_monster(spawn_ids=[1099])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[1099]):
+        if self.monster_dead(spawn_ids=[1099]):
             return 종료체크(self.ctx)
 
     def on_exit(self) -> None:
-        self.destroy_monster(spawnIds=[1099])
+        self.destroy_monster(spawn_ids=[1099])
 
 
 class 종료체크(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = 시작대기중

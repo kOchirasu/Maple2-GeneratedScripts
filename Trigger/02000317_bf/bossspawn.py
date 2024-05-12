@@ -7,155 +7,155 @@ from dungeon_common.checkusercount import *
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False, arg5=False)
-        self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False, arg5=False)
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False, arg5=False)
+        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False, arg5=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=101, minUsers='1'):
+        if self.count_users(box_id=101, min_users='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False, arg5=False)
-        self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False, arg5=False)
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False, arg5=False)
-        self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=True, arg3=0, delay=0, scale=0)
+        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False, arg5=False)
+        self.set_mesh(trigger_ids=[2001,2002,2003,2004], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Start(self.ctx)
 
 
 class Start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Step_1(self.ctx)
 
 
 class Step_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
-        self.set_mesh(triggerIds=[1,2,3,4,5,6,7], visible=False) # 다리안보임
-        self.create_monster(spawnIds=[201], animationEffect=False)
-        self.create_monster(spawnIds=[202], animationEffect=False)
-        self.create_monster(spawnIds=[203], animationEffect=False)
-        self.create_monster(spawnIds=[204], animationEffect=False)
-        self.create_monster(spawnIds=[205], animationEffect=False)
-        self.create_monster(spawnIds=[206], animationEffect=False)
-        self.create_monster(spawnIds=[207], animationEffect=False)
-        self.create_monster(spawnIds=[208], animationEffect=False)
-        self.create_monster(spawnIds=[301], animationEffect=False)
-        self.create_monster(spawnIds=[302], animationEffect=False)
-        self.create_monster(spawnIds=[303], animationEffect=False)
-        self.create_monster(spawnIds=[304], animationEffect=False)
-        self.create_monster(spawnIds=[305], animationEffect=False)
-        self.create_monster(spawnIds=[306], animationEffect=False)
-        self.create_monster(spawnIds=[307], animationEffect=False)
-        self.create_monster(spawnIds=[401], animationEffect=False)
-        self.create_monster(spawnIds=[402], animationEffect=False)
-        self.create_monster(spawnIds=[403], animationEffect=False)
-        self.create_monster(spawnIds=[404], animationEffect=False)
-        self.create_monster(spawnIds=[405], animationEffect=False)
-        self.create_monster(spawnIds=[406], animationEffect=False)
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
+        self.set_mesh(trigger_ids=[1,2,3,4,5,6,7], visible=False) # 다리안보임
+        self.spawn_monster(spawn_ids=[201], auto_target=False)
+        self.spawn_monster(spawn_ids=[202], auto_target=False)
+        self.spawn_monster(spawn_ids=[203], auto_target=False)
+        self.spawn_monster(spawn_ids=[204], auto_target=False)
+        self.spawn_monster(spawn_ids=[205], auto_target=False)
+        self.spawn_monster(spawn_ids=[206], auto_target=False)
+        self.spawn_monster(spawn_ids=[207], auto_target=False)
+        self.spawn_monster(spawn_ids=[208], auto_target=False)
+        self.spawn_monster(spawn_ids=[301], auto_target=False)
+        self.spawn_monster(spawn_ids=[302], auto_target=False)
+        self.spawn_monster(spawn_ids=[303], auto_target=False)
+        self.spawn_monster(spawn_ids=[304], auto_target=False)
+        self.spawn_monster(spawn_ids=[305], auto_target=False)
+        self.spawn_monster(spawn_ids=[306], auto_target=False)
+        self.spawn_monster(spawn_ids=[307], auto_target=False)
+        self.spawn_monster(spawn_ids=[401], auto_target=False)
+        self.spawn_monster(spawn_ids=[402], auto_target=False)
+        self.spawn_monster(spawn_ids=[403], auto_target=False)
+        self.spawn_monster(spawn_ids=[404], auto_target=False)
+        self.spawn_monster(spawn_ids=[405], auto_target=False)
+        self.spawn_monster(spawn_ids=[406], auto_target=False)
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[105]):
+        if self.user_detected(box_ids=[105]):
             return Step_1_B_Ready(self.ctx)
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_1_B_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
+        self.show_guide_summary(entity_id=100, text_id=20031701, duration=3000) # 타우스를 처치하세요.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[205,208]):
+        if self.monster_dead(spawn_ids=[205,208]):
             return Step_1_B(self.ctx)
 
 
 class Step_1_B(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[106]):
+        if self.user_detected(box_ids=[106]):
             return Step_1_C(self.ctx)
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_1_C(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
+        self.show_guide_summary(entity_id=100, text_id=20031701, duration=3000) # 타우스를 처치하세요.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[301,302]):
+        if self.monster_dead(spawn_ids=[301,302]):
             return Step_1_D_Ready(self.ctx)
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_1_D_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[8,9,10,11], visible=False) # 다리안보임
+        self.set_mesh(trigger_ids=[8,9,10,11], visible=False) # 다리안보임
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[107]):
+        if self.user_detected(box_ids=[107]):
             return Step_1_D(self.ctx)
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_1_D(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
+        self.show_guide_summary(entity_id=100, text_id=20031701, duration=3000) # 타우스를 처치하세요.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[405]):
+        if self.monster_dead(spawn_ids=[405]):
             return Step_1_E(self.ctx)
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_1_E(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=5, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[104]):
+        if self.user_detected(box_ids=[104]):
             return Step_2(self.ctx)
 
 
 class Step_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
-        self.create_monster(spawnIds=[100], animationEffect=False)
+        self.set_portal(portal_id=7, visible=True, enable=True, minimap_visible=True)
+        self.spawn_monster(spawn_ids=[100], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[100]):
+        if self.monster_dead(spawn_ids=[100]):
             return 종료체크(self.ctx)
 
     def on_exit(self) -> None:
-        self.destroy_monster(spawnIds=[100])
+        self.destroy_monster(spawn_ids=[100])
 
 
 class 종료체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             self.dungeon_clear()
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
-        self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=8, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = idle

@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=690000, enable=False)
+        self.select_camera(trigger_id=690000, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Phase_4_Camera_01', value=1):
@@ -13,10 +13,10 @@ class 대기(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=690000, enable=True)
+        self.select_camera(trigger_id=690000, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 리셋(self.ctx)
 
 

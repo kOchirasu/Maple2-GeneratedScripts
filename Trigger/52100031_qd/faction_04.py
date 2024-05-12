@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[601], visible=False)
-        self.remove_buff(boxId=199, skillId=99910160)
-        self.set_interact_object(triggerIds=[10002066], state=2)
-        self.set_interact_object(triggerIds=[10002070], state=2)
+        self.set_effect(trigger_ids=[601], visible=False)
+        self.remove_buff(box_id=199, skill_id=99910160)
+        self.set_interact_object(trigger_ids=[10002066], state=2)
+        self.set_interact_object(trigger_ids=[10002070], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='faction04', value=1):
@@ -19,17 +19,17 @@ class 인원수체크(trigger_api.Trigger):
         self.set_skip(state=반응대기)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.destroy_monster(spawnIds=[2902])
+        self.destroy_monster(spawn_ids=[2902])
         # self.set_cinematic_ui(type=1)
         # self.set_cinematic_ui(type=3)
-        self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
-        self.select_camera(triggerId=303, enable=True)
-        self.create_monster(spawnIds=[1300], animationEffect=True)
-        self.create_monster(spawnIds=[1301,1302,1303,1304,1305], animationEffect=False)
-        self.set_conversation(type=1, spawnId=1301, script='$52100031_QD__FACTION_04__0$', arg4=5, arg5=0)
+        self.add_buff(box_ids=[199], skill_id=70000107, level=1, is_player=False, is_skill_set=False)
+        self.select_camera(trigger_id=303, enable=True)
+        self.spawn_monster(spawn_ids=[1300], auto_target=True)
+        self.spawn_monster(spawn_ids=[1301,1302,1303,1304,1305], auto_target=False)
+        self.set_dialogue(type=1, spawn_id=1301, script='$52100031_QD__FACTION_04__0$', time=5, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3500):
+        if self.wait_tick(wait_tick=3500):
             return 반응대기(self.ctx)
 
 
@@ -39,12 +39,12 @@ class 반응대기(trigger_api.Trigger):
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.show_guide_summary(entityId=20040104, textId=20040104, duration=2500)
+        self.show_guide_summary(entity_id=20040104, text_id=20040104, duration=2500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.remove_buff(boxId=199, skillId=70000107)
+        self.remove_buff(box_id=199, skill_id=70000107)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolationTime=0)
+        self.reset_camera(interpolation_time=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='NPClanding', value=1):
@@ -65,11 +65,11 @@ class 룸체크(trigger_api.Trigger):
 """
 class 던전(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10002066], state=1)
-        self.set_effect(triggerIds=[601], visible=True)
+        self.set_interact_object(trigger_ids=[10002066], state=1)
+        self.set_effect(trigger_ids=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2500):
+        if self.wait_tick(wait_tick=2500):
             return 보스소환(self.ctx)
 
 """
@@ -77,28 +77,28 @@ class 던전(trigger_api.Trigger):
 
 class 퀘스트(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10002070], state=1)
-        self.set_effect(triggerIds=[601], visible=True)
+        self.set_interact_object(trigger_ids=[10002070], state=1)
+        self.set_effect(trigger_ids=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 보스소환(self.ctx)
 
 
 class 보스소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_guide_summary(entityId=20040107, textId=20040107, duration=3000)
+        self.show_guide_summary(entity_id=20040107, text_id=20040107, duration=3000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.create_monster(spawnIds=[2099], animationEffect=False)
-        self.set_user_value(triggerId=99999100, key='bossSpawn', value=1)
-        self.destroy_monster(spawnIds=[1300], arg2=False)
+        self.spawn_monster(spawn_ids=[2099], auto_target=False)
+        self.set_user_value(trigger_id=99999100, key='bossSpawn', value=1)
+        self.destroy_monster(spawn_ids=[1300], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DungeonClear', value=1):
-            self.destroy_monster(spawnIds=[1300,1301,1302,1303,1304,1305], arg2=False)
-            self.set_interact_object(triggerIds=[10002066], state=0)
-            self.set_interact_object(triggerIds=[10002070], state=0)
-            self.remove_buff(boxId=199, skillId=99910160)
+            self.destroy_monster(spawn_ids=[1300,1301,1302,1303,1304,1305], arg2=False)
+            self.set_interact_object(trigger_ids=[10002066], state=0)
+            self.set_interact_object(trigger_ids=[10002070], state=0)
+            self.remove_buff(box_id=199, skill_id=99910160)
             return 종료(self.ctx)
 
 

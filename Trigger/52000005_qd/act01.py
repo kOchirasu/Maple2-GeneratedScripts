@@ -4,23 +4,23 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[103], animationEffect=True)
-        self.create_monster(spawnIds=[202], animationEffect=True)
+        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[202], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[10002781], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[10002781], quest_states=[1]):
             return 딜레이01(self.ctx)
 
 
 class 딜레이01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
-        self.destroy_monster(spawnIds=[103])
-        self.destroy_monster(spawnIds=[202])
-        self.set_timer(timerId='1', seconds=2)
+        self.destroy_monster(spawn_ids=[103])
+        self.destroy_monster(spawn_ids=[202])
+        self.set_timer(timer_id='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 영감대화준비(self.ctx)
 
 
@@ -31,18 +31,17 @@ class 영감대화준비(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 영감대화01(self.ctx)
+        return 영감대화01(self.ctx)
 
 
 class 영감대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='2', seconds=3)
-        self.set_conversation(type=2, spawnId=11000031, script='$52000005_QD__ACT01__0$', arg4=3)
+        self.set_timer(timer_id='2', seconds=3)
+        self.set_dialogue(type=2, spawn_id=11000031, script='$52000005_QD__ACT01__0$', time=3)
         self.set_skip(state=영감대화02대기)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 영감대화02대기(self.ctx)
 
 
@@ -51,62 +50,61 @@ class 영감대화02대기(trigger_api.Trigger):
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 영감대화02(self.ctx)
+        return 영감대화02(self.ctx)
 
 
 class 영감대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='3', seconds=3)
-        self.set_conversation(type=2, spawnId=11000001, script='$52000005_QD__ACT01__1$', arg4=3)
-        self.create_monster(spawnIds=[101], animationEffect=True)
-        self.create_monster(spawnIds=[201], animationEffect=True)
+        self.set_timer(timer_id='3', seconds=3)
+        self.set_dialogue(type=2, spawn_id=11000001, script='$52000005_QD__ACT01__1$', time=3)
+        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[201], auto_target=True)
         self.set_skip(state=여제입장01)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return 여제입장01(self.ctx)
 
 
 class 여제입장01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_timer(timerId='10', seconds=1)
-        self.select_camera(triggerId=601, enable=True)
+        self.set_timer(timer_id='10', seconds=1)
+        self.select_camera(trigger_id=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
+        if self.time_expired(timer_id='10'):
             return 딜레이03(self.ctx)
 
 
 class 딜레이03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='12', seconds=2)
+        self.set_timer(timer_id='12', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='12'):
+        if self.time_expired(timer_id='12'):
             return 여제대화01(self.ctx)
 
 
 class 여제대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='20', seconds=3)
-        self.set_conversation(type=2, spawnId=11000075, script='$52000005_QD__ACT01__2$', arg4=3)
+        self.set_timer(timer_id='20', seconds=3)
+        self.set_dialogue(type=2, spawn_id=11000075, script='$52000005_QD__ACT01__2$', time=3)
         self.set_skip(state=영상준비)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='20'):
+        if self.time_expired(timer_id='20'):
             return 영상준비(self.ctx)
 
 
 class 영상준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        self.set_timer(timerId='21', seconds=3)
-        self.select_camera_path(pathIds=[601,602], returnView=False)
+        self.set_timer(timer_id='21', seconds=3)
+        self.select_camera_path(path_ids=[601,602], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='21'):
+        if self.time_expired(timer_id='21'):
             return 영상재생(self.ctx)
 
 
@@ -116,9 +114,9 @@ class 영상재생(trigger_api.Trigger):
         self.widget_action(type='SceneMovie', func='Clear')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.play_scene_movie(fileName='lumieragonhistory.swf', movieId=1)
-        self.destroy_monster(spawnIds=[101])
-        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.play_scene_movie(file_name='lumieragonhistory.swf', movie_id=1)
+        self.destroy_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -127,14 +125,14 @@ class 영상재생(trigger_api.Trigger):
 
 class 영상종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='31', seconds=4)
+        self.set_timer(timer_id='31', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_conversation(type=2, spawnId=11000075, script='$52000005_QD__ACT01__3$', arg4=4)
+        self.set_dialogue(type=2, spawn_id=11000075, script='$52000005_QD__ACT01__3$', time=4)
         self.set_skip(state=연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='31'):
+        if self.time_expired(timer_id='31'):
             return 연출종료(self.ctx)
 
 
@@ -143,15 +141,14 @@ class 연출종료(trigger_api.Trigger):
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 업적발생(self.ctx)
+        return 업적발생(self.ctx)
 
 
 class 업적발생(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_achievement(triggerId=9001, type='trigger', achieve='Lumieragon_History')
-        self.select_camera(triggerId=601, enable=False)
-        self.select_camera(triggerId=602, enable=False)
+        self.set_achievement(trigger_id=9001, type='trigger', achieve='Lumieragon_History')
+        self.select_camera(trigger_id=601, enable=False)
+        self.select_camera(trigger_id=602, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

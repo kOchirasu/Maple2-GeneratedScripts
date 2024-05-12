@@ -4,82 +4,81 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[300], animationEffect=False)
-        self.set_actor(triggerId=301, visible=True, initialSequence='Emotion_Failure_Idle_A')
-        self.set_actor(triggerId=30301, visible=True, initialSequence='Attack_Idle_A')
-        self.set_actor(triggerId=30302, visible=True, initialSequence='Attack_02_A')
-        self.set_actor(triggerId=30303, visible=True, initialSequence='Attack_02_A')
-        self.set_actor(triggerId=30304, visible=True, initialSequence='Attack_Idle_A')
-        self.set_actor(triggerId=30305, visible=True, initialSequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[300], auto_target=False)
+        self.set_actor(trigger_id=301, visible=True, initial_sequence='Emotion_Failure_Idle_A')
+        self.set_actor(trigger_id=30301, visible=True, initial_sequence='Attack_Idle_A')
+        self.set_actor(trigger_id=30302, visible=True, initial_sequence='Attack_02_A')
+        self.set_actor(trigger_id=30303, visible=True, initial_sequence='Attack_02_A')
+        self.set_actor(trigger_id=30304, visible=True, initial_sequence='Attack_Idle_A')
+        self.set_actor(trigger_id=30305, visible=True, initial_sequence='Attack_02_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 주민구출(self.ctx)
+        return 주민구출(self.ctx)
 
 
 class 주민구출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000355], state=1)
+        self.set_interact_object(trigger_ids=[10000355], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000355], stateValue=0):
+        if self.object_interacted(interact_ids=[10000355], state=0):
             return 문열림(self.ctx)
 
 
 class 문열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='10', seconds=3)
-        self.set_conversation(type=1, spawnId=300, script='$02000230_BF__SAVE_03__0$', arg4=2, arg5=0)
-        self.set_actor(triggerId=30301, visible=False, initialSequence='Attack_Idle_A')
-        self.create_monster(spawnIds=[30311], animationEffect=True)
-        self.set_actor(triggerId=30302, visible=False, initialSequence='Attack_02_A')
-        self.create_monster(spawnIds=[30312], animationEffect=True)
-        self.set_actor(triggerId=30303, visible=False, initialSequence='Attack_02_A')
-        self.create_monster(spawnIds=[30313], animationEffect=True)
-        self.set_actor(triggerId=30304, visible=False, initialSequence='Attack_Idle_A')
-        self.create_monster(spawnIds=[30314], animationEffect=True)
-        self.set_actor(triggerId=30305, visible=False, initialSequence='Attack_02_A')
-        self.create_monster(spawnIds=[30315], animationEffect=True)
-        self.set_conversation(type=1, spawnId=30311, script='$02000230_BF__SAVE_03__1$', arg4=2, arg5=1)
-        self.set_conversation(type=1, spawnId=30313, script='$02000230_BF__SAVE_03__2$', arg4=2, arg5=2)
+        self.set_timer(timer_id='10', seconds=3)
+        self.set_dialogue(type=1, spawn_id=300, script='$02000230_BF__SAVE_03__0$', time=2, arg5=0)
+        self.set_actor(trigger_id=30301, visible=False, initial_sequence='Attack_Idle_A')
+        self.spawn_monster(spawn_ids=[30311], auto_target=True)
+        self.set_actor(trigger_id=30302, visible=False, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[30312], auto_target=True)
+        self.set_actor(trigger_id=30303, visible=False, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[30313], auto_target=True)
+        self.set_actor(trigger_id=30304, visible=False, initial_sequence='Attack_Idle_A')
+        self.spawn_monster(spawn_ids=[30314], auto_target=True)
+        self.set_actor(trigger_id=30305, visible=False, initial_sequence='Attack_02_A')
+        self.spawn_monster(spawn_ids=[30315], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=30311, script='$02000230_BF__SAVE_03__1$', time=2, arg5=1)
+        self.set_dialogue(type=1, spawn_id=30313, script='$02000230_BF__SAVE_03__2$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
+        if self.time_expired(timer_id='10'):
             return 도망과공격(self.ctx)
 
 
 class 도망과공격(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[300])
-        self.set_actor(triggerId=301, visible=False, initialSequence='Emotion_Failure_Idle_A')
-        self.create_monster(spawnIds=[311], animationEffect=False)
-        self.set_conversation(type=1, spawnId=311, script='$02000230_BF__SAVE_03__3$', arg4=2, arg5=0)
-        self.move_npc(spawnId=311, patrolName='MS2PatrolData_311_11000689')
-        self.set_conversation(type=1, spawnId=311, script='$02000230_BF__SAVE_03__4$', arg4=2, arg5=2)
+        self.destroy_monster(spawn_ids=[300])
+        self.set_actor(trigger_id=301, visible=False, initial_sequence='Emotion_Failure_Idle_A')
+        self.spawn_monster(spawn_ids=[311], auto_target=False)
+        self.set_dialogue(type=1, spawn_id=311, script='$02000230_BF__SAVE_03__3$', time=2, arg5=0)
+        self.move_npc(spawn_id=311, patrol_name='MS2PatrolData_311_11000689')
+        self.set_dialogue(type=1, spawn_id=311, script='$02000230_BF__SAVE_03__4$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=90311, spawnIds=[311]):
+        if self.npc_detected(box_id=90311, spawn_ids=[311]):
             return 도망완료(self.ctx)
 
 
 class 도망완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[311])
+        self.destroy_monster(spawn_ids=[311])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[30311,30312,30313,30314,30315]):
+        if self.monster_dead(spawn_ids=[30311,30312,30313,30314,30315]):
             return 트리거초기화(self.ctx)
-        if not self.monster_in_combat(boxIds=[30311,30312,30313,30314,30315]):
+        if not self.monster_in_combat(spawn_ids=[30311,30312,30313,30314,30315]):
             return 트리거초기화(self.ctx)
 
 
 class 트리거초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='11', seconds=10)
-        self.destroy_monster(spawnIds=[30311,30312,30313,30314,30315])
+        self.set_timer(timer_id='11', seconds=10)
+        self.destroy_monster(spawn_ids=[30311,30312,30313,30314,30315])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='11'):
+        if self.time_expired(timer_id='11'):
             return 대기(self.ctx)
 
 

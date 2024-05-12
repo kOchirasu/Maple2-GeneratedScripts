@@ -13,59 +13,59 @@ class Wait(trigger_api.Trigger):
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return FirstWaveStart01(self.ctx)
 
 
 class FirstWaveStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[91280,91282,91284,91286,91288], animationEffect=False)
+        self.spawn_monster(spawn_ids=[91280,91282,91284,91286,91288], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return FirstWaveStart02(self.ctx)
 
 
 class FirstWaveStart02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[91281,91283,91285,91287,91289], animationEffect=False)
+        self.spawn_monster(spawn_ids=[91281,91283,91285,91287,91289], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return SecondWaveStart01(self.ctx)
 
 
 class SecondWaveStart01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[91290,91292,91294,91296,91298], animationEffect=False)
+        self.spawn_monster(spawn_ids=[91290,91292,91294,91296,91298], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return SecondWaveStart02(self.ctx)
 
 
 class SecondWaveStart02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[91291,91293,91295,91297,91299], animationEffect=False)
+        self.spawn_monster(spawn_ids=[91291,91293,91295,91297,91299], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[91280,91281,91282,91283,91284,91285,91286,91287,91288,91289,91290,91291,91292,91293,91294,91295,91296,91297,91298,91299]):
+        if self.monster_dead(spawn_ids=[91280,91281,91282,91283,91284,91285,91286,91287,91288,91289,91290,91291,91292,91293,91294,91295,91296,91297,91298,91299]):
             return PenaltyFinished01(self.ctx)
 
 
 class PenaltyFinished01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[91280,91281,91282,91283,91284,91285,91286,91287,91288,91289,91290,91291,91292,91293,91294,91295,91296,91297,91298,91299])
-        self.set_user_value(triggerId=912, key='PenaltyFinish', value=1)
+        self.destroy_monster(spawn_ids=[91280,91281,91282,91283,91284,91285,91286,91287,91288,91289,91290,91291,91292,91293,91294,91295,91296,91297,91298,91299])
+        self.set_user_value(trigger_id=912, key='PenaltyFinish', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return PenaltyFinished02(self.ctx)
 
 
 class PenaltyFinished02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Wait(self.ctx)
 
 

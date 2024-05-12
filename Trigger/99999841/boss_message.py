@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(varId=100, value=1):
+        if self.dungeon_variable(var_id=100, value=1):
             return 메시지1(self.ctx)
 
 
@@ -13,8 +13,7 @@ class 메시지1(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='A팀의 보스가 등장했습니다!', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 종료(self.ctx)
+        return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):

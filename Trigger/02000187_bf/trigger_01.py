@@ -4,25 +4,25 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[101], questIds=[20001281], questStates=[2]):
+        if self.quest_user_detected(box_ids=[101], quest_ids=[20001281], quest_states=[2]):
             return 몹리젠(self.ctx)
 
 
 class 몹리젠(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[201,202,203,204,205,206])
+        self.spawn_monster(spawn_ids=[201,202,203,204,205,206])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[201,202,203,204,205,206]):
+        if self.monster_dead(spawn_ids=[201,202,203,204,205,206]):
             return 쿨타임(self.ctx)
 
 
 class 쿨타임(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=20)
+        self.set_timer(timer_id='1', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 시작대기중(self.ctx)
 
 

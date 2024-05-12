@@ -4,44 +4,44 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5001], visible=False)
-        self.set_effect(triggerIds=[5002], visible=False)
+        self.set_effect(trigger_ids=[5001], visible=False)
+        self.set_effect(trigger_ids=[5002], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.quest_user_detected(boxIds=[2001], questIds=[20002391], questStates=[3]):
+        if not self.quest_user_detected(box_ids=[2001], quest_ids=[20002391], quest_states=[3]):
             # 인트로 퀘스트
             return 틴차이_준타_스폰01(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[3]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[2]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[1]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[1]):
             return Orde_Out_Effect(self.ctx)
         """
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100640], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100640], quest_states=[2]):
             return 챕터10에필로그연출01(self.ctx)
         """
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100400], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100400], quest_states=[3]):
             return Orde_In_Effect(self.ctx)
 
 
 class 틴차이_준타_스폰01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[102], animationEffect=True)
-        self.create_monster(spawnIds=[103], animationEffect=True)
+        self.spawn_monster(spawn_ids=[102], auto_target=True)
+        self.spawn_monster(spawn_ids=[103], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[3]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[2]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[1]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[1]):
             return Orde_Out_Effect(self.ctx)
         """
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100640], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100640], quest_states=[2]):
             return 챕터10에필로그연출01(self.ctx)
         """
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100400], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100400], quest_states=[3]):
             return Orde_In_Effect(self.ctx)
 
 
@@ -49,41 +49,41 @@ class Orde_In_Effect(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_effect(triggerIds=[5001], visible=True)
+        self.set_effect(trigger_ids=[5001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Orde_In(self.ctx)
 
 
 class Orde_In(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101], animationEffect=True)
+        self.spawn_monster(spawn_ids=[101], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Orde_In_Turn(self.ctx)
 
 
 class Orde_In_Turn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=600, enable=True)
-        self.set_effect(triggerIds=[5001], visible=True)
-        self.set_npc_rotation(spawnId=101, rotation=-45)
-        self.add_cinematic_talk(npcId=11004033, illustId='Orde_normal', msg='$52010068_QD__MAIN__0$', align='left')
+        self.select_camera(trigger_id=600, enable=True)
+        self.set_effect(trigger_ids=[5001], visible=True)
+        self.set_npc_rotation(spawn_id=101, rotation=-45)
+        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__0$', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Orde_In_Talk(self.ctx)
 
 
 class Orde_In_Talk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=101, sequenceName='IceSphere_A')
-        self.add_cinematic_talk(npcId=11004033, illustId='Orde_normal', msg='$52010068_QD__MAIN__1$', align='left')
+        self.set_npc_emotion_sequence(spawn_id=101, sequence_name='IceSphere_A')
+        self.add_cinematic_talk(npc_id=11004033, illust_id='Orde_normal', msg='$52010068_QD__MAIN__1$', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Orde_In_Talk_End(self.ctx)
 
 
@@ -94,38 +94,38 @@ class Orde_In_Talk_End(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Orde_In_ReTurn(self.ctx)
 
 
 class Orde_In_ReTurn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_rotation(spawnId=101, rotation=360)
+        self.set_npc_rotation(spawn_id=101, rotation=360)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[3]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[2]):
             return Orde_Out_Effect(self.ctx)
-        if self.quest_user_detected(boxIds=[2001], questIds=[50100420], questStates=[1]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[50100420], quest_states=[1]):
             return Orde_Out_Effect(self.ctx)
 
 
 class Orde_Out_Effect(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Wizard_Teleport_A')
-        self.add_balloon_talk(spawnId=101, msg='$52010068_QD__MAIN__2$', duration=2800, delayTick=0)
-        self.set_effect(triggerIds=[5002], visible=True)
+        self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Wizard_Teleport_A')
+        self.add_balloon_talk(spawn_id=101, msg='$52010068_QD__MAIN__2$', duration=2800, delay_tick=0)
+        self.set_effect(trigger_ids=[5002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Orde_Out(self.ctx)
 
 
 class Orde_Out(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101])
-        self.set_effect(triggerIds=[5002], visible=False)
+        self.destroy_monster(spawn_ids=[101])
+        self.set_effect(trigger_ids=[5002], visible=False)
 
 
 class 챕터10에필로그연출01(trigger_api.Trigger):
@@ -135,7 +135,7 @@ class 챕터10에필로그연출01(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 챕터10에필로그연출02(self.ctx)
 
 
@@ -146,7 +146,7 @@ class 챕터10에필로그연출02(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출02스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출02스킵(self.ctx)
 
 
@@ -157,8 +157,7 @@ class 챕터10에필로그연출02스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출03(self.ctx)
+        return 챕터10에필로그연출03(self.ctx)
 
 
 class 챕터10에필로그연출03(trigger_api.Trigger):
@@ -167,7 +166,7 @@ class 챕터10에필로그연출03(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출03스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출03스킵(self.ctx)
 
 
@@ -178,8 +177,7 @@ class 챕터10에필로그연출03스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출05(self.ctx)
+        return 챕터10에필로그연출05(self.ctx)
 
 
 class 챕터10에필로그연출05(trigger_api.Trigger):
@@ -188,7 +186,7 @@ class 챕터10에필로그연출05(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출05스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출05스킵(self.ctx)
 
 
@@ -199,8 +197,7 @@ class 챕터10에필로그연출05스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출05b(self.ctx)
+        return 챕터10에필로그연출05b(self.ctx)
 
 
 class 챕터10에필로그연출05b(trigger_api.Trigger):
@@ -209,19 +206,19 @@ class 챕터10에필로그연출05b(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 챕터10에필로그연출06(self.ctx)
 
 
 class 챕터10에필로그연출06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(triggerId=90000, enable=True) # 마드리아 고조 브금
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__3$', arg4=6)
+        self.set_sound(trigger_id=90000, enable=True) # 마드리아 고조 브금
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__3$', time=6)
         self.set_onetime_effect(id=2007, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_01_00002007.xml')
         self.set_skip(state=챕터10에필로그연출06스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 챕터10에필로그연출06스킵(self.ctx)
 
 
@@ -232,18 +229,17 @@ class 챕터10에필로그연출06스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출07(self.ctx)
+        return 챕터10에필로그연출07(self.ctx)
 
 
 class 챕터10에필로그연출07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__4$', arg4=6)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__4$', time=6)
         self.set_onetime_effect(id=2008, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_02_00002008.xml')
         self.set_skip(state=챕터10에필로그연출07스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 챕터10에필로그연출07스킵(self.ctx)
 
 
@@ -254,18 +250,17 @@ class 챕터10에필로그연출07스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출08(self.ctx)
+        return 챕터10에필로그연출08(self.ctx)
 
 
 class 챕터10에필로그연출08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__5$', arg4=9)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__5$', time=9)
         self.set_onetime_effect(id=2009, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_03_00002009.xml')
         self.set_skip(state=챕터10에필로그연출08스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=9000):
+        if self.wait_tick(wait_tick=9000):
             return 챕터10에필로그연출08스킵(self.ctx)
 
 
@@ -276,18 +271,17 @@ class 챕터10에필로그연출08스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출09(self.ctx)
+        return 챕터10에필로그연출09(self.ctx)
 
 
 class 챕터10에필로그연출09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__6$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__6$', time=5)
         self.set_onetime_effect(id=2009, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_03_00002009.xml')
         self.set_skip(state=챕터10에필로그연출9스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 챕터10에필로그연출9스킵(self.ctx)
 
 
@@ -298,8 +292,7 @@ class 챕터10에필로그연출9스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출10(self.ctx)
+        return 챕터10에필로그연출10(self.ctx)
 
 
 class 챕터10에필로그연출10(trigger_api.Trigger):
@@ -307,12 +300,12 @@ class 챕터10에필로그연출10(trigger_api.Trigger):
         self.set_cinematic_ui(type=9)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__7$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__7$', time=5)
         self.set_onetime_effect(id=2010, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_04_00002010.xml')
         self.set_skip(state=챕터10에필로그연출10스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 챕터10에필로그연출10스킵(self.ctx)
 
 
@@ -323,18 +316,17 @@ class 챕터10에필로그연출10스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출11(self.ctx)
+        return 챕터10에필로그연출11(self.ctx)
 
 
 class 챕터10에필로그연출11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__8$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__8$', time=5)
         self.set_onetime_effect(id=2011, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_05_00002011.xml')
         self.set_skip(state=챕터10에필로그연출11스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 챕터10에필로그연출11스킵(self.ctx)
 
 
@@ -345,18 +337,17 @@ class 챕터10에필로그연출11스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출12(self.ctx)
+        return 챕터10에필로그연출12(self.ctx)
 
 
 class 챕터10에필로그연출12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__9$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__9$', time=5)
         self.set_onetime_effect(id=2011, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_05_00002011.xml')
         self.set_skip(state=챕터10에필로그연출12스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출12스킵(self.ctx)
 
 
@@ -367,18 +358,17 @@ class 챕터10에필로그연출12스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출13(self.ctx)
+        return 챕터10에필로그연출13(self.ctx)
 
 
 class 챕터10에필로그연출13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__10$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__10$', time=5)
         self.set_onetime_effect(id=2011, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_05_00002011.xml')
         self.set_skip(state=챕터10에필로그연출13스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출13스킵(self.ctx)
 
 
@@ -389,8 +379,7 @@ class 챕터10에필로그연출13스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출13_b(self.ctx)
+        return 챕터10에필로그연출13_b(self.ctx)
 
 
 class 챕터10에필로그연출13_b(trigger_api.Trigger):
@@ -398,12 +387,12 @@ class 챕터10에필로그연출13_b(trigger_api.Trigger):
         self.set_cinematic_ui(type=9)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__11$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__11$', time=5)
         self.set_onetime_effect(id=2012, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_06_00002012.xml')
         self.set_skip(state=챕터10에필로그연출13b스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 챕터10에필로그연출13b스킵(self.ctx)
 
 
@@ -414,18 +403,17 @@ class 챕터10에필로그연출13b스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출14(self.ctx)
+        return 챕터10에필로그연출14(self.ctx)
 
 
 class 챕터10에필로그연출14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__12$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__12$', time=5)
         self.set_onetime_effect(id=2013, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_07_00002013.xml')
         self.set_skip(state=챕터10에필로그연출14스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출14스킵(self.ctx)
 
 
@@ -436,18 +424,17 @@ class 챕터10에필로그연출14스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출15(self.ctx)
+        return 챕터10에필로그연출15(self.ctx)
 
 
 class 챕터10에필로그연출15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__13$', arg4=6)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__13$', time=6)
         self.set_onetime_effect(id=2014, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_08_00002014.xml')
         self.set_skip(state=챕터10에필로그연출15스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 챕터10에필로그연출15스킵(self.ctx)
 
 
@@ -458,18 +445,17 @@ class 챕터10에필로그연출15스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출16(self.ctx)
+        return 챕터10에필로그연출16(self.ctx)
 
 
 class 챕터10에필로그연출16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001820, script='$52010068_QD__MAIN__14$', arg4=5)
+        self.set_dialogue(type=2, spawn_id=11001820, script='$52010068_QD__MAIN__14$', time=5)
         self.set_onetime_effect(id=2015, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter10_End_09_00002015.xml')
         self.set_skip(state=챕터10에필로그연출16스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 챕터10에필로그연출16스킵(self.ctx)
 
 
@@ -480,13 +466,12 @@ class 챕터10에필로그연출16스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출17(self.ctx)
+        return 챕터10에필로그연출17(self.ctx)
 
 
 class 챕터10에필로그연출17(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 챕터10에필로그연출18(self.ctx)
 
 
@@ -496,7 +481,7 @@ class 챕터10에필로그연출18(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출18스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출18스킵(self.ctx)
 
 
@@ -507,8 +492,7 @@ class 챕터10에필로그연출18스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출18b(self.ctx)
+        return 챕터10에필로그연출18b(self.ctx)
 
 
 class 챕터10에필로그연출18b(trigger_api.Trigger):
@@ -517,7 +501,7 @@ class 챕터10에필로그연출18b(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출18b스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출18b스킵(self.ctx)
 
 
@@ -528,8 +512,7 @@ class 챕터10에필로그연출18b스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출19(self.ctx)
+        return 챕터10에필로그연출19(self.ctx)
 
 
 class 챕터10에필로그연출19(trigger_api.Trigger):
@@ -538,7 +521,7 @@ class 챕터10에필로그연출19(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출19스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출19스킵(self.ctx)
 
 
@@ -549,8 +532,7 @@ class 챕터10에필로그연출19스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출20(self.ctx)
+        return 챕터10에필로그연출20(self.ctx)
 
 
 class 챕터10에필로그연출20(trigger_api.Trigger):
@@ -559,7 +541,7 @@ class 챕터10에필로그연출20(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출20스킵)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출20스킵(self.ctx)
 
 
@@ -570,8 +552,7 @@ class 챕터10에필로그연출20스킵(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 챕터10에필로그연출21(self.ctx)
+        return 챕터10에필로그연출21(self.ctx)
 
 
 class 챕터10에필로그연출21(trigger_api.Trigger):
@@ -580,7 +561,7 @@ class 챕터10에필로그연출21(trigger_api.Trigger):
         self.set_skip(state=챕터10에필로그연출22)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 챕터10에필로그연출22(self.ctx)
 
 
@@ -591,7 +572,7 @@ class 챕터10에필로그연출22(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit(self.ctx)
 
 
@@ -600,7 +581,7 @@ class Quit(trigger_api.Trigger):
         self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.move_user(mapId=52010068, portalId=2)
+        self.move_user(map_id=52010068, portal_id=2)
 
 
 initial_state = Ready

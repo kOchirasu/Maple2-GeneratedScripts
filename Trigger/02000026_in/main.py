@@ -4,74 +4,74 @@ import trigger_api
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101,102])
-        self.set_mesh(triggerIds=[4001,4002], visible=True)
+        self.destroy_monster(spawn_ids=[101,102])
+        self.set_mesh(trigger_ids=[4001,4002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001568], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001568], quest_states=[3]):
             return 조건체크01(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001568], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001568], quest_states=[2]):
             return 아노스있음01(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001568], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001568], quest_states=[1]):
             return 아노스만남연출대기(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001567], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001567], quest_states=[3]):
             return 대기조건01(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001567], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001567], quest_states=[2]):
             return 대기조건01(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001567], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001567], quest_states=[1]):
             return 기본상태(self.ctx)
 
 
 class 대기조건01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001568], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001568], quest_states=[1]):
             return 아노스만남연출시작(self.ctx)
-        if not self.quest_user_detected(boxIds=[9000], questIds=[50001568], questStates=[1]):
+        if not self.quest_user_detected(box_ids=[9000], quest_ids=[50001568], quest_states=[1]):
             return start(self.ctx)
 
 
 class 조건체크01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001569], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001569], quest_states=[1]):
             return 아노스있음01(self.ctx)
-        if not self.quest_user_detected(boxIds=[9000], questIds=[50001569], questStates=[1]):
+        if not self.quest_user_detected(box_ids=[9000], quest_ids=[50001569], quest_states=[1]):
             return 조건체크02(self.ctx)
 
 
 class 조건체크02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001573], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001573], quest_states=[3]):
             return 기본상태(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001568,50001569,50001570,50001571,50001572,50001573], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001568,50001569,50001570,50001571,50001572,50001573], quest_states=[2]):
             return 아노스있음01(self.ctx)
 
 
 class 기본상태(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9000]):
+        if self.user_detected(box_ids=[9000]):
             return start(self.ctx)
 
 
 class 아노스있음01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[102], animationEffect=False)
-        self.set_mesh(triggerIds=[4001,4002], visible=False)
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
+        self.set_mesh(trigger_ids=[4001,4002], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 종료(self.ctx)
 
 
 class 아노스만남연출대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101], animationEffect=False)
-        self.set_mesh(triggerIds=[4001,4002], visible=False)
+        self.spawn_monster(spawn_ids=[101], auto_target=False)
+        self.set_mesh(trigger_ids=[4001,4002], visible=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
-            self.move_user_path(patrolName='MS2PatrolData_PC_00')
+        if self.wait_tick(wait_tick=500):
+            self.move_user_path(patrol_name='MS2PatrolData_PC_00')
             return 아노스만남연출시작(self.ctx)
 
 
@@ -79,67 +79,67 @@ class 아노스만남연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera_path(pathIds=[8000], returnView=False)
+        self.select_camera_path(path_ids=[8000], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 아노스등장(self.ctx)
 
 
 class 아노스등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_Anos_00')
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__0$', arg4=4, arg5=0)
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Anos_00')
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__0$', time=4, arg5=0)
         self.set_scene_skip(state=아노스만남_스킵완료, action='nextState') # setsceneskip 1 set
         # setsceneskip 1 set
         # setsceneskip 1 set
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 아노스이동01(self.ctx)
 
 
 class 아노스이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8001], returnView=False)
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_Anos_01')
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__1$', arg4=3, arg5=0)
+        self.select_camera_path(path_ids=[8001], return_view=False)
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Anos_01')
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__1$', time=3, arg5=0)
         # self.set_skip(state=아노스만남_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3239):
+        if self.wait_tick(wait_tick=3239):
             return 아노스이동02(self.ctx)
 
 
 class 아노스이동02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_Anos_02')
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_Anos_02')
         # self.set_skip(state=아노스만남_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 아노스이동03(self.ctx)
 
 
 class 아노스이동03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__2$', arg4=3, arg5=0)
-        self.set_npc_emotion_sequence(spawnId=101, sequenceName='ChatUp_A')
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__2$', time=3, arg5=0)
+        self.set_npc_emotion_sequence(spawn_id=101, sequence_name='ChatUp_A')
         # self.set_skip(state=아노스만남_스킵완료)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4623):
+        if self.wait_tick(wait_tick=4623):
             return 아노스대사01(self.ctx)
 
 
 class 아노스대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__3$', arg4=4, arg5=0)
-        self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__3$', time=4, arg5=0)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=4000)
         self.set_skip(state=아노스대사01_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 카메라이동_라딘01(self.ctx)
 
 
@@ -150,29 +150,28 @@ class 아노스대사01_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 카메라이동_라딘01(self.ctx)
+        return 카메라이동_라딘01(self.ctx)
 
 
 class 카메라이동_라딘01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8003], returnView=False)
-        self.destroy_monster(spawnIds=[101])
-        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.select_camera_path(path_ids=[8003], return_view=False)
+        self.destroy_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 라딘대사01(self.ctx)
 
 
 class 라딘대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11000264, script='$02000026_IN__MAIN__4$', arg4=3, arg5=0)
-        self.set_npc_emotion_sequence(spawnId=103, sequenceName='Bore_A')
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__4$', time=3, arg5=0)
+        self.set_npc_emotion_sequence(spawn_id=103, sequence_name='Bore_A')
         self.set_skip(state=라딘대사01_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4623):
+        if self.wait_tick(wait_tick=4623):
             return 아노스대사02(self.ctx)
 
 
@@ -183,19 +182,18 @@ class 라딘대사01_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 아노스대사02(self.ctx)
+        return 아노스대사02(self.ctx)
 
 
 class 아노스대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8002], returnView=False)
-        self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=4000)
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__5$', arg4=4, arg5=0)
+        self.select_camera_path(path_ids=[8002], return_view=False)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__5$', time=4, arg5=0)
         self.set_skip(state=아노스대사02_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4519):
+        if self.wait_tick(wait_tick=4519):
             return 라딘대사02(self.ctx)
 
 
@@ -206,19 +204,18 @@ class 아노스대사02_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 라딘대사02(self.ctx)
+        return 라딘대사02(self.ctx)
 
 
 class 라딘대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=103, sequenceName='ChatUP_A')
-        # self.set_npc_emotion_loop(spawnId=103, sequenceName='ChatUP_A', duration=4000)
-        self.set_conversation(type=2, spawnId=11000264, script='$02000026_IN__MAIN__6$', arg4=4, arg5=0)
+        self.set_npc_emotion_sequence(spawn_id=103, sequence_name='ChatUP_A')
+        # self.set_npc_emotion_loop(spawn_id=103, sequence_name='ChatUP_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__6$', time=4, arg5=0)
         self.set_skip(state=라딘대사02_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4780):
+        if self.wait_tick(wait_tick=4780):
             return 카메라이동_아노스01(self.ctx)
 
 
@@ -229,28 +226,27 @@ class 라딘대사02_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 카메라이동_아노스01(self.ctx)
+        return 카메라이동_아노스01(self.ctx)
 
 
 class 카메라이동_아노스01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8001], returnView=False)
+        self.select_camera_path(path_ids=[8001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 아노스대사03(self.ctx)
 
 
 class 아노스대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=102, sequenceName='ChatUp_A')
-        # self.set_npc_emotion_loop(spawnId=102, sequenceName='ChatUp_A', duration=3000)
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__7$', arg4=3, arg5=0)
+        self.set_npc_emotion_sequence(spawn_id=102, sequence_name='ChatUp_A')
+        # self.set_npc_emotion_loop(spawn_id=102, sequence_name='ChatUp_A', duration=3000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__7$', time=3, arg5=0)
         self.set_skip(state=아노스대사03_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6817):
+        if self.wait_tick(wait_tick=6817):
             return 아노스대사04(self.ctx)
 
 
@@ -261,18 +257,17 @@ class 아노스대사03_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 아노스대사04(self.ctx)
+        return 아노스대사04(self.ctx)
 
 
 class 아노스대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__8$', arg4=3, arg5=0)
-        self.move_user_path(patrolName='MS2PatrolData_PC_01')
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__8$', time=3, arg5=0)
+        self.move_user_path(patrol_name='MS2PatrolData_PC_01')
         self.set_skip(state=아노스대사04_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 라딘대사03(self.ctx)
 
 
@@ -283,19 +278,18 @@ class 아노스대사04_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 라딘대사03(self.ctx)
+        return 라딘대사03(self.ctx)
 
 
 class 라딘대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8004], returnView=False)
-        self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=4000)
-        self.set_conversation(type=2, spawnId=11000264, script='$02000026_IN__MAIN__9$', arg4=4, arg5=0)
+        self.select_camera_path(path_ids=[8004], return_view=False)
+        self.set_npc_emotion_loop(spawn_id=103, sequence_name='Talk_A', duration=4000)
+        self.set_dialogue(type=2, spawn_id=11000264, script='$02000026_IN__MAIN__9$', time=4, arg5=0)
         self.set_skip(state=라딘대사03_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return PC안녕(self.ctx)
 
 
@@ -306,28 +300,27 @@ class 라딘대사03_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return PC안녕(self.ctx)
+        return PC안녕(self.ctx)
 
 
 class PC안녕(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_sequence(sequenceNames=['Emotion_Hello_A'])
+        self.set_pc_emotion_sequence(sequence_names=['Emotion_Hello_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 아노스대사05(self.ctx)
 
 
 class 아노스대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8001], returnView=False)
-        self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=3000)
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__10$', arg4=3, arg5=0)
+        self.select_camera_path(path_ids=[8001], return_view=False)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Talk_A', duration=3000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__10$', time=3, arg5=0)
         self.set_skip(state=아노스대사05_skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3343):
+        if self.wait_tick(wait_tick=3343):
             return 아노스대사06(self.ctx)
 
 
@@ -338,47 +331,46 @@ class 아노스대사05_skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 아노스대사06(self.ctx)
+        return 아노스대사06(self.ctx)
 
 
 class 아노스대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawnId=102, sequenceName='Idle_A', duration=3000)
-        self.set_conversation(type=2, spawnId=11003313, script='$02000026_IN__MAIN__11$', arg4=3, arg5=0)
-        self.show_caption(type='NameCaption', title='$02000026_IN__MAIN__12$', desc='$02000026_IN__MAIN__13$', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=5000, scale=2)
+        self.set_npc_emotion_loop(spawn_id=102, sequence_name='Idle_A', duration=3000)
+        self.set_dialogue(type=2, spawn_id=11003313, script='$02000026_IN__MAIN__11$', time=3, arg5=0)
+        self.show_caption(type='NameCaption', title='$02000026_IN__MAIN__12$', desc='$02000026_IN__MAIN__13$', align='centerLeft', offset_rate_x=0.05, offset_rate_y=0.15, duration=5000, scale=2)
         # Missing State: State
         self.set_scene_skip() # setsceneskip 1 close
         # setsceneskip 1 close
         # setsceneskip 1 close
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 연출종료(self.ctx)
 
 
 class 아노스만남_스킵완료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolationTime=2)
+        self.reset_camera(interpolation_time=2)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
-        self.destroy_monster(spawnIds=[101,102])
-        self.create_monster(spawnIds=[102])
+        self.destroy_monster(spawn_ids=[101,102])
+        self.spawn_monster(spawn_ids=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 연출종료(self.ctx)
 
 
 class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolationTime=2)
-        self.set_achievement(triggerId=9000, type='trigger', achieve='MeetAnos')
+        self.reset_camera(interpolation_time=2)
+        self.set_achievement(trigger_id=9000, type='trigger', achieve='MeetAnos')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 종료(self.ctx)
 
 

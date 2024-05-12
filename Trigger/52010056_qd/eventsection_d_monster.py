@@ -4,57 +4,57 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[2003]):
+        if self.user_detected(box_ids=[2003]):
             return Ready(self.ctx)
 
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[501], animationEffect=False) # 크림슨 스피어: 29000386
-        self.create_monster(spawnIds=[502], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[503], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[504], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[505], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[506], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[507], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[508], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[509], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[510], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[511], animationEffect=False) # 크림슨 스피어: 29000386
-        self.create_monster(spawnIds=[512], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[513], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[514], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[515], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[516], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[517], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[518], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[519], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[520], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[521], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[522], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[523], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[524], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[525], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[526], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[527], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[528], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[529], animationEffect=False) # 크림슨 스피어: 29000386
-        self.create_monster(spawnIds=[530], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[531], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[532], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[533], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[534], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[535], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[536], animationEffect=False) # 퍼플 크림슨: 29000383
-        self.create_monster(spawnIds=[537], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[538], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[539], animationEffect=False) # 크림슨 스피어: 29000386
-        self.create_monster(spawnIds=[540], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[541], animationEffect=False) # 브라운 크림슨: 29000384
-        self.create_monster(spawnIds=[542], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[543], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[544], animationEffect=False) # 화이트 크림슨: 29000385
-        self.create_monster(spawnIds=[545], animationEffect=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[501], auto_target=False) # 크림슨 스피어: 29000386
+        self.spawn_monster(spawn_ids=[502], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[503], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[504], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[505], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[506], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[507], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[508], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[509], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[510], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[511], auto_target=False) # 크림슨 스피어: 29000386
+        self.spawn_monster(spawn_ids=[512], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[513], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[514], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[515], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[516], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[517], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[518], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[519], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[520], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[521], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[522], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[523], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[524], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[525], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[526], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[527], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[528], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[529], auto_target=False) # 크림슨 스피어: 29000386
+        self.spawn_monster(spawn_ids=[530], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[531], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[532], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[533], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[534], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[535], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[536], auto_target=False) # 퍼플 크림슨: 29000383
+        self.spawn_monster(spawn_ids=[537], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[538], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[539], auto_target=False) # 크림슨 스피어: 29000386
+        self.spawn_monster(spawn_ids=[540], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[541], auto_target=False) # 브라운 크림슨: 29000384
+        self.spawn_monster(spawn_ids=[542], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[543], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[544], auto_target=False) # 화이트 크림슨: 29000385
+        self.spawn_monster(spawn_ids=[545], auto_target=False) # 퍼플 크림슨: 29000383
 
 
 initial_state = Idle

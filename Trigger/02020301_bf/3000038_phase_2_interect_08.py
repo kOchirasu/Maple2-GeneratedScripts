@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=20000):
+        if self.wait_tick(wait_tick=20000):
             return None # Missing State: 시작
 
 

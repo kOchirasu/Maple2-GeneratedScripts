@@ -4,28 +4,28 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[8003])
+        self.destroy_monster(spawn_ids=[8003])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[103]):
+        if self.user_detected(box_ids=[103]):
             return 생성(self.ctx)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[8003], animationEffect=False)
+        self.spawn_monster(spawn_ids=[8003], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[8003]):
+        if self.monster_dead(spawn_ids=[8003]):
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='60', seconds=60)
+        self.set_timer(timer_id='60', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='60'):
+        if self.time_expired(timer_id='60'):
             return 시작(self.ctx)
 
 

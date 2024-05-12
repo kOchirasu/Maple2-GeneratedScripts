@@ -16,8 +16,8 @@ class spawn(trigger_api.Trigger):
 
 class buff(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(boxIds=[1999], skillId=70002011, level=1, isPlayer=True, isSkillSet=False)
-        self.add_buff(boxIds=[302], skillId=70002011, level=1, isPlayer=True, isSkillSet=False)
+        self.add_buff(box_ids=[1999], skill_id=70002011, level=1, is_player=True, is_skill_set=False)
+        self.add_buff(box_ids=[302], skill_id=70002011, level=1, is_player=True, is_skill_set=False)
 
 
 initial_state = idle

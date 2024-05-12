@@ -4,69 +4,69 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101,201], animationEffect=False)
+        self.spawn_monster(spawn_ids=[101,201], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002679], quest_states=[3]):
             return NpcRemove01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002679], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002679], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002679], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002678], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002678], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002678], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002678], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002677], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002677], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002677], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002677], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002676], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002676], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002676], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002676], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002675], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002675], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002675], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002675], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002674], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002674], quest_states=[2]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002674], questStates=[1]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002674], quest_states=[1]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002673], quest_states=[3]):
             return NpcChange01(self.ctx)
-        if self.quest_user_detected(boxIds=[9900], questIds=[40002673], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9900], quest_ids=[40002673], quest_states=[2]):
             return NpcTalk01(self.ctx)
 
 
 class NpcRemove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101,201])
+        self.destroy_monster(spawn_ids=[101,201])
 
 
 class NpcChange01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101])
-        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.destroy_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
 
 
 class NpcTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101])
-        self.create_monster(spawnIds=[102], animationEffect=False)
+        self.destroy_monster(spawn_ids=[101])
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return CameraSet01(self.ctx)
 
 
@@ -75,79 +75,77 @@ class CameraSet01(trigger_api.Trigger):
         self.set_scene_skip(state=TalkEnd01, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(triggerId=600, enable=True)
+        self.select_camera(trigger_id=600, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return EveTalk01(self.ctx)
 
 
 class EveTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        self.set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__0$', arg4=5) # 이브
+        self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Talk_A')
+        self.set_dialogue(type=2, spawn_id=11001962, script='$52000074_QD__QUESTNPCSPAWN01__0$', time=5) # 이브
         # self.set_skip(state=EveTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return EveTalk01Skip(self.ctx)
 
 
 class EveTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         # Missing State: State
         # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return LennonTalk01(self.ctx)
+        return LennonTalk01(self.ctx)
 
 
 class LennonTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Talk_A')
-        self.set_conversation(type=2, spawnId=11001961, script='$52000074_QD__QUESTNPCSPAWN01__1$', arg4=5) # 레논
+        self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Talk_A')
+        self.set_dialogue(type=2, spawn_id=11001961, script='$52000074_QD__QUESTNPCSPAWN01__1$', time=5) # 레논
         # self.set_skip(state=LennonTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return LennonTalk01Skip(self.ctx)
 
 
 class LennonTalk01Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=102, sequenceName='Idle_A')
+        self.set_npc_emotion_sequence(spawn_id=102, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         # Missing State: State
         # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return EveTalk02(self.ctx)
+        return EveTalk02(self.ctx)
 
 
 class EveTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
-        self.set_conversation(type=2, spawnId=11001962, script='$52000074_QD__QUESTNPCSPAWN01__2$', arg4=3) # 이브
+        self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Talk_A')
+        self.set_dialogue(type=2, spawn_id=11001962, script='$52000074_QD__QUESTNPCSPAWN01__2$', time=3) # 이브
         # self.set_skip(state=EveTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return EveTalk02Skip(self.ctx)
 
 
 class EveTalk02Skip(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
+        self.set_npc_emotion_sequence(spawn_id=201, sequence_name='Idle_A')
         self.remove_cinematic_talk()
         # Missing State: State
         # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return TalkEnd01(self.ctx)
 
 
@@ -155,7 +153,7 @@ class TalkEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Missing State: State
         self.set_scene_skip()
-        self.select_camera(triggerId=600, enable=False)
+        self.select_camera(trigger_id=600, enable=False)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)
 

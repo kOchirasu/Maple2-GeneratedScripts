@@ -8,19 +8,19 @@ class Wait(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9002]):
+        if self.user_detected(box_ids=[9002]):
             return 영상재생(self.ctx)
 
 
 class 영상재생(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\\jp\\Lapenta_Frontier.usm', movieId=1)
+        self.play_scene_movie(file_name='common\\jp\\Lapenta_Frontier.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return 묘지전경씬01(self.ctx)
-        if self.wait_tick(waitTick=110000):
+        if self.wait_tick(wait_tick=110000):
             return 묘지전경씬01(self.ctx)
 
 
@@ -28,21 +28,21 @@ class 묘지전경씬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.select_camera_path(pathIds=[8000,8001,8002,8003], returnView=False)
+        self.select_camera_path(path_ids=[8000,8001,8002,8003], return_view=False)
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return 묘지전경씬02(self.ctx)
 
 
 class 묘지전경씬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8004,8005], returnView=False)
-        self.show_caption(type='VerticalCaption', title='$52000186_QD__52000186__0$', desc='$52000186_QD__52000186__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
+        self.select_camera_path(path_ids=[8004,8005], return_view=False)
+        self.show_caption(type='VerticalCaption', title='$52000186_QD__52000186__0$', desc='$52000186_QD__52000186__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=7000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 묘지전경씬03(self.ctx)
 
 
@@ -51,7 +51,7 @@ class 묘지전경씬03(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Quit01(self.ctx)
 
 
@@ -62,7 +62,7 @@ class Quit01(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit02(self.ctx)
 
 
@@ -73,7 +73,7 @@ class Skip_1(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit02(self.ctx)
 
 
@@ -81,54 +81,54 @@ class Quit02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolationTime=0)
-        self.add_balloon_talk(spawnId=0, msg='$52000186_QD__52000186__2$', duration=6000, delayTick=1000)
-        self.show_guide_summary(entityId=25201861, textId=25201861, duration=10000)
-        self.create_monster(spawnIds=[4000], animationEffect=False)
-        self.create_monster(spawnIds=[4001], animationEffect=False)
-        self.create_monster(spawnIds=[4002], animationEffect=False)
-        self.create_monster(spawnIds=[4003], animationEffect=False)
-        self.create_monster(spawnIds=[4004], animationEffect=False)
-        self.create_monster(spawnIds=[4005], animationEffect=False)
-        self.create_monster(spawnIds=[4006], animationEffect=False)
-        self.create_monster(spawnIds=[4007], animationEffect=False)
-        self.create_monster(spawnIds=[4008], animationEffect=False)
-        self.create_monster(spawnIds=[4009], animationEffect=False)
-        self.create_monster(spawnIds=[4010], animationEffect=False)
-        self.create_monster(spawnIds=[2000], animationEffect=False)
+        self.reset_camera(interpolation_time=0)
+        self.add_balloon_talk(spawn_id=0, msg='$52000186_QD__52000186__2$', duration=6000, delay_tick=1000)
+        self.show_guide_summary(entity_id=25201861, text_id=25201861, duration=10000)
+        self.spawn_monster(spawn_ids=[4000], auto_target=False)
+        self.spawn_monster(spawn_ids=[4001], auto_target=False)
+        self.spawn_monster(spawn_ids=[4002], auto_target=False)
+        self.spawn_monster(spawn_ids=[4003], auto_target=False)
+        self.spawn_monster(spawn_ids=[4004], auto_target=False)
+        self.spawn_monster(spawn_ids=[4005], auto_target=False)
+        self.spawn_monster(spawn_ids=[4006], auto_target=False)
+        self.spawn_monster(spawn_ids=[4007], auto_target=False)
+        self.spawn_monster(spawn_ids=[4008], auto_target=False)
+        self.spawn_monster(spawn_ids=[4009], auto_target=False)
+        self.spawn_monster(spawn_ids=[4010], auto_target=False)
+        self.spawn_monster(spawn_ids=[2000], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002777], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002777], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002778], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002778], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002779], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002779], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002780], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002780], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002781], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002781], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002782], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002782], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002783], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002783], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002784], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002784], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002785], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002785], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002786], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002786], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[40002787], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[40002787], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 출범연설시작01(self.ctx)
 
@@ -140,45 +140,45 @@ class 출범연설시작01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 출범연설시작02(self.ctx)
 
 
 class 출범연설시작02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000186, portalId=20)
-        self.destroy_monster(spawnIds=[4000])
-        self.destroy_monster(spawnIds=[4001])
-        self.destroy_monster(spawnIds=[4002])
-        self.destroy_monster(spawnIds=[4003])
-        self.destroy_monster(spawnIds=[4004])
-        self.destroy_monster(spawnIds=[4005])
-        self.destroy_monster(spawnIds=[4006])
-        self.destroy_monster(spawnIds=[4007])
-        self.destroy_monster(spawnIds=[4008])
-        self.destroy_monster(spawnIds=[4009])
-        self.destroy_monster(spawnIds=[4010])
-        self.create_monster(spawnIds=[5000], animationEffect=False)
-        self.create_monster(spawnIds=[5001], animationEffect=False)
-        self.create_monster(spawnIds=[5002], animationEffect=False)
-        self.create_monster(spawnIds=[5003], animationEffect=False)
-        self.create_monster(spawnIds=[5004], animationEffect=False)
-        self.create_monster(spawnIds=[5005], animationEffect=False)
-        self.create_monster(spawnIds=[5006], animationEffect=False)
-        self.create_monster(spawnIds=[5007], animationEffect=False)
-        self.create_monster(spawnIds=[5008], animationEffect=False)
-        self.create_monster(spawnIds=[5009], animationEffect=False)
-        self.create_monster(spawnIds=[5010], animationEffect=False)
-        self.create_monster(spawnIds=[3000], animationEffect=False)
-        self.create_monster(spawnIds=[3001], animationEffect=False)
-        self.create_monster(spawnIds=[3002], animationEffect=False)
-        self.create_monster(spawnIds=[3003], animationEffect=False)
-        self.create_monster(spawnIds=[3004], animationEffect=False)
-        self.create_monster(spawnIds=[3005], animationEffect=False)
-        self.create_monster(spawnIds=[3006], animationEffect=False)
+        self.move_user(map_id=52000186, portal_id=20)
+        self.destroy_monster(spawn_ids=[4000])
+        self.destroy_monster(spawn_ids=[4001])
+        self.destroy_monster(spawn_ids=[4002])
+        self.destroy_monster(spawn_ids=[4003])
+        self.destroy_monster(spawn_ids=[4004])
+        self.destroy_monster(spawn_ids=[4005])
+        self.destroy_monster(spawn_ids=[4006])
+        self.destroy_monster(spawn_ids=[4007])
+        self.destroy_monster(spawn_ids=[4008])
+        self.destroy_monster(spawn_ids=[4009])
+        self.destroy_monster(spawn_ids=[4010])
+        self.spawn_monster(spawn_ids=[5000], auto_target=False)
+        self.spawn_monster(spawn_ids=[5001], auto_target=False)
+        self.spawn_monster(spawn_ids=[5002], auto_target=False)
+        self.spawn_monster(spawn_ids=[5003], auto_target=False)
+        self.spawn_monster(spawn_ids=[5004], auto_target=False)
+        self.spawn_monster(spawn_ids=[5005], auto_target=False)
+        self.spawn_monster(spawn_ids=[5006], auto_target=False)
+        self.spawn_monster(spawn_ids=[5007], auto_target=False)
+        self.spawn_monster(spawn_ids=[5008], auto_target=False)
+        self.spawn_monster(spawn_ids=[5009], auto_target=False)
+        self.spawn_monster(spawn_ids=[5010], auto_target=False)
+        self.spawn_monster(spawn_ids=[3000], auto_target=False)
+        self.spawn_monster(spawn_ids=[3001], auto_target=False)
+        self.spawn_monster(spawn_ids=[3002], auto_target=False)
+        self.spawn_monster(spawn_ids=[3003], auto_target=False)
+        self.spawn_monster(spawn_ids=[3004], auto_target=False)
+        self.spawn_monster(spawn_ids=[3005], auto_target=False)
+        self.spawn_monster(spawn_ids=[3006], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 출범연설시작03(self.ctx)
 
 
@@ -189,18 +189,18 @@ class 출범연설시작03(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9001], questIds=[20002388], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[20002388], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 베아트리체움직임01(self.ctx)
 
 
 class 베아트리체움직임01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=3000, patrolName='MS2PatrolData_bche_Run')
-        self.move_npc(spawnId=3001, patrolName='MS2PatrolData_alf_Run')
+        self.move_npc(spawn_id=3000, patrol_name='MS2PatrolData_bche_Run')
+        self.move_npc(spawn_id=3001, patrol_name='MS2PatrolData_alf_Run')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9001], questIds=[20002389], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[20002389], quest_states=[3]):
             # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 연설시퀀스종료01(self.ctx)
 
@@ -211,34 +211,34 @@ class 연설시퀀스종료01(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 연설시퀀스종료02(self.ctx)
 
 
 class 연설시퀀스종료02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[5000])
-        self.destroy_monster(spawnIds=[5001])
-        self.destroy_monster(spawnIds=[5002])
-        self.destroy_monster(spawnIds=[5003])
-        self.destroy_monster(spawnIds=[5004])
-        self.destroy_monster(spawnIds=[5005])
-        self.destroy_monster(spawnIds=[5006])
-        self.destroy_monster(spawnIds=[5007])
-        self.destroy_monster(spawnIds=[5008])
-        self.destroy_monster(spawnIds=[5009])
-        self.destroy_monster(spawnIds=[5010])
-        self.destroy_monster(spawnIds=[3000])
-        self.destroy_monster(spawnIds=[3001])
-        self.destroy_monster(spawnIds=[3002])
-        self.destroy_monster(spawnIds=[3003])
-        self.destroy_monster(spawnIds=[3004])
-        self.destroy_monster(spawnIds=[3005])
-        self.destroy_monster(spawnIds=[3006])
-        self.move_user(mapId=52010068, portalId=1)
+        self.destroy_monster(spawn_ids=[5000])
+        self.destroy_monster(spawn_ids=[5001])
+        self.destroy_monster(spawn_ids=[5002])
+        self.destroy_monster(spawn_ids=[5003])
+        self.destroy_monster(spawn_ids=[5004])
+        self.destroy_monster(spawn_ids=[5005])
+        self.destroy_monster(spawn_ids=[5006])
+        self.destroy_monster(spawn_ids=[5007])
+        self.destroy_monster(spawn_ids=[5008])
+        self.destroy_monster(spawn_ids=[5009])
+        self.destroy_monster(spawn_ids=[5010])
+        self.destroy_monster(spawn_ids=[3000])
+        self.destroy_monster(spawn_ids=[3001])
+        self.destroy_monster(spawn_ids=[3002])
+        self.destroy_monster(spawn_ids=[3003])
+        self.destroy_monster(spawn_ids=[3004])
+        self.destroy_monster(spawn_ids=[3005])
+        self.destroy_monster(spawn_ids=[3006])
+        self.move_user(map_id=52010068, portal_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 연설시퀀스종료03(self.ctx)
 
 

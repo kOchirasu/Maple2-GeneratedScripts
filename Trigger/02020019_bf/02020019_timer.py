@@ -11,16 +11,15 @@ class 대기(trigger_api.Trigger):
 
 class 타이머시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='BattleTimer', seconds=300, startDelay=1, interval=1)
+        self.set_timer(timer_id='BattleTimer', seconds=300, start_delay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 타이머체크(self.ctx)
+        return 타이머체크(self.ctx)
 
 
 class 타이머체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='BattleTimer'):
+        if self.time_expired(timer_id='BattleTimer'):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=1):
             return 종료(self.ctx)
@@ -28,8 +27,8 @@ class 타이머체크(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_timer(timerId='BattleTimer')
-        self.set_user_value(triggerId=99990002, key='Timer', value=2)
+        self.reset_timer(timer_id='BattleTimer')
+        self.set_user_value(trigger_id=99990002, key='Timer', value=2)
 
 
 initial_state = 대기

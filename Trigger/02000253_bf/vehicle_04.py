@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8054], visible=False)
+        self.set_effect(trigger_ids=[8054], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count(value=4):
@@ -14,39 +14,39 @@ class idle(trigger_api.Trigger):
 
 class vehicle_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=906, minUsers='1'):
+        if self.count_users(box_id=906, min_users='1'):
             return monster_spawn_ready(self.ctx)
 
 
 class monster_spawn_ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return monster_spawn(self.ctx)
 
 
 class monster_spawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8054], visible=True)
-        self.create_monster(spawnIds=[3002], animationEffect=True)
+        self.set_effect(trigger_ids=[8054], visible=True)
+        self.spawn_monster(spawn_ids=[3002], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[3002]):
+        if self.monster_dead(spawn_ids=[3002]):
             return vehicle_spawn(self.ctx)
 
 
 class vehicle_spawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8054], visible=False)
-        self.set_interact_object(triggerIds=[10001051], state=1)
+        self.set_effect(trigger_ids=[8054], visible=False)
+        self.set_interact_object(trigger_ids=[10001051], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001051], stateValue=0):
+        if self.object_interacted(interact_ids=[10001051], state=0):
             return end(self.ctx)
 
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001051], state=2)
+        self.set_interact_object(trigger_ids=[10001051], state=2)
 
 
 initial_state = idle

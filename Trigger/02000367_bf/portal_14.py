@@ -4,20 +4,20 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=814, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=814, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000996], stateValue=0):
+        if self.object_interacted(interact_ids=[10000996], state=0):
             return 포털활성화(self.ctx)
 
 
 class 포털활성화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=814, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portal_id=814, visible=False, enable=True, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
-            self.set_interact_object(triggerIds=[10000996], state=1)
+        if self.wait_tick(wait_tick=1000):
+            self.set_interact_object(trigger_ids=[10000996], state=1)
             return 대기(self.ctx)
 
 

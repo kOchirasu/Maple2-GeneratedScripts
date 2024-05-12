@@ -4,48 +4,48 @@ import trigger_api
 
 class 퀘스트체크50100300_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[199], questIds=[50100300], questStates=[3]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100300], quest_states=[3]):
             # 어둠에 물든 서리왕 퀘스트 완료 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100300], questStates=[2]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100300], quest_states=[2]):
             # 어둠에 물든 서리왕 퀘스트 완료 가능 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100300], questStates=[1]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100300], quest_states=[1]):
             # 어둠에 물든 서리왕 퀘스트 진행 중 상태!
             return 대기(self.ctx)
 
 
 class 퀘스트체크50100310_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[199], questIds=[50100310], questStates=[3]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100310], quest_states=[3]):
             # 어둠에 물든 서리왕 퀘스트 완료 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100310], questStates=[2]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100310], quest_states=[2]):
             # 어둠에 물든 서리왕 퀘스트 완료 가능 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100310], questStates=[1]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100310], quest_states=[1]):
             # 어둠에 물든 서리왕 퀘스트 진행 중 상태!
             return 대기(self.ctx)
 
 
 class 퀘스트체크50100311_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[199], questIds=[50100311], questStates=[3]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100311], quest_states=[3]):
             # 어둠에 물든 서리왕 퀘스트 완료 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100311], questStates=[2]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100311], quest_states=[2]):
             # 어둠에 물든 서리왕 퀘스트 완료 가능 상태!
             return 던전종료(self.ctx)
-        if self.quest_user_detected(boxIds=[199], questIds=[50100311], questStates=[1]):
+        if self.quest_user_detected(box_ids=[199], quest_ids=[50100311], quest_states=[1]):
             # 어둠에 물든 서리왕 퀘스트 진행 중 상태!
             return 대기(self.ctx)
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(triggerIds=[4000], enable=False)
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
-        self.set_portal(portalId=91, visible=False, enable=False, minimapVisible=False)
+        self.set_breakable(trigger_ids=[4000], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.set_portal(portal_id=91, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='hp50', value=1):
@@ -57,12 +57,12 @@ class 연출시작(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.create_monster(spawnIds=[1007,1008], animationEffect=False)
-        self.move_user(mapId=52000086, portalId=30)
-        self.select_camera(triggerId=313, enable=True)
+        self.spawn_monster(spawn_ids=[1007,1008], auto_target=False)
+        self.move_user(map_id=52000086, portal_id=30)
+        self.select_camera(trigger_id=313, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다등장(self.ctx)
 
 
@@ -71,171 +71,171 @@ class 에르다등장(trigger_api.Trigger):
         self.set_skip(state=연출종료)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.select_camera(triggerId=314, enable=True)
-        self.move_npc(spawnId=1008, patrolName='MS2PatrolData_1008A')
+        self.select_camera(trigger_id=314, enable=True)
+        self.move_npc(spawn_id=1008, patrol_name='MS2PatrolData_1008A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다대사01(self.ctx)
 
 
 class 에르다대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003069, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__0$', align='right', duration=5000)
+        self.add_cinematic_talk(npc_id=11003069, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__0$', align='right', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 비에른대사01(self.ctx)
 
 
 class 비에른대사01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=315, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__1$', align='left', duration=3000)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__2$', align='left', duration=2000)
+        self.select_camera(trigger_id=315, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__1$', align='left', duration=3000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__2$', align='left', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 에르다대사02(self.ctx)
 
 
 class 에르다대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=316, enable=True)
-        self.visible_my_pc(isVisible=False) # 캐릭터 숨김
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__3$', align='right', duration=3000)
+        self.select_camera(trigger_id=316, enable=True)
+        self.visible_my_pc(is_visible=False) # 캐릭터 숨김
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__3$', align='right', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 비에른대사02(self.ctx)
 
 
 class 비에른대사02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__4$', align='left', duration=4000)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__5$', align='left', duration=5000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__4$', align='left', duration=4000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__5$', align='left', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=9000):
+        if self.wait_tick(wait_tick=9000):
             return 비에른접근(self.ctx)
 
 
 class 비에른접근(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=1007, patrolName='MS2PatrolData_1006B')
+        self.move_npc(spawn_id=1007, patrol_name='MS2PatrolData_1006B')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다대사03(self.ctx)
 
 
 class 에르다대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.visible_my_pc(isVisible=True) # 캐릭터 보임
-        self.select_camera(triggerId=317, enable=True)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__6$', align='right', duration=4000)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__7$', align='right', duration=4000)
+        self.visible_my_pc(is_visible=True) # 캐릭터 보임
+        self.select_camera(trigger_id=317, enable=True)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__6$', align='right', duration=4000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__7$', align='right', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return 비에른대사03(self.ctx)
 
 
 class 비에른대사03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=318, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__8$', align='left', duration=2000)
+        self.select_camera(trigger_id=318, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__8$', align='left', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다대사04(self.ctx)
 
 
 class 에르다대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=317, enable=True)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__9$', align='right', duration=2000)
+        self.select_camera(trigger_id=317, enable=True)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__9$', align='right', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 비에른대사04(self.ctx)
 
 
 class 비에른대사04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=312, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__10$', align='right', duration=5000)
+        self.select_camera(trigger_id=312, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__10$', align='right', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 비에른대사05(self.ctx)
 
 
 class 비에른대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=318, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__11$', align='left', duration=4000)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__12$', align='left', duration=4000)
+        self.select_camera(trigger_id=318, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__11$', align='left', duration=4000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__12$', align='left', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return 에르다대사05(self.ctx)
 
 
 class 에르다대사05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=317, enable=True)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__13$', align='right', duration=2000)
+        self.select_camera(trigger_id=317, enable=True)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__13$', align='right', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다대사06(self.ctx)
 
 
 class 에르다대사06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[1008])
-        self.set_visible_breakable_object(triggerIds=[4000], visible=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__14$', align='left', duration=2000)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__15$', align='right', duration=5000)
+        self.destroy_monster(spawn_ids=[1008])
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__14$', align='left', duration=2000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__15$', align='right', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 에르다대사07(self.ctx)
 
 
 class 에르다대사07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=319, enable=True)
-        self.create_monster(spawnIds=[1009], animationEffect=False)
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__16$', align='right', duration=3000)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__17$', align='right', duration=5000)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__18$', align='right', duration=5000)
+        self.select_camera(trigger_id=319, enable=True)
+        self.spawn_monster(spawn_ids=[1009], auto_target=False)
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__16$', align='right', duration=3000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__17$', align='right', duration=5000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__18$', align='right', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=13000):
+        if self.wait_tick(wait_tick=13000):
             return 에르다이동(self.ctx)
 
 
 class 에르다이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=1009, patrolName='MS2PatrolData_1009A')
-        self.select_camera(triggerId=320, enable=True)
+        self.move_npc(spawn_id=1009, patrol_name='MS2PatrolData_1009A')
+        self.select_camera(trigger_id=320, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 에르다대사08(self.ctx)
 
 
 class 에르다대사08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=1007, patrolName='MS2PatrolData_1007A')
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__19$', align='right', duration=4000)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__20$', align='right', duration=4000)
+        self.move_npc(spawn_id=1007, patrol_name='MS2PatrolData_1007A')
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__19$', align='right', duration=4000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__20$', align='right', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return 암전(self.ctx)
 
 
@@ -244,7 +244,7 @@ class 암전(trigger_api.Trigger):
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return 연출종료(self.ctx)
 
 
@@ -252,46 +252,46 @@ class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Missing State: State
         self.set_skip()
-        self.visible_my_pc(isVisible=True) # 캐릭터 숨김
+        self.visible_my_pc(is_visible=True) # 캐릭터 숨김
         self.set_ai_extra_data(key='getBack', value=1)
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.destroy_monster(spawnIds=[1007,1008,1009])
-        self.create_monster(spawnIds=[2098], animationEffect=False)
+        self.destroy_monster(spawn_ids=[1007,1008,1009])
+        self.spawn_monster(spawn_ids=[2098], auto_target=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolationTime=0)
-        self.add_buff(boxIds=[199], skillId=70000115, level=1, isPlayer=False, isSkillSet=False)
+        self.reset_camera(interpolation_time=0)
+        self.add_buff(box_ids=[199], skill_id=70000115, level=1, is_player=False, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 비에른사망대기(self.ctx)
 
 
 class 비에른사망대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2099]):
+        if self.monster_dead(spawn_ids=[2099]):
             return 사망연출대기(self.ctx)
 
 
 class 사망연출대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 사망연출시작(self.ctx)
 
 
 class 사망연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000086, portalId=40)
-        self.destroy_monster(spawnIds=[2099])
-        self.destroy_monster(spawnIds=[2098])
-        self.create_monster(spawnIds=[1101,1102], animationEffect=False)
-        self.set_npc_emotion_loop(spawnId=1102, sequenceName='Stun_A', duration=1E+12)
+        self.move_user(map_id=52000086, portal_id=40)
+        self.destroy_monster(spawn_ids=[2099])
+        self.destroy_monster(spawn_ids=[2098])
+        self.spawn_monster(spawn_ids=[1101,1102], auto_target=False)
+        self.set_npc_emotion_loop(spawn_id=1102, sequence_name='Stun_A', duration=1E+12)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return 에드다이동02(self.ctx)
 
 
@@ -300,148 +300,148 @@ class 에드다이동02(trigger_api.Trigger):
         self.set_skip(state=사망연출종료)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.select_camera(triggerId=321, enable=True)
-        self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1101A')
+        self.select_camera(trigger_id=321, enable=True)
+        self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_1101A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 에르다대사10(self.ctx)
 
 
 class 에르다대사10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__21$', align='right', duration=5000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__21$', align='right', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 비에른대사10(self.ctx)
 
 
 class 비에른대사10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=322, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__22$', align='left', duration=3000)
+        self.select_camera(trigger_id=322, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__22$', align='left', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 에르다대사11(self.ctx)
 
 
 class 에르다대사11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__23$', align='right', duration=2000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__23$', align='right', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 비에른대사11(self.ctx)
 
 
 class 비에른대사11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=323, enable=True)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__24$', align='left', duration=4000)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__25$', align='left', duration=2000)
+        self.select_camera(trigger_id=323, enable=True)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__24$', align='left', duration=4000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__25$', align='left', duration=2000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 비에른대사12(self.ctx)
 
 
 class 비에른대사12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__26$', align='left', duration=4000)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__26$', align='left', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 에르다대사12(self.ctx)
 
 
 class 에르다대사12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__27$', align='right', duration=3000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__27$', align='right', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 비에른대사13(self.ctx)
 
 
 class 비에른대사13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=322, enable=True)
-        self.set_npc_emotion_loop(spawnId=1102, sequenceName='Idle_A', duration=1E+12)
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__28$', align='left', duration=5000)
+        self.select_camera(trigger_id=322, enable=True)
+        self.set_npc_emotion_loop(spawn_id=1102, sequence_name='Idle_A', duration=1E+12)
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__28$', align='left', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 비에른대사14(self.ctx)
 
 
 class 비에른대사14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=324, enable=True)
-        self.move_npc(spawnId=1102, patrolName='MS2PatrolData_1102A')
-        self.add_cinematic_talk(npcId=11003075, illustId='SnowKing_normal', msg='$52000086_QD__HP50__29$', align='left', duration=3000)
+        self.select_camera(trigger_id=324, enable=True)
+        self.move_npc(spawn_id=1102, patrol_name='MS2PatrolData_1102A')
+        self.add_cinematic_talk(npc_id=11003075, illust_id='SnowKing_normal', msg='$52000086_QD__HP50__29$', align='left', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 에드다이동03(self.ctx)
 
 
 class 에드다이동03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=325, enable=True)
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__30$', align='right', duration=3000)
-        # self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1101B')
+        self.select_camera(trigger_id=325, enable=True)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__30$', align='right', duration=3000)
+        # self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_1101B')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return PC말풍선대사(self.ctx)
 
 
 class PC말풍선대사(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=0, script='$52000086_QD__HP50__31$', arg4=2)
+        self.set_dialogue(type=1, spawn_id=0, script='$52000086_QD__HP50__31$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3500):
+        if self.wait_tick(wait_tick=3500):
             return 에르다대사13(self.ctx)
 
 
 class 에르다대사13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__32$', align='right', duration=3000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__32$', align='right', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 에르다대사13To1(self.ctx)
 
 
 class 에르다대사13To1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_cinematic_talk(npcId=11003074, illustId='SnowQueen_normal', msg='$52000086_QD__HP50__33$', align='right', duration=3000)
+        self.add_cinematic_talk(npc_id=11003074, illust_id='SnowQueen_normal', msg='$52000086_QD__HP50__33$', align='right', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 에르다대사14(self.ctx)
 
 
 class 에르다대사14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=321, enable=True)
-        # self.set_conversation(type=2, spawnId=11003074, script='미안하지만 지금은… 생각을 좀 정리하고 싶으니 혼자 있게 해 다오. 부탁이다.', arg4=4)
+        self.select_camera(trigger_id=321, enable=True)
+        # self.set_dialogue(type=2, spawn_id=11003074, script='미안하지만 지금은… 생각을 좀 정리하고 싶으니 혼자 있게 해 다오. 부탁이다.', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 에드다마저이동(self.ctx)
 
 
 class 에드다마저이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1101C')
+        # self.move_npc(spawn_id=1101, patrol_name='MS2PatrolData_1101C')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 사망연출종료(self.ctx)
 
 
@@ -450,47 +450,47 @@ class 사망연출종료(trigger_api.Trigger):
         # Missing State: State
         self.set_skip()
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.destroy_monster(spawnIds=[1101,1102])
-        self.create_monster(spawnIds=[10000,10001,10002])
+        self.destroy_monster(spawn_ids=[1101,1102])
+        self.spawn_monster(spawn_ids=[10000,10001,10002])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.reset_camera(interpolationTime=0)
-        self.set_achievement(triggerId=199, type='trigger', achieve='snowkingbjorn')
+        self.reset_camera(interpolation_time=0)
+        self.set_achievement(trigger_id=199, type='trigger', achieve='snowkingbjorn')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 
 class 던전종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[-1])
-        self.set_portal(portalId=91, visible=False, enable=False, minimapVisible=False)
-        self.move_user(mapId=52000086, portalId=30)
+        self.destroy_monster(spawn_ids=[-1])
+        self.set_portal(portal_id=91, visible=False, enable=False, minimap_visible=False)
+        self.move_user(map_id=52000086, portal_id=30)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 던전종료1(self.ctx)
 
 
 class 던전종료1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=4002, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0)
-        self.set_actor(triggerId=4002, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0)
-        self.set_actor(triggerId=4003, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[3103], visible=False, arg3=0, delay=0, scale=0)
-        self.set_actor(triggerId=4004, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[3104], visible=False, arg3=0, delay=0, scale=0)
-        self.set_breakable(triggerIds=[4000], enable=False)
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
-        self.move_user(mapId=52000086, portalId=30)
-        self.destroy_monster(spawnIds=[1101,1102])
-        self.create_monster(spawnIds=[10000,10001,10002])
+        self.set_actor(trigger_id=4002, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_actor(trigger_id=4002, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3102], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_actor(trigger_id=4003, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_actor(trigger_id=4004, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[3104], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_breakable(trigger_ids=[4000], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.move_user(map_id=52000086, portal_id=30)
+        self.destroy_monster(spawn_ids=[1101,1102])
+        self.spawn_monster(spawn_ids=[10000,10001,10002])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 

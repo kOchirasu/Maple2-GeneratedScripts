@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=52, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=52, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[99994]):
+        if self.user_detected(box_ids=[99994]):
             return 포털작동(self.ctx)
 
 
 class 포털작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=52, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portal_id=52, visible=False, enable=True, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=15000):
+        if self.wait_tick(wait_tick=15000):
             return 대기(self.ctx)
 
 

@@ -4,20 +4,20 @@ import trigger_api
 
 class 오브젝트반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10001016], state=1)
+        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10001016], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001016], stateValue=0):
+        if self.object_interacted(interact_ids=[10001016], state=0):
             return 열림(self.ctx)
 
 
 class 열림(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=0, scale=3)
+        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 오브젝트반응대기(self.ctx)
 
 

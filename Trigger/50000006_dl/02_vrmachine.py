@@ -6,8 +6,8 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='machineon', value=0)
-        self.set_interact_object(triggerIds=[10001245], state=2)
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_interact_object(trigger_ids=[10001245], state=2)
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='machineon', value=1):
@@ -16,35 +16,35 @@ class Wait(trigger_api.Trigger):
 
 class MachineOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001245], state=1)
+        self.set_interact_object(trigger_ids=[10001245], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001245], stateValue=0):
+        if self.object_interacted(interact_ids=[10001245], state=0):
             return PortalOn(self.ctx)
 
 
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=False, enable=True, minimapVisible=False)
+        self.set_portal(portal_id=2, visible=False, enable=True, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return ResetDelay(self.ctx)
 
 
 class ResetDelay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Reset(self.ctx)
 
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
-        self.set_interact_object(triggerIds=[10001245], state=1)
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_interact_object(trigger_ids=[10001245], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001245], stateValue=0):
+        if self.object_interacted(interact_ids=[10001245], state=0):
             return PortalOn(self.ctx)
 
 

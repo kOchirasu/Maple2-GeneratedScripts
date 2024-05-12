@@ -4,75 +4,75 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[103]):
+        if self.user_detected(box_ids=[103]):
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[706], enable=False)
-        self.set_skill(triggerIds=[707], enable=False)
-        self.set_skill(triggerIds=[708], enable=False)
-        self.set_skill(triggerIds=[709], enable=False)
-        self.set_skill(triggerIds=[710], enable=False)
-        self.set_skill(triggerIds=[711], enable=False)
+        self.set_skill(trigger_ids=[706], enable=False)
+        self.set_skill(trigger_ids=[707], enable=False)
+        self.set_skill(trigger_ids=[708], enable=False)
+        self.set_skill(trigger_ids=[709], enable=False)
+        self.set_skill(trigger_ids=[710], enable=False)
+        self.set_skill(trigger_ids=[711], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1300):
+        if self.wait_tick(wait_tick=1300):
             return 스킬01(self.ctx)
 
 
 class 스킬01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[706], enable=True)
+        self.set_skill(trigger_ids=[706], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 스킬02(self.ctx)
 
 
 class 스킬02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[707], enable=True)
+        self.set_skill(trigger_ids=[707], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 스킬03(self.ctx)
 
 
 class 스킬03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[708], enable=True)
+        self.set_skill(trigger_ids=[708], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 스킬04(self.ctx)
 
 
 class 스킬04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[709], enable=True)
+        self.set_skill(trigger_ids=[709], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 스킬05(self.ctx)
 
 
 class 스킬05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[710], enable=True)
+        self.set_skill(trigger_ids=[710], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 스킬06(self.ctx)
 
 
 class 스킬06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[711], enable=True)
+        self.set_skill(trigger_ids=[711], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=100):
+        if self.wait_tick(wait_tick=100):
             return 대기시간(self.ctx)
 
 

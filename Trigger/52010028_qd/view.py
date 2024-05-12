@@ -8,11 +8,11 @@ class 진동설정(trigger_api.Trigger):
         self.set_onetime_effect(id=401, enable=False, path='BG/sound/Eff_ShakeLand_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[2003]):
+        if self.user_detected(box_ids=[2003]):
             return 흔들흔들(self.ctx)
-        if self.user_detected(boxIds=[2006]):
+        if self.user_detected(box_ids=[2006]):
             return 흔들흔들(self.ctx)
-        if self.user_detected(boxIds=[2007]):
+        if self.user_detected(box_ids=[2007]):
             return 흔들흔들(self.ctx)
 
 
@@ -22,7 +22,7 @@ class 흔들흔들(trigger_api.Trigger):
         self.set_onetime_effect(id=401, enable=True, path='BG/sound/Eff_ShakeLand_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 진동설정(self.ctx)
 
 

@@ -12,10 +12,10 @@ class 대기(trigger_api.Trigger):
 
 class 소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.spawn_npc_range(rangeIds=[1901,1902,1903,1904,1905,1906,1907,1908,1909], isAutoTargeting=True, randomPickCount=3)
+        self.spawn_npc_range(range_ids=[1901,1902,1903,1904,1905,1906,1907,1908,1909], is_auto_targeting=True, random_pick_count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 대기(self.ctx)
         if self.user_value(key='EndDungeon', value=1):
             return 종료(self.ctx)

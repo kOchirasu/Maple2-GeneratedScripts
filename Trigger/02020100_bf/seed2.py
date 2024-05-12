@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=99990001, key='Seed2interact', value=0)
+        self.set_user_value(trigger_id=99990001, key='Seed2interact', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Seed2start', value=1):
@@ -13,34 +13,34 @@ class 대기(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[221,222,223,224])
-        self.set_mesh(triggerIds=[1303], visible=True, arg3=0, delay=0, scale=2)
-        self.set_interact_object(triggerIds=[10002110], state=1, arg3=True)
+        self.destroy_monster(spawn_ids=[221,222,223,224])
+        self.set_mesh(trigger_ids=[1303], visible=True, start_delay=0, interval=0, fade=2)
+        self.set_interact_object(trigger_ids=[10002110], state=1, arg3=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Seed2start', value=2):
             return 종료(self.ctx)
-        if self.object_interacted(interactIds=[10002110], stateValue=0):
+        if self.object_interacted(interact_ids=[10002110], state=0):
             return 씨앗2_대기(self.ctx)
 
 
 class 씨앗2_대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[221,222,223,224], animationEffect=False)
-        self.set_mesh(triggerIds=[1303], visible=False, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10002110], state=0, arg3=True)
-        self.set_user_value(triggerId=99990001, key='Seed2interact', value=1)
+        self.spawn_monster(spawn_ids=[221,222,223,224], auto_target=False)
+        self.set_mesh(trigger_ids=[1303], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10002110], state=0, arg3=True)
+        self.set_user_value(trigger_id=99990001, key='Seed2interact', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Seed2start', value=2):
             return 종료(self.ctx)
-        if not self.check_any_user_additional_effect(boxId=0, additionalEffectId=70002109, level=1):
+        if not self.check_any_user_additional_effect(box_id=0, additional_effect_id=70002109, level=1):
             return 시작(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10002110], state=0)
+        self.set_interact_object(trigger_ids=[10002110], state=0)
 
 
 initial_state = 대기

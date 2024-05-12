@@ -17,7 +17,7 @@ class State2(trigger_api.Trigger):
         self.debug_string(string='현재 State2')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return State1(self.ctx)
 
 

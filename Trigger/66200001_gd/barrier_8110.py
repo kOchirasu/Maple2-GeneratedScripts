@@ -4,10 +4,10 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=2) # On
-        self.set_interact_object(triggerIds=[10001201], state=2) # Off
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=2) # On
+        self.set_interact_object(trigger_ids=[10001201], state=2) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Barrier11', value=1):
@@ -25,10 +25,10 @@ class Wait(trigger_api.Trigger):
 # 1명 방어 불가
 class Sensor7111(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=1) # yellow
+        self.set_user_value(trigger_id=7110, key='Color11', value=1) # yellow
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='1', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='1', operator='Equal'):
             return Activate7111(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -36,10 +36,10 @@ class Sensor7111(trigger_api.Trigger):
 
 class Activate7111(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=2) # green
+        self.set_user_value(trigger_id=7110, key='Color11', value=2) # green
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='1', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='1', operator='Equal'):
             return Sensor7111(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -48,14 +48,14 @@ class Activate7111(trigger_api.Trigger):
 # 2명
 class Sensor7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=1) # yellow
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=0) # On
-        self.set_interact_object(triggerIds=[10001201], state=0) # Off
+        self.set_user_value(trigger_id=7110, key='Color11', value=1) # yellow
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=0) # On
+        self.set_interact_object(trigger_ids=[10001201], state=0) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return SafeGreen7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -63,12 +63,12 @@ class Sensor7112(trigger_api.Trigger):
 
 class SafeGreen7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=2) # green
+        self.set_user_value(trigger_id=7110, key='Color11', value=2) # green
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return CheckSameUserTag7112(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Sensor7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -76,11 +76,11 @@ class SafeGreen7112(trigger_api.Trigger):
 
 class CheckSameUserTag7112(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_same_user_tag(boxId=9110) and self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if self.check_same_user_tag(box_id=9110) and self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Enable7112(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Sensor7112(self.ctx)
-        if not self.check_same_user_tag(boxId=9110):
+        if not self.check_same_user_tag(box_id=9110):
             return SafeGreen7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -88,14 +88,14 @@ class CheckSameUserTag7112(trigger_api.Trigger):
 
 class Enable7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9110], sound='DDStop_Stage_Shiled_01')
-        self.set_interact_object(triggerIds=[10001185], state=1) # On
+        self.play_system_sound_in_box(box_ids=[9110], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(trigger_ids=[10001185], state=1) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001185], stateValue=0):
+        if self.object_interacted(interact_ids=[10001185], state=0):
             # On
             return Activate7112(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Sensor7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -103,40 +103,40 @@ class Enable7112(trigger_api.Trigger):
 
 class Activate7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=True)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10001185], state=2) # On
+        self.set_effect(trigger_ids=[8110], visible=True)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10001185], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Sensor7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Delay7112(self.ctx)
 
 
 class Delay7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001201], state=1) # Off
+        self.set_interact_object(trigger_ids=[10001201], state=1) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='2', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='2', operator='Equal'):
             return Sensor7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.object_interacted(interactIds=[10001201], stateValue=0):
+        if self.object_interacted(interact_ids=[10001201], state=0):
             # Off
             return DeActivate7112(self.ctx)
 
 
 class DeActivate7112(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Sensor7112(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -145,14 +145,14 @@ class DeActivate7112(trigger_api.Trigger):
 # 3명
 class Sensor7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=1) # yellow
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=0) # On
-        self.set_interact_object(triggerIds=[10001201], state=0) # Off
+        self.set_user_value(trigger_id=7110, key='Color11', value=1) # yellow
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=0) # On
+        self.set_interact_object(trigger_ids=[10001201], state=0) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return SafeGreen7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -160,12 +160,12 @@ class Sensor7113(trigger_api.Trigger):
 
 class SafeGreen7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=2) # green
+        self.set_user_value(trigger_id=7110, key='Color11', value=2) # green
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return CheckSameUserTag7113(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Sensor7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -173,11 +173,11 @@ class SafeGreen7113(trigger_api.Trigger):
 
 class CheckSameUserTag7113(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_same_user_tag(boxId=9110) and self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if self.check_same_user_tag(box_id=9110) and self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Enable7113(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Sensor7113(self.ctx)
-        if not self.check_same_user_tag(boxId=9110):
+        if not self.check_same_user_tag(box_id=9110):
             return SafeGreen7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -185,14 +185,14 @@ class CheckSameUserTag7113(trigger_api.Trigger):
 
 class Enable7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9110], sound='DDStop_Stage_Shiled_01')
-        self.set_interact_object(triggerIds=[10001185], state=1) # On
+        self.play_system_sound_in_box(box_ids=[9110], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(trigger_ids=[10001185], state=1) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001185], stateValue=0):
+        if self.object_interacted(interact_ids=[10001185], state=0):
             # On
             return Activate7113(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Sensor7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -200,40 +200,40 @@ class Enable7113(trigger_api.Trigger):
 
 class Activate7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=True)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10001185], state=2) # On
+        self.set_effect(trigger_ids=[8110], visible=True)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10001185], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Sensor7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Delay7113(self.ctx)
 
 
 class Delay7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001201], state=1) # Off
+        self.set_interact_object(trigger_ids=[10001201], state=1) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='3', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='3', operator='Equal'):
             return Sensor7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.object_interacted(interactIds=[10001201], stateValue=0):
+        if self.object_interacted(interact_ids=[10001201], state=0):
             # Off
             return DeActivate7113(self.ctx)
 
 
 class DeActivate7113(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Sensor7113(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -242,14 +242,14 @@ class DeActivate7113(trigger_api.Trigger):
 # 4명
 class Sensor7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=1) # yellow
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=0) # On
-        self.set_interact_object(triggerIds=[10001201], state=0) # Off
+        self.set_user_value(trigger_id=7110, key='Color11', value=1) # yellow
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=0) # On
+        self.set_interact_object(trigger_ids=[10001201], state=0) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return SafeGreen7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -257,12 +257,12 @@ class Sensor7114(trigger_api.Trigger):
 
 class SafeGreen7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=2) # green
+        self.set_user_value(trigger_id=7110, key='Color11', value=2) # green
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return CheckSameUserTag7114(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Sensor7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -270,11 +270,11 @@ class SafeGreen7114(trigger_api.Trigger):
 
 class CheckSameUserTag7114(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_same_user_tag(boxId=9110) and self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if self.check_same_user_tag(box_id=9110) and self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Enable7114(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Sensor7114(self.ctx)
-        if not self.check_same_user_tag(boxId=9110):
+        if not self.check_same_user_tag(box_id=9110):
             return SafeGreen7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -282,14 +282,14 @@ class CheckSameUserTag7114(trigger_api.Trigger):
 
 class Enable7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9110], sound='DDStop_Stage_Shiled_01')
-        self.set_interact_object(triggerIds=[10001185], state=1) # On
+        self.play_system_sound_in_box(box_ids=[9110], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(trigger_ids=[10001185], state=1) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001185], stateValue=0):
+        if self.object_interacted(interact_ids=[10001185], state=0):
             # On
             return Activate7114(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Sensor7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -297,40 +297,40 @@ class Enable7114(trigger_api.Trigger):
 
 class Activate7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=True)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10001185], state=2) # On
+        self.set_effect(trigger_ids=[8110], visible=True)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10001185], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Sensor7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Delay7114(self.ctx)
 
 
 class Delay7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001201], state=1) # Off
+        self.set_interact_object(trigger_ids=[10001201], state=1) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='4', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='4', operator='Equal'):
             return Sensor7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.object_interacted(interactIds=[10001201], stateValue=0):
+        if self.object_interacted(interact_ids=[10001201], state=0):
             # Off
             return DeActivate7114(self.ctx)
 
 
 class DeActivate7114(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Sensor7114(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -339,14 +339,14 @@ class DeActivate7114(trigger_api.Trigger):
 # 5명
 class Sensor7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=1) # yellow
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=0) # On
-        self.set_interact_object(triggerIds=[10001201], state=0) # Off
+        self.set_user_value(trigger_id=7110, key='Color11', value=1) # yellow
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=0) # On
+        self.set_interact_object(trigger_ids=[10001201], state=0) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return SafeGreen7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -354,12 +354,12 @@ class Sensor7115(trigger_api.Trigger):
 
 class SafeGreen7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=7110, key='Color11', value=2) # green
+        self.set_user_value(trigger_id=7110, key='Color11', value=2) # green
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return CheckSameUserTag7115(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Sensor7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -367,11 +367,11 @@ class SafeGreen7115(trigger_api.Trigger):
 
 class CheckSameUserTag7115(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_same_user_tag(boxId=9110) and self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if self.check_same_user_tag(box_id=9110) and self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Enable7115(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Sensor7115(self.ctx)
-        if not self.check_same_user_tag(boxId=9110):
+        if not self.check_same_user_tag(box_id=9110):
             return SafeGreen7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -379,14 +379,14 @@ class CheckSameUserTag7115(trigger_api.Trigger):
 
 class Enable7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9110], sound='DDStop_Stage_Shiled_01')
-        self.set_interact_object(triggerIds=[10001185], state=1) # On
+        self.play_system_sound_in_box(box_ids=[9110], sound='DDStop_Stage_Shiled_01')
+        self.set_interact_object(trigger_ids=[10001185], state=1) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001185], stateValue=0):
+        if self.object_interacted(interact_ids=[10001185], state=0):
             # On
             return Activate7115(self.ctx)
-        if not self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Sensor7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -394,40 +394,40 @@ class Enable7115(trigger_api.Trigger):
 
 class Activate7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=True)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10001185], state=2) # On
+        self.set_effect(trigger_ids=[8110], visible=True)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10001185], state=2) # On
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Sensor7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Delay7115(self.ctx)
 
 
 class Delay7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001201], state=1) # Off
+        self.set_interact_object(trigger_ids=[10001201], state=1) # Off
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9110, minUsers='5', operator='Equal'):
+        if not self.count_users(box_id=9110, min_users='5', operator='Equal'):
             return Sensor7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
-        if self.object_interacted(interactIds=[10001201], stateValue=0):
+        if self.object_interacted(interact_ids=[10001201], state=0):
             # Off
             return DeActivate7115(self.ctx)
 
 
 class DeActivate7115(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Sensor7115(self.ctx)
         if self.user_value(key='Barrier11', value=10):
             return Reset(self.ctx)
@@ -435,14 +435,14 @@ class DeActivate7115(trigger_api.Trigger):
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[8111,8112,8113,8114], visible=False, arg3=0, delay=0, scale=0)
-        self.set_effect(triggerIds=[8110], visible=False)
-        self.set_interact_object(triggerIds=[10001185], state=0) # On
-        self.set_interact_object(triggerIds=[10001201], state=0) # Off
+        self.set_mesh(trigger_ids=[8111,8112,8113,8114], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_effect(trigger_ids=[8110], visible=False)
+        self.set_interact_object(trigger_ids=[10001185], state=0) # On
+        self.set_interact_object(trigger_ids=[10001201], state=0) # Off
         self.set_user_value(key='Barrier11', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Wait(self.ctx)
 
 

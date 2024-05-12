@@ -4,20 +4,20 @@ import trigger_api
 
 class 준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101], animationEffect=True)
-        self.create_monster(spawnIds=[102], animationEffect=True)
-        self.create_monster(spawnIds=[103], animationEffect=True)
-        self.create_monster(spawnIds=[104], animationEffect=True)
-        self.set_effect(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=False)
+        self.spawn_monster(spawn_ids=[101], auto_target=True)
+        self.spawn_monster(spawn_ids=[102], auto_target=True)
+        self.spawn_monster(spawn_ids=[103], auto_target=True)
+        self.spawn_monster(spawn_ids=[104], auto_target=True)
+        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[701], questIds=[40002691], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[40002691], quest_states=[1]):
             return 퀘스트진행_01(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[40002691], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[40002691], quest_states=[2]):
             return 퀘스트완료가능_01(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[40002691], questStates=[3]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[40002691], quest_states=[3]):
             return 페이드아웃_01(self.ctx)
-        if self.user_detected(boxIds=[701]):
+        if self.user_detected(box_ids=[701]):
             return 잠시대기(self.ctx)
 
 
@@ -26,35 +26,35 @@ class 잠시대기(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 카메라이동_01(self.ctx)
 
 
 class 카메라이동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8001], returnView=False)
+        self.select_camera_path(path_ids=[8001], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return 카메라이동_02(self.ctx)
 
 
 class 카메라이동_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.show_caption(type='VerticalCaption', title='$52000129_QD__52000129_MAIN__0$', desc='$52000129_QD__52000129_MAIN__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=4000, scale=2.5)
+        self.show_caption(type='VerticalCaption', title='$52000129_QD__52000129_MAIN__0$', desc='$52000129_QD__52000129_MAIN__1$', align='bottomLeft', offset_rate_x=0, offset_rate_y=0, duration=4000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 카메라리셋_01(self.ctx)
 
 
 class 카메라리셋_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
-        self.reset_camera(interpolationTime=1)
+        self.reset_camera(interpolation_time=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 계단타고이동_01(self.ctx)
 
 
@@ -62,111 +62,111 @@ class 계단타고이동_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.show_guide_summary(entityId=25201291, textId=25201291)
-        self.set_effect(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=True)
+        self.show_guide_summary(entity_id=25201291, text_id=25201291)
+        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return 퀘스트받기_01(self.ctx)
 
 
 class 퀘스트받기_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.hide_guide_summary(entityId=25201291)
-        self.set_effect(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=False)
-        self.show_guide_summary(entityId=25201292, textId=25201292)
+        self.hide_guide_summary(entity_id=25201291)
+        self.set_effect(trigger_ids=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011], visible=False)
+        self.show_guide_summary(entity_id=25201292, text_id=25201292)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[702], questIds=[40002691], questStates=[1]):
+        if self.quest_user_detected(box_ids=[702], quest_ids=[40002691], quest_states=[1]):
             return 퀘스트진행_01(self.ctx)
 
 
 class 퀘스트진행_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.hide_guide_summary(entityId=25201291)
-        self.hide_guide_summary(entityId=25201292)
-        self.show_guide_summary(entityId=25201293, textId=25201293)
+        self.hide_guide_summary(entity_id=25201291)
+        self.hide_guide_summary(entity_id=25201292)
+        self.show_guide_summary(entity_id=25201293, text_id=25201293)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[702], questIds=[40002691], questStates=[2]):
+        if self.quest_user_detected(box_ids=[702], quest_ids=[40002691], quest_states=[2]):
             return 퀘스트완료가능_01(self.ctx)
 
 
 class 퀘스트완료가능_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.hide_guide_summary(entityId=25201291)
-        self.hide_guide_summary(entityId=25201292)
-        self.hide_guide_summary(entityId=25201293)
-        self.show_guide_summary(entityId=25201294, textId=25201294)
+        self.hide_guide_summary(entity_id=25201291)
+        self.hide_guide_summary(entity_id=25201292)
+        self.hide_guide_summary(entity_id=25201293)
+        self.show_guide_summary(entity_id=25201294, text_id=25201294)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[702], questIds=[40002691], questStates=[3]):
+        if self.quest_user_detected(box_ids=[702], quest_ids=[40002691], quest_states=[3]):
             return 페이드아웃_01(self.ctx)
 
 
 class 페이드아웃_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.hide_guide_summary(entityId=25201291)
-        self.hide_guide_summary(entityId=25201292)
-        self.hide_guide_summary(entityId=25201293)
-        self.hide_guide_summary(entityId=25201294)
+        self.hide_guide_summary(entity_id=25201291)
+        self.hide_guide_summary(entity_id=25201292)
+        self.hide_guide_summary(entity_id=25201293)
+        self.hide_guide_summary(entity_id=25201294)
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 페이드아웃_02(self.ctx)
 
 
 class 페이드아웃_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000129, portalId=99)
-        self.create_monster(spawnIds=[105], animationEffect=True)
-        self.select_camera_path(pathIds=[8002], returnView=False)
+        self.move_user(map_id=52000129, portal_id=99)
+        self.spawn_monster(spawn_ids=[105], auto_target=True)
+        self.select_camera_path(path_ids=[8002], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 페이드인_01(self.ctx)
 
 
 class 페이드인_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMaskEff_fadein_1sec.xml')
-        self.set_pc_emotion_sequence(sequenceNames=['Talk_A'])
+        self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
         self.set_scene_skip(state=마무리, action='exit')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 감시_01(self.ctx)
 
 
 class 감시_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_pc_emotion_sequence(sequenceNames=['Talk_A'])
-        self.set_conversation(type=1, spawnId=101, script='$52000129_QD__52000129_MAIN__2$', arg4=2, arg5=0)
-        self.move_npc(spawnId=105, patrolName='MS2PatrolData_2001')
+        self.set_pc_emotion_sequence(sequence_names=['Talk_A'])
+        self.set_dialogue(type=1, spawn_id=101, script='$52000129_QD__52000129_MAIN__2$', time=2, arg5=0)
+        self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 감시_02(self.ctx)
 
 
 class 감시_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera_path(pathIds=[8002,8003], returnView=False)
+        self.select_camera_path(path_ids=[8002,8003], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 감시_03(self.ctx)
 
 
 class 감시_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user_path(patrolName='MS2PatrolData_2002')
-        self.set_conversation(type=1, spawnId=102, script='$52000129_QD__52000129_MAIN__3$', arg4=2, arg5=0)
+        self.move_user_path(patrol_name='MS2PatrolData_2002')
+        self.set_dialogue(type=1, spawn_id=102, script='$52000129_QD__52000129_MAIN__3$', time=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 마무리(self.ctx)
 
 
@@ -177,13 +177,13 @@ class 마무리(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_0sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 강제이동(self.ctx)
 
 
 class 강제이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000130, portalId=1)
+        self.move_user(map_id=52000130, portal_id=1)
 
 
 initial_state = 준비

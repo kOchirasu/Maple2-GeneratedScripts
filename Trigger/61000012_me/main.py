@@ -4,16 +4,16 @@ import trigger_api
 
 class 입장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[199]):
+        if self.user_detected(box_ids=[199]):
             return 대기(self.ctx)
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=301, enable=True)
+        self.select_camera(trigger_id=301, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 

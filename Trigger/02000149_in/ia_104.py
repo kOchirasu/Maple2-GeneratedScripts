@@ -4,42 +4,41 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000193], state=1)
-        self.set_actor(triggerId=204, visible=True, initialSequence='Sit_Chair_Idle_A')
+        self.set_interact_object(trigger_ids=[10000193], state=1)
+        self.set_actor(trigger_id=204, visible=True, initial_sequence='Sit_Chair_Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 오브젝트반응(self.ctx)
+        return 오브젝트반응(self.ctx)
 
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000193], stateValue=0):
+        if self.object_interacted(interact_ids=[10000193], state=0):
             return NPC이동(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(triggerId=204, visible=False, initialSequence='Sit_Chair_Idle_A')
-        self.create_monster(spawnIds=[404])
+        self.set_actor(trigger_id=204, visible=False, initial_sequence='Sit_Chair_Idle_A')
+        self.spawn_monster(spawn_ids=[404])
 
 
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=404, patrolName='MS2PatrolData_504')
-        self.set_conversation(type=1, spawnId=404, script='$02000149_IN__IA_104__0$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=404, script='$02000149_IN__IA_104__1$', arg4=2, arg5=2)
+        self.move_npc(spawn_id=404, patrol_name='MS2PatrolData_504')
+        self.set_dialogue(type=1, spawn_id=404, script='$02000149_IN__IA_104__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=404, script='$02000149_IN__IA_104__1$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=604, spawnIds=[404]):
+        if self.npc_detected(box_id=604, spawn_ids=[404]):
             return NPC소멸(self.ctx)
 
 
 class NPC소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[404])
-        self.set_timer(timerId='1', seconds=5)
+        self.destroy_monster(spawn_ids=[404])
+        self.set_timer(timer_id='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 시작대기중(self.ctx)
 
 

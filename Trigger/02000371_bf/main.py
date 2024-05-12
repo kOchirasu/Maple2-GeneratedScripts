@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[101]):
+        if self.user_detected(box_ids=[101]):
             return 카오스레이드(self.ctx)
 
 
@@ -25,10 +25,10 @@ class 난이도체크(trigger_api.Trigger):
 """
 class 레이드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2001], animationEffect=False)
+        self.spawn_monster(spawn_ids=[2001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2001]):
+        if self.monster_dead(spawn_ids=[2001]):
             return 초대기2(self.ctx)
 
 """
@@ -36,16 +36,16 @@ class 레이드(trigger_api.Trigger):
 
 class 카오스레이드(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2101], animationEffect=False)
+        self.spawn_monster(spawn_ids=[2101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2101]):
+        if self.monster_dead(spawn_ids=[2101]):
             return 초대기2(self.ctx)
 
 
 class 초대기2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 던전클리어(self.ctx)
 
 
@@ -54,16 +54,16 @@ class 던전클리어(trigger_api.Trigger):
         self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 포털개방(self.ctx)
 
 
 class 포털개방(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 

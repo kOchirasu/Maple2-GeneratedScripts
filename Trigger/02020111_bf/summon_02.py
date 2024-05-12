@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[1001]):
+        if self.user_detected(box_ids=[1001]):
             return 소환준비(self.ctx)
 
 
@@ -18,7 +18,7 @@ class 소환준비(trigger_api.Trigger):
 
 class 몬스터등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[121,122,123,124,131,132,133,134])
+        self.spawn_monster(spawn_ids=[121,122,123,124,131,132,133,134])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon_Enemy_1', value=0):
@@ -29,7 +29,7 @@ class 몬스터등장(trigger_api.Trigger):
 
 class 몬스터등장_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[121,122,123,124,131,132,133,134])
+        self.spawn_monster(spawn_ids=[121,122,123,124,131,132,133,134])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon_Enemy_1', value=0):

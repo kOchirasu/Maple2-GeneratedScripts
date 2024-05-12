@@ -10,17 +10,16 @@ class idle(trigger_api.Trigger):
 
 class 몬스터_사망(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[401]) or self.monster_dead(boxIds=[402]):
+        if self.monster_dead(spawn_ids=[401]) or self.monster_dead(spawn_ids=[402]):
             return 초강력버프(self.ctx)
 
 
 class 초강력버프(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(boxIds=[401,402], skillId=49200001, level=1, isPlayer=True)
+        self.add_buff(box_ids=[401,402], skill_id=49200001, level=1, is_player=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            pass
+        pass
 
 
 initial_state = idle

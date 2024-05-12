@@ -5,7 +5,7 @@ import trigger_api
 class 최초시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 3페이즈 인터렉트 오브젝트 대기,  arg2="0" 노말 상태 (툴벤치에서 상태 입력)      arg2="1" 반응가능 상태 (툴벤치에서 상태 입력)      arg2="2" 반응완료 상태 (actor일 경우 메시가 보이지 않는다.)
-        self.set_interact_object(triggerIds=[10003151], state=2)
+        self.set_interact_object(trigger_ids=[10003151], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -14,17 +14,17 @@ class 최초시작(trigger_api.Trigger):
 
 class 탈것_등장대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 탈것_등장연출(self.ctx)
 
 
 class 탈것_등장연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 탑승 아르케온 등장(연출용) : 리젠 애니메이션 출력
-        self.create_monster(spawnIds=[914106], animationEffect=False)
+        self.spawn_monster(spawn_ids=[914106], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             # 아르케온 리젠 애니메이션 길이에 맞게 WaitTick 시간 설정해야 함
             return 탈것_등장(self.ctx)
 
@@ -32,11 +32,11 @@ class 탈것_등장연출(trigger_api.Trigger):
 class 탈것_등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # arg2="0" 노말 상태 (툴벤치에서 상태 입력)      arg2="1" 반응가능 상태 (툴벤치에서 상태 입력)      arg2="2" 반응완료 상태 (actor일 경우 메시가 보이지 않는다.)
-        self.set_interact_object(triggerIds=[10003151], state=1)
-        self.destroy_monster(spawnIds=[914106])
+        self.set_interact_object(trigger_ids=[10003151], state=1)
+        self.destroy_monster(spawn_ids=[914106])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10003151], stateValue=0):
+        if self.object_interacted(interact_ids=[10003151], state=0):
             # arg2="0" 노말 상태 (툴벤치에서 상태 입력)      arg2="1" 반응가능 상태 (툴벤치에서 상태 입력)      arg2="2" 오브젝트 사라짐
             return 인터렉트_동작중(self.ctx)
         if self.user_value(key='RidingBattle', value=-1):
@@ -47,10 +47,10 @@ class 탈것_등장(trigger_api.Trigger):
 class 인터렉트_동작중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 3페이즈 인터렉트 오브젝트 대기,  arg2="0" 노말 상태 (툴벤치에서 상태 입력)      arg2="1" 반응가능 상태 (툴벤치에서 상태 입력)      arg2="2" 반응완료 상태 (actor일 경우 메시가 보이지 않는다.)
-        self.set_interact_object(triggerIds=[10003151], state=2)
+        self.set_interact_object(trigger_ids=[10003151], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=30000):
+        if self.wait_tick(wait_tick=30000):
             return 탈것_등장대기(self.ctx)
         if self.user_value(key='RidingBattle', value=-1):
             return 종료(self.ctx)
@@ -59,7 +59,7 @@ class 인터렉트_동작중(trigger_api.Trigger):
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 3페이즈 인터렉트 오브젝트 대기,  arg2="0" 노말 상태 (툴벤치에서 상태 입력)      arg2="1" 반응가능 상태 (툴벤치에서 상태 입력)      arg2="2" 반응완료 상태 (actor일 경우 메시가 보이지 않는다.)
-        self.set_interact_object(triggerIds=[10003151], state=2)
+        self.set_interact_object(trigger_ids=[10003151], state=2)
 
 
 initial_state = 최초시작

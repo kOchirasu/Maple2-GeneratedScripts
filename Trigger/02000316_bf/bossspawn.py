@@ -4,32 +4,32 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10]):
+        if self.user_detected(box_ids=[10]):
             return 몹생성(self.ctx)
 
 
 class 몹생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101], animationEffect=True)
+        self.spawn_monster(spawn_ids=[101], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[101]):
+        if self.monster_dead(spawn_ids=[101]):
             return 포털(self.ctx)
 
 
 class 포털(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             self.dungeon_clear()
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = 대기

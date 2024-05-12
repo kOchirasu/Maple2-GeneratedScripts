@@ -7,10 +7,10 @@ import trigger_api
 # 대기 시작
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=40, startDelay=1, interval=0) # 테스트 수정 가능 지점
+        self.set_timer(timer_id='1', seconds=40, start_delay=1, interval=0) # 테스트 수정 가능 지점
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9000]):
+        if self.user_detected(box_ids=[9000]):
             return 대기(self.ctx)
 
 
@@ -18,15 +18,15 @@ class 시작(trigger_api.Trigger):
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # npc대사 : 애프터파티에 오신 것을 환영해요!
-        self.add_balloon_talk(spawnId=102, msg='$84000006_WD__84000006_WD_WAIT__0$', duration=5000, delayTick=1000)
-        self.show_guide_summary(entityId=28500001, textId=28500001, duration=5000) # 가이드 : 잠시만 기다리셈
+        self.add_balloon_talk(spawn_id=102, msg='$84000006_WD__84000006_WD_WAIT__0$', duration=5000, delay_tick=1000)
+        self.show_guide_summary(entity_id=28500001, text_id=28500001, duration=5000) # 가이드 : 잠시만 기다리셈
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, minUsers='70'):
+        if self.count_users(box_id=9000, min_users='70'):
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 대기2(self.ctx)
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 종료(self.ctx)
 
 
@@ -34,15 +34,15 @@ class 대기(trigger_api.Trigger):
 class 대기2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # npc대사 : 애프터파티에 오신 것을 환영해요!
-        self.add_balloon_talk(spawnId=102, msg='$84000006_WD__84000006_WD_WAIT__1$', duration=5000, delayTick=1000)
-        self.show_guide_summary(entityId=28500002, textId=28500002, duration=5000) # 가이드 : 곧 시작함
+        self.add_balloon_talk(spawn_id=102, msg='$84000006_WD__84000006_WD_WAIT__1$', duration=5000, delay_tick=1000)
+        self.show_guide_summary(entity_id=28500002, text_id=28500002, duration=5000) # 가이드 : 곧 시작함
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, minUsers='70'):
+        if self.count_users(box_id=9000, min_users='70'):
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 대기(self.ctx)
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 종료(self.ctx)
 
 

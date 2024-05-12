@@ -4,12 +4,12 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[4023], visible=True, arg3=0, delay=0, scale=0) # RoundBarrier
-        self.set_mesh(triggerIds=[3003], visible=True, arg3=0, delay=0, scale=0) # CrystalOff
-        self.set_mesh(triggerIds=[3103], visible=False, arg3=0, delay=0, scale=0) # CrystalOn
-        self.set_mesh_animation(triggerIds=[3003], visible=True, arg3=0, arg4=0) # CrystalOff
-        self.set_mesh_animation(triggerIds=[3103], visible=False, arg3=0, arg4=0) # CrystalOn
-        self.set_effect(triggerIds=[5203], visible=False) # Sound_CrystalOn
+        self.set_mesh(trigger_ids=[4023], visible=True, start_delay=0, interval=0, fade=0) # RoundBarrier
+        self.set_mesh(trigger_ids=[3003], visible=True, start_delay=0, interval=0, fade=0) # CrystalOff
+        self.set_mesh(trigger_ids=[3103], visible=False, start_delay=0, interval=0, fade=0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3003], visible=True, start_delay=0, interval=0) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3103], visible=False, start_delay=0, interval=0) # CrystalOn
+        self.set_effect(trigger_ids=[5203], visible=False) # Sound_CrystalOn
         self.set_user_value(key='FindWay', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,46 +19,46 @@ class Wait(trigger_api.Trigger):
 
 class ReadyToWalkIn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[4023], visible=False, arg3=0, delay=0, scale=0) # RoundBarrier
-        # self.create_monster(spawnIds=[904,905,906], animationEffect=False)
+        self.set_mesh(trigger_ids=[4023], visible=False, start_delay=0, interval=0, fade=0) # RoundBarrier
+        # self.spawn_monster(spawn_ids=[904,905,906], auto_target=False)
         # 레이저 토템
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_103')
-        self.move_npc(spawnId=201, patrolName='MS2PatrolData_203')
-        self.set_conversation(type=1, spawnId=201, script='$52000052_QD__02_FINDWAY__0$', arg4=2, arg5=0) # 준타
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_103')
+        self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_203')
+        self.set_dialogue(type=1, spawn_id=201, script='$52000052_QD__02_FINDWAY__0$', time=2, arg5=0) # 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return ReadyToWalkIn02(self.ctx)
 
 
 class ReadyToWalkIn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1303, key='RouteSelected', value=1)
-        self.set_user_value(triggerId=2303, key='RouteSelected', value=1)
+        self.set_user_value(trigger_id=1303, key='RouteSelected', value=1)
+        self.set_user_value(trigger_id=2303, key='RouteSelected', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return ReadyToWalkIn03(self.ctx)
 
 
 class ReadyToWalkIn03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=101, script='$52000052_QD__02_FINDWAY__2$', arg4=2, arg5=2) # 틴차이
+        self.set_dialogue(type=1, spawn_id=101, script='$52000052_QD__02_FINDWAY__2$', time=2, arg5=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return Round03_Start(self.ctx)
 
     def on_exit(self) -> None:
-        self.destroy_monster(spawnIds=[101,201])
+        self.destroy_monster(spawn_ids=[101,201])
 
 
 class Round03_Start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1003], animationEffect=False) # 수호대상 틴차이
-        self.create_monster(spawnIds=[2003], animationEffect=False) # 전투용 준타
-        self.set_conversation(type=1, spawnId=1003, script='$52000052_QD__02_FINDWAY__3$', arg4=3, arg5=2) # 틴차이
-        self.set_user_value(triggerId=903, key='MobWaveStart', value=1)
+        self.spawn_monster(spawn_ids=[1003], auto_target=False) # 수호대상 틴차이
+        self.spawn_monster(spawn_ids=[2003], auto_target=False) # 전투용 준타
+        self.set_dialogue(type=1, spawn_id=1003, script='$52000052_QD__02_FINDWAY__3$', time=3, arg5=2) # 틴차이
+        self.set_user_value(trigger_id=903, key='MobWaveStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='03RoundSuccess', value=1):
@@ -67,80 +67,80 @@ class Round03_Start(trigger_api.Trigger):
 
 class Round03_Sucess01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=9003, spawnIds=[2203]):
+        if self.npc_detected(box_id=9003, spawn_ids=[2203]):
             return Round03_Sucess02(self.ctx)
 
 
 class Round03_Sucess02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=2203, patrolName='MS2PatrolData_2003')
-        self.destroy_monster(spawnIds=[1003])
-        self.create_monster(spawnIds=[103], animationEffect=False) # 연출용 틴차이
-        self.set_mesh(triggerIds=[3003], visible=False, arg3=100, delay=0, scale=0) # CrystalOff
-        self.set_mesh(triggerIds=[3103], visible=True, arg3=0, delay=0, scale=0) # CrystalOn
-        self.set_mesh_animation(triggerIds=[3003], visible=False, arg3=0, arg4=0) # CrystalOff
-        self.set_mesh_animation(triggerIds=[3103], visible=True, arg3=0, arg4=0) # CrystalOn
-        self.set_effect(triggerIds=[5203], visible=True) # Sound_CrystalOn
-        self.set_conversation(type=1, spawnId=103, script='$52000052_QD__02_FINDWAY__4$', arg4=2, arg5=1) # 틴차이
+        self.move_npc(spawn_id=2203, patrol_name='MS2PatrolData_2003')
+        self.destroy_monster(spawn_ids=[1003])
+        self.spawn_monster(spawn_ids=[103], auto_target=False) # 연출용 틴차이
+        self.set_mesh(trigger_ids=[3003], visible=False, start_delay=100, interval=0, fade=0) # CrystalOff
+        self.set_mesh(trigger_ids=[3103], visible=True, start_delay=0, interval=0, fade=0) # CrystalOn
+        self.set_mesh_animation(trigger_ids=[3003], visible=False, start_delay=0, interval=0) # CrystalOff
+        self.set_mesh_animation(trigger_ids=[3103], visible=True, start_delay=0, interval=0) # CrystalOn
+        self.set_effect(trigger_ids=[5203], visible=True) # Sound_CrystalOn
+        self.set_dialogue(type=1, spawn_id=103, script='$52000052_QD__02_FINDWAY__4$', time=2, arg5=1) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Round03_RouteSelect(self.ctx)
 
 
 class Round03_RouteSelect(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[2203])
-        self.create_monster(spawnIds=[203], animationEffect=False) # 연출용 준타
+        self.destroy_monster(spawn_ids=[2203])
+        self.spawn_monster(spawn_ids=[203], auto_target=False) # 연출용 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(rate=50):
+        if self.random_condition(weight=50):
             return Round03_PickRoute_Left(self.ctx)
-        if self.random_condition(rate=50):
+        if self.random_condition(weight=50):
             return Round03_PickRoute_Right(self.ctx)
 
 
 class Round03_PickRoute_Left(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1303, key='MakeTrue', value=1)
-        self.set_user_value(triggerId=2303, key='MakeFalse', value=1)
+        self.set_user_value(trigger_id=1303, key='MakeTrue', value=1)
+        self.set_user_value(trigger_id=2303, key='MakeFalse', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return GoToRound04(self.ctx)
 
 
 class GoToRound04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=4, key='FindWayRight', value=1)
+        self.set_user_value(trigger_id=4, key='FindWayRight', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return Quit(self.ctx)
 
 
 class Round03_PickRoute_Right(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1303, key='MakeFalse', value=1)
-        self.set_user_value(triggerId=2303, key='MakeTrue', value=1)
+        self.set_user_value(trigger_id=1303, key='MakeFalse', value=1)
+        self.set_user_value(trigger_id=2303, key='MakeTrue', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return GoToRound08(self.ctx)
 
 
 class GoToRound08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=8, key='FindWay', value=1)
+        self.set_user_value(trigger_id=8, key='FindWay', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return Quit(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.destroy_monster(spawnIds=[904,905,906])
+        # self.destroy_monster(spawn_ids=[904,905,906])
         # 레이저 토템
         pass
 

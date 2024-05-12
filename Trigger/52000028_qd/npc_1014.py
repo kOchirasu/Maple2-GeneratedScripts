@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=103, spawnIds=[1014]):
-            self.destroy_monster(spawnIds=[1014])
+        if self.npc_detected(box_id=103, spawn_ids=[1014]):
+            self.destroy_monster(spawn_ids=[1014])
             return 종료(self.ctx)
 
 

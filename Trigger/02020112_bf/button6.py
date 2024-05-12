@@ -4,35 +4,35 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[931], jobCode=0):
+        if self.user_detected(box_ids=[931], job_code=0):
             return 작동(self.ctx)
 
 
 class 작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=9906, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
+        self.set_actor(trigger_id=9906, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_Off')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ButtonSuccess', value=1):
             return 종료(self.ctx)
-        if self.user_detected(boxIds=[922], jobCode=0):
+        if self.user_detected(box_ids=[922], job_code=0):
             return 감지(self.ctx)
 
 
 class 감지(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=9906, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
+        self.set_actor(trigger_id=9906, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_On')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ButtonSuccess', value=1):
             return 종료(self.ctx)
-        if not self.user_detected(boxIds=[922], jobCode=0):
+        if not self.user_detected(box_ids=[922], job_code=0):
             return 작동(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=9906, visible=False, initialSequence='Interaction_Lapentafoothold_A01_On')
+        self.set_actor(trigger_id=9906, visible=False, initial_sequence='Interaction_Lapentafoothold_A01_On')
 
 
 initial_state = 대기

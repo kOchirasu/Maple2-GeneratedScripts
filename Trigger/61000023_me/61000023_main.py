@@ -68,19 +68,19 @@ class StateNone(trigger_api.Trigger):
 class WaitForEnterUser(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 숨바꼭질 플레이어 입장 대기 시간
-        self.set_timer(timerId='1', seconds=60, startDelay=1, interval=1)
+        self.set_timer(timer_id='1', seconds=60, start_delay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GameRuleNotice', value=1):
             return GameRuleNotice(self.ctx)
         if self.user_value(key='ShortOfUser', value=1):
             return ShortOfUser(self.ctx)
-        if self.wait_and_reset_tick(waitTick=5000):
-            self.show_guide_summary(entityId=26500301, textId=26500301, duration=4500)
+        if self.wait_and_reset_tick(wait_tick=5000):
+            self.show_guide_summary(entity_id=26500301, text_id=26500301, duration=4500)
 
     def on_exit(self) -> None:
-        self.reset_timer(timerId='1')
-        self.hide_guide_summary(entityId=26500301)
+        self.reset_timer(timer_id='1')
+        self.hide_guide_summary(entity_id=26500301)
 
 
 # 게임룰을 설명한다.
@@ -120,7 +120,7 @@ class MoveGameArea(trigger_api.Trigger):
 class BeInHidingTeams(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 사물팀 숨는 소요 시간
-        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=1)
+        self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=1)
         self.field_game_message(custom=1, type='SetEventUI', script='$61000023_ME__61000023_MAIN__2$', duration=30000)
         self.field_game_message(custom=2, type='SetEventUI', script='$61000023_ME__61000023_MAIN__3$', duration=30000)
 
@@ -131,21 +131,21 @@ class BeInHidingTeams(trigger_api.Trigger):
             return TeamMatchResult(self.ctx)
 
     def on_exit(self) -> None:
-        self.reset_timer(timerId='1')
+        self.reset_timer(timer_id='1')
 
 
 # 술래잡기 시작
 class LookingForATeams(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 술래팀 사물찾는데 소요 시간
-        self.set_timer(timerId='1', seconds=150, startDelay=1, interval=1)
+        self.set_timer(timer_id='1', seconds=150, start_delay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='TeamMatchResult', value=1):
             return TeamMatchResult(self.ctx)
 
     def on_exit(self) -> None:
-        self.reset_timer(timerId='1')
+        self.reset_timer(timer_id='1')
 
 
 # 숨바꼭질 승패 결정
@@ -180,7 +180,7 @@ class ShortOfUser(trigger_api.Trigger):
 # 게임종료
 class End(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=0, portalId=0)
+        self.move_user(map_id=0, portal_id=0)
 
 
 initial_state = StateNone

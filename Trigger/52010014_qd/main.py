@@ -4,24 +4,24 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101,102,103,104])
+        self.spawn_monster(spawn_ids=[101,102,103,104])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[701], questIds=[1002797], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[1002797], quest_states=[2]):
             return Event_01(self.ctx)
 
 
 class Event_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=8001, enable=True)
+        self.select_camera(trigger_id=8001, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_timer(timerId='3', seconds=3)
-        self.set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__0$', arg4=3)
+        self.set_timer(timer_id='3', seconds=3)
+        self.set_dialogue(type=2, spawn_id=11001292, script='$52010014_QD__MAIN__0$', time=3)
         self.set_skip(state=Event_02)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return Event_02(self.ctx)
 
     def on_exit(self) -> None:
@@ -30,12 +30,12 @@ class Event_01(trigger_api.Trigger):
 
 class Event_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__1$', arg4=3)
+        self.set_dialogue(type=2, spawn_id=11001285, script='$52010014_QD__MAIN__1$', time=3)
         self.set_skip(state=Event_03)
-        self.set_timer(timerId='3', seconds=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return Event_03(self.ctx)
 
     def on_exit(self) -> None:
@@ -44,12 +44,12 @@ class Event_02(trigger_api.Trigger):
 
 class Event_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001285, script='$52010014_QD__MAIN__2$', arg4=3)
+        self.set_dialogue(type=2, spawn_id=11001285, script='$52010014_QD__MAIN__2$', time=3)
         self.set_skip(state=Event_04)
-        self.set_timer(timerId='3', seconds=3)
+        self.set_timer(timer_id='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return Event_04(self.ctx)
 
     def on_exit(self) -> None:
@@ -58,12 +58,12 @@ class Event_03(trigger_api.Trigger):
 
 class Event_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11001292, script='$52010014_QD__MAIN__3$', arg4=3)
-        self.set_timer(timerId='3', seconds=3)
+        self.set_dialogue(type=2, spawn_id=11001292, script='$52010014_QD__MAIN__3$', time=3)
+        self.set_timer(timer_id='3', seconds=3)
         self.set_skip(state=Event_05)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return Event_05(self.ctx)
 
     def on_exit(self) -> None:
@@ -75,7 +75,7 @@ class Event_04(trigger_api.Trigger):
 
 class Event_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=8001, enable=False)
+        self.select_camera(trigger_id=8001, enable=False)
 
 
 initial_state = idle

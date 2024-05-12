@@ -4,9 +4,9 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[601], visible=False)
-        self.set_effect(triggerIds=[602], visible=False)
-        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[603], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='gameStart', value=1):
@@ -15,27 +15,27 @@ class 대기(trigger_api.Trigger):
 
 class 감지대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[601], visible=True)
-        self.set_effect(triggerIds=[602], visible=True)
-        self.set_effect(triggerIds=[603], visible=True)
+        self.set_effect(trigger_ids=[601], visible=True)
+        self.set_effect(trigger_ids=[602], visible=True)
+        self.set_effect(trigger_ids=[603], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[111]):
+        if self.user_detected(box_ids=[111]):
             return 스킬랜덤(self.ctx)
 
 
 class 스킬랜덤(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[601], visible=False)
-        self.set_effect(triggerIds=[602], visible=False)
-        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[603], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(rate=80):
-            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False)
+        if self.random_condition(weight=80):
+            self.add_buff(box_ids=[199], skill_id=70000008, level=1, is_player=False, is_skill_set=False)
             return 종료(self.ctx)
-        if self.random_condition(rate=20):
-            self.add_buff(boxIds=[199], skillId=70000009, level=1, isPlayer=False, isSkillSet=False)
+        if self.random_condition(weight=20):
+            self.add_buff(box_ids=[199], skill_id=70000009, level=1, is_player=False, is_skill_set=False)
             return 종료(self.ctx)
 
 

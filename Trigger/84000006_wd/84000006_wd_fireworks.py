@@ -12,10 +12,10 @@ class Staging(trigger_api.Trigger):
 # UV받아 불꽃놀이 연출
 class Volley(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[3000], visible=True)
+        self.set_effect(trigger_ids=[3000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             pass
 
 

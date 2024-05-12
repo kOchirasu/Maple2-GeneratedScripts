@@ -4,25 +4,25 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[613,614,615])
+        self.destroy_monster(spawn_ids=[613,614,615])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[203]):
+        if self.user_detected(box_ids=[203]):
             return 몹생성(self.ctx)
 
 
 class 몹생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[613,614,615], animationEffect=False)
+        self.spawn_monster(spawn_ids=[613,614,615], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[613,614,615]):
+        if self.monster_dead(spawn_ids=[613,614,615]):
             return 통과(self.ctx)
 
 
 class 통과(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=10)
+        self.set_timer(timer_id='1', seconds=10)
 
 
 initial_state = 대기

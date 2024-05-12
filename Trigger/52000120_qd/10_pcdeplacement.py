@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 class DefencePhase01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, minUsers='1'):
+        if self.count_users(box_id=9000, min_users='1'):
             return MoveToTheWall(self.ctx)
         if self.user_value(key='DefencePhase', value=2):
             return DefencePhase02(self.ctx)
@@ -21,10 +21,10 @@ class DefencePhase01(trigger_api.Trigger):
 
 class MoveToTheWall(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000120, portalId=10)
+        self.move_user(map_id=52000120, portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DefencePhase01(self.ctx)
         if self.user_value(key='DefencePhase', value=2):
             return DefencePhase02(self.ctx)
@@ -32,7 +32,7 @@ class MoveToTheWall(trigger_api.Trigger):
 
 class DefencePhase02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, minUsers='1'):
+        if self.count_users(box_id=9000, min_users='1'):
             return OutsideOfTheWall(self.ctx)
         if self.user_value(key='DefencePhase', value=3):
             return Quit(self.ctx)
@@ -40,10 +40,10 @@ class DefencePhase02(trigger_api.Trigger):
 
 class OutsideOfTheWall(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000120, portalId=40)
+        self.move_user(map_id=52000120, portal_id=40)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DefencePhase02(self.ctx)
         if self.user_value(key='DefencePhase', value=3):
             return Quit(self.ctx)

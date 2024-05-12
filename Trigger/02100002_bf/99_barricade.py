@@ -7,10 +7,10 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='PortalOn', value=0)
         self.set_user_value(key='MissionStart', value=0)
         self.set_user_value(key='DungeonClear', value=0)
-        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PortalOn', value=1):
@@ -19,16 +19,16 @@ class Wait(trigger_api.Trigger):
 
 class PortalOnDelay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return PortalOn(self.ctx)
 
 
 class PortalOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
-        self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
-        self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=True)
-        self.set_portal(portalId=21, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=11, visible=True, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=21, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MissionStart', value=1):
@@ -40,17 +40,17 @@ class CountDown(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02100002_BF__99_BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=30000):
+        if self.wait_tick(wait_tick=30000):
             return ShutDown(self.ctx)
 
 
 # 임시 테스트용 데이터 세팅 가능 지점 포탈 열어놓기
 class ShutDown(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=11, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=21, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='DungeonClear', value=1):
@@ -59,10 +59,10 @@ class ShutDown(trigger_api.Trigger):
 
 class Release(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
+        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Quit(self.ctx)
 
 

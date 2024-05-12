@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9900]):
+        if self.user_detected(box_ids=[9900]):
             return 룸체크(self.ctx)
 
 
@@ -16,10 +16,10 @@ class 룸체크(trigger_api.Trigger):
 
 class 트로피지급(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_achievement(triggerId=9900, type='trigger', achieve='Find02000399')
+        self.set_achievement(trigger_id=9900, type='trigger', achieve='Find02000399')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 대기(self.ctx)
 
 

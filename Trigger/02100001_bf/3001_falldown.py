@@ -4,19 +4,19 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # 투명 발판
+        self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=0) # 투명 발판
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9001]):
+        if self.user_detected(box_ids=[9001]):
             return RemoveMesh(self.ctx)
 
 
 class RemoveMesh(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0) # 투명 발판
+        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # 투명 발판
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[9001]):
+        if not self.user_detected(box_ids=[9001]):
             return Wait(self.ctx)
 
 

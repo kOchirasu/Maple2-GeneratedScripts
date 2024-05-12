@@ -10,43 +10,43 @@ class idle(trigger_api.Trigger):
 
 class Spawn_Start_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[7999], visible=True)
+        self.set_effect(trigger_ids=[7999], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Skill_01(self.ctx)
 
 
 class Skill_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[5021], enable=True)
+        self.set_skill(trigger_ids=[5021], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Skill_02(self.ctx)
 
 
 class Skill_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[5022], enable=True)
+        self.set_skill(trigger_ids=[5022], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Skill_03(self.ctx)
 
 
 class Skill_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[5023], enable=True)
+        self.set_skill(trigger_ids=[5023], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Skill_04(self.ctx)
 
 
 class Skill_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[5024], enable=True)
+        self.set_skill(trigger_ids=[5024], enable=True)
 
 
 initial_state = idle

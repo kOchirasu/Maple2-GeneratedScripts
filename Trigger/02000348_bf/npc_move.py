@@ -4,33 +4,33 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=60004, minUsers='1'):
+        if self.count_users(box_id=60004, min_users='1'):
             return start(self.ctx)
 
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=102, script='$02000348_BF__NPC_MOVE__0$', arg4=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000348_BF__NPC_MOVE__0$', time=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return start_02(self.ctx)
 
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=102, patrolName='MS2PatrolData_1002')
+        self.move_npc(spawn_id=102, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=60003, spawnIds=[102]):
+        if self.npc_detected(box_id=60003, spawn_ids=[102]):
             return end(self.ctx)
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return end(self.ctx)
 
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[102])
+        self.destroy_monster(spawn_ids=[102])
 
 
 initial_state = idle

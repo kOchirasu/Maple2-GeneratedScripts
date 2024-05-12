@@ -5,7 +5,7 @@ import trigger_api
 # 플레이어 감지
 class idle(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=203903, key='Summon', value=0)
+        self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon', value=1):
@@ -14,8 +14,8 @@ class idle(trigger_api.Trigger):
 
 class Summon(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[501,502,503], animationEffect=True)
-        self.set_user_value(triggerId=203903, key='Summon', value=0)
+        self.spawn_monster(spawn_ids=[501,502,503], auto_target=True)
+        self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon', value=1):
@@ -24,10 +24,10 @@ class Summon(trigger_api.Trigger):
 
 class Summon_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=102, script='$02000390_BF__SUMMON__0$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=101, script='$02000390_BF__SUMMON__1$', arg4=2, arg5=2)
-        self.create_monster(spawnIds=[504,505,506], animationEffect=True)
-        self.set_user_value(triggerId=203903, key='Summon', value=0)
+        self.set_dialogue(type=1, spawn_id=102, script='$02000390_BF__SUMMON__0$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=101, script='$02000390_BF__SUMMON__1$', time=2, arg5=2)
+        self.spawn_monster(spawn_ids=[504,505,506], auto_target=True)
+        self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon', value=1):
@@ -36,8 +36,8 @@ class Summon_02(trigger_api.Trigger):
 
 class Summon_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.create_monster(spawnIds=[507,508,509,510], animationEffect=True)
-        self.set_user_value(triggerId=203903, key='Summon', value=0)
+        # self.spawn_monster(spawn_ids=[507,508,509,510], auto_target=True)
+        self.set_user_value(trigger_id=203903, key='Summon', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon', value=1):

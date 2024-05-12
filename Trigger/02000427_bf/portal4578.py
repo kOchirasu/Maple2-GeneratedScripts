@@ -5,13 +5,13 @@ import trigger_api
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 4시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
         # 4시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
         # 7시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portalId=7, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
         # 8시방향 태엽폭탄 있는 곳의 순간이동 포탈 초기화 하기, 최초에는 모습을 안보임
-        self.set_portal(portalId=8, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=8, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ThirdPhase', value=1):
@@ -22,13 +22,13 @@ class 시작(trigger_api.Trigger):
 class 순간이동포탈생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 4시방향 태엽폭탄 있는 곳에 순간이동 포탈 등장시킴
-        self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)
         # 4시방향 태엽폭탄 있는 곳에 순간이동 포탈 등장시킴
-        self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=5, visible=True, enable=True, minimap_visible=True)
         # 7시방향 태엽폭탄 있는 곳에 순간이동 포탈 등장시킴
-        self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=7, visible=True, enable=True, minimap_visible=True)
         # 8시방향 태엽폭탄 있는 곳에 순간이동 포탈 등장시킴
-        self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=8, visible=True, enable=True, minimap_visible=True)
         return 종료(self.ctx)
 
 

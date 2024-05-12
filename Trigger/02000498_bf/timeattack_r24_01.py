@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=140, spawnIds=[124099]):
+        if self.npc_detected(box_id=140, spawn_ids=[124099]):
             return 몹스폰(self.ctx)
 
 
 class 몹스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dark_stream(type='SpawnMonster', spawnIds=[124001], score=32000)
+        self.dark_stream(type='SpawnMonster', spawn_ids=[124001], score=32000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[124099]):
-            self.destroy_monster(spawnIds=[124001])
+        if self.monster_dead(spawn_ids=[124099]):
+            self.destroy_monster(spawn_ids=[124001])
             return 종료(self.ctx)
-        if self.monster_dead(boxIds=[124001]):
+        if self.monster_dead(spawn_ids=[124001]):
             return 몹스폰(self.ctx)
 
 

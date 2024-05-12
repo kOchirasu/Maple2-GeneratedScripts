@@ -4,7 +4,7 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10]):
+        if self.user_detected(box_ids=[10]):
             # MS2TriggerBox   TriggerObjectID = 10, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면        10은 스타팅 포인트 지점만 커버하는 비교적 좁은 범위
             return 클리어성공유무체크시작(self.ctx)
 
@@ -21,7 +21,7 @@ class 클리어성공유무체크시작(trigger_api.Trigger):
         if self.dungeon_time_out():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(checkState='Fail'):
+        if self.dungeon_check_state(check_state='Fail'):
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -35,7 +35,7 @@ class 연출딜레이(trigger_api.Trigger):
         self.dungeon_close_timer()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             # 보스 죽으면 보스 죽음 동작 충분히 본 다음에(7초 딜레이) 클리어 UI 나오도록 함
             return 연출종료(self.ctx)
 
@@ -44,11 +44,11 @@ class 연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         # 스타트포인트 지점의 칸막이 트리거메쉬 제거하기
-        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311], visible=False, start_delay=0, interval=0, fade=0)
         # 나가기 포탈 생성은 portal.xml 에서 설정함
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 종료(self.ctx)
 
 
@@ -58,30 +58,30 @@ class 던전실패(trigger_api.Trigger):
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
         # 스타트포인트 지점의 칸막이 트리거메쉬 제거하기
-        self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311], visible=False, arg3=0, delay=0, scale=0)
-        self.destroy_monster(spawnIds=[-1]) # 모든 구간에 나가기 포탈 생성하기
+        self.set_mesh(trigger_ids=[301,302,303,304,305,306,307,308,309,310,311], visible=False, start_delay=0, interval=0, fade=0)
+        self.destroy_monster(spawn_ids=[-1]) # 모든 구간에 나가기 포탈 생성하기
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 1페이지 전투판에서 나가기 포탈
-        self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 7시 전투판에서 나가기 포탈
-        self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 5시 전투판에서 나가기 포탈
-        self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=5, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 12시 전투판에서 나가기 포탈
-        self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=6, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 마지막 전투판에서 나가기 포탈
-        self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=7, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             self.dungeon_fail()
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_enable_give_up(isEnable='0')
+        self.dungeon_enable_give_up(is_enable='0')
 
 
 initial_state = 시작대기중

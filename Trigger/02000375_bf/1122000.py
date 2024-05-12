@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(triggerId=13500, enable=False)
+        self.set_sound(trigger_id=13500, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ChangeBGM', value=1):
@@ -13,10 +13,10 @@ class 대기(trigger_api.Trigger):
 
 class BGM변경(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_sound(triggerId=13500, enable=True)
+        self.set_sound(trigger_id=13500, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return 종료(self.ctx)
 
 

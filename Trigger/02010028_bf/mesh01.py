@@ -4,30 +4,30 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[1000,1001,1002,1003,1004,1005], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000902], state=1)
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000902], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000902], stateValue=0):
+        if self.object_interacted(interact_ids=[10000902], state=0):
             return 생성(self.ctx)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[1000,1001,1002,1003,1004,1005], visible=False, arg3=0, delay=0, scale=7)
-        self.set_timer(timerId='2', seconds=3)
+        self.set_mesh(trigger_ids=[1000,1001,1002,1003,1004,1005], visible=False, start_delay=0, interval=0, fade=7)
+        self.set_timer(timer_id='2', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 재사용대기(self.ctx)
 
 
 class 재사용대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='3', seconds=4)
+        self.set_timer(timer_id='3', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return 대기(self.ctx)
 
 

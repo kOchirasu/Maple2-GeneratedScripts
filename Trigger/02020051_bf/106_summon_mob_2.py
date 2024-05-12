@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[1001], isStart=False)
+        self.start_combine_spawn(group_id=[1001], is_start=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Summon_monster_2', value=1):
@@ -13,10 +13,10 @@ class 대기(trigger_api.Trigger):
 
 class 몬스터등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[1001], isStart=True)
+        self.start_combine_spawn(group_id=[1001], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 리셋(self.ctx)
 
 

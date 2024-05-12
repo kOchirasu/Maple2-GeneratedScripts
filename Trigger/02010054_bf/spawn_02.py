@@ -4,24 +4,24 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000885], state=2)
-        self.set_effect(triggerIds=[611], visible=False)
-        self.set_mesh(triggerIds=[3128], visible=True, arg3=0, delay=0, scale=0)
+        self.set_interact_object(trigger_ids=[10000885], state=2)
+        self.set_effect(trigger_ids=[611], visible=False)
+        self.set_mesh(trigger_ids=[3128], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[106]):
+        if self.user_detected(box_ids=[106]):
             return 몬스터생성(self.ctx)
 
 
 class 몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[611], visible=True)
-        self.set_mesh(triggerIds=[3128], visible=False, arg3=0, delay=0, scale=5)
-        self.create_monster(spawnIds=[2023], animationEffect=False)
+        self.set_effect(trigger_ids=[611], visible=True)
+        self.set_mesh(trigger_ids=[3128], visible=False, start_delay=0, interval=0, fade=5)
+        self.spawn_monster(spawn_ids=[2023], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2023]):
-            self.set_interact_object(triggerIds=[10000885], state=1)
+        if self.monster_dead(spawn_ids=[2023]):
+            self.set_interact_object(trigger_ids=[10000885], state=1)
             return 종료(self.ctx)
 
 

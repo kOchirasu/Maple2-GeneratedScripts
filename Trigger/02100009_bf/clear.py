@@ -4,17 +4,17 @@ import trigger_api
 
 class 끝1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[1000049], enable=False)
+        self.set_skill(trigger_ids=[1000049], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[101]):
+        if self.user_detected(box_ids=[101]):
             return 끝2(self.ctx)
 
 
 """
 class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawnId=100000001, compare='lowerEqual', value=5, isRelative=True):
+        if self.check_npc_hp(spawn_id=100000001, compare='lowerEqual', value=5, is_relative=True):
             return 끝3(self.ctx)
 
 """
@@ -22,17 +22,17 @@ class 끝2(trigger_api.Trigger):
 
 class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawnId=100000001, compare='lowerEqual', value=5, isRelative=True) and self.check_npc_hp(spawnId=100000002, compare='lowerEqual', value=5, isRelative=True):
+        if self.check_npc_hp(spawn_id=100000001, compare='lowerEqual', value=5, is_relative=True) and self.check_npc_hp(spawn_id=100000002, compare='lowerEqual', value=5, is_relative=True):
             return 끝3(self.ctx)
 
 
 class 끝3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_buff(boxIds=[100000002], skillId=50000217, level=1, isPlayer=True, isSkillSet=False)
-        self.set_skill(triggerIds=[1000049], enable=True)
+        self.add_buff(box_ids=[100000002], skill_id=50000217, level=1, is_player=True, is_skill_set=False)
+        self.set_skill(trigger_ids=[1000049], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             pass
 
 

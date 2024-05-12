@@ -4,63 +4,63 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[401,402,403,404], visible=False)
-        self.set_interact_object(triggerIds=[10000131], state=1)
-        self.set_mesh(triggerIds=[201,202,203], visible=False)
-        self.set_ladder(triggerIds=[301], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[302], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[303], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[304], visible=False, animationEffect=False)
+        self.set_effect(trigger_ids=[401,402,403,404], visible=False)
+        self.set_interact_object(trigger_ids=[10000131], state=1)
+        self.set_mesh(trigger_ids=[201,202,203], visible=False)
+        self.set_ladder(trigger_ids=[301], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[302], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[303], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[304], visible=False, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000131], stateValue=0):
+        if self.object_interacted(interact_ids=[10000131], state=0):
             return 발판등장1(self.ctx)
 
 
 class 발판등장1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[201], visible=True)
-        self.set_timer(timerId='2', seconds=1)
+        self.set_mesh(trigger_ids=[201], visible=True)
+        self.set_timer(timer_id='2', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 발판등장2(self.ctx)
 
 
 class 발판등장2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[202], visible=True)
-        self.set_timer(timerId='3', seconds=1)
+        self.set_mesh(trigger_ids=[202], visible=True)
+        self.set_timer(timer_id='3', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='3'):
+        if self.time_expired(timer_id='3'):
             return 발판등장3(self.ctx)
 
 
 class 발판등장3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[203], visible=True)
-        self.set_timer(timerId='4', seconds=1)
+        self.set_mesh(trigger_ids=[203], visible=True)
+        self.set_timer(timer_id='4', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='4'):
+        if self.time_expired(timer_id='4'):
             return 사다리등장(self.ctx)
 
 
 class 사다리등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[301], visible=True, animationEffect=True)
-        self.set_effect(triggerIds=[401], visible=True)
-        self.set_ladder(triggerIds=[302], visible=True, animationEffect=True)
-        self.set_effect(triggerIds=[402], visible=True)
-        self.set_ladder(triggerIds=[303], visible=True, animationEffect=True)
-        self.set_effect(triggerIds=[403], visible=True)
-        self.set_ladder(triggerIds=[304], visible=True, animationEffect=True)
-        self.set_effect(triggerIds=[404], visible=True)
-        self.set_timer(timerId='4', seconds=20)
+        self.set_ladder(trigger_ids=[301], visible=True, enable=True)
+        self.set_effect(trigger_ids=[401], visible=True)
+        self.set_ladder(trigger_ids=[302], visible=True, enable=True)
+        self.set_effect(trigger_ids=[402], visible=True)
+        self.set_ladder(trigger_ids=[303], visible=True, enable=True)
+        self.set_effect(trigger_ids=[403], visible=True)
+        self.set_ladder(trigger_ids=[304], visible=True, enable=True)
+        self.set_effect(trigger_ids=[404], visible=True)
+        self.set_timer(timer_id='4', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='4'):
+        if self.time_expired(timer_id='4'):
             return 대기(self.ctx)
 
 

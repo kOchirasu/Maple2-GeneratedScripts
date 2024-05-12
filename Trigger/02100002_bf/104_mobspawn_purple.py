@@ -9,11 +9,11 @@ class Wait(trigger_api.Trigger):
         # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
         self.set_user_value(key='StopSpawn', value=0)
         self.set_user_value(key='SpawnHold', value=0)
-        self.destroy_monster(spawnIds=[40100,40075,40050,40025,40001,41001,41002,41003])
+        self.destroy_monster(spawn_ids=[40100,40075,40050,40025,40001,41001,41002,41003])
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=False)
+        self.set_effect(trigger_ids=[5104], visible=False)
         # Abnormal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5204], visible=False)
+        self.set_effect(trigger_ids=[5204], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Gauge', value=100):
@@ -23,11 +23,11 @@ class Wait(trigger_api.Trigger):
 class Gauge100_Normal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=True)
-        self.create_monster(spawnIds=[40100], animationEffect=False) # 100%
+        self.set_effect(trigger_ids=[5104], visible=True)
+        self.spawn_monster(spawn_ids=[40100], auto_target=False) # 100%
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
         if self.user_value(key='SpawnHold', value=1):
             return SpawnHold(self.ctx)
@@ -40,11 +40,11 @@ class Gauge100_Normal(trigger_api.Trigger):
 class Gauge75_Normal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=True)
-        self.create_monster(spawnIds=[40075], animationEffect=False) # 75%
+        self.set_effect(trigger_ids=[5104], visible=True)
+        self.spawn_monster(spawn_ids=[40075], auto_target=False) # 75%
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
         if self.user_value(key='SpawnHold', value=1):
             return SpawnHold(self.ctx)
@@ -59,11 +59,11 @@ class Gauge75_Normal(trigger_api.Trigger):
 class Gauge50_Normal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=True)
-        self.create_monster(spawnIds=[40050], animationEffect=False) # 50%
+        self.set_effect(trigger_ids=[5104], visible=True)
+        self.spawn_monster(spawn_ids=[40050], auto_target=False) # 50%
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
         if self.user_value(key='SpawnHold', value=1):
             return SpawnHold(self.ctx)
@@ -78,11 +78,11 @@ class Gauge50_Normal(trigger_api.Trigger):
 class Gauge25_Normal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=True)
-        self.create_monster(spawnIds=[40025], animationEffect=False) # 25%
+        self.set_effect(trigger_ids=[5104], visible=True)
+        self.spawn_monster(spawn_ids=[40025], auto_target=False) # 25%
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
         if self.user_value(key='SpawnHold', value=1):
             return SpawnHold(self.ctx)
@@ -97,11 +97,11 @@ class Gauge25_Normal(trigger_api.Trigger):
 class Gauge1_Normal(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5104], visible=True)
-        self.create_monster(spawnIds=[40001], animationEffect=False) # 1%
+        self.set_effect(trigger_ids=[5104], visible=True)
+        self.spawn_monster(spawn_ids=[40001], auto_target=False) # 1%
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
         if self.user_value(key='SpawnHold', value=1):
             return SpawnHold(self.ctx)
@@ -127,54 +127,53 @@ class SpawnHold(trigger_api.Trigger):
 # 돌연변이 슬라임 랜덤 낮은 확률
 class Gauge_SpawnRamdom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(rate=100, desc='Normal'):
+        if self.random_condition(weight=100, desc='Normal'):
             return Spawn_Normal(self.ctx)
-        if self.random_condition(rate=5, desc='Eater'):
+        if self.random_condition(weight=5, desc='Eater'):
             return Spawn_Eater(self.ctx)
         """
-        if self.random_condition(rate=1, desc='BigMom'):
+        if self.random_condition(weight=1, desc='BigMom'):
             return None # Missing State: Spawn_BigMom
         """
-        if self.random_condition(rate=10, desc='Runner'):
+        if self.random_condition(weight=10, desc='Runner'):
             return Spawn_Runner(self.ctx)
 
 
 # 랜덤 스폰 공용
 class Spawn_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return BackToGaugeState(self.ctx)
+        return BackToGaugeState(self.ctx)
 
 
 class Spawn_Eater(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Abnormal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5204], visible=True)
-        self.create_monster(spawnIds=[41001], animationEffect=False)
+        self.set_effect(trigger_ids=[5204], visible=True)
+        self.spawn_monster(spawn_ids=[41001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return BackToGaugeState(self.ctx)
 
 
 class Spawn_Runner(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # Abnormal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5204], visible=True)
-        self.create_monster(spawnIds=[41002], animationEffect=False)
+        self.set_effect(trigger_ids=[5204], visible=True)
+        self.spawn_monster(spawn_ids=[41002], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return BackToGaugeState(self.ctx)
 
 
 """
 class Spawn_BigMom(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[41003], animationEffect=False)
+        self.spawn_monster(spawn_ids=[41003], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return BackToGaugeState(self.ctx)
 
 """
@@ -197,7 +196,7 @@ class BackToGaugeState(trigger_api.Trigger):
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[40100,40075,40050,40025,40001,41001,41002,41003])
+        self.destroy_monster(spawn_ids=[40100,40075,40050,40025,40001,41001,41002,41003])
 
 
 initial_state = Wait

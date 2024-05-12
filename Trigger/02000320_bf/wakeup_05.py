@@ -4,111 +4,110 @@ import trigger_api
 
 class 자는중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=5001, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5002, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5003, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5004, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5005, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5006, visible=True, initialSequence='Stun_A')
+        self.set_actor(trigger_id=5001, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5002, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5003, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5004, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5005, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5006, visible=True, initial_sequence='Stun_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 도둑듬(self.ctx)
+        return 도둑듬(self.ctx)
 
 
 class 도둑듬(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000318], state=1)
+        self.set_interact_object(trigger_ids=[10000318], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000318], stateValue=0):
+        if self.object_interacted(interact_ids=[10000318], state=0):
             return 깨어남1(self.ctx)
 
 
 class 깨어남1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='10', seconds=8)
-        self.set_actor(triggerId=5001, visible=True, initialSequence='Bore_A')
-        self.set_actor(triggerId=5002, visible=True, initialSequence='Bore_A')
-        self.set_actor(triggerId=5004, visible=False, initialSequence='Bore_A')
-        self.set_actor(triggerId=5005, visible=False, initialSequence='Stun_A')
-        self.set_actor(triggerId=5006, visible=False, initialSequence='Stun_A')
-        self.create_monster(spawnIds=[50004], animationEffect=True)
-        self.set_conversation(type=1, spawnId=50004, script='$02000320_BF__WAKEUP_05__0$', arg4=2, arg5=0)
-        self.create_monster(spawnIds=[50005], animationEffect=True)
-        self.set_conversation(type=1, spawnId=50005, script='$02000320_BF__WAKEUP_05__1$', arg4=2, arg5=1)
-        self.create_monster(spawnIds=[50006], animationEffect=True)
-        self.set_conversation(type=1, spawnId=50006, script='$02000320_BF__WAKEUP_05__2$', arg4=2, arg5=2)
-        self.create_monster(spawnIds=[50001])
-        self.create_monster(spawnIds=[50002])
-        self.create_monster(spawnIds=[50003])
-        self.set_conversation(type=1, spawnId=50003, script='$02000320_BF__WAKEUP_05__3$', arg4=2, arg5=3)
-        self.set_conversation(type=1, spawnId=50001, script='$02000320_BF__WAKEUP_05__4$', arg4=2, arg5=4)
+        self.set_timer(timer_id='10', seconds=8)
+        self.set_actor(trigger_id=5001, visible=True, initial_sequence='Bore_A')
+        self.set_actor(trigger_id=5002, visible=True, initial_sequence='Bore_A')
+        self.set_actor(trigger_id=5004, visible=False, initial_sequence='Bore_A')
+        self.set_actor(trigger_id=5005, visible=False, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5006, visible=False, initial_sequence='Stun_A')
+        self.spawn_monster(spawn_ids=[50004], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=50004, script='$02000320_BF__WAKEUP_05__0$', time=2, arg5=0)
+        self.spawn_monster(spawn_ids=[50005], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=50005, script='$02000320_BF__WAKEUP_05__1$', time=2, arg5=1)
+        self.spawn_monster(spawn_ids=[50006], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=50006, script='$02000320_BF__WAKEUP_05__2$', time=2, arg5=2)
+        self.spawn_monster(spawn_ids=[50001])
+        self.spawn_monster(spawn_ids=[50002])
+        self.spawn_monster(spawn_ids=[50003])
+        self.set_dialogue(type=1, spawn_id=50003, script='$02000320_BF__WAKEUP_05__3$', time=2, arg5=3)
+        self.set_dialogue(type=1, spawn_id=50001, script='$02000320_BF__WAKEUP_05__4$', time=2, arg5=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
+        if self.time_expired(timer_id='10'):
             return 깨어남2(self.ctx)
 
 
 class 깨어남2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='11', seconds=4)
-        self.set_conversation(type=1, spawnId=50002, script='$02000320_BF__WAKEUP_05__5$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=50001, script='$02000320_BF__WAKEUP_05__6$', arg4=2, arg5=1)
-        self.set_conversation(type=1, spawnId=50003, script='$02000320_BF__WAKEUP_05__7$', arg4=2, arg5=2)
+        self.set_timer(timer_id='11', seconds=4)
+        self.set_dialogue(type=1, spawn_id=50002, script='$02000320_BF__WAKEUP_05__5$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=50001, script='$02000320_BF__WAKEUP_05__6$', time=2, arg5=1)
+        self.set_dialogue(type=1, spawn_id=50003, script='$02000320_BF__WAKEUP_05__7$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='11'):
+        if self.time_expired(timer_id='11'):
             return 깨어남3(self.ctx)
 
 
 class 깨어남3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='12', seconds=1)
-        self.set_actor(triggerId=5001, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5002, visible=True, initialSequence='Stun_A')
+        self.set_timer(timer_id='12', seconds=1)
+        self.set_actor(trigger_id=5001, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5002, visible=True, initial_sequence='Stun_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='12'):
+        if self.time_expired(timer_id='12'):
             return 깨어남4(self.ctx)
 
 
 class 깨어남4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[50004,50005,50006]):
+        if self.monster_dead(spawn_ids=[50004,50005,50006]):
             return 다시잠듬(self.ctx)
-        if not self.monster_in_combat(boxIds=[50004,50005,50006]):
+        if not self.monster_in_combat(spawn_ids=[50004,50005,50006]):
             return 다시자러감(self.ctx)
 
 
 class 다시자러감(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.remove_balloon_talk(spawnId=50004)
-        self.remove_balloon_talk(spawnId=50005)
-        self.remove_balloon_talk(spawnId=50006)
-        self.remove_balloon_talk(spawnId=50001)
-        self.remove_balloon_talk(spawnId=50002)
-        self.remove_balloon_talk(spawnId=50003)
-        self.set_timer(timerId='14', seconds=4)
-        self.set_conversation(type=1, spawnId=50004, script='$02000320_BF__WAKEUP_05__8$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=50005, script='$02000320_BF__WAKEUP_05__9$', arg4=2, arg5=1)
-        self.set_conversation(type=1, spawnId=50006, script='$02000320_BF__WAKEUP_05__10$', arg4=2, arg5=2)
+        self.remove_balloon_talk(spawn_id=50004)
+        self.remove_balloon_talk(spawn_id=50005)
+        self.remove_balloon_talk(spawn_id=50006)
+        self.remove_balloon_talk(spawn_id=50001)
+        self.remove_balloon_talk(spawn_id=50002)
+        self.remove_balloon_talk(spawn_id=50003)
+        self.set_timer(timer_id='14', seconds=4)
+        self.set_dialogue(type=1, spawn_id=50004, script='$02000320_BF__WAKEUP_05__8$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=50005, script='$02000320_BF__WAKEUP_05__9$', time=2, arg5=1)
+        self.set_dialogue(type=1, spawn_id=50006, script='$02000320_BF__WAKEUP_05__10$', time=2, arg5=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='14'):
+        if self.time_expired(timer_id='14'):
             return 다시잠듬(self.ctx)
 
 
 class 다시잠듬(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[50001,50002,50003,50004,50005,50006])
-        self.set_timer(timerId='15', seconds=7)
-        self.set_actor(triggerId=5004, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5005, visible=True, initialSequence='Stun_A')
-        self.set_actor(triggerId=5006, visible=True, initialSequence='Stun_A')
+        self.destroy_monster(spawn_ids=[50001,50002,50003,50004,50005,50006])
+        self.set_timer(timer_id='15', seconds=7)
+        self.set_actor(trigger_id=5004, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5005, visible=True, initial_sequence='Stun_A')
+        self.set_actor(trigger_id=5006, visible=True, initial_sequence='Stun_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='15'):
+        if self.time_expired(timer_id='15'):
             return 도둑듬(self.ctx)
 
 

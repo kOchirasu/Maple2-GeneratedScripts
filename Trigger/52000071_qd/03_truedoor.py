@@ -4,18 +4,18 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0) # 미니맵용_Invisible
-        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
-        self.set_interact_object(triggerIds=[10001105], state=1)
+        self.set_mesh(trigger_ids=[3002], visible=False, start_delay=0, interval=0, fade=0) # 미니맵용_Invisible
+        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_interact_object(trigger_ids=[10001105], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001105], stateValue=0):
+        if self.object_interacted(interact_ids=[10001105], state=0):
             return MobSpawn(self.ctx)
 
 
 class MobSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = Wait

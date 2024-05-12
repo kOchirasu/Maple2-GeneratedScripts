@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[705,706], visible=False)
+        self.set_mesh(trigger_ids=[705,706], visible=False)
 
 
 initial_state = 대기

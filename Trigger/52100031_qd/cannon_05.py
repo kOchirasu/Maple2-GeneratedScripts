@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[695], visible=False)
-        self.set_mesh(triggerIds=[3905], visible=True, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[695], visible=False)
+        self.set_mesh(trigger_ids=[3905], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='cannon05', value=1):
@@ -14,12 +14,12 @@ class 대기(trigger_api.Trigger):
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2905], animationEffect=True)
+        self.spawn_monster(spawn_ids=[2905], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2905]):
-            self.set_effect(triggerIds=[695], visible=True)
-            self.set_mesh(triggerIds=[3905], visible=False, arg3=0, delay=0, scale=5)
+        if self.monster_dead(spawn_ids=[2905]):
+            self.set_effect(trigger_ids=[695], visible=True)
+            self.set_mesh(trigger_ids=[3905], visible=False, start_delay=0, interval=0, fade=5)
             return 종료(self.ctx)
 
 

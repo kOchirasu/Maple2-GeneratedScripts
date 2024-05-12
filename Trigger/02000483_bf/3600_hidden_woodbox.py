@@ -4,18 +4,18 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5003], visible=False) # PortalOn
-        self.set_ladder(triggerIds=[530], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[531], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[532], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[533], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[534], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[535], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_mesh(triggerIds=[3600], visible=True, arg3=0, delay=0, scale=0) # Wall_BehindWoodBox
-        self.set_mesh(triggerIds=[3601], visible=True, arg3=0, delay=0, scale=0) # BehindWoodBoxCover
-        self.set_mesh(triggerIds=[3602], visible=True, arg3=0, delay=0, scale=0) # WoodBox
-        self.set_mesh(triggerIds=[3603], visible=True, arg3=0, delay=0, scale=0) # WoodBoxInvisible
-        self.set_interact_object(triggerIds=[10002043], state=0) # WoodBox
+        self.set_effect(trigger_ids=[5003], visible=False) # PortalOn
+        self.set_ladder(trigger_ids=[530], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[531], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[532], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[533], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[534], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[535], visible=False, enable=False, fade=0) # Ladder
+        self.set_mesh(trigger_ids=[3600], visible=True, start_delay=0, interval=0, fade=0) # Wall_BehindWoodBox
+        self.set_mesh(trigger_ids=[3601], visible=True, start_delay=0, interval=0, fade=0) # BehindWoodBoxCover
+        self.set_mesh(trigger_ids=[3602], visible=True, start_delay=0, interval=0, fade=0) # WoodBox
+        self.set_mesh(trigger_ids=[3603], visible=True, start_delay=0, interval=0, fade=0) # WoodBoxInvisible
+        self.set_interact_object(trigger_ids=[10002043], state=0) # WoodBox
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,41 +27,41 @@ class Wait(trigger_api.Trigger):
 
 class Opened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3602], visible=False, arg3=100, delay=0, scale=2) # WoodBox
-        self.set_interact_object(triggerIds=[10002043], state=1) # WoodBox
+        self.set_mesh(trigger_ids=[3602], visible=False, start_delay=100, interval=0, fade=2) # WoodBox
+        self.set_interact_object(trigger_ids=[10002043], state=1) # WoodBox
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10002043], stateValue=0):
+        if self.object_interacted(interact_ids=[10002043], state=0):
             return LadderOn(self.ctx)
 
 
 class LadderOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5003], visible=True) # PortalOn
-        self.set_mesh(triggerIds=[3600], visible=False, arg3=0, delay=0, scale=3) # Wall_BehindWoodBox
-        self.set_mesh(triggerIds=[3601], visible=False, arg3=0, delay=0, scale=3) # BehindWoodBoxCover
-        self.set_mesh(triggerIds=[3603], visible=False, arg3=0, delay=0, scale=0) # WoodBoxInvisible
-        self.set_ladder(triggerIds=[530], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[531], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[532], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[533], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[534], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[535], visible=True, animationEffect=True, animationDelay=2) # Ladder
+        self.set_effect(trigger_ids=[5003], visible=True) # PortalOn
+        self.set_mesh(trigger_ids=[3600], visible=False, start_delay=0, interval=0, fade=3) # Wall_BehindWoodBox
+        self.set_mesh(trigger_ids=[3601], visible=False, start_delay=0, interval=0, fade=3) # BehindWoodBoxCover
+        self.set_mesh(trigger_ids=[3603], visible=False, start_delay=0, interval=0, fade=0) # WoodBoxInvisible
+        self.set_ladder(trigger_ids=[530], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[531], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[532], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[533], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[534], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[535], visible=True, enable=True, fade=2) # Ladder
 
 
 class Closed(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3602], visible=False, arg3=100, delay=0, scale=2) # WoodBox
-        self.set_interact_object(triggerIds=[10002043], state=1) # WoodBox
+        self.set_mesh(trigger_ids=[3602], visible=False, start_delay=100, interval=0, fade=2) # WoodBox
+        self.set_interact_object(trigger_ids=[10002043], state=1) # WoodBox
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10002043], stateValue=0):
+        if self.object_interacted(interact_ids=[10002043], state=0):
             return NothingHappened(self.ctx)
 
 
 class NothingHappened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3602], visible=True, arg3=0, delay=0, scale=0) # WoodBox
+        self.set_mesh(trigger_ids=[3602], visible=True, start_delay=0, interval=0, fade=0) # WoodBox
 
 
 initial_state = Wait

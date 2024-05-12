@@ -4,16 +4,16 @@ import trigger_api
 
 class 오브젝트_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[1103,1104]):
+        if self.monster_dead(spawn_ids=[1103,1104]):
             return 오브젝트_03_작동(self.ctx)
 
 
 class 오브젝트_03_작동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[10001], visible=False)
+        self.set_mesh(trigger_ids=[10001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[103]):
+        if self.user_detected(box_ids=[103]):
             return 오브젝트_03_작동_메세지(self.ctx)
 
 

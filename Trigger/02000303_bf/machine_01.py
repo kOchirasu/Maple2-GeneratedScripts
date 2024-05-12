@@ -4,20 +4,20 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000575], stateValue=0):
-            self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=2)
+        if self.object_interacted(interact_ids=[10000575], state=0):
+            self.set_mesh(trigger_ids=[3001], visible=True, start_delay=0, interval=0, fade=2)
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1800000', seconds=1800000)
+        self.set_timer(timer_id='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1800000'):
+        if self.time_expired(timer_id='1800000'):
             return None # Missing State: 종료2
 
 

@@ -4,28 +4,28 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[401], visible=False)
+        self.set_mesh(trigger_ids=[401], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[201]):
+        if self.user_detected(box_ids=[201]):
             return 발판01(self.ctx)
 
 
 class 발판01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[401], visible=True)
+        self.set_mesh(trigger_ids=[401], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[201]):
+        if not self.user_detected(box_ids=[201]):
             return 발판01끝(self.ctx)
 
 
 class 발판01끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='501', seconds=2, startDelay=0)
+        self.set_timer(timer_id='501', seconds=2, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='501'):
+        if self.time_expired(timer_id='501'):
             return 대기(self.ctx)
 
 

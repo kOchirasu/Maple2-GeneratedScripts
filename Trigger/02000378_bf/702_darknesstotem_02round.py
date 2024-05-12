@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, delay=0, scale=0) # TotemGround
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, start_delay=0, interval=0, fade=0) # TotemGround
         self.set_user_value(key='TotemApp', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,66 +14,66 @@ class Wait(trigger_api.Trigger):
 
 class TotemApp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[2002]) # 전투용 준타
-        self.create_monster(spawnIds=[2302], animationEffect=False) # 날아라 준타
-        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=True, arg3=0, delay=0, scale=5) # TotemGround
-        self.create_monster(spawnIds=[920], animationEffect=False) # 암흑 토템
+        self.destroy_monster(spawn_ids=[2002]) # 전투용 준타
+        self.spawn_monster(spawn_ids=[2302], auto_target=False) # 날아라 준타
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=True, start_delay=0, interval=0, fade=5) # TotemGround
+        self.spawn_monster(spawn_ids=[920], auto_target=False) # 암흑 토템
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return JuntaReady01(self.ctx)
 
 
 class JuntaReady01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=2302, script='$02000378_BF__702_DARKNESSTOTEM_02ROUND__0$', arg4=3, arg5=0) # 전투중인 준타
+        self.set_dialogue(type=1, spawn_id=2302, script='$02000378_BF__702_DARKNESSTOTEM_02ROUND__0$', time=3, arg5=0) # 전투중인 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return JuntaGoUp01(self.ctx)
 
 
 class JuntaGoUp01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=2302, patrolName='MS2PatrolData_2302')
+        self.move_npc(spawn_id=2302, patrol_name='MS2PatrolData_2302')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return DestoryTotem01(self.ctx)
 
 
 class DestoryTotem01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2102], animationEffect=False) # 토템 옆에 준타
+        self.spawn_monster(spawn_ids=[2102], auto_target=False) # 토템 옆에 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return JuntaReturn01(self.ctx)
 
 
 class JuntaReturn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[920]) # 암흑 토템
-        self.destroy_monster(spawnIds=[2302]) # 날아라 준타
-        self.destroy_monster(spawnIds=[2102]) # 토템 옆에 준타
+        self.destroy_monster(spawn_ids=[920]) # 암흑 토템
+        self.destroy_monster(spawn_ids=[2302]) # 날아라 준타
+        self.destroy_monster(spawn_ids=[2102]) # 토템 옆에 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return JuntaReturn02(self.ctx)
 
 
 class JuntaReturn02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2202], animationEffect=False) # Regen_A 준타
+        self.spawn_monster(spawn_ids=[2202], auto_target=False) # Regen_A 준타
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Quit(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, arg3=0, delay=0, scale=5) # TotemGround
+        self.set_mesh(trigger_ids=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313], visible=False, start_delay=0, interval=0, fade=5) # TotemGround
 
 
 initial_state = Wait

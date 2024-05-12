@@ -4,29 +4,29 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
+        self.set_mesh(trigger_ids=[3000], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9000]):
+        if self.user_detected(box_ids=[9000]):
             return 낙하01(self.ctx)
 
 
 class 낙하01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=5)
-        self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=0, scale=0)
+        self.set_timer(timer_id='1', seconds=5)
+        self.set_mesh(trigger_ids=[3000], visible=False, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 초기화(self.ctx)
 
 
 class 초기화(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='2', seconds=5)
+        self.set_timer(timer_id='2', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 낙하01(self.ctx)
 
 

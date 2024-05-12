@@ -4,74 +4,74 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
-        self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0) # Wall
-        self.set_breakable(triggerIds=[4000], enable=False) # Move
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move
-        self.set_interact_object(triggerIds=[10001082], state=1) # BookCase
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_actor(trigger_id=3000, visible=True, initial_sequence='Closed') # HiddenDoor
+        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0) # Wall
+        self.set_breakable(trigger_ids=[4000], enable=False) # Move
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # Move
+        self.set_interact_object(trigger_ids=[10001082], state=1) # BookCase
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001082], stateValue=0):
+        if self.object_interacted(interact_ids=[10001082], state=0):
             return BookCaseMove01(self.ctx)
 
 
 class BookCaseMove01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(triggerIds=[4000], enable=True) # Move
-        self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move
-        self.set_mesh(triggerIds=[2000], visible=False, arg3=0, delay=0, scale=3) # Wall
+        self.set_breakable(trigger_ids=[4000], enable=True) # Move
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=True) # Move
+        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=3) # Wall
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DoorOpen01(self.ctx)
 
 
 class DoorOpen01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=3000, visible=True, initialSequence='Opened') # HiddenDoor
-        self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
+        self.set_actor(trigger_id=3000, visible=True, initial_sequence='Opened') # HiddenDoor
+        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DoorOpen02(self.ctx)
 
 
 class DoorOpen02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=57000):
+        if self.wait_tick(wait_tick=57000):
             return DoorClose01(self.ctx)
 
 
 class DoorClose01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
-        self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
+        self.set_actor(trigger_id=3000, visible=True, initial_sequence='Closed') # HiddenDoor
+        self.set_portal(portal_id=2, visible=True, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DoorClose02(self.ctx)
 
 
 class DoorClose02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(triggerIds=[4000], enable=False) # Move
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move
-        self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=3) # Wall
-        self.set_interact_object(triggerIds=[10001082], state=1) # BookCase
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_breakable(trigger_ids=[4000], enable=False) # Move
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False) # Move
+        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=3) # Wall
+        self.set_interact_object(trigger_ids=[10001082], state=1) # BookCase
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Reset(self.ctx)
 
 
 class Reset(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001082], stateValue=0):
+        if self.object_interacted(interact_ids=[10001082], state=0):
             return BookCaseMove01(self.ctx)
 
 

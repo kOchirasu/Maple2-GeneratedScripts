@@ -5,257 +5,248 @@ import trigger_api
 # 디펜스 모드 :  엘리트
 class 대기시간(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=102, spawnIds=[901]):
+        if self.npc_detected(box_id=102, spawn_ids=[901]):
             return 차타이머2(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[902]): # 33레벨
+        if self.npc_detected(box_id=102, spawn_ids=[902]): # 33레벨
             return 차타이머3(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[904]):
+        if self.npc_detected(box_id=102, spawn_ids=[904]):
             return 차타이머4(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[905]):
+        if self.npc_detected(box_id=102, spawn_ids=[905]):
             return 차타이머5(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[906]): # 35레벨
+        if self.npc_detected(box_id=102, spawn_ids=[906]): # 35레벨
             return 차타이머6(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[908]):
+        if self.npc_detected(box_id=102, spawn_ids=[908]):
             return 차타이머7(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[909]):
+        if self.npc_detected(box_id=102, spawn_ids=[909]):
             return 차타이머8(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[910]): # 35레벨 하드
+        if self.npc_detected(box_id=102, spawn_ids=[910]): # 35레벨 하드
             return 차타이머9(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[912]):
+        if self.npc_detected(box_id=102, spawn_ids=[912]):
             return 차타이머10(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[913]):
+        if self.npc_detected(box_id=102, spawn_ids=[913]):
             return 차타이머11(self.ctx)
-        if self.npc_detected(boxId=102, spawnIds=[914]):
+        if self.npc_detected(box_id=102, spawn_ids=[914]):
             return 차타이머12(self.ctx)
 
 
 class 차타이머2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='80', seconds=80)
+        self.set_timer(timer_id='80', seconds=80)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[901]):
+        if self.monster_dead(spawn_ids=[901]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='80'):
+        if self.time_expired(timer_id='80'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='75', seconds=75)
+        self.set_timer(timer_id='75', seconds=75)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[902]):
+        if self.monster_dead(spawn_ids=[902]):
             return 소멸(self.ctx)
-        if self.time_expired(timerId='75'):
+        if self.time_expired(timer_id='75'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='68', seconds=68)
+        self.set_timer(timer_id='68', seconds=68)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[904]):
+        if self.monster_dead(spawn_ids=[904]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='68'):
+        if self.time_expired(timer_id='68'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='63', seconds=63)
+        self.set_timer(timer_id='63', seconds=63)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[905]):
+        if self.monster_dead(spawn_ids=[905]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='63'):
+        if self.time_expired(timer_id='63'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='58', seconds=58)
+        self.set_timer(timer_id='58', seconds=58)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[906]):
+        if self.monster_dead(spawn_ids=[906]):
             return 소멸(self.ctx)
-        if self.time_expired(timerId='58'):
+        if self.time_expired(timer_id='58'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='68', seconds=68)
+        self.set_timer(timer_id='68', seconds=68)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[908]):
+        if self.monster_dead(spawn_ids=[908]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='68'):
+        if self.time_expired(timer_id='68'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='62', seconds=62)
+        self.set_timer(timer_id='62', seconds=62)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[909]):
+        if self.monster_dead(spawn_ids=[909]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='62'):
+        if self.time_expired(timer_id='62'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머9(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='60', seconds=60)
+        self.set_timer(timer_id='60', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[910]):
+        if self.monster_dead(spawn_ids=[910]):
             return 소멸(self.ctx)
-        if self.time_expired(timerId='60'):
+        if self.time_expired(timer_id='60'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='55', seconds=55)
+        self.set_timer(timer_id='55', seconds=55)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[912]):
+        if self.monster_dead(spawn_ids=[912]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='55'):
+        if self.time_expired(timer_id='55'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='52', seconds=52)
+        self.set_timer(timer_id='52', seconds=52)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[913]):
+        if self.monster_dead(spawn_ids=[913]):
             return 대기시간(self.ctx)
-        if self.time_expired(timerId='52'):
+        if self.time_expired(timer_id='52'):
             return 생성랜덤(self.ctx)
 
 
 class 차타이머12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='49', seconds=49)
+        self.set_timer(timer_id='49', seconds=49)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[914]):
+        if self.monster_dead(spawn_ids=[914]):
             return 소멸(self.ctx)
-        if self.time_expired(timerId='49'):
+        if self.time_expired(timer_id='49'):
             return 생성랜덤(self.ctx)
 
 
 class 생성랜덤(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.random_condition(rate=12):
+        if self.random_condition(weight=12):
             return 번생성1(self.ctx)
-        if self.random_condition(rate=13):
+        if self.random_condition(weight=13):
             return 번생성2(self.ctx)
-        if self.random_condition(rate=12):
+        if self.random_condition(weight=12):
             return 번생성3(self.ctx)
-        if self.random_condition(rate=13):
+        if self.random_condition(weight=13):
             return 번생성4(self.ctx)
-        if self.random_condition(rate=12):
+        if self.random_condition(weight=12):
             return 번생성5(self.ctx)
-        if self.random_condition(rate=13):
+        if self.random_condition(weight=13):
             return 번생성6(self.ctx)
-        if self.random_condition(rate=12):
+        if self.random_condition(weight=12):
             return 번생성7(self.ctx)
-        if self.random_condition(rate=13):
+        if self.random_condition(weight=13):
             return 번생성8(self.ctx)
 
 
 class 번생성1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1201], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1201], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1202], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1202], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1203], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1203], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1204], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1204], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1205], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1205], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1206], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1206], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1207], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1207], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 번생성8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1208], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1208], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 class 소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[1201])
-        self.destroy_monster(spawnIds=[1202])
-        self.destroy_monster(spawnIds=[1203])
-        self.destroy_monster(spawnIds=[1204])
-        self.destroy_monster(spawnIds=[1205])
-        self.destroy_monster(spawnIds=[1206])
-        self.destroy_monster(spawnIds=[1207])
-        self.destroy_monster(spawnIds=[1208])
+        self.destroy_monster(spawn_ids=[1201])
+        self.destroy_monster(spawn_ids=[1202])
+        self.destroy_monster(spawn_ids=[1203])
+        self.destroy_monster(spawn_ids=[1204])
+        self.destroy_monster(spawn_ids=[1205])
+        self.destroy_monster(spawn_ids=[1206])
+        self.destroy_monster(spawn_ids=[1207])
+        self.destroy_monster(spawn_ids=[1208])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기시간(self.ctx)
+        return 대기시간(self.ctx)
 
 
 initial_state = 대기시간

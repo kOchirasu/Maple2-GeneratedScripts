@@ -4,70 +4,70 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[10000], visible=False)
-        self.set_effect(triggerIds=[601], visible=True)
+        self.set_mesh(trigger_ids=[10000], visible=False)
+        self.set_effect(trigger_ids=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[1000]):
+        if self.user_detected(box_ids=[1000]):
             return 퀘스트체크(self.ctx)
 
 
 class 퀘스트체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101040], questStates=[1]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101040], quest_states=[1]):
             return 화이트박스제거(self.ctx)
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101030], questStates=[3]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101030], quest_states=[3]):
             return 로텔레포트52100105(self.ctx)
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101030], questStates=[2]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101030], quest_states=[2]):
             return 퀘스트용몬스터스폰(self.ctx)
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101030], questStates=[1]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101030], quest_states=[1]):
             return 퀘스트용몬스터스폰(self.ctx)
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101020], questStates=[3]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101020], quest_states=[3]):
             return 퀘스트용몬스터스폰(self.ctx)
 
 
 class 퀘스트체크2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101040], questStates=[1]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101040], quest_states=[1]):
             return 화이트박스제거(self.ctx)
-        if self.quest_user_detected(boxIds=[1000], questIds=[50101030], questStates=[3]):
+        if self.quest_user_detected(box_ids=[1000], quest_ids=[50101030], quest_states=[3]):
             return None # Missing State: State
 
 
 class 로텔레포트52100105(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[10000], visible=True)
-        self.move_user(mapId=52100105, portalId=3)
+        self.set_mesh(trigger_ids=[10000], visible=True)
+        self.move_user(map_id=52100105, portal_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return None # Missing State: State
 
 
 class 퀘스트용몬스터스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101,102,103], animationEffect=False)
+        self.spawn_monster(spawn_ids=[101,102,103], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 화이트박스생성2(self.ctx)
 
 
 class 화이트박스생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[10000], visible=True)
+        self.set_mesh(trigger_ids=[10000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 퀘스트체크2(self.ctx)
 
 
 class 화이트박스제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[10000], visible=False)
+        self.set_mesh(trigger_ids=[10000], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return None # Missing State: State
 
 

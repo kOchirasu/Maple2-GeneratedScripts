@@ -4,7 +4,7 @@ import trigger_api
 
 class start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2001], questIds=[10003448], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[10003448], quest_states=[2]):
             # 예언의 때 퀘스트 진행 유저
             return CameraEffect01(self.ctx)
 
@@ -12,10 +12,10 @@ class start(trigger_api.Trigger):
 class CameraEffect01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
-        self.move_user(mapId=52000199, portalId=5001)
+        self.move_user(map_id=52000199, portal_id=5001)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return CameraEffect02(self.ctx)
 
 
@@ -24,18 +24,18 @@ class CameraEffect02(trigger_api.Trigger):
         self.set_cinematic_ui(type=9, script='$52000199_QD__52000199_2__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3500):
+        if self.wait_tick(wait_tick=3500):
             return CameraEffect02_2(self.ctx)
 
 
 class CameraEffect02_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_visible_ui(uiNames=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
-        self.add_buff(boxIds=[2001], skillId=99910403, level=1, isPlayer=False, isSkillSet=True) # 다크로드 변신
-        self.add_buff(boxIds=[2001], skillId=99910403, level=1, isPlayer=False, isSkillSet=False) # 다크로드 변신
+        self.set_visible_ui(ui_names=['MessengerBrowser','GroupMessengerBrowser','HighlightGameMenu'], visible=False)
+        self.add_buff(box_ids=[2001], skill_id=99910403, level=1, is_player=False, is_skill_set=True) # 다크로드 변신
+        self.add_buff(box_ids=[2001], skill_id=99910403, level=1, is_player=False, is_skill_set=False) # 다크로드 변신
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return CameraEffect03(self.ctx)
 
 

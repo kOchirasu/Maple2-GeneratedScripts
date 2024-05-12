@@ -4,11 +4,11 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[102], animationEffect=False)
-        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.spawn_monster(spawn_ids=[102], auto_target=False)
+        self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[50001484], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[50001484], quest_states=[2]):
             # 그 길에서 만난 것은 퀘스트 완료 가능 상태
             return LodingDelay00(self.ctx)
 
@@ -18,31 +18,31 @@ class LodingDelay00(trigger_api.Trigger):
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
-        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return LodingDelay01(self.ctx)
 
 
 class LodingDelay01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=63000042, portalId=10)
+        self.move_user(map_id=63000042, portal_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return LodingDelay02(self.ctx)
 
 
 class LodingDelay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[102])
-        self.create_monster(spawnIds=[101], animationEffect=False)
-        self.select_camera(triggerId=500, enable=True)
-        self.set_pc_emotion_loop(sequenceName='Down_Idle_D', duration=6000)
+        self.destroy_monster(spawn_ids=[102])
+        self.spawn_monster(spawn_ids=[101], auto_target=False)
+        self.select_camera(trigger_id=500, enable=True)
+        self.set_pc_emotion_loop(sequence_name='Down_Idle_D', duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return PCDownIdle01(self.ctx)
 
 
@@ -53,7 +53,7 @@ class PCDownIdle01(trigger_api.Trigger):
         self.set_skip(state=PCDownIdle02)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return PCDownIdle02(self.ctx)
 
 
@@ -66,17 +66,17 @@ class PCDownIdle02(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return DoctorTalk01(self.ctx)
 
 
 class DoctorTalk01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__0$', arg4=4)
+        self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__0$', time=4)
         self.set_skip(state=DoctorTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return DoctorTalk01Skip(self.ctx)
 
 
@@ -87,19 +87,18 @@ class DoctorTalk01Skip(trigger_api.Trigger):
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return LookAround01(self.ctx)
+        return LookAround01(self.ctx)
 
 
 class LookAround01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=500, enable=False)
-        self.select_camera(triggerId=501, enable=True)
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
-        self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=18000)
+        self.select_camera(trigger_id=500, enable=False)
+        self.select_camera(trigger_id=501, enable=True)
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_101')
+        self.set_pc_emotion_loop(sequence_name='Sit_Ground_Idle_A', duration=18000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return LookAround02(self.ctx)
 
 
@@ -109,59 +108,59 @@ class LookAround02(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return DoctorTalk02(self.ctx)
 
 
 class DoctorTalk02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
-        self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__1$', arg4=5)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__1$', time=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return DoctorTalk03(self.ctx)
 
 
 class DoctorTalk03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
-        self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__2$', arg4=4)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__2$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return DoctorTalk04(self.ctx)
 
 
 class DoctorTalk04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
-        self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__3$', arg4=4)
+        self.set_npc_emotion_loop(spawn_id=101, sequence_name='Talk_A', duration=5000)
+        self.set_dialogue(type=2, spawn_id=11000038, script='$63000042_CS__WAKEUP01__3$', time=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return SceneEnd01(self.ctx)
 
 
 class SceneEnd01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
+        self.set_npc_emotion_sequence(spawn_id=101, sequence_name='Idle_A')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return SceneEnd02(self.ctx)
 
 
 class SceneEnd02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=501, enable=False)
-        self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
+        self.select_camera(trigger_id=501, enable=False)
+        self.set_pc_emotion_sequence(sequence_names=['Idle_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return Quit(self.ctx)
 
 
@@ -169,7 +168,7 @@ class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = Wait

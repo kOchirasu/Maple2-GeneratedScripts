@@ -5,17 +5,17 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='BridgeOpen', value=0)
-        self.set_interact_object(triggerIds=[10001036], state=1)
+        self.set_interact_object(trigger_ids=[10001036], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001036], stateValue=0):
+        if self.object_interacted(interact_ids=[10001036], state=0):
             return WakeUp(self.ctx)
 
 
 class WakeUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001036], state=2)
-        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.set_interact_object(trigger_ids=[10001036], state=2)
+        self.spawn_monster(spawn_ids=[101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BridgeOpen', value=1):
@@ -28,7 +28,7 @@ class WakeUp(trigger_api.Trigger):
 
 class Patrol01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_1011')
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1011')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BridgeOpen', value=2):
@@ -37,7 +37,7 @@ class Patrol01(trigger_api.Trigger):
 
 class Patrol02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_1012')
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1012')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BridgeOpen', value=3):
@@ -46,7 +46,7 @@ class Patrol02(trigger_api.Trigger):
 
 class Patrol03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=101, patrolName='MS2PatrolData_1013')
+        self.move_npc(spawn_id=101, patrol_name='MS2PatrolData_1013')
 
 
 initial_state = Wait

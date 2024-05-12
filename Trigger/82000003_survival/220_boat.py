@@ -5,10 +5,10 @@ import trigger_api
 # 맵 외곽 동선
 class BoatPatrol(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.npc_to_patrol_in_box(boxId=9520, npcId=11400001, spawnId='interactObject', patrolName='MS2PatrolData_220')
+        self.npc_to_patrol_in_box(box_id=9520, npc_id=11400001, spawn_id='interactObject', patrol_name='MS2PatrolData_220')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return BoatPatrol(self.ctx)
 
 

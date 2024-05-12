@@ -4,36 +4,34 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[200], visible=False)
+        self.set_effect(trigger_ids=[200], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 축하대기1(self.ctx)
+        return 축하대기1(self.ctx)
 
 
 class 축하대기1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.bonus_game_reward_detected(boxId=100, arg2=True):
+        if self.bonus_game_reward_detected(box_id=100, type=1):
             return 축하1(self.ctx)
 
 
 class 축하1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[200], visible=True)
+        self.set_effect(trigger_ids=[200], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 축하2(self.ctx)
+        return 축하2(self.ctx)
 
 
 class 축하2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=100, script='$80000003_bonus__T1_CONGRATULATION__0$')
-        self.set_conversation(type=1, spawnId=101, script='$80000003_bonus__T1_CONGRATULATION__1$')
-        self.set_timer(timerId='1', seconds=30)
+        self.set_dialogue(type=1, spawn_id=100, script='$80000003_bonus__T1_CONGRATULATION__0$')
+        self.set_dialogue(type=1, spawn_id=101, script='$80000003_bonus__T1_CONGRATULATION__1$')
+        self.set_timer(timer_id='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 완료(self.ctx)
 
 

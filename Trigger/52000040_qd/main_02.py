@@ -5,23 +5,23 @@ import trigger_api
 # 출연진 : 라오즈(401 : 11001760)
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[1]):
             return end(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[2]):
             return end(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[3]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[3]):
             return end(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[3]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003052], quest_states=[3]):
             return start_05(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003052], quest_states=[2]):
             return start_05(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[1]):
-            self.set_effect(triggerIds=[6002], visible=True)
-            self.create_monster(spawnIds=[401], animationEffect=False)
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003052], quest_states=[1]):
+            self.set_effect(trigger_ids=[6002], visible=True)
+            self.spawn_monster(spawn_ids=[401], auto_target=False)
             return start(self.ctx)
 
 
@@ -31,27 +31,27 @@ class start(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return start_02(self.ctx)
 
 
 class start_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__0$', arg4=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__0$', time=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return start_03(self.ctx)
 
 
 class start_03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__1$', arg4=2, arg5=0)
-        self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__2$', arg4=2, arg5=3)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__1$', time=2, arg5=0)
+        self.set_dialogue(type=1, spawn_id=401, script='$52000040_QD__MAIN_02__2$', time=2, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.move_npc(spawnId=401, patrolName='MS2PatrolData_4001') # 연출용 라오즈 이동
+        if self.wait_tick(wait_tick=3000):
+            self.move_npc(spawn_id=401, patrol_name='MS2PatrolData_4001') # 연출용 라오즈 이동
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return start_04(self.ctx)
@@ -59,35 +59,35 @@ class start_03(trigger_api.Trigger):
 
 class start_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=702, spawnIds=[401]):
+        if self.npc_detected(box_id=702, spawn_ids=[401]):
             return npc_exit_01(self.ctx)
 
 
 class npc_exit_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[6001], visible=True)
-        self.destroy_monster(spawnIds=[401])
+        self.set_effect(trigger_ids=[6001], visible=True)
+        self.destroy_monster(spawn_ids=[401])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return start_05(self.ctx)
 
 
 class start_05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_achievement(triggerId=701, type='trigger', achieve='FollowingLaoz') # 퀘스트 목표 체크용 업적이벤트 발생
-        self.create_monster(spawnIds=[501], animationEffect=False)
+        self.set_achievement(trigger_id=701, type='trigger', achieve='FollowingLaoz') # 퀘스트 목표 체크용 업적이벤트 발생
+        self.spawn_monster(spawn_ids=[501], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[10003053], quest_states=[1]):
             return end(self.ctx)
 
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[501])
-        self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
-        self.set_portal(portalId=4, visible=True, enable=False, minimapVisible=False)
+        self.destroy_monster(spawn_ids=[501])
+        self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
+        self.set_portal(portal_id=4, visible=True, enable=False, minimap_visible=False)
 
 
 initial_state = ready

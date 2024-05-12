@@ -5,7 +5,7 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='GuideNpcSpawn', value=0)
-        self.destroy_monster(spawnIds=[109])
+        self.destroy_monster(spawn_ids=[109])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='GuideNpcSpawn', value=1):
@@ -14,23 +14,23 @@ class Wait(trigger_api.Trigger):
 
 class NpcSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[109], animationEffect=False)
-        self.move_npc(spawnId=109, patrolName='MS2PatrolData_GuideNpc')
+        self.spawn_monster(spawn_ids=[109], auto_target=False)
+        self.move_npc(spawn_id=109, patrol_name='MS2PatrolData_GuideNpc')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=60000):
+        if self.wait_tick(wait_tick=60000):
             return CheckUser(self.ctx)
 
 
 class CheckUser(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[9900]):
+        if not self.user_detected(box_ids=[9900]):
             return Quit(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[109])
+        self.destroy_monster(spawn_ids=[109])
 
 
 initial_state = Wait

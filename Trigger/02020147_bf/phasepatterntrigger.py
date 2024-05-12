@@ -10,7 +10,7 @@ class Ready(trigger_api.Trigger):
         self.set_user_value(key='PhasePatternTrigger', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=601, minUsers='1'):
+        if self.count_users(box_id=601, min_users='1'):
             # MS2TriggerBox  ID = 601, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면   601은 스타팅 지점과 1셋트 전투판 전체  포함하는 넓은 범위
             return 보스3마리_페이즈전환계산(self.ctx)
 
@@ -39,7 +39,7 @@ class 보스3마리_페이즈전환실행_3페이즈(trigger_api.Trigger):
         self.set_ai_extra_data(key='PhasePatternTrigger', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1200):
+        if self.wait_tick(wait_tick=1200):
             return 종료(self.ctx)
 
 

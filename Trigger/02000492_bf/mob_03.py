@@ -4,27 +4,27 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[1001]):
+        if self.user_detected(box_ids=[1001]):
             return 전투01(self.ctx)
-        if self.user_detected(boxIds=[1002]):
+        if self.user_detected(box_ids=[1002]):
             return 전투01(self.ctx)
 
 
 class 전투01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[301,311], animationEffect=False)
+        self.spawn_monster(spawn_ids=[301,311], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[301,311]):
+        if self.monster_dead(spawn_ids=[301,311]):
             return 전투02(self.ctx)
 
 
 class 전투02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[302], animationEffect=False)
+        self.spawn_monster(spawn_ids=[302], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[302]):
+        if self.monster_dead(spawn_ids=[302]):
             return 종료(self.ctx)
 
 

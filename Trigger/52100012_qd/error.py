@@ -7,16 +7,16 @@ class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Error', value=1):
             return end(self.ctx)
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return error(self.ctx)
 
 
 class error(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_random_user(mapId=52100012, portalId=5, triggerId=702, count=4)
+        self.move_random_user(map_id=52100012, portal_id=5, box_id=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return idle(self.ctx)
 
 

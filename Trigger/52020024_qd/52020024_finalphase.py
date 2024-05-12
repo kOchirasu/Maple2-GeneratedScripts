@@ -10,12 +10,12 @@ class 대기(trigger_api.Trigger):
 
 class 스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[131,132,133,134,135,136], animationEffect=True)
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=20000):
+        if self.wait_tick(wait_tick=20000):
             return 스폰(self.ctx)
-        if self.monster_dead(boxIds=[131,132,133,134,135,136]):
+        if self.monster_dead(spawn_ids=[131,132,133,134,135,136]):
             return 스폰(self.ctx)
         if self.user_value(key='FinalPhase', value=2):
             return 종료(self.ctx)

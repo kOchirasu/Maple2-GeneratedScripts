@@ -4,42 +4,40 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000295], state=1)
-        self.set_actor(triggerId=203, visible=True, initialSequence='Dead_A')
+        self.set_interact_object(trigger_ids=[10000295], state=1)
+        self.set_actor(trigger_id=203, visible=True, initial_sequence='Dead_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000295], stateValue=0):
+        if self.object_interacted(interact_ids=[10000295], state=0):
             return 오브젝트반응(self.ctx)
 
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=203, visible=False, initialSequence='Dead_A')
+        self.set_actor(trigger_id=203, visible=False, initial_sequence='Dead_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NPC이동(self.ctx)
+        return NPC이동(self.ctx)
 
 
 class NPC이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[303], animationEffect=False)
-        self.move_npc(spawnId=303, patrolName='MS2PatrolData_203')
-        self.set_conversation(type=1, spawnId=303, script='$02000046_AD__EAGLE_03__0$', arg4=2)
-        self.set_timer(timerId='1', seconds=20)
+        self.spawn_monster(spawn_ids=[303], auto_target=False)
+        self.move_npc(spawn_id=303, patrol_name='MS2PatrolData_203')
+        self.set_dialogue(type=1, spawn_id=303, script='$02000046_AD__EAGLE_03__0$', time=2)
+        self.set_timer(timer_id='1', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return NPC소멸(self.ctx)
 
 
 class NPC소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[303])
+        self.destroy_monster(spawn_ids=[303])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 시작대기중(self.ctx)
+        return 시작대기중(self.ctx)
 
 
 initial_state = 시작대기중

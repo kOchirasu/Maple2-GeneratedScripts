@@ -4,40 +4,39 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000187], state=1)
-        self.set_actor(triggerId=212, visible=True, initialSequence='Attack_Idle_A')
+        self.set_interact_object(trigger_ids=[10000187], state=1)
+        self.set_actor(trigger_id=212, visible=True, initial_sequence='Attack_Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 오브젝트반응(self.ctx)
+        return 오브젝트반응(self.ctx)
 
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000187], stateValue=0):
+        if self.object_interacted(interact_ids=[10000187], state=0):
             return NPC등장(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_actor(triggerId=212, visible=False, initialSequence='Attack_Idle_A')
-        self.create_monster(spawnIds=[412])
+        self.set_actor(trigger_id=212, visible=False, initial_sequence='Attack_Idle_A')
+        self.spawn_monster(spawn_ids=[412])
 
 
 class NPC등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=412, script='$02000146_BF__IA_112__0$', arg4=2)
-        self.set_timer(timerId='1', seconds=15)
+        self.set_dialogue(type=1, spawn_id=412, script='$02000146_BF__IA_112__0$', time=2)
+        self.set_timer(timer_id='1', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[412]):
+        if self.monster_dead(spawn_ids=[412]):
             return 딜레이(self.ctx)
 
 
 class 딜레이(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='2', seconds=8)
+        self.set_timer(timer_id='2', seconds=8)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 시작대기중(self.ctx)
 
 

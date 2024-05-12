@@ -4,81 +4,81 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000909], state=1)
-        self.set_ladder(triggerIds=[201], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[202], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[203], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[204], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[205], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[206], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[207], visible=False, animationEffect=False)
+        self.set_interact_object(trigger_ids=[10000909], state=1)
+        self.set_ladder(trigger_ids=[201], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[202], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[203], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[204], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[205], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[206], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[207], visible=False, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000909], stateValue=0):
+        if self.object_interacted(interact_ids=[10000909], state=0):
             return 사다리생성01(self.ctx)
 
 
 class 사다리생성01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[201], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[201], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성02(self.ctx)
 
 
 class 사다리생성02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[202], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[202], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성03(self.ctx)
 
 
 class 사다리생성03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[203], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[203], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성04(self.ctx)
 
 
 class 사다리생성04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[204], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[204], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성05(self.ctx)
 
 
 class 사다리생성05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[205], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[205], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성06(self.ctx)
 
 
 class 사다리생성06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[206], visible=True, animationEffect=True, animationDelay=5)
+        self.set_ladder(trigger_ids=[206], visible=True, enable=True, fade=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=200):
+        if self.wait_tick(wait_tick=200):
             return 사다리생성07(self.ctx)
 
 
 class 사다리생성07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[207], visible=True, animationEffect=True, animationDelay=5)
-        self.set_timer(timerId='1', seconds=10, startDelay=0)
+        self.set_ladder(trigger_ids=[207], visible=True, enable=True, fade=5)
+        self.set_timer(timer_id='1', seconds=10, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 대기(self.ctx)
 
 

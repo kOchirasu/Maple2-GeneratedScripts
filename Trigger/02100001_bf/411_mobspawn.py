@@ -5,7 +5,7 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='RemoveAll', value=0)
-        self.destroy_monster(spawnIds=[411])
+        self.destroy_monster(spawn_ids=[411])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -14,10 +14,10 @@ class Wait(trigger_api.Trigger):
 
 class MobSpawn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[411], animationEffect=False)
+        self.spawn_monster(spawn_ids=[411], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[411]):
+        if self.monster_dead(spawn_ids=[411]):
             return Delay01(self.ctx)
         if self.user_value(key='RemoveAll', value=1):
             return Quit(self.ctx)
@@ -25,14 +25,14 @@ class MobSpawn(trigger_api.Trigger):
 
 class Delay01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=60000):
+        if self.wait_tick(wait_tick=60000):
             # 리스폰 딜레이400
             return MobSpawn(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[411])
+        self.destroy_monster(spawn_ids=[411])
 
 
 initial_state = Wait

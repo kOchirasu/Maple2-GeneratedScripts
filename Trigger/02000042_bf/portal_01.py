@@ -4,22 +4,22 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000583], state=1)
-        self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
+        self.set_interact_object(trigger_ids=[10000583], state=1)
+        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000583], stateValue=0):
+        if self.object_interacted(interact_ids=[10000583], state=0):
             return 생성(self.ctx)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='10', seconds=5)
-        self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True)
+        self.set_timer(timer_id='10', seconds=5)
+        self.set_portal(portal_id=6, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
-            # self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
+        if self.time_expired(timer_id='10'):
+            # self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
             return 대기(self.ctx)
 
 

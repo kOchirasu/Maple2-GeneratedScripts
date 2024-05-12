@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[102])
+        self.destroy_monster(spawn_ids=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9001], jobCode=0):
+        if self.user_detected(box_ids=[9001], job_code=0):
             return 크림슨발록등장(self.ctx)
 
 
 class 크림슨발록등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[102], animationEffect=True) # 크림슨 발록
+        self.spawn_monster(spawn_ids=[102], auto_target=True) # 크림슨 발록
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 

@@ -4,36 +4,36 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[511], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[512], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[513], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[514], visible=False, animationEffect=False)
-        self.set_interact_object(triggerIds=[10000429], state=2)
+        self.set_ladder(trigger_ids=[511], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[512], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[513], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[514], visible=False, enable=False)
+        self.set_interact_object(trigger_ids=[10000429], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=102, spawnIds=[2001]):
+        if self.npc_detected(box_id=102, spawn_ids=[2001]):
             return 반응대기(self.ctx)
 
 
 class 반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000429], state=1)
+        self.set_interact_object(trigger_ids=[10000429], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000429], stateValue=0):
+        if self.object_interacted(interact_ids=[10000429], state=0):
             return 사다리생성(self.ctx)
 
 
 class 사다리생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[514], visible=True, animationEffect=True)
-        self.set_timer(timerId='10', seconds=10, startDelay=0, interval=0)
+        self.set_ladder(trigger_ids=[511], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[512], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[513], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[514], visible=True, enable=True)
+        self.set_timer(timer_id='10', seconds=10, start_delay=0, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
+        if self.time_expired(timer_id='10'):
             return 종료(self.ctx)
 
 

@@ -4,16 +4,16 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[701]):
+        if self.user_detected(box_ids=[701]):
             return start(self.ctx)
 
 
 class start(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[108], animationEffect=False)
+        self.spawn_monster(spawn_ids=[108], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=60000):
+        if self.wait_tick(wait_tick=60000):
             return end(self.ctx)
 
 

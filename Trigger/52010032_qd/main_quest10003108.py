@@ -4,14 +4,14 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2001], questIds=[10003105,10003106,10003107], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2001], quest_ids=[10003105,10003106,10003107], quest_states=[2]):
             return NpcSpawn_02(self.ctx)
 
 
 class NpcSpawn_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[501], animationEffect=True)
-        self.set_npc_emotion_sequence(spawnId=501, sequenceName='Idle_A')
+        self.spawn_monster(spawn_ids=[501], auto_target=True)
+        self.set_npc_emotion_sequence(spawn_id=501, sequence_name='Idle_A')
 
 
 initial_state = Ready

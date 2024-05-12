@@ -8,15 +8,15 @@ class 대기(trigger_api.Trigger):
             return 생성(self.ctx)
 
     def on_exit(self) -> None:
-        self.create_monster(spawnIds=[101,102], animationEffect=True)
+        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101,102], animationEffect=True)
+        self.spawn_monster(spawn_ids=[101,102], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 생성(self.ctx)
         if self.user_value(key='WaveEnd', value=1):
             return 종료(self.ctx)

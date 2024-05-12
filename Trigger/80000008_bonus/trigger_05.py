@@ -4,52 +4,52 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[801,802,803,804,805], visible=False)
-        self.set_effect(triggerIds=[806,807,808,809,810], visible=False)
-        self.set_mesh(triggerIds=[201,202,203,204,205], visible=False, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000212], state=1)
+        self.set_effect(trigger_ids=[801,802,803,804,805], visible=False)
+        self.set_effect(trigger_ids=[806,807,808,809,810], visible=False)
+        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000212], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000212], stateValue=0):
+        if self.object_interacted(interact_ids=[10000212], state=0):
             return 소환(self.ctx)
 
 
 class 소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[105], animationEffect=False)
-        self.move_npc(spawnId=105, patrolName='MS2PatrolData_301')
+        self.spawn_monster(spawn_ids=[105], auto_target=False)
+        self.move_npc(spawn_id=105, patrol_name='MS2PatrolData_301')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=401, spawnIds=[105]):
+        if self.npc_detected(box_id=401, spawn_ids=[105]):
             return 몬스터소멸(self.ctx)
 
 
 class 몬스터소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[105])
-        self.set_timer(timerId='5', seconds=1)
-        self.set_timer(timerId='6', seconds=1, startDelay=1)
-        self.set_effect(triggerIds=[801,802,803,804,805], visible=True)
-        self.set_effect(triggerIds=[806,807,808,809,810], visible=True)
+        self.destroy_monster(spawn_ids=[105])
+        self.set_timer(timer_id='5', seconds=1)
+        self.set_timer(timer_id='6', seconds=1, start_delay=1)
+        self.set_effect(trigger_ids=[801,802,803,804,805], visible=True)
+        self.set_effect(trigger_ids=[806,807,808,809,810], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='5'):
+        if self.time_expired(timer_id='5'):
             return 꽝(self.ctx)
 
 
 class 꽝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101])
-        self.destroy_monster(spawnIds=[102])
-        self.destroy_monster(spawnIds=[103])
-        self.destroy_monster(spawnIds=[104])
-        self.destroy_monster(spawnIds=[105])
-        self.set_mesh(triggerIds=[201,202,203,204,205], visible=True, arg3=0, delay=0, scale=0)
-        self.set_interact_object(triggerIds=[10000208], state=2)
-        self.set_interact_object(triggerIds=[10000209], state=2)
-        self.set_interact_object(triggerIds=[10000210], state=2)
-        self.set_interact_object(triggerIds=[10000211], state=2)
-        self.set_interact_object(triggerIds=[10000212], state=2)
+        self.destroy_monster(spawn_ids=[101])
+        self.destroy_monster(spawn_ids=[102])
+        self.destroy_monster(spawn_ids=[103])
+        self.destroy_monster(spawn_ids=[104])
+        self.destroy_monster(spawn_ids=[105])
+        self.set_mesh(trigger_ids=[201,202,203,204,205], visible=True, start_delay=0, interval=0, fade=0)
+        self.set_interact_object(trigger_ids=[10000208], state=2)
+        self.set_interact_object(trigger_ids=[10000209], state=2)
+        self.set_interact_object(trigger_ids=[10000210], state=2)
+        self.set_interact_object(trigger_ids=[10000211], state=2)
+        self.set_interact_object(trigger_ids=[10000212], state=2)
 
 
 initial_state = 대기

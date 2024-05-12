@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[482], isStart=False)
+        self.start_combine_spawn(group_id=[482], is_start=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteSpawn', value=1):
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 class 스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[482], isStart=True)
+        self.start_combine_spawn(group_id=[482], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='EliteSpawn', value=0):
@@ -24,7 +24,7 @@ class 스폰(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[482], isStart=False)
+        self.start_combine_spawn(group_id=[482], is_start=False)
 
 
 initial_state = 대기

@@ -15,7 +15,7 @@ class 기본셋팅(trigger_api.Trigger):
         self.set_user_value(key='MonsterMany', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 트리거작동시작(self.ctx)
 
 
@@ -31,15 +31,15 @@ class 블랙빈에게버프부여(trigger_api.Trigger):
         # arg2은 몬스터 스폰ID 101는 어려운 난이도    102는 쉬운 난이도
         # 50003307(레벨2)는 버프 시간 엄청 긴거
         # 공격반사 버프 부여하기 ,   arg1="101" 보스 스폰 ID ,  arg3="1" 은 애디셔널 레벨
-        self.add_buff(boxIds=[101], skillId=50003307, level=2, isPlayer=True)
+        self.add_buff(box_ids=[101], skill_id=50003307, level=2, is_player=True)
         # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
         # 50003307(레벨2)는 버프 시간 엄청 긴거
         # 공격반사 버프 부여하기 ,   arg1="102" 보스 스폰 ID ,  arg3="1" 은 애디셔널 레벨
-        self.add_buff(boxIds=[102], skillId=50003307, level=2, isPlayer=True)
+        self.add_buff(box_ids=[102], skill_id=50003307, level=2, is_player=True)
         # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 블랙빈에게버프삭제체크(self.ctx)
 
 
@@ -52,7 +52,7 @@ class 블랙빈에게버프삭제체크(trigger_api.Trigger):
 
 class 블랙빈에게버프삭제대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=900):
+        if self.wait_tick(wait_tick=900):
             return 블랙빈에게버프삭제실시(self.ctx)
 
 
@@ -61,15 +61,15 @@ class 블랙빈에게버프삭제실시(trigger_api.Trigger):
         # arg2은 몬스터 스폰ID 101는 어려운 난이도    102는 쉬운 난이도
         # 50003309(레벨1)은 50003307 애디셔널 제거하는 기능이 있음
         # 공격반사 버프 버프 제거 ,   arg1="101" 보스 스폰 ID ,  arg3="1" 은 애디셔널 레벨
-        self.add_buff(boxIds=[101], skillId=50003309, level=1, isPlayer=True)
+        self.add_buff(box_ids=[101], skill_id=50003309, level=1, is_player=True)
         # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
         # 50003309(레벨1)은 50003307 애디셔널 제거하는 기능이 있음
         # 공격반사 버프 버프 제거 ,   arg1="102" 보스 스폰 ID ,  arg3="1" 은 애디셔널 레벨
-        self.add_buff(boxIds=[102], skillId=50003309, level=1, isPlayer=True)
+        self.add_buff(box_ids=[102], skill_id=50003309, level=1, is_player=True)
         # 몬스터에게 애디셔널 거는 경우:  arg4 = "타겟이 몬스터로 하려면 1 인 경우  ->    arg1 = "몬스터스폰ID", arg2 = "애디셔널코드", arg3 = "애디셔널레벨", arg4 = "타겟이 몬스터로 하려면 1설정"
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 트리거작동시작(self.ctx) # 다시 처음단계로 되돌아가기
 
 

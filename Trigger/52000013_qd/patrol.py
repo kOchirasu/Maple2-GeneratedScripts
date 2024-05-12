@@ -4,68 +4,68 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
-        self.set_actor(triggerId=6000, visible=False, initialSequence='Idle_A')
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_actor(trigger_id=6000, visible=False, initial_sequence='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9000]):
+        if self.user_detected(box_ids=[9000]):
             return 어린벨라등장(self.ctx)
 
 
 class 어린벨라등장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='10', seconds=1)
-        self.create_monster(spawnIds=[5000], animationEffect=False)
+        self.set_timer(timer_id='10', seconds=1)
+        self.spawn_monster(spawn_ids=[5000], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='10'):
+        if self.time_expired(timer_id='10'):
             return 어린벨라패트롤01(self.ctx)
 
 
 class 어린벨라패트롤01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1001')
+        self.move_npc(spawn_id=5000, patrol_name='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=9001, spawnIds=[5000]):
+        if self.npc_detected(box_id=9001, spawn_ids=[5000]):
             return 어린벨라대화01(self.ctx)
 
 
 class 어린벨라대화01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='11', seconds=3)
-        self.set_conversation(type=1, spawnId=5000, script='$52000013_QD__MAIN__1$', arg4=2)
+        self.set_timer(timer_id='11', seconds=3)
+        self.set_dialogue(type=1, spawn_id=5000, script='$52000013_QD__MAIN__1$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='11'):
+        if self.time_expired(timer_id='11'):
             return 어린벨라패트롤02(self.ctx)
 
 
 class 어린벨라패트롤02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1002')
+        self.move_npc(spawn_id=5000, patrol_name='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=9002, spawnIds=[5000]):
+        if self.npc_detected(box_id=9002, spawn_ids=[5000]):
             return 어린벨라대화02(self.ctx)
 
 
 class 어린벨라대화02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='12', seconds=3)
-        self.set_conversation(type=1, spawnId=5000, script='$52000013_QD__MAIN__2$', arg4=2)
+        self.set_timer(timer_id='12', seconds=3)
+        self.set_dialogue(type=1, spawn_id=5000, script='$52000013_QD__MAIN__2$', time=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='12'):
+        if self.time_expired(timer_id='12'):
             return 어린벨라패트롤03(self.ctx)
 
 
 class 어린벨라패트롤03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1003')
+        self.move_npc(spawn_id=5000, patrol_name='MS2PatrolData_1003')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=9003, spawnIds=[5000]):
+        if self.npc_detected(box_id=9003, spawn_ids=[5000]):
             return 카메라연출01(self.ctx)
 
 
@@ -73,96 +73,96 @@ class 카메라연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_timer(timerId='12', seconds=6)
-        self.select_camera_path(pathIds=[901], returnView=False)
+        self.set_timer(timer_id='12', seconds=6)
+        self.select_camera_path(path_ids=[901], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=9004, spawnIds=[5000]):
+        if self.npc_detected(box_id=9004, spawn_ids=[5000]):
             return 카메라연출02(self.ctx)
 
 
 class 카메라연출02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='13', seconds=12)
-        self.set_actor(triggerId=6000, visible=True, initialSequence='Idle_A')
-        self.select_camera_path(pathIds=[902,903], returnView=False)
+        self.set_timer(timer_id='13', seconds=12)
+        self.set_actor(trigger_id=6000, visible=True, initial_sequence='Idle_A')
+        self.select_camera_path(path_ids=[902,903], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='13'):
+        if self.time_expired(timer_id='13'):
             return 화면끄기(self.ctx)
 
 
 class 화면끄기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='14', seconds=2)
+        self.set_timer(timer_id='14', seconds=2)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='14'):
+        if self.time_expired(timer_id='14'):
             return 어린벨라소멸(self.ctx)
 
 
 class 어린벨라소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='15', seconds=1)
-        self.destroy_monster(spawnIds=[5000])
-        self.set_actor(triggerId=6000, visible=False, initialSequence='Idle_A')
-        self.create_monster(spawnIds=[6001], animationEffect=False)
+        self.set_timer(timer_id='15', seconds=1)
+        self.destroy_monster(spawn_ids=[5000])
+        self.set_actor(trigger_id=6000, visible=False, initial_sequence='Idle_A')
+        self.spawn_monster(spawn_ids=[6001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='15'):
+        if self.time_expired(timer_id='15'):
             return 벨라연출01(self.ctx)
 
 
 class 벨라연출01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='16', seconds=8)
+        self.set_timer(timer_id='16', seconds=8)
         self.set_cinematic_ui(type=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.move_npc(spawnId=6001, patrolName='MS2PatrolData_2001')
-        self.select_camera_path(pathIds=[904,905], returnView=False)
+        self.move_npc(spawn_id=6001, patrol_name='MS2PatrolData_2001')
+        self.select_camera_path(path_ids=[904,905], return_view=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='16'):
+        if self.time_expired(timer_id='16'):
             return 벨라연출종료(self.ctx)
 
 
 class 벨라연출종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='17', seconds=8)
-        self.select_camera(triggerId=905, enable=False)
+        self.set_timer(timer_id='17', seconds=8)
+        self.select_camera(trigger_id=905, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='17'):
+        if self.time_expired(timer_id='17'):
             return 이동딜레이(self.ctx)
 
 
 class 이동딜레이(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[10000], questIds=[10002611], questStates=[3]):
+        if self.quest_user_detected(box_ids=[10000], quest_ids=[10002611], quest_states=[3]):
             return 강제이동(self.ctx)
 
 
 class 강제이동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='19', seconds=10)
-        self.move_user(mapId=3009017, portalId=50)
+        self.set_timer(timer_id='19', seconds=10)
+        self.move_user(map_id=3009017, portal_id=50)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='19'):
+        if self.time_expired(timer_id='19'):
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='20', seconds=10)
-        self.destroy_monster(spawnIds=[6001])
+        self.set_timer(timer_id='20', seconds=10)
+        self.destroy_monster(spawn_ids=[6001])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='20'):
+        if self.time_expired(timer_id='20'):
             return 대기(self.ctx)
 
 

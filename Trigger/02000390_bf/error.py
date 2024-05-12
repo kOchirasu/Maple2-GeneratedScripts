@@ -16,16 +16,16 @@ class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Error', value=1):
             return end(self.ctx)
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return error(self.ctx)
 
 
 class error(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_random_user(mapId=2000390, portalId=2, triggerId=702, count=4)
+        self.move_random_user(map_id=2000390, portal_id=2, box_id=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return idle(self.ctx)
 
 
@@ -33,30 +33,30 @@ class quest_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Error', value=1):
             return end(self.ctx)
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return quest_error(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[50001518], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[50001518], quest_states=[1]):
             return end(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[50001517], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[50001517], quest_states=[2]):
             return end(self.ctx)
 
 
 class quest_error(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_random_user(mapId=2000390, portalId=2, triggerId=702, count=4)
+        self.move_random_user(map_id=2000390, portal_id=2, box_id=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return quest_idle(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[50001518], questStates=[1]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[50001518], quest_states=[1]):
             return end(self.ctx)
-        if self.quest_user_detected(boxIds=[701], questIds=[50001517], questStates=[2]):
+        if self.quest_user_detected(box_ids=[701], quest_ids=[50001517], quest_states=[2]):
             return end(self.ctx)
 
 
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[1001,1002], visible=False)
+        self.set_mesh(trigger_ids=[1001,1002], visible=False)
 
 
 initial_state = ready

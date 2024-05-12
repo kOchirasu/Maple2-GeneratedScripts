@@ -4,18 +4,18 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5004], visible=False) # PortalOn
-        self.set_ladder(triggerIds=[540], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[541], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[542], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[543], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[544], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_ladder(triggerIds=[545], visible=False, animationEffect=False, animationDelay=0) # Ladder
-        self.set_mesh(triggerIds=[3700], visible=True, arg3=0, delay=0, scale=0) # Wall_BehindWardrope
-        self.set_mesh(triggerIds=[3701,3704], visible=True, arg3=0, delay=0, scale=0) # BehindWardropeCover01
-        self.set_mesh(triggerIds=[3702], visible=True, arg3=0, delay=0, scale=0) # Wardrope
-        self.set_mesh(triggerIds=[3703], visible=True, arg3=0, delay=0, scale=0) # WardropeInvisible
-        self.set_interact_object(triggerIds=[10002044], state=0) # Wardrope
+        self.set_effect(trigger_ids=[5004], visible=False) # PortalOn
+        self.set_ladder(trigger_ids=[540], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[541], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[542], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[543], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[544], visible=False, enable=False, fade=0) # Ladder
+        self.set_ladder(trigger_ids=[545], visible=False, enable=False, fade=0) # Ladder
+        self.set_mesh(trigger_ids=[3700], visible=True, start_delay=0, interval=0, fade=0) # Wall_BehindWardrope
+        self.set_mesh(trigger_ids=[3701,3704], visible=True, start_delay=0, interval=0, fade=0) # BehindWardropeCover01
+        self.set_mesh(trigger_ids=[3702], visible=True, start_delay=0, interval=0, fade=0) # Wardrope
+        self.set_mesh(trigger_ids=[3703], visible=True, start_delay=0, interval=0, fade=0) # WardropeInvisible
+        self.set_interact_object(trigger_ids=[10002044], state=0) # Wardrope
         self.set_user_value(key='HiddenRouteOpen', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,41 +27,41 @@ class Wait(trigger_api.Trigger):
 
 class Opened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3702], visible=False, arg3=100, delay=0, scale=2) # Wardrope
-        self.set_interact_object(triggerIds=[10002044], state=1) # Wardrope
+        self.set_mesh(trigger_ids=[3702], visible=False, start_delay=100, interval=0, fade=2) # Wardrope
+        self.set_interact_object(trigger_ids=[10002044], state=1) # Wardrope
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10002044], stateValue=0):
+        if self.object_interacted(interact_ids=[10002044], state=0):
             return LadderOn(self.ctx)
 
 
 class LadderOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5004], visible=True) # PortalOn
-        self.set_mesh(triggerIds=[3700], visible=False, arg3=0, delay=0, scale=3) # Wall_BehindWardrope
-        self.set_mesh(triggerIds=[3701,3704], visible=False, arg3=0, delay=0, scale=3) # BehindWardropeCover
-        self.set_mesh(triggerIds=[3703], visible=False, arg3=0, delay=0, scale=0) # WardropeInvisible
-        self.set_ladder(triggerIds=[540], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[541], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[542], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[543], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[544], visible=True, animationEffect=True, animationDelay=2) # Ladder
-        self.set_ladder(triggerIds=[545], visible=True, animationEffect=True, animationDelay=2) # Ladder
+        self.set_effect(trigger_ids=[5004], visible=True) # PortalOn
+        self.set_mesh(trigger_ids=[3700], visible=False, start_delay=0, interval=0, fade=3) # Wall_BehindWardrope
+        self.set_mesh(trigger_ids=[3701,3704], visible=False, start_delay=0, interval=0, fade=3) # BehindWardropeCover
+        self.set_mesh(trigger_ids=[3703], visible=False, start_delay=0, interval=0, fade=0) # WardropeInvisible
+        self.set_ladder(trigger_ids=[540], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[541], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[542], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[543], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[544], visible=True, enable=True, fade=2) # Ladder
+        self.set_ladder(trigger_ids=[545], visible=True, enable=True, fade=2) # Ladder
 
 
 class Closed(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3702], visible=False, arg3=100, delay=0, scale=2) # Wardrope
-        self.set_interact_object(triggerIds=[10002044], state=1) # Wardrope
+        self.set_mesh(trigger_ids=[3702], visible=False, start_delay=100, interval=0, fade=2) # Wardrope
+        self.set_interact_object(trigger_ids=[10002044], state=1) # Wardrope
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10002044], stateValue=0):
+        if self.object_interacted(interact_ids=[10002044], state=0):
             return NothingHappened(self.ctx)
 
 
 class NothingHappened(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3702], visible=True, arg3=0, delay=0, scale=0) # Wardrope
+        self.set_mesh(trigger_ids=[3702], visible=True, start_delay=0, interval=0, fade=0) # Wardrope
 
 
 initial_state = Wait

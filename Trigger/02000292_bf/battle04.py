@@ -4,23 +4,23 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[521], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[522], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[523], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[524], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[525], visible=True, animationEffect=True)
-        self.destroy_monster(spawnIds=[1015])
-        self.destroy_monster(spawnIds=[1016])
-        self.destroy_monster(spawnIds=[1017])
-        self.destroy_monster(spawnIds=[1018])
-        self.destroy_monster(spawnIds=[1019])
-        self.destroy_monster(spawnIds=[2015])
-        self.destroy_monster(spawnIds=[2016])
-        self.destroy_monster(spawnIds=[2017])
-        self.destroy_monster(spawnIds=[2018])
-        self.destroy_monster(spawnIds=[2019])
-        self.set_effect(triggerIds=[5003], visible=False) # Dark_Intro_Chord
-        self.set_interact_object(triggerIds=[10001063], state=0)
+        self.set_ladder(trigger_ids=[521], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[522], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[523], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[524], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[525], visible=True, enable=True)
+        self.destroy_monster(spawn_ids=[1015])
+        self.destroy_monster(spawn_ids=[1016])
+        self.destroy_monster(spawn_ids=[1017])
+        self.destroy_monster(spawn_ids=[1018])
+        self.destroy_monster(spawn_ids=[1019])
+        self.destroy_monster(spawn_ids=[2015])
+        self.destroy_monster(spawn_ids=[2016])
+        self.destroy_monster(spawn_ids=[2017])
+        self.destroy_monster(spawn_ids=[2018])
+        self.destroy_monster(spawn_ids=[2019])
+        self.set_effect(trigger_ids=[5003], visible=False) # Dark_Intro_Chord
+        self.set_interact_object(trigger_ids=[10001063], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -29,57 +29,57 @@ class Wait(trigger_api.Trigger):
 
 class MobSpawn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1015], animationEffect=False)
-        self.create_monster(spawnIds=[1016], animationEffect=False)
-        self.create_monster(spawnIds=[1017], animationEffect=False)
-        self.create_monster(spawnIds=[1018], animationEffect=False)
-        self.create_monster(spawnIds=[1019], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1015], auto_target=False)
+        self.spawn_monster(spawn_ids=[1016], auto_target=False)
+        self.spawn_monster(spawn_ids=[1017], auto_target=False)
+        self.spawn_monster(spawn_ids=[1018], auto_target=False)
+        self.spawn_monster(spawn_ids=[1019], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_in_combat(boxIds=[1015,1016,1017,1018,1019]):
+        if self.monster_in_combat(spawn_ids=[1015,1016,1017,1018,1019]):
             return MobBattle01(self.ctx)
 
 
 class MobBattle01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5003], visible=True) # Dark_Intro_Chord
-        self.change_monster(removeSpawnId=1015, addSpawnId=2015)
-        self.change_monster(removeSpawnId=1016, addSpawnId=2016)
-        self.change_monster(removeSpawnId=1017, addSpawnId=2017)
-        self.change_monster(removeSpawnId=1018, addSpawnId=2018)
-        self.change_monster(removeSpawnId=1019, addSpawnId=2019)
-        self.set_ladder(triggerIds=[521], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[522], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[523], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[524], visible=False, animationEffect=False)
-        self.set_ladder(triggerIds=[525], visible=False, animationEffect=False)
+        self.set_effect(trigger_ids=[5003], visible=True) # Dark_Intro_Chord
+        self.change_monster(from_spawn_id=1015, to_spawn_id=2015)
+        self.change_monster(from_spawn_id=1016, to_spawn_id=2016)
+        self.change_monster(from_spawn_id=1017, to_spawn_id=2017)
+        self.change_monster(from_spawn_id=1018, to_spawn_id=2018)
+        self.change_monster(from_spawn_id=1019, to_spawn_id=2019)
+        self.set_ladder(trigger_ids=[521], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[522], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[523], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[524], visible=False, enable=False)
+        self.set_ladder(trigger_ids=[525], visible=False, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return LadderOff01(self.ctx)
 
 
 class LadderOff01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20002921, textId=20002921, duration=5000)
-        self.set_interact_object(triggerIds=[10001063], state=1)
+        self.play_system_sound_in_box(box_ids=[9001], sound='System_ShowGuideSummary_01')
+        self.show_guide_summary(entity_id=20002921, text_id=20002921, duration=5000)
+        self.set_interact_object(trigger_ids=[10001063], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001063], stateValue=0):
+        if self.object_interacted(interact_ids=[10001063], state=0):
             return LadderOn01(self.ctx)
 
 
 class LadderOn01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[521], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[522], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[523], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[524], visible=True, animationEffect=True)
-        self.set_ladder(triggerIds=[525], visible=True, animationEffect=True)
+        self.set_ladder(trigger_ids=[521], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[522], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[523], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[524], visible=True, enable=True)
+        self.set_ladder(trigger_ids=[525], visible=True, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Quit(self.ctx)
 
 

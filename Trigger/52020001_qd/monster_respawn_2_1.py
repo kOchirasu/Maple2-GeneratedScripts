@@ -10,16 +10,16 @@ class 체력조건(trigger_api.Trigger):
 
 class 몬스터사망(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[6000030]):
+        if self.monster_dead(spawn_ids=[6000030]):
             return 몬스터생성(self.ctx)
 
 
 class 몬스터생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[6000030], animationEffect=False)
+        self.spawn_monster(spawn_ids=[6000030], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 몬스터사망(self.ctx)
 
 

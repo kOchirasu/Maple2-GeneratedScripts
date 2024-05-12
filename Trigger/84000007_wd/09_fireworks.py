@@ -13,29 +13,29 @@ class Staging(trigger_api.Trigger):
 class Volley_Ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$84000007_WD__09_FIREWORKS__0$', arg3='3000', arg4='0')
-        # self.select_camera_path(pathIds=[902,903], returnView=True)
+        # self.select_camera_path(path_ids=[902,903], return_view=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Volley_Fire(self.ctx)
 
 
 class Volley_Ready2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$84000007_WD__09_FIREWORKS__1$', arg3='3000', arg4='0')
-        # self.select_camera_path(pathIds=[902,903], returnView=True)
+        # self.select_camera_path(path_ids=[902,903], return_view=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Volley_Fire(self.ctx)
 
 
 class Volley_Fire(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[8002], visible=True)
+        self.set_effect(trigger_ids=[8002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=14000):
+        if self.wait_tick(wait_tick=14000):
             pass
 
 

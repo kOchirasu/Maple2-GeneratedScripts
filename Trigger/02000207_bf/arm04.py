@@ -10,10 +10,10 @@ class 대기(trigger_api.Trigger):
 
 class 트로피지급(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_achievement(triggerId=199, type='trigger', achieve='ZakumArmDeath04')
+        self.set_achievement(trigger_id=199, type='trigger', achieve='ZakumArmDeath04')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 종료(self.ctx)
 
 

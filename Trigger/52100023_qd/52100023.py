@@ -4,18 +4,18 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(triggerIds=[4000], enable=False)
-        self.set_visible_breakable_object(triggerIds=[4000], visible=False)
-        self.create_monster(spawnIds=[1101], animationEffect=False)
+        self.set_breakable(trigger_ids=[4000], enable=False)
+        self.set_visible_breakable_object(trigger_ids=[4000], visible=False)
+        self.spawn_monster(spawn_ids=[1101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[199]):
+        if self.user_detected(box_ids=[199]):
             return 연출시작(self.ctx)
 
 
 class 연출시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 종료(self.ctx)
 
 

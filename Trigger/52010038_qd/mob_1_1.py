@@ -9,19 +9,19 @@ class 대기(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         # 최초 3마리
-        self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
-        self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
-        self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
-        self.create_monster(spawnIds=[2011], animationEffect=True)
+        self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
+        self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
+        self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True)
+        self.spawn_monster(spawn_ids=[2011], auto_target=True)
 
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2011], animationEffect=True)
-        self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
+        self.spawn_monster(spawn_ids=[2011], auto_target=True)
+        self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True, random_pick_count=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return 생성(self.ctx)
         if self.user_value(key='WaveSlowDown', value=1):
             return 생성2(self.ctx)
@@ -31,11 +31,11 @@ class 생성(trigger_api.Trigger):
 
 class 생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2011], animationEffect=True)
-        self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
+        self.spawn_monster(spawn_ids=[2011], auto_target=True)
+        self.spawn_npc_range(range_ids=[2001,2002,2003,2004], is_auto_targeting=True, random_pick_count=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=14000):
+        if self.wait_tick(wait_tick=14000):
             return 생성2(self.ctx)
         if self.user_value(key='WaveEnd', value=1):
             return 종료(self.ctx)

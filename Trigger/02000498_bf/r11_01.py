@@ -4,19 +4,19 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=103, spawnIds=[111001]):
+        if self.npc_detected(box_id=103, spawn_ids=[111001]):
             return 몹스폰(self.ctx)
 
 
 class 몹스폰(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[111002], animationEffect=True)
+        self.spawn_monster(spawn_ids=[111002], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[111001]):
-            self.destroy_monster(spawnIds=[111002])
+        if self.monster_dead(spawn_ids=[111001]):
+            self.destroy_monster(spawn_ids=[111002])
             return 종료(self.ctx)
-        if self.monster_dead(boxIds=[111002]):
+        if self.monster_dead(spawn_ids=[111002]):
             return 몹스폰(self.ctx)
 
 

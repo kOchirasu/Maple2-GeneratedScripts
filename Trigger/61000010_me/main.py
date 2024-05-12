@@ -4,17 +4,17 @@ import trigger_api
 
 class 입장(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=True)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[101]):
-            # self.set_local_camera(cameraId=302, enable=True)
+        if self.user_detected(box_ids=[101]):
+            # self.set_local_camera(camera_id=302, enable=True)
             return 대기(self.ctx)
 
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=60000):
+        if self.wait_tick(wait_tick=60000):
             return 어나운스0(self.ctx)
         if self.user_value(key='GameStart', value=1):
             return 어나운스0(self.ctx)
@@ -23,12 +23,12 @@ class 대기(trigger_api.Trigger):
 class 어나운스0(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000010_ME__main__0$', arg3='3000', arg4='0')
-        self.set_achievement(triggerId=101, type='trigger', achieve='ShanghaiRunnersStart')
-        # self.set_local_camera(cameraId=302, enable=False)
-        # self.reset_camera(interpolationTime=3)
+        self.set_achievement(trigger_id=101, type='trigger', achieve='ShanghaiRunnersStart')
+        # self.set_local_camera(camera_id=302, enable=False)
+        # self.reset_camera(interpolation_time=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return 어나운스1(self.ctx)
 
 
@@ -37,23 +37,23 @@ class 어나운스1(trigger_api.Trigger):
         self.show_count_ui(text='$61000006_ME__TRIGGER_03__1$', stage=0, count=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 시작(self.ctx)
 
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='99', seconds=190, startDelay=0, interval=1)
-        self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=False)
-        self.set_user_value(triggerId=999111, key='gameStart', value=1)
-        self.start_mini_game(boxId=199, round=1, gameName='shanghairunner')
-        self.start_mini_game_round(boxId=199, round=1)
-        self.move_user_to_box(boxId=101, portalId=1)
-        self.set_achievement(triggerId=101, type='trigger', achieve='dailyquest_start')
-        self.give_guild_exp(boxId=0, type=2)
+        self.set_timer(timer_id='99', seconds=190, start_delay=0, interval=1)
+        self.set_mesh(trigger_ids=[3000,3001,3002,3003], visible=False)
+        self.set_user_value(trigger_id=999111, key='gameStart', value=1)
+        self.start_mini_game(box_id=199, round=1, game_name='shanghairunner')
+        self.start_mini_game_round(box_id=199, round=1)
+        self.move_user_to_box(box_id=101, portal_id=1)
+        self.set_achievement(trigger_id=101, type='trigger', achieve='dailyquest_start')
+        self.give_guild_exp(box_id=0, type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='99'):
+        if self.time_expired(timer_id='99'):
             return 경기종료(self.ctx)
 
 
@@ -61,20 +61,20 @@ class 경기종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=3, arg2='$61000006_ME__TRIGGER_03__2$', arg3='5000', arg4='401')
         self.set_event_ui(type=6, arg2='$61000006_ME__TRIGGER_03__3$', arg3='5000', arg4='!401')
-        # self.add_buff(boxIds=[199], skillId=70000019, level=1)
+        # self.add_buff(box_ids=[199], skill_id=70000019, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.end_mini_game_round(winnerBoxId=102, expRate=0.25, isGainLoserBonus=True)
-            self.mini_game_give_reward(winnerBoxId=102, contentType='MiniGameType2')
-            self.end_mini_game(winnerBoxId=102, gameName='shanghairunner')
+        if self.wait_tick(wait_tick=3000):
+            self.end_mini_game_round(winner_box_id=102, exp_rate=0.25, is_gain_loser_bonus=True)
+            self.mini_game_give_reward(winner_box_id=102, content_type='MiniGameType2')
+            self.end_mini_game(winner_box_id=102, game_name='shanghairunner')
             return 강제이동(self.ctx)
 
 
 class 강제이동(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.move_user(mapId=0, portalId=0)
+        if self.wait_tick(wait_tick=3000):
+            self.move_user(map_id=0, portal_id=0)
             return 종료(self.ctx)
 
 

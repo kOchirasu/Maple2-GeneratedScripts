@@ -10,14 +10,14 @@ class 대기(trigger_api.Trigger):
 
 class 결승점(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.end_mini_game_round(winnerBoxId=401, isOnlyWinner=True, expRate=1)
-        self.mini_game_give_reward(winnerBoxId=401, contentType='UserOpenMiniGameExtraReward', gameName='UserMassive_Crazyrunner') # 1일 5회 추가 보너스
-        self.end_mini_game(winnerBoxId=401, isOnlyWinner='true', gameName='UserMassive_Crazyrunner')
-        self.add_buff(boxIds=[401], skillId=70000132, level=1)
-        self.add_buff(boxIds=[401], skillId=70000019, level=1) # 에레브의 축복
+        self.end_mini_game_round(winner_box_id=401, is_only_winner=True, exp_rate=1)
+        self.mini_game_give_reward(winner_box_id=401, content_type='UserOpenMiniGameExtraReward', game_name='UserMassive_Crazyrunner') # 1일 5회 추가 보너스
+        self.end_mini_game(winner_box_id=401, is_only_winner='true', game_name='UserMassive_Crazyrunner')
+        self.add_buff(box_ids=[401], skill_id=70000132, level=1)
+        self.add_buff(box_ids=[401], skill_id=70000019, level=1) # 에레브의 축복
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 결승점(self.ctx)
 
 

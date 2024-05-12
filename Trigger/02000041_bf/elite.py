@@ -4,19 +4,19 @@ import trigger_api
 
 class 생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[1001,1002], animationEffect=False)
+        self.spawn_monster(spawn_ids=[1001,1002], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[1001,1002]):
+        if self.monster_dead(spawn_ids=[1001,1002]):
             return 대기(self.ctx)
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='30', seconds=30, startDelay=0, interval=0)
+        self.set_timer(timer_id='30', seconds=30, start_delay=0, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='30'):
+        if self.time_expired(timer_id='30'):
             return 생성(self.ctx)
 
 

@@ -4,31 +4,31 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[201]):
+        if self.user_detected(box_ids=[201]):
             # 플레이어가 왼쪽지점 태엽폭탄 있는 곳에 들어서면
             return 왼쪽지점견제(self.ctx)
 
 
 class 왼쪽지점견제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.show_guide_summary(entityId=20041008, textId=20041008)
+        # self.show_guide_summary(entity_id=20041008, text_id=20041008)
         # 플레이어가 왼쪽지점 태엽폭탄 있는 곳에 들어서면, 파풀라투스가 사용하는 이 변수를 1로 만들어서 파풀라투스가 왼쪽 태엽폭탄 지점 플레이어 견제하도록 함
         self.set_ai_extra_data(key='LeftPositionCheck', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[201]):
+        if not self.user_detected(box_ids=[201]):
             # 플레이어가 왼쪽지점 태엽폭탄 있는 곳에 벗어나면
             return 왼쪽지점견제풀기(self.ctx)
 
 
 class 왼쪽지점견제풀기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        # self.show_guide_summary(entityId=20000664, textId=20000664)
+        # self.show_guide_summary(entity_id=20000664, text_id=20000664)
         # 플레이어가 왼쪽지점 태엽폭탄 있는 곳에 벗어나면 , 파풀라투스가 사용하는 이 변수를 0로 만들어 초기화 하기
         self.set_ai_extra_data(key='LeftPositionCheck', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 시작(self.ctx)
 
 

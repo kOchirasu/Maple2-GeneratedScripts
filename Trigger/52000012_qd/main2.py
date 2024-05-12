@@ -4,62 +4,61 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
-        self.set_actor(triggerId=10001, visible=True, initialSequence='Closed')
-        self.set_actor(triggerId=10002, visible=True, initialSequence='Closed')
-        self.set_mesh(triggerIds=[10011], visible=True)
-        self.set_mesh(triggerIds=[10012], visible=True)
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
+        self.set_actor(trigger_id=10001, visible=True, initial_sequence='Closed')
+        self.set_actor(trigger_id=10002, visible=True, initial_sequence='Closed')
+        self.set_mesh(trigger_ids=[10011], visible=True)
+        self.set_mesh(trigger_ids=[10012], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[10002610], quest_states=[2]):
             return 문열림1(self.ctx)
-        if self.quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[10002610], quest_states=[3]):
             return 문열림1(self.ctx)
 
     def on_exit(self) -> None:
-        self.create_monster(spawnIds=[2000], animationEffect=False)
-        self.destroy_monster(spawnIds=[5000])
-        self.destroy_monster(spawnIds=[101])
-        self.destroy_monster(spawnIds=[102])
-        self.destroy_monster(spawnIds=[103])
+        self.spawn_monster(spawn_ids=[2000], auto_target=False)
+        self.destroy_monster(spawn_ids=[5000])
+        self.destroy_monster(spawn_ids=[101])
+        self.destroy_monster(spawn_ids=[102])
+        self.destroy_monster(spawn_ids=[103])
 
 
 class 문열림1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='19', seconds=1)
-        self.set_actor(triggerId=10001, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[10011], visible=False)
+        self.set_timer(timer_id='19', seconds=1)
+        self.set_actor(trigger_id=10001, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[10011], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='19'):
+        if self.time_expired(timer_id='19'):
             return 문열림2(self.ctx)
 
 
 class 문열림2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=10002, visible=True, initialSequence='Opened')
-        self.set_mesh(triggerIds=[10012], visible=False)
+        self.set_actor(trigger_id=10002, visible=True, initial_sequence='Opened')
+        self.set_mesh(trigger_ids=[10012], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[10002611], quest_states=[2]):
             return 포털생성(self.ctx)
-        if self.quest_user_detected(boxIds=[9001], questIds=[10002611], questStates=[3]):
+        if self.quest_user_detected(box_ids=[9001], quest_ids=[10002611], quest_states=[3]):
             return 포털생성(self.ctx)
 
 
 class 포털생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_detected(boxIds=[9001]):
+        if not self.user_detected(box_ids=[9001]):
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기(self.ctx)
+        return 대기(self.ctx)
 
 
 initial_state = 대기

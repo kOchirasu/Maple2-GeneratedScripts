@@ -4,34 +4,34 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[169,170], visible=True)
-        self.set_effect(triggerIds=[8031], visible=True)
-        self.set_effect(triggerIds=[8032], visible=True)
-        self.set_interact_object(triggerIds=[10000401], state=1)
+        self.set_mesh(trigger_ids=[169,170], visible=True)
+        self.set_effect(trigger_ids=[8031], visible=True)
+        self.set_effect(trigger_ids=[8032], visible=True)
+        self.set_interact_object(trigger_ids=[10000401], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000401], stateValue=0):
+        if self.object_interacted(interact_ids=[10000401], state=0):
             return 열기(self.ctx)
 
 
 class 열기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=2)
-        self.set_effect(triggerIds=[8031], visible=False)
-        self.set_effect(triggerIds=[8032], visible=False)
-        self.set_mesh(triggerIds=[169,170], visible=False)
-        self.create_monster(spawnIds=[1012], animationEffect=True)
-        self.set_conversation(type=1, spawnId=1012, script='$02000252_BF__DOOR_01__0$', arg4=2)
-        self.move_npc(spawnId=1012, patrolName='MS2PatrolData_3')
+        self.set_timer(timer_id='1', seconds=2)
+        self.set_effect(trigger_ids=[8031], visible=False)
+        self.set_effect(trigger_ids=[8032], visible=False)
+        self.set_mesh(trigger_ids=[169,170], visible=False)
+        self.spawn_monster(spawn_ids=[1012], auto_target=True)
+        self.set_dialogue(type=1, spawn_id=1012, script='$02000252_BF__DOOR_01__0$', time=2)
+        self.move_npc(spawn_id=1012, patrol_name='MS2PatrolData_3')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 삭제(self.ctx)
 
 
 class 삭제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[1012])
+        self.destroy_monster(spawn_ids=[1012])
 
 
 initial_state = 대기

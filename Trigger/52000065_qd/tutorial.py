@@ -4,21 +4,21 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[1000], visible=True, arg3=0, delay=0, scale=0) # 강철 결계
-        self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0) # Invisible
-        self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=30, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=40, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=50, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=60, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=70, visible=False, enable=False, minimapVisible=False)
-        self.set_portal(portalId=80, visible=False, enable=False, minimapVisible=False)
+        self.set_mesh(trigger_ids=[1000], visible=True, start_delay=0, interval=0, fade=0) # 강철 결계
+        self.set_mesh(trigger_ids=[2000], visible=True, start_delay=0, interval=0, fade=0) # Invisible
+        self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=10, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=20, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=30, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=40, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=50, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=60, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=70, visible=False, enable=False, minimap_visible=False)
+        self.set_portal(portal_id=80, visible=False, enable=False, minimap_visible=False)
         self.create_widget(type='Guide')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9002]):
+        if self.user_detected(box_ids=[9002]):
             return 영상준비_01(self.ctx)
 
 
@@ -28,7 +28,7 @@ class 영상준비_01(trigger_api.Trigger):
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 영상재생_01(self.ctx)
 
 
@@ -36,12 +36,12 @@ class 영상재생_01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
-        self.play_scene_movie(fileName='common\\Common_Opening.usm', movieId=1)
+        self.play_scene_movie(file_name='common\\Common_Opening.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return 영상완료_01(self.ctx)
-        if self.wait_tick(waitTick=190000):
+        if self.wait_tick(wait_tick=190000):
             return 영상완료_01(self.ctx)
 
 
@@ -58,60 +58,60 @@ class 영상완료_01(trigger_api.Trigger):
 
 class 몬스터소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101], animationEffect=False)
+        self.spawn_monster(spawn_ids=[101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[101]):
+        if self.monster_dead(spawn_ids=[101]):
             return 해제(self.ctx)
 
 
 class 해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[1000], visible=False, arg3=0, delay=0, scale=0) # 강철 결계
-        self.set_mesh(triggerIds=[2000], visible=False, arg3=0, delay=0, scale=0) # Invisible
-        self.guide_event(eventId=260)
+        self.set_mesh(trigger_ids=[1000], visible=False, start_delay=0, interval=0, fade=0) # 강철 결계
+        self.set_mesh(trigger_ids=[2000], visible=False, start_delay=0, interval=0, fade=0) # Invisible
+        self.guide_event(event_id=260)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9001], jobCode=90):
+        if self.user_detected(box_ids=[9001], job_code=90):
             # 룬 블레이더
-            self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+            self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
             self.start_tutorial()
-        if self.user_detected(boxIds=[9001], jobCode=110):
+        if self.user_detected(box_ids=[9001], job_code=110):
             # 소울바인더
-            self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+            self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
             self.start_tutorial()
-        if self.user_detected(boxIds=[9001], jobCode=100):
+        if self.user_detected(box_ids=[9001], job_code=100):
             # 스트라이커
-            self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+            self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
             self.start_tutorial()
-        if self.user_detected(boxIds=[9001], jobCode=1):
+        if self.user_detected(box_ids=[9001], job_code=1):
             # 초보자
-            self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+            self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
             self.start_tutorial()
-        if self.user_detected(boxIds=[9001], jobCode=10):
+        if self.user_detected(box_ids=[9001], job_code=10):
             # 나이트
-            self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=20):
+            self.set_portal(portal_id=10, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=20):
             # 버서커
-            self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=30):
+            self.set_portal(portal_id=20, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=30):
             # 위자드
-            self.set_portal(portalId=30, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=40):
+            self.set_portal(portal_id=30, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=40):
             # 프리스트
-            self.set_portal(portalId=40, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=50):
+            self.set_portal(portal_id=40, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=50):
             # 레인저
-            self.set_portal(portalId=50, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=60):
+            self.set_portal(portal_id=50, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=60):
             # 헤비거너
-            self.set_portal(portalId=60, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=70):
+            self.set_portal(portal_id=60, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=70):
             # 시프
-            self.set_portal(portalId=70, visible=True, enable=True, minimapVisible=True)
-        if self.user_detected(boxIds=[9001], jobCode=80):
+            self.set_portal(portal_id=70, visible=True, enable=True, minimap_visible=True)
+        if self.user_detected(box_ids=[9001], job_code=80):
             # 어쌔신
-            self.set_portal(portalId=80, visible=True, enable=True, minimapVisible=True)
+            self.set_portal(portal_id=80, visible=True, enable=True, minimap_visible=True)
 
 
 class 종료(trigger_api.Trigger):

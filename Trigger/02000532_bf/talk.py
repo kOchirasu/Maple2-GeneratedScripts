@@ -5,16 +5,16 @@ import trigger_api
 # 플레이어 감지
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[703], jobCode=0):
+        if self.user_detected(box_ids=[703], job_code=0):
             return ready(self.ctx)
 
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawnId=216, msg='$02000532_BF__TALK__0$', duration=3500, delayTick=0)
+        self.add_balloon_talk(spawn_id=216, msg='$02000532_BF__TALK__0$', duration=3500, delay_tick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6500):
+        if self.wait_tick(wait_tick=6500):
             return None # Missing State: State
 
 

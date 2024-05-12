@@ -4,12 +4,12 @@ import trigger_api
 
 class IsLadderComplete(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[311], visible=False, animationEffect=False, animationDelay=0)
-        self.set_ladder(triggerIds=[312], visible=False, animationEffect=False, animationDelay=0)
-        self.set_ladder(triggerIds=[313], visible=False, animationEffect=False, animationDelay=0)
-        self.set_ladder(triggerIds=[314], visible=False, animationEffect=False, animationDelay=0)
-        self.set_ladder(triggerIds=[315], visible=False, animationEffect=False, animationDelay=0)
-        self.set_ladder(triggerIds=[316], visible=False, animationEffect=False, animationDelay=0)
+        self.set_ladder(trigger_ids=[311], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[312], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[313], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[314], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[315], visible=False, enable=False, fade=0)
+        self.set_ladder(trigger_ids=[316], visible=False, enable=False, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ladderComp', value=1):
@@ -18,15 +18,15 @@ class IsLadderComplete(trigger_api.Trigger):
 
 class ladderComplete(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_ladder(triggerIds=[311], visible=True, animationEffect=True, animationDelay=0)
-        self.set_ladder(triggerIds=[312], visible=True, animationEffect=True, animationDelay=0)
-        self.set_ladder(triggerIds=[313], visible=True, animationEffect=True, animationDelay=0)
-        self.set_ladder(triggerIds=[314], visible=True, animationEffect=True, animationDelay=0)
-        self.set_ladder(triggerIds=[315], visible=True, animationEffect=True, animationDelay=0)
-        self.set_ladder(triggerIds=[316], visible=True, animationEffect=True, animationDelay=0)
+        self.set_ladder(trigger_ids=[311], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[312], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[313], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[314], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[315], visible=True, enable=True, fade=0)
+        self.set_ladder(trigger_ids=[316], visible=True, enable=True, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return End(self.ctx)
 
 

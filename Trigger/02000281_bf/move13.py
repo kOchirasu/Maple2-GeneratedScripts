@@ -4,20 +4,20 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_breakable(triggerIds=[813], enable=False)
+        self.set_breakable(trigger_ids=[813], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[193]):
+        if self.user_detected(box_ids=[193]):
             return 발판발동(self.ctx)
 
 
 class 발판발동(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='30', seconds=30, startDelay=0)
-        self.set_breakable(triggerIds=[813], enable=True)
+        self.set_timer(timer_id='30', seconds=30, start_delay=0)
+        self.set_breakable(trigger_ids=[813], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='30'):
+        if self.time_expired(timer_id='30'):
             return 대기(self.ctx)
 
 

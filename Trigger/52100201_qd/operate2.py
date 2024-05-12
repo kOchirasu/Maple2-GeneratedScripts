@@ -10,8 +10,8 @@ class 대기(trigger_api.Trigger):
 
 class 몬스터소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[206,207], animationEffect=False)
-        self.set_user_value(triggerId=99990003, key='summon', value=2)
+        self.spawn_monster(spawn_ids=[206,207], auto_target=False)
+        self.set_user_value(trigger_id=99990003, key='summon', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='summon', value=2):

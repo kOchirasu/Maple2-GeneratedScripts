@@ -4,17 +4,17 @@ import trigger_api
 
 class ladderIdle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001078], stateValue=0):
+        if self.object_interacted(interact_ids=[10001078], state=0):
             return ladderWolk(self.ctx)
 
 
 class ladderWolk(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[702], visible=False, arg3=1)
-        self.set_ai_extra_data(key='LadderCnt', value=1, isModify=True)
+        self.set_mesh(trigger_ids=[702], visible=False, start_delay=1)
+        self.set_ai_extra_data(key='LadderCnt', value=1, is_modify=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return ladderEnd(self.ctx)
 
 

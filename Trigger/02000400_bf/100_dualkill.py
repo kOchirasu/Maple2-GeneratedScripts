@@ -19,27 +19,27 @@ class Wait(trigger_api.Trigger):
 
 class CheckDualKill(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[900]):
+        if self.monster_dead(spawn_ids=[900]):
             return LionBlueDead(self.ctx)
-        if self.monster_dead(boxIds=[901]):
+        if self.monster_dead(spawn_ids=[901]):
             return LionRedDead(self.ctx)
 
 
 class LionBlueDead(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[901]):
-            self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
+        if self.monster_dead(spawn_ids=[901]):
+            self.set_achievement(trigger_id=9900, type='trigger', achieve='ChangeLionDualKill')
             return Quit(self.ctx)
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Quit(self.ctx)
 
 
 class LionRedDead(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[900]):
-            self.set_achievement(triggerId=9900, type='trigger', achieve='ChangeLionDualKill')
+        if self.monster_dead(spawn_ids=[900]):
+            self.set_achievement(trigger_id=9900, type='trigger', achieve='ChangeLionDualKill')
             return Quit(self.ctx)
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return Quit(self.ctx)
 
 

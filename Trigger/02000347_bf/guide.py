@@ -4,16 +4,16 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[60002]):
+        if self.user_detected(box_ids=[60002]):
             return 대기_02(self.ctx)
 
 
 class 대기_02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='8', seconds=8)
+        self.set_timer(timer_id='8', seconds=8)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='8'):
+        if self.time_expired(timer_id='8'):
             return 시작(self.ctx)
 
 

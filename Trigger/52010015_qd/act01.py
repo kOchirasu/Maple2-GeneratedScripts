@@ -4,46 +4,46 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[201], animationEffect=True)
+        self.spawn_monster(spawn_ids=[201], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[9000], questIds=[10002824], questStates=[2]):
+        if self.quest_user_detected(box_ids=[9000], quest_ids=[10002824], quest_states=[2]):
             return 딜레이01(self.ctx)
 
 
 class 딜레이01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='100', seconds=1)
+        self.set_timer(timer_id='100', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='100'):
+        if self.time_expired(timer_id='100'):
             return 미카교체01(self.ctx)
 
 
 # 1st Quest
 class 미카교체01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=1)
-        self.destroy_monster(spawnIds=[201])
-        self.create_monster(spawnIds=[202], animationEffect=False)
+        self.set_timer(timer_id='1', seconds=1)
+        self.destroy_monster(spawn_ids=[201])
+        self.spawn_monster(spawn_ids=[202], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 미카이동01(self.ctx)
 
 
 class 미카이동01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=202, patrolName='MS2PatrolData_2020')
+        self.move_npc(spawn_id=202, patrol_name='MS2PatrolData_2020')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=8000, spawnIds=[202]):
+        if self.npc_detected(box_id=8000, spawn_ids=[202]):
             return 미카소멸01(self.ctx)
 
 
 class 미카소멸01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[202])
+        self.destroy_monster(spawn_ids=[202])
 
 
 initial_state = 대기

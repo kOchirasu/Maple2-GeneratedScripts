@@ -5,33 +5,33 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 졸구간 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
         # 1페이지 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
         # 2페이지 7시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=4, visible=False, enable=False, minimap_visible=False)
         # 2페이지 5시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=5, visible=False, enable=False, minimap_visible=False)
         # 2페이지 12시 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
         # 3페이지 마지막 전투판에 있는 던전 나가기 포탈 최초에 감추기
-        self.set_portal(portalId=7, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=7, visible=False, enable=False, minimap_visible=False)
         # 변수 초기화, 보스AI로 부터 이 변수 1 신호를 받으면 이 트리거 작동시켜 1페이지 순간이동 포탈 Off 상태로 만들기
         self.set_user_value(key='BossOnePhaseEnd', value=0)
         # 1페이지의 왼쪽 순간이동 포탈 최초에 On 설정 하기
-        self.set_portal(portalId=40, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=40, visible=True, enable=True, minimap_visible=True)
         # 1페이지의 오른쪽 순간이동 포탈 최초에 On 설정 하기
-        self.set_portal(portalId=50, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=50, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[10]):
+        if self.user_detected(box_ids=[10]):
             # MS2TriggerBox   TriggerObjectID = 10, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면        10은 스타팅 포인트 지점만 커버하는 비교적 좁은 범위
             return 포탈체크시작(self.ctx)
 
 
 class 포탈체크시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 포탈체크대기중(self.ctx)
 
 
@@ -52,19 +52,19 @@ class 포탈체크대기중(trigger_api.Trigger):
 class 순간이동포탈OFF(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 1페이지의 왼쪽 순간이동 포탈 Off 설정 하기
-        self.set_portal(portalId=40, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=40, visible=False, enable=False, minimap_visible=False)
         # 1페이지의 오른쪽 순간이동 포탈 Off 설정 하기
-        self.set_portal(portalId=50, visible=False, enable=False, minimapVisible=False)
+        self.set_portal(portal_id=50, visible=False, enable=False, minimap_visible=False)
         self.set_user_value(key='BossOnePhaseEnd', value=0) # 변수 초기화, 이거 안하면 무한루프에 빠짐
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 포탈체크대기중(self.ctx) # 다시 이전 단계로 돌아가기
 
 
 class 나가기포탈생성잠시대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=9500):
+        if self.wait_tick(wait_tick=9500):
             # 던전 클리어 연출 뜨기 전에 나가기 포탈로 나가면 혹시 모를 버그가 나올 수 있어서 10여초 정도 잠시 딜레이 함
             return 나가기포탈생성(self.ctx)
 
@@ -88,50 +88,50 @@ class 나가기포탈생성(trigger_api.Trigger):
 class 졸구간만포탈생성(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 트리거종료(self.ctx)
 
 
 class 페이지전투판포탈생성1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 1페이지 전투판에서 나가기 포탈
-        self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 트리거종료(self.ctx)
 
 
 class 페이지전투판포탈생성2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 7시 전투판에서 나가기 포탈
-        self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 5시 전투판에서 나가기 포탈
-        self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=5, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 2페이지 12시 전투판에서 나가기 포탈
-        self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=6, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 트리거종료(self.ctx)
 
 
 class 페이지전투판포탈생성3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 보스 죽이면 나가기 포탈 생성하기, 졸구간 전투판에서 나가기 포탈
-        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=2, visible=True, enable=True, minimap_visible=True)
         # 보스 죽이면 나가기 포탈 생성하기, 마지막 전투판에서 나가기 포탈
-        self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=7, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return 트리거종료(self.ctx)
 
 

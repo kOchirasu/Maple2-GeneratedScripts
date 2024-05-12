@@ -4,52 +4,52 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000440], state=0)
-        self.set_skill(triggerIds=[701], enable=False)
-        self.set_effect(triggerIds=[440], visible=False)
-        self.set_effect(triggerIds=[441], visible=False)
-        self.set_effect(triggerIds=[442], visible=False)
-        self.set_effect(triggerIds=[443], visible=False)
-        self.set_effect(triggerIds=[460], visible=False)
+        self.set_interact_object(trigger_ids=[10000440], state=0)
+        self.set_skill(trigger_ids=[701], enable=False)
+        self.set_effect(trigger_ids=[440], visible=False)
+        self.set_effect(trigger_ids=[441], visible=False)
+        self.set_effect(trigger_ids=[442], visible=False)
+        self.set_effect(trigger_ids=[443], visible=False)
+        self.set_effect(trigger_ids=[460], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=905, spawnIds=[103]):
+        if self.npc_detected(box_id=905, spawn_ids=[103]):
             return 반응대기(self.ctx)
 
 
 class 반응대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000440], state=1)
+        self.set_interact_object(trigger_ids=[10000440], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000440], stateValue=0):
+        if self.object_interacted(interact_ids=[10000440], state=0):
             return 스턴(self.ctx)
-        if not self.npc_detected(boxId=905, spawnIds=[103]):
+        if not self.npc_detected(box_id=905, spawn_ids=[103]):
             return 시작대기중(self.ctx)
 
 
 class 스턴(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[440], visible=True)
-        self.set_effect(triggerIds=[441], visible=True)
-        self.set_effect(triggerIds=[442], visible=True)
-        self.set_effect(triggerIds=[443], visible=True)
-        self.set_effect(triggerIds=[460], visible=True)
-        self.set_skill(triggerIds=[701], enable=True)
-        self.set_timer(timerId='1', seconds=2)
+        self.set_effect(trigger_ids=[440], visible=True)
+        self.set_effect(trigger_ids=[441], visible=True)
+        self.set_effect(trigger_ids=[442], visible=True)
+        self.set_effect(trigger_ids=[443], visible=True)
+        self.set_effect(trigger_ids=[460], visible=True)
+        self.set_skill(trigger_ids=[701], enable=True)
+        self.set_timer(timer_id='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 스턴2(self.ctx)
 
 
 class 스턴2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_skill(triggerIds=[701], enable=False)
-        self.set_timer(timerId='1', seconds=10)
+        self.set_skill(trigger_ids=[701], enable=False)
+        self.set_timer(timer_id='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 시작대기중(self.ctx)
 
 

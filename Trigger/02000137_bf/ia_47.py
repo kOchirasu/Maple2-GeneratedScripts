@@ -4,41 +4,40 @@ import trigger_api
 
 class 시작대기중(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10000047], state=1)
-        self.create_monster(spawnIds=[147])
+        self.set_interact_object(trigger_ids=[10000047], state=1)
+        self.spawn_monster(spawn_ids=[147])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 오브젝트반응(self.ctx)
+        return 오브젝트반응(self.ctx)
 
 
 class 오브젝트반응(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10000047], stateValue=0):
+        if self.object_interacted(interact_ids=[10000047], state=0):
             return NPC탈출(self.ctx)
 
     def on_exit(self) -> None:
-        self.destroy_monster(spawnIds=[147])
+        self.destroy_monster(spawn_ids=[147])
 
 
 class NPC탈출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[148])
-        self.set_conversation(type=1, spawnId=148, script='$02000137_BF__IA_47__0$', arg4=2)
-        self.set_timer(timerId='1', seconds=5)
+        self.spawn_monster(spawn_ids=[148])
+        self.set_dialogue(type=1, spawn_id=148, script='$02000137_BF__IA_47__0$', time=2)
+        self.set_timer(timer_id='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
-            self.destroy_monster(spawnIds=[148])
+        if self.time_expired(timer_id='1'):
+            self.destroy_monster(spawn_ids=[148])
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=10)
+        self.set_timer(timer_id='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 시작대기중(self.ctx)
 
 

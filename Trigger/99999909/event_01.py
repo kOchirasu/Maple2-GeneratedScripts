@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return Ready(self.ctx)
 
 

@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5001], visible=False) # DownArrow
-        self.set_interact_object(triggerIds=[10001072], state=1) # TrainLever
+        self.set_effect(trigger_ids=[5001], visible=False) # DownArrow
+        self.set_interact_object(trigger_ids=[10001072], state=1) # TrainLever
         self.set_user_value(key='TrainMove', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,84 +14,84 @@ class Wait(trigger_api.Trigger):
 
     def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=25200663, textId=25200663)
+        self.show_guide_summary(entity_id=25200663, text_id=25200663)
         # 가이드 : 레버를 당겨 보세요.
 
 
 class FourthPhaseChase01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[5001], visible=True) # DownArrow
+        self.set_effect(trigger_ids=[5001], visible=True) # DownArrow
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.object_interacted(interactIds=[10001072], stateValue=0):
+        if self.object_interacted(interact_ids=[10001072], state=0):
             return FourthPhaseChase02(self.ctx)
 
 
 class FourthPhaseChase02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.hide_guide_summary(entityId=25200663)
-        self.set_effect(triggerIds=[5001], visible=False) # DownArrow
-        self.create_monster(spawnIds=[201], animationEffect=False)
-        self.move_npc(spawnId=201, patrolName='MS2PatrolData_200')
+        self.hide_guide_summary(entity_id=25200663)
+        self.set_effect(trigger_ids=[5001], visible=False) # DownArrow
+        self.spawn_monster(spawn_ids=[201], auto_target=False)
+        self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_200')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return GetInTheTrain01(self.ctx)
 
 
 class GetInTheTrain01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=25200664, textId=25200664) # 가이드 : 수레에 타세요.
+        self.show_guide_summary(entity_id=25200664, text_id=25200664) # 가이드 : 수레에 타세요.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[9700]):
+        if self.user_detected(box_ids=[9700]):
             # HoldTrain
             return GetInTheTrain02(self.ctx)
 
 
 class GetInTheTrain02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_local_camera(cameraId=700, enable=True) # LocalTargetCamera
-        self.hide_guide_summary(entityId=25200664)
+        self.set_local_camera(camera_id=700, enable=True) # LocalTargetCamera
+        self.hide_guide_summary(entity_id=25200664)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=25200665, textId=25200665, duration=2000) # 가이드 : 출발합니다!
+        self.show_guide_summary(entity_id=25200665, text_id=25200665, duration=2000) # 가이드 : 출발합니다!
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return GetInTheTrain03(self.ctx)
 
 
 class GetInTheTrain03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
+        self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=7000):
+        if self.wait_tick(wait_tick=7000):
             return GetInTheTrain04(self.ctx)
 
 
 class GetInTheTrain04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_local_camera(cameraId=700, enable=False) # LocalTargetCamera
+        self.set_local_camera(camera_id=700, enable=False) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return Reset(self.ctx)
 
 
 class Reset(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[201])
+        self.destroy_monster(spawn_ids=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return FourthPhaseChase01(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_effect(triggerIds=[5001], visible=True)
+        self.set_effect(trigger_ids=[5001], visible=True)
         # DownArrow
-        self.set_interact_object(triggerIds=[10001072], state=1)
+        self.set_interact_object(trigger_ids=[10001072], state=1)
         # TrainLever
 
 

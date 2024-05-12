@@ -4,22 +4,22 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 대기(self.ctx)
 
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_cube(triggerIds=[5107], isVisible=False)
-        # self.create_monster(spawnIds=[10007], animationEffect=True)
-        self.set_mesh(triggerIds=[31701,31702,31703,31704,31705,31706,31707,31708,31709,31710,31711,31712,31713,31714,31715,31716,31717,31718,31719], visible=False, arg3=0, delay=0, scale=0)
-        self.set_mesh(triggerIds=[41701], visible=True, arg3=0, delay=0, scale=0)
+        self.set_cube(trigger_ids=[5107], is_visible=False)
+        # self.spawn_monster(spawn_ids=[10007], auto_target=True)
+        self.set_mesh(trigger_ids=[31701,31702,31703,31704,31705,31706,31707,31708,31709,31710,31711,31712,31713,31714,31715,31716,31717,31718,31719], visible=False, start_delay=0, interval=0, fade=0)
+        self.set_mesh(trigger_ids=[41701], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[10006]):
-            # self.set_cube(triggerIds=[5107], isVisible=True)
-            self.set_mesh(triggerIds=[31701,31702,31703,31704,31705,31706,31707,31708,31709,31710,31711,31712,31713,31714,31715,31716,31717,31718,31719], visible=True, arg3=0, delay=200, scale=2)
-            self.set_mesh(triggerIds=[41701], visible=False, arg3=0, delay=0, scale=0)
+        if self.monster_dead(spawn_ids=[10006]):
+            # self.set_cube(trigger_ids=[5107], is_visible=True)
+            self.set_mesh(trigger_ids=[31701,31702,31703,31704,31705,31706,31707,31708,31709,31710,31711,31712,31713,31714,31715,31716,31717,31718,31719], visible=True, start_delay=0, interval=200, fade=2)
+            self.set_mesh(trigger_ids=[41701], visible=False, start_delay=0, interval=0, fade=0)
             return 종료(self.ctx)
 
 

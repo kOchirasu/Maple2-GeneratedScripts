@@ -4,100 +4,100 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[601], visible=False)
-        self.set_effect(triggerIds=[602], visible=False)
-        self.set_effect(triggerIds=[603], visible=False)
-        self.set_effect(triggerIds=[604], visible=False)
-        self.set_effect(triggerIds=[605], visible=False)
-        self.set_effect(triggerIds=[606], visible=False)
-        self.set_effect(triggerIds=[607], visible=False)
-        self.set_effect(triggerIds=[608], visible=False)
-        self.set_effect(triggerIds=[609], visible=False)
-        self.set_effect(triggerIds=[610], visible=False)
-        self.set_effect(triggerIds=[611], visible=False)
-        self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008], visible=True, arg3=0, delay=0, scale=0)
+        self.set_effect(trigger_ids=[601], visible=False)
+        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[603], visible=False)
+        self.set_effect(trigger_ids=[604], visible=False)
+        self.set_effect(trigger_ids=[605], visible=False)
+        self.set_effect(trigger_ids=[606], visible=False)
+        self.set_effect(trigger_ids=[607], visible=False)
+        self.set_effect(trigger_ids=[608], visible=False)
+        self.set_effect(trigger_ids=[609], visible=False)
+        self.set_effect(trigger_ids=[610], visible=False)
+        self.set_effect(trigger_ids=[611], visible=False)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008], visible=True, start_delay=0, interval=0, fade=0)
         self.set_gravity(gravity=-9.8)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[103,104,105,106]):
+        if self.user_detected(box_ids=[103,104,105,106]):
             return 연출시작(self.ctx)
 
 
 class 연출시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=52000056, portalId=3)
+        self.move_user(map_id=52000056, portal_id=3)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(triggerId=301, enable=True)
+        self.select_camera(trigger_id=301, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return PC말풍선01(self.ctx)
 
 
 class PC말풍선01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__0$', arg4=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=0, script='$52000056_QD__50001460__0$', time=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1500):
+        if self.wait_tick(wait_tick=1500):
             return 낙하준비(self.ctx)
 
 
 class 낙하준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008], visible=False, arg3=0, delay=200, scale=2)
+        self.set_mesh(trigger_ids=[3001,3002,3003,3004,3005,3006,3007,3008], visible=False, start_delay=0, interval=200, fade=2)
         self.set_gravity(gravity=-37)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 낙하시작(self.ctx)
 
 
 class 낙하시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=302, enable=True)
+        self.select_camera(trigger_id=302, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=6000):
+        if self.wait_tick(wait_tick=6000):
             return 낙하종료(self.ctx)
 
 
 class 낙하종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.select_camera(triggerId=302, enable=False)
+        self.select_camera(trigger_id=302, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return PC말풍선02(self.ctx)
 
 
 class PC말풍선02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__1$', arg4=4, arg5=0)
+        self.set_dialogue(type=1, spawn_id=0, script='$52000056_QD__50001460__1$', time=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=4000):
+        if self.wait_tick(wait_tick=4000):
             return PC말풍선03(self.ctx)
 
 
 class PC말풍선03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__2$', arg4=3, arg5=0)
+        self.set_dialogue(type=1, spawn_id=0, script='$52000056_QD__50001460__2$', time=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.set_effect(triggerIds=[601], visible=True)
-            self.set_effect(triggerIds=[602], visible=True)
-            self.set_effect(triggerIds=[603], visible=True)
-            self.set_effect(triggerIds=[604], visible=True)
-            self.set_effect(triggerIds=[605], visible=True)
-            self.set_effect(triggerIds=[606], visible=True)
-            self.set_effect(triggerIds=[607], visible=True)
-            self.set_effect(triggerIds=[608], visible=True)
-            self.set_effect(triggerIds=[609], visible=True)
-            self.set_effect(triggerIds=[610], visible=True)
-            self.set_effect(triggerIds=[611], visible=True)
+        if self.wait_tick(wait_tick=3000):
+            self.set_effect(trigger_ids=[601], visible=True)
+            self.set_effect(trigger_ids=[602], visible=True)
+            self.set_effect(trigger_ids=[603], visible=True)
+            self.set_effect(trigger_ids=[604], visible=True)
+            self.set_effect(trigger_ids=[605], visible=True)
+            self.set_effect(trigger_ids=[606], visible=True)
+            self.set_effect(trigger_ids=[607], visible=True)
+            self.set_effect(trigger_ids=[608], visible=True)
+            self.set_effect(trigger_ids=[609], visible=True)
+            self.set_effect(trigger_ids=[610], visible=True)
+            self.set_effect(trigger_ids=[611], visible=True)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             self.set_gravity(gravity=-9.8)
@@ -106,18 +106,18 @@ class PC말풍선03(trigger_api.Trigger):
 
 class 이펙트종료대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[102]):
-            self.set_effect(triggerIds=[601], visible=False)
-            self.set_effect(triggerIds=[602], visible=False)
-            self.set_effect(triggerIds=[603], visible=False)
-            self.set_effect(triggerIds=[604], visible=False)
-            self.set_effect(triggerIds=[605], visible=False)
-            self.set_effect(triggerIds=[606], visible=False)
-            self.set_effect(triggerIds=[607], visible=False)
-            self.set_effect(triggerIds=[608], visible=False)
-            self.set_effect(triggerIds=[609], visible=False)
-            self.set_effect(triggerIds=[610], visible=False)
-            self.set_effect(triggerIds=[611], visible=False)
+        if self.user_detected(box_ids=[102]):
+            self.set_effect(trigger_ids=[601], visible=False)
+            self.set_effect(trigger_ids=[602], visible=False)
+            self.set_effect(trigger_ids=[603], visible=False)
+            self.set_effect(trigger_ids=[604], visible=False)
+            self.set_effect(trigger_ids=[605], visible=False)
+            self.set_effect(trigger_ids=[606], visible=False)
+            self.set_effect(trigger_ids=[607], visible=False)
+            self.set_effect(trigger_ids=[608], visible=False)
+            self.set_effect(trigger_ids=[609], visible=False)
+            self.set_effect(trigger_ids=[610], visible=False)
+            self.set_effect(trigger_ids=[611], visible=False)
             return 종료(self.ctx)
 
 

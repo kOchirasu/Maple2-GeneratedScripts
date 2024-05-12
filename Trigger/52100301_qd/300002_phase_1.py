@@ -10,17 +10,17 @@ class 대기(trigger_api.Trigger):
 
 class 텍스트_대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 패이즈_1_시작(self.ctx)
 
 
 class 패이즈_1_시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='AI_Phase', value=0)
-        self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300002_PHASE_1__0$', duration=4176)
+        self.side_npc_talk(type='talk', npc_id=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300002_PHASE_1__0$', duration=4176)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             pass
 
 

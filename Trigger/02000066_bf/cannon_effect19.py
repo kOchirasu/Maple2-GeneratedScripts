@@ -4,37 +4,37 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[819], visible=False)
+        self.set_effect(trigger_ids=[819], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[129]):
+        if self.user_detected(box_ids=[129]):
             return 이펙트대기(self.ctx)
 
 
 class 이펙트대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=129, spawnIds=[8019]):
+        if self.npc_detected(box_id=129, spawn_ids=[8019]):
             return 이펙트on(self.ctx)
 
 
 class 이펙트on(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[819], visible=True)
+        self.set_effect(trigger_ids=[819], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[8019]):
+        if self.monster_dead(spawn_ids=[8019]):
             return 대기시간(self.ctx)
-        if not self.user_detected(boxIds=[129]):
+        if not self.user_detected(box_ids=[129]):
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[819], visible=False)
-        self.set_timer(timerId='2', seconds=2)
+        self.set_effect(trigger_ids=[819], visible=False)
+        self.set_timer(timer_id='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='2'):
+        if self.time_expired(timer_id='2'):
             return 시작(self.ctx)
 
 

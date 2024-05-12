@@ -7,198 +7,198 @@ from dungeon_common.checkusercount import *
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110])
-        self.set_effect(triggerIds=[2001], visible=False)
+        self.destroy_monster(spawn_ids=[101,102,103,104,105,106,107,108,109,110])
+        self.set_effect(trigger_ids=[2001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=201, minUsers='1'):
+        if self.count_users(box_id=201, min_users='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[201]):
+        if self.user_detected(box_ids=[201]):
             return 시작(self.ctx)
 
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[798,799], visible=False)
-        self.set_timer(timerId='89', seconds=3, startDelay=0)
+        self.set_mesh(trigger_ids=[798,799], visible=False)
+        self.set_timer(timer_id='89', seconds=3, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='89'):
+        if self.time_expired(timer_id='89'):
             return 공격(self.ctx)
 
 
 class 공격(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[101,102,103], animationEffect=True)
-        self.set_effect(triggerIds=[2001], visible=True)
+        self.spawn_monster(spawn_ids=[101,102,103], auto_target=True)
+        self.set_effect(trigger_ids=[2001], visible=True)
         self.set_event_ui(type=1, arg2='$02000248_BF__TRIGGER_01__0$', arg3='5000', arg4='0')
-        self.set_timer(timerId='1', seconds=9, startDelay=0)
+        self.set_timer(timer_id='1', seconds=9, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[101,102,103]):
+        if self.monster_dead(spawn_ids=[101,102,103]):
             return 공격1(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[104,105], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[104,105], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[104,105]):
+        if self.monster_dead(spawn_ids=[104,105]):
             return 공격2(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[106,107,108], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[106,107,108], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[106,107,108]):
+        if self.monster_dead(spawn_ids=[106,107,108]):
             return 공격2_2(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격2_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[109,110], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[109,110], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[109,110]):
+        if self.monster_dead(spawn_ids=[109,110]):
             return 공격3(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[114,115,116], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[114,115,116], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[114,115,116]):
+        if self.monster_dead(spawn_ids=[114,115,116]):
             return 공격3_2(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격3_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[111,112,113], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[111,112,113], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[111,112,113]):
+        if self.monster_dead(spawn_ids=[111,112,113]):
             return 공격3_3(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격3_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[117,118,119,120], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[117,118,119,120], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[117,118,119,120]):
+        if self.monster_dead(spawn_ids=[117,118,119,120]):
             return 공격4(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격4(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[121,122,123,124,125], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[121,122,123,124,125], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[121,122,123,124,125]):
+        if self.monster_dead(spawn_ids=[121,122,123,124,125]):
             return 공격4_2(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격4_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[126,127,128,129,130], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[126,127,128,129,130], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[126,127,128,129,130]):
+        if self.monster_dead(spawn_ids=[126,127,128,129,130]):
             return 공격5(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격5(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[131,132,133,134,135,136], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[131,132,133,134,135,136], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[131,132,133,134,135,136]):
+        if self.monster_dead(spawn_ids=[131,132,133,134,135,136]):
             return 공격5_2(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격5_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[137,138,139,140], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[137,138,139,140], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[137,138,139,140]):
+        if self.monster_dead(spawn_ids=[137,138,139,140]):
             return 공격6(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격6(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[141,142,143,144,145,146,148], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[141,142,143,144,145,146,148], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[141,142,143,144,145,146,148]):
+        if self.monster_dead(spawn_ids=[141,142,143,144,145,146,148]):
             return 공격7(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격7(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[151,153,154,155,156,157,158], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[151,153,154,155,156,157,158], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[151,153,154,155,156,157,158]):
+        if self.monster_dead(spawn_ids=[151,153,154,155,156,157,158]):
             return 공격8(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
 class 공격8(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[161,162,163,164,167,168,169,170], animationEffect=True)
-        self.set_timer(timerId='1', seconds=30, startDelay=0)
+        self.spawn_monster(spawn_ids=[161,162,163,164,167,168,169,170], auto_target=True)
+        self.set_timer(timer_id='1', seconds=30, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
-            self.destroy_monster(spawnIds=[161,162,163,164,167,168,169,170])
+        if self.time_expired(timer_id='1'):
+            self.destroy_monster(spawn_ids=[161,162,163,164,167,168,169,170])
             return 끝연출(self.ctx)
-        if not self.user_detected(boxIds=[999]):
+        if not self.user_detected(box_ids=[999]):
             return 대기(self.ctx)
 
 
@@ -206,30 +206,30 @@ class 끝연출(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera_path(pathIds=[8001,8003,8002], returnView=False)
-        self.set_timer(timerId='1', seconds=4, startDelay=0)
+        self.select_camera_path(path_ids=[8001,8003,8002], return_view=False)
+        self.set_timer(timer_id='1', seconds=4, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 끝(self.ctx)
 
 
 class 끝(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.move_user(mapId=2000249, portalId=2)
-        self.set_timer(timerId='1', seconds=3, startDelay=0)
+        self.move_user(map_id=2000249, portal_id=2)
+        self.set_timer(timer_id='1', seconds=3, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 차진입대기2(self.ctx)
 
 
 class 차진입대기2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_timer(timerId='1', seconds=15, startDelay=0)
+        self.set_timer(timer_id='1', seconds=15, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timerId='1'):
+        if self.time_expired(timer_id='1'):
             return 끝(self.ctx)
 
 

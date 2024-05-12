@@ -13,8 +13,8 @@ class 엘리베이터_정지(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020300_BF__MAIN__12$', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=30000):
-            self.set_breakable(triggerIds=[5001], enable=False)
+        if self.wait_tick(wait_tick=30000):
+            self.set_breakable(trigger_ids=[5001], enable=False)
             return 종료(self.ctx)
 
 

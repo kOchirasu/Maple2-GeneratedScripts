@@ -4,13 +4,13 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[101]):
+        if self.user_detected(box_ids=[101]):
             return 소환대기(self.ctx)
 
 
 class 소환대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=999992, key='NpcSpawned10', value=0)
+        self.set_user_value(trigger_id=999992, key='NpcSpawned10', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='NpcSpawn10', value=1):
@@ -19,11 +19,11 @@ class 소환대기(trigger_api.Trigger):
 
 class 소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=999992, key='NpcSpawned10', value=1)
-        self.create_monster(spawnIds=[2010], animationEffect=True)
+        self.set_user_value(trigger_id=999992, key='NpcSpawned10', value=1)
+        self.spawn_monster(spawn_ids=[2010], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 종료(self.ctx)
 
 

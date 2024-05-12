@@ -4,19 +4,19 @@ import trigger_api
 
 class ready(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[6001], visible=False)
-        self.set_mesh(triggerIds=[6002], visible=False)
-        self.set_mesh(triggerIds=[6003], visible=False)
-        self.set_mesh(triggerIds=[6004], visible=False)
+        self.set_mesh(trigger_ids=[6001], visible=False)
+        self.set_mesh(trigger_ids=[6002], visible=False)
+        self.set_mesh(trigger_ids=[6003], visible=False)
+        self.set_mesh(trigger_ids=[6004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[702]):
+        if self.user_detected(box_ids=[702]):
             return chaos_raid(self.ctx)
 
 
 class chaos_raid(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[402], animationEffect=False)
+        self.spawn_monster(spawn_ids=[402], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ExitPortal', value=1):
@@ -26,7 +26,7 @@ class chaos_raid(trigger_api.Trigger):
 class end(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
-        self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
+        self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True)
 
 
 initial_state = ready

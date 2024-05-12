@@ -4,8 +4,8 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[602], visible=False)
-        self.set_effect(triggerIds=[603], visible=False)
+        self.set_effect(trigger_ids=[602], visible=False)
+        self.set_effect(trigger_ids=[603], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SummonSister', value=1):
@@ -24,16 +24,16 @@ class 소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(triggerId=300, enable=True)
-        self.create_monster(spawnIds=[2002], animationEffect=False)
-        self.set_effect(triggerIds=[602], visible=True)
-        self.add_cinematic_talk(npcId=11003889, illustId='Firis_normal', msg='$02000392_BF__SUMMON__0$', align='left', duration=2000)
+        self.select_camera(trigger_id=300, enable=True)
+        self.spawn_monster(spawn_ids=[2002], auto_target=False)
+        self.set_effect(trigger_ids=[602], visible=True)
+        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__SUMMON__0$', align='left', duration=2000)
         self.set_skip(state=죽음대기)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.reset_camera(interpolationTime=1)
-            # self.select_camera(triggerId=300, enable=False)
+        if self.wait_tick(wait_tick=3000):
+            self.reset_camera(interpolation_time=1)
+            # self.select_camera(trigger_id=300, enable=False)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return 죽음대기(self.ctx)
@@ -43,16 +43,16 @@ class 퀘스트소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.select_camera(triggerId=300, enable=True)
-        self.create_monster(spawnIds=[2102], animationEffect=False)
-        self.set_effect(triggerIds=[602], visible=True)
-        self.add_cinematic_talk(npcId=11003889, illustId='Firis_normal', msg='$02000392_BF__SUMMON__0$', align='left', duration=2000)
+        self.select_camera(trigger_id=300, enable=True)
+        self.spawn_monster(spawn_ids=[2102], auto_target=False)
+        self.set_effect(trigger_ids=[602], visible=True)
+        self.add_cinematic_talk(npc_id=11003889, illust_id='Firis_normal', msg='$02000392_BF__SUMMON__0$', align='left', duration=2000)
         self.set_skip(state=퀘스트죽음대기)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
-            self.reset_camera(interpolationTime=1)
-            # self.select_camera(triggerId=300, enable=False)
+        if self.wait_tick(wait_tick=3000):
+            self.reset_camera(interpolation_time=1)
+            # self.select_camera(trigger_id=300, enable=False)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return 퀘스트죽음대기(self.ctx)
@@ -60,80 +60,80 @@ class 퀘스트소환(trigger_api.Trigger):
 
 class 퀘스트죽음대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolationTime=1)
+        self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2101]):
+        if self.monster_dead(spawn_ids=[2101]):
             return 퀘스트셀린사망(self.ctx)
-        if self.monster_dead(boxIds=[2102]):
+        if self.monster_dead(spawn_ids=[2102]):
             return 퀘스트피리스사망(self.ctx)
 
 
 class 퀘스트셀린사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=2102, script='$02000392_BF__SUMMON__1$', arg4=4, arg5=0)
-        self.add_buff(boxIds=[2102], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
+        self.set_dialogue(type=1, spawn_id=2102, script='$02000392_BF__SUMMON__1$', time=4, arg5=0)
+        self.add_buff(box_ids=[2102], skill_id=40442003, level=1, is_player=True, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 종료(self.ctx)
 
 
 class 퀘스트피리스사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[603], visible=True)
-        self.set_conversation(type=1, spawnId=2101, script='$02000392_BF__SUMMON__2$', arg4=4, arg5=0)
-        self.add_buff(boxIds=[2101], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
+        self.set_effect(trigger_ids=[603], visible=True)
+        self.set_dialogue(type=1, spawn_id=2101, script='$02000392_BF__SUMMON__2$', time=4, arg5=0)
+        self.add_buff(box_ids=[2101], skill_id=40442003, level=1, is_player=True, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 종료(self.ctx)
 
 
 class 죽음대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.reset_camera(interpolationTime=1)
+        self.reset_camera(interpolation_time=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2001]):
+        if self.monster_dead(spawn_ids=[2001]):
             return 셀린사망(self.ctx)
-        if self.monster_dead(boxIds=[2002]):
+        if self.monster_dead(spawn_ids=[2002]):
             return 피리스사망(self.ctx)
 
 
 class 셀린사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=2002, script='$02000392_BF__SUMMON__1$', arg4=4, arg5=0)
-        self.add_buff(boxIds=[2002], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
+        self.set_dialogue(type=1, spawn_id=2002, script='$02000392_BF__SUMMON__1$', time=4, arg5=0)
+        self.add_buff(box_ids=[2002], skill_id=40442003, level=1, is_player=True, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2002]):
-            self.set_achievement(triggerId=199, type='trigger', achieve='SirenDualKill')
+        if self.monster_dead(spawn_ids=[2002]):
+            self.set_achievement(trigger_id=199, type='trigger', achieve='SirenDualKill')
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 종료(self.ctx)
 
 
 class 피리스사망(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[603], visible=True)
-        self.set_achievement(triggerId=199, type='trigger', achieve='BigSisterFirst')
-        self.set_conversation(type=1, spawnId=2001, script='$02000392_BF__SUMMON__2$', arg4=4, arg5=0)
-        self.add_buff(boxIds=[2001], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
+        self.set_effect(trigger_ids=[603], visible=True)
+        self.set_achievement(trigger_id=199, type='trigger', achieve='BigSisterFirst')
+        self.set_dialogue(type=1, spawn_id=2001, script='$02000392_BF__SUMMON__2$', time=4, arg5=0)
+        self.add_buff(box_ids=[2001], skill_id=40442003, level=1, is_player=True, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2001]):
-            self.set_achievement(triggerId=199, type='trigger', achieve='SirenDualKill')
+        if self.monster_dead(spawn_ids=[2001]):
+            self.set_achievement(trigger_id=199, type='trigger', achieve='SirenDualKill')
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=2000):
+        if self.wait_tick(wait_tick=2000):
             return 종료(self.ctx)
 
 

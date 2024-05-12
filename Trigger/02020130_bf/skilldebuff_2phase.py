@@ -12,7 +12,7 @@ class Ready(trigger_api.Trigger):
         self.set_user_value(key='FirstBattleEnd', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=601, minUsers='1'):
+        if self.count_users(box_id=601, min_users='1'):
             # MS2TriggerBox  ID = 601, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면   601은 스타팅 지점과 1셋트 전투판 전체  포함하는 넓은 범위
             return 보스의저주디버프사용신호대기(self.ctx)
 
@@ -32,7 +32,7 @@ class 보스의저주디버프사용신호대기(trigger_api.Trigger):
 
 class 소환몹활성화될때까지잠시기다리기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=13000):
+        if self.wait_tick(wait_tick=13000):
             # !중요: 소환몹이 순차 등장하여  전투 상태로 전환 되어 MonsterMany 변수에 1씩 더해지는 상황이 될때까지 이 단계에서 13초 정도 머물기,13초 정도 해야 넉넉한 대기 시간임 혹시 3초 이하로 하면 넘 짧아서 베놈 스피릿이 공격 상태가 되기전에 트리거 단계가 넘어가 골치아픈 버그 생길 수 있으므로 넉넉히 6초 정도로 하자
             # 2페이즈 때 순차 저주걸기 소환몹 호출 때도 고려해야 하기 때문에 이 순차 행동이 다 끝날때까지 waitTick에서 머물러야 안정성이 있기 때문에 10초 이상 설정함
             # 이 waitTick 시간 10초 이상 설정 때문에 SkillDebuff_1Phase.xml,  SkillDebuff_1Phase.xml 트리거를 따로 나누었음
@@ -61,7 +61,7 @@ class 폭발저주디버프제거잠시대기(trigger_api.Trigger):
         self.set_user_value(key='FirstBattleEnd', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1200):
+        if self.wait_tick(wait_tick=1200):
             # 소환 졸몹 다 죽이면 디버프가 바로 풀리는 것보다 약 1.2초 정도 뒤에 풀리게 waitTick 넣음
             return 폭발저주디버프제거(self.ctx)
 
@@ -69,22 +69,22 @@ class 폭발저주디버프제거잠시대기(trigger_api.Trigger):
 class 폭발저주디버프제거(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 50001413은 보스한테 걸린 폭발 저주 디버프 제거해주는 애디셔널임, MS2TriggerBox  ID = 601 트리거 박스 크기는 1셋트 3개 전투판과 스타팅 지점까지 포함되는 넓은 범위임
-        self.add_buff(boxIds=[601], skillId=50001413, level=1, isPlayer=False)
+        self.add_buff(box_ids=[601], skill_id=50001413, level=1, is_player=False)
         # 50001413 레벨1: 이 애디셔널에서 폭발 저주 디버프 뿐만 아니라 각종 SP 0 상태이상 공격력 저하 상태이상 즉 모든 상태이상 다 제거해줌
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1800):
+        if self.wait_tick(wait_tick=1800):
             return 보스의저주디버프사용신호대기(self.ctx) # 다시 위 처음 단계로 돌아가기
 
 
 class 폭발저주디버프제거하고종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         # 50001413은 보스한테 걸린 폭발 저주 디버프 제거해주는 애디셔널임, MS2TriggerBox  ID = 601 트리거 박스 크기는 1셋트 3개 전투판과 스타팅 지점까지 포함되는 넓은 범위임
-        self.add_buff(boxIds=[601], skillId=50001413, level=1, isPlayer=False)
+        self.add_buff(box_ids=[601], skill_id=50001413, level=1, is_player=False)
         # 50001413 레벨1: 이 애디셔널에서 폭발 저주 디버프 뿐만 아니라 각종 SP 0 상태이상 공격력 저하 상태이상 즉 모든 상태이상 다 제거해줌
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1200):
+        if self.wait_tick(wait_tick=1200):
             # 소환 졸몹 다 죽이면 디버프가 바로 풀리는 것보다 약 1.2초 정도 뒤에 풀리게 waitTick 넣음
             return 종료(self.ctx)
 

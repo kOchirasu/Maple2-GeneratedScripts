@@ -4,37 +4,37 @@ import trigger_api
 
 class Idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200055], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200055], quest_states=[2]):
             return Actor_On(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200055], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200055], quest_states=[3]):
             return Actor_On(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[1]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[1]):
             return Actor_On(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[2]):
             return Actor_Off(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[3]):
             return Actor_Off(self.ctx)
 
 
 class Actor_On(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
+        self.set_actor(trigger_id=8001, visible=True, initial_sequence='Event_01_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[2]):
             return Actor_Off(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[3]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[3]):
             return Actor_Off(self.ctx)
 
 
 class Actor_Off(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
+        self.set_actor(trigger_id=8001, visible=True, initial_sequence='Event_01_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[2]):
             return Actor_Off(self.ctx)
-        if self.quest_user_detected(boxIds=[2007], questIds=[60200060], questStates=[2]):
+        if self.quest_user_detected(box_ids=[2007], quest_ids=[60200060], quest_states=[2]):
             return Actor_Off(self.ctx)
 
 

@@ -17,27 +17,27 @@ class 페이즈1(trigger_api.Trigger):
 
 class 도약(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.npc_detected(boxId=903, spawnIds=[111]):
+        if self.npc_detected(box_id=903, spawn_ids=[111]):
             return 페이즈2(self.ctx)
 
 
 class 페이즈2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_conversation(type=1, spawnId=111, script='조심하는 게 좋을걸?', arg4=4)
-        self.create_monster(spawnIds=[112], animationEffect=True)
-        self.create_monster(spawnIds=[113], animationEffect=True)
-        self.create_monster(spawnIds=[114], animationEffect=True)
-        self.create_monster(spawnIds=[115], animationEffect=True)
+        self.set_dialogue(type=1, spawn_id=111, script='조심하는 게 좋을걸?', time=4)
+        self.spawn_monster(spawn_ids=[112], auto_target=True)
+        self.spawn_monster(spawn_ids=[113], auto_target=True)
+        self.spawn_monster(spawn_ids=[114], auto_target=True)
+        self.spawn_monster(spawn_ids=[115], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return NPC애니세팅(self.ctx)
 
 
 class NPC애니세팅(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_npc_emotion_loop(spawnId=114, sequenceName='Attack_01_A', duration=2000)
-        self.set_npc_emotion_loop(spawnId=115, sequenceName='Attack_01_A', duration=2000)
+        self.set_npc_emotion_loop(spawn_id=114, sequence_name='Attack_01_A', duration=2000)
+        self.set_npc_emotion_loop(spawn_id=115, sequence_name='Attack_01_A', duration=2000)
 
 
 initial_state = 감지

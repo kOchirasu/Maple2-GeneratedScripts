@@ -4,63 +4,63 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[608], visible=False)
-        self.set_actor(triggerId=208, visible=True, initialSequence='Damg_B')
+        self.set_effect(trigger_ids=[608], visible=False)
+        self.set_actor(trigger_id=208, visible=True, initial_sequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_detected(boxIds=[1801]):
+        if self.user_detected(box_ids=[1801]):
             return 몬스터소환대기(self.ctx)
 
 
 class 몬스터소환대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_effect(triggerIds=[608], visible=True)
+        self.set_effect(trigger_ids=[608], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3500):
+        if self.wait_tick(wait_tick=3500):
             return 몬스터소환(self.ctx)
 
 
 class 몬스터소환(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[2008], animationEffect=False)
+        self.spawn_monster(spawn_ids=[2008], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=500):
+        if self.wait_tick(wait_tick=500):
             return 더미해제(self.ctx)
 
 
 class 더미해제(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=208, visible=False, initialSequence='Damg_B')
+        self.set_actor(trigger_id=208, visible=False, initial_sequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[2008]):
+        if self.monster_dead(spawn_ids=[2008]):
             return 소멸(self.ctx)
-        if self.monster_dead(boxIds=[2099]):
+        if self.monster_dead(spawn_ids=[2099]):
             return 소멸(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=15000):
+        if self.wait_tick(wait_tick=15000):
             return 리젠준비(self.ctx)
-        if self.monster_dead(boxIds=[2099]):
+        if self.monster_dead(spawn_ids=[2099]):
             return 소멸(self.ctx)
 
 
 class 리젠준비(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_actor(triggerId=208, visible=True, initialSequence='Regen_A')
+        self.set_actor(trigger_id=208, visible=True, initial_sequence='Regen_A')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=3000):
+        if self.wait_tick(wait_tick=3000):
             return 대기(self.ctx)
 
 
 class 소멸(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[2008])
+        self.destroy_monster(spawn_ids=[2008])
 
 
 initial_state = 대기

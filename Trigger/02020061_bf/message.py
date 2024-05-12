@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
         if self.user_value(key='FieldGameStart', value=2):
             # <방폭 결정>
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=5000):
+        if self.wait_tick(wait_tick=5000):
             return 대기(self.ctx)
 
 

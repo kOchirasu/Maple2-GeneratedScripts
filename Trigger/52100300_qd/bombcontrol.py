@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=99990001, key='RandomBombEnd', value=0)
-        self.start_combine_spawn(groupId=[522], isStart=False)
-        self.start_combine_spawn(groupId=[523], isStart=False)
-        self.start_combine_spawn(groupId=[524], isStart=False)
+        self.set_user_value(trigger_id=99990001, key='RandomBombEnd', value=0)
+        self.start_combine_spawn(group_id=[522], is_start=False)
+        self.start_combine_spawn(group_id=[523], is_start=False)
+        self.start_combine_spawn(group_id=[524], is_start=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='RandomBomb', value=1):
@@ -16,38 +16,38 @@ class 대기(trigger_api.Trigger):
 
 class 포탑생성_1(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.create_monster(spawnIds=[152], animationEffect=True) # 몬스터 등장
-        self.start_combine_spawn(groupId=[524], isStart=True)
+        self.spawn_monster(spawn_ids=[152], auto_target=True) # 몬스터 등장
+        self.start_combine_spawn(group_id=[524], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[152]):
+        if self.monster_dead(spawn_ids=[152]):
             return 포탑생성_2(self.ctx)
 
 
 class 포탑생성_2(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[522], isStart=True)
+        self.start_combine_spawn(group_id=[522], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=15000):
+        if self.wait_tick(wait_tick=15000):
             return 포탑생성_3(self.ctx)
 
 
 class 포탑생성_3(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.start_combine_spawn(groupId=[523], isStart=True)
+        self.start_combine_spawn(group_id=[523], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[151,152,153,154,155,156,157,158,159]):
+        if self.monster_dead(spawn_ids=[151,152,153,154,155,156,157,158,159]):
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=99990001, key='RandomBombEnd', value=1)
-        self.start_combine_spawn(groupId=[522], isStart=False)
-        self.start_combine_spawn(groupId=[523], isStart=False)
-        self.start_combine_spawn(groupId=[524], isStart=False)
+        self.set_user_value(trigger_id=99990001, key='RandomBombEnd', value=1)
+        self.start_combine_spawn(group_id=[522], is_start=False)
+        self.start_combine_spawn(group_id=[523], is_start=False)
+        self.start_combine_spawn(group_id=[524], is_start=False)
 
 
 initial_state = 대기

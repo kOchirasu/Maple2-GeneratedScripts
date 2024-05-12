@@ -10,22 +10,22 @@ class Wait(trigger_api.Trigger):
 
 class NPCTalkOnWait(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=8000):
+        if self.wait_tick(wait_tick=8000):
             return NPCTalkOn(self.ctx)
 
 
 class NPCTalkOn(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.add_balloon_talk(spawnId=15401, msg='$02020009_BF__1000051_NPCTALK__0$', duration=3000, delayTick=0)
+        self.add_balloon_talk(spawn_id=15401, msg='$02020009_BF__1000051_NPCTALK__0$', duration=3000, delay_tick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return TalkDelay(self.ctx)
 
 
 class TalkDelay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=17000):
+        if self.wait_tick(wait_tick=17000):
             return NPCTalkOn(self.ctx)
         if self.user_value(key='NPCTalk', value=0):
             return None # Missing State: NPCTalkOff
@@ -33,10 +33,10 @@ class TalkDelay(trigger_api.Trigger):
 
 class PortalOff(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.remove_balloon_talk(spawnId=15401)
+        self.remove_balloon_talk(spawn_id=15401)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=1000):
+        if self.wait_tick(wait_tick=1000):
             return Wait(self.ctx)
 
 

@@ -4,8 +4,8 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001169], state=2)
-        self.destroy_monster(spawnIds=[231]) # NPC
+        self.set_interact_object(trigger_ids=[10001169], state=2)
+        self.destroy_monster(spawn_ids=[231]) # NPC
         self.set_user_value(key='NpcDown', value=0)
         self.set_user_value(key='BattleEnd', value=0)
 
@@ -19,61 +19,61 @@ class Delay(trigger_api.Trigger):
         self.set_user_value(key='NpcDown', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=20000):
+        if self.wait_tick(wait_tick=20000):
             # NPC 마다 다름
             return NpcDown(self.ctx)
 
 
 class NpcDown(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[221])
-        self.set_interact_object(triggerIds=[10001169], state=1)
+        self.destroy_monster(spawn_ids=[221])
+        self.set_interact_object(trigger_ids=[10001169], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BattleEnd', value=1):
             return Quit(self.ctx)
-        if self.object_interacted(interactIds=[10001169], stateValue=0):
+        if self.object_interacted(interact_ids=[10001169], state=0):
             return NpcWakeUp(self.ctx)
 
 
 class NpcWakeUp(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001169], state=2)
-        self.create_monster(spawnIds=[231], animationEffect=False)
+        self.set_interact_object(trigger_ids=[10001169], state=2)
+        self.spawn_monster(spawn_ids=[231], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BattleEnd', value=1):
             return Quit(self.ctx)
-        if self.npc_detected(boxId=9900, spawnIds=[221]):
+        if self.npc_detected(box_id=9900, spawn_ids=[221]):
             return Delay02(self.ctx)
 
 
 class Delay02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_interact_object(triggerIds=[10001169], state=2)
+        self.set_interact_object(trigger_ids=[10001169], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=45000):
+        if self.wait_tick(wait_tick=45000):
             # NPC 마다 다름
             return NpcDown02(self.ctx)
 
 
 class NpcDown02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[231])
-        self.set_interact_object(triggerIds=[10001169], state=1)
+        self.destroy_monster(spawn_ids=[231])
+        self.set_interact_object(trigger_ids=[10001169], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BattleEnd', value=1):
             return Quit(self.ctx)
-        if self.object_interacted(interactIds=[10001169], stateValue=0):
+        if self.object_interacted(interact_ids=[10001169], state=0):
             return NpcWakeUp(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.destroy_monster(spawnIds=[221,231])
-        self.set_interact_object(triggerIds=[10001169], state=0)
+        self.destroy_monster(spawn_ids=[221,231])
+        self.set_interact_object(trigger_ids=[10001169], state=0)
 
 
 initial_state = Wait

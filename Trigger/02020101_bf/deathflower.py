@@ -10,14 +10,14 @@ class 대기(trigger_api.Trigger):
 
 class 랜덤대상선정(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.random_additional_effect(target='pc', boxId=1003, spawnId=0, targetCount=1, tick=3, waitTick=2, targetEffect='Additional/Etc/Eff_Target_Select_Keep.xml', additionalEffectId=62100021)
+        self.random_additional_effect(target='pc', box_id=1003, spawn_id=0, target_count=1, tick=3, wait_tick=2, target_effect='Additional/Etc/Eff_Target_Select_Keep.xml', additional_effect_id=62100021)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.monster_dead(boxIds=[101]):
-            self.set_user_value(triggerId=900007, key='flower', value=0)
+        if self.monster_dead(spawn_ids=[101]):
+            self.set_user_value(trigger_id=900007, key='flower', value=0)
             return 종료(self.ctx)
-        if self.wait_tick(waitTick=2000):
-            self.set_user_value(triggerId=900007, key='flower', value=0)
+        if self.wait_tick(wait_tick=2000):
+            self.set_user_value(trigger_id=900007, key='flower', value=0)
             return 변수초기화(self.ctx)
 
 
@@ -29,13 +29,12 @@ class 변수초기화(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.remove_buff(boxId=1004, skillId=62100021, isPlayer=True)
-        self.remove_buff(boxId=1004, skillId=62100022, isPlayer=True)
-        self.remove_buff(boxId=1004, skillId=62100023, isPlayer=True)
+        self.remove_buff(box_id=1004, skill_id=62100021, is_player=True)
+        self.remove_buff(box_id=1004, skill_id=62100022, is_player=True)
+        self.remove_buff(box_id=1004, skill_id=62100023, is_player=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return 대기(self.ctx)
+        return 대기(self.ctx)
 
 
 initial_state = 대기

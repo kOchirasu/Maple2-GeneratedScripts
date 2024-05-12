@@ -4,22 +4,22 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[110,111,112,113,114,115], visible=False, arg3=0, delay=0, scale=0) # 1,1 / Number 0 to 5
-        self.set_mesh(triggerIds=[120,121,122,123,124,125], visible=False, arg3=0, delay=0, scale=0) # 1,2 / Number 0 to 5
-        self.set_mesh(triggerIds=[130,131,132,133,134,135], visible=False, arg3=0, delay=0, scale=0) # 1,3 / Number 0 to 5
-        self.set_mesh(triggerIds=[140,141,142,143,144,145], visible=False, arg3=0, delay=0, scale=0) # 1,4 / Number 0 to 5
-        self.set_mesh(triggerIds=[210,211,212,213,214,215], visible=False, arg3=0, delay=0, scale=0) # 2,1 / Number 0 to 5
-        self.set_mesh(triggerIds=[220,221,222,223,224,225], visible=False, arg3=0, delay=0, scale=0) # 2,2 / Number 0 to 5
-        self.set_mesh(triggerIds=[230,231,232,233,234,235], visible=False, arg3=0, delay=0, scale=0) # 2,3 / Number 0 to 5
-        self.set_mesh(triggerIds=[240,241,242,243,244,245], visible=False, arg3=0, delay=0, scale=0) # 2,4 / Number 0 to 5
-        self.set_mesh(triggerIds=[310,311,312,313,314,315], visible=False, arg3=0, delay=0, scale=0) # 3,1 / Number 0 to 5
-        self.set_mesh(triggerIds=[320,321,322,323,324,325], visible=False, arg3=0, delay=0, scale=0) # 3,2 / Number 0 to 5
-        self.set_mesh(triggerIds=[330,331,332,333,334,335], visible=False, arg3=0, delay=0, scale=0) # 3,3 / Number 0 to 5
-        self.set_mesh(triggerIds=[340,341,342,343,344,345], visible=False, arg3=0, delay=0, scale=0) # 3,4 / Number 0 to 5
-        self.set_mesh(triggerIds=[410,411,412,413,414,415], visible=False, arg3=0, delay=0, scale=0) # 4,1 / Number 0 to 5
-        self.set_mesh(triggerIds=[420,421,422,423,424,425], visible=False, arg3=0, delay=0, scale=0) # 4,2 / Number 0 to 5
-        self.set_mesh(triggerIds=[430,431,432,433,434,435], visible=False, arg3=0, delay=0, scale=0) # 4,3 / Number 0 to 5
-        self.set_mesh(triggerIds=[440,441,442,443,444,445], visible=False, arg3=0, delay=0, scale=0) # 4,4 / Number 0 to 5
+        self.set_mesh(trigger_ids=[110,111,112,113,114,115], visible=False, start_delay=0, interval=0, fade=0) # 1,1 / Number 0 to 5
+        self.set_mesh(trigger_ids=[120,121,122,123,124,125], visible=False, start_delay=0, interval=0, fade=0) # 1,2 / Number 0 to 5
+        self.set_mesh(trigger_ids=[130,131,132,133,134,135], visible=False, start_delay=0, interval=0, fade=0) # 1,3 / Number 0 to 5
+        self.set_mesh(trigger_ids=[140,141,142,143,144,145], visible=False, start_delay=0, interval=0, fade=0) # 1,4 / Number 0 to 5
+        self.set_mesh(trigger_ids=[210,211,212,213,214,215], visible=False, start_delay=0, interval=0, fade=0) # 2,1 / Number 0 to 5
+        self.set_mesh(trigger_ids=[220,221,222,223,224,225], visible=False, start_delay=0, interval=0, fade=0) # 2,2 / Number 0 to 5
+        self.set_mesh(trigger_ids=[230,231,232,233,234,235], visible=False, start_delay=0, interval=0, fade=0) # 2,3 / Number 0 to 5
+        self.set_mesh(trigger_ids=[240,241,242,243,244,245], visible=False, start_delay=0, interval=0, fade=0) # 2,4 / Number 0 to 5
+        self.set_mesh(trigger_ids=[310,311,312,313,314,315], visible=False, start_delay=0, interval=0, fade=0) # 3,1 / Number 0 to 5
+        self.set_mesh(trigger_ids=[320,321,322,323,324,325], visible=False, start_delay=0, interval=0, fade=0) # 3,2 / Number 0 to 5
+        self.set_mesh(trigger_ids=[330,331,332,333,334,335], visible=False, start_delay=0, interval=0, fade=0) # 3,3 / Number 0 to 5
+        self.set_mesh(trigger_ids=[340,341,342,343,344,345], visible=False, start_delay=0, interval=0, fade=0) # 3,4 / Number 0 to 5
+        self.set_mesh(trigger_ids=[410,411,412,413,414,415], visible=False, start_delay=0, interval=0, fade=0) # 4,1 / Number 0 to 5
+        self.set_mesh(trigger_ids=[420,421,422,423,424,425], visible=False, start_delay=0, interval=0, fade=0) # 4,2 / Number 0 to 5
+        self.set_mesh(trigger_ids=[430,431,432,433,434,435], visible=False, start_delay=0, interval=0, fade=0) # 4,3 / Number 0 to 5
+        self.set_mesh(trigger_ids=[440,441,442,443,444,445], visible=False, start_delay=0, interval=0, fade=0) # 4,4 / Number 0 to 5
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P01Set', value=1):
@@ -124,76 +124,76 @@ class Wait(trigger_api.Trigger):
             return NumberOnP50(self.ctx)
 
     def on_exit(self) -> None:
-        self.set_user_value(triggerId=7110, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7110, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7120, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7120, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7130, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7130, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7140, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7140, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7210, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7210, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7220, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7220, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7230, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7230, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7240, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7240, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7310, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7310, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7320, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7320, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7330, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7330, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7340, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7340, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7410, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7410, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7420, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7420, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7430, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7430, key='ColorStart', value=1)
         # start
-        self.set_user_value(triggerId=7440, key='ColorStart', value=1)
+        self.set_user_value(trigger_id=7440, key='ColorStart', value=1)
         # start
 
 
 # G05 P01
 class NumberOnP01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P01TimeLimit', value=1):
@@ -202,99 +202,97 @@ class NumberOnP01(trigger_api.Trigger):
 
 class CheckP01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP01(self.ctx)
+        return NumberOffP01(self.ctx)
 
 
 class NumberOffP01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP01(self.ctx)
+        return ResetP01(self.ctx)
 
 
 class ResetP01(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P01End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P01End', value=1)
         self.set_user_value(key='G05P01Set', value=0)
         self.set_user_value(key='G05P01TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P02
 class NumberOnP02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[211], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[323], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=1)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=3)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[211], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[323], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=1)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=3)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P02TimeLimit', value=1):
@@ -303,99 +301,97 @@ class NumberOnP02(trigger_api.Trigger):
 
 class CheckP02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=1)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=3)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=1)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=3)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP02(self.ctx)
+        return NumberOffP02(self.ctx)
 
 
 class NumberOffP02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[211], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[323], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[211], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[323], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP02(self.ctx)
+        return ResetP02(self.ctx)
 
 
 class ResetP02(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P02End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P02End', value=1)
         self.set_user_value(key='G05P02Set', value=0)
         self.set_user_value(key='G05P02TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P03
 class NumberOnP03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[431], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=1)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=1)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[431], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=1)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=1)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P03TimeLimit', value=1):
@@ -404,99 +400,97 @@ class NumberOnP03(trigger_api.Trigger):
 
 class CheckP03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=1)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=1)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=1)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=1)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP03(self.ctx)
+        return NumberOffP03(self.ctx)
 
 
 class NumberOffP03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[431], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP03(self.ctx)
+        return ResetP03(self.ctx)
 
 
 class ResetP03(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P03End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P03End', value=1)
         self.set_user_value(key='G05P03Set', value=0)
         self.set_user_value(key='G05P03TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P04
 class NumberOnP04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[132], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[342], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 1
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=2)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=2)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=1)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[132], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[342], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 1
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=2)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=2)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P04TimeLimit', value=1):
@@ -505,99 +499,97 @@ class NumberOnP04(trigger_api.Trigger):
 
 class CheckP04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=2)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=2)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=1)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=2)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=2)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP04(self.ctx)
+        return NumberOffP04(self.ctx)
 
 
 class NumberOffP04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[342], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[132], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[342], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 1
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP04(self.ctx)
+        return ResetP04(self.ctx)
 
 
 class ResetP04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P04End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P04End', value=1)
         self.set_user_value(key='G05P04Set', value=0)
         self.set_user_value(key='G05P04TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P05
 class NumberOnP05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P05TimeLimit', value=1):
@@ -606,99 +598,97 @@ class NumberOnP05(trigger_api.Trigger):
 
 class CheckP05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP05(self.ctx)
+        return NumberOffP05(self.ctx)
 
 
 class NumberOffP05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP05(self.ctx)
+        return ResetP05(self.ctx)
 
 
 class ResetP05(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P05End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P05End', value=1)
         self.set_user_value(key='G05P05Set', value=0)
         self.set_user_value(key='G05P05TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P06
 class NumberOnP06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=1)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=1)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P06TimeLimit', value=1):
@@ -707,99 +697,97 @@ class NumberOnP06(trigger_api.Trigger):
 
 class CheckP06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=1)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=1)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP06(self.ctx)
+        return NumberOffP06(self.ctx)
 
 
 class NumberOffP06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP06(self.ctx)
+        return ResetP06(self.ctx)
 
 
 class ResetP06(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P06End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P06End', value=1)
         self.set_user_value(key='G05P06Set', value=0)
         self.set_user_value(key='G05P06TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P07
 class NumberOnP07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[120], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 0
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[240], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 0
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=0)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=0)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[120], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 0
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[240], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 0
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=0)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=0)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P07TimeLimit', value=1):
@@ -808,99 +796,97 @@ class NumberOnP07(trigger_api.Trigger):
 
 class CheckP07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=0)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=0)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=0)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=0)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP07(self.ctx)
+        return NumberOffP07(self.ctx)
 
 
 class NumberOffP07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[240], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 0
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[120], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 0
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[240], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 0
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP07(self.ctx)
+        return ResetP07(self.ctx)
 
 
 class ResetP07(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P07End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P07End', value=1)
         self.set_user_value(key='G05P07Set', value=0)
         self.set_user_value(key='G05P07TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P08
 class NumberOnP08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P08TimeLimit', value=1):
@@ -909,99 +895,97 @@ class NumberOnP08(trigger_api.Trigger):
 
 class CheckP08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP08(self.ctx)
+        return NumberOffP08(self.ctx)
 
 
 class NumberOffP08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP08(self.ctx)
+        return ResetP08(self.ctx)
 
 
 class ResetP08(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P08End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P08End', value=1)
         self.set_user_value(key='G05P08Set', value=0)
         self.set_user_value(key='G05P08TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P09
 class NumberOnP09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[323], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=3)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[323], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=3)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P09TimeLimit', value=1):
@@ -1010,99 +994,97 @@ class NumberOnP09(trigger_api.Trigger):
 
 class CheckP09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=3)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=3)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP09(self.ctx)
+        return NumberOffP09(self.ctx)
 
 
 class NumberOffP09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[323], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[323], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP09(self.ctx)
+        return ResetP09(self.ctx)
 
 
 class ResetP09(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P09End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P09End', value=1)
         self.set_user_value(key='G05P09Set', value=0)
         self.set_user_value(key='G05P09TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P10
 class NumberOnP10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[230], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 0
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[441], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 1
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=0)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=1)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[230], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 0
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[441], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 1
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=0)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P10TimeLimit', value=1):
@@ -1111,99 +1093,97 @@ class NumberOnP10(trigger_api.Trigger):
 
 class CheckP10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=0)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=1)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=0)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP10(self.ctx)
+        return NumberOffP10(self.ctx)
 
 
 class NumberOffP10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[230], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 0
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[230], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 0
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[441], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 1
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP10(self.ctx)
+        return ResetP10(self.ctx)
 
 
 class ResetP10(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P10End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P10End', value=1)
         self.set_user_value(key='G05P10Set', value=0)
         self.set_user_value(key='G05P10TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P11
 class NumberOnP11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=1)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=1)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P11TimeLimit', value=1):
@@ -1212,99 +1192,97 @@ class NumberOnP11(trigger_api.Trigger):
 
 class CheckP11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=1)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=1)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP11(self.ctx)
+        return NumberOffP11(self.ctx)
 
 
 class NumberOffP11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[211], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[211], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP11(self.ctx)
+        return ResetP11(self.ctx)
 
 
 class ResetP11(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P11End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P11End', value=1)
         self.set_user_value(key='G05P11Set', value=0)
         self.set_user_value(key='G05P11TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P12
 class NumberOnP12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P12TimeLimit', value=1):
@@ -1313,99 +1291,97 @@ class NumberOnP12(trigger_api.Trigger):
 
 class CheckP12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP12(self.ctx)
+        return NumberOffP12(self.ctx)
 
 
 class NumberOffP12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP12(self.ctx)
+        return ResetP12(self.ctx)
 
 
 class ResetP12(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P12End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P12End', value=1)
         self.set_user_value(key='G05P12Set', value=0)
         self.set_user_value(key='G05P12TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P13
 class NumberOnP13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[332], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=2)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[332], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=2)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P13TimeLimit', value=1):
@@ -1414,99 +1390,97 @@ class NumberOnP13(trigger_api.Trigger):
 
 class CheckP13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=2)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=2)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP13(self.ctx)
+        return NumberOffP13(self.ctx)
 
 
 class NumberOffP13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[332], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[332], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP13(self.ctx)
+        return ResetP13(self.ctx)
 
 
 class ResetP13(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P13End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P13End', value=1)
         self.set_user_value(key='G05P13Set', value=0)
         self.set_user_value(key='G05P13TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P14
 class NumberOnP14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[432], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=2)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[432], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=2)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P14TimeLimit', value=1):
@@ -1515,99 +1489,97 @@ class NumberOnP14(trigger_api.Trigger):
 
 class CheckP14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=2)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=2)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP14(self.ctx)
+        return NumberOffP14(self.ctx)
 
 
 class NumberOffP14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[432], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP14(self.ctx)
+        return ResetP14(self.ctx)
 
 
 class ResetP14(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P14End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P14End', value=1)
         self.set_user_value(key='G05P14Set', value=0)
         self.set_user_value(key='G05P14TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P15
 class NumberOnP15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P15TimeLimit', value=1):
@@ -1616,99 +1588,97 @@ class NumberOnP15(trigger_api.Trigger):
 
 class CheckP15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP15(self.ctx)
+        return NumberOffP15(self.ctx)
 
 
 class NumberOffP15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP15(self.ctx)
+        return ResetP15(self.ctx)
 
 
 class ResetP15(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P15End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P15End', value=1)
         self.set_user_value(key='G05P15Set', value=0)
         self.set_user_value(key='G05P15TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P16
 class NumberOnP16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[432], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=2)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[432], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=2)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P16TimeLimit', value=1):
@@ -1717,99 +1687,97 @@ class NumberOnP16(trigger_api.Trigger):
 
 class CheckP16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=2)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=2)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP16(self.ctx)
+        return NumberOffP16(self.ctx)
 
 
 class NumberOffP16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[432], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP16(self.ctx)
+        return ResetP16(self.ctx)
 
 
 class ResetP16(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P16End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P16End', value=1)
         self.set_user_value(key='G05P16Set', value=0)
         self.set_user_value(key='G05P16TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P17
 class NumberOnP17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[411], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=1)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[411], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=1)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P17TimeLimit', value=1):
@@ -1818,99 +1786,97 @@ class NumberOnP17(trigger_api.Trigger):
 
 class CheckP17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=1)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=1)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP17(self.ctx)
+        return NumberOffP17(self.ctx)
 
 
 class NumberOffP17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[411], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[411], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP17(self.ctx)
+        return ResetP17(self.ctx)
 
 
 class ResetP17(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P17End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P17End', value=1)
         self.set_user_value(key='G05P17Set', value=0)
         self.set_user_value(key='G05P17TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P18
 class NumberOnP18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P18TimeLimit', value=1):
@@ -1919,99 +1885,97 @@ class NumberOnP18(trigger_api.Trigger):
 
 class CheckP18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP18(self.ctx)
+        return NumberOffP18(self.ctx)
 
 
 class NumberOffP18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP18(self.ctx)
+        return ResetP18(self.ctx)
 
 
 class ResetP18(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P18End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P18End', value=1)
         self.set_user_value(key='G05P18Set', value=0)
         self.set_user_value(key='G05P18TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P19
 class NumberOnP19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[323], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[431], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=3)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=1)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[323], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[431], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=3)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=1)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P19TimeLimit', value=1):
@@ -2020,99 +1984,97 @@ class NumberOnP19(trigger_api.Trigger):
 
 class CheckP19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=3)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=1)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=3)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=1)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP19(self.ctx)
+        return NumberOffP19(self.ctx)
 
 
 class NumberOffP19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[323], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[323], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[431], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP19(self.ctx)
+        return ResetP19(self.ctx)
 
 
 class ResetP19(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P19End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P19End', value=1)
         self.set_user_value(key='G05P19Set', value=0)
         self.set_user_value(key='G05P19TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P20
 class NumberOnP20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[323], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=3)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[323], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=3)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P20TimeLimit', value=1):
@@ -2121,99 +2083,97 @@ class NumberOnP20(trigger_api.Trigger):
 
 class CheckP20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=3)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=3)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP20(self.ctx)
+        return NumberOffP20(self.ctx)
 
 
 class NumberOffP20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[323], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[323], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP20(self.ctx)
+        return ResetP20(self.ctx)
 
 
 class ResetP20(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P20End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P20End', value=1)
         self.set_user_value(key='G05P20Set', value=0)
         self.set_user_value(key='G05P20TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P21
 class NumberOnP21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[411], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[432], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=1)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=2)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[411], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[432], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=1)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=2)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P21TimeLimit', value=1):
@@ -2222,99 +2182,97 @@ class NumberOnP21(trigger_api.Trigger):
 
 class CheckP21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=1)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=2)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=1)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=2)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP21(self.ctx)
+        return NumberOffP21(self.ctx)
 
 
 class NumberOffP21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[411], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[411], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[432], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP21(self.ctx)
+        return ResetP21(self.ctx)
 
 
 class ResetP21(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P21End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P21End', value=1)
         self.set_user_value(key='G05P21Set', value=0)
         self.set_user_value(key='G05P21TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P22
 class NumberOnP22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[332], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=2)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[332], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=2)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P22TimeLimit', value=1):
@@ -2323,99 +2281,97 @@ class NumberOnP22(trigger_api.Trigger):
 
 class CheckP22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=2)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=2)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP22(self.ctx)
+        return NumberOffP22(self.ctx)
 
 
 class NumberOffP22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[332], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[332], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP22(self.ctx)
+        return ResetP22(self.ctx)
 
 
 class ResetP22(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P22End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P22End', value=1)
         self.set_user_value(key='G05P22Set', value=0)
         self.set_user_value(key='G05P22TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P23
 class NumberOnP23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[431], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=1)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[431], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=1)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P23TimeLimit', value=1):
@@ -2424,99 +2380,97 @@ class NumberOnP23(trigger_api.Trigger):
 
 class CheckP23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=1)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=1)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP23(self.ctx)
+        return NumberOffP23(self.ctx)
 
 
 class NumberOffP23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[431], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP23(self.ctx)
+        return ResetP23(self.ctx)
 
 
 class ResetP23(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P23End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P23End', value=1)
         self.set_user_value(key='G05P23Set', value=0)
         self.set_user_value(key='G05P23TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P24
 class NumberOnP24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P24TimeLimit', value=1):
@@ -2525,99 +2479,97 @@ class NumberOnP24(trigger_api.Trigger):
 
 class CheckP24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP24(self.ctx)
+        return NumberOffP24(self.ctx)
 
 
 class NumberOffP24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP24(self.ctx)
+        return ResetP24(self.ctx)
 
 
 class ResetP24(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P24End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P24End', value=1)
         self.set_user_value(key='G05P24Set', value=0)
         self.set_user_value(key='G05P24TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P25
 class NumberOnP25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 1
-        self.set_user_value(triggerId=8110, key='Barrier11', value=1)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=1)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[111], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 1
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=1)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P25TimeLimit', value=1):
@@ -2626,99 +2578,97 @@ class NumberOnP25(trigger_api.Trigger):
 
 class CheckP25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=1)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=1)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=1)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP25(self.ctx)
+        return NumberOffP25(self.ctx)
 
 
 class NumberOffP25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
+        self.set_mesh(trigger_ids=[111], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 1
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 1
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP25(self.ctx)
+        return ResetP25(self.ctx)
 
 
 class ResetP25(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P25End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P25End', value=1)
         self.set_user_value(key='G05P25Set', value=0)
         self.set_user_value(key='G05P25TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P26
 class NumberOnP26(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[431], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=1)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[431], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=1)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P26TimeLimit', value=1):
@@ -2727,99 +2677,97 @@ class NumberOnP26(trigger_api.Trigger):
 
 class CheckP26(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=1)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=1)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP26(self.ctx)
+        return NumberOffP26(self.ctx)
 
 
 class NumberOffP26(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[431], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP26(self.ctx)
+        return ResetP26(self.ctx)
 
 
 class ResetP26(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P26End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P26End', value=1)
         self.set_user_value(key='G05P26Set', value=0)
         self.set_user_value(key='G05P26TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P27
 class NumberOnP27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P27TimeLimit', value=1):
@@ -2828,99 +2776,97 @@ class NumberOnP27(trigger_api.Trigger):
 
 class CheckP27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP27(self.ctx)
+        return NumberOffP27(self.ctx)
 
 
 class NumberOffP27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP27(self.ctx)
+        return ResetP27(self.ctx)
 
 
 class ResetP27(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P27End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P27End', value=1)
         self.set_user_value(key='G05P27Set', value=0)
         self.set_user_value(key='G05P27TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P28
 class NumberOnP28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[323], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=3)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=1)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[323], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=3)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=1)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P28TimeLimit', value=1):
@@ -2929,99 +2875,97 @@ class NumberOnP28(trigger_api.Trigger):
 
 class CheckP28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=3)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=1)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=3)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=1)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP28(self.ctx)
+        return NumberOffP28(self.ctx)
 
 
 class NumberOffP28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[323], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 3
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[421], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 1
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[323], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 3
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[421], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 1
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP28(self.ctx)
+        return ResetP28(self.ctx)
 
 
 class ResetP28(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P28End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P28End', value=1)
         self.set_user_value(key='G05P28Set', value=0)
         self.set_user_value(key='G05P28TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P29
 class NumberOnP29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P29TimeLimit', value=1):
@@ -3030,99 +2974,97 @@ class NumberOnP29(trigger_api.Trigger):
 
 class CheckP29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP29(self.ctx)
+        return NumberOffP29(self.ctx)
 
 
 class NumberOffP29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP29(self.ctx)
+        return ResetP29(self.ctx)
 
 
 class ResetP29(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P29End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P29End', value=1)
         self.set_user_value(key='G05P29Set', value=0)
         self.set_user_value(key='G05P29TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P30
 class NumberOnP30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[332], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[341], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=2)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=1)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[332], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[341], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=2)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=1)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P30TimeLimit', value=1):
@@ -3131,99 +3073,97 @@ class NumberOnP30(trigger_api.Trigger):
 
 class CheckP30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=2)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=1)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=2)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=1)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP30(self.ctx)
+        return NumberOffP30(self.ctx)
 
 
 class NumberOffP30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[332], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 2
-        self.set_mesh(triggerIds=[341], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 1
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[332], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 2
+        self.set_mesh(trigger_ids=[341], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 1
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP30(self.ctx)
+        return ResetP30(self.ctx)
 
 
 class ResetP30(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P30End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P30End', value=1)
         self.set_user_value(key='G05P30Set', value=0)
         self.set_user_value(key='G05P30TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P31
 class NumberOnP31(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[132], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[342], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[431], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=2)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=2)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=1)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[132], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[342], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[431], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=2)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=2)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=1)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P31TimeLimit', value=1):
@@ -3232,99 +3172,97 @@ class NumberOnP31(trigger_api.Trigger):
 
 class CheckP31(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=2)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=2)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=1)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=2)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=2)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=1)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP31(self.ctx)
+        return NumberOffP31(self.ctx)
 
 
 class NumberOffP31(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[342], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[431], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 1
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[132], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[342], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[431], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 1
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP31(self.ctx)
+        return ResetP31(self.ctx)
 
 
 class ResetP31(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P31End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P31End', value=1)
         self.set_user_value(key='G05P31Set', value=0)
         self.set_user_value(key='G05P31TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P32
 class NumberOnP32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P32TimeLimit', value=1):
@@ -3333,99 +3271,97 @@ class NumberOnP32(trigger_api.Trigger):
 
 class CheckP32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP32(self.ctx)
+        return NumberOffP32(self.ctx)
 
 
 class NumberOffP32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP32(self.ctx)
+        return ResetP32(self.ctx)
 
 
 class ResetP32(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P32End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P32End', value=1)
         self.set_user_value(key='G05P32Set', value=0)
         self.set_user_value(key='G05P32TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P33
 class NumberOnP33(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 1
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=1)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 1
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P33TimeLimit', value=1):
@@ -3434,99 +3370,97 @@ class NumberOnP33(trigger_api.Trigger):
 
 class CheckP33(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=1)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP33(self.ctx)
+        return NumberOffP33(self.ctx)
 
 
 class NumberOffP33(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[441], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 1
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP33(self.ctx)
+        return ResetP33(self.ctx)
 
 
 class ResetP33(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P33End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P33End', value=1)
         self.set_user_value(key='G05P33Set', value=0)
         self.set_user_value(key='G05P33TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P34
 class NumberOnP34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P34TimeLimit', value=1):
@@ -3535,99 +3469,97 @@ class NumberOnP34(trigger_api.Trigger):
 
 class CheckP34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP34(self.ctx)
+        return NumberOffP34(self.ctx)
 
 
 class NumberOffP34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP34(self.ctx)
+        return ResetP34(self.ctx)
 
 
 class ResetP34(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P34End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P34End', value=1)
         self.set_user_value(key='G05P34Set', value=0)
         self.set_user_value(key='G05P34TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P35
 class NumberOnP35(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[231], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[342], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=1)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=2)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[231], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[342], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=1)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=2)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P35TimeLimit', value=1):
@@ -3636,99 +3568,97 @@ class NumberOnP35(trigger_api.Trigger):
 
 class CheckP35(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=1)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=2)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=1)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=2)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP35(self.ctx)
+        return NumberOffP35(self.ctx)
 
 
 class NumberOffP35(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[231], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 1
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[342], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[231], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 1
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[342], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP35(self.ctx)
+        return ResetP35(self.ctx)
 
 
 class ResetP35(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P35End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P35End', value=1)
         self.set_user_value(key='G05P35Set', value=0)
         self.set_user_value(key='G05P35TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P36
 class NumberOnP36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[441], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 1
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=1)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=1)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[441], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 1
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=1)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P36TimeLimit', value=1):
@@ -3737,99 +3667,97 @@ class NumberOnP36(trigger_api.Trigger):
 
 class CheckP36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=1)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=1)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=1)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP36(self.ctx)
+        return NumberOffP36(self.ctx)
 
 
 class NumberOffP36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[441], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 1
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[131], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 1
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[441], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 1
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP36(self.ctx)
+        return ResetP36(self.ctx)
 
 
 class ResetP36(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P36End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P36End', value=1)
         self.set_user_value(key='G05P36Set', value=0)
         self.set_user_value(key='G05P36TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P37
 class NumberOnP37(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[211], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[411], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=1)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=1)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[211], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[411], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=1)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=1)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P37TimeLimit', value=1):
@@ -3838,99 +3766,97 @@ class NumberOnP37(trigger_api.Trigger):
 
 class CheckP37(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=1)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=1)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=1)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=1)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP37(self.ctx)
+        return NumberOffP37(self.ctx)
 
 
 class NumberOffP37(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[211], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 1
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[411], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 1
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[211], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 1
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[411], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 1
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP37(self.ctx)
+        return ResetP37(self.ctx)
 
 
 class ResetP37(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P37End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P37End', value=1)
         self.set_user_value(key='G05P37Set', value=0)
         self.set_user_value(key='G05P37TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P38
 class NumberOnP38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=1)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=1)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P38TimeLimit', value=1):
@@ -3939,99 +3865,97 @@ class NumberOnP38(trigger_api.Trigger):
 
 class CheckP38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=1)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=1)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP38(self.ctx)
+        return NumberOffP38(self.ctx)
 
 
 class NumberOffP38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[321], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 1
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[321], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 1
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP38(self.ctx)
+        return ResetP38(self.ctx)
 
 
 class ResetP38(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P38End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P38End', value=1)
         self.set_user_value(key='G05P38Set', value=0)
         self.set_user_value(key='G05P38TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P39
 class NumberOnP39(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[311], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=1)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=1)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[311], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=1)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=1)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P39TimeLimit', value=1):
@@ -4040,99 +3964,97 @@ class NumberOnP39(trigger_api.Trigger):
 
 class CheckP39(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=1)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=1)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=1)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=1)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP39(self.ctx)
+        return NumberOffP39(self.ctx)
 
 
 class NumberOffP39(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[141], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 1
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[311], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 1
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[141], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 1
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[311], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 1
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP39(self.ctx)
+        return ResetP39(self.ctx)
 
 
 class ResetP39(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P39End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P39End', value=1)
         self.set_user_value(key='G05P39Set', value=0)
         self.set_user_value(key='G05P39TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P40
 class NumberOnP40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[241], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[432], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=1)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=1)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=2)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[241], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[432], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=1)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=1)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=2)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P40TimeLimit', value=1):
@@ -4141,99 +4063,97 @@ class NumberOnP40(trigger_api.Trigger):
 
 class CheckP40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=1)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=1)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=2)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=1)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=1)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=2)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP40(self.ctx)
+        return NumberOffP40(self.ctx)
 
 
 class NumberOffP40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[241], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 1
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[432], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 2
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[121], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 1
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[241], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 1
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[432], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 2
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP40(self.ctx)
+        return ResetP40(self.ctx)
 
 
 class ResetP40(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P40End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P40End', value=1)
         self.set_user_value(key='G05P40Set', value=0)
         self.set_user_value(key='G05P40TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P41
 class NumberOnP41(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[331], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=1)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=1)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[331], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=1)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=1)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P41TimeLimit', value=1):
@@ -4242,99 +4162,97 @@ class NumberOnP41(trigger_api.Trigger):
 
 class CheckP41(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=1)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=1)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=1)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=1)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP41(self.ctx)
+        return NumberOffP41(self.ctx)
 
 
 class NumberOffP41(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[221], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 1
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[331], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 1
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[221], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 1
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[331], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 1
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP41(self.ctx)
+        return ResetP41(self.ctx)
 
 
 class ResetP41(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P41End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P41End', value=1)
         self.set_user_value(key='G05P41Set', value=0)
         self.set_user_value(key='G05P41TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P42
 class NumberOnP42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[232], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=3)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=2)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[232], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=3)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=2)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P42TimeLimit', value=1):
@@ -4343,99 +4261,97 @@ class NumberOnP42(trigger_api.Trigger):
 
 class CheckP42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=3)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=2)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=3)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=2)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP42(self.ctx)
+        return NumberOffP42(self.ctx)
 
 
 class NumberOffP42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[223], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 3
-        self.set_mesh(triggerIds=[232], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 2
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[223], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 3
+        self.set_mesh(trigger_ids=[232], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 2
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP42(self.ctx)
+        return ResetP42(self.ctx)
 
 
 class ResetP42(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P42End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P42End', value=1)
         self.set_user_value(key='G05P42Set', value=0)
         self.set_user_value(key='G05P42TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P43
 class NumberOnP43(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=3)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=3)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P43TimeLimit', value=1):
@@ -4444,99 +4360,97 @@ class NumberOnP43(trigger_api.Trigger):
 
 class CheckP43(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=3)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=3)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP43(self.ctx)
+        return NumberOffP43(self.ctx)
 
 
 class NumberOffP43(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[143], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 3
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[143], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 3
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP43(self.ctx)
+        return ResetP43(self.ctx)
 
 
 class ResetP43(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P43End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P43End', value=1)
         self.set_user_value(key='G05P43Set', value=0)
         self.set_user_value(key='G05P43TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P44
 class NumberOnP44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[243], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=3)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=2)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[243], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=3)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=2)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P44TimeLimit', value=1):
@@ -4545,99 +4459,97 @@ class NumberOnP44(trigger_api.Trigger):
 
 class CheckP44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=3)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=2)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=3)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=2)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP44(self.ctx)
+        return NumberOffP44(self.ctx)
 
 
 class NumberOffP44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[243], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 3
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[412], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 2
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[243], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 3
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[412], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 2
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP44(self.ctx)
+        return ResetP44(self.ctx)
 
 
 class ResetP44(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P44End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P44End', value=1)
         self.set_user_value(key='G05P44Set', value=0)
         self.set_user_value(key='G05P44TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P45
 class NumberOnP45(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[132], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=2)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=5)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=3)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[132], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=2)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=5)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=3)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P45TimeLimit', value=1):
@@ -4646,99 +4558,97 @@ class NumberOnP45(trigger_api.Trigger):
 
 class CheckP45(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=2)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=5)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=3)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=2)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=5)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=3)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP45(self.ctx)
+        return NumberOffP45(self.ctx)
 
 
 class NumberOffP45(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[415], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 5
-        self.set_mesh(triggerIds=[423], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 3
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[132], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[415], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 5
+        self.set_mesh(trigger_ids=[423], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 3
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP45(self.ctx)
+        return ResetP45(self.ctx)
 
 
 class ResetP45(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P45End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P45End', value=1)
         self.set_user_value(key='G05P45Set', value=0)
         self.set_user_value(key='G05P45TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P46
 class NumberOnP46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[313], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[333], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[433], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=5)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=3)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=3)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=3)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[313], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[333], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[433], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=5)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=3)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=3)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=3)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P46TimeLimit', value=1):
@@ -4747,99 +4657,97 @@ class NumberOnP46(trigger_api.Trigger):
 
 class CheckP46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=5)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=3)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=3)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=3)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=5)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=3)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=3)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=3)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP46(self.ctx)
+        return NumberOffP46(self.ctx)
 
 
 class NumberOffP46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[145], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 5
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[313], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 3
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[333], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 3
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[433], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 3
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[145], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 5
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[313], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 3
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[333], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 3
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[433], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 3
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP46(self.ctx)
+        return ResetP46(self.ctx)
 
 
 class ResetP46(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P46End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P46End', value=1)
         self.set_user_value(key='G05P46Set', value=0)
         self.set_user_value(key='G05P46TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P47
 class NumberOnP47(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[222], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[342], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 5
-        self.set_user_value(triggerId=8110, key='Barrier11', value=5)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=2)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=5)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=2)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=2)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=2)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=5)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[115], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[122], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[222], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[342], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 5
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=5)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=2)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=5)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=2)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=2)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=2)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P47TimeLimit', value=1):
@@ -4848,99 +4756,97 @@ class NumberOnP47(trigger_api.Trigger):
 
 class CheckP47(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=5)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=2)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=5)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=2)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=2)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=2)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=5)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=5)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=2)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=5)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=2)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=2)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=2)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP47(self.ctx)
+        return NumberOffP47(self.ctx)
 
 
 class NumberOffP47(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
-        self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
-        self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[212], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 2
-        self.set_mesh(triggerIds=[222], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 2
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[342], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 2
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[445], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 5
+        self.set_mesh(trigger_ids=[115], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 5
+        self.set_mesh(trigger_ids=[122], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 2
+        self.set_mesh(trigger_ids=[135], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 5
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[212], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 2
+        self.set_mesh(trigger_ids=[222], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 2
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[342], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 2
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[445], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP47(self.ctx)
+        return ResetP47(self.ctx)
 
 
 class ResetP47(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P47End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P47End', value=1)
         self.set_user_value(key='G05P47Set', value=0)
         self.set_user_value(key='G05P47TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P48
 class NumberOnP48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[133], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[245], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[325], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[345], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 3
-        self.set_user_value(triggerId=8110, key='Barrier11', value=2)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=5)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=3)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=5)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=5)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=5)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=5)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=5)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=5)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=5)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=5)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=2)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=3)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[112], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[133], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[245], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[325], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[345], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 3
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=2)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=5)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=3)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=5)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=5)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=5)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=5)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=5)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=5)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=5)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=5)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=2)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P48TimeLimit', value=1):
@@ -4949,99 +4855,97 @@ class NumberOnP48(trigger_api.Trigger):
 
 class CheckP48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=2)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=5)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=3)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=5)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=5)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=5)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=5)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=5)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=5)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=5)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=5)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=2)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=3)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=2)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=5)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=3)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=5)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=5)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=5)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=5)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=5)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=5)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=5)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=5)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=2)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP48(self.ctx)
+        return NumberOffP48(self.ctx)
 
 
 class NumberOffP48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
-        self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
-        self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[215], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 5
-        self.set_mesh(triggerIds=[225], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 5
-        self.set_mesh(triggerIds=[235], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 5
-        self.set_mesh(triggerIds=[245], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 5
-        self.set_mesh(triggerIds=[315], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 5
-        self.set_mesh(triggerIds=[325], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 5
-        self.set_mesh(triggerIds=[335], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 5
-        self.set_mesh(triggerIds=[345], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 5
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[422], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 2
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[443], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 3
+        self.set_mesh(trigger_ids=[112], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 2
+        self.set_mesh(trigger_ids=[125], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 5
+        self.set_mesh(trigger_ids=[133], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 3
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[215], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 5
+        self.set_mesh(trigger_ids=[225], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 5
+        self.set_mesh(trigger_ids=[235], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 5
+        self.set_mesh(trigger_ids=[245], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 5
+        self.set_mesh(trigger_ids=[315], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 5
+        self.set_mesh(trigger_ids=[325], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 5
+        self.set_mesh(trigger_ids=[335], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 5
+        self.set_mesh(trigger_ids=[345], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 5
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[422], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 2
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[443], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 3
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP48(self.ctx)
+        return ResetP48(self.ctx)
 
 
 class ResetP48(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P48End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P48End', value=1)
         self.set_user_value(key='G05P48Set', value=0)
         self.set_user_value(key='G05P48TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P49
 class NumberOnP49(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[134], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[142], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[233], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[244], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[322], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 2
-        self.set_user_value(triggerId=8110, key='Barrier11', value=3)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=4)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=4)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=2)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=4)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=3)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=4)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=4)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=2)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=4)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=3)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=4)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=4)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=2)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[113], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[134], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[142], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[233], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[244], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[322], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 2
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=3)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=4)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=4)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=2)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=4)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=3)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=4)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=4)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=2)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=4)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=3)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=4)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=4)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P49TimeLimit', value=1):
@@ -5050,99 +4954,97 @@ class NumberOnP49(trigger_api.Trigger):
 
 class CheckP49(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=3)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=4)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=4)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=2)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=4)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=3)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=4)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=4)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=2)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=4)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=3)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=4)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=4)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=2)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=3)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=4)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=4)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=2)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=4)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=3)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=4)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=4)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=2)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=4)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=3)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=4)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=4)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP49(self.ctx)
+        return NumberOffP49(self.ctx)
 
 
 class NumberOffP49(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
-        self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
-        self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
-        self.set_mesh(triggerIds=[142], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 2
-        self.set_mesh(triggerIds=[214], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 4
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[233], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 3
-        self.set_mesh(triggerIds=[244], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 4
-        self.set_mesh(triggerIds=[314], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 4
-        self.set_mesh(triggerIds=[322], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 2
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[344], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 4
-        self.set_mesh(triggerIds=[413], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 3
-        self.set_mesh(triggerIds=[424], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 4
-        self.set_mesh(triggerIds=[434], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 4
-        self.set_mesh(triggerIds=[442], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 2
+        self.set_mesh(trigger_ids=[113], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 3
+        self.set_mesh(trigger_ids=[124], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 4
+        self.set_mesh(trigger_ids=[134], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 4
+        self.set_mesh(trigger_ids=[142], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 2
+        self.set_mesh(trigger_ids=[214], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 4
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[233], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 3
+        self.set_mesh(trigger_ids=[244], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 4
+        self.set_mesh(trigger_ids=[314], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 4
+        self.set_mesh(trigger_ids=[322], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 2
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[344], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 4
+        self.set_mesh(trigger_ids=[413], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 3
+        self.set_mesh(trigger_ids=[424], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 4
+        self.set_mesh(trigger_ids=[434], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 4
+        self.set_mesh(trigger_ids=[442], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 2
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP49(self.ctx)
+        return ResetP49(self.ctx)
 
 
 class ResetP49(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P49End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P49End', value=1)
         self.set_user_value(key='G05P49Set', value=0)
         self.set_user_value(key='G05P49TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
 # G05 P50
 class NumberOnP50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
-        self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[132], visible=True, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[144], visible=True, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[213], visible=True, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[224], visible=True, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=True, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=True, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=True, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=True, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=True, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[343], visible=True, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=True, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=True, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=True, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[444], visible=True, arg3=0, delay=0, scale=2) # 4,4 / 4
-        self.set_user_value(triggerId=8110, key='Barrier11', value=4)
-        self.set_user_value(triggerId=8120, key='Barrier12', value=3)
-        self.set_user_value(triggerId=8130, key='Barrier13', value=2)
-        self.set_user_value(triggerId=8140, key='Barrier14', value=4)
-        self.set_user_value(triggerId=8210, key='Barrier21', value=3)
-        self.set_user_value(triggerId=8220, key='Barrier22', value=4)
-        self.set_user_value(triggerId=8230, key='Barrier23', value=4)
-        self.set_user_value(triggerId=8240, key='Barrier24', value=2)
-        self.set_user_value(triggerId=8310, key='Barrier31', value=2)
-        self.set_user_value(triggerId=8320, key='Barrier32', value=4)
-        self.set_user_value(triggerId=8330, key='Barrier33', value=4)
-        self.set_user_value(triggerId=8340, key='Barrier34', value=3)
-        self.set_user_value(triggerId=8410, key='Barrier41', value=4)
-        self.set_user_value(triggerId=8420, key='Barrier42', value=5)
-        self.set_user_value(triggerId=8430, key='Barrier43', value=5)
-        self.set_user_value(triggerId=8440, key='Barrier44', value=4)
+        self.play_system_sound_in_box(box_ids=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
+        self.set_mesh(trigger_ids=[114], visible=True, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=True, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[132], visible=True, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[144], visible=True, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[213], visible=True, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[224], visible=True, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=True, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=True, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=True, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=True, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=True, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[343], visible=True, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=True, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=True, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=True, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[444], visible=True, start_delay=0, interval=0, fade=2) # 4,4 / 4
+        self.set_user_value(trigger_id=8110, key='Barrier11', value=4)
+        self.set_user_value(trigger_id=8120, key='Barrier12', value=3)
+        self.set_user_value(trigger_id=8130, key='Barrier13', value=2)
+        self.set_user_value(trigger_id=8140, key='Barrier14', value=4)
+        self.set_user_value(trigger_id=8210, key='Barrier21', value=3)
+        self.set_user_value(trigger_id=8220, key='Barrier22', value=4)
+        self.set_user_value(trigger_id=8230, key='Barrier23', value=4)
+        self.set_user_value(trigger_id=8240, key='Barrier24', value=2)
+        self.set_user_value(trigger_id=8310, key='Barrier31', value=2)
+        self.set_user_value(trigger_id=8320, key='Barrier32', value=4)
+        self.set_user_value(trigger_id=8330, key='Barrier33', value=4)
+        self.set_user_value(trigger_id=8340, key='Barrier34', value=3)
+        self.set_user_value(trigger_id=8410, key='Barrier41', value=4)
+        self.set_user_value(trigger_id=8420, key='Barrier42', value=5)
+        self.set_user_value(trigger_id=8430, key='Barrier43', value=5)
+        self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='G05P50TimeLimit', value=1):
@@ -5151,60 +5053,58 @@ class NumberOnP50(trigger_api.Trigger):
 
 class CheckP50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=9110, key='Box11Check', value=4)
-        self.set_user_value(triggerId=9120, key='Box12Check', value=3)
-        self.set_user_value(triggerId=9130, key='Box13Check', value=2)
-        self.set_user_value(triggerId=9140, key='Box14Check', value=4)
-        self.set_user_value(triggerId=9210, key='Box21Check', value=3)
-        self.set_user_value(triggerId=9220, key='Box22Check', value=4)
-        self.set_user_value(triggerId=9230, key='Box23Check', value=4)
-        self.set_user_value(triggerId=9240, key='Box24Check', value=2)
-        self.set_user_value(triggerId=9310, key='Box31Check', value=2)
-        self.set_user_value(triggerId=9320, key='Box32Check', value=4)
-        self.set_user_value(triggerId=9330, key='Box33Check', value=4)
-        self.set_user_value(triggerId=9340, key='Box34Check', value=3)
-        self.set_user_value(triggerId=9410, key='Box41Check', value=4)
-        self.set_user_value(triggerId=9420, key='Box42Check', value=5)
-        self.set_user_value(triggerId=9430, key='Box43Check', value=5)
-        self.set_user_value(triggerId=9440, key='Box44Check', value=4)
+        self.set_user_value(trigger_id=9110, key='Box11Check', value=4)
+        self.set_user_value(trigger_id=9120, key='Box12Check', value=3)
+        self.set_user_value(trigger_id=9130, key='Box13Check', value=2)
+        self.set_user_value(trigger_id=9140, key='Box14Check', value=4)
+        self.set_user_value(trigger_id=9210, key='Box21Check', value=3)
+        self.set_user_value(trigger_id=9220, key='Box22Check', value=4)
+        self.set_user_value(trigger_id=9230, key='Box23Check', value=4)
+        self.set_user_value(trigger_id=9240, key='Box24Check', value=2)
+        self.set_user_value(trigger_id=9310, key='Box31Check', value=2)
+        self.set_user_value(trigger_id=9320, key='Box32Check', value=4)
+        self.set_user_value(trigger_id=9330, key='Box33Check', value=4)
+        self.set_user_value(trigger_id=9340, key='Box34Check', value=3)
+        self.set_user_value(trigger_id=9410, key='Box41Check', value=4)
+        self.set_user_value(trigger_id=9420, key='Box42Check', value=5)
+        self.set_user_value(trigger_id=9430, key='Box43Check', value=5)
+        self.set_user_value(trigger_id=9440, key='Box44Check', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return NumberOffP50(self.ctx)
+        return NumberOffP50(self.ctx)
 
 
 class NumberOffP50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
-        self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
-        self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
-        self.set_mesh(triggerIds=[144], visible=False, arg3=0, delay=0, scale=2) # 1,4 / 4
-        self.set_mesh(triggerIds=[213], visible=False, arg3=0, delay=0, scale=2) # 2,1 / 3
-        self.set_mesh(triggerIds=[224], visible=False, arg3=0, delay=0, scale=2) # 2,2 / 4
-        self.set_mesh(triggerIds=[234], visible=False, arg3=0, delay=0, scale=2) # 2,3 / 4
-        self.set_mesh(triggerIds=[242], visible=False, arg3=0, delay=0, scale=2) # 2,4 / 2
-        self.set_mesh(triggerIds=[312], visible=False, arg3=0, delay=0, scale=2) # 3,1 / 2
-        self.set_mesh(triggerIds=[324], visible=False, arg3=0, delay=0, scale=2) # 3,2 / 4
-        self.set_mesh(triggerIds=[334], visible=False, arg3=0, delay=0, scale=2) # 3,3 / 4
-        self.set_mesh(triggerIds=[343], visible=False, arg3=0, delay=0, scale=2) # 3,4 / 3
-        self.set_mesh(triggerIds=[414], visible=False, arg3=0, delay=0, scale=2) # 4,1 / 4
-        self.set_mesh(triggerIds=[425], visible=False, arg3=0, delay=0, scale=2) # 4,2 / 5
-        self.set_mesh(triggerIds=[435], visible=False, arg3=0, delay=0, scale=2) # 4,3 / 5
-        self.set_mesh(triggerIds=[444], visible=False, arg3=0, delay=0, scale=2) # 4,4 / 4
+        self.set_mesh(trigger_ids=[114], visible=False, start_delay=0, interval=0, fade=2) # 1,1 / 4
+        self.set_mesh(trigger_ids=[123], visible=False, start_delay=0, interval=0, fade=2) # 1,2 / 3
+        self.set_mesh(trigger_ids=[132], visible=False, start_delay=0, interval=0, fade=2) # 1,3 / 2
+        self.set_mesh(trigger_ids=[144], visible=False, start_delay=0, interval=0, fade=2) # 1,4 / 4
+        self.set_mesh(trigger_ids=[213], visible=False, start_delay=0, interval=0, fade=2) # 2,1 / 3
+        self.set_mesh(trigger_ids=[224], visible=False, start_delay=0, interval=0, fade=2) # 2,2 / 4
+        self.set_mesh(trigger_ids=[234], visible=False, start_delay=0, interval=0, fade=2) # 2,3 / 4
+        self.set_mesh(trigger_ids=[242], visible=False, start_delay=0, interval=0, fade=2) # 2,4 / 2
+        self.set_mesh(trigger_ids=[312], visible=False, start_delay=0, interval=0, fade=2) # 3,1 / 2
+        self.set_mesh(trigger_ids=[324], visible=False, start_delay=0, interval=0, fade=2) # 3,2 / 4
+        self.set_mesh(trigger_ids=[334], visible=False, start_delay=0, interval=0, fade=2) # 3,3 / 4
+        self.set_mesh(trigger_ids=[343], visible=False, start_delay=0, interval=0, fade=2) # 3,4 / 3
+        self.set_mesh(trigger_ids=[414], visible=False, start_delay=0, interval=0, fade=2) # 4,1 / 4
+        self.set_mesh(trigger_ids=[425], visible=False, start_delay=0, interval=0, fade=2) # 4,2 / 5
+        self.set_mesh(trigger_ids=[435], visible=False, start_delay=0, interval=0, fade=2) # 4,3 / 5
+        self.set_mesh(trigger_ids=[444], visible=False, start_delay=0, interval=0, fade=2) # 4,4 / 4
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.true():
-            return ResetP50(self.ctx)
+        return ResetP50(self.ctx)
 
 
 class ResetP50(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.set_user_value(triggerId=1, key='G05P50End', value=1)
+        self.set_user_value(trigger_id=1, key='G05P50End', value=1)
         self.set_user_value(key='G05P50Set', value=0)
         self.set_user_value(key='G05P50TimeLimit', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wait_tick(waitTick=10000):
+        if self.wait_tick(wait_tick=10000):
             return Wait(self.ctx)
 
 
