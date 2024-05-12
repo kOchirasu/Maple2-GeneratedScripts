@@ -18,7 +18,7 @@ class 이벤트대기중(trigger_api.Trigger):
         self.set_effect(trigger_ids=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=302, min_users='50'):
+        if self.count_users(box_id=302) >= 50:
             return 준비멘트1(self.ctx)
         if self.wait_tick(wait_tick=30000):
             return 준비멘트1(self.ctx)

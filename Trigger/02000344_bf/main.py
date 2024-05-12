@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000789], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return ready(self.ctx)
 
 
@@ -38,7 +38,7 @@ class DungeonStart(trigger_api.Trigger):
 
 class touchfield(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return ready(self.ctx)
 
 
@@ -301,7 +301,7 @@ class 클리어_04(trigger_api.Trigger):
         self.dungeon_clear()
         self.set_portal(portal_id=4, visible=True, enable=True, minimap_visible=True) # 보상으로 연결되는 포탈 제어 (on)
         self.set_achievement(type='trigger', achieve='ClearTVProgram')
-        self.dungeon_variable(var_id=2, value=1) # 2번 던전 클리어 처리
+        self.set_dungeon_variable(var_id=2, value=1) # 2번 던전 클리어 처리
         self.show_guide_summary(entity_id=110, text_id=40009) # 포탈 이용하세요
         self.select_camera_path(path_ids=[8010], return_view=True)
         self.set_cinematic_ui(type=0)

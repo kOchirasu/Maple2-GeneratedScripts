@@ -13,7 +13,7 @@ class 시작(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7310], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 폭발01(self.ctx)
 
 
@@ -23,7 +23,7 @@ class 폭발01(trigger_api.Trigger):
         self.set_skill(trigger_ids=[8301], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 폭발02(self.ctx)
 
 
@@ -33,7 +33,7 @@ class 폭발02(trigger_api.Trigger):
         self.set_skill(trigger_ids=[8302], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 폭발03(self.ctx)
 
 
@@ -45,7 +45,7 @@ class 폭발03(trigger_api.Trigger):
         self.set_skill(trigger_ids=[8304], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 폭발04(self.ctx)
 
 
@@ -55,7 +55,7 @@ class 폭발04(trigger_api.Trigger):
         self.set_skill(trigger_ids=[8305], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return 폭발04(self.ctx)
 
 

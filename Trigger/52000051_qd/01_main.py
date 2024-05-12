@@ -25,7 +25,7 @@ class Wait(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[900], auto_target=False) # 어둠의 토템
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return LodingDelay01(self.ctx)
 
 
@@ -182,7 +182,7 @@ class NpcPatrol02(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$52000051_QD__01_MAIN__5$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='PatrolEnd', value=1):
+        if self.user_value(key='PatrolEnd') >= 1:
             return NpcPatrol03(self.ctx)
         if self.monster_dead(spawn_ids=[900]):
             # 토템 제거
@@ -200,7 +200,7 @@ class NpcPatrol03(trigger_api.Trigger):
 
 class NpcPatrol04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9400, min_users='1'):
+        if self.count_users(box_id=9400) >= 1:
             return FoundTotem01(self.ctx)
         if self.monster_dead(spawn_ids=[900]):
             # 토템 제거
@@ -456,7 +456,7 @@ class StartPuzzle02(trigger_api.Trigger):
 # NPC 말풍선 퍼즐에 대한 멘트 스크립트 모노로그
 class EndPuzzle01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='PuzzleSolved', value=1):
+        if self.user_value(key='PuzzleSolved') >= 1:
             return GateOpen01(self.ctx)
 
 

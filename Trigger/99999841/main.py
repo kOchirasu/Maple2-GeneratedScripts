@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_variable(var_id=1, value=0)
+        self.set_dungeon_variable(var_id=1, value=0)
         self.set_user_value(trigger_id=99990002, key='Team2Battle', value=0)
         self.set_user_value(trigger_id=99990003, key='Start', value=0)
         self.set_user_value(trigger_id=99990004, key='Start', value=0)
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990015, key='Start', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9001) == 3:
             return 세팅(self.ctx)
 
 
@@ -27,7 +27,7 @@ class 세팅(trigger_api.Trigger):
 
 class 시작(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_variable(var_id=1, value=1)
+        self.set_dungeon_variable(var_id=1, value=1)
         self.set_event_ui(type=1, arg2='경기 시작!\\n당신은 B팀입니다.', arg3='3000')
         self.set_user_value(trigger_id=99990002, key='Team2Battle', value=1)
         self.set_user_value(trigger_id=99990003, key='Start', value=1)
@@ -45,9 +45,9 @@ class 메시지1(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='검은 군단을 해치우고 자원을 획득하세요.\\n획득한 자원을 20개 모아서 보스를 불러내세요.\\n한번에 최대 9개의 자원을 들 수 있습니다.', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=2, value=1):
+        if self.dungeon_variable(var_id=2) == 1:
             return A팀승리(self.ctx)
-        if self.dungeon_variable(var_id=3, value=1):
+        if self.dungeon_variable(var_id=3) == 1:
             return B팀승리(self.ctx)
 
 

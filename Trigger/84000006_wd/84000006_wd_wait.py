@@ -22,7 +22,7 @@ class 대기(trigger_api.Trigger):
         self.show_guide_summary(entity_id=28500001, text_id=28500001, duration=5000) # 가이드 : 잠시만 기다리셈
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='70'):
+        if self.count_users(box_id=9000) >= 70:
             return 종료(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 대기2(self.ctx)
@@ -38,7 +38,7 @@ class 대기2(trigger_api.Trigger):
         self.show_guide_summary(entity_id=28500002, text_id=28500002, duration=5000) # 가이드 : 곧 시작함
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='70'):
+        if self.count_users(box_id=9000) >= 70:
             return 종료(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 대기(self.ctx)

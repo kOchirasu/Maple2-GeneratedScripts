@@ -11,17 +11,17 @@ class Ready(trigger_api.Trigger):
         self.set_user_value(key='DungeonReset', value=0) # DungeonReset 변수 0으로 초기화
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=299, min_users='1'):
+        if self.count_users(box_id=299) >= 1:
             # MS2TriggerBox   TriggerObjectID = 299, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면        299은 모든 전투판 포함되는 엄청 넓은 범위
             return 던전시간작동대기(self.ctx)
 
 
 class 던전시간작동대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=399, min_users='1'):
+        if self.count_users(box_id=399) >= 1:
             # MS2TriggerBox   TriggerObjectID = 399, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면        399은 보스 메인 전투판만 포함되는 범위
             return 스킬브레이크신호대기_BGM교체(self.ctx)
-        if self.user_value(key='BgmChangeTriggerCancel', value=1):
+        if self.user_value(key='BgmChangeTriggerCancel') >= 1:
             # 이슈라가 메인 전투판에 오기 전에 죽으면 BGM 변경 트리거 자체를 종료 시키기 , 이슈라가 Kill되면 나오는 이벤트 연출용 AI_IshuraRbladerDark_EventLeave.xml 에서 신호 보냄
             return 종료(self.ctx)
 
@@ -32,7 +32,7 @@ class 스킬브레이크신호대기_BGM교체(trigger_api.Trigger):
         self.set_sound(trigger_id=19600, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SkillBreakStart', value=1, operator='GreaterEqual'):
+        if self.user_value(key='SkillBreakStart') >= 1:
             # 이슈라가 스킬브레이크 광역맵파괴 스킬 사용시  SkillBreakStart 이 변수 1로 설정하는 신호를 AI에서 보냄
             return 스킬브레이크로직작동(self.ctx)
 
@@ -65,7 +65,7 @@ class 스킬브레이크실패연출출력(trigger_api.Trigger):
         pass
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='DungeonReset', value=1):
+        if self.user_value(key='DungeonReset') >= 1:
             return Ready(self.ctx)
 
 

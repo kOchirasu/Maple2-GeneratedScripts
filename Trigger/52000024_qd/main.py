@@ -93,7 +93,7 @@ class Start_06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(box_ids=[702], quest_ids=[20002233], quest_states=[2]):
             return startB_01(self.ctx)
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return startB_01(self.ctx)
 
 """
@@ -262,7 +262,7 @@ class startC_03(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[104]) # 이슈라 사라짐
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return startD_01(self.ctx)
 
 

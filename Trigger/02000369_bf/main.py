@@ -54,7 +54,7 @@ class 연출시작(trigger_api.Trigger):
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 전투01(self.ctx)
 
     def on_exit(self) -> None:

@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
         self.reset_timer(timer_id='3')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=1):
+        if self.user_value(key='Battle_2_SpawnStart') >= 1:
             return 스폰_1_SE(self.ctx)
 
 
@@ -32,7 +32,7 @@ class 스폰_1_SE(trigger_api.Trigger):
         self.start_combine_spawn(group_id=[500], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 스폰_1(self.ctx)
@@ -43,7 +43,7 @@ class 스폰_1(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 스폰_2_SE(self.ctx)
@@ -54,7 +54,7 @@ class 스폰_2_SE(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=2000):
             return 스폰_2(self.ctx)
@@ -67,9 +67,9 @@ class 스폰_2(trigger_api.Trigger):
         self.start_combine_spawn(group_id=[501], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timer_id='1') or self.score_board_compare(operator='GreaterEqual', score=150):
+        if self.time_expired(timer_id='1') or self.score_board_score() >= 150:
             return 스폰_3_SE(self.ctx)
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
 
 
@@ -78,7 +78,7 @@ class 스폰_3_SE(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=2000):
             return 스폰_3(self.ctx)
@@ -91,9 +91,9 @@ class 스폰_3(trigger_api.Trigger):
         self.start_combine_spawn(group_id=[502], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timer_id='2') or self.score_board_compare(operator='GreaterEqual', score=300):
+        if self.time_expired(timer_id='2') or self.score_board_score() >= 300:
             return 스폰_4_SE(self.ctx)
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
 
 
@@ -102,7 +102,7 @@ class 스폰_4_SE(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=2000):
             return 스폰_4(self.ctx)
@@ -115,9 +115,9 @@ class 스폰_4(trigger_api.Trigger):
         self.start_combine_spawn(group_id=[503], is_start=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.time_expired(timer_id='3') or self.score_board_compare(operator='GreaterEqual', score=450):
+        if self.time_expired(timer_id='3') or self.score_board_score() >= 450:
             return 스폰_5_SE(self.ctx)
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
 
 
@@ -126,7 +126,7 @@ class 스폰_5_SE(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
         if self.wait_tick(wait_tick=2000):
             return 스폰_5(self.ctx)
@@ -139,7 +139,7 @@ class 스폰_5(trigger_api.Trigger):
         self.score_board_remove()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_SpawnStart', value=0):
+        if self.user_value(key='Battle_2_SpawnStart') >= 0:
             return 대기(self.ctx)
 
 

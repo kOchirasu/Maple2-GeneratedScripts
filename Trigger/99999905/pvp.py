@@ -8,7 +8,7 @@ class 시작(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3001,3002,3003,4001,4002,4003], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=104, min_users='1'):
+        if self.count_users(box_id=104) >= 1:
             return PvP(self.ctx)
         if self.time_expired(timer_id='30'):
             return PvP(self.ctx)

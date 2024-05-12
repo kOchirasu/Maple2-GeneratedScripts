@@ -47,7 +47,7 @@ class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
             return start(self.ctx)
-        if self.shadow_expedition_reach_point(point=1000):
+        if self.shadow_expedition_points() >= 1000:
             self.shadow_expedition(type='CloseBossGauge')
             return boss_scene(self.ctx)
 
@@ -60,7 +60,7 @@ class start(trigger_api.Trigger):
         self.reset_camera(interpolation_time=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=1000):
+        if self.shadow_expedition_points() >= 1000:
             self.shadow_expedition(type='CloseBossGauge')
             return boss_scene(self.ctx)
 

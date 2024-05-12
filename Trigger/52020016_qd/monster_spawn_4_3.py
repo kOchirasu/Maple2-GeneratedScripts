@@ -4,7 +4,7 @@ import trigger_api
 
 class 체력조건(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='respawn_phase_4', value=1):
+        if self.user_value(key='respawn_phase_4') >= 1:
             return 전투페이즈(self.ctx)
 
 
@@ -14,7 +14,7 @@ class 전투페이즈(trigger_api.Trigger):
         self.set_dialogue(type=1, spawn_id=4000404, script='당신 떄문에!!당신 떄문에!!', time=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=20, spawn_id=4000404, is_relative=True):
+        if self.npc_hp(spawn_id=4000404, is_relative=True) <= 20:
             return 몬스터소멸(self.ctx)
 
 

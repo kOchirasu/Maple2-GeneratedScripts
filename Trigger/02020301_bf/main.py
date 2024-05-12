@@ -86,7 +86,7 @@ class 시작(trigger_api.Trigger):
 class 조건추가(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         """
-        if self.dungeon_check_play_time(play_seconds=420, operator='Equal'):
+        if self.dungeon_play_time() == 420:
             return None # Missing State: 보스전_타임어택실패
         """
         # all_of: 	<condition name="DungeonCheckPlayTime" playSeconds="420" operator="Less" />

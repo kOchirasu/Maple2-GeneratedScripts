@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000786], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=709, min_users='1'):
+        if self.count_users(box_id=709) >= 1:
             return 시작(self.ctx)
 
 
@@ -61,7 +61,7 @@ class 벽제거(trigger_api.Trigger):
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 몬스터등장(self.ctx)
 
 

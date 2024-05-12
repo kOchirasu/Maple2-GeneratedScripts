@@ -218,10 +218,10 @@ class 정산(trigger_api.Trigger):
         self.remove_buff(box_id=199, skill_id=99910110)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='ScoreBoard', name='Compare', condition='>=,1500', desc='비교 연산 (연산자,대상값)'):
+        if self.widget_value(type='ScoreBoard', name='Compare', desc='비교 연산 (연산자,대상값)') >= 1500:
             self.debug_string(value='1500점 이상')
             return 보상(self.ctx)
-        if self.widget_condition(type='ScoreBoard', name='Compare', condition='>=,1000', desc='비교 연산 (연산자,대상값)'):
+        if self.widget_value(type='ScoreBoard', name='Compare', desc='비교 연산 (연산자,대상값)') >= 1000:
             self.debug_string(value='1000점 이상')
             return 보상(self.ctx)
         if self.wait_tick(wait_tick=1000):

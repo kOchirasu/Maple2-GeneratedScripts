@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
         self.set_actor(trigger_id=9908, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_Off')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=931, min_users='4', operator='GreaterEqual'):
+        if self.count_users(box_id=931) >= 4:
             # <4명 이상 입장시 활성화>
             return 감지(self.ctx)
         if self.user_detected(box_ids=[931], job_code=0):

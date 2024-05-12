@@ -44,7 +44,7 @@ class 영상재생_01(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\JobIntro_Priest.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상마무리_01(self.ctx)
         if self.wait_tick(wait_tick=53000):
             return 영상마무리_01(self.ctx)

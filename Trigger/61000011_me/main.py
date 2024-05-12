@@ -35,9 +35,9 @@ class 대기(trigger_api.Trigger):
         self.widget_action(type='OxQuizUGC', func='ShowHostUI')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='IsStarted'):
+        if self.widget_value(type='OxQuizUGC', name='IsStarted') == 1:
             return 게임시작(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsCanceled'):
+        if self.widget_value(type='OxQuizUGC', name='IsCanceled') == 1:
             return 게임취소(self.ctx)
 
 
@@ -71,11 +71,11 @@ class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[105]):
             return 종료(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsCanceled'):
+        if self.widget_value(type='OxQuizUGC', name='IsCanceled') == 1:
             return 게임취소(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsFinished'):
+        if self.widget_value(type='OxQuizUGC', name='IsFinished') == 1:
             return 게임끝(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsQuizSubmit'):
+        if self.widget_value(type='OxQuizUGC', name='IsQuizSubmit') == 1:
             return 문제표시(self.ctx)
 
 
@@ -112,9 +112,9 @@ class 정답대기(trigger_api.Trigger):
         self.widget_action(type='OxQuizUGC', func='HostUIChange', widget_arg='SelectAnswer')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='IsRemoveWall'):
+        if self.widget_value(type='OxQuizUGC', name='IsRemoveWall') == 1:
             return 문제표시(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsAnswerSubmit'):
+        if self.widget_value(type='OxQuizUGC', name='IsAnswerSubmit') == 1:
             return 정답체크(self.ctx)
 
 
@@ -124,9 +124,9 @@ class 정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuizUGC', func='HostUIChange', widget_arg='Judge')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='Correct'):
+        if self.widget_value(type='OxQuizUGC', name='Correct') == 1:
             return 문제정답O(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='Incorrect'):
+        if self.widget_value(type='OxQuizUGC', name='Incorrect') == 1:
             return 문제정답X(self.ctx)
 
 
@@ -173,9 +173,9 @@ class 문제정리(trigger_api.Trigger):
         self.move_user(map_id=61000011, portal_id=99, box_id=104)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='IsFinished'):
+        if self.widget_value(type='OxQuizUGC', name='IsFinished') == 1:
             return 게임끝(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsCanceled'):
+        if self.widget_value(type='OxQuizUGC', name='IsCanceled') == 1:
             return 게임취소(self.ctx)
         if self.time_expired(timer_id='20'):
             return 준비(self.ctx)

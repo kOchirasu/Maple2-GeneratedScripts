@@ -19,7 +19,7 @@ class 기다림(trigger_api.Trigger):
 
 class 체력조건_1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=150):
+        if self.shadow_expedition_points() >= 150:
             return 알림_1(self.ctx)
 
 
@@ -40,7 +40,7 @@ class 알림_1(trigger_api.Trigger):
 
 class 체력조건_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=300):
+        if self.shadow_expedition_points() >= 300:
             return 알림_5(self.ctx)
 
     def on_exit(self) -> None:

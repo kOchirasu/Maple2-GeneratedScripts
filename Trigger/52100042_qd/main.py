@@ -24,9 +24,9 @@ class roomCheck(trigger_api.Trigger):
 
 class levelcheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             return raid(self.ctx)
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             return chaos_raid(self.ctx)
 
 
@@ -35,7 +35,7 @@ class raid(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[401], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ExitPortal', value=1):
+        if self.user_value(key='ExitPortal') >= 1:
             return end(self.ctx)
 
 
@@ -44,7 +44,7 @@ class chaos_raid(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[402], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ExitPortal', value=1):
+        if self.user_value(key='ExitPortal') >= 1:
             return end(self.ctx)
 
 
@@ -165,7 +165,7 @@ class quest_raid(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[403], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ExitPortal', value=1):
+        if self.user_value(key='ExitPortal') >= 1:
             return quest_end(self.ctx)
         if self.user_detected(box_ids=[720]):
             return npcSpawn(self.ctx)
@@ -176,7 +176,7 @@ class npcSpawn(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[510], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ExitPortal', value=1):
+        if self.user_value(key='ExitPortal') >= 1:
             return quest_end(self.ctx)
 
 

@@ -4,7 +4,7 @@ import trigger_api
 
 class guide(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return Guide_Climb(self.ctx)
 
 
@@ -14,7 +14,7 @@ class Guide_Climb(trigger_api.Trigger):
         self.show_guide_summary(entity_id=20001771, text_id=20001771, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return Guide_Climb_02(self.ctx)
 
 

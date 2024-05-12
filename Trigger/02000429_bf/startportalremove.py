@@ -4,7 +4,7 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,          750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 시작지점포탈_우선생성(self.ctx)
 
@@ -23,7 +23,7 @@ class 시작지점포탈_우선생성(trigger_api.Trigger):
 
 class 시작지점포탈제거_직전(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=770, min_users='1'):
+        if self.count_users(box_id=770) >= 1:
             # MS2TriggerBox   TriggerObjectID = 770, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,          770은 최초 스타팅 지점만 포함하는 아주 작은 범위
             # 던전 입장 후 30초 지났는데도, 계속 스타팅 지점에 있으면 진입포탈 제거 알림 경고 메시지 보여주기
             return 시작지점포탈_제거알림메시지생성(self.ctx)

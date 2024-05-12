@@ -149,7 +149,7 @@ class pc소환_2(trigger_api.Trigger):
 class 카메라리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=16, visible=True, enable=True, minimap_visible=False)
-        self.reset_camera(interpolation_time=0.8)
+        self.reset_camera(arg1='interpolationTime', interpolation_time=0.8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

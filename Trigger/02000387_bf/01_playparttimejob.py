@@ -138,14 +138,14 @@ class PCPlacement01(trigger_api.Trigger):
         self.set_user_value(trigger_id=10, key='RandomPortalOn', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9005, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9005) == 1:
             # 카운터 1명
             return PCPlacement02(self.ctx) # 1인 테스트용 임시
 
 
 class PCPlacement02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9006, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9006) == 3:
             return PCPlacement03(self.ctx)
 
 
@@ -1387,53 +1387,53 @@ class NpcGroup4228(trigger_api.Trigger):
 
 class NextTurnCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='RoundCustomerRow', value=10103):
+        if self.user_value(key='RoundCustomerRow') >= 10103:
             return R01Customer02Row02Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=10202):
+        if self.user_value(key='RoundCustomerRow') >= 10202:
             return R01Customer03Row04Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=10304):
+        if self.user_value(key='RoundCustomerRow') >= 10304:
             return R01Customer04Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=10401): # 2Round
+        if self.user_value(key='RoundCustomerRow') >= 10401: # 2Round
             return R01End(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20102):
+        if self.user_value(key='RoundCustomerRow') >= 20102:
             return R02Customer02Row03Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20203):
+        if self.user_value(key='RoundCustomerRow') >= 20203:
             return R02Customer03Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20301):
+        if self.user_value(key='RoundCustomerRow') >= 20301:
             return R02Customer04Row04Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20404):
+        if self.user_value(key='RoundCustomerRow') >= 20404:
             return R02Customer05Row02Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20502):
+        if self.user_value(key='RoundCustomerRow') >= 20502:
             return R02Customer06Row03Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20603):
+        if self.user_value(key='RoundCustomerRow') >= 20603:
             return R02Customer07Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20701):
+        if self.user_value(key='RoundCustomerRow') >= 20701:
             return R02Customer08Row04Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=20804): # 3Round
+        if self.user_value(key='RoundCustomerRow') >= 20804: # 3Round
             return R02End(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30104):
+        if self.user_value(key='RoundCustomerRow') >= 30104:
             return R03Customer02Row02Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30202):
+        if self.user_value(key='RoundCustomerRow') >= 30202:
             return R03Customer03Row03Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30303):
+        if self.user_value(key='RoundCustomerRow') >= 30303:
             return R03Customer04Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30401):
+        if self.user_value(key='RoundCustomerRow') >= 30401:
             return R03Customer05Row02Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30502):
+        if self.user_value(key='RoundCustomerRow') >= 30502:
             return R03Customer06Row04Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30604):
+        if self.user_value(key='RoundCustomerRow') >= 30604:
             return R03Customer07Row03Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30703):
+        if self.user_value(key='RoundCustomerRow') >= 30703:
             return R03Customer08Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30801):
+        if self.user_value(key='RoundCustomerRow') >= 30801:
             return R03Customer09Row01Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=30901):
+        if self.user_value(key='RoundCustomerRow') >= 30901:
             return R03Customer10Row04Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=31004):
+        if self.user_value(key='RoundCustomerRow') >= 31004:
             return R03Customer11Row02Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=31102):
+        if self.user_value(key='RoundCustomerRow') >= 31102:
             return R03Customer12Row03Random(self.ctx)
-        if self.user_value(key='RoundCustomerRow', value=31203):
+        if self.user_value(key='RoundCustomerRow') >= 31203:
             return R03End(self.ctx)
 
 

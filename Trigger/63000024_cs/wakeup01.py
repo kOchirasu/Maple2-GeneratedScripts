@@ -275,7 +275,7 @@ class 키타입설정안내01(trigger_api.Trigger):
         self.guide_event(event_id=10030005) # 트리거 To가이드 : 키타입설정
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10030009'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10030009:
             return MeetTinChai01(self.ctx)
 
 

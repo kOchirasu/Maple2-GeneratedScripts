@@ -33,7 +33,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513,3514,3515,3516,3517,3518,3519,3520,3521], visible=False, start_delay=0, interval=0, fade=0) # 벽
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=100, min_users='50'):
+        if self.count_users(box_id=100) >= 50:
             return 시작준비(self.ctx)
         if self.wait_tick(wait_tick=60000):
             return 시작준비(self.ctx)
@@ -127,9 +127,9 @@ class 문제1정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제1정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제1정답X(self.ctx)
 
 
@@ -225,9 +225,9 @@ class 문제2정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='2')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제2정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제2정답X(self.ctx)
 
 
@@ -323,9 +323,9 @@ class 문제3정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='3')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제3정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제3정답X(self.ctx)
 
 
@@ -421,9 +421,9 @@ class 문제4정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='4')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제4정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제4정답X(self.ctx)
 
 
@@ -519,9 +519,9 @@ class 문제5정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='5')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제5정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제5정답X(self.ctx)
 
 
@@ -617,9 +617,9 @@ class 문제6정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='6')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제6정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제6정답X(self.ctx)
 
 
@@ -715,9 +715,9 @@ class 문제7정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='7')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제7정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제7정답X(self.ctx)
 
 
@@ -813,9 +813,9 @@ class 문제8정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='8')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제8정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제8정답X(self.ctx)
 
 
@@ -911,9 +911,9 @@ class 문제9정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='9')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제9정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제9정답X(self.ctx)
 
 
@@ -1009,9 +1009,9 @@ class 문제10정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuiz', func='PreJudge', widget_arg='10')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuiz', name='Correct'):
+        if self.widget_value(type='OxQuiz', name='Correct') == 1:
             return 문제10정답O(self.ctx)
-        if self.widget_condition(type='OxQuiz', name='Incorrect'):
+        if self.widget_value(type='OxQuiz', name='Incorrect') == 1:
             return 문제10정답X(self.ctx)
 
 

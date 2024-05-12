@@ -304,9 +304,9 @@ class CheckSuccess(trigger_api.Trigger):
         self.set_portal(portal_id=3, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='RainbowMonster', name='IsMissionSuccess', condition='19-21'):
+        if self.widget_value(type='RainbowMonster', name='IsMissionSuccess') in [19,20,21]:
             return HappyEndingStart(self.ctx)
-        if not self.widget_condition(type='RainbowMonster', name='IsMissionSuccess', condition='19-21'):
+        if self.widget_value(type='RainbowMonster', name='IsMissionSuccess') not in [19,20,21]:
             return BadEndingStart(self.ctx)
 
 

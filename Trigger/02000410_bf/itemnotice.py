@@ -4,14 +4,14 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면          750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 전투시작(self.ctx)
 
 
 class 전투시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ItemNotice01', value=1):
+        if self.user_value(key='ItemNotice01') >= 1:
             # 인페르녹이 최초 등장하여 광역기폭발 공격할 때 이 신호를 보냄
             return 필수아이템01(self.ctx)
 
@@ -31,7 +31,7 @@ class 필수아이템01(trigger_api.Trigger):
 
 class 다음대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ItemNotice02', value=1):
+        if self.user_value(key='ItemNotice02') >= 1:
             # 인페르녹이 광역공격 할때 이 신호를 보냄
             return 필수아이템02(self.ctx)
 

@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=100, value=1):
+        if self.dungeon_variable(var_id=100) == 1:
             return 메시지1(self.ctx)
 
 

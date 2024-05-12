@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=799, min_users='1'):
+        if self.count_users(box_id=799) >= 1:
             return 시작(self.ctx)
 
 

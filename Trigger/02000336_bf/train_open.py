@@ -8,7 +8,7 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000805], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=706, min_users='1'):
+        if self.count_users(box_id=706) >= 1:
             return 시작(self.ctx)
 
 
@@ -48,7 +48,7 @@ class 작동_02(trigger_api.Trigger):
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 작동_03(self.ctx)
 
 

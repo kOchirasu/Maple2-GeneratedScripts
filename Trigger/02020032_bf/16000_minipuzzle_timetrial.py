@@ -18,7 +18,7 @@ class Wait(trigger_api.Trigger):
         self.set_effect(trigger_ids=[16201], visible=False) # Right Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimeEventOn', value=1):
+        if self.user_value(key='TimeEventOn') >= 1:
             return SettingDelay(self.ctx)
 
 
@@ -34,7 +34,7 @@ class Setting(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000079], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimeEventOn', value=0):
+        if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
         if self.object_interacted(interact_ids=[12000079], state=0):
             self.set_timer(timer_id='10', seconds=120, start_delay=1, interval=0, v_offset=0)
@@ -150,7 +150,7 @@ class TimeTrial_Fail(trigger_api.Trigger):
         self.reset_timer(timer_id='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimeEventOn', value=0):
+        if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
         if self.time_expired(timer_id='10'):
             self.set_interact_object(trigger_ids=[12000098], state=0)

@@ -22,7 +22,7 @@ class 시작(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_Remember_Vision.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 말풍선딜레이(self.ctx)
 
 

@@ -54,7 +54,7 @@ class 스테이지1_추가등장대기01(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000535_BF__MAIN__37$', arg3='5000') # 시작안내문
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=6, operator='LessEqual'):
+        if self.user_value(key='MonsterMany') <= 6:
             return 스테이지1_추가등장01(self.ctx)
 
 
@@ -70,7 +70,7 @@ class 스테이지1_추가등장01(trigger_api.Trigger):
 
 class 스테이지1_대기01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=6, operator='LessEqual'):
+        if self.user_value(key='MonsterMany') <= 6:
             return 스테이지1_추가등장02(self.ctx)
 
 
@@ -86,7 +86,7 @@ class 스테이지1_추가등장02(trigger_api.Trigger):
 
 class 스테이지1_대기02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=6, operator='LessEqual'):
+        if self.user_value(key='MonsterMany') <= 6:
             return 스테이지1_추가등장03(self.ctx)
 
 
@@ -102,7 +102,7 @@ class 스테이지1_추가등장03(trigger_api.Trigger):
 
 class 스테이지1_대기03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 1스테이지의 몹 다 죽이면 이 변수 0이됨
             return 스테이지1문파괴대기_스테이지2몬스터등장(self.ctx)
 
@@ -145,7 +145,7 @@ class 스테이지2_시작(trigger_api.Trigger):
 
 class 스테이지2_대기01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=4, operator='LessEqual'):
+        if self.user_value(key='MonsterMany') <= 4:
             return 스테이지2_추가등장01(self.ctx)
 
 
@@ -161,7 +161,7 @@ class 스테이지2_추가등장01(trigger_api.Trigger):
 
 class 스테이지2_대기02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 2스테이지의 몹 다 죽이면 이 변수 0이됨
             return 스테이지2문파괴대기_스테이지3몬스터등장(self.ctx)
 
@@ -204,7 +204,7 @@ class 스테이지3_시작(trigger_api.Trigger):
 
 class 스테이지3_진행중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 3스테이지의 몹 다 죽이면 이 변수 0이됨
             return 스테이지3문파괴대기_스테이지4몬스터등장(self.ctx)
 
@@ -249,7 +249,7 @@ class 스테이지4_시작(trigger_api.Trigger):
 
 class 스테이지4_진행중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 4스테이지의 몹 다 죽이면 이 변수 0이됨
             return 스테이지4문파괴대기_스테이지5몬스터등장(self.ctx)
 
@@ -292,7 +292,7 @@ class 스테이지5_시작(trigger_api.Trigger):
 
 class 스테이지5_완료대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 5스테이지의 몹 다 죽이면 이 변수 0이됨
             return 스테이지5_완료(self.ctx)
 
@@ -344,9 +344,9 @@ class 문열기시작2(trigger_api.Trigger):
 
 class 게임로직종료대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='GameLogicEnd', value=1):
+        if self.user_value(key='GameLogicEnd') >= 1:
             return 게임로직종료및성공(self.ctx)
-        if self.user_value(key='GameLogicEnd', value=2):
+        if self.user_value(key='GameLogicEnd') >= 2:
             return 게임로직종료및실패(self.ctx)
 
 

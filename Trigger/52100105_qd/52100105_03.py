@@ -44,7 +44,7 @@ class 컷신1_1(trigger_api.Trigger):
         self.play_scene_movie(file_name='Kritias_EpicCutScene07_01.swf', movie_id=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='0'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 0:
             return None # Missing State: 컷신1_2
         if self.wait_tick(wait_tick=3000):
             return 몹소환1(self.ctx)
@@ -159,7 +159,7 @@ class 컷신3_1(trigger_api.Trigger):
         self.play_scene_movie(file_name='Kritias_EpicCutScene07_02.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 클라디아생성2(self.ctx)
         if self.wait_tick(wait_tick=12000):
             return 클라디아생성2(self.ctx)

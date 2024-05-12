@@ -10,24 +10,24 @@ class Ready(trigger_api.Trigger):
         self.set_skill(trigger_ids=[1212], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=199, min_users='1'):
+        if self.count_users(box_id=199) >= 1:
             # MS2TriggerBox   TriggerObjectID = 199, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면        199은 스타팅 지점   포함되는 범위
             return 낮밤변환신호대기(self.ctx)
 
 
 class 낮밤변환신호대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='DayNightChange', value=1):
+        if self.user_value(key='DayNightChange') >= 1:
             # 이슈라가 밤에서 낮으로 변화시킬때  DayNightChange 이 변수 1로 설정하는 신호를 AI에서 보냄
             return 낮시간으로변화대기단계(self.ctx)
-        if self.user_value(key='DayNightChange', value=2):
+        if self.user_value(key='DayNightChange') >= 2:
             # 이슈라가 낮에서 밤으로 변화시킬때  DayNightChange 이 변수 2로 설정하는 신호를 AI에서 보냄
             return 밤시간으로변화대기단계(self.ctx)
         # 스킬 브레이크 막기 실패하면 이슈라AI에서  DungeonReset = 1 신호를 보내서 던전 초기화 시킴
-        if self.user_value(key='DayNightChange', value=3):
+        if self.user_value(key='DayNightChange') >= 3:
             # 이슈라가 스킬브레이크 패턴 사용하거나 죽을 때  DayNightChange 이 변수 3으로로 설정하는 신호를 AI에서 보냄
             return 디버프모조리제거(self.ctx)
-        if self.user_value(key='DungeonReset', value=1):
+        if self.user_value(key='DungeonReset') >= 1:
             # 낮으로 시간으로 셋팅하는 것이 이 맵의 초기화 셋팅임
             return 낮시간으로변화하기_맵초기화(self.ctx)
 

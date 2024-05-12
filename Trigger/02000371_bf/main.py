@@ -14,9 +14,9 @@ class 대기(trigger_api.Trigger):
 """
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             return None # Missing State: 레이드
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             return 카오스레이드(self.ctx)
 
 """

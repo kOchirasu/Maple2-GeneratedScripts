@@ -857,7 +857,7 @@ class MinimapGuide03(trigger_api.Trigger):
         self.guide_event(event_id=10031080)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10031083'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10031083:
             # 가이드 To 트리거 -: 미니맵 크게 보기 완료
             return Delay03(self.ctx)
 

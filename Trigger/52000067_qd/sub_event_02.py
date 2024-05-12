@@ -7,7 +7,7 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7200], visible=False) # 폭발
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return idle_02(self.ctx)
 
 

@@ -7,7 +7,7 @@ class 시작(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return 대기시간(self.ctx)
 
 

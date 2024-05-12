@@ -33,7 +33,7 @@ class 시작(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         # <condition name="WaitTick" waitTick="1500">
-        if self.user_value(key='Dead_A', value=1) and self.user_value(key='Dead_B', value=1):
+        if self.user_value(key='Dead_A') >= 1 and self.user_value(key='Dead_B') >= 1:
             return 보스소환대기(self.ctx)
 
 
@@ -69,12 +69,12 @@ class 정산(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3024], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.score_board_compare(operator='GreaterEqual', score=28000):
+        if self.score_board_score() >= 28000:
             self.debug_string(value='28000 이상')
             # self.set_event_ui(type=7, arg2='미션 성공! 참 잘했어요!', arg3='2500')
             self.set_achievement(trigger_id=199, type='trigger', achieve='HighScoreTreasureMap04')
             return 반응대기(self.ctx)
-        if self.score_board_compare(operator='Less', score=28000):
+        if self.score_board_score() < 28000:
             self.debug_string(value='28000 미만')
             # self.set_event_ui(type=7, arg2='미션 성공!', arg3='2500')
             return 반응대기(self.ctx)

@@ -4,7 +4,7 @@ import trigger_api
 
 class 레이저_01_소멸(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=712, min_users='1'):
+        if self.count_users(box_id=712) >= 1:
             return 레이저_02(self.ctx)
 
     def on_exit(self) -> None:
@@ -13,7 +13,7 @@ class 레이저_01_소멸(trigger_api.Trigger):
 
 class 레이저_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return 레이저_02_생성(self.ctx)
 
 
@@ -22,7 +22,7 @@ class 레이저_02_생성(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[998], auto_target=True) # 몬스터 등장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=708, min_users='1'):
+        if self.count_users(box_id=708) >= 1:
             return 레이저_03_생성(self.ctx)
 
 

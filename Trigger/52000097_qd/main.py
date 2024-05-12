@@ -167,7 +167,7 @@ class scene_12(trigger_api.Trigger):
         self.play_scene_movie(file_name='ProphecyofFall.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return scene_13(self.ctx)
 
     def on_exit(self) -> None:

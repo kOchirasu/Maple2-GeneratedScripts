@@ -7,14 +7,14 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[8053], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_max_user_count(value=3):
+        if self.dungeon_max_user_count() == 3:
             # 던전 최대 인원수가 3이면
             return vehicle_01(self.ctx)
 
 
 class vehicle_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=906, min_users='1'):
+        if self.count_users(box_id=906) >= 1:
             return monster_spawn_ready(self.ctx)
 
 

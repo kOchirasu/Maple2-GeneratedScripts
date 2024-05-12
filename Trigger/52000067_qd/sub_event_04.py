@@ -7,7 +7,7 @@ class idle(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[759], auto_target=True) # 시장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=706, min_users='1'):
+        if self.count_users(box_id=706) >= 1:
             return ready(self.ctx)
 
 

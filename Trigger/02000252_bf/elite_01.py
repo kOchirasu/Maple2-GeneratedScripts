@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=903, min_users='1'):
+        if self.count_users(box_id=903) >= 1:
             return 딜레이(self.ctx)
 
 
@@ -20,7 +20,7 @@ class 대기2(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[2146,2147,2148,2149,2150,2151,2152,2153,2154,2155,2156,2157,2158,2159,2160,2161,2162,2163,2164,2165,2166], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=903, min_users='1'):
+        if self.count_users(box_id=903) >= 1:
             return 딜레이2(self.ctx)
 
 

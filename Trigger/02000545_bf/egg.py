@@ -11,7 +11,7 @@ class idle(trigger_api.Trigger):
 
 class 아르키아체력(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=55, spawn_id=102, is_relative=True):
+        if self.npc_hp(spawn_id=102, is_relative=True) <= 55:
             return 알메쉬생성(self.ctx)
 
 

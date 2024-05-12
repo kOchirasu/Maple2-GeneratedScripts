@@ -32,10 +32,10 @@ class 기본셋팅(trigger_api.Trigger):
 
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_id(dungeon_id=23050003):
+        if self.dungeon_id() == 23050003:
             # 현재 입장한 던전ID가 23050003  이라면 ,<transition state="쉬운난이도보스등장" /> 실행
             return 쉬운난이도보스등장(self.ctx)
-        if self.dungeon_id(dungeon_id=23051003):
+        if self.dungeon_id() == 23051003:
             # 현재 입장한 던전ID가 23051003  이라면 , <transition state="여려움난이도보스등장" /> 실행
             return 여려움난이도보스등장(self.ctx)
         if self.wait_tick(wait_tick=1100):
@@ -65,22 +65,22 @@ class 쉬운난이도보스등장(trigger_api.Trigger):
 
 class 보스전투중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SmallRemove', value=1):
+        if self.user_value(key='SmallRemove') >= 1:
             # 블랙빈이 방구 공격 할 때 AI에서 이 신호 SmallRemove = 1 보냄
             return 작아짐제거(self.ctx)
-        if self.user_value(key='VacuumMessage', value=1):
+        if self.user_value(key='VacuumMessage') >= 1:
             # 블랙빈 진공청소기 흡수된 플레이어 있으면 AI에서 이 신호 VacuumMessage = 1 보냄
             return 메시지출력(self.ctx)
-        if self.user_value(key='NextPortal', value=1):
+        if self.user_value(key='NextPortal') >= 1:
             # 블랙빈 첫번째 전투판 전투 끝나면 AI에서 이 신호 NextPortal = 1 보냄
             return 다음이동포탈등장(self.ctx)
-        if self.user_value(key='End', value=1):
+        if self.user_value(key='End') >= 1:
             # 블랙빈AI에서 End = 1 신호를 보냄
             return 종료딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 

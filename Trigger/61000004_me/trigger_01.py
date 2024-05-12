@@ -77,7 +77,7 @@ class 시작조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=60000):
             return 어나운스0(self.ctx)
-        if self.count_users(box_id=101, min_users='20'):
+        if self.count_users(box_id=101) >= 20:
             return 어나운스0(self.ctx)
 
 

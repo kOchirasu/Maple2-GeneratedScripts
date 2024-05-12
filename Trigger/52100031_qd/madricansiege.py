@@ -99,7 +99,7 @@ class 다리건넘(trigger_api.Trigger):
         # self.spawn_monster(spawn_ids=[2101], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=300):
+        if self.shadow_expedition_points() >= 300:
             return 차지원2(self.ctx)
 
 
@@ -108,7 +108,7 @@ class 차지원2(trigger_api.Trigger):
         self.set_user_value(trigger_id=99999098, key='faction02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=600):
+        if self.shadow_expedition_points() >= 600:
             return 차지원3(self.ctx)
 
 
@@ -118,7 +118,7 @@ class 차지원3(trigger_api.Trigger):
         self.set_user_value(trigger_id=99999097, key='faction03', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=1000):
+        if self.shadow_expedition_points() >= 1000:
             self.shadow_expedition(type='CloseBossGauge')
             return 보스등장(self.ctx)
 
@@ -129,7 +129,7 @@ class 보스등장(trigger_api.Trigger):
         self.set_user_value(trigger_id=99999096, key='faction04', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='bossSpawn', value=1):
+        if self.user_value(key='bossSpawn') >= 1:
             return 던전종료대기(self.ctx)
 
 

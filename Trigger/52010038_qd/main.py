@@ -46,7 +46,7 @@ class 시작(trigger_api.Trigger):
         self.set_user_value(trigger_id=999004, key='AllertStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=150):
+        if self.shadow_expedition_points() >= 150:
             return 부상병발생(self.ctx)
 
 
@@ -56,7 +56,7 @@ class 부상병발생(trigger_api.Trigger):
         self.set_user_value(trigger_id=993001, key='WoundStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=300):
+        if self.shadow_expedition_points() >= 300:
             return 차폭탄방어2(self.ctx)
 
 
@@ -121,7 +121,7 @@ class 차폭탄방어완료조건2(trigger_api.Trigger):
 
 class 층이벤트스킵3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=700):
+        if self.shadow_expedition_points() >= 700:
             return 보스등장(self.ctx)
 
 
@@ -195,7 +195,7 @@ class 보스연출종료(trigger_api.Trigger):
         self.set_user_value(trigger_id=992002, key='WaveStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=1000):
+        if self.shadow_expedition_points() >= 1000:
             return 종료(self.ctx)
         if self.monster_dead(spawn_ids=[1099]):
             self.set_user_value(trigger_id=999001, key='EngineIsDead', value=1)

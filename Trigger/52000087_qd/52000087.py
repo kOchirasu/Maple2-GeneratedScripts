@@ -70,7 +70,7 @@ class 영상재생(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return Quit(self.ctx)
         if self.wait_tick(wait_tick=35000):
             return Quit(self.ctx)

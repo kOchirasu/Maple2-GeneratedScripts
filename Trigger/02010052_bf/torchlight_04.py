@@ -8,7 +8,7 @@ class start(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7004], visible=False) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return Event_04(self.ctx)
 
 
@@ -65,7 +65,7 @@ class spawn_state(trigger_api.Trigger):
 
 class run(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return run_01(self.ctx)
 
 

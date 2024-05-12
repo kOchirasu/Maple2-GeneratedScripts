@@ -4,7 +4,7 @@ import trigger_api
 
 class 경고텍스트발생(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='respawn', value=1):
+        if self.user_value(key='respawn') >= 1:
             return 경고텍스트(self.ctx)
 
 
@@ -15,7 +15,7 @@ class 경고텍스트(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
             return 경고텍스트_2(self.ctx)
-        if self.user_value(key='respawn_end', value=2):
+        if self.user_value(key='respawn_end') >= 2:
             return 끝(self.ctx)
 
 
@@ -26,7 +26,7 @@ class 경고텍스트_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
             return 경고텍스트(self.ctx)
-        if self.user_value(key='respawn_end', value=2):
+        if self.user_value(key='respawn_end') >= 2:
             return 끝(self.ctx)
 
 

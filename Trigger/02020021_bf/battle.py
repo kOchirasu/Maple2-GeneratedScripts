@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990001, key='End', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='battlesetting', value=1):
+        if self.user_value(key='battlesetting') >= 1:
             return 전투_1라운드(self.ctx)
 
 
@@ -26,9 +26,9 @@ class 전투_1라운드(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=300):
+        if self.dungeon_play_time() >= 300:
             return 전투_종료(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=80, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 80:
             return 전투_2라운드(self.ctx)
 
 
@@ -41,9 +41,9 @@ class 전투_2라운드(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=300):
+        if self.dungeon_play_time() >= 300:
             return 전투_종료(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=60, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 60:
             return 전투_3라운드(self.ctx)
 
 
@@ -67,9 +67,9 @@ class 전투_3라운드_시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(box_ids=[901]):
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=300):
+        if self.dungeon_play_time() >= 300:
             return 전투_종료(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=40, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 40:
             return 전투_4라운드(self.ctx)
 
 
@@ -89,15 +89,15 @@ class 전투_4라운드_시작(trigger_api.Trigger):
         # <독바닥 깔기 제어>
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_check_play_time(play_seconds=180, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 180 and self.monster_dead(spawn_ids=[201]):
             # <한국용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24095005)
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=70, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 70 and self.monster_dead(spawn_ids=[201]):
             # <중국용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24095006)
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=270, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 270 and self.monster_dead(spawn_ids=[201]):
             # <NA용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24095010)
             return 전투_종료(self.ctx)
@@ -105,7 +105,7 @@ class 전투_4라운드_시작(trigger_api.Trigger):
             return 전투_종료(self.ctx)
         if not self.user_detected(box_ids=[901]):
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=300):
+        if self.dungeon_play_time() >= 300:
             return 전투_종료(self.ctx)
 
 

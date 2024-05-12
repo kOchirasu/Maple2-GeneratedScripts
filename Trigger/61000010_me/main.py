@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=60000):
             return 어나운스0(self.ctx)
-        if self.user_value(key='GameStart', value=1):
+        if self.user_value(key='GameStart') >= 1:
             return 어나운스0(self.ctx)
 
 

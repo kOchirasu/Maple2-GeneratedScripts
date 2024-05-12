@@ -7,7 +7,7 @@ class idle(trigger_api.Trigger):
         self.move_user(map_id=99999911, portal_id=1, box_id=702)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return fail_random(self.ctx)
 
 

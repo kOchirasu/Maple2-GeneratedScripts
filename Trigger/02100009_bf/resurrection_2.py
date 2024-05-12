@@ -29,7 +29,7 @@ class 버프(trigger_api.Trigger):
 
 class 체력조건달성(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=100000002, compare='lowerEqual', value=5, is_relative=True):
+        if self.npc_hp(spawn_id=100000002, is_relative=True) <= 5:
             return 몬스터기절_2(self.ctx)
 
     def on_exit(self) -> None:
@@ -60,7 +60,7 @@ class 몬스터부활(trigger_api.Trigger):
 
 class 체력조건미달(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=100000002, compare='higher', value=5, is_relative=True):
+        if self.npc_hp(spawn_id=100000002, is_relative=True) > 5:
             return 몬스터부활_2(self.ctx)
 
     def on_exit(self) -> None:

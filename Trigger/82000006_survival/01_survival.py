@@ -104,10 +104,10 @@ class CheckTheNumberOfPlayers_1st(trigger_api.Trigger):
         self.reset_timer(timer_id='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='25', operator='GreaterEqual'):
+        if self.count_users(box_id=9000) >= 25:
             # 25명 이상이면 게임 시작
             return MatchingSuccessDelay(self.ctx)
-        if self.count_users(box_id=9000, min_users='25', operator='Less'):
+        if self.count_users(box_id=9000) < 25:
             # 25명 미만이면 게임 취소
             return MatchingFailDelay(self.ctx)
 
@@ -338,10 +338,10 @@ class PVPReady(trigger_api.Trigger):
 
 class CheckTheNumberOfPlayers_2nd(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='20', operator='GreaterEqual'):
+        if self.count_users(box_id=9000) >= 20:
             # 20명 이상이면 게임 시작
             return RideRiseUp(self.ctx)
-        if self.count_users(box_id=9000, min_users='20', operator='Less'):
+        if self.count_users(box_id=9000) < 20:
             # 20명 미만이면 게임 취소  : 게임 설명 중에 이탈한 플레이어가 많은 경우 게임 취소
             return MatchingFailDelay(self.ctx)
 

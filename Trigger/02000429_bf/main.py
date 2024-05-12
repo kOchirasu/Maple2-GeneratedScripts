@@ -14,7 +14,7 @@ class Ready(trigger_api.Trigger):
         self.set_portal(portal_id=1, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,          750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 전투시작_인페르녹전함(self.ctx)
 
@@ -31,13 +31,13 @@ class 전투시작_인페르녹전함(trigger_api.Trigger):
 
 class 첫번째페이즈_인페르녹전함(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SecondPhase', value=1):
+        if self.user_value(key='SecondPhase') >= 1:
             # 1페이즈 전투 진행하면서  SecondPhase = 1 신호를 받을때까지 여기서 대기
             return 두번째페이즈_인페르녹전함(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 시간이 다 되어서 실패한 경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -50,13 +50,13 @@ class 두번째페이즈_인페르녹전함(trigger_api.Trigger):
         # <action feature="DungeonRankBalance_02" name="DungeonMissionComplete" missionID="24090017"/> ## 중국용 던전랭크 코드: 인페르녹의 전함 측면파괴 던전랭크 달성을 위한 신호
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ThirdPhase', value=1):
+        if self.user_value(key='ThirdPhase') >= 1:
             # 2페이즈 전투 진행하면서, 인페르녹 전함에게   ThirdPhase = 1 신호를 받을때까지 여기서 대기
             return 세번째페이즈_인페르녹등장(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 시간이 다 되어서 실패한 경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -70,10 +70,10 @@ class 세번째페이즈_인페르녹등장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 인페르녹전투시작(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 시간이 다 되어서 실패한 경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -83,10 +83,10 @@ class 인페르녹전투시작(trigger_api.Trigger):
         if self.monster_dead(spawn_ids=[102]):
             # 인페르녹 보스 죽이면, 스폰ID : 102
             return 인페르녹처치성공(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 시간이 다 되어서 실패한 경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -186,7 +186,7 @@ class 성공연출02(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\WorldInvasionScene6.usm', movie_id=1, skip_type='needAll')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 최종성공처리(self.ctx)
         if self.wait_tick(wait_tick=10000):
             return 최종성공처리(self.ctx)

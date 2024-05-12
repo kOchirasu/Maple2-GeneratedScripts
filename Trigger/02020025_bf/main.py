@@ -153,16 +153,16 @@ class 전투_진행(trigger_api.Trigger):
         # self.set_user_value(trigger_id=99990006, key='SpecialTimer', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='End', value=1):
+        if self.user_value(key='End') >= 1:
             return 랭크체크대사(self.ctx)
 
 
 class 랭크체크대사(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_first_user_mission_score(score=1500, operator='GreaterEqual'):
+        if self.dungeon_first_user_mission_score() >= 1500:
             self.side_npc_talk(npc_id=24110001, illust='Conder_normal', duration=5000, script='$02020025_BF__main__8$', voice='ko/Npc/00002146')
             return 던전종료_A랭크이상(self.ctx)
-        if self.dungeon_first_user_mission_score(score=1500, operator='Less'):
+        if self.dungeon_first_user_mission_score() < 1500:
             self.side_npc_talk(npc_id=24110001, illust='Conder_smile', duration=5000, script='$02020025_BF__main__9$', voice='ko/Npc/00002145')
             return 던전종료_A랭크미만(self.ctx)
 

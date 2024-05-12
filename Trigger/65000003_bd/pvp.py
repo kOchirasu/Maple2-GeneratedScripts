@@ -7,7 +7,7 @@ class 시작(trigger_api.Trigger):
         self.set_timer(timer_id='60', seconds=60, start_delay=0, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=104, min_users='20'):
+        if self.count_users(box_id=104) >= 20:
             return PvP(self.ctx)
         if self.time_expired(timer_id='60'):
             return 대기(self.ctx)
@@ -21,9 +21,9 @@ class 대기(trigger_api.Trigger):
         self.reset_timer(timer_id='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=104, min_users='2'):
+        if self.count_users(box_id=104) >= 2:
             return PvP(self.ctx)
-        if not self.count_users(box_id=104, min_users='2'):
+        if self.count_users(box_id=104) < 2:
             return 비김(self.ctx)
 
 

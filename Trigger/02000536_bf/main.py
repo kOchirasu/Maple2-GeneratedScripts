@@ -73,7 +73,7 @@ class 전투시작(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=70, spawn_id=101, is_relative=True):
+        if self.npc_hp(spawn_id=101, is_relative=True) <= 70:
             return 메이드군단을스폰(self.ctx)
 
 
@@ -83,7 +83,7 @@ class 메이드군단을스폰(trigger_api.Trigger):
         self.side_npc_talk(npc_id=23300001, illust='Haren_serious', duration=4000, script='$02000536_BF__MAIN__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=101, is_relative=True):
+        if self.npc_hp(spawn_id=101, is_relative=True) <= 50:
             return 메이드군단을스폰2(self.ctx)
 
 
@@ -92,7 +92,7 @@ class 메이드군단을스폰2(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[401,402,403,404], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=30, spawn_id=101, is_relative=True):
+        if self.npc_hp(spawn_id=101, is_relative=True) <= 30:
             return 몬스터사망체크(self.ctx)
 
 

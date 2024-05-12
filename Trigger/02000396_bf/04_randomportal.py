@@ -18,7 +18,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='SearchStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SearchStart', value=1):
+        if self.user_value(key='SearchStart') >= 1:
             return PickRandomPortal(self.ctx)
 
 

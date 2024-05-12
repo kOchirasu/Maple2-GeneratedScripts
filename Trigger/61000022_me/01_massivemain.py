@@ -52,7 +52,7 @@ class EntryDelay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='1'):
             return MusicChange(self.ctx)
-        if self.count_users(box_id=9001, min_users='50'):
+        if self.count_users(box_id=9001) >= 50:
             return MusicChange(self.ctx)
 
 
@@ -437,15 +437,15 @@ class R01_GameTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R01G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G05orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G03orG04orG05(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G02orG03orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G02orG03(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             return G01orG02(self.ctx)
 
 
@@ -1266,15 +1266,15 @@ class R02_GameTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R02G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G05orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G03orG04orG05(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G02orG03orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G02orG03(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             return G01orG02(self.ctx)
 
 
@@ -1664,15 +1664,15 @@ class R03_GameTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R03G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G05orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G03orG04orG05(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G02orG03orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G02orG03(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             return G01orG02(self.ctx)
 
 
@@ -2036,11 +2036,11 @@ class R04_GameStartDelay(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R04_GambleOrNormal00(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='20', operator='GreaterEqual'):
+        if self.count_users(box_id=9001) >= 20:
             return R04_GambleOrJackpot(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='GreaterEqual'):
+        if self.count_users(box_id=9001) >= 10:
             return R04_GambleOrNormal(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Less'):
+        if self.count_users(box_id=9001) < 10:
             return R04_GameStart(self.ctx)
 
 
@@ -2104,15 +2104,15 @@ class R04_GambleTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R04GambleCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G06P400_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G06P300_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G06P200_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G06P100_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             # 인원이 갑자기 줄었을 때 트리거 멈춤 방지
             return G06P100_Random(self.ctx)
 
@@ -2300,13 +2300,13 @@ class R04_JackpotTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R04JackpotCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G07P400_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G07P300_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G07P200_Random(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 20:
             # 인원이 갑자기 줄어도 트리거 멈춤 방지
             return G07P200_Random(self.ctx)
 
@@ -2437,9 +2437,9 @@ class R05ReadyAfterGamble(trigger_api.Trigger):
 
 class R05StartAfterGamble(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='GambleSuccess', value=1):
+        if self.user_value(key='GambleSuccess') >= 1:
             return R05StartGamblePass(self.ctx)
-        if self.user_value(key='GambleSuccess', value=0):
+        if self.user_value(key='GambleSuccess') >= 0:
             return R05StartGambleFail(self.ctx)
 
 
@@ -2530,15 +2530,15 @@ class R04_GameTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R04G00Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G05orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G03orG04orG05(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G02orG03orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G02orG03(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             return G01orG02(self.ctx)
 
 
@@ -2941,15 +2941,15 @@ class R05_GameTimerStart(trigger_api.Trigger):
 # 테스트 수정 가능 지점
 class R05G05Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='40', operator='Greater'):
+        if self.count_users(box_id=9001) > 40:
             return G05orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='30', operator='Greater'):
+        if self.count_users(box_id=9001) > 30:
             return G03orG04orG05(self.ctx)
-        if self.count_users(box_id=9001, min_users='20', operator='Greater'):
+        if self.count_users(box_id=9001) > 20:
             return G02orG03orG04(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='Greater'):
+        if self.count_users(box_id=9001) > 10:
             return G02orG03(self.ctx)
-        if self.count_users(box_id=9001, min_users='10', operator='LessEqual'):
+        if self.count_users(box_id=9001) <= 10:
             return G01orG02(self.ctx)
 
 
@@ -3172,7 +3172,7 @@ class G01P01_Check(trigger_api.Trigger):
 
 class G01P01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P01End', value=1):
+        if self.user_value(key='G01P01End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3214,7 +3214,7 @@ class G01P02_Check(trigger_api.Trigger):
 
 class G01P02_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P02End', value=1):
+        if self.user_value(key='G01P02End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3256,7 +3256,7 @@ class G01P03_Check(trigger_api.Trigger):
 
 class G01P03_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P03End', value=1):
+        if self.user_value(key='G01P03End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3298,7 +3298,7 @@ class G01P04_Check(trigger_api.Trigger):
 
 class G01P04_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P04End', value=1):
+        if self.user_value(key='G01P04End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3340,7 +3340,7 @@ class G01P05_Check(trigger_api.Trigger):
 
 class G01P05_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P05End', value=1):
+        if self.user_value(key='G01P05End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3382,7 +3382,7 @@ class G01P06_Check(trigger_api.Trigger):
 
 class G01P06_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P06End', value=1):
+        if self.user_value(key='G01P06End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3424,7 +3424,7 @@ class G01P07_Check(trigger_api.Trigger):
 
 class G01P07_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P07End', value=1):
+        if self.user_value(key='G01P07End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3466,7 +3466,7 @@ class G01P08_Check(trigger_api.Trigger):
 
 class G01P08_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P08End', value=1):
+        if self.user_value(key='G01P08End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3508,7 +3508,7 @@ class G01P09_Check(trigger_api.Trigger):
 
 class G01P09_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P09End', value=1):
+        if self.user_value(key='G01P09End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3550,7 +3550,7 @@ class G01P10_Check(trigger_api.Trigger):
 
 class G01P10_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P10End', value=1):
+        if self.user_value(key='G01P10End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3592,7 +3592,7 @@ class G01P11_Check(trigger_api.Trigger):
 
 class G01P11_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P11End', value=1):
+        if self.user_value(key='G01P11End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3634,7 +3634,7 @@ class G01P12_Check(trigger_api.Trigger):
 
 class G01P12_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P12End', value=1):
+        if self.user_value(key='G01P12End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3676,7 +3676,7 @@ class G01P13_Check(trigger_api.Trigger):
 
 class G01P13_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P13End', value=1):
+        if self.user_value(key='G01P13End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3718,7 +3718,7 @@ class G01P14_Check(trigger_api.Trigger):
 
 class G01P14_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P14End', value=1):
+        if self.user_value(key='G01P14End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3760,7 +3760,7 @@ class G01P15_Check(trigger_api.Trigger):
 
 class G01P15_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P15End', value=1):
+        if self.user_value(key='G01P15End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3802,7 +3802,7 @@ class G01P16_Check(trigger_api.Trigger):
 
 class G01P16_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P16End', value=1):
+        if self.user_value(key='G01P16End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3844,7 +3844,7 @@ class G01P17_Check(trigger_api.Trigger):
 
 class G01P17_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P17End', value=1):
+        if self.user_value(key='G01P17End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3886,7 +3886,7 @@ class G01P18_Check(trigger_api.Trigger):
 
 class G01P18_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P18End', value=1):
+        if self.user_value(key='G01P18End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3928,7 +3928,7 @@ class G01P19_Check(trigger_api.Trigger):
 
 class G01P19_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P19End', value=1):
+        if self.user_value(key='G01P19End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -3970,7 +3970,7 @@ class G01P20_Check(trigger_api.Trigger):
 
 class G01P20_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P20End', value=1):
+        if self.user_value(key='G01P20End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4012,7 +4012,7 @@ class G01P21_Check(trigger_api.Trigger):
 
 class G01P21_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P21End', value=1):
+        if self.user_value(key='G01P21End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4054,7 +4054,7 @@ class G01P22_Check(trigger_api.Trigger):
 
 class G01P22_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P22End', value=1):
+        if self.user_value(key='G01P22End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4096,7 +4096,7 @@ class G01P23_Check(trigger_api.Trigger):
 
 class G01P23_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P23End', value=1):
+        if self.user_value(key='G01P23End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4138,7 +4138,7 @@ class G01P24_Check(trigger_api.Trigger):
 
 class G01P24_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P24End', value=1):
+        if self.user_value(key='G01P24End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4180,7 +4180,7 @@ class G01P25_Check(trigger_api.Trigger):
 
 class G01P25_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P25End', value=1):
+        if self.user_value(key='G01P25End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4222,7 +4222,7 @@ class G01P26_Check(trigger_api.Trigger):
 
 class G01P26_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P26End', value=1):
+        if self.user_value(key='G01P26End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4264,7 +4264,7 @@ class G01P27_Check(trigger_api.Trigger):
 
 class G01P27_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P27End', value=1):
+        if self.user_value(key='G01P27End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4306,7 +4306,7 @@ class G01P28_Check(trigger_api.Trigger):
 
 class G01P28_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P28End', value=1):
+        if self.user_value(key='G01P28End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4348,7 +4348,7 @@ class G01P29_Check(trigger_api.Trigger):
 
 class G01P29_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P29End', value=1):
+        if self.user_value(key='G01P29End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4390,7 +4390,7 @@ class G01P30_Check(trigger_api.Trigger):
 
 class G01P30_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P30End', value=1):
+        if self.user_value(key='G01P30End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4432,7 +4432,7 @@ class G02P01_Check(trigger_api.Trigger):
 
 class G02P01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P01End', value=1):
+        if self.user_value(key='G02P01End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4474,7 +4474,7 @@ class G02P02_Check(trigger_api.Trigger):
 
 class G02P02_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P02End', value=1):
+        if self.user_value(key='G02P02End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4516,7 +4516,7 @@ class G02P03_Check(trigger_api.Trigger):
 
 class G02P03_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P03End', value=1):
+        if self.user_value(key='G02P03End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4558,7 +4558,7 @@ class G02P04_Check(trigger_api.Trigger):
 
 class G02P04_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P04End', value=1):
+        if self.user_value(key='G02P04End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4600,7 +4600,7 @@ class G02P05_Check(trigger_api.Trigger):
 
 class G02P05_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P05End', value=1):
+        if self.user_value(key='G02P05End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4642,7 +4642,7 @@ class G02P06_Check(trigger_api.Trigger):
 
 class G02P06_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P06End', value=1):
+        if self.user_value(key='G02P06End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4684,7 +4684,7 @@ class G02P07_Check(trigger_api.Trigger):
 
 class G02P07_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P07End', value=1):
+        if self.user_value(key='G02P07End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4726,7 +4726,7 @@ class G02P08_Check(trigger_api.Trigger):
 
 class G02P08_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P08End', value=1):
+        if self.user_value(key='G02P08End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4768,7 +4768,7 @@ class G02P09_Check(trigger_api.Trigger):
 
 class G02P09_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P09End', value=1):
+        if self.user_value(key='G02P09End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4810,7 +4810,7 @@ class G02P10_Check(trigger_api.Trigger):
 
 class G02P10_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P10End', value=1):
+        if self.user_value(key='G02P10End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4852,7 +4852,7 @@ class G02P11_Check(trigger_api.Trigger):
 
 class G02P11_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P11End', value=1):
+        if self.user_value(key='G02P11End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4894,7 +4894,7 @@ class G02P12_Check(trigger_api.Trigger):
 
 class G02P12_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P12End', value=1):
+        if self.user_value(key='G02P12End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4936,7 +4936,7 @@ class G02P13_Check(trigger_api.Trigger):
 
 class G02P13_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P13End', value=1):
+        if self.user_value(key='G02P13End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -4978,7 +4978,7 @@ class G02P14_Check(trigger_api.Trigger):
 
 class G02P14_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P14End', value=1):
+        if self.user_value(key='G02P14End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5020,7 +5020,7 @@ class G02P15_Check(trigger_api.Trigger):
 
 class G02P15_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P15End', value=1):
+        if self.user_value(key='G02P15End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5062,7 +5062,7 @@ class G02P16_Check(trigger_api.Trigger):
 
 class G02P16_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P16End', value=1):
+        if self.user_value(key='G02P16End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5104,7 +5104,7 @@ class G02P17_Check(trigger_api.Trigger):
 
 class G02P17_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P17End', value=1):
+        if self.user_value(key='G02P17End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5146,7 +5146,7 @@ class G02P18_Check(trigger_api.Trigger):
 
 class G02P18_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P18End', value=1):
+        if self.user_value(key='G02P18End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5188,7 +5188,7 @@ class G02P19_Check(trigger_api.Trigger):
 
 class G02P19_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P19End', value=1):
+        if self.user_value(key='G02P19End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5230,7 +5230,7 @@ class G02P20_Check(trigger_api.Trigger):
 
 class G02P20_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P20End', value=1):
+        if self.user_value(key='G02P20End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5272,7 +5272,7 @@ class G02P21_Check(trigger_api.Trigger):
 
 class G02P21_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P21End', value=1):
+        if self.user_value(key='G02P21End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5314,7 +5314,7 @@ class G02P22_Check(trigger_api.Trigger):
 
 class G02P22_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P22End', value=1):
+        if self.user_value(key='G02P22End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5356,7 +5356,7 @@ class G02P23_Check(trigger_api.Trigger):
 
 class G02P23_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P23End', value=1):
+        if self.user_value(key='G02P23End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5398,7 +5398,7 @@ class G02P24_Check(trigger_api.Trigger):
 
 class G02P24_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P24End', value=1):
+        if self.user_value(key='G02P24End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5440,7 +5440,7 @@ class G02P25_Check(trigger_api.Trigger):
 
 class G02P25_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P25End', value=1):
+        if self.user_value(key='G02P25End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5482,7 +5482,7 @@ class G02P26_Check(trigger_api.Trigger):
 
 class G02P26_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P26End', value=1):
+        if self.user_value(key='G02P26End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5524,7 +5524,7 @@ class G02P27_Check(trigger_api.Trigger):
 
 class G02P27_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P27End', value=1):
+        if self.user_value(key='G02P27End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5566,7 +5566,7 @@ class G02P28_Check(trigger_api.Trigger):
 
 class G02P28_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P28End', value=1):
+        if self.user_value(key='G02P28End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5608,7 +5608,7 @@ class G02P29_Check(trigger_api.Trigger):
 
 class G02P29_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P29End', value=1):
+        if self.user_value(key='G02P29End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5650,7 +5650,7 @@ class G02P30_Check(trigger_api.Trigger):
 
 class G02P30_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G02P30End', value=1):
+        if self.user_value(key='G02P30End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5692,7 +5692,7 @@ class G03P01_Check(trigger_api.Trigger):
 
 class G03P01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P01End', value=1):
+        if self.user_value(key='G03P01End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5734,7 +5734,7 @@ class G03P02_Check(trigger_api.Trigger):
 
 class G03P02_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P02End', value=1):
+        if self.user_value(key='G03P02End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5776,7 +5776,7 @@ class G03P03_Check(trigger_api.Trigger):
 
 class G03P03_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P03End', value=1):
+        if self.user_value(key='G03P03End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5818,7 +5818,7 @@ class G03P04_Check(trigger_api.Trigger):
 
 class G03P04_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P04End', value=1):
+        if self.user_value(key='G03P04End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5860,7 +5860,7 @@ class G03P05_Check(trigger_api.Trigger):
 
 class G03P05_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P05End', value=1):
+        if self.user_value(key='G03P05End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5902,7 +5902,7 @@ class G03P06_Check(trigger_api.Trigger):
 
 class G03P06_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P06End', value=1):
+        if self.user_value(key='G03P06End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5944,7 +5944,7 @@ class G03P07_Check(trigger_api.Trigger):
 
 class G03P07_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P07End', value=1):
+        if self.user_value(key='G03P07End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -5986,7 +5986,7 @@ class G03P08_Check(trigger_api.Trigger):
 
 class G03P08_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P08End', value=1):
+        if self.user_value(key='G03P08End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6028,7 +6028,7 @@ class G03P09_Check(trigger_api.Trigger):
 
 class G03P09_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P09End', value=1):
+        if self.user_value(key='G03P09End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6070,7 +6070,7 @@ class G03P10_Check(trigger_api.Trigger):
 
 class G03P10_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P10End', value=1):
+        if self.user_value(key='G03P10End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6112,7 +6112,7 @@ class G03P11_Check(trigger_api.Trigger):
 
 class G03P11_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P11End', value=1):
+        if self.user_value(key='G03P11End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6154,7 +6154,7 @@ class G03P12_Check(trigger_api.Trigger):
 
 class G03P12_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P12End', value=1):
+        if self.user_value(key='G03P12End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6196,7 +6196,7 @@ class G03P13_Check(trigger_api.Trigger):
 
 class G03P13_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P13End', value=1):
+        if self.user_value(key='G03P13End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6238,7 +6238,7 @@ class G03P14_Check(trigger_api.Trigger):
 
 class G03P14_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P14End', value=1):
+        if self.user_value(key='G03P14End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6280,7 +6280,7 @@ class G03P15_Check(trigger_api.Trigger):
 
 class G03P15_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P15End', value=1):
+        if self.user_value(key='G03P15End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6322,7 +6322,7 @@ class G03P16_Check(trigger_api.Trigger):
 
 class G03P16_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P16End', value=1):
+        if self.user_value(key='G03P16End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6364,7 +6364,7 @@ class G03P17_Check(trigger_api.Trigger):
 
 class G03P17_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P17End', value=1):
+        if self.user_value(key='G03P17End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6406,7 +6406,7 @@ class G03P18_Check(trigger_api.Trigger):
 
 class G03P18_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P18End', value=1):
+        if self.user_value(key='G03P18End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6448,7 +6448,7 @@ class G03P19_Check(trigger_api.Trigger):
 
 class G03P19_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P19End', value=1):
+        if self.user_value(key='G03P19End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6490,7 +6490,7 @@ class G03P20_Check(trigger_api.Trigger):
 
 class G03P20_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P20End', value=1):
+        if self.user_value(key='G03P20End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6532,7 +6532,7 @@ class G03P21_Check(trigger_api.Trigger):
 
 class G03P21_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P21End', value=1):
+        if self.user_value(key='G03P21End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6574,7 +6574,7 @@ class G03P22_Check(trigger_api.Trigger):
 
 class G03P22_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P22End', value=1):
+        if self.user_value(key='G03P22End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6616,7 +6616,7 @@ class G03P23_Check(trigger_api.Trigger):
 
 class G03P23_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P23End', value=1):
+        if self.user_value(key='G03P23End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6658,7 +6658,7 @@ class G03P24_Check(trigger_api.Trigger):
 
 class G03P24_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P24End', value=1):
+        if self.user_value(key='G03P24End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6700,7 +6700,7 @@ class G03P25_Check(trigger_api.Trigger):
 
 class G03P25_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P25End', value=1):
+        if self.user_value(key='G03P25End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6742,7 +6742,7 @@ class G03P26_Check(trigger_api.Trigger):
 
 class G03P26_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P26End', value=1):
+        if self.user_value(key='G03P26End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6784,7 +6784,7 @@ class G03P27_Check(trigger_api.Trigger):
 
 class G03P27_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P27End', value=1):
+        if self.user_value(key='G03P27End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6826,7 +6826,7 @@ class G03P28_Check(trigger_api.Trigger):
 
 class G03P28_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P28End', value=1):
+        if self.user_value(key='G03P28End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6868,7 +6868,7 @@ class G03P29_Check(trigger_api.Trigger):
 
 class G03P29_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P29End', value=1):
+        if self.user_value(key='G03P29End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6910,7 +6910,7 @@ class G03P30_Check(trigger_api.Trigger):
 
 class G03P30_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G03P30End', value=1):
+        if self.user_value(key='G03P30End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6952,7 +6952,7 @@ class G04P01_Check(trigger_api.Trigger):
 
 class G04P01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P01End', value=1):
+        if self.user_value(key='G04P01End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -6994,7 +6994,7 @@ class G04P02_Check(trigger_api.Trigger):
 
 class G04P02_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P02End', value=1):
+        if self.user_value(key='G04P02End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7036,7 +7036,7 @@ class G04P03_Check(trigger_api.Trigger):
 
 class G04P03_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P03End', value=1):
+        if self.user_value(key='G04P03End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7078,7 +7078,7 @@ class G04P04_Check(trigger_api.Trigger):
 
 class G04P04_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P04End', value=1):
+        if self.user_value(key='G04P04End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7120,7 +7120,7 @@ class G04P05_Check(trigger_api.Trigger):
 
 class G04P05_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P05End', value=1):
+        if self.user_value(key='G04P05End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7162,7 +7162,7 @@ class G04P06_Check(trigger_api.Trigger):
 
 class G04P06_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P06End', value=1):
+        if self.user_value(key='G04P06End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7204,7 +7204,7 @@ class G04P07_Check(trigger_api.Trigger):
 
 class G04P07_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P07End', value=1):
+        if self.user_value(key='G04P07End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7246,7 +7246,7 @@ class G04P08_Check(trigger_api.Trigger):
 
 class G04P08_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P08End', value=1):
+        if self.user_value(key='G04P08End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7288,7 +7288,7 @@ class G04P09_Check(trigger_api.Trigger):
 
 class G04P09_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P09End', value=1):
+        if self.user_value(key='G04P09End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7330,7 +7330,7 @@ class G04P10_Check(trigger_api.Trigger):
 
 class G04P10_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P10End', value=1):
+        if self.user_value(key='G04P10End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7372,7 +7372,7 @@ class G04P11_Check(trigger_api.Trigger):
 
 class G04P11_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P11End', value=1):
+        if self.user_value(key='G04P11End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7414,7 +7414,7 @@ class G04P12_Check(trigger_api.Trigger):
 
 class G04P12_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P12End', value=1):
+        if self.user_value(key='G04P12End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7456,7 +7456,7 @@ class G04P13_Check(trigger_api.Trigger):
 
 class G04P13_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P13End', value=1):
+        if self.user_value(key='G04P13End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7498,7 +7498,7 @@ class G04P14_Check(trigger_api.Trigger):
 
 class G04P14_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P14End', value=1):
+        if self.user_value(key='G04P14End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7540,7 +7540,7 @@ class G04P15_Check(trigger_api.Trigger):
 
 class G04P15_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P15End', value=1):
+        if self.user_value(key='G04P15End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7582,7 +7582,7 @@ class G04P16_Check(trigger_api.Trigger):
 
 class G04P16_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P16End', value=1):
+        if self.user_value(key='G04P16End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7624,7 +7624,7 @@ class G04P17_Check(trigger_api.Trigger):
 
 class G04P17_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P17End', value=1):
+        if self.user_value(key='G04P17End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7666,7 +7666,7 @@ class G04P18_Check(trigger_api.Trigger):
 
 class G04P18_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P18End', value=1):
+        if self.user_value(key='G04P18End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7708,7 +7708,7 @@ class G04P19_Check(trigger_api.Trigger):
 
 class G04P19_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P19End', value=1):
+        if self.user_value(key='G04P19End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7750,7 +7750,7 @@ class G04P20_Check(trigger_api.Trigger):
 
 class G04P20_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P20End', value=1):
+        if self.user_value(key='G04P20End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7792,7 +7792,7 @@ class G04P21_Check(trigger_api.Trigger):
 
 class G04P21_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P21End', value=1):
+        if self.user_value(key='G04P21End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7834,7 +7834,7 @@ class G04P22_Check(trigger_api.Trigger):
 
 class G04P22_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P22End', value=1):
+        if self.user_value(key='G04P22End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7876,7 +7876,7 @@ class G04P23_Check(trigger_api.Trigger):
 
 class G04P23_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P23End', value=1):
+        if self.user_value(key='G04P23End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7918,7 +7918,7 @@ class G04P24_Check(trigger_api.Trigger):
 
 class G04P24_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P24End', value=1):
+        if self.user_value(key='G04P24End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -7960,7 +7960,7 @@ class G04P25_Check(trigger_api.Trigger):
 
 class G04P25_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P25End', value=1):
+        if self.user_value(key='G04P25End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8002,7 +8002,7 @@ class G04P26_Check(trigger_api.Trigger):
 
 class G04P26_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P26End', value=1):
+        if self.user_value(key='G04P26End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8044,7 +8044,7 @@ class G04P27_Check(trigger_api.Trigger):
 
 class G04P27_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P27End', value=1):
+        if self.user_value(key='G04P27End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8086,7 +8086,7 @@ class G04P28_Check(trigger_api.Trigger):
 
 class G04P28_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P28End', value=1):
+        if self.user_value(key='G04P28End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8128,7 +8128,7 @@ class G04P29_Check(trigger_api.Trigger):
 
 class G04P29_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P29End', value=1):
+        if self.user_value(key='G04P29End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8170,7 +8170,7 @@ class G04P30_Check(trigger_api.Trigger):
 
 class G04P30_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P30End', value=1):
+        if self.user_value(key='G04P30End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8212,7 +8212,7 @@ class G04P31_Check(trigger_api.Trigger):
 
 class G04P31_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P31End', value=1):
+        if self.user_value(key='G04P31End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8254,7 +8254,7 @@ class G04P32_Check(trigger_api.Trigger):
 
 class G04P32_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P32End', value=1):
+        if self.user_value(key='G04P32End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8296,7 +8296,7 @@ class G04P33_Check(trigger_api.Trigger):
 
 class G04P33_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P33End', value=1):
+        if self.user_value(key='G04P33End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8338,7 +8338,7 @@ class G04P34_Check(trigger_api.Trigger):
 
 class G04P34_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P34End', value=1):
+        if self.user_value(key='G04P34End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8380,7 +8380,7 @@ class G04P35_Check(trigger_api.Trigger):
 
 class G04P35_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P35End', value=1):
+        if self.user_value(key='G04P35End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8422,7 +8422,7 @@ class G04P36_Check(trigger_api.Trigger):
 
 class G04P36_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P36End', value=1):
+        if self.user_value(key='G04P36End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8464,7 +8464,7 @@ class G04P37_Check(trigger_api.Trigger):
 
 class G04P37_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P37End', value=1):
+        if self.user_value(key='G04P37End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8506,7 +8506,7 @@ class G04P38_Check(trigger_api.Trigger):
 
 class G04P38_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P38End', value=1):
+        if self.user_value(key='G04P38End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8548,7 +8548,7 @@ class G04P39_Check(trigger_api.Trigger):
 
 class G04P39_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P39End', value=1):
+        if self.user_value(key='G04P39End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8590,7 +8590,7 @@ class G04P40_Check(trigger_api.Trigger):
 
 class G04P40_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G04P40End', value=1):
+        if self.user_value(key='G04P40End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8632,7 +8632,7 @@ class G05P01_Check(trigger_api.Trigger):
 
 class G05P01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P01End', value=1):
+        if self.user_value(key='G05P01End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8674,7 +8674,7 @@ class G05P02_Check(trigger_api.Trigger):
 
 class G05P02_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P02End', value=1):
+        if self.user_value(key='G05P02End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8716,7 +8716,7 @@ class G05P03_Check(trigger_api.Trigger):
 
 class G05P03_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P03End', value=1):
+        if self.user_value(key='G05P03End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8758,7 +8758,7 @@ class G05P04_Check(trigger_api.Trigger):
 
 class G05P04_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P04End', value=1):
+        if self.user_value(key='G05P04End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8800,7 +8800,7 @@ class G05P05_Check(trigger_api.Trigger):
 
 class G05P05_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P05End', value=1):
+        if self.user_value(key='G05P05End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8842,7 +8842,7 @@ class G05P06_Check(trigger_api.Trigger):
 
 class G05P06_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P06End', value=1):
+        if self.user_value(key='G05P06End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8884,7 +8884,7 @@ class G05P07_Check(trigger_api.Trigger):
 
 class G05P07_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P07End', value=1):
+        if self.user_value(key='G05P07End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8926,7 +8926,7 @@ class G05P08_Check(trigger_api.Trigger):
 
 class G05P08_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P08End', value=1):
+        if self.user_value(key='G05P08End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -8968,7 +8968,7 @@ class G05P09_Check(trigger_api.Trigger):
 
 class G05P09_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P09End', value=1):
+        if self.user_value(key='G05P09End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9010,7 +9010,7 @@ class G05P10_Check(trigger_api.Trigger):
 
 class G05P10_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P10End', value=1):
+        if self.user_value(key='G05P10End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9052,7 +9052,7 @@ class G05P11_Check(trigger_api.Trigger):
 
 class G05P11_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P11End', value=1):
+        if self.user_value(key='G05P11End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9094,7 +9094,7 @@ class G05P12_Check(trigger_api.Trigger):
 
 class G05P12_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P12End', value=1):
+        if self.user_value(key='G05P12End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9136,7 +9136,7 @@ class G05P13_Check(trigger_api.Trigger):
 
 class G05P13_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P13End', value=1):
+        if self.user_value(key='G05P13End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9178,7 +9178,7 @@ class G05P14_Check(trigger_api.Trigger):
 
 class G05P14_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P14End', value=1):
+        if self.user_value(key='G05P14End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9220,7 +9220,7 @@ class G05P15_Check(trigger_api.Trigger):
 
 class G05P15_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P15End', value=1):
+        if self.user_value(key='G05P15End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9262,7 +9262,7 @@ class G05P16_Check(trigger_api.Trigger):
 
 class G05P16_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P16End', value=1):
+        if self.user_value(key='G05P16End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9304,7 +9304,7 @@ class G05P17_Check(trigger_api.Trigger):
 
 class G05P17_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P17End', value=1):
+        if self.user_value(key='G05P17End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9346,7 +9346,7 @@ class G05P18_Check(trigger_api.Trigger):
 
 class G05P18_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P18End', value=1):
+        if self.user_value(key='G05P18End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9388,7 +9388,7 @@ class G05P19_Check(trigger_api.Trigger):
 
 class G05P19_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P19End', value=1):
+        if self.user_value(key='G05P19End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9430,7 +9430,7 @@ class G05P20_Check(trigger_api.Trigger):
 
 class G05P20_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P20End', value=1):
+        if self.user_value(key='G05P20End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9472,7 +9472,7 @@ class G05P21_Check(trigger_api.Trigger):
 
 class G05P21_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P21End', value=1):
+        if self.user_value(key='G05P21End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9514,7 +9514,7 @@ class G05P22_Check(trigger_api.Trigger):
 
 class G05P22_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P22End', value=1):
+        if self.user_value(key='G05P22End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9556,7 +9556,7 @@ class G05P23_Check(trigger_api.Trigger):
 
 class G05P23_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P23End', value=1):
+        if self.user_value(key='G05P23End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9598,7 +9598,7 @@ class G05P24_Check(trigger_api.Trigger):
 
 class G05P24_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P24End', value=1):
+        if self.user_value(key='G05P24End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9640,7 +9640,7 @@ class G05P25_Check(trigger_api.Trigger):
 
 class G05P25_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P25End', value=1):
+        if self.user_value(key='G05P25End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9682,7 +9682,7 @@ class G05P26_Check(trigger_api.Trigger):
 
 class G05P26_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P26End', value=1):
+        if self.user_value(key='G05P26End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9724,7 +9724,7 @@ class G05P27_Check(trigger_api.Trigger):
 
 class G05P27_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P27End', value=1):
+        if self.user_value(key='G05P27End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9766,7 +9766,7 @@ class G05P28_Check(trigger_api.Trigger):
 
 class G05P28_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P28End', value=1):
+        if self.user_value(key='G05P28End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9808,7 +9808,7 @@ class G05P29_Check(trigger_api.Trigger):
 
 class G05P29_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P29End', value=1):
+        if self.user_value(key='G05P29End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9850,7 +9850,7 @@ class G05P30_Check(trigger_api.Trigger):
 
 class G05P30_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P30End', value=1):
+        if self.user_value(key='G05P30End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9892,7 +9892,7 @@ class G05P31_Check(trigger_api.Trigger):
 
 class G05P31_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P31End', value=1):
+        if self.user_value(key='G05P31End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9934,7 +9934,7 @@ class G05P32_Check(trigger_api.Trigger):
 
 class G05P32_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P32End', value=1):
+        if self.user_value(key='G05P32End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -9976,7 +9976,7 @@ class G05P33_Check(trigger_api.Trigger):
 
 class G05P33_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P33End', value=1):
+        if self.user_value(key='G05P33End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10018,7 +10018,7 @@ class G05P34_Check(trigger_api.Trigger):
 
 class G05P34_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P34End', value=1):
+        if self.user_value(key='G05P34End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10060,7 +10060,7 @@ class G05P35_Check(trigger_api.Trigger):
 
 class G05P35_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P35End', value=1):
+        if self.user_value(key='G05P35End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10102,7 +10102,7 @@ class G05P36_Check(trigger_api.Trigger):
 
 class G05P36_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P36End', value=1):
+        if self.user_value(key='G05P36End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10144,7 +10144,7 @@ class G05P37_Check(trigger_api.Trigger):
 
 class G05P37_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P37End', value=1):
+        if self.user_value(key='G05P37End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10186,7 +10186,7 @@ class G05P38_Check(trigger_api.Trigger):
 
 class G05P38_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P38End', value=1):
+        if self.user_value(key='G05P38End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10228,7 +10228,7 @@ class G05P39_Check(trigger_api.Trigger):
 
 class G05P39_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P39End', value=1):
+        if self.user_value(key='G05P39End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10270,7 +10270,7 @@ class G05P40_Check(trigger_api.Trigger):
 
 class G05P40_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P40End', value=1):
+        if self.user_value(key='G05P40End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10312,7 +10312,7 @@ class G05P41_Check(trigger_api.Trigger):
 
 class G05P41_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P41End', value=1):
+        if self.user_value(key='G05P41End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10354,7 +10354,7 @@ class G05P42_Check(trigger_api.Trigger):
 
 class G05P42_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P42End', value=1):
+        if self.user_value(key='G05P42End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10396,7 +10396,7 @@ class G05P43_Check(trigger_api.Trigger):
 
 class G05P43_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P43End', value=1):
+        if self.user_value(key='G05P43End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10438,7 +10438,7 @@ class G05P44_Check(trigger_api.Trigger):
 
 class G05P44_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P44End', value=1):
+        if self.user_value(key='G05P44End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10480,7 +10480,7 @@ class G05P45_Check(trigger_api.Trigger):
 
 class G05P45_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P45End', value=1):
+        if self.user_value(key='G05P45End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10522,7 +10522,7 @@ class G05P46_Check(trigger_api.Trigger):
 
 class G05P46_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P46End', value=1):
+        if self.user_value(key='G05P46End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10564,7 +10564,7 @@ class G05P47_Check(trigger_api.Trigger):
 
 class G05P47_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P47End', value=1):
+        if self.user_value(key='G05P47End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10606,7 +10606,7 @@ class G05P48_Check(trigger_api.Trigger):
 
 class G05P48_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P48End', value=1):
+        if self.user_value(key='G05P48End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10648,7 +10648,7 @@ class G05P49_Check(trigger_api.Trigger):
 
 class G05P49_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P49End', value=1):
+        if self.user_value(key='G05P49End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10690,7 +10690,7 @@ class G05P50_Check(trigger_api.Trigger):
 
 class G05P50_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G05P50End', value=1):
+        if self.user_value(key='G05P50End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10733,7 +10733,7 @@ class G06P101_Check(trigger_api.Trigger):
 
 class G06P101_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P101End', value=1):
+        if self.user_value(key='G06P101End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10775,7 +10775,7 @@ class G06P102_Check(trigger_api.Trigger):
 
 class G06P102_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P102End', value=1):
+        if self.user_value(key='G06P102End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10817,7 +10817,7 @@ class G06P103_Check(trigger_api.Trigger):
 
 class G06P103_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P103End', value=1):
+        if self.user_value(key='G06P103End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10859,7 +10859,7 @@ class G06P104_Check(trigger_api.Trigger):
 
 class G06P104_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P104End', value=1):
+        if self.user_value(key='G06P104End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10901,7 +10901,7 @@ class G06P105_Check(trigger_api.Trigger):
 
 class G06P105_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P105End', value=1):
+        if self.user_value(key='G06P105End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10943,7 +10943,7 @@ class G06P106_Check(trigger_api.Trigger):
 
 class G06P106_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P106End', value=1):
+        if self.user_value(key='G06P106End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -10985,7 +10985,7 @@ class G06P107_Check(trigger_api.Trigger):
 
 class G06P107_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P107End', value=1):
+        if self.user_value(key='G06P107End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11027,7 +11027,7 @@ class G06P108_Check(trigger_api.Trigger):
 
 class G06P108_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P108End', value=1):
+        if self.user_value(key='G06P108End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11069,7 +11069,7 @@ class G06P109_Check(trigger_api.Trigger):
 
 class G06P109_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P109End', value=1):
+        if self.user_value(key='G06P109End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11111,7 +11111,7 @@ class G06P110_Check(trigger_api.Trigger):
 
 class G06P110_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P110End', value=1):
+        if self.user_value(key='G06P110End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11153,7 +11153,7 @@ class G06P201_Check(trigger_api.Trigger):
 
 class G06P201_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P201End', value=1):
+        if self.user_value(key='G06P201End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11195,7 +11195,7 @@ class G06P202_Check(trigger_api.Trigger):
 
 class G06P202_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P202End', value=1):
+        if self.user_value(key='G06P202End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11237,7 +11237,7 @@ class G06P203_Check(trigger_api.Trigger):
 
 class G06P203_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P203End', value=1):
+        if self.user_value(key='G06P203End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11279,7 +11279,7 @@ class G06P204_Check(trigger_api.Trigger):
 
 class G06P204_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P204End', value=1):
+        if self.user_value(key='G06P204End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11321,7 +11321,7 @@ class G06P205_Check(trigger_api.Trigger):
 
 class G06P205_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P205End', value=1):
+        if self.user_value(key='G06P205End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11363,7 +11363,7 @@ class G06P206_Check(trigger_api.Trigger):
 
 class G06P206_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P206End', value=1):
+        if self.user_value(key='G06P206End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11405,7 +11405,7 @@ class G06P207_Check(trigger_api.Trigger):
 
 class G06P207_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P207End', value=1):
+        if self.user_value(key='G06P207End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11447,7 +11447,7 @@ class G06P208_Check(trigger_api.Trigger):
 
 class G06P208_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P208End', value=1):
+        if self.user_value(key='G06P208End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11489,7 +11489,7 @@ class G06P209_Check(trigger_api.Trigger):
 
 class G06P209_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P209End', value=1):
+        if self.user_value(key='G06P209End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11531,7 +11531,7 @@ class G06P210_Check(trigger_api.Trigger):
 
 class G06P210_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P210End', value=1):
+        if self.user_value(key='G06P210End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11573,7 +11573,7 @@ class G06P211_Check(trigger_api.Trigger):
 
 class G06P211_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P211End', value=1):
+        if self.user_value(key='G06P211End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11615,7 +11615,7 @@ class G06P212_Check(trigger_api.Trigger):
 
 class G06P212_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P212End', value=1):
+        if self.user_value(key='G06P212End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11657,7 +11657,7 @@ class G06P213_Check(trigger_api.Trigger):
 
 class G06P213_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P213End', value=1):
+        if self.user_value(key='G06P213End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11699,7 +11699,7 @@ class G06P214_Check(trigger_api.Trigger):
 
 class G06P214_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P214End', value=1):
+        if self.user_value(key='G06P214End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11741,7 +11741,7 @@ class G06P215_Check(trigger_api.Trigger):
 
 class G06P215_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P215End', value=1):
+        if self.user_value(key='G06P215End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11783,7 +11783,7 @@ class G06P216_Check(trigger_api.Trigger):
 
 class G06P216_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P216End', value=1):
+        if self.user_value(key='G06P216End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11825,7 +11825,7 @@ class G06P217_Check(trigger_api.Trigger):
 
 class G06P217_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P217End', value=1):
+        if self.user_value(key='G06P217End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11867,7 +11867,7 @@ class G06P218_Check(trigger_api.Trigger):
 
 class G06P218_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P218End', value=1):
+        if self.user_value(key='G06P218End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11909,7 +11909,7 @@ class G06P219_Check(trigger_api.Trigger):
 
 class G06P219_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P219End', value=1):
+        if self.user_value(key='G06P219End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11951,7 +11951,7 @@ class G06P220_Check(trigger_api.Trigger):
 
 class G06P220_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P220End', value=1):
+        if self.user_value(key='G06P220End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -11993,7 +11993,7 @@ class G06P301_Check(trigger_api.Trigger):
 
 class G06P301_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P301End', value=1):
+        if self.user_value(key='G06P301End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12035,7 +12035,7 @@ class G06P302_Check(trigger_api.Trigger):
 
 class G06P302_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P302End', value=1):
+        if self.user_value(key='G06P302End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12077,7 +12077,7 @@ class G06P303_Check(trigger_api.Trigger):
 
 class G06P303_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P303End', value=1):
+        if self.user_value(key='G06P303End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12119,7 +12119,7 @@ class G06P304_Check(trigger_api.Trigger):
 
 class G06P304_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P304End', value=1):
+        if self.user_value(key='G06P304End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12161,7 +12161,7 @@ class G06P305_Check(trigger_api.Trigger):
 
 class G06P305_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P305End', value=1):
+        if self.user_value(key='G06P305End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12203,7 +12203,7 @@ class G06P306_Check(trigger_api.Trigger):
 
 class G06P306_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P306End', value=1):
+        if self.user_value(key='G06P306End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12245,7 +12245,7 @@ class G06P307_Check(trigger_api.Trigger):
 
 class G06P307_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P307End', value=1):
+        if self.user_value(key='G06P307End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12287,7 +12287,7 @@ class G06P308_Check(trigger_api.Trigger):
 
 class G06P308_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P308End', value=1):
+        if self.user_value(key='G06P308End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12329,7 +12329,7 @@ class G06P309_Check(trigger_api.Trigger):
 
 class G06P309_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P309End', value=1):
+        if self.user_value(key='G06P309End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12371,7 +12371,7 @@ class G06P310_Check(trigger_api.Trigger):
 
 class G06P310_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P310End', value=1):
+        if self.user_value(key='G06P310End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12413,7 +12413,7 @@ class G06P311_Check(trigger_api.Trigger):
 
 class G06P311_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P311End', value=1):
+        if self.user_value(key='G06P311End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12455,7 +12455,7 @@ class G06P312_Check(trigger_api.Trigger):
 
 class G06P312_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P312End', value=1):
+        if self.user_value(key='G06P312End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12497,7 +12497,7 @@ class G06P313_Check(trigger_api.Trigger):
 
 class G06P313_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P313End', value=1):
+        if self.user_value(key='G06P313End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12539,7 +12539,7 @@ class G06P314_Check(trigger_api.Trigger):
 
 class G06P314_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P314End', value=1):
+        if self.user_value(key='G06P314End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12581,7 +12581,7 @@ class G06P315_Check(trigger_api.Trigger):
 
 class G06P315_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P315End', value=1):
+        if self.user_value(key='G06P315End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12623,7 +12623,7 @@ class G06P316_Check(trigger_api.Trigger):
 
 class G06P316_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P316End', value=1):
+        if self.user_value(key='G06P316End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12665,7 +12665,7 @@ class G06P317_Check(trigger_api.Trigger):
 
 class G06P317_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P317End', value=1):
+        if self.user_value(key='G06P317End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12707,7 +12707,7 @@ class G06P318_Check(trigger_api.Trigger):
 
 class G06P318_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P318End', value=1):
+        if self.user_value(key='G06P318End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12749,7 +12749,7 @@ class G06P319_Check(trigger_api.Trigger):
 
 class G06P319_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P319End', value=1):
+        if self.user_value(key='G06P319End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12791,7 +12791,7 @@ class G06P320_Check(trigger_api.Trigger):
 
 class G06P320_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P320End', value=1):
+        if self.user_value(key='G06P320End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12833,7 +12833,7 @@ class G06P401_Check(trigger_api.Trigger):
 
 class G06P401_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P401End', value=1):
+        if self.user_value(key='G06P401End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12875,7 +12875,7 @@ class G06P402_Check(trigger_api.Trigger):
 
 class G06P402_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P402End', value=1):
+        if self.user_value(key='G06P402End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12917,7 +12917,7 @@ class G06P403_Check(trigger_api.Trigger):
 
 class G06P403_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P403End', value=1):
+        if self.user_value(key='G06P403End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -12959,7 +12959,7 @@ class G06P404_Check(trigger_api.Trigger):
 
 class G06P404_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P404End', value=1):
+        if self.user_value(key='G06P404End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13001,7 +13001,7 @@ class G06P405_Check(trigger_api.Trigger):
 
 class G06P405_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P405End', value=1):
+        if self.user_value(key='G06P405End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13043,7 +13043,7 @@ class G06P406_Check(trigger_api.Trigger):
 
 class G06P406_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P406End', value=1):
+        if self.user_value(key='G06P406End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13085,7 +13085,7 @@ class G06P407_Check(trigger_api.Trigger):
 
 class G06P407_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P407End', value=1):
+        if self.user_value(key='G06P407End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13127,7 +13127,7 @@ class G06P408_Check(trigger_api.Trigger):
 
 class G06P408_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P408End', value=1):
+        if self.user_value(key='G06P408End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13169,7 +13169,7 @@ class G06P409_Check(trigger_api.Trigger):
 
 class G06P409_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P409End', value=1):
+        if self.user_value(key='G06P409End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13211,7 +13211,7 @@ class G06P410_Check(trigger_api.Trigger):
 
 class G06P410_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G06P410End', value=1):
+        if self.user_value(key='G06P410End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13254,7 +13254,7 @@ class G07P201_Check(trigger_api.Trigger):
 
 class G07P201_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P201End', value=1):
+        if self.user_value(key='G07P201End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13296,7 +13296,7 @@ class G07P202_Check(trigger_api.Trigger):
 
 class G07P202_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P202End', value=1):
+        if self.user_value(key='G07P202End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13338,7 +13338,7 @@ class G07P203_Check(trigger_api.Trigger):
 
 class G07P203_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P203End', value=1):
+        if self.user_value(key='G07P203End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13380,7 +13380,7 @@ class G07P204_Check(trigger_api.Trigger):
 
 class G07P204_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P204End', value=1):
+        if self.user_value(key='G07P204End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13422,7 +13422,7 @@ class G07P205_Check(trigger_api.Trigger):
 
 class G07P205_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P205End', value=1):
+        if self.user_value(key='G07P205End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13464,7 +13464,7 @@ class G07P206_Check(trigger_api.Trigger):
 
 class G07P206_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P206End', value=1):
+        if self.user_value(key='G07P206End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13506,7 +13506,7 @@ class G07P207_Check(trigger_api.Trigger):
 
 class G07P207_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P207End', value=1):
+        if self.user_value(key='G07P207End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13548,7 +13548,7 @@ class G07P208_Check(trigger_api.Trigger):
 
 class G07P208_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P208End', value=1):
+        if self.user_value(key='G07P208End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13590,7 +13590,7 @@ class G07P209_Check(trigger_api.Trigger):
 
 class G07P209_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P209End', value=1):
+        if self.user_value(key='G07P209End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13632,7 +13632,7 @@ class G07P210_Check(trigger_api.Trigger):
 
 class G07P210_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P210End', value=1):
+        if self.user_value(key='G07P210End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13674,7 +13674,7 @@ class G07P301_Check(trigger_api.Trigger):
 
 class G07P301_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P301End', value=1):
+        if self.user_value(key='G07P301End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13716,7 +13716,7 @@ class G07P302_Check(trigger_api.Trigger):
 
 class G07P302_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P302End', value=1):
+        if self.user_value(key='G07P302End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13758,7 +13758,7 @@ class G07P303_Check(trigger_api.Trigger):
 
 class G07P303_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P303End', value=1):
+        if self.user_value(key='G07P303End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13800,7 +13800,7 @@ class G07P304_Check(trigger_api.Trigger):
 
 class G07P304_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P304End', value=1):
+        if self.user_value(key='G07P304End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13842,7 +13842,7 @@ class G07P305_Check(trigger_api.Trigger):
 
 class G07P305_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P305End', value=1):
+        if self.user_value(key='G07P305End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13884,7 +13884,7 @@ class G07P306_Check(trigger_api.Trigger):
 
 class G07P306_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P306End', value=1):
+        if self.user_value(key='G07P306End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13926,7 +13926,7 @@ class G07P307_Check(trigger_api.Trigger):
 
 class G07P307_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P307End', value=1):
+        if self.user_value(key='G07P307End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -13968,7 +13968,7 @@ class G07P308_Check(trigger_api.Trigger):
 
 class G07P308_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P308End', value=1):
+        if self.user_value(key='G07P308End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14010,7 +14010,7 @@ class G07P309_Check(trigger_api.Trigger):
 
 class G07P309_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P309End', value=1):
+        if self.user_value(key='G07P309End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14052,7 +14052,7 @@ class G07P310_Check(trigger_api.Trigger):
 
 class G07P310_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P310End', value=1):
+        if self.user_value(key='G07P310End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14094,7 +14094,7 @@ class G07P401_Check(trigger_api.Trigger):
 
 class G07P401_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P401End', value=1):
+        if self.user_value(key='G07P401End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14136,7 +14136,7 @@ class G07P402_Check(trigger_api.Trigger):
 
 class G07P402_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P402End', value=1):
+        if self.user_value(key='G07P402End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14178,7 +14178,7 @@ class G07P403_Check(trigger_api.Trigger):
 
 class G07P403_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P403End', value=1):
+        if self.user_value(key='G07P403End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14220,7 +14220,7 @@ class G07P404_Check(trigger_api.Trigger):
 
 class G07P404_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P404End', value=1):
+        if self.user_value(key='G07P404End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14262,7 +14262,7 @@ class G07P405_Check(trigger_api.Trigger):
 
 class G07P405_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P405End', value=1):
+        if self.user_value(key='G07P405End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14304,7 +14304,7 @@ class G07P406_Check(trigger_api.Trigger):
 
 class G07P406_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P406End', value=1):
+        if self.user_value(key='G07P406End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14346,7 +14346,7 @@ class G07P407_Check(trigger_api.Trigger):
 
 class G07P407_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G07P407End', value=1):
+        if self.user_value(key='G07P407End') >= 1:
             return RoundCheckOut(self.ctx)
 
 
@@ -14362,17 +14362,17 @@ class RoundCheckOut(trigger_api.Trigger):
 
 class CheckNextRound(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Round', value=1):
+        if self.user_value(key='Round') >= 1:
             return R01EndDelay(self.ctx)
-        if self.user_value(key='Round', value=2):
+        if self.user_value(key='Round') >= 2:
             return R02EndDelay(self.ctx)
-        if self.user_value(key='Round', value=3):
+        if self.user_value(key='Round') >= 3:
             return R03EndDelay(self.ctx)
-        if self.user_value(key='Round', value=4):
+        if self.user_value(key='Round') >= 4:
             return R04EndDelay(self.ctx)
-        if self.user_value(key='Round', value=6):
+        if self.user_value(key='Round') >= 6:
             return R04GambleEndDelay(self.ctx)
-        if self.user_value(key='Round', value=5):
+        if self.user_value(key='Round') >= 5:
             return R05EndDelay(self.ctx)
 
     def on_exit(self) -> None:

@@ -4,7 +4,7 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면, 750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 타이머(self.ctx)
 
@@ -39,7 +39,7 @@ class 보스HP체크(trigger_api.Trigger):
         LessEqual,
         Less,
         """
-        if self.check_npc_damage(spawn_id=102, damage_rate=1):
+        if self.npc_damage(spawn_id=102) >= 1:
             # 인페르녹 보스 스폰하기, 스폰ID : 102
             # 이때 보스 HP에 있는 인페르녹의 보호막 이펙트와 쉴드 버프 아이콘을 제거시겨서 보스 100% 클이어 조건이 되었음을 알림
             # 여기서 전투판 안에 있는 몬스터인 인페르녹에게 50004522 버프를 부여하여  인페르녹의 보호막 이펙트와 쉴드 버프 아이콘 출력 용도인 50004521 애디셔널을 제거시킴

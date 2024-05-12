@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Archeon4', value=1):
+        if self.user_value(key='Archeon4') >= 1:
             self.set_user_value(trigger_id=900010, key='Archeon4', value=0)
             return Archeon_Ready(self.ctx)
 

@@ -87,7 +87,7 @@ class 모쿰이동(trigger_api.Trigger):
         self.add_buff(box_ids=[99999], skill_id=71000077, level=1, is_player=False, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='551'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 551:
             # 가이드 To 트리거 -: 몬스터생성신호
             self.spawn_monster(spawn_ids=[101], auto_target=False)
             return 모쿰대사1(self.ctx)

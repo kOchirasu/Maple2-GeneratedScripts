@@ -5,7 +5,7 @@ import trigger_api
 # 포탈 파괴 연출
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return portal(self.ctx)
 
 

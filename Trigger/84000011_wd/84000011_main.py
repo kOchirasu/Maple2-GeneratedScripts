@@ -18,7 +18,7 @@ class 결혼식연출시작요청대기(trigger_api.Trigger):
         self.hide_guide_summary(entity_id=28400140)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Weddingceremonystarts', value=1):
+        if self.user_value(key='Weddingceremonystarts') >= 1:
             # 결혼하시겠습니까 입력창 띄우자마자 쏘는 신호 받으면 하객옮기기 트리거 시작되도록
             self.set_user_value(key='Weddingceremonystarts', value=0) # 받자마자 초기화
             self.lock_my_pc(is_lock=True) # PC 움직임 락
@@ -173,10 +173,10 @@ class 성혼타이핑결과확인(trigger_api.Trigger):
             # 신랑신부 중 나간 사람 없나 체크
             self.wedding_mutual_cancel(agree_type='partnerName') # 투표 취소 (방어 트리거)
             return 탈주로중단(self.ctx)
-        if self.wedding_mutual_agree_result(agree_type='partnerName', success=False):
+        if not self.wedding_mutual_agree_result(agree_type='partnerName'):
             # 타이핑 둘 중 하나라도 안 하면 취소로 감 : 제대로 될 때까지 무한루핑
             return 탈주로중단(self.ctx)
-        if self.wedding_mutual_agree_result(agree_type='partnerName', success=True):
+        if self.wedding_mutual_agree_result(agree_type='partnerName'):
             # 타이핑 둘 다 하면 성혼 발표로
             return 성혼발표(self.ctx)
 
@@ -274,7 +274,7 @@ class 보상과결혼상태마지막체크(trigger_api.Trigger):
         self.lock_my_pc(is_lock=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.wedding_hall_state(hall_state='weddingComplete', success=True):
+        if self.wedding_hall_state(success=True) == 'weddingComplete':
             return 뒷풀이02(self.ctx)
         return 보상결혼상태체크실패(self.ctx)
 
@@ -310,7 +310,7 @@ class 뒷풀이03(trigger_api.Trigger):
         self.set_user_value(key='EndWedding', value=0) # 결혼종료확인 초기화
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EndWedding', value=1):
+        if self.user_value(key='EndWedding') >= 1:
             return 결혼종료확인(self.ctx)
 
     def on_exit(self) -> None:
@@ -326,14 +326,14 @@ class 결혼종료확인(trigger_api.Trigger):
         if self.wedding_entry_in_field(entry_type='GroomBride', is_in_field=False):
             # 신랑신부 중 나간 사람 있으면 바로 결혼식장 폐쇄(종료)로
             return 종료알림(self.ctx)
-        if self.wedding_mutual_agree_result(agree_type='endActing', success=True):
+        if self.wedding_mutual_agree_result(agree_type='endActing'):
             # 결혼식 종료에 동의했으면 바로 결혼식장 폐쇄(종료)로
             return 종료알림(self.ctx)
         """
         if self.time_expired(timer_id='8400131'):
             return None # Missing State: 강퇴안내
         """
-        if self.wedding_mutual_agree_result(agree_type='endActing', success=False):
+        if not self.wedding_mutual_agree_result(agree_type='endActing'):
             # 결혼식 종료에 동의 안했으면 안내메시지 출력하면서 종료 체크 계속 하도록 직전 스테이트로 돌려보냄
             return 뒷풀이03(self.ctx)
 

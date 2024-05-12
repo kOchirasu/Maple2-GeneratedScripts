@@ -7,7 +7,7 @@ class Wait(trigger_api.Trigger):
         self.create_widget(type='SurvivalContents')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StormStart', value=1):
+        if self.user_value(key='StormStart') >= 1:
             return SetStorm(self.ctx)
 
 
@@ -27,7 +27,7 @@ class Step01(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_1_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step02(self.ctx)
 
     def on_exit(self) -> None:
@@ -42,7 +42,7 @@ class Step02(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_2_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step03(self.ctx)
 
     def on_exit(self) -> None:
@@ -57,7 +57,7 @@ class Step03(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_3_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step04(self.ctx)
 
     def on_exit(self) -> None:
@@ -72,7 +72,7 @@ class Step04(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_4_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step05(self.ctx)
 
     def on_exit(self) -> None:
@@ -87,7 +87,7 @@ class Step05(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_5_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step06(self.ctx)
 
     def on_exit(self) -> None:
@@ -102,7 +102,7 @@ class Step06(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_6_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step07(self.ctx)
 
     def on_exit(self) -> None:
@@ -117,7 +117,7 @@ class Step07(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_7_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Step08(self.ctx)
 
     def on_exit(self) -> None:
@@ -132,7 +132,7 @@ class Step08(trigger_api.Trigger):
         self.write_log(log_name='Survival', event='Storm_Step_8_start') # 서바이벌 스톰 로그
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SurvivalContents', name='TimeOver'):
+        if self.widget_value(type='SurvivalContents', name='TimeOver') == 1:
             return Quit(self.ctx)
 
     def on_exit(self) -> None:

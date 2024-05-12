@@ -22,7 +22,7 @@ class idle(trigger_api.Trigger):
         self.enable_spawn_point_pc(spawn_id=993, is_enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -60,7 +60,7 @@ class 시작_03(trigger_api.Trigger):
 
 class 시작_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 전투_01(self.ctx)
 
 
@@ -86,7 +86,7 @@ class 관문_01_개방(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7020], visible=False) # 알람 소리
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 전투_02(self.ctx)
 
 
@@ -114,7 +114,7 @@ class 관문_02_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 전투_03(self.ctx)
 
 
@@ -128,7 +128,7 @@ class 전투_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[121,122,123,124,125,126,127,128,129]):
             return 관문_03_개방(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return 전투_04(self.ctx)
 
     def on_exit(self) -> None:
@@ -144,7 +144,7 @@ class 관문_03_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return 전투_04(self.ctx)
 
 
@@ -170,7 +170,7 @@ class 관문_04_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=706, min_users='1'):
+        if self.count_users(box_id=706) >= 1:
             return 전투_05(self.ctx)
 
 
@@ -184,7 +184,7 @@ class 전투_05(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[141,142,143,144,145,146,147,148,149]):
             return 관문_05_개방(self.ctx)
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return 전투_06(self.ctx)
 
 
@@ -197,7 +197,7 @@ class 관문_05_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return 전투_06(self.ctx)
 
 
@@ -231,7 +231,7 @@ class 관문_06_개방_02(trigger_api.Trigger):
         self.show_guide_summary(entity_id=106, text_id=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=708, min_users='1'):
+        if self.count_users(box_id=708) >= 1:
             return 전투_07(self.ctx)
 
 

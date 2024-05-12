@@ -9,33 +9,33 @@ class Wait(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[5220], visible=True, start_delay=0, interval=0, fade=0) # 22 / Ground inner
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Box22Check', value=0):
+        if self.user_value(key='Box22Check') >= 0:
             return Sensor0(self.ctx)
-        if self.user_value(key='Box22Check', value=1):
+        if self.user_value(key='Box22Check') >= 1:
             return Sensor1(self.ctx)
-        if self.user_value(key='Box22Check', value=2):
+        if self.user_value(key='Box22Check') >= 2:
             return Sensor2(self.ctx)
-        if self.user_value(key='Box22Check', value=3):
+        if self.user_value(key='Box22Check') >= 3:
             return Sensor3(self.ctx)
-        if self.user_value(key='Box22Check', value=4):
+        if self.user_value(key='Box22Check') >= 4:
             return Sensor4(self.ctx)
-        if self.user_value(key='Box22Check', value=5):
+        if self.user_value(key='Box22Check') >= 5:
             return Sensor5(self.ctx)
-        if self.user_value(key='Box22Check', value=7):
+        if self.user_value(key='Box22Check') >= 7:
             return Sensor7(self.ctx)
-        if self.user_value(key='Box22Check', value=8):
+        if self.user_value(key='Box22Check') >= 8:
             return Sensor8(self.ctx)
-        if self.user_value(key='Box22Check', value=9):
+        if self.user_value(key='Box22Check') >= 9:
             return Sensor9(self.ctx)
-        if self.user_value(key='Box22Check', value=6):
+        if self.user_value(key='Box22Check') >= 6:
             return Sensor10(self.ctx)
-        if self.user_value(key='Box22Check', value=15):
+        if self.user_value(key='Box22Check') >= 15:
             return Sensor15(self.ctx)
-        if self.user_value(key='Box22Check', value=20):
+        if self.user_value(key='Box22Check') >= 20:
             return Sensor20(self.ctx)
-        if self.user_value(key='Box22Check', value=25):
+        if self.user_value(key='Box22Check') >= 25:
             return Sensor25(self.ctx)
-        if self.user_value(key='Box22Check', value=30):
+        if self.user_value(key='Box22Check') >= 30:
             return Sensor30(self.ctx)
 
 
@@ -46,105 +46,105 @@ class Sensor0(trigger_api.Trigger):
 
 class Sensor1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9220) == 1:
             return NormalPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9220) != 1:
             return Fail(self.ctx)
 
 
 class Sensor2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='2', operator='Equal'):
+        if self.count_users(box_id=9220) == 2:
             return NormalPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='2', operator='Equal'):
+        if self.count_users(box_id=9220) != 2:
             return Fail(self.ctx)
 
 
 class Sensor3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9220) == 3:
             return NormalPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9220) != 3:
             return Fail(self.ctx)
 
 
 class Sensor4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9220) == 4:
             return NormalPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9220) != 4:
             return Fail(self.ctx)
 
 
 class Sensor5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='5', operator='Equal'):
+        if self.count_users(box_id=9220) == 5:
             return NormalPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='5', operator='Equal'):
+        if self.count_users(box_id=9220) != 5:
             return Fail(self.ctx)
 
 
 class Sensor7(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='7', operator='Equal'):
+        if self.count_users(box_id=9220) == 7:
             return GamblePass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='7', operator='Equal'):
+        if self.count_users(box_id=9220) != 7:
             return Fail(self.ctx)
 
 
 class Sensor8(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='8', operator='Equal'):
+        if self.count_users(box_id=9220) == 8:
             return GamblePass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='8', operator='Equal'):
+        if self.count_users(box_id=9220) != 8:
             return Fail(self.ctx)
 
 
 class Sensor9(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='9', operator='Equal'):
+        if self.count_users(box_id=9220) == 9:
             return GamblePass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='9', operator='Equal'):
+        if self.count_users(box_id=9220) != 9:
             return Fail(self.ctx)
 
 
 class Sensor10(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='10', operator='Equal'):
+        if self.count_users(box_id=9220) == 10:
             return GamblePass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='10', operator='Equal'):
+        if self.count_users(box_id=9220) != 10:
             return Fail(self.ctx)
 
 
 class Sensor15(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='15', operator='Equal'):
+        if self.count_users(box_id=9220) == 15:
             return JackpotPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='15', operator='Equal'):
+        if self.count_users(box_id=9220) != 15:
             return Fail(self.ctx)
 
 
 class Sensor20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='20', operator='Equal'):
+        if self.count_users(box_id=9220) == 20:
             return JackpotPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='20', operator='Equal'):
+        if self.count_users(box_id=9220) != 20:
             return Fail(self.ctx)
 
 
 class Sensor25(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='25', operator='Equal'):
+        if self.count_users(box_id=9220) == 25:
             return JackpotPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='25', operator='Equal'):
+        if self.count_users(box_id=9220) != 25:
             return Fail(self.ctx)
 
 
 class Sensor30(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9220, min_users='30', operator='Equal'):
+        if self.count_users(box_id=9220) == 30:
             return JackpotPass(self.ctx)
-        if not self.count_users(box_id=9220, min_users='30', operator='Equal'):
+        if self.count_users(box_id=9220) != 30:
             return Fail(self.ctx)
 
 

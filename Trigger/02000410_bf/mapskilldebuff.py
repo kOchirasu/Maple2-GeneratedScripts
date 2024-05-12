@@ -8,7 +8,7 @@ class Ready(trigger_api.Trigger):
         self.set_skill(trigger_ids=[666], enable=False) # 맵 스킬 초기화 셋팅
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면           750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 전투시작(self.ctx)
 
@@ -16,7 +16,7 @@ class Ready(trigger_api.Trigger):
 class 전투시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         # 언제든지  파티원이 전멸하거나 파티장이 던전 포기를 해서 몬스터가 전부 제거 될 수 있어서, 맵셋팅 스킬은 트리거 영역 안의 몬스터가 없으면 꺼지도록 매 턴마다 체크할 수 있도록 함
-        if self.dungeon_check_play_time(play_seconds=600):
+        if self.dungeon_play_time() >= 600:
             # 플레이 시간이 10분 되면, 1단계 필수 아이템 없는 유저 디버프로 죽이기, 이 것은 인페르녹이 스킬로 사용하는데, 혹시 보스쪽이 오류라면 대박 버그라서 안정 장치로 맵트리거 설정도 넣음
             return 단계_70000103_1(self.ctx)
         if not self.npc_detected(box_id=700, spawn_ids=[0]):
@@ -31,7 +31,7 @@ class 단계_70000103_1(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         # 언제든지  파티원이 전멸하거나 파티장이 던전 포기를 해서 몬스터가 전부 제거 될 수 있어서, 맵셋팅 스킬은 트리거 영역 안의 몬스터가 없으면 꺼지도록 매 턴마다 체크할 수 있도록 함
-        if self.dungeon_check_play_time(play_seconds=780):
+        if self.dungeon_play_time() >= 780:
             # 플레이 시간이 13분 되면, 2단계 필수 아이템 없는 유저 디버프로 죽이기, 이 것은 인페르녹이 스킬로 사용하는데, 혹시 보스쪽이 오류라면 대박 버그라서 안정 장치로 맵트리거 설정도 넣음
             return 단계_70000104_2(self.ctx)
         if not self.npc_detected(box_id=700, spawn_ids=[0]):
@@ -46,7 +46,7 @@ class 단계_70000104_2(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         # 언제든지  파티원이 전멸하거나 파티장이 던전 포기를 해서 몬스터가 전부 제거 될 수 있어서, 맵셋팅 스킬은 트리거 영역 안의 몬스터가 없으면 꺼지도록 매 턴마다 체크할 수 있도록 함
-        if self.dungeon_check_play_time(play_seconds=900):
+        if self.dungeon_play_time() >= 900:
             # 플레이 시간이 15분 되면, 2개 맵스킬 끄기
             return 스킬끄기(self.ctx)
         if not self.npc_detected(box_id=700, spawn_ids=[0]):

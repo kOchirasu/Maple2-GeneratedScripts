@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BattleStart', value=1):
+        if self.user_value(key='BattleStart') >= 1:
             return 카운트(self.ctx)
 
 
@@ -22,7 +22,7 @@ class 차단(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3000,3001], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BattleEnd', value=1):
+        if self.user_value(key='BattleEnd') >= 1:
             return 차단해제(self.ctx)
 
 

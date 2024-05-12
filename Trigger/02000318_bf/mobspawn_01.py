@@ -110,7 +110,7 @@ class MoveShip01(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3001], visible=False, start_delay=0, interval=0, fade=0) # 1stBarrier
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ShipMove', value=1):
+        if self.user_value(key='ShipMove') >= 1:
             return MoveShip02(self.ctx)
 
 

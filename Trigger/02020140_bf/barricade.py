@@ -29,10 +29,10 @@ class 칸막이대기알림(trigger_api.Trigger):
         self.dungeon_enable_give_up(is_enable='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패종료(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패종료(self.ctx)
         if self.wait_tick(wait_tick=30000):
@@ -50,10 +50,10 @@ class 칸막이막기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[609], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패종료(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패종료(self.ctx)
 

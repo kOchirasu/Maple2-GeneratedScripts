@@ -22,7 +22,7 @@ class main(trigger_api.Trigger):
         self.select_camera(trigger_id=8000, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=90001, min_users='1'):
+        if self.count_users(box_id=90001) >= 1:
             return CheckUserCount(self.ctx)
 
 

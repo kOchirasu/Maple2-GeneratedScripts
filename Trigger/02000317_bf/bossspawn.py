@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
         self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False, arg5=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=101, min_users='1'):
+        if self.count_users(box_id=101) >= 1:
             return CheckUserCount(self.ctx)
 
 

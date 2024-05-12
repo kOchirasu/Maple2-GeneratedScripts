@@ -4,7 +4,7 @@ import trigger_api
 
 class 체력조건(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=70, spawn_id=6000019, is_relative=True):
+        if self.npc_hp(spawn_id=6000019, is_relative=True) <= 70:
             return 몬스터생성(self.ctx)
 
 

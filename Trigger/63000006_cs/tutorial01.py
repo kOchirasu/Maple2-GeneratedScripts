@@ -85,7 +85,7 @@ class 영상재생_01(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\Common_Opening.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 룬블영상준비_01(self.ctx)
         if self.wait_tick(wait_tick=190000):
             return 룬블영상준비_01(self.ctx)
@@ -104,7 +104,7 @@ class 룬블영상재생_01(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\RuneBlader_Intro.usm', movie_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='2'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 2:
             return 룬블영상완료_01(self.ctx)
         if self.wait_tick(wait_tick=30000):
             return 룬블영상완료_01(self.ctx)
@@ -141,7 +141,7 @@ class 키타입설정안내01(trigger_api.Trigger):
         self.guide_event(event_id=10010005) # 트리거 To가이드 : 키타입설정
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10010009'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10010009:
             # 가이드 To 트리거 - 키타입설정완료
             return 플레이준비(self.ctx)
 
@@ -285,7 +285,7 @@ class 미니맵가이드01(trigger_api.Trigger):
         self.guide_event(event_id=10010010)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10010020'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10010020:
             # 가이드 To 트리거 -: 미니맵 크게 보기 완료
             return 이슈라이동01(self.ctx)
 

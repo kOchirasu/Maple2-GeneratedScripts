@@ -4,7 +4,7 @@ import trigger_api
 
 class 메시지_대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='elevator', value=1):
+        if self.user_value(key='elevator') >= 1:
             return 엘리베이터_정지(self.ctx)
 
 
@@ -20,7 +20,7 @@ class 엘리베이터_정지(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='elevator', value=0):
+        if self.user_value(key='elevator') >= 0:
             return 메시지_대기(self.ctx)
 
 

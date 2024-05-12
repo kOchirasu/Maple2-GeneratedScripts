@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7705], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -30,7 +30,7 @@ class 시작_04(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010,6011,6012], visible=False, interval=0, fade=10) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 시작_05(self.ctx)
 
 
@@ -56,7 +56,7 @@ class 관문_01_개방(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6021,6022,6023,6024,6025,6026,6027,6028,6029,6030,6031,6032,6033], visible=False, interval=0, fade=10) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_02_시작(self.ctx)
 
 
@@ -82,7 +82,7 @@ class 관문_02_개방(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6051,6052,6053,6054,6055,6056,6057,6058,6059,6060,6061,6062,6063,6064,6065,6066,6067,6068,6069,6070,6071,6072,6073,6074,6075,6076,6077,6078,6079,6080,6081,6082,6083], visible=False, interval=0, fade=10) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 관문_03_시작(self.ctx)
 
 
@@ -108,7 +108,7 @@ class 관문_03_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=113, text_id=40011) # 다음 지역으로 이동하세요
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return 관문_04_시작(self.ctx)
 
     def on_exit(self) -> None:
@@ -137,7 +137,7 @@ class 관문_04_개방(trigger_api.Trigger):
         self.show_guide_summary(entity_id=113, text_id=40011) # 다음 지역으로 이동하세요
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=706, min_users='1'):
+        if self.count_users(box_id=706) >= 1:
             return 관문_05_시작(self.ctx)
 
     def on_exit(self) -> None:

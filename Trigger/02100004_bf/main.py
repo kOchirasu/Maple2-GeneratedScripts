@@ -19,9 +19,9 @@ class CheckUser10_GuildRaid(trigger_api.Trigger):
         self.set_timer(timer_id='99', seconds=30, start_delay=1, interval=0, v_offset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=199, min_users='10', operator='GreaterEqual'):
+        if self.count_users(box_id=199) >= 10:
             return MaxCount10_Start(self.ctx)
-        if self.count_users(box_id=199, min_users='10', operator='Less'):
+        if self.count_users(box_id=199) < 10:
             return MaxCount10_Wait(self.ctx)
         if not self.is_dungeon_room():
             # 룸던전이 아니면 바로 시작
@@ -33,7 +33,7 @@ class MaxCount10_Wait(trigger_api.Trigger):
         self.show_guide_summary(entity_id=40012, text_id=40012, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=199, min_users='10', operator='GreaterEqual'):
+        if self.count_users(box_id=199) >= 10:
             return MaxCount10_Start(self.ctx)
         if self.time_expired(timer_id='99'):
             return MaxCount10_Start(self.ctx)

@@ -17,7 +17,7 @@ class 전직컷씬01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 리엔원경_01_03(self.ctx)
         if self.wait_tick(wait_tick=8000):
             return 리엔원경_01_03(self.ctx)

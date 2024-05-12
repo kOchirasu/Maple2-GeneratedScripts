@@ -40,7 +40,7 @@ class PlayOpeningMovie02(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\Common_Opening.usm', movie_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='2'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 2:
             return PlayMovie01(self.ctx)
         if self.wait_tick(wait_tick=190000):
             return PlayMovie01(self.ctx)
@@ -59,7 +59,7 @@ class PlayMovie02(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_Vivid_Dream.swf', movie_id=1) # 소울바인더 인트로 컷신
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return LodingDelay01(self.ctx)
         if self.wait_tick(wait_tick=77000):
             return LodingDelay01(self.ctx)

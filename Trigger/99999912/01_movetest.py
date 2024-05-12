@@ -8,7 +8,7 @@ class Init(trigger_api.Trigger):
         self.user_tag_symbol(symbol1='guild_game_red', symbol2='guild_game_blue')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1', operator='>=', user_tag_id=1):
+        if self.count_users(box_id=9000, user_tag_id=1) >= 1:
             return Wait(self.ctx)
 
 

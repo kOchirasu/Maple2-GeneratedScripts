@@ -139,7 +139,7 @@ class MobWaveStart(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[121,122,123,124,125,126,127,128]):
             return MobWaveDelayRandom(self.ctx)
-        if self.user_value(key='MobWaveStop', value=1):
+        if self.user_value(key='MobWaveStop') >= 1:
             return Quit(self.ctx)
 
     def on_exit(self) -> None:
@@ -157,7 +157,7 @@ class MobWaveDelayRandom(trigger_api.Trigger):
         if self.random_condition(weight=20):
             # 7초
             return MobWaveDelay03(self.ctx)
-        if self.user_value(key='MobWaveStop', value=1):
+        if self.user_value(key='MobWaveStop') >= 1:
             return Quit(self.ctx)
 
 
@@ -165,7 +165,7 @@ class MobWaveDelay01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=12000):
             return MobWaveStart(self.ctx)
-        if self.user_value(key='MobWaveStop', value=1):
+        if self.user_value(key='MobWaveStop') >= 1:
             return Quit(self.ctx)
 
 
@@ -173,7 +173,7 @@ class MobWaveDelay02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=17000):
             return MobWaveStart(self.ctx)
-        if self.user_value(key='MobWaveStop', value=1):
+        if self.user_value(key='MobWaveStop') >= 1:
             return Quit(self.ctx)
 
 
@@ -181,7 +181,7 @@ class MobWaveDelay03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=7000):
             return MobWaveStart(self.ctx)
-        if self.user_value(key='MobWaveStop', value=1):
+        if self.user_value(key='MobWaveStop') >= 1:
             return Quit(self.ctx)
 
 

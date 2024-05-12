@@ -92,10 +92,10 @@ class 조건확인(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[101]):
             return 보스전_성공(self.ctx)
-        if self.check_npc_hp(compare='higherEqual', value=50, spawn_id=101, is_relative=True):
+        if self.npc_hp(spawn_id=101, is_relative=True) >= 50:
             # 렌듀비앙 HP 50% 이상이면 불 끄고 싸우는 패턴 한번 더
             return 조명변경(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=101, is_relative=True):
+        if self.npc_hp(spawn_id=101, is_relative=True) <= 50:
             # 렌듀비앙 HP 50% 이하면 일반 싸우는 패턴으로 유지
             return 조건추가(self.ctx)
 

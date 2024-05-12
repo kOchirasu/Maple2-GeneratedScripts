@@ -29,7 +29,7 @@ class 대기(trigger_api.Trigger):
 
 class LoadingDelay01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BattleStart', value=1):
+        if self.user_value(key='BattleStart') >= 1:
             return LoadingDelay02(self.ctx)
 
 

@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=101, min_users='2'):
+        if self.count_users(box_id=101) >= 2:
             return PvP종료(self.ctx)
         if self.pvp_zone_ended(box_id=101):
             return 완료(self.ctx)

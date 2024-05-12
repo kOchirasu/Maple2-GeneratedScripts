@@ -183,7 +183,7 @@ class BlackeyeAction03(trigger_api.Trigger):
         self.show_guide_summary(entity_id=20039601, text_id=20039601, duration=3000) # 가이드 : 레버를 당겨 트랩을 발동시키기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MobClear', value=1):
+        if self.user_value(key='MobClear') >= 1:
             return MoveToUpstairs01(self.ctx)
 
 
@@ -267,7 +267,7 @@ class NpcMonologue01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
             return NpcMonologueRandom(self.ctx)
-        if self.user_value(key='FindWay', value=1):
+        if self.user_value(key='FindWay') >= 1:
             return NpcLeave01(self.ctx)
 
 
@@ -278,7 +278,7 @@ class NpcMonologue02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
             return NpcMonologueRandom(self.ctx)
-        if self.user_value(key='FindWay', value=1):
+        if self.user_value(key='FindWay') >= 1:
             return NpcLeave01(self.ctx)
 
 
@@ -289,7 +289,7 @@ class NpcMonologue03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
             return NpcMonologueRandom(self.ctx)
-        if self.user_value(key='FindWay', value=1):
+        if self.user_value(key='FindWay') >= 1:
             return NpcLeave01(self.ctx)
 
 
@@ -300,7 +300,7 @@ class NpcMonologue04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=9000):
             return NpcMonologueRandom(self.ctx)
-        if self.user_value(key='FindWay', value=1):
+        if self.user_value(key='FindWay') >= 1:
             return NpcLeave01(self.ctx)
 
 

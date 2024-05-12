@@ -282,7 +282,7 @@ class 영상재생(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\KarKarIntro.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 대사_14_PC(self.ctx)
         if self.wait_tick(wait_tick=18000):
             return 대사_14_PC(self.ctx)

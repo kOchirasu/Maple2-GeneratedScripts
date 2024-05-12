@@ -10,7 +10,7 @@ class 유저감지(trigger_api.Trigger):
 
 class 알림(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=100000001, compare='lowerEqual', value=5, is_relative=True) or self.check_npc_hp(spawn_id=100000002, compare='lowerEqual', value=5, is_relative=True):
+        if self.npc_hp(spawn_id=100000001, is_relative=True) <= 5 or self.npc_hp(spawn_id=100000002, is_relative=True) <= 5:
             return 알림_2(self.ctx)
         if self.monster_dead(spawn_ids=[100000001]) and self.monster_dead(spawn_ids=[100000002]):
             return 완료알림(self.ctx)

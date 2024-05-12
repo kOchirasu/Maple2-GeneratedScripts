@@ -33,7 +33,7 @@ class wait_02(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[102], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 숙소도착_01(self.ctx)
         if self.wait_tick(wait_tick=85000):
             return 숙소도착_01(self.ctx)
@@ -124,7 +124,7 @@ class 전직컷씬01(trigger_api.Trigger):
         self.play_scene_movie(file_name='jobChange_soul.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 깨어났다_01(self.ctx)
         if self.wait_tick(wait_tick=8000):
             return 깨어났다_01(self.ctx)

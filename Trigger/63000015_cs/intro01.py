@@ -118,7 +118,7 @@ class PlayOpeningMovie02(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\Common_Opening.usm', movie_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='2'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 2:
             return PlayMovie01(self.ctx)
         if self.wait_tick(wait_tick=190000):
             return PlayMovie01(self.ctx)
@@ -137,7 +137,7 @@ class PlayMovie02(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_Blackstar_Crash.swf', movie_id=1) # 임시
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return WeiHongTalk01(self.ctx)
         if self.wait_tick(wait_tick=66000):
             return WeiHongTalk01(self.ctx)
@@ -269,7 +269,7 @@ class KeytypeSelect01(trigger_api.Trigger):
         self.guide_event(event_id=10020005)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10020009'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10020009:
             return MeetWeiHong01(self.ctx)
 
 

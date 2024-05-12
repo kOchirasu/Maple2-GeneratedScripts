@@ -21,7 +21,7 @@ class Ready(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[101], auto_target=False) # 기본 배치 될 몬스터 등장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=700, min_users='1'):
+        if self.count_users(box_id=700) >= 1:
             return Ready_Idle(self.ctx)
 
 
@@ -231,7 +231,7 @@ class Round_Spawn_A2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=85000):
             # 2라운드 1차 스폰 타이머
             return Round_Spawn_A_02_Ready2(self.ctx)
-        if self.user_value(key='2Round_A', value=1):
+        if self.user_value(key='2Round_A') >= 1:
             return Round_Spawn_A_02_Ready2(self.ctx)
 
 
@@ -246,7 +246,7 @@ class Round_Spawn_B2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=85000):
             # 2라운드 1차 스폰 타이머
             return Round_Spawn_B_02_Ready2(self.ctx)
-        if self.user_value(key='2Round_B', value=1):
+        if self.user_value(key='2Round_B') >= 1:
             return Round_Spawn_B_02_Ready2(self.ctx)
 
 
@@ -261,7 +261,7 @@ class Round_Spawn_C2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=85000):
             # 2라운드 1차 스폰 타이머
             return Round_Spawn_C_02_Ready2(self.ctx)
-        if self.user_value(key='2Round_C', value=1):
+        if self.user_value(key='2Round_C') >= 1:
             return Round_Spawn_C_02_Ready2(self.ctx)
 
 
@@ -311,7 +311,7 @@ class Round_Spawn_A_B_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_A_B_C2(self.ctx)
-        if self.user_value(key='2Round_B', value=1):
+        if self.user_value(key='2Round_B') >= 1:
             return Round_Spawn_A_B_C2(self.ctx)
 
 
@@ -323,7 +323,7 @@ class Round_Spawn_A_C_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_A_C_B2(self.ctx)
-        if self.user_value(key='2Round_C', value=1):
+        if self.user_value(key='2Round_C') >= 1:
             return Round_Spawn_A_C_B2(self.ctx)
 
 
@@ -365,7 +365,7 @@ class Round_Spawn_B_A_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_B_A_C2(self.ctx)
-        if self.user_value(key='2Round_A', value=1):
+        if self.user_value(key='2Round_A') >= 1:
             return Round_Spawn_B_A_C2(self.ctx)
 
 
@@ -377,7 +377,7 @@ class Round_Spawn_B_C_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_B_C_A2(self.ctx)
-        if self.user_value(key='2Round_C', value=1):
+        if self.user_value(key='2Round_C') >= 1:
             return Round_Spawn_B_C_A2(self.ctx)
 
 
@@ -419,7 +419,7 @@ class Round_Spawn_C_A_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_C_A_B2(self.ctx)
-        if self.user_value(key='2Round_A', value=1):
+        if self.user_value(key='2Round_A') >= 1:
             return Round_Spawn_C_A_B2(self.ctx)
 
 
@@ -431,7 +431,7 @@ class Round_Spawn_C_B_02_2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=135000):
             # 2라운드 2차 스폰 타이머
             return Round_Spawn_C_B_A2(self.ctx)
-        if self.user_value(key='2Round_B', value=1):
+        if self.user_value(key='2Round_B') >= 1:
             return Round_Spawn_C_B_A2(self.ctx)
 
 

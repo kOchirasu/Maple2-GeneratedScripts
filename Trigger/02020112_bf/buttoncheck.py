@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
         self.set_effect(trigger_ids=[8002,8003,8004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='GravityRoom', value=1):
+        if self.user_value(key='GravityRoom') >= 1:
             return 작동(self.ctx)
 
 
@@ -49,7 +49,7 @@ class 감지_1층(trigger_api.Trigger):
         self.add_buff(box_ids=[916], skill_id=70002103, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimerReset', value=1):
+        if self.user_value(key='TimerReset') >= 1:
             return 대기(self.ctx)
         if self.user_detected(box_ids=[912], job_code=0):
             return 감지_2층(self.ctx)
@@ -63,7 +63,7 @@ class 감지_2층(trigger_api.Trigger):
         self.set_actor(trigger_id=9902, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_On')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimerReset', value=1):
+        if self.user_value(key='TimerReset') >= 1:
             return 대기(self.ctx)
         if self.user_detected(box_ids=[913], job_code=0):
             return 감지_3층(self.ctx)
@@ -76,7 +76,7 @@ class 감지_3층(trigger_api.Trigger):
         self.set_actor(trigger_id=9903, visible=True, initial_sequence='Interaction_Lapentafoothold_A01_On')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimerReset', value=1):
+        if self.user_value(key='TimerReset') >= 1:
             return 대기(self.ctx)
         if self.user_detected(box_ids=[914], job_code=0):
             return 감지_4층(self.ctx)

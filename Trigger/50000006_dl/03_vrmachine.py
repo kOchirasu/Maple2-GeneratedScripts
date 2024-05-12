@@ -10,7 +10,7 @@ class Wait(trigger_api.Trigger):
         self.set_portal(portal_id=3, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='machineon', value=1):
+        if self.user_value(key='machineon') >= 1:
             return MachineOn(self.ctx)
 
 

@@ -103,7 +103,7 @@ class 다리건넘(trigger_api.Trigger):
         self.set_user_value(trigger_id=99999105, key='cannon05', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=450):
+        if self.shadow_expedition_points() >= 450:
             return 차지원2(self.ctx)
 
 
@@ -112,7 +112,7 @@ class 차지원2(trigger_api.Trigger):
         self.spawn_npc_range(range_ids=[2021,2022,2023,2024,2025,2026,2027,2028,2029,2030], is_auto_targeting=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=700):
+        if self.shadow_expedition_points() >= 700:
             return 차지원3(self.ctx)
 
 
@@ -121,7 +121,7 @@ class 차지원3(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[2031,2032,2033,2034,2035,2036], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=1400):
+        if self.shadow_expedition_points() >= 1400:
             self.shadow_expedition(type='CloseBossGauge')
             return 보스등장_딜레이(self.ctx)
 
@@ -140,7 +140,7 @@ class 보스등장(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[2099], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=2099, is_relative=True):
+        if self.npc_hp(spawn_id=2099, is_relative=True) <= 50:
             return 보스_버프패턴(self.ctx)
 
 

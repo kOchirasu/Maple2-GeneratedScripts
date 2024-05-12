@@ -59,7 +59,7 @@ class MevidicCinematic(trigger_api.Trigger):
         self.move_npc(spawn_id=451, patrol_name='MS2PatrolData_701')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=402, min_users='1'):
+        if self.count_users(box_id=402) >= 1:
             return None # Missing State: LoadingStart
 
 

@@ -26,7 +26,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='DungeonClear', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='RandomPortalOn', value=1):
+        if self.user_value(key='RandomPortalOn') >= 1:
             return Guide01(self.ctx)
 
 
@@ -45,7 +45,7 @@ class Guide01(trigger_api.Trigger):
 
 class CheckMember01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9001) == 1:
             # 1인용 테스트 임시
             # 1인용 테스트 임시
             return CheckMember02(self.ctx) # CheckMember02
@@ -53,31 +53,31 @@ class CheckMember01(trigger_api.Trigger):
 
 class CheckMember02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(box_id=9001, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9001) != 1:
             return CheckMember01(self.ctx)
-        if self.count_users(box_id=9002, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9002) == 1:
             return CheckMember03(self.ctx)
 
 
 class CheckMember03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(box_id=9001, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9001) != 1:
             return CheckMember01(self.ctx)
-        if not self.count_users(box_id=9002, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9002) != 1:
             return CheckMember01(self.ctx)
-        if self.count_users(box_id=9003, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9003) == 1:
             return CheckMember04(self.ctx)
 
 
 class CheckMember04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(box_id=9001, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9001) != 1:
             return CheckMember01(self.ctx)
-        if not self.count_users(box_id=9002, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9002) != 1:
             return CheckMember01(self.ctx)
-        if not self.count_users(box_id=9003, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9003) != 1:
             return CheckMember01(self.ctx)
-        if self.count_users(box_id=9004, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9004) == 1:
             return DoorActivate01(self.ctx)
 
 
@@ -166,10 +166,10 @@ class rdDoorPick4(trigger_api.Trigger):
 
 class GameStart00(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9800, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9800) == 4:
             # InTheStore
             return GameStart01(self.ctx)
-        if self.count_users(box_id=9800, min_users='4', operator='Less'):
+        if self.count_users(box_id=9800) < 4:
             # InTheStore
             return GameStartDelay01(self.ctx)
 
@@ -202,24 +202,24 @@ class GameStart01(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5004], visible=False) # FrontDoorStep
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9005, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9005) == 1:
             # 카운터 1명
             return GameStart02(self.ctx) # 1인 테스트용 임시
-        if self.count_users(box_id=9900, min_users='4', operator='Less'):
+        if self.count_users(box_id=9900) < 4:
             return EndGame01(self.ctx)
 
 
 class GameStart02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9006, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9006) == 3:
             return secondsWait10(self.ctx)
-        if self.count_users(box_id=9900, min_users='4', operator='Less'):
+        if self.count_users(box_id=9900) < 4:
             return EndGame01(self.ctx)
 
 
 class secondsWait10(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='DungeonClear', value=1):
+        if self.user_value(key='DungeonClear') >= 1:
             return Quit(self.ctx)
         if self.wait_tick(wait_tick=10000):
             return CheckMemeberAgain(self.ctx) # 1인 테스트용 임시
@@ -227,11 +227,11 @@ class secondsWait10(trigger_api.Trigger):
 
 class CheckMemeberAgain(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9900, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9900) == 4:
             return secondsWait10(self.ctx)
-        if self.count_users(box_id=9900, min_users='4', operator='Less'):
+        if self.count_users(box_id=9900) < 4:
             return EndGame01(self.ctx)
-        if self.user_value(key='DungeonClear', value=1):
+        if self.user_value(key='DungeonClear') >= 1:
             return Quit(self.ctx)
 
 
@@ -242,7 +242,7 @@ class EndGame01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
             return PCMoveOut01(self.ctx)
-        if self.user_value(key='DungeonClear', value=1):
+        if self.user_value(key='DungeonClear') >= 1:
             return Quit(self.ctx)
 
 

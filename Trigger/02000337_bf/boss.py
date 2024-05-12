@@ -60,7 +60,7 @@ class 폭발후(trigger_api.Trigger):
         self.show_guide_summary(entity_id=111, text_id=20003371) # [b:기관실] 내부로 이동하세요.
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return 폭발후_02(self.ctx)
 
     def on_exit(self) -> None:

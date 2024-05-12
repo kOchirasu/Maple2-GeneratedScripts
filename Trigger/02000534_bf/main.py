@@ -388,7 +388,7 @@ class 보스등장(trigger_api.Trigger):
         self.add_balloon_talk(spawn_id=507, msg='$02000534_BF__MAIN__34$', duration=3500, delay_tick=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=507, is_relative=True):
+        if self.npc_hp(spawn_id=507, is_relative=True) <= 50:
             return 업그레이드시작(self.ctx)
         if self.monster_dead(spawn_ids=[507]):
             return 포탈생성(self.ctx)

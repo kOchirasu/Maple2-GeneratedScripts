@@ -7,7 +7,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='PatrolStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='PatrolStart', value=1):
+        if self.user_value(key='PatrolStart') >= 1:
             return Delay01(self.ctx)
 
 
@@ -23,7 +23,7 @@ class NpcChange01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[101,201], auto_target=False) # 스크립트 잡담을 가지고 있는 NPC
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9301, min_users='1'):
+        if self.count_users(box_id=9301) >= 1:
             return Patrol01(self.ctx)
 
 
@@ -33,7 +33,7 @@ class Patrol01(trigger_api.Trigger):
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_201')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9302, min_users='1'):
+        if self.count_users(box_id=9302) >= 1:
             return Patrol02(self.ctx)
 
 
@@ -43,7 +43,7 @@ class Patrol02(trigger_api.Trigger):
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_202')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9303, min_users='1'):
+        if self.count_users(box_id=9303) >= 1:
             return Patrol03(self.ctx)
 
 
@@ -53,7 +53,7 @@ class Patrol03(trigger_api.Trigger):
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_203')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9304, min_users='1'):
+        if self.count_users(box_id=9304) >= 1:
             return Patrol04(self.ctx)
 
 
@@ -63,7 +63,7 @@ class Patrol04(trigger_api.Trigger):
         self.move_npc(spawn_id=201, patrol_name='MS2PatrolData_204')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9305, min_users='1'):
+        if self.count_users(box_id=9305) >= 1:
             return Patrol05Air(self.ctx)
 
 

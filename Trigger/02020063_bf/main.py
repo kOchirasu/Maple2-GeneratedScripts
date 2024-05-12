@@ -35,10 +35,10 @@ class 유저카운트(trigger_api.Trigger):
         self.set_effect(trigger_ids=[10001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='FieldGameStart', value=1):
+        if self.user_value(key='FieldGameStart') >= 1:
             # <게임 시작 결정>
             return 딜레이(self.ctx)
-        if self.user_value(key='FieldGameStart', value=2):
+        if self.user_value(key='FieldGameStart') >= 2:
             # <방폭 결정>
             return 방폭(self.ctx)
 
@@ -88,7 +88,7 @@ class 시작(trigger_api.Trigger):
         self.enable_spawn_point_pc(spawn_id=2, is_enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_1_Clear', value=1):
+        if self.user_value(key='Battle_1_Clear') >= 1:
             # <웨이브 종료>
             self.set_user_value(trigger_id=99990002, key='Battle_1_SpawnStart', value=0)
             return 포탑페이즈(self.ctx)
@@ -109,7 +109,7 @@ class 포탑페이즈(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020063_BF__MAIN__3$', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_2_Clear', value=1):
+        if self.user_value(key='Battle_2_Clear') >= 1:
             # <모든 포탑 파괴>
             self.set_user_value(trigger_id=99990005, key='Battle_2_SpawnStart', value=0)
             return 보스페이즈(self.ctx)
@@ -130,7 +130,7 @@ class 보스페이즈(trigger_api.Trigger):
         # <3라운드 게임 플레이 타임 설정>
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Clear', value=1):
+        if self.user_value(key='Battle_3_Clear') >= 1:
             # <보스를 처치했을 경우 성공>
             return 성공_세팅(self.ctx)
         if self.monster_dead(spawn_ids=[801]):

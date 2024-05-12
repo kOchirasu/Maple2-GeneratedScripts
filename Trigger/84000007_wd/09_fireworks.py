@@ -4,9 +4,9 @@ import trigger_api
 
 class Staging(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Fireworks', value=1):
+        if self.user_value(key='Fireworks') >= 1:
             return Volley_Ready(self.ctx)
-        if self.user_value(key='Fireworks', value=2):
+        if self.user_value(key='Fireworks') >= 2:
             return Volley_Ready2(self.ctx)
 
 

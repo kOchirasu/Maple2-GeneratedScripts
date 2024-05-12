@@ -7,7 +7,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990004, key='BadMob', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=912, value=1):
+        if self.dungeon_variable(var_id=912) == 1:
             return 몬스터스폰(self.ctx)
 
 
@@ -30,7 +30,7 @@ class 신호쏴주기(trigger_api.Trigger):
 
 class 종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=912, value=0):
+        if self.dungeon_variable(var_id=912) == 0:
             return 대기(self.ctx)
 
 

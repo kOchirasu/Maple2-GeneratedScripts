@@ -4,7 +4,7 @@ import trigger_api
 
 class start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='tria_seige', value=1):
+        if self.user_value(key='tria_seige') >= 1:
             return LoadingDelayB0(self.ctx)
 
 

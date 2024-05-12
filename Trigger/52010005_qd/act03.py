@@ -83,7 +83,7 @@ class Q3_영상재생(trigger_api.Trigger):
         self.play_scene_movie(file_name='MemoryofDragon.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return Q3_시네마틱연출01(self.ctx)
 
 

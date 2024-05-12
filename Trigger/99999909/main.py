@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
         self.set_breakable(trigger_ids=[1025,1026,1027,1028,1029,1030,1031,1032], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return main(self.ctx)
 
 
@@ -51,7 +51,7 @@ class start(trigger_api.Trigger):
         self.set_breakable(trigger_ids=[1025,1026,1027,1028,1029,1030,1031,1032], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return start_02(self.ctx)
 
 

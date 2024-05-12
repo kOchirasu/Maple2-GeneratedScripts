@@ -14,7 +14,7 @@ class 끝1(trigger_api.Trigger):
 """
 class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=100000001, compare='lowerEqual', value=5, is_relative=True):
+        if self.npc_hp(spawn_id=100000001, is_relative=True) <= 5:
             return 끝3(self.ctx)
 
 """
@@ -22,7 +22,7 @@ class 끝2(trigger_api.Trigger):
 
 class 끝2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=100000001, compare='lowerEqual', value=5, is_relative=True) and self.check_npc_hp(spawn_id=100000002, compare='lowerEqual', value=5, is_relative=True):
+        if self.npc_hp(spawn_id=100000001, is_relative=True) <= 5 and self.npc_hp(spawn_id=100000002, is_relative=True) <= 5:
             return 끝3(self.ctx)
 
 

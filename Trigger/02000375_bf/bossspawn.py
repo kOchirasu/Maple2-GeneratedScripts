@@ -21,10 +21,10 @@ class 대기(trigger_api.Trigger):
 
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             # 일반레이드 난이도로 던전입장을 했을 경우
             return 레이드(self.ctx)
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             # 카오스 난이도로 던전입장을 했을 경우
             return 카오스레이드(self.ctx)
         if self.wait_tick(wait_tick=2000):
@@ -52,10 +52,10 @@ class 카오스레이드(trigger_api.Trigger):
 
 class 클리어_체크대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='KanduraNormalDead', value=1):
+        if self.user_value(key='KanduraNormalDead') >= 1:
             # 1페이지 변신전 칸두라가 스펙높은 유저에게 극딜 당해서 죽은 경우  AI_KanduraNormal.xml, AI_KanduraNormal_Chaos.xml 로 부터 KanduraNormalDead = 1신호를 받음
             return 클리어처리01(self.ctx)
-        if self.user_value(key='ThirdPhaseEnd', value=1):
+        if self.user_value(key='ThirdPhaseEnd') >= 1:
             # 칸두라가 변신 한 이후 죽은 경우  AI_KanduraBigBurster.xml, AI_KanduraBigBurster_Chaos.xml 로 부터 ThirdPhaseEnd = 1신호를 받음
             return 클리어처리01(self.ctx)
 

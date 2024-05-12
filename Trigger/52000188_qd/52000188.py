@@ -137,7 +137,7 @@ class 나이트컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_knight.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -149,7 +149,7 @@ class 버서커컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_berserker.swf', movie_id=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -161,7 +161,7 @@ class 위자드컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_wizard.swf', movie_id=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -173,7 +173,7 @@ class 프리스트컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_priest.swf', movie_id=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -185,7 +185,7 @@ class 레인저컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_ranger.swf', movie_id=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -197,7 +197,7 @@ class 헤비거너컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_heavy.swf', movie_id=6)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -209,7 +209,7 @@ class 시프컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_thief.swf', movie_id=7)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -221,7 +221,7 @@ class 어쌔신컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_Assassin.swf', movie_id=8)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -233,7 +233,7 @@ class 룬블컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_RBlader.swf', movie_id=9)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -245,7 +245,7 @@ class 스커컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_striker.swf', movie_id=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)
@@ -257,7 +257,7 @@ class 소바컷씬(trigger_api.Trigger):
         self.play_scene_movie(file_name='MasterSkill_soul.swf', movie_id=11)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상재생_end(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 영상재생_end(self.ctx)

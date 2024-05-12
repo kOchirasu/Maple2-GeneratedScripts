@@ -56,7 +56,7 @@ class sb_ready_02(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_BeyondLink_CCTV.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return sb_ready_03(self.ctx)
 
 
@@ -440,7 +440,7 @@ class ready_10(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_BeyondLink_CCTV.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return start_01(self.ctx)
 
 

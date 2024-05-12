@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
         self.set_effect(trigger_ids=[3004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=201, min_users='1'):
+        if self.count_users(box_id=201) >= 1:
             return 몹생성(self.ctx)
 
 

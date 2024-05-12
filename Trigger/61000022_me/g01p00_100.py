@@ -22,65 +22,65 @@ class Wait(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[440,441,442,443,444,445], visible=False, start_delay=0, interval=0, fade=0) # 4,4 / Number 0 to 5
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P01Set', value=1):
+        if self.user_value(key='G01P01Set') >= 1:
             return NumberOnP01(self.ctx)
-        if self.user_value(key='G01P02Set', value=1):
+        if self.user_value(key='G01P02Set') >= 1:
             return NumberOnP02(self.ctx)
-        if self.user_value(key='G01P03Set', value=1):
+        if self.user_value(key='G01P03Set') >= 1:
             return NumberOnP03(self.ctx)
-        if self.user_value(key='G01P04Set', value=1):
+        if self.user_value(key='G01P04Set') >= 1:
             return NumberOnP04(self.ctx)
-        if self.user_value(key='G01P05Set', value=1):
+        if self.user_value(key='G01P05Set') >= 1:
             return NumberOnP05(self.ctx)
-        if self.user_value(key='G01P06Set', value=1):
+        if self.user_value(key='G01P06Set') >= 1:
             return NumberOnP06(self.ctx)
-        if self.user_value(key='G01P07Set', value=1):
+        if self.user_value(key='G01P07Set') >= 1:
             return NumberOnP07(self.ctx)
-        if self.user_value(key='G01P08Set', value=1):
+        if self.user_value(key='G01P08Set') >= 1:
             return NumberOnP08(self.ctx)
-        if self.user_value(key='G01P09Set', value=1):
+        if self.user_value(key='G01P09Set') >= 1:
             return NumberOnP09(self.ctx)
-        if self.user_value(key='G01P10Set', value=1):
+        if self.user_value(key='G01P10Set') >= 1:
             return NumberOnP10(self.ctx)
-        if self.user_value(key='G01P11Set', value=1):
+        if self.user_value(key='G01P11Set') >= 1:
             return NumberOnP11(self.ctx)
-        if self.user_value(key='G01P12Set', value=1):
+        if self.user_value(key='G01P12Set') >= 1:
             return NumberOnP12(self.ctx)
-        if self.user_value(key='G01P13Set', value=1):
+        if self.user_value(key='G01P13Set') >= 1:
             return NumberOnP13(self.ctx)
-        if self.user_value(key='G01P14Set', value=1):
+        if self.user_value(key='G01P14Set') >= 1:
             return NumberOnP14(self.ctx)
-        if self.user_value(key='G01P15Set', value=1):
+        if self.user_value(key='G01P15Set') >= 1:
             return NumberOnP15(self.ctx)
-        if self.user_value(key='G01P16Set', value=1):
+        if self.user_value(key='G01P16Set') >= 1:
             return NumberOnP16(self.ctx)
-        if self.user_value(key='G01P17Set', value=1):
+        if self.user_value(key='G01P17Set') >= 1:
             return NumberOnP17(self.ctx)
-        if self.user_value(key='G01P18Set', value=1):
+        if self.user_value(key='G01P18Set') >= 1:
             return NumberOnP18(self.ctx)
-        if self.user_value(key='G01P19Set', value=1):
+        if self.user_value(key='G01P19Set') >= 1:
             return NumberOnP19(self.ctx)
-        if self.user_value(key='G01P20Set', value=1):
+        if self.user_value(key='G01P20Set') >= 1:
             return NumberOnP20(self.ctx)
-        if self.user_value(key='G01P21Set', value=1):
+        if self.user_value(key='G01P21Set') >= 1:
             return NumberOnP21(self.ctx)
-        if self.user_value(key='G01P22Set', value=1):
+        if self.user_value(key='G01P22Set') >= 1:
             return NumberOnP22(self.ctx)
-        if self.user_value(key='G01P23Set', value=1):
+        if self.user_value(key='G01P23Set') >= 1:
             return NumberOnP23(self.ctx)
-        if self.user_value(key='G01P24Set', value=1):
+        if self.user_value(key='G01P24Set') >= 1:
             return NumberOnP24(self.ctx)
-        if self.user_value(key='G01P25Set', value=1):
+        if self.user_value(key='G01P25Set') >= 1:
             return NumberOnP25(self.ctx)
-        if self.user_value(key='G01P26Set', value=1):
+        if self.user_value(key='G01P26Set') >= 1:
             return NumberOnP26(self.ctx)
-        if self.user_value(key='G01P27Set', value=1):
+        if self.user_value(key='G01P27Set') >= 1:
             return NumberOnP27(self.ctx)
-        if self.user_value(key='G01P28Set', value=1):
+        if self.user_value(key='G01P28Set') >= 1:
             return NumberOnP28(self.ctx)
-        if self.user_value(key='G01P29Set', value=1):
+        if self.user_value(key='G01P29Set') >= 1:
             return NumberOnP29(self.ctx)
-        if self.user_value(key='G01P30Set', value=1):
+        if self.user_value(key='G01P30Set') >= 1:
             return NumberOnP30(self.ctx)
 
     def on_exit(self) -> None:
@@ -156,7 +156,7 @@ class NumberOnP01(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P01TimeLimit', value=1):
+        if self.user_value(key='G01P01TimeLimit') >= 1:
             return CheckP01(self.ctx)
 
 
@@ -255,7 +255,7 @@ class NumberOnP02(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P02TimeLimit', value=1):
+        if self.user_value(key='G01P02TimeLimit') >= 1:
             return CheckP02(self.ctx)
 
 
@@ -354,7 +354,7 @@ class NumberOnP03(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P03TimeLimit', value=1):
+        if self.user_value(key='G01P03TimeLimit') >= 1:
             return CheckP03(self.ctx)
 
 
@@ -453,7 +453,7 @@ class NumberOnP04(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P04TimeLimit', value=1):
+        if self.user_value(key='G01P04TimeLimit') >= 1:
             return CheckP04(self.ctx)
 
 
@@ -552,7 +552,7 @@ class NumberOnP05(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P05TimeLimit', value=1):
+        if self.user_value(key='G01P05TimeLimit') >= 1:
             return CheckP05(self.ctx)
 
 
@@ -651,7 +651,7 @@ class NumberOnP06(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P06TimeLimit', value=1):
+        if self.user_value(key='G01P06TimeLimit') >= 1:
             return CheckP06(self.ctx)
 
 
@@ -750,7 +750,7 @@ class NumberOnP07(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P07TimeLimit', value=1):
+        if self.user_value(key='G01P07TimeLimit') >= 1:
             return CheckP07(self.ctx)
 
 
@@ -849,7 +849,7 @@ class NumberOnP08(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P08TimeLimit', value=1):
+        if self.user_value(key='G01P08TimeLimit') >= 1:
             return CheckP08(self.ctx)
 
 
@@ -948,7 +948,7 @@ class NumberOnP09(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P09TimeLimit', value=1):
+        if self.user_value(key='G01P09TimeLimit') >= 1:
             return CheckP09(self.ctx)
 
 
@@ -1047,7 +1047,7 @@ class NumberOnP10(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P10TimeLimit', value=1):
+        if self.user_value(key='G01P10TimeLimit') >= 1:
             return CheckP10(self.ctx)
 
 
@@ -1146,7 +1146,7 @@ class NumberOnP11(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P11TimeLimit', value=1):
+        if self.user_value(key='G01P11TimeLimit') >= 1:
             return CheckP11(self.ctx)
 
 
@@ -1245,7 +1245,7 @@ class NumberOnP12(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P12TimeLimit', value=1):
+        if self.user_value(key='G01P12TimeLimit') >= 1:
             return CheckP12(self.ctx)
 
 
@@ -1344,7 +1344,7 @@ class NumberOnP13(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P13TimeLimit', value=1):
+        if self.user_value(key='G01P13TimeLimit') >= 1:
             return CheckP13(self.ctx)
 
 
@@ -1443,7 +1443,7 @@ class NumberOnP14(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P14TimeLimit', value=1):
+        if self.user_value(key='G01P14TimeLimit') >= 1:
             return CheckP14(self.ctx)
 
 
@@ -1542,7 +1542,7 @@ class NumberOnP15(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P15TimeLimit', value=1):
+        if self.user_value(key='G01P15TimeLimit') >= 1:
             return CheckP15(self.ctx)
 
 
@@ -1641,7 +1641,7 @@ class NumberOnP16(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P16TimeLimit', value=1):
+        if self.user_value(key='G01P16TimeLimit') >= 1:
             return CheckP16(self.ctx)
 
 
@@ -1740,7 +1740,7 @@ class NumberOnP17(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P17TimeLimit', value=1):
+        if self.user_value(key='G01P17TimeLimit') >= 1:
             return CheckP17(self.ctx)
 
 
@@ -1839,7 +1839,7 @@ class NumberOnP18(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P18TimeLimit', value=1):
+        if self.user_value(key='G01P18TimeLimit') >= 1:
             return CheckP18(self.ctx)
 
 
@@ -1938,7 +1938,7 @@ class NumberOnP19(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P19TimeLimit', value=1):
+        if self.user_value(key='G01P19TimeLimit') >= 1:
             return CheckP19(self.ctx)
 
 
@@ -2037,7 +2037,7 @@ class NumberOnP20(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P20TimeLimit', value=1):
+        if self.user_value(key='G01P20TimeLimit') >= 1:
             return CheckP20(self.ctx)
 
 
@@ -2136,7 +2136,7 @@ class NumberOnP21(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P21TimeLimit', value=1):
+        if self.user_value(key='G01P21TimeLimit') >= 1:
             return CheckP21(self.ctx)
 
 
@@ -2235,7 +2235,7 @@ class NumberOnP22(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P22TimeLimit', value=1):
+        if self.user_value(key='G01P22TimeLimit') >= 1:
             return CheckP22(self.ctx)
 
 
@@ -2334,7 +2334,7 @@ class NumberOnP23(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P23TimeLimit', value=1):
+        if self.user_value(key='G01P23TimeLimit') >= 1:
             return CheckP23(self.ctx)
 
 
@@ -2433,7 +2433,7 @@ class NumberOnP24(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P24TimeLimit', value=1):
+        if self.user_value(key='G01P24TimeLimit') >= 1:
             return CheckP24(self.ctx)
 
 
@@ -2532,7 +2532,7 @@ class NumberOnP25(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P25TimeLimit', value=1):
+        if self.user_value(key='G01P25TimeLimit') >= 1:
             return CheckP25(self.ctx)
 
 
@@ -2631,7 +2631,7 @@ class NumberOnP26(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P26TimeLimit', value=1):
+        if self.user_value(key='G01P26TimeLimit') >= 1:
             return CheckP26(self.ctx)
 
 
@@ -2730,7 +2730,7 @@ class NumberOnP27(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=4)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P27TimeLimit', value=1):
+        if self.user_value(key='G01P27TimeLimit') >= 1:
             return CheckP27(self.ctx)
 
 
@@ -2829,7 +2829,7 @@ class NumberOnP28(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P28TimeLimit', value=1):
+        if self.user_value(key='G01P28TimeLimit') >= 1:
             return CheckP28(self.ctx)
 
 
@@ -2928,7 +2928,7 @@ class NumberOnP29(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=5)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P29TimeLimit', value=1):
+        if self.user_value(key='G01P29TimeLimit') >= 1:
             return CheckP29(self.ctx)
 
 
@@ -3027,7 +3027,7 @@ class NumberOnP30(trigger_api.Trigger):
         self.set_user_value(trigger_id=8440, key='Barrier44', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='G01P30TimeLimit', value=1):
+        if self.user_value(key='G01P30TimeLimit') >= 1:
             return CheckP30(self.ctx)
 
 

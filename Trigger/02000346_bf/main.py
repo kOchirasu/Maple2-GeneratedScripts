@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return 오브젝티브_01(self.ctx)
 
 

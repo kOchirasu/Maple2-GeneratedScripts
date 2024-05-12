@@ -97,7 +97,7 @@ class 영상재생(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\KiliansTruth.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 바깥으로(self.ctx)
         if self.wait_tick(wait_tick=203000):
             return 바깥으로(self.ctx)

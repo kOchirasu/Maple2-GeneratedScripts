@@ -48,7 +48,7 @@ class 대기(trigger_api.Trigger):
         self.set_portal(portal_id=91, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='hp50', value=1):
+        if self.user_value(key='hp50') >= 1:
             return 연출시작(self.ctx)
 
 

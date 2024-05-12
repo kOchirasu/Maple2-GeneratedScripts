@@ -10,7 +10,7 @@ class 유저감지(trigger_api.Trigger):
 
 class 알림(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(spawn_id=900, compare='lowerEqual', value=30, is_relative=True) or self.check_npc_hp(spawn_id=901, compare='lowerEqual', value=30, is_relative=True):
+        if self.npc_hp(spawn_id=900, is_relative=True) <= 30 or self.npc_hp(spawn_id=901, is_relative=True) <= 30:
             return 텍스트(self.ctx)
 
 

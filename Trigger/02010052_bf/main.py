@@ -25,7 +25,7 @@ class idle(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[994], auto_target=False) # 카나의 분신 994 (Battle_04)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -60,7 +60,7 @@ class Start_04(trigger_api.Trigger):
         # self.show_guide_summary(entity_id=20105205, text_id=20105205)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return Event_01(self.ctx)
 
 
@@ -108,7 +108,7 @@ class Event_01_03(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[991]) # 카나 사라짐
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return Event_02(self.ctx)
 
 
@@ -140,7 +140,7 @@ class Event_02_03(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[992])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return Event_03(self.ctx)
 
 

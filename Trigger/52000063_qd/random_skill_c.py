@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
         self.set_effect(trigger_ids=[609], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='gameStart', value=1):
+        if self.user_value(key='gameStart') >= 1:
             return 감지대기(self.ctx)
 
 

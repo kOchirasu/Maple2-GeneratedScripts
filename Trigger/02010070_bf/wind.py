@@ -17,7 +17,7 @@ class Start(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='wind01', value=1):
+        if self.user_value(key='wind01') >= 1:
             return Change(self.ctx)
 
 

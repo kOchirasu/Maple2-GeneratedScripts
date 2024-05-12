@@ -16,7 +16,7 @@ class 영상재생_01(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\SkyFortress_Intro.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return start(self.ctx)
         if self.wait_tick(wait_tick=170000):
             return start(self.ctx)

@@ -44,7 +44,7 @@ class 영상재생_01(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\JobIntro_Thief.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 시작_01(self.ctx)
         if self.wait_tick(wait_tick=33000):
             return 시작_01(self.ctx)
@@ -531,7 +531,7 @@ class 벨마전투_01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[106], auto_target=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='battleStop', value=1):
+        if self.user_value(key='battleStop') >= 1:
             return 벨마전투끝_01(self.ctx)
 
 

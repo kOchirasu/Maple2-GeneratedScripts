@@ -10,7 +10,7 @@ class 시간표확인(trigger_api.Trigger):
         self.set_effect(trigger_ids=[602], visible=False) # 종료 효과음
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=102, min_users='10'):
+        if self.count_users(box_id=102) >= 10:
             return 어나운스0(self.ctx)
         if self.time_expired(timer_id='60'):
             return 대기(self.ctx)
@@ -21,9 +21,9 @@ class 시간표확인(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=102, min_users='2'):
+        if self.count_users(box_id=102) >= 2:
             return 어나운스0(self.ctx)
-        if not self.count_users(box_id=102, min_users='2'):
+        if self.count_users(box_id=102) < 2:
             return 비김(self.ctx)
 
 

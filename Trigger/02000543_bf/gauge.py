@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='GaugeOpen', value=1):
+        if self.user_value(key='GaugeOpen') >= 1:
             return 게이지시작(self.ctx)
 
 
@@ -13,7 +13,7 @@ class 게이지시작(trigger_api.Trigger):
         self.shadow_expedition(type='OpenBossGauge', title='$02000543_BF__GAUGE__0$', max_gauge_point=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=1000):
+        if self.shadow_expedition_points() >= 1000:
             return 성공(self.ctx)
 
 

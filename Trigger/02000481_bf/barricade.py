@@ -16,9 +16,9 @@ class CheckUser04_GuildRaid(trigger_api.Trigger):
         self.set_timer(timer_id='1', seconds=30, start_delay=1, interval=0, v_offset=0) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='4', operator='GreaterEqual'):
+        if self.count_users(box_id=701) >= 4:
             return MaxCount04_Start(self.ctx)
-        if self.count_users(box_id=701, min_users='4', operator='Less'):
+        if self.count_users(box_id=701) < 4:
             return MaxCount04_Wait(self.ctx)
 
 
@@ -27,7 +27,7 @@ class MaxCount04_Wait(trigger_api.Trigger):
         self.show_guide_summary(entity_id=40012, text_id=40012, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='4', operator='GreaterEqual'):
+        if self.count_users(box_id=701) >= 4:
             # 10명이면 바로 시작
             return MaxCount04_Start(self.ctx)
         if self.time_expired(timer_id='1'):

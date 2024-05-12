@@ -596,7 +596,7 @@ class 영상02(trigger_api.Trigger):
         self.play_scene_movie(file_name='Royal_IshuraRemember.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 영상03(self.ctx)
 
 

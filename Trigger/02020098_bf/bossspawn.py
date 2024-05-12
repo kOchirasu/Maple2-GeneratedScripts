@@ -31,10 +31,10 @@ class 시작대기중(trigger_api.Trigger):
 
 class 던전코드별보스등장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_id(dungeon_id=23042003):
+        if self.dungeon_id() == 23042003:
             # 10인던전으로 입장하면 10인용 보스 등장,   dungeonID 의 숫자는 DungeonRoom.xlsx 에 정의된 던전코드
             return 어려움난이도보스등장(self.ctx)
-        if self.dungeon_id(dungeon_id=23043003):
+        if self.dungeon_id() == 23043003:
             # 4인던전으로 입장하면 6인용 보스 등장
             return 쉬움난이도보스등장(self.ctx)
         if self.wait_tick(wait_tick=2000):
@@ -74,12 +74,12 @@ class 인페르녹최초이미지대사연출(trigger_api.Trigger):
 class 대기상태(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         # 1페이즈 끝나서 보스가 바닥 큐브 파괴하면서 2페이즈로 넘어갈 때, AI_BalrogMagicBurster_Kritias.xml 인페르녹에게   2PhaseStart = 1 신호를 받으면 이 부분 실행
-        if self.user_value(key='StairsOk', value=1):
+        if self.user_value(key='StairsOk') >= 1:
             return 계단생성시작중(self.ctx)
         # 2페이즈 끝나서 보스가 바닥 큐브 파괴하면서  3페이즈로 넘어갈 때, AI_BalrogMagicBurster_Kritias.xml 인페르녹에게   3PhaseStart = 1 신호를 받으면 이 부분 실행
-        if self.user_value(key='2PhaseStart', value=1):
+        if self.user_value(key='2PhaseStart') >= 1:
             return 페이지_바로가기포탈생성2(self.ctx)
-        if self.user_value(key='3PhaseStart', value=1):
+        if self.user_value(key='3PhaseStart') >= 1:
             return 페이지_바로가기포탈생성3(self.ctx)
 
 
@@ -89,10 +89,10 @@ class 계단생성시작중(trigger_api.Trigger):
         self.set_user_value(key='StairsOk', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StairsOkPass', value=0):
+        if self.user_value(key='StairsOkPass') >= 0:
             # @중요!: StairsOkPass 변수가 0이라는 것은 순조롭게 순서대로 실행되고 있다는 뜻이기 때문에 계단생성함
             return 계단생성(self.ctx)
-        if self.user_value(key='StairsOkPass', value=1):
+        if self.user_value(key='StairsOkPass') >= 1:
             # @중요!:  StairsOkPass 변수가 1이라는 것은 이미  <condition name="UserValue" key="2PhaseStart" value="1">   이것이 먼저 달성되어 2페이지 이상 넘어갔다는 뜻이기 때문에 계단생성 안하고 대기 상태로 넘어감
             return 대기상태(self.ctx)
 

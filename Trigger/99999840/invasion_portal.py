@@ -14,7 +14,7 @@ class 포탈열림(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10002183], state=1, arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=3, value=1):
+        if self.dungeon_variable(var_id=3) == 1:
             return 종료(self.ctx)
         if self.time_expired(timer_id='1'):
             self.reset_timer(timer_id='1')
@@ -28,9 +28,9 @@ class 유저이동(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990010, key='PCmove', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=3, value=1):
+        if self.dungeon_variable(var_id=3) == 1:
             return 종료(self.ctx)
-        if self.dungeon_variable(var_id=2000, value=1):
+        if self.dungeon_variable(var_id=2000) == 1:
             return 포탈열림(self.ctx)
 
 
@@ -41,7 +41,7 @@ class 포탈닫힘(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10002183], state=2, arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=3, value=1):
+        if self.dungeon_variable(var_id=3) == 1:
             return 종료(self.ctx)
         if self.time_expired(timer_id='2'):
             self.reset_timer(timer_id='2')

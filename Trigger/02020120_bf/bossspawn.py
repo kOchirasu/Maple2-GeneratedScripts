@@ -28,13 +28,13 @@ class 보스등장(trigger_api.Trigger):
         self.set_portal(portal_id=9902, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='DungeonReset', value=1):
+        if self.user_value(key='DungeonReset') >= 1:
             return 던전초기화진행(self.ctx) # @####@##
         if self.monster_dead(spawn_ids=[99]):
             return 종료딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 

@@ -66,7 +66,7 @@ class 카메라_PC도망준비(trigger_api.Trigger):
 class 카메라_종료(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawn_ids=[101])
-        self.reset_camera()
+        self.reset_camera(arg1='0.1')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_agent(trigger_ids=[9001], visible=False)

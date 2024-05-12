@@ -4,7 +4,7 @@ import trigger_api
 
 class Horus(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=710, min_users='1'):
+        if self.count_users(box_id=710) >= 1:
             return Horus_move_01(self.ctx)
 
 
@@ -34,7 +34,7 @@ class Horus_01_End(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=2300):
             return Horus_01_End_02(self.ctx)
-        if self.count_users(box_id=711, min_users='1'):
+        if self.count_users(box_id=711) >= 1:
             return Horus_move_02(self.ctx)
 
 
@@ -43,7 +43,7 @@ class Horus_01_End_02(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[999])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=711, min_users='1'):
+        if self.count_users(box_id=711) >= 1:
             return Horus_move_02(self.ctx)
 
 
@@ -65,7 +65,7 @@ class Horus_02_End(trigger_api.Trigger):
         self.destroy_monster(spawn_ids=[998])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=752, min_users='1'):
+        if self.count_users(box_id=752) >= 1:
             return Horus_move_03(self.ctx)
 
 

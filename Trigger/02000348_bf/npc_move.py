@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60004, min_users='1'):
+        if self.count_users(box_id=60004) >= 1:
             return start(self.ctx)
 
 

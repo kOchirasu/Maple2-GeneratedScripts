@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7006], visible=False) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=709, min_users='1'):
+        if self.count_users(box_id=709) >= 1:
             return Event_05(self.ctx)
 
 

@@ -8,7 +8,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='Reset', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='PatternPick', value=1):
+        if self.user_value(key='PatternPick') >= 1:
             return MelodyPlay01_Start(self.ctx)
 
     def on_exit(self) -> None:
@@ -164,7 +164,7 @@ class CheckAnswer01_Start(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000065], state=0):
             # HighC
             return AnswerIsWrong_Delay(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -173,7 +173,7 @@ class CheckAnswer01_Delay(trigger_api.Trigger):
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
             return CheckAnswer02_Start(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
@@ -207,7 +207,7 @@ class CheckAnswer02_Start(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000065], state=0):
             # HighC
             return AnswerIsWrong_Delay(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -216,7 +216,7 @@ class CheckAnswer02_Delay(trigger_api.Trigger):
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
             return CheckAnswer03_Start(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
@@ -250,7 +250,7 @@ class CheckAnswer03_Start(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000065], state=0):
             # HighC
             return CheckAnswer03_Delay(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -259,7 +259,7 @@ class CheckAnswer03_Delay(trigger_api.Trigger):
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
             return CheckAnswer04_Start(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
@@ -293,7 +293,7 @@ class CheckAnswer04_Start(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000065], state=0):
             # HighC
             return AnswerIsWrong_Delay(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -302,7 +302,7 @@ class CheckAnswer04_Delay(trigger_api.Trigger):
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
             return CheckAnswer05_Start(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
     def on_exit(self) -> None:
@@ -336,13 +336,13 @@ class CheckAnswer05_Start(trigger_api.Trigger):
         if self.object_interacted(interact_ids=[12000065], state=0):
             # HighC
             return AnswerIsWrong_Delay(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
 class CheckAnswer05_Delay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
@@ -375,7 +375,7 @@ class AnswerIsRight(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000065], state=0) # Lever HighC
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -396,7 +396,7 @@ class AnswerIsWrong_Delay(trigger_api.Trigger):
         if self.wait_tick(wait_tick=500):
             # SoundEffectDelay
             return AnswerIsWrong(self.ctx)
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
 
 
@@ -413,16 +413,16 @@ class AnswerIsWrong(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[12000065], state=0) # Lever HighC
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
-        if self.user_value(key='Reset', value=0):
+        if self.user_value(key='Reset') >= 0:
             return MelodyPlay01_ReStartDelay01(self.ctx)
 
 
 # 재도전 딜레이
 class MelodyPlay01_ReStartDelay01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
         if self.wait_tick(wait_tick=1000):
             return MelodyPlay01_ReStartDelay02(self.ctx)
@@ -441,7 +441,7 @@ class MelodyPlay01_ReStartDelay02(trigger_api.Trigger):
         self.set_actor(trigger_id=11008, visible=True, initial_sequence='ks_quest_musical_B01_pink') # Bell HighC
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
         if self.wait_tick(wait_tick=1000):
             return StartMelodyQuiz_Delay03(self.ctx)
@@ -459,7 +459,7 @@ class StartMelodyQuiz_Delay03(trigger_api.Trigger):
         self.set_actor(trigger_id=11008, visible=True, initial_sequence='ks_quest_musical_B01_off') # Bell HighC
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Reset', value=1):
+        if self.user_value(key='Reset') >= 1:
             return ResetDelay(self.ctx)
         if self.wait_tick(wait_tick=1000):
             return MelodyPlay01_Start(self.ctx)

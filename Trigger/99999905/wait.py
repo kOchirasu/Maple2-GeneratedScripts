@@ -8,7 +8,7 @@ class 시간표확인(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$99999905__WAIT__0$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=101, min_users='10'):
+        if self.count_users(box_id=101) >= 10:
             return 시작(self.ctx)
         if self.time_expired(timer_id='10'):
             return 시간표확인(self.ctx)

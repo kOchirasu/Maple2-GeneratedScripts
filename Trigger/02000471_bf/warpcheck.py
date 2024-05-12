@@ -8,14 +8,14 @@ class idle(trigger_api.Trigger):
         self.set_user_value(trigger_id=2040323, key='Warp', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Boss', value=1):
+        if self.user_value(key='Boss') >= 1:
             return warp_condition(self.ctx)
 
 
 """
 class warp(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.user_value(key='10002019clear', value=1) or not self.user_value(key='10002020clear', value=1) or not self.user_value(key='10002021clear', value=1) or not self.user_value(key='10002022clear', value=1) or not self.user_value(key='10002023clear', value=1) or not self.user_value(key='10002024clear', value=1):
+        if self.user_value(key='10002019clear') < 1 or self.user_value(key='10002020clear') < 1 or self.user_value(key='10002021clear') < 1 or self.user_value(key='10002022clear') < 1 or self.user_value(key='10002023clear') < 1 or self.user_value(key='10002024clear') < 1:
             return warp_condition(self.ctx)
 
 """
@@ -25,7 +25,7 @@ class warp_condition(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1999]):
             return end(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=70, spawn_id=1999, is_relative=True):
+        if self.npc_hp(spawn_id=1999, is_relative=True) <= 70:
             return warp_1st(self.ctx)
 
 
@@ -59,7 +59,7 @@ class warp_cancel(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1999]):
             return end(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=30, spawn_id=1999, is_relative=True):
+        if self.npc_hp(spawn_id=1999, is_relative=True) <= 30:
             return warp_2nd(self.ctx)
 
 
@@ -74,7 +74,7 @@ class warp_go(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[1999]):
             return end(self.ctx)
-        if self.check_npc_hp(compare='lowerEqual', value=30, spawn_id=1999, is_relative=True):
+        if self.npc_hp(spawn_id=1999, is_relative=True) <= 30:
             return warp_2nd(self.ctx)
 
 

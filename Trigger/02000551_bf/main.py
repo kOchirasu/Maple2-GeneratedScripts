@@ -33,10 +33,10 @@ class 기본셋팅(trigger_api.Trigger):
 
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_id(dungeon_id=23050003):
+        if self.dungeon_id() == 23050003:
             # 현재 입장한 던전ID가 23050003  이라면 ,<transition state="쉬운난이도보스등장" /> 실행
             return 쉬운난이도보스등장(self.ctx)
-        if self.dungeon_id(dungeon_id=23051003):
+        if self.dungeon_id() == 23051003:
             # 현재 입장한 던전ID가 23051003  이라면 , <transition state="여려움난이도보스등장" /> 실행
             return 여려움난이도보스등장(self.ctx)
         if self.wait_tick(wait_tick=1100):
@@ -78,16 +78,16 @@ class 전투진행중(trigger_api.Trigger):
         self.set_user_value(key='GuideMessage', value=0) # GuideMessage 0으로 초기 셋팅
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='GuideMessage', value=1):
+        if self.user_value(key='GuideMessage') >= 1:
             # 자동차AI에서 GuideMessage = 1 신호를 보냄
             return 메시지출력(self.ctx)
-        if self.user_value(key='NextPortal', value=1):
+        if self.user_value(key='NextPortal') >= 1:
             # 블랙빈AI에서 NextPortal = 1 신호를 보냄
             return 다음진행딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 

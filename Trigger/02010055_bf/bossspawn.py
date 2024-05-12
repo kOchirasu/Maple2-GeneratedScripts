@@ -33,9 +33,9 @@ class 난이도체크(trigger_api.Trigger):
         self.set_portal(portal_id=1, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             return 레이드(self.ctx)
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             return 카오스레이드(self.ctx)
 
 

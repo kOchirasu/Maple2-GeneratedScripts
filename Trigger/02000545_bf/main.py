@@ -274,7 +274,7 @@ class 거미여왕스폰6(trigger_api.Trigger):
         self.side_npc_talk(npc_id=11004706, illust='PuppetBunnyBlue_normal', duration=3000, script='$02000545_BF__MAIN__17$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=90, spawn_id=102, is_relative=True):
+        if self.npc_hp(spawn_id=102, is_relative=True) <= 90:
             return 쫄몬스터소환1(self.ctx)
         if self.monster_dead(spawn_ids=[102]):
             return 던전클리어(self.ctx)
@@ -286,7 +286,7 @@ class 쫄몬스터소환1(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[301,302,303,304,305], auto_target=False, delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=70, spawn_id=102, is_relative=True):
+        if self.npc_hp(spawn_id=102, is_relative=True) <= 70:
             return 쫄몬스터소환2(self.ctx)
         if self.monster_dead(spawn_ids=[102]):
             return 던전클리어(self.ctx)
@@ -298,7 +298,7 @@ class 쫄몬스터소환2(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[301,302,303,304,305], auto_target=False, delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=29, spawn_id=102, is_relative=True):
+        if self.npc_hp(spawn_id=102, is_relative=True) <= 29:
             return 쫄몬스터소환3(self.ctx)
         if self.monster_dead(spawn_ids=[102]):
             return 던전클리어(self.ctx)

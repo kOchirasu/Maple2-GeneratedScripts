@@ -40,10 +40,10 @@ class 보스등장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1100):
             return 클리어성공유무체크시작(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -52,10 +52,10 @@ class 클리어성공유무체크시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[99]):
             return 연출딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 

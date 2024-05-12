@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interact_ids=[10000896], state=0):
             return 작동_01(self.ctx)
-        if self.count_users(box_id=708, min_users='1'):
+        if self.count_users(box_id=708) >= 1:
             return 시작(self.ctx)
 
 

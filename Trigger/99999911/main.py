@@ -5,7 +5,7 @@ import trigger_api
 # 플레이어 감지
 class 최초(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 시작조건체크(self.ctx)
 
 
@@ -13,7 +13,7 @@ class 시작조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=10000):
             return 어나운스0(self.ctx)
-        if self.count_users(box_id=701, min_users='20'):
+        if self.count_users(box_id=701) >= 20:
             return 어나운스0(self.ctx)
 
 

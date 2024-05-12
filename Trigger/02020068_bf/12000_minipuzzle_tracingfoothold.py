@@ -20,7 +20,7 @@ class Wait(trigger_api.Trigger):
         self.set_effect(trigger_ids=[12100], visible=False) # Success Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimeEventOn', value=1):
+        if self.user_value(key='TimeEventOn') >= 1:
             return SettingDelay(self.ctx)
 
 

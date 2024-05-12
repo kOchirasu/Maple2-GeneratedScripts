@@ -17,7 +17,7 @@ class Wait(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5000], visible=False) # 가이드 서머리 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return LodingDelay01(self.ctx)
 
 
@@ -110,7 +110,7 @@ class Round01_Start(trigger_api.Trigger):
         self.set_user_value(trigger_id=901, key='MobWaveStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='01RoundSuccess', value=1):
+        if self.user_value(key='01RoundSuccess') >= 1:
             return Round01_Sucess(self.ctx)
 
 

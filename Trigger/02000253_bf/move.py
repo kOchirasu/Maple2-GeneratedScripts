@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001053], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=906, min_users='1'):
+        if self.count_users(box_id=906) >= 1:
             return 벨라소환(self.ctx)
 
 

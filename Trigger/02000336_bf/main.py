@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[110,111,112,113,114,116,117,120,121,124,125,126,127,128,129,131,132,133,134,135,137,139,141,142,144], auto_target=False) # 기본 배치 될 몬스터 등장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_01_개방_준비(self.ctx)
 
 

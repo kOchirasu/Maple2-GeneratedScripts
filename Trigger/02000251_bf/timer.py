@@ -20,7 +20,7 @@ class 초재기1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='99'):
             return 초재기2(self.ctx)
-        if self.count_users(box_id=202, min_users='4'):
+        if self.count_users(box_id=202) >= 4:
             return 초재기2(self.ctx)
 
 

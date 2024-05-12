@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[5001,5002,1301,1302,1303,1304], auto_target=False) # 보스 소환
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=101, min_users='1'):
+        if self.count_users(box_id=101) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -56,7 +56,7 @@ class scene_02(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[10000,11001,11002,11003,19999], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=105, min_users='1'):
+        if self.count_users(box_id=105) >= 1:
             return npc_talk(self.ctx)
 
 

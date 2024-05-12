@@ -74,7 +74,7 @@ class 열림_끝(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 종료(self.ctx)
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 종료(self.ctx)
 
     def on_exit(self) -> None:

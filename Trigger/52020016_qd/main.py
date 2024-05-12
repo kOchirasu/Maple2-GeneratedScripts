@@ -165,7 +165,7 @@ class 전투페이즈_1(trigger_api.Trigger):
 
 class 전투종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.shadow_expedition_reach_point(point=300):
+        if self.shadow_expedition_points() >= 300:
             return 페이즈_2_준비(self.ctx)
 
 

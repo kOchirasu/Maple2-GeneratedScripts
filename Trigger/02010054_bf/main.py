@@ -159,7 +159,7 @@ class 반응대기03(trigger_api.Trigger):
 
 class 인원체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_max_user_count(value=1):
+        if self.dungeon_max_user_count() == 1:
             # 던전 최대 인원수가 1이면
             return 반응둘중하나만(self.ctx)
         if self.wait_tick(wait_tick=100):

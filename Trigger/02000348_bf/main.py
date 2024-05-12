@@ -23,7 +23,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -38,7 +38,7 @@ class touchfield(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[2001,2002], visible=False, start_delay=0, interval=200)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return ready(self.ctx)
 
 
@@ -259,7 +259,7 @@ class 클리어_03(trigger_api.Trigger):
 
 class 클리어_04(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
-        self.dungeon_variable(var_id=1, value=1) # 1번 던전 클리어 처리
+        self.set_dungeon_variable(var_id=1, value=1) # 1번 던전 클리어 처리
         self.show_guide_summary(entity_id=110, text_id=40009) # 포탈 이용하세요
         self.select_camera_path(path_ids=[8808], return_view=True)
         self.set_cinematic_ui(type=0)

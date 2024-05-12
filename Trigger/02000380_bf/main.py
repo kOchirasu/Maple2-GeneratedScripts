@@ -18,7 +18,7 @@ class idle(trigger_api.Trigger):
         self.set_portal(portal_id=13, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -166,7 +166,7 @@ class Start_09(trigger_api.Trigger):
         if not self.user_detected(box_ids=[710]):
             return Start_09_02(self.ctx)
         """
-        if self.dungeon_variable(var_id=1, value=1):
+        if self.dungeon_variable(var_id=1) == 1:
             # 1번 던전이 클리어 됐다면?
             return Start_09_02(self.ctx)
 
@@ -177,7 +177,7 @@ class Start_09(trigger_api.Trigger):
 
 class Start_09_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return Round_2_03(self.ctx)
 
     def on_exit(self) -> None:
@@ -302,7 +302,7 @@ class Round_2_11(trigger_api.Trigger):
         if not self.user_detected(box_ids=[710]):
             return Round_2_12(self.ctx)
         """
-        if self.dungeon_variable(var_id=2, value=1):
+        if self.dungeon_variable(var_id=2) == 1:
             # 2번 던전이 클리어 됐다면?
             return Round_2_12(self.ctx)
 
@@ -313,7 +313,7 @@ class Round_2_11(trigger_api.Trigger):
 
 class Round_2_12(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return Round_3_02(self.ctx)
 
     def on_exit(self) -> None:
@@ -330,7 +330,7 @@ class Round_3(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[103])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=708, min_users='1'):
+        if self.count_users(box_id=708) >= 1:
             return Round_3_02(self.ctx)
 
 """

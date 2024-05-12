@@ -408,7 +408,7 @@ class 임무02종료(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[2004], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SetSkillA', value=1):
+        if self.user_value(key='SetSkillA') >= 1:
             return 데블린카메라이동(self.ctx)
 
 
@@ -417,7 +417,7 @@ class 데블린카메라이동(trigger_api.Trigger):
         self.select_camera(trigger_id=310, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SetSkillB', value=1):
+        if self.user_value(key='SetSkillB') >= 1:
             return 벽파괴대기(self.ctx)
 
 

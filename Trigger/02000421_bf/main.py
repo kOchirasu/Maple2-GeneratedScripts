@@ -23,7 +23,7 @@ class Ready(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6016], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=700, min_users='1'):
+        if self.count_users(box_id=700) >= 1:
             return Ready_Idle(self.ctx)
 
 

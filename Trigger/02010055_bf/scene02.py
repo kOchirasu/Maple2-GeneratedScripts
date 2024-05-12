@@ -18,9 +18,9 @@ class 룸체크(trigger_api.Trigger):
 
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             return 레이드대기(self.ctx)
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             return None # Missing State: 카오스레이드
 
 
@@ -123,7 +123,7 @@ class 영상재생(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\KarKarBossEvent.usm', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 종료(self.ctx)
         if self.wait_tick(wait_tick=10000):
             return 종료(self.ctx)

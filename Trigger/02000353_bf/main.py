@@ -20,7 +20,7 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[6302], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -55,7 +55,7 @@ class 시작_04(trigger_api.Trigger):
         self.set_skill(trigger_ids=[2020], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 시작_05(self.ctx)
 
 
@@ -180,7 +180,7 @@ class 관문_02_시작(trigger_api.Trigger):
         # self.set_event_ui(type=1, arg2='다음 지역으로 이동하세요.', arg3='2000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_02_시작_02(self.ctx)
 
     def on_exit(self) -> None:
@@ -265,7 +265,7 @@ class 관문_03_시작_01(trigger_api.Trigger):
         self.show_guide_summary(entity_id=103, text_id=40011) # 다음 지역으로 이동하세요
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 관문_03_시작_02(self.ctx)
 
     def on_exit(self) -> None:

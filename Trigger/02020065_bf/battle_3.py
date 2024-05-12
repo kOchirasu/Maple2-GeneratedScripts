@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990014, key='Battle3_TurretSpawn_4', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Start', value=1):
+        if self.user_value(key='Battle_3_Start') >= 1:
             return 보스_추가대사(self.ctx)
 
 
@@ -29,11 +29,11 @@ class 보스소환(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[921], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Start', value=0):
+        if self.user_value(key='Battle_3_Start') >= 0:
             return 대기(self.ctx)
         if self.monster_dead(spawn_ids=[921]):
             return 보스군단_클리어(self.ctx)
-        if self.user_value(key='ObjectStart', value=2) and self.npc_detected(box_id=9099, spawn_ids=[921]):
+        if self.user_value(key='ObjectStart') >= 2 and self.npc_detected(box_id=9099, spawn_ids=[921]):
             return 보스_무적페이즈(self.ctx)
 
 
@@ -50,7 +50,7 @@ class 보스_무적페이즈(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990006, key='Battle_3_SpawnStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Start', value=0):
+        if self.user_value(key='Battle_3_Start') >= 0:
             return 대기(self.ctx)
         if self.monster_dead(spawn_ids=[921]):
             return 보스군단_클리어(self.ctx)
@@ -63,7 +63,7 @@ class 보스_추가대사1(trigger_api.Trigger):
         self.side_npc_talk(type='talk', npc_id=11003536, illust='Neirin_surprise', duration=5000, script='$02020065_BF__BATTLE_3__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Start', value=0):
+        if self.user_value(key='Battle_3_Start') >= 0:
             return 대기(self.ctx)
         if self.monster_dead(spawn_ids=[921]):
             return 보스군단_클리어(self.ctx)
@@ -76,7 +76,7 @@ class 보스_추가대사2(trigger_api.Trigger):
         self.side_npc_talk(type='talk', npc_id=11003533, illust='Bliche_normal', duration=5000, script='$02020065_BF__BATTLE_3__3$')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Battle_3_Start', value=0):
+        if self.user_value(key='Battle_3_Start') >= 0:
             return 대기(self.ctx)
         if self.monster_dead(spawn_ids=[921]):
             return 보스군단_클리어(self.ctx)

@@ -31,7 +31,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513,3514,3515,3516,3517,3518,3519,3520,3521], visible=False, start_delay=0, interval=0, fade=0) # 벽
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=100, min_users='50'):
+        if self.count_users(box_id=100) >= 50:
             return 준비(self.ctx)
         if self.wait_tick(wait_tick=1000):
             return 준비(self.ctx)
@@ -55,9 +55,9 @@ class 시작(trigger_api.Trigger):
         self.set_mini_game_area_for_hack(box_id=105)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='IsQuizSubmit'):
+        if self.widget_value(type='OxQuizUGC', name='IsQuizSubmit') == 1:
             return 문제표시(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='IsFinished'):
+        if self.widget_value(type='OxQuizUGC', name='IsFinished') == 1:
             return 종료(self.ctx)
 
 
@@ -93,9 +93,9 @@ class 정답체크(trigger_api.Trigger):
         self.widget_action(type='OxQuizUGC', func='PreJudge', widget_arg='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='OxQuizUGC', name='Correct'):
+        if self.widget_value(type='OxQuizUGC', name='Correct') == 1:
             return 문제정답O(self.ctx)
-        if self.widget_condition(type='OxQuizUGC', name='Incorrect'):
+        if self.widget_value(type='OxQuizUGC', name='Incorrect') == 1:
             return 문제정답X(self.ctx)
 
 

@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=906, min_users='1'):
+        if self.count_users(box_id=906) >= 1:
             return 벨라소환(self.ctx)
 
 

@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
         self.start_combine_spawn(group_id=[518], is_start=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='RandomBomb', value=1):
+        if self.user_value(key='RandomBomb') >= 1:
             return 포탑생성_1(self.ctx)
 
 

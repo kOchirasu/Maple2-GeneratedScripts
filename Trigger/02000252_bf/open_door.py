@@ -7,7 +7,7 @@ class idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[8903], visible=False) # 가이드 화살표
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=909, min_users='1'):
+        if self.count_users(box_id=909) >= 1:
             return start(self.ctx)
 
 

@@ -50,7 +50,7 @@ class idle(trigger_api.Trigger):
         if self.wait_tick(wait_tick=3000):
             return fadein(self.ctx)
         """
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return ready(self.ctx)
 
 

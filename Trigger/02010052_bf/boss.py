@@ -18,7 +18,7 @@ class Idle(trigger_api.Trigger):
         self.set_timer(timer_id='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             return Echo(self.ctx)
 
     def on_exit(self) -> None:
@@ -30,7 +30,7 @@ class Echo(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7800], visible=True) # 카나 메아리
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=720, min_users='1'):
+        if self.count_users(box_id=720) >= 1:
             return Boss_01(self.ctx)
 
 
@@ -87,7 +87,7 @@ class burn_state_01(trigger_api.Trigger):
 
 class Boss_02_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=721, min_users='1'):
+        if self.count_users(box_id=721) >= 1:
             return Boss_02(self.ctx)
 
 
@@ -144,7 +144,7 @@ class burn_state_02(trigger_api.Trigger):
 
 class Boss_03_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=722, min_users='1'):
+        if self.count_users(box_id=722) >= 1:
             return Boss_03(self.ctx)
 
 
@@ -199,7 +199,7 @@ class burn_state_03(trigger_api.Trigger):
         if self.time_expired(timer_id='1'):
             return Boss_04_idle(self.ctx)
         """
-        if self.count_users(box_id=724, min_users='1'):
+        if self.count_users(box_id=724) >= 1:
             return Boss_04_idle(self.ctx)
 
     def on_exit(self) -> None:
@@ -278,7 +278,7 @@ class Boss_battle_01(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02010052_BF__BOSS__7$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=723, min_users='1'):
+        if self.count_users(box_id=723) >= 1:
             return Boss_Spawn_01(self.ctx)
 
 

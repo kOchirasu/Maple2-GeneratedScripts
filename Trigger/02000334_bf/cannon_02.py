@@ -7,7 +7,7 @@ class Idle(trigger_api.Trigger):
         self.set_effect(trigger_ids=[98011], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='cannon_02', value=1):
+        if self.user_value(key='cannon_02') >= 1:
             return 마킹비표시(self.ctx)
 
 

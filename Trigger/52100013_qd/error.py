@@ -14,7 +14,7 @@ class ready(trigger_api.Trigger):
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Error', value=1):
+        if self.user_value(key='Error') >= 1:
             return end(self.ctx)
         if self.user_detected(box_ids=[702]):
             return error(self.ctx)
@@ -31,7 +31,7 @@ class error(trigger_api.Trigger):
 
 class quest_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Error', value=1):
+        if self.user_value(key='Error') >= 1:
             return end(self.ctx)
         if self.user_detected(box_ids=[702]):
             return quest_error(self.ctx)

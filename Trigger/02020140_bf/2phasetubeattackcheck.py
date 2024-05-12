@@ -16,7 +16,7 @@ class 시작대기중(trigger_api.Trigger):
 
 class 트리거작동신호받기대기중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='2PhaseTubeStep', value=1, operator='GreaterEqual'):
+        if self.user_value(key='2PhaseTubeStep') >= 1:
             # 이 변수가 1 이상이 되면 본격 트리거 작동함, 이 변수는 0 1 2 이렇게 3가지 경우의 수가 있음
             return 트리거작동대기중(self.ctx)
 
@@ -30,17 +30,17 @@ class 트리거작동대기중(trigger_api.Trigger):
 
 class 트리거작동시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='2PhaseTubeStep', value=1):
+        if self.user_value(key='2PhaseTubeStep') >= 1:
             # 2페이즈 투르카 AI 에서 이 변수 1 신호 받으면,  튜브 대미지 필드 1단계 진행함
             return 튜브대미지필드_1단계진행(self.ctx)
-        if self.user_value(key='2PhaseTubeStep', value=2):
+        if self.user_value(key='2PhaseTubeStep') >= 2:
             # 2페이즈 투르카 AI 에서 이 변수 2 신호 받으면,  튜브 대미지 필드 2단계 진행함
             return 튜브대미지필드_2단계전환_우선1단계제거(self.ctx)
 
 
 class 튜브대미지필드_1단계진행(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MarbleTurkaSupportMany', value=1, operator='GreaterEqual'):
+        if self.user_value(key='MarbleTurkaSupportMany') >= 1:
             # 이 변수 1 이상이라는 것은 마법 구슬 오브젝트가 최소 1개라도 있어 보스한테 마력 에너지 제공하고 있다는 뜻이기 때문에, 튜브 대미지필드 생성 로직으로 진행해야 함
             return 단계_튜브대미지필드_생성1(self.ctx)
         if self.wait_tick(wait_tick=1000):
@@ -54,10 +54,10 @@ class 단계_튜브대미지필드_생성1(trigger_api.Trigger):
         self.add_buff(box_ids=[102], skill_id=50004566, level=1, is_player=True, is_skill_set=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='2PhaseTubeStep', value=2):
+        if self.user_value(key='2PhaseTubeStep') >= 2:
             # 2페이즈 투르카 AI 에서 이 변수 2 신호 받으면,  튜브 대미지 필드 2단계 진행함
             return 튜브대미지필드_2단계전환_우선1단계제거(self.ctx)
-        if self.user_value(key='MarbleTurkaSupportMany', value=0):
+        if self.user_value(key='MarbleTurkaSupportMany') >= 0:
             # 혹시 이 타이밍에 구슬 오브젝트로 파괴되면 이 변수 0이 되는데, 튜브 대미지필드 제거 진행하기
             return 단계_튜브대미지필드_제거1(self.ctx)
 
@@ -67,7 +67,7 @@ class 단계_튜브대미지필드_제거1(trigger_api.Trigger):
         self.npc_remove_additional_effect(spawn_id=102, additional_effect_id=50004566) # 1단계 튜브대미지필드 제거
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='2PhaseTubeStep', value=2):
+        if self.user_value(key='2PhaseTubeStep') >= 2:
             # 2페이즈 투르카 AI 에서 이 변수 2 신호 받으면,  튜브 대미지 필드 2단계 진행함
             return 튜브대미지필드_2단계전환_우선1단계제거(self.ctx)
         if self.wait_tick(wait_tick=1000):
@@ -88,7 +88,7 @@ class 튜브대미지필드_2단계전환_우선1단계제거(trigger_api.Trigge
 
 class 단계_튜브대미지필드_처음단계2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MarbleTurkaSupportMany', value=1, operator='GreaterEqual'):
+        if self.user_value(key='MarbleTurkaSupportMany') >= 1:
             # 이 변수 1 이상이라는 것은 마법 구슬 오브젝트가 최소 1개라도 있어 보스한테 마력 에너지 제공하고 있다는 뜻이기 때문에, 튜브 대미지필드 생성 로직으로 진행해야 함
             return 단계_튜브대미지필드_1Lv생성2(self.ctx)
         if self.wait_tick(wait_tick=1000):
@@ -137,20 +137,20 @@ class 단계_튜브대미지필드_TubeLeveStep_더하기2(trigger_api.Trigger):
         if self.wait_tick(wait_tick=1000):
             # 1초 마다 체크하게 하기 위해 waitTick="1000" 설정
             return 단계_튜브대미지필드_TubeLeveStep_체크2(self.ctx)
-        if self.user_value(key='TubeLeveStep', value=30):
+        if self.user_value(key='TubeLeveStep') >= 30:
             # 이 변수가 30이되면 경고 메시지 띄우기
             return 버프부여구슬제거경고메시지(self.ctx)
 
 
 class 단계_튜브대미지필드_TubeLeveStep_체크2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TubeLeveStep', value=10):
+        if self.user_value(key='TubeLeveStep') >= 10:
             # 이 변수가 1씩 계속 더해져서 10이 되면, 튜브대미지필드 2Lv를 실행함, 즉 마법구슬 에너지 노출 시간 10초면 1단계 상승됨
             return 단계_튜브대미지필드_2Lv생성2(self.ctx)
-        if self.user_value(key='TubeLeveStep', value=20):
+        if self.user_value(key='TubeLeveStep') >= 20:
             # 이 변수가 1씩 계속 더해져서 20이 되면, 튜브대미지필드 3Lv를 실행함, 즉 마법구슬 에너지 노출 시간 10초면 1단계 상승됨
             return 단계_튜브대미지필드_3Lv생성2(self.ctx)
-        if self.user_value(key='MarbleTurkaSupportMany', value=1, operator='GreaterEqual'):
+        if self.user_value(key='MarbleTurkaSupportMany') >= 1:
             # 이 변수 1 이상이라는 것은 마법 구슬 오브젝트가 최소 1개라도 있어 보스한테 마력 에너지 제공하고 있다는 뜻이기 때문에, 튜브 대미지필드 생성 로직으로 진행해야 함
             return 단계_튜브대미지필드_TubeLeveStep_더하기2(self.ctx)
         if self.wait_tick(wait_tick=1000):

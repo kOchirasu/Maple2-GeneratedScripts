@@ -29,7 +29,7 @@ class 퍼즐대기중(trigger_api.Trigger):
         self.set_portal(portal_id=779, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=301, min_users='50'):
+        if self.count_users(box_id=301) >= 50:
             return 계단없애기(self.ctx)
         if self.wait_tick(wait_tick=30000):
             return 계단없애기(self.ctx)

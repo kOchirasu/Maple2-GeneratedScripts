@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
         self.set_effect(trigger_ids=[7001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 시작_01(self.ctx)
 
 

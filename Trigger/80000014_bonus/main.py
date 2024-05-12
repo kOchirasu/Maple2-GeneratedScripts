@@ -101,13 +101,13 @@ class 딜레이(trigger_api.Trigger):
 
 class 정산(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.score_board_compare(operator='GreaterEqual', score=18000):
+        if self.score_board_score() >= 18000:
             self.debug_string(value='18000 이상')
             self.set_achievement(trigger_id=199, type='trigger', achieve='HighScoreTreasureMap01')
             self.set_achievement(trigger_id=199, type='trigger', achieve='TimerunTreasureMap01')
             # self.set_event_ui(type=7, arg2='미션 성공! 참 잘했어요!', arg3='2500')
             return 반응대기(self.ctx)
-        if self.score_board_compare(operator='Less', score=18000):
+        if self.score_board_score() < 18000:
             self.debug_string(value='18000 미만')
             self.set_achievement(trigger_id=199, type='trigger', achieve='TimerunTreasureMap01')
             # self.set_event_ui(type=7, arg2='미션 성공!', arg3='2500')

@@ -7,7 +7,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[9001,9002,9003,9004,9005,9006,9007], visible=True, start_delay=0, interval=0, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lower', value=50, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) < 50:
             return 문열림(self.ctx)
 
 

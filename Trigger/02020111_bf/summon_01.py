@@ -10,7 +10,7 @@ class 시작(trigger_api.Trigger):
 
 class 소환준비(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Summon', value=1):
+        if self.user_value(key='Summon') >= 1:
             return 몬스터등장(self.ctx)
 
 
@@ -31,7 +31,7 @@ class 몬스터등장_2(trigger_api.Trigger):
         self.set_directional_light(diffuse_color=[0,0,0], specular_color=[206,174,84])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Summon', value=0):
+        if self.user_value(key='Summon') >= 0:
             return 시작(self.ctx)
 
 

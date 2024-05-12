@@ -61,9 +61,9 @@ class start(trigger_api.Trigger):
         self.reset_camera(interpolation_time=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimerEnd', value=1):
+        if self.user_value(key='TimerEnd') >= 1:
             return dungeonfail(self.ctx)
-        if self.user_value(key='InteractClear', value=1):
+        if self.user_value(key='InteractClear') >= 1:
             return boss_scene(self.ctx)
 
     def on_exit(self) -> None:

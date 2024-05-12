@@ -102,13 +102,13 @@ class 투르카대사연출(trigger_api.Trigger):
 
 class 페이즈보스등장대기1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='1PhaseSpawnStart', value=1):
+        if self.user_value(key='1PhaseSpawnStart') >= 1:
             # 시작 이벤트 연출용 NPC의 "AI_TurkaReaperCostume_EventStart.xml" 에서 이 변수 1 신호를 받아서 1페이즈 보스 등장시킴
             return 페이즈보스등장1(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -121,10 +121,10 @@ class 페이즈보스등장1(trigger_api.Trigger):
         if self.wait_tick(wait_tick=4500):
             # WaitTick  시간 조절 연출 타이밍 맞춤
             return 페이즈전투진행1(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -135,13 +135,13 @@ class 페이즈전투진행1(trigger_api.Trigger):
         self.set_portal(portal_id=108, visible=True, enable=True, minimap_visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='2PhaseSpawnStart', value=1):
+        if self.user_value(key='2PhaseSpawnStart') >= 1:
             # 1페이즈 트루카 HP 1%가 되면 AI에서 이 변수 1 신호 보내고 스스로 사라짐
             return 페이즈전투완료_2페이즈투르카등장1(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -156,10 +156,10 @@ class 페이즈전투완료_2페이즈투르카등장1(trigger_api.Trigger):
         if self.wait_tick(wait_tick=6000):
             # 보스 1페이즈 전투 끝나면, 맵 조명 변경하고 -> 투르카 특수 행동하고 -> 보스AI로 부터 신호 받아서 -> 졸구간 지형생성 등등 연출이 나오는데 적당한 시간 타이밍 조절 필요해 waitTick 수치 조절 해야함
             return 졸구간시작연출딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -176,7 +176,7 @@ class 졸구간시작연출딜레이(trigger_api.Trigger):
         self.change_background(dds='BG_Turka_D.dds')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StageOpen', value=1):
+        if self.user_value(key='StageOpen') >= 1:
             # 보스AI로 부터 신호 받아서 -> 졸구간 지형생성 등등 연출 시작
             return 최초졸구간몬스터등장(self.ctx)
 
@@ -228,40 +228,40 @@ class 졸구간본격진행(trigger_api.Trigger):
 
 class 졸구간진행체크중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TriggerMesh11', value=0):
+        if self.user_value(key='TriggerMesh11') >= 0:
             # 첫번째 왼쪽지형 졸몹이 다 죽으면 TriggerMesh11 변수 0이  되어, 두번째 왼쪽지형 졸몹 등장 단계로 넘어감
             return 두번째왼쪽진행01(self.ctx)
-        if self.user_value(key='TriggerMesh12', value=0):
+        if self.user_value(key='TriggerMesh12') >= 0:
             # 첫번째 가운데지형 졸몹이 다 죽으면 TriggerMesh12 변수 0이  되어, 두번째 가운데지형 졸몹 등장  단계로 넘어감
             return 두번째가운데진행01(self.ctx)
-        if self.user_value(key='TriggerMesh13', value=0):
+        if self.user_value(key='TriggerMesh13') >= 0:
             # 첫번째 오른쪽지형 졸몹이 다 죽으면 TriggerMesh13 변수 0이  되어, 두번째 오른쪽지형 졸몹 등장  단계로 넘어감
             return 두번째오른쪽진행01(self.ctx)
-        if self.user_value(key='TriggerMesh22', value=0):
+        if self.user_value(key='TriggerMesh22') >= 0:
             # 두번째 가운데지형 졸몹이 다 죽으면 TriggerMesh22 변수 0이  되어, 세번째 가운데지형 졸몹 등장  단계로 넘어감
             return 세번째가운데진행01(self.ctx)
-        if self.user_value(key='TriggerMesh21', value=0):
+        if self.user_value(key='TriggerMesh21') >= 0:
             # 두번째 왼쪽지형 졸몹이 다 죽으면 TriggerMesh21 변수 0이  되어, 2페이즈 보스 전투판으로 가는 포탈 생성하기
             # 중요: 이 곳에서 실행되면 보스의 AI_TurkaHoodForce_Phase02.xml 에 설정된  TwoPhaseMainBattle 변수의 1 신호를 보냄
             return 왼쪽지점보스방가는포탈생성(self.ctx)
-        if self.user_value(key='TriggerMesh32', value=0):
+        if self.user_value(key='TriggerMesh32') >= 0:
             # 세번째 가운데지형 졸몹이 다 죽으면 TriggerMesh32 변수 0이  되어, 2페이즈 보스 전투판으로 가는 포탈 생성하기
             # 중요: 이 곳에서 실행되면 보스의 AI_TurkaHoodForce_Phase02.xml 에 설정된  TwoPhaseMainBattle 변수의 1 신호를 보냄
             return 가운데지점보스방가는포탈생성(self.ctx)
-        if self.user_value(key='TriggerMesh23', value=0):
+        if self.user_value(key='TriggerMesh23') >= 0:
             # 두번째 오른쪽지형 졸몹이 다 죽으면 TriggerMesh23 변수 0이  되어, 2페이즈 보스 전투판으로 가는 포탈 생성하기
             # 중요: 이 곳에서 실행되면 보스의 AI_TurkaHoodForce_Phase02.xml 에 설정된  TwoPhaseMainBattle 변수의 1 신호를 보냄
             return 오른쪽지점보스방가는포탈생성(self.ctx)
-        if self.user_value(key='2PhaseStartOk', value=1):
+        if self.user_value(key='2PhaseStartOk') >= 1:
             # 두번째 페이즈에서의 투르카 보스의 AI_TurkaHoodForce_Phase02.xml AI에서 본격 2페이즈 전투 시작하면서 2PhaseStartOk 변수 1 신호를 보내는데, 이 변수 1이 되면 모든 졸구간에서의 포탈 생성시키고, 졸몹 제거함
             return 모든졸구간지형과포탈생성(self.ctx)
-        if self.user_value(key='TurkaTwoPhaseEnd', value=1):
+        if self.user_value(key='TurkaTwoPhaseEnd') >= 1:
             # 두번째 페이즈에서의 투르카 보스 전투 끝나면 이 보스 AI에서 TurkaTwoPhaseEnd 변수 1 신호를 받게 되어 이 맵에서의 진행 끝내기
             return 이맵에서진행끝내고다음맵으로이동(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -497,10 +497,10 @@ class 이맵에서진행끝내고다음맵으로이동(trigger_api.Trigger):
         if self.wait_tick(wait_tick=9000):
             # 보스의 맵 파괴 연출 동작이 끝날때까지 여기서 9~10초 정도 waitTick 해야함
             return 종료안내메시지_대기(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -533,10 +533,10 @@ class 종료_메시지대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=3000):
             return 종료안내메시지_다시출력_대기(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -557,10 +557,10 @@ class 종료안내메시지_다시출력(trigger_api.Trigger):
         if self.wait_tick(wait_tick=15500):
             # 안내 메시지 15~16초 정도 출력후 다시 "종료_메시지대기" 단계로 돌아가기
             return 종료_메시지대기(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 

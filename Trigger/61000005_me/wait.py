@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$61000005_ME__WAIT__0$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=196, min_users='20'):
+        if self.count_users(box_id=196) >= 20:
             return 시작(self.ctx)
         if self.wait_tick(wait_tick=10000):
             return 대기(self.ctx)

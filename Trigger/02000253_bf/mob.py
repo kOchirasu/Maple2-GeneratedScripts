@@ -18,7 +18,7 @@ class 대기(trigger_api.Trigger):
         self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=906, min_users='1'):
+        if self.count_users(box_id=906) >= 1:
             return 딜레이(self.ctx)
 
 

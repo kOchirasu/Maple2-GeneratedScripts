@@ -38,7 +38,7 @@ class 몬스터출현_5(trigger_api.Trigger):
 
 class 몬스터체력50(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=6000018, is_relative=True) or self.check_npc_hp(compare='lowerEqual', value=50, spawn_id=6000019, is_relative=True):
+        if self.npc_hp(spawn_id=6000018, is_relative=True) <= 50 or self.npc_hp(spawn_id=6000019, is_relative=True) <= 50:
             return 생성_2(self.ctx)
         if self.time_expired(timer_id='102'):
             return 실패(self.ctx)
@@ -145,7 +145,7 @@ class 맵폭발연출_2(trigger_api.Trigger):
 class 카메라리셋(trigger_api.Trigger):
     def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portal_id=17, visible=True, enable=True, minimap_visible=False)
-        self.reset_camera(interpolation_time=0.8)
+        self.reset_camera(arg1='interpolationTime', interpolation_time=0.8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):

@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[709,710], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=205, min_users='1'):
+        if self.count_users(box_id=205) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -54,7 +54,7 @@ class 어나운스2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='88'):
             return None # Missing State: 어나운스3
-        if self.count_users(box_id=205, min_users='4'):
+        if self.count_users(box_id=205) >= 4:
             return 초재기0(self.ctx)
 
 """
@@ -66,7 +66,7 @@ class 어나운스3(trigger_api.Trigger):
         self.set_timer(timer_id='88', seconds=5, start_delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=205, min_users='4'):
+        if self.count_users(box_id=205) >= 4:
             return 초재기0(self.ctx)
         if self.time_expired(timer_id='88'):
             return None # Missing State: 어나운스2

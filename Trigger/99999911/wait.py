@@ -4,7 +4,7 @@ import trigger_api
 
 class 최초(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 시작(self.ctx)
 
 
@@ -22,7 +22,7 @@ class 대기(trigger_api.Trigger):
         self.show_guide_summary(entity_id=26100001, text_id=26100001)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='20'):
+        if self.count_users(box_id=701) >= 20:
             return 종료(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 대기2(self.ctx)
@@ -38,7 +38,7 @@ class 대기2(trigger_api.Trigger):
         self.show_guide_summary(entity_id=26100002, text_id=26100002)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='20'):
+        if self.count_users(box_id=701) >= 20:
             return 종료(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return 대기(self.ctx)

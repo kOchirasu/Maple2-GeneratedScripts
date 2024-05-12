@@ -56,7 +56,7 @@ class 시작대기중(trigger_api.Trigger):
         self.set_effect(trigger_ids=[438], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=901, min_users='1'):
+        if self.count_users(box_id=901) >= 1:
             return 연출시작딜레이(self.ctx)
 
 
@@ -196,7 +196,7 @@ class 카메라원위치2(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=902, min_users='1'):
+        if self.count_users(box_id=902) >= 1:
             return 쿠당탕(self.ctx)
 
 
@@ -269,7 +269,7 @@ class 스킵벨라이동(trigger_api.Trigger):
 
 class 스킵카메라원위치(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=902, min_users='1'):
+        if self.count_users(box_id=902) >= 1:
             return 스킵쿠당탕(self.ctx)
 
 

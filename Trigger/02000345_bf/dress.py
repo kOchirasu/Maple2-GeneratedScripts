@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10001067], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60002, min_users='1'):
+        if self.count_users(box_id=60002) >= 1:
             return ready(self.ctx)
 
 

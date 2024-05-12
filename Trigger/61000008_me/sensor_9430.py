@@ -9,17 +9,17 @@ class Wait(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[5430], visible=True, start_delay=0, interval=0, fade=0) # 43 / Ground inner
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Box43Check', value=0):
+        if self.user_value(key='Box43Check') >= 0:
             return Sensor0(self.ctx)
-        if self.user_value(key='Box43Check', value=1):
+        if self.user_value(key='Box43Check') >= 1:
             return Sensor1(self.ctx)
-        if self.user_value(key='Box43Check', value=2):
+        if self.user_value(key='Box43Check') >= 2:
             return Sensor2(self.ctx)
-        if self.user_value(key='Box43Check', value=3):
+        if self.user_value(key='Box43Check') >= 3:
             return Sensor3(self.ctx)
-        if self.user_value(key='Box43Check', value=4):
+        if self.user_value(key='Box43Check') >= 4:
             return Sensor4(self.ctx)
-        if self.user_value(key='Box43Check', value=5):
+        if self.user_value(key='Box43Check') >= 5:
             return Sensor5(self.ctx)
 
 
@@ -30,41 +30,41 @@ class Sensor0(trigger_api.Trigger):
 
 class Sensor1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9430, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9430) == 1:
             return Pass(self.ctx)
-        if not self.count_users(box_id=9430, min_users='1', operator='Equal'):
+        if self.count_users(box_id=9430) != 1:
             return Fail(self.ctx)
 
 
 class Sensor2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9430, min_users='2', operator='Equal'):
+        if self.count_users(box_id=9430) == 2:
             return Pass(self.ctx)
-        if not self.count_users(box_id=9430, min_users='2', operator='Equal'):
+        if self.count_users(box_id=9430) != 2:
             return Fail(self.ctx)
 
 
 class Sensor3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9430, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9430) == 3:
             return Pass(self.ctx)
-        if not self.count_users(box_id=9430, min_users='3', operator='Equal'):
+        if self.count_users(box_id=9430) != 3:
             return Fail(self.ctx)
 
 
 class Sensor4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9430, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9430) == 4:
             return Pass(self.ctx)
-        if not self.count_users(box_id=9430, min_users='4', operator='Equal'):
+        if self.count_users(box_id=9430) != 4:
             return Fail(self.ctx)
 
 
 class Sensor5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9430, min_users='5', operator='Equal'):
+        if self.count_users(box_id=9430) == 5:
             return Pass(self.ctx)
-        if not self.count_users(box_id=9430, min_users='5', operator='Equal'):
+        if self.count_users(box_id=9430) != 5:
             return Fail(self.ctx)
 
 

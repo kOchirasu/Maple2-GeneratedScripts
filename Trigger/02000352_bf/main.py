@@ -13,9 +13,9 @@ class 시작(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000822], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return 관문01_시작(self.ctx)
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_03_시작(self.ctx)
 
 
@@ -38,7 +38,7 @@ class 관문_01_개방(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000822], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 관문_02_시작(self.ctx)
 
 
@@ -64,7 +64,7 @@ class 관문_02_개방(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000824], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_03_시작(self.ctx)
 
     def on_exit(self) -> None:

@@ -26,7 +26,7 @@ class Wait(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[13300], visible=False, start_delay=0, interval=0, fade=0) # Final_FootHold
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='TimeEventOn', value=1):
+        if self.user_value(key='TimeEventOn') >= 1:
             return SettingDelay(self.ctx)
 
 
@@ -34,7 +34,7 @@ class SettingDelay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
             return Setting(self.ctx)
-        if self.user_value(key='EventStart', value=0):
+        if self.user_value(key='EventStart') >= 0:
             return Wait(self.ctx)
 
 
@@ -48,7 +48,7 @@ class Setting(trigger_api.Trigger):
             # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001031 지속시간 동일
             self.set_timer(timer_id='1', seconds=120, start_delay=1, interval=0, v_offset=0)
             return PassingThroughRing_Start_Delay(self.ctx)
-        if self.user_value(key='TimeEventOn', value=0):
+        if self.user_value(key='TimeEventOn') >= 0:
             return Wait(self.ctx)
 
 

@@ -7,15 +7,15 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='DefencePhase', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='DefencePhase', value=1):
+        if self.user_value(key='DefencePhase') >= 1:
             return DefencePhase01(self.ctx)
 
 
 class DefencePhase01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return MoveToTheWall(self.ctx)
-        if self.user_value(key='DefencePhase', value=2):
+        if self.user_value(key='DefencePhase') >= 2:
             return DefencePhase02(self.ctx)
 
 
@@ -26,15 +26,15 @@ class MoveToTheWall(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return DefencePhase01(self.ctx)
-        if self.user_value(key='DefencePhase', value=2):
+        if self.user_value(key='DefencePhase') >= 2:
             return DefencePhase02(self.ctx)
 
 
 class DefencePhase02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return OutsideOfTheWall(self.ctx)
-        if self.user_value(key='DefencePhase', value=3):
+        if self.user_value(key='DefencePhase') >= 3:
             return Quit(self.ctx)
 
 
@@ -45,7 +45,7 @@ class OutsideOfTheWall(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1000):
             return DefencePhase02(self.ctx)
-        if self.user_value(key='DefencePhase', value=3):
+        if self.user_value(key='DefencePhase') >= 3:
             return Quit(self.ctx)
 
 

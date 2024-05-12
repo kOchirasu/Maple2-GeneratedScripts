@@ -12,7 +12,7 @@ class 던전미션_체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
         # all_of:  <스킬 브레이크 성공 애디셔널>
-        if self.check_npc_extra_data(spawn_point_id='101', extra_data_key='brokenShieldRemainTick', extra_data_value='8000', operator='GreaterEqual') and self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002171, level=1):
+        if self.npc_extra_data(spawn_point_id='101', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002171, level=1):
             return 던전미션_스킬브레이크저지_성공(self.ctx)
         if self.check_npc_additional_effect(spawn_id=101, additional_effect_id=70002181, level=1):
             # <스킬 브레이크 실패 애디셔널>

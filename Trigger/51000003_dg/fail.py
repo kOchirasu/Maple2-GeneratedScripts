@@ -4,15 +4,15 @@ import trigger_api
 
 class gameset(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Fail', value=1):
+        if self.user_value(key='Fail') >= 1:
             return Fail_condition(self.ctx)
 
 
 class Fail_condition(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=799, min_users='1'):
+        if self.count_users(box_id=799) >= 1:
             return Fail(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return Fail(self.ctx)
         if not self.user_detected(box_ids=[701]):
             return Fail(self.ctx)

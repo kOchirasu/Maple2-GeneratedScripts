@@ -10,9 +10,9 @@ class 시작(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[16004], visible=False, interval=0, fade=0) # 벽 해제
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 패트롤_01(self.ctx)
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return 패트롤_03(self.ctx)
 
 
@@ -21,7 +21,7 @@ class 패트롤_01(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[147,148,149], auto_target=False) # 기본 배치 될 몬스터 등장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=707, min_users='1'):
+        if self.count_users(box_id=707) >= 1:
             return 패트롤_03(self.ctx)
 
 

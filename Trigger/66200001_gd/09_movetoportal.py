@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
         self.set_portal(portal_id=6, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MoveToTeamPortal', value=1):
+        if self.user_value(key='MoveToTeamPortal') >= 1:
             return MoveUserbyTag(self.ctx)
 
 
@@ -25,7 +25,7 @@ class MoveUserbyTag(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(box_ids=[9900]):
             return MoveUserbyTag(self.ctx)
-        if self.user_value(key='MoveToTeamPortal', value=2):
+        if self.user_value(key='MoveToTeamPortal') >= 2:
             return QuitDelay(self.ctx)
 
 

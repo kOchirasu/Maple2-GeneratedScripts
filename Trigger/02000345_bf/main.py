@@ -17,7 +17,7 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return CheckUserCount(self.ctx)
         if self.wait_tick(wait_tick=5000):
             return start_game_01(self.ctx)
@@ -34,7 +34,7 @@ class touchfield(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[2001,2002], visible=False, start_delay=0, interval=200)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return ready(self.ctx)
 
 
@@ -227,7 +227,7 @@ class 대기_01(trigger_api.Trigger):
         self.set_ladder(trigger_ids=[9003], visible=False, enable=False, fade=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return 대기_02(self.ctx)
 
 
@@ -242,7 +242,7 @@ class 대기_02(trigger_api.Trigger):
 
 class 대기_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=60001, min_users='1'):
+        if self.count_users(box_id=60001) >= 1:
             return 오브젝티브_01(self.ctx)
 
 

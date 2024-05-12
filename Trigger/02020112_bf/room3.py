@@ -4,10 +4,10 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EliteDead', value=1):
+        if self.user_value(key='EliteDead') >= 1:
             return 종료2(self.ctx)
         # all_of:  <두번째 격리조치가 끝난 후에 발동하도록>
-        if self.user_value(key='Extinction', value=1) and self.user_value(key='Extinction_1_check', value=1) and self.user_value(key='Extinction_2_check', value=1):
+        if self.user_value(key='Extinction') >= 1 and self.user_value(key='Extinction_1_check') >= 1 and self.user_value(key='Extinction_2_check') >= 1:
             return 시작(self.ctx)
 
 
@@ -16,7 +16,7 @@ class 시작(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020112_BF__ROOM3__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EliteDead', value=1):
+        if self.user_value(key='EliteDead') >= 1:
             return 종료2(self.ctx)
         if self.wait_tick(wait_tick=3000):
             return 격리(self.ctx)
@@ -35,7 +35,7 @@ class 격리(trigger_api.Trigger):
         self.add_buff(box_ids=[941], skill_id=70002106, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EliteDead', value=1):
+        if self.user_value(key='EliteDead') >= 1:
             return 종료2(self.ctx)
         if self.monster_dead(spawn_ids=[181,182,183]):
             return 구출(self.ctx)
@@ -48,7 +48,7 @@ class 소멸(trigger_api.Trigger):
         self.add_buff(box_ids=[941], skill_id=70002107, level=1, is_skill_set=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EliteDead', value=1):
+        if self.user_value(key='EliteDead') >= 1:
             return 종료2(self.ctx)
         return 종료(self.ctx)
 
@@ -58,7 +58,7 @@ class 구출(trigger_api.Trigger):
         self.move_user(map_id=2020112, portal_id=5, box_id=941)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='EliteDead', value=1):
+        if self.user_value(key='EliteDead') >= 1:
             return 종료2(self.ctx)
         return 종료(self.ctx)
 

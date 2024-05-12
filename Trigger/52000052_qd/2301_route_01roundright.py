@@ -12,13 +12,13 @@ class Wait(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[430100,430101,430102,430103,430104,430105,430106,430107,430108,430109,430110,430111,430112,430113,430114,430115,430116,430117,430118,430119,430120,430121,430122,430123], visible=False, start_delay=0, interval=0, fade=0) # Real
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return StartDazzling01(self.ctx)
 
 
 class StartDazzling01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='RouteSelected', value=1):
+        if self.user_value(key='RouteSelected') >= 1:
             return StartDazzlingRandom01(self.ctx)
 
 
@@ -30,9 +30,9 @@ class StartDazzlingRandom01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return StartDazzlingRandom02(self.ctx)
-        if self.user_value(key='MakeTrue', value=1):
+        if self.user_value(key='MakeTrue') >= 1:
             return MakeTrue(self.ctx)
-        if self.user_value(key='MakeFalse', value=1):
+        if self.user_value(key='MakeFalse') >= 1:
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:
@@ -47,9 +47,9 @@ class StartDazzlingRandom02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return StartDazzlingRandom01(self.ctx)
-        if self.user_value(key='MakeTrue', value=1):
+        if self.user_value(key='MakeTrue') >= 1:
             return MakeTrue(self.ctx)
-        if self.user_value(key='MakeFalse', value=1):
+        if self.user_value(key='MakeFalse') >= 1:
             return MakeFalse(self.ctx)
 
     def on_exit(self) -> None:

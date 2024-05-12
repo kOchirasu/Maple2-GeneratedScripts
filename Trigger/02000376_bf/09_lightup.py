@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='1'):
+        if self.count_users(box_id=9000) >= 1:
             return LoadingDelay(self.ctx)
 
 

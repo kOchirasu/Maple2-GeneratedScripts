@@ -24,7 +24,7 @@ class idle(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6007], visible=False, interval=0, fade=10) # 화살표 표시 안함
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -54,7 +54,7 @@ class Start(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6900], visible=False, interval=0, fade=10)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 관문_01_개방(self.ctx)
 
 
@@ -63,7 +63,7 @@ class 관문_01_개방(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000818], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=703, min_users='1'):
+        if self.count_users(box_id=703) >= 1:
             return 관문_02_개방(self.ctx)
 
 
@@ -75,7 +75,7 @@ class 관문_02_개방(trigger_api.Trigger):
         self.set_interact_object(trigger_ids=[10000820], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=704, min_users='1'):
+        if self.count_users(box_id=704) >= 1:
             return 관문_03_시작(self.ctx)
 
     def on_exit(self) -> None:

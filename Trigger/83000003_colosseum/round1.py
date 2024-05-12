@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
         self.set_sound(trigger_id=13001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StartRound1', value=1):
+        if self.user_value(key='StartRound1') >= 1:
             # self.set_user_value(trigger_id=910001, key='StartRound1', value=0)
             return 시작딜레이(self.ctx)
 
@@ -37,7 +37,7 @@ class 방향조정(trigger_api.Trigger):
 
 class 라운드조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_round_require(round=1):
+        if self.dungeon_round() == 1:
             self.side_npc_talk(type='talk', npc_id=11004288, illust='nagi_normal', script='$83000002_COLOSSEUM__ROUND1__0$', duration=5000)
             # self.set_event_ui(type=1, arg2='첫 번째 상대가 곧 출현합니다. 전투 준비를 하세요!!', arg3='3000')
             return 라운드대기(self.ctx)

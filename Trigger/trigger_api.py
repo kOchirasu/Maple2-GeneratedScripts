@@ -326,14 +326,14 @@ class Trigger:
         """DungeonStopTimer"""
         self.ctx.DungeonStopTimer()
 
-    def dungeon_variable(self, var_id: int=0, value: int=0):
+    def set_dungeon_variable(self, var_id: int=0, value: int=0):
         """DungeonVariable
 
         Args:
             var_id (int): _description_. Defaults to 0.
             value (int): _description_. Defaults to 0.
         """
-        self.ctx.DungeonVariable(var_id, value)
+        self.ctx.SetDungeonVariable(var_id, value)
 
     def enable_local_camera(self, is_enable: bool=False):
         """EnableLocalCamera
@@ -395,12 +395,13 @@ class Trigger:
         """
         self.ctx.FieldGameConstant(key, value, feature, locale)
 
-    def field_game_message(self, custom: int=0, type: str=None, script: str=None, duration: int=0):
+    def field_game_message(self, custom: int=0, type: str=None, arg1: str=None, script: str=None, duration: int=0):
         """FieldGameMessage
 
         Args:
             custom (int): _description_. Defaults to 0.
             type (str): _description_. Defaults to None.
+            arg1 (str): _description_. Defaults to None.
             script (str): _description_. Defaults to None.
             duration (int): _description_. Defaults to 0.
         """
@@ -770,11 +771,12 @@ class Trigger:
         """
         self.ctx.RemoveEffectNif(spawn_id)
 
-    def reset_camera(self, interpolation_time: float=0.0):
+    def reset_camera(self, interpolation_time: float=0.0, arg1: str=None):
         """카메라리셋
 
         Args:
             interpolation_time (float): _description_. Defaults to 0.0.
+            arg1 (str): _description_. Defaults to None.
         """
         self.ctx.ResetCamera(interpolation_time, arg1)
 
@@ -1672,46 +1674,40 @@ class Trigger:
         """
         return self.ctx.CheckNpcAdditionalEffect(spawn_id, additional_effect_id, level)
 
-    def check_npc_damage(self, spawn_id: int=0, damage_rate: float=0.0, operator: str='GreaterEqual') -> bool:
+    def npc_damage(self, spawn_id: int=0) -> int:
         """CheckNpcDamage
 
         Args:
             spawn_id (int): _description_. Defaults to 0.
-            damage_rate (float): _description_. Defaults to 0.0.
-            operator (str): _description_. Defaults to 'GreaterEqual'.
 
         Returns:
-            bool: _description_
+            int: damage_rate
         """
-        return self.ctx.CheckNpcDamage(spawn_id, damage_rate, operator)
+        return self.ctx.NpcDamage(spawn_id)
 
-    def check_npc_extra_data(self, spawn_point_id: str=None, extra_data_key: str=None, extra_data_value: str=None, operator: str=None) -> bool:
+    def npc_extra_data(self, spawn_point_id: str=None, extra_data_key: str=None) -> int:
         """CheckNpcExtraData
 
         Args:
             spawn_point_id (str): _description_. Defaults to None.
             extra_data_key (str): _description_. Defaults to None.
-            extra_data_value (str): _description_. Defaults to None.
-            operator (str): _description_. Defaults to None.
 
         Returns:
-            bool: _description_
+            int: extra_data_value
         """
-        return self.ctx.CheckNpcExtraData(spawn_point_id, extra_data_key, extra_data_value, operator)
+        return self.ctx.NpcExtraData(spawn_point_id, extra_data_key)
 
-    def check_npc_hp(self, compare: str=None, value: int=0, spawn_id: int=0, is_relative: bool=False) -> bool:
+    def npc_hp(self, spawn_id: int=0, is_relative: bool=False) -> int:
         """CheckNpcHp
 
         Args:
-            compare (str): _description_. Defaults to None.
-            value (int): _description_. Defaults to 0.
             spawn_id (int): _description_. Defaults to 0.
             is_relative (bool): _description_. Defaults to False.
 
         Returns:
-            bool: _description_
+            int: value
         """
-        return self.ctx.CheckNpcHp(compare, value, spawn_id, is_relative)
+        return self.ctx.NpcHp(spawn_id, is_relative)
 
     def check_same_user_tag(self, box_id: int=0) -> bool:
         """CheckSameUserTag
@@ -1732,42 +1728,38 @@ class Trigger:
         """
         return self.ctx.CheckUser()
 
-    def check_user_count(self, check_count: int=0) -> bool:
+    def user_count(self) -> int:
         """CheckUserCount
 
         Args:
-            check_count (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: check_count
         """
-        return self.ctx.CheckUserCount(check_count)
+        return self.ctx.UserCount()
 
-    def count_users(self, box_id: int=0, min_users: str=None, operator: str='GreaterEqual', user_tag_id: int=0) -> bool:
+    def count_users(self, box_id: int=0, user_tag_id: int=0) -> int:
         """여러명의유저를감지했으면
 
         Args:
             box_id (int): _description_. Defaults to 0.
-            min_users (str): _description_. Defaults to None.
-            operator (str): _description_. Defaults to 'GreaterEqual'.
             user_tag_id (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: min_users
         """
-        return self.ctx.CountUsers(box_id, min_users, operator, user_tag_id)
+        return self.ctx.CountUsers(box_id, user_tag_id)
 
-    def day_of_week(self, day_of_weeks: List[int]=[], desc: str=None) -> bool:
+    def day_of_week(self, desc: str=None) -> int:
         """DayOfWeek
 
         Args:
-            day_of_weeks (List[int]): _description_. Defaults to [].
             desc (str): _description_. Defaults to None.
 
         Returns:
-            bool: _description_
+            int: day_of_weeks
         """
-        return self.ctx.DayOfWeek(day_of_weeks, desc)
+        return self.ctx.DayOfWeek(desc)
 
     def detect_liftable_object(self, box_ids: List[int]=[], item_id: int=0) -> bool:
         """DetectLiftableObject
@@ -1781,104 +1773,94 @@ class Trigger:
         """
         return self.ctx.DetectLiftableObject(box_ids, item_id)
 
-    def dungeon_check_play_time(self, play_seconds: int=0, operator: str='GreaterEqual') -> bool:
+    def dungeon_play_time(self) -> int:
         """DungeonCheckPlayTime
 
         Args:
-            play_seconds (int): _description_. Defaults to 0.
-            operator (str): _description_. Defaults to 'GreaterEqual'.
 
         Returns:
-            bool: _description_
+            int: play_seconds
         """
-        return self.ctx.DungeonCheckPlayTime(play_seconds, operator)
+        return self.ctx.DungeonPlayTime()
 
-    def dungeon_check_state(self, check_state: str=None) -> bool:
+    def dungeon_state(self) -> int:
         """DungeonCheckState
 
         Args:
-            check_state (str): _description_. Defaults to None.
 
         Returns:
-            bool: _description_
+            int: check_state
         """
-        return self.ctx.DungeonCheckState(check_state)
+        return self.ctx.DungeonState()
 
-    def dungeon_first_user_mission_score(self, score: int=0, operator: str='GreaterEqual') -> bool:
+    def dungeon_first_user_mission_score(self) -> int:
         """DungeonFirstUserMissionScore
 
         Args:
-            score (int): _description_. Defaults to 0.
-            operator (str): _description_. Defaults to 'GreaterEqual'.
 
         Returns:
-            bool: _description_
+            int: score
         """
-        return self.ctx.DungeonFirstUserMissionScore(score, operator)
+        return self.ctx.DungeonFirstUserMissionScore()
 
-    def dungeon_id(self, dungeon_id: int=0) -> bool:
+    def dungeon_id(self) -> int:
         """DungeonID
 
         Args:
-            dungeon_id (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: dungeon_id
         """
-        return self.ctx.DungeonId(dungeon_id)
+        return self.ctx.DungeonId()
 
-    def dungeon_level(self, level: int=0) -> bool:
+    def dungeon_level(self) -> int:
         """DungeonLevel
 
         Args:
-            level (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: level
         """
-        return self.ctx.DungeonLevel(level)
+        return self.ctx.DungeonLevel()
 
-    def dungeon_max_user_count(self, value: int=0) -> bool:
+    def dungeon_max_user_count(self) -> int:
         """DungeonMaxUserCount
 
         Args:
-            value (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: value
         """
-        return self.ctx.DungeonMaxUserCount(value)
+        return self.ctx.DungeonMaxUserCount()
 
-    def dungeon_round_require(self, round: int=0) -> bool:
+    def dungeon_round(self) -> int:
         """DungeonRoundRequire
 
         Args:
-            round (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: round
         """
-        return self.ctx.DungeonRoundRequire(round)
+        return self.ctx.DungeonRound()
 
-    def dungeon_time_out(self) -> bool:
+    def dungeon_timeout(self) -> bool:
         """DungeonTimeOut
 
         Returns:
             bool: _description_
         """
-        return self.ctx.DungeonTimeOut()
+        return self.ctx.DungeonTimeout()
 
-    def dungeon_variable(self, var_id: int=0, value: int=0) -> bool:
+    def dungeon_variable(self, var_id: int=0) -> int:
         """DungeonVariable
 
         Args:
             var_id (int): _description_. Defaults to 0.
-            value (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: value
         """
-        return self.ctx.DungeonVariable(var_id, value)
+        return self.ctx.DungeonVariable(var_id)
 
     def guild_vs_game_scored_team(self, team_id: int=0) -> bool:
         """GuildVsGameScoredTeam
@@ -1964,18 +1946,17 @@ class Trigger:
         """
         return self.ctx.NpcIsDeadByStringId(string_id)
 
-    def object_interacted(self, interact_ids: List[int]=[], state: int=0, ar2: str=None) -> bool:
+    def object_interacted(self, interact_ids: List[int]=[], state: int=0) -> bool:
         """오브젝트가반응했으면
 
         Args:
             interact_ids (List[int]): _description_. Defaults to [].
             state (int): _description_. Defaults to 0.
-            ar2 (str): _description_. Defaults to None.
 
         Returns:
             bool: _description_
         """
-        return self.ctx.ObjectInteracted(interact_ids, state, ar2)
+        return self.ctx.ObjectInteracted(interact_ids, state)
 
     def pvp_zone_ended(self, box_id: int=0) -> bool:
         """PVP존이종료했으면
@@ -2014,28 +1995,25 @@ class Trigger:
         """
         return self.ctx.RandomCondition(weight, desc)
 
-    def score_board_compare(self, operator: str='GreaterEqual', score: int=0) -> bool:
+    def score_board_score(self) -> int:
         """ScoreBoardCompare
 
         Args:
-            operator (str): _description_. Defaults to 'GreaterEqual'.
-            score (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: score
         """
-        return self.ctx.ScoreBoardCompare(operator, score)
+        return self.ctx.ScoreBoardScore()
 
-    def shadow_expedition_reach_point(self, point: int=0) -> bool:
+    def shadow_expedition_points(self) -> int:
         """ShadowExpeditionReachPoint
 
         Args:
-            point (int): _description_. Defaults to 0.
 
         Returns:
-            bool: _description_
+            int: point
         """
-        return self.ctx.ShadowExpeditionReachPoint(point)
+        return self.ctx.ShadowExpeditionPoints()
 
     def time_expired(self, timer_id: str=None) -> bool:
         """시간이경과했으면
@@ -2060,18 +2038,16 @@ class Trigger:
         """
         return self.ctx.UserDetected(box_ids, job_code)
 
-    def user_value(self, key: str=None, value: int=0, operator: str='GreaterEqual') -> bool:
+    def user_value(self, key: str=None) -> int:
         """UserValue
 
         Args:
             key (str): _description_. Defaults to None.
-            value (int): _description_. Defaults to 0.
-            operator (str): _description_. Defaults to 'GreaterEqual'.
 
         Returns:
-            bool: _description_
+            int: value
         """
-        return self.ctx.UserValue(key, value, operator)
+        return self.ctx.UserValue(key)
 
     def wait_and_reset_tick(self, wait_tick: int=0) -> bool:
         """WaitAndResetTick
@@ -2119,41 +2095,38 @@ class Trigger:
         """
         return self.ctx.WeddingEntryInField(entry_type, is_in_field)
 
-    def wedding_hall_state(self, hall_state: str=None, success: bool=False) -> bool:
+    def wedding_hall_state(self, success: bool=False) -> str:
         """WeddingHallState
 
         Args:
-            hall_state (str): _description_. Defaults to None.
             success (bool): _description_. Defaults to False.
 
         Returns:
-            bool: _description_
+            str: hall_state
         """
-        return self.ctx.WeddingHallState(hall_state, success)
+        return self.ctx.WeddingHallState(success)
 
-    def wedding_mutual_agree_result(self, agree_type: str=None, success: bool=False) -> bool:
+    def wedding_mutual_agree_result(self, agree_type: str=None) -> bool:
         """WeddingMutualAgreeResult
 
         Args:
             agree_type (str): _description_. Defaults to None.
-            success (bool): _description_. Defaults to False.
 
         Returns:
-            bool: _description_
+            bool: success
         """
-        return self.ctx.WeddingMutualAgreeResult(agree_type, success)
+        return self.ctx.WeddingMutualAgreeResult(agree_type)
 
-    def widget_condition(self, type: str=None, name: str=None, condition: str=None, desc: str=None) -> bool:
+    def widget_value(self, type: str=None, name: str=None, desc: str=None) -> int:
         """WidgetCondition
 
         Args:
             type (str): _description_. Defaults to None.
             name (str): _description_. Defaults to None.
-            condition (str): _description_. Defaults to None.
             desc (str): _description_. Defaults to None.
 
         Returns:
-            bool: _description_
+            int: condition
         """
-        return self.ctx.WidgetCondition(type, name, condition, desc)
+        return self.ctx.WidgetValue(type, name, desc)
 

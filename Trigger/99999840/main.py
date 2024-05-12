@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990015, key='Start', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9001, min_users='6', operator='Equal'):
+        if self.count_users(box_id=9001) == 6:
             return 세팅(self.ctx)
 
 
@@ -21,7 +21,7 @@ class 세팅(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='잠시 후 경기가 시작됩니다.', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=1, value=1):
+        if self.dungeon_variable(var_id=1) == 1:
             return 시작(self.ctx)
 
 
@@ -44,9 +44,9 @@ class 메시지1(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='검은 군단을 해치우고 자원을 획득하세요.\\n획득한 자원을 20개 모아서 보스를 불러내세요.\\n한번에 최대 9개의 자원을 들 수 있습니다.', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(var_id=2, value=1):
+        if self.dungeon_variable(var_id=2) == 1:
             return A팀승리(self.ctx)
-        if self.dungeon_variable(var_id=3, value=1):
+        if self.dungeon_variable(var_id=3) == 1:
             return B팀승리(self.ctx)
 
 

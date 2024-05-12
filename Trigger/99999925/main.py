@@ -20,7 +20,7 @@ class DungeonStart(trigger_api.Trigger):
         self.move_npc(spawn_id=203, patrol_name='MS2PatrolData5')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=402, min_users='1'):
+        if self.count_users(box_id=402) >= 1:
             return LoadingStart(self.ctx)
 
 

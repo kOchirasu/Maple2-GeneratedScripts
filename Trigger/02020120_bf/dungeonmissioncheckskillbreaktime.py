@@ -20,7 +20,7 @@ class 던전미션_체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         # all_of:  <쉴드가 깨지기까지 8초보다 많은 시간이 남은 경우 = 6초 이내로 파괴>
         # all_of:  이슈라는 스폰포인트ID : 99임, 이 애디셔널은 이슈라가 스킬브레이크 공격이 플레이어한테 저지 당하면 실패 동작 출력때 이 70002171 애디셔널을 AI에서 인위적으로 적용시킴
-        if self.check_npc_extra_data(spawn_point_id='99', extra_data_key='brokenShieldRemainTick', extra_data_value='8000', operator='GreaterEqual') and self.check_npc_additional_effect(spawn_id=99, additional_effect_id=70002171, level=1):
+        if self.npc_extra_data(spawn_point_id='99', extra_data_key='brokenShieldRemainTick') >= '8000' and self.check_npc_additional_effect(spawn_id=99, additional_effect_id=70002171, level=1):
             return 던전미션_스킬브레이크저지_성공(self.ctx)
         if self.check_npc_additional_effect(spawn_id=99, additional_effect_id=50000367, level=1):
             # 이슈라는 스폰포인트ID : 99임, 이 애디셔널은 플레이어가 이슈라 스킬브레이크 저지 실패하면 극 광역 공격떄  이 50000367 애디셔널을 스킬에서 적용시켜 발생함

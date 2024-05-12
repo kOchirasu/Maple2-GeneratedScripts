@@ -61,7 +61,7 @@ class 둘다입장(trigger_api.Trigger):
         self.set_user_value(key='StartWedding', value=0) # 결혼시작확인 초기화
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StartWedding', value=1):
+        if self.user_value(key='StartWedding') >= 1:
             # 주례에게 말 걸어 결혼식 시작하기로 할 때 npcscriptfunction에서 triggervalue 컬럼에 입력된 값을 쏨(setuservalue와 같은 역할). 이 값을 받은 경우 다음 state로 넘긴다.
             return 결혼확인띄우기(self.ctx)
         if self.time_expired(timer_id='4000'):
@@ -88,10 +88,10 @@ class 결혼시작체크(trigger_api.Trigger):
         if self.wedding_entry_in_field(entry_type='GroomBride', is_in_field=False):
             # 신랑신부 중 나간 사람 없나 체크. 만약 나간 사람이 있으면
             return 대기01(self.ctx)
-        if self.wedding_mutual_agree_result(agree_type='startActing', success=True):
+        if self.wedding_mutual_agree_result(agree_type='startActing'):
             # 결혼식 시작에 동의했으면 wait xml에서 10분 타이머, 신랑신부 입장체크는 완전 종료시킴
             return 결혼식연출진행중(self.ctx)
-        if self.wedding_mutual_agree_result(agree_type='startActing', success=False):
+        if not self.wedding_mutual_agree_result(agree_type='startActing'):
             # 결혼식 시작에 동의 안했으면 wait xml에서 10분 타이머, 신랑신부 입장체크 계속 하도록 돌려보냄
             return 대기01(self.ctx)
         if self.time_expired(timer_id='4000'):
@@ -125,11 +125,11 @@ class 결혼식연출진행중(trigger_api.Trigger):
         self.set_user_value(trigger_id=4001, key='Weddingceremonystarts', value=1) # 연출 시작하라고 main에 쏘는 신호
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Weddingceremonyfail', value=1):
+        if self.user_value(key='Weddingceremonyfail') >= 1:
             # 결혼 실패
             self.set_user_value(key='Weddingceremonyfail', value=0) # 초기화
             return 위치세팅(self.ctx)
-        if self.wedding_hall_state(hall_state='weddingComplete'):
+        if self.wedding_hall_state() == 'weddingComplete':
             # 결혼 연출 끝나서 보상받고 종료
             return 종료(self.ctx)
 

@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[149], auto_target=False) # 기본 배치 될 NPC 등장
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=710, min_users='1'):
+        if self.count_users(box_id=710) >= 1:
             return 시작(self.ctx)
 
 
@@ -43,7 +43,7 @@ class 화물문_개방(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timer_id='3'):
             return 화물문_개방_종료(self.ctx)
-        if self.count_users(box_id=711, min_users='1'):
+        if self.count_users(box_id=711) >= 1:
             return 보스등장연출_00(self.ctx)
 
     def on_exit(self) -> None:
@@ -52,7 +52,7 @@ class 화물문_개방(trigger_api.Trigger):
 
 class 화물문_개방_종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=711, min_users='1'):
+        if self.count_users(box_id=711) >= 1:
             return 보스등장연출_00(self.ctx)
 
 

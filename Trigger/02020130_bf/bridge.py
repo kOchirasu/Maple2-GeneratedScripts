@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 
 class 작동대기상태(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BridgeAppear', value=3, operator='GreaterEqual'):
+        if self.user_value(key='BridgeAppear') >= 3:
             # 이슈라 랜듀비앙 유페리아 가 두번째 전투판으로 순간이동 하거나 죽을 때 이 변수 +1 신호를 보내서 3이 되면  다리생성 트리거 작동시킴
             # 이슈라 랜듀비앙 유페리아 가 두번째 전투판으로 순간이동 하거나 죽을 때 이 변수 +1 신호를 보내는데, 혹시 타이밍이 꼬여 이 숫자가 4 이상이 될 수도 있을거 같아서 안전하게 3 이상 으로 설정함(operator="GreaterEqual")
             return 다리생성(self.ctx)

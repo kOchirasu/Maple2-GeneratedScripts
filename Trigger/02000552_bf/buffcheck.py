@@ -21,7 +21,7 @@ class 기본셋팅(trigger_api.Trigger):
 
 class 트리거작동시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=1, operator='GreaterEqual'):
+        if self.user_value(key='MonsterMany') >= 1:
             # 졸몹이 등장해 이 변수가 1 이상의 숫자가 되면, 블랙빈에게 버프 부여하기
             return 블랙빈에게버프부여(self.ctx)
 
@@ -45,7 +45,7 @@ class 블랙빈에게버프부여(trigger_api.Trigger):
 
 class 블랙빈에게버프삭제체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='MonsterMany', value=0):
+        if self.user_value(key='MonsterMany') >= 0:
             # 졸몹이 전멸해 이 변수가 0이 되면
             return 블랙빈에게버프삭제대기(self.ctx)
 

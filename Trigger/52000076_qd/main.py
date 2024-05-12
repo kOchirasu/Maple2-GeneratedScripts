@@ -129,7 +129,7 @@ class DungeonStart(trigger_api.Trigger):
         self.play_scene_movie(file_name='KatvanIntroMovie.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 진행01벽제거(self.ctx)
 
 
@@ -597,7 +597,7 @@ class BossBattleStart01(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[3801,3802,3803,3804,3805,3806,3807,3808,3809,3810,3811,3812,3813,3814,3815,3816], visible=False, start_delay=0, interval=200, fade=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='saveEveIntheDark', value=1):
+        if self.user_value(key='saveEveIntheDark') >= 1:
             return BossNpcChange01(self.ctx)
         if self.monster_dead(spawn_ids=[1099]):
             return BossNpcChange01(self.ctx)

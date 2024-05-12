@@ -16,7 +16,7 @@ class 던전미션체크대기(trigger_api.Trigger):
 
 class 체력90이하체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=90, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 90:
             return 지하1층(self.ctx)
 
 
@@ -25,7 +25,7 @@ class 지하1층(trigger_api.Trigger):
         self.dungeon_mission_complete(mission_id=24092001)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=70, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 70:
             return 지하2층(self.ctx)
 
 
@@ -34,7 +34,7 @@ class 지하2층(trigger_api.Trigger):
         self.dungeon_mission_complete(mission_id=24092002)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=55, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 55:
             return 지하3층(self.ctx)
 
 
@@ -43,7 +43,7 @@ class 지하3층(trigger_api.Trigger):
         self.dungeon_mission_complete(mission_id=24092003)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.check_npc_hp(compare='lowerEqual', value=40, spawn_id=201, is_relative=True):
+        if self.npc_hp(spawn_id=201, is_relative=True) <= 40:
             return 지하4층(self.ctx)
 
 

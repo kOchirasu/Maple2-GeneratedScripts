@@ -13,7 +13,7 @@ class Idle(trigger_api.Trigger):
         self.set_mesh(trigger_ids=[6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211,6212,6213,6214,6215,6216,6217,6218,6219,6220,6221,6222,6223,6224,6225,6226,6227,6228,6229,6230,6231,6232,6233,6234,6235,6236,6237,6238,6239,6240,6241,6242,6243,6244,6245,6246,6247,6248,6249,6250,6251,6252,6253,6254,6255,6256,6257,6258,6259,6260,6261,6262,6263,6264,6265,6266,6267,6268,6269,6270,6271,6272,6273,6274,6275,6276,6277,6278,6279,6280,6281,6282,6283,6284,6285,6286,6287,6288,6289,6290,6291,6292,6293,6294,6295,6296,6297,6298,6299,6300], visible=False, start_delay=0, interval=0, fade=0) # 히든 존 투명 블록
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=701, min_users='1'):
+        if self.count_users(box_id=701) >= 1:
             return Tutorial(self.ctx)
 
     def on_exit(self) -> None:
@@ -104,7 +104,7 @@ class Step_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_02(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -119,7 +119,7 @@ class Step_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_03(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -135,7 +135,7 @@ class Step_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_04(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
     def on_exit(self) -> None:
@@ -157,7 +157,7 @@ class Step_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_05(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
     def on_exit(self) -> None:
@@ -176,7 +176,7 @@ class Step_05(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_06(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -190,7 +190,7 @@ class Step_06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_07(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -206,7 +206,7 @@ class Step_07(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_08(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -221,7 +221,7 @@ class Step_08(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_09(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -236,7 +236,7 @@ class Step_09(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_10(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
     def on_exit(self) -> None:
@@ -270,7 +270,7 @@ class Step_11(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_12(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -285,7 +285,7 @@ class Step_12(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_13(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -301,7 +301,7 @@ class Step_13(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_14(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -317,7 +317,7 @@ class Step_14(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_15(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -331,7 +331,7 @@ class Step_15(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_16(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
     def on_exit(self) -> None:
@@ -351,7 +351,7 @@ class Step_16(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_17(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -366,7 +366,7 @@ class Step_17(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_18(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -382,7 +382,7 @@ class Step_18(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_19(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -397,7 +397,7 @@ class Step_19(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_20(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -412,7 +412,7 @@ class Step_20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_21(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -426,7 +426,7 @@ class Step_21(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_22(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -440,7 +440,7 @@ class Step_22(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_23(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -454,7 +454,7 @@ class Step_23(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_24(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -468,7 +468,7 @@ class Step_24(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=20000):
             return Step_25(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -482,7 +482,7 @@ class Step_25(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=120000):
             return Step_26(self.ctx)
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 
@@ -492,7 +492,7 @@ class Step_26(trigger_api.Trigger):
         self.set_achievement(trigger_id=701, type='trigger', achieve='boomocean_10min') # 붐붐오션 10분 버티기 트로피
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=705, min_users='1'):
+        if self.count_users(box_id=705) >= 1:
             return End(self.ctx)
 
 

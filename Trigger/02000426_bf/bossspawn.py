@@ -19,10 +19,10 @@ class 시작(trigger_api.Trigger):
 
 class 던전코드별보스등장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_id(dungeon_id=23040003):
+        if self.dungeon_id() == 23040003:
             # 10인던전으로 입장하면 10인용 보스 등장,   dungeonID 의 숫자는 DungeonRoom.xlsx 에 정의된 던전코드
             return 어려운난이도보스등장(self.ctx)
-        if self.dungeon_id(dungeon_id=23041003):
+        if self.dungeon_id() == 23041003:
             # 6인던전으로 입장하면 6인용 보스 등장
             return 쉬운난이도보스등장(self.ctx)
         if self.wait_tick(wait_tick=2000):
@@ -50,14 +50,14 @@ class 쉬운난이도보스등장(trigger_api.Trigger):
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ZakumBodyAppearance', value=1):
+        if self.user_value(key='ZakumBodyAppearance') >= 1:
             # AI_ZakumBrownImitation.xml 로 부터 신호 받아서 자쿰몸체를 스폰시키기
             return 자쿰몸체등장(self.ctx)
-        if self.user_value(key='ZakumDungeonEnd', value=1):
+        if self.user_value(key='ZakumDungeonEnd') >= 1:
             return 종료딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -68,10 +68,10 @@ class 자쿰몸체등장(trigger_api.Trigger):
         self.set_user_value(key='ZakumBodyAppearance', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_id(dungeon_id=23040003):
+        if self.dungeon_id() == 23040003:
             # 10인던전으로 입장하면 10인용 자쿰몸 등장,   dungeonID 의 숫자는 DungeonRoom.xlsx 에 정의된 던전코드
             return 어려운난이도_자쿰몸등장(self.ctx)
-        if self.dungeon_id(dungeon_id=23041003):
+        if self.dungeon_id() == 23041003:
             # 4인던전으로 입장하면 4인용 자쿰몸 등장
             return 쉬운난이도_자쿰몸등장(self.ctx)
         if self.wait_tick(wait_tick=2000):

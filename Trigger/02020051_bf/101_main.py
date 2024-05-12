@@ -19,7 +19,7 @@ class 포션사용(trigger_api.Trigger):
         self.set_user_value(trigger_id=103, key='Main', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Potion', value=1):
+        if self.user_value(key='Potion') >= 1:
             return 타이머(self.ctx)
 
 
@@ -138,7 +138,7 @@ class 종료(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020051_BF__101_MAIN__2$', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Potion', value=2):
+        if self.user_value(key='Potion') >= 2:
             return 포션사용(self.ctx)
 
 

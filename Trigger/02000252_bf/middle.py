@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
         self.set_effect(trigger_ids=[8218], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=902, min_users='1'):
+        if self.count_users(box_id=902) >= 1:
             return 바닥삭제(self.ctx)
 
 

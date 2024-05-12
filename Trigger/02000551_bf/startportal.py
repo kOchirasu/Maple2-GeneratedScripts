@@ -28,10 +28,10 @@ class 포탈활성화(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020140_BF__BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패종료(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패종료(self.ctx)
         if self.wait_tick(wait_tick=30000):
@@ -44,10 +44,10 @@ class 포탈감추기(trigger_api.Trigger):
         # <action name="이펙트를설정한다" arg1="8101,8102,8103,8104,8105" arg2="0" />   최초 시작 지점에 나오는 화살표 표시 끄기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패종료(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패종료(self.ctx)
 

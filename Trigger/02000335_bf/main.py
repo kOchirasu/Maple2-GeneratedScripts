@@ -21,7 +21,7 @@ class idle(trigger_api.Trigger):
         self.enable_spawn_point_pc(spawn_id=992, is_enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=700, min_users='1'):
+        if self.count_users(box_id=700) >= 1:
             return CheckUserCount(self.ctx)
 
 
@@ -99,7 +99,7 @@ class 관문_01_개방_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[106]):
             return 관문_02_개방(self.ctx)
-        if self.count_users(box_id=702, min_users='1'):
+        if self.count_users(box_id=702) >= 1:
             return 관문_01_개방_03(self.ctx)
 
 

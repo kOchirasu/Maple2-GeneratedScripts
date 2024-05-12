@@ -18,7 +18,7 @@ class 어나운스01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=5000):
             return 어나운스01(self.ctx)
-        if self.count_users(box_id=102, min_users='2'):
+        if self.count_users(box_id=102) >= 2:
             return 종료(self.ctx)
         if self.time_expired(timer_id='60'):
             return 종료(self.ctx)

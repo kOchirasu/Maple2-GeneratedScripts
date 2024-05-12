@@ -8,7 +8,7 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(trigger_id=99990001, key='End', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='battlesetting', value=1):
+        if self.user_value(key='battlesetting') >= 1:
             return 전투_시작(self.ctx)
 
 
@@ -18,15 +18,15 @@ class 전투_시작(trigger_api.Trigger):
         self.set_npc_duel_hp_bar(is_open=True, spawn_id=[201], duration_tick=300000, npc_hp_step=100)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_check_play_time(play_seconds=180, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 180 and self.monster_dead(spawn_ids=[201]):
             # <한국용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24094005)
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=70, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 70 and self.monster_dead(spawn_ids=[201]):
             # <중국용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24094006)
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=270, operator='LessEqual') and self.monster_dead(spawn_ids=[201]):
+        if self.dungeon_play_time() <= 270 and self.monster_dead(spawn_ids=[201]):
             # <NA용 컨디션체크>
             self.dungeon_mission_complete(mission_id=24094010)
             return 전투_종료(self.ctx)
@@ -36,7 +36,7 @@ class 전투_시작(trigger_api.Trigger):
         if not self.user_detected(box_ids=[1003]):
             # <pc 사망>
             return 전투_종료(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=300):
+        if self.dungeon_play_time() >= 300:
             # <5분 다 지날 경우>
             return 전투_종료(self.ctx)
 

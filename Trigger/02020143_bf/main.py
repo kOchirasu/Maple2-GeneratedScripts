@@ -50,10 +50,10 @@ class 클리어성공유무체크시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(spawn_ids=[99]):
             return 연출딜레이(self.ctx)
-        if self.dungeon_time_out():
+        if self.dungeon_timeout():
             # 던전 시간 다 된경우
             return 던전실패(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
@@ -120,7 +120,7 @@ class 영상재생(trigger_api.Trigger):
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return Quit(self.ctx)
         if self.wait_tick(wait_tick=129000):
             return Quit(self.ctx)

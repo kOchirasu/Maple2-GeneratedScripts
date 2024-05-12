@@ -475,7 +475,7 @@ class 차연출종료2(trigger_api.Trigger):
         self.spawn_monster(spawn_ids=[2001], auto_target=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='FirstPhaseEnd', value=1):
+        if self.user_value(key='FirstPhaseEnd') >= 1:
             self.set_mesh(trigger_ids=[3401], visible=False, start_delay=0, interval=0, fade=0)
             self.set_actor(trigger_id=202, visible=True, initial_sequence='sf_fi_funct_darkdoor_A01_on')
             return 차연출시작3(self.ctx)
@@ -520,7 +520,7 @@ class 차연출종료3(trigger_api.Trigger):
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ChangeBGM', value=1):
+        if self.user_value(key='ChangeBGM') >= 1:
             return HP50퍼센트대기(self.ctx)
 
 
@@ -529,7 +529,7 @@ class HP50퍼센트대기(trigger_api.Trigger):
         self.set_sound(trigger_id=13500, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='CallFriendlyNPC', value=1):
+        if self.user_value(key='CallFriendlyNPC') >= 1:
             return 차소환분기4(self.ctx)
 
 
@@ -547,7 +547,7 @@ class 차소환분기4(trigger_api.Trigger):
 
 class NPC소환(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BattleEnd', value=1):
+        if self.user_value(key='BattleEnd') >= 1:
             return NPC원위치딜레이(self.ctx)
 
 
@@ -727,7 +727,7 @@ class 동영상시작(trigger_api.Trigger):
         self.play_scene_movie(file_name='Cut_Farewell_Vision.swf', movie_id=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 완료가능40002651(self.ctx)
 
     def on_exit(self) -> None:

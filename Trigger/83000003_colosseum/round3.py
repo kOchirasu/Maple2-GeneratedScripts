@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
         self.set_sound(trigger_id=13001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='StartRound3', value=1):
+        if self.user_value(key='StartRound3') >= 1:
             return 시작딜레이(self.ctx)
 
 
@@ -25,7 +25,7 @@ class 시작딜레이(trigger_api.Trigger):
 
 class 라운드조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_round_require(round=3):
+        if self.dungeon_round() == 3:
             self.side_npc_talk(type='talk', npc_id=11004288, illust='nagi_normal', script='$83000002_COLOSSEUM__ROUND3__0$', duration=5000)
             # self.set_event_ui(type=1, arg2='전투에서 승리하셨습니다. 잠시만 기다려주세요 다음전투가 기다리고 있습니다!!', arg3='3000')
             return 라운드대기(self.ctx)

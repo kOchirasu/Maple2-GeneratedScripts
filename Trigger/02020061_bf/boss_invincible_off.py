@@ -4,7 +4,7 @@ import trigger_api
 
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BombPhase', value=2):
+        if self.user_value(key='BombPhase') >= 2:
             return 무적해제안내(self.ctx)
 
 
@@ -15,7 +15,7 @@ class 무적해제안내(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02020061_BF__BOSS_INVINCIBLE_OFF__0$', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BossClear', value=1):
+        if self.user_value(key='BossClear') >= 1:
             return 종료(self.ctx)
 
 

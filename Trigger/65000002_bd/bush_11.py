@@ -7,7 +7,7 @@ class 대기(trigger_api.Trigger):
         self.remove_buff(box_id=1001011, skill_id=70000075)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=1001011, min_users='1', operator='Equal'):
+        if self.count_users(box_id=1001011) == 1:
             return 버프발동(self.ctx)
 
 
@@ -18,7 +18,7 @@ class 버프발동(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=100):
             return 버프발동(self.ctx)
-        if self.count_users(box_id=1001011, min_users='1', operator='Greater'):
+        if self.count_users(box_id=1001011) > 1:
             return 대기(self.ctx)
         if not self.user_detected(box_ids=[1001011]):
             return 대기(self.ctx)

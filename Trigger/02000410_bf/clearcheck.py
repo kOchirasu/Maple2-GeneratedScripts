@@ -4,20 +4,20 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면, 750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 전투시작(self.ctx)
 
 
 class 전투시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_check_play_time(play_seconds=420):
+        if self.dungeon_play_time() >= 420:
             # 플레이 시간이 7분 되면, 전멸체크 로직 부분으로 넘어가기
             return 지금부터파티전멸체크(self.ctx)
-        if self.user_value(key='ThirdPhase', value=1):
+        if self.user_value(key='ThirdPhase') >= 1:
             # 2페이즈 전투 다 끝나고 , 파괴되어진 AI_AirshipBalrogCrimsonBroken.xml 인페르녹 전함에게   ThirdPhase = 1 신호를 받을때까지 여기서 대기, 즉 AI_AirshipBalrogCrimsonBroken.xml 에서 보냄
             return 지금부터파티전멸체크(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전포기(self.ctx)
 
@@ -28,10 +28,10 @@ class 지금부터파티전멸체크(trigger_api.Trigger):
             # MS2TriggerBox   TriggerObjectID = 700 , 이 트리거 박스 안에 플레이어가 한명도 없다면, 700은 전투판만 포함되는 범위, 750은 스타팅 지점 전투판 다  포함되는 범위
             # MS2TriggerBox   TriggerObjectID = 700 ,  꼭 700 번을 사용해야 함, 실수로 750 설정하면 대박 버그임
             return 전멸던전실패연출01(self.ctx)
-        if self.dungeon_check_state(check_state='Fail'):
+        if self.dungeon_state() == 'Fail':
             # 파티장이 던전을 포기해서 실패한 경우
             return 던전포기(self.ctx)
-        if self.dungeon_check_play_time(play_seconds=900):
+        if self.dungeon_play_time() >= 900:
             # 플레이 시간이 15분 다 됬으면 던전 클리어 처리하기
             return 분완료15(self.ctx)
 
@@ -89,7 +89,7 @@ class 분완료15(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         # 인페르녹 보스 스폰ID : 102 의 몬스터가 지금까지 받은 대미지가 HP 기준 대비 100%보다 적으면 던전 실패 처리
-        if self.check_npc_damage(spawn_id=102, damage_rate=1, operator='GreaterEqual'):
+        if self.npc_damage(spawn_id=102) >= 1:
             return 성공연출시작(self.ctx)
         """
         condition name="CheckNpcDamage"   파라미터 기능 설명
@@ -99,7 +99,7 @@ class 분완료15(trigger_api.Trigger):
         operator: 연산자 기준 입니다 생략시 해당 값 이상 (GreaterEqual 이며) 다음 옵션을 사용 가능합니다.
         Greater, GreaterEqual, Equal, LessEqual, Less,
         """
-        if self.check_npc_damage(spawn_id=102, damage_rate=1, operator='Less'):
+        if self.npc_damage(spawn_id=102) < 1:
             # 인페르녹 보스 스폰ID : 102
             return 실패연출시작(self.ctx)
 
@@ -144,7 +144,7 @@ class 성공연출02(trigger_api.Trigger):
         self.play_scene_movie(file_name='common\\WorldInvasionScene6.usm', movie_id=1, skip_type='needAll')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
+        if self.widget_value(type='SceneMovie', name='IsStop') == 1:
             return 최종성공처리(self.ctx)
         if self.wait_tick(wait_tick=10000):
             return 최종성공처리(self.ctx)

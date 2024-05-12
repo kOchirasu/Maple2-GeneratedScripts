@@ -217,7 +217,7 @@ class HP가이드01(trigger_api.Trigger):
         self.guide_event(event_id=10012060) # 트리거 To가이드 : HP 가이드 시작
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='10012070'):
+        if self.widget_value(type='Guide', name='IsTriggerEvent') == 10012070:
             # 가이드 To 트리거  : HP 가이드 완료
             return 전투시작01(self.ctx)
 

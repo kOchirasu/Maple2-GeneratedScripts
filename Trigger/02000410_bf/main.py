@@ -16,7 +16,7 @@ class Ready(trigger_api.Trigger):
         self.set_portal(portal_id=2, visible=False, enable=False, minimap_visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,          750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 전투시작_인페르녹전함(self.ctx)
 
@@ -38,7 +38,7 @@ class 전투시작_인페르녹전함(trigger_api.Trigger):
 
 class 첫번째페이즈_인페르녹전함(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SecondPhase', value=1):
+        if self.user_value(key='SecondPhase') >= 1:
             # 1페이즈 전투 진행하면서  SecondPhase = 1 신호를 받을때까지 여기서 대기
             return 두번째페이즈_인페르녹전함(self.ctx)
 
@@ -53,7 +53,7 @@ class 두번째페이즈_인페르녹전함(trigger_api.Trigger):
         self.dungeon_mission_complete(feature='DungeonRankBalance_02', mission_id=24090017)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='ThirdPhase', value=1):
+        if self.user_value(key='ThirdPhase') >= 1:
             # 2페이즈 전투 진행하면서, 인페르녹 전함에게   ThirdPhase = 1 신호를 받을때까지 여기서 대기
             return 세번째페이즈_인페르녹등장(self.ctx)
 
@@ -68,7 +68,7 @@ class 세번째페이즈_인페르녹등장(trigger_api.Trigger):
         self.set_sound(trigger_id=8410, enable=True) # 보스 등장하면 보스용 BGM으로 교체하기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BalrogMagicBursterBattlePhase', value=1):
+        if self.user_value(key='BalrogMagicBursterBattlePhase') >= 1:
             # 인페르녹과 전투 시작할 때 몬스터 AI에서 이 신호를 보낼때까지 대기
             # 즉  BalrogMagicBursterBattlePhase = 1 신호를 AI에서 부터 트리거가  받을때까지 여기서 대기
             return 인페르녹전투시작(self.ctx)
@@ -80,7 +80,7 @@ class 인페르녹전투시작(trigger_api.Trigger):
         self.set_ai_extra_data(key='Phase', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_check_play_time(play_seconds=720):
+        if self.dungeon_play_time() >= 720:
             # 던전 전투 시작 15분 중 라스트 3분 남았으면, 이 부분은 맵으로 바로 들어가지 말고 던전로직을 통해서 정식으로 입장해야 작동함
             return 네번째페이즈_인페르녹광폭화(self.ctx)
 

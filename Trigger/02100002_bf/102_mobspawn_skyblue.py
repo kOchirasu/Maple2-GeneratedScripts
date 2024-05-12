@@ -16,7 +16,7 @@ class Wait(trigger_api.Trigger):
         self.set_effect(trigger_ids=[5202], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Gauge', value=100):
+        if self.user_value(key='Gauge') >= 100:
             return Gauge100_Normal(self.ctx)
 
 
@@ -29,11 +29,11 @@ class Gauge100_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
-        if self.user_value(key='SpawnHold', value=1):
+        if self.user_value(key='SpawnHold') >= 1:
             return SpawnHold(self.ctx)
-        if self.user_value(key='Gauge', value=75):
+        if self.user_value(key='Gauge') >= 75:
             return Gauge75_Normal(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -46,13 +46,13 @@ class Gauge75_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
-        if self.user_value(key='SpawnHold', value=1):
+        if self.user_value(key='SpawnHold') >= 1:
             return SpawnHold(self.ctx)
-        if self.user_value(key='Gauge', value=100):
+        if self.user_value(key='Gauge') >= 100:
             return Gauge100_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=50):
+        if self.user_value(key='Gauge') >= 50:
             return Gauge50_Normal(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -65,13 +65,13 @@ class Gauge50_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
-        if self.user_value(key='SpawnHold', value=1):
+        if self.user_value(key='SpawnHold') >= 1:
             return SpawnHold(self.ctx)
-        if self.user_value(key='Gauge', value=75):
+        if self.user_value(key='Gauge') >= 75:
             return Gauge75_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=25):
+        if self.user_value(key='Gauge') >= 25:
             return Gauge25_Normal(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -84,13 +84,13 @@ class Gauge25_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
-        if self.user_value(key='SpawnHold', value=1):
+        if self.user_value(key='SpawnHold') >= 1:
             return SpawnHold(self.ctx)
-        if self.user_value(key='Gauge', value=50):
+        if self.user_value(key='Gauge') >= 50:
             return Gauge50_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=1):
+        if self.user_value(key='Gauge') >= 1:
             return Gauge1_Normal(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -103,11 +103,11 @@ class Gauge1_Normal(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(wait_tick=1500):
             return Gauge_SpawnRamdom(self.ctx)
-        if self.user_value(key='SpawnHold', value=1):
+        if self.user_value(key='SpawnHold') >= 1:
             return SpawnHold(self.ctx)
-        if self.user_value(key='Gauge', value=25):
+        if self.user_value(key='Gauge') >= 25:
             return Gauge25_Normal(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -118,9 +118,9 @@ class SpawnHold(trigger_api.Trigger):
         pass
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='SpawnHold', value=0):
+        if self.user_value(key='SpawnHold') >= 0:
             return BackToGaugeState(self.ctx)
-        if self.user_value(key='StopSpawn', value=1):
+        if self.user_value(key='StopSpawn') >= 1:
             return Quit(self.ctx)
 
 
@@ -182,15 +182,15 @@ class Spawn_BigMom(trigger_api.Trigger):
 # 게이지 상태 체크로 돌아가기 공용
 class BackToGaugeState(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Gauge', value=100):
+        if self.user_value(key='Gauge') >= 100:
             return Gauge100_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=75):
+        if self.user_value(key='Gauge') >= 75:
             return Gauge75_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=50):
+        if self.user_value(key='Gauge') >= 50:
             return Gauge50_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=25):
+        if self.user_value(key='Gauge') >= 25:
             return Gauge25_Normal(self.ctx)
-        if self.user_value(key='Gauge', value=1):
+        if self.user_value(key='Gauge') >= 1:
             return Gauge1_Normal(self.ctx)
 
 

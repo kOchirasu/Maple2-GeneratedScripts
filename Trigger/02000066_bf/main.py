@@ -40,19 +40,19 @@ class 대기(trigger_api.Trigger):
 
 class DungeonStart(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_max_user_count(value=4):
+        if self.dungeon_max_user_count() == 4:
             # 던전 최대 인원수가 4이면
             return 연출시작(self.ctx)
-        if self.dungeon_max_user_count(value=3):
+        if self.dungeon_max_user_count() == 3:
             # 던전 최대 인원수가 3이면
             self.set_user_value(trigger_id=9995001, key='randomTalk', value=1)
             return 연출시작(self.ctx)
-        if self.dungeon_max_user_count(value=2):
+        if self.dungeon_max_user_count() == 2:
             # 던전 최대 인원수가 2이면
             self.set_user_value(trigger_id=9995002, key='randomTalk', value=1)
             self.set_user_value(trigger_id=9995003, key='randomTalk', value=1)
             return 연출시작(self.ctx)
-        if self.dungeon_max_user_count(value=1):
+        if self.dungeon_max_user_count() == 1:
             # 던전 최대 인원수가 1이면
             self.set_user_value(trigger_id=9995001, key='randomTalk', value=1)
             self.set_user_value(trigger_id=9995002, key='randomTalk', value=1)

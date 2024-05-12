@@ -20,9 +20,9 @@ class 시작대기중(trigger_api.Trigger):
 
 class 난이도체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_level(level=2):
+        if self.dungeon_level() == 2:
             return 레이드(self.ctx)
-        if self.dungeon_level(level=3):
+        if self.dungeon_level() == 3:
             return 카오스레이드(self.ctx)
 
 

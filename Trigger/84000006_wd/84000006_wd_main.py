@@ -46,7 +46,7 @@ class EntryDelay(trigger_api.Trigger):
         if self.time_expired(timer_id='1'):
             # 시작조건 매시브이벤트와 동일 : 정원충족 or 시간 만료
             return openingscene_start(self.ctx)
-        if self.count_users(box_id=9000, min_users='70'):
+        if self.count_users(box_id=9000) >= 70:
             return openingscene_start(self.ctx)
 
 
@@ -192,7 +192,7 @@ class Pinata_Ready(trigger_api.Trigger):
         self.show_guide_summary(entity_id=28500010, text_id=28500010, duration=5000) # 가이드 : 오브젝트 상호작용해서 보상수령하셈
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Steal', value=1):
+        if self.user_value(key='Steal') >= 1:
             # 시간경과 or 전부 훔쳐먹음
             return Pinata_Fight(self.ctx)
 

@@ -54,10 +54,10 @@ class Wait02(trigger_api.Trigger):
 
 class CheckTheNumberOfPlayers(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=9000, min_users='20', operator='Less'):
+        if self.count_users(box_id=9000) < 20:
             # 20명 미만이면 게임 취소
             return GameCancel01(self.ctx)
-        if self.count_users(box_id=9000, min_users='20', operator='GreaterEqual'):
+        if self.count_users(box_id=9000) >= 20:
             # 20명 이상이면 게임 시작
             return StartPositionRandomPick(self.ctx)
 

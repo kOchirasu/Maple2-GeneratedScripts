@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=1):
+        if self.user_value(key='Warp') >= 1:
             return warp_1st(self.ctx)
 
 
@@ -30,7 +30,7 @@ class warp_1(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 
@@ -40,7 +40,7 @@ class warp_2(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 
@@ -50,7 +50,7 @@ class warp_3(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 
@@ -60,7 +60,7 @@ class warp_4(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 
@@ -70,7 +70,7 @@ class warp_5(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 
@@ -80,7 +80,7 @@ class warp_6(trigger_api.Trigger):
         self.set_event_ui(type=1, arg2='$02000471_BF__WARP__0$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Warp', value=2):
+        if self.user_value(key='Warp') >= 2:
             return warp_2nd(self.ctx)
 
 

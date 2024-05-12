@@ -4,14 +4,14 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=750, min_users='1'):
+        if self.count_users(box_id=750) >= 1:
             # MS2TriggerBox   TriggerObjectID = 750, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,          750은 스타팅 지점 전투판 다  포함되는 범위, 700은 전투판만 포함되는 범위
             return 드랍어뷰징디버프_작동시작(self.ctx)
 
 
 class 드랍어뷰징디버프_작동시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(box_id=780, min_users='1'):
+        if self.count_users(box_id=780) >= 1:
             # MS2TriggerBox   TriggerObjectID = 780, 이 트리거 박스 안에 플레이어가 한명이라도 체크 되면,     780은 전투판에서의 추락 지점을 체크하기 위한 트리거 영역 범위임
             return 전투판에떨어지면디버프걸기(self.ctx)
 
