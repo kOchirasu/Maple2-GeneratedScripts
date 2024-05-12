@@ -7,7 +7,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 어나운스1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=7)
         self.set_event_ui(type=1, arg2='$02000251_BF__END__0$', arg3='5000', arg4='0')
 
@@ -17,7 +17,7 @@ class 어나운스1(trigger_api.Trigger):
 
 
 class 어나운스2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=7)
         self.set_event_ui(type=1, arg2='$02000251_BF__END__1$', arg3='5000', arg4='0')
 
@@ -27,7 +27,7 @@ class 어나운스2(trigger_api.Trigger):
 
 
 class 어나운스3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=7)
         self.set_event_ui(type=1, arg2='$02000251_BF__END__2$', arg3='5000')
 
@@ -37,7 +37,7 @@ class 어나운스3(trigger_api.Trigger):
 
 
 class 어나운스4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=7)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 어나운스4(trigger_api.Trigger):
 
 
 class 통과(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=300)
 
 

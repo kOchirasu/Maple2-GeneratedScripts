@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001326], state=2)
         self.set_interact_object(triggerIds=[10001327], state=2)
         self.set_interact_object(triggerIds=[10001328], state=2)
@@ -99,7 +99,7 @@ class 랜덤H(trigger_api.Trigger):
 
 
 class 스폰1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021], isAutoTargeting=False, score=100)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,7 +108,7 @@ class 스폰1(trigger_api.Trigger):
 
 
 class 스폰2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038], isAutoTargeting=False, score=100)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,7 +117,7 @@ class 스폰2(trigger_api.Trigger):
 
 
 class 스폰3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061], isAutoTargeting=False, score=100)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,7 +126,7 @@ class 스폰3(trigger_api.Trigger):
 
 
 class 스폰4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083], isAutoTargeting=False, score=100)
 
     def on_tick(self) -> trigger_api.Trigger:

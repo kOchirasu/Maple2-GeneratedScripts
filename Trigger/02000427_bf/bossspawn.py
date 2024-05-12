@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[99], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

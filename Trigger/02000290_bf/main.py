@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Closed')
         self.set_actor(triggerId=3010, visible=True, initialSequence='Closed')
         self.set_actor(triggerId=3020, visible=True, initialSequence='Closed')
@@ -42,7 +42,7 @@ class 로딩딜레이(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -55,8 +55,9 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[800,802], returnView=True)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +66,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
@@ -78,7 +79,7 @@ class 준비(trigger_api.Trigger):
 
 # 첫 번째 문 열림
 class 트리거01시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1001], animationEffect=False)
@@ -89,7 +90,7 @@ class 트리거01시작(trigger_api.Trigger):
 
 
 class 트리거01진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3002,3003,3004,3005,3006,3007,3008], visible=False, arg3=0, delay=200, scale=2)
 
@@ -102,7 +103,7 @@ class 트리거01진행(trigger_api.Trigger):
 
 # 두 번째 문 열림
 class 트리거02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3010, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3011], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1002], animationEffect=False)
@@ -114,7 +115,7 @@ class 트리거02시작(trigger_api.Trigger):
 
 
 class 트리거02진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3010, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3012,3013,3014,3015,3016], visible=False, arg3=0, delay=200, scale=2)
 
@@ -127,7 +128,7 @@ class 트리거02진행(trigger_api.Trigger):
 
 # 세 번째 문 열림
 class 트리거03시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3020, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3021], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1004], animationEffect=False)
@@ -138,7 +139,7 @@ class 트리거03시작(trigger_api.Trigger):
 
 
 class 트리거03진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3020, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3033], visible=False, arg3=0, delay=200, scale=2)
 
@@ -150,7 +151,7 @@ class 트리거03진행(trigger_api.Trigger):
 
 
 class 트리거04시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3040, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3041], visible=False, arg3=0, delay=0, scale=0)
 
@@ -160,7 +161,7 @@ class 트리거04시작(trigger_api.Trigger):
 
 
 class 트리거04진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002902)
         self.set_actor(triggerId=3040, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3042,3043,3044,3045,3046,3047,3048,3049,3050,3051,3052,3053], visible=False, arg3=0, delay=200, scale=2)

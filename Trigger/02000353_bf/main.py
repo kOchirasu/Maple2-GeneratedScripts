@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
         self.set_effect(triggerIds=[5003], visible=False)
@@ -20,12 +20,12 @@ class idle(trigger_api.Trigger):
         self.set_effect(triggerIds=[6302], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=1):
+        if self.count_users(boxId=701, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class Start(trigger_api.Trigger):
 
 
 class 시작_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5004], visible=True)
         self.set_timer(timerId='2', seconds=2, interval=0)
 
@@ -50,17 +50,17 @@ class 시작_03(trigger_api.Trigger):
 
 
 class 시작_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[901,902,903], visible=False, delay=0, scale=10) # 벽 해제
         self.set_skill(triggerIds=[2020], enable=True) # 벽 날리는 스킬
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=702, boxId=1):
+        if self.count_users(boxId=702, minUsers='1'):
             return 시작_05(self.ctx)
 
 
 class 시작_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=101, textId=40010) # 적을 모두 처치하시오
         self.set_effect(triggerIds=[6001], visible=True)
@@ -80,12 +80,12 @@ class 시작_05(trigger_api.Trigger):
         if self.monster_dead(boxIds=[11,12,13,14,15]):
             return 관문_01_개방전(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=101)
 
 
 class 관문_01_개방전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000353_BF__MAIN__2$', arg3='2000')
         self.set_timer(timerId='2', seconds=2)
 
@@ -95,7 +95,7 @@ class 관문_01_개방전(trigger_api.Trigger):
 
 
 class 관문_01_개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=관문_02_스킵)
@@ -108,7 +108,7 @@ class 관문_01_개방(trigger_api.Trigger):
 
 
 class 관문_01_개방_이벤트_00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_timer(timerId='1', seconds=1)
 
@@ -118,7 +118,7 @@ class 관문_01_개방_이벤트_00(trigger_api.Trigger):
 
 
 class 관문_01_개방_이벤트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2001], enable=True) # 벽 날리는 스킬
         self.set_skill(triggerIds=[2002], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
@@ -129,7 +129,7 @@ class 관문_01_개방_이벤트_01(trigger_api.Trigger):
 
 
 class 관문_01_개방_이벤트_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2003], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -139,7 +139,7 @@ class 관문_01_개방_이벤트_02(trigger_api.Trigger):
 
 
 class 관문_01_개방_이벤트_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2004], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='2', seconds=2)
 
@@ -147,18 +147,20 @@ class 관문_01_개방_이벤트_03(trigger_api.Trigger):
         if self.time_expired(timerId='2'):
             return 관문_02_시작(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
 
 
 class 관문_02_스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2001], enable=True)
         self.set_skill(triggerIds=[2002], enable=True)
         self.set_skill(triggerIds=[2003], enable=True)
         self.set_skill(triggerIds=[2004], enable=True)
+        # Missing State: State
         self.set_skip()
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
@@ -171,21 +173,22 @@ class 관문_02_스킵(trigger_api.Trigger):
 
 
 class 관문_02_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.select_camera(triggerId=8001, enable=False)
         self.show_guide_summary(entityId=103, textId=40011) # 다음 지역으로 이동하세요
+        # self.set_event_ui(type=1, arg2='다음 지역으로 이동하세요.', arg3='2000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=703, boxId=1):
+        if self.count_users(boxId=703, minUsers='1'):
             return 관문_02_시작_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=103)
 
 
 class 관문_02_시작_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6005], visible=True)
         self.set_effect(triggerIds=[6006], visible=True)
         self.set_effect(triggerIds=[6007], visible=True)
@@ -202,12 +205,12 @@ class 관문_02_시작_02(trigger_api.Trigger):
         if self.monster_dead(boxIds=[21,22,23,24,25,26,27]):
             return 관문_02_개방전(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=101)
 
 
 class 관문_02_개방전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000353_BF__MAIN__3$', arg3='2000')
         self.set_timer(timerId='1', seconds=1)
 
@@ -217,7 +220,7 @@ class 관문_02_개방전(trigger_api.Trigger):
 
 
 class 관문_02_개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True)
         self.set_timer(timerId='2', seconds=2)
 
@@ -227,7 +230,7 @@ class 관문_02_개방(trigger_api.Trigger):
 
 
 class 관문_02_개방_이벤트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2006], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -237,7 +240,7 @@ class 관문_02_개방_이벤트_01(trigger_api.Trigger):
 
 
 class 관문_02_개방_이벤트_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2007], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -247,7 +250,7 @@ class 관문_02_개방_이벤트_02(trigger_api.Trigger):
 
 
 class 관문_02_개방_이벤트_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2008], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -257,20 +260,20 @@ class 관문_02_개방_이벤트_03(trigger_api.Trigger):
 
 
 class 관문_03_시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=103, textId=40011) # 다음 지역으로 이동하세요
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=704, boxId=1):
+        if self.count_users(boxId=704, minUsers='1'):
             return 관문_03_시작_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=103)
 
 
 class 관문_03_시작_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=101, textId=40010) # 적을 모두 처치하시오
         self.set_effect(triggerIds=[6301], visible=True)
@@ -283,12 +286,12 @@ class 관문_03_시작_02(trigger_api.Trigger):
         if self.monster_dead(boxIds=[31,32,33]):
             return 관문_03_개방전(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=101)
 
 
 class 관문_03_개방전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000353_BF__MAIN__4$', arg3='2000')
         self.set_timer(timerId='1', seconds=1)
 
@@ -298,7 +301,7 @@ class 관문_03_개방전(trigger_api.Trigger):
 
 
 class 관문_03_개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True)
         self.set_timer(timerId='2', seconds=2)
 
@@ -308,7 +311,7 @@ class 관문_03_개방(trigger_api.Trigger):
 
 
 class 관문_03_개방_이벤트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2009], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -318,7 +321,7 @@ class 관문_03_개방_이벤트_01(trigger_api.Trigger):
 
 
 class 관문_03_개방_이벤트_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2010], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -328,7 +331,7 @@ class 관문_03_개방_이벤트_02(trigger_api.Trigger):
 
 
 class 관문_03_개방_이벤트_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2011], enable=True) # 벽 날리는 스킬
         self.set_timer(timerId='1', seconds=1)
 
@@ -338,7 +341,7 @@ class 관문_03_개방_이벤트_03(trigger_api.Trigger):
 
 
 class 지역클리어(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=103, textId=40009) # 포탈로 이동하세요
         self.set_mesh(triggerIds=[6006], visible=False, delay=0, scale=10) # 벽 해제

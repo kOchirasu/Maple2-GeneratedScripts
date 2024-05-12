@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7003], visible=False)
         self.set_mesh(triggerIds=[1103], visible=False, arg3=0, delay=200, scale=15)
         self.set_mesh(triggerIds=[1203], visible=True, arg3=0, delay=200, scale=15)
@@ -21,7 +21,8 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_achievement(triggerId=713, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[165,166,167,168,169], animationEffect=False)
         self.set_npc_emotion_loop(spawnId=165, sequenceName='Down_Idle_A', duration=600000)
 
@@ -31,7 +32,7 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_03_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=168, patrolName='MS2PatrolData_2138')
         self.set_npc_emotion_loop(spawnId=165, sequenceName='Down_Idle_A', duration=600000)
         self.set_conversation(type=1, spawnId=165, script='$52100041_QD__MAGIC_03__0$', arg4=3, arg5=0)
@@ -45,7 +46,7 @@ class Event_03_b(trigger_api.Trigger):
 
 
 class Event_03_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[165,166,167,168,169])
 
 

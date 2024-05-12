@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True, arg3=0, delay=0)
 
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발판(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=False, arg3=0, delay=200)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class 발판(trigger_api.Trigger):
 
 
 class 포털등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 포털등장(trigger_api.Trigger):
 
 
 class 발록죽음(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25], visible=True, arg3=0, delay=200)
 

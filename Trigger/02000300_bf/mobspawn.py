@@ -23,7 +23,7 @@ class 랜덤생성조건(trigger_api.Trigger):
 
 
 class 초40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='45', seconds=45)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 초40(trigger_api.Trigger):
 
 
 class 초35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='50', seconds=50)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 초35(trigger_api.Trigger):
 
 
 class 초30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='55', seconds=55)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 초30(trigger_api.Trigger):
 
 
 class 초45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='60', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 초45(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1099, script='$02000300_BF__MOBSPAWN__0$', arg4=2)
         self.set_conversation(type=1, spawnId=1001, script='$02000300_BF__MOBSPAWN__1$', arg4=3)
         self.create_monster(spawnIds=[1097,1098], animationEffect=True)
@@ -80,7 +80,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1098])
         self.destroy_monster(spawnIds=[1097])
 

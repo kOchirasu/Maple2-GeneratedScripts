@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 지원군생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[107], animationEffect=False)
         self.move_npc(spawnId=107, patrolName='MS2PatrolData_17')
 
@@ -19,7 +19,7 @@ class 지원군생성(trigger_api.Trigger):
 
 
 class 지원군이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=104, script='$02000076_TW_HenesysVillage__01_NPCBACKUP07__0$', arg4=1)
         self.move_npc(spawnId=107, patrolName='MS2PatrolData_107')
 
@@ -29,7 +29,7 @@ class 지원군이동(trigger_api.Trigger):
 
 
 class 지원군소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[107])
         self.set_timer(timerId='3', seconds=90)
 

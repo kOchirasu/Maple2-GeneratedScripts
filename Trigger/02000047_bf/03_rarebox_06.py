@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[306], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발판06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[306], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 발판06(trigger_api.Trigger):
 
 
 class 발판06끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='406', seconds=2, startDelay=0)
 
     def on_tick(self) -> trigger_api.Trigger:

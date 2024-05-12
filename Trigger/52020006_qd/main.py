@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,103,104])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 퀘스트조건체크(trigger_api.Trigger):
 
 
 class 세리하_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[101], animationEffect=False)
 
@@ -50,7 +50,7 @@ class 세리하_대기(trigger_api.Trigger):
 
 
 class 제이든_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[105], animationEffect=False)
 
@@ -64,7 +64,7 @@ class 제이든_대기(trigger_api.Trigger):
 
 
 class 빈방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +109,7 @@ class 조건확인_대기02(trigger_api.Trigger):
 
 
 class 세리하와아르망_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[101,102], animationEffect=False)
         self.set_cinematic_ui(type=1)
@@ -124,7 +124,8 @@ class 세리하와아르망_대기(trigger_api.Trigger):
 
 
 class 세리하와아르망_준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.select_camera_path(pathIds=[8000], returnView=False)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.visible_my_pc(isVisible=False) # PC안보이게
 
@@ -134,9 +135,11 @@ class 세리하와아르망_준비(trigger_api.Trigger):
 
 
 class 세리하와아르망_연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=세리하와아르망_스킵완료, action='exit') # setsceneskip 1 set
+        # setsceneskip 1 set
+        # setsceneskip 1 set
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -144,7 +147,7 @@ class 세리하와아르망_연출시작(trigger_api.Trigger):
 
 
 class 세리하와아르망_연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.add_cinematic_talk(npcId=11003548, illustId='Seriha_normal', msg='연출 보강 예정', duration=3000)
 
@@ -154,7 +157,7 @@ class 세리하와아르망_연출01(trigger_api.Trigger):
 
 
 class 세리하와아르망_연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.add_cinematic_talk(npcId=11003658, illustId='Armand_normal', msg='조금만 기다려 주세요', duration=3000)
         self.visible_my_pc(isVisible=True) # PC보이게
@@ -165,7 +168,7 @@ class 세리하와아르망_연출02(trigger_api.Trigger):
 
 
 class 세리하와아르망_연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.add_cinematic_talk(npcId=11003548, illustId='Seriha_normal', msg='죄송합니다', duration=3000)
 
@@ -175,9 +178,13 @@ class 세리하와아르망_연출03(trigger_api.Trigger):
 
 
 class 세리하와아르망_마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
+        # Missing State: State
         self.set_scene_skip() # setsceneskip 1 close
+        # setsceneskip 1 close
+        # setsceneskip 1 close
+        # setsceneskip 1 close
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -185,7 +192,7 @@ class 세리하와아르망_마무리(trigger_api.Trigger):
 
 
 class 세리하와아르망_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[101])
         self.set_cinematic_ui(type=1)
@@ -197,7 +204,7 @@ class 세리하와아르망_스킵완료(trigger_api.Trigger):
 
 
 class 세리하와아르망_연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -211,7 +218,7 @@ class 세리하와아르망_연출종료(trigger_api.Trigger):
 
 
 class 세리하와함께전투_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.set_cinematic_ui(type=1)
@@ -226,7 +233,7 @@ class 세리하와함께전투_대기(trigger_api.Trigger):
 
 
 class 세리하와함께전투_준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[150,151,152,153], animationEffect=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -236,9 +243,11 @@ class 세리하와함께전투_준비(trigger_api.Trigger):
 
 
 class 세리하와함께전투_연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=세리하와함께전투_전투직전스킵, action='exit') # setsceneskip 2 set
+        # setsceneskip 2 set
+        # setsceneskip 2 set
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -246,7 +255,7 @@ class 세리하와함께전투_연출시작(trigger_api.Trigger):
 
 
 class 세리하와함께전투_연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.add_cinematic_talk(npcId=11003548, illustId='Seriha_normal', msg='그럼 누가 먼저 저것들을 쓸어버리나 내기하자고.', duration=3000)
 
@@ -256,7 +265,7 @@ class 세리하와함께전투_연출01(trigger_api.Trigger):
 
 
 class 세리하와함께전투_연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='임시연출이라 몬스터가 허약할 거야.', duration=3000)
 
@@ -266,12 +275,16 @@ class 세리하와함께전투_연출02(trigger_api.Trigger):
 
 
 class 세리하와함께전투_연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[111], animationEffect=False)
         self.select_camera_path(pathIds=[8010], returnView=False)
         self.add_cinematic_talk(npcId=29000335, illustId='Seriha_normal', msg='간다!', duration=3000)
+        # Missing State: State
         self.set_scene_skip() # setsceneskip 2 close
+        # setsceneskip 2 close
+        # setsceneskip 2 close
+        # setsceneskip 2 close
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -279,7 +292,7 @@ class 세리하와함께전투_연출03(trigger_api.Trigger):
 
 
 class 세리하와함께전투_전투직전스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105])
         self.create_monster(spawnIds=[101])
         self.set_cinematic_ui(type=1)
@@ -291,9 +304,11 @@ class 세리하와함께전투_전투직전스킵(trigger_api.Trigger):
 
 
 class 전투대기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
-        # <action name="AddCinematicTalk" npcID="29000251" illustID="11000015" msg="$52000121_QD__MAIN__17$" duration="2000" align="left" />
+        # self.add_cinematic_talk(npcId=29000251, illustId='11000015', msg='$52000121_QD__MAIN__17$', duration=2000, align='left')
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -301,7 +316,7 @@ class 전투대기01(trigger_api.Trigger):
 
 
 class 전투준비01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -311,9 +326,9 @@ class 전투준비01(trigger_api.Trigger):
 
 
 class 전투끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8040], returnView=False)
-        # <action name="업적이벤트를발생시킨다" arg1="9000" arg2="trigger" arg3="FightingSeriha"/>
+        # self.set_achievement(triggerId=9000, type='trigger', achieve='FightingSeriha')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -323,7 +338,7 @@ class 전투끝(trigger_api.Trigger):
 
 
 class 암전02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -332,7 +347,7 @@ class 암전02(trigger_api.Trigger):
 
 
 class npc교체01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111])
         self.create_monster(spawnIds=[110], animationEffect=False)
 
@@ -342,12 +357,14 @@ class npc교체01(trigger_api.Trigger):
 
 
 class 전투후제이든등장_연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111])
         self.create_monster(spawnIds=[110], animationEffect=False)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[8020], returnView=False)
         self.set_scene_skip(state=전투후제이든등장_스킵완료, action='exit') # setsceneskip 3 set
+        # setsceneskip 3 set
+        # setsceneskip 3 set
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -355,7 +372,9 @@ class 전투후제이든등장_연출준비(trigger_api.Trigger):
 
 
 class 전투후제이든등장_01_세리하소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.move_npc(spawnId=101, patrolName='MS2PatrolData_Armand_comingout')
+        # self.move_user_path(patrolName='MS2PatrolData_PC_Surprised')
         self.add_cinematic_talk(npcId=11003548, illustId='Seriha_normal', msg='내가 이긴 듯. 그럼 이만!', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -364,7 +383,7 @@ class 전투후제이든등장_01_세리하소멸(trigger_api.Trigger):
 
 
 class 전투후제이든등장_02_PC독백(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[110])
         self.add_cinematic_talk(npcId=0, illustId='Seriha_normal', msg='이제 저 너머로 갈 차례인가...', duration=3000)
 
@@ -374,10 +393,14 @@ class 전투후제이든등장_02_PC독백(trigger_api.Trigger):
 
 
 class 전투후제이든등장_03_제이든등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.add_cinematic_talk(npcId=11003677, illustId='Jaiden_normal', msg='무사했구나, $MyPCName$.', duration=3000)
+        # Missing State: State
         self.set_scene_skip() # setsceneskip 3 close
+        # setsceneskip 3 close
+        # setsceneskip 3 close
+        # setsceneskip 3 close
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -385,7 +408,7 @@ class 전투후제이든등장_03_제이든등장(trigger_api.Trigger):
 
 
 class 전투후제이든등장_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,105,110,111,150,151,152,153])
         self.create_monster(spawnIds=[105])
         self.set_cinematic_ui(type=1)
@@ -397,7 +420,7 @@ class 전투후제이든등장_스킵완료(trigger_api.Trigger):
 
 
 class 세리하와함께전투_제이든등장_연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -410,7 +433,7 @@ class 세리하와함께전투_제이든등장_연출종료(trigger_api.Trigger)
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

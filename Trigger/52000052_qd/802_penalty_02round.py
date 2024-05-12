@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PenaltyMob', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Ready(trigger_api.Trigger):
 
 
 class FirstWaveStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[90282,90288], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class FirstWaveStart01(trigger_api.Trigger):
 
 
 class FirstWaveStart02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[90285,90289], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class FirstWaveStart02(trigger_api.Trigger):
 
 
 class SecondWaveStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[90294,90296], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class SecondWaveStart01(trigger_api.Trigger):
 
 
 class SecondWaveStart02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[90291,90297], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class SecondWaveStart02(trigger_api.Trigger):
 
 
 class PenaltyFinished01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[90280,90281,90282,90283,90284,90285,90286,90287,90288,90289,90290,90291,90292,90293,90294,90295,90296,90297,90298,90299])
         self.set_user_value(triggerId=902, key='PenaltyFinish', value=1)
 

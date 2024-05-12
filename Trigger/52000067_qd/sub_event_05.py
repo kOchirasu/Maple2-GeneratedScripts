@@ -33,7 +33,7 @@ class idle(trigger_api.Trigger):
 
 
 class NPC소멸751(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[751])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class NPC소멸751(trigger_api.Trigger):
 
 
 class NPC소멸752(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[752])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -51,7 +51,7 @@ class NPC소멸752(trigger_api.Trigger):
 
 
 class NPC소멸753(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[753])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class NPC소멸753(trigger_api.Trigger):
 
 
 class NPC소멸754(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[754])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class NPC소멸754(trigger_api.Trigger):
 
 
 class NPC소멸755(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[755])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class NPC소멸755(trigger_api.Trigger):
 
 
 class NPC소멸756(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[756])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +87,7 @@ class NPC소멸756(trigger_api.Trigger):
 
 
 class NPC소멸757(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[757])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class NPC소멸757(trigger_api.Trigger):
 
 
 class NPC소멸758(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[758])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -105,7 +105,7 @@ class NPC소멸758(trigger_api.Trigger):
 
 
 class NPC소멸759(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[759])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +114,7 @@ class NPC소멸759(trigger_api.Trigger):
 
 
 class NPC소멸761(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[761])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class NPC소멸761(trigger_api.Trigger):
 
 
 class NPC소멸762(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[762])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +132,7 @@ class NPC소멸762(trigger_api.Trigger):
 
 
 class NPC소멸591(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[591])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,7 +141,7 @@ class NPC소멸591(trigger_api.Trigger):
 
 
 class NPC소멸592(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[592])
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='EventStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Wait(trigger_api.Trigger):
 
 
 class PuzzleOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='EventStart', value=0)
         self.set_user_value(triggerId=12000, key='TimeEventOn', value=1)
 
@@ -22,7 +22,7 @@ class PuzzleOn(trigger_api.Trigger):
 
 
 class PuzzleOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=12000, key='TimeEventOn', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[11000023], state=1)
         self.set_interact_object(triggerIds=[11000008], state=2)
         self.set_interact_object(triggerIds=[11000009], state=2)
@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 차웨이브대기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=23000003, textId=23000003, duration=5000)
         self.set_effect(triggerIds=[602], visible=True)
         self.set_effect(triggerIds=[603], visible=True)
@@ -30,7 +30,7 @@ class 차웨이브대기1(trigger_api.Trigger):
 
 
 class 차웨이브시작1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class 차웨이브시작1(trigger_api.Trigger):
 
 
 class 차웨이브대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 차웨이브대기2(trigger_api.Trigger):
 
 
 class 차웨이브시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 차웨이브시작2(trigger_api.Trigger):
 
 
 class 차웨이브대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class 차웨이브대기3(trigger_api.Trigger):
 
 
 class 차웨이브시작3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[3001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

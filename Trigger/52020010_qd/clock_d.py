@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5011], visible=False)
         self.set_effect(triggerIds=[5012], visible=False)
         self.set_effect(triggerIds=[5013], visible=False)
@@ -21,7 +21,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001275], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5011], visible=True)
         self.set_effect(triggerIds=[5012], visible=True)
         self.create_monster(spawnIds=[401], animationEffect=True) # 아빠 유령
@@ -41,7 +41,7 @@ class Event_Start(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='대체 어디 있는거야?', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5013], visible=True)
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_3002')
         self.add_balloon_talk(spawnId=401, msg='분명히 책장 어딘가에 장치가 있었는데...', duration=2800, delayTick=0)
@@ -61,7 +61,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='어째서 이럴 때 기억나지 않는거야!!!', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5014], visible=True)
         self.add_balloon_talk(spawnId=401, msg='여기였나?', duration=2800, delayTick=0)
 
@@ -80,7 +80,7 @@ class Event_04(trigger_api.Trigger):
 
 
 class Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='아니... 생각해보니 소용 없군...', duration=2800, delayTick=0)
         self.set_interact_object(triggerIds=[10001275], state=1)
 
@@ -90,7 +90,7 @@ class Event_05(trigger_api.Trigger):
 
 
 class Event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5015], visible=True)
         self.add_balloon_talk(spawnId=401, msg='어차피 거스를 수 없는 운명인 것을...', duration=2800, delayTick=0)
 
@@ -100,7 +100,7 @@ class Event_06(trigger_api.Trigger):
 
 
 class Event_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5011], visible=False)
         self.set_effect(triggerIds=[5012], visible=False)
         self.set_effect(triggerIds=[5013], visible=False)
@@ -111,7 +111,7 @@ class Event_End(trigger_api.Trigger):
 
 # 시간을 돌려라 퀘스트 가능 상태 이후
 class Ready_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001275], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -120,7 +120,7 @@ class Ready_A(trigger_api.Trigger):
 
 
 class Event_Start_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5011], visible=True)
         self.set_effect(triggerIds=[5012], visible=True)
         self.create_monster(spawnIds=[401], animationEffect=True) # 아빠 유령
@@ -131,7 +131,7 @@ class Event_Start_A(trigger_api.Trigger):
 
 
 class Event_01_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='대체 어디 있는거야?', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class Event_01_A(trigger_api.Trigger):
 
 
 class Event_02_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5013], visible=True)
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_3002')
         self.add_balloon_talk(spawnId=401, msg='분명히 책장 어딘가에 장치가 있었는데...', duration=2800, delayTick=0)
@@ -151,7 +151,7 @@ class Event_02_A(trigger_api.Trigger):
 
 
 class Event_03_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='어째서 이럴 때 기억나지 않는거야!!!', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +160,7 @@ class Event_03_A(trigger_api.Trigger):
 
 
 class Event_04_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5014], visible=True)
         self.add_balloon_talk(spawnId=401, msg='여기였나?', duration=2800, delayTick=0)
 
@@ -170,7 +170,7 @@ class Event_04_A(trigger_api.Trigger):
 
 
 class Event_05_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='아니... 생각해보니 소용 없군...', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +179,7 @@ class Event_05_A(trigger_api.Trigger):
 
 
 class Event_06_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5015], visible=True)
         self.add_balloon_talk(spawnId=401, msg='어차피 거스를 수 없는 운명인 것을...', duration=2800, delayTick=0)
 
@@ -189,7 +189,7 @@ class Event_06_A(trigger_api.Trigger):
 
 
 class Event_End_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5011], visible=False)
         self.set_effect(triggerIds=[5012], visible=False)
         self.set_effect(triggerIds=[5013], visible=False)

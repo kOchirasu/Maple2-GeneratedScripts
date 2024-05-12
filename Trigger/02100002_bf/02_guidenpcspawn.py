@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='GuideNpcSpawn', value=0)
         self.destroy_monster(spawnIds=[109])
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class NpcSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109], animationEffect=False)
         self.move_npc(spawnId=109, patrolName='MS2PatrolData_GuideNpc')
 
@@ -29,7 +29,7 @@ class CheckUser(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
 
 

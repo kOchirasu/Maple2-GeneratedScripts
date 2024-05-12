@@ -6,11 +6,12 @@ from dungeon_common.checkusercount import *
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_TireSpawn
         self.set_mesh(triggerIds=[3002,3003,3004,3006,3007,3008], visible=False, arg3=0, delay=0, scale=0) # Invisible_MobSpawn
         self.set_mesh(triggerIds=[3005,3008], visible=True, arg3=0, delay=0, scale=0) # Invisible_BehindBarrier
-        self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0) # Invisible_BarrierGrating
+        # Invisible_BarrierGrating
+        self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0)
         self.destroy_monster(spawnIds=[102,202]) # Npc_Battle
         self.destroy_monster(spawnIds=[300,301]) # TirePendulum
         self.destroy_monster(spawnIds=[900,901,910,911,912,913,920,921,922]) # TirePendulum
@@ -28,7 +29,7 @@ class Wait(trigger_api.Trigger):
 
 
 class LoadingDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[300,301], animationEffect=True) # TirePendulum
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +45,7 @@ class DungeonStart(trigger_api.Trigger):
 
 # 연출 시작
 class NpcTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000119, script='$02000395_BF__01_ENTER__0$', arg4=4) # 프레이
@@ -56,8 +57,9 @@ class NpcTalk01(trigger_api.Trigger):
 
 
 class NpcTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +68,7 @@ class NpcTalk01Skip(trigger_api.Trigger):
 
 
 class NpcTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000015, script='$02000395_BF__01_ENTER__1$', arg4=5) # 오스칼
         self.set_skip(state=NpcTalk02Skip)
 
@@ -76,8 +78,9 @@ class NpcTalk02(trigger_api.Trigger):
 
 
 class NpcTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -88,7 +91,7 @@ class NpcTalk02Skip(trigger_api.Trigger):
 
 
 class NpcMonologue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000395_BF__01_ENTER__2$', arg4=2, arg5=0) # 프레이
         self.set_conversation(type=1, spawnId=201, script='$02000395_BF__01_ENTER__3$', arg4=2, arg5=0) # 오스칼
         self.set_user_value(triggerId=2, key='MobSpawn', value=1)
@@ -99,7 +102,7 @@ class NpcMonologue01(trigger_api.Trigger):
 
 
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=101)
         self.remove_balloon_talk(spawnId=201)
         self.destroy_monster(spawnIds=[101,201]) # Npc_Actor
@@ -111,7 +114,7 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class NpcMonologue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000395_BF__01_ENTER__4$', arg4=3, arg5=0) # 프레이
         self.set_conversation(type=1, spawnId=202, script='$02000395_BF__01_ENTER__5$', arg4=2, arg5=1) # 오스칼
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -124,7 +127,7 @@ class NpcMonologue02(trigger_api.Trigger):
 
 
 class GratingOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039502, textId=20039502, duration=4000) # 가이드 : 지하도 안쪽으로 이동하기
         self.set_mesh(triggerIds=[3300,3301,3302,3303], visible=False, arg3=500, delay=0, scale=0) # Grating_Closed
@@ -137,9 +140,10 @@ class GratingOpen01(trigger_api.Trigger):
 
 
 class GratingOpen02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[910], animationEffect=False)
-        self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0) # Invisible_BarrierGrating
+        # Invisible_BarrierGrating
+        self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3200,3201], visible=True, arg3=0, delay=0, scale=0) # Grating_Opened
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +152,7 @@ class GratingOpen02(trigger_api.Trigger):
 
 
 class GratingOpen03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000,4001,4002,4003], enable=False) # Grating
         self.set_visible_breakable_object(triggerIds=[4000,4001,4002,4003], visible=False) # Grating
         self.create_monster(spawnIds=[911,912,913], animationEffect=False)
@@ -159,7 +163,7 @@ class GratingOpen03(trigger_api.Trigger):
 
 
 class MobSpawn_Hallway01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039503, textId=20039503, duration=4000) # 가이드 : 타이어에 매달려 넘어가기
         self.create_monster(spawnIds=[920], animationEffect=False)
@@ -170,7 +174,7 @@ class MobSpawn_Hallway01(trigger_api.Trigger):
 
 
 class MobSpawn_Hallway02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[921,922], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +183,7 @@ class MobSpawn_Hallway02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039504, textId=20039504, duration=4000) # 가이드 : 사다리를 타고 위로 올라가기
 

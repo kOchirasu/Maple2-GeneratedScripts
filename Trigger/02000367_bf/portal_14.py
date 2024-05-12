@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=814, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 포털활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=814, visible=False, enable=True, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

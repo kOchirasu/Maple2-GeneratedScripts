@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 메세지01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200404, textId=25200404)
 
@@ -21,12 +21,12 @@ class 메세지01(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200404)
 
 
 class 메세지02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200405, textId=25200405)
 
@@ -36,7 +36,7 @@ class 메세지02(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200405)
 
 
@@ -47,7 +47,7 @@ class 메세지02대기(trigger_api.Trigger):
 
 
 class 메세지03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200406, textId=25200406)
 
@@ -57,7 +57,7 @@ class 메세지03(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200406)
 
 
@@ -68,7 +68,7 @@ class 메세지03대기(trigger_api.Trigger):
 
 
 class 메세지04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200407, textId=25200407)
 
@@ -78,7 +78,7 @@ class 메세지04(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200407)
 
 
@@ -89,7 +89,7 @@ class 메세지04대기(trigger_api.Trigger):
 
 
 class 메세지05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200408, textId=25200408)
 
@@ -99,7 +99,7 @@ class 메세지05(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200408)
 
 
@@ -110,7 +110,7 @@ class 메세지05대기(trigger_api.Trigger):
 
 
 class 메세지06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200409, textId=25200409)
 
@@ -120,7 +120,7 @@ class 메세지06(trigger_api.Trigger):
         if not self.user_detected(boxIds=[199]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=25200409)
 
 

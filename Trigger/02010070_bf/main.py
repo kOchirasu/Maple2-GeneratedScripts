@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=800, visible=True, initialSequence='Closed') # Door
         self.set_mesh(triggerIds=[699], visible=True, arg3=0, delay=0, scale=0) # Invisible_EnterBlock
         self.set_mesh(triggerIds=[700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737], visible=True, arg3=0, delay=0, scale=0) # Invisible_EnterBlock
@@ -37,7 +37,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=800, visible=True, initialSequence='Opend') # Door
         self.set_mesh(triggerIds=[699], visible=False, arg3=0, delay=0, scale=0) # Invisible_EnterBlock
 
@@ -47,7 +47,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class GateOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=800, visible=False, initialSequence='Opend') # Door
         self.set_random_mesh(triggerIds=[700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715,716,717,718,719,720,721,722,723,724,725,726,727,728,729,730,731,732,733,734,735,736,737], visible=False, meshCount=38, arg4=50, delay=2) # Invisible_EnterBlock
         self.set_effect(triggerIds=[7010], visible=True) # Arrow
@@ -63,7 +63,7 @@ class GateOpen(trigger_api.Trigger):
 
 
 class 시작1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[95222], visible=True)
         self.set_event_ui(type=1, arg2='$02010070_BF__MAIN__3$', arg3='5000', arg4='0')
 
@@ -73,14 +73,15 @@ class 시작1(trigger_api.Trigger):
 
 
 class 시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1007,1008])
         self.create_monster(spawnIds=[1000,1001,1002], animationEffect=True)
         self.set_effect(triggerIds=[7010], visible=False)
         self.set_effect(triggerIds=[7011], visible=False)
         self.set_effect(triggerIds=[7012], visible=False)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20100702, textId=20100702, duration=7000) # 욕망이 불러낸 몬스터를 모두 처치해야 합니다.
+        # 욕망이 불러낸 몬스터를 모두 처치해야 합니다.
+        self.show_guide_summary(entityId=20100702, textId=20100702, duration=7000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1000,1001,1002]):
@@ -88,7 +89,7 @@ class 시작2(trigger_api.Trigger):
 
 
 class 시작3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1003,1004,1005], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +98,7 @@ class 시작3(trigger_api.Trigger):
 
 
 class 시작4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1006], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +107,7 @@ class 시작4(trigger_api.Trigger):
 
 
 class 시간1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='150', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -115,7 +116,7 @@ class 시간1(trigger_api.Trigger):
 
 
 class 시작5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7002], visible=True)
         self.set_effect(triggerIds=[7003], visible=True)
 
@@ -127,7 +128,7 @@ class 시작5(trigger_api.Trigger):
 
 
 class 시작6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=6)
         self.set_cinematic_ui(type=1)
 
@@ -144,7 +145,7 @@ class 시작7(trigger_api.Trigger):
 
 
 class 시작8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=False)

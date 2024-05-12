@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3005], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7501], enable=False)
 
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[501,511], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class 전투01(trigger_api.Trigger):
 
 
 class 전투02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7501], enable=True)
         self.create_monster(spawnIds=[502], animationEffect=False)

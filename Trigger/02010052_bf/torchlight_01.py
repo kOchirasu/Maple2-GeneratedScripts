@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[81001], visible=False) # 얼음이 녹는 이펙트
         self.set_effect(triggerIds=[81002], visible=False) # 얼음이 녹는 이펙트
         self.set_effect(triggerIds=[81003], visible=False) # 얼음이 녹는 이펙트
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 
 class burn_state(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6001,6002,6003,6004,6005,6006,6007,6008,6009,6010,6011,6012], visible=False, arg3=800, delay=100, scale=0) # 벽 해제
         self.set_event_ui(type=1, arg2='$02010052_BF__TORCHLIGHT_01__0$', arg3='3000')
         self.set_effect(triggerIds=[7001], visible=True) # 횃불에 불이 붙는 이펙트
@@ -28,7 +28,7 @@ class burn_state(trigger_api.Trigger):
 
 
 class spawn_state(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
         self.set_effect(triggerIds=[7501], visible=True) # 얼음 녹는 소리
         self.set_effect(triggerIds=[81001], visible=True) # 얼음이 녹는 이펙트

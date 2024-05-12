@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 자는중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=5001, visible=True, initialSequence='Stun_A')
         self.set_actor(triggerId=5002, visible=True, initialSequence='Stun_A')
         self.set_actor(triggerId=5003, visible=True, initialSequence='Stun_A')
@@ -17,7 +17,7 @@ class 자는중(trigger_api.Trigger):
 
 
 class 도둑듬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000318], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +26,7 @@ class 도둑듬(trigger_api.Trigger):
 
 
 class 깨어남1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=8)
         self.set_actor(triggerId=5001, visible=True, initialSequence='Bore_A')
         self.set_actor(triggerId=5002, visible=True, initialSequence='Bore_A')
@@ -51,7 +51,7 @@ class 깨어남1(trigger_api.Trigger):
 
 
 class 깨어남2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=4)
         self.set_conversation(type=1, spawnId=50002, script='$02000320_BF__WAKEUP_05__5$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=50001, script='$02000320_BF__WAKEUP_05__6$', arg4=2, arg5=1)
@@ -63,7 +63,7 @@ class 깨어남2(trigger_api.Trigger):
 
 
 class 깨어남3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=1)
         self.set_actor(triggerId=5001, visible=True, initialSequence='Stun_A')
         self.set_actor(triggerId=5002, visible=True, initialSequence='Stun_A')
@@ -82,7 +82,7 @@ class 깨어남4(trigger_api.Trigger):
 
 
 class 다시자러감(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=50004)
         self.remove_balloon_talk(spawnId=50005)
         self.remove_balloon_talk(spawnId=50006)
@@ -100,7 +100,7 @@ class 다시자러감(trigger_api.Trigger):
 
 
 class 다시잠듬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[50001,50002,50003,50004,50005,50006])
         self.set_timer(timerId='15', seconds=7)
         self.set_actor(triggerId=5004, visible=True, initialSequence='Stun_A')

@@ -13,7 +13,7 @@ class 몬스터체력_75(trigger_api.Trigger):
         if self.check_npc_hp(compare='lowerEqual', value=75, spawnId=209, isRelative=True):
             return 몬스터체력_35(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[210,211,212,213], animationEffect=True)
 
 
@@ -24,12 +24,12 @@ class 몬스터체력_35(trigger_api.Trigger):
 
 
 class 몬스터_마지막_리스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[214,215,216,217], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
-            return None
+            pass
 
 
 initial_state = idle

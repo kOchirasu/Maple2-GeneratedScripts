@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # EnteranceBarrier
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # 1stBarrier
         self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0) # 2ndBarrier
@@ -19,7 +19,7 @@ class Setting(trigger_api.Trigger):
 
 
 class LoadingDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=False)
         self.create_monster(spawnIds=[201,202,203,204,205], animationEffect=False)
 
@@ -29,7 +29,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -42,8 +42,9 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=False)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +53,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class CameraWalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
@@ -66,7 +67,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 
 class Battle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20031801, textId=20031801) # 몬스터를 모두 처치하세요
 
@@ -74,12 +75,12 @@ class Battle01(trigger_api.Trigger):
         if self.monster_dead(boxIds=[301,302,303,304,305]):
             return Battle02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[301,302,303,304,305])
 
 
 class Battle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111,112,113,114,115,116,501], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,21 +89,22 @@ class Battle02(trigger_api.Trigger):
 
 
 class Battle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031801)
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20031802, textId=20031802) # 대포를 이용해 올라갈 수 없는 지형 위의 몬스터를 처치하세요
+        # 대포를 이용해 올라갈 수 없는 지형 위의 몬스터를 처치하세요
+        self.show_guide_summary(entityId=20031802, textId=20031802)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[111,112,113,114,115,116]):
             return MoveShip01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[111,112,113,114,115,116,501])
 
 
 class MoveShip01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031802)
         self.set_user_value(triggerId=2, key='ShipSet', value=1)
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0) # 1stBarrier
@@ -119,7 +121,7 @@ class MoveShip02(trigger_api.Trigger):
 
 
 class Battle11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20031801, textId=20031801) # 몬스터를 모두 처치하세요
 
@@ -127,12 +129,12 @@ class Battle11(trigger_api.Trigger):
         if self.monster_dead(boxIds=[201,202,203,204,205]):
             return Battle12(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[201,202,203,204,205])
 
 
 class Battle12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[211,212,213,214,215,216,217,218,219,502,503], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,21 +143,22 @@ class Battle12(trigger_api.Trigger):
 
 
 class Battle13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031801)
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20031802, textId=20031802) # 대포를 이용해 올라갈 수 없는 지형 위의 몬스터를 처치하세요
+        # 대포를 이용해 올라갈 수 없는 지형 위의 몬스터를 처치하세요
+        self.show_guide_summary(entityId=20031802, textId=20031802)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[211,212,213,214,215,216,217,218,219]):
             return CannonSpawn01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[211,212,213,214,215,216,217,218,219,502,503])
 
 
 class CannonSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -164,7 +167,7 @@ class CannonSpawn01(trigger_api.Trigger):
 
 
 class CannonSpawn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031802)
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20031804, textId=20031804) # 대포를 이용해 다음 지역으로 이동하세요
@@ -176,7 +179,7 @@ class CannonSpawn02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031804)
 
 

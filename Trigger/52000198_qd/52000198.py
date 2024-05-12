@@ -3,7 +3,7 @@ import trigger_api
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5002, visible=False, enable=False)
         self.set_portal(portalId=2, visible=False, enable=False)
         self.set_portal(portalId=4, visible=False, enable=False)
@@ -11,15 +11,18 @@ class start(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003422], questStates=[2]):
+            # 바론구한 직후로
             return 도망쳐_12(self.ctx)
         if self.quest_user_detected(boxIds=[2001], questIds=[10003422], questStates=[1]):
+            # 첨부터
             return CameraEffect01(self.ctx)
         if self.quest_user_detected(boxIds=[2001], questIds=[10003422], questStates=[3]):
+            # 퀘완료
             return 도망쳐_26(self.ctx)
 
 
 class CameraEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +31,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 
 class CameraEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101]) # 에레브
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000198, portalId=5001)
@@ -40,7 +43,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 
 class CameraEffect03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -50,7 +53,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 
 class CameraEffect04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +62,7 @@ class CameraEffect04(trigger_api.Trigger):
 
 
 class 도망쳐_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=3)
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=3000)
@@ -74,8 +77,9 @@ class 도망쳐_01(trigger_api.Trigger):
 
 
 class 도망쳐_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000198_QD__52000198__4$', duration=4000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +88,7 @@ class 도망쳐_01_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
 
@@ -94,7 +98,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 도망쳐_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=101, msg='$52000198_QD__52000198__5$', duration=4000)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -102,53 +106,58 @@ class 도망쳐_02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2002]):
+            # 내려가는 포탈1
             return 도망쳐_03(self.ctx)
 
 
 class 도망쳐_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True)
         self.create_monster(spawnIds=[102]) # 에레브
         self.destroy_monster(spawnIds=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2003]):
+            # 내려가는 포탈2
             return 도망쳐_04(self.ctx)
 
 
 class 도망쳐_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=102, msg='$52000198_QD__52000198__6$', duration=4000)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_3002')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2004]):
+            # 내려가는 포탈3
             return 도망쳐_05(self.ctx)
 
 
 class 도망쳐_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=True, enable=True)
         self.create_monster(spawnIds=[103]) # 에레브
         self.destroy_monster(spawnIds=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2005]):
+            # 내려가는 포탈2
             return 도망쳐_06(self.ctx)
 
 
 class 도망쳐_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=103, msg='$52000198_QD__52000198__7$', duration=4000)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3003')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2006]):
+            # 비밀통로 앞
             return 도망쳐_07(self.ctx)
 
 
 class 도망쳐_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -158,7 +167,7 @@ class 도망쳐_07(trigger_api.Trigger):
 
 
 class 도망쳐_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000198, portalId=5003)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +176,7 @@ class 도망쳐_08(trigger_api.Trigger):
 
 
 class 도망쳐_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
 
@@ -177,7 +186,7 @@ class 도망쳐_09(trigger_api.Trigger):
 
 
 class 도망쳐_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__8$', align='right', illustId='Ereb_serious', duration=4500)
 
@@ -187,7 +196,7 @@ class 도망쳐_10(trigger_api.Trigger):
 
 
 class 도망쳐_10_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000198_QD__52000198__9$', duration=4000)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__10$', align='right', illustId='Ereb_serious', duration=4500)
@@ -198,11 +207,12 @@ class 도망쳐_10_01(trigger_api.Trigger):
 
 
 class 도망쳐_10_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4500)
         self.add_cinematic_talk(npcId=0, msg='$52000198_QD__52000198__11$', duration=4500)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__12$', align='right', illustId='Ereb_closeEye', duration=1800)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__13$', align='right', illustId='Ereb_serious', duration=4500)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,7 +221,7 @@ class 도망쳐_10_02(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
@@ -221,18 +231,19 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 도망쳐_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=103, msg='$52000198_QD__52000198__14$', duration=4000)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2007], questIds=[10003422], questStates=[2]):
+            # 바론 감옥 앞
             return 도망쳐_12(self.ctx)
 
 
 class 도망쳐_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -242,7 +253,7 @@ class 도망쳐_12(trigger_api.Trigger):
 
 
 class 도망쳐_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104]) # 바론
         self.move_user(mapId=52000198, portalId=5004)
 
@@ -252,7 +263,7 @@ class 도망쳐_13(trigger_api.Trigger):
 
 
 class 도망쳐_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_3, action='nextState')
 
@@ -262,7 +273,7 @@ class 도망쳐_14(trigger_api.Trigger):
 
 
 class 도망쳐_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000198_QD__52000198__15$', duration=4000)
@@ -274,7 +285,7 @@ class 도망쳐_15(trigger_api.Trigger):
 
 
 class 도망쳐_15_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000198_QD__52000198__17$', duration=4500)
         self.add_cinematic_talk(npcId=11004787, msg='$52000198_QD__52000198__18$', align='left', illustId='Baron_normal', duration=4000)
@@ -286,7 +297,7 @@ class 도망쳐_15_01(trigger_api.Trigger):
 
 
 class 도망쳐_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
 
@@ -296,7 +307,7 @@ class 도망쳐_16(trigger_api.Trigger):
 
 
 class 도망쳐_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[104]) # 아래층바론
         self.create_monster(spawnIds=[105]) # 바론
         self.move_user(mapId=52000198, portalId=5003)
@@ -307,7 +318,7 @@ class 도망쳐_17(trigger_api.Trigger):
 
 
 class 도망쳐_19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -316,7 +327,7 @@ class 도망쳐_19(trigger_api.Trigger):
 
 
 class 도망쳐_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__20$', align='right', illustId='Ereb_surprise', duration=4000)
         self.add_cinematic_talk(npcId=11004787, msg='$52000198_QD__52000198__21$', align='left', illustId='Baron_normal', duration=4000)
@@ -328,7 +339,7 @@ class 도망쳐_20(trigger_api.Trigger):
 
 
 class 도망쳐_21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_3004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -337,7 +348,7 @@ class 도망쳐_21(trigger_api.Trigger):
 
 
 class 도망쳐_22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Object_React_A', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -346,7 +357,7 @@ class 도망쳐_22(trigger_api.Trigger):
 
 
 class 도망쳐_23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_mesh(triggerIds=[8001], visible=False)
         self.set_mesh(triggerIds=[8002], visible=True)
@@ -357,10 +368,11 @@ class 도망쳐_23(trigger_api.Trigger):
 
 
 class 도망쳐_24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.reset_camera(interpolationTime=0)
         self.add_cinematic_talk(npcId=11001302, msg='$52000198_QD__52000198__23$', align='right', illustId='Ereb_serious', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -369,7 +381,7 @@ class 도망쳐_24(trigger_api.Trigger):
 
 
 class Skip_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.destroy_monster(spawnIds=[104]) # 아래층바론
         self.destroy_monster(spawnIds=[105])
@@ -389,7 +401,7 @@ class Skip_3(trigger_api.Trigger):
 
 
 class 도망쳐_25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.destroy_monster(spawnIds=[103])
         self.set_cinematic_ui(type=0)
@@ -397,12 +409,14 @@ class 도망쳐_25(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003422], questStates=[3]):
+            # 퀘완료
             return 도망쳐_26(self.ctx)
 
 
 class 도망쳐_26(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_portal(portalId=5002, visible=True, enable=True) # 불길 속으로 퀘스트 바론에게 완료하고 나면 포탈이 활성화 되게 수정
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 불길 속으로 퀘스트 바론에게 완료하고 나면 포탈이 활성화 되게 수정
+        self.set_portal(portalId=5002, visible=True, enable=True)
         self.destroy_monster(spawnIds=[105])
 
 

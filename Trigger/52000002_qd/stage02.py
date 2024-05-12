@@ -11,7 +11,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 안내시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25200205, textId=25200205)
         self.set_timer(timerId='10', seconds=10)
 
@@ -23,7 +23,7 @@ class 안내시작(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25200205)
 
     def on_tick(self) -> trigger_api.Trigger:

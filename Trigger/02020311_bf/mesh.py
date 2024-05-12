@@ -16,8 +16,9 @@ class 첫번째길막(trigger_api.Trigger):
 
 
 class 이페이즈(trigger_api.Trigger):
-    def on_enter(self):
-        self.create_monster(spawnIds=[111], animationEffect=False) # 2페이즈 갈 때 큐브 폭발 사용하는 더미몬스터 소환
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 2페이즈 갈 때 큐브 폭발 사용하는 더미몬스터 소환
+        self.create_monster(spawnIds=[111], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Mesh', value=3):
@@ -30,6 +31,7 @@ class 삼페이즈(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Mesh', value=4):
             self.set_mesh(triggerIds=[4004], visible=True)
+            # 4페이즈 갈 때 큐브 폭발 사용하는 더미몬스터 삭제
             self.destroy_monster(spawnIds=[111])
             return 진짜마지막(self.ctx)
 

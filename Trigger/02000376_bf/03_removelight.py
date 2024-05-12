@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ResetInnerLight', value=0)
         self.set_user_value(key='RemoveInnerLight', value=0)
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Play(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ResetInnerLight', value=0)
         self.set_user_value(key='RemoveInnerLight', value=0)
 
@@ -23,7 +23,7 @@ class Play(trigger_api.Trigger):
 
 
 class RemoveLight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70000103, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:

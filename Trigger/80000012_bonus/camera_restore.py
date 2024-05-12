@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8001, enable=True)
         self.set_timer(timerId='2', seconds=2)
 
@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 
 class camera_restore(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8001, enable=True)
         self.set_timer(timerId='2', seconds=2)
 

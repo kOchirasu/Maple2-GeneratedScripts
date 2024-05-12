@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[611], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class NPC교체(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_interact_object(triggerIds=[10000612], state=2)
         self.create_monster(spawnIds=[1091])
@@ -27,7 +27,7 @@ class NPC교체(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=6)
         self.move_npc(spawnId=1091, patrolName='MS2PatrolData_1091')
         self.set_effect(triggerIds=[611], visible=True)
@@ -41,7 +41,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1091])
 
     def on_tick(self) -> trigger_api.Trigger:

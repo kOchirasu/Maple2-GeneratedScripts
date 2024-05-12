@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=False) # SafeZone Barrier Effect
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007], visible=True, arg3=0, delay=0, scale=0) # Barrier Center
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107], visible=True, arg3=0, delay=0, scale=0) # Barrier North
@@ -21,16 +21,22 @@ class Setting(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9000]):
-            return Wait_Talk01(self.ctx)
+            # 원본 state : Wait_Talk01
+            # 비행선 생성하려면 : CheckPCLocation / 추가로 인원수 수정 필요
+            # 비행선 없이 빠른 시작 : Countdown  / 인원수 수정 필요 없음
+            return Wait_Talk01(self.ctx) # test용 수정 가능 지점
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True) # SafeZone Barrier Effect
-        self.set_timer(timerId='1', seconds=59, startDelay=1, interval=1, vOffset=-80) # test용 수정 가능 지점 / arg2="30" / arg2 시간 더 짧게 가능  arg2="10"
-        self.write_log(logName='Survival', event='Waiting_Start') # 서바이벌 대기 시작
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=True)
+        # SafeZone Barrier Effect
+        self.set_timer(timerId='1', seconds=59, startDelay=1, interval=1, vOffset=-80)
+        # test용 수정 가능 지점 / arg2="30" / arg2 시간 더 짧게 가능  arg2="10"
+        self.write_log(logName='Survival', event='Waiting_Start')
+        # 서바이벌 대기 시작
 
 
 class Wait_Talk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +47,7 @@ class Wait_Talk01(trigger_api.Trigger):
 
 
 class Wait_Talk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +58,7 @@ class Wait_Talk02(trigger_api.Trigger):
 
 
 class Wait_Talk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +69,7 @@ class Wait_Talk03(trigger_api.Trigger):
 
 
 class ChangeBGM(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='BattleField_Event')
         self.set_sound(triggerId=20000, enable=True) # BGM Intro
 
@@ -73,7 +79,7 @@ class ChangeBGM(trigger_api.Trigger):
 
 
 class StartGameExplain(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__3$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +88,7 @@ class StartGameExplain(trigger_api.Trigger):
 
 
 class GameExplain01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=6000, script='$82000002_survival__01_SURVIVAL__4$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +97,7 @@ class GameExplain01(trigger_api.Trigger):
 
 
 class GameExplain02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=3000, script='$82000002_survival__01_SURVIVAL__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +106,7 @@ class GameExplain02(trigger_api.Trigger):
 
 
 class GameExplain03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=3000, script='$82000002_survival__01_SURVIVAL__6$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +115,7 @@ class GameExplain03(trigger_api.Trigger):
 
 
 class GameExplain04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__7$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -118,7 +124,7 @@ class GameExplain04(trigger_api.Trigger):
 
 
 class GameExplain05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__14$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,7 +157,7 @@ class StartPoint01_North(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=1)
 
 
@@ -160,7 +166,7 @@ class StartPoint02_South(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=2)
 
 
@@ -169,7 +175,7 @@ class StartPoint03_East(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=3)
 
 
@@ -178,7 +184,7 @@ class StartPoint04_West(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=4)
 
 
@@ -187,7 +193,7 @@ class StartPoint05_NorthWest(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=5)
 
 
@@ -196,7 +202,7 @@ class StartPoint06_NorthEast(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=6)
 
 
@@ -205,7 +211,7 @@ class StartPoint07_SouthWest(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=7)
 
 
@@ -214,32 +220,37 @@ class StartPoint08_SouthEast(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return PVPReady(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=2, key='SetRide', value=8)
 
 
 class PVPReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__8$') # 누가 우승할지 보자
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
-            return CheckTheNumberOfPlayers(self.ctx)
+            # 원본 state : CheckTheNumberOfPlayers
+            # 인원 체크 생략하려면  : MatchingSuccessDelay
+            return CheckTheNumberOfPlayers(self.ctx) # test용 수정 가능 지점
 
 
 class CheckTheNumberOfPlayers(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='1')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, boxId=20, operator='GreaterEqual'):
+        if self.count_users(boxId=9000, minUsers='20', operator='GreaterEqual'):
+            # 10명 이상이면 게임 시작
             return MatchingSuccessDelay(self.ctx)
-        if self.count_users(boxId=9000, boxId=20, operator='Less'):
+        if self.count_users(boxId=9000, minUsers='20', operator='Less'):
+            # 10명 미만이면 게임 취소
             return MatchingFailDelay(self.ctx)
 
 
 class MatchingSuccessDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # <action name="SetUserValue" triggerID="7" key="HidePartyUI" value="1" />		팀 모드에서 사용하지 않음
         self.play_system_sound_in_box(sound='GuildBattle_Enter')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -248,7 +259,7 @@ class MatchingSuccessDelay(trigger_api.Trigger):
 
 
 class MatchingSuccess(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__9$') # 충분히 모였군!
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -257,7 +268,7 @@ class MatchingSuccess(trigger_api.Trigger):
 
 
 class RideRiseUp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2, key='StartPatrol', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -266,7 +277,7 @@ class RideRiseUp(trigger_api.Trigger):
 
 
 class Countdown(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_field_game(type='MapleSurvivalTeam')
         self.show_count_ui(text='$82000002_survival__01_SURVIVAL__10$', stage=0, count=3)
 
@@ -276,7 +287,7 @@ class Countdown(trigger_api.Trigger):
 
 
 class AreaOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,419,420,421,422,423,424,425,426,427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477], isStart=True) # 나태 버섯 Normal Mob
         self.set_user_value(triggerId=5, key='RareBoxOnCount', value=1)
         self.set_user_value(triggerId=8, key='RareMobOnCount', value=1)
@@ -286,6 +297,7 @@ class AreaOpen(trigger_api.Trigger):
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_user_value(triggerId=4, key='InvincibleOff', value=1)
         self.add_buff(boxIds=[9000], skillId=71000053, level=1, isPlayer=False, isSkillSet=False) # 31초 무적 버프
+        # test용 수정 가능 지점 : 무적 버프 없이 게임하려면 주석 처리
         self.set_effect(triggerIds=[4000,4100,4200,4300,4400,4500,4600,4700,4800], visible=False) # SafeZone Barrier Effect
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007], visible=False, arg3=1000, delay=0, scale=1) # Barrier Center
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107], visible=False, arg3=1000, delay=0, scale=1) # Barrier_North
@@ -302,12 +314,14 @@ class AreaOpen(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
+            # test용 수정 가능 지점 : 게임 시작 후 스톰 생성 딜레이
             return GameStart(self.ctx)
 
 
 class GameStart(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_user_value(triggerId=3, key='StormStart', value=1) # test용 수정 가능 지점 : 스톰 생성 안하려면 주석 처리
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # test용 수정 가능 지점 : 스톰 생성 안하려면 주석 처리
+        self.set_user_value(triggerId=3, key='StormStart', value=1)
         self.write_log(logName='Survival', event='StormStart') # 서바이벌 스톰 시작 로그 남김
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -319,7 +333,7 @@ class GameStart(trigger_api.Trigger):
 
 # 인원 미만으로 인한 경기 취소
 class MatchingFailDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='guildBattle_MatchingFail')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -328,7 +342,7 @@ class MatchingFailDelay(trigger_api.Trigger):
 
 
 class MatchingFail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__11$') # 인원 부족
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -337,7 +351,7 @@ class MatchingFail(trigger_api.Trigger):
 
 
 class GameCancel(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23500110, illust='Mushking_normal', duration=4000, script='$82000002_survival__01_SURVIVAL__12$') # 경기 취소
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -346,7 +360,7 @@ class GameCancel(trigger_api.Trigger):
 
 
 class ReadyToKickOut(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$82000002_survival__01_SURVIVAL__13$', arg3='4000', arg4='0') # 잠시 후 원래 있던 곳으로 돌아갑니다.
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -355,9 +369,10 @@ class ReadyToKickOut(trigger_api.Trigger):
 
 
 class GameEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9000], skillId=70001101, level=1, isPlayer=False, isSkillSet=False) # 변신 탈 것 해제용 버프
-        self.sight_range(enable=False, range=3) # 우승자 카메라 (LocalTargetCamera 호출) 연출 시, 워포그 해제
+        # 우승자 카메라 (LocalTargetCamera 호출) 연출 시, 워포그 해제
+        self.sight_range(enable=False, range=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[9000]):
@@ -365,7 +380,7 @@ class GameEnd(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=5, key='RareBoxOff', value=1)
         self.set_user_value(triggerId=8, key='RareMobOff', value=1)
         self.set_user_value(triggerId=9, key='NormaBoxOff', value=1)

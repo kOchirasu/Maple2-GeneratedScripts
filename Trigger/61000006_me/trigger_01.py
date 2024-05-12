@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 레버(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000223], state=1)
         self.set_interact_object(triggerIds=[10000214], state=1)
         self.set_mesh(triggerIds=[307,308,309,310,311,312,313,314,315,316,317,318,319], visible=False)
@@ -14,7 +14,7 @@ class 레버(trigger_api.Trigger):
 
 
 class 다리01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[307,308], visible=True)
 
@@ -24,7 +24,7 @@ class 다리01(trigger_api.Trigger):
 
 
 class 다리02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=1)
         self.set_mesh(triggerIds=[309,310,311], visible=True)
 
@@ -34,7 +34,7 @@ class 다리02(trigger_api.Trigger):
 
 
 class 다리03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=1)
         self.set_mesh(triggerIds=[312,313,314], visible=True)
 
@@ -44,7 +44,7 @@ class 다리03(trigger_api.Trigger):
 
 
 class 다리04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=1)
         self.set_mesh(triggerIds=[315,316,317], visible=True)
 
@@ -54,7 +54,7 @@ class 다리04(trigger_api.Trigger):
 
 
 class 다리05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=1)
         self.set_mesh(triggerIds=[318,319], visible=True)
 
@@ -64,7 +64,7 @@ class 다리05(trigger_api.Trigger):
 
 
 class 다리06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

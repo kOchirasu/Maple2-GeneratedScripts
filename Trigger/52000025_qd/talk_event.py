@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class talk_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$52000025_QD__TALK_EVENT__0$', arg4=3, arg5=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class talk_01(trigger_api.Trigger):
 
 
 class talk_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$52000025_QD__TALK_EVENT__1$', arg4=2, arg5=1)
 
 

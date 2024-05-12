@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
 
 
 class 말풍선1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='$02000539_BF__TALK__0$', duration=3500, delayTick=0)
         self.add_balloon_talk(spawnId=201, msg='$02000539_BF__TALK__1$', duration=3500, delayTick=3500)
 
@@ -22,7 +22,7 @@ class 말풍선1(trigger_api.Trigger):
 
 
 class 말풍선2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=202, msg='$02000539_BF__TALK__2$', duration=3500, delayTick=0)
         self.add_balloon_talk(spawnId=202, msg='$02000539_BF__TALK__3$', duration=3500, delayTick=3500)
         self.add_balloon_talk(spawnId=202, msg='$02000539_BF__TALK__4$', duration=3500, delayTick=7000)

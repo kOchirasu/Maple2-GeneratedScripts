@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.enable_spawn_point_pc(spawnId=0, isEnable=True)
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
@@ -54,7 +54,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 가이드메시지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12001], visible=True)
         self.show_guide_summary(entityId=111, textId=20110001) # 에네르 동력원을 전원부 위로 옮기세요.
 
@@ -64,7 +64,7 @@ class 가이드메시지(trigger_api.Trigger):
 
 
 class 엘리베이터_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
         self.set_effect(triggerIds=[12001], visible=False)
@@ -79,7 +79,7 @@ class 엘리베이터_1(trigger_api.Trigger):
 
 
 class 엘리베이터_1_활성화_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008,10009], visible=True)
         self.set_effect(triggerIds=[11002], visible=True)
 
@@ -89,7 +89,7 @@ class 엘리베이터_1_활성화_대기(trigger_api.Trigger):
 
 
 class 엘리베이터_1_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4013,4015,4017,4019,4021], visible=False)
         self.set_visible_breakable_object(triggerIds=[5010,5011,5012,5013,5014], visible=True)
         self.set_breakable(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014], enable=True)
@@ -100,7 +100,7 @@ class 엘리베이터_1_활성화(trigger_api.Trigger):
 
 
 class 번방2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10001,10002,10003,10004,10005,10006,10007,10008,10009], visible=False)
         self.create_monster(spawnIds=[101,102,103,104], animationEffect=False)
         self.set_mesh(triggerIds=[1101,1102,1103,1104,1105,1106,1107,1108,1109], visible=False)
@@ -114,7 +114,7 @@ class 번방2(trigger_api.Trigger):
 
 
 class 번방_클리어2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12002], visible=True)
         self.set_user_value(triggerId=99990002, key='BombOn', value=2)
         self.set_user_value(triggerId=99990003, key='BombOn', value=2)
@@ -129,7 +129,7 @@ class 번방_클리어2(trigger_api.Trigger):
 
 
 class 엘리베이터_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.enable_spawn_point_pc(spawnId=2, isEnable=True)
         self.set_effect(triggerIds=[12002], visible=False)
@@ -144,7 +144,7 @@ class 엘리베이터_2(trigger_api.Trigger):
 
 
 class 엘리베이터_2_활성화_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10010,10011,10012,10013,10014,10015,10016,10017,10018], visible=True)
         self.set_effect(triggerIds=[11004], visible=True)
 
@@ -154,7 +154,7 @@ class 엘리베이터_2_활성화_대기(trigger_api.Trigger):
 
 
 class 엘리베이터_2_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4133,4135,4137,4139,4141], visible=False)
         self.set_visible_breakable_object(triggerIds=[5110,5111,5112,5113,5114], visible=True)
         self.set_breakable(triggerIds=[5101,5102,5103,5104,5105,5106,5107,5108,5109,5110,5111,5112,5113,5114], enable=True)
@@ -165,7 +165,7 @@ class 엘리베이터_2_활성화(trigger_api.Trigger):
 
 
 class 번방3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10010,10011,10012,10013,10014,10015,10016,10017,10018], visible=False)
         self.create_monster(spawnIds=[201,202,203,204,205], animationEffect=False)
         self.set_mesh(triggerIds=[1110,1111,1112,1113,1114,1115,1116,1117,1118], visible=False)
@@ -179,7 +179,7 @@ class 번방3(trigger_api.Trigger):
 
 
 class 번방_클리어3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12003], visible=True)
         self.set_user_value(triggerId=99990005, key='BombOn', value=2)
         self.set_user_value(triggerId=99990006, key='BombOn', value=2)
@@ -194,7 +194,7 @@ class 번방_클리어3(trigger_api.Trigger):
 
 
 class 엘리베이터_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=2, isEnable=False)
         self.enable_spawn_point_pc(spawnId=3, isEnable=True)
         self.set_effect(triggerIds=[12003], visible=False)
@@ -209,7 +209,7 @@ class 엘리베이터_3(trigger_api.Trigger):
 
 
 class 엘리베이터_3_활성화_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10019,10020,10021,10022,10023,10024,10025,10026,10027], visible=True)
         self.set_effect(triggerIds=[11006], visible=True)
 
@@ -219,7 +219,7 @@ class 엘리베이터_3_활성화_대기(trigger_api.Trigger):
 
 
 class 엘리베이터_3_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4232,4234,4236,4238,4240], visible=False)
         self.set_visible_breakable_object(triggerIds=[5210,5211,5212,5213,5214], visible=True)
         self.set_breakable(triggerIds=[5201,5202,5203,5204,5205,5206,5207,5208,5209,5210,5211,5212,5213,5214], enable=True)
@@ -230,7 +230,7 @@ class 엘리베이터_3_활성화(trigger_api.Trigger):
 
 
 class 번방4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10019,10020,10021,10022,10023,10024,10025,10026,10027], visible=False)
         self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=False)
         self.set_user_value(triggerId=99990008, key='BombOn', value=1)
@@ -243,7 +243,7 @@ class 번방4(trigger_api.Trigger):
 
 
 class 번방_클리어4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12004], visible=True)
         self.set_user_value(triggerId=99990008, key='BombOn', value=2)
         self.set_user_value(triggerId=99990009, key='BombOn', value=2)
@@ -258,7 +258,7 @@ class 번방_클리어4(trigger_api.Trigger):
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12004], visible=False)
         self.hide_guide_summary(entityId=111)
         self.set_mesh(triggerIds=[4301,4302,4303,4304,4305,4306,4307,4308,4309,4310,4311,4312,4313,4314,4315,4316,4317,4318,4319,4320,4321,4322,4323,4324,4325,4326,4327,4328,4329,4330,4331,4332,4333,4334,4335,4336,4337,4338,4339,4340,4341,4342,4343,4344,4345,4346,4347,4348,4349,4350,4351,4352,4353,4354,4355,4356,4357,4358,4359,4360,4361,4362,4363,4364,4365,4366,4367,4368,4369,4370,4371,4372,4373,4374,4375], visible=True, delay=50, scale=3)
@@ -271,7 +271,7 @@ class 딜레이(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[11008], visible=True)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 

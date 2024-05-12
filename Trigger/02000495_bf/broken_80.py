@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[701], enable=False)
@@ -20,7 +20,7 @@ class 초대기5(trigger_api.Trigger):
 
 
 class 초대기30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000384_BF__BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class 초대기30(trigger_api.Trigger):
 
 
 class 스킬발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=True, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[701], enable=True)
 
@@ -39,7 +39,7 @@ class 스킬발동(trigger_api.Trigger):
 
 
 class 다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111], visible=True, arg3=0, delay=100, scale=1)
 

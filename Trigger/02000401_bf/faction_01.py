@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=199, skillId=99910150)
         self.set_interact_object(triggerIds=[12000021], state=2)
         self.set_interact_object(triggerIds=[12000022], state=2)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 석궁준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1001, script='$02000401_BF__FACTION_01__0$', arg4=5, arg5=0)
         self.set_conversation(type=1, spawnId=1001, script='$02000401_BF__FACTION_01__1$', arg4=5, arg5=5)
 
@@ -33,7 +33,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 던전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040101, textId=20040101, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_interact_object(triggerIds=[12000021], state=1)
@@ -45,7 +45,7 @@ class 던전(trigger_api.Trigger):
 
 
 class 퀘스트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040101, textId=20040101, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_interact_object(triggerIds=[12000037], state=1)

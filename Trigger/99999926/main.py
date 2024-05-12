@@ -7,9 +7,9 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Battle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[421,422,423,424,425], animationEffect=False)
-        # action name="스킬을설정한다" arg1="501" arg2="1" /
+        # self.set_skill(triggerIds=[501], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[421,422,423,424,425]):
@@ -17,7 +17,7 @@ class Battle01(trigger_api.Trigger):
 
 
 class Battle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[411,412,413,414,415], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class Battle03Random(trigger_api.Trigger):
 
 
 class Battle03A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[421,422,423,424,425], animationEffect=False)
         self.create_monster(spawnIds=[441], animationEffect=False)
 
@@ -44,7 +44,7 @@ class Battle03A(trigger_api.Trigger):
 
 
 class Battle03B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[411,412,413,414,415], animationEffect=False)
         self.create_monster(spawnIds=[441], animationEffect=False)
 
@@ -54,12 +54,12 @@ class Battle03B(trigger_api.Trigger):
 
 
 class MevidicCinematic(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[451], animationEffect=False)
         self.move_npc(spawnId=451, patrolName='MS2PatrolData_701')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=402, boxId=1):
+        if self.count_users(boxId=402, minUsers='1'):
             return None # Missing State: LoadingStart
 
 

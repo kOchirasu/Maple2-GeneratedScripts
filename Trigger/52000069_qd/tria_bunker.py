@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
@@ -59,7 +59,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -71,7 +71,8 @@ class 카메라이동(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.add_buff(boxIds=[199], skillId=70000109, level=1, isPlayer=False, isSkillSet=False) # 초생회
         self.select_camera(triggerId=301, enable=False)
@@ -86,7 +87,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 차연출2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=11100101, enable=True, path='BG/Common/Sound/Eff_Object_Devlin_Appear_01.xml ')
@@ -99,7 +100,7 @@ class 차연출2(trigger_api.Trigger):
 
 
 class 프레이대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
         self.set_npc_emotion_sequence(spawnId=2003, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11000119, illustId='Fray_serious', msg='$52000069_QD__TRIA_BUNKER__2$', duration=4000, align='center')
@@ -111,7 +112,8 @@ class 프레이대사01(trigger_api.Trigger):
 
 
 class 대사스킵용01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
 
@@ -121,7 +123,8 @@ class 대사스킵용01(trigger_api.Trigger):
 
 
 class 돌격(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.select_camera(triggerId=304, enable=True)
         self.set_agent(triggerIds=[8004], visible=False)
@@ -149,7 +152,7 @@ class 돌격(trigger_api.Trigger):
 
 
 class 지원군대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=304, enable=False)
@@ -160,7 +163,7 @@ class 지원군대기(trigger_api.Trigger):
 
 
 class 지원군등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1201,1202,1203])
         self.destroy_monster(spawnIds=[2101,2102,2103])
         self.create_monster(spawnIds=[1004,1005,1301,1302,1303,1304], animationEffect=False)
@@ -171,7 +174,7 @@ class 지원군등장(trigger_api.Trigger):
 
 
 class 지원군연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
@@ -191,7 +194,7 @@ class 지원군연출(trigger_api.Trigger):
 
 
 class 임무종료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.remove_buff(boxId=199, skillId=70000107)
@@ -209,7 +212,7 @@ class 데블린사망딜레이(trigger_api.Trigger):
 
 
 class 암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -220,7 +223,7 @@ class 암전(trigger_api.Trigger):
 
 
 class NPC교체(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52000069, portalId=2)
         self.create_monster(spawnIds=[1006,1007,1009], animationEffect=False)
@@ -233,7 +236,7 @@ class NPC교체(trigger_api.Trigger):
 
 
 class 에레브연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=NPC교체2, action='nextState')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -245,7 +248,7 @@ class 에레브연출시작(trigger_api.Trigger):
 
 
 class 에레브대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Talk_A')
         self.set_sound(triggerId=90000, enable=True) # TriaAttack
@@ -257,7 +260,7 @@ class 에레브대사01(trigger_api.Trigger):
 
 
 class 에레브대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$52000069_QD__TRIA_BUNKER__6$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -266,7 +269,7 @@ class 에레브대사02(trigger_api.Trigger):
 
 
 class 에레브대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001975, script='$52000069_QD__TRIA_BUNKER__7$', arg4=4)
         self.set_onetime_effect(id=1991, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_02_00001991.xml')
 
@@ -276,7 +279,7 @@ class 에레브대사03(trigger_api.Trigger):
 
 
 class 에레브대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=90000, enable=False) # TriaAttack
         self.add_cinematic_talk(npcId=11000075, illustId='Ereb_surprise', msg='$52000069_QD__TRIA_BUNKER__8$', duration=4000, align='center')
 
@@ -286,7 +289,7 @@ class 에레브대사04(trigger_api.Trigger):
 
 
 class 마드리아등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.select_camera(triggerId=307, enable=True)
         self.create_monster(spawnIds=[2000], animationEffect=False, animationDelay=4000)
@@ -297,11 +300,11 @@ class 마드리아등장(trigger_api.Trigger):
 
 
 class 방향전환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[609], visible=True)
         self.move_npc(spawnId=1006, patrolName='MS2PatrolData_1006A')
         self.move_npc(spawnId=1007, patrolName='MS2PatrolData_1007A')
-        # action name="NPC를이동시킨다" arg1="1008" arg2="MS2PatrolData_1008A" /
+        # self.move_npc(spawnId=1008, patrolName='MS2PatrolData_1008A')
         self.move_npc(spawnId=1009, patrolName='MS2PatrolData_1009A')
         self.move_user_path(patrolName='MS2PatrolData_PCA')
 
@@ -311,7 +314,7 @@ class 방향전환(trigger_api.Trigger):
 
 
 class 광역마법(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_2000A')
         self.set_effect(triggerIds=[609], visible=True)
@@ -327,7 +330,7 @@ class 광역마법(trigger_api.Trigger):
 
 
 class 처맞음(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.set_npc_emotion_sequence(spawnId=1006, sequenceName='Damg_A')
         self.set_npc_emotion_sequence(spawnId=1007, sequenceName='Damg_A')
@@ -339,10 +342,10 @@ class 처맞음(trigger_api.Trigger):
 
 
 class 쓰러짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=1006, sequenceName='Down_Idle_A', duration=1E+09)
         self.set_npc_emotion_loop(spawnId=1007, sequenceName='Down_Idle_A', duration=1E+09)
-        # action name="SetNpcEmotionLoop" arg1="1008" arg2="Down_Idle" arg3="999999999" /
+        # self.set_npc_emotion_loop(spawnId=1008, sequenceName='Down_Idle', duration=1E+09)
         self.set_npc_emotion_loop(spawnId=1009, sequenceName='Dead_Idle_A', duration=1E+09)
         self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=12000)
 
@@ -352,7 +355,7 @@ class 쓰러짐(trigger_api.Trigger):
 
 
 class 쓰러짐2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001,1002])
         self.select_camera(triggerId=309, enable=True)
 
@@ -362,7 +365,7 @@ class 쓰러짐2(trigger_api.Trigger):
 
 
 class 마드리아워킹(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=308, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -371,7 +374,7 @@ class 마드리아워킹(trigger_api.Trigger):
 
 
 class 마드리아오버숄더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__9$', arg4=7) # 대사
         self.set_onetime_effect(id=1992, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_03_00001992.xml')
         self.select_camera(triggerId=310, enable=True)
@@ -382,7 +385,7 @@ class 마드리아오버숄더(trigger_api.Trigger):
 
 
 class 마드리아공격(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000075, illustId='Ereb_serious', msg='$52000069_QD__TRIA_BUNKER__10$', duration=3000, align='center')
         self.select_camera(triggerId=311, enable=True)
 
@@ -392,7 +395,7 @@ class 마드리아공격(trigger_api.Trigger):
 
 
 class 마드리아공격2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__11$', arg4=12) # 대사
         self.set_onetime_effect(id=1993, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_04_00001993.xml')
 
@@ -402,7 +405,7 @@ class 마드리아공격2(trigger_api.Trigger):
 
 
 class 마드리아공격3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__12$', arg4=11) # 대사
         self.set_onetime_effect(id=1994, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_05_00001994.xml')
 
@@ -412,7 +415,7 @@ class 마드리아공격3(trigger_api.Trigger):
 
 
 class 마드리아공격4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__13$', arg4=8) # 대사
         self.set_onetime_effect(id=1995, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_06_00001995.xml')
 
@@ -422,7 +425,7 @@ class 마드리아공격4(trigger_api.Trigger):
 
 
 class 마드리아공격5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Damg_A')
         self.select_camera(triggerId=315, enable=True)
 
@@ -432,7 +435,7 @@ class 마드리아공격5(trigger_api.Trigger):
 
 
 class 에레브각성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[607], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -441,7 +444,7 @@ class 에레브각성(trigger_api.Trigger):
 
 
 class 에레브각성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=1000, sequenceName='Damg_Idle_B', duration=1E+09)
         self.select_camera(triggerId=312, enable=True)
 
@@ -451,7 +454,7 @@ class 에레브각성2(trigger_api.Trigger):
 
 
 class 마드리아놀람(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=314, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -460,7 +463,7 @@ class 마드리아놀람(trigger_api.Trigger):
 
 
 class 카메라눈속임(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=312, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -469,7 +472,7 @@ class 카메라눈속임(trigger_api.Trigger):
 
 
 class 에레브버프2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=313, enable=True)
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Spell_A')
         self.set_onetime_effect(id=2100287, enable=True, path='BG/Common/Sound/Eff_System_Chapter8_Destruction_of_Ereb_01.xml')
@@ -480,7 +483,7 @@ class 에레브버프2(trigger_api.Trigger):
 
 
 class 화이트아웃(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[608], visible=True)
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
 
@@ -490,7 +493,7 @@ class 화이트아웃(trigger_api.Trigger):
 
 
 class 마드리아대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__14$', arg4=7) # 대사
         self.set_onetime_effect(id=1996, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_07_00001996.xml')
 
@@ -500,7 +503,7 @@ class 마드리아대사01(trigger_api.Trigger):
 
 
 class 마드리아대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001820, script='$52000069_QD__TRIA_BUNKER__15$', arg4=3) # 대사
         self.set_onetime_effect(id=1997, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_08_00001997.xml')
 
@@ -510,7 +513,8 @@ class 마드리아대사02(trigger_api.Trigger):
 
 
 class NPC교체2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_buff(boxId=199, skillId=70000109)
         self.set_effect(triggerIds=[601], visible=False)
@@ -527,7 +531,7 @@ class NPC교체2(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_achievement(triggerId=91000, type='trigger', achieve='TriaSeigeClear')
         self.set_sound(triggerId=90000, enable=True) # TriaAttack

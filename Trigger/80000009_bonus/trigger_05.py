@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[801,802,803,804,805,806,807,808,809,810], visible=False)
         self.set_interact_object(triggerIds=[10000212], state=1)
         self.set_mesh(triggerIds=[201,202,203,204,205], visible=False, arg3=0, delay=0, scale=0)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_301')
 
@@ -24,7 +24,7 @@ class 소환(trigger_api.Trigger):
 
 
 class 몬스터소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[105])
         self.set_timer(timerId='5', seconds=1)
 
@@ -34,7 +34,7 @@ class 몬스터소멸(trigger_api.Trigger):
 
 
 class 아이템(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[505])
         self.set_effect(triggerIds=[810], visible=True)
         self.set_mesh(triggerIds=[205], visible=True, arg3=0, delay=0, scale=0)

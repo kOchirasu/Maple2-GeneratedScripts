@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000056, portalId=3)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -36,7 +36,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class PC말풍선01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__0$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 
 class 낙하준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008], visible=False, arg3=0, delay=200, scale=2)
         self.set_gravity(gravity=-37)
 
@@ -55,7 +55,7 @@ class 낙하준비(trigger_api.Trigger):
 
 
 class 낙하시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 낙하시작(trigger_api.Trigger):
 
 
 class 낙하종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +73,7 @@ class 낙하종료(trigger_api.Trigger):
 
 
 class PC말풍선02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__1$', arg4=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +82,7 @@ class PC말풍선02(trigger_api.Trigger):
 
 
 class PC말풍선03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000056_QD__50001460__2$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:

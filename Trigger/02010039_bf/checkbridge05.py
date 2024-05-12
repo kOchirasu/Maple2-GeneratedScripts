@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 업적발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=5001, type='trigger', achieve='checkBridge')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 업적발생(trigger_api.Trigger):
 
 
 class 초기화준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

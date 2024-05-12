@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,22 +12,23 @@ class Wait(trigger_api.Trigger):
 
 
 class CheckUser10_GuildRaid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
+        if self.count_users(boxId=101, minUsers='10', operator='GreaterEqual'):
             return MaxCount10_Start(self.ctx)
-        if self.count_users(boxId=101, boxId=10, operator='Less'):
+        if self.count_users(boxId=101, minUsers='10', operator='Less'):
             return MaxCount10_Wait(self.ctx)
 
 
 class MaxCount10_Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=101, boxId=10, operator='GreaterEqual'):
+        if self.count_users(boxId=101, minUsers='10', operator='GreaterEqual'):
+            # 10명이면 바로 시작
             return MaxCount10_Start(self.ctx)
         if self.time_expired(timerId='1'):
             return MaxCount10_Start(self.ctx)
@@ -36,7 +37,8 @@ class MaxCount10_Wait(trigger_api.Trigger):
 
 
 class MaxCount10_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 최대 30초 대기 타이머 초기화
         self.reset_timer(timerId='1')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +47,7 @@ class MaxCount10_Start(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=904, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +57,7 @@ class DungeonStart(trigger_api.Trigger):
 
 # 설명문 출력
 class ShowCaption01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_intro(text='$02100000_BF__MAIN__0$')
         self.set_skip(state=ShowCaption01Skip)
 
@@ -65,7 +67,8 @@ class ShowCaption01(trigger_api.Trigger):
 
 
 class ShowCaption01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -75,7 +78,7 @@ class ShowCaption01Skip(trigger_api.Trigger):
 
 
 class ShowCaption02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_intro(text='$02100000_BF__MAIN__1$')
         self.set_skip(state=ShowCaption02Skip)
 
@@ -85,7 +88,8 @@ class ShowCaption02(trigger_api.Trigger):
 
 
 class ShowCaption02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -95,7 +99,7 @@ class ShowCaption02Skip(trigger_api.Trigger):
 
 
 class CloseCaptionSetting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.close_cinematic()
         self.select_camera(triggerId=904, enable=False)
 
@@ -105,7 +109,7 @@ class CloseCaptionSetting(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=False)
         self.add_buff(boxIds=[101], skillId=70000133, level=1, isPlayer=False, isSkillSet=True)
         self.set_effect(triggerIds=[8001], visible=False)
@@ -194,7 +198,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 버프_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__2$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -203,7 +207,7 @@ class 버프_2(trigger_api.Trigger):
 
 
 class 바리케이트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02100000_BF__MAIN__3$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -212,7 +216,7 @@ class 바리케이트(trigger_api.Trigger):
 
 
 class 닫기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[8001], visible=True)
         self.set_effect(triggerIds=[8002], visible=True)
@@ -220,7 +224,7 @@ class 닫기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None
+            pass
 
 
 initial_state = Wait

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7101], enable=False)
         self.set_interact_object(triggerIds=[10001314], state=1)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005], visible=True, arg3=0, delay=0, scale=0)
@@ -22,7 +22,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$80000015_bonus__lever__0$', arg3='2000', arg4='101')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 안내(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True)
         self.spawn_npc_range(rangeIds=[2001], isAutoTargeting=False, score=1500)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005], visible=False, arg3=0, delay=0, scale=0)
@@ -44,7 +44,7 @@ class 문열림(trigger_api.Trigger):
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999101, key='Dead_A', value=1)
         self.set_effect(triggerIds=[6000], visible=True)
 

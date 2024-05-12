@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 카운트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000384_BF__BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 카운트(trigger_api.Trigger):
 
 
 class 차단(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='Closed') # IronDoor_StageEnter
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0) # DoorBarrier_StageEnter
 
@@ -28,7 +28,7 @@ class 차단(trigger_api.Trigger):
 
 
 class 차단해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='Opened') # IronDoor_StageEnter
         self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0) # DoorBarrier_StageEnter
 

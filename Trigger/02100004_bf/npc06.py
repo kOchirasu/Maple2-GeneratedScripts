@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 소환대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999992, key='NpcSpawned06', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 소환대기(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999992, key='NpcSpawned06', value=1)
         self.create_monster(spawnIds=[2006], animationEffect=True)
 

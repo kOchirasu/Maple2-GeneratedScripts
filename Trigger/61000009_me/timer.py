@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=100, textId=40012) # 잠시 후에 시작합니다.
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class ready(trigger_api.Trigger):
 
 
 class Ready_Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=100)
         self.set_timer(timerId='1200', seconds=1200, startDelay=0, interval=1)
 
@@ -24,7 +24,7 @@ class Ready_Idle(trigger_api.Trigger):
 
 
 class endGame(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=5, arg2='$61000004_ME__TRIGGER_01__2$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:

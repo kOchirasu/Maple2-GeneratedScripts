@@ -3,14 +3,16 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000307], state=2)
         self.set_interact_object(triggerIds=[12000308], state=2)
         self.set_interact_object(triggerIds=[12000309], state=2)
         self.set_interact_object(triggerIds=[12000310], state=2)
         self.set_interact_object(triggerIds=[12000311], state=2)
         self.set_interact_object(triggerIds=[12000312], state=2)
-        # <action name="SetVisibleBreakableObject" arg1="1001,1002,1003,1004,1005,1006,1007,1008,1009,1010" arg2="0" />
+        # self.set_visible_breakable_object(triggerIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], visible=False)
+        # self.set_visible_breakable_object(triggerIds=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], visible=False)
+        # self.set_visible_breakable_object(triggerIds=[1021,1022], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Block', value=1):
@@ -153,6 +155,7 @@ class CableDelay_12(trigger_api.Trigger):
 class CableOff_07(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-5025,-4125,150], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=2)
             return End_02(self.ctx)
 
@@ -160,6 +163,7 @@ class CableOff_07(trigger_api.Trigger):
 class CableOff_08(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-4575,3075,1500], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=1)
             return End_02(self.ctx)
 
@@ -167,6 +171,7 @@ class CableOff_08(trigger_api.Trigger):
 class CableOff_09(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-3525,-6075,150], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=2)
             return End_02(self.ctx)
 
@@ -174,6 +179,7 @@ class CableOff_09(trigger_api.Trigger):
 class CableOff_10(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-1875,-8775,2700], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=3)
             return End_02(self.ctx)
 
@@ -181,6 +187,7 @@ class CableOff_10(trigger_api.Trigger):
 class CableOff_11(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-4575,5025,1550], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=1)
             return End_02(self.ctx)
 
@@ -188,6 +195,7 @@ class CableOff_11(trigger_api.Trigger):
 class CableOff_12(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-2025,8025,1600], rot=[0,0,0])
             self.set_user_value(triggerId=900004, key='Block', value=4)
             return End_02(self.ctx)
 
@@ -195,6 +203,12 @@ class CableOff_12(trigger_api.Trigger):
 class End_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
+            # self.set_visible_breakable_object(triggerIds=[1007], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1008], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1009], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1010], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1011], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1012], visible=False)
             return 대기(self.ctx)
 
 

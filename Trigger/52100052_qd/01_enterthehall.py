@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5004], visible=False) # DoorOpen
         self.set_actor(triggerId=4004, visible=True, initialSequence='Closed') # Upstairs
         self.set_ladder(triggerIds=[511], visible=False, animationEffect=False, animationDelay=0) # Ladder_Enter
@@ -28,7 +28,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class BlackeyeApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[101], animationEffect=False) # Npc_Actor
@@ -39,7 +39,7 @@ class BlackeyeApp01(trigger_api.Trigger):
 
 
 class BlackeyeApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -53,8 +53,9 @@ class BlackeyeApp02(trigger_api.Trigger):
 
 
 class BlackeyeApp02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=101)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +64,7 @@ class BlackeyeApp02Skip(trigger_api.Trigger):
 
 
 class BlackeyeApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=3000)
         self.add_cinematic_talk(npcId=11001590, illustId='11001590', msg='$52100052_QD__01_ENTERTHEHALL__1$', duration=3000, align='left')
         self.set_skip(state=BlackeyeApp03Skip)
@@ -74,8 +75,9 @@ class BlackeyeApp03(trigger_api.Trigger):
 
 
 class BlackeyeApp03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=101)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +86,7 @@ class BlackeyeApp03Skip(trigger_api.Trigger):
 
 
 class EnemyApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=601, enable=True)
@@ -96,7 +98,7 @@ class EnemyApp01(trigger_api.Trigger):
 
 
 class EnemyApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[901,902,903], animationEffect=False) # Mob_Actor
@@ -111,10 +113,11 @@ class EnemyApp02(trigger_api.Trigger):
 
 
 class EnemyApp03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=901)
         self.remove_balloon_talk(spawnId=902)
         self.remove_balloon_talk(spawnId=903)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +126,7 @@ class EnemyApp03Skip(trigger_api.Trigger):
 
 
 class EnemyApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -135,7 +138,7 @@ class EnemyApp03(trigger_api.Trigger):
 
 
 class BlackeyeAction01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001590, script='$52100052_QD__01_ENTERTHEHALL__5$', arg4=5) # 이슈라
@@ -147,8 +150,9 @@ class BlackeyeAction01(trigger_api.Trigger):
 
 
 class BlackeyeAction01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -160,7 +164,7 @@ class BlackeyeAction01Skip(trigger_api.Trigger):
 
 
 class BlackeyeAction02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101]) # Npc_Actor
         self.create_monster(spawnIds=[102], animationEffect=False) # Npc_Battle
         self.set_conversation(type=1, spawnId=102, script='$52100052_QD__01_ENTERTHEHALL__6$', arg4=3, arg5=1)
@@ -177,7 +181,7 @@ class BlackeyeAction02(trigger_api.Trigger):
 
 
 class BlackeyeAction03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039601, textId=20039601, duration=3000) # 가이드 : 레버를 당겨 트랩을 발동시키기
 
@@ -187,7 +191,7 @@ class BlackeyeAction03(trigger_api.Trigger):
 
 
 class MoveToUpstairs01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8006,8007,8008,8009], visible=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
         self.set_effect(triggerIds=[5004], visible=True) # DoorOpen
@@ -201,7 +205,7 @@ class MoveToUpstairs01(trigger_api.Trigger):
 
 
 class MoveToUpstairs02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001590, script='$52100052_QD__01_ENTERTHEHALL__7$', arg4=5) # 이슈라
@@ -213,8 +217,9 @@ class MoveToUpstairs02(trigger_api.Trigger):
 
 
 class MoveToUpstairs02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -227,7 +232,7 @@ class MoveToUpstairs02Skip(trigger_api.Trigger):
 
 
 class FindWayOut01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_103')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -236,7 +241,7 @@ class FindWayOut01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52100052_QD__01_ENTERTHEHALL__8$', arg3='4000', arg4='0')
         self.set_user_value(triggerId=4, key='SearchStart', value=1)
@@ -259,7 +264,7 @@ class NpcMonologueRandom(trigger_api.Trigger):
 
 
 class NpcMonologue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$52100052_QD__01_ENTERTHEHALL__9$', arg4=3, arg5=0) # 이슈라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -270,7 +275,7 @@ class NpcMonologue01(trigger_api.Trigger):
 
 
 class NpcMonologue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$52100052_QD__01_ENTERTHEHALL__10$', arg4=3, arg5=0) # 이슈라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -281,7 +286,7 @@ class NpcMonologue02(trigger_api.Trigger):
 
 
 class NpcMonologue03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$52100052_QD__01_ENTERTHEHALL__11$', arg4=3, arg5=0) # 이슈라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -292,7 +297,7 @@ class NpcMonologue03(trigger_api.Trigger):
 
 
 class NpcMonologue04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$52100052_QD__01_ENTERTHEHALL__12$', arg4=3, arg5=0) # 이슈라
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,7 +308,7 @@ class NpcMonologue04(trigger_api.Trigger):
 
 
 class NpcLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=102)
         self.destroy_monster(spawnIds=[102]) # Npc
 

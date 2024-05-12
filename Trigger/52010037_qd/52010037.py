@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=False) # 콘대르
         self.create_monster(spawnIds=[202], animationEffect=False) # 샤텐
         self.create_monster(spawnIds=[203], animationEffect=False) # 네이린
@@ -29,28 +29,33 @@ class Wait(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[91000003], questStates=[2]):
+            # [하늘의 요새] 퀘스트 완료가능 상태
             return 지하기지전경씬01(self.ctx)
         if self.quest_user_detected(boxIds=[9001], questIds=[91000013], questStates=[1]):
+            # [긴급 이륙] 퀘스트 시작
             self.move_user(mapId=52010038, portalId=1)
-            return None
         if self.quest_user_detected(boxIds=[9001], questIds=[91000013], questStates=[2]):
+            # [긴급 이륙] 퀘스트 완료 가능 상태
             self.move_user(mapId=52010039, portalId=1)
-            return None
         if self.quest_user_detected(boxIds=[9001], questIds=[91000004], questStates=[2]):
-            self.create_monster(spawnIds=[200], animationEffect=False)
+            # [새로운 지휘관] 퀘스트 시작
+            self.create_monster(spawnIds=[200], animationEffect=False) # 블리체
             return 블리체와대장들이동(self.ctx)
         if self.quest_user_detected(boxIds=[9001], questIds=[91000010], questStates=[3]):
+            # [새로운 지휘관] 퀘스트 완료
             return 긴급상황발동01(self.ctx)
         if self.quest_user_detected(boxIds=[9001], questIds=[91000004], questStates=[3]):
-            self.create_monster(spawnIds=[200], animationEffect=False)
+            # [새로운 지휘관] 퀘스트 시작
+            self.create_monster(spawnIds=[200], animationEffect=False) # 블리체
             return 블리체와대장들이동(self.ctx)
         if self.quest_user_detected(boxIds=[9001], questIds=[91000003], questStates=[3]):
+            # [하늘의 요새] 퀘스트 완료
             return 블리체함장등장(self.ctx)
 
 
 # ########################지하기지 전경씬########################
 class 지하기지전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -60,7 +65,7 @@ class 지하기지전경씬01(trigger_api.Trigger):
 
 
 class 지하기지전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Quit01, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
@@ -71,7 +76,7 @@ class 지하기지전경씬02(trigger_api.Trigger):
 
 
 class 지하기지전경씬02_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3002,3003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +85,7 @@ class 지하기지전경씬02_b(trigger_api.Trigger):
 
 
 class 지하기지전경씬02_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3004,3005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +94,7 @@ class 지하기지전경씬02_c(trigger_api.Trigger):
 
 
 class 지하기지전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52010037_QD__52010037__0$', desc='$52010037_QD__52010037__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
         self.select_camera_path(pathIds=[3006,3007], returnView=False)
 
@@ -99,7 +104,7 @@ class 지하기지전경씬03(trigger_api.Trigger):
 
 
 class 지하기지전경씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,7 +113,7 @@ class 지하기지전경씬04(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -116,22 +121,24 @@ class Quit01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[91000003], questStates=[3]):
+            # [하늘의 요새] 퀘스트 완료
             return 블리체함장등장(self.ctx)
 
 
 # ########################지하기지 전경씬########################
 class 블리체함장등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[200], animationEffect=False) # 블리체
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_bliche_come') # 블리체 이동
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[91000004], questStates=[2]):
+            # [새로운 지휘관] 퀘스트 시작
             return 블리체와대장들이동(self.ctx)
 
 
 class 블리체와대장들이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_bliche_go') # 블리체 이동
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_blackEye') # 블랙아이 이동
         self.move_npc(spawnId=206, patrolName='MS2PatrolData_alon') # 알론 이동
@@ -140,11 +147,12 @@ class 블리체와대장들이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[91000010], questStates=[3]):
+            # [의문의 레이더 반응] 퀘스트 완료
             return 긴급상황발동01(self.ctx)
 
 
 class 긴급상황발동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9010, enable=True) # 케이틀린 등장 브금
         self.set_ambient_light(primary=[232,92,53])
         self.set_directional_light(diffuseColor=[41,21,18], specularColor=[130,130,130])
@@ -174,7 +182,7 @@ class 긴급상황발동01(trigger_api.Trigger):
 
 
 class 긴급상황발동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.create_monster(spawnIds=[209], animationEffect=False) # 프레이
         self.create_monster(spawnIds=[210], animationEffect=False) # 오스칼

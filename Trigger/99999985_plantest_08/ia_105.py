@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(value='환경음 테스트 트리거 입니다. 환경음을 켭니다. (HeavyRain)')
         self.set_sound(triggerId=10001, enable=True)
         self.weather(weatherType='HeavyRain')
@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 오브젝트반응(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(value='환경음이 꺼집니다.')
         self.set_sound(triggerId=10001, enable=False)
         self.weather(weatherType='None')

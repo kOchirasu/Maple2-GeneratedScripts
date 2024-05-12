@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002034], state=0) # ToTower_False
         self.set_user_value(key='ToTowerFalse', value=0)
         self.set_user_value(key='AnotherGuide', value=0)
@@ -14,7 +14,7 @@ class Wait(trigger_api.Trigger):
 
 
 class ToTowerFalse(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002034], state=1) # ToTower_False
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class ToTowerFalse(trigger_api.Trigger):
 
 
 class NoticeDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=5, key='AnotherGuide', value=1)
         self.set_user_value(triggerId=6, key='AnotherGuide', value=1)
 
@@ -33,9 +33,10 @@ class NoticeDelay(trigger_api.Trigger):
 
 
 class NoticeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039605, textId=20039605) # 가이드 : 철창은 자물쇠로 단단히 묶여 있습니다.
+        # 가이드 : 철창은 자물쇠로 단단히 묶여 있습니다.
+        self.show_guide_summary(entityId=20039605, textId=20039605)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -51,7 +52,7 @@ class CloseGuide01(trigger_api.Trigger):
 
 
 class CloseGuide02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20039605)
         self.set_user_value(triggerId=5, key='AnotherGuide', value=0)
         self.set_user_value(triggerId=6, key='AnotherGuide', value=0)

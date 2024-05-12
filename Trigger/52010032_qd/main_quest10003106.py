@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, type='trigger', achieve='NewChief')
 
 

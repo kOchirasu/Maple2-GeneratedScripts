@@ -3,17 +3,18 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[50001484], questStates=[2]):
+            # 그 길에서 만난 것은 퀘스트 완료 가능 상태
             return LodingDelay00(self.ctx)
 
 
 class LodingDelay00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -25,7 +26,7 @@ class LodingDelay00(trigger_api.Trigger):
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000042, portalId=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +35,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class LodingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.select_camera(triggerId=500, enable=True)
@@ -46,7 +47,7 @@ class LodingDelay02(trigger_api.Trigger):
 
 
 class PCDownIdle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=PCDownIdle02)
@@ -57,10 +58,11 @@ class PCDownIdle01(trigger_api.Trigger):
 
 
 class PCDownIdle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +71,7 @@ class PCDownIdle02(trigger_api.Trigger):
 
 
 class DoctorTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__0$', arg4=4)
         self.set_skip(state=DoctorTalk01Skip)
 
@@ -79,8 +81,9 @@ class DoctorTalk01(trigger_api.Trigger):
 
 
 class DoctorTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +92,7 @@ class DoctorTalk01Skip(trigger_api.Trigger):
 
 
 class LookAround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=False)
         self.select_camera(triggerId=501, enable=True)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
@@ -101,7 +104,7 @@ class LookAround01(trigger_api.Trigger):
 
 
 class LookAround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -111,7 +114,7 @@ class LookAround02(trigger_api.Trigger):
 
 
 class DoctorTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
         self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__1$', arg4=5)
 
@@ -121,7 +124,7 @@ class DoctorTalk02(trigger_api.Trigger):
 
 
 class DoctorTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
         self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__2$', arg4=4)
 
@@ -131,7 +134,7 @@ class DoctorTalk03(trigger_api.Trigger):
 
 
 class DoctorTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
         self.set_conversation(type=2, spawnId=11000038, script='$63000042_CS__WAKEUP01__3$', arg4=4)
 
@@ -141,7 +144,7 @@ class DoctorTalk04(trigger_api.Trigger):
 
 
 class SceneEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -153,7 +156,7 @@ class SceneEnd01(trigger_api.Trigger):
 
 
 class SceneEnd02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=501, enable=False)
         self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
 
@@ -163,7 +166,7 @@ class SceneEnd02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

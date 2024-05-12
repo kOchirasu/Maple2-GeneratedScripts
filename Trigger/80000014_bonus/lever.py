@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001314], state=1)
         self.set_mesh(triggerIds=[3501,3502,3503,3504,3505,3506], visible=True, arg3=0, delay=0, scale=0)
 
@@ -21,7 +21,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$80000014_bonus__lever__0$', arg3='2000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 안내(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3501,3502,3503,3504,3505,3506], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:

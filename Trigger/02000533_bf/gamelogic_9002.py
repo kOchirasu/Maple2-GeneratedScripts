@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='TypingGame') # 키입력 게임 선언
         self.create_widget(type='Round') # 라운드 관리 트리거위젯 선언
         self.widget_action(type='Round', func='SettingFinalRound', widgetArg='1')
@@ -43,7 +43,7 @@ class 라운드체크(trigger_api.Trigger):
 
 
 class 라운드1시작전UI(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__GAMELOGIC_9002__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 라운드1진행(trigger_api.Trigger):
 
 
 class 라운드2시작전UI(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__GAMELOGIC_9002__4$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +91,7 @@ class 라운드2진행(trigger_api.Trigger):
 
 
 class 라운드3시작전UI(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__GAMELOGIC_9002__8$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class 라운드종료(trigger_api.Trigger):
 
 
 class 게임성공종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9001, key='GameLogicEnd', value=1)
         self.set_user_value(key='GameLogicStart', value=999) # 코드는 테스트 후 지워주세요
 
@@ -133,7 +133,7 @@ class 게임성공종료(trigger_api.Trigger):
 
 
 class 게임실패종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9001, key='GameLogicEnd', value=2)
         self.set_user_value(key='GameLogicStart', value=999) # 코드는 테스트 후 지워주세요
 

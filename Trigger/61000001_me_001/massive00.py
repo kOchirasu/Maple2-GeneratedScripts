@@ -10,7 +10,8 @@ class 대기(trigger_api.Trigger):
 
 
 class 퍼즐대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # arg1은 상태그룹의 ID, arg2 상태그룹에 포함되는 상태이름들, arg3 0이면 순서대로 1이면 상태그룹을 랜덤하게 섞는다.
         self.set_state(id=1, states=[퍼즐패턴10,퍼즐패턴11,퍼즐패턴12,퍼즐패턴13,퍼즐패턴14,퍼즐패턴15,퍼즐패턴16,퍼즐패턴17,퍼즐패턴18,퍼즐패턴19,퍼즐패턴20,퍼즐패턴21,퍼즐패턴22,퍼즐패턴23,퍼즐패턴24,퍼즐패턴25,퍼즐패턴26,퍼즐패턴27,퍼즐패턴28,퍼즐패턴29,퍼즐패턴30,퍼즐패턴31,퍼즐패턴32,퍼즐패턴33,퍼즐패턴34,퍼즐패턴35,퍼즐패턴36,퍼즐패턴37,퍼즐패턴38,퍼즐패턴39,퍼즐패턴40,퍼즐패턴41,퍼즐패턴42,퍼즐패턴43,퍼즐패턴44,퍼즐패턴45,퍼즐패턴46,퍼즐패턴47,퍼즐패턴48,퍼즐패턴49,퍼즐패턴50,퍼즐패턴51,퍼즐패턴52,퍼즐패턴53,퍼즐패턴54,퍼즐패턴55,퍼즐패턴56,퍼즐패턴57,퍼즐패턴58,퍼즐패턴59,퍼즐패턴60], randomize=True)
         self.set_mesh(triggerIds=[201,202,203,204,205,206,207,208,209,210,211], visible=True)
         self.set_actor(triggerId=251, visible=True, initialSequence='Eff_MassiveEvent_Stair_Opened')
@@ -30,14 +31,14 @@ class 퍼즐대기중(trigger_api.Trigger):
         self.set_portal(portalId=779, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=301, boxId=50):
+        if self.count_users(boxId=301, minUsers='50'):
             return 계단없애기(self.ctx)
         if self.wait_tick(waitTick=60000):
             return 계단없애기(self.ctx)
 
 
 class 계단없애기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mini_game_area_for_hack(boxId=301) # 해킹 보안용 시작 box 설정
         self.set_actor(triggerId=261, visible=True, initialSequence='Eff_MassiveEvent_Door_Vanished')
         self.set_portal(portalId=777, visible=False, enable=False, minimapVisible=False)
@@ -47,12 +48,12 @@ class 계단없애기(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 계단없애기2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 계단없애기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[206,207,208,209,210,211], visible=False)
         self.set_actor(triggerId=256, visible=True, initialSequence='Eff_MassiveEvent_Stair_Closed')
         self.set_actor(triggerId=257, visible=True, initialSequence='Eff_MassiveEvent_Stair_Closed')
@@ -66,12 +67,13 @@ class 계단없애기2(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 시작대기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 퍼즐 대기에서 패턴을 섞을 경우 섞이지 않는 경우가 있어서 여기에서 퍼즐 패턴을 한번 더 섞어줌
         self.set_state(id=1, states=[퍼즐패턴10,퍼즐패턴11,퍼즐패턴12,퍼즐패턴13,퍼즐패턴14,퍼즐패턴15,퍼즐패턴16,퍼즐패턴17,퍼즐패턴18,퍼즐패턴19,퍼즐패턴20,퍼즐패턴21,퍼즐패턴22,퍼즐패턴23,퍼즐패턴24,퍼즐패턴25,퍼즐패턴26,퍼즐패턴27,퍼즐패턴28,퍼즐패턴29,퍼즐패턴30,퍼즐패턴31,퍼즐패턴32,퍼즐패턴33,퍼즐패턴34,퍼즐패턴35,퍼즐패턴36,퍼즐패턴37,퍼즐패턴38,퍼즐패턴39,퍼즐패턴40,퍼즐패턴41,퍼즐패턴42,퍼즐패턴43,퍼즐패턴44,퍼즐패턴45,퍼즐패턴46,퍼즐패턴47,퍼즐패턴48,퍼즐패턴49,퍼즐패턴50,퍼즐패턴51,퍼즐패턴52,퍼즐패턴53,퍼즐패턴54,퍼즐패턴55,퍼즐패턴56,퍼즐패턴57,퍼즐패턴58,퍼즐패턴59,퍼즐패턴60], randomize=True) # 퍼즐 패턴 섞기 종료
         self.set_mesh(triggerIds=[201,202,203,204,205], visible=False)
         self.set_actor(triggerId=251, visible=True, initialSequence='Eff_MassiveEvent_Stair_Closed')
@@ -90,30 +92,33 @@ class 시작대기(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 멘트0(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 멘트0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
         self.play_system_sound_in_box(sound='ME_001_Massive00_00')
-        self.set_event_ui(type=1, arg2='$61000001_ME_001__MASSIVE00__0$', arg3='6000') # 로그에서 해당 이벤트에 참여한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
-        self.start_mini_game(boxId=301, round=5, gameName='trapmaster') # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값
+        # 로그에서 해당 이벤트에 참여한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
+        self.set_event_ui(type=1, arg2='$61000001_ME_001__MASSIVE00__0$', arg3='6000')
+        # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값
+        self.start_mini_game(boxId=301, round=5, gameName='trapmaster')
         self.set_achievement(triggerId=301, type='trigger', achieve='trapmaster_start')
-        self.set_achievement(triggerId=301, type='trigger', achieve='dailyquest_start') # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        # 길드 경험치 지급 / boxID="타겟박스id", 0이면 맵전체, type="GuildGainExp의 id" 2가 매시브이벤트
+        self.set_achievement(triggerId=301, type='trigger', achieve='dailyquest_start')
         self.give_guild_exp(boxId=0, type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 멘트1(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 멘트1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=11)
         self.play_system_sound_in_box(sound='ME_001_Massive00_01')
         self.set_event_ui(type=1, arg2='$61000001_ME_001__MASSIVE00__1$', arg3='11000')
@@ -122,12 +127,12 @@ class 멘트1(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 멘트2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 멘트2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=10)
         self.play_system_sound_in_box(sound='ME_001_Massive00_02')
         self.set_event_ui(type=1, arg2='$61000001_ME_001__MASSIVE00__2$', arg3='10000')
@@ -136,27 +141,27 @@ class 멘트2(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 멘트3(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 멘트3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
         self.set_event_ui(type=0, arg2='1,5')
-        # action name="PlaySystemSoundInBox" arg2="ME_001_Massive00_03"/
+        # self.play_system_sound_in_box(sound='ME_001_Massive00_03')
         self.show_count_ui(text='$61000001_ME_001__MASSIVE00__3$', stage=1, count=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 퍼즐단계1(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐단계1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='99', seconds=14)
         self.use_state(arg1=1, arg2=False)
         self.start_mini_game_round(boxId=301, round=1)
@@ -165,12 +170,12 @@ class 퍼즐단계1(trigger_api.Trigger):
         if self.time_expired(timerId='99'):
             return 퍼즐단계1정리(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='99')
 
 
 class 퍼즐단계1정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301, expRate=0.2)
         self.set_timer(timerId='1', seconds=3)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
@@ -181,7 +186,7 @@ class 퍼즐단계1정리(trigger_api.Trigger):
         if not self.user_detected(boxIds=[301]):
             return 실패계단보이기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
@@ -194,19 +199,19 @@ class 퍼즐단계1종료(trigger_api.Trigger):
 
 
 class 퍼즐단계2대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 퍼즐단계2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐단계2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(boxId=301, round=2)
         self.set_timer(timerId='99', seconds=14)
         self.use_state(arg1=1, arg2=False)
@@ -215,12 +220,12 @@ class 퍼즐단계2(trigger_api.Trigger):
         if self.time_expired(timerId='99'):
             return 퍼즐단계2정리(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='99')
 
 
 class 퍼즐단계2정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301, expRate=0.2)
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
@@ -231,7 +236,7 @@ class 퍼즐단계2정리(trigger_api.Trigger):
         if not self.user_detected(boxIds=[301]):
             return 실패계단보이기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
@@ -244,19 +249,19 @@ class 퍼즐단계2종료(trigger_api.Trigger):
 
 
 class 퍼즐단계3대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 퍼즐단계3(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐단계3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(boxId=301, round=3)
         self.set_timer(timerId='99', seconds=14)
         self.use_state(arg1=1, arg2=False)
@@ -265,12 +270,12 @@ class 퍼즐단계3(trigger_api.Trigger):
         if self.time_expired(timerId='99'):
             return 퍼즐단계3정리(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='99')
 
 
 class 퍼즐단계3정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301, expRate=0.2)
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
@@ -281,7 +286,7 @@ class 퍼즐단계3정리(trigger_api.Trigger):
         if not self.user_detected(boxIds=[301]):
             return 실패계단보이기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
@@ -294,19 +299,19 @@ class 퍼즐단계3종료(trigger_api.Trigger):
 
 
 class 퍼즐단계4대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 퍼즐단계4(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐단계4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(boxId=301, round=4)
         self.set_timer(timerId='99', seconds=14)
         self.use_state(arg1=1, arg2=False)
@@ -315,12 +320,12 @@ class 퍼즐단계4(trigger_api.Trigger):
         if self.time_expired(timerId='99'):
             return 퍼즐단계4정리(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='99')
 
 
 class 퍼즐단계4정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301, expRate=0.2)
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
@@ -331,7 +336,7 @@ class 퍼즐단계4정리(trigger_api.Trigger):
         if not self.user_detected(boxIds=[301]):
             return 실패계단보이기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
@@ -339,24 +344,25 @@ class 퍼즐단계4종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[301]):
             self.set_event_ui(type=0, arg2='5,5')
+            # self.play_system_sound_in_box(sound='ME_001_Massive00_07')
             self.show_count_ui(text='$61000001_ME_001__MASSIVE00__7$', stage=5, count=5)
             return 퍼즐단계5대기(self.ctx)
 
 
 class 퍼즐단계5대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return 퍼즐단계5(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐단계5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_mini_game_round(boxId=301, round=5)
         self.set_timer(timerId='99', seconds=14)
         self.use_state(arg1=1, arg2=False)
@@ -365,12 +371,12 @@ class 퍼즐단계5(trigger_api.Trigger):
         if self.time_expired(timerId='99'):
             return 퍼즐단계5정리(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='99')
 
 
 class 퍼즐단계5정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301, expRate=0.2)
         self.set_timer(timerId='1', seconds=1)
 
@@ -380,7 +386,7 @@ class 퍼즐단계5정리(trigger_api.Trigger):
         if not self.user_detected(boxIds=[301]):
             return 실패계단보이기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
@@ -394,7 +400,7 @@ class 퍼즐단계5종료(trigger_api.Trigger):
 
 
 class 우승자카메라연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.mini_game_camera_direction(boxId=301, cameraId=901)
         self.set_event_ui(type=0, arg2='0,0')
         self.play_system_sound_in_box(boxIds=[301], sound='ME_001_Massive00_08')
@@ -408,13 +414,15 @@ class 우승자카메라연출(trigger_api.Trigger):
 
 
 class 보상단계(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[301], skillId=70000019, level=1)
         self.play_system_sound_in_box(boxIds=[301], sound='ME_001_Massive00_10')
         self.set_event_ui(type=3, arg2='$61000001_ME_001__MASSIVE00__10$', arg3='5000', arg4='301')
-        self.set_event_ui(type=6, arg2='$61000001_ME_001__MASSIVE00__11$', arg3='5000', arg4='!301') # 로그에서 해당 이벤트에서 우승한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
+        # 로그에서 해당 이벤트에서 우승한 사람을 체크하기 위한 명령어 / 1=미니게임 이름, 2=타겟박스 id
+        self.set_event_ui(type=6, arg2='$61000001_ME_001__MASSIVE00__11$', arg3='5000', arg4='!301')
         self.mini_game_give_reward(winnerBoxId=301, contentType='miniGame')
-        self.end_mini_game(winnerBoxId=301, gameName='trapmaster') # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값
+        # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값
+        self.end_mini_game(winnerBoxId=301, gameName='trapmaster')
         self.set_achievement(triggerId=301, type='trigger', achieve='trapmaster_win')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -423,7 +431,7 @@ class 보상단계(trigger_api.Trigger):
 
 
 class 퍼즐종료계단보이기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='0,0')
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=True)
         self.set_mesh(triggerIds=[201,202,203,204,205], visible=True)
@@ -438,12 +446,12 @@ class 퍼즐종료계단보이기(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 퍼즐종료계단보이기2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐종료계단보이기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[206,207,208,209,210], visible=True)
         self.set_actor(triggerId=256, visible=True, initialSequence='Eff_MassiveEvent_Stair_Opened')
         self.set_actor(triggerId=257, visible=True, initialSequence='Eff_MassiveEvent_Stair_Opened')
@@ -456,12 +464,12 @@ class 퍼즐종료계단보이기2(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 퍼즐종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 퍼즐종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.unset_mini_game_area_for_hack() # 해킹 보안 종료
         self.set_mesh(triggerIds=[211], visible=True)
         self.set_actor(triggerId=261, visible=True, initialSequence='Eff_MassiveEvent_Door_Opened')
@@ -474,7 +482,7 @@ class 퍼즐종료(trigger_api.Trigger):
 
 
 class 퍼즐종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -486,42 +494,42 @@ class 퍼즐종료2(trigger_api.Trigger):
 # 9시->12시 방향 패턴
 # 9시->12시 방향, 한줄씩 사라지는 패턴
 class 퍼즐패턴10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 바깥에서 소용돌이로 빠지는 패턴
 class 퍼즐패턴11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,12,13,14,15,16,17,18,19,29,39,49,59,69,79,89,88,87,86,85,84,83,82,72,62,52,42,32,22,23,24,25,26,27,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,34,35,36,37,47,57,67,66,65,64,54,44], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 숫자 2 모양으로 한줄씩 남기고 사라지는 패턴
 class 퍼즐패턴12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,30,29,28,27,26,25,24,23,22,21,31,41,42,43,44,45,46,47,48,49,50,60,70,69,68,67,66,65,64,63,62,61,71,81,82,83,84,85,86,87,88,89,90,100], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 3시->6시 방향, 각각 한 방향에서 한줄씩 사라짐.
 class 퍼즐패턴13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,100,99,98,97,96,95,94,93,92,91,11,12,13,14,15,16,17,18,19,20,90,89,88,87,86,85,84,83,82,81,21,22,23,24,25,26,27,28,29,30,80,79,78,77,76,75,74,73,72,71,31,32,33,34,35,36,37,38,39,40,70,69,68,67,66,65,64,63,62,61], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 3시->6시 방향, 각각 한 방향에서 한줄씩 건너띄면서 한줄 씩 사라짐
 class 퍼즐패턴14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,100,99,98,97,96,95,94,93,92,91,21,22,23,24,25,26,27,28,29,30,80,79,78,77,76,75,74,73,72,71,41,42,43,44,45,46,47,48,49,50,60,59,58,57,56,55,54,53,52,51], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 바깥쪽에서 원 1개씩 사라짐, 중간에 1줄씩 건너뛰면서 원을 그리며 사라짐
 class 퍼즐패턴15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[23,24,25,26,27,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33], visible=False, arg3=3600, delay=100)
@@ -530,21 +538,21 @@ class 퍼즐패턴15(trigger_api.Trigger):
 
 # 9시->12시 방향, 12시->6시방향, 6시->3시 방향, 3시->9시 방향, 9시->6시방향, 그 후 시계 반대방향으로 원을 그림
 class 퍼즐패턴16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,19,28,37,46,55,64,73,82,91,92,93,94,95,96,97,98,99,100,89,78,67,56,45,34,23,12,11,21,31,41,51,61,71,81,83,84,85,86,87,88,90,80,70,60,50,40,30,20,18,17,16,15,14,13,22,32,42,52,62,72,74,75,76,77,79,69,59,49,39,29,27,26,25,24], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 12시->6시방향, 6시->3시 방향, Z형태가 된 후 안쪽으로 원을 그리며 사라짐
 class 퍼즐패턴17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,19,28,37,46,55,64,73,82,91,92,93,94,95,96,97,98,99,100,90,80,70,60,50,40,30,20,18,17,16,15,14,13,12,11,21,31,41,51,61,71,81,83,84,85,86,87,88,89,79,69,59,49,39,29,27,26,25,24,23,22,32,42,52,62,72,74,75,76,77,78,68,58,48,38,36,35,34,33,43,53,63,65,66,67], visible=False, arg3=0, delay=100)
 
 
 # 9시->12시 방향, 순서대로 S자로 사라지다가 다시 생겨남
 class 퍼즐패턴18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,19,18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28,29,30,40,39,38,37,36,35,34,33,32,31,41,42,43,44,45,46,47,48,49,50,60,59,58,57,56,55,54,53,52,51,61,62,63,64,65,66,67,68,69,70,80,79,78,77,76,75,74,73,72,71,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[10,9,8,7,6,5,4,3,2,1,11,12,13,14,15,16,17,18,19,20,30,29,28,27,26,25,24,23,22,21,31,32,33,34,35,36,37,38,39,40,50,49,48,47,46,45,44,43,42,41,51,52,53,54,55,56,57,58,59,60,70,69,68,67,66,65,64,63,62,61,71,72,73,74,75,76,77,78,79,80,90,89,88,87,86,85,84,83,82,81,91,92,93,94,95,96,97,98,99,100], visible=True, arg3=1200, delay=100)
@@ -553,7 +561,7 @@ class 퍼즐패턴18(trigger_api.Trigger):
 # 9시->12시 방향과 12시->9시방향 중앙 동시 패턴
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 S자로 차례대로 사라지는 패턴
 class 퍼즐패턴19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,40,39,38,37,36,35,34,33,32,31,21,22,23,24,25,26,27,28,29,30,20,19,18,17,16,15,14,13,12,11], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[60,59,58,57,56,55,54,53,52,51,61,62,63,64,65,66,67,68,69,70,80,79,78,77,76,75,74,73,72,71,81,82,83,84,85,86,87,88,89,90], visible=False, arg3=0, delay=100)
@@ -561,7 +569,7 @@ class 퍼즐패턴19(trigger_api.Trigger):
 
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 서로 원을 그리며 사라지는 패턴
 class 퍼즐패턴20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,40,30,20,10,9,8,7,6,5,4,3,2,1,11,21,31,32,33,34,35,36,37,38,39,29,19,18,17,16,15,14,13,12,22], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[60,59,58,57,56,55,54,53,52,51,61,71,81,91,92,93,94,95,96,97,98,99,100,90,80,70,69,68,67,66,65,64,63,62,72,82,83,84,85,86,87,88,89,79], visible=False, arg3=0, delay=100)
@@ -569,7 +577,7 @@ class 퍼즐패턴20(trigger_api.Trigger):
 
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 각각 12시, 3시 방향으로 반으로 나뉜 공간을 작은 S자 형태로 없앰
 class 퍼즐패턴21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,40,30,20,10,9,19,29,39,38,28,18,8,7,17,27,37,36,26,16,6,5,15,25,35,34,24,14,4,3,13,23,33,32,22,12,2], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[60,59,58,57,56,55,54,53,52,51,61,71,81,91,92,82,72,62,63,73,83,93,94,84,74,64,65,75,85,95,96,86,76,66,67,77,87,97,98,88,78,68,69,79,89,99], visible=False, arg3=0, delay=100)
@@ -577,7 +585,7 @@ class 퍼즐패턴21(trigger_api.Trigger):
 
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 각각 12시, 3시 방향으로 반으로 나뉜 공간을 큰 S자 형태로 없앰
 class 퍼즐패턴22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,40,30,20,10,9,8,7,6,5,4,3,2,1,11,12,13,14,15,16,17,18,19,29,28,27,26,25,24,23,22,21,31], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[60,59,58,57,56,55,54,53,52,51,61,71,81,91,92,93,94,95,96,97,98,99,100,90,89,88,87,86,85,84,83,82,72,73,74,75,76,77,78,79,80,70], visible=False, arg3=0, delay=100)
@@ -585,7 +593,7 @@ class 퍼즐패턴22(trigger_api.Trigger):
 
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 중앙 두 줄부터 각각 끝과 안쪽이 차례대로 한줄씩 사라짐
 class 퍼즐패턴23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,1,2,3,4,5,6,7,8,9,10,31,32,33,34,35,36,37,38,39,40,11,12,13,14,15,16,17,18,19,20], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[60,59,58,57,56,55,54,53,52,51,100,99,98,97,96,95,94,93,92,91,70,69,68,67,66,65,64,63,62,61,90,89,88,87,86,85,84,83,82,81], visible=False, arg3=0, delay=100)
@@ -593,7 +601,7 @@ class 퍼즐패턴23(trigger_api.Trigger):
 
 # 9시->12시 방향과 12시->9시방향 중앙 동시, 한줄씩 사라지면서 다시 생성됨
 class 퍼즐패턴24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[41,42,43,44,45,46,47,48,49,50,31,32,33,34,35,36,37,38,39,40,21,22,23,24,25,26,27,28,29,30,11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1], visible=True, arg3=1200, delay=100)
@@ -604,7 +612,7 @@ class 퍼즐패턴24(trigger_api.Trigger):
 # 같은 색상 별로 띄엄띄엄 사라짐 패턴
 # 같은 색상 별로 띄엄띄엄 사라짐, 12시 방향에서 6시 방향으로 노란색이 사라짐
 class 퍼즐패턴25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_timer(timerId='1', seconds=10)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
@@ -621,7 +629,7 @@ class 퍼즐패턴25(trigger_api.Trigger):
 
 # 같은 색상 별로 띄엄띄엄 사라짐, 12시->3시 방향의 가로가 사라짐, 노란색이 사라지다가, 중간부터 반대편의 흰색이 사라짐
 class 퍼즐패턴26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10,30,50,70,90], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[19,39,59,79,99], visible=False, arg3=500, delay=0)
@@ -637,7 +645,7 @@ class 퍼즐패턴26(trigger_api.Trigger):
 
 # 같은 색상 별로 띄엄띄엄 사라짐, 12시->3시 방향의 가로가 사라짐, 노란색이 차례대로 계속 사라짐
 class 퍼즐패턴27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10,30,50,70,90], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[19,39,59,79,99], visible=False, arg3=500, delay=0)
@@ -654,7 +662,7 @@ class 퍼즐패턴27(trigger_api.Trigger):
 # 12시 방향에서 쭉 내려오는 패턴
 # 12시 방향에서 쭉 내려오는 패턴, 한 줄로 사라지면서 다시 나타나는 패턴
 class 퍼즐패턴28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,20], visible=False, arg3=500, delay=0)
@@ -698,7 +706,7 @@ class 퍼즐패턴28(trigger_api.Trigger):
 
 # 12시 방향에서 쭉 내려오는 패턴, 12시 방향에서 내려오고 동시에 6시 방향에서 올라오면서 가운데 대각선만 남기는 패턴
 class 퍼즐패턴29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,20], visible=False, arg3=500, delay=0)
@@ -722,7 +730,7 @@ class 퍼즐패턴29(trigger_api.Trigger):
 
 # 12시 방향에서 쭉 내려오는 패턴, ㅅ자 형태로 사라짐
 class 퍼즐패턴30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,8,7,6,5,4,3,2,1], visible=False, arg3=100, delay=100)
@@ -752,7 +760,7 @@ class 퍼즐패턴30(trigger_api.Trigger):
 
 # 12시 방향에서 쭉 내려오는 패턴, 12시 방향 및 6시 방향에서 번갈아서 ㅅ자 형태로 사라짐
 class 퍼즐패턴31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,8,7,6,5,4,3,2,1], visible=False, arg3=100, delay=100)
@@ -782,7 +790,7 @@ class 퍼즐패턴31(trigger_api.Trigger):
 
 # 12시 방향에서 쭉 내려오는 패턴, 12시 방향 및 6시 방향에서 번갈아서 한줄 씩 띄우고 ㅅ자 형태로 사라짐
 class 퍼즐패턴32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,8,7,6,5,4,3,2,1], visible=False, arg3=100, delay=100)
@@ -806,7 +814,7 @@ class 퍼즐패턴32(trigger_api.Trigger):
 
 # 12시에서 3시 방향으로 큐브가 사라짐, 1시 방향에서 7시 방향으로 각 열마다 큐브 하나씩만 대각선으로 남기면서 없어지는 패턴
 class 퍼즐패턴33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[20,30,40,50,60,70,80,90,100], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,29,39,49,59,69,79,89,99], visible=False, arg3=500, delay=0)
@@ -823,28 +831,28 @@ class 퍼즐패턴33(trigger_api.Trigger):
 # 안쪽 사각형 부터 사라지는 패턴
 # 안쪽 사각형 부터 사라지는 패턴, 안쪽부터 소용돌이 모양을 그리며 바깥쪽으로 빠지는 패턴
 class 퍼즐패턴34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[46,56,55,45,35,36,37,47,57,67,66,65,64,54,44,34,24,25,26,27,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,23,13,14,15,16,17,18,19,29,39,49,59,69,79,89,88,87,86,85,84,83,82,72,62,52,42,32,22,12], visible=False, arg3=0, delay=100)
 
 
 # 안쪽 사각형 부터 사라지는 패턴, 안쪽부터 소용돌이 모양을 그리며 한 줄씩 띄우고 바깥쪽으로 빠지는 패턴
 class 퍼즐패턴35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[46,56,55,45,25,26,27,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,23,24,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,1,2,3,4,5,6,7,8,9,10,20], visible=False, arg3=0, delay=100)
 
 
 # 안쪽 사각형 부터 사라지는 패턴, 안쪽부터 4개가 먼저 사라진 후 바깥쪽으로 이동하여 바깥쪽부터 원을 그리며 사라지는 패턴
 class 퍼즐패턴36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[46,56,55,45,35,25,15,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,12,13,14,15,16,17,18,19,29,39,49,59,69,79,89,88,87,86,85,84,83,82,72,62,52,42,32,22,23,24,25,26,27,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,34,35,36,37,47,57,67,66,65,64,54,44], visible=False, arg3=0, delay=100)
 
 
 # 안쪽 사각형 부터 사라지는 패턴, 안쪽부터 4개가 먼저 사라진 후 서로 마주보며 U자 형태로 사라짐
 class 퍼즐패턴37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[46,56,55,45,64,54,44,34,35,36,37,47,57,67,28,38,48,58,68,78,77,76,75,74,73,63,53,43,33,23,82,72,62,52,42,32,22,12,13,14,15,16,17,18,19,29,39,49,59,69,79,89,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,1], visible=False, arg3=0, delay=100)
 
@@ -852,7 +860,7 @@ class 퍼즐패턴37(trigger_api.Trigger):
 # 가운데서 사방으로 퍼져나가는 패턴
 # 가운데서 사방으로 퍼져나가는 패턴, 가운데서 사방으로 퍼져가면서 v자 모양으로 사라짐
 class 퍼즐패턴38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[45,34,23,12,1], visible=False, arg3=0, delay=200)
         self.set_mesh(triggerIds=[46,37,28,19,10], visible=False, arg3=0, delay=200)
@@ -886,7 +894,7 @@ class 퍼즐패턴38(trigger_api.Trigger):
 
 # 가운데서 사방으로 퍼져나가는 패턴, 가운데서 사방으로 퍼져가면서 v자 모양으로 사라짐
 class 퍼즐패턴39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[45], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[35,25,15,5], visible=False, arg3=100, delay=100)
@@ -941,7 +949,7 @@ class 퍼즐패턴39(trigger_api.Trigger):
 # 12시->6시방향으로 사라짐
 # 12시->6시방향으로 사라짐, 한 줄로 땅이 갈라진 후 바깥쪽으로 확대되는 패턴
 class 퍼즐패턴40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10,19,28,37,46,55,64,73,82,91], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[9,18,27,36,45,54,63,72,81,20,29,38,47,56,65,74,83,92], visible=False, arg3=1000, delay=0)
@@ -956,7 +964,7 @@ class 퍼즐패턴40(trigger_api.Trigger):
 
 # 12시->6시방향으로 사라짐, 한 줄로 땅이 갈라진 후 바깥쪽으로 확대되는 패턴
 class 퍼즐패턴41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10,19,28,37,46,55,64,73,82,91], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[81,71,61,51,41,31,21,11,1,2,3,4,5,6,7,8,9,18,27,36,45,54,63,72,62,52,42,32,22,12,13,14,15,16,17,26,35,44,53,43,33,23], visible=False, arg3=1000, delay=100)
@@ -965,14 +973,14 @@ class 퍼즐패턴41(trigger_api.Trigger):
 
 # 12시->6시방향으로 사라짐, 한 줄로 땅이 갈라진 후 안쪽으로 원을 만들면서 사라지는 패턴
 class 퍼즐패턴42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10,19,28,37,46,55,64,73,82,91], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[81,71,61,51,41,31,21,11,1,2,3,4,5,6,7,8,9,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,72,62,52,42,32,22,12,13,14,15,16,17,18,29,39,49,59,69,79,89,88,87,86,85,84,83,63,53,43,33,23,24,25,26,27,38,48,58,68,78,77,76,75,74,54,44,34,35,36,47,57,67,66,65], visible=False, arg3=1000, delay=100)
 
 
 class 퍼즐패턴43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[91], visible=False, arg3=100, delay=0)
@@ -995,7 +1003,7 @@ class 퍼즐패턴43(trigger_api.Trigger):
 
 
 class 퍼즐패턴44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,8,7,6,5,4,3,2,1], visible=False, arg3=100, delay=100)
@@ -1025,7 +1033,7 @@ class 퍼즐패턴44(trigger_api.Trigger):
 
 # 신규 추가 패턴
 class 퍼즐패턴45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[34,33,23,24], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[77,78,68,67], visible=False, arg3=400, delay=100)
@@ -1039,7 +1047,7 @@ class 퍼즐패턴45(trigger_api.Trigger):
 
 
 class 퍼즐패턴46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[33,23,24,34], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[44,43,42,32,22,12,13,14,15,25,35,45], visible=False, arg3=400, delay=100)
@@ -1049,7 +1057,7 @@ class 퍼즐패턴46(trigger_api.Trigger):
 
 
 class 퍼즐패턴47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[33,23,24,34], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[44,43,42,32,22,12,13,14,15,25,35,45], visible=False, arg3=400, delay=100)
@@ -1060,7 +1068,7 @@ class 퍼즐패턴47(trigger_api.Trigger):
 
 
 class 퍼즐패턴48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[33,23,24,34], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[44,43,42,32,22,12,13,14,15,25,35,45], visible=False, arg3=400, delay=100)
@@ -1071,7 +1079,7 @@ class 퍼즐패턴48(trigger_api.Trigger):
 
 
 class 퍼즐패턴49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[34,33,23,24], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[77,78,68,67], visible=False, arg3=400, delay=100)
@@ -1092,7 +1100,7 @@ class 퍼즐패턴49(trigger_api.Trigger):
 
 
 class 퍼즐패턴50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[34,33,23,24], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[77,78,68,67], visible=False, arg3=400, delay=100)
@@ -1105,7 +1113,7 @@ class 퍼즐패턴50(trigger_api.Trigger):
 
 
 class 퍼즐패턴51(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[34,33,23,24], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[77,78,68,67], visible=False, arg3=400, delay=100)
@@ -1119,7 +1127,7 @@ class 퍼즐패턴51(trigger_api.Trigger):
 
 
 class 퍼즐패턴52(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[13,12,2,3], visible=False, arg3=100, delay=100)
@@ -1133,7 +1141,7 @@ class 퍼즐패턴52(trigger_api.Trigger):
 
 
 class 퍼즐패턴53(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[13,12,2,3], visible=False, arg3=100, delay=100)
@@ -1147,7 +1155,7 @@ class 퍼즐패턴53(trigger_api.Trigger):
 
 
 class 퍼즐패턴54(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,100], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[13,12,2,3,88,89,99,98], visible=False, arg3=200, delay=100)
@@ -1159,7 +1167,7 @@ class 퍼즐패턴54(trigger_api.Trigger):
 
 
 class 퍼즐패턴55(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,100], visible=False, arg3=0, delay=100)
         self.set_mesh(triggerIds=[13,12,2,3,88,89,99,98], visible=False, arg3=200, delay=100)
@@ -1171,31 +1179,31 @@ class 퍼즐패턴55(trigger_api.Trigger):
 
 
 class 퍼즐패턴56(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,12,13,14,15,16,17,18,19,29,69,79,89,88,87,84,83,82,72,62,22,25,26,38,48,58,78,76,75,73,53,43,33,34,37,47,57,67,66,65,64,54,44,45,46,56,55], visible=False, arg3=0, delay=100)
 
 
 class 퍼즐패턴57(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,8,9,10,20,30,40,50,90,100,99,92,91,81,41,31,21,11,12,13,14,17,18,19,29,39,59,69,79,88,87,86,85,84,83,72,62,52,32,22,23,26,27,28,48,58,68,78,77,74,73,63,53,43,34,35,47,67,66,65,64,44,45,46,56,55], visible=False, arg3=0, delay=100)
 
 
 class 퍼즐패턴58(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,12,13,14,15,16,17,18,29,39,49,59,69,79,89,88,87,86,85,84,83,72,62,52,42,32,22,23,25,26,48,58,78,77,76,75,53,43,33,34,37,67,66,64,44,46,55], visible=False, arg3=0, delay=100)
 
 
 class 퍼즐패턴59(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[1,2,6,7,8,9,10,20,30,40,50,90,100,99,98,97,96,95,94,93,92,91,81,71,61,51,41,31,21,11,13,14,15,17,18,19,29,39,59,69,79,78,77,76,75,74,73,23,24,25,27,28,38,58,68,67,66,65,64,63,53,43,33,34,35,37,57,67,66,65,64,54,44,45,56,55], visible=False, arg3=0, delay=100)
 
 
 class 퍼즐패턴60(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=14)
         self.set_mesh(triggerIds=[10], visible=False, arg3=0, delay=0)
         self.set_mesh(triggerIds=[9,20], visible=False, arg3=500, delay=0)
@@ -1220,7 +1228,7 @@ class 퍼즐패턴60(trigger_api.Trigger):
 
 # 퍼즐 패턴 끝
 class 실패계단보이기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=301)
         self.end_mini_game(winnerBoxId=301, gameName='trapmaster')
         self.unset_mini_game_area_for_hack() # 해킹 보안 종료
@@ -1241,12 +1249,12 @@ class 실패계단보이기(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 실패계단보이기2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 실패계단보이기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[206,207,208,209,210], visible=True)
         self.set_actor(triggerId=256, visible=True, initialSequence='Eff_MassiveEvent_Stair_Opened')
@@ -1259,12 +1267,12 @@ class 실패계단보이기2(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 실패(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='1')
 
 
 class 실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[211], visible=True)
         self.set_actor(triggerId=261, visible=True, initialSequence='Eff_MassiveEvent_Door_Opened')
 
@@ -1280,7 +1288,7 @@ class 실패2(trigger_api.Trigger):
 
 
 class 유저이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000007_ME__MAINPROCESS_SPRINGBEACH__23$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:

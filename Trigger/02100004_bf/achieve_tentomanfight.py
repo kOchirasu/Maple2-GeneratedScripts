@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='LastRoundStart', value=0)
         self.set_user_value(key='LastRoundEnd', value=0)
 
@@ -15,12 +15,13 @@ class Wait(trigger_api.Trigger):
 class MobCheck01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=102, spawnIds=[2000]):
+            # 아마돈 등장
             return MobCheck02(self.ctx)
 
 
 class MobCheck02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if not self.npc_detected(boxId=102, spawnIds=[2001]) and not self.npc_detected(boxId=102, spawnIds=[2002]) and not self.npc_detected(boxId=102, spawnIds=[2003]) and not self.npc_detected(boxId=102, spawnIds=[2004]) and not self.npc_detected(boxId=102, spawnIds=[2005]) and not self.npc_detected(boxId=102, spawnIds=[2006]) and not self.npc_detected(boxId=102, spawnIds=[2008]) and not self.npc_detected(boxId=102, spawnIds=[2009]) and not self.npc_detected(boxId=102, spawnIds=[2010]) and not self.npc_detected(boxId=102, spawnIds=[2011]) and not self.npc_detected(boxId=102, spawnIds=[2012]) and not self.npc_detected(boxId=102, spawnIds=[2013]):
             return CheckSuccess(self.ctx)
         if self.user_value(key='LastRoundEnd', value=1):
             return Quit(self.ctx)
@@ -36,14 +37,15 @@ class CheckSuccess(trigger_api.Trigger):
 
 class MemberCheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=102, boxId=10, operator='Equal'):
+        if self.count_users(boxId=102, minUsers='10', operator='Equal'):
+            # 10명 체크
             return Achieve(self.ctx)
         if self.user_value(key='LastRoundEnd', value=1):
             return Quit(self.ctx)
 
 
 class Achieve(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=102, type='trigger', achieve='TenToOneFight')
 
     def on_tick(self) -> trigger_api.Trigger:

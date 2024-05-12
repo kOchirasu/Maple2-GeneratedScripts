@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 지하배경(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_background(dds='BG_Cave_D.dds')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 지하배경(trigger_api.Trigger):
 
 
 class 지상배경(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_background(dds='BG_Tria.dds')
 
     def on_tick(self) -> trigger_api.Trigger:

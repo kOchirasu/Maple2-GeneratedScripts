@@ -7,12 +7,12 @@ class 대기(trigger_api.Trigger):
         if self.user_value(key='WaveStart', value=1):
             return 생성(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[101,102], animationEffect=True)
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:

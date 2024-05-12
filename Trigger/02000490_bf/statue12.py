@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[12], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 수신대기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[12], visible=False, arg3=0, delay=0, scale=0)
 
 

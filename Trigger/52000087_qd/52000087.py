@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 # 에레브여제에게 보고
 class 보고시작준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000087, portalId=6001)
@@ -22,7 +22,7 @@ class 보고시작준비_01(trigger_api.Trigger):
 
 
 class 보고시작준비_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3001')
@@ -34,7 +34,7 @@ class 보고시작준비_02(trigger_api.Trigger):
 
 
 class 보고시작준비_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=5000)
         self.select_camera_path(pathIds=[4003], returnView=False)
 
@@ -44,7 +44,7 @@ class 보고시작준비_03(trigger_api.Trigger):
 
 
 class 보고시작준비_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class 보고시작준비_04(trigger_api.Trigger):
 
 
 class 보고시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000087_QD__52000087__0$')
         self.move_user(mapId=52000087, portalId=10)
 
@@ -63,9 +63,10 @@ class 보고시작_01(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='Kritias_EpicCutScene_second_01.swf', movieId=1)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +77,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(mapId=52000087, portalId=10)
@@ -87,7 +88,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

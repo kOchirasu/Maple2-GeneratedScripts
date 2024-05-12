@@ -3,13 +3,17 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 탱크 리필 트리거에서 받는 신호
         self.set_user_value(key='Gauge', value=0) # 탱크 리필 트리거에서 받는 신호
-        self.set_user_value(key='StopSpawn', value=0) # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
+        # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
+        self.set_user_value(key='StopSpawn', value=0)
         self.set_user_value(key='SpawnHold', value=0)
         self.destroy_monster(spawnIds=[10100,10075,10050,10025,10001,11001,11002,11003])
-        self.set_effect(triggerIds=[5101], visible=False) # Normal Slime Rebirth Sound
-        self.set_effect(triggerIds=[5201], visible=False) # Abnormal Slime Rebirth Sound
+        # Normal Slime Rebirth Sound
+        self.set_effect(triggerIds=[5101], visible=False)
+        # Abnormal Slime Rebirth Sound
+        self.set_effect(triggerIds=[5201], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Gauge', value=100):
@@ -17,7 +21,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Gauge100_Normal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # Rebirth Sound
         self.create_monster(spawnIds=[10100], animationEffect=False) # 100%
 
@@ -33,7 +37,7 @@ class Gauge100_Normal(trigger_api.Trigger):
 
 
 class Gauge75_Normal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # Rebirth Sound
         self.create_monster(spawnIds=[10075], animationEffect=False) # 75%
 
@@ -51,7 +55,7 @@ class Gauge75_Normal(trigger_api.Trigger):
 
 
 class Gauge50_Normal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # Rebirth Sound
         self.create_monster(spawnIds=[10050], animationEffect=False) # 50%
 
@@ -69,7 +73,7 @@ class Gauge50_Normal(trigger_api.Trigger):
 
 
 class Gauge25_Normal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # Rebirth Sound
         self.create_monster(spawnIds=[10025], animationEffect=False) # 25%
 
@@ -87,7 +91,7 @@ class Gauge25_Normal(trigger_api.Trigger):
 
 
 class Gauge1_Normal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # Rebirth Sound
         self.create_monster(spawnIds=[10001], animationEffect=False) # 1%
 
@@ -104,6 +108,10 @@ class Gauge1_Normal(trigger_api.Trigger):
 
 # 스폰 홀드
 class SpawnHold(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 홀더 트리거에서 받는 신호 0이면 스폰 진행 / 1이면 스폰 중지
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SpawnHold', value=0):
             return BackToGaugeState(self.ctx)
@@ -118,13 +126,12 @@ class Gauge_SpawnRamdom(trigger_api.Trigger):
             return Spawn_Normal(self.ctx)
         if self.random_condition(rate=5, desc='Eater'):
             return Spawn_Eater(self.ctx)
+        """
+        if self.random_condition(rate=1, desc='BigMom'):
+            return None # Missing State: Spawn_BigMom
+        """
         if self.random_condition(rate=10, desc='Runner'):
             return Spawn_Runner(self.ctx)
-        """
-        <condition name="랜덤조건" arg1="1" desc="BigMom">
-            <transition state="Spawn_BigMom" /> 
-        </condition>
-        """
 
 
 # 랜덤 스폰 공용
@@ -135,8 +142,9 @@ class Spawn_Normal(trigger_api.Trigger):
 
 
 class Spawn_Eater(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5201], visible=True) # Abnormal Slime Rebirth Sound
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Abnormal Slime Rebirth Sound
+        self.set_effect(triggerIds=[5201], visible=True)
         self.create_monster(spawnIds=[11001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,13 +153,26 @@ class Spawn_Eater(trigger_api.Trigger):
 
 
 class Spawn_Runner(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5201], visible=True) # Abnormal Slime Rebirth Sound
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Abnormal Slime Rebirth Sound
+        self.set_effect(triggerIds=[5201], visible=True)
         self.create_monster(spawnIds=[11002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             return BackToGaugeState(self.ctx)
+
+
+"""
+class Spawn_BigMom(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[11003], animationEffect=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1500):
+            return BackToGaugeState(self.ctx)
+
+"""
 
 
 # 게이지 상태 체크로 돌아가기 공용
@@ -170,7 +191,7 @@ class BackToGaugeState(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[10100,10075,10050,10025,10001,11001,11002,11003])
 
 

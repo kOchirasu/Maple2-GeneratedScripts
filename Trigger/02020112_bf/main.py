@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_gravity(gravity=0)
         self.set_user_value(triggerId=99990002, key='JumpFloor', value=0)
         self.set_user_value(triggerId=99990017, key='JumpFloor', value=0)
@@ -37,7 +37,7 @@ class 중력방_대기(trigger_api.Trigger):
 
 
 class 중력방_발판(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990020, key='GravityRoom', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,10 +52,11 @@ class 중력방_전투(trigger_api.Trigger):
 
 
 class 카메라_발판점프대(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카메라_종료, action='exit')
         self.set_user_value(triggerId=99990020, key='GravityRoom', value=1)
-        self.set_user_value(triggerId=99990002, key='JumpFloor', value=1) # <점프 발판 활성화, Floor.xml 참조>
+        self.set_user_value(triggerId=99990002, key='JumpFloor', value=1)
+        # <점프 발판 활성화, Floor.xml 참조>
         self.set_user_value(triggerId=99990017, key='JumpFloor', value=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -67,7 +68,8 @@ class 카메라_발판점프대(trigger_api.Trigger):
 
 
 class 카메라_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -88,7 +90,7 @@ class 격리방_지하(trigger_api.Trigger):
 
 
 class 격리방_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +99,7 @@ class 격리방_대기(trigger_api.Trigger):
 
 
 class 격리방_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[191], animationEffect=False)
         self.set_user_value(triggerId=99990008, key='Start', value=1)
 
@@ -108,7 +110,6 @@ class 격리방_전투(trigger_api.Trigger):
             self.set_user_value(triggerId=99990013, key='EliteDead', value=1)
             self.set_user_value(triggerId=99990014, key='EliteDead', value=1)
             self.set_user_value(triggerId=99990015, key='EliteDead', value=1)
-            return None
 
 
 initial_state = 대기

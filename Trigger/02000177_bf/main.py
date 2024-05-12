@@ -7,12 +7,12 @@ from dungeon_common.checkusercount import *
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=1):
+        if self.count_users(boxId=701, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001058], state=1)
         self.set_interact_object(triggerIds=[10001059], state=1)
         self.set_interact_object(triggerIds=[10001060], state=1)
@@ -31,7 +31,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[999], animationEffect=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -42,13 +42,13 @@ class Start(trigger_api.Trigger):
         if self.wait_tick(waitTick=5000):
             return Start_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class Start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000177_BF__MAIN__0$', arg3='3000', arg4='0')
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20001773, textId=20001773, duration=4000)
@@ -58,42 +58,42 @@ class Start_02(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10001058], stateValue=0):
             return Step_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_interact_object(triggerIds=[10001058], state=2)
-        # <action name="메쉬를설정한다" arg1="741" arg2="0" arg3="0" arg4="0" arg5="10" />
+        # self.set_mesh(triggerIds=[741], visible=False, arg3=0, delay=0, scale=10)
         self.set_effect(triggerIds=[6661], visible=False)
 
 
 class Step_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1000,1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012], visible=True, arg3=0, delay=100, scale=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001059], stateValue=0):
             return Step_3(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_interact_object(triggerIds=[10001059], state=2)
-        # <action name="메쉬를설정한다" arg1="742" arg2="0" arg3="0" arg4="0" arg5="10" />
+        # self.set_mesh(triggerIds=[742], visible=False, arg3=0, delay=0, scale=10)
         self.set_effect(triggerIds=[6662], visible=False)
 
 
 class Step_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032], visible=True, arg3=0, delay=100, scale=10)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001060], stateValue=0):
             return Step_4(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_interact_object(triggerIds=[10001060], state=2)
-        # <action name="메쉬를설정한다" arg1="743" arg2="0" arg3="0" arg4="0" arg5="10" />
+        # self.set_mesh(triggerIds=[743], visible=False, arg3=0, delay=0, scale=10)
         self.set_effect(triggerIds=[6663], visible=False)
 
 
 class Step_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060], visible=True, arg3=0, delay=100, scale=10)
 
 

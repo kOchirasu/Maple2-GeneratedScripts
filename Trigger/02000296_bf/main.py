@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[110], visible=False, animationEffect=False) # Enter
         self.set_ladder(triggerIds=[111], visible=False, animationEffect=False) # Enter
         self.set_ladder(triggerIds=[112], visible=False, animationEffect=False) # Enter
@@ -34,7 +34,7 @@ class 대기(trigger_api.Trigger):
 
 
 class LoadingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[5007], animationEffect=False) # Lennon_Battle
         self.create_monster(spawnIds=[5005], animationEffect=False) # Blackeye_Actor01
         self.create_monster(spawnIds=[5001], animationEffect=False)
@@ -48,7 +48,7 @@ class LoadingDelay01(trigger_api.Trigger):
 
 
 class LoadingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=1, spawnId=5005, script='$02000296_BF__MAIN__0$', arg4=3, arg5=0)
@@ -60,7 +60,7 @@ class LoadingDelay02(trigger_api.Trigger):
 
 
 class LoadingDelay03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=1, spawnId=5005, script='$02000296_BF__MAIN__1$', arg4=2, arg5=1)
@@ -72,7 +72,7 @@ class LoadingDelay03(trigger_api.Trigger):
 
 # 레논 전투 중
 class MeetLennon01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -83,7 +83,7 @@ class MeetLennon01(trigger_api.Trigger):
 
 
 class MeetLennon02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[5005]) # Blackeye_Actor01
@@ -97,7 +97,7 @@ class MeetLennon02(trigger_api.Trigger):
 
 
 class MeetLennon03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=False)
@@ -109,7 +109,7 @@ class MeetLennon03(trigger_api.Trigger):
 
 
 class LennonLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawnId=5012, patrolName='MS2PatrolData_5012')
@@ -121,7 +121,7 @@ class LennonLeave01(trigger_api.Trigger):
 
 
 class LennonLeave02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_agent(triggerIds=[1300], visible=False)
@@ -132,6 +132,7 @@ class LennonLeave02(trigger_api.Trigger):
         self.remove_balloon_talk(spawnId=5007)
         self.set_conversation(type=1, spawnId=5013, script='$02000296_BF__MAIN__5$', arg4=4, arg5=1) # Lennon_Actor
         self.move_npc(spawnId=5013, patrolName='MS2PatrolData_5009')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +141,7 @@ class LennonLeave02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5005]) # Blackeye_Actor01
         self.create_monster(spawnIds=[5012], animationEffect=False) # Blackeye_Actor02
         self.change_monster(removeSpawnId=5012, addSpawnId=5006) # Blackeye_Battle
@@ -152,7 +153,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class LennonLeave03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=601, enable=False)
@@ -170,7 +171,7 @@ class LennonLeave03(trigger_api.Trigger):
 
 
 class ReactSoulBead01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[1300], visible=True)
         self.set_agent(triggerIds=[1301], visible=True)
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
@@ -183,7 +184,7 @@ class ReactSoulBead01(trigger_api.Trigger):
 
 
 class ReactSoulBead02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002961)
         self.set_conversation(type=1, spawnId=5006, script='$02000296_BF__MAIN__7$', arg4=4, arg5=0) # Blackeye_Battle
 
@@ -193,7 +194,7 @@ class ReactSoulBead02(trigger_api.Trigger):
 
 
 class BossBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[4000], visible=True) # Intro_Chord
         self.set_mesh(triggerIds=[1001], visible=True, arg3=0, delay=0, scale=2)
         self.set_effect(triggerIds=[1000], visible=False)
@@ -205,7 +206,7 @@ class BossBattle01(trigger_api.Trigger):
 
 
 class BossBattle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[5100], animationEffect=True) # Boss
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -214,7 +215,7 @@ class BossBattle02(trigger_api.Trigger):
 
 
 class BossBattle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002963, textId=20002963, duration=5000) # 악령술사 디툰을 처치하세요
 
@@ -224,7 +225,7 @@ class BossBattle03(trigger_api.Trigger):
 
 
 class ReadyToMove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5100,5001,5002,5003,5004])
         self.set_mesh(triggerIds=[1200,1201,1202,1203,1204,1205,1206,1207,1208,1209], visible=True, arg3=0, delay=100, scale=5) # ExitBridge
         self.set_agent(triggerIds=[1300], visible=False)
@@ -236,7 +237,7 @@ class ReadyToMove01(trigger_api.Trigger):
 
 
 class ReadyToMove02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.move_npc(spawnId=5006, patrolName='MS2PatrolData_5009')
         self.set_conversation(type=1, spawnId=5006, script='$02000296_BF__MAIN__9$', arg4=4, arg5=0) # Blackeye_Battle
@@ -247,7 +248,7 @@ class ReadyToMove02(trigger_api.Trigger):
 
 
 class ReadyToMove03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002962, textId=20002962, duration=6000) # 다음 층으로 이동
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -256,7 +257,7 @@ class ReadyToMove03(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5006])
 
 

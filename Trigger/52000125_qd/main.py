@@ -4,7 +4,7 @@ import trigger_api
 
 # 노란 머리의 행방: 60100185 / 거짓말의 이유: 60100190 / 유력한 목격자: 60100195
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True) # 연출용 마크(11003205)
         self.set_sound(triggerId=7001, enable=True)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -20,7 +20,7 @@ class idle(trigger_api.Trigger):
 
 # 준비
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -32,7 +32,7 @@ class fadein(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.create_monster(spawnIds=[301], animationEffect=True) # 연출용 디나(11003214)
@@ -46,7 +46,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class start(trigger_api.Trigger):
 
 # 이벤트 씬 시작
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN__0$', duration=3000, align='center')
 
@@ -75,7 +75,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.add_cinematic_talk(npcId=11003214, msg='$52000125_QD__MAIN__1$', duration=3000, align='left')
 
@@ -85,7 +85,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003214, msg='$52000125_QD__MAIN__2$', duration=3000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.add_cinematic_talk(npcId=11003213, msg='$52000125_QD__MAIN__3$', duration=3000, align='left')
 
@@ -104,7 +104,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN__4$', duration=3000, align='center')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4010], returnView=False)
         self.add_cinematic_talk(npcId=11003212, msg='$52000125_QD__MAIN__5$', duration=3000, align='left')
 
@@ -123,9 +123,10 @@ class scene_07(trigger_api.Trigger):
 
 
 class scene_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN__6$', duration=3000, align='center')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,7 +136,7 @@ class scene_08(trigger_api.Trigger):
 
 # 전투 씬
 class battle_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,7 +145,7 @@ class battle_ready(trigger_api.Trigger):
 
 
 class wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[301,302,303]) # 연출용 마스크단
         self.create_monster(spawnIds=[601,602,603], animationEffect=False) # 몬스터 불량배
         self.reset_camera(interpolationTime=0)
@@ -155,7 +156,7 @@ class wait(trigger_api.Trigger):
 
 
 class battle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_balloon_talk(spawnId=601, msg='$52000125_QD__MAIN__7$', duration=3000, delayTick=1000)
         self.add_balloon_talk(spawnId=602, msg='$52000125_QD__MAIN__8$', duration=3000, delayTick=3000)
@@ -168,7 +169,7 @@ class battle(trigger_api.Trigger):
 
 
 class battleMsg(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52000125_QD__MAIN__9$', arg3='3000', arg4='0')
 
@@ -178,7 +179,7 @@ class battleMsg(trigger_api.Trigger):
 
 
 class delay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_achievement(triggerId=2001, type='trigger', achieve='markguard')
@@ -190,7 +191,7 @@ class delay(trigger_api.Trigger):
 
 
 class winready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[601,602,603]) # 불량배
         self.create_monster(spawnIds=[304,305,306], animationEffect=True)
         self.move_user(mapId=52000125, portalId=6001)
@@ -204,7 +205,7 @@ class winready(trigger_api.Trigger):
 
 
 class endcamera(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -213,7 +214,7 @@ class endcamera(trigger_api.Trigger):
 
 
 class bye(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003214, msg='$52000125_QD__MAIN__10$', duration=3000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -222,7 +223,7 @@ class bye(trigger_api.Trigger):
 
 
 class run(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=304, patrolName='MS2PatrolData_3002')
         self.move_npc(spawnId=305, patrolName='MS2PatrolData_3002')
         self.move_npc(spawnId=306, patrolName='MS2PatrolData_3002')
@@ -234,10 +235,11 @@ class run(trigger_api.Trigger):
 
 
 class thanks(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4007], returnView=False)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Clap_A')
         self.add_cinematic_talk(npcId=11003205, msg='$52000125_QD__MAIN__12$', duration=2000, align='center')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -246,7 +248,7 @@ class thanks(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_sound(triggerId=7001, enable=False)
         self.destroy_monster(spawnIds=[304,305,306])

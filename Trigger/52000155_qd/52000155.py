@@ -3,7 +3,7 @@ import trigger_api
 
 
 class wait_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001,5002], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -26,7 +26,7 @@ class wait_02(trigger_api.Trigger):
 
 
 class wait_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[108], animationEffect=False)
         self.create_monster(spawnIds=[109], animationEffect=False)
@@ -40,7 +40,7 @@ class wait_03(trigger_api.Trigger):
 
 
 class 빅스제시_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +49,7 @@ class 빅스제시_01(trigger_api.Trigger):
 
 
 class 정리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,8 +58,9 @@ class 정리_01(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +69,7 @@ class 정리_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -79,7 +80,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 밝아짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -90,7 +91,7 @@ class 밝아짐(trigger_api.Trigger):
 
 
 class 만취상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000155_QD__52000155__0$', arg3=False)
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
@@ -100,7 +101,7 @@ class 만취상태(trigger_api.Trigger):
 
 
 class 만취상태_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.create_monster(spawnIds=[106], animationEffect=False)
@@ -116,7 +117,7 @@ class 만취상태_01(trigger_api.Trigger):
 
 
 class 정리2_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +126,7 @@ class 정리2_02(trigger_api.Trigger):
 
 
 class 정리2_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -136,7 +137,7 @@ class 정리2_03(trigger_api.Trigger):
 
 
 class 가이드_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001,5002], visible=True)
         self.destroy_monster(spawnIds=[110])
         self.create_monster(spawnIds=[107], animationEffect=False)
@@ -148,7 +149,7 @@ class 가이드_01(trigger_api.Trigger):
 
 
 class 가이드_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001,5002], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +158,7 @@ class 가이드_02(trigger_api.Trigger):
 
 
 class 전직하러_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -167,7 +168,7 @@ class 전직하러_01(trigger_api.Trigger):
 
 
 class 전직하러_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000157, portalId=6003)
 
 

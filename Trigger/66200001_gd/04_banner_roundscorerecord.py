@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[999], visible=True, arg3=0, delay=0, scale=0) # mark
         self.set_mesh(triggerIds=[1000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[1100], visible=True, arg3=0, delay=0, scale=0)
@@ -14,13 +14,13 @@ class Wait(trigger_api.Trigger):
         if self.check_user():
             return Enter(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_mesh(triggerIds=[1000], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[1100], visible=False, arg3=0, delay=0, scale=0)
 
 
 class Enter(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -35,7 +35,7 @@ class Enter(trigger_api.Trigger):
 
 
 class R01BannerUpdate(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -48,7 +48,7 @@ class R01BannerUpdate(trigger_api.Trigger):
 
 
 class R02BannerUpdate(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -61,7 +61,7 @@ class R02BannerUpdate(trigger_api.Trigger):
 
 
 class R03BannerUpdate(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -78,7 +78,7 @@ class R03BannerUpdate(trigger_api.Trigger):
 
 
 class R04BannerUpdate(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -95,7 +95,7 @@ class R04BannerUpdate(trigger_api.Trigger):
 
 
 class R05BannerUpdate(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_guild_vs_game_score(teamId=1, key='BlueteamScore')
         self.user_value_to_number_mesh(key='BlueteamScore', startMeshId=1000, digitCount=1)
         self.set_user_value_from_guild_vs_game_score(teamId=2, key='RedteamScore')
@@ -112,12 +112,12 @@ class R05BannerUpdate(trigger_api.Trigger):
 
 
 class BlueTeamWin(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='WinnerTeam', value=1)
 
 
 class RedTeamWin(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='WinnerTeam', value=2)
 
 

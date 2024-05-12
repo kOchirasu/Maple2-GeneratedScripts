@@ -3,9 +3,10 @@ import trigger_api
 
 
 class 입장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=51000004, portalId=10)
-        self.create_monster(spawnIds=[101], animationEffect=False) # 101: 게임상대 - 11004557 핑크핑크 핑크빈
+        # 101: 게임상대 - 11004557 핑크핑크 핑크빈
+        self.create_monster(spawnIds=[101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9000]):
@@ -13,8 +14,10 @@ class 입장(trigger_api.Trigger):
 
 
 class 인트로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=셋둘하나_스킵완료, action='nextState') # setsceneskip 1 set
+        # setsceneskip 1 set
+        # setsceneskip 1 set
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -26,10 +29,11 @@ class 인트로(trigger_api.Trigger):
 
 
 class 인트로00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
         self.set_cinematic_ui(type=1)
-        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__0$') # 안녕? 난 게임을 좋아하는 핑크빈!\n지금부터 나랑 재밌게 놀자!
+        # 안녕? 난 게임을 좋아하는 핑크빈!\n지금부터 나랑 재밌게 놀자!
+        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -37,10 +41,11 @@ class 인트로00(trigger_api.Trigger):
 
 
 class 인트로01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.set_cinematic_ui(type=1)
-        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__1$') # 나와 다른 방향을 선택하면 네가 이기고, \n같은 방향을 선택하면 지는 거야~!
+        # 나와 다른 방향을 선택하면 네가 이기고, \n같은 방향을 선택하면 지는 거야~!
+        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -48,9 +53,10 @@ class 인트로01(trigger_api.Trigger):
 
 
 class 인트로02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
-        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__2$') # 네가 다섯 번 지면 게임은 끝!\n지지 않고 오래 버티면 높은 점수를 받지!
+        # 네가 다섯 번 지면 게임은 끝!\n지지 않고 오래 버티면 높은 점수를 받지!
+        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__2$')
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Attack_01_I_Bore', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,23 +65,27 @@ class 인트로02(trigger_api.Trigger):
 
 
 class 인트로03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip() # setsceneskip 1 close
+        # setsceneskip 1 close
+        # setsceneskip 1 close
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
         self.set_cinematic_ui(type=1)
-        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__3$') # 높은 순위를 기록하면 선물도 있으니까,\n자~ 지금 바로 도전하라고!
+        # 높은 순위를 기록하면 선물도 있으니까,\n자~ 지금 바로 도전하라고!
+        self.set_cinematic_ui(type=3, script='$51000004_DG__51000004_MAIN__3$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 게임시작_대기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 셋둘하나_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1.5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -88,15 +98,18 @@ class 셋둘하나_스킵완료(trigger_api.Trigger):
 
 
 class 게임시작_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.reset_camera(interpolationTime=1)
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.set_achievement(triggerId=9000, type='trigger', achieve='PinkBeanThreeTwoOne_start')
         self.write_log(logName='PinkBeanThreeTwoOne_log', triggerId=9000, event='char_event', subEvent='gamestart') # lifeCount : 최대 사망 횟수
         self.arcade_three_two_one(type='StartGame', lifeCount=5, initScore=10000)
-        # <action name="이벤트UI를설정한다" arg1="0" arg2="1,1" arg4="120"/>
+        # self.set_event_ui(type=0, arg2='1,1', arg4='120')
+        # 셋둘하나는 1라운드 내에서 무한루핑이므로 라운드 ui를 표시하지 않아 이 행을 넣지 않음
         self.set_user_value(triggerId=4001, key='Fail', value=1) # Fail Event on
         self.add_balloon_talk(spawnId=0, msg='$51000004_DG__51000004_MAIN__4$', duration=3000) # 좋아, 붙어 보자!
-        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_GetReadyGo_01') # 시작 효과음 / 레디-고! 음성 포함 02100323
+        # 시작 효과음 / 레디-고! 음성 포함 02100323
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_GetReadyGo_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -112,9 +125,11 @@ class 라운드준비(trigger_api.Trigger):
 
 
 class 라운드시작(trigger_api.Trigger):
-    def on_enter(self):
-        self.show_guide_summary(entityId=1, textId=26300736, duration=3000) # 26300736 가이드 텍스트 ON : [[icon:click]] 방향을 선택하세요.
-        self.arcade_three_two_one(type='StartRound', uiDuration=4, round=1) # uiDuration : 게임 UI (화살표) 노출 시간
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 26300736 가이드 텍스트 ON : [[icon:click]] 방향을 선택하세요.
+        self.show_guide_summary(entityId=1, textId=26300736, duration=3000)
+        # uiDuration : 게임 UI (화살표) 노출 시간
+        self.arcade_three_two_one(type='StartRound', uiDuration=4, round=1)
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_ArrowPopup_01') # 화살표 Ui 팝업 효과음 02100325
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +140,7 @@ class 라운드시작(trigger_api.Trigger):
 
 
 class 라운드진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=101, msg='$51000004_DG__51000004_MAIN__5$', duration=1800) # 핑크빈 대사
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -138,10 +153,12 @@ class 라운드진행(trigger_api.Trigger):
 
 
 class 좌로돌아01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='ResultRound', resultDirection=1)
-        self.set_npc_rotation(spawnId=101, rotation=270) # 핑크빈 왼쪽으로 돔 : 270도 = resultDirection 1
-        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01') # 핑크빈 도는 효과음 2500밀리초 02100326
+        # 핑크빈 왼쪽으로 돔 : 270도 = resultDirection 1
+        self.set_npc_rotation(spawnId=101, rotation=270)
+        # 핑크빈 도는 효과음 2500밀리초 02100326
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -149,10 +166,12 @@ class 좌로돌아01(trigger_api.Trigger):
 
 
 class 뒤로돌아02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='ResultRound', resultDirection=2)
-        self.set_npc_rotation(spawnId=101, rotation=180) # 핑크빈 뒤쪽으로 돔 : 180도 = resultDirection 2
-        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01') # 핑크빈 도는 효과음 2500밀리초 02100326
+        # 핑크빈 뒤쪽으로 돔 : 180도 = resultDirection 2
+        self.set_npc_rotation(spawnId=101, rotation=180)
+        # 핑크빈 도는 효과음 2500밀리초 02100326
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -160,10 +179,12 @@ class 뒤로돌아02(trigger_api.Trigger):
 
 
 class 우로돌아03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='ResultRound', resultDirection=3)
-        self.set_npc_rotation(spawnId=101, rotation=90) # 핑크빈 오른쪽으로 돔 : 90도 = resultDirection 3
-        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01') # 핑크빈 도는 효과음 2500밀리초 02100326
+        # 핑크빈 오른쪽으로 돔 : 90도 = resultDirection 3
+        self.set_npc_rotation(spawnId=101, rotation=90)
+        # 핑크빈 도는 효과음 2500밀리초 02100326
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Turning_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -171,29 +192,35 @@ class 우로돌아03(trigger_api.Trigger):
 
 
 class 결과연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.init_npc_rotation(spawnIds=[101])
         self.set_pc_rotation(rotation=[0,0,0])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ThreeTwoOneResult', value=1):
-            self.set_npc_emotion_loop(spawnId=101, sequenceName='Failure_A', duration=2700)
-            self.set_pc_emotion_loop(sequenceName='Emotion_Dance_V', duration=2450)
-            self.add_balloon_talk(spawnId=101, msg='$51000004_DG__51000004_MAIN__6$', duration=3000)
-            self.add_balloon_talk(msg='$51000004_DG__51000004_MAIN__7$', duration=3000)
-            self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Correct_01')
+            # ThreeTwoOneResult 1 = 유저승리 = 다른방향
+            # self.show_guide_summary(entityId=2, textId=26300737, duration=3000)
+            # 26300737 가이드 텍스트 ON : 승리
+            self.set_npc_emotion_loop(spawnId=101, sequenceName='Failure_A', duration=2700) # 핑크빈 패배 1400
+            self.set_pc_emotion_loop(sequenceName='Emotion_Dance_V', duration=2450) # PC 신남
+            self.add_balloon_talk(spawnId=101, msg='$51000004_DG__51000004_MAIN__6$', duration=3000) # …핑크빈 : 이런 꼬맹이 녀석한테 지다니!
+            self.add_balloon_talk(msg='$51000004_DG__51000004_MAIN__7$', duration=3000) # …PC : 이겼다!
+            self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Correct_01') # 성공 효과음 02100327
             return 결과정산(self.ctx)
         if self.user_value(key='ThreeTwoOneResult', value=0):
-            self.set_npc_emotion_loop(spawnId=101, sequenceName='Dance_A', duration=2700)
-            self.set_pc_emotion_sequence(sequenceNames=['Emotion_Fuss_A'])
-            self.add_balloon_talk(spawnId=101, msg='$51000004_DG__51000004_MAIN__8$', duration=3000)
-            self.add_balloon_talk(msg='$51000004_DG__51000004_MAIN__9$', duration=2700)
-            self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Wrong_01')
+            # ThreeTwoOneResult 0 = 유저패배 = 같은방향
+            # self.show_guide_summary(entityId=3, textId=26300738, duration=3000)
+            # 26300738 가이드 텍스트 ON : 패배
+            self.set_npc_emotion_loop(spawnId=101, sequenceName='Dance_A', duration=2700) # 핑크빈 신난다 3067
+            self.set_pc_emotion_sequence(sequenceNames=['Emotion_Fuss_A']) # PC 아파
+            self.add_balloon_talk(spawnId=101, msg='$51000004_DG__51000004_MAIN__8$', duration=3000) # …핑크빈 : 오예~ 이겼다!
+            self.add_balloon_talk(msg='$51000004_DG__51000004_MAIN__9$', duration=2700) # …PC : 내가 지다니
+            self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Wrong_01') # 패배 효과음 02100328
             return 결과정산(self.ctx)
 
 
 class 결과정산(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='ResultRound2', round=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -202,7 +229,7 @@ class 결과정산(trigger_api.Trigger):
 
 
 class 라운드결과(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='ClearRound', round=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,7 +238,7 @@ class 라운드결과(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.arcade_three_two_one(type='EndGame')
         self.move_user(mapId=51000004, portalId=44)
 
@@ -221,11 +248,12 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 진짜끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8010, enable=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01') # 끝나는 효과음 02100329 핑크빈 셋둘하나 전용
+        # 끝나는 효과음 02100329 핑크빈 셋둘하나 전용
+        self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):

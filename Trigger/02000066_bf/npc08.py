@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[605], visible=False)
         self.set_actor(triggerId=208, visible=False, initialSequence='Dead_A')
         self.set_interact_object(triggerIds=[10000376], state=0)
@@ -14,7 +14,7 @@ class 시작(trigger_api.Trigger):
 
 
 class NPC생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.create_monster(spawnIds=[2008], animationEffect=False)
         self.set_interact_object(triggerIds=[10000376], state=0)
@@ -34,7 +34,7 @@ class NPC생성조건(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.destroy_monster(spawnIds=[2008])
 
@@ -45,7 +45,7 @@ class NPC소멸(trigger_api.Trigger):
 
 
 class 오브젝트반응(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=True, initialSequence='Dead_A')
         self.set_interact_object(triggerIds=[10000376], state=1)
 
@@ -55,7 +55,7 @@ class 오브젝트반응(trigger_api.Trigger):
 
 
 class 부활(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.create_monster(spawnIds=[2008], animationEffect=False)
 
@@ -65,7 +65,7 @@ class 부활(trigger_api.Trigger):
 
 
 class NPC대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=False, initialSequence='Dead_A')
         self.set_conversation(type=1, spawnId=2008, script='$02000066_BF__NPC08__1$', arg4=2)
 

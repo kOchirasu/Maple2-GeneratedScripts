@@ -15,7 +15,7 @@ class NpcFight(trigger_api.Trigger):
 
 
 class NpcDown(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[518], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class NpcDown(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[518])
         self.set_user_value(key='NpcRemove', value=0)
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=1)
         self.set_mesh(triggerIds=[1001], visible=False, scale=1)
 
@@ -13,7 +13,7 @@ class 트리거초기화(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000467], state=1)
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[1001], visible=True, scale=1)
         self.destroy_monster(spawnIds=[101])
@@ -41,7 +41,7 @@ class 문열림(trigger_api.Trigger):
 
 
 class 도망갈준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=111, script='$03000145_BF__SAVE_01__0$', arg4=2, arg5=0)
 
@@ -51,7 +51,7 @@ class 도망갈준비1(trigger_api.Trigger):
 
 
 class 도망갈준비2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=1, spawnId=112, script='$03000145_BF__SAVE_01__1$', arg4=2, arg5=0)
 
@@ -61,7 +61,7 @@ class 도망갈준비2(trigger_api.Trigger):
 
 
 class 도망갈준비3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=1)
         self.set_conversation(type=1, spawnId=113, script='$03000145_BF__SAVE_01__2$', arg4=2, arg5=0)
 
@@ -71,7 +71,7 @@ class 도망갈준비3(trigger_api.Trigger):
 
 
 class 도망시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=111, patrolName='MS2PatrolData_111')
         self.move_npc(spawnId=112, patrolName='MS2PatrolData_112')
         self.move_npc(spawnId=113, patrolName='MS2PatrolData_113')
@@ -82,7 +82,7 @@ class 도망시작(trigger_api.Trigger):
 
 
 class 도망중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=3)
         self.set_conversation(type=1, spawnId=111, script='$03000145_BF__SAVE_01__3$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=112, script='$03000145_BF__SAVE_01__4$', arg4=2, arg5=1)
@@ -94,7 +94,7 @@ class 도망중(trigger_api.Trigger):
 
 
 class 도망끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='7', seconds=10)
         self.destroy_monster(spawnIds=[111])
         self.destroy_monster(spawnIds=[112])

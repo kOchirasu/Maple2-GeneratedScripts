@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Guide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='8번 영역에 들어가면 EffectTest 트리거가 발동됩니다.')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Guide(trigger_api.Trigger):
 
 
 class CameraReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='EffectTest 2초 후에 시작됩니다.')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class CameraReady(trigger_api.Trigger):
 
 
 class 이펙트출력01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='EffectTest 발동')
         self.set_effect(triggerIds=[9101,9102,9103,9104,9105,9106,9107,9108,9109,9110], visible=True)
 
@@ -37,7 +37,7 @@ class 이펙트출력01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='5초 후에 트리거가 리셋됩니다. 8번 영역 밖으로 나가세요.')
 
     def on_tick(self) -> trigger_api.Trigger:

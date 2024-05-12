@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000065], state=1)
         self.set_actor(triggerId=12, visible=True, initialSequence='Closed')
         self.set_effect(triggerIds=[203], visible=True)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터와전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=12, visible=True, initialSequence='Opened')
         self.create_monster(spawnIds=[103], animationEffect=True)
         self.set_effect(triggerIds=[203], visible=True)
@@ -34,13 +34,12 @@ class 몬스터전투(trigger_api.Trigger):
 
 
 class 몬스터소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(boxIds=[103]):
             self.reset_timer(timerId='1')
-            return None
         if self.monster_dead(boxIds=[103]):
             return 소멸대기(self.ctx)
         if self.time_expired(timerId='1'):
@@ -48,7 +47,7 @@ class 몬스터소멸(trigger_api.Trigger):
 
 
 class 소멸대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +58,7 @@ class 소멸대기(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
         self.set_timer(timerId='2', seconds=20)
 
@@ -67,7 +66,7 @@ class 트리거초기화(trigger_api.Trigger):
         if self.time_expired(timerId='2'):
             return 대기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='2')
 
 

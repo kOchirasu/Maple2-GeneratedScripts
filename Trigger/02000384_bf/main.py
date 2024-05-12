@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6001], visible=False)
         self.set_mesh(triggerIds=[6002], visible=False)
         self.set_mesh(triggerIds=[6003], visible=False)
@@ -31,7 +31,7 @@ class levelcheck(trigger_api.Trigger):
 
 
 class raid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class raid(trigger_api.Trigger):
 
 
 class chaos_raid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[402], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,8 +49,9 @@ class chaos_raid(trigger_api.Trigger):
 
 
 class quest_raid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=True) # 1층 피직
+        # 1, 2, 3층 사다리 보이기 처리
         self.set_ladder(triggerIds=[1101], visible=True, animationEffect=True, animationDelay=1)
         self.set_ladder(triggerIds=[1102], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1103], visible=True, animationEffect=True, animationDelay=3)
@@ -171,7 +172,7 @@ class quest_raid(trigger_api.Trigger):
 
 
 class npcSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[510], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +181,7 @@ class npcSpawn(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_achievement(triggerId=90000, type='trigger', achieve='Madracan03')
         self.set_achievement(triggerId=90000, type='trigger', achieve='Madracan_Q03')
@@ -188,7 +189,7 @@ class end(trigger_api.Trigger):
 
 
 class quest_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=7, arg2='$02000384_BF__MAIN__0$', arg3='5000', arg4='0')
         self.set_conversation(type=1, spawnId=510, script='$02000384_BF__MAIN__1$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=510, script='$02000384_BF__MAIN__2$', arg4=2, arg5=2)

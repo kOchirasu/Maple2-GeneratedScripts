@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1000, visible=False, enable=False, minimapVisible=False)
         self.set_cinematic_ui(type=1)
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='jobChangeStory.swf', movieId=1)
@@ -26,7 +26,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 묘지전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_effect(triggerIds=[700], visible=False)
@@ -38,7 +38,7 @@ class 묘지전경씬01(trigger_api.Trigger):
 
 
 class 묘지전경씬02_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_user_path(patrolName='MS2PatrolData_pc')
         self.select_camera_path(pathIds=[4000,4001,4002,4003], returnView=False)
@@ -50,7 +50,7 @@ class 묘지전경씬02_1(trigger_api.Trigger):
 
 
 class 묘지전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000167_QD__52000167__0$', desc='$52000167_QD__52000167__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class 묘지전경씬02(trigger_api.Trigger):
 
 
 class 묘지전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class 묘지전경씬03(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -79,7 +79,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -90,12 +90,13 @@ class Quit02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002369], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 홀슈타트등장00(self.ctx)
 
 
 # ########################씬2 케이틀린 등장########################
 class 홀슈타트등장00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[401], animationEffect=False)
@@ -111,7 +112,7 @@ class 홀슈타트등장00(trigger_api.Trigger):
 
 
 class 홀슈타트등장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[5000,5001,5002,5003,5004], returnView=False)
         self.move_npc(spawnId=402, patrolName='MS2PatrolData_402_hol')
@@ -127,7 +128,7 @@ class 홀슈타트등장01(trigger_api.Trigger):
 
 
 class 홀슈타트등장02_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[700], visible=True)
         self.set_time_scale(enable=True, startScale=1, endScale=0.3, duration=3.5, interpolator=2) # 2초간 느려지기 시작
         self.add_balloon_talk(spawnId=0, msg='$52000167_QD__52000167__3$', duration=6000, delayTick=1000)
@@ -138,7 +139,7 @@ class 홀슈타트등장02_c(trigger_api.Trigger):
 
 
 class 홀슈타트등장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=40, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -147,7 +148,7 @@ class 홀슈타트등장02(trigger_api.Trigger):
 
 
 class 홀슈타트등장03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=52001672, textId=52001672, duration=10000)
         self.set_onetime_effect(id=40, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
@@ -156,11 +157,12 @@ class 홀슈타트등장03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002370], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 홀슈타트등장04(self.ctx)
 
 
 class 홀슈타트등장04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=402, sequenceName='Attack_Idle_A', duration=800000)
         self.set_npc_emotion_loop(spawnId=403, sequenceName='Attack_Idle_A', duration=800000)
         self.set_npc_emotion_loop(spawnId=404, sequenceName='Attack_Idle_A', duration=800000)
@@ -169,11 +171,12 @@ class 홀슈타트등장04(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002371], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 수련장이동01(self.ctx)
 
 
 class 수련장이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=100000, arg3=True)
         self.set_cinematic_ui(type=1)
@@ -184,7 +187,7 @@ class 수련장이동01(trigger_api.Trigger):
 
 
 class 수련장이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000168, portalId=80)
 
 

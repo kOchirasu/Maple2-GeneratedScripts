@@ -3,6 +3,10 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_monster(spawnIds=[101], animationEffect=False)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9000]):
             return 퀘스트조건체크(self.ctx)
@@ -39,7 +43,7 @@ class 퀘스트조건체크(trigger_api.Trigger):
 
 
 class 기본상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,111])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +52,7 @@ class 기본상태(trigger_api.Trigger):
 
 
 class 앤있음(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +63,7 @@ class 앤있음(trigger_api.Trigger):
 
 
 class 연출1준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -71,7 +75,7 @@ class 연출1준비(trigger_api.Trigger):
 
 
 class 연출1앤등장준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +84,7 @@ class 연출1앤등장준비(trigger_api.Trigger):
 
 
 class 앤등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_ann01')
         self.add_cinematic_talk(npcId=11003432, illustId='Ann_normal', msg='$02000065_BF__MAIN__0$', duration=3000, align='left')
@@ -91,10 +95,10 @@ class 앤등장(trigger_api.Trigger):
 
 
 class 앤등장2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
         self.add_balloon_talk(spawnId=101, msg='$02000065_BF__MAIN__1$', duration=3000, delayTick=0)
-        # <action name="NPC를이동시킨다" arg1="101" arg2="MS2PatrolData_ann02" />
+        # self.move_npc(spawnId=101, patrolName='MS2PatrolData_ann02')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -102,7 +106,7 @@ class 앤등장2(trigger_api.Trigger):
 
 
 class 연출2준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[101])
@@ -116,7 +120,7 @@ class 연출2준비(trigger_api.Trigger):
 
 
 class 연출2준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +129,7 @@ class 연출2준비1(trigger_api.Trigger):
 
 
 class 앤대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8010,8011], returnView=False)
         self.add_cinematic_talk(npcId=11003432, msg='$02000065_BF__MAIN__2$', duration=3000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=3000)
@@ -138,8 +142,9 @@ class 앤대사01(trigger_api.Trigger):
 
 
 class 앤대사01_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +153,7 @@ class 앤대사01_skip(trigger_api.Trigger):
 
 
 class 칼대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000074, msg='$02000065_BF__MAIN__3$', duration=3000)
         self.set_skip(state=칼대사01_skip)
 
@@ -158,8 +163,9 @@ class 칼대사01(trigger_api.Trigger):
 
 
 class 칼대사01_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -168,7 +174,7 @@ class 칼대사01_skip(trigger_api.Trigger):
 
 
 class 앤대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003432, msg='$02000065_BF__MAIN__4$', duration=4000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=3000)
         self.set_skip(state=앤대사02_skip)
@@ -179,8 +185,9 @@ class 앤대사02(trigger_api.Trigger):
 
 
 class 앤대사02_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,7 +196,7 @@ class 앤대사02_skip(trigger_api.Trigger):
 
 
 class 칼대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000074, msg='$02000065_BF__MAIN__5$', duration=3000)
         self.set_skip(state=칼대사02_skip)
 
@@ -199,8 +206,9 @@ class 칼대사02(trigger_api.Trigger):
 
 
 class 칼대사02_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -209,7 +217,7 @@ class 칼대사02_skip(trigger_api.Trigger):
 
 
 class 앤대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003432, msg='$02000065_BF__MAIN__6$', duration=3000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=2000)
         self.set_skip(state=앤대사03_skip)
@@ -220,8 +228,9 @@ class 앤대사03(trigger_api.Trigger):
 
 
 class 앤대사03_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -230,7 +239,7 @@ class 앤대사03_skip(trigger_api.Trigger):
 
 
 class 칼대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000074, msg='$02000065_BF__MAIN__7$', duration=4000)
         self.set_skip(state=칼대사03_skip)
 
@@ -240,8 +249,9 @@ class 칼대사03(trigger_api.Trigger):
 
 
 class 칼대사03_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -250,7 +260,7 @@ class 칼대사03_skip(trigger_api.Trigger):
 
 
 class 앤대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003432, msg='$02000065_BF__MAIN__8$', duration=3000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=2000)
         self.set_skip(state=앤대사04_skip)
@@ -261,8 +271,9 @@ class 앤대사04(trigger_api.Trigger):
 
 
 class 앤대사04_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,7 +282,7 @@ class 앤대사04_skip(trigger_api.Trigger):
 
 
 class 칼대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000074, msg='$02000065_BF__MAIN__9$', duration=3000)
         self.set_skip(state=칼대사04_skip)
 
@@ -281,8 +292,9 @@ class 칼대사04(trigger_api.Trigger):
 
 
 class 칼대사04_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -291,7 +303,7 @@ class 칼대사04_skip(trigger_api.Trigger):
 
 
 class 앤대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.set_conversation(type=2, spawnId=11003432, script='$02000065_BF__MAIN__10$', arg4=3, arg5=0)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=2000)
@@ -302,7 +314,7 @@ class 앤대사05(trigger_api.Trigger):
 
 
 class 카메라아웃(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000,8001], returnView=False)
         self.visible_my_pc(isVisible=True)
 
@@ -312,7 +324,7 @@ class 카메라아웃(trigger_api.Trigger):
 
 
 class 칼과앤_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.visible_my_pc(isVisible=True)
@@ -323,7 +335,7 @@ class 칼과앤_스킵완료(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=3)
         self.set_achievement(triggerId=9000, type='trigger', achieve='meetingAnn')
         self.set_cinematic_ui(type=0)

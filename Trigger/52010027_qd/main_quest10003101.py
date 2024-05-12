@@ -5,7 +5,7 @@ import trigger_api
 # 바람의 골짜기 : 52010027
 # 중간 보스 빌런과 전투 벌이는 씬
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5005], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(mapId=52010027, portalId=6005)
@@ -26,7 +26,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 집에서나옴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4011], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3006')
         self.create_monster(spawnIds=[801], animationEffect=True)
@@ -38,7 +38,7 @@ class 집에서나옴(trigger_api.Trigger):
 
 
 class 집에서나와서대사침(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Suprise_A'])
         self.add_balloon_talk(spawnId=0, msg='$52010027_QD__MAIN_QUEST10003101__1$', duration=2000, delayTick=0)
 
@@ -48,7 +48,7 @@ class 집에서나와서대사침(trigger_api.Trigger):
 
 
 class 집에나와서대사침01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=10000)
         self.add_cinematic_talk(npcId=0, msg='$52010027_QD__MAIN_QUEST10003101__2$', duration=3000)
 
@@ -58,7 +58,7 @@ class 집에나와서대사침01(trigger_api.Trigger):
 
 
 class 집에나와서대사침02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN_QUEST10003101__3$', duration=3000)
 
@@ -68,7 +68,7 @@ class 집에나와서대사침02(trigger_api.Trigger):
 
 
 class 집에나와서대사침03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4011], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=10000)
         self.add_cinematic_talk(npcId=0, msg='$52010027_QD__MAIN_QUEST10003101__4$', duration=2000)
@@ -79,7 +79,7 @@ class 집에나와서대사침03(trigger_api.Trigger):
 
 
 class 집에나와서대사침04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
         self.move_npc(spawnId=801, patrolName='MS2PatrolData_3005')
         self.set_effect(triggerIds=[5005], visible=True)
@@ -95,7 +95,7 @@ class 집에나와서대사침04(trigger_api.Trigger):
 
 
 class 집에나와서대사침05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=801, sequenceName='Attack_01_G')
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN_QUEST10003101__10$', duration=3000)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN_QUEST10003101__11$', duration=3000)
@@ -106,7 +106,7 @@ class 집에나와서대사침05(trigger_api.Trigger):
 
 
 class 전투시작01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(mapId=52010027, portalId=6006)
@@ -117,7 +117,8 @@ class 전투시작01(trigger_api.Trigger):
 
 
 class 전투시작01_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,7 +127,7 @@ class 전투시작01_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52010027, portalId=6006)
         self.create_monster(spawnIds=[801], animationEffect=True)
@@ -137,7 +138,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 전투시작02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5005], visible=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -150,7 +151,7 @@ class 전투시작02(trigger_api.Trigger):
 
 
 class 전투시작03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[802], animationEffect=True)
         self.set_event_ui(type=1, arg2='$52010027_QD__MAIN_QUEST10003101__12$', arg3='3000', arg4='0')
         self.add_balloon_talk(spawnId=802, msg='$52010027_QD__MAIN_QUEST10003101__13$', duration=3000, delayTick=5000)
@@ -161,7 +162,7 @@ class 전투시작03(trigger_api.Trigger):
 
 
 class 전투종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -174,7 +175,7 @@ class 전투종료01(trigger_api.Trigger):
 
 
 class 전투종료02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN_QUEST10003101__14$', duration=3000)
         self.set_npc_emotion_loop(spawnId=803, sequenceName='Stun_A', duration=160000000)
@@ -185,14 +186,14 @@ class 전투종료02(trigger_api.Trigger):
 
 
 class 전투종료03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = idle

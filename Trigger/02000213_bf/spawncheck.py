@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 잡몹소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
         self.destroy_monster(spawnIds=[1002])
         self.destroy_monster(spawnIds=[1003])

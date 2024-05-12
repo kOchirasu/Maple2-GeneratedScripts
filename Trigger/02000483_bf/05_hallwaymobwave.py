@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[930,931,932,933]) # Mob
         self.set_user_value(key='MobWave', value=0)
 
@@ -13,7 +13,7 @@ class Setting(trigger_api.Trigger):
 
 
 class MobSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[930], animationEffect=False) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class MobSpawn01(trigger_api.Trigger):
 
 
 class MobSpawn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[931], animationEffect=False) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class MobSpawn02(trigger_api.Trigger):
 
 
 class MobSpawn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[932], animationEffect=False) # Mob
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class MobSpawn03(trigger_api.Trigger):
 
 
 class MobSpawn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[933], animationEffect=False) # Mob
 
 

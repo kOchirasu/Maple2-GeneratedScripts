@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 진동설정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=301, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=401, enable=False, path='BG/sound/Eff_ShakeLand_01.xml')
 
@@ -17,7 +17,7 @@ class 진동설정(trigger_api.Trigger):
 
 
 class 흔들흔들(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=301, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=401, enable=True, path='BG/sound/Eff_ShakeLand_01.xml')
 

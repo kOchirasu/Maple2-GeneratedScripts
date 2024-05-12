@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=199, skillId=99910130)
         self.set_interact_object(triggerIds=[12000027], state=2)
         self.set_interact_object(triggerIds=[12000028], state=2)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 탱크준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2903])
         self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.show_guide_summary(entityId=20040103, textId=20040103, duration=3500)
@@ -38,7 +38,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 던전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=종료체크)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -51,7 +51,7 @@ class 던전(trigger_api.Trigger):
 
 
 class 퀘스트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000039], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,8 @@ class 퀘스트(trigger_api.Trigger):
 
 
 class 종료체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.show_guide_summary(entityId=20040106, textId=20040106, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')

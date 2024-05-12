@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=19, visible=False, enable=False, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 타이머시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10000', seconds=360, startDelay=1, interval=1, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 유저감지_2(trigger_api.Trigger):
 
 
 class 몬스터등장_보스(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[82001], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,12 +42,12 @@ class 종료선택(trigger_api.Trigger):
         if self.time_expired(timerId='10000'):
             return 실패(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='10000')
 
 
 class 성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_achievement(triggerId=9900, type='trigger', achieve='Find02100000')
         self.set_event_ui(type=7, arg2='$02100000_BF__TIMER__1$', arg3='2000', arg4='0')
@@ -59,7 +59,7 @@ class 성공(trigger_api.Trigger):
 
 
 class 실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=5, arg2='$02100000_BF__TIMER__0$', arg3='2000', arg4='0')
         self.destroy_monster(spawnIds=[-1])
 
@@ -70,7 +70,7 @@ class 실패(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=19, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
 

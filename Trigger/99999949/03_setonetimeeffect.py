@@ -3,10 +3,11 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
         self.set_onetime_effect(id=2, enable=False, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
-        self.set_onetime_effect(id=3, enable=False, path='BG/Common/Eff_co_targetBox_test_99999949_01.xml') # 툴벤치 상 좌표 : 	-600, -600, 1200
+        # 툴벤치 상 좌표 : 	-600, -600, 1200
+        self.set_onetime_effect(id=3, enable=False, path='BG/Common/Eff_co_targetBox_test_99999949_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9021]):
@@ -14,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Guide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='3번 영역에 들어가면 SetOnetime트리거가 발동됩니다.Effect targetBox 이펙트 테스트.')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +24,7 @@ class Guide(trigger_api.Trigger):
 
 
 class SetOnetimeEffectReady01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='SetOnetimeEffect 1초 후에 시작됩니다.')
         self.set_onetime_effect(id=1, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
 
@@ -33,7 +34,7 @@ class SetOnetimeEffectReady01(trigger_api.Trigger):
 
 
 class SetOnetimeEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='SetOnetimeEffect 재생')
         self.set_onetime_effect(id=2, enable=True, path='UGC_Test/Eff_Tutorial_Sound_target.xml')
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/Eff_co_targetBox_test_99999949_01.xml')
@@ -45,10 +46,10 @@ class SetOnetimeEffect01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=True, startScale=0.2, endScale=1, duration=2, interpolator=2)
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/Eff_co_targetBox_test_99999949_01.xml')
-        # action name="SetTimeScale" enable="1" endScale="1" duration="8" interpolator="2" /
+        # self.set_time_scale(enable=True, endScale=1, duration=8, interpolator=2)
         self.debug_string(string='5초 후에 트리거가 리셋됩니다. 3번 영역 밖으로 나가세요.')
 
     def on_tick(self) -> trigger_api.Trigger:

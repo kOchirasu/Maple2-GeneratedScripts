@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 유저감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[1000049], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,13 +18,13 @@ class 대기(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[100000002], skillId=50000217, level=1, isPlayer=True, isSkillSet=False)
         self.set_skill(triggerIds=[1000049], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
-            return None
+            pass
 
 
 initial_state = 유저감지

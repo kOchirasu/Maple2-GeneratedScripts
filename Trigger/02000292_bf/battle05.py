@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[117,118,119,120], visible=False, arg3=0, delay=0, scale=2)
         self.destroy_monster(spawnIds=[1020])
         self.destroy_monster(spawnIds=[1021])
@@ -23,7 +23,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MobSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1020], animationEffect=False)
         self.create_monster(spawnIds=[1021], animationEffect=False)
         self.create_monster(spawnIds=[1022], animationEffect=False)
@@ -36,7 +36,7 @@ class MobSpawn01(trigger_api.Trigger):
 
 
 class MobBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5004], visible=True) # Dark_Intro_Chord
         self.change_monster(removeSpawnId=1020, addSpawnId=2015)
         self.change_monster(removeSpawnId=1021, addSpawnId=2016)
@@ -52,7 +52,7 @@ class MobBattle01(trigger_api.Trigger):
 
 
 class BlockOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002923, textId=20002923)
 
@@ -62,7 +62,7 @@ class BlockOn01(trigger_api.Trigger):
 
 
 class BlockOff01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002923)
         self.set_mesh(triggerIds=[117,118,119,120], visible=False, arg3=0, delay=0, scale=2)
 

@@ -9,7 +9,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class wait_01_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=520001781, portalId=1)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -30,7 +30,7 @@ class wait_01_03(trigger_api.Trigger):
 
 
 class 연구실도착_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -40,7 +40,7 @@ class 연구실도착_01(trigger_api.Trigger):
 
 
 class 연구실도착_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_3001')
         self.move_user_path(patrolName='MS2PatrolData_3002')
 
@@ -50,7 +50,7 @@ class 연구실도착_02(trigger_api.Trigger):
 
 
 class 정리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,8 +59,9 @@ class 정리_01(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +70,7 @@ class 정리_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -80,7 +81,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 정리_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -94,7 +95,7 @@ class 정리_03(trigger_api.Trigger):
 
 
 class 프론티아재단으로_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -104,7 +105,7 @@ class 프론티아재단으로_01(trigger_api.Trigger):
 
 
 class 프론티아재단으로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000186, portalId=1)
 
 

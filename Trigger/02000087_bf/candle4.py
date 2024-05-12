@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000135], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 오브젝트반응(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104], animationEffect=False)
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_204')
         self.set_timer(timerId='4', seconds=3)
@@ -29,7 +29,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class 대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=104, script='$02000087_BF__CANDLE4__0$', arg4=2)
         self.set_timer(timerId='4', seconds=3)
 
@@ -39,7 +39,7 @@ class 대화(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[104])
         self.set_timer(timerId='4', seconds=10)
 

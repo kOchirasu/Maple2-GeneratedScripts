@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
 
 
 class buff_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[701], skillId=49200002, level=1, isPlayer=False, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class buff_1(trigger_api.Trigger):
 
 
 class buff_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[701], skillId=49200002, level=1, isPlayer=False, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:

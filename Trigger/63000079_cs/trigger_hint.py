@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 힌트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(triggerIds=[801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818], visible=True, meshCount=2, arg4=0, delay=1000)
         self.set_timer(timerId='99', seconds=3, startDelay=0)
 
@@ -13,7 +13,7 @@ class 힌트(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818], visible=False)
         self.set_timer(timerId='41', seconds=30, startDelay=0)
 

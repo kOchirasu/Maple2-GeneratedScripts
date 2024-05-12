@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[500], visible=True)
         self.set_effect(triggerIds=[501], visible=True)
         self.set_effect(triggerIds=[600], visible=False)
@@ -48,7 +48,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[100009], skillId=70000102, level=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 시작연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6011], visible=True)
         self.set_effect(triggerIds=[6012], visible=True)
         self.set_event_ui(type=1, arg2='다크스크림의 새로운 차원의 틈으로 진입 했습니다.', arg3='3000')
@@ -68,7 +68,7 @@ class 시작연출(trigger_api.Trigger):
 
 
 class 시작연출_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6013], visible=True)
         self.set_effect(triggerIds=[6010], visible=True)
 
@@ -78,7 +78,7 @@ class 시작연출_2(trigger_api.Trigger):
 
 
 class 시작연출_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6023], visible=True)
         self.set_effect(triggerIds=[6022], visible=True)
 
@@ -88,7 +88,7 @@ class 시작연출_3(trigger_api.Trigger):
 
 
 class 시작연출_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6021], visible=True)
         self.set_effect(triggerIds=[6024], visible=True)
         self.set_event_ui(type=1, arg2='더 가까이 다가가십시오.', arg3='3000')
@@ -101,7 +101,7 @@ class 시작연출_4(trigger_api.Trigger):
 
 
 class 시작연출_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6028], visible=True)
         self.set_effect(triggerIds=[6027], visible=True)
 
@@ -111,7 +111,7 @@ class 시작연출_5(trigger_api.Trigger):
 
 
 class 시작연출_6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6025], visible=True)
         self.set_effect(triggerIds=[6026], visible=True)
 
@@ -121,7 +121,7 @@ class 시작연출_6(trigger_api.Trigger):
 
 
 class 시작연출_7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6032], visible=True)
         self.set_effect(triggerIds=[6029], visible=True)
 
@@ -131,7 +131,7 @@ class 시작연출_7(trigger_api.Trigger):
 
 
 class 시작연출_8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6031], visible=True)
         self.set_effect(triggerIds=[6030], visible=True)
 

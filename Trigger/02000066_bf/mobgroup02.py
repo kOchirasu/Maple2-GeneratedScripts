@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1101])
         self.destroy_monster(spawnIds=[1102])
         self.destroy_monster(spawnIds=[1103])
@@ -48,7 +48,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 차타이머1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='45', seconds=45)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -67,7 +67,7 @@ class 차타이머1(trigger_api.Trigger):
 
 
 class 차타이머2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=22)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -86,7 +86,7 @@ class 차타이머2(trigger_api.Trigger):
 
 
 class 차타이머3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='40', seconds=40)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -105,7 +105,7 @@ class 차타이머3(trigger_api.Trigger):
 
 
 class 차타이머4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='33', seconds=33)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -124,7 +124,7 @@ class 차타이머4(trigger_api.Trigger):
 
 
 class 차타이머5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='16', seconds=16)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -143,7 +143,7 @@ class 차타이머5(trigger_api.Trigger):
 
 
 class 차타이머6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='28', seconds=28)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -162,7 +162,7 @@ class 차타이머6(trigger_api.Trigger):
 
 
 class 차타이머7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='25', seconds=25)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -181,7 +181,7 @@ class 차타이머7(trigger_api.Trigger):
 
 
 class 차타이머8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='13', seconds=13)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -200,7 +200,7 @@ class 차타이머8(trigger_api.Trigger):
 
 
 class 차타이머9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=22)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -219,7 +219,7 @@ class 차타이머9(trigger_api.Trigger):
 
 
 class 차타이머10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=20)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -238,7 +238,7 @@ class 차타이머10(trigger_api.Trigger):
 
 
 class 차타이머11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -257,7 +257,7 @@ class 차타이머11(trigger_api.Trigger):
 
 
 class 차타이머12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='16', seconds=16)
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
@@ -276,7 +276,7 @@ class 차타이머12(trigger_api.Trigger):
 
 
 class 소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1101])
         self.destroy_monster(spawnIds=[1102])
         self.destroy_monster(spawnIds=[1103])

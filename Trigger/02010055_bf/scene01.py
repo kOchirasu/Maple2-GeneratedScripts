@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[699], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 바르칸트대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -26,8 +26,9 @@ class 바르칸트대사(trigger_api.Trigger):
 
 
 class 바르칸트대사2스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +37,7 @@ class 바르칸트대사2스킵(trigger_api.Trigger):
 
 
 class 바르칸트대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
         self.set_effect(triggerIds=[699], visible=True)
         self.set_conversation(type=2, spawnId=23000068, script='$02010055_BF__SCENE01__1$', arg4=4)
@@ -48,8 +49,9 @@ class 바르칸트대사2(trigger_api.Trigger):
 
 
 class 종료준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +60,7 @@ class 종료준비(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

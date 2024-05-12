@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
@@ -21,7 +21,7 @@ class 시작대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2002])
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.set_timer(timerId='5', seconds=5)
@@ -34,7 +34,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 첫번째구덩이도착(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_effect(triggerIds=[601], visible=True)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__1$', arg4=3)
@@ -45,7 +45,7 @@ class 첫번째구덩이도착(trigger_api.Trigger):
 
 
 class 첫번째구덩이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__2$', arg4=2)
 
@@ -55,7 +55,7 @@ class 첫번째구덩이(trigger_api.Trigger):
 
 
 class 첫번째꿈틀이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__3$', arg4=3)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001B')
         self.create_monster(spawnIds=[1001], animationEffect=True)
@@ -66,7 +66,7 @@ class 첫번째꿈틀이(trigger_api.Trigger):
 
 
 class 첫번째구덩이완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__4$', arg4=3)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001C')
@@ -77,7 +77,7 @@ class 첫번째구덩이완료(trigger_api.Trigger):
 
 
 class 두번째구덩이시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__5$', arg4=5)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001D')
@@ -88,7 +88,7 @@ class 두번째구덩이시작(trigger_api.Trigger):
 
 
 class 두번째구덩이도착(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_effect(triggerIds=[602], visible=True)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__6$', arg4=3)
@@ -99,7 +99,7 @@ class 두번째구덩이도착(trigger_api.Trigger):
 
 
 class 두번째구덩이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__7$', arg4=2)
 
@@ -109,7 +109,7 @@ class 두번째구덩이(trigger_api.Trigger):
 
 
 class 두번째꿈틀이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__8$', arg4=3)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001E')
         self.create_monster(spawnIds=[1002], animationEffect=True)
@@ -120,7 +120,7 @@ class 두번째꿈틀이(trigger_api.Trigger):
 
 
 class 두번째구덩이완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__9$', arg4=3)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001F')
@@ -131,7 +131,7 @@ class 두번째구덩이완료(trigger_api.Trigger):
 
 
 class 세번째구덩이시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__10$', arg4=5)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001G')
@@ -142,7 +142,7 @@ class 세번째구덩이시작(trigger_api.Trigger):
 
 
 class 세번째구덩이도착(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=4)
         self.set_effect(triggerIds=[603], visible=True)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__11$', arg4=4)
@@ -153,7 +153,7 @@ class 세번째구덩이도착(trigger_api.Trigger):
 
 
 class 세번째구덩이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__12$', arg4=2)
 
@@ -163,7 +163,7 @@ class 세번째구덩이(trigger_api.Trigger):
 
 
 class 세번째꿈틀이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001H')
         self.create_monster(spawnIds=[1003], animationEffect=True)
 
@@ -173,7 +173,7 @@ class 세번째꿈틀이(trigger_api.Trigger):
 
 
 class 세번째구덩이완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=1, spawnId=2001, script='$52000019_QD__MAIN__13$', arg4=5)
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001G')

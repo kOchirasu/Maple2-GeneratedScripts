@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000999], state=0)
@@ -37,7 +37,7 @@ class 전투감지2(trigger_api.Trigger):
 
 
 class 포털개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000999], state=1)
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
         self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False)
@@ -54,7 +54,7 @@ class 포털개방(trigger_api.Trigger):
 
 
 class 다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3002,3003,3004,3005], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132,3133,3134,3135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147], visible=True, arg3=0, delay=10, scale=0)

@@ -4,12 +4,12 @@ import trigger_api
 
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.user_value(key='SkillBreakSuccess_5', value=1) and self.user_value(key='SkillBreakSuccess_6', value=1) and self.user_value(key='SkillBreakSuccess_7', value=1) and self.user_value(key='SkillBreakSuccess_8', value=1):
             return 버프발동(self.ctx)
 
 
 class 버프발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=62100027, level=1, isPlayer=True)
         self.add_buff(boxIds=[1001], skillId=75000002, level=1)
         self.add_buff(boxIds=[1002], skillId=75000002, level=1)
@@ -24,7 +24,7 @@ class 버프발동(trigger_api.Trigger):
         self.set_user_value(triggerId=900204, key='Message', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.user_value(key='SkillBreakSuccess_5', value=0) and self.user_value(key='SkillBreakSuccess_6', value=0) and self.user_value(key='SkillBreakSuccess_7', value=0) and self.user_value(key='SkillBreakSuccess_8', value=0) and self.user_value(key='SkillBreakSuccess_Reset', value=0):
             return 시작(self.ctx)
 
 

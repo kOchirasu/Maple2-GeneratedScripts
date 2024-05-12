@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.set_actor(triggerId=201, visible=True, initialSequence='Idle_A')
         self.set_actor(triggerId=202, visible=True, initialSequence='Idle_A')
@@ -67,7 +67,7 @@ class 대기(trigger_api.Trigger):
 
 
 class CheckQuestCondition(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -83,7 +83,7 @@ class CheckQuestCondition(trigger_api.Trigger):
 
 # 다음 맵 이동
 class QuestOnGoing01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000076, portalId=30, boxId=100)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -92,7 +92,7 @@ class QuestOnGoing01(trigger_api.Trigger):
 
 
 class QuestOnGoing02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=320, enable=True)
         self.create_monster(spawnIds=[1310,1410], animationEffect=False)
 
@@ -102,7 +102,7 @@ class QuestOnGoing02(trigger_api.Trigger):
 
 
 class QuestOnGoing03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -113,7 +113,7 @@ class QuestOnGoing03(trigger_api.Trigger):
 
 # 던전 진행
 class DungeonReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -123,7 +123,7 @@ class DungeonReady(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='KatvanIntroMovie.swf', movieId=1)
@@ -134,7 +134,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 진행01벽제거(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=201, visible=False, initialSequence='Idle_A')
         self.set_interact_object(triggerIds=[10000806], state=1)
         self.show_guide_summary(entityId=20003492, textId=20003492)
@@ -148,7 +148,7 @@ class 진행01벽제거(trigger_api.Trigger):
 
 
 class 진행01몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,1003], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +157,7 @@ class 진행01몬스터(trigger_api.Trigger):
 
 
 class 진행01오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003496, textId=20003496)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=202, visible=False, initialSequence='Idle_A')
@@ -170,7 +170,7 @@ class 진행01오브젝트(trigger_api.Trigger):
 
 
 class 진행02몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[39102], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1004,1005,1006], animationEffect=False)
 
@@ -180,7 +180,7 @@ class 진행02몬스터(trigger_api.Trigger):
 
 
 class 진행02오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003497, textId=20003497)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=203, visible=False, initialSequence='Idle_A')
@@ -193,7 +193,7 @@ class 진행02오브젝트(trigger_api.Trigger):
 
 
 class 진행03몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[39103], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1007,1008,1009], animationEffect=False)
 
@@ -203,7 +203,7 @@ class 진행03몬스터(trigger_api.Trigger):
 
 
 class 진행04오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003498, textId=20003498)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=204, visible=False, initialSequence='Idle_A')
@@ -216,7 +216,7 @@ class 진행04오브젝트(trigger_api.Trigger):
 
 
 class 진행04몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[39104], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1010,1011,1012], animationEffect=False)
 
@@ -226,7 +226,7 @@ class 진행04몬스터(trigger_api.Trigger):
 
 
 class 진행05오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003499, textId=20003499)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=205, visible=False, initialSequence='Idle_A')
@@ -239,7 +239,7 @@ class 진행05오브젝트(trigger_api.Trigger):
 
 
 class 진행05몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[39105], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1013,1014,1015], animationEffect=False)
 
@@ -249,7 +249,7 @@ class 진행05몬스터(trigger_api.Trigger):
 
 
 class 진행06오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003500, textId=20003500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=206, visible=False, initialSequence='Idle_A')
@@ -263,7 +263,7 @@ class 진행06오브젝트(trigger_api.Trigger):
 
 
 class 진행06몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[39106], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1016,1017,1018,1019,1020], animationEffect=True)
 
@@ -273,7 +273,7 @@ class 진행06몬스터(trigger_api.Trigger):
 
 
 class 레논오브젝트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003495, textId=20003495)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_actor(triggerId=207, visible=False, initialSequence='Idle_A')
@@ -287,7 +287,7 @@ class 레논오브젝트(trigger_api.Trigger):
 
 
 class 레논구출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -302,7 +302,7 @@ class 레논구출(trigger_api.Trigger):
 
 
 class 레논대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6101], visible=True)
         self.set_conversation(type=2, spawnId=11000064, script='$02000349_BF__MAIN__3$', arg4=3)
         self.set_skip(state=레논구출종료)
@@ -313,7 +313,7 @@ class 레논대사01(trigger_api.Trigger):
 
 
 class 레논대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6102], visible=True)
         self.set_conversation(type=2, spawnId=11000064, script='$02000349_BF__MAIN__4$', arg4=3)
         self.set_skip(state=레논구출종료)
@@ -324,7 +324,8 @@ class 레논대사02(trigger_api.Trigger):
 
 
 class 레논구출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_item(spawnIds=[9001], triggerId=100)
         self.select_camera_path(pathIds=[301], returnView=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -333,7 +334,7 @@ class 레논구출종료(trigger_api.Trigger):
 
 
 class 진행07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -347,7 +348,7 @@ class 진행07(trigger_api.Trigger):
 
 
 class 진행07몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1021], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,7 +357,7 @@ class 진행07몬스터(trigger_api.Trigger):
 
 
 class 진행08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData2002_C')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -369,7 +370,7 @@ class 진행08(trigger_api.Trigger):
 
 
 class 진행09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData2002_C')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -378,7 +379,7 @@ class 진행09(trigger_api.Trigger):
 
 
 class 진행09몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2003, patrolName='MS2PatrolData2003_A')
         self.create_monster(spawnIds=[1022], animationEffect=False)
 
@@ -388,7 +389,7 @@ class 진행09몬스터(trigger_api.Trigger):
 
 
 class 진행10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2003, patrolName='MS2PatrolData2003_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -407,7 +408,7 @@ class 진행11(trigger_api.Trigger):
 
 
 class 진행11몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2004, patrolName='MS2PatrolData2004_A')
         self.create_monster(spawnIds=[1023], animationEffect=False)
 
@@ -417,7 +418,7 @@ class 진행11몬스터(trigger_api.Trigger):
 
 
 class 진행12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2004, patrolName='MS2PatrolData2004_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -436,7 +437,7 @@ class 진행13(trigger_api.Trigger):
 
 
 class 진행13몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2005, patrolName='MS2PatrolData2005_A')
         self.create_monster(spawnIds=[1024], animationEffect=False)
 
@@ -446,7 +447,7 @@ class 진행13몬스터(trigger_api.Trigger):
 
 
 class 진행14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2005, patrolName='MS2PatrolData2005_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -465,7 +466,7 @@ class 진행15(trigger_api.Trigger):
 
 
 class 카트반연출딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1099], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -474,13 +475,13 @@ class 카트반연출딜레이(trigger_api.Trigger):
 
 
 class 카드반연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카드반연출종료, action='nextState')
         self.set_effect(triggerIds=[602], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -488,9 +489,9 @@ class 카드반연출시작(trigger_api.Trigger):
 
 
 class 카드반대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=24001705, script='$02000349_BF__MAIN__5$', arg4=3)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -498,9 +499,9 @@ class 카드반대사01(trigger_api.Trigger):
 
 
 class 카드반대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=24001705, script='$02000349_BF__MAIN__6$', arg4=4)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -508,10 +509,10 @@ class 카드반대사02(trigger_api.Trigger):
 
 
 class 레논대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
         self.set_conversation(type=2, spawnId=11000064, script='$02000349_BF__MAIN__7$', arg4=4)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -519,10 +520,10 @@ class 레논대사05(trigger_api.Trigger):
 
 
 class 카드반대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_conversation(type=2, spawnId=24001705, script='$02000349_BF__MAIN__8$', arg4=6)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
@@ -530,10 +531,10 @@ class 카드반대사03(trigger_api.Trigger):
 
 
 class 카드반대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_conversation(type=2, spawnId=24001705, script='$02000349_BF__MAIN__9$', arg4=8)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
@@ -541,11 +542,11 @@ class 카드반대사04(trigger_api.Trigger):
 
 
 class 카드반대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.create_monster(spawnIds=[1025,1026], animationEffect=False)
         self.set_conversation(type=2, spawnId=24001705, script='$02000349_BF__MAIN__10$', arg4=7)
-        # <action name="스킵을설정한다" arg1="카드반연출종료" />
+        # self.set_skip(state=카드반연출종료)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=8000):
@@ -553,7 +554,8 @@ class 카드반대사05(trigger_api.Trigger):
 
 
 class 카드반연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.show_guide_summary(entityId=20003502, textId=20003502, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -573,7 +575,7 @@ class 카드반연출종료(trigger_api.Trigger):
 
 
 class 진행16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=302, enable=False)
@@ -587,7 +589,7 @@ class 진행16(trigger_api.Trigger):
 
 # Boss 전투 개시
 class BossBattleStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1025,1026], animationEffect=False)
         self.create_monster(spawnIds=[1099], animationEffect=False)
         self.set_agent(triggerIds=[901], visible=True)
@@ -604,7 +606,7 @@ class BossBattleStart01(trigger_api.Trigger):
 
 
 class BossNpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -620,7 +622,7 @@ class BossNpcChange01(trigger_api.Trigger):
 
 
 class BossNpcChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1025,1026,1099,2006])
         self.move_user(mapId=52000076, portalId=20, boxId=100)
         self.create_monster(spawnIds=[1200,1300], animationEffect=False)
@@ -632,7 +634,7 @@ class BossNpcChange02(trigger_api.Trigger):
 
 
 class BossNpcChange03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_loop(spawnId=1200, sequenceName='Attack_Idle_A', duration=15000)
 
@@ -642,7 +644,7 @@ class BossNpcChange03(trigger_api.Trigger):
 
 
 class BossNpcChange04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=311, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -651,7 +653,7 @@ class BossNpcChange04(trigger_api.Trigger):
 
 
 class EveEnter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1400], animationEffect=False)
         self.move_npc(spawnId=1400, patrolName='MS2PatrolData_1400')
         self.select_camera(triggerId=312, enable=True)
@@ -664,7 +666,7 @@ class EveEnter01(trigger_api.Trigger):
 
 
 class EveEnter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=313, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -673,7 +675,7 @@ class EveEnter02(trigger_api.Trigger):
 
 
 class EveEnter03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1300, patrolName='MS2PatrolData_1300')
         self.move_user_path(patrolName='MS2PatrolData_1000')
         self.set_conversation(type=1, spawnId=1300, script='$52000076_QD__MAIN__1$', arg4=2, arg5=2)
@@ -685,7 +687,7 @@ class EveEnter03(trigger_api.Trigger):
 
 
 class EveEnter04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
         self.set_conversation(type=1, spawnId=1200, script='$52000076_QD__MAIN__3$', arg4=2, arg5=0)
 
@@ -693,16 +695,16 @@ class EveEnter04(trigger_api.Trigger):
         if self.wait_tick(waitTick=3000):
             return EveTalk01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=11, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001901.xml')
 
 
 class EveTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=314, enable=True)
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__4$', duration=5000, align='center')
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EveTalk01Skip"/>
+        # self.set_skip(state=EveTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -710,10 +712,11 @@ class EveTalk01(trigger_api.Trigger):
 
 
 class EveTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -721,10 +724,10 @@ class EveTalk01Skip(trigger_api.Trigger):
 
 
 class EveTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__5$', duration=5000, align='center')
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EveTalk02Skip"/>
+        # self.set_skip(state=EveTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -732,10 +735,11 @@ class EveTalk02(trigger_api.Trigger):
 
 
 class EveTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -743,10 +747,10 @@ class EveTalk02Skip(trigger_api.Trigger):
 
 
 class LennonTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__6$', arg4=5) # 레논
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="LennonTalk01Skip"/>
+        # self.set_skip(state=LennonTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
@@ -754,10 +758,11 @@ class LennonTalk01(trigger_api.Trigger):
 
 
 class LennonTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -765,7 +770,7 @@ class LennonTalk01Skip(trigger_api.Trigger):
 
 
 class LennonTurnAround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=315, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -774,7 +779,7 @@ class LennonTurnAround01(trigger_api.Trigger):
 
 
 class LennonTurnAround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1300, patrolName='MS2PatrolData_1301')
         self.move_npc(spawnId=1400, patrolName='MS2PatrolData_1401')
         self.move_user_path(patrolName='MS2PatrolData_1001')
@@ -785,9 +790,10 @@ class LennonTurnAround02(trigger_api.Trigger):
 
 
 class LennonTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__7$', arg4=5) # 레논
+        # self.set_skip(state=LennonTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -795,10 +801,11 @@ class LennonTalk02(trigger_api.Trigger):
 
 
 class LennonTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -806,25 +813,26 @@ class LennonTalk02Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=12, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__8$', arg4=7) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk01Skip"/>
+        # self.set_skip(state=EvilKatvanTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return EvilKatvanTalk01Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=12, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001902.xml')
 
 
 class EvilKatvanTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -832,25 +840,26 @@ class EvilKatvanTalk01Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=13, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__9$', arg4=7) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk02Skip"/>
+        # self.set_skip(state=EvilKatvanTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
             return EvilKatvanTalk02Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=13, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001903.xml')
 
 
 class EvilKatvanTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -858,24 +867,25 @@ class EvilKatvanTalk02Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=14, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__10$', arg4=6) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk03Skip"/>
+        # self.set_skip(state=EvilKatvanTalk03Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return EvilKatvanTalk03Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=14, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001904.xml')
 
 
 class EvilKatvanTalk03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
@@ -883,7 +893,7 @@ class EvilKatvanTalk03Skip(trigger_api.Trigger):
 
 
 class EveWalkFront01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
         self.move_npc(spawnId=1400, patrolName='MS2PatrolData_1402')
 
@@ -893,10 +903,10 @@ class EveWalkFront01(trigger_api.Trigger):
 
 
 class EveTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__11$', duration=5000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk10Skip"/>
+        # self.set_skip(state=EveTalk10Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -904,23 +914,24 @@ class EveTalk10(trigger_api.Trigger):
 
 
 class EveTalk10Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EveTalk11(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Idle_A')
 
 
 class EveTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__12$', duration=7000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk11Skip"/>
+        # self.set_skip(state=EveTalk11Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
@@ -928,22 +939,24 @@ class EveTalk11(trigger_api.Trigger):
 
 
 class EveTalk11Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EveTalk12(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Idle_A')
 
 
 class EveTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000523, script='$52000076_QD__MAIN__13$', arg4=5) # 이브
+        # self.set_skip(state=EveTalk12Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -951,37 +964,39 @@ class EveTalk12(trigger_api.Trigger):
 
 
 class EveTalk12Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EvilKatvanTalk10(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=1400, sequenceName='Idle_A')
 
 
 class EvilKatvanTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=15, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__14$', arg4=6) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk10Skip"/>
+        # self.set_skip(state=EvilKatvanTalk10Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return EvilKatvanTalk10Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=15, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001905.xml')
 
 
 class EvilKatvanTalk10Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
@@ -989,10 +1004,11 @@ class EvilKatvanTalk10Skip(trigger_api.Trigger):
 
 
 class LennonTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
         self.move_npc(spawnId=1300, patrolName='MS2PatrolData_1302')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__15$', arg4=3) # 레논
+        # self.set_skip(state=LennonTalk10Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -1000,9 +1016,10 @@ class LennonTalk10(trigger_api.Trigger):
 
 
 class LennonTalk10Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
         self.select_camera(triggerId=316, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1011,78 +1028,82 @@ class LennonTalk10Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=16, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__16$', arg4=5) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk20Skip"/>
+        # self.set_skip(state=EvilKatvanTalk20Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return EvilKatvanTalk20Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=16, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001906.xml')
 
 
 class EvilKatvanTalk20Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EvilKatvanTalk21(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
 
 
 class EvilKatvanTalk21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=17, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__17$', arg4=6) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk21Skip"/>
+        # self.set_skip(state=EvilKatvanTalk21Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
             return EvilKatvanTalk21Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=17, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001907.xml')
 
 
 class EvilKatvanTalk21Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return EvilKatvanTalk22(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
 
 
 class EvilKatvanTalk22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=18, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__18$', arg4=5) # 흑화카트반
+        # self.set_skip(state=EvilKatvanTalk22Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return EvilKatvanTalk22Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=18, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001908.xml')
 
 
 class EvilKatvanTalk22Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
         self.select_camera(triggerId=317, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1091,9 +1112,10 @@ class EvilKatvanTalk22Skip(trigger_api.Trigger):
 
 
 class LennonTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__19$', arg4=4) # 레논
+        # self.set_skip(state=LennonTalk20Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -1101,10 +1123,11 @@ class LennonTalk20(trigger_api.Trigger):
 
 
 class LennonTalk20Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1300, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1112,7 +1135,7 @@ class LennonTalk20Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1200, patrolName='MS2PatrolData_1200')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1121,24 +1144,25 @@ class EvilKatvanTalk30(trigger_api.Trigger):
 
 
 class EvilKatvanTalk31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=19, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__20$', arg4=9) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
-        # <action name="스킵을설정한다" arg1="EvilKatvanTalk31Skip"/>
+        # self.set_skip(state=EvilKatvanTalk31Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=9000):
             return EvilKatvanTalk31Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=19, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001909.xml')
 
 
 class EvilKatvanTalk31Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1147,7 +1171,7 @@ class EvilKatvanTalk31Skip(trigger_api.Trigger):
 
 
 class EvilKatvanTalk32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=True, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
         self.set_conversation(type=2, spawnId=24001705, script='$52000076_QD__MAIN__21$', arg4=6) # 흑화카트반
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Talk_A')
@@ -1156,12 +1180,12 @@ class EvilKatvanTalk32(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return EvilKatvanTalk32Skip(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=20, enable=False, path='BG/Common/Sound/Eff_Sound_52000076_EvilKatvan_DarkRoots_00001910.xml')
 
 
 class EvilKatvanTalk32Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1200, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1171,7 +1195,7 @@ class EvilKatvanTalk32Skip(trigger_api.Trigger):
 
 
 class EvilKatvanLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1200, patrolName='MS2PatrolData_1201')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1180,7 +1204,7 @@ class EvilKatvanLeave01(trigger_api.Trigger):
 
 
 class EvilKatvanLeave02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1200])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1189,7 +1213,7 @@ class EvilKatvanLeave02(trigger_api.Trigger):
 
 
 class EvilKatvanLeave03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1300, patrolName='MS2PatrolData_1303')
         self.set_conversation(type=1, spawnId=1300, script='$52000076_QD__MAIN__22$', arg4=2, arg5=0)
 
@@ -1199,7 +1223,8 @@ class EvilKatvanLeave03(trigger_api.Trigger):
 
 
 class EvilKatvanLeave04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -1209,7 +1234,7 @@ class EvilKatvanLeave04(trigger_api.Trigger):
 
 
 class PositionArrange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1200,1300,1400])
         self.move_user(mapId=52000076, portalId=30, boxId=100)
         self.create_monster(spawnIds=[1310,1410], animationEffect=False)
@@ -1221,7 +1246,7 @@ class PositionArrange01(trigger_api.Trigger):
 
 
 class PositionArrange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1230,10 +1255,11 @@ class PositionArrange02(trigger_api.Trigger):
 
 
 class LennonTalk30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=EveTalk31Skip, action='nextState')
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__23$', arg4=5) # 레논
+        # self.set_skip(state=LennonTalk30Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -1241,10 +1267,11 @@ class LennonTalk30(trigger_api.Trigger):
 
 
 class LennonTalk30Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1252,9 +1279,10 @@ class LennonTalk30Skip(trigger_api.Trigger):
 
 
 class LennonTalk31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__24$', arg4=5) # 레논
+        # self.set_skip(state=LennonTalk31Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -1262,10 +1290,11 @@ class LennonTalk31(trigger_api.Trigger):
 
 
 class LennonTalk31Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1273,10 +1302,10 @@ class LennonTalk31Skip(trigger_api.Trigger):
 
 
 class EveTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__25$', duration=6000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk20Skip"/>
+        # self.set_skip(state=EveTalk20Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -1284,10 +1313,11 @@ class EveTalk20(trigger_api.Trigger):
 
 
 class EveTalk20Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1295,10 +1325,10 @@ class EveTalk20Skip(trigger_api.Trigger):
 
 
 class EveTalk21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__26$', duration=6000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk21Skip"/>
+        # self.set_skip(state=EveTalk21Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -1306,10 +1336,11 @@ class EveTalk21(trigger_api.Trigger):
 
 
 class EveTalk21Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1317,9 +1348,10 @@ class EveTalk21Skip(trigger_api.Trigger):
 
 
 class LennonTalk40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11000064, script='$52000076_QD__MAIN__27$', arg4=6) # 레논
+        # self.set_skip(state=LennonTalk40Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -1327,10 +1359,11 @@ class LennonTalk40(trigger_api.Trigger):
 
 
 class LennonTalk40Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1310, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -1338,10 +1371,10 @@ class LennonTalk40Skip(trigger_api.Trigger):
 
 
 class EveTalk30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__28$', duration=3000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk30Skip"/>
+        # self.set_skip(state=EveTalk30Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -1349,10 +1382,11 @@ class EveTalk30(trigger_api.Trigger):
 
 
 class EveTalk30Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1410, sequenceName='Idle_A')
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
         self.select_camera(triggerId=321, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1361,9 +1395,9 @@ class EveTalk30Skip(trigger_api.Trigger):
 
 
 class EveTalk31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000523, illustId='Eve_serious', msg='$52000076_QD__MAIN__29$', duration=5000, align='center')
-        # <action name="스킵을설정한다" arg1="EveTalk31Skip"/>
+        # self.set_skip(state=EveTalk31Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -1371,10 +1405,12 @@ class EveTalk31(trigger_api.Trigger):
 
 
 class EveTalk31Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
-        # <action name="스킵을설정한다" arg1=""/>
+        # Missing State: State
+        # self.set_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1383,7 +1419,7 @@ class EveTalk31Skip(trigger_api.Trigger):
 
 
 class QuestComplete01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=100, type='trigger', achieve='saveEveIntheDark')
         self.set_effect(triggerIds=[6205], visible=True)
         self.set_mesh(triggerIds=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716], visible=True, arg3=0, delay=0, scale=0)
@@ -1395,7 +1431,7 @@ class QuestComplete01(trigger_api.Trigger):
 
 
 class QuestComplete02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.reset_camera(interpolationTime=1)
@@ -1407,7 +1443,7 @@ class QuestComplete02(trigger_api.Trigger):
 
 
 class QuestComplete03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1310, patrolName='MS2PatrolData_1304')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1416,7 +1452,7 @@ class QuestComplete03(trigger_api.Trigger):
 
 
 class GotoTria01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1310, script='$52000076_QD__MAIN__30$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1425,7 +1461,7 @@ class GotoTria01(trigger_api.Trigger):
 
 
 class GotoTria02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1410, patrolName='MS2PatrolData_1403')
         self.move_user_path(patrolName='MS2PatrolData_1002')
 
@@ -1435,20 +1471,20 @@ class GotoTria02(trigger_api.Trigger):
 
 
 class GotoTria03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1310,1410])
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return GotoTria04(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class GotoTria04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000050, portalId=1, boxId=100)
 
 

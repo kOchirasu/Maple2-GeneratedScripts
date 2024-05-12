@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='전 밖에서 기다리고 있겠습니다.', duration=2500, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class ready(trigger_api.Trigger):
 
 
 class move(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class move(trigger_api.Trigger):
 
 
 class out(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
 
 

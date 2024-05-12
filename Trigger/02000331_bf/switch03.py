@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7773], visible=False) # 발판 휠 내려옴 사운드
         self.set_breakable(triggerIds=[5001], enable=False)
         self.set_breakable(triggerIds=[5002], enable=False)
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발판내리기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[5001], enable=True)
         self.set_breakable(triggerIds=[5002], enable=True)
         self.set_breakable(triggerIds=[5011], enable=True)
@@ -39,7 +39,7 @@ class 발판내리기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[5001], enable=False)
         self.set_breakable(triggerIds=[5002], enable=False)
         self.set_breakable(triggerIds=[5011], enable=False)

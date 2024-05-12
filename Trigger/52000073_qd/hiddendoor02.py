@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
         self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0) # Wall
         self.set_breakable(triggerIds=[4000], enable=False) # Move
@@ -17,7 +17,7 @@ class Wait(trigger_api.Trigger):
 
 
 class BookCaseMove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=True) # Move
         self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move
         self.set_mesh(triggerIds=[2000], visible=False, arg3=0, delay=0, scale=3) # Wall
@@ -28,7 +28,7 @@ class BookCaseMove01(trigger_api.Trigger):
 
 
 class DoorOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Opened') # HiddenDoor
         self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
 
@@ -38,7 +38,7 @@ class DoorOpen01(trigger_api.Trigger):
 
 
 class DoorOpen02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class DoorOpen02(trigger_api.Trigger):
 
 
 class DoorClose01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Closed') # HiddenDoor
         self.set_portal(portalId=2, visible=True, enable=False, minimapVisible=False)
 
@@ -57,7 +57,7 @@ class DoorClose01(trigger_api.Trigger):
 
 
 class DoorClose02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False) # Move
         self.set_visible_breakable_object(triggerIds=[4000], visible=False) # Move
         self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=3) # Wall

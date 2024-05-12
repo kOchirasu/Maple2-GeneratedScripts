@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000170], state=1)
         self.set_effect(triggerIds=[205,206,207,208], visible=False)
         self.set_mesh(triggerIds=[309,310,311,312], visible=True)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 개봉박두(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[309,310,311,312], visible=False)
         self.create_monster(spawnIds=[95,96,97,98], animationEffect=True)
         self.set_mesh(triggerIds=[313,314,315,316], visible=True)
@@ -27,7 +27,7 @@ class 개봉박두(trigger_api.Trigger):
 
 
 class 유저감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:

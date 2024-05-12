@@ -10,7 +10,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 차타이머1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class 생성랜덤(trigger_api.Trigger):
 
 
 class 번생성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +49,7 @@ class 번생성1(trigger_api.Trigger):
 
 
 class 번생성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[112], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 번생성2(trigger_api.Trigger):
 
 
 class 번생성3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[113], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 번생성3(trigger_api.Trigger):
 
 
 class 번생성4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[114], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class 번생성4(trigger_api.Trigger):
 
 
 class 번생성5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[115], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class 번생성5(trigger_api.Trigger):
 
 
 class 번생성6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class 번생성6(trigger_api.Trigger):
 
 
 class 번생성7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[114], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class 번생성7(trigger_api.Trigger):
 
 
 class 번생성8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[115], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:

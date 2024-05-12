@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # Voice 60000509
         self.set_mesh(triggerIds=[10000], visible=True, arg3=0, delay=0, scale=0) # battle02
         self.set_mesh(triggerIds=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=True, arg3=0, delay=0, scale=0) # battle02 flag
@@ -29,7 +29,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102,103,104,105,107,108], animationEffect=False)
         self.create_monster(spawnIds=[201,202,203,204,205,206], animationEffect=False)
         self.show_guide_summary(entityId=20104901, textId=20104901, duration=3000) # 벌레떼가 모여들고 있습니다.
@@ -41,7 +41,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -51,16 +51,17 @@ class CameraWalk01(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return CameraWalk02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class CameraWalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +70,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 
 class GateOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9990,9991,9992,9993], visible=False, arg3=0, delay=0, scale=0) # startzone
         self.set_mesh(triggerIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017], visible=False, arg3=0, delay=0, scale=10) # startzone flag
 
@@ -79,7 +80,7 @@ class GateOpen01(trigger_api.Trigger):
 
 
 class 전투지역01시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=20104902, textId=20104902, duration=5000) # 달려드는 벌레들을 모두 처치하세요.
 
@@ -89,7 +90,7 @@ class 전투지역01시작(trigger_api.Trigger):
 
 
 class 전투지역02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[10000], visible=False, arg3=0, delay=0, scale=0) # battle02
         self.set_mesh(triggerIds=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016], visible=False, arg3=0, delay=0, scale=10) # battle02 flag
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
@@ -101,7 +102,7 @@ class 전투지역02대기(trigger_api.Trigger):
 
 
 class 전투지역02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=20104902, textId=20104902, duration=5000) # 달려드는 벌레들을 모두 처치하세요.
 
@@ -111,7 +112,7 @@ class 전투지역02시작(trigger_api.Trigger):
 
 
 class 전투지역02추가(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=20104904, textId=20104904, duration=5000) # 화장실 악취에는 벌레도 기절합니다.
 
@@ -121,7 +122,7 @@ class 전투지역02추가(trigger_api.Trigger):
 
 
 class 전투지역03대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[20000], visible=False, arg3=0, delay=0, scale=0) # battle03
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016], visible=False, arg3=0, delay=0, scale=10) # battle03 flag
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
@@ -133,7 +134,7 @@ class 전투지역03대기(trigger_api.Trigger):
 
 
 class 전투지역03시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[399], animationEffect=False) # boss
         self.create_monster(spawnIds=[302,303,304,305,306,307], animationEffect=False)
         self.create_monster(spawnIds=[309], animationEffect=False) # elite
@@ -146,7 +147,7 @@ class 전투지역03시작(trigger_api.Trigger):
 
 
 class 전투지역04시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=20104904, textId=20104904, duration=5000) # 화장실 악취에는 벌레도 기절합니다.
 
@@ -156,7 +157,7 @@ class 전투지역04시작(trigger_api.Trigger):
 
 
 class 퇴장연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[399])
         self.create_monster(spawnIds=[400], animationEffect=False)
         self.move_npc(spawnId=400, patrolName='MS2PatrolData_399')
@@ -170,7 +171,7 @@ class 퇴장연출01(trigger_api.Trigger):
 
 
 class 퇴장연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # Voice 60000509
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +180,7 @@ class 퇴장연출02(trigger_api.Trigger):
 
 
 class 퇴장연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -190,7 +191,7 @@ class 퇴장연출03(trigger_api.Trigger):
 
 
 class 다리생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[400])
         self.set_mesh(triggerIds=[30000], visible=False, arg3=0, delay=0, scale=0) # battle04
         self.set_random_mesh(triggerIds=[7000,7001,7002,7003], visible=True, meshCount=4, arg4=100, delay=100) # bridge

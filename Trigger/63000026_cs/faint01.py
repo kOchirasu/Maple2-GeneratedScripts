@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=False) # BGM
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5100], visible=False) # 경로 안내
@@ -40,13 +40,15 @@ class Wait(trigger_api.Trigger):
 class Enter01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[90000450], questStates=[1]):
+            # 기묘한 조짐 퀘스트 진행중 상태
             return Enter02(self.ctx)
 
 
 class Enter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10033010, textId=10033010) # 가이드 : 다리를 건너 눈썹달 동굴로 들어가기
+        # 가이드 : 다리를 건너 눈썹달 동굴로 들어가기
+        self.show_guide_summary(entityId=10033010, textId=10033010)
         self.set_effect(triggerIds=[5100], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5101], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5102], visible=True) # 경로 안내
@@ -60,20 +62,28 @@ class Enter02(trigger_api.Trigger):
         if self.user_detected(boxIds=[9001]):
             return OnTheBridge01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10033010)
-        self.set_effect(triggerIds=[5100], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5101], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5102], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5103], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5104], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5105], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5106], visible=False) # 경로 안내
-        self.set_effect(triggerIds=[5107], visible=False) # 경로 안내
+        self.set_effect(triggerIds=[5100], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5101], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5102], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5103], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5104], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5105], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5106], visible=False)
+        # 경로 안내
+        self.set_effect(triggerIds=[5107], visible=False)
+        # 경로 안내
 
 
 class OnTheBridge01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -85,7 +95,7 @@ class OnTheBridge01(trigger_api.Trigger):
 
 
 class OnTheBridge02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000026, portalId=10, boxId=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +104,7 @@ class OnTheBridge02(trigger_api.Trigger):
 
 
 class OnTheBridge03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +113,7 @@ class OnTheBridge03(trigger_api.Trigger):
 
 
 class OnTheBridge04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -114,7 +124,7 @@ class OnTheBridge04(trigger_api.Trigger):
 
 
 class TinChaiComeIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=501, enable=True)
         self.set_sound(triggerId=10000, enable=True) # BGM
 
@@ -124,7 +134,7 @@ class TinChaiComeIn01(trigger_api.Trigger):
 
 
 class TinChaiComeIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$63000026_CS__FAINT01__5$', arg4=2, arg5=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
@@ -134,7 +144,7 @@ class TinChaiComeIn02(trigger_api.Trigger):
 
 
 class TinChaiComeIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +153,7 @@ class TinChaiComeIn03(trigger_api.Trigger):
 
 
 class TinChaiComeIn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=502, enable=True)
         self.set_scene_skip(state=PCTeleport03, action='exit')
 
@@ -153,7 +163,7 @@ class TinChaiComeIn04(trigger_api.Trigger):
 
 
 class TinChaiTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # Voice_Tinchai_00001681
         self.set_conversation(type=2, spawnId=11001708, script='$63000026_CS__FAINT01__0$', arg4=5) # 틴차이 00001681
         self.set_skip(state=TinChaiTalk02)
@@ -164,8 +174,9 @@ class TinChaiTalk01(trigger_api.Trigger):
 
 
 class TinChaiTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -174,7 +185,7 @@ class TinChaiTalk02(trigger_api.Trigger):
 
 
 class TinChaiTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=True) # Voice_Tinchai_00001717
         self.set_effect(triggerIds=[5400], visible=True) # ShadowApp
         self.set_conversation(type=2, spawnId=11001708, script='$63000026_CS__FAINT01__1$', arg4=3) # 틴차이 00001717
@@ -200,7 +211,7 @@ class TinChaiTalk03(trigger_api.Trigger):
 
 # 연출용 그림자 패트롤
 class DarkShadowApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -209,7 +220,7 @@ class DarkShadowApp01(trigger_api.Trigger):
 
 
 class DarkShadowApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.move_user(mapId=63000026, portalId=20, boxId=9900)
@@ -220,7 +231,7 @@ class DarkShadowApp02(trigger_api.Trigger):
 
 
 class DarkShadowApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,7 +240,7 @@ class DarkShadowApp03(trigger_api.Trigger):
 
 
 class ReadyToBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6002], visible=True) # Voice_Tinchai_00001682
         self.set_conversation(type=2, spawnId=11001708, script='$63000026_CS__FAINT01__2$', arg4=5) # 틴차이 00001682
         self.set_skip(state=ReadyToBattle02)
@@ -240,8 +251,9 @@ class ReadyToBattle01(trigger_api.Trigger):
 
 
 class ReadyToBattle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.select_camera_path(pathIds=[700,701], returnView=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
@@ -252,7 +264,7 @@ class ReadyToBattle02(trigger_api.Trigger):
 
 
 class ReadyToBattle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000026, portalId=30, boxId=9900)
         self.set_effect(triggerIds=[6001], visible=True) # Voice_Tinchai_00001717
         self.set_conversation(type=2, spawnId=11001708, script='$63000026_CS__FAINT01__3$', arg4=3) # 틴차이
@@ -263,7 +275,7 @@ class ReadyToBattle03(trigger_api.Trigger):
 
 
 class ReadyToBattle05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # Faint
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -272,7 +284,7 @@ class ReadyToBattle05(trigger_api.Trigger):
 
 
 class ReadyToBattle06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=30000)
 
@@ -283,7 +295,7 @@ class ReadyToBattle06(trigger_api.Trigger):
 
 # PC가 털썩 바닥에 쓰러지는 사운드 이펙트
 class PCFaint01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=702, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -292,7 +304,7 @@ class PCFaint01(trigger_api.Trigger):
 
 
 class PCFaint02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_103')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -301,7 +313,7 @@ class PCFaint02(trigger_api.Trigger):
 
 
 class PCFaint03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=True) # Voice_Tinchai_00001683
         self.set_conversation(type=2, spawnId=11001708, script='$63000026_CS__FAINT01__4$', arg4=5) # 틴차이 00001683
         self.destroy_monster(spawnIds=[900,901,902,903,904,905,910,911,912,913,914,915])
@@ -314,8 +326,9 @@ class PCFaint03(trigger_api.Trigger):
 
 
 class PCFaint04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -326,7 +339,7 @@ class PCFaint04(trigger_api.Trigger):
 
 
 class TinChaiGoToFight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=710, enable=True)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_104')
 
@@ -336,7 +349,7 @@ class TinChaiGoToFight01(trigger_api.Trigger):
 
 
 class TinChaiGoToFight02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -346,7 +359,8 @@ class TinChaiGoToFight02(trigger_api.Trigger):
 
 
 class TinChaiGoToFight03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
@@ -363,7 +377,7 @@ class TinChaiGoToFight03(trigger_api.Trigger):
 
 
 class PCTeleport01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8100], visible=True)
         self.set_agent(triggerIds=[8101], visible=True)
         self.select_camera_path(pathIds=[720,721], returnView=True)
@@ -374,7 +388,7 @@ class PCTeleport01(trigger_api.Trigger):
 
 
 class PCTeleport02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -385,7 +399,7 @@ class PCTeleport02(trigger_api.Trigger):
 
 
 class PCTeleport03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=721, enable=False)

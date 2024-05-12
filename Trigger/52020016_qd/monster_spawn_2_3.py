@@ -9,7 +9,7 @@ class 체력조건(trigger_api.Trigger):
 
 
 class 전투페이즈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4000103], animationEffect=False)
         self.set_conversation(type=1, spawnId=4000103, script='네녀석 처음부터 마음에 들지 않았어!!', arg4=3, arg5=0)
 
@@ -19,12 +19,12 @@ class 전투페이즈(trigger_api.Trigger):
 
 
 class 몬스터소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[4000103], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
-            return None
+            pass
 
 
 initial_state = 체력조건

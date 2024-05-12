@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_actor(triggerId=6000, visible=False, initialSequence='Idle_A')
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 어린벨라등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=1)
         self.create_monster(spawnIds=[5000], animationEffect=False)
 
@@ -23,7 +23,7 @@ class 어린벨라등장(trigger_api.Trigger):
 
 
 class 어린벨라패트롤01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 어린벨라패트롤01(trigger_api.Trigger):
 
 
 class 어린벨라대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=3)
         self.set_conversation(type=1, spawnId=5000, script='$52000013_QD__MAIN__1$', arg4=2)
 
@@ -42,7 +42,7 @@ class 어린벨라대화01(trigger_api.Trigger):
 
 
 class 어린벨라패트롤02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -51,7 +51,7 @@ class 어린벨라패트롤02(trigger_api.Trigger):
 
 
 class 어린벨라대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=3)
         self.set_conversation(type=1, spawnId=5000, script='$52000013_QD__MAIN__2$', arg4=2)
 
@@ -61,7 +61,7 @@ class 어린벨라대화02(trigger_api.Trigger):
 
 
 class 어린벨라패트롤03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=5000, patrolName='MS2PatrolData_1003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 어린벨라패트롤03(trigger_api.Trigger):
 
 
 class 카메라연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='12', seconds=6)
@@ -82,7 +82,7 @@ class 카메라연출01(trigger_api.Trigger):
 
 
 class 카메라연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='13', seconds=12)
         self.set_actor(triggerId=6000, visible=True, initialSequence='Idle_A')
         self.select_camera_path(pathIds=[902,903], returnView=False)
@@ -93,7 +93,7 @@ class 카메라연출02(trigger_api.Trigger):
 
 
 class 화면끄기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='14', seconds=2)
         self.set_cinematic_ui(type=4)
 
@@ -103,7 +103,7 @@ class 화면끄기(trigger_api.Trigger):
 
 
 class 어린벨라소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=1)
         self.destroy_monster(spawnIds=[5000])
         self.set_actor(triggerId=6000, visible=False, initialSequence='Idle_A')
@@ -115,7 +115,7 @@ class 어린벨라소멸(trigger_api.Trigger):
 
 
 class 벨라연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='16', seconds=8)
         self.set_cinematic_ui(type=4)
         self.set_cinematic_ui(type=1)
@@ -129,7 +129,7 @@ class 벨라연출01(trigger_api.Trigger):
 
 
 class 벨라연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='17', seconds=8)
         self.select_camera(triggerId=905, enable=False)
         self.set_cinematic_ui(type=0)
@@ -147,7 +147,7 @@ class 이동딜레이(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='19', seconds=10)
         self.move_user(mapId=3009017, portalId=50)
 
@@ -157,7 +157,7 @@ class 강제이동(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=10)
         self.destroy_monster(spawnIds=[6001])
 

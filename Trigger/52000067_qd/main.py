@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
         self.set_interact_object(triggerIds=[10001073], state=2)
         self.set_effect(triggerIds=[7005], visible=False) # mask_black
         self.set_effect(triggerIds=[7001], visible=False)
-        # <action name="카메라경로를선택한다" arg1="8001" arg2="0"/>
+        # self.select_camera_path(pathIds=[8001], returnView=False)
         self.set_effect(triggerIds=[7010], visible=False) # 다크 포탈
         self.set_effect(triggerIds=[7011], visible=False) # 다크 포탈
         self.set_effect(triggerIds=[7012], visible=False) # 다크 포탈
@@ -46,17 +46,16 @@ class idle(trigger_api.Trigger):
         self.move_user(mapId=52000067, portalId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=702, boxId=1):
+        """
+        if self.wait_tick(waitTick=3000):
+            return fadein(self.ctx)
+        """
+        if self.count_users(boxId=702, minUsers='1'):
             return ready(self.ctx)
-        """
-        <condition name="WaitTick" waitTick="3000" > 
-                    <transition state="fadein"/>
-            </condition>
-        """
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[7005], visible=True) # mask_black
@@ -69,7 +68,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7005], visible=False) # mask_black
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -89,7 +88,7 @@ class start(trigger_api.Trigger):
 
 
 class portal_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7301], visible=True) # 다크 포탈 생성음
         self.set_effect(triggerIds=[7010], visible=True) # 다크 포탈
 
@@ -99,7 +98,7 @@ class portal_01(trigger_api.Trigger):
 
 
 class portal_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7302], visible=True) # 다크 포탈 생성음
         self.set_effect(triggerIds=[7016], visible=True) # 다크 포탈
 
@@ -109,7 +108,7 @@ class portal_02(trigger_api.Trigger):
 
 
 class portal_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7303], visible=True) # 다크 포탈 생성음
         self.set_effect(triggerIds=[7013], visible=True) # 다크 포탈
 
@@ -119,7 +118,7 @@ class portal_03(trigger_api.Trigger):
 
 
 class portal_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7304], visible=True) # 다크 포탈 생성음
         self.set_effect(triggerIds=[7012], visible=True) # 다크 포탈
         self.set_effect(triggerIds=[7014], visible=True) # 다크 포탈
@@ -130,7 +129,7 @@ class portal_04(trigger_api.Trigger):
 
 
 class portal_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7015], visible=True) # 다크 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,7 +138,7 @@ class portal_05(trigger_api.Trigger):
 
 
 class portal_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7011], visible=True) # 다크 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +147,7 @@ class portal_06(trigger_api.Trigger):
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2001')
 
@@ -158,7 +157,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +166,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03a(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__1$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +175,7 @@ class scene_03a(trigger_api.Trigger):
 
 
 class scene_03b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1003')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__2$', arg4=3)
 
@@ -186,7 +185,7 @@ class scene_03b(trigger_api.Trigger):
 
 
 class scene_03c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__3$', arg4=3)
 
@@ -196,7 +195,7 @@ class scene_03c(trigger_api.Trigger):
 
 
 class scene_03c_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7305], visible=True) # 로봇 랜딩음
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,7 +204,7 @@ class scene_03c_02(trigger_api.Trigger):
 
 
 class scene_03d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000067_QD__MAIN__22$', arg4=2, arg5=0)
         self.move_user_path(patrolName='MS2PatrolData_1004')
 
@@ -215,7 +214,7 @@ class scene_03d(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -224,7 +223,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4001, visible=True, initialSequence='Regen_A')
         self.set_effect(triggerIds=[7001], visible=True)
         self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2, interpolator=2) # 2초간 느려지기 시작
@@ -235,7 +234,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_05_a(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Jump_Damg_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -244,15 +243,19 @@ class scene_05_a(trigger_api.Trigger):
 
 
 class scene_05_b(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_time_scale(enable=True, startScale=0.1, endScale=0.1, duration=1, interpolator=0)
+        # 1초 정지
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return scene_05_d(self.ctx)
 
 
 class scene_05_d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=True, startScale=0.1, endScale=1, duration=1, interpolator=2) # 1초 뒤 복원
-        self.select_camera_path(pathIds=[8099,8005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -260,7 +263,7 @@ class scene_05_d(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=False, startScale=1, endScale=1, duration=1, interpolator=0) # 종료
         self.select_camera_path(pathIds=[8005,8006], returnView=False)
         self.set_actor(triggerId=4001, visible=True, initialSequence='Idle_A')
@@ -271,7 +274,7 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=False, startScale=0, endScale=0, duration=0, interpolator=0) # 1초 뒤 복원
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__4$', arg4=3)
@@ -282,7 +285,7 @@ class scene_07(trigger_api.Trigger):
 
 
 class scene_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006,8007], returnView=False)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__5$', arg4=3)
@@ -293,8 +296,9 @@ class scene_08(trigger_api.Trigger):
 
 
 class scene_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__6$', arg4=3)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,7 +307,7 @@ class scene_09(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.remove_buff(boxId=702, skillId=99910070)
         self.destroy_monster(spawnIds=[201])
@@ -319,7 +323,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201])
         self.create_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119], animationEffect=True) # 다크윈드
         self.create_monster(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514], animationEffect=True) # 침략자
@@ -345,9 +349,10 @@ class Skip_2(trigger_api.Trigger):
 
 
 class fadeout(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2002')
         self.set_effect(triggerIds=[7005], visible=True) # mask_black
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,7 +361,7 @@ class fadeout(trigger_api.Trigger):
 
 
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25200671, textId=25200671)
@@ -375,7 +380,7 @@ class fadein(trigger_api.Trigger):
 
 
 class play(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7310], visible=True) # 로봇 탑승 음
         self.hide_guide_summary(entityId=25200671)
         self.set_conversation(type=1, spawnId=201, script='$52000067_QD__MAIN__8$', arg4=3, arg5=0)
@@ -390,7 +395,7 @@ class play(trigger_api.Trigger):
 
 
 class GuideMission(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52000067_QD__MAIN__9$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -399,7 +404,7 @@ class GuideMission(trigger_api.Trigger):
 
 
 class boss_event(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[7005], visible=True) # mask_black
@@ -410,7 +415,7 @@ class boss_event(trigger_api.Trigger):
 
 
 class boss_event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000067, portalId=2)
         self.set_effect(triggerIds=[7005], visible=False) # mask_black
         self.select_camera_path(pathIds=[8008,8009], returnView=False)
@@ -419,7 +424,7 @@ class boss_event_02(trigger_api.Trigger):
         self.destroy_monster(spawnIds=[520,521,522,523,524,525,526,527,528,529,531,532,533,534,535,536,537,538,539])
         self.destroy_monster(spawnIds=[551,552,553,554,555,556,557,558,559])
         self.destroy_monster(spawnIds=[801,802,803,804,805,806,807])
-        # <action name="몬스터소멸시킨다" arg1="851,852,853,854,855,856,857,858,859,861,862,863,864,865,866,867" />
+        # self.destroy_monster(spawnIds=[851,852,853,854,855,856,857,858,859,861,862,863,864,865,866,867])
         self.destroy_monster(spawnIds=[751,752,753,754,756,757,758,759,761,762])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -428,11 +433,11 @@ class boss_event_02(trigger_api.Trigger):
 
 
 class boss_event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7306], visible=True) # 데블린 워리어 등장음
         self.create_monster(spawnIds=[999], animationEffect=True, animationDelay=5000)
         self.set_scene_skip(state=Skip_3, action='nextState')
-        # <action name="액터를설정한다" arg1="4999" arg2="0" arg3="Regen_A" />
+        # self.set_actor(triggerId=4999, visible=False, initialSequence='Regen_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -440,9 +445,10 @@ class boss_event_03(trigger_api.Trigger):
 
 
 class boss_event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8010,8011], returnView=False)
         self.set_npc_emotion_sequence(spawnId=999, sequenceName='AttackReady_A')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -451,7 +457,7 @@ class boss_event_04(trigger_api.Trigger):
 
 
 class Skip_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -460,7 +466,7 @@ class Skip_3(trigger_api.Trigger):
 
 
 class boss_event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8012], returnView=False)
         self.set_effect(triggerIds=[7005], visible=True) # mask_black
 
@@ -470,7 +476,7 @@ class boss_event_05(trigger_api.Trigger):
 
 
 class boss_event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -494,7 +500,7 @@ class ending_ready(trigger_api.Trigger):
 
 
 class ending(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_4, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -506,7 +512,7 @@ class ending(trigger_api.Trigger):
 
 
 class ending_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(triggerIds=[6300,6301,6302,6303,6304,6305,6306,6307,6308,6309,6310], visible=False)
         self.set_visible_breakable_object(triggerIds=[6311,6312,6313,6314,6315,6316,6317,6318,6319,6320,6321], visible=False)
         self.set_visible_breakable_object(triggerIds=[6322,6323,6324,6325,6326,6327,6328,6329,6330,6331], visible=False)
@@ -519,7 +525,7 @@ class ending_02(trigger_api.Trigger):
 
 
 class ending_02_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[851,852,853,854,855,856,857,858,859,860], animationEffect=True)
         self.create_monster(spawnIds=[861,862,863,864,865,866,867,868,869,870], animationEffect=True)
 
@@ -529,7 +535,7 @@ class ending_02_b(trigger_api.Trigger):
 
 
 class ending_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7307], visible=True) # 수리 음
         self.set_conversation(type=1, spawnId=861, script='$52000067_QD__MAIN__11$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=853, script='$52000067_QD__MAIN__12$', arg4=2, arg5=2)
@@ -547,8 +553,9 @@ class ending_03(trigger_api.Trigger):
 
 
 class ending_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7117], visible=True) # 감전 이펙트
+        # self.create_monster(spawnIds=[201], animationEffect=True)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2003')
         self.move_user(mapId=52000067, portalId=3)
         self.set_actor(triggerId=4002, visible=True, initialSequence='Dead_Idle_A')
@@ -560,7 +567,7 @@ class ending_04(trigger_api.Trigger):
 
 
 class ending_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8016,8017], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -569,7 +576,7 @@ class ending_05(trigger_api.Trigger):
 
 
 class ending_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7308], visible=True) # 로봇 스파크 음
         self.set_effect(triggerIds=[7005], visible=False) # mask_black
 
@@ -579,7 +586,7 @@ class ending_06(trigger_api.Trigger):
 
 
 class ending_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__16$', arg4=3)
 
@@ -589,7 +596,8 @@ class ending_07(trigger_api.Trigger):
 
 
 class ending_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__17$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -598,7 +606,7 @@ class ending_08(trigger_api.Trigger):
 
 
 class ending_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8018], returnView=False)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2004')
 
@@ -608,7 +616,7 @@ class ending_09(trigger_api.Trigger):
 
 
 class ending_09_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1005')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -617,7 +625,7 @@ class ending_09_b(trigger_api.Trigger):
 
 
 class ending_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__18$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -626,7 +634,7 @@ class ending_10(trigger_api.Trigger):
 
 
 class ending_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2005')
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__19$', arg4=3)
 
@@ -636,7 +644,7 @@ class ending_11(trigger_api.Trigger):
 
 
 class ending_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__20$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -645,7 +653,7 @@ class ending_12(trigger_api.Trigger):
 
 
 class ending_12_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1006')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -654,7 +662,7 @@ class ending_12_b(trigger_api.Trigger):
 
 
 class ending_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2006')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -663,7 +671,7 @@ class ending_13(trigger_api.Trigger):
 
 
 class ending_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8019], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -672,7 +680,7 @@ class ending_14(trigger_api.Trigger):
 
 
 class ending_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001897, script='$52000067_QD__MAIN__21$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -681,7 +689,7 @@ class ending_15(trigger_api.Trigger):
 
 
 class ending_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8020], returnView=False)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_1006')
 
@@ -691,9 +699,10 @@ class ending_16(trigger_api.Trigger):
 
 
 class ending_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7309], visible=True) # 로봇 움직임 음
         self.set_actor(triggerId=4002, visible=True, initialSequence='Dead_Damg_A')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -702,7 +711,7 @@ class ending_17(trigger_api.Trigger):
 
 
 class Skip_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
 
@@ -712,7 +721,7 @@ class Skip_4(trigger_api.Trigger):
 
 
 class ending_18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7005], visible=True) # mask_black
         self.set_achievement(triggerId=702, type='trigger', achieve='CityWarfareClear')
 
@@ -722,7 +731,7 @@ class ending_18(trigger_api.Trigger):
 
 
 class end01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.play_scene_movie(fileName='Aftermath_Madria.swf')
         self.set_scene_skip(state=end02, action='exit')
@@ -733,7 +742,7 @@ class end01(trigger_api.Trigger):
 
 
 class end02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000055, portalId=1)
 
 

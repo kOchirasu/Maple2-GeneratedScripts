@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=False)
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='jobChange_ranger.swf', movieId=1)
@@ -26,7 +26,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 영상재생_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2001], visible=False)
         self.set_cinematic_ui(type=9, script='$52000177_QD__52000177__0$', arg3=False)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
@@ -37,7 +37,7 @@ class 영상재생_end(trigger_api.Trigger):
 
 
 class 영상재생_end02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -47,7 +47,7 @@ class 영상재생_end02(trigger_api.Trigger):
 
 
 class 전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_pc_emotion_loop(sequenceName='Sword_Attack_Idle_A', duration=10000, arg3=True)
@@ -60,7 +60,7 @@ class 전경씬01(trigger_api.Trigger):
 
 
 class 전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,8 +69,9 @@ class 전경씬02(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +80,7 @@ class Quit01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -90,7 +91,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -102,7 +103,7 @@ class Quit02(trigger_api.Trigger):
 
 
 class 전직이펙트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,7 +112,7 @@ class 전직이펙트_01(trigger_api.Trigger):
 
 
 class 전직이펙트_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,11 +124,12 @@ class 전직이펙트_02(trigger_api.Trigger):
 class Quit03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002366], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 전원퇴장01(self.ctx)
 
 
 class 전원퇴장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=10, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_mesh(triggerIds=[2001], visible=True)
         self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=11000)
@@ -140,7 +142,7 @@ class 전원퇴장01(trigger_api.Trigger):
 
 
 class 전원퇴장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=10, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -150,19 +152,20 @@ class 전원퇴장02(trigger_api.Trigger):
 
 
 class 전원퇴장03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[402], animationEffect=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9001], questIds=[20002368], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 프론티아재단으로01(self.ctx)
 
 
 # ########################퀘스트 종료########################
 class 프론티아재단으로01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -172,7 +175,7 @@ class 프론티아재단으로01(trigger_api.Trigger):
 
 
 class 프론티아재단으로02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000186, portalId=1)
 
 

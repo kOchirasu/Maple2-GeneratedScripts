@@ -7,7 +7,7 @@ from dungeon_common.checkusercount import *
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=True)
         self.set_actor(triggerId=3001, visible=True, initialSequence='Closed')
@@ -31,7 +31,7 @@ class RoomCheck(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8100, enable=True) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,11 +40,11 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class QuestDungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8100, enable=True) # LocalTargetCamera
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.quest_user_detected(boxIds=[702], questIds=[50001517], questStates=[1]):
+        if self.quest_user_detected(boxIds=[702], questIds=[50001517], questStates=[1]): # >
             return mermaid_01(self.ctx)
         if self.quest_user_detected(boxIds=[702], questIds=[50001517], questStates=[2]):
             return moveuser_00(self.ctx)
@@ -53,12 +53,12 @@ class QuestDungeonStart(trigger_api.Trigger):
 
 
 class moveuser_00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000390, portalId=2)
 
 
 class mermaid_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[8001,8002], returnView=False)
@@ -70,7 +70,7 @@ class mermaid_01(trigger_api.Trigger):
 
 
 class mermaid_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
         self.set_skip(state=scene_04)
 
@@ -80,7 +80,7 @@ class mermaid_02(trigger_api.Trigger):
 
 
 class mermaid_02_talk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__0$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000388_BF__MAIN__1$', arg4=2, arg5=1)
 
@@ -90,7 +90,7 @@ class mermaid_02_talk(trigger_api.Trigger):
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.select_camera(triggerId=8006, enable=True)
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__2$', arg4=3, arg5=0)
@@ -103,7 +103,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__5$', arg4=2, arg5=1)
 
@@ -113,7 +113,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=102, sequenceName='Attack_01_A')
         self.set_mesh(triggerIds=[7001,7002], visible=False, arg3=0, delay=0, scale=0)
         self.set_actor(triggerId=3001, visible=True, initialSequence='Opening')
@@ -124,7 +124,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class open_door_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__6$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000388_BF__MAIN__7$', arg4=2, arg5=1)
 
@@ -134,11 +134,12 @@ class open_door_01(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_local_camera(cameraId=8100, enable=True)
         self.set_breakable(triggerIds=[1801,1802,1803,1804,1805,1806,1807,1808,1809,1810,1811,1812,1813,1814,1815,1816,1817,1818,1819,1820,1821], enable=True)
         self.set_effect(triggerIds=[7101], visible=True)
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -151,7 +152,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class battle_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8100, enable=True) # LocalTargetCamera
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__8$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000388_BF__MAIN__9$', arg4=2, arg5=1)
@@ -163,7 +164,7 @@ class battle_01(trigger_api.Trigger):
 
 
 class battle_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=open_door_03)
         self.select_camera(triggerId=8007, enable=True)
         self.set_cinematic_ui(type=1)
@@ -183,7 +184,7 @@ class open_door_ready(trigger_api.Trigger):
 
 
 class open_door_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2007')
         self.set_mesh(triggerIds=[7003,7004], visible=False, arg3=0, delay=0, scale=0)
         self.set_actor(triggerId=3002, visible=True, initialSequence='Opening')
@@ -194,9 +195,10 @@ class open_door_02(trigger_api.Trigger):
 
 
 class open_door_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_local_camera(cameraId=8100, enable=True)
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -214,7 +216,7 @@ class open_door_03(trigger_api.Trigger):
 
 
 class battle_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__13$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000388_BF__MAIN__14$', arg4=2, arg5=2)
 
@@ -224,7 +226,7 @@ class battle_03(trigger_api.Trigger):
 
 
 class battle_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7103], visible=True)
         self.set_breakable(triggerIds=[1851,1852,1853,1854,1855,1856,1857,1858,1859,1860,1861,1862,1863,1864,1865,1866,1867,1868,1869,1870,1871], enable=True)
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__15$', arg4=2, arg5=0)
@@ -236,7 +238,7 @@ class battle_04(trigger_api.Trigger):
 
 
 class move_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2010')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2009')
 
@@ -246,7 +248,7 @@ class move_02(trigger_api.Trigger):
 
 
 class ship_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000388_BF__MAIN__17$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000388_BF__MAIN__18$', arg4=2, arg5=2)
 
@@ -256,7 +258,7 @@ class ship_01(trigger_api.Trigger):
 
 
 class ship_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000388_BF__MAIN__19$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,7 +273,7 @@ class ship_03(trigger_api.Trigger):
 
 
 class ship_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=ending_02)
@@ -283,7 +285,7 @@ class ship_end(trigger_api.Trigger):
 
 
 class ending(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7104], visible=True)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[8003,8004,8005,8006], returnView=False)
@@ -294,7 +296,8 @@ class ending(trigger_api.Trigger):
 
 
 class ending_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -304,7 +307,7 @@ class ending_02(trigger_api.Trigger):
 
 
 class ending_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000389, portalId=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -313,7 +316,7 @@ class ending_03(trigger_api.Trigger):
 
 
 class ending_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_local_camera(cameraId=8100, enable=True) # LocalTargetCamera
@@ -324,7 +327,7 @@ class ending_04(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7101], visible=False)
         self.set_effect(triggerIds=[7102], visible=False)
         self.set_effect(triggerIds=[7103], visible=False)

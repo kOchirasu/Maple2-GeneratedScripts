@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 알림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=23000006, textId=23000006, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:

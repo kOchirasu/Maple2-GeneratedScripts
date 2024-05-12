@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='FlyAway', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Wait(trigger_api.Trigger):
 
 
 class FlyAway(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=211, addSpawnId=1211)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class FlyAway(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1211])
 
     def on_tick(self) -> trigger_api.Trigger:

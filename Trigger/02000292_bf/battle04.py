@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[521], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[522], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[523], visible=True, animationEffect=True)
@@ -28,7 +28,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MobSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1015], animationEffect=False)
         self.create_monster(spawnIds=[1016], animationEffect=False)
         self.create_monster(spawnIds=[1017], animationEffect=False)
@@ -41,7 +41,7 @@ class MobSpawn01(trigger_api.Trigger):
 
 
 class MobBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True) # Dark_Intro_Chord
         self.change_monster(removeSpawnId=1015, addSpawnId=2015)
         self.change_monster(removeSpawnId=1016, addSpawnId=2016)
@@ -60,7 +60,7 @@ class MobBattle01(trigger_api.Trigger):
 
 
 class LadderOff01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002921, textId=20002921, duration=5000)
         self.set_interact_object(triggerIds=[10001063], state=1)
@@ -71,7 +71,7 @@ class LadderOff01(trigger_api.Trigger):
 
 
 class LadderOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[521], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[522], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[523], visible=True, animationEffect=True)

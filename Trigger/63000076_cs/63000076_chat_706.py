@@ -9,7 +9,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잡담_01_706(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=118, msg='$63000076_CS__63000076_CHAT_706__0$', duration=2500, delayTick=0) # 신발… 아…이 신발, 신어보고 싶어요
 
     def on_tick(self) -> trigger_api.Trigger:

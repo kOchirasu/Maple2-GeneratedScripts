@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20000661, textId=20000661, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -15,7 +15,7 @@ class 시작대기중(trigger_api.Trigger):
 
 # Test State
 class 경험치구슬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16])
         self.debug_string(string='변수를 설정한다')
         self.set_user_value(key='TimeEvent', value=0)
@@ -28,7 +28,7 @@ class 경험치구슬01(trigger_api.Trigger):
 
 
 class 업적이벤트02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(achieve='oxquiz_win')
         self.debug_string(string='업적이벤트테스트')
 
@@ -38,8 +38,8 @@ class 업적이벤트02(trigger_api.Trigger):
 
 
 class 컷씬03(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_cinematic_intro(text='텍스트 안녕하세요 한줄 \n두줄 테스트 입니다.')
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_cinematic_intro(text='텍스트 안녕하세요 한줄 \\n두줄 테스트 입니다.')
         self.debug_string(string='컷씬테스트')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 컷씬03(trigger_api.Trigger):
 
 
 class 그림자원정대게이지04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='OpenBossGauge', title='$02000401_BF__MADRICANSIEGE_Gauge$', maxGaugePoint=1000)
         self.debug_string(string='그림자원정대게이지테스트')
 
@@ -58,7 +58,7 @@ class 그림자원정대게이지04(trigger_api.Trigger):
 
 
 class PC이동테스트05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_to_pos(pos=[907,758,151], rot=[0,0,315])
         self.move_npc_to_pos(spawnId=101, pos=[702,767,151], rot=[0,0,45])
         self.debug_string(string='05PC NPC이동테스트')
@@ -69,7 +69,7 @@ class PC이동테스트05(trigger_api.Trigger):
 
 
 class 요일테스트06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='06_요일테스트')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class 요일테스트06(trigger_api.Trigger):
 
 
 class 보상테스트07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='07_보상테스트')
         self.give_reward_content(rewardId=31000003)
 
@@ -89,7 +89,7 @@ class 보상테스트07(trigger_api.Trigger):
 
 # End State
 class 컷씬종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.close_cinematic()
 
     def on_tick(self) -> trigger_api.Trigger:

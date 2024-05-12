@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -13,7 +13,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:

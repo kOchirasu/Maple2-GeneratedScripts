@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='Guide')
         self.set_sound(triggerId=10000, enable=False)
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
@@ -37,7 +37,7 @@ class Wait(trigger_api.Trigger):
 
 # 퀘스트 진행 중 상태, 완료 가능 상태
 class StandAside10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -54,7 +54,7 @@ class StandAside10(trigger_api.Trigger):
 
 
 class StandAside11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_203')
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_205')
         self.move_npc(spawnId=206, patrolName='MS2PatrolData_206')
@@ -66,7 +66,7 @@ class StandAside11(trigger_api.Trigger):
 
 # 퀘스트 진행 완료 상태
 class StandAside20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -83,7 +83,7 @@ class StandAside20(trigger_api.Trigger):
 
 
 class StandAside21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_203')
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_205')
         self.move_npc(spawnId=206, patrolName='MS2PatrolData_206')
@@ -95,25 +95,27 @@ class StandAside21(trigger_api.Trigger):
 
 # 최초 입장
 class PlayOpeningMovie01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9100], questIds=[90000430], questStates=[2]):
+            # 퀘스트 완료 가능 상태
             return StandAside10(self.ctx)
         if self.quest_user_detected(boxIds=[9100], questIds=[90000430], questStates=[3]):
+            # 퀘스트 완료 상태
             return StandAside20(self.ctx)
         if self.wait_tick(waitTick=2000):
             return PlayOpeningMovie02(self.ctx)
 
 
 class PlayOpeningMovie02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
-        self.play_scene_movie(fileName='common\Common_Opening.usm', movieId=2)
+        self.play_scene_movie(fileName='common\\Common_Opening.usm', movieId=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='2'):
@@ -129,7 +131,7 @@ class PlayMovie01(trigger_api.Trigger):
 
 
 class PlayMovie02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Cut_Blackstar_Crash.swf', movieId=1) # 임시
@@ -142,7 +144,7 @@ class PlayMovie02(trigger_api.Trigger):
 
 
 class WeiHongTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -153,12 +155,13 @@ class WeiHongTalk01(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return WeiHongTalk02(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[6000], visible=False) # VoiceGangster
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[6000], visible=False)
+        # VoiceGangster
 
 
 class WeiHongTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__0$', arg4=6) # Voice 00001390
         self.set_effect(triggerIds=[8000], visible=True) # WeiHong 00001390
@@ -170,8 +173,9 @@ class WeiHongTalk02(trigger_api.Trigger):
 
 
 class WeiHongTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8000], visible=False) # WeiHong 00001390
 
@@ -181,7 +185,7 @@ class WeiHongTalk03(trigger_api.Trigger):
 
 
 class WeiHongTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__1$', arg4=6) # Voice 00001391
         self.set_effect(triggerIds=[8001], visible=True) # WeiHong 00001391
         self.set_skip(state=WeiHongTalk05)
@@ -192,8 +196,9 @@ class WeiHongTalk04(trigger_api.Trigger):
 
 
 class WeiHongTalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8001], visible=False) # WeiHong 00001391
 
@@ -203,7 +208,7 @@ class WeiHongTalk05(trigger_api.Trigger):
 
 
 class WeiHongTalk06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__2$', arg4=5) # Voice 00001392
         self.set_effect(triggerIds=[8002], visible=True) # WeiHong 00001392
         self.set_skip(state=WeiHongTalk07)
@@ -214,8 +219,9 @@ class WeiHongTalk06(trigger_api.Trigger):
 
 
 class WeiHongTalk07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8002], visible=False) # WeiHong 00001392
         self.set_cinematic_ui(type=1)
@@ -229,7 +235,7 @@ class WeiHongTalk07(trigger_api.Trigger):
 
 
 class StandAside01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_202')
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_204')
@@ -240,7 +246,7 @@ class StandAside01(trigger_api.Trigger):
 
 
 class StandAside02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_203')
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_205')
         self.move_npc(spawnId=206, patrolName='MS2PatrolData_206')
@@ -251,7 +257,7 @@ class StandAside02(trigger_api.Trigger):
 
 
 class StandAside03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -261,7 +267,7 @@ class StandAside03(trigger_api.Trigger):
 
 
 class KeytypeSelect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.guide_event(eventId=10020005)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -270,12 +276,13 @@ class KeytypeSelect01(trigger_api.Trigger):
 
 
 class MeetWeiHong01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5002], visible=True) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5100], visible=True) # 목표지점 바닥
         self.set_effect(triggerIds=[5101], visible=True) # 목표지점 화살표
-        self.show_guide_summary(entityId=10020010, textId=10020010) # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        self.show_guide_summary(entityId=10020010, textId=10020010)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9001]):
@@ -283,7 +290,7 @@ class MeetWeiHong01(trigger_api.Trigger):
 
 
 class MeetWeiHong02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 화살표 안내 사운드 이펙트
@@ -297,7 +304,7 @@ class MeetWeiHong02(trigger_api.Trigger):
 
 
 class WeiHongTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=602, enable=True)
@@ -308,7 +315,7 @@ class WeiHongTalk10(trigger_api.Trigger):
 
 
 class WeiHongTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__3$', arg4=5) # Voice 00000480
         self.set_effect(triggerIds=[8005], visible=True) # WeiHong 00000480
         self.set_skip(state=WeiHongTalk12)
@@ -319,8 +326,9 @@ class WeiHongTalk11(trigger_api.Trigger):
 
 
 class WeiHongTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8005], visible=False) # WeiHong 00000480
         self.set_cinematic_ui(type=1)
@@ -332,7 +340,7 @@ class WeiHongTalk12(trigger_api.Trigger):
 
 
 class WeiHongTalk13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__4$', arg4=5) # Voice 00001393
         self.set_effect(triggerIds=[8003], visible=True) # WeiHong 00001393
         self.set_skip(state=WeiHongTalk14)
@@ -343,8 +351,9 @@ class WeiHongTalk13(trigger_api.Trigger):
 
 
 class WeiHongTalk14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8003], visible=False) # WeiHong 00001393
         self.set_cinematic_ui(type=1)
@@ -356,7 +365,7 @@ class WeiHongTalk14(trigger_api.Trigger):
 
 
 class MafiaTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # VoiceGangster
         self.set_conversation(type=1, spawnId=201, script='$63000015_CS__INTRO01__5$', arg4=3, arg5=0)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
@@ -367,7 +376,7 @@ class MafiaTalk10(trigger_api.Trigger):
 
 
 class MafiaTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.set_conversation(type=1, spawnId=202, script='$63000015_CS__INTRO01__6$', arg4=3, arg5=0)
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
@@ -378,7 +387,7 @@ class MafiaTalk11(trigger_api.Trigger):
 
 
 class MafiaTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Idle_A')
         self.set_conversation(type=1, spawnId=206, script='$63000015_CS__INTRO01__7$', arg4=3, arg5=0)
         self.set_npc_emotion_sequence(spawnId=206, sequenceName='Talk_A')
@@ -387,12 +396,13 @@ class MafiaTalk12(trigger_api.Trigger):
         if self.wait_tick(waitTick=4000):
             return WeiHongTalk20(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[6000], visible=False) # VoiceGangster
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[6000], visible=False)
+        # VoiceGangster
 
 
 class WeiHongTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=206, sequenceName='Idle_A')
         self.set_conversation(type=2, spawnId=11000251, script='$63000015_CS__INTRO01__8$', arg4=6) # Voice 00001394
         self.set_effect(triggerIds=[8004], visible=True) # WeiHong 00001394
@@ -404,8 +414,9 @@ class WeiHongTalk20(trigger_api.Trigger):
 
 
 class WeiHongQuest01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_effect(triggerIds=[8004], visible=False) # WeiHong 00001394
         self.destroy_monster(spawnIds=[101])
@@ -420,28 +431,30 @@ class WeiHongQuest01(trigger_api.Trigger):
 
 
 class WeiHongQuest02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10020020, textId=10020020) # 가이드 : 스페이스키로 대화하기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9100], questIds=[90000430], questStates=[2]):
+            # 퀘스트 진행 중 상태
             return WeiHongQuest03(self.ctx)
 
 
 class WeiHongQuest03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10020020)
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10020021, textId=10020021) # 가이드 : 웨이 홍과 대화하기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9100], questIds=[90000430], questStates=[3]):
+            # 퀘스트 완료 상태
             return GuideNextMap01(self.ctx)
 
 
 class GuideNextMap01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10020021)
         self.set_portal(portalId=1, visible=True, enable=False, minimapVisible=True)
         self.set_effect(triggerIds=[5200], visible=True) # 경로 안내
@@ -452,7 +465,8 @@ class GuideNextMap01(trigger_api.Trigger):
         self.set_effect(triggerIds=[5205], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5206], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5207], visible=True) # 경로 안내
-        self.show_guide_summary(entityId=10020012, textId=10020012) # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        self.show_guide_summary(entityId=10020012, textId=10020012)
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -461,7 +475,7 @@ class GuideNextMap01(trigger_api.Trigger):
 
 
 class GuideNextMap02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10020012)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.show_guide_summary(entityId=10020011, textId=10020011) # 가이드 : 포털 위치에서 스페이스 키 누르기
@@ -473,7 +487,7 @@ class GuideNextMap02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10020011)
         self.set_effect(triggerIds=[5200], visible=False) # 경로 안내
         self.set_effect(triggerIds=[5201], visible=False) # 경로 안내

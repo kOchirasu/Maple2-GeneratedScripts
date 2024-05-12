@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[301,302], visible=True, arg3=0, delay=0)
         self.set_interact_object(triggerIds=[10000414], state=0)
         self.set_ladder(triggerIds=[321], visible=False, animationEffect=False)
@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015], animationEffect=False)
@@ -32,13 +32,13 @@ class DungeonStart(trigger_api.Trigger):
         if self.wait_tick(waitTick=1500):
             return 카메라대기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 카메라대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002810, textId=20002810, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -48,20 +48,20 @@ class 카메라대기(trigger_api.Trigger):
 
 
 class 카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=3002, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 생성(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_buff(boxId=199, skillId=70000107)
         self.select_camera(triggerId=3002, enable=False)
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[301,302], visible=False, arg3=0, delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 보스(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.show_guide_summary(entityId=20002816, textId=20002816, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')

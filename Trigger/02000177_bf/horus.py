@@ -4,12 +4,12 @@ import trigger_api
 
 class Horus(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=710, boxId=1):
+        if self.count_users(boxId=710, minUsers='1'):
             return Horus_move_01(self.ctx)
 
 
 class Horus_move_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20001772, textId=20001772, duration=5000)
 
@@ -19,7 +19,7 @@ class Horus_move_01(trigger_api.Trigger):
 
 
 class Horus_01_broken(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=999, patrolName='MS2PatrolData_2004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,27 +28,27 @@ class Horus_01_broken(trigger_api.Trigger):
 
 
 class Horus_01_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[3001], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2300):
             return Horus_01_End_02(self.ctx)
-        if self.count_users(boxId=711, boxId=1):
+        if self.count_users(boxId=711, minUsers='1'):
             return Horus_move_02(self.ctx)
 
 
 class Horus_01_End_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[999])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=711, boxId=1):
+        if self.count_users(boxId=711, minUsers='1'):
             return Horus_move_02(self.ctx)
 
 
 class Horus_move_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20001772, textId=20001772, duration=5000)
         self.create_monster(spawnIds=[998], animationEffect=False)
@@ -61,16 +61,16 @@ class Horus_move_02(trigger_api.Trigger):
 
 
 class Horus_02_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[998])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=752, boxId=1):
+        if self.count_users(boxId=752, minUsers='1'):
             return Horus_move_03(self.ctx)
 
 
 class Horus_move_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20001772, textId=20001772, duration=5000)
         self.create_monster(spawnIds=[997], animationEffect=False)
@@ -81,7 +81,7 @@ class Horus_move_03(trigger_api.Trigger):
 
 
 class Horus_03_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[997])
 
 

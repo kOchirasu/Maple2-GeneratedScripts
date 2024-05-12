@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_portal(portalId=1000, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5304], visible=False) # 가이드 서머리 사운드 이펙트
@@ -34,9 +34,9 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\JobIntro_Wizard.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\JobIntro_Wizard.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -46,7 +46,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 엘리니아전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1100,1101], returnView=False)
@@ -58,7 +58,7 @@ class 엘리니아전경씬01(trigger_api.Trigger):
 
 
 class 엘리니아전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000101_QD__52000101__0$', desc='$52000101_QD__52000101__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=10000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 엘리니아전경씬02(trigger_api.Trigger):
 
 
 class 엘리니아전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,8 +76,9 @@ class 엘리니아전경씬03(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,7 +87,7 @@ class Quit01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -97,7 +98,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -130,7 +131,7 @@ class Quit02(trigger_api.Trigger):
 
 # ########################씬2 케이틀린 등장########################
 class 케이틀린등장씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[200], animationEffect=False) # 케이틀린
@@ -141,7 +142,7 @@ class 케이틀린등장씬01(trigger_api.Trigger):
 
 
 class 케이틀린등장씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_caitCome')
@@ -153,7 +154,7 @@ class 케이틀린등장씬02(trigger_api.Trigger):
 
 
 class 케이틀린등장씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1004,1005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +163,7 @@ class 케이틀린등장씬03(trigger_api.Trigger):
 
 
 class 케이틀린등장씬04_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=200, sequenceName='Bore_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +172,7 @@ class 케이틀린등장씬04_b(trigger_api.Trigger):
 
 
 class 케이틀린등장씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='NameCaption', title='$52000101_QD__52000101__3$', desc='$52000101_QD__52000101__4$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +181,8 @@ class 케이틀린등장씬04(trigger_api.Trigger):
 
 
 class 케이틀린등장씬04_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,7 +191,7 @@ class 케이틀린등장씬04_1(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_caitCome')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
@@ -200,7 +202,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 케이틀린등장씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -228,14 +230,16 @@ class 케이틀린등장씬05(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[4001], questIds=[20002286], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 케이틀린화남01(self.ctx)
         if self.quest_user_detected(boxIds=[4001], questIds=[20002286], questStates=[2]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 케이틀린화남01(self.ctx)
 
 
 # ########################씬3 케이틀린과 대화퀘스트 이후########################
 class 케이틀린화남01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=케이틀린화남06, action='exit')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -248,7 +252,7 @@ class 케이틀린화남01(trigger_api.Trigger):
 
 
 class 케이틀린화남02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.add_cinematic_talk(npcId=0, msg='$52000101_QD__52000101__5$', duration=4000, align='right')
         self.select_camera_path(pathIds=[1006,1007], returnView=False)
@@ -261,7 +265,7 @@ class 케이틀린화남02(trigger_api.Trigger):
 
 
 class 케이틀린화남03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003146, msg='$52000101_QD__52000101__6$', duration=4000, align='right')
         self.set_onetime_effect(id=3000946, enable=True, path='BG/Common/Sound/Eff_Caitlyn_IntroQuest_03000946.xml')
 
@@ -271,7 +275,7 @@ class 케이틀린화남03(trigger_api.Trigger):
 
 
 class 케이틀린화남04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=200, emotionName='UpSet')
         self.select_camera_path(pathIds=[1008,1009], returnView=False)
         self.add_cinematic_talk(npcId=11003146, msg='$52000101_QD__52000101__7$', duration=4000, align='right')
@@ -283,7 +287,7 @@ class 케이틀린화남04(trigger_api.Trigger):
 
 
 class 케이틀린화남05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1200], returnView=False)
         self.add_cinematic_talk(npcId=11003146, msg='$52000101_QD__52000101__8$', duration=4000, align='right')
         self.set_onetime_effect(id=3000948, enable=True, path='BG/Common/Sound/Eff_Caitlyn_IntroQuest_03000948.xml')
@@ -294,7 +298,8 @@ class 케이틀린화남05(trigger_api.Trigger):
 
 
 class 케이틀린화남05_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,7 +308,7 @@ class 케이틀린화남05_1(trigger_api.Trigger):
 
 
 class 케이틀린화남06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

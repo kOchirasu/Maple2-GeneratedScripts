@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3113,3114], visible=True, arg3=0, delay=0, scale=0)
@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[11101,11102,11103,11104,11105,11106,11107,11201,11202,11203,11204,11205], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 전투01(trigger_api.Trigger):
 
 
 class 전투02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3101,3102], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000983], state=1)
         self.set_interact_object(triggerIds=[10000984], state=1)
@@ -47,7 +47,7 @@ class 전투02(trigger_api.Trigger):
 
 
 class 전투03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3103,3104], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000985], state=1)
         self.set_interact_object(triggerIds=[10000986], state=1)
@@ -68,7 +68,7 @@ class 합류대기(trigger_api.Trigger):
 
 
 class 전투04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[30001,30002,30003,30004], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +77,7 @@ class 전투04(trigger_api.Trigger):
 
 
 class 포털개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=False)
         self.set_portal(portalId=22, visible=True, enable=True, minimapVisible=False)
         self.set_portal(portalId=33, visible=True, enable=True, minimapVisible=False)

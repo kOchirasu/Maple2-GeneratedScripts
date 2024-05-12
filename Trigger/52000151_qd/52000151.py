@@ -4,23 +4,26 @@ import trigger_api
 
 # ########################씬7 파토스의 등장########################
 class wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10010], questIds=[50001642], questStates=[1]):
+            # C퀘스트가 진행 상태 일때
             return 생명의틈으로01(self.ctx)
         if self.quest_user_detected(boxIds=[10010], questIds=[50001641], questStates=[3]):
+            # 퀘스트 감지 조건 추가
             return 생틈퀘수령전대기(self.ctx)
         if self.quest_user_detected(boxIds=[10010], questIds=[50001641], questStates=[2]):
+            # 퀘스트 감지 조건 추가
             return 생틈퀘수령전대기(self.ctx)
-        if self.quest_user_detected(boxIds=[10010], questIds=[50001641], questStates=[1]):
+        """
+        if self.user_detected(boxIds=[10010]):
             return 파토스등장연출01(self.ctx)
         """
-        <condition name="유저를감지했으면" arg1="10010">
-                <transition state="파토스등장연출01"/>
-            </condition>
-        """
+        if self.quest_user_detected(boxIds=[10010], questIds=[50001641], questStates=[1]):
+            # 퀘스트 감지 조건 추가
+            return 파토스등장연출01(self.ctx)
 
 
 class wait_2(trigger_api.Trigger):
@@ -30,7 +33,7 @@ class wait_2(trigger_api.Trigger):
 
 
 class 생틈퀘수령전대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=False) # 케이틀린
         self.create_monster(spawnIds=[200], animationEffect=False) # 아노스
         self.create_monster(spawnIds=[201], animationEffect=False) # 호르헤
@@ -38,11 +41,12 @@ class 생틈퀘수령전대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10010], questIds=[50001642], questStates=[1]):
+            # C퀘스트가 진행 상태 일때
             return 생명의틈으로01(self.ctx)
 
 
 class 파토스등장연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.create_monster(spawnIds=[202], animationEffect=False) # 케이틀린
         self.create_monster(spawnIds=[200], animationEffect=False) # 아노스
@@ -58,7 +62,7 @@ class 파토스등장연출01(trigger_api.Trigger):
 
 
 class 파토스등장연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='exit')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -69,7 +73,7 @@ class 파토스등장연출02(trigger_api.Trigger):
 
 
 class 파토스등장연출02_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
         self.set_effect(triggerIds=[1100,1101,1102,1103,1104,1105,1106,1107], visible=True, arg3=0, arg4=100)
         self.set_effect(triggerIds=[1200,1201,1202,1203,1204,1205,1206], visible=True, arg3=0, arg4=100)
@@ -85,11 +89,12 @@ class 파토스등장연출02_B(trigger_api.Trigger):
 
 
 class 파토스등장연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003439, illustId='0', msg='$52000151_QD__52000151__0$', duration=4000, align='right') # 호르헤 대사
         self.select_camera_path(pathIds=[7000,7001], returnView=False)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_B') # 호르헤
+        # 도대체 이건…무슨 일이죠…?!
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -97,7 +102,7 @@ class 파토스등장연출03(trigger_api.Trigger):
 
 
 class 파토스등장연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003442, illustId='0', msg='$52000151_QD__52000151__1$', duration=4000, align='right') # 케이틀린 대사
         self.select_camera_path(pathIds=[7002,7003], returnView=False) # 아노스 선생님이 두명…?!
 
@@ -107,10 +112,11 @@ class 파토스등장연출04(trigger_api.Trigger):
 
 
 class 파토스등장연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__2$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7004,7005], returnView=False)
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Bore_A') # 파토스
+        # 파토스다.
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -118,10 +124,11 @@ class 파토스등장연출05(trigger_api.Trigger):
 
 
 class 파토스등장연출06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__3$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7006,7007], returnView=False)
-        self.move_npc(spawnId=203, patrolName='MS2PatrolData_patos_come') # 내 이름은 파토스. 빛의 이노센트 따위와 이름을 섞고 싶지 않군.
+        # 내 이름은 파토스. 빛의 이노센트 따위와 이름을 섞고 싶지 않군.
+        self.move_npc(spawnId=203, patrolName='MS2PatrolData_patos_come')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -129,9 +136,10 @@ class 파토스등장연출06(trigger_api.Trigger):
 
 
 class 파토스등장연출08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__4$', duration=4000, align='right') # 파토스 대사
-        self.select_camera_path(pathIds=[7008,7009], returnView=False) # 난 어둠의 이노센트다. 그래, 빛의 위선을 뚫고 나온 이 세상의 진정한 힘이지…
+        # 난 어둠의 이노센트다. 그래, 빛의 위선을 뚫고 나온 이 세상의 진정한 힘이지…
+        self.select_camera_path(pathIds=[7008,7009], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -139,7 +147,7 @@ class 파토스등장연출08(trigger_api.Trigger):
 
 
 class 파토스등장연출09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003442, illustId='0', msg='$52000151_QD__52000151__5$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7010,7011], returnView=False) # 어둠의…이노센트?!
 
@@ -149,10 +157,11 @@ class 파토스등장연출09(trigger_api.Trigger):
 
 
 class 파토스등장연출10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003439, illustId='0', msg='$52000151_QD__52000151__6$', duration=4000, align='right') # 호르헤 대사
         self.select_camera_path(pathIds=[7000,7001], returnView=False)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_A') # 호르헤
+        # 가설이 맞았군…아노스 선생은 역시 고대의 이노센트였다…
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -160,9 +169,10 @@ class 파토스등장연출10(trigger_api.Trigger):
 
 
 class 파토스등장연출12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003439, illustId='0', msg='$52000151_QD__52000151__7$', duration=4000, align='right') # 호르헤 대사
-        self.select_camera_path(pathIds=[7012,7013,7014,7015], returnView=False) # 하지만 어둠의 이노센트라니…이노센트는 하나가 아니었나…?
+        # 하지만 어둠의 이노센트라니…이노센트는 하나가 아니었나…?
+        self.select_camera_path(pathIds=[7012,7013,7014,7015], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -170,7 +180,7 @@ class 파토스등장연출12(trigger_api.Trigger):
 
 
 class 파토스등장연출13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__8$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7016,7017], returnView=False) # 훗…하나?
 
@@ -180,8 +190,9 @@ class 파토스등장연출13(trigger_api.Trigger):
 
 
 class 파토스등장연출14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__9$', duration=4000, align='right') # 파토스 대사
+        # 숫자놀이를 할 만큼 여유롭지 않지만,조금은 어울려 주도록 하지.
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -189,7 +200,7 @@ class 파토스등장연출14(trigger_api.Trigger):
 
 
 class 파토스등장연출15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__10$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7018,7019], returnView=False) # 우린 하나가 아니다.
 
@@ -199,8 +210,9 @@ class 파토스등장연출15(trigger_api.Trigger):
 
 
 class 파토스등장연출16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__11$', duration=4000, align='right') # 파토스 대사
+        # 저 녀석은 저 녀석.
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -208,8 +220,9 @@ class 파토스등장연출16(trigger_api.Trigger):
 
 
 class 파토스등장연출17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__12$', duration=4000, align='right') # 파토스 대사
+        # 나 파토스는 파토스일 뿐.
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -217,9 +230,10 @@ class 파토스등장연출17(trigger_api.Trigger):
 
 
 class 파토스등장연출18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__13$', duration=4000, align='right') # 파토스 대사
-        self.select_camera_path(pathIds=[7020,7021], returnView=False) # 뭐…그것도 잠시 일 테지.생명의 틈만 있다면, 빛의 이노센트도 내 몸이 될 것이다.
+        # 뭐…그것도 잠시 일 테지.생명의 틈만 있다면, 빛의 이노센트도 내 몸이 될 것이다.
+        self.select_camera_path(pathIds=[7020,7021], returnView=False)
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_patos_exit')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -228,7 +242,7 @@ class 파토스등장연출18(trigger_api.Trigger):
 
 
 class 파토스등장연출19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__14$', duration=4000, align='right') # 파토스 대사
         self.select_camera_path(pathIds=[7022,7023], returnView=False)
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_patos_turn') # 크큭…빛의 이노센트여.날 거부하지 마라.
@@ -239,10 +253,11 @@ class 파토스등장연출19(trigger_api.Trigger):
 
 
 class 파토스등장연출20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003441, illustId='0', msg='$52000151_QD__52000151__15$', duration=4000, align='right') # 케이틀린 대사
         self.select_camera_path(pathIds=[7024,7025], returnView=False)
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Attack_01_A') # 파토스
+        # 네 모든 건…모두 내 것이다.
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -250,15 +265,20 @@ class 파토스등장연출20(trigger_api.Trigger):
 
 
 class 파토스등장연출21(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 파토스 사라지는 이펙트
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 파토스등장연출22(self.ctx)
 
 
 class 파토스등장연출22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_anosTurn')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -267,7 +287,7 @@ class 파토스등장연출22(trigger_api.Trigger):
 
 
 class 파토스등장연출23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.set_achievement(triggerId=10010, type='trigger', achieve='ProtectFinish') # 50001641 퀘스트 완료 업적
         self.set_npc_emotion_loop(spawnId=200, sequenceName='Event_01_A', duration=999999)
@@ -279,11 +299,12 @@ class 파토스등장연출23(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10010], questIds=[50001642], questStates=[1]):
+            # C퀘스트가 진행 상태 일때
             return 생명의틈으로01(self.ctx)
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.set_npc_emotion_loop(spawnId=200, sequenceName='Event_01_A', duration=999999)
@@ -297,18 +318,19 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Skip_1_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_achievement(triggerId=10010, type='trigger', achieve='ProtectFinish') # 50001641 퀘스트 완료 업적
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10010], questIds=[50001642], questStates=[1]):
+            # C퀘스트가 진행 상태 일때
             return 생명의틈으로01(self.ctx)
 
 
 class 생명의틈으로01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000172, portalId=21002)
 
 

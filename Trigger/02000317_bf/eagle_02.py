@@ -3,13 +3,17 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_monster(spawnIds=[98], animationEffect=False)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[103]):
             return 독수리비행(self.ctx)
 
 
 class 독수리비행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +23,7 @@ class 독수리비행(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
         self.set_mesh(triggerIds=[3100,3101,3102,3103], visible=True, arg3=0, delay=0, scale=0) # Move_OnWater
         self.set_mesh(triggerIds=[3200,3201,3202,3203], visible=False, arg3=0, delay=0, scale=0) # Move_onTop
@@ -34,7 +34,7 @@ class Wait(trigger_api.Trigger):
 
 
 class BoardApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_Barrier
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class BoardApp01(trigger_api.Trigger):
 
 
 class BoardApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031204, textId=20031204) # 레버를 당겨 이동 장치 작동시키기
         self.set_effect(triggerIds=[5003], visible=True) # LeverHear
@@ -55,7 +55,7 @@ class BoardApp02(trigger_api.Trigger):
 
 
 class BoardGoUp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031204)
         self.set_effect(triggerIds=[5002], visible=True) # Wheel
         self.set_mesh(triggerIds=[3100,3101,3102,3103], visible=False, arg3=100, delay=0, scale=2) # Move_OnWater
@@ -75,7 +75,7 @@ class BoardGoUp01(trigger_api.Trigger):
 
 
 class BoardGoUp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -91,7 +91,7 @@ class BoardGoUp02(trigger_api.Trigger):
 
 
 class BoardDisApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3200,3201,3202,3203], visible=True, arg3=100, delay=0, scale=2) # Move_onTop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class BoardDisApp01(trigger_api.Trigger):
 
 
 class BoardDisApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False) # Move_GoUp
         self.set_breakable(triggerIds=[4001], enable=False) # Move_GoUp
         self.set_breakable(triggerIds=[4002], enable=False) # Move_GoUp
@@ -116,7 +116,7 @@ class BoardDisApp02(trigger_api.Trigger):
 
 
 class BoardReset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3100,3101,3102,3103], visible=True, arg3=0, delay=0, scale=0) # Move_OnWater
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +125,7 @@ class BoardReset01(trigger_api.Trigger):
 
 
 class BoardReset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001034], state=1) # Lever
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class BoardReset02(trigger_api.Trigger):
 
 
 class BoardReset03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3200,3201,3202,3203], visible=False, arg3=100, delay=0, scale=2) # Move_onTop
 
     def on_tick(self) -> trigger_api.Trigger:

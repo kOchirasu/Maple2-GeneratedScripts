@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[131,132,133,134,135,136], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:

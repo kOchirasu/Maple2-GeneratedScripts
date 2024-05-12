@@ -3,29 +3,29 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8902], visible=False) # 가이드 화살표
         self.set_effect(triggerIds=[605], visible=False) # 벨라 음성
         self.set_mesh(triggerIds=[2113,2114,2115,2116,2117,2118], visible=True)
         self.set_mesh(triggerIds=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=904, boxId=1):
+        if self.count_users(boxId=904, minUsers='1'):
             return 딜레이(self.ctx)
 
 
 class 대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2113,2114,2115,2116,2117,2118], visible=True)
         self.set_mesh(triggerIds=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=904, boxId=1):
+        if self.count_users(boxId=904, minUsers='1'):
             return 딜레이2(self.ctx)
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 딜레이(trigger_api.Trigger):
 
 
 class 딜레이2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class 딜레이2(trigger_api.Trigger):
 
 
 class 벨라(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.create_monster(spawnIds=[1003], animationEffect=False)
 
@@ -53,7 +53,7 @@ class 벨라(trigger_api.Trigger):
 
 
 class 벨라2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.create_monster(spawnIds=[1003], animationEffect=False)
 
@@ -63,11 +63,11 @@ class 벨라2(trigger_api.Trigger):
 
 
 class 벨라대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
         self.set_conversation(type=1, spawnId=1003, script='$02000252_BF__ELITE_02__0$', arg4=2)
         self.set_scene_skip(state=이동, action='nextState')
-        # action name="스킵을설정한다" arg1="이동" /
+        # self.set_skip(state=이동)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
@@ -75,11 +75,11 @@ class 벨라대사(trigger_api.Trigger):
 
 
 class 벨라대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
         self.set_conversation(type=1, spawnId=1003, script='$02000252_BF__ELITE_02__1$', arg4=2)
         self.set_scene_skip(state=이동, action='nextState')
-        # action name="스킵을설정한다" arg1="이동" /
+        # self.set_skip(state=이동)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
@@ -87,7 +87,7 @@ class 벨라대사2(trigger_api.Trigger):
 
 
 class 벨라스킬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_4')
 
@@ -97,8 +97,9 @@ class 벨라스킬(trigger_api.Trigger):
 
 
 class 벨라스킬2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
+        # Missing State: State
         self.set_scene_skip()
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_4')
 
@@ -108,9 +109,9 @@ class 벨라스킬2(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
-        # <action name="무작위유저를이동시킨다" arg1="02000252" arg2="9998" arg3="904" arg4="1" />
+        # self.move_random_user(mapId=2000252, portalId=9998, triggerId=904, count=1)
         self.create_monster(spawnIds=[202], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
         self.create_monster(spawnIds=[1103], animationEffect=False)
@@ -129,9 +130,9 @@ class 이동(trigger_api.Trigger):
 
 
 class 이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
-        # <action name="무작위유저를이동시킨다" arg1="02000252" arg2="9998" arg3="904" arg4="1" />
+        # self.move_random_user(mapId=2000252, portalId=9998, triggerId=904, count=1)
         self.set_mesh(triggerIds=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +141,7 @@ class 이동2(trigger_api.Trigger):
 
 
 class 벨라삭제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1003])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +150,7 @@ class 벨라삭제(trigger_api.Trigger):
 
 
 class 개봉(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8902], visible=True) # 가이드 화살표
         self.set_mesh(triggerIds=[2113,2114,2115,2116,2117,2118], visible=False)
         self.set_mesh(triggerIds=[2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,2136,2137,2138,2139,2140,2141,2142,2143,2144,2145], visible=False)

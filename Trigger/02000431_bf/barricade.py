@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[80001], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[80002], visible=True, arg3=0, delay=0, scale=0)
@@ -15,22 +15,23 @@ class Wait(trigger_api.Trigger):
 
 
 class CheckUser04_GuildRaid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # 최대 30초 대기
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=4, operator='GreaterEqual'):
+        if self.count_users(boxId=701, minUsers='4', operator='GreaterEqual'):
             return MaxCount04_Start(self.ctx)
-        if self.count_users(boxId=701, boxId=4, operator='Less'):
+        if self.count_users(boxId=701, minUsers='4', operator='Less'):
             return MaxCount04_Wait(self.ctx)
 
 
 class MaxCount04_Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=4, operator='GreaterEqual'):
+        if self.count_users(boxId=701, minUsers='4', operator='GreaterEqual'):
+            # 10명이면 바로 시작
             return MaxCount04_Start(self.ctx)
         if self.time_expired(timerId='1'):
             return MaxCount04_Start(self.ctx)
@@ -39,7 +40,8 @@ class MaxCount04_Wait(trigger_api.Trigger):
 
 
 class MaxCount04_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 최대 30초 대기 타이머 초기화
         self.reset_timer(timerId='1')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +56,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999101, key='start', value=1)
         self.set_effect(triggerIds=[70001], visible=False)
         self.set_effect(triggerIds=[70002], visible=False)
@@ -76,7 +78,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 카운트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000431_BF__BARRICADE__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +87,7 @@ class 카운트(trigger_api.Trigger):
 
 
 class 차단(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[80000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[80001], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[80002], visible=True, arg3=0, delay=0, scale=0)

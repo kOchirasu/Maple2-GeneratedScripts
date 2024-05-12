@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200033,200034], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 인터렉트_설정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200033,200034], visible=True)
         self.set_interact_object(triggerIds=[10003102], state=1) # 4페이즈 인터렉트 오브젝트 생성
         self.set_visible_breakable_object(triggerIds=[5520], visible=False)
@@ -31,7 +31,7 @@ class 인터렉트_설정(trigger_api.Trigger):
 
 
 class 인터렉트_동작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200033,200034], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_effect(triggerIds=[7001], visible=False)
         self.create_monster(spawnIds=[101])
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$52010023_QD__MAIN__0$', arg4=5)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
 
@@ -24,7 +24,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Npc_out(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=True)
         self.destroy_monster(spawnIds=[101])
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False)
         self.set_effect(triggerIds=[5001], visible=False)
         self.create_monster(spawnIds=[1001], animationEffect=False)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_widget(type='SceneMovie')
@@ -33,7 +33,7 @@ class 말풍선딜레이(trigger_api.Trigger):
 
 
 class PC말풍선01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000017_QD__QUEST01__0$', arg4=3, arg5=0)
         self.set_scene_skip(state=종료, action='exit')
 
@@ -43,7 +43,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 
 class NPC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True)
         self.set_conversation(type=2, spawnId=11001560, script='$52000017_QD__QUEST01__1$', arg4=4)
         self.set_skip(state=NPC대사01스킵)
@@ -54,9 +54,10 @@ class NPC대사01(trigger_api.Trigger):
 
 
 class NPC대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +66,7 @@ class NPC대사01스킵(trigger_api.Trigger):
 
 
 class NPC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_conversation(type=2, spawnId=11001560, script='$52000017_QD__QUEST01__2$', arg4=3)
         self.set_skip(state=NPC대사02스킵)
@@ -76,9 +77,10 @@ class NPC대사02(trigger_api.Trigger):
 
 
 class NPC대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +89,7 @@ class NPC대사02스킵(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -97,7 +99,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000040, portalId=1)
 
 

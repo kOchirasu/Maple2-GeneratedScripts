@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
         self.set_mesh(triggerIds=[80001], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[9500001,9500002,9500003,9500004,9500005,9500006,9500007,9500008,9500009,9500010], visible=False, arg3=0, delay=0, scale=0)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 유저감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=True)
         self.set_portal(portalId=19, visible=False, enable=False, minimapVisible=True)
 
@@ -25,7 +25,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 몬스터등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[80001], animationEffect=True)
         self.create_monster(spawnIds=[800011], animationEffect=True)
         self.create_monster(spawnIds=[81001], animationEffect=True)
@@ -37,12 +37,13 @@ class 몬스터등장(trigger_api.Trigger):
 
 class 몬스터사망_1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        # all_of:             <condition name="몬스터가죽어있으면" arg1="800011" />
+        if self.monster_dead(boxIds=[80001]):
             return 몬스터등장_2(self.ctx)
 
 
 class 몬스터등장_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[80002], animationEffect=True)
         self.create_monster(spawnIds=[800021], animationEffect=True)
         self.create_monster(spawnIds=[810021], animationEffect=True)
@@ -54,12 +55,12 @@ class 몬스터등장_2(trigger_api.Trigger):
 
 class 몬스터사망_2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[80002]) and self.monster_dead(boxIds=[800021]) and self.monster_dead(boxIds=[800011]):
             return 몬스터등장_3(self.ctx)
 
 
 class 몬스터등장_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[81001])
         self.destroy_monster(spawnIds=[81002])
         self.destroy_monster(spawnIds=[810021])
@@ -70,7 +71,7 @@ class 몬스터등장_3(trigger_api.Trigger):
 
 
 class 포탈생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9500001,9500002,9500003,9500004,9500005,9500006,9500007,9500008,9500009,9500010], visible=True, arg3=0, delay=90, scale=1)
         self.set_mesh(triggerIds=[9600001,9600002,9600003,9600004,9600005,9600006,9600007,9600008,9600009,9600010,9600011,9600012,9600013,9600014], visible=True, arg3=0, delay=90, scale=1)
 
@@ -80,13 +81,13 @@ class 포탈생성(trigger_api.Trigger):
 
 
 class 길생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[80001], visible=False, arg3=0, delay=0, scale=0)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
-            return None
+            pass
 
 
 initial_state = 대기

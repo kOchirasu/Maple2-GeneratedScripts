@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=True)
         self.destroy_monster(spawnIds=[3001])
         self.destroy_monster(spawnIds=[3002])
@@ -72,7 +72,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[10000], animationEffect=False)
@@ -85,7 +85,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class NpcMonologue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10000')
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__0$', arg4=2, arg5=0)
         self.set_skip(state=GateOpen01)
@@ -96,7 +96,7 @@ class NpcMonologue01(trigger_api.Trigger):
 
 
 class NpcMonologue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10001')
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__1$', arg4=2, arg5=0)
         self.set_skip(state=GateOpen01)
@@ -107,12 +107,13 @@ class NpcMonologue02(trigger_api.Trigger):
 
 
 class GateOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_actor(triggerId=900, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[300], visible=False, arg3=0, delay=0, scale=0) # InvisibleEnterBarrier
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +122,7 @@ class GateOpen01(trigger_api.Trigger):
 
 
 class GateOpen02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10002')
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__2$', arg4=3, arg5=0)
         self.set_actor(triggerId=900, visible=False, initialSequence='Opened')
@@ -133,7 +134,7 @@ class GateOpen02(trigger_api.Trigger):
 
 
 class Battle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002941, textId=20002941) # 용광로 괴수를 처치하세요!
         self.create_monster(spawnIds=[3001], animationEffect=False)
         self.create_monster(spawnIds=[3002], animationEffect=False)
@@ -160,7 +161,7 @@ class Battle01(trigger_api.Trigger):
 
 
 class Battle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999992, key='Battle_01', value=1)
         self.create_monster(spawnIds=[3101], animationEffect=True)
         self.create_monster(spawnIds=[3102], animationEffect=True)
@@ -174,7 +175,7 @@ class Battle02(trigger_api.Trigger):
 
 
 class Battle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[133], visible=True)
         self.set_agent(triggerIds=[134], visible=True)
         self.set_agent(triggerIds=[135], visible=True)
@@ -229,7 +230,7 @@ class Battle03(trigger_api.Trigger):
 
 
 class BattleEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[137], visible=False)
         self.set_agent(triggerIds=[138], visible=False)
         self.set_agent(triggerIds=[152], visible=False)
@@ -243,7 +244,7 @@ class BattleEnd01(trigger_api.Trigger):
 
 
 class BattleEnd02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__4$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -252,7 +253,7 @@ class BattleEnd02(trigger_api.Trigger):
 
 
 class BattleEnd03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=10000, patrolName='MS2PatrolData_10004')
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__5$', arg4=3, arg5=0)
         self.set_mesh(triggerIds=[101,102], visible=False, arg3=0, delay=0, scale=5)
@@ -264,7 +265,7 @@ class BattleEnd03(trigger_api.Trigger):
 
 
 class BattleEnd04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002942, textId=20002942)
         self.set_conversation(type=1, spawnId=10000, script='$02000294_BF__MAIN__6$', arg4=4, arg5=0)
 
@@ -274,7 +275,7 @@ class BattleEnd04(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002942)
         self.destroy_monster(spawnIds=[3001])
         self.destroy_monster(spawnIds=[3002])

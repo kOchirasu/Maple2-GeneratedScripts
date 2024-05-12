@@ -4,7 +4,7 @@ import trigger_api
 
 class Wait(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, boxId=1):
+        if self.count_users(boxId=9000, minUsers='1'):
             return LoadingDelay(self.ctx)
 
 
@@ -23,7 +23,7 @@ class LightOff01(trigger_api.Trigger):
 
 
 class LightOff02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2, key='InnerLight', value=1)
         self.set_user_value(triggerId=3, key='ResetInnerLight', value=1)
         self.set_ambient_light(primary=[0,0,0])
@@ -35,7 +35,7 @@ class LightOff02(trigger_api.Trigger):
 
 
 class RemoveTotem01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3, key='RemoveInnerLight', value=1)
         self.set_user_value(triggerId=2, key='InactivateLotus', value=1)
         self.set_ambient_light(primary=[96,160,157])

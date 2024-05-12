@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001064], state=2)
         self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_A01_Off')
         self.set_actor(triggerId=4003, visible=True, initialSequence='ry_functobj_door_A01_On')
@@ -18,12 +18,12 @@ class idle(trigger_api.Trigger):
         self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=1):
+        if self.count_users(boxId=701, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[8001,8002,8003], returnView=True)
@@ -46,7 +46,7 @@ class Start(trigger_api.Trigger):
 
 
 class Start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__2$', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=11001836, script='$02000380_BF__MAIN__3$', arg4=3)
 
@@ -56,7 +56,7 @@ class Start_02(trigger_api.Trigger):
 
 
 class Start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -66,7 +66,7 @@ class Start_03(trigger_api.Trigger):
 
 
 class Start_03_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003801, textId=20003801, duration=5000)
         self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=False, arg3=0, delay=10, scale=10)
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__4$', arg4=2, arg5=0)
@@ -77,7 +77,7 @@ class Start_03_02(trigger_api.Trigger):
 
 
 class Start_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2202')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,7 +86,7 @@ class Start_04(trigger_api.Trigger):
 
 
 class Start_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__5$', arg4=3, arg5=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2203')
 
@@ -96,7 +96,7 @@ class Start_05(trigger_api.Trigger):
 
 
 class Start_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__6$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -105,7 +105,7 @@ class Start_06(trigger_api.Trigger):
 
 
 class Start_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__7$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,22 +114,21 @@ class Start_07(trigger_api.Trigger):
 
 
 class Start_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=110, textId=40009, duration=5000) # 포탈 이용하세요
         self.set_mesh(triggerIds=[2010,2011,2012], visible=False, arg3=0, delay=10, scale=10)
 
     def on_tick(self) -> trigger_api.Trigger:
+        """
+        if self.random_condition(rate=33):
+            return Portal_11(self.ctx)
+        """
         if self.random_condition(rate=33):
             return Portal_10(self.ctx)
-        """
-        <condition name="랜덤조건" arg1="33">
-            <transition state="Portal_11" />
-        </condition>
-        """
 
 
 class Portal_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_A01_On')
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False)
 
@@ -139,7 +138,7 @@ class Portal_10(trigger_api.Trigger):
 
 
 class Portal_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_A01_On')
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=False)
 
@@ -149,7 +148,7 @@ class Portal_11(trigger_api.Trigger):
 
 
 class Portal_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4001, visible=True, initialSequence='ry_functobj_door_A01_On')
         self.set_portal(portalId=12, visible=True, enable=True, minimapVisible=False)
 
@@ -159,25 +158,30 @@ class Portal_12(trigger_api.Trigger):
 
 
 class Start_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__8$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(varId=1, value=1):
+        """
+        if not self.user_detected(boxIds=[710]):
             return Start_09_02(self.ctx)
         """
-        <condition name="!유저를감지했으면" arg1="710">
-            <transition state="Start_09_02" />
-        </condition>
-        """
+        if self.dungeon_variable(varId=1, value=1):
+            # 1번 던전이 클리어 됐다면?
+            return Start_09_02(self.ctx)
+
+    def on_exit(self) -> None:
+        # self.set_mesh(triggerIds=[2005,2006,2007,2008], visible=True, arg3=0, delay=0, scale=0)
+        pass
 
 
 class Start_09_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=703, boxId=1):
+        if self.count_users(boxId=703, minUsers='1'):
             return Round_2_03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 한명이라도 2라운드 지역으로 이동하면 포탈 셋팅 변경
         self.set_mesh(triggerIds=[2005,2006,2007,2008], visible=False, arg3=0, delay=0, scale=10)
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
@@ -192,7 +196,7 @@ class Round_2_02(trigger_api.Trigger):
 
 
 class Round_2_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__9$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +205,7 @@ class Round_2_03(trigger_api.Trigger):
 
 
 class Round_2_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2205')
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__10$', arg4=3, arg5=0)
 
@@ -211,7 +215,7 @@ class Round_2_04(trigger_api.Trigger):
 
 
 class Round_2_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__11$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,7 +224,7 @@ class Round_2_05(trigger_api.Trigger):
 
 
 class Round_2_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2207')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -228,8 +232,21 @@ class Round_2_06(trigger_api.Trigger):
             return Round_2_08(self.ctx)
 
 
+"""
+class Round_2_07(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_mesh(triggerIds=[2013,2014,2015], visible=False, arg3=0, delay=10, scale=10)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return Round_2_08(self.ctx)
+
+"""
+
+
 class Round_2_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.move_npc(spawnId=101, patrolName='MS2PatrolData_2208')
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__12$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -238,7 +255,7 @@ class Round_2_08(trigger_api.Trigger):
 
 
 class Round_2_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__13$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -247,7 +264,7 @@ class Round_2_09(trigger_api.Trigger):
 
 
 class Round_2_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=110, textId=40009, duration=5000) # 포탈 이용하세요
         self.set_mesh(triggerIds=[2013,2014,2015], visible=False, arg3=0, delay=10, scale=10)
 
@@ -257,7 +274,7 @@ class Round_2_10(trigger_api.Trigger):
 
 
 class Portal_21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4004, visible=True, initialSequence='ry_functobj_door_A01_On')
         self.set_portal(portalId=21, visible=True, enable=True, minimapVisible=False)
 
@@ -267,7 +284,7 @@ class Portal_21(trigger_api.Trigger):
 
 
 class Portal_22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4004, visible=True, initialSequence='ry_functobj_door_A01_On')
         self.set_portal(portalId=22, visible=True, enable=True, minimapVisible=False)
 
@@ -277,33 +294,50 @@ class Portal_22(trigger_api.Trigger):
 
 
 class Round_2_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__14$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.dungeon_variable(varId=2, value=1):
+        """
+        if not self.user_detected(boxIds=[710]):
             return Round_2_12(self.ctx)
         """
-        <condition name="!유저를감지했으면" arg1="710">
-            <transition state="Round_2_12" />
-        </condition>
-        """
+        if self.dungeon_variable(varId=2, value=1):
+            # 2번 던전이 클리어 됐다면?
+            return Round_2_12(self.ctx)
+
+    def on_exit(self) -> None:
+        # self.set_mesh(triggerIds=[2005,2006,2007,2008], visible=True, arg3=0, delay=0, scale=0)
+        pass
 
 
 class Round_2_12(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=703, boxId=1):
+        if self.count_users(boxId=703, minUsers='1'):
             return Round_3_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 한명이라도 3라운드 지역으로 이동하면 포탈 셋팅 변경
         self.set_mesh(triggerIds=[2005,2006,2007,2008], visible=False, arg3=0, delay=0, scale=10)
         self.set_portal(portalId=21, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=22, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=23, visible=True, enable=False, minimapVisible=False)
 
 
+"""
+class Round_3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[103])
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.count_users(boxId=708, minUsers='1'):
+            return Round_3_02(self.ctx)
+
+"""
+
+
 class Round_3_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2208')
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__15$', arg4=3, arg5=0)
 
@@ -313,7 +347,7 @@ class Round_3_02(trigger_api.Trigger):
 
 
 class Round_3_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2208')
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__16$', arg4=3, arg5=0)
 
@@ -323,7 +357,7 @@ class Round_3_03(trigger_api.Trigger):
 
 
 class Round_3_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000380_BF__MAIN__17$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -332,7 +366,7 @@ class Round_3_04(trigger_api.Trigger):
 
 
 class Clear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003802, textId=20003802) # 포탈 이용하세요
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[199])

@@ -9,7 +9,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 초5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2, startDelay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 초5(trigger_api.Trigger):
 
 
 class 초30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='300', seconds=300, startDelay=0)
         self.set_event_ui(type=1, arg2='$52000007_QD__EXIT__0$', arg3='4000')
 

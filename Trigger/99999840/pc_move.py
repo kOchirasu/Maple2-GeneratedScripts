@@ -27,7 +27,7 @@ class 유저이동확률(trigger_api.Trigger):
 
 
 class 유저이동1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999841, portalId=2, boxId=9202)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class 유저이동1(trigger_api.Trigger):
 
 
 class 유저이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999841, portalId=3, boxId=9202)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +49,7 @@ class 유저이동2(trigger_api.Trigger):
 
 
 class 유저이동3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999841, portalId=4, boxId=9202)
 
     def on_tick(self) -> trigger_api.Trigger:

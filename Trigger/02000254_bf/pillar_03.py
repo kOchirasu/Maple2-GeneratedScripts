@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000442], state=0)
         self.set_skill(triggerIds=[703], enable=False)
         self.set_effect(triggerIds=[446], visible=False)
@@ -16,7 +16,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000442], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 스턴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[446], visible=True)
         self.set_effect(triggerIds=[447], visible=True)
         self.set_effect(triggerIds=[462], visible=True)
@@ -40,7 +40,7 @@ class 스턴(trigger_api.Trigger):
 
 
 class 스턴2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[703], enable=False)
         self.set_timer(timerId='1', seconds=10)
 

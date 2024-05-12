@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10000, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=10001, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=10002, visible=False, enable=False, minimapVisible=False)
@@ -51,7 +51,7 @@ class 대기(trigger_api.Trigger):
         self.set_interact_object(triggerIds=[12000519], state=0)
         self.set_interact_object(triggerIds=[12000520], state=0)
         self.set_interact_object(triggerIds=[12000521], state=0)
-        # <action name="오브젝트반응설정한다" arg1="12000322" arg2="2" />
+        # self.set_interact_object(triggerIds=[12000322], state=2)
         self.set_interact_object(triggerIds=[12000604], state=1)
         self.set_interact_object(triggerIds=[12000605], state=1)
         self.set_mesh(triggerIds=[1001], visible=True, arg3=0, delay=0, scale=0)
@@ -125,17 +125,20 @@ class 대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[900]):
+            # self.side_npc_talk(type='talk', npcId=23501001, illust='Neirin_serious', script='하아...복잡한 곳이로군요...파악 좀 해볼게요.', duration=5000)
+            # self.create_monster(spawnIds=[1001], animationEffect=False)
+            # self.create_monster(spawnIds=[1002], animationEffect=False)
             return 카메라시작(self.ctx)
 
 
 class 카메라시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카메라종료, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        # <action name="카메라경로를선택한다" arg1="101,102,112,113,103,114,104,105,115,106,107,108,109" arg2="0" />
+        # self.select_camera_path(pathIds=[101,102,112,113,103,114,104,105,115,106,107,108,109], returnView=False)
         self.select_camera_path(pathIds=[100001,100002,100003,100004,100005], returnView=False)
-        # <action name="대화를설정한다" arg1="2" arg2="23501001" arg3="하아...복잡한 곳이로군요... 어떤 비밀이 있는지 한 번 알아볼게요." arg4="6"/>
+        # self.set_conversation(type=2, spawnId=23501001, script='하아...복잡한 곳이로군요... 어떤 비밀이 있는지 한 번 알아볼게요.', arg4=6)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
@@ -143,7 +146,7 @@ class 카메라시작(trigger_api.Trigger):
 
 
 class 마를레네대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004582, msg='$52100302_QD__MAIN__0$', align='left', illustId='Eone_normal', duration=5000)
         self.add_cinematic_talk(npcId=11004582, msg='$52100302_QD__MAIN__1$', align='left', illustId='Eone_serious', duration=4500)
 
@@ -153,7 +156,8 @@ class 마를레네대사(trigger_api.Trigger):
 
 
 class 카메라종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
@@ -169,17 +173,28 @@ class 시작딜레이(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
             self.create_monster(spawnIds=[1101], animationEffect=False)
+            # self.create_monster(spawnIds=[1102], animationEffect=False)
+            # self.create_monster(spawnIds=[1103], animationEffect=False)
             self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], animationEffect=False)
             self.create_monster(spawnIds=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], animationEffect=False)
             return LineStart(self.ctx)
 
 
 class LineStart(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_monster(spawnIds=[1101], animationEffect=False)
+        # self.create_monster(spawnIds=[1102], animationEffect=False)
+        # self.create_monster(spawnIds=[1103], animationEffect=False)
+        # self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010], animationEffect=False)
+        # self.create_monster(spawnIds=[1011,1012,1013,1014,1015,1016,1017,1018,1019,1020], animationEffect=False)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[1101,1001,1002,1005,1006,1009,1010,1011,1012,1015,1016,1017,1018,1019,1020]):
             self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_normal', script='$52100302_QD__MAIN__3$', duration=8000)
             self.enable_spawn_point_pc(spawnId=101, isEnable=False)
             self.enable_spawn_point_pc(spawnId=102, isEnable=True)
+            # self.set_visible_breakable_object(triggerIds=[1001,1002,1003], visible=True)
             self.set_interact_object(triggerIds=[12000501], state=1)
             self.set_interact_object(triggerIds=[12000502], state=1)
             self.set_interact_object(triggerIds=[12000503], state=1)
@@ -318,6 +333,7 @@ class CableDelay_05_3(trigger_api.Trigger):
 class CableOff_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-13125,75,2550], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=1)
             return End_01(self.ctx)
 
@@ -325,6 +341,7 @@ class CableOff_01(trigger_api.Trigger):
 class CableOff_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-13275,-5025,1650], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=2)
             return End_01(self.ctx)
 
@@ -332,6 +349,7 @@ class CableOff_02(trigger_api.Trigger):
 class CableOff_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-12925,5025,550], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=3)
             return End_01(self.ctx)
 
@@ -339,7 +357,11 @@ class CableOff_03(trigger_api.Trigger):
 class End_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
-            return None
+            # self.set_visible_breakable_object(triggerIds=[1001], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1002], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1003], visible=False)
+            # <transition state="대기"/>
+            pass
 
 
 initial_state = 대기

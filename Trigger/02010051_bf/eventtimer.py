@@ -17,7 +17,7 @@ class 시간체크(trigger_api.Trigger):
 
 
 class 업적이벤트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9003, type='trigger', achieve='CaboTimeEvent')
 
     def on_tick(self) -> trigger_api.Trigger:

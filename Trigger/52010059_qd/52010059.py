@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=False) # 콘대르
         self.create_monster(spawnIds=[202], animationEffect=False) # 샤텐
         self.create_monster(spawnIds=[203], animationEffect=False) # 네이린

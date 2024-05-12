@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class Idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -26,7 +26,7 @@ class ready(trigger_api.Trigger):
 
 
 class Monologue_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='으으.......', duration=2500, align='Right')
         self.set_scene_skip(state=end, action='exit')
 
@@ -36,7 +36,7 @@ class Monologue_01(trigger_api.Trigger):
 
 
 class Monologue_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='도대체 무슨 일이 일어난 거지?', duration=2500, align='Right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class Monologue_02(trigger_api.Trigger):
 
 
 class Monologue_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='.......', duration=3000, align='Right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,11 +54,12 @@ class Monologue_03(trigger_api.Trigger):
 
 
 class Monologue_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='잠깐! 여기는?!', duration=3000, align='Right')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +68,7 @@ class Monologue_04(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')

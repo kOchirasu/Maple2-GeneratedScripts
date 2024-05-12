@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[2900,2901,2902,2903,2904,2905], visible=True, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[12900], visible=False) # Vibrate Short
@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 로딩딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 로딩딜레이(trigger_api.Trigger):
 
 
 class 무너짐01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='2', seconds=2)
@@ -42,7 +42,7 @@ class 무너짐01(trigger_api.Trigger):
 
 
 class 카메라연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=2)
         self.select_camera(triggerId=601, enable=True)
 
@@ -52,7 +52,7 @@ class 카메라연출01(trigger_api.Trigger):
 
 
 class 카메라연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$52000014_QD__COLLAPSE_2900__0$')
@@ -64,7 +64,7 @@ class 카메라연출02(trigger_api.Trigger):
 
 
 class 카메라연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=3)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -76,7 +76,7 @@ class 카메라연출03(trigger_api.Trigger):
 
 
 class 무너짐02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52000014_QD__COLLAPSE_2900__1$', arg3='4000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class 무너짐02(trigger_api.Trigger):
 
 
 class 무너짐03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=5)
         self.set_effect(triggerIds=[12901], visible=True) # Vibrate Short
         self.set_effect(triggerIds=[22901], visible=True) # Vibrate Sound
@@ -96,7 +96,7 @@ class 무너짐03(trigger_api.Trigger):
 
 
 class 무너짐04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -111,7 +111,7 @@ class 무너짐05(trigger_api.Trigger):
 
 
 class 반응안내01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=4)
         self.set_effect(triggerIds=[12902], visible=True) # Vibrate Short
         self.set_effect(triggerIds=[22902], visible=True) # Vibrate Sound
@@ -123,62 +123,86 @@ class 반응안내01(trigger_api.Trigger):
 
 
 class 줍기안내01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52000014_QD__COLLAPSE_2900__3$', arg3='4000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9004], questIds=[50001250], questStates=[2]):
+            # Knight
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001251], questStates=[2]):
+            # Beginer
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001252], questStates=[2]):
+            # Berserker
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001253], questStates=[2]):
+            # Wizard
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001254], questStates=[2]):
+            # Priest
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001255], questStates=[2]):
+            # Ranger
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001256], questStates=[2]):
+            # HeavyGunner
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001257], questStates=[2]):
+            # Thief
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001258], questStates=[2]):
+            # Assassin
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001259], questStates=[2]):
+            # RuneBlader
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001370], questStates=[2]):
+            # Striker
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001371], questStates=[2]): # 완료 유저
+            # Soulbinder
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001250], questStates=[3]):
+            # Knight
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001251], questStates=[3]):
+            # Beginer
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001252], questStates=[3]):
+            # Berserker
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001253], questStates=[3]):
+            # Wizard
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001254], questStates=[3]):
+            # Priest
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001255], questStates=[3]):
+            # Ranger
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001256], questStates=[3]):
+            # HeavyGunner
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001257], questStates=[3]):
+            # Thief
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001258], questStates=[3]):
+            # Assassin
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001259], questStates=[3]):
+            # RuneBlader
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001370], questStates=[3]):
+            # Striker
             return 포털생성01(self.ctx)
         if self.quest_user_detected(boxIds=[9004], questIds=[50001371], questStates=[3]):
+            # Soulbinder
             return 포털생성01(self.ctx)
 
 
 class 포털생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -187,7 +211,7 @@ class 포털생성01(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12900], visible=False) # Vibrate Short
         self.set_effect(triggerIds=[22900], visible=False) # Vibrate Sound
         self.set_effect(triggerIds=[12901], visible=False) # Vibrate Short

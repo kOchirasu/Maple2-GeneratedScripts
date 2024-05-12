@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[132,195,255], secondary=[0,0,0], tertiary=[0,0,0])
         self.set_directional_light(diffuseColor=[163,115,143], specularColor=[140,140,140])
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -44,7 +44,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[8000], visible=True)
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__0$', arg3='3000')
@@ -55,7 +55,7 @@ class ready(trigger_api.Trigger):
 
 
 class 전투판으로이동하면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[601,6011,6012], animationEffect=True)
         self.add_balloon_talk(spawnId=601, msg='$02000540_BF__MAIN__1$', duration=3500, delayTick=0)
         self.add_balloon_talk(spawnId=6011, msg='$02000540_BF__MAIN__2$', duration=3500, delayTick=1500)
@@ -67,7 +67,7 @@ class 전투판으로이동하면(trigger_api.Trigger):
 
 
 class 전투판으로이동하면2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[602,6021,6022,603], animationEffect=True)
         self.add_balloon_talk(spawnId=603, msg='$02000540_BF__MAIN__4$', duration=3500, delayTick=500)
 
@@ -77,7 +77,7 @@ class 전투판으로이동하면2(trigger_api.Trigger):
 
 
 class 첫번째오브젝트조사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__5$', arg3='3000')
         self.set_interact_object(triggerIds=[10003138], state=1)
 
@@ -87,7 +87,7 @@ class 첫번째오브젝트조사(trigger_api.Trigger):
 
 
 class 첫번째불켰음(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8001], visible=True)
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__6$', arg3='3000')
@@ -98,7 +98,7 @@ class 첫번째불켰음(trigger_api.Trigger):
 
 
 class 두번째몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[9000], visible=False)
         self.create_monster(spawnIds=[604,6041,6042], animationEffect=False)
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000540_BF__MAIN__7$')
@@ -109,7 +109,7 @@ class 두번째몬스터생성(trigger_api.Trigger):
 
 
 class 두번째전투판으로이동하면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[605,6051,6052,606], animationEffect=True)
         self.add_balloon_talk(spawnId=606, msg='$02000540_BF__MAIN__8$', duration=3500, delayTick=500)
 
@@ -119,7 +119,7 @@ class 두번째전투판으로이동하면(trigger_api.Trigger):
 
 
 class 두번째오브젝트조사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__9$', arg3='3000')
         self.set_interact_object(triggerIds=[10003139], state=1)
 
@@ -129,7 +129,7 @@ class 두번째오브젝트조사(trigger_api.Trigger):
 
 
 class 세번째전투판체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8002], visible=True)
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__10$', arg3='3000')
@@ -145,7 +145,7 @@ class 세번째전투판체크(trigger_api.Trigger):
 
 
 class 세번째몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[9001], visible=False)
         self.create_monster(spawnIds=[607,6071,6072], animationEffect=False)
 
@@ -155,7 +155,7 @@ class 세번째몬스터생성(trigger_api.Trigger):
 
 
 class 세번째전투판으로이동하면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[608,6081,6082,609], animationEffect=True)
         self.add_balloon_talk(spawnId=609, msg='$02000540_BF__MAIN__12$', duration=3500, delayTick=500)
 
@@ -165,7 +165,7 @@ class 세번째전투판으로이동하면(trigger_api.Trigger):
 
 
 class 세번째오브젝트조사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__13$', arg3='3000')
         self.set_interact_object(triggerIds=[10003140], state=1)
 
@@ -175,7 +175,7 @@ class 세번째오브젝트조사(trigger_api.Trigger):
 
 
 class 네번째전투판체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8003], visible=True)
         self.set_onetime_effect(id=103, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__14$', arg3='3000')
@@ -186,7 +186,7 @@ class 네번째전투판체크(trigger_api.Trigger):
 
 
 class 네번째몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[9002], visible=False)
         self.create_monster(spawnIds=[610,6101,6102], animationEffect=False)
 
@@ -196,7 +196,7 @@ class 네번째몬스터생성(trigger_api.Trigger):
 
 
 class 네번째전투판으로이동하면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[611,6111,6112,612], animationEffect=True)
         self.add_balloon_talk(spawnId=612, msg='$02000540_BF__MAIN__15$', duration=3500, delayTick=500)
 
@@ -206,7 +206,7 @@ class 네번째전투판으로이동하면(trigger_api.Trigger):
 
 
 class 네번째오브젝트조사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__16$', arg3='3000')
         self.set_interact_object(triggerIds=[10003141], state=1)
 
@@ -216,7 +216,7 @@ class 네번째오브젝트조사(trigger_api.Trigger):
 
 
 class 보스전투판완성시키기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8004], visible=True)
         self.set_onetime_effect(id=104, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_event_ui(type=1, arg2='$02000540_BF__MAIN__17$', arg3='3000')
@@ -233,7 +233,7 @@ class 보스전투판완성시키기(trigger_api.Trigger):
 
 
 class 보스등장전에(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000540_BF__MAIN__18$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +242,7 @@ class 보스등장전에(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[9003], visible=False)
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
@@ -257,7 +257,7 @@ class 보스등장(trigger_api.Trigger):
 
 
 class 다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000540_BF__MAIN__20$')
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

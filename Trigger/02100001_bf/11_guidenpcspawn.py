@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Wait(trigger_api.Trigger):
 
 
 class NpcSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class CheckUser(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
 
 

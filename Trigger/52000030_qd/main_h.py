@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Nutaman_intro.swf', movieId=1)
@@ -28,18 +28,18 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 이슈라대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001564, script='$52000030_QD__MAIN_H__0$', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=11001583, script='$52000030_QD__MAIN_H__1$', arg4=3, arg5=0)
-        self.set_skip(state=NPC 단체 이동)
+        self.set_skip(state=NPC_단체_이동)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
-            return NPC 단체 이동(self.ctx)
+            return NPC_단체_이동(self.ctx)
 
 
-class NPC 단체 이동(trigger_api.Trigger):
-    def on_enter(self):
+class NPC_단체_이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001')
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002')
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003')
@@ -59,7 +59,7 @@ class NPC 단체 이동(trigger_api.Trigger):
         if self.npc_detected(boxId=102, spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014]):
             return 전투판으로이동(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014])
         self.create_monster(spawnIds=[1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,2001,2002], animationEffect=False)
         self.set_cinematic_ui(type=0)
@@ -67,7 +67,7 @@ class NPC 단체 이동(trigger_api.Trigger):
 
 
 class 전투판으로이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=False)
         self.move_user(mapId=52000030, portalId=100)
 
@@ -75,24 +75,24 @@ class 전투판으로이동(trigger_api.Trigger):
         if self.monster_dead(boxIds=[2002]):
             return 차전투2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[2001])
 
 
 class 차전투2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2003,2004], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2003]):
             return 이슈라대사02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[2004])
 
 
 class 이슈라대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001583, script='$52000030_QD__MAIN_H__2$', arg4=3, arg5=0)
@@ -101,13 +101,13 @@ class 이슈라대사02(trigger_api.Trigger):
         if self.wait_tick(waitTick=2500):
             return 차전투3(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 차전투3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2005], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 차전투3(trigger_api.Trigger):
 
 
 class 이슈라대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001244, script='$52000030_QD__MAIN_H__3$', arg4=3, arg5=0)
@@ -126,7 +126,7 @@ class 이슈라대사03(trigger_api.Trigger):
             self.move_user(mapId=52000031, portalId=0)
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=False)
         self.set_skill(triggerIds=[7002], enable=False)
         self.set_skill(triggerIds=[7003], enable=False)
@@ -35,7 +35,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 스킬발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_skill(triggerIds=[7002], enable=True)
         self.set_skill(triggerIds=[7003], enable=True)

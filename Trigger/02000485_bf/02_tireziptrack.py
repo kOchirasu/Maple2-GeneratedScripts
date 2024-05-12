@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[100]) # Tire
         self.set_user_value(key='TireSpawn', value=0)
         self.set_interact_object(triggerIds=[10002047], state=0) # MakeTireZipTrack
@@ -14,21 +14,22 @@ class Wait(trigger_api.Trigger):
 
 
 class GuideInteract(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039903, textId=20039903) # 가이드 : 건너편 탑으로 이동할 수 있는 장치를 찾으세요
+        # 가이드 : 건너편 탑으로 이동할 수 있는 장치를 찾으세요
+        self.show_guide_summary(entityId=20039903, textId=20039903)
         self.set_interact_object(triggerIds=[10002047], state=1) # MakeTireZipTrack
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10002047], stateValue=0):
             return TireSpawn(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=20039903)
 
 
 class TireSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[100], animationEffect=False) # Tire
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039904, textId=20039904, duration=3000) # 가이드 : 타이어에 매달리세요!
@@ -39,7 +40,7 @@ class TireSpawn(trigger_api.Trigger):
 
 
 class GuideTireHold(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039905, textId=20039905, duration=2000) # 가이드 : 출발합니다!
 
@@ -49,7 +50,7 @@ class GuideTireHold(trigger_api.Trigger):
 
 
 class TireMove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +59,7 @@ class TireMove(trigger_api.Trigger):
 
 
 class TireRemove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[100])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +74,7 @@ class TireResetDelay(trigger_api.Trigger):
 
 
 class TireReset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002047], state=1) # MakeTireZipTrack
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +83,7 @@ class TireReset(trigger_api.Trigger):
 
 
 class TireSpawnAgain(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[100], animationEffect=False) # Tire
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +92,7 @@ class TireSpawnAgain(trigger_api.Trigger):
 
 
 class TireMoveAgain(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
 
     def on_tick(self) -> trigger_api.Trigger:

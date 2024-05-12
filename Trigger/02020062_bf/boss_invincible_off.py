@@ -9,8 +9,9 @@ class 대기(trigger_api.Trigger):
 
 
 class 무적해제안내(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_buff(boxIds=[9002], skillId=70002371, level=1, isSkillSet=False) # <유저 웨폰 오브젝트 떨구기>
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.add_buff(boxIds=[9002], skillId=70002371, level=1, isSkillSet=False)
+        # <유저 웨폰 오브젝트 떨구기>
         self.set_event_ui(type=1, arg2='$02020062_BF__BOSS_INVINCIBLE_OFF__0$', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:

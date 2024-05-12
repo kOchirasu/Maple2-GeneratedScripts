@@ -3,16 +3,16 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3400,3401], visible=False, arg3=0, delay=0, scale=0) # Bridge Mesh
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.user_detected(boxIds=[9400]) and self.user_detected(boxIds=[9401]):
             return BridgeOn(self.ctx)
 
 
 class BridgeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3400,3401], visible=True, arg3=300, delay=0, scale=2) # Bridge Mesh
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class BridgeOn(trigger_api.Trigger):
 
 
 class BridgeOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3400,3401], visible=False, arg3=0, delay=0, scale=2) # Bridge Mesh
 
     def on_tick(self) -> trigger_api.Trigger:

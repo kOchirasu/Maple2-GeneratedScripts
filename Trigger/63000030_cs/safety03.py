@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='SafetyStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Enter01(trigger_api.Trigger):
 
 
 class PCTeleport01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000030, portalId=20, boxId=9900)
 
     def on_tick(self) -> trigger_api.Trigger:

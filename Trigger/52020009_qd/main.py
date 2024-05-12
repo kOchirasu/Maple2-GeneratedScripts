@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8001], visible=False)
         self.set_interact_object(triggerIds=[10001266], state=0)
         self.set_effect(triggerIds=[5001], visible=False)
@@ -26,7 +26,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.create_monster(spawnIds=[203], animationEffect=True)
@@ -49,7 +49,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001266], state=1)
         self.set_mesh(triggerIds=[8001], visible=True)
 
@@ -59,7 +59,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class MeshOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

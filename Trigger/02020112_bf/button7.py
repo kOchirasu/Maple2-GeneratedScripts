@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=9907, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 작동(trigger_api.Trigger):
 
 
 class 감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=9907, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 감지(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=9907, visible=False, initialSequence='Interaction_Lapentafoothold_A01_On')
 
 

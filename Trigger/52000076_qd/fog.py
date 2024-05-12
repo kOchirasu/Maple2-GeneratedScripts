@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000813], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1098])
         self.set_effect(triggerIds=[600], visible=False) # fog 500
         self.set_effect(triggerIds=[602], visible=False) # fog 1500
@@ -24,7 +24,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 포그(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_interact_object(triggerIds=[10000813], state=1)
         self.show_guide_summary(entityId=20003494, textId=20003494)
@@ -38,7 +38,7 @@ class 포그(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20003494)
         self.set_effect(triggerIds=[602], visible=True)
         self.set_interact_object(triggerIds=[10000813], state=0)

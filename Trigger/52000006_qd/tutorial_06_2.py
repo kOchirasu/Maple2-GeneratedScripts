@@ -15,7 +15,7 @@ class 오픈대기중(trigger_api.Trigger):
 
 
 class 화면효과(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=7)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class 화면효과(trigger_api.Trigger):
 
 
 class 화면효과2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$52000006_QD__TUTORIAL_06_2__0$')
@@ -36,7 +36,7 @@ class 화면효과2(trigger_api.Trigger):
 
 
 class 화면효과3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.select_camera(triggerId=303, enable=True)
         self.set_effect(triggerIds=[402], visible=True)
@@ -47,7 +47,7 @@ class 화면효과3(trigger_api.Trigger):
 
 
 class 맵이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.move_user(mapId=52000007, portalId=1)
 

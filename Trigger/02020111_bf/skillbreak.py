@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900001, key='SkillBreakFail', value=0)
         self.set_user_value(triggerId=900008, key='SkillBreakFail', value=3)
         self.set_user_value(triggerId=900009, key='SkillBreakFail', value=3)
@@ -26,15 +26,15 @@ class 대기(trigger_api.Trigger):
 
 
 class 스킬브레이크_실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=62100026, level=1, isPlayer=True)
         self.add_buff(boxIds=[101], skillId=70002185, level=1, isPlayer=True) # 스킬브레이크 체크를 제거한다.
         self.set_ambient_light(primary=[183,189,201])
         self.set_directional_light(diffuseColor=[192,210,211], specularColor=[170,170,170])
         self.add_buff(boxIds=[1006], skillId=70002151, level=1, isSkillSet=False)
         self.set_user_value(triggerId=900001, key='SkillBreakFail', value=1)
-        # <action name="SetUserValue" triggerID="900002" key="SkillBreakFail" value="1" />
-        # <action name="SetUserValue" triggerID="900003" key="SkillBreakFail" value="1" />
+        # self.set_user_value(triggerId=900002, key='SkillBreakFail', value=1)
+        # self.set_user_value(triggerId=900003, key='SkillBreakFail', value=1)
         self.set_user_value(triggerId=900008, key='SkillBreakFail', value=1)
         self.set_user_value(triggerId=900009, key='SkillBreakFail', value=1)
         self.set_user_value(triggerId=900010, key='SkillBreakFail', value=1)
@@ -73,7 +73,7 @@ class 스킬브레이크_실패(trigger_api.Trigger):
 
 
 class 스킬브레이크_실패_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='Lapenta_Attack', value=0)
         self.set_user_value(triggerId=900006, key='Lapenta_Attack_2', value=0)
         self.set_user_value(triggerId=900102, key='Phase', value=1)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,111,112])
         self.set_effect(triggerIds=[6001,6002], visible=True)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Sit_Down_A', duration=100000000) # 아시모프
@@ -36,7 +36,7 @@ class 퀘스트조건체크(trigger_api.Trigger):
 
 
 class 기본상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 기본상태(trigger_api.Trigger):
 
 
 class 전경_연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(mapId=52000149, portalId=10)
@@ -57,10 +57,12 @@ class 전경_연출준비(trigger_api.Trigger):
 
 
 class 전경_연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000,8010], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_pc')
         self.set_scene_skip(state=아노스아파_스킵완료, action='nextState') # setsceneskip 1 set
+        # setsceneskip 1 set
+        # setsceneskip 1 set
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -68,7 +70,7 @@ class 전경_연출시작(trigger_api.Trigger):
 
 
 class 카메라_아노스줌인(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.add_cinematic_talk(npcId=11003436, msg='$52000149_QD__MAIN__0$', duration=3000)
         self.set_skip(state=아노스아파_스킵완료)
@@ -85,7 +87,7 @@ class 카메라_아노스줌인01(trigger_api.Trigger):
 
 
 class 카메라_케이틀린01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002,8004], returnView=False)
         self.add_cinematic_talk(npcId=11003436, msg='$52000149_QD__MAIN__1$', duration=3000)
         self.set_skip(state=아노스아파_스킵완료)
@@ -102,7 +104,7 @@ class 카메라_케이틀린0102(trigger_api.Trigger):
 
 
 class 카메라_케이틀린02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Idle_A', duration=3000)
         self.add_cinematic_talk(npcId=11003436, msg='$52000149_QD__MAIN__2$', duration=3000)
@@ -116,7 +118,7 @@ class 카메라_케이틀린02(trigger_api.Trigger):
 
 
 class 호르헤이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_Jorge')
 
@@ -126,7 +128,7 @@ class 호르헤이동(trigger_api.Trigger):
 
 
 class 빈집(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111,112])
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -136,7 +138,7 @@ class 빈집(trigger_api.Trigger):
 
 
 class 아노스아파_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52000149, portalId=11)
@@ -148,7 +150,7 @@ class 아노스아파_스킵완료(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=3)
         self.set_achievement(triggerId=9000, type='trigger', achieve='AnosReturns')
         self.set_cinematic_ui(type=0)

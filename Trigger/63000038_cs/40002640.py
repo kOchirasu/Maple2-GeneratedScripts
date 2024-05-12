@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
@@ -63,7 +63,7 @@ class 퀘스트분기_소울바인더(trigger_api.Trigger):
 
 
 class 차연출시작1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -82,7 +82,7 @@ class 차연출시작1(trigger_api.Trigger):
 
 
 class 차연출딜레이1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=차연출종료1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +91,7 @@ class 차연출딜레이1(trigger_api.Trigger):
 
 
 class 차연출종료1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -106,7 +106,7 @@ class 차연출종료1(trigger_api.Trigger):
 
 
 class 계단생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2001])
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.set_npc_emotion_loop(spawnId=2002, sequenceName='Attack_Idle_A', duration=1E+10)
@@ -133,7 +133,7 @@ class 차전투대기2(trigger_api.Trigger):
 
 
 class 차전투2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2103], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,7 +142,7 @@ class 차전투2(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3400], visible=False, arg3=0, delay=0, scale=0)
         self.set_actor(triggerId=201, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_on')
 
@@ -154,7 +154,7 @@ class 문열림(trigger_api.Trigger):
 
 
 class 차연출시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
@@ -165,7 +165,7 @@ class 차연출시작2(trigger_api.Trigger):
 
 
 class 칸두라대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__0$', arg4=3)
         self.set_skip(state=칸두라대사01스킵)
 
@@ -175,8 +175,9 @@ class 칸두라대사01(trigger_api.Trigger):
 
 
 class 칸두라대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -185,7 +186,7 @@ class 칸두라대사01스킵(trigger_api.Trigger):
 
 
 class 칸두라대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__1$', arg4=5)
         self.set_skip(state=칸두라대사02스킵)
 
@@ -195,8 +196,9 @@ class 칸두라대사02(trigger_api.Trigger):
 
 
 class 칸두라대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,7 +207,7 @@ class 칸두라대사02스킵(trigger_api.Trigger):
 
 
 class 칸두라공격(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_npc_emotion_sequence(spawnId=2002, sequenceName='Attack_01_A')
 
@@ -215,7 +217,7 @@ class 칸두라공격(trigger_api.Trigger):
 
 
 class 칸두라공격이펙트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -224,7 +226,7 @@ class 칸두라공격이펙트(trigger_api.Trigger):
 
 
 class 가로막기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002')
 
@@ -234,7 +236,7 @@ class 가로막기(trigger_api.Trigger):
 
 
 class 처맞기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.select_camera(triggerId=304, enable=True)
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002B')
@@ -252,7 +254,7 @@ class 처맞기후딜레이(trigger_api.Trigger):
 
 
 class NPC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=307, enable=True)
         self.set_conversation(type=2, spawnId=11001782, script='$63000038_CS__40002640__2$', arg4=3)
         self.set_skip(state=NPC대사01스킵)
@@ -263,8 +265,9 @@ class NPC대사01(trigger_api.Trigger):
 
 
 class NPC대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -273,7 +276,7 @@ class NPC대사01스킵(trigger_api.Trigger):
 
 
 class NPC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001782, script='$63000038_CS__40002640__3$', arg4=4)
@@ -285,8 +288,9 @@ class NPC대사02(trigger_api.Trigger):
 
 
 class NPC대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -295,7 +299,7 @@ class NPC대사02스킵(trigger_api.Trigger):
 
 
 class 칸두라대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__4$', arg4=5)
         self.set_skip(state=칸두라대사03스킵)
@@ -306,8 +310,9 @@ class 칸두라대사03(trigger_api.Trigger):
 
 
 class 칸두라대사03스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -316,7 +321,7 @@ class 칸두라대사03스킵(trigger_api.Trigger):
 
 
 class 차연출시작_소울바인더2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
@@ -327,7 +332,7 @@ class 차연출시작_소울바인더2(trigger_api.Trigger):
 
 
 class 칸두라대사01_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__5$', arg4=4)
         self.set_skip(state=칸두라대사01스킵_소울바인더)
 
@@ -337,8 +342,9 @@ class 칸두라대사01_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사01스킵_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -347,7 +353,7 @@ class 칸두라대사01스킵_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사02_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__6$', arg4=4)
         self.set_skip(state=칸두라대사02스킵_소울바인더)
 
@@ -357,8 +363,9 @@ class 칸두라대사02_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사02스킵_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -367,7 +374,7 @@ class 칸두라대사02스킵_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라공격_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_npc_emotion_sequence(spawnId=2002, sequenceName='Attack_01_A')
 
@@ -377,7 +384,7 @@ class 칸두라공격_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라공격이펙트_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -386,7 +393,7 @@ class 칸두라공격이펙트_소울바인더(trigger_api.Trigger):
 
 
 class 가로막기_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
         self.move_npc(spawnId=11002, patrolName='MS2PatrolData_1002')
 
@@ -396,7 +403,7 @@ class 가로막기_소울바인더(trigger_api.Trigger):
 
 
 class 처맞기_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.select_camera(triggerId=304, enable=True)
         self.move_npc(spawnId=11002, patrolName='MS2PatrolData_1002B')
@@ -414,7 +421,7 @@ class 처맞기후딜레이_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사03_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__7$', arg4=3)
         self.set_skip(state=칸두라대사03스킵_소울바인더)
@@ -425,8 +432,9 @@ class 칸두라대사03_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사03스킵_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -435,7 +443,7 @@ class 칸두라대사03스킵_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사04_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__8$', arg4=6)
         # Missing State: 칸두라대사04스킵_소울바인더
@@ -447,8 +455,9 @@ class 칸두라대사04_소울바인더(trigger_api.Trigger):
 
 
 class 칸두라대사04스킵_소울바인더_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -457,9 +466,9 @@ class 칸두라대사04스킵_소울바인더_소울바인더(trigger_api.Trigge
 
 
 class 칸투라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2104,2105], animationEffect=False)
-        # action name="NPC를이동시킨다" arg1="2002" arg2="MS2PatrolData_2002"/
+        # self.move_npc(spawnId=2002, patrolName='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -467,7 +476,7 @@ class 칸투라이동(trigger_api.Trigger):
 
 
 class 차연출종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=305, enable=False)
@@ -482,7 +491,7 @@ class 차연출종료2(trigger_api.Trigger):
 
 
 class 차연출시작3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[2104,2105])
@@ -502,7 +511,7 @@ class 차연출분기3(trigger_api.Trigger):
 
 
 class NPC교체_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=199, type='trigger', achieve='KillallShadow')
         self.destroy_monster(spawnIds=[11002])
         self.create_monster(spawnIds=[11003], animationEffect=False)
@@ -513,7 +522,7 @@ class NPC교체_소울바인더(trigger_api.Trigger):
 
 
 class 차연출종료3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999004, key='BossGuide', value=1)
         self.select_camera(triggerId=307, enable=False)
         self.set_cinematic_ui(type=0)
@@ -525,7 +534,7 @@ class 차연출종료3(trigger_api.Trigger):
 
 
 class HP50퍼센트대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=13500, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -552,7 +561,7 @@ class NPC소환(trigger_api.Trigger):
 
 
 class NPC원위치딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=13500, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -569,7 +578,7 @@ class 차원위치분기5(trigger_api.Trigger):
 
 
 class NPC원위치(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -578,7 +587,7 @@ class NPC원위치(trigger_api.Trigger):
 
 
 class 수락대기40002641(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1003])
         self.create_monster(spawnIds=[1004], animationEffect=False)
 
@@ -588,7 +597,7 @@ class 수락대기40002641(trigger_api.Trigger):
 
 
 class NPC원위치_소울바인더(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=11004, patrolName='MS2PatrolData_1003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -597,7 +606,7 @@ class NPC원위치_소울바인더(trigger_api.Trigger):
 
 
 class 소울바인더연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(mapId=63000038, portalId=3)
@@ -609,7 +618,7 @@ class 소울바인더연출시작(trigger_api.Trigger):
 
 
 class 준타틴차이등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[13001,13002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -618,7 +627,7 @@ class 준타틴차이등장(trigger_api.Trigger):
 
 
 class 준타대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=308, enable=True)
         self.set_conversation(type=2, spawnId=11001557, script='$63000038_CS__40002640__9$', arg4=5)
         self.set_skip(state=준타대사01스킵)
@@ -629,8 +638,9 @@ class 준타대사01(trigger_api.Trigger):
 
 
 class 준타대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -639,7 +649,7 @@ class 준타대사01스킵(trigger_api.Trigger):
 
 
 class 칸두라대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=311, enable=True)
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.set_npc_emotion_loop(spawnId=2004, sequenceName='Attack_Idle_A', duration=1E+10)
@@ -652,8 +662,9 @@ class 칸두라대사05(trigger_api.Trigger):
 
 
 class 칸두라대사05스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -662,7 +673,7 @@ class 칸두라대사05스킵(trigger_api.Trigger):
 
 
 class 칸두라대사06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000038_CS__40002640__11$', arg4=3)
         self.set_skip(state=칸두라대사06스킵)
 
@@ -672,8 +683,9 @@ class 칸두라대사06(trigger_api.Trigger):
 
 
 class 칸두라대사06스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -682,7 +694,7 @@ class 칸두라대사06스킵(trigger_api.Trigger):
 
 
 class 비전등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=309, enable=True)
         self.create_monster(spawnIds=[14001], animationEffect=False)
 
@@ -692,7 +704,7 @@ class 비전등장(trigger_api.Trigger):
 
 
 class 칸두라공격02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_npc_emotion_sequence(spawnId=2004, sequenceName='Attack_01_A')
 
@@ -702,7 +714,7 @@ class 칸두라공격02(trigger_api.Trigger):
 
 
 class 비전대신맞기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=310, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -711,7 +723,8 @@ class 비전대신맞기(trigger_api.Trigger):
 
 
 class 비전대신맞기이펙트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.select_camera(triggerId=312, enable=True)
         self.set_effect(triggerIds=[603], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -720,7 +733,7 @@ class 비전대신맞기이펙트(trigger_api.Trigger):
 
 
 class 동영상시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Cut_Farewell_Vision.swf', movieId=1)
@@ -729,12 +742,12 @@ class 동영상시작(trigger_api.Trigger):
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return 완료가능40002651(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_achievement(triggerId=199, type='trigger', achieve='DisappearKandura')
 
 
 class 완료가능40002651(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=310, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -751,7 +764,7 @@ class 완료가능40002651(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26300381, textId=26300381, duration=3000)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

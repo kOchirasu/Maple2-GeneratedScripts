@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5001], visible=False) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 미션 완료 사운드 이펙트
@@ -53,19 +53,23 @@ class Wait(trigger_api.Trigger):
 
 
 class Enter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[90000455], questStates=[1]):
+            # 하산 퀘스트 수락한 상태
             return QuestOnGiong21(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000454], questStates=[3]):
+            # 여정의 명분 퀘스트 완료 상태
             return QuestOnGiong11(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000454], questStates=[2]):
+            # 여정의 명분 퀘스트 완료 가능 상태
             return QuestOnGiong01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000453], questStates=[3]):
+            # 무나크라의 계시 완료 상태
             return Delay01(self.ctx)
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
@@ -73,7 +77,7 @@ class Enter01(trigger_api.Trigger):
 
 # 하산 퀘스트 수락한 상태
 class QuestOnGiong21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -96,7 +100,7 @@ class QuestOnGiong21(trigger_api.Trigger):
 
 
 class QuestOnGiong22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -107,7 +111,7 @@ class QuestOnGiong22(trigger_api.Trigger):
 
 # 여정의 명분 퀘스트 완료 상태
 class QuestOnGiong11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -129,7 +133,7 @@ class QuestOnGiong11(trigger_api.Trigger):
 
 
 class QuestOnGiong12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -140,7 +144,7 @@ class QuestOnGiong12(trigger_api.Trigger):
 
 # 여정의 명분 퀘스트 완료 가능 상태
 class QuestOnGiong01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -162,7 +166,7 @@ class QuestOnGiong01(trigger_api.Trigger):
 
 
 class QuestOnGiong02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -173,7 +177,7 @@ class QuestOnGiong02(trigger_api.Trigger):
 
 # 최초 진입
 class Delay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[920,921,922,923,924,925,926,927,928,929,930,931], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -182,7 +186,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class LookAround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -193,7 +197,7 @@ class LookAround01(trigger_api.Trigger):
 
 
 class LookAround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,201], animationEffect=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
@@ -204,7 +208,7 @@ class LookAround02(trigger_api.Trigger):
 
 
 class LookAround03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=True)
         self.set_scene_skip(state=LookAround07_CSkip, action='nextState')
 
@@ -214,7 +218,7 @@ class LookAround03(trigger_api.Trigger):
 
 
 class LookAround04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$63000030_CS__FLYINGCLOUD01__0$', arg4=2, arg5=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_202')
@@ -225,7 +229,7 @@ class LookAround04(trigger_api.Trigger):
 
 
 class LookAround05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6100], visible=True) # Voice_Junta_00001820
         self.set_conversation(type=1, spawnId=201, script='$63000030_CS__FLYINGCLOUD01__1$', arg4=2, arg5=0) # 준타 00001820
         self.move_npc(spawnId=920, patrolName='MS2PatrolData_920')
@@ -241,13 +245,14 @@ class LookAround05(trigger_api.Trigger):
 
 
 class LookAround06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=921, patrolName='MS2PatrolData_921')
         self.move_npc(spawnId=922, patrolName='MS2PatrolData_922')
         self.move_npc(spawnId=924, patrolName='MS2PatrolData_924')
         self.move_npc(spawnId=926, patrolName='MS2PatrolData_926')
         self.move_npc(spawnId=929, patrolName='MS2PatrolData_929')
         self.move_npc(spawnId=930, patrolName='MS2PatrolData_930')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -256,7 +261,7 @@ class LookAround06(trigger_api.Trigger):
 
 
 class LookAround07_CSkip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=920, patrolName='MS2PatrolData_920')
         self.move_npc(spawnId=923, patrolName='MS2PatrolData_923')
         self.move_npc(spawnId=925, patrolName='MS2PatrolData_925')
@@ -276,7 +281,7 @@ class LookAround07_CSkip(trigger_api.Trigger):
 
 
 class LookAround07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[102,202], animationEffect=False)
@@ -303,7 +308,7 @@ class LookAround07(trigger_api.Trigger):
 
 
 class BattleStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10037010, textId=10037010) # 가이드 : 검은 그림자 무리 처치하기
 
@@ -311,12 +316,12 @@ class BattleStart01(trigger_api.Trigger):
         if self.monster_dead(boxIds=[920,921,922,923,924,925,926,927,928,929,930,931]):
             return BattleEnd01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10037010)
 
 
 class BattleEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -327,7 +332,7 @@ class BattleEnd01(trigger_api.Trigger):
 
 
 class BattleEnd02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000030, portalId=10, boxId=9900)
         self.destroy_monster(spawnIds=[102,202])
         self.create_monster(spawnIds=[103,203], animationEffect=False)
@@ -339,7 +344,7 @@ class BattleEnd02(trigger_api.Trigger):
 
 
 class BattleEnd03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_scene_skip(state=DialogueSkip10, action='nextState')
@@ -351,7 +356,7 @@ class BattleEnd03(trigger_api.Trigger):
 
 # 시네마틱 대화 연출
 class Dialogue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6101], visible=True) # Voice_Junta_00001780
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001557, script='$63000030_CS__FLYINGCLOUD01__2$', arg4=7) # 준타 00001780
@@ -362,7 +367,7 @@ class Dialogue01(trigger_api.Trigger):
 
 
 class DialogueSkip01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -372,7 +377,7 @@ class DialogueSkip01(trigger_api.Trigger):
 
 
 class Dialogue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # Voice_Tinchai_00001689
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__3$', arg4=6) # 틴차이 00001689
@@ -383,7 +388,7 @@ class Dialogue02(trigger_api.Trigger):
 
 
 class DialogueSkip02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -393,7 +398,7 @@ class DialogueSkip02(trigger_api.Trigger):
 
 
 class Dialogue03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=True) # Voice_Tinchai_00001690
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__4$', arg4=6) # 틴차이 00001690
@@ -404,7 +409,7 @@ class Dialogue03(trigger_api.Trigger):
 
 
 class DialogueSkip03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -414,7 +419,7 @@ class DialogueSkip03(trigger_api.Trigger):
 
 
 class Dialogue04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6102], visible=True) # Voice_Junta_00001781
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001557, script='$63000030_CS__FLYINGCLOUD01__5$', arg4=6) # 준타 00001781
@@ -425,7 +430,7 @@ class Dialogue04(trigger_api.Trigger):
 
 
 class DialogueSkip04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -435,7 +440,7 @@ class DialogueSkip04(trigger_api.Trigger):
 
 
 class Dialogue05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6002], visible=True) # Voice_Tinchai_00001691
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__6$', arg4=6) # 틴차이 00001691
@@ -446,7 +451,7 @@ class Dialogue05(trigger_api.Trigger):
 
 
 class DialogueSkip05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -456,7 +461,7 @@ class DialogueSkip05(trigger_api.Trigger):
 
 
 class Dialogue06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=True) # Voice_Tinchai_00001692
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__7$', arg4=6) # 틴차이 00001692
@@ -467,7 +472,7 @@ class Dialogue06(trigger_api.Trigger):
 
 
 class DialogueSkip06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -477,7 +482,7 @@ class DialogueSkip06(trigger_api.Trigger):
 
 
 class Dialogue07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6103], visible=True) # Voice_Junta_00001782
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001557, script='$63000030_CS__FLYINGCLOUD01__8$', arg4=5) # 준타 00001782
@@ -488,7 +493,7 @@ class Dialogue07(trigger_api.Trigger):
 
 
 class DialogueSkip07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -498,7 +503,7 @@ class DialogueSkip07(trigger_api.Trigger):
 
 
 class Dialogue08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__9$', arg4=4) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -507,7 +512,7 @@ class Dialogue08(trigger_api.Trigger):
 
 
 class DialogueSkip08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -516,7 +521,7 @@ class DialogueSkip08(trigger_api.Trigger):
 
 
 class Dialogue09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6104], visible=True) # Voice_Junta_00001783
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001557, script='$63000030_CS__FLYINGCLOUD01__10$', arg4=8) # 준타 00001783
@@ -527,7 +532,7 @@ class Dialogue09(trigger_api.Trigger):
 
 
 class DialogueSkip09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -537,10 +542,11 @@ class DialogueSkip09(trigger_api.Trigger):
 
 
 class Dialogue10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6004], visible=True) # Voice_Tinchai_00001694
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__11$', arg4=5) # 틴차이 00001694
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -549,10 +555,11 @@ class Dialogue10(trigger_api.Trigger):
 
 
 class DialogueSkip10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.select_camera(triggerId=501, enable=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -563,46 +570,52 @@ class DialogueSkip10(trigger_api.Trigger):
 
 
 class FirstQuestStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10030160, textId=10030160) # 가이드 : [[icon:questaccept]] 틴차이와 대화하기
+        # 가이드 : [[icon:questaccept]] 틴차이와 대화하기
+        self.show_guide_summary(entityId=10030160, textId=10030160)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000454], questStates=[2]):
+            # 여정의 명분 퀘스트 바로 완료 가능 상태
             return FirstQuestEnd01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10030160)
 
 
 class FirstQuestEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10031010, textId=10031010) # 가이드 : [[icon:questcomplete]] 준타와 대화하기
+        # 가이드 : [[icon:questcomplete]] 준타와 대화하기
+        self.show_guide_summary(entityId=10031010, textId=10031010)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000454], questStates=[3]):
+            # 여정의 명분 퀘스트 완료 상태
             return SecondQuestStart01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10031010)
 
 
 class SecondQuestStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10031020, textId=10031020) # 가이드 : [[icon:questaccept]] 준타와 대화하기
+        # 가이드 : [[icon:questaccept]] 준타와 대화하기
+        self.show_guide_summary(entityId=10031020, textId=10031020)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000455], questStates=[1]):
+            # 하산 퀘스트 수락한 상태
             return PatrolWhileTalking01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10031020)
 
 
 class PatrolWhileTalking01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -613,7 +626,7 @@ class PatrolWhileTalking01(trigger_api.Trigger):
 
 
 class PatrolWhileTalking02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103,203])
         self.create_monster(spawnIds=[104,204], animationEffect=False)
         self.move_user(mapId=63000030, portalId=11, boxId=9900)
@@ -624,7 +637,7 @@ class PatrolWhileTalking02(trigger_api.Trigger):
 
 
 class PatrolWhileTalking03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=FightBack01, action='nextState')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -638,7 +651,7 @@ class PatrolWhileTalking03(trigger_api.Trigger):
 
 
 class PatrolWhileTalking04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=204, script='$63000030_CS__FLYINGCLOUD01__12$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=204, script='$63000030_CS__FLYINGCLOUD01__13$', arg4=2, arg5=2)
 
@@ -648,7 +661,7 @@ class PatrolWhileTalking04(trigger_api.Trigger):
 
 
 class PatrolWhileTalking05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=104, script='$63000030_CS__FLYINGCLOUD01__14$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=104, script='$63000030_CS__FLYINGCLOUD01__15$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=104, script='$63000030_CS__FLYINGCLOUD01__16$', arg4=2, arg5=4)
@@ -659,7 +672,7 @@ class PatrolWhileTalking05(trigger_api.Trigger):
 
 
 class ShadowApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5400], visible=True) # ShadowApp
         self.create_monster(spawnIds=[940,941,942,943,944,945,946,947,948,949], animationEffect=False)
         self.select_camera(triggerId=600, enable=True)
@@ -671,7 +684,7 @@ class ShadowApp01(trigger_api.Trigger):
 
 
 class ShadowApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_104')
         self.set_effect(triggerIds=[6105], visible=True) # Voice_Junta_00001792
         self.set_conversation(type=1, spawnId=204, script='$63000030_CS__FLYINGCLOUD01__17$', arg4=2, arg5=0) # 준타 00001792
@@ -682,7 +695,7 @@ class ShadowApp02(trigger_api.Trigger):
 
 
 class ShadowApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -691,8 +704,9 @@ class ShadowApp03(trigger_api.Trigger):
 
 
 class ShadowApp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=104, script='$63000030_CS__FLYINGCLOUD01__18$', arg4=2, arg5=0)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -701,7 +715,7 @@ class ShadowApp04(trigger_api.Trigger):
 
 
 class ShadowApp05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -710,7 +724,7 @@ class ShadowApp05(trigger_api.Trigger):
 
 
 class FightBack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_205')
         self.set_effect(triggerIds=[6106], visible=True) # Voice_Junta_00001798
         self.set_conversation(type=2, spawnId=11001557, script='$63000030_CS__FLYINGCLOUD01__19$', arg4=4) # 준타 00001798
@@ -721,8 +735,9 @@ class FightBack01(trigger_api.Trigger):
 
 
 class FightBack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -731,7 +746,7 @@ class FightBack02(trigger_api.Trigger):
 
 
 class FightBack03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_105')
         self.set_effect(triggerIds=[6005], visible=True) # Voice_Tinchai_00001695
         self.set_conversation(type=2, spawnId=11001708, script='$63000030_CS__FLYINGCLOUD01__20$', arg4=5) # 틴차이 00001695
@@ -742,8 +757,9 @@ class FightBack03(trigger_api.Trigger):
 
 
 class FightBack04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -756,7 +772,7 @@ class FightBack04(trigger_api.Trigger):
 
 
 class FightBack05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000030, portalId=20, boxId=9900)
         self.destroy_monster(spawnIds=[940,941,942,943,944,945,946,947,948,949])
         self.create_monster(spawnIds=[910,911,912,913,914,915,916,917,918,919], animationEffect=False)
@@ -771,7 +787,7 @@ class FightBack05(trigger_api.Trigger):
 
 
 class FightBack06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_user_value(triggerId=2, key='PushStart', value=1)
@@ -783,7 +799,7 @@ class FightBack06(trigger_api.Trigger):
 
 # 암벽등반 가이드 ClimbingGuide01
 class GotoTria01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=False)
         self.set_effect(triggerIds=[5001], visible=True) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5200], visible=True) # 구름터 경로 안내
@@ -802,12 +818,12 @@ class GotoTria01(trigger_api.Trigger):
         if self.user_detected(boxIds=[9001]):
             return GotoTria02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10037020)
 
 
 class GotoTria02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10037030, textId=10037030) # 가이드 : 트라이아행 구름에 타기
@@ -817,20 +833,28 @@ class GotoTria02(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10001010], stateValue=0):
             return TakeOffFlyingCloud01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10037030)
-        self.set_effect(triggerIds=[5100], visible=False) # DownArrow
-        self.set_effect(triggerIds=[5001], visible=False) # 화살표 안내 사운드 이펙트
-        self.set_effect(triggerIds=[5200], visible=False) # 구름터 경로 안내
-        self.set_effect(triggerIds=[5201], visible=False) # 구름터 경로 안내
-        self.set_effect(triggerIds=[5202], visible=False) # 구름터 경로 안내
-        self.set_effect(triggerIds=[5203], visible=False) # 구름터 경로 안내
-        self.set_effect(triggerIds=[5204], visible=False) # 구름터 경로 안내
-        self.set_effect(triggerIds=[5205], visible=False) # 구름터 경로 안내
+        self.set_effect(triggerIds=[5100], visible=False)
+        # DownArrow
+        self.set_effect(triggerIds=[5001], visible=False)
+        # 화살표 안내 사운드 이펙트
+        self.set_effect(triggerIds=[5200], visible=False)
+        # 구름터 경로 안내
+        self.set_effect(triggerIds=[5201], visible=False)
+        # 구름터 경로 안내
+        self.set_effect(triggerIds=[5202], visible=False)
+        # 구름터 경로 안내
+        self.set_effect(triggerIds=[5203], visible=False)
+        # 구름터 경로 안내
+        self.set_effect(triggerIds=[5204], visible=False)
+        # 구름터 경로 안내
+        self.set_effect(triggerIds=[5205], visible=False)
+        # 구름터 경로 안내
 
 
 class TakeOffFlyingCloud01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -844,7 +868,7 @@ class TakeOffFlyingCloud01(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # FlyingCloud
         self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_Bounding
         self.move_user(mapId=63000030, portalId=30, boxId=9900)
@@ -856,7 +880,7 @@ class TakeOffFlyingCloud02(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=701, enable=True)
@@ -867,7 +891,7 @@ class TakeOffFlyingCloud03(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000036, portalId=1)
         self.select_camera(triggerId=701, enable=False)
 
@@ -877,7 +901,7 @@ class TakeOffFlyingCloud04(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

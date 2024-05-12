@@ -15,7 +15,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 트로피지급(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='Find02000398')
 
     def on_tick(self) -> trigger_api.Trigger:

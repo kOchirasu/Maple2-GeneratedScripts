@@ -3,7 +3,7 @@ import trigger_api
 
 
 class START(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=False) # 재즈바 비밀통로 경로 안내
         self.create_monster(spawnIds=[101], animationEffect=False) # 바텐더
         self.set_actor(triggerId=231, visible=True, initialSequence='Closed')
@@ -36,7 +36,7 @@ class START(trigger_api.Trigger):
 
 # ########################씬1 재즈바_1층습격########################
 class 재즈바1층습격_진행중01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[102,103,104,105,106,107], isAutoTargeting=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 재즈바1층습격_진행중01(trigger_api.Trigger):
 
 
 class 재즈바1층습격_완료가능01_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=0, msg='$52000112_QD__52000112__0$', duration=6000, delayTick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class 재즈바1층습격_완료가능01_b(trigger_api.Trigger):
 
 
 class 재즈바1층습격_완료가능01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
 
@@ -64,7 +64,7 @@ class 재즈바1층습격_완료가능01(trigger_api.Trigger):
 
 
 class 재즈바1층습격_완료가능02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[200], animationEffect=False)
         self.destroy_monster(spawnIds=[102,103,104,105,106,107])
 
@@ -74,7 +74,7 @@ class 재즈바1층습격_완료가능02(trigger_api.Trigger):
 
 
 class 재즈바1층습격_완료가능03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
@@ -89,7 +89,7 @@ class 재즈바1층습격_완료가능03(trigger_api.Trigger):
 
 # ########################씬2 재즈바_지하습격########################
 class 재즈바_지하습격_진행중01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # 재즈바 비밀통로 경로 안내
         self.set_actor(triggerId=231, visible=True, initialSequence='Opened')
         self.create_monster(spawnIds=[200,209,204,205,210,206], animationEffect=False) # 지하층 다크윈드 요원 생성
@@ -100,7 +100,7 @@ class 재즈바_지하습격_진행중01(trigger_api.Trigger):
 
 
 class 재즈바_지하습격_완료가능01_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=0, msg='$52000112_QD__52000112__2$', duration=6000, delayTick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +109,7 @@ class 재즈바_지하습격_완료가능01_b(trigger_api.Trigger):
 
 
 class 재즈바_지하습격_완료가능01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_onetime_effect(id=20, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
 
@@ -119,7 +119,7 @@ class 재즈바_지하습격_완료가능01(trigger_api.Trigger):
 
 
 class 재즈바_지하습격_완료가능02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.create_monster(spawnIds=[208], animationEffect=False) # 쉐도우클로
         self.create_monster(spawnIds=[201,202,203], animationEffect=False) # 다크윈드 포로
@@ -133,7 +133,7 @@ class 재즈바_지하습격_완료가능02(trigger_api.Trigger):
 
 
 class 재즈바_지하습격_완료가능03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -144,7 +144,7 @@ class 재즈바_지하습격_완료가능03(trigger_api.Trigger):
 
 # ########################씬3 PC_로그스거역_대원들 전투준비########################
 class PC_로그스거역_진행중01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=211, sequenceName='Attack_Idle_A', duration=15000)
         self.set_npc_emotion_loop(spawnId=212, sequenceName='Attack_Idle_A', duration=15000)
         self.set_npc_emotion_loop(spawnId=213, sequenceName='Attack_Idle_A', duration=15000)
@@ -166,7 +166,7 @@ class PC_로그스거역_진행중01(trigger_api.Trigger):
 
 # ########################씬3 PC_로그스거역_대원들 전투########################
 class PC_로그스거역_대원들01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[211,212,213,214,215,216,217,218,219]) # 로그스 대원 npc버전 삭제
         self.create_monster(spawnIds=[220,221,222,223,224,225,226,227,228], animationEffect=False) # 로그스 대원 몬스터 생성
 
@@ -177,7 +177,7 @@ class PC_로그스거역_대원들01(trigger_api.Trigger):
 
 # ########################씬4 쉐도우클로전투########################
 class 쉐도우클로전투_진행중01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[211,212,213,214,215,216,217,218,219]) # 로그스 대원 npc버전 삭제
         self.destroy_monster(spawnIds=[220,221,222,223,224,225,226,227,228]) # 로그스 대원 몬스터 삭제
         self.set_sound(triggerId=9000, enable=True)
@@ -191,7 +191,7 @@ class 쉐도우클로전투_진행중01(trigger_api.Trigger):
 
 # ########################씬5 쉐도우클로전투_완료연출########################
 class 쉐도우클로전투_완료연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9000, enable=False)
         self.visible_my_pc(isVisible=True) # 유저 투명 처리
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
@@ -211,7 +211,7 @@ class 쉐도우클로전투_완료연출01(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=쉐도우클로전투_완료연출09, action='exit')
         self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FadeInOut1sec.xml')
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
@@ -224,7 +224,7 @@ class 쉐도우클로전투_완료연출02(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3002,3003], returnView=False)
         self.add_cinematic_talk(npcId=11003185, illustId='0', msg='$52000112_QD__52000112__3$', duration=5000, align='right')
 
@@ -234,7 +234,7 @@ class 쉐도우클로전투_완료연출03(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000112_QD__52000112__4$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -243,7 +243,7 @@ class 쉐도우클로전투_완료연출04(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=5.5, interpolator=2) # 2초간 느려지기 시작
         self.select_camera_path(pathIds=[3004], returnView=False)
         self.set_pc_emotion_sequence(sequenceNames=['Assassin_DarkSight_A'])
@@ -255,7 +255,7 @@ class 쉐도우클로전투_완료연출05(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3005,3006], returnView=False)
         self.set_pc_emotion_sequence(sequenceNames=['Assassin_Enterance_A'])
         self.set_pc_emotion_loop(sequenceName='Assassin_Enterance_A', duration=5000)
@@ -266,7 +266,7 @@ class 쉐도우클로전투_완료연출06(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출07_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[400], visible=True)
         self.set_effect(triggerIds=[401], visible=True)
         self.set_effect(triggerIds=[402], visible=True)
@@ -282,7 +282,7 @@ class 쉐도우클로전투_완료연출07_b(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3007,3008], returnView=False)
         self.add_cinematic_talk(npcId=11003185, illustId='0', msg='$52000112_QD__52000112__5$', duration=4000, align='right')
         self.set_npc_emotion_loop(spawnId=208, sequenceName='Stun_A', duration=15500)
@@ -294,7 +294,7 @@ class 쉐도우클로전투_완료연출07(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3009,3010], returnView=False)
         self.destroy_monster(spawnIds=[201,202,203])
         self.visible_my_pc(isVisible=False) # 유저 투명 처리
@@ -306,7 +306,8 @@ class 쉐도우클로전투_완료연출08(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출08_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -315,7 +316,7 @@ class 쉐도우클로전투_완료연출08_1(trigger_api.Trigger):
 
 
 class 쉐도우클로전투_완료연출09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000111, portalId=11)
 
 

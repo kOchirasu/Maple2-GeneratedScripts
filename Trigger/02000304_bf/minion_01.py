@@ -21,7 +21,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:

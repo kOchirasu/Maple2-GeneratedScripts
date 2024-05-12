@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
         self.create_monster(spawnIds=[102], animationEffect=True)
         self.set_effect(triggerIds=[5001], visible=False)
@@ -20,7 +20,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잠시대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -30,7 +30,7 @@ class 잠시대기(trigger_api.Trigger):
 
 
 class 뚜벅뚜벅_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class 뚜벅뚜벅_01(trigger_api.Trigger):
 
 
 class 뚜벅뚜벅_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000147_QD__52000147_MAIN__0$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,20 +48,20 @@ class 뚜벅뚜벅_02(trigger_api.Trigger):
 
 
 class 목격_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 목격_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 목격_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -72,7 +72,7 @@ class 목격_02(trigger_api.Trigger):
 
 
 class 목격_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +81,7 @@ class 목격_03(trigger_api.Trigger):
 
 
 class 목격_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001,8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class 목격_04(trigger_api.Trigger):
 
 
 class 목격_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +99,7 @@ class 목격_05(trigger_api.Trigger):
 
 
 class 목격_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,7 +108,7 @@ class 목격_06(trigger_api.Trigger):
 
 
 class 목격_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4001,4002], visible=False)
         self.set_mesh_animation(triggerIds=[4001,4002], visible=False, arg3=0, arg4=0)
 
@@ -118,7 +118,7 @@ class 목격_07(trigger_api.Trigger):
 
 
 class 목격_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=삼자대화_01)
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__1$', duration=4000, illustId='DarkLord_normal', align='right')
 
@@ -128,7 +128,8 @@ class 목격_08(trigger_api.Trigger):
 
 
 class 삼자대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -139,7 +140,7 @@ class 삼자대화_01(trigger_api.Trigger):
 
 
 class 삼자대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +149,7 @@ class 삼자대화_02(trigger_api.Trigger):
 
 
 class 삼자대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +158,7 @@ class 삼자대화_03(trigger_api.Trigger):
 
 
 class 삼자대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2003')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +167,7 @@ class 삼자대화_04(trigger_api.Trigger):
 
 
 class 삼자대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=하스터와전투_01, action='nextState')
         self.add_cinematic_talk(npcId=0, msg='$52000147_QD__52000147_MAIN__2$', duration=3500, align='right')
 
@@ -176,7 +177,7 @@ class 삼자대화_05(trigger_api.Trigger):
 
 
 class 삼자대화_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2004')
 
@@ -186,7 +187,7 @@ class 삼자대화_06(trigger_api.Trigger):
 
 
 class 삼자대화_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +196,7 @@ class 삼자대화_07(trigger_api.Trigger):
 
 
 class 삼자대화_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__3$', duration=3000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -204,7 +205,7 @@ class 삼자대화_08(trigger_api.Trigger):
 
 
 class 삼자대화_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -213,7 +214,7 @@ class 삼자대화_09(trigger_api.Trigger):
 
 
 class 삼자대화_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__4$', duration=3000, illustId='DarkLord_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -222,7 +223,7 @@ class 삼자대화_10(trigger_api.Trigger):
 
 
 class 삼자대화_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__5$', duration=2500, illustId='Hastur_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -231,7 +232,7 @@ class 삼자대화_11(trigger_api.Trigger):
 
 
 class 삼자대화_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__6$', duration=4000, illustId='DarkLord_normal', align='right')
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__7$', duration=3000, illustId='DarkLord_normal', align='right')
 
@@ -241,7 +242,7 @@ class 삼자대화_12(trigger_api.Trigger):
 
 
 class 삼자대화_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000147_QD__52000147_MAIN__8$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -250,7 +251,7 @@ class 삼자대화_13(trigger_api.Trigger):
 
 
 class 삼자대화_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__9$', duration=3000, illustId='Hastur_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -259,7 +260,7 @@ class 삼자대화_14(trigger_api.Trigger):
 
 
 class 삼자대화_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__10$', duration=3000, illustId='DarkLord_normal', align='right')
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__11$', duration=3000, illustId='DarkLord_normal', align='right')
 
@@ -269,7 +270,7 @@ class 삼자대화_15(trigger_api.Trigger):
 
 
 class 삼자대화_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__12$', duration=3000, illustId='Hastur_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -278,7 +279,7 @@ class 삼자대화_16(trigger_api.Trigger):
 
 
 class 삼자대화_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__13$', duration=3000, illustId='DarkLord_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -287,7 +288,7 @@ class 삼자대화_17(trigger_api.Trigger):
 
 
 class 삼자대화_18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000147_QD__52000147_MAIN__14$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -296,7 +297,7 @@ class 삼자대화_18(trigger_api.Trigger):
 
 
 class 삼자대화_19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -305,7 +306,7 @@ class 삼자대화_19(trigger_api.Trigger):
 
 
 class 삼자대화_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__15$', duration=2500, align='left')
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Attack_Idle_A', duration=4000)
 
@@ -315,7 +316,8 @@ class 삼자대화_20(trigger_api.Trigger):
 
 
 class 하스터와전투_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -326,7 +328,7 @@ class 하스터와전투_01(trigger_api.Trigger):
 
 
 class 하스터와전투_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=True)
@@ -337,7 +339,7 @@ class 하스터와전투_02(trigger_api.Trigger):
 
 
 class 하스터와전투_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -349,7 +351,7 @@ class 하스터와전투_03(trigger_api.Trigger):
 
 
 class 하스터와전투_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.hide_guide_summary(entityId=25201471)
         self.set_cinematic_ui(type=1)
@@ -361,7 +363,7 @@ class 하스터와전투_04(trigger_api.Trigger):
 
 
 class 하스터와전투_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
         self.create_monster(spawnIds=[104], animationEffect=True)
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__16$', duration=2500, align='left')
@@ -373,7 +375,7 @@ class 하스터와전투_05(trigger_api.Trigger):
 
 
 class 하스터와전투_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Down_Idle_B', duration=60000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -382,7 +384,7 @@ class 하스터와전투_06(trigger_api.Trigger):
 
 
 class 하스터와전투_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -391,7 +393,7 @@ class 하스터와전투_07(trigger_api.Trigger):
 
 
 class 전투후대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=전투후대화_02)
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__17$', duration=3000, illustId='DarkLord_normal', align='right')
 
@@ -401,7 +403,8 @@ class 전투후대화_01(trigger_api.Trigger):
 
 
 class 전투후대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2005')
@@ -412,7 +415,7 @@ class 전투후대화_02(trigger_api.Trigger):
 
 
 class 전투후대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=전투후대화_03_01)
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__18$', duration=3000, illustId='Hastur_normal', align='left')
 
@@ -422,7 +425,8 @@ class 전투후대화_03(trigger_api.Trigger):
 
 
 class 전투후대화_03_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
 
@@ -432,7 +436,7 @@ class 전투후대화_03_01(trigger_api.Trigger):
 
 
 class 전투후대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=전투후대화_05)
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__19$', duration=3000, illustId='DarkLord_normal', align='right')
         self.add_cinematic_talk(npcId=11003382, msg='$52000147_QD__52000147_MAIN__20$', duration=2500, illustId='DarkLord_normal', align='right')
@@ -443,7 +447,8 @@ class 전투후대화_04(trigger_api.Trigger):
 
 
 class 전투후대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
@@ -454,7 +459,7 @@ class 전투후대화_05(trigger_api.Trigger):
 
 
 class 전투후대화_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -463,7 +468,7 @@ class 전투후대화_06(trigger_api.Trigger):
 
 
 class 전투후대화_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2007')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -472,7 +477,7 @@ class 전투후대화_07(trigger_api.Trigger):
 
 
 class 전투후대화_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -481,7 +486,7 @@ class 전투후대화_08(trigger_api.Trigger):
 
 
 class 전투후대화_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2006')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -490,7 +495,7 @@ class 전투후대화_09(trigger_api.Trigger):
 
 
 class 전투후대화_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5005], visible=True)
         self.set_effect(triggerIds=[5004], visible=True)
 
@@ -500,7 +505,7 @@ class 전투후대화_10(trigger_api.Trigger):
 
 
 class 전투후대화_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=전투후대화_12)
         self.add_cinematic_talk(npcId=11003189, msg='$52000147_QD__52000147_MAIN__21$', duration=3000, illustId='Hastur_normal', align='left')
 
@@ -510,7 +515,8 @@ class 전투후대화_11(trigger_api.Trigger):
 
 
 class 전투후대화_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2007')
@@ -521,7 +527,7 @@ class 전투후대화_12(trigger_api.Trigger):
 
 
 class 전투후대화_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[104])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -530,7 +536,7 @@ class 전투후대화_13(trigger_api.Trigger):
 
 
 class 전투후대화_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -539,7 +545,7 @@ class 전투후대화_14(trigger_api.Trigger):
 
 
 class 전투후대화_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000147_QD__52000147_MAIN__22$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -548,7 +554,7 @@ class 전투후대화_15(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000148, portalId=1)
 
 

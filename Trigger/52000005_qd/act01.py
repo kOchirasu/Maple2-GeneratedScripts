@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=True)
         self.create_monster(spawnIds=[202], animationEffect=True)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawnIds=[103])
         self.destroy_monster(spawnIds=[202])
@@ -25,7 +25,7 @@ class 딜레이01(trigger_api.Trigger):
 
 
 class 영감대화준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -36,7 +36,7 @@ class 영감대화준비(trigger_api.Trigger):
 
 
 class 영감대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=3)
         self.set_conversation(type=2, spawnId=11000031, script='$52000005_QD__ACT01__0$', arg4=3)
         self.set_skip(state=영감대화02대기)
@@ -47,7 +47,7 @@ class 영감대화01(trigger_api.Trigger):
 
 
 class 영감대화02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 영감대화02대기(trigger_api.Trigger):
 
 
 class 영감대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=2, spawnId=11000001, script='$52000005_QD__ACT01__1$', arg4=3)
         self.create_monster(spawnIds=[101], animationEffect=True)
@@ -69,7 +69,7 @@ class 영감대화02(trigger_api.Trigger):
 
 
 class 여제입장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_timer(timerId='10', seconds=1)
         self.select_camera(triggerId=601, enable=True)
@@ -80,7 +80,7 @@ class 여제입장01(trigger_api.Trigger):
 
 
 class 딜레이03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class 딜레이03(trigger_api.Trigger):
 
 
 class 여제대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=3)
         self.set_conversation(type=2, spawnId=11000075, script='$52000005_QD__ACT01__2$', arg4=3)
         self.set_skip(state=영상준비)
@@ -100,7 +100,7 @@ class 여제대화01(trigger_api.Trigger):
 
 
 class 영상준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_timer(timerId='21', seconds=3)
         self.select_camera_path(pathIds=[601,602], returnView=False)
@@ -111,7 +111,7 @@ class 영상준비(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.set_cinematic_ui(type=0)
@@ -126,7 +126,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 영상종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='31', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -139,7 +139,7 @@ class 영상종료(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +148,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 업적발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9001, type='trigger', achieve='Lumieragon_History')
         self.select_camera(triggerId=601, enable=False)
         self.select_camera(triggerId=602, enable=False)

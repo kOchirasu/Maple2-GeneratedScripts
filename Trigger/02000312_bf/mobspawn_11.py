@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3005,3006,3007,3008,3009,3010], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
         self.set_ladder(triggerIds=[510], visible=False, animationEffect=False) # LadderEnterance
         self.set_ladder(triggerIds=[511], visible=False, animationEffect=False) # LadderEnterance
@@ -35,7 +35,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -48,26 +48,32 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=False)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return Battle01(self.ctx)
 
-    def on_exit(self):
-        self.set_ladder(triggerIds=[510], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True) # LadderEnterance
-        self.set_mesh(triggerIds=[3005,3006,3007,3008,3009,3010], visible=False, arg3=0, delay=0, scale=0) # Invisible_Barrier
+    def on_exit(self) -> None:
+        self.set_ladder(triggerIds=[510], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_mesh(triggerIds=[3005,3006,3007,3008,3009,3010], visible=False, arg3=0, delay=0, scale=0)
+        # Invisible_Barrier
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class Battle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103], animationEffect=False)
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031201, textId=20031201) # 몬스터를 모두 처치하기
@@ -76,12 +82,12 @@ class Battle01(trigger_api.Trigger):
         if self.monster_dead(boxIds=[101,102,103]):
             return Battle02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[101,102,103])
 
 
 class Battle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031201)
         self.create_monster(spawnIds=[111,112,113,114], animationEffect=False)
 
@@ -89,12 +95,12 @@ class Battle02(trigger_api.Trigger):
         if self.monster_dead(boxIds=[111,112,113,114]):
             return Battle03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[111,112,113,114])
 
 
 class Battle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031202, textId=20031202) # 어둠의 씨앗 제거하기
         self.create_monster(spawnIds=[130], animationEffect=False)
@@ -103,12 +109,12 @@ class Battle03(trigger_api.Trigger):
         if self.monster_dead(boxIds=[130]):
             return VineRemove01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[130])
 
 
 class VineRemove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031202)
         self.set_effect(triggerIds=[5001], visible=True) # Vine
         self.set_mesh(triggerIds=[3002,3003,3004], visible=False, arg3=500, delay=0, scale=0) # Invisible_Barrier
@@ -125,7 +131,7 @@ class VineRemove01(trigger_api.Trigger):
 
 
 class MobWaveStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
         self.show_guide_summary(entityId=20031203, textId=20031203) # 어둠의 씨앗 모두 제거하기
         self.create_monster(spawnIds=[121,122,123,124,125,126,127,128], animationEffect=False)
@@ -136,17 +142,20 @@ class MobWaveStart(trigger_api.Trigger):
         if self.user_value(key='MobWaveStop', value=1):
             return Quit(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[121,122,123,124,125,126,127,128])
 
 
 class MobWaveDelayRandom(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=60):
+            # 기본 12초
             return MobWaveDelay01(self.ctx)
         if self.random_condition(rate=20):
+            # 17초
             return MobWaveDelay02(self.ctx)
         if self.random_condition(rate=20):
+            # 7초
             return MobWaveDelay03(self.ctx)
         if self.user_value(key='MobWaveStop', value=1):
             return Quit(self.ctx)
@@ -177,7 +186,7 @@ class MobWaveDelay03(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031203)
 
 

@@ -6,18 +6,18 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False, arg5=False)
         self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False, arg5=False)
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False, arg5=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=101, boxId=1):
+        if self.count_users(boxId=101, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False, arg5=False)
         self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False, arg5=False)
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False, arg5=False)
@@ -35,7 +35,7 @@ class Start(trigger_api.Trigger):
 
 
 class Step_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[1,2,3,4,5,6,7], visible=False) # 다리안보임
         self.create_monster(spawnIds=[201], animationEffect=False)
@@ -69,7 +69,7 @@ class Step_1(trigger_api.Trigger):
 
 
 class Step_1_B_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
 
@@ -79,7 +79,7 @@ class Step_1_B_Ready(trigger_api.Trigger):
 
 
 class Step_1_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class Step_1_B(trigger_api.Trigger):
 
 
 class Step_1_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
 
@@ -102,7 +102,7 @@ class Step_1_C(trigger_api.Trigger):
 
 
 class Step_1_D_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8,9,10,11], visible=False) # 다리안보임
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class Step_1_D_Ready(trigger_api.Trigger):
 
 
 class Step_1_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=100, textId=20031701, duration=3000) # 타우스를 처치하세요.
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -124,7 +124,7 @@ class Step_1_D(trigger_api.Trigger):
 
 
 class Step_1_E(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -133,7 +133,7 @@ class Step_1_E(trigger_api.Trigger):
 
 
 class Step_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
         self.create_monster(spawnIds=[100], animationEffect=False)
 
@@ -141,7 +141,7 @@ class Step_2(trigger_api.Trigger):
         if self.monster_dead(boxIds=[100]):
             return 종료체크(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[100])
 
 
@@ -153,7 +153,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=8, visible=True, enable=True, minimapVisible=True)
 

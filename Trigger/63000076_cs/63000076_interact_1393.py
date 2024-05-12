@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109], animationEffect=True)
         self.create_monster(spawnIds=[110], animationEffect=True)
         self.create_monster(spawnIds=[111], animationEffect=True)
@@ -17,7 +17,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 화난요정_01_1393(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
         self.destroy_monster(spawnIds=[110])
         self.destroy_monster(spawnIds=[111])
@@ -43,7 +43,7 @@ class 화난요정_02_1393(trigger_api.Trigger):
 
 
 class 화난요정_03_1393(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109], animationEffect=False)
         self.create_monster(spawnIds=[110], animationEffect=False)
         self.create_monster(spawnIds=[111], animationEffect=False)

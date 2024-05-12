@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Ending_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Ending_Ready(trigger_api.Trigger):
 
 
 class Ending_Camera_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=False)
         self.select_camera_path(pathIds=[500,501], returnView=False)
         self.set_effect(triggerIds=[5000], visible=False)
@@ -51,7 +51,7 @@ class Ending_Camera_1(trigger_api.Trigger):
 
 
 class Ending_Talk_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=narration01)
         self.select_camera(triggerId=1000, enable=True)
         self.set_npc_emotion_sequence(spawnId=602, sequenceName='Talk_A')
@@ -63,7 +63,7 @@ class Ending_Talk_1(trigger_api.Trigger):
 
 
 class Ending_Talk_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=1001, enable=True)
         self.set_npc_emotion_sequence(spawnId=601, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11001567, illustId='11001567', msg='$52100043_QD__ENDING__1$', duration=3000, align='left')
@@ -74,7 +74,7 @@ class Ending_Talk_2(trigger_api.Trigger):
 
 
 class Ending_Talk_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=1002, enable=True)
         self.set_npc_emotion_sequence(spawnId=600, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11001568, illustId='11001568', msg='$52100043_QD__ENDING__2$', duration=5000, align='left')
@@ -85,7 +85,7 @@ class Ending_Talk_3(trigger_api.Trigger):
 
 
 class Shake_Camera(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True)
         self.select_camera_path(pathIds=[4000,4001,4002,4003,4004,4005,4006,4007,4008,4006,4007,4008,4006,4007,4005,4006,4007,4008,4006,4007,4008,4006,4007,4008,4006,4007,4008,4008,4006,4007,4008,4006,4007,4008,4006,4007,4008], returnView=True)
         self.add_cinematic_talk(npcId=11001567, illustId='11001567', msg='$52100043_QD__ENDING__3$', duration=2000, align='left')
@@ -98,7 +98,7 @@ class Shake_Camera(trigger_api.Trigger):
 
 
 class Ending_Talk_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[701,702], arg2=False)
         self.destroy_monster(spawnIds=[601,602])
         self.set_effect(triggerIds=[5000], visible=True)
@@ -113,7 +113,7 @@ class Ending_Talk_4(trigger_api.Trigger):
 
 
 class Ending_Talk_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[7000,7001], returnView=False)
         self.set_effect(triggerIds=[5001], visible=True)
         self.add_cinematic_talk(npcId=11001568, illustId='11001568', msg='$52100043_QD__ENDING__5$', duration=2000, align='left')
@@ -124,7 +124,7 @@ class Ending_Talk_5(trigger_api.Trigger):
 
 
 class del6000(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_blackfast.xml')
         self.destroy_monster(spawnIds=[600])
         self.create_monster(spawnIds=[700], animationEffect=False)
@@ -135,7 +135,7 @@ class del6000(trigger_api.Trigger):
 
 
 class Ending_Talk_6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_blackfast.xml')
         self.select_camera(triggerId=6000, enable=True)
         self.move_npc(spawnId=700, patrolName='MS2PatrolData4')
@@ -151,7 +151,7 @@ class Ending_Talk_6(trigger_api.Trigger):
 
 
 class Ending_Talk_7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
 
@@ -161,7 +161,8 @@ class Ending_Talk_7(trigger_api.Trigger):
 
 
 class narration01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[-1])
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
@@ -173,7 +174,7 @@ class narration01(trigger_api.Trigger):
 
 
 class narration02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=Map_Warf)
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__8$')
 
@@ -183,7 +184,7 @@ class narration02(trigger_api.Trigger):
 
 
 class narration03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__9$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,7 +193,7 @@ class narration03(trigger_api.Trigger):
 
 
 class narration04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__10$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +202,7 @@ class narration04(trigger_api.Trigger):
 
 
 class narration05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__11$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +211,7 @@ class narration05(trigger_api.Trigger):
 
 
 class narration06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52100043_QD__ENDING__12$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,7 +220,8 @@ class narration06(trigger_api.Trigger):
 
 
 class Map_Warf(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[-1])
         self.set_cinematic_ui(type=0)

@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 
 class 서브몬스터1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[601,602,607,608,609,610], animationEffect=False)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_5000')
         self.move_npc(spawnId=602, patrolName='MS2PatrolData_5001')
@@ -28,7 +28,7 @@ class 서브몬스터1(trigger_api.Trigger):
 
 
 class 서브몬스터2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[601,602,607,608,609,610])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,12 +37,12 @@ class 서브몬스터2(trigger_api.Trigger):
 
 
 class 서브몬스터3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[6601,6602,6607,6608,6609,6610], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[6601,6602,6607,6608,6609,6610]):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = idle

@@ -2,6 +2,15 @@
 import trigger_api
 
 
+"""
+class idle(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.quest_user_detected(boxIds=[9900], questIds=[50001681], questStates=[2]):
+            return 대원등장(self.ctx)
+
+"""
+
+
 class 대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9900]):
@@ -37,7 +46,7 @@ class 퀘스트조건체크(trigger_api.Trigger):
 
 
 class 기본상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[401])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +55,7 @@ class 기본상태(trigger_api.Trigger):
 
 
 class 대원있음(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +64,7 @@ class 대원있음(trigger_api.Trigger):
 
 
 class 대원등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[401]) # 윈 스틸던의 시체
@@ -66,7 +75,7 @@ class 대원등장(trigger_api.Trigger):
 
 
 class 대원대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_pcTurn')
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_2001')
@@ -80,7 +89,7 @@ class 대원대사(trigger_api.Trigger):
 
 
 class 카트반대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000044, illustId='0', msg='$52000073_QD__LOSTEVE__1$', duration=4000, align='right') # 호르헤 대사
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +98,8 @@ class 카트반대사(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -100,4 +110,4 @@ class 연출종료(trigger_api.Trigger):
             return None # Missing State: 종료
 
 
-initial_state = 대기
+initial_state = idle

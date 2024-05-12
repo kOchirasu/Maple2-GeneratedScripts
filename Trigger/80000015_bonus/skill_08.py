@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[713], enable=False)
         self.set_skill(triggerIds=[714], enable=False)
         self.set_skill(triggerIds=[715], enable=False)
@@ -24,7 +24,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 스킬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[713], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 스킬01(trigger_api.Trigger):
 
 
 class 스킬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[714], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class 스킬02(trigger_api.Trigger):
 
 
 class 스킬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[715], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -51,7 +51,7 @@ class 스킬03(trigger_api.Trigger):
 
 
 class 스킬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[716], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class 스킬04(trigger_api.Trigger):
 
 
 class 스킬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[717], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class 스킬05(trigger_api.Trigger):
 
 
 class 스킬06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[718], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class 스킬06(trigger_api.Trigger):
 
 
 class 스킬07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[719], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='CloseBossGauge')
         self.set_interact_object(triggerIds=[10002071], state=1)
         self.set_interact_object(triggerIds=[10002072], state=1)
@@ -22,6 +22,7 @@ class idle(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[701]):
+            # <transition state="CheckUserCount"/>
             return DungeonStart(self.ctx)
 
 
@@ -33,7 +34,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=start)
@@ -51,7 +52,7 @@ class Ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1801,1802], visible=False, arg3=0, delay=0, scale=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -62,7 +63,7 @@ class start(trigger_api.Trigger):
             self.shadow_expedition(type='CloseBossGauge')
             return boss_scene(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[105,106,107,108,109,111,112,113,114,115,116,117,118,119])
         self.destroy_monster(spawnIds=[120,121,122,123,124,125,126,127,128,129])
         self.destroy_monster(spawnIds=[130,131,132,133,134,135,136])
@@ -70,7 +71,9 @@ class start(trigger_api.Trigger):
 
 
 class boss_scene(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_mesh(triggerIds=[1002], visible=False, arg3=0, delay=200, scale=35)
+        # self.set_mesh(triggerIds=[1201,1202,1203,1204,1205,1206], visible=False, arg3=0, delay=200, scale=35)
         self.set_effect(triggerIds=[7999], visible=True)
         self.create_monster(spawnIds=[1999], animationEffect=False)
         self.set_cinematic_ui(type=1)
@@ -84,7 +87,7 @@ class boss_scene(trigger_api.Trigger):
 
 
 class boss_scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=boss)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[8006,8007], returnView=False)
@@ -95,7 +98,7 @@ class boss_scene_02(trigger_api.Trigger):
 
 
 class boss_scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=boss)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,7 +107,7 @@ class boss_scene_03(trigger_api.Trigger):
 
 
 class boss_scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_skip(state=boss)
 
@@ -112,12 +115,12 @@ class boss_scene_04(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return boss(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_camera(interpolationTime=0)
 
 
 class boss(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -136,9 +139,11 @@ class dungeonClear_ready(trigger_api.Trigger):
 
 
 class dungeonClear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52010068, portalId=6001)
-        # <action name="포탈을설정한다" arg1="1" arg2="1" arg3="1" arg4="1"/>
+        # self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
+        # self.set_ambient_light(primary=[250,250,250])
+        # self.set_directional_light(diffuseColor=[100,100,100], specularColor=[0,0,0])
         self.set_effect(triggerIds=[7999], visible=False)
         self.set_effect(triggerIds=[7998], visible=True)
         self.dungeon_clear()

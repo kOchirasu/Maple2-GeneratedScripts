@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 닫힘상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000824], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 작동(trigger_api.Trigger):
 
 
 class 열림상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_effect(triggerIds=[9000004], visible=True) # Sound EFfect on
         self.set_mesh(triggerIds=[6060,6061,6062,6063], visible=False, delay=200, scale=15) # 빨간선 사라지게

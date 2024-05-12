@@ -10,14 +10,14 @@ class 전투시작(trigger_api.Trigger):
 
 class 타임(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.monster_dead(boxIds=[900]) or self.monster_dead(boxIds=[901]):
             return None # Missing State: Move01
 
 
 class 버프_종료(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None
+            pass
 
 
 initial_state = 전투시작

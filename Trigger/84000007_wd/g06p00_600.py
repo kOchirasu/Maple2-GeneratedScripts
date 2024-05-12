@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110,111,112,113,114,115], visible=False, arg3=0, delay=0, scale=0) # 1,1 / Number 0 to 5
         self.set_mesh(triggerIds=[120,121,122,123,124,125], visible=False, arg3=0, delay=0, scale=0) # 1,2 / Number 0 to 5
         self.set_mesh(triggerIds=[130,131,132,133,134,135], visible=False, arg3=0, delay=0, scale=0) # 1,3 / Number 0 to 5
@@ -150,7 +150,7 @@ class Wait(trigger_api.Trigger):
 
 # G06 P101
 class NumberOnP101(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -207,7 +207,7 @@ class NumberOnP101(trigger_api.Trigger):
 
 
 class CheckP101(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -231,7 +231,7 @@ class CheckP101(trigger_api.Trigger):
 
 
 class NumberOffP101(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -255,7 +255,7 @@ class NumberOffP101(trigger_api.Trigger):
 
 
 class ResetP101(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P101End', value=1)
         self.set_user_value(key='G06P101Set', value=0)
         self.set_user_value(key='G06P101TimeLimit', value=0)
@@ -267,7 +267,7 @@ class ResetP101(trigger_api.Trigger):
 
 # G06 P102
 class NumberOnP102(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -324,7 +324,7 @@ class NumberOnP102(trigger_api.Trigger):
 
 
 class CheckP102(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -348,7 +348,7 @@ class CheckP102(trigger_api.Trigger):
 
 
 class NumberOffP102(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -372,7 +372,7 @@ class NumberOffP102(trigger_api.Trigger):
 
 
 class ResetP102(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P102End', value=1)
         self.set_user_value(key='G06P102Set', value=0)
         self.set_user_value(key='G06P102TimeLimit', value=0)
@@ -384,7 +384,7 @@ class ResetP102(trigger_api.Trigger):
 
 # G06 P103
 class NumberOnP103(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -441,7 +441,7 @@ class NumberOnP103(trigger_api.Trigger):
 
 
 class CheckP103(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -465,7 +465,7 @@ class CheckP103(trigger_api.Trigger):
 
 
 class NumberOffP103(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -489,7 +489,7 @@ class NumberOffP103(trigger_api.Trigger):
 
 
 class ResetP103(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P103End', value=1)
         self.set_user_value(key='G06P103Set', value=0)
         self.set_user_value(key='G06P103TimeLimit', value=0)
@@ -501,7 +501,7 @@ class ResetP103(trigger_api.Trigger):
 
 # G06 P104
 class NumberOnP104(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -558,7 +558,7 @@ class NumberOnP104(trigger_api.Trigger):
 
 
 class CheckP104(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -582,7 +582,7 @@ class CheckP104(trigger_api.Trigger):
 
 
 class NumberOffP104(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -606,7 +606,7 @@ class NumberOffP104(trigger_api.Trigger):
 
 
 class ResetP104(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P104End', value=1)
         self.set_user_value(key='G06P104Set', value=0)
         self.set_user_value(key='G06P104TimeLimit', value=0)
@@ -618,7 +618,7 @@ class ResetP104(trigger_api.Trigger):
 
 # G06 P105
 class NumberOnP105(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -675,7 +675,7 @@ class NumberOnP105(trigger_api.Trigger):
 
 
 class CheckP105(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -699,7 +699,7 @@ class CheckP105(trigger_api.Trigger):
 
 
 class NumberOffP105(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -723,7 +723,7 @@ class NumberOffP105(trigger_api.Trigger):
 
 
 class ResetP105(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P105End', value=1)
         self.set_user_value(key='G06P105Set', value=0)
         self.set_user_value(key='G06P105TimeLimit', value=0)
@@ -735,7 +735,7 @@ class ResetP105(trigger_api.Trigger):
 
 # G06 P106
 class NumberOnP106(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -792,7 +792,7 @@ class NumberOnP106(trigger_api.Trigger):
 
 
 class CheckP106(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -816,7 +816,7 @@ class CheckP106(trigger_api.Trigger):
 
 
 class NumberOffP106(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -840,7 +840,7 @@ class NumberOffP106(trigger_api.Trigger):
 
 
 class ResetP106(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P106End', value=1)
         self.set_user_value(key='G06P106Set', value=0)
         self.set_user_value(key='G06P106TimeLimit', value=0)
@@ -852,7 +852,7 @@ class ResetP106(trigger_api.Trigger):
 
 # G06 P107
 class NumberOnP107(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -909,7 +909,7 @@ class NumberOnP107(trigger_api.Trigger):
 
 
 class CheckP107(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -933,7 +933,7 @@ class CheckP107(trigger_api.Trigger):
 
 
 class NumberOffP107(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -957,7 +957,7 @@ class NumberOffP107(trigger_api.Trigger):
 
 
 class ResetP107(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P107End', value=1)
         self.set_user_value(key='G06P107Set', value=0)
         self.set_user_value(key='G06P107TimeLimit', value=0)
@@ -969,7 +969,7 @@ class ResetP107(trigger_api.Trigger):
 
 # G06 P108
 class NumberOnP108(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1026,7 +1026,7 @@ class NumberOnP108(trigger_api.Trigger):
 
 
 class CheckP108(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1050,7 +1050,7 @@ class CheckP108(trigger_api.Trigger):
 
 
 class NumberOffP108(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1074,7 +1074,7 @@ class NumberOffP108(trigger_api.Trigger):
 
 
 class ResetP108(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P108End', value=1)
         self.set_user_value(key='G06P108Set', value=0)
         self.set_user_value(key='G06P108TimeLimit', value=0)
@@ -1086,7 +1086,7 @@ class ResetP108(trigger_api.Trigger):
 
 # G06 P109
 class NumberOnP109(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1143,7 +1143,7 @@ class NumberOnP109(trigger_api.Trigger):
 
 
 class CheckP109(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -1167,7 +1167,7 @@ class CheckP109(trigger_api.Trigger):
 
 
 class NumberOffP109(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -1191,7 +1191,7 @@ class NumberOffP109(trigger_api.Trigger):
 
 
 class ResetP109(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P109End', value=1)
         self.set_user_value(key='G06P109Set', value=0)
         self.set_user_value(key='G06P109TimeLimit', value=0)
@@ -1203,7 +1203,7 @@ class ResetP109(trigger_api.Trigger):
 
 # G06 P110
 class NumberOnP110(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1261,7 +1261,7 @@ class NumberOnP110(trigger_api.Trigger):
 
 
 class CheckP110(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -1285,7 +1285,7 @@ class CheckP110(trigger_api.Trigger):
 
 
 class NumberOffP110(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -1310,7 +1310,7 @@ class NumberOffP110(trigger_api.Trigger):
 
 
 class ResetP110(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P110End', value=1)
         self.set_user_value(key='G06P110Set', value=0)
         self.set_user_value(key='G06P110TimeLimit', value=0)
@@ -1322,7 +1322,7 @@ class ResetP110(trigger_api.Trigger):
 
 # G06 P201
 class NumberOnP201(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1380,7 +1380,7 @@ class NumberOnP201(trigger_api.Trigger):
 
 
 class CheckP201(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1404,7 +1404,7 @@ class CheckP201(trigger_api.Trigger):
 
 
 class NumberOffP201(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1429,7 +1429,7 @@ class NumberOffP201(trigger_api.Trigger):
 
 
 class ResetP201(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P201End', value=1)
         self.set_user_value(key='G06P201Set', value=0)
         self.set_user_value(key='G06P201TimeLimit', value=0)
@@ -1441,7 +1441,7 @@ class ResetP201(trigger_api.Trigger):
 
 # G06 P202
 class NumberOnP202(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1498,7 +1498,7 @@ class NumberOnP202(trigger_api.Trigger):
 
 
 class CheckP202(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -1522,7 +1522,7 @@ class CheckP202(trigger_api.Trigger):
 
 
 class NumberOffP202(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -1546,7 +1546,7 @@ class NumberOffP202(trigger_api.Trigger):
 
 
 class ResetP202(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P202End', value=1)
         self.set_user_value(key='G06P202Set', value=0)
         self.set_user_value(key='G06P202TimeLimit', value=0)
@@ -1558,7 +1558,7 @@ class ResetP202(trigger_api.Trigger):
 
 # G06 P203
 class NumberOnP203(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1615,7 +1615,7 @@ class NumberOnP203(trigger_api.Trigger):
 
 
 class CheckP203(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -1639,7 +1639,7 @@ class CheckP203(trigger_api.Trigger):
 
 
 class NumberOffP203(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -1663,7 +1663,7 @@ class NumberOffP203(trigger_api.Trigger):
 
 
 class ResetP203(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P203End', value=1)
         self.set_user_value(key='G06P203Set', value=0)
         self.set_user_value(key='G06P203TimeLimit', value=0)
@@ -1675,7 +1675,7 @@ class ResetP203(trigger_api.Trigger):
 
 # G06 P204
 class NumberOnP204(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1733,7 +1733,7 @@ class NumberOnP204(trigger_api.Trigger):
 
 
 class CheckP204(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1757,7 +1757,7 @@ class CheckP204(trigger_api.Trigger):
 
 
 class NumberOffP204(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1782,7 +1782,7 @@ class NumberOffP204(trigger_api.Trigger):
 
 
 class ResetP204(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P204End', value=1)
         self.set_user_value(key='G06P204Set', value=0)
         self.set_user_value(key='G06P204TimeLimit', value=0)
@@ -1794,7 +1794,7 @@ class ResetP204(trigger_api.Trigger):
 
 # G06 P205
 class NumberOnP205(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1852,7 +1852,7 @@ class NumberOnP205(trigger_api.Trigger):
 
 
 class CheckP205(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1876,7 +1876,7 @@ class CheckP205(trigger_api.Trigger):
 
 
 class NumberOffP205(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1901,7 +1901,7 @@ class NumberOffP205(trigger_api.Trigger):
 
 
 class ResetP205(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P205End', value=1)
         self.set_user_value(key='G06P205Set', value=0)
         self.set_user_value(key='G06P205TimeLimit', value=0)
@@ -1913,7 +1913,7 @@ class ResetP205(trigger_api.Trigger):
 
 # G06 P206
 class NumberOnP206(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -1970,7 +1970,7 @@ class NumberOnP206(trigger_api.Trigger):
 
 
 class CheckP206(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1994,7 +1994,7 @@ class CheckP206(trigger_api.Trigger):
 
 
 class NumberOffP206(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -2018,7 +2018,7 @@ class NumberOffP206(trigger_api.Trigger):
 
 
 class ResetP206(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P206End', value=1)
         self.set_user_value(key='G06P206Set', value=0)
         self.set_user_value(key='G06P206TimeLimit', value=0)
@@ -2030,7 +2030,7 @@ class ResetP206(trigger_api.Trigger):
 
 # G06 P207
 class NumberOnP207(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2087,7 +2087,7 @@ class NumberOnP207(trigger_api.Trigger):
 
 
 class CheckP207(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -2111,7 +2111,7 @@ class CheckP207(trigger_api.Trigger):
 
 
 class NumberOffP207(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -2135,7 +2135,7 @@ class NumberOffP207(trigger_api.Trigger):
 
 
 class ResetP207(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P207End', value=1)
         self.set_user_value(key='G06P207Set', value=0)
         self.set_user_value(key='G06P207TimeLimit', value=0)
@@ -2147,7 +2147,7 @@ class ResetP207(trigger_api.Trigger):
 
 # G06 P208
 class NumberOnP208(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2204,7 +2204,7 @@ class NumberOnP208(trigger_api.Trigger):
 
 
 class CheckP208(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -2228,7 +2228,7 @@ class CheckP208(trigger_api.Trigger):
 
 
 class NumberOffP208(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -2252,7 +2252,7 @@ class NumberOffP208(trigger_api.Trigger):
 
 
 class ResetP208(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P208End', value=1)
         self.set_user_value(key='G06P208Set', value=0)
         self.set_user_value(key='G06P208TimeLimit', value=0)
@@ -2264,7 +2264,7 @@ class ResetP208(trigger_api.Trigger):
 
 # G06 P209
 class NumberOnP209(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2322,7 +2322,7 @@ class NumberOnP209(trigger_api.Trigger):
 
 
 class CheckP209(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2346,7 +2346,7 @@ class CheckP209(trigger_api.Trigger):
 
 
 class NumberOffP209(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2371,7 +2371,7 @@ class NumberOffP209(trigger_api.Trigger):
 
 
 class ResetP209(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P209End', value=1)
         self.set_user_value(key='G06P209Set', value=0)
         self.set_user_value(key='G06P209TimeLimit', value=0)
@@ -2383,7 +2383,7 @@ class ResetP209(trigger_api.Trigger):
 
 # G06 P210
 class NumberOnP210(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2442,7 +2442,7 @@ class NumberOnP210(trigger_api.Trigger):
 
 
 class CheckP210(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -2466,7 +2466,7 @@ class CheckP210(trigger_api.Trigger):
 
 
 class NumberOffP210(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -2492,7 +2492,7 @@ class NumberOffP210(trigger_api.Trigger):
 
 
 class ResetP210(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P210End', value=1)
         self.set_user_value(key='G06P210Set', value=0)
         self.set_user_value(key='G06P210TimeLimit', value=0)
@@ -2504,7 +2504,7 @@ class ResetP210(trigger_api.Trigger):
 
 # G06 P211
 class NumberOnP211(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2561,7 +2561,7 @@ class NumberOnP211(trigger_api.Trigger):
 
 
 class CheckP211(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2585,7 +2585,7 @@ class CheckP211(trigger_api.Trigger):
 
 
 class NumberOffP211(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2609,7 +2609,7 @@ class NumberOffP211(trigger_api.Trigger):
 
 
 class ResetP211(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P211End', value=1)
         self.set_user_value(key='G06P211Set', value=0)
         self.set_user_value(key='G06P211TimeLimit', value=0)
@@ -2621,7 +2621,7 @@ class ResetP211(trigger_api.Trigger):
 
 # G06 P212
 class NumberOnP212(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2678,7 +2678,7 @@ class NumberOnP212(trigger_api.Trigger):
 
 
 class CheckP212(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=0)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2702,7 +2702,7 @@ class CheckP212(trigger_api.Trigger):
 
 
 class NumberOffP212(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 0
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2726,7 +2726,7 @@ class NumberOffP212(trigger_api.Trigger):
 
 
 class ResetP212(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P212End', value=1)
         self.set_user_value(key='G06P212Set', value=0)
         self.set_user_value(key='G06P212TimeLimit', value=0)
@@ -2738,7 +2738,7 @@ class ResetP212(trigger_api.Trigger):
 
 # G06 P213
 class NumberOnP213(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2795,7 +2795,7 @@ class NumberOnP213(trigger_api.Trigger):
 
 
 class CheckP213(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -2819,7 +2819,7 @@ class CheckP213(trigger_api.Trigger):
 
 
 class NumberOffP213(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -2843,7 +2843,7 @@ class NumberOffP213(trigger_api.Trigger):
 
 
 class ResetP213(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P213End', value=1)
         self.set_user_value(key='G06P213Set', value=0)
         self.set_user_value(key='G06P213TimeLimit', value=0)
@@ -2855,7 +2855,7 @@ class ResetP213(trigger_api.Trigger):
 
 # G06 P214
 class NumberOnP214(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -2912,7 +2912,7 @@ class NumberOnP214(trigger_api.Trigger):
 
 
 class CheckP214(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -2936,7 +2936,7 @@ class CheckP214(trigger_api.Trigger):
 
 
 class NumberOffP214(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -2960,7 +2960,7 @@ class NumberOffP214(trigger_api.Trigger):
 
 
 class ResetP214(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P214End', value=1)
         self.set_user_value(key='G06P214Set', value=0)
         self.set_user_value(key='G06P214TimeLimit', value=0)
@@ -2972,7 +2972,7 @@ class ResetP214(trigger_api.Trigger):
 
 # G06 P215
 class NumberOnP215(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3029,7 +3029,7 @@ class NumberOnP215(trigger_api.Trigger):
 
 
 class CheckP215(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -3053,7 +3053,7 @@ class CheckP215(trigger_api.Trigger):
 
 
 class NumberOffP215(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -3077,7 +3077,7 @@ class NumberOffP215(trigger_api.Trigger):
 
 
 class ResetP215(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P215End', value=1)
         self.set_user_value(key='G06P215Set', value=0)
         self.set_user_value(key='G06P215TimeLimit', value=0)
@@ -3089,7 +3089,7 @@ class ResetP215(trigger_api.Trigger):
 
 # G06 P216
 class NumberOnP216(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3146,7 +3146,7 @@ class NumberOnP216(trigger_api.Trigger):
 
 
 class CheckP216(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -3170,7 +3170,7 @@ class CheckP216(trigger_api.Trigger):
 
 
 class NumberOffP216(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -3194,7 +3194,7 @@ class NumberOffP216(trigger_api.Trigger):
 
 
 class ResetP216(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P216End', value=1)
         self.set_user_value(key='G06P216Set', value=0)
         self.set_user_value(key='G06P216TimeLimit', value=0)
@@ -3206,7 +3206,7 @@ class ResetP216(trigger_api.Trigger):
 
 # G06 P217
 class NumberOnP217(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3264,7 +3264,7 @@ class NumberOnP217(trigger_api.Trigger):
 
 
 class CheckP217(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3288,7 +3288,7 @@ class CheckP217(trigger_api.Trigger):
 
 
 class NumberOffP217(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3313,7 +3313,7 @@ class NumberOffP217(trigger_api.Trigger):
 
 
 class ResetP217(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P217End', value=1)
         self.set_user_value(key='G06P217Set', value=0)
         self.set_user_value(key='G06P217TimeLimit', value=0)
@@ -3325,7 +3325,7 @@ class ResetP217(trigger_api.Trigger):
 
 # G06 P218
 class NumberOnP218(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3383,7 +3383,7 @@ class NumberOnP218(trigger_api.Trigger):
 
 
 class CheckP218(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -3407,7 +3407,7 @@ class CheckP218(trigger_api.Trigger):
 
 
 class NumberOffP218(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -3432,7 +3432,7 @@ class NumberOffP218(trigger_api.Trigger):
 
 
 class ResetP218(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P218End', value=1)
         self.set_user_value(key='G06P218Set', value=0)
         self.set_user_value(key='G06P218TimeLimit', value=0)
@@ -3444,7 +3444,7 @@ class ResetP218(trigger_api.Trigger):
 
 # G06 P219
 class NumberOnP219(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3502,7 +3502,7 @@ class NumberOnP219(trigger_api.Trigger):
 
 
 class CheckP219(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -3526,7 +3526,7 @@ class CheckP219(trigger_api.Trigger):
 
 
 class NumberOffP219(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -3551,7 +3551,7 @@ class NumberOffP219(trigger_api.Trigger):
 
 
 class ResetP219(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P219End', value=1)
         self.set_user_value(key='G06P219Set', value=0)
         self.set_user_value(key='G06P219TimeLimit', value=0)
@@ -3563,7 +3563,7 @@ class ResetP219(trigger_api.Trigger):
 
 # G06 P220
 class NumberOnP220(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3621,7 +3621,7 @@ class NumberOnP220(trigger_api.Trigger):
 
 
 class CheckP220(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3645,7 +3645,7 @@ class CheckP220(trigger_api.Trigger):
 
 
 class NumberOffP220(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3670,7 +3670,7 @@ class NumberOffP220(trigger_api.Trigger):
 
 
 class ResetP220(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P220End', value=1)
         self.set_user_value(key='G06P220Set', value=0)
         self.set_user_value(key='G06P220TimeLimit', value=0)
@@ -3682,7 +3682,7 @@ class ResetP220(trigger_api.Trigger):
 
 # G06 P301
 class NumberOnP301(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3741,7 +3741,7 @@ class NumberOnP301(trigger_api.Trigger):
 
 
 class CheckP301(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -3765,7 +3765,7 @@ class CheckP301(trigger_api.Trigger):
 
 
 class NumberOffP301(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -3791,7 +3791,7 @@ class NumberOffP301(trigger_api.Trigger):
 
 
 class ResetP301(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P301End', value=1)
         self.set_user_value(key='G06P301Set', value=0)
         self.set_user_value(key='G06P301TimeLimit', value=0)
@@ -3803,7 +3803,7 @@ class ResetP301(trigger_api.Trigger):
 
 # G06 P302
 class NumberOnP302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3861,7 +3861,7 @@ class NumberOnP302(trigger_api.Trigger):
 
 
 class CheckP302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3885,7 +3885,7 @@ class CheckP302(trigger_api.Trigger):
 
 
 class NumberOffP302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3910,7 +3910,7 @@ class NumberOffP302(trigger_api.Trigger):
 
 
 class ResetP302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P302End', value=1)
         self.set_user_value(key='G06P302Set', value=0)
         self.set_user_value(key='G06P302TimeLimit', value=0)
@@ -3922,7 +3922,7 @@ class ResetP302(trigger_api.Trigger):
 
 # G06 P303
 class NumberOnP303(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -3980,7 +3980,7 @@ class NumberOnP303(trigger_api.Trigger):
 
 
 class CheckP303(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -4004,7 +4004,7 @@ class CheckP303(trigger_api.Trigger):
 
 
 class NumberOffP303(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -4029,7 +4029,7 @@ class NumberOffP303(trigger_api.Trigger):
 
 
 class ResetP303(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P303End', value=1)
         self.set_user_value(key='G06P303Set', value=0)
         self.set_user_value(key='G06P303TimeLimit', value=0)
@@ -4041,7 +4041,7 @@ class ResetP303(trigger_api.Trigger):
 
 # G06 P304
 class NumberOnP304(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4099,7 +4099,7 @@ class NumberOnP304(trigger_api.Trigger):
 
 
 class CheckP304(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4123,7 +4123,7 @@ class CheckP304(trigger_api.Trigger):
 
 
 class NumberOffP304(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4148,7 +4148,7 @@ class NumberOffP304(trigger_api.Trigger):
 
 
 class ResetP304(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P304End', value=1)
         self.set_user_value(key='G06P304Set', value=0)
         self.set_user_value(key='G06P304TimeLimit', value=0)
@@ -4160,7 +4160,7 @@ class ResetP304(trigger_api.Trigger):
 
 # G06 P305
 class NumberOnP305(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4217,7 +4217,7 @@ class NumberOnP305(trigger_api.Trigger):
 
 
 class CheckP305(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -4241,7 +4241,7 @@ class CheckP305(trigger_api.Trigger):
 
 
 class NumberOffP305(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -4265,7 +4265,7 @@ class NumberOffP305(trigger_api.Trigger):
 
 
 class ResetP305(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P305End', value=1)
         self.set_user_value(key='G06P305Set', value=0)
         self.set_user_value(key='G06P305TimeLimit', value=0)
@@ -4277,7 +4277,7 @@ class ResetP305(trigger_api.Trigger):
 
 # G06 P306
 class NumberOnP306(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4336,7 +4336,7 @@ class NumberOnP306(trigger_api.Trigger):
 
 
 class CheckP306(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4360,7 +4360,7 @@ class CheckP306(trigger_api.Trigger):
 
 
 class NumberOffP306(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4386,7 +4386,7 @@ class NumberOffP306(trigger_api.Trigger):
 
 
 class ResetP306(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P306End', value=1)
         self.set_user_value(key='G06P306Set', value=0)
         self.set_user_value(key='G06P306TimeLimit', value=0)
@@ -4398,7 +4398,7 @@ class ResetP306(trigger_api.Trigger):
 
 # G06 P307
 class NumberOnP307(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4456,7 +4456,7 @@ class NumberOnP307(trigger_api.Trigger):
 
 
 class CheckP307(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4480,7 +4480,7 @@ class CheckP307(trigger_api.Trigger):
 
 
 class NumberOffP307(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4505,7 +4505,7 @@ class NumberOffP307(trigger_api.Trigger):
 
 
 class ResetP307(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P307End', value=1)
         self.set_user_value(key='G06P307Set', value=0)
         self.set_user_value(key='G06P307TimeLimit', value=0)
@@ -4517,7 +4517,7 @@ class ResetP307(trigger_api.Trigger):
 
 # G06 P308
 class NumberOnP308(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4574,7 +4574,7 @@ class NumberOnP308(trigger_api.Trigger):
 
 
 class CheckP308(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4598,7 +4598,7 @@ class CheckP308(trigger_api.Trigger):
 
 
 class NumberOffP308(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4622,7 +4622,7 @@ class NumberOffP308(trigger_api.Trigger):
 
 
 class ResetP308(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P308End', value=1)
         self.set_user_value(key='G06P308Set', value=0)
         self.set_user_value(key='G06P308TimeLimit', value=0)
@@ -4634,7 +4634,7 @@ class ResetP308(trigger_api.Trigger):
 
 # G06 P309
 class NumberOnP309(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4691,7 +4691,7 @@ class NumberOnP309(trigger_api.Trigger):
 
 
 class CheckP309(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -4715,7 +4715,7 @@ class CheckP309(trigger_api.Trigger):
 
 
 class NumberOffP309(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -4739,7 +4739,7 @@ class NumberOffP309(trigger_api.Trigger):
 
 
 class ResetP309(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P309End', value=1)
         self.set_user_value(key='G06P309Set', value=0)
         self.set_user_value(key='G06P309TimeLimit', value=0)
@@ -4751,7 +4751,7 @@ class ResetP309(trigger_api.Trigger):
 
 # G06 P310
 class NumberOnP310(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4808,7 +4808,7 @@ class NumberOnP310(trigger_api.Trigger):
 
 
 class CheckP310(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -4832,7 +4832,7 @@ class CheckP310(trigger_api.Trigger):
 
 
 class NumberOffP310(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -4856,7 +4856,7 @@ class NumberOffP310(trigger_api.Trigger):
 
 
 class ResetP310(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P310End', value=1)
         self.set_user_value(key='G06P310Set', value=0)
         self.set_user_value(key='G06P310TimeLimit', value=0)
@@ -4868,7 +4868,7 @@ class ResetP310(trigger_api.Trigger):
 
 # G06 P311
 class NumberOnP311(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -4927,7 +4927,7 @@ class NumberOnP311(trigger_api.Trigger):
 
 
 class CheckP311(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4951,7 +4951,7 @@ class CheckP311(trigger_api.Trigger):
 
 
 class NumberOffP311(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4977,7 +4977,7 @@ class NumberOffP311(trigger_api.Trigger):
 
 
 class ResetP311(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P311End', value=1)
         self.set_user_value(key='G06P311Set', value=0)
         self.set_user_value(key='G06P311TimeLimit', value=0)
@@ -4989,7 +4989,7 @@ class ResetP311(trigger_api.Trigger):
 
 # G06 P312
 class NumberOnP312(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5048,7 +5048,7 @@ class NumberOnP312(trigger_api.Trigger):
 
 
 class CheckP312(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -5072,7 +5072,7 @@ class CheckP312(trigger_api.Trigger):
 
 
 class NumberOffP312(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -5098,7 +5098,7 @@ class NumberOffP312(trigger_api.Trigger):
 
 
 class ResetP312(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P312End', value=1)
         self.set_user_value(key='G06P312Set', value=0)
         self.set_user_value(key='G06P312TimeLimit', value=0)
@@ -5110,7 +5110,7 @@ class ResetP312(trigger_api.Trigger):
 
 # G06 P313
 class NumberOnP313(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5167,7 +5167,7 @@ class NumberOnP313(trigger_api.Trigger):
 
 
 class CheckP313(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -5191,7 +5191,7 @@ class CheckP313(trigger_api.Trigger):
 
 
 class NumberOffP313(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -5215,7 +5215,7 @@ class NumberOffP313(trigger_api.Trigger):
 
 
 class ResetP313(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P313End', value=1)
         self.set_user_value(key='G06P313Set', value=0)
         self.set_user_value(key='G06P313TimeLimit', value=0)
@@ -5227,7 +5227,7 @@ class ResetP313(trigger_api.Trigger):
 
 # G06 P314
 class NumberOnP314(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5284,7 +5284,7 @@ class NumberOnP314(trigger_api.Trigger):
 
 
 class CheckP314(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -5308,7 +5308,7 @@ class CheckP314(trigger_api.Trigger):
 
 
 class NumberOffP314(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -5332,7 +5332,7 @@ class NumberOffP314(trigger_api.Trigger):
 
 
 class ResetP314(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P314End', value=1)
         self.set_user_value(key='G06P314Set', value=0)
         self.set_user_value(key='G06P314TimeLimit', value=0)
@@ -5344,7 +5344,7 @@ class ResetP314(trigger_api.Trigger):
 
 # G06 P315
 class NumberOnP315(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5401,7 +5401,7 @@ class NumberOnP315(trigger_api.Trigger):
 
 
 class CheckP315(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -5425,7 +5425,7 @@ class CheckP315(trigger_api.Trigger):
 
 
 class NumberOffP315(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -5449,7 +5449,7 @@ class NumberOffP315(trigger_api.Trigger):
 
 
 class ResetP315(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P315End', value=1)
         self.set_user_value(key='G06P315Set', value=0)
         self.set_user_value(key='G06P315TimeLimit', value=0)
@@ -5461,7 +5461,7 @@ class ResetP315(trigger_api.Trigger):
 
 # G06 P316
 class NumberOnP316(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5518,7 +5518,7 @@ class NumberOnP316(trigger_api.Trigger):
 
 
 class CheckP316(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -5542,7 +5542,7 @@ class CheckP316(trigger_api.Trigger):
 
 
 class NumberOffP316(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -5566,7 +5566,7 @@ class NumberOffP316(trigger_api.Trigger):
 
 
 class ResetP316(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P316End', value=1)
         self.set_user_value(key='G06P316Set', value=0)
         self.set_user_value(key='G06P316TimeLimit', value=0)
@@ -5578,7 +5578,7 @@ class ResetP316(trigger_api.Trigger):
 
 # G06 P317
 class NumberOnP317(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5635,7 +5635,7 @@ class NumberOnP317(trigger_api.Trigger):
 
 
 class CheckP317(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -5659,7 +5659,7 @@ class CheckP317(trigger_api.Trigger):
 
 
 class NumberOffP317(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -5683,7 +5683,7 @@ class NumberOffP317(trigger_api.Trigger):
 
 
 class ResetP317(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P317End', value=1)
         self.set_user_value(key='G06P317Set', value=0)
         self.set_user_value(key='G06P317TimeLimit', value=0)
@@ -5695,7 +5695,7 @@ class ResetP317(trigger_api.Trigger):
 
 # G06 P318
 class NumberOnP318(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5752,7 +5752,7 @@ class NumberOnP318(trigger_api.Trigger):
 
 
 class CheckP318(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -5776,7 +5776,7 @@ class CheckP318(trigger_api.Trigger):
 
 
 class NumberOffP318(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -5800,7 +5800,7 @@ class NumberOffP318(trigger_api.Trigger):
 
 
 class ResetP318(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P318End', value=1)
         self.set_user_value(key='G06P318Set', value=0)
         self.set_user_value(key='G06P318TimeLimit', value=0)
@@ -5812,7 +5812,7 @@ class ResetP318(trigger_api.Trigger):
 
 # G06 P319
 class NumberOnP319(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5869,7 +5869,7 @@ class NumberOnP319(trigger_api.Trigger):
 
 
 class CheckP319(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=0)
@@ -5893,7 +5893,7 @@ class CheckP319(trigger_api.Trigger):
 
 
 class NumberOffP319(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[130], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 0
@@ -5917,7 +5917,7 @@ class NumberOffP319(trigger_api.Trigger):
 
 
 class ResetP319(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P319End', value=1)
         self.set_user_value(key='G06P319Set', value=0)
         self.set_user_value(key='G06P319TimeLimit', value=0)
@@ -5929,7 +5929,7 @@ class ResetP319(trigger_api.Trigger):
 
 # G06 P320
 class NumberOnP320(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -5986,7 +5986,7 @@ class NumberOnP320(trigger_api.Trigger):
 
 
 class CheckP320(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -6010,7 +6010,7 @@ class CheckP320(trigger_api.Trigger):
 
 
 class NumberOffP320(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -6034,7 +6034,7 @@ class NumberOffP320(trigger_api.Trigger):
 
 
 class ResetP320(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P320End', value=1)
         self.set_user_value(key='G06P320Set', value=0)
         self.set_user_value(key='G06P320TimeLimit', value=0)
@@ -6046,7 +6046,7 @@ class ResetP320(trigger_api.Trigger):
 
 # G06 P401
 class NumberOnP401(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6103,7 +6103,7 @@ class NumberOnP401(trigger_api.Trigger):
 
 
 class CheckP401(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -6127,7 +6127,7 @@ class CheckP401(trigger_api.Trigger):
 
 
 class NumberOffP401(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -6151,7 +6151,7 @@ class NumberOffP401(trigger_api.Trigger):
 
 
 class ResetP401(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P401End', value=1)
         self.set_user_value(key='G06P401Set', value=0)
         self.set_user_value(key='G06P401TimeLimit', value=0)
@@ -6163,7 +6163,7 @@ class ResetP401(trigger_api.Trigger):
 
 # G06 P402
 class NumberOnP402(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6221,7 +6221,7 @@ class NumberOnP402(trigger_api.Trigger):
 
 
 class CheckP402(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -6245,7 +6245,7 @@ class CheckP402(trigger_api.Trigger):
 
 
 class NumberOffP402(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -6270,7 +6270,7 @@ class NumberOffP402(trigger_api.Trigger):
 
 
 class ResetP402(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P402End', value=1)
         self.set_user_value(key='G06P402Set', value=0)
         self.set_user_value(key='G06P402TimeLimit', value=0)
@@ -6282,7 +6282,7 @@ class ResetP402(trigger_api.Trigger):
 
 # G06 P403
 class NumberOnP403(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6340,7 +6340,7 @@ class NumberOnP403(trigger_api.Trigger):
 
 
 class CheckP403(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -6364,7 +6364,7 @@ class CheckP403(trigger_api.Trigger):
 
 
 class NumberOffP403(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -6389,7 +6389,7 @@ class NumberOffP403(trigger_api.Trigger):
 
 
 class ResetP403(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P403End', value=1)
         self.set_user_value(key='G06P403Set', value=0)
         self.set_user_value(key='G06P403TimeLimit', value=0)
@@ -6401,7 +6401,7 @@ class ResetP403(trigger_api.Trigger):
 
 # G06 P404
 class NumberOnP404(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6461,7 +6461,7 @@ class NumberOnP404(trigger_api.Trigger):
 
 
 class CheckP404(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -6485,7 +6485,7 @@ class CheckP404(trigger_api.Trigger):
 
 
 class NumberOffP404(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -6512,7 +6512,7 @@ class NumberOffP404(trigger_api.Trigger):
 
 
 class ResetP404(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P404End', value=1)
         self.set_user_value(key='G06P404Set', value=0)
         self.set_user_value(key='G06P404TimeLimit', value=0)
@@ -6524,7 +6524,7 @@ class ResetP404(trigger_api.Trigger):
 
 # G06 P405
 class NumberOnP405(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6581,7 +6581,7 @@ class NumberOnP405(trigger_api.Trigger):
 
 
 class CheckP405(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -6605,7 +6605,7 @@ class CheckP405(trigger_api.Trigger):
 
 
 class NumberOffP405(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -6629,7 +6629,7 @@ class NumberOffP405(trigger_api.Trigger):
 
 
 class ResetP405(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P405End', value=1)
         self.set_user_value(key='G06P405Set', value=0)
         self.set_user_value(key='G06P405TimeLimit', value=0)
@@ -6641,7 +6641,7 @@ class ResetP405(trigger_api.Trigger):
 
 # G06 P406
 class NumberOnP406(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6698,7 +6698,7 @@ class NumberOnP406(trigger_api.Trigger):
 
 
 class CheckP406(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -6722,7 +6722,7 @@ class CheckP406(trigger_api.Trigger):
 
 
 class NumberOffP406(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -6746,7 +6746,7 @@ class NumberOffP406(trigger_api.Trigger):
 
 
 class ResetP406(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P406End', value=1)
         self.set_user_value(key='G06P406Set', value=0)
         self.set_user_value(key='G06P406TimeLimit', value=0)
@@ -6758,7 +6758,7 @@ class ResetP406(trigger_api.Trigger):
 
 # G06 P407
 class NumberOnP407(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6815,7 +6815,7 @@ class NumberOnP407(trigger_api.Trigger):
 
 
 class CheckP407(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -6839,7 +6839,7 @@ class CheckP407(trigger_api.Trigger):
 
 
 class NumberOffP407(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -6863,7 +6863,7 @@ class NumberOffP407(trigger_api.Trigger):
 
 
 class ResetP407(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P407End', value=1)
         self.set_user_value(key='G06P407Set', value=0)
         self.set_user_value(key='G06P407TimeLimit', value=0)
@@ -6875,7 +6875,7 @@ class ResetP407(trigger_api.Trigger):
 
 # G06 P408
 class NumberOnP408(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -6934,7 +6934,7 @@ class NumberOnP408(trigger_api.Trigger):
 
 
 class CheckP408(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -6958,7 +6958,7 @@ class CheckP408(trigger_api.Trigger):
 
 
 class NumberOffP408(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -6984,7 +6984,7 @@ class NumberOffP408(trigger_api.Trigger):
 
 
 class ResetP408(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P408End', value=1)
         self.set_user_value(key='G06P408Set', value=0)
         self.set_user_value(key='G06P408TimeLimit', value=0)
@@ -6996,7 +6996,7 @@ class ResetP408(trigger_api.Trigger):
 
 # G06 P409
 class NumberOnP409(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -7053,7 +7053,7 @@ class NumberOnP409(trigger_api.Trigger):
 
 
 class CheckP409(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -7077,7 +7077,7 @@ class CheckP409(trigger_api.Trigger):
 
 
 class NumberOffP409(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -7101,7 +7101,7 @@ class NumberOffP409(trigger_api.Trigger):
 
 
 class ResetP409(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P409End', value=1)
         self.set_user_value(key='G06P409Set', value=0)
         self.set_user_value(key='G06P409TimeLimit', value=0)
@@ -7113,7 +7113,7 @@ class ResetP409(trigger_api.Trigger):
 
 # G06 P410
 class NumberOnP410(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7110, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7120, key='ColorStart', value=1) # yellow
         self.set_user_value(triggerId=7130, key='ColorStart', value=1) # yellow
@@ -7172,7 +7172,7 @@ class NumberOnP410(trigger_api.Trigger):
 
 
 class CheckP410(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -7196,7 +7196,7 @@ class CheckP410(trigger_api.Trigger):
 
 
 class NumberOffP410(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -7222,7 +7222,7 @@ class NumberOffP410(trigger_api.Trigger):
 
 
 class ResetP410(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G06P410End', value=1)
         self.set_user_value(key='G06P410Set', value=0)
         self.set_user_value(key='G06P410TimeLimit', value=0)

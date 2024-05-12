@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=200, scale=2)
         self.set_interact_object(triggerIds=[10000730], state=1)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 부서짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=200, scale=2)
         self.set_timer(timerId='25', seconds=25)
 

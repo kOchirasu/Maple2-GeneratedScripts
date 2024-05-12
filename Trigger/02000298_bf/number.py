@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[608], visible=False)
         self.set_effect(triggerIds=[610], visible=False)
         self.set_effect(triggerIds=[611], visible=False)
@@ -23,7 +23,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 암호체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002982, textId=20002982)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -71,7 +71,7 @@ class 암호체크(trigger_api.Trigger):
 
 
 class 입력대기중_1279(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class 입력대기중_1279(trigger_api.Trigger):
 
 
 class 입력대기중_1238(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +109,7 @@ class 입력대기중_1238(trigger_api.Trigger):
 
 
 class 입력대기중_1358(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -128,7 +128,7 @@ class 입력대기중_1358(trigger_api.Trigger):
 
 
 class 입력대기중_1489(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -147,7 +147,7 @@ class 입력대기중_1489(trigger_api.Trigger):
 
 
 class 입력대기중_1567(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +166,7 @@ class 입력대기중_1567(trigger_api.Trigger):
 
 
 class 입력대기중_1679(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -185,7 +185,7 @@ class 입력대기중_1679(trigger_api.Trigger):
 
 
 class 입력대기중_2389(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -204,7 +204,7 @@ class 입력대기중_2389(trigger_api.Trigger):
 
 
 class 입력대기중_2347(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -223,7 +223,7 @@ class 입력대기중_2347(trigger_api.Trigger):
 
 
 class 입력대기중_2478(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +242,7 @@ class 입력대기중_2478(trigger_api.Trigger):
 
 
 class 입력대기중_2456(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -261,7 +261,7 @@ class 입력대기중_2456(trigger_api.Trigger):
 
 
 class 입력대기중_2569(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -280,7 +280,7 @@ class 입력대기중_2569(trigger_api.Trigger):
 
 
 class 입력대기중_2678(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -299,7 +299,7 @@ class 입력대기중_2678(trigger_api.Trigger):
 
 
 class 입력대기중_3458(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -318,7 +318,7 @@ class 입력대기중_3458(trigger_api.Trigger):
 
 
 class 입력대기중_3589(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -337,7 +337,7 @@ class 입력대기중_3589(trigger_api.Trigger):
 
 
 class 입력대기중_3679(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,7 +356,7 @@ class 입력대기중_3679(trigger_api.Trigger):
 
 
 class 입력대기중_3789(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -375,7 +375,7 @@ class 입력대기중_3789(trigger_api.Trigger):
 
 
 class 입력대기중_4567(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -394,7 +394,7 @@ class 입력대기중_4567(trigger_api.Trigger):
 
 
 class 입력대기중_4578(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -413,7 +413,7 @@ class 입력대기중_4578(trigger_api.Trigger):
 
 
 class 입력대기중_4689(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -432,7 +432,7 @@ class 입력대기중_4689(trigger_api.Trigger):
 
 
 class 입력대기중_4789(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000001,12000002,12000003,12000004,12000005,12000006,12000007,12000008,12000009], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -451,7 +451,7 @@ class 입력대기중_4789(trigger_api.Trigger):
 
 
 class 정답(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002982)
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=20002983, textId=20002983)
@@ -464,7 +464,7 @@ class 정답(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_effect(triggerIds=[608], visible=True)
         self.set_mesh(triggerIds=[3221,3222,3223], visible=False, arg3=0, delay=0, scale=5)
@@ -479,7 +479,7 @@ class 문열림(trigger_api.Trigger):
 
 
 class 오답(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002982)
         self.set_effect(triggerIds=[610], visible=True)
         self.set_timer(timerId='3', seconds=3)
@@ -494,7 +494,7 @@ class 오답(trigger_api.Trigger):
 
 
 class 방어모드(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=292, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=293, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=294, visible=True, initialSequence='sf_quest_light_A01_On')

@@ -16,7 +16,7 @@ class 아르키아체력(trigger_api.Trigger):
 
 
 class 알메쉬생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=23300010, illust='ArakiaDark_normal', duration=4000, script='$02000545_BF__EGG2__0$')
         self.set_mesh(triggerIds=[2150,2151], visible=True)
         self.create_monster(spawnIds=[505,507], animationEffect=True)
@@ -31,7 +31,7 @@ class 알메쉬생성(trigger_api.Trigger):
 
 
 class 알파괴1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2150], visible=False)
         self.set_ai_extra_data(key='phase', value=1)
 
@@ -43,7 +43,7 @@ class 알파괴1(trigger_api.Trigger):
 
 
 class 알파괴2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2151], visible=False)
         self.set_ai_extra_data(key='phase', value=1)
 
@@ -55,7 +55,7 @@ class 알파괴2(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2150,2151], visible=False)
 
 

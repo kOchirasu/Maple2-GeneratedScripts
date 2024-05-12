@@ -3,12 +3,12 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='HidePartyUI', value=0)
 
 
 class HidePartyUI(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_ui(uiNames=['PartyDialog'], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

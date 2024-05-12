@@ -9,7 +9,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 전투시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[100000002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 전투시작(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[100000002], skillId=50000198, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[100000002], skillId=50000202, level=1, isPlayer=True, isSkillSet=False)
 
@@ -29,17 +29,17 @@ class 버프(trigger_api.Trigger):
 
 class 체력조건달성(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.check_npc_hp(spawnId=100000002, compare='lowerEqual', value=5, isRelative=True):
             return 몬스터기절_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.add_buff(boxIds=[100000002], skillId=50000229, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[100000002], skillId=50000207, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[100000002], skillId=50000216, level=1, isPlayer=True, isSkillSet=False)
 
 
 class 몬스터기절_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='02100009_1')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 몬스터기절_2(trigger_api.Trigger):
 
 
 class 몬스터부활(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[100000002], skillId=50000204, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[100000002], skillId=50000198, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[100000002], skillId=50000202, level=1, isPlayer=True, isSkillSet=False)
@@ -60,15 +60,15 @@ class 몬스터부활(trigger_api.Trigger):
 
 class 체력조건미달(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.check_npc_hp(spawnId=100000002, compare='higher', value=5, isRelative=True):
             return 몬스터부활_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.add_buff(boxIds=[100000002], skillId=50000228, level=1, isPlayer=True, isSkillSet=False)
 
 
 class 몬스터부활_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='MonsterDown2', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:

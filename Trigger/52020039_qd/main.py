@@ -13,7 +13,7 @@ class Ready(trigger_api.Trigger):
 
 
 class NPC소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)

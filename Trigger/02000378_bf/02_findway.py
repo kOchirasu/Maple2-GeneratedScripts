@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=24, visible=False, enable=False, minimapVisible=False) # 20170223 업데이트 던전 개편 단축
         self.set_mesh(triggerIds=[4022], visible=True, arg3=0, delay=0, scale=0) # RoundBarrier
         self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0) # CrystalOff
@@ -19,7 +19,7 @@ class Wait(trigger_api.Trigger):
 
 
 class ReadyToWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4022], visible=False, arg3=0, delay=0, scale=0) # RoundBarrier
         self.create_monster(spawnIds=[901,902,903], animationEffect=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
@@ -32,7 +32,7 @@ class ReadyToWalkIn01(trigger_api.Trigger):
 
 
 class ReadyToWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1302, key='RouteSelected', value=1)
         self.set_user_value(triggerId=2302, key='RouteSelected', value=1)
         self.set_conversation(type=1, spawnId=201, script='$02000378_BF__02_FINDWAY__1$', arg4=2, arg5=1) # 준타
@@ -43,19 +43,19 @@ class ReadyToWalkIn02(trigger_api.Trigger):
 
 
 class ReadyToWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000378_BF__02_FINDWAY__2$', arg4=2, arg5=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return Round02_Start(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[101,201])
 
 
 class Round02_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002], animationEffect=False) # 수호대상 틴차이
         self.create_monster(spawnIds=[2002], animationEffect=False) # 전투용 준타
         self.set_conversation(type=1, spawnId=1002, script='$02000378_BF__02_FINDWAY__3$', arg4=3, arg5=2) # 틴차이
@@ -66,13 +66,26 @@ class Round02_Start(trigger_api.Trigger):
             return Round02_Sucess02(self.ctx)
 
 
+# 20170223 업데이트 던전 개편 단축 			
+#     <state name="Round02_Sucess01" >	
+#         <onEnter>				
+# 				</onEnter>		
+# 			<condition name="NPC를감지했으면" arg1="9002" arg2="2202">	
+# 			<transition state="Round02_Sucess02"/>	
+# 		</condition> 		
+#     <onExit> 
+#     </onExit>	
+#     </state>
 class Round02_Sucess02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.move_npc(spawnId=2202, patrolName='MS2PatrolData_2002')
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData_2002')
         self.destroy_monster(spawnIds=[1002])
         self.create_monster(spawnIds=[102], animationEffect=False) # 연출용 틴차이
         self.set_mesh(triggerIds=[3002], visible=False, arg3=100, delay=0, scale=0) # CrystalOff
+        # <action name="메쉬를설정한다" arg1="3102" arg2="1" arg3="0" arg4="0" arg5="0" />  CrystalOn
         self.set_mesh_animation(triggerIds=[3002], visible=False, arg3=0, arg4=0) # CrystalOff
+        # <action name="메쉬애니를설정한다" arg1="3102" arg2="1" arg3="0" arg4="0" />  CrystalOn
         self.set_effect(triggerIds=[5202], visible=True) # Sound_CrystalOn
         self.set_portal(portalId=24, visible=True, enable=True, minimapVisible=False)
         self.set_conversation(type=1, spawnId=102, script='$02000378_BF__02_FINDWAY__4$', arg4=2, arg5=1) # 틴차이
@@ -83,26 +96,27 @@ class Round02_Sucess02(trigger_api.Trigger):
 
 
 class Round02_RouteSelect(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.destroy_monster(spawnIds=[2202])
         self.destroy_monster(spawnIds=[2002])
         self.create_monster(spawnIds=[202], animationEffect=False) # 연출용 준타
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_102New')
 
     def on_tick(self) -> trigger_api.Trigger:
+        """
+        if self.random_condition(rate=50):
+            return None # Missing State: Round02_PickRoute_Left
+        """
+        """
+        if self.random_condition(rate=50):
+            return None # Missing State: Round02_PickRoute_Right
+        """
         if self.wait_tick(waitTick=500):
             return GoToRound12(self.ctx)
-        """
-        <condition name="랜덤조건" arg1="50">    
-                    <transition state="Round02_PickRoute_Left"/>    
-                </condition> 
-                <condition name="랜덤조건" arg1="50"> 
-                    <transition state="Round02_PickRoute_Right" />
-                </condition>
-        """
 
 
 class GoToRound12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_202New')
         self.set_user_value(triggerId=12, key='FindWay', value=1)
@@ -113,7 +127,7 @@ class GoToRound12(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.destroy_monster(spawnIds=[901,902,903])
 

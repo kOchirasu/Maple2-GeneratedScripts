@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=201, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_off')
         self.set_mesh(triggerIds=[3000,3001,3002], visible=True)
         self.set_mesh(triggerIds=[3003,3004,3005], visible=False)
@@ -26,7 +26,7 @@ class NPC말풍선(trigger_api.Trigger):
 
 
 class 오브젝트반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001025], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class 오브젝트반응대기(trigger_api.Trigger):
 
 
 class NPC를이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -53,7 +53,7 @@ class NPC를이동(trigger_api.Trigger):
 
 
 class PC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=201, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_on')
         self.move_user_path(patrolName='MS2PatrolData_PC')
 
@@ -63,7 +63,7 @@ class PC이동(trigger_api.Trigger):
 
 
 class PC말풍선(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_conversation(type=1, spawnId=0, script='$63000039_CS__40002641__2$', arg4=4, arg5=0)
         self.set_achievement(triggerId=199, type='trigger', achieve='SaveBackstreetPeople')
@@ -74,7 +74,7 @@ class PC말풍선(trigger_api.Trigger):
 
 
 class 유저이동조건(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -84,7 +84,7 @@ class 유저이동조건(trigger_api.Trigger):
 
 
 class 유저이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=False)
         self.move_user(mapId=2000275, portalId=30)
 

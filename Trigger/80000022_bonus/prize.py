@@ -3,9 +3,10 @@ import trigger_api
 
 
 class 입장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=True)
-        self.set_actor(triggerId=3000, visible=False, initialSequence='or_functobj_mortar_A01_off') # 오브젝트 반응 이후 사라진 달토끼 대체인력 끈 상태로 정의
+        # 오브젝트 반응 이후 사라진 달토끼 대체인력 끈 상태로 정의
+        self.set_actor(triggerId=3000, visible=False, initialSequence='or_functobj_mortar_A01_off')
         self.set_interact_object(triggerIds=[11000119], state=1) # 달토끼 오브젝트, 반응 가능으로 스폰
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
 
@@ -15,7 +16,7 @@ class 입장(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[201])
         self.create_item(spawnIds=[202])
         self.create_item(spawnIds=[203])
@@ -74,7 +75,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 오브젝트체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,9 +84,10 @@ class 오브젝트체크(trigger_api.Trigger):
 
 
 class 포탈생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[11000119], state=2) # 달토끼 오브젝트, 사라짐
-        self.set_actor(triggerId=3000, visible=True, initialSequence='or_functobj_mortar_A01_off') # 오브젝트 반응 이후 사라진 달토끼 대체인력 켜기
+        # 오브젝트 반응 이후 사라진 달토끼 대체인력 켜기
+        self.set_actor(triggerId=3000, visible=True, initialSequence='or_functobj_mortar_A01_off')
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

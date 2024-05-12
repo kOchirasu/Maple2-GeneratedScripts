@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3107,3108,3109,3110,3111,3112], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3115,3116], visible=True, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000989], state=2)
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[21101,21102,21103,21104,21105,21106,21107,21201,21202,21203,21204,21205], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 전투01(trigger_api.Trigger):
 
 
 class 전투02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3107,3108], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000989], state=1)
         self.set_interact_object(triggerIds=[10000990], state=1)
@@ -42,7 +42,7 @@ class 전투02(trigger_api.Trigger):
 
 
 class 전투03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3109,3110], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000991], state=1)
         self.set_interact_object(triggerIds=[10000992], state=1)
@@ -64,7 +64,7 @@ class 합류대기(trigger_api.Trigger):
 
 
 class 전투04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[51101,51102,51103,51104,51105,51106,51107,51108,51201,51202,51203,51204,51205,51206], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

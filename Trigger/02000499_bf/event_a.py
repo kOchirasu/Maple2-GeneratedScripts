@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -19,7 +19,7 @@ class idle(trigger_api.Trigger):
 
 
 class Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_3008')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_3009')
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3010')
@@ -31,7 +31,7 @@ class Start(trigger_api.Trigger):
 
 
 class CompleteEffect(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_effect(triggerIds=[5002], visible=True)
         self.set_effect(triggerIds=[5003], visible=True)

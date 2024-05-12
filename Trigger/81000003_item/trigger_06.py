@@ -3,13 +3,17 @@ import trigger_api
 
 
 class 시간표등록(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # timeEvent.xml의 시작 시간 참조
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
             return 시간표확인(self.ctx)
 
 
 class 시간표확인(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000226], state=1)
         self.set_interact_object(triggerIds=[10000227], state=1)
         self.set_interact_object(triggerIds=[10000228], state=1)
@@ -71,7 +75,7 @@ class 시간표확인(trigger_api.Trigger):
 
 
 class 어나운스0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_state(id=1, states=[미로패턴01,미로패턴02,미로패턴03], randomize=False)
         self.set_state(id=2, states=[점프패턴01,점프패턴02], randomize=False)
         self.set_timer(timerId='89', seconds=5)
@@ -82,7 +86,7 @@ class 어나운스0(trigger_api.Trigger):
 
 
 class 레버(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_state(id=1, states=[미로패턴01,미로패턴02,미로패턴03], randomize=False)
         self.set_state(id=2, states=[점프패턴01,점프패턴02], randomize=False)
         self.set_mesh(triggerIds=[527,528,529], visible=True)
@@ -93,7 +97,7 @@ class 레버(trigger_api.Trigger):
 
 
 class 패턴결정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.use_state(arg1=1, arg2=True)
         self.use_state(arg1=2, arg2=True)
         self.set_timer(timerId='12', seconds=240)
@@ -104,22 +108,22 @@ class 패턴결정(trigger_api.Trigger):
 
 
 class 미로패턴01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[527], visible=False)
 
 
 class 미로패턴02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[528], visible=False)
 
 
 class 미로패턴03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[529], visible=False)
 
 
 class 점프패턴01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[711], visible=True)
         self.set_effect(triggerIds=[712], visible=False)
         self.set_effect(triggerIds=[713], visible=False)
@@ -171,7 +175,7 @@ class 점프패턴01(trigger_api.Trigger):
 
 
 class 점프패턴02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[711], visible=False)
         self.set_effect(triggerIds=[712], visible=True)
         self.set_effect(triggerIds=[713], visible=True)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], enable=False)
         self.set_interact_object(triggerIds=[10001024], state=0)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 레버반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26300382, textId=26300382)
         self.set_interact_object(triggerIds=[10001024], state=1)
 
@@ -24,7 +24,7 @@ class 레버반응대기(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016,7017,7018,7019,7020,7021,7022,7023], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

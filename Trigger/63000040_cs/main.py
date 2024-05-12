@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,103,104], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25200474, textId=25200474)
         self.set_effect(triggerIds=[7001], visible=True)
 
@@ -26,7 +26,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25200474)
         self.set_effect(triggerIds=[7001], visible=False)
 
@@ -36,7 +36,7 @@ class start_02_ready(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_2001') # 연출용 틴차이 이동
@@ -50,7 +50,7 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=3000)
         self.set_conversation(type=2, spawnId=11001708, script='$63000040_CS__MAIN__1$', arg4=5)
 
@@ -60,7 +60,7 @@ class start_03(trigger_api.Trigger):
 
 
 class start_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_2003') # 연출용 틴차이 이동
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class start_04(trigger_api.Trigger):
 
 
 class start_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2003') # 연출용 틴차이 이동
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class start_05(trigger_api.Trigger):
 
 
 class start_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2003') # 유저를 이동시킨다
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class start_07(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

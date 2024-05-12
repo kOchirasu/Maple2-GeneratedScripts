@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20020010)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,15 +42,17 @@ class ready(trigger_api.Trigger):
             self.create_monster(spawnIds=[121,122], animationEffect=True)
             return scene_b_02(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002630], questStates=[3]):
+            # 완료
             return scene_b_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002630], questStates=[2]):
+            # 완료가능
             return scene_b_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002630], questStates=[1]):
             return ready_02(self.ctx)
 
 
 class ready_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +67,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
         self.set_conversation(type=1, spawnId=101, script='$52000038_QD__MAIN__0$', arg4=2, arg5=0)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
@@ -77,7 +79,7 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2003')
         self.set_conversation(type=1, spawnId=101, script='$52000038_QD__MAIN__2$', arg4=2, arg5=0)
 
@@ -87,7 +89,7 @@ class start_03(trigger_api.Trigger):
 
 
 class start_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2004')
         self.set_conversation(type=1, spawnId=102, script='$52000038_QD__MAIN__3$', arg4=2, arg5=0)
 
@@ -97,7 +99,7 @@ class start_04(trigger_api.Trigger):
 
 
 class start_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +108,7 @@ class start_05(trigger_api.Trigger):
 
 
 class start_05_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3001, visible=False, initialSequence='Dead_A')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2005')
         self.set_conversation(type=1, spawnId=101, script='$52000038_QD__MAIN__4$', arg4=2, arg5=0)
@@ -119,7 +121,7 @@ class start_05_b(trigger_api.Trigger):
 
 
 class start_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.create_monster(spawnIds=[203], animationEffect=True)
         self.create_monster(spawnIds=[204], animationEffect=True)
@@ -131,7 +133,7 @@ class start_06(trigger_api.Trigger):
 
 
 class start_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3002, visible=False, initialSequence='Dead_A')
         self.set_actor(triggerId=3003, visible=False, initialSequence='Dead_A')
         self.set_actor(triggerId=3004, visible=False, initialSequence='Dead_A')
@@ -150,7 +152,7 @@ class start_07(trigger_api.Trigger):
 
 
 class scene_b_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=701, type='trigger', achieve='beyondroid1')
         self.create_monster(spawnIds=[111,112], animationEffect=True)
 
@@ -162,7 +164,7 @@ class scene_b_01(trigger_api.Trigger):
 
 
 class scene_b_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=121, patrolName='MS2PatrolData_2009')
         self.set_conversation(type=1, spawnId=121, script='$52000038_QD__MAIN__8$', arg4=2, arg5=0)
 
@@ -172,7 +174,7 @@ class scene_b_02(trigger_api.Trigger):
 
 
 class scene_b_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_2010')
         self.set_conversation(type=1, spawnId=122, script='$52000038_QD__MAIN__9$', arg4=2, arg5=3)
 
@@ -182,7 +184,7 @@ class scene_b_03(trigger_api.Trigger):
 
 
 class scene_b_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=True)
         self.show_guide_summary(entityId=20020010, textId=20020010)
         self.set_conversation(type=1, spawnId=121, script='$52000038_QD__MAIN__10$', arg4=2, arg5=0)

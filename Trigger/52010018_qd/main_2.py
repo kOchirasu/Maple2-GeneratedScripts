@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0)
@@ -27,7 +27,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 미카이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
@@ -68,7 +68,7 @@ class 다리생성(trigger_api.Trigger):
 
 
 class 미카대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010018_QD__MAIN_2__0$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +77,7 @@ class 미카대사02(trigger_api.Trigger):
 
 
 class 에레브대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010018_QD__MAIN_2__1$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,7 +86,7 @@ class 에레브대사02(trigger_api.Trigger):
 
 
 class 미카대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010018_QD__MAIN_2__2$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:

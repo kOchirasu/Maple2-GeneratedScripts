@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[805], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 이펙트대기(trigger_api.Trigger):
 
 
 class 이펙트on(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[805], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class 이펙트on(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[805], visible=False)
         self.set_timer(timerId='2', seconds=2)
 

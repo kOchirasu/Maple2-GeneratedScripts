@@ -13,12 +13,12 @@ class 잠시기다림_1(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return 타이머시작(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_event_ui(type=1, arg2='폭격이 더욱 거세집니다. 서둘러 이동하세요!', arg3='4000')
 
 
 class 타이머시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='101', seconds=180, startDelay=1, interval=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 타이머시작(trigger_api.Trigger):
 
 
 class 몬스터출현_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[6100002], animationEffect=False)
         self.create_monster(spawnIds=[6000011], animationEffect=False)
         self.create_monster(spawnIds=[6000012], animationEffect=False)
@@ -42,14 +42,14 @@ class 몬스터출현_3(trigger_api.Trigger):
 
 class 몬스터사망_3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[6000011]) and self.monster_dead(boxIds=[6000012]) and self.monster_dead(boxIds=[6000013]):
             return 몬스터출현_4(self.ctx)
         if self.time_expired(timerId='101'):
             return 실패(self.ctx)
 
 
 class 몬스터출현_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[6000014], animationEffect=False)
         self.create_monster(spawnIds=[6000015], animationEffect=False)
         self.create_monster(spawnIds=[6000016], animationEffect=False)
@@ -63,14 +63,14 @@ class 몬스터출현_4(trigger_api.Trigger):
 
 class 몬스터사망_4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[6000014]) and self.monster_dead(boxIds=[6000015]) and self.monster_dead(boxIds=[6000016]):
             return 생성_2(self.ctx)
         if self.time_expired(timerId='101'):
             return 실패(self.ctx)
 
 
 class 생성_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='101')
         self.set_interact_object(triggerIds=[10002002], state=1)
 
@@ -86,7 +86,7 @@ class 작동_2(trigger_api.Trigger):
 
 
 class 연출시작_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[6100002])
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
@@ -98,7 +98,7 @@ class 연출시작_2(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +107,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 폭발_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 폭발_2(trigger_api.Trigger):
 
 
 class 맵폭발연출_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10031], visible=True)
         self.set_skill(triggerIds=[6004], enable=True)
 
@@ -126,7 +126,7 @@ class 맵폭발연출_1(trigger_api.Trigger):
 
 
 class 카메라연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000006], returnView=False)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)
@@ -137,7 +137,7 @@ class 카메라연출(trigger_api.Trigger):
 
 
 class pc소환_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True)
         self.move_user(mapId=52020001, portalId=12)
 
@@ -147,17 +147,17 @@ class pc소환_2(trigger_api.Trigger):
 
 
 class 카메라리셋(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=16, visible=True, enable=True, minimapVisible=False)
         self.reset_camera(interpolationTime=0.8)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None
+            pass
 
 
 class 실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10090], visible=True)
         self.set_effect(triggerIds=[10091], visible=True)
         self.set_effect(triggerIds=[10092], visible=True)
@@ -169,7 +169,7 @@ class 실패(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=100):
-            return None
+            pass
 
 
 initial_state = 차감지2

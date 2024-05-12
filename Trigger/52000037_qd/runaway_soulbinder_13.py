@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=603, enable=True)
@@ -28,7 +28,7 @@ class PC말풍선딜레이(trigger_api.Trigger):
 
 
 class PC말풍선01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__RUNAWAY_SOULBINDER_13__0$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 
 class PC말풍선02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__RUNAWAY_SOULBINDER_13__1$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class PC말풍선02(trigger_api.Trigger):
 
 
 class PC말풍선03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__RUNAWAY_SOULBINDER_13__2$', arg4=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class 말풍선딜레이(trigger_api.Trigger):
 
 
 class PC말풍선04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__RUNAWAY_SOULBINDER_13__3$', arg4=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +71,7 @@ class PC말풍선04(trigger_api.Trigger):
 
 
 class PC말풍선05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__RUNAWAY_SOULBINDER_13__4$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +80,7 @@ class PC말풍선05(trigger_api.Trigger):
 
 
 class NPC등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[211,212,213], animationEffect=False)
         self.select_camera(triggerId=604, enable=True)
 
@@ -90,7 +90,7 @@ class NPC등장(trigger_api.Trigger):
 
 
 class NPC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001727, script='$52000037_QD__RUNAWAY_SOULBINDER_13__5$', arg4=2)
         self.set_skip(state=NPC대사01스킵)
 
@@ -100,8 +100,9 @@ class NPC대사01(trigger_api.Trigger):
 
 
 class NPC대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +111,7 @@ class NPC대사01스킵(trigger_api.Trigger):
 
 
 class NPC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001725, script='$52000037_QD__RUNAWAY_SOULBINDER_13__6$', arg4=2)
         self.set_skip(state=NPC대사02스킵)
 
@@ -120,8 +121,9 @@ class NPC대사02(trigger_api.Trigger):
 
 
 class NPC대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +132,7 @@ class NPC대사02스킵(trigger_api.Trigger):
 
 
 class PC도주(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.select_camera(triggerId=605, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_PC1102C')
@@ -141,7 +143,7 @@ class PC도주(trigger_api.Trigger):
 
 
 class PC말풍선06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=211, patrolName='MS2PatrolData_NPC1102')
         self.move_npc(spawnId=212, patrolName='MS2PatrolData_NPC1102')
         self.move_npc(spawnId=213, patrolName='MS2PatrolData_NPC1102')
@@ -153,7 +155,7 @@ class PC말풍선06(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000043, portalId=5)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

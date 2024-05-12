@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False)
         self.set_sound(triggerId=7001, enable=False)
         self.set_sound(triggerId=7002, enable=False)
@@ -19,7 +19,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -32,7 +32,7 @@ class ready(trigger_api.Trigger):
 
 
 class setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.visible_my_pc(isVisible=True)
@@ -48,7 +48,7 @@ class setting(trigger_api.Trigger):
 
 # PC 꿈
 class dreamscene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__0$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class dreamscene_01(trigger_api.Trigger):
 
 
 class dreamscene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__1$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class dreamscene_02(trigger_api.Trigger):
 
 
 class dreamscene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__2$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +75,7 @@ class dreamscene_03(trigger_api.Trigger):
 
 
 class dreamscene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__3$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class dreamscene_04(trigger_api.Trigger):
 
 
 class dreamscene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__4$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class dreamscene_05(trigger_api.Trigger):
 
 
 class dreamscene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__5$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -102,7 +102,7 @@ class dreamscene_06(trigger_api.Trigger):
 
 
 class dreamscene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000127_QD__MAIN__6$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class dreamscene_07(trigger_api.Trigger):
 
 # 연출
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -127,7 +127,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='Stun')
         self.show_caption(type='VerticalCaption', title='$52000127_QD__MAIN__12$', desc='$52000127_QD__MAIN__13$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2)
 
@@ -137,7 +137,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='Stun')
         self.add_cinematic_talk(npcId=11003218, msg='$52000127_QD__MAIN__7$', duration=3000, illustId='Jordy_normal', align='Right')
 
@@ -147,7 +147,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Stun')
         self.add_cinematic_talk(npcId=11003218, msg='$52000127_QD__MAIN__8$', duration=3000, align='Right')
@@ -158,7 +158,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.add_cinematic_talk(npcId=11003218, msg='$52000127_QD__MAIN__9$', duration=3000, align='Right')
 
@@ -168,7 +168,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.face_emotion(spawnId=0, emotionName='calm')
         self.add_cinematic_talk(npcId=0, msg='$52000127_QD__MAIN__10$', duration=3000, align='Right')
@@ -179,10 +179,11 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Ride_Sp_Run_005')
         self.add_cinematic_talk(npcId=11003218, msg='$52000127_QD__MAIN__11$', duration=3000, align='Right')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -191,7 +192,7 @@ class scene_07(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -199,7 +200,7 @@ class end(trigger_api.Trigger):
 
 
 class open(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -212,7 +213,7 @@ class open(trigger_api.Trigger):
 
 
 class open2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

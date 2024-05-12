@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3003,3004], visible=False)
         self.reset_camera(interpolationTime=0)
         self.set_local_camera(cameraId=302, enable=False)
@@ -28,7 +28,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 타이틀(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000093, portalId=99)
         self.add_buff(boxIds=[9100], skillId=99910190, level=1, isPlayer=False, isSkillSet=False)
         self.set_cinematic_ui(type=9, script='$52000093_QD__20002281_RP__0$')
@@ -39,7 +39,7 @@ class 타이틀(trigger_api.Trigger):
 
 
 class 오스칼대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -51,7 +51,7 @@ class 오스칼대사01(trigger_api.Trigger):
 
 
 class RP시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3003,3004], visible=True) # 뒤로 못나가게 한다
         self.select_camera(triggerId=300, enable=False)
         self.set_local_camera(cameraId=302, enable=True)
@@ -68,7 +68,7 @@ class RP시작(trigger_api.Trigger):
 
 
 class 데보라크소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -80,7 +80,7 @@ class 데보라크소환(trigger_api.Trigger):
 
 
 class 데보라크사망대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25200932, textId=25200932, duration=4000)
         self.set_cinematic_ui(type=0)
@@ -93,7 +93,7 @@ class 데보라크사망대기(trigger_api.Trigger):
 
 
 class 미션완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2101,2102,2103,2104,2105,2106,2107,2108,2109])
         self.set_event_ui(type=7, arg2='$52000093_QD__20002281_RP__2$', arg3='3000', arg4='0')
 
@@ -105,7 +105,7 @@ class 미션완료(trigger_api.Trigger):
 
 
 class 미션완료02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -116,7 +116,7 @@ class 미션완료02(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')

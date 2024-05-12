@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6605,6606,6607,6608], visible=False)
         self.set_mesh(triggerIds=[1521,1522,1523,1524,1525,1526,1527,1528,1529,1530], visible=True, arg3=0, delay=1000, scale=0)
         self.set_mesh(triggerIds=[19993], visible=True)
@@ -16,9 +16,10 @@ class 대기(trigger_api.Trigger):
 
 
 class 애플몽키소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=101, textId=20000030) # 닭장을 부수세요
+        # self.set_event_ui(type=1, arg2='닭장을 공격하여 닭을 구출하세요', arg3='3000')
         self.create_monster(spawnIds=[703], animationEffect=False)
         self.set_effect(triggerIds=[6605,6606,6607,6608], visible=True)
 
@@ -26,15 +27,16 @@ class 애플몽키소환(trigger_api.Trigger):
         if self.monster_dead(boxIds=[1105,1106,1107,1108]):
             return 섹터개방(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=101)
 
 
 class 섹터개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_timer(timerId='3', seconds=3, interval=0)
         self.show_guide_summary(entityId=102, textId=40011) # 다음 지역으로 이동하세요
+        # self.set_event_ui(type=1, arg2='$02000329_BF__BATTLEZONE_03__0$', arg3='3000')
         self.set_mesh(triggerIds=[19993], visible=False)
         self.set_mesh(triggerIds=[1521,1522,1523,1524,1525,1526,1527,1528,1529,1530], visible=False, arg3=0, delay=0, scale=10)
 
@@ -42,7 +44,7 @@ class 섹터개방(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=102)
 
 

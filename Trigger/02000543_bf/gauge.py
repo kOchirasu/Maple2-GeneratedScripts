@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 게이지시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='OpenBossGauge', title='$02000543_BF__GAUGE__0$', maxGaugePoint=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 게이지시작(trigger_api.Trigger):
 
 
 class 성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='CloseBossGauge')
         self.destroy_monster(spawnIds=[-1])
         self.set_user_value(triggerId=2001, key='WaveEnd', value=1)

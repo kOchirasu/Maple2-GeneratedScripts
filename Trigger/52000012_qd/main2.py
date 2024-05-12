@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_actor(triggerId=10001, visible=True, initialSequence='Closed')
         self.set_actor(triggerId=10002, visible=True, initialSequence='Closed')
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[9000], questIds=[10002610], questStates=[3]):
             return 문열림1(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[2000], animationEffect=False)
         self.destroy_monster(spawnIds=[5000])
         self.destroy_monster(spawnIds=[101])
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 문열림1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='19', seconds=1)
         self.set_actor(triggerId=10001, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[10011], visible=False)
@@ -36,7 +36,7 @@ class 문열림1(trigger_api.Trigger):
 
 
 class 문열림2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=10002, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[10012], visible=False)
 
@@ -48,7 +48,7 @@ class 문열림2(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

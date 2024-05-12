@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2, startDelay=0)
         self.set_breakable(triggerIds=[7000], enable=False)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000361], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=6, startDelay=0)
         self.set_breakable(triggerIds=[7000], enable=True)
 

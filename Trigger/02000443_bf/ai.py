@@ -17,7 +17,7 @@ class idle(trigger_api.Trigger):
 
 
 class 몬스터소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[210]) # 메비딕 제거
         self.destroy_monster(spawnIds=[101,102]) # 초반 등장 npc 제거
 
@@ -27,7 +27,7 @@ class 몬스터소멸(trigger_api.Trigger):
 
 
 class Ending(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[701], skillId=49200003, level=1, isPlayer=False, isSkillSet=False)
         self.remove_buff(boxId=701, skillId=99910120)
         self.set_effect(triggerIds=[7001], visible=True)
@@ -42,7 +42,7 @@ class Ending(trigger_api.Trigger):
 
 
 class Ending_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=Ending_04)
         self.select_camera_path(pathIds=[8101,8102,8103], returnView=False)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -58,7 +58,7 @@ class Ending_02(trigger_api.Trigger):
 
 
 class Ending_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$02000443_BF__AI__2$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=104, script='$02000443_BF__AI__3$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=103, script='$02000443_BF__AI__4$', arg4=2, arg5=3)
@@ -70,7 +70,7 @@ class Ending_03(trigger_api.Trigger):
 
 
 class Ending_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class Ending_04(trigger_api.Trigger):
 
 
 class Ending_04_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +88,7 @@ class Ending_04_b(trigger_api.Trigger):
 
 
 class Ending_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False) # LocalTargetCamera
         self.set_local_camera(cameraId=8002, enable=False) # LocalTargetCamera
         self.set_cinematic_ui(type=0)
@@ -107,7 +107,7 @@ class IsDungeonRoom(trigger_api.Trigger):
 
 
 class dungeonEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False)
         self.set_mesh(triggerIds=[1001,1002], visible=False)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

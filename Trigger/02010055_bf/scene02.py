@@ -49,7 +49,7 @@ class 연출시작딜레이(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
@@ -62,7 +62,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 스타츠대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=NPC이동)
         self.set_conversation(type=2, spawnId=11001292, script='$02010055_BF__SCENE02__0$', arg4=4)
 
@@ -72,7 +72,7 @@ class 스타츠대사01(trigger_api.Trigger):
 
 
 class 타라대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=NPC이동)
         self.set_conversation(type=2, spawnId=11001218, script='$02010055_BF__SCENE02__1$', arg4=3)
 
@@ -82,7 +82,7 @@ class 타라대사01(trigger_api.Trigger):
 
 
 class 스타츠대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=NPC이동)
         self.set_conversation(type=2, spawnId=11001292, script='$02010055_BF__SCENE02__2$', arg4=3)
 
@@ -92,7 +92,7 @@ class 스타츠대사02(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=302, enable=False)
@@ -107,7 +107,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class 영상준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_timer(timerId='21', seconds=10)
         self.select_camera_path(pathIds=[601,602], returnView=False)
@@ -118,9 +118,9 @@ class 영상준비(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\KarKarBossEvent.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\KarKarBossEvent.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):

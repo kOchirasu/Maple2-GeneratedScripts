@@ -18,7 +18,7 @@ class 환경변화_3(trigger_api.Trigger):
 
 
 class 페이드아웃_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=7, visible=False, enable=False, minimapVisible=False)
@@ -31,7 +31,7 @@ class 페이드아웃_3(trigger_api.Trigger):
 
 
 class 조명변경_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=62100014, level=1, isPlayer=True)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_ambient_light(primary=[52,48,38])
@@ -46,7 +46,7 @@ class 조명변경_3(trigger_api.Trigger):
 
 
 class 페이드인_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,13 +57,17 @@ class 페이드인_3(trigger_api.Trigger):
 
 
 class 유저이동_3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.move_user(mapId=2020111, portalId=7)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 조명리셋_3(self.ctx)
 
 
 class 조명리셋_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02020111_BF__MOVEMENT_01__2$', arg4=3, arg5=0)
         self.move_npc_to_pos(spawnId=101, pos=[-8,-3318,1651], rot=[0,0,45])
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -89,25 +93,30 @@ class 조명리셋_3(trigger_api.Trigger):
 
 
 class 중앙지역이동_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200021,200022,200023,200024,200025], visible=False)
         self.move_npc_to_pos(spawnId=101, pos=[-13,288,1951], rot=[0,0,45]) # 페이즈 꼬임을 방지하기 위한 npc이동장치
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
-        # <action name="SetOnetimeEffect" id="1" enable="1" path="BG/Common/ScreenMask/Eff_fadein_1sec.xml"/>
+        # self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=100):
+            # self.move_user(mapId=2020111, portalId=4)
             return 중앙지역이동_3_페이드인(self.ctx)
 
 
 class 중앙지역이동_3_페이드인(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=100):
             return 포탈설정_3(self.ctx)
 
 
 class 포탈설정_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)

@@ -5,13 +5,14 @@ import trigger_api
 class start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[1000], questIds=[50001745], questStates=[3]):
+            # 챕터8 에필로그 [10002274 끝이 아닌 끝] 완료 시
             return CameraEffect0(self.ctx)
         if self.quest_user_detected(boxIds=[1000], questIds=[50001745], questStates=[2]):
             return ReturnMapReady0(self.ctx)
 
 
 class ReturnMapReady0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +21,7 @@ class ReturnMapReady0(trigger_api.Trigger):
 
 
 class ReturnMapReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=9, script='$52000054_QD__EPILOGUE_K__0$')
@@ -31,12 +32,12 @@ class ReturnMapReady(trigger_api.Trigger):
 
 
 class ReturnMap(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000025, portalId=2)
 
 
 class CameraEffect0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Quit, action='exit')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -49,7 +50,7 @@ class CameraEffect0(trigger_api.Trigger):
 
 
 class CameraEffect1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[100,101], returnView=False)
 
@@ -59,7 +60,7 @@ class CameraEffect1(trigger_api.Trigger):
 
 
 class CameraEffect2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +69,7 @@ class CameraEffect2(trigger_api.Trigger):
 
 
 class CityWarfareTalk1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11100105, enable=True, path='BG/Common/Sound/Eff_AMB_BlackMoon_Abyss_01.xml') # 어둠의 회랑 환경음
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
         self.set_cinematic_ui(type=1)
@@ -84,8 +85,9 @@ class CityWarfareTalk1(trigger_api.Trigger):
 
 
 class CityWarfareTalk2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +96,7 @@ class CityWarfareTalk2(trigger_api.Trigger):
 
 
 class CityWarfareTalk3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1884, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001884.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__2$', arg4=5)
         self.set_skip(state=CityWarfareTalk4)
@@ -105,8 +107,9 @@ class CityWarfareTalk3(trigger_api.Trigger):
 
 
 class CityWarfareTalk4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -115,7 +118,7 @@ class CityWarfareTalk4(trigger_api.Trigger):
 
 
 class CityWarfareTalk5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2000], animationEffect=False) # 투르카
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_Turka') # 투르카 이동
         self.select_camera_path(pathIds=[300,301], returnView=False)
@@ -129,8 +132,9 @@ class CityWarfareTalk5(trigger_api.Trigger):
 
 
 class CityWarfareTalk6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,7 +143,7 @@ class CityWarfareTalk6(trigger_api.Trigger):
 
 
 class CityWarfareTalk7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[202], returnView=False)
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Sit_Down_HeadUP')
         self.set_onetime_effect(id=1885, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001885.xml')
@@ -152,8 +156,9 @@ class CityWarfareTalk7(trigger_api.Trigger):
 
 
 class CityWarfareTalk8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +167,7 @@ class CityWarfareTalk8(trigger_api.Trigger):
 
 
 class CityWarfareTalk9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1886, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001886.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__5$', arg4=5)
         self.set_skip(state=CityWarfareTalk10)
@@ -173,8 +178,9 @@ class CityWarfareTalk9(trigger_api.Trigger):
 
 
 class CityWarfareTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -183,7 +189,7 @@ class CityWarfareTalk10(trigger_api.Trigger):
 
 
 class CityWarfareTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[400,401], returnView=False)
         self.set_onetime_effect(id=1944, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001944.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__6$', arg4=13)
@@ -195,8 +201,9 @@ class CityWarfareTalk11(trigger_api.Trigger):
 
 
 class CityWarfareTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -205,7 +212,7 @@ class CityWarfareTalk12(trigger_api.Trigger):
 
 
 class CityWarfareTalk13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1945, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001945.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__7$', arg4=8)
         self.set_skip(state=CityWarfareTalk14)
@@ -216,8 +223,9 @@ class CityWarfareTalk13(trigger_api.Trigger):
 
 
 class CityWarfareTalk14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +234,7 @@ class CityWarfareTalk14(trigger_api.Trigger):
 
 
 class CityWarfareTalk15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[204,205], returnView=False)
         self.set_onetime_effect(id=1887, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001887.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__8$', arg4=5)
@@ -238,8 +246,9 @@ class CityWarfareTalk15(trigger_api.Trigger):
 
 
 class CityWarfareTalk16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -248,7 +257,7 @@ class CityWarfareTalk16(trigger_api.Trigger):
 
 
 class CityWarfareTalk17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[402], returnView=False)
         self.set_onetime_effect(id=1946, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001946.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__9$', arg4=12)
@@ -260,8 +269,9 @@ class CityWarfareTalk17(trigger_api.Trigger):
 
 
 class CityWarfareTalk18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -270,7 +280,7 @@ class CityWarfareTalk18(trigger_api.Trigger):
 
 
 class CityWarfareTalk19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[204], returnView=False)
         self.set_onetime_effect(id=1888, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001888.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__10$', arg4=5)
@@ -282,8 +292,9 @@ class CityWarfareTalk19(trigger_api.Trigger):
 
 
 class CityWarfareTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -292,7 +303,7 @@ class CityWarfareTalk20(trigger_api.Trigger):
 
 
 class CityWarfareTalk21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[500,501], returnView=False)
         self.set_onetime_effect(id=1947, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001947.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__11$', arg4=10)
@@ -304,8 +315,9 @@ class CityWarfareTalk21(trigger_api.Trigger):
 
 
 class CityWarfareTalk22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -314,7 +326,7 @@ class CityWarfareTalk22(trigger_api.Trigger):
 
 
 class CityWarfareTalk23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[200], returnView=False)
         self.set_onetime_effect(id=1889, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001889.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__12$', arg4=5)
@@ -326,8 +338,9 @@ class CityWarfareTalk23(trigger_api.Trigger):
 
 
 class CityWarfareTalk24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -336,7 +349,7 @@ class CityWarfareTalk24(trigger_api.Trigger):
 
 
 class CityWarfareTalk25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[403], returnView=False)
         self.set_onetime_effect(id=1948, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001948.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__13$', arg4=8)
@@ -348,8 +361,9 @@ class CityWarfareTalk25(trigger_api.Trigger):
 
 
 class CityWarfareTalk26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -358,7 +372,7 @@ class CityWarfareTalk26(trigger_api.Trigger):
 
 
 class CityWarfareTalk27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__14$', arg4=5)
         self.set_skip(state=CityWarfareTalk28)
 
@@ -368,8 +382,9 @@ class CityWarfareTalk27(trigger_api.Trigger):
 
 
 class CityWarfareTalk28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -378,7 +393,7 @@ class CityWarfareTalk28(trigger_api.Trigger):
 
 
 class CityWarfareTalk29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[200], returnView=False)
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__29$', arg4=5)
         self.set_skip(state=CityWarfareTalk30)
@@ -389,8 +404,9 @@ class CityWarfareTalk29(trigger_api.Trigger):
 
 
 class CityWarfareTalk30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -399,7 +415,7 @@ class CityWarfareTalk30(trigger_api.Trigger):
 
 
 class CityWarfareTalk31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[404], returnView=False)
         self.set_onetime_effect(id=1949, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001949.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__15$', arg4=11)
@@ -411,8 +427,9 @@ class CityWarfareTalk31(trigger_api.Trigger):
 
 
 class CityWarfareTalk32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -421,7 +438,7 @@ class CityWarfareTalk32(trigger_api.Trigger):
 
 
 class CityWarfareTalk33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[408,409], returnView=False)
         self.set_onetime_effect(id=1950, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001950.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__16$', arg4=8)
@@ -433,8 +450,9 @@ class CityWarfareTalk33(trigger_api.Trigger):
 
 
 class CityWarfareTalk34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -443,7 +461,7 @@ class CityWarfareTalk34(trigger_api.Trigger):
 
 
 class CityWarfareTalk35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1890, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001890.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__17$', arg4=5)
         self.set_skip(state=CityWarfareTalk36)
@@ -454,8 +472,9 @@ class CityWarfareTalk35(trigger_api.Trigger):
 
 
 class CityWarfareTalk36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -464,7 +483,7 @@ class CityWarfareTalk36(trigger_api.Trigger):
 
 
 class CityWarfareTalk37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[502,503], returnView=False)
         self.set_onetime_effect(id=1951, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001951.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__18$', arg4=7)
@@ -476,8 +495,9 @@ class CityWarfareTalk37(trigger_api.Trigger):
 
 
 class CityWarfareTalk38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -486,7 +506,7 @@ class CityWarfareTalk38(trigger_api.Trigger):
 
 
 class CityWarfareTalk39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1952, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001952.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__19$', arg4=7)
         self.set_skip(state=CityWarfareTalk40)
@@ -497,8 +517,9 @@ class CityWarfareTalk39(trigger_api.Trigger):
 
 
 class CityWarfareTalk40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -507,7 +528,7 @@ class CityWarfareTalk40(trigger_api.Trigger):
 
 
 class CityWarfareTalk41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[402], returnView=False)
         self.set_onetime_effect(id=1953, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001953.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__20$', arg4=6)
@@ -519,8 +540,9 @@ class CityWarfareTalk41(trigger_api.Trigger):
 
 
 class CityWarfareTalk42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -529,7 +551,7 @@ class CityWarfareTalk42(trigger_api.Trigger):
 
 
 class CityWarfareTalk43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[504,505], returnView=False)
         self.set_onetime_effect(id=1891, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001891.xml')
         self.set_conversation(type=2, spawnId=11001958, script='$52000054_QD__EPILOGUE_K__21$', arg4=7)
@@ -541,8 +563,9 @@ class CityWarfareTalk43(trigger_api.Trigger):
 
 
 class CityWarfareTalk44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -551,7 +574,7 @@ class CityWarfareTalk44(trigger_api.Trigger):
 
 
 class CityWarfareTalk45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[405,406], returnView=False)
         self.set_onetime_effect(id=1954, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001954.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__22$', arg4=13)
@@ -563,8 +586,9 @@ class CityWarfareTalk45(trigger_api.Trigger):
 
 
 class CityWarfareTalk46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -573,7 +597,7 @@ class CityWarfareTalk46(trigger_api.Trigger):
 
 
 class CityWarfareTalk47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[206,207], returnView=False)
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Sit_Down_HeadUP')
         self.set_onetime_effect(id=1892, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001892.xml')
@@ -586,8 +610,9 @@ class CityWarfareTalk47(trigger_api.Trigger):
 
 
 class CityWarfareTalk48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -596,7 +621,7 @@ class CityWarfareTalk48(trigger_api.Trigger):
 
 
 class CityWarfareTalk49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[410,411], returnView=False)
         self.set_npc_emotion_sequence(spawnId=2000, sequenceName='Bore_B')
         self.set_onetime_effect(id=1955, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001955.xml')
@@ -609,8 +634,9 @@ class CityWarfareTalk49(trigger_api.Trigger):
 
 
 class CityWarfareTalk50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -619,7 +645,7 @@ class CityWarfareTalk50(trigger_api.Trigger):
 
 
 class CityWarfareTalk51(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1956, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001956.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__25$', arg4=6)
         self.set_skip(state=CityWarfareTalk52)
@@ -630,8 +656,9 @@ class CityWarfareTalk51(trigger_api.Trigger):
 
 
 class CityWarfareTalk52(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -640,7 +667,7 @@ class CityWarfareTalk52(trigger_api.Trigger):
 
 
 class CityWarfareTalk53(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[500,501], returnView=False)
         self.set_onetime_effect(id=1957, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001957.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__26$', arg4=10)
@@ -652,8 +679,9 @@ class CityWarfareTalk53(trigger_api.Trigger):
 
 
 class CityWarfareTalk54(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -662,7 +690,7 @@ class CityWarfareTalk54(trigger_api.Trigger):
 
 
 class CityWarfareTalk55(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[402], returnView=False)
         self.set_onetime_effect(id=1958, enable=True, path='BG/Common/Sound/Eff_Sound_52000054_Turka_00001958.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000054_QD__EPILOGUE_K__27$', arg4=12)
@@ -674,8 +702,9 @@ class CityWarfareTalk55(trigger_api.Trigger):
 
 
 class CityWarfareTalk56(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -684,7 +713,7 @@ class CityWarfareTalk56(trigger_api.Trigger):
 
 
 class CityWarfareTalk57(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[202,203], returnView=False)
         self.set_npc_emotion_sequence(spawnId=1000, sequenceName='Sit_Down_HeadUP')
         self.set_onetime_effect(id=1893, enable=True, path='BG/Common/Sound/Eff_Sound_52000055_Katvan_00001893.xml')
@@ -697,8 +726,9 @@ class CityWarfareTalk57(trigger_api.Trigger):
 
 
 class CityWarfareTalk58(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -707,7 +737,7 @@ class CityWarfareTalk58(trigger_api.Trigger):
 
 
 class CityWarfareTalk59(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeOut.xml')
         self.remove_cinematic_talk()
 
@@ -717,7 +747,8 @@ class CityWarfareTalk59(trigger_api.Trigger):
 
 
 class CityWarfareTalk60(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -726,7 +757,7 @@ class CityWarfareTalk60(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(mapId=2000025, portalId=2)

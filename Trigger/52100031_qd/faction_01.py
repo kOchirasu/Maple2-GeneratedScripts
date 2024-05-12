@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=199, skillId=99910150)
         self.set_interact_object(triggerIds=[10002058], state=2)
         self.set_interact_object(triggerIds=[10002059], state=2)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 석궁준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1001, script='$52100031_QD__FACTION_01__0$', arg4=5, arg5=0)
         self.set_conversation(type=1, spawnId=1001, script='$52100031_QD__FACTION_01__1$', arg4=5, arg5=5)
 
@@ -24,8 +24,34 @@ class 석궁준비(trigger_api.Trigger):
             return 퀘스트(self.ctx)
 
 
+"""
+class 룸체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.is_dungeon_room():
+            return None # Missing State: 던전
+        if not self.is_dungeon_room():
+            return 퀘스트(self.ctx)
+
+"""
+
+
+"""
+class 던전(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.show_guide_summary(entityId=20040101, textId=20040101, duration=3500)
+        self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        self.set_interact_object(triggerIds=[10002058], state=1)
+        self.set_interact_object(triggerIds=[10002059], state=1)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=100):
+            return 종료체크(self.ctx)
+
+"""
+
+
 class 퀘스트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040101, textId=20040101, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_interact_object(triggerIds=[10002067], state=1)

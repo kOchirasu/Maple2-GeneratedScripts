@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=7001, visible=False, initialSequence='Sit_Down_A') # 준타
         self.set_actor(triggerId=7002, visible=False, initialSequence='Down_Idle_A') # 틴차이
         self.set_mesh(triggerIds=[6020,6021,6022,6023,6024,6025,6026,6027,6028,6029,6030], visible=False, arg3=0, delay=0, scale=0) # 짹쨱이
@@ -17,13 +17,15 @@ class ready(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[701], questIds=[10003059], questStates=[1]):
             return start_c(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003058], questStates=[2]):
+            # 완료 가능
             return start_c(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003058], questStates=[1]):
+            # 진행
             return start_b(self.ctx)
 
 
 class start_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7011], visible=True)
         self.set_mesh(triggerIds=[6020,6021,6022,6023,6024,6025], visible=True, arg3=0, delay=0, scale=0) # 짹쨱이
         self.set_mesh_animation(triggerIds=[6020,6021,6022,6023,6024,6025], visible=True, arg3=0, arg4=0)
@@ -39,7 +41,7 @@ class start_b(trigger_api.Trigger):
 
 
 class start_b_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7010], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +51,7 @@ class start_b_02(trigger_api.Trigger):
 
 
 class start_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6020,6021,6022,6023,6024], visible=True, arg3=0, delay=0, scale=0) # 짹쨱이
         self.set_mesh_animation(triggerIds=[6020,6021,6022,6023,6024,6025], visible=True, arg3=0, arg4=0)
         self.destroy_monster(spawnIds=[101,102,111,112,121,122]) # 퀘스트용 소멸
@@ -66,7 +68,7 @@ class start_c(trigger_api.Trigger):
 
 
 class start_c_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6020,6021,6022,6023,6024,6025], visible=False, arg3=0, delay=0, scale=0) # 짹쨱이
         self.set_mesh(triggerIds=[6026,6027,6028,6029,6030], visible=True, arg3=0, delay=0, scale=0) # 짹쨱이
         self.set_mesh_animation(triggerIds=[6026,6027,6028,6029,6030], visible=True, arg3=0, arg4=0)
@@ -82,7 +84,7 @@ class start_c_02(trigger_api.Trigger):
 
 
 class start_c_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000050_QD__MAIN_02__1$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +93,7 @@ class start_c_03(trigger_api.Trigger):
 
 
 class start_c_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000050_QD__MAIN_02__2$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,18 +102,18 @@ class start_c_04(trigger_api.Trigger):
 
 
 class start_c_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[9010,9011,9012,9013,9014], enable=True) # 참새들 조용히 있음
         self.set_visible_breakable_object(triggerIds=[9010,9011,9012,9013,9014], visible=True) # 참새들 조용히 있음
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
-            self.set_mesh(triggerIds=[6026,6027,6028,6029,6030], visible=False, arg3=0, delay=0, scale=0)
+            self.set_mesh(triggerIds=[6026,6027,6028,6029,6030], visible=False, arg3=0, delay=0, scale=0) # 짹쨱이
             return start_c_06(self.ctx)
 
 
 class start_c_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7011], visible=False) # 지저귐 삭제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -120,8 +122,8 @@ class start_c_06(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
-            self.set_breakable(triggerIds=[9010,9011,9012,9013,9014], enable=False)
-            self.set_visible_breakable_object(triggerIds=[9010,9011,9012,9013,9014], visible=False)
+            self.set_breakable(triggerIds=[9010,9011,9012,9013,9014], enable=False) # 참새들 조용히 있음
+            self.set_visible_breakable_object(triggerIds=[9010,9011,9012,9013,9014], visible=False) # 참새들 조용히 있음
             return start_c_07(self.ctx)
 
 

@@ -4,7 +4,7 @@ import trigger_api
 
 # 제논 시스템 연구소 : VR머신
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='machineon', value=0)
         self.set_interact_object(triggerIds=[10001245], state=2)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MachineOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001245], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class MachineOn(trigger_api.Trigger):
 
 
 class PortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=True, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class ResetDelay(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_interact_object(triggerIds=[10001245], state=1)
 

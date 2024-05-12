@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_ladder(triggerIds=[601], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[602], visible=False, animationEffect=False)
@@ -37,7 +37,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +52,7 @@ class 잠시쉬기(trigger_api.Trigger):
 
 
 class 사다리생성하기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[601], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[602], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[603], visible=True, animationEffect=True)
@@ -64,7 +64,7 @@ class 사다리생성하기(trigger_api.Trigger):
 
 
 class 잠시쉬기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000539_BF__MAIN__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +73,7 @@ class 잠시쉬기2(trigger_api.Trigger):
 
 
 class 잠시쉬기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[904,905,906,907,908,909], visible=False)
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
@@ -83,7 +83,7 @@ class 잠시쉬기3(trigger_api.Trigger):
 
 
 class 몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[203])
         self.create_monster(spawnIds=[103,1031,1032,1033,1034], animationEffect=True)
 
@@ -93,7 +93,7 @@ class 몬스터생성(trigger_api.Trigger):
 
 
 class 다음몬스터생성조건체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000539_BF__MAIN__1$')
         self.create_monster(spawnIds=[107,1071,1072], animationEffect=True)
 
@@ -103,7 +103,7 @@ class 다음몬스터생성조건체크(trigger_api.Trigger):
 
 
 class 다음몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105,1051,1052], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 다음몬스터생성(trigger_api.Trigger):
 
 
 class NPC생성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__2$')
         self.set_effect(triggerIds=[3000], visible=True)
         self.create_monster(spawnIds=[201], animationEffect=False)
@@ -123,7 +123,7 @@ class NPC생성1(trigger_api.Trigger):
 
 
 class NPC생성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__3$')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_500')
 
@@ -133,7 +133,7 @@ class NPC생성2(trigger_api.Trigger):
 
 
 class 다리만들기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(triggerIds=[910,911], visible=True)
 
@@ -143,7 +143,7 @@ class 다리만들기1(trigger_api.Trigger):
 
 
 class 다리만들기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__4$')
         self.set_mesh(triggerIds=[912,913,921], visible=True)
 
@@ -153,7 +153,7 @@ class 다리만들기2(trigger_api.Trigger):
 
 
 class 다리만들기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[914,915,922], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +162,7 @@ class 다리만들기3(trigger_api.Trigger):
 
 
 class 다리만들기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[916,917,918], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +171,7 @@ class 다리만들기4(trigger_api.Trigger):
 
 
 class 다리만들기5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[919,920,926,922,927], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +180,7 @@ class 다리만들기5(trigger_api.Trigger):
 
 
 class 다리만들기6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[923,924,925], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,7 +189,7 @@ class 다리만들기6(trigger_api.Trigger):
 
 
 class 다음몬스터생성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=False)
         self.create_monster(spawnIds=[111,1111,1112,112,1121], animationEffect=True)
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=3000, script='$02000539_BF__MAIN__5$')
@@ -202,7 +202,7 @@ class 다음몬스터생성1(trigger_api.Trigger):
 
 
 class 다음몬스터생성조건체크2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__6$')
         self.create_monster(spawnIds=[113,1131,1132,1133,1134], animationEffect=True)
 
@@ -212,7 +212,7 @@ class 다음몬스터생성조건체크2(trigger_api.Trigger):
 
 
 class 다음몬스터생성조건체크3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[3001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -221,7 +221,7 @@ class 다음몬스터생성조건체크3(trigger_api.Trigger):
 
 
 class 두번째다리만들기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=False)
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=3000, script='$02000539_BF__MAIN__7$')
 
@@ -237,7 +237,7 @@ class 두번째다리만들기2(trigger_api.Trigger):
 
 
 class 두번째사다리생성하기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000539_BF__MAIN__8$')
         self.set_onetime_effect(id=103, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(triggerIds=[928,929,930,931,932,933,934,935,936,937], visible=True)
@@ -251,7 +251,7 @@ class 두번째사다리생성하기1(trigger_api.Trigger):
 
 
 class 다음몬스터생성3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104,1041], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -266,7 +266,7 @@ class 보스문으로이동(trigger_api.Trigger):
 
 
 class 벽부시기3단계(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=105, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(triggerIds=[938,939,940,941,942,943], visible=False)
 
@@ -276,7 +276,7 @@ class 벽부시기3단계(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=3000, script='$02000539_BF__MAIN__9$')
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.enable_spawn_point_pc(spawnId=2, isEnable=True)
@@ -289,7 +289,7 @@ class 보스등장(trigger_api.Trigger):
 
 
 class 보스등장3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[3002], visible=True)
         self.set_effect(triggerIds=[3003], visible=True)
         self.set_effect(triggerIds=[3004], visible=True)
@@ -301,7 +301,7 @@ class 보스등장3(trigger_api.Trigger):
 
 
 class 잠시쉬기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=3000, script='$02000539_BF__MAIN__10$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -310,7 +310,7 @@ class 잠시쉬기4(trigger_api.Trigger):
 
 
 class 포탈활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 

@@ -10,8 +10,21 @@ class wait_01(trigger_api.Trigger):
             return 장치가동_04(self.ctx)
 
 
+"""
+class wait_02(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=9, script='투르카가 클라디아의 블루 라펜타 에너지를 빼앗으려 하는 연출이 나올 예정입니다.')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return None # Missing State: 연출끝
+
+"""
+
+
 class wait_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +33,7 @@ class wait_03(trigger_api.Trigger):
 
 
 class 투르카_클라디아(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False) # 클라디아
         self.create_monster(spawnIds=[102], animationEffect=False) # 투르카
         self.create_monster(spawnIds=[103], animationEffect=False) # 검은 군단 병사
@@ -37,7 +50,7 @@ class 투르카_클라디아(trigger_api.Trigger):
 
 
 class 투르카_클라디아_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4001], returnView=False)
 
@@ -47,7 +60,7 @@ class 투르카_클라디아_02(trigger_api.Trigger):
 
 
 class 투르카_클라디아_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11004430, illustId='Turka_normal', align='right', msg='$52100105_QD__52100105_01__0$', duration=4000)
@@ -61,7 +74,7 @@ class 투르카_클라디아_03(trigger_api.Trigger):
 
 
 class 투르카_클라디아_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11004392, illustId='cladia_normal', align='left', msg='$52100105_QD__52100105_01__3$', duration=3500)
         self.add_cinematic_talk(npcId=11004392, illustId='cladia_normal', align='left', msg='$52100105_QD__52100105_01__4$', duration=3500)
@@ -73,7 +86,7 @@ class 투르카_클라디아_04(trigger_api.Trigger):
 
 
 class 투르카_클라디아_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=11004430, illustId='Turka_normal', align='left', msg='$52100105_QD__52100105_01__6$', duration=5000)
 
@@ -83,7 +96,7 @@ class 투르카_클라디아_05(trigger_api.Trigger):
 
 
 class 장치가동_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4007], returnView=False)
         self.set_npc_rotation(spawnId=102, rotation=270)
         self.set_npc_emotion_sequence(spawnId=102, sequenceName='Bore_A')
@@ -95,7 +108,7 @@ class 장치가동_01(trigger_api.Trigger):
 
 
 class 장치가동_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,7 +117,7 @@ class 장치가동_01_02(trigger_api.Trigger):
 
 
 class 장치가동_01_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +126,7 @@ class 장치가동_01_03(trigger_api.Trigger):
 
 
 class 장치가동_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.select_camera_path(pathIds=[4006], returnView=False)
 
@@ -123,7 +136,7 @@ class 장치가동_02(trigger_api.Trigger):
 
 
 class 장치가동_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=102, rotation=360)
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Quest_Attack_A', duration=5000) # 클라디아
@@ -135,9 +148,10 @@ class 장치가동_02_01(trigger_api.Trigger):
 
 
 class 장치가동_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4008], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Quest_Effect_A', duration=12000) # 클라디아
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -146,7 +160,7 @@ class 장치가동_03(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
@@ -156,7 +170,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 장치가동_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
@@ -166,7 +180,7 @@ class 장치가동_04(trigger_api.Trigger):
 
 
 class 정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[102])
         self.destroy_monster(spawnIds=[103])

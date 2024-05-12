@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 레이드(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 초대기2(trigger_api.Trigger):
 
 
 class 던전클리어(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 던전클리어(trigger_api.Trigger):
 
 
 class 포털개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

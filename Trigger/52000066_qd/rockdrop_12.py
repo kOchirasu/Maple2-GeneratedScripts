@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8004], enable=False)
         self.set_skill(triggerIds=[8005], enable=False)
         self.set_effect(triggerIds=[7004], visible=False) # RockDrop
@@ -21,7 +21,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class RockDrop01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7004], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class RockDrop01(trigger_api.Trigger):
 
 
 class RockDrop02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8004], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class Delay02(trigger_api.Trigger):
 
 
 class RockDrop11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7005], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class RockDrop11(trigger_api.Trigger):
 
 
 class RockDrop12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8005], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class RockDrop12(trigger_api.Trigger):
 
 
 class RockDrop21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7005], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +72,7 @@ class RockDrop21(trigger_api.Trigger):
 
 
 class RockDrop22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8005], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +81,7 @@ class RockDrop22(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8004], enable=False)
         self.set_skill(triggerIds=[8005], enable=False)
         self.set_effect(triggerIds=[7004], visible=False) # RockDrop

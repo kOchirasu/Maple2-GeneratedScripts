@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 버프쏴주기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[916], skillId=70002105, level=1, isSkillSet=False)
         self.set_timer(timerId='1', seconds=5, startDelay=0, interval=0)
 
@@ -21,7 +21,7 @@ class 버프쏴주기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[931], skillId=70002112, level=1, isSkillSet=False)
 
 

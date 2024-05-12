@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='Seed2interact', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[221,222,223,224])
         self.set_mesh(triggerIds=[1303], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002110], state=1, arg3=True)
@@ -25,7 +25,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 씨앗2_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[221,222,223,224], animationEffect=False)
         self.set_mesh(triggerIds=[1303], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10002110], state=0, arg3=True)
@@ -39,7 +39,7 @@ class 씨앗2_대기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002110], state=0)
 
 

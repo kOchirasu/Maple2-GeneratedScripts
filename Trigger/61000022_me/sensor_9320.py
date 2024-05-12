@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box32Check', value=10)
         self.set_mesh(triggerIds=[532], visible=True, arg3=0, delay=0, scale=0) # 32 / Ground outter
         self.set_mesh(triggerIds=[5320], visible=True, arg3=0, delay=0, scale=0) # 32 / Ground inner
@@ -47,110 +47,110 @@ class Sensor0(trigger_api.Trigger):
 
 class Sensor1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=1, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='1', operator='Equal'):
             return NormalPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='1', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=2, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='2', operator='Equal'):
             return NormalPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=2, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='2', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=3, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='3', operator='Equal'):
             return NormalPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=3, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='3', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=4, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='4', operator='Equal'):
             return NormalPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=4, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='4', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=5, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='5', operator='Equal'):
             return NormalPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=5, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='5', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor7(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=7, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='7', operator='Equal'):
             return GamblePass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=7, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='7', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor8(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=8, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='8', operator='Equal'):
             return GamblePass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=8, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='8', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor9(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=9, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='9', operator='Equal'):
             return GamblePass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=9, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='9', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor10(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=10, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='10', operator='Equal'):
             return GamblePass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=10, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='10', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor15(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=15, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='15', operator='Equal'):
             return JackpotPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=15, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='15', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=20, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='20', operator='Equal'):
             return JackpotPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=20, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='20', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor25(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=25, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='25', operator='Equal'):
             return JackpotPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=25, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='25', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor30(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9320, boxId=30, operator='Equal'):
+        if self.count_users(boxId=9320, minUsers='30', operator='Equal'):
             return JackpotPass(self.ctx)
-        if not self.count_users(boxId=9320, boxId=30, operator='Equal'):
+        if not self.count_users(boxId=9320, minUsers='30', operator='Equal'):
             return Fail(self.ctx)
 
 
 class NormalPass(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Pass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
@@ -161,10 +161,11 @@ class NormalPass(trigger_api.Trigger):
 
 
 class GamblePass(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_GamblePass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
-        self.set_user_value(triggerId=3, key='GamblePass', value=32) # Gamble Pass Bonus For Everyone
+        # Gamble Pass Bonus For Everyone
+        self.set_user_value(triggerId=3, key='GamblePass', value=32)
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.write_log(logName='dancedancestop', triggerId=9320, event='char_event', arg4=4, subEvent='gamble')
 
@@ -174,10 +175,11 @@ class GamblePass(trigger_api.Trigger):
 
 
 class JackpotPass(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Pass_01')
         self.set_user_value(triggerId=7320, key='Color32', value=0) # color reset
-        self.set_user_value(triggerId=3, key='JackpotPass', value=32) # Jackpot Pass Bonus For Everyone
+        # Jackpot Pass Bonus For Everyone
+        self.set_user_value(triggerId=3, key='JackpotPass', value=32)
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.write_log(logName='dancedancestop', triggerId=9320, event='char_event', arg4=4, subEvent='jackpot')
 
@@ -187,7 +189,7 @@ class JackpotPass(trigger_api.Trigger):
 
 
 class Fail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9320], sound='DDStop_Stage_Fail_01')
         self.set_mesh(triggerIds=[532], visible=False, arg3=0, delay=0, scale=2) # 32 / Ground outter
         self.set_mesh(triggerIds=[5320], visible=False, arg3=0, delay=0, scale=0) # 32 / Ground inner
@@ -199,9 +201,11 @@ class Fail(trigger_api.Trigger):
 
 
 class GambleReset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9320, type='trigger', achieve='ddstop_gamble')
-        self.mini_game_give_exp(boxId=9320, expRate=0.1, isOutside=False) # Gamble Pass Bonus For challenger
+        # Gamble Pass Bonus For challenger
+        self.mini_game_give_exp(boxId=9320, expRate=0.1, isOutside=False)
+        # self.create_item(spawnIds=[7300,7301,7302,7302,7303,7304,7305,7306,7307,7308,7309,7310,7311,7312], triggerId=9320)
         self.set_user_value(key='Box32Check', value=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,9 +214,11 @@ class GambleReset(trigger_api.Trigger):
 
 
 class JackpotReset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9320, type='trigger', achieve='ddstop_gamble')
-        self.mini_game_give_exp(boxId=9320, expRate=0.3, isOutside=False) # Jackpot Pass Bonus For challenger
+        # Jackpot Pass Bonus For challenger
+        self.mini_game_give_exp(boxId=9320, expRate=0.3, isOutside=False)
+        # self.create_item(spawnIds=[7700,7701,7702,7702,7703,7704,7705,7706,7707,7708,7709,7710,7711,7712], triggerId=9320)
         self.set_user_value(key='Box32Check', value=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -221,7 +227,7 @@ class JackpotReset(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box32Check', value=10)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -9,7 +9,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 포션사용_준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002131], state=2)
         self.set_user_value(triggerId=101, key='Potion', value=2)
 
@@ -19,7 +19,7 @@ class 포션사용_준비(trigger_api.Trigger):
 
 
 class 포션사용(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002131], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 포션사용(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=101, key='Potion', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

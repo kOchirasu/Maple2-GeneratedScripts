@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.create_monster(spawnIds=[1002], animationEffect=False)
         self.create_monster(spawnIds=[1003], animationEffect=False)
@@ -29,7 +29,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 페르시카대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -40,7 +40,7 @@ class 페르시카대사01(trigger_api.Trigger):
 
 
 class 페르시카대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001176, script='$52000062_QD__GUIDESCENE_01__0$', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=11001176, script='$52000062_QD__GUIDESCENE_01__1$', arg4=3, arg5=0)
 
@@ -50,7 +50,7 @@ class 페르시카대사02(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -61,7 +61,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 연퀘감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_Fercika')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 연퀘감지(trigger_api.Trigger):
 
 
 class 연퀘감지2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_Fercika')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 연퀘감지2(trigger_api.Trigger):
 
 
 class PC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -91,7 +91,7 @@ class PC이동(trigger_api.Trigger):
 
 
 class 찬양NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_Fercika2')
         self.create_monster(spawnIds=[1005], animationEffect=False)
@@ -107,7 +107,7 @@ class 찬양NPC이동(trigger_api.Trigger):
 
 
 class 찬양연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1008, script='$52000062_QD__GUIDESCENE_01__2$', arg4=2, arg5=1)
         self.set_conversation(type=1, spawnId=1005, script='$52000062_QD__GUIDESCENE_01__3$', arg4=2, arg5=3)
         self.set_conversation(type=1, spawnId=1006, script='$52000062_QD__GUIDESCENE_01__4$', arg4=2, arg5=5)
@@ -118,7 +118,7 @@ class 찬양연출(trigger_api.Trigger):
 
 
 class 연출종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)

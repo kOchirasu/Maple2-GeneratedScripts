@@ -5,11 +5,12 @@ import trigger_api
 class start(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003429], questStates=[2]):
+            # 바론과 루아나가 균열 복구하는거 비춰주는 연출
             return CameraEffect01(self.ctx)
 
 
 class CameraEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +19,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 
 class CameraEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.move_user(mapId=52000201, portalId=5001)
@@ -29,7 +30,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 
 class CameraEffect03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +39,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 
 class CameraEffect04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +48,7 @@ class CameraEffect04(trigger_api.Trigger):
 
 
 class CameraEffect05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +57,7 @@ class CameraEffect05(trigger_api.Trigger):
 
 
 class CameraEffect07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

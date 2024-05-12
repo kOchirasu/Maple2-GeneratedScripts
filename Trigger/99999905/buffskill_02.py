@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=202, visible=True, initialSequence='Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 스킬랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=202, visible=True, initialSequence='Dead_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 스킬랜덤(trigger_api.Trigger):
 
 
 class A스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7201], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -38,7 +38,7 @@ class A스킬작동(trigger_api.Trigger):
 
 
 class B스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7202], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -49,7 +49,7 @@ class B스킬작동(trigger_api.Trigger):
 
 
 class C스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7203], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -60,7 +60,7 @@ class C스킬작동(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[7201], enable=False)
         self.set_skill(triggerIds=[7202], enable=False)

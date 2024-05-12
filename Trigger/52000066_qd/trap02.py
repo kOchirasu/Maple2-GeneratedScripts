@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001071], state=0) # TrapLever
         self.set_mesh(triggerIds=[2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029], visible=True, arg3=0, delay=0, scale=3) # TrapMesh
         self.set_effect(triggerIds=[5000], visible=False) # DownArrow
@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class TrapLeverOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001071], state=1) # TrapLever
         self.set_effect(triggerIds=[5000], visible=True) # DownArrow
 
@@ -27,7 +27,7 @@ class TrapLeverOn01(trigger_api.Trigger):
 
 
 class TrapFalse01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # DownArrow
         self.set_interact_object(triggerIds=[10001071], state=0) # TrapLever
         self.set_actor(triggerId=4000, visible=True, initialSequence='Closed') # TrapLever
@@ -35,11 +35,12 @@ class TrapFalse01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9300]):
+            # 엘베 주변
             return Quit(self.ctx)
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # DownArrow
         self.set_interact_object(triggerIds=[10001071], state=0) # TrapLever
 

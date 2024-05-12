@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[3002])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=False)
         self.set_interact_object(triggerIds=[10000334], state=0)
         self.create_monster(spawnIds=[3002], animationEffect=False)
@@ -23,7 +23,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 게이트열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_interact_object(triggerIds=[10000334], state=1)
         self.set_effect(triggerIds=[604], visible=True)

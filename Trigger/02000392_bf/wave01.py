@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[1901,1902,1903,1904,1905,1906,1907,1908,1909], isAutoTargeting=True, randomPickCount=3)
 
     def on_tick(self) -> trigger_api.Trigger:

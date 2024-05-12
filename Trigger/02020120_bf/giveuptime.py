@@ -12,6 +12,8 @@ class 대기(trigger_api.Trigger):
 class 타이머(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
+            # self.set_event_ui(type=1, arg2='$DUNGEON__GIVEUP__TIME__0$', arg3='3000')
+            # self.dungeon_enable_give_up(isEnable='1')
             return 종료(self.ctx)
 
 

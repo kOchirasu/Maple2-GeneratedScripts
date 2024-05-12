@@ -15,7 +15,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class 전경씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_scene_skip(state=Skip_1, action='nextState')
@@ -26,7 +26,7 @@ class 전경씬(trigger_api.Trigger):
 
 
 class 전경씬_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4000,4001], returnView=False)
 
@@ -36,7 +36,7 @@ class 전경씬_02(trigger_api.Trigger):
 
 
 class 전경씬_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52010069_QD__52010069__0$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,8 +45,9 @@ class 전경씬_03(trigger_api.Trigger):
 
 
 class 전경씬_03_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +56,7 @@ class 전경씬_03_01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
@@ -65,7 +66,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 전경씬_03_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=20, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -77,7 +78,7 @@ class 전경씬_03_02(trigger_api.Trigger):
 
 
 class 전경씬_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -91,7 +92,7 @@ class 전경씬_04(trigger_api.Trigger):
 
 
 class 전경씬_04_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52010069, portalId=6001)
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
@@ -103,7 +104,7 @@ class 전경씬_04_01(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.select_camera_path(pathIds=[4002], returnView=False)
@@ -116,7 +117,7 @@ class Quit02(trigger_api.Trigger):
 
 
 class 조사중_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003,4004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +126,7 @@ class 조사중_01(trigger_api.Trigger):
 
 
 class 조사중_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__2$', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__3$', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__4$', duration=3000)
@@ -136,7 +137,7 @@ class 조사중_02(trigger_api.Trigger):
 
 
 class 조사중_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,7 +146,7 @@ class 조사중_03(trigger_api.Trigger):
 
 
 class 재회_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__5$', duration=3000)
@@ -156,7 +157,7 @@ class 재회_01(trigger_api.Trigger):
 
 
 class 재회_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4006,4007], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -165,7 +166,7 @@ class 재회_02(trigger_api.Trigger):
 
 
 class 재회_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__6$', duration=2800)
         self.move_user(mapId=52010069, portalId=6002)
 
@@ -175,7 +176,7 @@ class 재회_03(trigger_api.Trigger):
 
 
 class 재회_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData1')
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__7$', duration=3000)
@@ -189,7 +190,7 @@ class 재회_04(trigger_api.Trigger):
 
 
 class 재회_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009,4010], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52010069_QD__52010069__11$', duration=6000)
 
@@ -199,7 +200,7 @@ class 재회_05(trigger_api.Trigger):
 
 
 class 재회정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,8 +209,9 @@ class 재회정리(trigger_api.Trigger):
 
 
 class 재회정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -218,7 +220,7 @@ class 재회정리_02(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -230,7 +232,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 재회정리_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -241,7 +243,7 @@ class 재회정리_03(trigger_api.Trigger):
 
 
 class 아이오브라펜타로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
 
@@ -251,7 +253,7 @@ class 아이오브라펜타로(trigger_api.Trigger):
 
 
 class 아이오브라펜타로_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101], arg2=False)
         self.destroy_monster(spawnIds=[102], arg2=False)
         self.destroy_monster(spawnIds=[103], arg2=False)
@@ -262,12 +264,12 @@ class 아이오브라펜타로_01(trigger_api.Trigger):
 
 
 class 아이오브라펜타로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000496, portalId=5)
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101], arg2=False)
         self.destroy_monster(spawnIds=[102], arg2=False)
         self.destroy_monster(spawnIds=[103], arg2=False)

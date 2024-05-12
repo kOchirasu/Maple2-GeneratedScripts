@@ -6,12 +6,12 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110])
         self.set_effect(triggerIds=[2001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=201, boxId=1):
+        if self.count_users(boxId=201, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
@@ -22,7 +22,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[798,799], visible=False)
         self.set_timer(timerId='89', seconds=3, startDelay=0)
 
@@ -32,7 +32,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 공격(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103], animationEffect=True)
         self.set_effect(triggerIds=[2001], visible=True)
         self.set_event_ui(type=1, arg2='$02000248_BF__TRIGGER_01__0$', arg3='5000', arg4='0')
@@ -46,7 +46,7 @@ class 공격(trigger_api.Trigger):
 
 
 class 공격1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104,105], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -58,7 +58,7 @@ class 공격1(trigger_api.Trigger):
 
 
 class 공격2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[106,107,108], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -70,7 +70,7 @@ class 공격2(trigger_api.Trigger):
 
 
 class 공격2_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109,110], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -82,7 +82,7 @@ class 공격2_2(trigger_api.Trigger):
 
 
 class 공격3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[114,115,116], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -94,7 +94,7 @@ class 공격3(trigger_api.Trigger):
 
 
 class 공격3_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111,112,113], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -106,7 +106,7 @@ class 공격3_2(trigger_api.Trigger):
 
 
 class 공격3_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[117,118,119,120], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -118,7 +118,7 @@ class 공격3_3(trigger_api.Trigger):
 
 
 class 공격4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[121,122,123,124,125], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -130,7 +130,7 @@ class 공격4(trigger_api.Trigger):
 
 
 class 공격4_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[126,127,128,129,130], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -142,7 +142,7 @@ class 공격4_2(trigger_api.Trigger):
 
 
 class 공격5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[131,132,133,134,135,136], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -154,7 +154,7 @@ class 공격5(trigger_api.Trigger):
 
 
 class 공격5_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[137,138,139,140], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -166,7 +166,7 @@ class 공격5_2(trigger_api.Trigger):
 
 
 class 공격6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[141,142,143,144,145,146,148], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -178,7 +178,7 @@ class 공격6(trigger_api.Trigger):
 
 
 class 공격7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[151,153,154,155,156,157,158], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -190,7 +190,7 @@ class 공격7(trigger_api.Trigger):
 
 
 class 공격8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[161,162,163,164,167,168,169,170], animationEffect=True)
         self.set_timer(timerId='1', seconds=30, startDelay=0)
 
@@ -203,7 +203,7 @@ class 공격8(trigger_api.Trigger):
 
 
 class 끝연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[8001,8003,8002], returnView=False)
@@ -215,7 +215,7 @@ class 끝연출(trigger_api.Trigger):
 
 
 class 끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000249, portalId=2)
         self.set_timer(timerId='1', seconds=3, startDelay=0)
 
@@ -225,7 +225,7 @@ class 끝(trigger_api.Trigger):
 
 
 class 차진입대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=15, startDelay=0)
 
     def on_tick(self) -> trigger_api.Trigger:

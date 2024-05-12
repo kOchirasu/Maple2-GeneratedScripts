@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[313], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 폭탄_터짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2009], visible=False, arg3=1500, scale=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[313])
         self.set_mesh(triggerIds=[2009], visible=False, arg3=1500, scale=3)
 

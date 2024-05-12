@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[700], animationEffect=False)
         self.set_actor(triggerId=701, visible=True, initialSequence='Emotion_Failure_Idle_A')
         self.set_actor(triggerId=70701, visible=True, initialSequence='Attack_Idle_A')
@@ -18,7 +18,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 주민구출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000359], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 주민구출(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=3)
         self.set_conversation(type=1, spawnId=700, script='$02000230_BF__SAVE_07__0$', arg4=2, arg5=0)
         self.set_actor(triggerId=70701, visible=False, initialSequence='Attack_Idle_A')
@@ -49,7 +49,7 @@ class 문열림(trigger_api.Trigger):
 
 
 class 도망과공격(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[700])
         self.set_actor(triggerId=701, visible=False, initialSequence='Emotion_Failure_Idle_A')
         self.create_monster(spawnIds=[711], animationEffect=False)
@@ -63,7 +63,7 @@ class 도망과공격(trigger_api.Trigger):
 
 
 class 도망완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[711])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +74,7 @@ class 도망완료(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=10)
         self.destroy_monster(spawnIds=[70711,70712,70713,70714,70715])
 

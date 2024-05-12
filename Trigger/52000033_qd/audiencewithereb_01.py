@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,201,301,401,501,502,503,504,505,506,507,508,509,510], animationEffect=False)
         self.set_effect(triggerIds=[5000], visible=False) # SpotLight_01
         self.set_effect(triggerIds=[5001], visible=False) # SpotLight_02
@@ -15,17 +15,20 @@ class 대기(trigger_api.Trigger):
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[50001301], questStates=[3]):
+            # 두 번째 퀘스트 완료 상태
             return QuestOngoing02(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[3]):
+            # 첫 번째 퀘스트 완료 상태
             return QuestOngoing01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[50001300], questStates=[2]):
+            # 첫 번째 퀘스트 완료 가능 상태
             return PCWalkIn01(self.ctx)
         if self.wait_tick(waitTick=3000):
             return PCtoLeave01(self.ctx)
@@ -33,7 +36,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 # 첫 번째 퀘스트 완료 상태
 class QuestOngoing01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -44,7 +47,7 @@ class QuestOngoing01(trigger_api.Trigger):
 
 # 두 번째 퀘스트 완료 상태
 class QuestOngoing02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -55,7 +58,7 @@ class QuestOngoing02(trigger_api.Trigger):
 
 # 첫 번째 퀘스트 완료 가능 상태
 class PCWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -66,7 +69,7 @@ class PCWalkIn01(trigger_api.Trigger):
 
 
 class PCWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +78,7 @@ class PCWalkIn02(trigger_api.Trigger):
 
 
 class PCWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +87,7 @@ class PCWalkIn03(trigger_api.Trigger):
 
 
 class PCWalkIn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +96,7 @@ class PCWalkIn04(trigger_api.Trigger):
 
 
 class BowAction01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=501, sequenceName='Bow_A')
         self.set_npc_emotion_sequence(spawnId=502, sequenceName='Bow_A')
         self.set_npc_emotion_sequence(spawnId=503, sequenceName='Bow_A')
@@ -112,7 +115,7 @@ class BowAction01(trigger_api.Trigger):
 
 
 class BowAction02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=701, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +124,7 @@ class BowAction02(trigger_api.Trigger):
 
 
 class ErebTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1001')
         self.select_camera(triggerId=700, enable=True)
 
@@ -131,7 +134,7 @@ class ErebTalk01(trigger_api.Trigger):
 
 
 class ErebTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__0$', arg4=4, arg5=0)
         self.set_skip(state=ErebTalk03)
 
@@ -141,8 +144,9 @@ class ErebTalk02(trigger_api.Trigger):
 
 
 class ErebTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,14 +155,14 @@ class ErebTalk03(trigger_api.Trigger):
 
 
 class ErebTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=700, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return SecondQuestCheck01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -166,12 +170,14 @@ class ErebTalk04(trigger_api.Trigger):
 class SecondQuestCheck01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[50001300], questStates=[3]):
+            # 첫 번째 퀘스트 완료 상태
             return SecondQuestCheck02(self.ctx)
 
 
 class SecondQuestCheck02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[50001301], questStates=[3]):
+            # 두 번째 퀘스트 완료 상태
             return PCGoCenter01(self.ctx)
 
 
@@ -182,7 +188,7 @@ class PCGoCenter01(trigger_api.Trigger):
 
 
 class PCGoCenter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -193,7 +199,7 @@ class PCGoCenter02(trigger_api.Trigger):
 
 
 class PCGoCenter03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000033, portalId=10, boxId=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -202,7 +208,7 @@ class PCGoCenter03(trigger_api.Trigger):
 
 
 class PCGoCenter04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=800, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_1002')
 
@@ -212,7 +218,7 @@ class PCGoCenter04(trigger_api.Trigger):
 
 
 class PCGoCenter05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -222,7 +228,7 @@ class PCGoCenter05(trigger_api.Trigger):
 
 
 class PCSpotLighting01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # SpotLight_01
         self.set_effect(triggerIds=[5001], visible=True) # SpotLight_02
 
@@ -232,7 +238,7 @@ class PCSpotLighting01(trigger_api.Trigger):
 
 
 class PCSpotLighting02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Happy_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -241,7 +247,7 @@ class PCSpotLighting02(trigger_api.Trigger):
 
 
 class PCSpotLighting03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1003')
         self.select_camera(triggerId=801, enable=True)
 
@@ -251,7 +257,7 @@ class PCSpotLighting03(trigger_api.Trigger):
 
 
 class ErebTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52000033_QD__AUDIENCEWITHEREB_01__1$', arg4=5, arg5=0)
         self.set_skip(state=ErebTalk12)
 
@@ -261,8 +267,9 @@ class ErebTalk11(trigger_api.Trigger):
 
 
 class ErebTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,20 +278,22 @@ class ErebTalk12(trigger_api.Trigger):
 
 
 class ErebTalk13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=801, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return PCtoLeave01(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[5000], visible=False) # SpotLight_01
-        self.set_effect(triggerIds=[5001], visible=False) # SpotLight_02
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[5000], visible=False)
+        # SpotLight_01
+        self.set_effect(triggerIds=[5001], visible=False)
+        # SpotLight_02
 
 
 class PCtoLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

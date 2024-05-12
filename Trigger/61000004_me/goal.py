@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 결승점(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.end_mini_game_round(winnerBoxId=102, isOnlyWinner=True, expRate=1)
         self.mini_game_give_reward(winnerBoxId=102, contentType='miniGame')
         self.end_mini_game(winnerBoxId=102, isOnlyWinner='true', gameName='escape')

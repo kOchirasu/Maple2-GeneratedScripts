@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[165,166,167,168], visible=True)
         self.set_interact_object(triggerIds=[10000406], state=1)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 열기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[9001], triggerId=998)
         self.set_mesh(triggerIds=[165,166,167,168], visible=False)
 

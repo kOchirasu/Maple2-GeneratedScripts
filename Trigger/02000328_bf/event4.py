@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[301], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 진행1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 진행1(trigger_api.Trigger):
 
 
 class 진행2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,343,344,345,346,347,348,349,350,351,352,353,354,355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375,376], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 진행2(trigger_api.Trigger):
 
 
 class 진행3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[301,302], visible=True, arg3=100, delay=50, scale=2)
         self.set_mesh(triggerIds=[303,304,305,306], visible=True, arg3=200, delay=50, scale=2)
         self.set_mesh(triggerIds=[307,308,309,310,311,312], visible=True, arg3=300, delay=50, scale=2)
@@ -51,7 +51,7 @@ class 진행3(trigger_api.Trigger):
 
 
 class 종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20003281)
 
 

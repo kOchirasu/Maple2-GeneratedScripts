@@ -5,7 +5,7 @@ import trigger_api
 # 플레이어 감지
 # 큐브스킬형 캐논 발사체
 class Round_check(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class Round_check(trigger_api.Trigger):
 
 
 class Round_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[113], animationEffect=True, animationDelay=600)
         self.create_monster(spawnIds=[118], animationEffect=True, animationDelay=1500)
 
@@ -36,7 +36,7 @@ class Round_01(trigger_api.Trigger):
 
 
 class Round_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[114], animationEffect=True, animationDelay=700)
         self.create_monster(spawnIds=[117], animationEffect=True, animationDelay=1100)
 
@@ -48,7 +48,7 @@ class Round_02(trigger_api.Trigger):
 
 
 class Round_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[112], animationEffect=True, animationDelay=800)
         self.create_monster(spawnIds=[116], animationEffect=True, animationDelay=1300)
 
@@ -60,7 +60,7 @@ class Round_03(trigger_api.Trigger):
 
 
 class Round_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111], animationEffect=True, animationDelay=300)
         self.create_monster(spawnIds=[115], animationEffect=True, animationDelay=900)
 
@@ -72,7 +72,7 @@ class Round_04(trigger_api.Trigger):
 
 
 class Round_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111,112,113,114,115,116,117,118])
         self.create_monster(spawnIds=[101], animationEffect=True, animationDelay=1000)
         self.create_monster(spawnIds=[102], animationEffect=True, animationDelay=2000)
@@ -91,7 +91,7 @@ class Round_05(trigger_api.Trigger):
 
 
 class Round_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[121], animationEffect=True, animationDelay=1000)
         self.create_monster(spawnIds=[122], animationEffect=True, animationDelay=3000)
         self.create_monster(spawnIds=[123], animationEffect=True, animationDelay=5000)
@@ -104,7 +104,8 @@ class Round_06(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=1, arg2='cannon_projectile 종료', arg3='1000')
         self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,111,112,113,114,115,116,117,118])
 
 

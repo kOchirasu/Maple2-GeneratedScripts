@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[900], visible=False)
         self.set_mesh(triggerIds=[1501,1502,1503,1504,1505,1506], visible=True, arg3=0, delay=0, scale=0) # Gate Close grating
         self.set_mesh(triggerIds=[1511,1512,1513], visible=False, arg3=0, delay=0, scale=0) # Gate Open grating
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 입장딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 입장딜레이01(trigger_api.Trigger):
 
 
 class 대화연출준비01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -43,7 +43,7 @@ class 대화연출준비01(trigger_api.Trigger):
 
 
 class 연출대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=3)
         self.set_conversation(type=2, spawnId=11001319, script='$02010051_BF__PORTAL06__0$', arg4=3)
         self.set_skip(state=연출대화02대기)
@@ -54,7 +54,7 @@ class 연출대화01(trigger_api.Trigger):
 
 
 class 연출대화02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 연출대화02대기(trigger_api.Trigger):
 
 
 class 연출대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=4)
         self.set_conversation(type=2, spawnId=11001319, script='$02010051_BF__PORTAL06__1$', arg4=3)
         self.set_skip(state=대화연출종료01)
@@ -74,7 +74,7 @@ class 연출대화02(trigger_api.Trigger):
 
 
 class 대화연출종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +83,7 @@ class 대화연출종료01(trigger_api.Trigger):
 
 
 class 문열기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -103,7 +103,7 @@ class 유저입장01(trigger_api.Trigger):
 
 
 class 가이드준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=7) # VoicePlay
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 가이드준비(trigger_api.Trigger):
 
 
 class 가이드시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105101, textId=20105101, duration=4000) # 길 찾기
         self.set_interact_object(triggerIds=[10000914], state=1)
 
@@ -122,7 +122,7 @@ class 가이드시작(trigger_api.Trigger):
 
 
 class 포털개방01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=1)
         self.set_effect(triggerIds=[914], visible=True) # light
         self.set_effect(triggerIds=[6000], visible=True) # DoorOpen vibrate
@@ -134,7 +134,7 @@ class 포털개방01(trigger_api.Trigger):
 
 
 class 포털개방02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=11, visible=True, enable=False, minimapVisible=False)
 
@@ -144,7 +144,7 @@ class 포털개방02(trigger_api.Trigger):
 
 
 class 포털폐쇄(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[1601,1602,1603,1604,1605,1606], visible=True, arg3=0, delay=0, scale=2) # grating

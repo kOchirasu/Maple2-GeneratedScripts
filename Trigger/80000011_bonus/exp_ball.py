@@ -10,7 +10,7 @@ class 입장(trigger_api.Trigger):
 
 
 class 초5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 초5(trigger_api.Trigger):
 
 
 class 초10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 초10(trigger_api.Trigger):
 
 
 class 초15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class 초15(trigger_api.Trigger):
 
 
 class 초20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class 초20(trigger_api.Trigger):
 
 
 class 초25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

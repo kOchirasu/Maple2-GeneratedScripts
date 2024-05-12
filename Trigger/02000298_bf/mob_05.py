@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[605], visible=False)
         self.set_mesh(triggerIds=[3006,3007,3008,3009,3010], visible=True, arg3=0, delay=0, scale=0)
@@ -25,7 +25,7 @@ class 방호벽대기(trigger_api.Trigger):
 
 
 class 방호벽해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_mesh(triggerIds=[3006,3007,3008,3009,3010], visible=False, arg3=0, delay=0, scale=5)
         self.set_timer(timerId='1', seconds=1)
@@ -36,7 +36,7 @@ class 방호벽해제(trigger_api.Trigger):
 
 
 class 번생성10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1010], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 번생성10(trigger_api.Trigger):
 
 
 class 방호벽해제2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.set_mesh(triggerIds=[3206,3207,3208,3209,3210], visible=False, arg3=0, delay=0, scale=5)
         self.set_timer(timerId='1', seconds=1)
@@ -56,7 +56,7 @@ class 방호벽해제2(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:

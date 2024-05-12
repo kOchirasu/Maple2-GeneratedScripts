@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7005], visible=False)
         self.set_mesh(triggerIds=[1105], visible=False, arg3=0, delay=200, scale=15)
         self.set_mesh(triggerIds=[1205], visible=True, arg3=0, delay=200, scale=15)
@@ -21,7 +21,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=715, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[145,146,147], animationEffect=False)
 
@@ -31,7 +31,7 @@ class Event_05(trigger_api.Trigger):
 
 
 class Event_05_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=147, patrolName='MS2PatrolData_2136')
         self.set_conversation(type=1, spawnId=147, script='$02000403_BF__MAGIC_05__0$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=145, script='$02000403_BF__MAGIC_05__1$', arg4=3, arg5=4)
@@ -44,7 +44,7 @@ class Event_05_b(trigger_api.Trigger):
 
 
 class Event_05_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[148], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class Event_05_c(trigger_api.Trigger):
 
 
 class Event_05_d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=148, patrolName='MS2PatrolData_2137')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class Event_05_d(trigger_api.Trigger):
 
 
 class Event_05_e(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[145,146,147])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +71,7 @@ class Event_05_e(trigger_api.Trigger):
 
 
 class Event_05_f(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[148])
 
 

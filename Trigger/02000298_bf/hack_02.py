@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000370], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1032], animationEffect=False)
         self.set_interact_object(triggerIds=[10000370], state=1)
 
@@ -66,7 +66,7 @@ class 코드체크(trigger_api.Trigger):
 
 
 class 코드_1279(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__0$', arg3='2000')
 
@@ -76,7 +76,7 @@ class 코드_1279(trigger_api.Trigger):
 
 
 class 코드_1238(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__1$', arg3='2000')
 
@@ -86,7 +86,7 @@ class 코드_1238(trigger_api.Trigger):
 
 
 class 코드_1358(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__2$', arg3='2000')
 
@@ -96,7 +96,7 @@ class 코드_1358(trigger_api.Trigger):
 
 
 class 코드_1489(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__3$', arg3='2000')
 
@@ -106,7 +106,7 @@ class 코드_1489(trigger_api.Trigger):
 
 
 class 코드_1567(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__4$', arg3='2000')
 
@@ -116,7 +116,7 @@ class 코드_1567(trigger_api.Trigger):
 
 
 class 코드_1679(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__5$', arg3='2000')
 
@@ -126,7 +126,7 @@ class 코드_1679(trigger_api.Trigger):
 
 
 class 코드_2389(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__6$', arg3='2000')
 
@@ -136,7 +136,7 @@ class 코드_2389(trigger_api.Trigger):
 
 
 class 코드_2347(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__7$', arg3='2000')
 
@@ -146,7 +146,7 @@ class 코드_2347(trigger_api.Trigger):
 
 
 class 코드_2478(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__8$', arg3='2000')
 
@@ -156,7 +156,7 @@ class 코드_2478(trigger_api.Trigger):
 
 
 class 코드_2456(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__9$', arg3='2000')
 
@@ -166,7 +166,7 @@ class 코드_2456(trigger_api.Trigger):
 
 
 class 코드_2569(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__10$', arg3='2000')
 
@@ -176,7 +176,7 @@ class 코드_2569(trigger_api.Trigger):
 
 
 class 코드_2678(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__11$', arg3='2000')
 
@@ -186,7 +186,7 @@ class 코드_2678(trigger_api.Trigger):
 
 
 class 코드_3458(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__12$', arg3='2000')
 
@@ -196,7 +196,7 @@ class 코드_3458(trigger_api.Trigger):
 
 
 class 코드_3589(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__13$', arg3='2000')
 
@@ -206,7 +206,7 @@ class 코드_3589(trigger_api.Trigger):
 
 
 class 코드_3679(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__14$', arg3='2000')
 
@@ -216,7 +216,7 @@ class 코드_3679(trigger_api.Trigger):
 
 
 class 코드_3789(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__15$', arg3='2000')
 
@@ -226,7 +226,7 @@ class 코드_3789(trigger_api.Trigger):
 
 
 class 코드_4567(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__16$', arg3='2000')
 
@@ -236,7 +236,7 @@ class 코드_4567(trigger_api.Trigger):
 
 
 class 코드_4578(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__17$', arg3='2000')
 
@@ -246,7 +246,7 @@ class 코드_4578(trigger_api.Trigger):
 
 
 class 코드_4689(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__18$', arg3='2000')
 
@@ -256,7 +256,7 @@ class 코드_4689(trigger_api.Trigger):
 
 
 class 코드_4789(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_event_ui(type=1, arg2='$02000298_BF__HACK_02__19$', arg3='2000')
 
@@ -266,7 +266,7 @@ class 코드_4789(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:

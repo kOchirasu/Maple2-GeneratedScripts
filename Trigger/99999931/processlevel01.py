@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 레버당기기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000217], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 레버당기기(trigger_api.Trigger):
 
 
 class 카운트다운1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='31', seconds=1)
         self.set_event_ui(type=1, arg2='3', arg3='1000')
 
@@ -22,7 +22,7 @@ class 카운트다운1(trigger_api.Trigger):
 
 
 class 카운트다운2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='32', seconds=1)
         self.set_event_ui(type=1, arg2='2', arg3='1000')
 
@@ -32,7 +32,7 @@ class 카운트다운2(trigger_api.Trigger):
 
 
 class 카운트다운3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='33', seconds=1)
         self.set_event_ui(type=1, arg2='1', arg3='1000')
 
@@ -42,7 +42,7 @@ class 카운트다운3(trigger_api.Trigger):
 
 
 class 게임시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='34', seconds=1) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,114,115,116,118,119,121,123,126,130,131,132,133,134,135], enable=True) # 움직이는 발판을 이동한다 (arg2=1)
 
@@ -52,7 +52,7 @@ class 게임시작(trigger_api.Trigger):
 
 
 class 게임진행1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='35', seconds=1) # arg2는 시간 (초)
         self.set_breakable(triggerIds=[101,102,103,104,105,106,107,114,115,116,118,119,121,123,126,130,131,132,133,134,135], enable=False) # 움직이는 발판을 멈춘다 (arg2=0)
         self.set_skill(triggerIds=[801,802,803,804,805,806,807], isEnable='1')
@@ -77,7 +77,7 @@ class 게임진행1(trigger_api.Trigger):
 
 
 class 게임진행2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='36', seconds=2) # arg2는 시간 (초)
         self.set_skill(triggerIds=[801], enable=False)
         self.set_skill(triggerIds=[802], enable=False)

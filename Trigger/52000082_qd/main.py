@@ -9,7 +9,7 @@ class mapskill(trigger_api.Trigger):
 
 
 class mapskill_start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[701], skillId=70000114, level=1, isPlayer=False, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:

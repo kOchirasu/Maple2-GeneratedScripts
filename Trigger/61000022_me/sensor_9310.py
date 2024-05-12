@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box31Check', value=10)
         self.set_mesh(triggerIds=[531], visible=True, arg3=0, delay=0, scale=0) # 31 / Ground outter
         self.set_mesh(triggerIds=[5310], visible=True, arg3=0, delay=0, scale=0) # 31 / Ground inner
@@ -31,46 +31,46 @@ class Sensor0(trigger_api.Trigger):
 
 class Sensor1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9310, boxId=1, operator='Equal'):
+        if self.count_users(boxId=9310, minUsers='1', operator='Equal'):
             return Pass(self.ctx)
-        if not self.count_users(boxId=9310, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9310, minUsers='1', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9310, boxId=2, operator='Equal'):
+        if self.count_users(boxId=9310, minUsers='2', operator='Equal'):
             return Pass(self.ctx)
-        if not self.count_users(boxId=9310, boxId=2, operator='Equal'):
+        if not self.count_users(boxId=9310, minUsers='2', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9310, boxId=3, operator='Equal'):
+        if self.count_users(boxId=9310, minUsers='3', operator='Equal'):
             return Pass(self.ctx)
-        if not self.count_users(boxId=9310, boxId=3, operator='Equal'):
+        if not self.count_users(boxId=9310, minUsers='3', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9310, boxId=4, operator='Equal'):
+        if self.count_users(boxId=9310, minUsers='4', operator='Equal'):
             return Pass(self.ctx)
-        if not self.count_users(boxId=9310, boxId=4, operator='Equal'):
+        if not self.count_users(boxId=9310, minUsers='4', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Sensor5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9310, boxId=5, operator='Equal'):
+        if self.count_users(boxId=9310, minUsers='5', operator='Equal'):
             return Pass(self.ctx)
-        if not self.count_users(boxId=9310, boxId=5, operator='Equal'):
+        if not self.count_users(boxId=9310, minUsers='5', operator='Equal'):
             return Fail(self.ctx)
 
 
 class Pass(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9310], sound='DDStop_Stage_Pass_01')
         self.set_user_value(triggerId=7310, key='Color31', value=0) # color reset
         self.set_mesh(triggerIds=[531], visible=False, arg3=0, delay=0, scale=2) # 31 / Ground outter
@@ -81,7 +81,7 @@ class Pass(trigger_api.Trigger):
 
 
 class Fail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9310], sound='DDStop_Stage_Fail_01')
         self.set_mesh(triggerIds=[531], visible=False, arg3=0, delay=0, scale=2) # 31 / Ground outter
         self.set_mesh(triggerIds=[5310], visible=False, arg3=0, delay=0, scale=0) # 31 / Ground inner
@@ -93,7 +93,7 @@ class Fail(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Box31Check', value=10)
 
     def on_tick(self) -> trigger_api.Trigger:

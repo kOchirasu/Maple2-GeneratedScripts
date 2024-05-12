@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.set_effect(triggerIds=[8005], visible=False)
         self.set_effect(triggerIds=[8006], visible=False)
@@ -20,27 +20,29 @@ class 대기(trigger_api.Trigger):
         self.set_actor(triggerId=9908, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=931, boxId=4, operator='GreaterEqual'):
+        if self.count_users(boxId=931, minUsers='4', operator='GreaterEqual'):
+            # <4명 이상 입장시 활성화>
             return 감지(self.ctx)
         if self.user_detected(boxIds=[931], jobCode=0):
             return 감지(self.ctx)
 
 
 class 감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8005], visible=True)
         self.set_effect(triggerIds=[8006], visible=True)
         self.set_effect(triggerIds=[8007], visible=True)
         self.set_effect(triggerIds=[8008], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.user_detected(boxIds=[921], jobCode=0) and self.user_detected(boxIds=[922], jobCode=0) and self.user_detected(boxIds=[923], jobCode=0) and self.user_detected(boxIds=[924], jobCode=0):
             return 성공(self.ctx)
 
 
 class 성공(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_user_value(triggerId=99990021, key='Reconnect', value=2) # <재접속 유저를 위해 버프 지속적으로 쏴주기 캔슬>
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_user_value(triggerId=99990021, key='Reconnect', value=2)
+        # <재접속 유저를 위해 버프 지속적으로 쏴주기 캔슬>
         self.set_event_ui(type=1, arg2='$02020112_BF__JUMPROOM__0$', arg3='5000')
         self.set_gravity(gravity=0)
         self.set_effect(triggerIds=[8005], visible=False)
@@ -67,7 +69,7 @@ class 성공(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[152,153,154,155]):
             self.set_user_value(triggerId=99990001, key='MonsterDead', value=1)
-            return None
+            # <점프방 몬스터 체크>
 
 
 initial_state = 대기

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False) # SlidingBoard
         self.set_visible_breakable_object(triggerIds=[4000], visible=False) # SlidingBoard
         self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0) # WallforMinimap
@@ -21,7 +21,7 @@ class Wait(trigger_api.Trigger):
 
 
 class LoadingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class LoadingDelay01(trigger_api.Trigger):
 
 
 class PCEnter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -41,7 +41,7 @@ class PCEnter01(trigger_api.Trigger):
 
 
 class PCEnter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
         self.set_mesh(triggerIds=[4200], visible=False, arg3=100, delay=0, scale=3) # BoardClosed
         self.set_breakable(triggerIds=[4000], enable=True) # SlidingBoard
@@ -54,8 +54,9 @@ class PCEnter02(trigger_api.Trigger):
 
 
 class BoardSlide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3000, visible=True, initialSequence='Opened') # Door
+        # soundeffect 추가
         self.set_effect(triggerIds=[6100], visible=True) # DoorOpen
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +65,7 @@ class BoardSlide01(trigger_api.Trigger):
 
 
 class BoardSlide02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4100], visible=True, arg3=800, delay=0, scale=3) # BoardOpened
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +74,7 @@ class BoardSlide02(trigger_api.Trigger):
 
 
 class EnemyNpcWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=False) # LargeGear_SlidingBoard
         self.set_breakable(triggerIds=[4000], enable=False) # SlidingBoard
         self.set_visible_breakable_object(triggerIds=[4000], visible=False) # SlidingBoard
@@ -87,7 +88,7 @@ class EnemyNpcWalkIn01(trigger_api.Trigger):
 
 
 class EnemyNpcWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=True)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
@@ -98,7 +99,7 @@ class EnemyNpcWalkIn02(trigger_api.Trigger):
 
 
 class EnemyNpcWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_103')
 
@@ -108,7 +109,7 @@ class EnemyNpcWalkIn03(trigger_api.Trigger):
 
 
 class EnemyNpcWalkIn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104], animationEffect=False)
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_104')
         self.select_camera(triggerId=603, enable=True)
@@ -119,7 +120,7 @@ class EnemyNpcWalkIn04(trigger_api.Trigger):
 
 
 class EnemyNpcTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__0$', arg4=5) # 카트반의 첩자
         self.set_skip(state=EnemyNpcTalk01Skip)
@@ -130,9 +131,10 @@ class EnemyNpcTalk01(trigger_api.Trigger):
 
 
 class EnemyNpcTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,7 +143,7 @@ class EnemyNpcTalk01Skip(trigger_api.Trigger):
 
 
 class EnemyNpcTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001963, script='$52000070_QD__TRAP01__1$', arg4=5) # 카트반의 첩자
         self.set_skip(state=EnemyNpcTalk02Skip)
@@ -152,9 +154,10 @@ class EnemyNpcTalk02(trigger_api.Trigger):
 
 
 class EnemyNpcTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -163,7 +166,7 @@ class EnemyNpcTalk02Skip(trigger_api.Trigger):
 
 
 class EnemyMobChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -176,7 +179,7 @@ class EnemyMobChange01(trigger_api.Trigger):
 
 
 class BattleEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -187,7 +190,7 @@ class BattleEnd01(trigger_api.Trigger):
 
 
 class PCPositionFix01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=604, enable=True)
         self.move_user(mapId=52000070, portalId=10, boxId=9900)
 
@@ -197,7 +200,7 @@ class PCPositionFix01(trigger_api.Trigger):
 
 
 class PCPositionFix02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +209,7 @@ class PCPositionFix02(trigger_api.Trigger):
 
 
 class FriendNpcWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203,204], animationEffect=False)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_202')
@@ -219,7 +222,7 @@ class FriendNpcWalkIn01(trigger_api.Trigger):
 
 
 class FriendNpcWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1001')
         self.select_camera(triggerId=605, enable=True)
 
@@ -229,7 +232,7 @@ class FriendNpcWalkIn02(trigger_api.Trigger):
 
 
 class FriendNpcTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__2$', arg4=4) # 험플스 대원
         self.set_skip(state=FriendNpcTalk01Skip)
@@ -240,9 +243,10 @@ class FriendNpcTalk01(trigger_api.Trigger):
 
 
 class FriendNpcTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -251,7 +255,7 @@ class FriendNpcTalk01Skip(trigger_api.Trigger):
 
 
 class FriendNpcTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001964, script='$52000070_QD__TRAP01__3$', arg4=4) # 험플스 대원
         self.set_skip(state=FriendNpcTalk02Skip)
@@ -262,9 +266,10 @@ class FriendNpcTalk02(trigger_api.Trigger):
 
 
 class FriendNpcTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.reset_camera(interpolationTime=1)
 
@@ -274,7 +279,7 @@ class FriendNpcTalk02Skip(trigger_api.Trigger):
 
 
 class WayOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_211')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_212')
 
@@ -284,7 +289,7 @@ class WayOpen01(trigger_api.Trigger):
 
 
 class WayOpen02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_213')
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_214')
 
@@ -294,7 +299,7 @@ class WayOpen02(trigger_api.Trigger):
 
 
 class WayOpen03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$52000070_QD__TRAP01__4$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -303,7 +308,7 @@ class WayOpen03(trigger_api.Trigger):
 
 
 class QuestCom(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='remnantssweeping')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -312,7 +317,7 @@ class QuestCom(trigger_api.Trigger):
 
 
 class MoveToComplete(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

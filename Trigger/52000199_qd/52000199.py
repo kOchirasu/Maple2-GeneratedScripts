@@ -9,18 +9,20 @@ class Wait(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000199, portalId=5001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003416], questStates=[2]):
+            # 또 하나의 진실 퀘스트 수락 유저는 영상을 보거라
             return CameraEffect01(self.ctx)
         if self.quest_user_detected(boxIds=[2001], questIds=[10003417], questStates=[1]):
+            # 또 하나의 진실 퀘스트 수락 유저는 영상을 보거라
             return Wait_02(self.ctx)
 
 
 class CameraEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +31,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 
 class CameraEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_cinematic_ui(type=1)
 
@@ -39,7 +41,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 
 class CameraEffect03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +50,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 
 class CameraEffect03_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.show_caption(type='VerticalCaption', title='$52000199_QD__52000199__0$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
@@ -58,7 +60,7 @@ class CameraEffect03_3(trigger_api.Trigger):
 
 
 class CameraEffect04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +69,7 @@ class CameraEffect04(trigger_api.Trigger):
 
 
 class CameraEffect05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
@@ -75,11 +77,12 @@ class CameraEffect05(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003417], questStates=[1]):
+            # 또 하나의 진실 퀘스트 수락 유저는 영상을 보거라
             return Wait_02(self.ctx)
 
 
 class Wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -89,9 +92,9 @@ class Wait_02(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\KiliansTruth.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\KiliansTruth.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -101,7 +104,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 바깥으로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
         self.set_achievement(triggerId=2001, achieve='KiliansTruth')
 
@@ -111,7 +114,7 @@ class 바깥으로(trigger_api.Trigger):
 
 
 class 바깥으로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000146, portalId=12)
 
 

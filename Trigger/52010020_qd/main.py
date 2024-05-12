@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=4)
@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 
 class Event_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class Event_Ready(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
         self.set_conversation(type=1, spawnId=102, script='$52010020_QD__MAIN__0$', arg4=5)
         self.set_timer(timerId='2', seconds=2)
@@ -35,7 +35,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2002')
         self.set_conversation(type=1, spawnId=101, script='$52010020_QD__MAIN__1$', arg4=5)
         self.set_timer(timerId='5', seconds=5)
@@ -46,7 +46,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=True)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2004')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
@@ -57,6 +57,7 @@ class Event_03(trigger_api.Trigger):
         self.create_monster(spawnIds=[103])
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_2003')
         self.select_camera_path(pathIds=[8001,8002], returnView=False) # 사이드뷰 카메라
+        # self.select_camera(triggerId=8001, enable=True)
         self.set_timer(timerId='4', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +66,7 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001502, script='$52010020_QD__MAIN__2$', arg4=4)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
         self.set_timer(timerId='3', seconds=3)
@@ -74,19 +75,19 @@ class Event_04(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_05(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=4)
 
 
 class Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='2'):
             return end(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_achievement(triggerId=701, type='trigger', achieve='luanDialogue')
         self.select_camera(triggerId=8001, enable=False)
         self.move_user(mapId=52010019, portalId=2, boxId=701)

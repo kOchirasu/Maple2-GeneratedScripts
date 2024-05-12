@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0) # 유저 이동 하게
         self.set_cinematic_ui(type=2) # UI 복구
@@ -28,7 +28,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 영상준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
 
@@ -38,10 +38,10 @@ class 영상준비_01(trigger_api.Trigger):
 
 
 class 영상재생_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
-        self.play_scene_movie(fileName='common\JobIntro_Thief.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\JobIntro_Thief.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -51,19 +51,19 @@ class 영상재생_01(trigger_api.Trigger):
 
 
 class 시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 금고폭파_01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=2)
 
 
 class 금고폭파_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1) # 유저 이동 못 하게
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[8001], returnView=False)
@@ -74,7 +74,7 @@ class 금고폭파_01(trigger_api.Trigger):
 
 
 class 금고폭파_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +83,7 @@ class 금고폭파_02(trigger_api.Trigger):
 
 
 class 금고폭파_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_effect(triggerIds=[5001], visible=True)
 
@@ -93,7 +93,7 @@ class 금고폭파_03(trigger_api.Trigger):
 
 
 class 폭파확인_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2002')
 
@@ -103,7 +103,7 @@ class 폭파확인_01(trigger_api.Trigger):
 
 
 class 빅스소개_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001,8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 빅스소개_01(trigger_api.Trigger):
 
 
 class 빅스소개_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003272, msg='$52000128_QD__52000128_MAIN__0$', duration=2000, align='left')
         self.set_scene_skip(state=제시소개_01, action='nextState')
 
@@ -122,7 +122,7 @@ class 빅스소개_02(trigger_api.Trigger):
 
 
 class 빅스소개_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000128_QD__52000128_MAIN__1$', desc='$52000128_QD__52000128_MAIN__2$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +131,8 @@ class 빅스소개_03(trigger_api.Trigger):
 
 
 class 제시소개_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.select_camera_path(pathIds=[8002,8003], returnView=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2003')
@@ -142,7 +143,7 @@ class 제시소개_01(trigger_api.Trigger):
 
 
 class 제시소개_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003273, msg='$52000128_QD__52000128_MAIN__3$', duration=2000, align='left')
         self.set_scene_skip(state=카일소개_01, action='nextState')
 
@@ -152,7 +153,7 @@ class 제시소개_02(trigger_api.Trigger):
 
 
 class 제시소개_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000128_QD__52000128_MAIN__4$', desc='$52000128_QD__52000128_MAIN__5$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -161,7 +162,8 @@ class 제시소개_03(trigger_api.Trigger):
 
 
 class 카일소개_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
 
@@ -171,7 +173,7 @@ class 카일소개_01(trigger_api.Trigger):
 
 
 class 카일소개_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_2004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +182,7 @@ class 카일소개_02(trigger_api.Trigger):
 
 
 class 카일소개_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003280, msg='$52000128_QD__52000128_MAIN__6$', duration=2351, align='left')
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Bore_B')
         self.set_scene_skip(state=퀘스트시작_01, action='nextState')
@@ -191,7 +193,7 @@ class 카일소개_03(trigger_api.Trigger):
 
 
 class 카일소개_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000128_QD__52000128_MAIN__7$', desc='$52000128_QD__52000128_MAIN__8$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,7 +202,8 @@ class 카일소개_04(trigger_api.Trigger):
 
 
 class 퀘스트시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -217,7 +220,7 @@ class 퀘스트시작_01(trigger_api.Trigger):
 
 
 class 퀘스트진행_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25201281)
         self.show_guide_summary(entityId=25201282, textId=25201282)
         self.set_effect(triggerIds=[5003,5004,5005,5006,5007,5008,5009], visible=True)
@@ -228,7 +231,7 @@ class 퀘스트진행_01(trigger_api.Trigger):
 
 
 class 퀘스트진행_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003,5004,5005,5006,5007,5008,5009], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,7 +240,7 @@ class 퀘스트진행_02(trigger_api.Trigger):
 
 
 class 퀘스트완료가능_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25201281)
         self.hide_guide_summary(entityId=25201282)
         self.show_guide_summary(entityId=25201283, textId=25201283)
@@ -248,7 +251,7 @@ class 퀘스트완료가능_01(trigger_api.Trigger):
 
 
 class 암전_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25201281)
         self.hide_guide_summary(entityId=25201282)
         self.hide_guide_summary(entityId=25201283)
@@ -262,7 +265,7 @@ class 암전_01(trigger_api.Trigger):
 
 
 class 암전_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.destroy_monster(spawnIds=[103])
         self.create_monster(spawnIds=[104], animationEffect=False)
@@ -276,7 +279,7 @@ class 암전_02(trigger_api.Trigger):
 
 
 class 밝은화면_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -285,7 +288,7 @@ class 밝은화면_01(trigger_api.Trigger):
 
 
 class 잡담_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000128_QD__52000128_MAIN__9$', arg4=2, arg5=0)
         self.set_scene_skip(state=교도관등장_06, action='nextState')
 
@@ -295,7 +298,8 @@ class 잡담_01(trigger_api.Trigger):
 
 
 class 잡담_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_monster(spawnIds=[105], animationEffect=False)
         self.create_monster(spawnIds=[107,109,111,113,115], animationEffect=False)
         self.set_conversation(type=1, spawnId=104, script='$52000128_QD__52000128_MAIN__10$', arg4=2, arg5=0)
 
@@ -305,7 +309,7 @@ class 잡담_02(trigger_api.Trigger):
 
 
 class 교도관등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2010')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2008')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2009')
@@ -316,7 +320,7 @@ class 교도관등장_01(trigger_api.Trigger):
 
 
 class 교도관등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006], returnView=False)
         self.set_conversation(type=1, spawnId=111, script='$52000128_QD__52000128_MAIN__21$', arg4=2, arg5=0)
 
@@ -326,7 +330,7 @@ class 교도관등장_02(trigger_api.Trigger):
 
 
 class 교도관등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -335,7 +339,7 @@ class 교도관등장_03(trigger_api.Trigger):
 
 
 class 교도관등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2012')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -344,7 +348,7 @@ class 교도관등장_04(trigger_api.Trigger):
 
 
 class 교도관등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000128_QD__52000128_MAIN__11$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -353,7 +357,8 @@ class 교도관등장_05(trigger_api.Trigger):
 
 
 class 교도관등장_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.move_user_path(patrolName='MS2PatrolData_2013')
 
@@ -363,7 +368,7 @@ class 교도관등장_06(trigger_api.Trigger):
 
 
 class 교도관등장_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2014')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2014')
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2014')
@@ -374,19 +379,19 @@ class 교도관등장_07(trigger_api.Trigger):
 
 
 class 교도관등장_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return 교도관전투_01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[101,102,104])
 
 
 class 교도관전투_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entityId=25201284, textId=25201284)
@@ -399,7 +404,7 @@ class 교도관전투_01(trigger_api.Trigger):
 
 
 class 교도관전투끝_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.hide_guide_summary(entityId=25201284)
         self.set_cinematic_ui(type=1)
@@ -411,7 +416,7 @@ class 교도관전투끝_01(trigger_api.Trigger):
 
 
 class 교도관전투끝_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000128, portalId=99)
         self.create_monster(spawnIds=[117,118,119,120,121])
         self.create_monster(spawnIds=[105], animationEffect=True)
@@ -429,7 +434,7 @@ class 교도관전투끝_02(trigger_api.Trigger):
 
 
 class 교도관전투끝_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -438,7 +443,7 @@ class 교도관전투끝_03(trigger_api.Trigger):
 
 
 class 전투끝_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=벨마등장_06, action='nextState')
         self.add_cinematic_talk(npcId=0, msg='$52000128_QD__52000128_MAIN__12$', duration=3000, align='right')
 
@@ -448,7 +453,7 @@ class 전투끝_04(trigger_api.Trigger):
 
 
 class 전투끝_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Suprise_A'])
         self.add_cinematic_talk(npcId=0, msg='$52000128_QD__52000128_MAIN__13$', duration=3000, align='right')
 
@@ -458,7 +463,7 @@ class 전투끝_05(trigger_api.Trigger):
 
 
 class 벨마등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -467,7 +472,7 @@ class 벨마등장_01(trigger_api.Trigger):
 
 
 class 벨마등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003274, msg='$52000128_QD__52000128_MAIN__14$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -476,7 +481,7 @@ class 벨마등장_02(trigger_api.Trigger):
 
 
 class 벨마등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8007], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000128_QD__52000128_MAIN__15$', duration=4000, align='right')
         self.set_pc_emotion_sequence(sequenceNames=['Talk_A'])
@@ -487,7 +492,7 @@ class 벨마등장_03(trigger_api.Trigger):
 
 
 class 벨마등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8008], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -496,7 +501,7 @@ class 벨마등장_04(trigger_api.Trigger):
 
 
 class 벨마등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=105, sequenceName='Attack_01_B')
         self.add_cinematic_talk(npcId=11003274, msg='$52000128_QD__52000128_MAIN__16$', duration=3000, align='right')
 
@@ -506,7 +511,8 @@ class 벨마등장_05(trigger_api.Trigger):
 
 
 class 벨마등장_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.reset_camera(interpolationTime=0)
@@ -517,7 +523,7 @@ class 벨마등장_06(trigger_api.Trigger):
 
 
 class 벨마전투_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entityId=25201285, textId=25201285)
@@ -530,7 +536,7 @@ class 벨마전투_01(trigger_api.Trigger):
 
 
 class 벨마전투끝_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.hide_guide_summary(entityId=25201285)
         self.set_cinematic_ui(type=1)
@@ -542,7 +548,7 @@ class 벨마전투끝_01(trigger_api.Trigger):
 
 
 class 벨마전투끝_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000128, portalId=99)
         self.destroy_monster(spawnIds=[106])
         self.create_monster(spawnIds=[105], animationEffect=True)
@@ -554,7 +560,7 @@ class 벨마전투끝_02(trigger_api.Trigger):
 
 
 class 벨마전투끝_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -563,7 +569,7 @@ class 벨마전투끝_03(trigger_api.Trigger):
 
 
 class 전투후대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=마무리, action='exit')
         self.select_camera_path(pathIds=[8010], returnView=False)
         self.face_emotion(spawnId=0)
@@ -577,7 +583,7 @@ class 전투후대화_01(trigger_api.Trigger):
 
 
 class 전투후대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -586,7 +592,7 @@ class 전투후대화_02(trigger_api.Trigger):
 
 
 class 불길_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -595,7 +601,7 @@ class 불길_01(trigger_api.Trigger):
 
 
 class 탈출_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8011], returnView=False)
         self.set_conversation(type=1, spawnId=0, script='$52000128_QD__52000128_MAIN__19$', arg4=2, arg5=0)
 
@@ -605,7 +611,7 @@ class 탈출_01(trigger_api.Trigger):
 
 
 class 탈출_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2014')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -614,7 +620,7 @@ class 탈출_02(trigger_api.Trigger):
 
 
 class 탈출_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8008], returnView=False)
         self.set_npc_emotion_sequence(spawnId=105, sequenceName='Attack_01_B')
         self.add_cinematic_talk(npcId=11003274, msg='$52000128_QD__52000128_MAIN__20$', duration=2000, align='right')
@@ -625,7 +631,8 @@ class 탈출_03(trigger_api.Trigger):
 
 
 class 마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -636,7 +643,7 @@ class 마무리(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000129, portalId=1)
 
 

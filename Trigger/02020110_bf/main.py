@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
@@ -24,7 +24,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 번방1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,120], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 번방1(trigger_api.Trigger):
 
 
 class 번방2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102,103,104,105,106,107], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 번방2(trigger_api.Trigger):
 
 
 class 번방3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[108,109,110,111,112,113], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 번방3(trigger_api.Trigger):
 
 
 class 번방4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[114,115,116,117,118,119], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class 번방4(trigger_api.Trigger):
 
 
 class 다음블록이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=7, visible=True, enable=True, minimapVisible=True)
 
 

@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.enable_spawn_point_pc(spawnId=0, isEnable=True)
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
@@ -23,7 +23,7 @@ class idle(trigger_api.Trigger):
 
 
 class 문열기오브젝트설정1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000542_BF__MAIN__0$', arg3='5000')
         self.set_interact_object(triggerIds=[10003142], state=1)
         self.create_monster(spawnIds=[112], animationEffect=False)
@@ -35,7 +35,7 @@ class 문열기오브젝트설정1(trigger_api.Trigger):
 
 
 class 감옥문부시기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000542_BF__MAIN__2$')
         self.destroy_monster(spawnIds=[112])
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
@@ -47,7 +47,7 @@ class 감옥문부시기1(trigger_api.Trigger):
 
 
 class 몬스터생성하기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.create_monster(spawnIds=[101], animationEffect=False)
 
@@ -63,7 +63,7 @@ class 문을열자1(trigger_api.Trigger):
 
 
 class 감옥문부시기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[605], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +72,7 @@ class 감옥문부시기2(trigger_api.Trigger):
 
 
 class 몬스터생성하기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000542_BF__MAIN__3$')
         self.create_monster(spawnIds=[102], animationEffect=True)
 
@@ -82,7 +82,7 @@ class 몬스터생성하기2(trigger_api.Trigger):
 
 
 class 몬스터생성하기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000542_BF__MAIN__4$')
         self.create_monster(spawnIds=[103], animationEffect=True)
 
@@ -92,7 +92,7 @@ class 몬스터생성하기3(trigger_api.Trigger):
 
 
 class 몬스터생성하기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +101,7 @@ class 몬스터생성하기4(trigger_api.Trigger):
 
 
 class 문열기오브젝트설정2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000542_BF__MAIN__5$', arg3='5000')
         self.set_interact_object(triggerIds=[10003143], state=1)
         self.create_monster(spawnIds=[113], animationEffect=False)
@@ -114,7 +114,7 @@ class 문열기오브젝트설정2(trigger_api.Trigger):
 
 
 class 감옥문부시기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(triggerIds=[604], visible=False)
         self.destroy_monster(spawnIds=[113])
@@ -125,7 +125,7 @@ class 감옥문부시기3(trigger_api.Trigger):
 
 
 class 감옥문부시기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[116], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class 감옥문부시기4(trigger_api.Trigger):
 
 
 class 감옥문부시기5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[607], visible=False)
         self.create_monster(spawnIds=[121], animationEffect=False)
         self.add_balloon_talk(spawnId=121, msg='$02000542_BF__MAIN__8$', duration=8500, delayTick=1000)
@@ -145,7 +145,7 @@ class 감옥문부시기5(trigger_api.Trigger):
 
 
 class 감옥문부시기6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[121])
         self.set_mesh(triggerIds=[612], visible=False)
 
@@ -155,7 +155,7 @@ class 감옥문부시기6(trigger_api.Trigger):
 
 
 class 연출NPC스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=102, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.create_monster(spawnIds=[105,111], animationEffect=False)
         self.add_balloon_talk(spawnId=105, msg='$02000542_BF__MAIN__9$', duration=3500)
@@ -172,7 +172,7 @@ class 연출NPC스폰(trigger_api.Trigger):
 
 
 class 몬스터다수생성하기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[114])
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
@@ -185,7 +185,7 @@ class 몬스터다수생성하기(trigger_api.Trigger):
 
 
 class 보스스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=103, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.add_balloon_talk(spawnId=117, msg='$02000542_BF__MAIN__15$', duration=8500, delayTick=500)
         self.add_balloon_talk(spawnId=118, msg='$02000542_BF__MAIN__16$', duration=8500, delayTick=1000)
@@ -199,7 +199,7 @@ class 보스스폰(trigger_api.Trigger):
 
 
 class 보스스폰2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=103, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.create_monster(spawnIds=[110], animationEffect=False)
 
@@ -215,7 +215,7 @@ class 포탈열기(trigger_api.Trigger):
 
 
 class 포탈열기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[115], animationEffect=False)
         self.destroy_monster(spawnIds=[117,118,119,120])
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000542_BF__MAIN__20$')
@@ -227,7 +227,7 @@ class 포탈열기2(trigger_api.Trigger):
 
 
 class 포탈열기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=103, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_mesh(triggerIds=[601,602], visible=False)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)

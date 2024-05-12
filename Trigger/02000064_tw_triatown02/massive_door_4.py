@@ -7,38 +7,40 @@ class 클로즈대기중(trigger_api.Trigger):
 
 
 class 클로즈5초전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.공지를한다(arg1='0', arg2='5초 후 게이트가 닫힙니다. 서둘러 입장해 주세요.', arg3='1')
         self.set_timer(timerId='115', seconds=115)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='115'):
             return 클로즈중1(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='115')
 
 
 class 클로즈중1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
             return 클로즈중2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='5')
 
 
 class 클로즈중2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.공지를한다(arg1='0', arg2='빛나는 문이 닫혔습니다.', arg3='1')
         self.set_timer(timerId='6', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='6'):
             return 클로즈대기중(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_timer(timerId='6')
 
 

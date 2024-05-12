@@ -9,7 +9,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_effect(triggerIds=[6000], visible=False)
@@ -20,7 +20,7 @@ class wait_02(trigger_api.Trigger):
 
 
 class wait_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -35,7 +35,7 @@ class wait_03(trigger_api.Trigger):
 
 
 class 크리티아스로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
 
@@ -45,7 +45,7 @@ class 크리티아스로(trigger_api.Trigger):
 
 
 class 크리티아스로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003,4004,4005], returnView=False)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_B', duration=1E+11)
@@ -60,7 +60,7 @@ class 크리티아스로_02(trigger_api.Trigger):
 
 
 class 크리티아스로_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4006], returnView=False)
         self.show_caption(type='HorizonCaption', title='$52020040_QD__52020040__3$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
@@ -70,7 +70,7 @@ class 크리티아스로_02_01(trigger_api.Trigger):
 
 
 class 크리티아스로_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4007], returnView=False)
         self.add_cinematic_talk(npcId=11004436, illustId='Schatten_smile', align='left', msg='$52020040_QD__52020040__4$', duration=3000)
         self.add_cinematic_talk(npcId=11004438, illustId='Mason_closeEye', align='right', msg='$52020040_QD__52020040__5$', duration=3000)
@@ -82,7 +82,7 @@ class 크리티아스로_03(trigger_api.Trigger):
 
 
 class 크리티아스로_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[232,92,53])
         self.set_directional_light(diffuseColor=[41,21,18], specularColor=[130,130,130])
         self.add_cinematic_talk(npcId=11004435, illustId='Conder_normal', align='left', msg='$52020040_QD__52020040__7$', duration=2500)
@@ -93,7 +93,7 @@ class 크리티아스로_04(trigger_api.Trigger):
 
 
 class 경보(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True)
         self.set_actor(triggerId=201, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=202, visible=True, initialSequence='sf_quest_light_A01_On')
@@ -110,7 +110,7 @@ class 경보(trigger_api.Trigger):
 
 
 class 경보_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.add_cinematic_talk(npcId=11004437, illustId='Neirin_surprise', align='left', msg='$52020040_QD__52020040__8$', duration=2500)
         self.add_cinematic_talk(npcId=11004437, illustId='Neirin_surprise', align='left', msg='$52020040_QD__52020040__9$', duration=2800)
@@ -127,7 +127,7 @@ class 경보_01(trigger_api.Trigger):
 
 
 class 경보_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009,4010], returnView=False)
         self.set_effect(triggerIds=[6000], visible=False)
         self.add_cinematic_talk(npcId=11004440, msg='$52020040_QD__52020040__16$', duration=3000)
@@ -140,7 +140,7 @@ class 경보_02(trigger_api.Trigger):
 
 
 class 경보끝_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_ambient_light(primary=[131,160,209])
         self.set_directional_light(diffuseColor=[134,160,143], specularColor=[130,130,130])
@@ -160,7 +160,7 @@ class 경보끝_01(trigger_api.Trigger):
 
 
 class 경보끝_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,7 +175,7 @@ class 경보끝_02_02(trigger_api.Trigger):
 
 
 class 경보끝_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
         self.add_cinematic_talk(npcId=11004437, illustId='Neirin_surprise', align='left', msg='$52020040_QD__52020040__20$', duration=2800)
         self.add_cinematic_talk(npcId=11004437, illustId='Neirin_surprise', align='left', msg='$52020040_QD__52020040__21$', duration=2800)
@@ -198,9 +198,9 @@ class 경보끝_02(trigger_api.Trigger):
 
 
 class 경보끝_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4011,4013], returnView=False)
-        # <action name="SetPcEmotionLoop" arg1="Talk_A" arg2="9999999999999" />
+        # self.set_pc_emotion_loop(sequenceName='Talk_A', duration=1E+13)
         self.add_cinematic_talk(npcId=11004438, illustId='Mason_normal', msg='$52020040_QD__52020040__34$', align='left', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='$52020040_QD__52020040__35$', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='$52020040_QD__52020040__36$', duration=3000)
@@ -212,6 +212,7 @@ class 경보끝_03(trigger_api.Trigger):
         self.add_cinematic_talk(npcId=11004434, illustId='Bliche_closeEye', align='left', msg='$52020040_QD__52020040__42$', duration=3000)
         self.add_cinematic_talk(npcId=11004434, illustId='Bliche_normal', align='left', msg='$52020040_QD__52020040__43$', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='$52020040_QD__52020040__44$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,7 +221,7 @@ class 경보끝_03(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,7 +230,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -238,7 +239,7 @@ class 이동(trigger_api.Trigger):
 
 
 class 이동_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2020029, portalId=2)
 
 

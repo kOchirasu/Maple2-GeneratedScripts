@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
 
 
 class error(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_random_user(mapId=52100012, portalId=5, triggerId=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:

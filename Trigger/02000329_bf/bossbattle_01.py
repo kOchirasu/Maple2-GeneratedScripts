@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[611], visible=False)
         self.set_interact_object(triggerIds=[10000759], state=2)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -19,9 +19,12 @@ class 대기(trigger_api.Trigger):
 
 
 class 보스소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=109, textId=20000070) # 보스를 처치하세요!
+        # self.set_cinematic_ui(type=1)
+        # self.set_cinematic_ui(type=3, script='$02000329_BF__BOSSBATTLE_01__0$')
+        # self.set_timer(timerId='3', seconds=3)
         self.set_skip(state=보스전투시작)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +33,7 @@ class 보스소환(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return 보스전투시작(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -40,28 +43,29 @@ class 보스전투시작(trigger_api.Trigger):
         if self.monster_dead(boxIds=[5001,5002]):
             return 닭장열기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=109)
 
 
 class 닭장열기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[611], visible=True)
         self.set_interact_object(triggerIds=[10000759], state=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=103, textId=20000050) # 닭장을 여세요
+        # self.set_event_ui(type=1, arg2='$02000329_BF__BOSSBATTLE_01__2$', arg3='3000')
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000759], stateValue=0):
             return 보스전투끝(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=103)
 
 
 class 보스전투끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[611], visible=False)
         self.set_effect(triggerIds=[6811], visible=True)
         self.set_timer(timerId='6', seconds=6)
@@ -72,12 +76,13 @@ class 보스전투끝(trigger_api.Trigger):
         if self.time_expired(timerId='2'):
             return 닭장오픈(self.ctx)
 
-    def on_exit(self):
-        self.set_achievement(triggerId=106, type='trigger', achieve='ClearSavetheChicken') # ClearSavetheChicken 퀘스트
+    def on_exit(self) -> None:
+        self.set_achievement(triggerId=106, type='trigger', achieve='ClearSavetheChicken')
+        # ClearSavetheChicken 퀘스트
 
 
 class 닭장오픈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.dungeon_clear()
         self.move_npc(spawnId=1011, patrolName='MS2PatrolData_1010')

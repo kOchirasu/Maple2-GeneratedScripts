@@ -11,7 +11,7 @@ class idle(trigger_api.Trigger):
 
 
 class npc_exit_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class npc_exit_01(trigger_api.Trigger):
 
 
 class npc_exit_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
 
     def on_tick(self) -> trigger_api.Trigger:

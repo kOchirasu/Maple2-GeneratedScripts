@@ -3,13 +3,13 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990010, key='PCmove', value=0)
         self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
 
 
 class 포탈열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30, startDelay=1)
         self.set_interact_object(triggerIds=[10002184], state=1, arg3=False)
 
@@ -24,7 +24,7 @@ class 포탈열림(trigger_api.Trigger):
 
 
 class 유저이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990010, key='PCmove', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 유저이동(trigger_api.Trigger):
 
 
 class 포탈닫힘(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990010, key='PCmove', value=0)
         self.set_timer(timerId='2', seconds=60, startDelay=1)
         self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
@@ -49,7 +49,7 @@ class 포탈닫힘(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002184], state=2, arg3=False)
 
 

@@ -3,31 +3,31 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[11000064], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9051]):
-            self.add_effect_nif(spawnId=11000064, nifPath='Map\Royalcity\Indoor\ry_in_cubric_mat_A01.nif', isOutline=True, scale=0.5, rotateZ=45)
+            self.add_effect_nif(spawnId=11000064, nifPath='Map\\Royalcity\\Indoor\\ry_in_cubric_mat_A01.nif', isOutline=True, scale=0.5, rotateZ=45)
             self.face_emotion(emotionName='Ride_Idle_000')
             return Wait2(self.ctx)
 
 
 class Wait2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='AddEffectNif 테스트')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Guide(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_effect_nif(spawnId=11000064)
         self.face_emotion()
 
 
 class Guide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='40002673퀘스트 완료가능 or 완료 상태를 만들고 6번 영역안에 들어가보세요.')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class Guide(trigger_api.Trigger):
 
 
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[11000064])
         self.create_monster(spawnIds=[11000044], animationEffect=False)
 
@@ -46,7 +46,7 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[11000044])
         self.debug_string(string='5초 후에 트리거가 리셋됩니다. 6번 영역 밖으로 나가세요.')
 

@@ -10,7 +10,7 @@ class start(trigger_api.Trigger):
 
 # 챕터5 에필로그 [10002105 엇갈리는 마음]완료 시 연출맵으로 이동
 class LoadingDelayB0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=NPC이동, action='nextState')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeOut.xml')
@@ -45,7 +45,7 @@ class LoadingDelayB0(trigger_api.Trigger):
 
 
 class LoadingDelayB1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeOut.xml')
 
@@ -55,7 +55,7 @@ class LoadingDelayB1(trigger_api.Trigger):
 
 
 class 원경카메라01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[12000,12001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 원경카메라01(trigger_api.Trigger):
 
 
 class 원경카메라02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[12002,12003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +73,7 @@ class 원경카메라02(trigger_api.Trigger):
 
 
 class 원경카메라03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[12004,12005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +82,7 @@ class 원경카메라03(trigger_api.Trigger):
 
 
 class 프레이대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11000064, illustId='Lennon_closeEye', msg='$52000068_QD__TRIA_SEIGE_MOVIE__0$', duration=5000, align='center')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +91,7 @@ class 프레이대사(trigger_api.Trigger):
 
 
 class 알론대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000076, script='$52000068_QD__TRIA_SEIGE_MOVIE__1$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class 알론대사(trigger_api.Trigger):
 
 
 class 근위대원등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
         self.create_monster(spawnIds=[11008], animationEffect=False)
         self.move_npc(spawnId=11008, patrolName='MS2PatrolData_soldier') # 에레브 이동
@@ -111,7 +111,7 @@ class 근위대원등장(trigger_api.Trigger):
 
 
 class 근위대대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001968, script='$52000068_QD__TRIA_SEIGE_MOVIE__2$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -120,7 +120,7 @@ class 근위대대사01(trigger_api.Trigger):
 
 
 class 근위대대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001968, script='$52000068_QD__TRIA_SEIGE_MOVIE__3$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -129,7 +129,7 @@ class 근위대대사02(trigger_api.Trigger):
 
 
 class 근위대대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000601, script='$52000068_QD__TRIA_SEIGE_MOVIE__4$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -138,7 +138,8 @@ class 근위대대사03(trigger_api.Trigger):
 
 
 class 근위대대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -147,7 +148,7 @@ class 근위대대사04(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeOut.xml')
         self.set_cinematic_ui(type=0)

@@ -3,8 +3,9 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # InvisibleMesh_forTransparancy
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # InvisibleMesh_forTransparancy
+        self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_interact_object(triggerIds=[10002101], state=0) # LeverForLadder01
         self.set_interact_object(triggerIds=[10002102], state=0) # LeverForRope
@@ -48,17 +49,19 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class GuideToMove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039901, textId=20039901, duration=3000) # 가이드 : 성벽을 따라 다음 탑으로 이동하세요.
+        # 가이드 : 성벽을 따라 다음 탑으로 이동하세요.
+        self.show_guide_summary(entityId=20039901, textId=20039901, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9100]):
+            # 계단 진입
             return MobActorSpawn(self.ctx)
 
 
 class MobActorSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[901,902,903], animationEffect=False) # Mob
         self.set_conversation(type=1, spawnId=901, script='$52100055_QD__01_ABOVEWALL__0$', arg4=2, arg5=1)
         self.set_conversation(type=1, spawnId=902, script='$52100055_QD__01_ABOVEWALL__0$', arg4=2, arg5=1)
@@ -70,7 +73,7 @@ class MobActorSpawn(trigger_api.Trigger):
 
 
 class Battle01Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[930,931,932], animationEffect=False) # Mob
         self.set_interact_object(triggerIds=[10002101], state=1) # LeverForLadder01
 
@@ -80,7 +83,7 @@ class Battle01Start(trigger_api.Trigger):
 
 
 class Battle02Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20039902, textId=20039902, duration=3000) # 가이드 : 사다리를 타고 위로 올라가세요.
         self.set_ladder(triggerIds=[510], visible=True, animationEffect=True, animationDelay=2) # Ladder01
@@ -97,7 +100,7 @@ class Battle02Start(trigger_api.Trigger):
 
 
 class Battle03Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2, key='TireSpawn', value=1)
         self.create_monster(spawnIds=[920,921,922], animationEffect=False) # Mob
         self.set_interact_object(triggerIds=[10002102], state=1) # LeverForRope
@@ -108,7 +111,7 @@ class Battle03Start(trigger_api.Trigger):
 
 
 class RopeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_rope(triggerId=530, visible=True, animationEffect=True, animationDelay=2) # Rope
         self.set_rope(triggerId=531, visible=True, animationEffect=True, animationDelay=2) # Rope
         self.set_rope(triggerId=532, visible=True, animationEffect=True, animationDelay=2) # Rope
@@ -120,15 +123,17 @@ class RopeOn(trigger_api.Trigger):
         self.set_rope(triggerId=538, visible=True, animationEffect=True, animationDelay=2) # Rope
         self.set_rope(triggerId=539, visible=True, animationEffect=True, animationDelay=2) # Rope
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039906, textId=20039906) # 가이드 : 로프를 타고 탑 위층으로 올라가세요.
+        # 가이드 : 로프를 타고 탑 위층으로 올라가세요.
+        self.show_guide_summary(entityId=20039906, textId=20039906)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9200]):
+            # 탑 위층 진입
             return Battle04Start(self.ctx)
 
 
 class Battle04Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20039906)
         self.create_monster(spawnIds=[940,941,942], animationEffect=False) # Mob
         self.set_interact_object(triggerIds=[10002103], state=1) # LeverForLadder02
@@ -139,7 +144,7 @@ class Battle04Start(trigger_api.Trigger):
 
 
 class PortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder02
         self.set_ladder(triggerIds=[521], visible=True, animationEffect=True, animationDelay=2) # Ladder02
         self.set_ladder(triggerIds=[522], visible=True, animationEffect=True, animationDelay=2) # Ladder02

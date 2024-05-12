@@ -3,16 +3,16 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=60001, boxId=1):
+        if self.count_users(boxId=60001, minUsers='1'):
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014], visible=True, arg3=0, delay=0, scale=5)
         self.set_timer(timerId='15', seconds=15)
 
@@ -22,7 +22,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 발판랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
         self.set_random_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014], visible=False, meshCount=8, arg4=0, delay=0)
 

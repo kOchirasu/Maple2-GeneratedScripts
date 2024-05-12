@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3500], visible=False, arg3=0, delay=0, scale=0) # FindKeyFromDocument
         self.set_mesh(triggerIds=[3501], visible=True, arg3=0, delay=0, scale=0) # Document
         self.set_interact_object(triggerIds=[10002042], state=0) # Document
@@ -11,13 +11,13 @@ class Wait(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='FindKey', value=1):
-            return True(self.ctx)
+            return StateTrue(self.ctx)
         if self.user_value(key='FindKey', value=2):
-            return False(self.ctx)
+            return StateFalse(self.ctx)
 
 
-class True(trigger_api.Trigger):
-    def on_enter(self):
+class StateTrue(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3501], visible=False, arg3=100, delay=0, scale=2) # Document
         self.set_interact_object(triggerIds=[10002042], state=1) # Document
 
@@ -27,13 +27,13 @@ class True(trigger_api.Trigger):
 
 
 class KeyFound(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3500], visible=True, arg3=0, delay=0, scale=2) # FindKeyFromDocument
         self.set_user_value(triggerId=1, key='PortalOn', value=1)
 
 
-class False(trigger_api.Trigger):
-    def on_enter(self):
+class StateFalse(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002042], state=1) # Document
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class False(trigger_api.Trigger):
 
 
 class NothingHappened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3501], visible=True, arg3=0, delay=0, scale=0) # Document
 
 

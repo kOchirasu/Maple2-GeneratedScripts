@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
 
 
 class NPC생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[98], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 말풍선랜덤(trigger_api.Trigger):
 
 
 class NPC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=98, script='$02000066_BF__ANOS__0$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class NPC대사01(trigger_api.Trigger):
 
 
 class NPC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=98, script='$02000066_BF__ANOS__1$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class NPC대사02(trigger_api.Trigger):
 
 
 class NPC대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=98, script='$02000066_BF__ANOS__2$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class NPC대사03(trigger_api.Trigger):
 
 
 class NPC대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=98, script='$02000066_BF__ANOS__3$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6107], visible=False) # Voice_Junta_00001768
         self.set_effect(triggerIds=[6006], visible=False) # Voice_Tinchai_00001700
         self.set_agent(triggerIds=[8100], visible=False)
@@ -29,7 +29,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Enter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
         self.set_agent(triggerIds=[8100], visible=True)
         self.set_agent(triggerIds=[8101], visible=True)
@@ -51,7 +51,7 @@ class Enter01(trigger_api.Trigger):
 
 
 class Push01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7000], enable=True) # Push
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class NpcTalkRandom(trigger_api.Trigger):
 
 
 class JuntaTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[6107], visible=True) # Voice_Junta_00001768
@@ -80,7 +80,7 @@ class JuntaTalk01(trigger_api.Trigger):
 
 
 class TinChaiTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[6006], visible=True) # Voice_Tinchai_00001700
@@ -92,7 +92,7 @@ class TinChaiTalk01(trigger_api.Trigger):
 
 
 class Delay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +101,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

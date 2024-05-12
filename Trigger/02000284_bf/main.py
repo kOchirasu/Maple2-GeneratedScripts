@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000428], state=2)
         self.set_interact_object(triggerIds=[10000430], state=2)
         self.set_interact_object(triggerIds=[10000431], state=2)
@@ -18,7 +18,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 보스연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[2001], animationEffect=False)
@@ -29,24 +29,28 @@ class 보스연출(trigger_api.Trigger):
         if self.wait_tick(waitTick=2500):
             return 준비(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=3001, enable=False)
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002815, textId=20002815, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[2001]):
+            # self.set_interact_object(triggerIds=[10000430], state=1)
+            # self.set_interact_object(triggerIds=[10000431], state=1)
+            # self.set_interact_object(triggerIds=[10000432], state=1)
+            # self.set_interact_object(triggerIds=[10000433], state=1)
             return 반응대기(self.ctx)
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +72,7 @@ class 반응체크(trigger_api.Trigger):
 
 
 class 소멸대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

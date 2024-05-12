@@ -32,7 +32,7 @@ class Round_01(trigger_api.Trigger):
 
 
 class Round_01_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -44,7 +44,7 @@ class Round_01_Random_01(trigger_api.Trigger):
 
 
 class Round_01_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -56,7 +56,7 @@ class Round_01_Random_02(trigger_api.Trigger):
 
 
 class Round_01_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -68,7 +68,7 @@ class Round_01_Random_03(trigger_api.Trigger):
 
 
 class Round_01_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -80,7 +80,7 @@ class Round_01_Random_04(trigger_api.Trigger):
 
 
 class Round_01_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -92,7 +92,7 @@ class Round_01_Random_05(trigger_api.Trigger):
 
 
 class Round_01_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[402], animationEffect=True)
         self.set_timer(timerId='4', seconds=4)
 
@@ -120,7 +120,7 @@ class Round_02(trigger_api.Trigger):
 
 
 class Round_02_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)
@@ -133,7 +133,7 @@ class Round_02_Random_01(trigger_api.Trigger):
 
 
 class Round_02_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)
@@ -146,7 +146,7 @@ class Round_02_Random_02(trigger_api.Trigger):
 
 
 class Round_02_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)
@@ -159,7 +159,7 @@ class Round_02_Random_03(trigger_api.Trigger):
 
 
 class Round_02_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)
@@ -172,7 +172,7 @@ class Round_02_Random_04(trigger_api.Trigger):
 
 
 class Round_02_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)
@@ -185,7 +185,7 @@ class Round_02_Random_05(trigger_api.Trigger):
 
 
 class Round_02_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=2)
         self.set_timer(timerId='6', seconds=6)

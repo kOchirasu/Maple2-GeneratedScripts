@@ -24,7 +24,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 차타이머2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='13', seconds=13)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 차타이머2(trigger_api.Trigger):
 
 
 class 차타이머5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=11)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 차타이머5(trigger_api.Trigger):
 
 
 class 차타이머7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +57,7 @@ class 차타이머7(trigger_api.Trigger):
 
 
 class 차타이머8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class 차타이머8(trigger_api.Trigger):
 
 
 class 차타이머9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='8', seconds=8)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 차타이머9(trigger_api.Trigger):
 
 
 class 차타이머10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='7', seconds=7)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class 차타이머10(trigger_api.Trigger):
 
 
 class 차타이머11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=6)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +101,7 @@ class 차타이머11(trigger_api.Trigger):
 
 
 class 차타이머12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 차타이머12(trigger_api.Trigger):
 
 
 class 생성랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1401], animationEffect=False)
         self.create_monster(spawnIds=[1402], animationEffect=False)
         self.create_monster(spawnIds=[1403], animationEffect=False)
@@ -124,7 +124,7 @@ class 생성랜덤(trigger_api.Trigger):
 
 
 class 소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1401])
         self.destroy_monster(spawnIds=[1402])
         self.destroy_monster(spawnIds=[1403])

@@ -5,7 +5,7 @@ import trigger_api
 # 플레이어 감지
 class 최초(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=1):
+        if self.count_users(boxId=701, minUsers='1'):
             return 시작조건체크(self.ctx)
 
 
@@ -13,12 +13,12 @@ class 시작조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
             return 어나운스0(self.ctx)
-        if self.count_users(boxId=701, boxId=20):
+        if self.count_users(boxId=701, minUsers='20'):
             return 어나운스0(self.ctx)
 
 
 class 어나운스0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$99999911__MAIN__0$', arg3='4000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 어나운스0(trigger_api.Trigger):
 
 
 class 어나운스1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', stage=0, count=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class 어나운스1(trigger_api.Trigger):
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True, animationDelay=1)
         self.create_monster(spawnIds=[102], animationEffect=True, animationDelay=2)
         self.create_monster(spawnIds=[103], animationEffect=True, animationDelay=3)
@@ -67,7 +67,7 @@ class idle(trigger_api.Trigger):
 
 
 class Round1_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=991104, key='Round_02', value=1)
         self.set_timer(timerId='3', seconds=3)
 

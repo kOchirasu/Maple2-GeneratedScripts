@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 지원군생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_15')
 
@@ -19,7 +19,7 @@ class 지원군생성(trigger_api.Trigger):
 
 
 class 지원군이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_105')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 지원군이동(trigger_api.Trigger):
 
 
 class 지원군소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[105])
         self.set_timer(timerId='5', seconds=90)
 

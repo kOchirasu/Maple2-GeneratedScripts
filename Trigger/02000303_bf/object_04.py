@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000601], state=0)
         self.set_interact_object(triggerIds=[10000602], state=0)
         self.set_interact_object(triggerIds=[10000603], state=0)
@@ -35,7 +35,7 @@ class 생성랜덤(trigger_api.Trigger):
 
 
 class 생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[60601], visible=True)
         self.set_interact_object(triggerIds=[10000601], state=1)
 
@@ -46,7 +46,7 @@ class 생성01(trigger_api.Trigger):
 
 
 class 생성02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[60602], visible=True)
         self.set_interact_object(triggerIds=[10000602], state=1)
 
@@ -57,7 +57,7 @@ class 생성02(trigger_api.Trigger):
 
 
 class 생성03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[60603], visible=True)
         self.set_interact_object(triggerIds=[10000603], state=1)
 
@@ -68,7 +68,7 @@ class 생성03(trigger_api.Trigger):
 
 
 class 생성04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[60604], visible=True)
         self.set_interact_object(triggerIds=[10000604], state=1)
 
@@ -79,7 +79,7 @@ class 생성04(trigger_api.Trigger):
 
 
 class 생성05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[60605], visible=True)
         self.set_interact_object(triggerIds=[10000605], state=1)
 
@@ -90,7 +90,7 @@ class 생성05(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='120', seconds=120)
 
     def on_tick(self) -> trigger_api.Trigger:

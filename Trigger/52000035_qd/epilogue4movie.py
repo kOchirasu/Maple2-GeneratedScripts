@@ -6,24 +6,30 @@ import trigger_api
 class 한라봉에이드검사1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[6000], questIds=[50001677], questStates=[2]):
+            # 챕터6 에필로그 [50001677 허락되지 않은 일] 미완료 시
             return ReturnMapReadyEP6(self.ctx)
         if not self.quest_user_detected(boxIds=[6000], questIds=[50001677], questStates=[2]):
+            # 챕터6 에필로그 [50001677 허락되지 않은 일] 미완료 시
             return 한라봉에이드검사2(self.ctx)
 
 
 class 한라봉에이드검사2(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[5000], questIds=[50001625], questStates=[2]):
+            # 챕터5 에필로그 [50001625 엇갈리는 마음] 미완료 시
             return ReturnMapReadyEP5(self.ctx)
         if not self.quest_user_detected(boxIds=[5000], questIds=[50001625], questStates=[2]):
+            # 챕터5 에필로그 [50001625 엇갈리는 마음] 미완료 시
             return 한라봉에이드검사3(self.ctx)
 
 
 class 한라봉에이드검사3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[4000], questIds=[50001613], questStates=[2]):
+            # 챕터4 에필로그 [50001613 푸른 희망의 빛] 미완료 시
             return ReturnMapReadyEP4(self.ctx)
         if not self.quest_user_detected(boxIds=[4000], questIds=[50001613], questStates=[2]):
+            # 챕터4 에필로그 [50001613 푸른 희망의 빛] 미완료 시
             return StartCheckEP6(self.ctx)
 
 
@@ -35,7 +41,7 @@ class ReturnMapReadyEP6(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP6_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__0$')
@@ -46,7 +52,7 @@ class ReturnMapReadyEP6_1(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP6_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000154, portalId=1)
 
 
@@ -58,7 +64,7 @@ class ReturnMapReadyEP5(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP5_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__1$')
@@ -69,7 +75,7 @@ class ReturnMapReadyEP5_1(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP5_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000065, portalId=1)
 
 
@@ -81,7 +87,7 @@ class ReturnMapReadyEP4(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP4_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__2$')
@@ -92,7 +98,7 @@ class ReturnMapReadyEP4_1(trigger_api.Trigger):
 
 
 class ReturnMapReadyEP4_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000001, portalId=1)
 
 
@@ -100,6 +106,7 @@ class ReturnMapReadyEP4_2(trigger_api.Trigger):
 class StartCheckEP6(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[6000], questIds=[50001677], questStates=[3]):
+            # 챕터6 에필로그 [50001677 허락되지 않은 일] 완료 시
             return 번으로보내는스테이트3(self.ctx)
         if not self.quest_user_detected(boxIds=[6000], questIds=[50001677], questStates=[3]):
             return StartCheckEP5(self.ctx)
@@ -108,6 +115,7 @@ class StartCheckEP6(trigger_api.Trigger):
 class StartCheckEP5(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[5000], questIds=[50001625], questStates=[3]):
+            # 챕터5 에필로그 [50001625 엇갈리는 마음] 완료 시
             return 번으로보내는스테이트2(self.ctx)
         if not self.quest_user_detected(boxIds=[5000], questIds=[50001625], questStates=[3]):
             return StartCheckEP4(self.ctx)
@@ -116,22 +124,23 @@ class StartCheckEP5(trigger_api.Trigger):
 class StartCheckEP4(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[4000], questIds=[50001613], questStates=[3]):
+            # 챕터4 에필로그 [50001613 푸른 희망의 빛] 완료 시
             return LoadingDelayA0(self.ctx)
 
 
 class 번으로보내는스테이트2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2, key='50001625', value=1)
 
 
 class 번으로보내는스테이트3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3, key='50001677', value=1)
 
 
 # 챕터4 에필로그 [50001613 푸른 희망의 빛] 완료 시 연출시작
 class LoadingDelayA0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Quit, action='exit')
         self.set_onetime_effect(id=11100104, enable=True, path='BG/Common/Sound/Eff_AMB_DarkCorridor_01.xml') # 어둠의 회랑 환경음
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
@@ -148,7 +157,7 @@ class LoadingDelayA0(trigger_api.Trigger):
 
 
 class LoadingDelayA1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_EP4_DarkLord') # 11001957 이동
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_EP4_Turka') # 투르카 이동
         self.move_npc(spawnId=300, patrolName='MS2PatrolData_EP4_Madria') # 마드리아 이동
@@ -160,7 +169,7 @@ class LoadingDelayA1(trigger_api.Trigger):
 
 
 class CameraEffectA0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 페이드 켠다
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -174,7 +183,7 @@ class CameraEffectA0(trigger_api.Trigger):
 
 
 class CameraEffectA1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000035_QD__EPILOGUE4MOVIE__3$', arg3=False)
         self.select_camera_path(pathIds=[1000,1001,1002,1003,1004,1005,1006,1007,1008,1009], returnView=False)
 
@@ -184,7 +193,7 @@ class CameraEffectA1(trigger_api.Trigger):
 
 
 class CameraEffectA2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml') # 페이드 끈다
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -195,7 +204,7 @@ class CameraEffectA2(trigger_api.Trigger):
 
 
 class CameraEffect1100(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -204,7 +213,7 @@ class CameraEffect1100(trigger_api.Trigger):
 
 
 class CameraEffect1101(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2100276, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_ZoomIn_01.xml')
         self.select_camera_path(pathIds=[1100,1101,1104], returnView=False)
@@ -215,7 +224,7 @@ class CameraEffect1101(trigger_api.Trigger):
 
 
 class CameraEffect_1103(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -224,7 +233,7 @@ class CameraEffect_1103(trigger_api.Trigger):
 
 
 class CameraEffect_1104(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.set_onetime_effect(id=2100277, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_DarkWizard_Appear_01.xml')
         self.select_camera_path(pathIds=[1103,1102,1105], returnView=False)
@@ -236,7 +245,7 @@ class CameraEffect_1104(trigger_api.Trigger):
 
 
 class CameraEffect_1105(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,7 +254,7 @@ class CameraEffect_1105(trigger_api.Trigger):
 
 
 class CameraEffect_1106(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +263,7 @@ class CameraEffect_1106(trigger_api.Trigger):
 
 
 class CameraEffectA3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
         self.select_camera_path(pathIds=[1200,1201], returnView=False)
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__4$', arg4=7)
@@ -266,8 +275,9 @@ class CameraEffectA3(trigger_api.Trigger):
 
 
 class Epilogue4Talk1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -276,7 +286,7 @@ class Epilogue4Talk1(trigger_api.Trigger):
 
 
 class Epilogue4Talk2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1300], returnView=False)
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__5$', arg4=5)
         self.set_skip(state=Epilogue4Talk3)
@@ -287,8 +297,9 @@ class Epilogue4Talk2(trigger_api.Trigger):
 
 
 class Epilogue4Talk3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -297,7 +308,7 @@ class Epilogue4Talk3(trigger_api.Trigger):
 
 
 class Epilogue4Talk4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__6$', arg4=5)
         self.set_skip(state=Epilogue4Talk5)
 
@@ -307,8 +318,9 @@ class Epilogue4Talk4(trigger_api.Trigger):
 
 
 class Epilogue4Talk5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -317,7 +329,7 @@ class Epilogue4Talk5(trigger_api.Trigger):
 
 
 class Epilogue4Talk6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1915, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001915.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__7$', arg4=6)
         self.set_skip(state=Epilogue4Talk7)
@@ -328,8 +340,9 @@ class Epilogue4Talk6(trigger_api.Trigger):
 
 
 class Epilogue4Talk7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -338,7 +351,7 @@ class Epilogue4Talk7(trigger_api.Trigger):
 
 
 class Epilogue4Talk8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2100,2101], returnView=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_EP4_DarkToTurka') # 11001957,투르카 노려봄!
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__8$', arg4=5)
@@ -350,8 +363,9 @@ class Epilogue4Talk8(trigger_api.Trigger):
 
 
 class Epilogue4Talk9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -360,7 +374,7 @@ class Epilogue4Talk9(trigger_api.Trigger):
 
 
 class Epilogue4Talk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__9$', arg4=5)
         self.set_skip(state=Epilogue4Talk11)
 
@@ -370,8 +384,9 @@ class Epilogue4Talk10(trigger_api.Trigger):
 
 
 class Epilogue4Talk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -380,7 +395,7 @@ class Epilogue4Talk11(trigger_api.Trigger):
 
 
 class Epilogue4Talk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__10$', arg4=5)
         self.set_skip(state=Epilogue4Talk12B)
 
@@ -390,8 +405,9 @@ class Epilogue4Talk12(trigger_api.Trigger):
 
 
 class Epilogue4Talk12B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -400,7 +416,7 @@ class Epilogue4Talk12B(trigger_api.Trigger):
 
 
 class Epilogue4Talk12C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_TurkaToDark') # 투르카,11001957 노려봄!
         self.select_camera_path(pathIds=[2102,2103], returnView=False)
         self.set_onetime_effect(id=1916, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001916.xml')
@@ -413,8 +429,9 @@ class Epilogue4Talk12C(trigger_api.Trigger):
 
 
 class Epilogue4Talk13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -424,7 +441,7 @@ class Epilogue4Talk13(trigger_api.Trigger):
 
 # 검은마법사 화남!
 class DM_AttScene01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000,2001], returnView=False)
         self.set_onetime_effect(id=2100278, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_DarkWizard_Attack_01.xml')
         self.set_npc_emotion_sequence(spawnId=900, sequenceName='Attack_01_A')
@@ -435,7 +452,7 @@ class DM_AttScene01(trigger_api.Trigger):
 
 
 class DM_AttScene02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
         self.set_onetime_effect(id=1917, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001917.xml')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_darkReturn') # 11001957,투르카 원복
@@ -447,7 +464,7 @@ class DM_AttScene02(trigger_api.Trigger):
 
 
 class DM_AttScene03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=102, sequenceName='Damg_A')
         self.set_npc_emotion_sequence(spawnId=200, sequenceName='Damg_A')
 
@@ -457,7 +474,7 @@ class DM_AttScene03(trigger_api.Trigger):
 
 
 class DM_AttScene04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2002,2003], returnView=False)
         self.set_time_scale(enable=True, startScale=1, endScale=0.1, duration=2.5, interpolator=2) # 2초간 느려지기 시작
 
@@ -467,7 +484,7 @@ class DM_AttScene04(trigger_api.Trigger):
 
 
 class Epilogue4Talk14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1501], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__12$', arg4=5)
         self.set_skip(state=Epilogue4Talk15)
@@ -478,8 +495,9 @@ class Epilogue4Talk14(trigger_api.Trigger):
 
 
 class Epilogue4Talk15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -488,7 +506,7 @@ class Epilogue4Talk15(trigger_api.Trigger):
 
 
 class Epilogue4Talk16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1200], returnView=False)
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__38$', arg4=5)
         self.set_skip(state=Epilogue4Talk17)
@@ -499,8 +517,9 @@ class Epilogue4Talk16(trigger_api.Trigger):
 
 
 class Epilogue4Talk17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -509,7 +528,7 @@ class Epilogue4Talk17(trigger_api.Trigger):
 
 
 class Epilogue4Talk18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1300], returnView=False)
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__13$', arg4=5)
         self.set_skip(state=Epilogue4Talk19)
@@ -520,8 +539,9 @@ class Epilogue4Talk18(trigger_api.Trigger):
 
 
 class Epilogue4Talk19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -530,7 +550,7 @@ class Epilogue4Talk19(trigger_api.Trigger):
 
 
 class Epilogue4Talk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1500], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__14$', arg4=5)
         self.set_skip(state=Epilogue4Talk21)
@@ -541,8 +561,9 @@ class Epilogue4Talk20(trigger_api.Trigger):
 
 
 class Epilogue4Talk21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -551,7 +572,7 @@ class Epilogue4Talk21(trigger_api.Trigger):
 
 
 class Epilogue4Talk22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__15$', arg4=5)
         self.set_skip(state=Epilogue4Talk23)
@@ -562,8 +583,9 @@ class Epilogue4Talk22(trigger_api.Trigger):
 
 
 class Epilogue4Talk23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -572,7 +594,7 @@ class Epilogue4Talk23(trigger_api.Trigger):
 
 
 class Epilogue4Talk24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__16$', arg4=5)
         self.set_skip(state=Epilogue4Talk25)
 
@@ -582,8 +604,9 @@ class Epilogue4Talk24(trigger_api.Trigger):
 
 
 class Epilogue4Talk25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -592,7 +615,7 @@ class Epilogue4Talk25(trigger_api.Trigger):
 
 
 class Epilogue4Talk26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__17$', arg4=5)
         self.set_skip(state=Epilogue4Talk27)
 
@@ -602,8 +625,9 @@ class Epilogue4Talk26(trigger_api.Trigger):
 
 
 class Epilogue4Talk27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -612,7 +636,7 @@ class Epilogue4Talk27(trigger_api.Trigger):
 
 
 class Epilogue4Talk27A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1203], returnView=False)
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__39$', arg4=5)
         self.set_skip(state=Epilogue4Talk27B)
@@ -623,8 +647,9 @@ class Epilogue4Talk27A(trigger_api.Trigger):
 
 
 class Epilogue4Talk27B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -633,7 +658,7 @@ class Epilogue4Talk27B(trigger_api.Trigger):
 
 
 class Epilogue4Talk28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1502,1504], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__18$', arg4=5)
         self.set_skip(state=Epilogue4Talk29)
@@ -644,8 +669,9 @@ class Epilogue4Talk28(trigger_api.Trigger):
 
 
 class Epilogue4Talk29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -654,7 +680,7 @@ class Epilogue4Talk29(trigger_api.Trigger):
 
 
 class Epilogue4Talk30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1400,1406], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__19$', arg4=8)
         self.set_onetime_effect(id=1978, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter4_End_01_00001978.xml')
@@ -666,8 +692,9 @@ class Epilogue4Talk30(trigger_api.Trigger):
 
 
 class Epilogue4Talk31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -676,7 +703,7 @@ class Epilogue4Talk31(trigger_api.Trigger):
 
 
 class Epilogue4Talk32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1401], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__20$', arg4=6)
         self.set_onetime_effect(id=1979, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter4_End_02_00001979.xml')
@@ -688,8 +715,9 @@ class Epilogue4Talk32(trigger_api.Trigger):
 
 
 class Epilogue4Talk33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -698,7 +726,7 @@ class Epilogue4Talk33(trigger_api.Trigger):
 
 
 class Epilogue4Talk34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1505,1506], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__21$', arg4=5)
         self.set_skip(state=Epilogue4Talk35)
@@ -709,8 +737,9 @@ class Epilogue4Talk34(trigger_api.Trigger):
 
 
 class Epilogue4Talk35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -719,7 +748,7 @@ class Epilogue4Talk35(trigger_api.Trigger):
 
 
 class Epilogue4Talk36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2100279, enable=True, path='BG/Common/Sound/Eff_System_Chapter4_ZoomOut_01.xml')
         self.select_camera_path(pathIds=[1403], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__22$', arg4=5)
@@ -732,8 +761,9 @@ class Epilogue4Talk36(trigger_api.Trigger):
 
 
 class Epilogue4Talk37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -742,7 +772,7 @@ class Epilogue4Talk37(trigger_api.Trigger):
 
 
 class Epilogue4Talk38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1500,1503], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__23$', arg4=5)
         self.set_skip(state=Epilogue4Talk39)
@@ -753,8 +783,9 @@ class Epilogue4Talk38(trigger_api.Trigger):
 
 
 class Epilogue4Talk39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -763,7 +794,7 @@ class Epilogue4Talk39(trigger_api.Trigger):
 
 
 class Epilogue4Talk40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1407], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__24$', arg4=7)
         self.set_onetime_effect(id=1981, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter4_End_04_00001981.xml')
@@ -775,8 +806,9 @@ class Epilogue4Talk40(trigger_api.Trigger):
 
 
 class Epilogue4Talk41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -785,7 +817,7 @@ class Epilogue4Talk41(trigger_api.Trigger):
 
 
 class Epilogue4Talk42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1401], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__25$', arg4=5)
         self.set_skip(state=Epilogue4Talk43)
@@ -796,8 +828,9 @@ class Epilogue4Talk42(trigger_api.Trigger):
 
 
 class Epilogue4Talk43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -806,7 +839,7 @@ class Epilogue4Talk43(trigger_api.Trigger):
 
 
 class Epilogue4Talk44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1402], returnView=False)
         self.set_conversation(type=2, spawnId=11001955, script='$52000035_QD__EPILOGUE4MOVIE__26$', arg4=5)
         self.set_skip(state=Epilogue4Talk45)
@@ -817,8 +850,9 @@ class Epilogue4Talk44(trigger_api.Trigger):
 
 
 class Epilogue4Talk45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -827,7 +861,7 @@ class Epilogue4Talk45(trigger_api.Trigger):
 
 
 class Epilogue4Talk46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1404], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__27$', arg4=5)
         self.set_onetime_effect(id=1982, enable=True, path='BG/Common/Sound/Eff_Madria_Chapter4_End_05_00001982.xml')
@@ -839,8 +873,9 @@ class Epilogue4Talk46(trigger_api.Trigger):
 
 
 class Epilogue4Talk47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -849,7 +884,7 @@ class Epilogue4Talk47(trigger_api.Trigger):
 
 
 class Epilogue4Talk48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1200,1201], returnView=False)
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__28$', arg4=5)
         self.set_skip(state=Epilogue4Talk49)
@@ -860,8 +895,9 @@ class Epilogue4Talk48(trigger_api.Trigger):
 
 
 class Epilogue4Talk49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -870,7 +906,7 @@ class Epilogue4Talk49(trigger_api.Trigger):
 
 
 class Epilogue4Talk50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__29$', arg4=5)
         self.set_skip(state=Epilogue4Talk51)
 
@@ -880,8 +916,9 @@ class Epilogue4Talk50(trigger_api.Trigger):
 
 
 class Epilogue4Talk51(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -890,7 +927,7 @@ class Epilogue4Talk51(trigger_api.Trigger):
 
 
 class Epilogue4Talk52(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=300, patrolName='MS2PatrolData_MadToDark') # 마드리아, 11001957 노려봄!
         self.select_camera_path(pathIds=[1405], returnView=False)
         self.set_conversation(type=2, spawnId=11001851, script='$52000035_QD__EPILOGUE4MOVIE__30$', arg4=5)
@@ -903,8 +940,9 @@ class Epilogue4Talk52(trigger_api.Trigger):
 
 
 class Epilogue4Talk53(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -913,7 +951,7 @@ class Epilogue4Talk53(trigger_api.Trigger):
 
 
 class Epilogue4Talk54(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1202], returnView=False)
         self.move_npc(spawnId=300, patrolName='MS2PatrolData_madriaReturn') # 마드리아, 재자리
         self.set_conversation(type=2, spawnId=11001957, script='$52000035_QD__EPILOGUE4MOVIE__31$', arg4=5)
@@ -925,8 +963,9 @@ class Epilogue4Talk54(trigger_api.Trigger):
 
 
 class Epilogue4Talk55(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -935,7 +974,7 @@ class Epilogue4Talk55(trigger_api.Trigger):
 
 
 class Epilogue4Talk56(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1100,1101,1104], returnView=False)
         self.set_onetime_effect(id=1918, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001918.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__32$', arg4=12)
@@ -947,8 +986,9 @@ class Epilogue4Talk56(trigger_api.Trigger):
 
 
 class Epilogue4Talk58(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -957,7 +997,7 @@ class Epilogue4Talk58(trigger_api.Trigger):
 
 
 class Epilogue4Talk59(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[400], animationEffect=False) # 벨라
         self.move_npc(spawnId=400, patrolName='MS2PatrolData_EP4_bella_go') # 벨라, 나서기
         self.select_camera_path(pathIds=[1600,1601], returnView=False)
@@ -970,8 +1010,9 @@ class Epilogue4Talk59(trigger_api.Trigger):
 
 
 class Epilogue4Talk60(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -980,7 +1021,7 @@ class Epilogue4Talk60(trigger_api.Trigger):
 
 
 class Epilogue4Talk61(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1300,1301], returnView=False)
         self.set_onetime_effect(id=1919, enable=True, path='BG/Common/Sound/Eff_Sound_52000035_Turka_00001919.xml')
         self.set_conversation(type=2, spawnId=11001956, script='$52000035_QD__EPILOGUE4MOVIE__34$', arg4=8)
@@ -992,8 +1033,9 @@ class Epilogue4Talk61(trigger_api.Trigger):
 
 
 class Epilogue4Talk62(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1002,7 +1044,7 @@ class Epilogue4Talk62(trigger_api.Trigger):
 
 
 class Epilogue4Talk63(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1602], returnView=False)
         self.set_conversation(type=2, spawnId=11001852, script='$52000035_QD__EPILOGUE4MOVIE__35$', arg4=5)
         self.set_skip(state=Epilogue4Talk64)
@@ -1013,8 +1055,9 @@ class Epilogue4Talk63(trigger_api.Trigger):
 
 
 class Epilogue4Talk64(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1023,7 +1066,7 @@ class Epilogue4Talk64(trigger_api.Trigger):
 
 
 class Epilogue4Talk65(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1603,1604], returnView=False)
         self.set_conversation(type=2, spawnId=11001852, script='$52000035_QD__EPILOGUE4MOVIE__36$', arg4=5)
         self.set_skip(state=Epilogue4Talk66)
@@ -1034,8 +1077,9 @@ class Epilogue4Talk65(trigger_api.Trigger):
 
 
 class Epilogue4Talk66(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1044,7 +1088,7 @@ class Epilogue4Talk66(trigger_api.Trigger):
 
 
 class Epilogue4Talk67(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1605,1606], returnView=False)
         self.set_conversation(type=2, spawnId=11001852, script='$52000035_QD__EPILOGUE4MOVIE__37$', arg4=5)
         self.set_skip(state=Epilogue4Talk68)
@@ -1055,8 +1099,9 @@ class Epilogue4Talk67(trigger_api.Trigger):
 
 
 class Epilogue4Talk68(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1065,7 +1110,7 @@ class Epilogue4Talk68(trigger_api.Trigger):
 
 
 class Epilogue4Talk69(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeOut.xml')
         self.remove_cinematic_talk()
 
@@ -1075,7 +1120,8 @@ class Epilogue4Talk69(trigger_api.Trigger):
 
 
 class Epilogue4Talk70(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1084,7 +1130,7 @@ class Epilogue4Talk70(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(mapId=2000001, portalId=2)

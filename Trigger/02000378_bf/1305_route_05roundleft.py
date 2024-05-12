@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[4011], visible=True, arg3=0, delay=0, scale=0) # PortalBarrier
         self.set_agent(triggerIds=[18051], visible=True)
@@ -16,7 +16,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='MakeFalse', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, boxId=1):
+        if self.count_users(boxId=9000, minUsers='1'):
             return StartDazzling01(self.ctx)
 
 
@@ -28,7 +28,7 @@ class StartDazzling01(trigger_api.Trigger):
 
 # 가짜 길이 깜빡이는 연출
 class StartDazzlingRandom01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=True, meshCount=6, arg4=100, delay=500) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,12 +39,13 @@ class StartDazzlingRandom01(trigger_api.Trigger):
         if self.user_value(key='MakeFalse', value=1):
             return MakeFalse(self.ctx)
 
-    def on_exit(self):
-        self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, meshCount=20, arg4=0, delay=0) # Fake
+    def on_exit(self) -> None:
+        self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, meshCount=20, arg4=0, delay=0)
+        # Fake
 
 
 class StartDazzlingRandom02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=True, meshCount=6, arg4=100, delay=500) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,12 +56,13 @@ class StartDazzlingRandom02(trigger_api.Trigger):
         if self.user_value(key='MakeFalse', value=1):
             return MakeFalse(self.ctx)
 
-    def on_exit(self):
-        self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, meshCount=20, arg4=0, delay=0) # Fake
+    def on_exit(self) -> None:
+        self.set_random_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, meshCount=20, arg4=0, delay=0)
+        # Fake
 
 
 class MakeTrue(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5005], visible=True) # 05Round_BridgeApp
         self.set_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, arg3=0, delay=0, scale=5) # Fake
         self.set_random_mesh(triggerIds=[330500,330501,330502,330503,330504,330505,330506,330507,330508,330509,330510,330511,330512,330513,330514,330515,330516,330517,330518,330519], visible=True, meshCount=20, arg4=100, delay=50) # Real
@@ -75,7 +77,7 @@ class MakeTrue(trigger_api.Trigger):
 
 
 class MakeFalse(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[130500,130501,130502,130503,130504,130505,130506,130507,130508,130509,130510,130511,130512,130513,130514,130515,130516,130517,130518,130519], visible=False, arg3=0, delay=0, scale=5) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:

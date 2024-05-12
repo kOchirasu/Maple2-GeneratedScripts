@@ -3,11 +3,13 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # Beep_Loop
         self.set_effect(triggerIds=[5001], visible=False) # MonitorOn_Pop
-        self.set_effect(triggerIds=[6000], visible=False) # Voice_Kandura_Satisfied_00001866
-        self.set_effect(triggerIds=[6001], visible=False) # Voice_Kandura_Think_00001867
+        # Voice_Kandura_Satisfied_00001866
+        self.set_effect(triggerIds=[6000], visible=False)
+        # Voice_Kandura_Think_00001867
+        self.set_effect(triggerIds=[6001], visible=False)
         self.set_sound(triggerId=10000, enable=False) # BGM
         self.set_sound(triggerId=10001, enable=False) # AMB_BrokenTV
         self.set_sound(triggerId=10002, enable=False) # AMB_AbandonedFacility
@@ -21,7 +23,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Enter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -32,10 +34,10 @@ class Enter01(trigger_api.Trigger):
 
 
 class PlayOpeningMovie02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
-        self.play_scene_movie(fileName='common\Common_Opening.usm', movieId=2)
+        self.play_scene_movie(fileName='common\\Common_Opening.usm', movieId=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='2'):
@@ -51,7 +53,7 @@ class PlayMovie01(trigger_api.Trigger):
 
 
 class PlayMovie02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Cut_Vivid_Dream.swf', movieId=1) # 소울바인더 인트로 컷신
@@ -62,13 +64,13 @@ class PlayMovie02(trigger_api.Trigger):
         if self.wait_tick(waitTick=77000):
             return LodingDelay01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -80,7 +82,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=True) # BGM
         self.set_sound(triggerId=10001, enable=True) # AMB_BrokenTV
         self.set_sound(triggerId=10002, enable=True) # AMB_AbandonedFacility
@@ -95,7 +97,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class Operator01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001705, script='$63000035_CS__REPORT01__0$', arg4=6) # 오퍼레이터
         self.set_scene_skip(state=PCTeleport01, action='exit')
 
@@ -105,7 +107,7 @@ class Operator01(trigger_api.Trigger):
 
 
 class OperatorSkip01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +116,7 @@ class OperatorSkip01(trigger_api.Trigger):
 
 
 class Operator02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001705, script='$63000035_CS__REPORT01__1$', arg4=6) # 오퍼레이터
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +125,7 @@ class Operator02(trigger_api.Trigger):
 
 
 class OperatorSkip02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +134,7 @@ class OperatorSkip02(trigger_api.Trigger):
 
 
 class MonitorOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=502, enable=True)
@@ -143,7 +145,7 @@ class MonitorOn01(trigger_api.Trigger):
 
 
 class MonitorOn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # Beep_Loop
         self.set_effect(triggerIds=[5001], visible=True) # MonitorOn_Pop
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # MonitorOn
@@ -155,7 +157,7 @@ class MonitorOn02(trigger_api.Trigger):
 
 
 class MonitorOn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=503, enable=True)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
@@ -165,9 +167,10 @@ class MonitorOn03(trigger_api.Trigger):
 
 
 class KahnTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000035_CS__REPORT01__2$', arg4=6) # 칸두라 00001867
-        self.set_effect(triggerIds=[6001], visible=True) # Voice_Kandura_Think_00001867
+        # Voice_Kandura_Think_00001867
+        self.set_effect(triggerIds=[6001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -175,7 +178,7 @@ class KahnTalk01(trigger_api.Trigger):
 
 
 class KahnTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -184,7 +187,7 @@ class KahnTalk02(trigger_api.Trigger):
 
 
 class KahnTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=504, enable=True)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A') # 칸두라
 
@@ -194,7 +197,7 @@ class KahnTalk03(trigger_api.Trigger):
 
 
 class KahnTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -203,9 +206,10 @@ class KahnTalk04(trigger_api.Trigger):
 
 
 class KahnTalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001559, script='$63000035_CS__REPORT01__3$', arg4=6) # 칸두라 00001866
-        self.set_effect(triggerIds=[6000], visible=True) # Voice_Kandura_Satisfied_00001866
+        # Voice_Kandura_Satisfied_00001866
+        self.set_effect(triggerIds=[6000], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -213,7 +217,7 @@ class KahnTalk05(trigger_api.Trigger):
 
 
 class KahnTalk06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -222,7 +226,8 @@ class KahnTalk06(trigger_api.Trigger):
 
 
 class PCTeleport01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -234,7 +239,7 @@ class PCTeleport01(trigger_api.Trigger):
 
 
 class PCTeleport02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=False) # BGM
         self.set_sound(triggerId=10001, enable=False) # AMB_BrokenTV
         self.set_sound(triggerId=10002, enable=False) # AMB_AbandonedFacility
@@ -245,7 +250,7 @@ class PCTeleport02(trigger_api.Trigger):
 
 
 class PCTeleport03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000024, portalId=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +259,7 @@ class PCTeleport03(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=504, enable=False)
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 가이드(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=10010001, textId=10010001)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 가이드(trigger_api.Trigger):
         if self.wait_tick(waitTick=3000):
             return 가이드(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10010001)
 
 

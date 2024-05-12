@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001258], state=2)
         self.set_interact_object(triggerIds=[10001259], state=2)
         self.set_interact_object(triggerIds=[10001260], state=2)
@@ -50,7 +50,7 @@ class 체크10001258(trigger_api.Trigger):
 
 
 class 생성10001258(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001258], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 체크10001259(trigger_api.Trigger):
 
 
 class 생성10001259(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001259], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class 체크10001260(trigger_api.Trigger):
 
 
 class 생성10001260(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001260], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +110,7 @@ class 체크10001261(trigger_api.Trigger):
 
 
 class 생성10001261(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001261], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +130,7 @@ class 체크10001262(trigger_api.Trigger):
 
 
 class 생성10001262(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001262], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +150,7 @@ class 체크10001263(trigger_api.Trigger):
 
 
 class 생성10001263(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001263], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -170,7 +170,7 @@ class 체크10001264(trigger_api.Trigger):
 
 
 class 생성10001264(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001264], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -190,7 +190,7 @@ class 체크10001265(trigger_api.Trigger):
 
 
 class 생성10001265(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001265], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

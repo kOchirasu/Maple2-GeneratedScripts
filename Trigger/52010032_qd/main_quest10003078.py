@@ -4,7 +4,7 @@ import trigger_api
 
 # 무르파고스 신전에 나메드를 만나러 들어오는 퀘스트
 class 무르파고스에들어오면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=False) # 퀘스트 나메드: 11000039
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 무르파고스에들어오면(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[301], animationEffect=True) # 시끄러운 주먹
@@ -33,7 +33,7 @@ class 무르파고스이동(trigger_api.Trigger):
 
 
 class 무르파고스이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user_path(patrolName='MS2PatrolData_3005')
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_3003')
@@ -48,14 +48,14 @@ class 무르파고스이동01(trigger_api.Trigger):
 
 
 class 나메드에게퀘스트받기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = 무르파고스에들어오면

@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 더미소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900008, key='Dummy', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

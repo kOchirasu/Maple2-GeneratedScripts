@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
         self.set_effect(triggerIds=[5003], visible=False)
@@ -21,7 +21,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
         self.create_monster(spawnIds=[102], animationEffect=True)
         self.create_monster(spawnIds=[103], animationEffect=True)
@@ -37,7 +37,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Scene_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -47,7 +47,7 @@ class Scene_Ready(trigger_api.Trigger):
 
 
 class Scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class Scene_01(trigger_api.Trigger):
 
 
 class Scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5100], visible=True) # 입구 이펙트
         self.set_effect(triggerIds=[5101], visible=True) # 입구 이펙트
 
@@ -66,7 +66,7 @@ class Scene_02(trigger_api.Trigger):
 
 
 class Scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4101,4102], returnView=False)
         self.set_scene_skip(state=MobSpawn_A, action='nextState')
 
@@ -76,7 +76,7 @@ class Scene_03(trigger_api.Trigger):
 
 
 class Scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4105], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class Scene_04(trigger_api.Trigger):
 
 
 class Scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4104,4103], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class Scene_05(trigger_api.Trigger):
 
 
 class Scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4201], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Down_Idle_A', duration=10000)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Down_Idle_A', duration=10000)
@@ -106,7 +106,7 @@ class Scene_06(trigger_api.Trigger):
 
 
 class Scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4202], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -115,7 +115,7 @@ class Scene_07(trigger_api.Trigger):
 
 
 class Scene_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4204], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -124,8 +124,9 @@ class Scene_08(trigger_api.Trigger):
 
 
 class Scene_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4202], returnView=False)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +135,7 @@ class Scene_09(trigger_api.Trigger):
 
 
 class MobSpawn_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=101, addSpawnId=201)
         self.change_monster(removeSpawnId=102, addSpawnId=202)
         self.change_monster(removeSpawnId=103, addSpawnId=203)
@@ -148,7 +149,7 @@ class MobSpawn_A(trigger_api.Trigger):
 
 
 class Play(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -159,7 +160,7 @@ class Play(trigger_api.Trigger):
 
 
 class MobSpawn_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=104, addSpawnId=204)
         self.change_monster(removeSpawnId=105, addSpawnId=205)
         self.change_monster(removeSpawnId=106, addSpawnId=206)
@@ -177,7 +178,7 @@ class MobSpawn_B(trigger_api.Trigger):
 
 
 class Scene_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_scene_skip(state=End, action='Exit')
 
@@ -187,9 +188,10 @@ class Scene_10(trigger_api.Trigger):
 
 
 class Scene_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5100], visible=False) # 입구 이펙트
         self.set_effect(triggerIds=[5101], visible=False) # 입구 이펙트
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,7 +200,7 @@ class Scene_11(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)

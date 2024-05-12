@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_actor(triggerId=8001, visible=False, initialSequence='Event_01_A')
 
@@ -13,7 +13,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=0, msg='!!!', duration=1000, delayTick=0)
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_actor(triggerId=8001, visible=True, initialSequence='Event_03_A')
@@ -33,7 +33,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=8001, visible=False, initialSequence='Event_03_A')
         self.reset_camera(interpolationTime=1)
 

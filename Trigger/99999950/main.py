@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 시작대기(trigger_api.Trigger):
 
 
 class 라운드1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101001], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 라운드1(trigger_api.Trigger):
 
 
 class 라운드02_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101001], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class 라운드02_1(trigger_api.Trigger):
 
 
 class 라운드대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 라운드대기2(trigger_api.Trigger):
 
 
 class 라운드2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101002], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 라운드2(trigger_api.Trigger):
 
 
 class 라운드02_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101002], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class 라운드02_2(trigger_api.Trigger):
 
 
 class 라운드대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +75,7 @@ class 라운드대기3(trigger_api.Trigger):
 
 
 class 라운드3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101003], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class 라운드3(trigger_api.Trigger):
 
 
 class 라운드02_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101003], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class 라운드02_3(trigger_api.Trigger):
 
 
 class 라운드대기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class 라운드대기4(trigger_api.Trigger):
 
 
 class 라운드4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101004], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 라운드4(trigger_api.Trigger):
 
 
 class 라운드02_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101004], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 라운드02_4(trigger_api.Trigger):
 
 
 class 라운드03_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101004], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +130,7 @@ class 라운드03_4(trigger_api.Trigger):
 
 
 class 라운드대기5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class 라운드대기5(trigger_api.Trigger):
 
 
 class 라운드5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101005], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,19 +3,20 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8051], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count(value=1):
+            # 던전 최대 인원수가 1이면
             return vehicle_01(self.ctx)
-        if self.count_users(boxId=906, boxId=1):
+        if self.count_users(boxId=906, minUsers='1'):
             return monster_spawn_ready(self.ctx)
 
 
 class vehicle_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=906, boxId=1):
+        if self.count_users(boxId=906, minUsers='1'):
             return monster_spawn_ready(self.ctx)
 
 
@@ -26,7 +27,7 @@ class monster_spawn_ready(trigger_api.Trigger):
 
 
 class monster_spawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[3003], animationEffect=True)
         self.set_effect(triggerIds=[8051], visible=True)
 
@@ -36,7 +37,7 @@ class monster_spawn(trigger_api.Trigger):
 
 
 class vehicle_spawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8051], visible=False)
         self.set_interact_object(triggerIds=[10001050], state=1)
 
@@ -46,7 +47,7 @@ class vehicle_spawn(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001050], state=2)
 
 

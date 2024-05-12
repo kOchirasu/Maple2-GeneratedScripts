@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 # 준비
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000126, portalId=6001)
         self.set_sound(triggerId=7002, enable=True)
         self.set_cinematic_ui(type=1)
@@ -30,7 +30,7 @@ class ready(trigger_api.Trigger):
 
 
 class move(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
         self.add_balloon_talk(spawnId=201, msg='$52000126_QD__MAIN_01__0$', duration=7000, delayTick=1)
 
@@ -40,7 +40,7 @@ class move(trigger_api.Trigger):
 
 
 class talk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Clap_A')
         self.add_balloon_talk(spawnId=201, msg='$52000126_QD__MAIN_01__1$', duration=3000, delayTick=0)
 
@@ -50,7 +50,7 @@ class talk(trigger_api.Trigger):
 
 
 class endtalk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='$52000126_QD__MAIN_01__2$', duration=3000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class endtalk(trigger_api.Trigger):
 
 
 class endwaiting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -72,7 +72,7 @@ class endwaiting(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

@@ -3,14 +3,15 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990002, key='Spawn', value=0)
         self.set_user_value(triggerId=99990003, key='RandomBomb', value=0)
         self.set_user_value(triggerId=99990004, key='Laser', value=0)
         self.set_user_value(triggerId=99990005, key='elevator', value=0)
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_interact_object(triggerIds=[10002185], state=0) # 엘리베이터 발판
-        self.enable_spawn_point_pc(spawnId=100, isEnable=True) # <시작 위치 세팅>
+        self.enable_spawn_point_pc(spawnId=100, isEnable=True)
+        # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawnId=101, isEnable=False)
         self.enable_spawn_point_pc(spawnId=102, isEnable=False)
 
@@ -57,7 +58,7 @@ class 엘리베이터_체크(trigger_api.Trigger):
 
 
 class 엘리베이터_스위치(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002185], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +67,7 @@ class 엘리베이터_스위치(trigger_api.Trigger):
 
 
 class 엘리베이터_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[5001], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,13 +76,14 @@ class 엘리베이터_활성화(trigger_api.Trigger):
 
 
 class 아르케온_탑승_가이드(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02020300_BF__MAIN__5$', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[711]):
             self.set_user_value(triggerId=99990005, key='elevator', value=1)
             self.enable_spawn_point_pc(spawnId=100, isEnable=False)
+            # <시작 위치 세팅>
             self.enable_spawn_point_pc(spawnId=101, isEnable=True)
             self.enable_spawn_point_pc(spawnId=102, isEnable=False)
             return 레이저_패턴_시작(self.ctx)
@@ -94,7 +96,7 @@ class 레이저_패턴_시작(trigger_api.Trigger):
 
 
 class 갈림길_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203,204], animationEffect=False)
         self.set_actor(triggerId=9001, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_end')
         self.set_mesh(triggerIds=[1001], visible=True)
@@ -105,7 +107,7 @@ class 갈림길_전투(trigger_api.Trigger):
 
 
 class 짜투리_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301,302,303,304], animationEffect=False)
         self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=True)
         self.set_mesh(triggerIds=[30000,30010,30020,30030], visible=True)
@@ -116,7 +118,7 @@ class 짜투리_전투(trigger_api.Trigger):
 
 
 class 웨이브_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=29000170, illust='ArcaneBlader_unfair', script='$02020300_BF__MAIN__6$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -127,7 +129,7 @@ class 웨이브_시작(trigger_api.Trigger):
 
 
 class 추가대사_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=29500101, illust='ArcheonBlack_Normal', script='$02020300_BF__MAIN__7$', duration=5000)
         self.set_user_value(triggerId=99990002, key='Spawn', value=1)
 
@@ -138,7 +140,7 @@ class 추가대사_04(trigger_api.Trigger):
 
 
 class 길열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1001], visible=False)
         self.set_mesh(triggerIds=[2001,2002,2003,2004], visible=True)
         self.set_mesh(triggerIds=[30000,30010,30020,30030], visible=True)
@@ -149,8 +151,9 @@ class 길열림(trigger_api.Trigger):
 
 
 class 지뢰방_시작(trigger_api.Trigger):
-    def on_enter(self):
-        self.enable_spawn_point_pc(spawnId=100, isEnable=False) # <시작 위치 세팅>
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.enable_spawn_point_pc(spawnId=100, isEnable=False)
+        # <시작 위치 세팅>
         self.enable_spawn_point_pc(spawnId=101, isEnable=False)
         self.enable_spawn_point_pc(spawnId=102, isEnable=True)
         self.set_actor(triggerId=9002, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_end')
@@ -167,7 +170,7 @@ class 지뢰방_시작(trigger_api.Trigger):
 
 
 class 추가대사_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=29000170, illust='ArcaneBlader_normal', script='$02020300_BF__MAIN__9$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +179,7 @@ class 추가대사_05(trigger_api.Trigger):
 
 
 class 추가대사_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11003536, illust='Neirin_normal', script='$02020300_BF__MAIN__10$', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -186,7 +189,7 @@ class 추가대사_06(trigger_api.Trigger):
 
 
 class 보스전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=29000170, illust='ArcaneBlader_normal', script='$02020300_BF__MAIN__11$', duration=5000)
         self.set_actor(triggerId=9002, visible=True, initialSequence='sf_fi_funct_darkdoor_A01_start')
         self.set_mesh(triggerIds=[3001], visible=False)
@@ -198,7 +201,7 @@ class 보스전(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990005, key='elevator', value=0)
 
 

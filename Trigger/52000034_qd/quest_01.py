@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 제이시추가배치(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001,2002,2003], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 제이시추가배치(trigger_api.Trigger):
 
 
 class 기본NPC배치(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001,2002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 기본NPC배치(trigger_api.Trigger):
 
 
 class 연출01시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -44,7 +44,7 @@ class 연출01시작(trigger_api.Trigger):
 
 
 class 자베스대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__0$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class 자베스대사01(trigger_api.Trigger):
 
 
 class 자베스대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__1$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class 자베스대사02(trigger_api.Trigger):
 
 
 class 브라보대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__2$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +71,7 @@ class 브라보대사01(trigger_api.Trigger):
 
 
 class 브라보대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__3$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +80,7 @@ class 브라보대사02(trigger_api.Trigger):
 
 
 class 브라보대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__4$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class 브라보대사03(trigger_api.Trigger):
 
 
 class 자베스대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__5$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +98,7 @@ class 자베스대사03(trigger_api.Trigger):
 
 
 class 자베스대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__6$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +107,7 @@ class 자베스대사04(trigger_api.Trigger):
 
 
 class 브라보대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__7$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 브라보대사04(trigger_api.Trigger):
 
 
 class 브라보대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__8$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +125,7 @@ class 브라보대사05(trigger_api.Trigger):
 
 
 class 자베스대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__9$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class 자베스대사05(trigger_api.Trigger):
 
 
 class 자베스대사06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$52000034_QD__QUEST_01__10$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +143,7 @@ class 자베스대사06(trigger_api.Trigger):
 
 
 class 브라보대사06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__11$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +152,7 @@ class 브라보대사06(trigger_api.Trigger):
 
 
 class 브라보대사07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001545, script='$52000034_QD__QUEST_01__12$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +167,7 @@ class 잠시대기(trigger_api.Trigger):
 
 
 class 제이시대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001690, script='$52000034_QD__QUEST_01__13$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,8 +176,9 @@ class 제이시대사01(trigger_api.Trigger):
 
 
 class 연출01종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=301, enable=False)
         self.set_cinematic_ui(type=0)

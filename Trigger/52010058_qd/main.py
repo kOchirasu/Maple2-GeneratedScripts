@@ -4,15 +4,15 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9010, boxId=2):
+        if self.count_users(boxId=9010, minUsers='2'):
             return 성공연출시작(self.ctx)
 
 
 class 성공연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
-        self.play_scene_movie(fileName='common\WorldInvasionScene6.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\WorldInvasionScene6.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -22,7 +22,7 @@ class 성공연출시작(trigger_api.Trigger):
 
 
 class quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000422, portalId=3)
 
 

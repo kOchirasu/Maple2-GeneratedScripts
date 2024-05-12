@@ -10,12 +10,12 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=216, msg='$02000532_BF__TALK__0$', duration=3500, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6500):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = idle

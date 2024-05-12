@@ -3,6 +3,10 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_user_value(triggerId=900001, key='Reset', value=0)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MainStart', value=1):
             self.set_user_value(triggerId=900001, key='MainStart', value=0)
@@ -27,7 +31,7 @@ class WaitRound1(trigger_api.Trigger):
 
 
 class ContinuePlayDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.lock_my_pc(isLock=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,38 +48,48 @@ class ContinuePlayDelay2(trigger_api.Trigger):
 
 
 class ContinuePlay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_dungeon_reward_count(key='ClearRound', dungeonRewardId=24096001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ClearRound', value=1):
+            # self.debug_string(string='이어하기로 2스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910002, key='StartRound2', value=1)
             return ResultRound2(self.ctx)
         if self.user_value(key='ClearRound', value=2):
+            # self.debug_string(string='이어하기로 3스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910003, key='StartRound3', value=1)
             return ResultRound3(self.ctx)
         if self.user_value(key='ClearRound', value=3):
+            # self.debug_string(string='이어하기로 4스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910004, key='StartRound4', value=1)
             return ResultRound4(self.ctx)
         if self.user_value(key='ClearRound', value=4):
+            # self.debug_string(string='이어하기로 5스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910005, key='StartRound5', value=1)
             return ResultRound5(self.ctx)
         if self.user_value(key='ClearRound', value=5):
+            # self.debug_string(string='이어하기로 6스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910006, key='StartRound6', value=1)
             return ResultRound6(self.ctx)
         if self.user_value(key='ClearRound', value=6):
+            # self.debug_string(string='이어하기로 7스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910007, key='StartRound7', value=1)
             return ResultRound7(self.ctx)
         if self.user_value(key='ClearRound', value=7):
+            # self.debug_string(string='이어하기로 8스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910008, key='StartRound8', value=1)
             return ResultRound8(self.ctx)
         if self.user_value(key='ClearRound', value=8):
+            # self.debug_string(string='이어하기로 9스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910009, key='StartRound9', value=1)
             return ResultRound9(self.ctx)
         if self.user_value(key='ClearRound', value=9):
+            # self.debug_string(string='이어하기로 10스테이지 부터 시작합니다.')
             self.set_user_value(triggerId=910010, key='StartRound10', value=1)
             return ResultRound10(self.ctx)
         if self.user_value(key='ClearRound', value=10):
+            # self.debug_string(string='이미 10 스테이지까지 완료 했습니다. 처음부터 시작합니다. ')
             return WaitRound1(self.ctx)
 
 
@@ -274,7 +288,7 @@ class ResultRound10(trigger_api.Trigger):
 
 
 class RoundClear1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -283,7 +297,7 @@ class RoundClear1(trigger_api.Trigger):
 
 
 class RoundClear2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -292,7 +306,7 @@ class RoundClear2(trigger_api.Trigger):
 
 
 class RoundClear3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -301,7 +315,7 @@ class RoundClear3(trigger_api.Trigger):
 
 
 class RoundClear4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -310,7 +324,7 @@ class RoundClear4(trigger_api.Trigger):
 
 
 class RoundClear5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -319,7 +333,7 @@ class RoundClear5(trigger_api.Trigger):
 
 
 class RoundClear6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -328,7 +342,7 @@ class RoundClear6(trigger_api.Trigger):
 
 
 class RoundClear7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -337,7 +351,7 @@ class RoundClear7(trigger_api.Trigger):
 
 
 class RoundClear8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -346,7 +360,7 @@ class RoundClear8(trigger_api.Trigger):
 
 
 class RoundClear9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear(uiType='None')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -355,7 +369,7 @@ class RoundClear9(trigger_api.Trigger):
 
 
 class AllRoundClear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -364,7 +378,7 @@ class AllRoundClear(trigger_api.Trigger):
 
 
 class RoundFail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_fail()
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -7,7 +7,7 @@ import trigger_api
 # 한순간의 방심 하렌(11003749) - spawnpoint : 2
 # 연출용 하렌(11003756) - spawnpoint : 101
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 
 class 세번째전투끝나고(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,9 @@ class 세번째전투끝나고(trigger_api.Trigger):
 
 
 class 세번째전투끝나고1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.create_monster(spawnIds=[101], animationEffect=False)
+        # <action name="SetNpcEmotionLoop" arg1="101" arg2="Sit_Down_A" arg3="12000" /> 쓰러져있는 연출용 하렌
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -37,7 +39,7 @@ class 세번째전투끝나고1(trigger_api.Trigger):
 
 
 class 세번째전투끝나고2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020031, portalId=6001)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,12 +48,12 @@ class 세번째전투끝나고2(trigger_api.Trigger):
 
 
 class 세번째전투끝나고2_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(triggerIds=[5001], visible=True)
         self.face_emotion(spawnId=0, emotionName='defaultBattle')
         self.set_pc_emotion_loop(sequenceName='Idle_A', duration=5000)
-        self.add_cinematic_talk(npcId=0, msg='역시 너희 흑성회는 믿을 만한 사람들이 아니었군.\n천공의 심장은 내가 가져가겠어.', duration=5000)
+        self.add_cinematic_talk(npcId=0, msg='역시 너희 흑성회는 믿을 만한 사람들이 아니었군.\\n천공의 심장은 내가 가져가겠어.', duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -59,7 +61,7 @@ class 세번째전투끝나고2_2(trigger_api.Trigger):
 
 
 class 세번째전투끝나고3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4010], returnView=False)
         self.set_effect(triggerIds=[5001], visible=False)
         self.add_cinematic_talk(npcId=11003756, msg='크윽...', duration=3000)
@@ -70,7 +72,7 @@ class 세번째전투끝나고3(trigger_api.Trigger):
 
 
 class 세번째전투끝나고3_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_3002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +81,7 @@ class 세번째전투끝나고3_01(trigger_api.Trigger):
 
 
 class 세번째전투끝나고4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='오늘 있었던 일은, 라딘에게도 전하겠어.', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='흑성회와의 동맹은 여기까지야.', duration=3000)
@@ -90,7 +92,7 @@ class 세번째전투끝나고4(trigger_api.Trigger):
 
 
 class 천공의탑으로이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(mapId=52020030, portalId=6001)
 

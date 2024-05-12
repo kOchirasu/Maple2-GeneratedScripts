@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[206,207], animationEffect=False)
         self.set_user_value(triggerId=99990003, key='summon', value=2)
 

@@ -3,11 +3,11 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=1, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=702, boxId=1):
+        if self.count_users(boxId=702, minUsers='1'):
             return fail_random(self.ctx)
 
 
@@ -26,7 +26,7 @@ class fail_random(trigger_api.Trigger):
 
 
 class fail_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=1, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class fail_01(trigger_api.Trigger):
 
 
 class fail_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=2, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class fail_02(trigger_api.Trigger):
 
 
 class fail_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=3, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class fail_03(trigger_api.Trigger):
 
 
 class fail_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=4, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class fail_04(trigger_api.Trigger):
 
 
 class fail_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999911, portalId=5, boxId=702)
 
     def on_tick(self) -> trigger_api.Trigger:

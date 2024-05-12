@@ -3,9 +3,11 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_interact_object(triggerIds=[12000069], state=2) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001141 걸어서 71001041 제거
-        self.set_interact_object(triggerIds=[12000077], state=2) # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001041 부여
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001141 걸어서 71001041 제거
+        self.set_interact_object(triggerIds=[12000069], state=2)
+        # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001041 부여
+        self.set_interact_object(triggerIds=[12000077], state=2)
         self.set_interact_object(triggerIds=[12000088], state=0) # CheckPosition_Tree01
         self.set_interact_object(triggerIds=[12000089], state=0) # CheckPosition_Tree02
         self.set_interact_object(triggerIds=[12000090], state=0) # CheckPosition_Tree03
@@ -44,11 +46,13 @@ class SettingDelay(trigger_api.Trigger):
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_interact_object(triggerIds=[12000077], state=1) # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001041 부여
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # AntiqueMap / 기믹 시작 오브젝트 / Additional Effect 71001041 부여
+        self.set_interact_object(triggerIds=[12000077], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000077], stateValue=0):
+            # UI 표시 안함 / 황금 상자 소유권 Additional Effect 71001041 지속시간 동일
             self.set_timer(timerId='1', seconds=90, startDelay=1, interval=0, vOffset=0)
             return TouchingInNumericalOrder_Start_Delay(self.ctx)
         if self.user_value(key='TimeEventOn', value=0):
@@ -62,7 +66,7 @@ class TouchingInNumericalOrder_Start_Delay(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Play01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_interact_object(triggerIds=[12000088], state=1) # CheckPosition_Tree01
         self.set_interact_object(triggerIds=[12000089], state=1) # CheckPosition_Tree02
@@ -101,7 +105,7 @@ class TouchingInNumericalOrder_Play01(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Play02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000088], state=0) # CheckPosition_Tree01
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_actor(triggerId=14011, visible=True, initialSequence='Interaction_luminous_A02_on') # Flower01_Of_Tree01
@@ -120,7 +124,7 @@ class TouchingInNumericalOrder_Play02(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Play03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000089], state=0) # CheckPosition_Tree02
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_actor(triggerId=14021, visible=True, initialSequence='Interaction_luminous_A02_on') # Flower01_Of_Tree02
@@ -138,7 +142,7 @@ class TouchingInNumericalOrder_Play03(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Play04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000090], state=0) # CheckPosition_Tree03
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_actor(triggerId=14031, visible=True, initialSequence='Interaction_luminous_A02_on') # Flower01_Of_Tree03
@@ -155,7 +159,7 @@ class TouchingInNumericalOrder_Play04(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Play05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000091], state=0) # CheckPosition_Tree04
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_actor(triggerId=14041, visible=True, initialSequence='Interaction_luminous_A02_on') # Flower01_Of_Tree04
@@ -171,7 +175,7 @@ class TouchingInNumericalOrder_Play05(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000092], state=0) # CheckPosition_Tree05
         self.set_effect(triggerIds=[14201], visible=True) # Right Sound Effect
         self.set_actor(triggerId=14051, visible=True, initialSequence='Interaction_luminous_A02_on') # Flower01_Of_Tree05
@@ -187,11 +191,12 @@ class TouchingInNumericalOrder_End(trigger_api.Trigger):
 
 # 퍼즐 성공 후 종료
 class TouchingInNumericalOrder_Success(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=61, startDelay=1, interval=0, vOffset=0)
         self.add_buff(boxIds=[140001], skillId=71001042, level=1, isPlayer=False, isSkillSet=False)
         self.set_effect(triggerIds=[14200], visible=True) # Success Sound Effect
-        self.set_interact_object(triggerIds=[12000069], state=1) # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001141 걸어서 71001041 제거
+        # RareBox / 기믹 종료 오브젝트 / Additional Effect 71001141 걸어서 71001041 제거
+        self.set_interact_object(triggerIds=[12000069], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[12000069], stateValue=0):
@@ -207,7 +212,7 @@ class TouchingInNumericalOrder_SuccessDelay(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=14000, key='TimeEventOn', value=0)
         self.reset_timer(timerId='1')
         self.reset_timer(timerId='10')
@@ -219,7 +224,7 @@ class TouchingInNumericalOrder_Quit(trigger_api.Trigger):
 
 # 오답 터치
 class TouchingInNumericalOrder_FailDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[14202], visible=True) # Wrong Sound Effect
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -232,7 +237,7 @@ class TouchingInNumericalOrder_FailDelay(trigger_api.Trigger):
 
 
 class TouchingInNumericalOrder_Fail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000088], state=0) # CheckPosition_Tree01
         self.set_interact_object(triggerIds=[12000089], state=0) # CheckPosition_Tree02
         self.set_interact_object(triggerIds=[12000090], state=0) # CheckPosition_Tree03
@@ -258,13 +263,14 @@ class TouchingInNumericalOrder_Fail(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return TouchingInNumericalOrder_Play01(self.ctx)
         if self.time_expired(timerId='1'):
+            # 타임 이벤트가 종료했으면
             return ResetTimer(self.ctx)
         if self.user_value(key='TimeEventOn', value=0):
             return ResetTimer(self.ctx)
 
 
 class ResetTimer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='1')
 
     def on_tick(self) -> trigger_api.Trigger:

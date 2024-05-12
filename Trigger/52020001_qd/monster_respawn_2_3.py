@@ -15,7 +15,7 @@ class 몬스터사망(trigger_api.Trigger):
 
 
 class 몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[6000032], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

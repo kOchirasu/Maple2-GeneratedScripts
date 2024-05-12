@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6201], visible=False, delay=0, scale=0) # 파란 선 안보이게
         self.set_interact_object(triggerIds=[10000821], state=1)
         self.set_mesh(triggerIds=[6150,6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162,6163], visible=True, delay=0, scale=0) # 빨간 선 보이게
@@ -15,7 +15,7 @@ class 작동(trigger_api.Trigger):
 
 
 class 열림상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_effect(triggerIds=[9000001], visible=True) # Sound EFfect on
         self.set_mesh(triggerIds=[6211], visible=False, delay=200, scale=15) # 빨간 선 안보이게
@@ -27,7 +27,7 @@ class 열림상태(trigger_api.Trigger):
 
 
 class 열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6001], visible=False, delay=0, scale=10) # 벽 해제
         self.set_timer(timerId='1', seconds=1)
 

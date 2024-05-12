@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='RemoveAll', value=0)
         self.destroy_monster(spawnIds=[600,601,602,603,604,701,702,703,704,705])
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MobSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[600,601,602,603,604,701,702,703,704,705], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class MobSpawn(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[600,601,602,603,604,701,702,703,704,705])
 
 

@@ -3,14 +3,15 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='Battle_1_Clear', value=0)
         self.start_combine_spawn(groupId=[500], isStart=False)
         self.start_combine_spawn(groupId=[501], isStart=False)
         self.start_combine_spawn(groupId=[502], isStart=False)
         self.start_combine_spawn(groupId=[503], isStart=False)
         self.start_combine_spawn(groupId=[504], isStart=False)
-        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml') # 웨이브 구간별, or 조건으로 타이머 설정, 개별 30초 정도 설정
+        # 웨이브 구간별, or 조건으로 타이머 설정, 개별 30초 정도 설정
+        self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.reset_timer(timerId='1')
         self.reset_timer(timerId='2')
         self.reset_timer(timerId='3')
@@ -22,9 +23,10 @@ class 대기(trigger_api.Trigger):
 
 # 시작
 class 스폰_1_SE(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
-        self.score_board_create(type='ShadowGauge', maxScore=800) # <ShadowExpedition 기능을 대체함>
+        self.score_board_create(type='ShadowGauge', maxScore=800)
+        # <ShadowExpedition 기능을 대체함>
         self.start_combine_spawn(groupId=[500], isStart=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +37,7 @@ class 스폰_1_SE(trigger_api.Trigger):
 
 
 class 스폰_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.side_npc_talk(type='talk', npcId=11003533, illust='Bliche_normal', duration=5000, script='$02020063_BF__BATTLE_1__0$')
 
@@ -47,7 +49,7 @@ class 스폰_1(trigger_api.Trigger):
 
 
 class 스폰_1_추가대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020063_BF__BATTLE_1__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +60,7 @@ class 스폰_1_추가대사1(trigger_api.Trigger):
 
 
 class 스폰_1_추가대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11003536, illust='Neirin_surprise', duration=5000, script='$02020063_BF__BATTLE_1__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +71,7 @@ class 스폰_1_추가대사2(trigger_api.Trigger):
 
 
 class 스폰_2_SE(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,20 +82,20 @@ class 스폰_2_SE(trigger_api.Trigger):
 
 
 class 스폰_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=990, startDelay=1)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.start_combine_spawn(groupId=[501], isStart=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.time_expired(timerId='1') or self.score_board_compare(operator='GreaterEqual', score=150):
             return 스폰_3_SE(self.ctx)
         if self.user_value(key='Battle_1_SpawnStart', value=0):
             return 대기(self.ctx)
 
 
 class 스폰_3_SE(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,20 +106,20 @@ class 스폰_3_SE(trigger_api.Trigger):
 
 
 class 스폰_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=990, startDelay=1)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.start_combine_spawn(groupId=[502], isStart=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.time_expired(timerId='2') or self.score_board_compare(operator='GreaterEqual', score=300):
             return 스폰_4_SE(self.ctx)
         if self.user_value(key='Battle_1_SpawnStart', value=0):
             return 대기(self.ctx)
 
 
 class 스폰_4_SE(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -128,20 +130,20 @@ class 스폰_4_SE(trigger_api.Trigger):
 
 
 class 스폰_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=990, startDelay=1)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.start_combine_spawn(groupId=[503], isStart=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.time_expired(timerId='3') or self.score_board_compare(operator='GreaterEqual', score=450):
             return 스폰_5_SE(self.ctx)
         if self.user_value(key='Battle_1_SpawnStart', value=0):
             return 대기(self.ctx)
 
 
 class 스폰_5_SE(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +154,7 @@ class 스폰_5_SE(trigger_api.Trigger):
 
 
 class 스폰_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
         self.start_combine_spawn(groupId=[504], isStart=True)
 
@@ -164,7 +166,7 @@ class 스폰_5(trigger_api.Trigger):
 
 
 class 포탑페이즈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[500], isStart=False)
         self.start_combine_spawn(groupId=[501], isStart=False)
         self.start_combine_spawn(groupId=[502], isStart=False)

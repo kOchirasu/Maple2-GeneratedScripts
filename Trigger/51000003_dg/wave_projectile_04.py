@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class Round_check(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[421,422,423,424,425,426,427,428,429,430])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class Round_01(trigger_api.Trigger):
 
 
 class Round_01_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[216], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -47,7 +47,7 @@ class Round_01_Random_01(trigger_api.Trigger):
 
 
 class Round_01_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[217], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -61,7 +61,7 @@ class Round_01_Random_02(trigger_api.Trigger):
 
 
 class Round_01_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[218], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -75,7 +75,7 @@ class Round_01_Random_03(trigger_api.Trigger):
 
 
 class Round_01_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[219], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -89,7 +89,7 @@ class Round_01_Random_04(trigger_api.Trigger):
 
 
 class Round_01_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[220], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -103,7 +103,9 @@ class Round_01_Random_05(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    pass
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=1, arg2='wave_projectile_04 종료', arg3='1000')
+        pass
 
 
 initial_state = Round_check

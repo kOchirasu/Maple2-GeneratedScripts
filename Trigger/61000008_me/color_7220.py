@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Color22', value=10)
         self.set_mesh(triggerIds=[822], visible=True, arg3=0, delay=0, scale=0) # yellow
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
@@ -18,7 +18,7 @@ class Wait(trigger_api.Trigger):
 
 # Yellow Before
 class YellowBefore(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[822], visible=True, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1022], visible=False, arg3=0, delay=0, scale=0) # red
@@ -38,7 +38,7 @@ class YellowBefore(trigger_api.Trigger):
 
 # Red Before
 class RedBefore(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1022], visible=True, arg3=0, delay=0, scale=0) # red
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[822], visible=False, arg3=0, delay=0, scale=0) # yellow
@@ -58,7 +58,7 @@ class RedBefore(trigger_api.Trigger):
 
 # Green After
 class GreenAfter(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[922], visible=True, arg3=0, delay=0, scale=0) # green
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class GreenAfter(trigger_api.Trigger):
 
 # Yellow After
 class YellowAfter(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[822], visible=True, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[1022], visible=False, arg3=100, delay=0, scale=0) # red
@@ -96,7 +96,7 @@ class YellowAfter(trigger_api.Trigger):
 
 # Red After
 class RedAfter(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1022], visible=True, arg3=0, delay=0, scale=0) # red
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
         self.set_mesh(triggerIds=[822], visible=False, arg3=100, delay=0, scale=0) # yellow
@@ -116,7 +116,7 @@ class RedAfter(trigger_api.Trigger):
 
 # All Clear
 class Clear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=2) # green
         self.set_mesh(triggerIds=[822], visible=False, arg3=0, delay=0, scale=2) # yellow
         self.set_mesh(triggerIds=[1022], visible=False, arg3=0, delay=0, scale=2) # red
@@ -128,7 +128,7 @@ class Clear(trigger_api.Trigger):
 
 # Regen
 class Regen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
         self.set_mesh(triggerIds=[822], visible=True, arg3=400, delay=0, scale=0) # yellow
         self.set_mesh(triggerIds=[922], visible=False, arg3=0, delay=0, scale=0) # green
@@ -141,7 +141,7 @@ class Regen(trigger_api.Trigger):
 
 # Reset
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ColorStart', value=0) # Pattern Trigger
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000390], state=0)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
@@ -29,7 +29,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -44,7 +44,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 연출시작02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
         self.create_monster(spawnIds=[1002], animationEffect=False)
         self.set_effect(triggerIds=[602], visible=True)
@@ -56,7 +56,7 @@ class 연출시작02(trigger_api.Trigger):
 
 
 class 말풍선대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2001, script='$52000044_QD__10003040__0$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class 말풍선대사01(trigger_api.Trigger):
 
 
 class 말풍선대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001')
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData_2002')
         self.move_npc(spawnId=2003, patrolName='MS2PatrolData_2003')
@@ -79,7 +79,7 @@ class 말풍선대사02(trigger_api.Trigger):
 
 
 class 제이시대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000515, script='$52000044_QD__10003040__2$', arg4=2)
         self.set_skip(state=제이시대사01스킵)
 
@@ -89,8 +89,9 @@ class 제이시대사01(trigger_api.Trigger):
 
 
 class 제이시대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +100,7 @@ class 제이시대사01스킵(trigger_api.Trigger):
 
 
 class 제이시대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_effect(triggerIds=[601], visible=True)
         self.set_conversation(type=2, spawnId=11000515, script='$52000044_QD__10003040__3$', arg4=4)
@@ -111,8 +112,9 @@ class 제이시대사02(trigger_api.Trigger):
 
 
 class 제이시대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +123,7 @@ class 제이시대사02스킵(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=302, enable=False)
@@ -134,7 +136,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 차전투시작1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25200441, textId=25200441, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,7 +146,7 @@ class 차전투시작1(trigger_api.Trigger):
 
 
 class 차전투시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -169,7 +171,7 @@ class 오브젝트반응조건(trigger_api.Trigger):
 
 
 class 오브젝트반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000390], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[199], animationEffect=False) # 웨이브 장치 작동
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -9,17 +9,17 @@ class 체력조건(trigger_api.Trigger):
 
 
 class 전투페이즈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4000201], animationEffect=False)
         self.create_monster(spawnIds=[4000202], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[4000201]) and self.monster_dead(boxIds=[4000202]):
             return 전투페이즈_2(self.ctx)
 
 
 class 전투페이즈_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4000301], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 전투페이즈_2(trigger_api.Trigger):
 
 
 class 전투페이즈_2_대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=4000301, script='하하하!!내가 돌아왔다!', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,20 +37,20 @@ class 전투페이즈_2_대사(trigger_api.Trigger):
 
 
 class 끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='카...카트반? 어떻게?!', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[4000301]):
             return 대화(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_ambient_light(primary=[0,0,0])
         self.set_directional_light(diffuseColor=[0,0,0], specularColor=[0,0,0])
 
 
 class 대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
         self.set_conversation(type=2, spawnId=4000201, script='제법이군요! 그렇다면 이건 어떤가요?', arg4=5)
@@ -59,24 +59,24 @@ class 대화(trigger_api.Trigger):
         if self.wait_tick(waitTick=1000):
             return 조디등장_1(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[4000401], animationEffect=False)
 
 
 class 조디등장_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=4000401, patrolName='MS2PatrolData0_4000401_1')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 조디등장_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.select_camera_path(pathIds=[2000001], returnView=False)
 
 
 class 조디등장_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=0, script='!!!!!!!??????', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=0, script='조...조디?!', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=0, script='조디...살아있었던거야?', arg4=3, arg5=0)
@@ -91,13 +91,13 @@ class 조디등장_2(trigger_api.Trigger):
         if self.wait_tick(waitTick=32000):
             return 마지막전투(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[4000401], arg2=False)
         self.select_camera_path(pathIds=[2000001], returnView=True)
 
 
 class 마지막전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)
         self.destroy_monster(spawnIds=[4000401])
@@ -109,7 +109,7 @@ class 마지막전투(trigger_api.Trigger):
 
 
 class 마지막전투_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[180,180,149])
         self.set_directional_light(diffuseColor=[219,204,182], specularColor=[219,204,182])
         self.set_portal(portalId=95, visible=True, enable=True)
@@ -121,44 +121,102 @@ class 마지막전투_2(trigger_api.Trigger):
 
 
 class 마지막전투_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=912, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=913, key='respawn_phase_4', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[4000403]) and self.monster_dead(boxIds=[4000404]):
             return 마지막전투_4(self.ctx)
 
 
 class 마지막전투_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=914, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=915, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=916, key='respawn_phase_4', value=1)
         self.set_conversation(type=1, spawnId=0, script='조디!! 제발 맘춰!!', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[4000405]) and self.monster_dead(boxIds=[4000406]) and self.monster_dead(boxIds=[4000407]):
             return 마지막전투_5(self.ctx)
 
 
 class 마지막전투_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=917, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=918, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=919, key='respawn_phase_4', value=1)
         self.set_user_value(triggerId=920, key='respawn_phase_4', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.monster_dead(boxIds=[4000408]) and self.monster_dead(boxIds=[4000409]) and self.monster_dead(boxIds=[4000410]) and self.monster_dead(boxIds=[4000411]):
             return 긴급대화_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_achievement(type='trigger', achieve='DollMaster')
 
 
+"""
+class 마지막전투_2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_portal(portalId=95, visible=True, enable=True)
+        self.set_user_value(triggerId=911, key='respawn_phase_4', value=1)
+        self.set_user_value(triggerId=912, key='respawn_phase_4', value=1)
+        self.set_user_value(triggerId=913, key='respawn_phase_4', value=1)
+        self.set_user_value(triggerId=914, key='respawn_phase_4', value=1)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=4400):
+            return None # Missing State: 타이머시작
+
+"""
+
+
+"""
+class 타이머시작(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_timer(timerId='115', seconds=30, startDelay=1)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return None # Missing State: 긴급대화
+
+"""
+
+
+"""
+class 긴급대화(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_conversation(type=1, spawnId=0, script='조디!! 제발 맘춰!!', arg4=3, arg5=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=15000):
+            return None # Missing State: 시간종료
+
+"""
+
+
+"""
+class 시간종료(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_achievement(type='trigger', achieve='DollMaster')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.time_expired(timerId='115'):
+            return 긴급대화_2(self.ctx)
+
+    def on_exit(self) -> None:
+        self.set_user_value(triggerId=911, key='respawn_phase_4_end', value=1)
+        self.set_user_value(triggerId=912, key='respawn_phase_4_end', value=1)
+        self.set_user_value(triggerId=913, key='respawn_phase_4_end', value=1)
+        self.set_user_value(triggerId=914, key='respawn_phase_4_end', value=1)
+
+"""
+
+
 class 긴급대화_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Disappoint_A','Emotion_Disappoint_Idle_A'])
@@ -170,7 +228,7 @@ class 긴급대화_2(trigger_api.Trigger):
 
 
 class 긴급대화_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
 
@@ -180,7 +238,7 @@ class 긴급대화_3(trigger_api.Trigger):
 
 
 class 마지막_연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[400001], animationEffect=False)
         self.create_monster(spawnIds=[400002], animationEffect=False)
         self.create_monster(spawnIds=[400003], animationEffect=False)
@@ -193,12 +251,12 @@ class 마지막_연출(trigger_api.Trigger):
         if self.wait_tick(waitTick=1500):
             return 마지막_연출_2(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_pc_emotion_loop(sequenceName='Emotion_Disappoint_Idle_A', duration=100000000)
 
 
 class 마지막_연출_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera_path(pathIds=[2000005], returnView=False)
@@ -209,7 +267,7 @@ class 마지막_연출_2(trigger_api.Trigger):
 
 
 class 마지막_연출_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[320001], animationEffect=False)
@@ -221,7 +279,7 @@ class 마지막_연출_3(trigger_api.Trigger):
 
 
 class 마지막_연출_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=320001, script='하하하하! 느껴지시나요? 나와 당신의 높이가!!', arg4=5)
         self.set_conversation(type=2, spawnId=0, script='헉헉...제발 그만둬!!', arg4=3, arg5=0)
         self.set_conversation(type=2, spawnId=320001, script='이 몽환의 무대 안에서는 어떠한 존재라도 저를 이길 수 없습니다!', arg4=5)
@@ -234,7 +292,7 @@ class 마지막_연출_4(trigger_api.Trigger):
 
 
 class 마지막_연출_4_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000006], returnView=False)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -245,7 +303,7 @@ class 마지막_연출_4_2(trigger_api.Trigger):
 
 
 class 마지막_연출_4_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[410001], animationEffect=False)
         self.create_monster(spawnIds=[410002], animationEffect=False)
         self.create_monster(spawnIds=[410003], animationEffect=False)
@@ -255,7 +313,7 @@ class 마지막_연출_4_3(trigger_api.Trigger):
         if self.wait_tick(waitTick=300):
             return 마지막_연출_5(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[420001], animationEffect=False)
         self.create_monster(spawnIds=[420002], animationEffect=False)
         self.create_monster(spawnIds=[420003], animationEffect=False)
@@ -270,17 +328,17 @@ class 마지막_연출_5(trigger_api.Trigger):
         if self.wait_tick(waitTick=900):
             return 유저이동(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=4)
 
 
 class 유저이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020032, portalId=6001)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2500):
-            return None
+            pass
 
 
 initial_state = 체력조건

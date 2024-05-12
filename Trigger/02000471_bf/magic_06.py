@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040315, key='10002024clear', value=0)
         self.set_user_value(triggerId=2040321, key='10002024clear', value=0)
         self.set_user_value(triggerId=2040322, key='10002024clear', value=0)
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7006], visible=False)
         self.set_mesh(triggerIds=[1106], visible=False, arg3=0, delay=200, scale=15)
         self.set_mesh(triggerIds=[1206], visible=True, arg3=0, delay=200, scale=15)
@@ -27,7 +27,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040315, key='10002024clear', value=1)
         self.set_user_value(triggerId=2040321, key='10002024clear', value=1)
         self.set_user_value(triggerId=2040322, key='10002024clear', value=1)
@@ -40,7 +40,7 @@ class Event_06(trigger_api.Trigger):
 
 
 class Event_06_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1103, script='$02000471_BF__MAGIC_06__0$', arg4=3, arg5=1)
         self.set_npc_emotion_sequence(spawnId=1103, sequenceName='Talk_A')
         self.set_conversation(type=1, spawnId=1104, script='$02000471_BF__MAGIC_06__1$', arg4=3, arg5=4)
@@ -53,7 +53,7 @@ class Event_06_b(trigger_api.Trigger):
 
 
 class Event_06_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=1104, sequenceName='Talk_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class Event_06_c(trigger_api.Trigger):
 
 
 class Event_06_d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1103,1104,1105,1101,1102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +77,7 @@ class Event_06_e(trigger_api.Trigger):
 
 
 class Event_06_f(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=702, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[1107,1108], animationEffect=False)
 
@@ -87,7 +87,7 @@ class Event_06_f(trigger_api.Trigger):
 
 
 class Event_06_g(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1107, patrolName='MS2PatrolData_2140')
         self.move_npc(spawnId=1108, patrolName='MS2PatrolData_2141')
 
@@ -97,7 +97,7 @@ class Event_06_g(trigger_api.Trigger):
 
 
 class Event_06_h(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1107, script='$02000471_BF__MAGIC_06__4$', arg4=5, arg5=0)
         self.set_conversation(type=1, spawnId=1108, script='$02000471_BF__MAGIC_06__5$', arg4=3, arg5=3)
 
@@ -107,7 +107,7 @@ class Event_06_h(trigger_api.Trigger):
 
 
 class Event_06_i(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1107, patrolName='MS2PatrolData_2142')
         self.set_conversation(type=1, spawnId=1107, script='$02000471_BF__MAGIC_06__6$', arg4=5, arg5=0)
         self.set_conversation(type=1, spawnId=1108, script='$02000471_BF__MAGIC_06__7$', arg4=3, arg5=3)
@@ -119,7 +119,7 @@ class Event_06_i(trigger_api.Trigger):
 
 
 class Event_06_j(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1108, patrolName='MS2PatrolData_2143')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -128,7 +128,7 @@ class Event_06_j(trigger_api.Trigger):
 
 
 class Event_06_k(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1107,1108])
 
 

@@ -5,7 +5,7 @@ import trigger_api
 # 심연의 성채
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[5000], visible=True)
         self.set_mesh(triggerIds=[8900], visible=True)
         self.set_mesh(triggerIds=[8901], visible=True)
@@ -32,7 +32,7 @@ class idle(trigger_api.Trigger):
 
 # 첫번째 발판
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000537_BF__MAIN__0$', arg3='3000')
         self.create_monster(spawnIds=[101,1011,1012,1013,1014,1017,1018,1019], animationEffect=False)
 
@@ -42,7 +42,7 @@ class ready(trigger_api.Trigger):
 
 
 class 도마뱀스폰1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8900], visible=False)
         self.create_monster(spawnIds=[1015,1016], animationEffect=True)
 
@@ -52,7 +52,7 @@ class 도마뱀스폰1(trigger_api.Trigger):
 
 
 class 시작702(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
         self.create_monster(spawnIds=[102,1022,1023,1024,1025], animationEffect=True)
@@ -64,7 +64,7 @@ class 시작702(trigger_api.Trigger):
 
 
 class 마무리1_702(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8901], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +73,7 @@ class 마무리1_702(trigger_api.Trigger):
 
 
 class 마무리2_702(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +82,7 @@ class 마무리2_702(trigger_api.Trigger):
 
 
 class 시작703(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1026])
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.enable_spawn_point_pc(spawnId=2, isEnable=True)
@@ -93,7 +93,7 @@ class 시작703(trigger_api.Trigger):
 
 
 class 진행703(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000537_BF__MAIN__3$', arg3='3000')
         self.create_monster(spawnIds=[109], animationEffect=True)
         self.create_monster(spawnIds=[103,1031,1032,1033,1034], animationEffect=True)
@@ -104,7 +104,7 @@ class 진행703(trigger_api.Trigger):
 
 
 class 마무리1_703(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8902], visible=False)
         self.create_monster(spawnIds=[1035], animationEffect=True)
 
@@ -114,7 +114,7 @@ class 마무리1_703(trigger_api.Trigger):
 
 
 class 마무리2_703(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000537_BF__MAIN__4$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class 마무리2_703(trigger_api.Trigger):
 
 
 class 시작704(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=2, isEnable=False)
         self.enable_spawn_point_pc(spawnId=3, isEnable=True)
         self.create_monster(spawnIds=[104,1041,1042,1043,1044], animationEffect=False)
@@ -134,7 +134,7 @@ class 시작704(trigger_api.Trigger):
 
 
 class 진행704(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +143,7 @@ class 진행704(trigger_api.Trigger):
 
 
 class 마무리704(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8903], visible=False)
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__6$')
 
@@ -153,7 +153,7 @@ class 마무리704(trigger_api.Trigger):
 
 
 class 시작705(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=3, isEnable=False)
         self.enable_spawn_point_pc(spawnId=4, isEnable=True)
 
@@ -163,7 +163,7 @@ class 시작705(trigger_api.Trigger):
 
 
 class 진행705(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105,1051,1052,1053,1054], animationEffect=True)
         self.side_npc_talk(npcId=22600006, illust='DesertDragonBigBlue_normal', duration=4000, script='$02000537_BF__MAIN__7$')
 
@@ -173,7 +173,7 @@ class 진행705(trigger_api.Trigger):
 
 
 class 마무리705(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8904], visible=False)
         self.create_monster(spawnIds=[1036], animationEffect=True)
 
@@ -183,7 +183,7 @@ class 마무리705(trigger_api.Trigger):
 
 
 class 버프걸어주기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000537_BF__MAIN__8$')
         self.set_skill(triggerIds=[9000], enable=True)
 
@@ -193,7 +193,7 @@ class 버프걸어주기(trigger_api.Trigger):
 
 
 class 시작706(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__9$')
         self.enable_spawn_point_pc(spawnId=4, isEnable=False)
         self.enable_spawn_point_pc(spawnId=5, isEnable=True)
@@ -205,7 +205,7 @@ class 시작706(trigger_api.Trigger):
 
 
 class 마무리706(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8905], visible=False)
         self.side_npc_talk(npcId=11004644, illust='SlaveMan3_normal', duration=4000, script='$02000537_BF__MAIN__10$')
 
@@ -215,7 +215,7 @@ class 마무리706(trigger_api.Trigger):
 
 
 class 시작707(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=5, isEnable=False)
         self.enable_spawn_point_pc(spawnId=6, isEnable=True)
         self.create_monster(spawnIds=[108], animationEffect=True)
@@ -227,7 +227,7 @@ class 시작707(trigger_api.Trigger):
 
 
 class 포털생성전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
         self.create_monster(spawnIds=[1091], animationEffect=True)
 
@@ -237,7 +237,7 @@ class 포털생성전(trigger_api.Trigger):
 
 
 class 포털생성전2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[109])
         self.create_monster(spawnIds=[1091], animationEffect=True)
         self.side_npc_talk(npcId=11004643, illust='SlaveWoman3_normal', duration=4000, script='$02000537_BF__MAIN__12$')
@@ -248,7 +248,7 @@ class 포털생성전2(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 

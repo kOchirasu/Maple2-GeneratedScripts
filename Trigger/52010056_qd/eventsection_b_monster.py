@@ -9,7 +9,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[302], animationEffect=True) # 브라운 크림슨: 29000384
         self.create_monster(spawnIds=[303], animationEffect=True) # 브라운 크림슨: 29000384

@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 
 class 암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 암전(trigger_api.Trigger):
 
 
 class 연출시작1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020029, portalId=6002)
         self.destroy_monster(spawnIds=[105])
         self.set_cinematic_ui(type=1)
@@ -35,7 +35,7 @@ class 연출시작1(trigger_api.Trigger):
 
 
 class 연출시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -53,7 +53,7 @@ class 연출시작2(trigger_api.Trigger):
 
 
 class 정보검색첫번째(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003755, msg='티어스 코어에 대해서 검색해 주세요.', duration=3000)
 
@@ -63,7 +63,7 @@ class 정보검색첫번째(trigger_api.Trigger):
 
 
 class 정보검색첫번째2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[4006], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -77,7 +77,7 @@ class 정보검색첫번째2(trigger_api.Trigger):
 
 
 class 정보검색첫번째2_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4013,4010], returnView=False)
         self.add_cinematic_talk(npcId=11003717, msg='티어스 코어는 티마이온의 에너지 원으로, 강력한 마력의 힘이 담겨 있다.', duration=3000)
         self.add_cinematic_talk(npcId=11003717, msg='티어스 코어는 몇 가지의 재료로 조합할 수 있으며, 이 재료는 크리티아스의 사방에 흩어져 있다.', duration=3000)
@@ -90,7 +90,7 @@ class 정보검색첫번째2_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003717, msg='파멸의 날개 이외의 재료는 천공의 심장, 신의 눈, 영혼의 구슬, 지혜의 고리이다. ', duration=3000)
         self.add_cinematic_talk(npcId=11003717, msg='천공의 심장은 마력의 숲의 천공의 탑에 보관되어 있으며, 실제적인 티어스 코어의 베이스가 되는 물질이다.', duration=3000)
         self.add_cinematic_talk(npcId=11003717, msg='신의 눈은 티아만 시간의...', duration=3000)
@@ -101,7 +101,7 @@ class 정보검색첫번째3(trigger_api.Trigger):
 
 
 class 정보검색첫번째3_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=104, emotionName='dance_S')
         self.select_camera_path(pathIds=[4011], returnView=False)
         self.add_cinematic_talk(npcId=11003717, msg='엇!?', duration=4000)
@@ -112,7 +112,7 @@ class 정보검색첫번째3_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_npc_emotion_sequence(spawnId=104, sequenceName='Emotion_Troubled_A')
         self.add_cinematic_talk(npcId=11003717, msg='으음...', duration=3000)
@@ -123,7 +123,7 @@ class 정보검색첫번째4(trigger_api.Trigger):
 
 
 class 정보검색첫번째4_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3005')
         self.add_cinematic_talk(npcId=11003755, msg='무슨일이지요?', duration=4000)
@@ -134,7 +134,7 @@ class 정보검색첫번째4_2(trigger_api.Trigger):
 
 
 class 정보검색첫번째4_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=11003717, msg='갑자기... 티어스 코어에 대한 정보를 볼수가 없게 되었습니다.', duration=3000)
         self.add_cinematic_talk(npcId=11003717, msg='누군가가... 데이터 접근을 막고 있습니다.', duration=3000)
@@ -145,7 +145,7 @@ class 정보검색첫번째4_3(trigger_api.Trigger):
 
 
 class 정보검색첫번째4_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=3000)
         self.add_cinematic_talk(npcId=11003755, msg='흐음. 누가 접근을 막고 있는건지는 알 수 있을까나?', duration=3000)
         self.add_cinematic_talk(npcId=11003717, msg='노력은 해보겠지만, 시간이 필요합니다.', duration=3000)
@@ -157,7 +157,7 @@ class 정보검색첫번째4_4(trigger_api.Trigger):
 
 
 class 정보검색첫번째5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=20000)
         self.add_cinematic_talk(npcId=0, msg='그렇다면, 제가 먼저 천공의 심장을 찾으러 가겠어요.', duration=4000)
@@ -168,7 +168,7 @@ class 정보검색첫번째5(trigger_api.Trigger):
 
 
 class 정보검색첫번째5_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=9000)
         self.add_cinematic_talk(npcId=11003755, msg='...아무래도 그게 좋겠군요.', duration=4000)
@@ -179,7 +179,7 @@ class 정보검색첫번째5_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째5_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='당신은 같이 안 가나요?', duration=4000)
 
@@ -189,10 +189,10 @@ class 정보검색첫번째5_2(trigger_api.Trigger):
 
 
 class 정보검색첫번째5_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=3000)
-        self.add_cinematic_talk(npcId=11003755, msg='예. 저는 더 찾고 싶은 정보가 있습니다.\n나중에 뵙죠.', duration=4000)
+        self.add_cinematic_talk(npcId=11003755, msg='예. 저는 더 찾고 싶은 정보가 있습니다.\\n나중에 뵙죠.', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -200,7 +200,7 @@ class 정보검색첫번째5_3(trigger_api.Trigger):
 
 
 class 정보검색첫번째6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='알겠어요. 더 알게 되는 것이 있으면 알려주세요.', duration=4000)
 
@@ -210,7 +210,7 @@ class 정보검색첫번째6(trigger_api.Trigger):
 
 
 class 정보검색첫번째7_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_3004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,7 +219,7 @@ class 정보검색첫번째7_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -231,7 +231,7 @@ class 정보검색첫번째7(trigger_api.Trigger):
 
 
 class 정보검색첫번째8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False)
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[4004], returnView=False)
@@ -245,7 +245,7 @@ class 정보검색첫번째8(trigger_api.Trigger):
 
 
 class 정보검색첫번째8_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=104, sequenceName='Emotion_Troubled_A')
         self.add_cinematic_talk(npcId=11003717, msg='희귀한 보석? 헤카톤 왕의 비밀?', duration=3000)
 
@@ -255,7 +255,7 @@ class 정보검색첫번째8_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003755, msg='훗. 찾고 있는 것은 따로 있지.', duration=3000)
@@ -266,7 +266,7 @@ class 정보검색첫번째9(trigger_api.Trigger):
 
 
 class 정보검색첫번째9_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Bore_B')
         self.face_emotion(spawnId=103, emotionName='Idle_A')
 
@@ -276,7 +276,7 @@ class 정보검색첫번째9_1(trigger_api.Trigger):
 
 
 class 정보검색첫번째10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
         self.face_emotion(spawnId=103, emotionName='Trigger_Bore_03')
         self.add_cinematic_talk(npcId=11003755, msg='비밀 병기 프로젝트 아포칼립스...!', duration=4000)
@@ -287,7 +287,7 @@ class 정보검색첫번째10(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -296,7 +296,7 @@ class 이동(trigger_api.Trigger):
 
 
 class 이동_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
         self.destroy_monster(spawnIds=[104])
 
@@ -306,7 +306,7 @@ class 이동_1(trigger_api.Trigger):
 
 
 class 이동_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.visible_my_pc(isVisible=True)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000487], state=1)
         self.set_actor(triggerId=913, visible=False, initialSequence='Attack_Idle_A')
         self.set_effect(triggerIds=[914], visible=False)
@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 오브젝트반응(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=913, visible=True, initialSequence='Attack_Idle_A')
         self.set_effect(triggerIds=[914], visible=True)
         self.set_timer(timerId='1', seconds=2)
@@ -23,13 +23,13 @@ class 오브젝트반응(trigger_api.Trigger):
         if self.time_expired(timerId='1'):
             return 그리폰제거(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_actor(triggerId=913, visible=False, initialSequence='Attack_Idle_A')
         self.set_effect(triggerIds=[914], visible=False)
 
 
 class 그리폰제거(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=600)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='1stTreeRemove', value=0)
         self.set_user_value(key='2ndTreeRemove', value=0)
         self.set_user_value(key='3rdTreeRemove', value=0)
@@ -90,7 +90,7 @@ class Check08(trigger_api.Trigger):
 
 
 class BoardApp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='BoardApp', value=1)
         self.set_user_value(triggerId=11, key='MobWaveStop', value=1)
 

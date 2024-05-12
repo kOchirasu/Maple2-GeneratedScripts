@@ -10,16 +10,16 @@ class gameset(trigger_api.Trigger):
 
 class Fail_condition(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=799, boxId=1):
+        if self.count_users(boxId=799, minUsers='1'):
             return Fail(self.ctx)
-        if self.count_users(boxId=705, boxId=1):
+        if self.count_users(boxId=705, minUsers='1'):
             return Fail(self.ctx)
         if not self.user_detected(boxIds=[701]):
             return Fail(self.ctx)
 
 
 class Fail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Ending_Popup_01')
         self.set_timer(timerId='10', seconds=10, interval=1)
         self.select_camera_path(pathIds=[8800], returnView=False) # 카메라 뒤로 당김
@@ -33,7 +33,8 @@ class Fail(trigger_api.Trigger):
         self.set_user_value(triggerId=991120, key='Reset', value=1) # wave_projectile_03.xml
         self.set_user_value(triggerId=991121, key='Reset', value=1) # wave_projectile_04.xml
         self.set_user_value(triggerId=991122, key='Reset', value=1) # wave_projectile_05.xml
-        self.set_user_value(triggerId=991123, key='Reset', value=1) # normal_projectile_02.xml
+        # normal_projectile_02.xml
+        self.set_user_value(triggerId=991123, key='Reset', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10'):
@@ -41,7 +42,7 @@ class Fail(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0, boxId=705)
 
 

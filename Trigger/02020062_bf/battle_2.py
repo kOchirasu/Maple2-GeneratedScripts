@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='ObjectClear', value=0)
         self.set_user_value(triggerId=99990004, key='ObjectStart', value=0)
         self.set_user_value(triggerId=99990005, key='ObjectStart', value=0)
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 오브젝트소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[711,712,713], animationEffect=False)
         self.set_user_value(triggerId=99990004, key='ObjectStart', value=1)
         self.set_user_value(triggerId=99990005, key='ObjectStart', value=1)
@@ -34,7 +34,7 @@ class 오브젝트소환(trigger_api.Trigger):
 
 
 class 추가대사_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11001813, illust='Turka_normal', duration=5000, script='$02020062_BF__BATTLE_2__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 추가대사_1(trigger_api.Trigger):
 
 
 class 추가대사_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11003536, illust='Neirin_surprise', duration=5000, script='$02020062_BF__BATTLE_2__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 추가대사_2(trigger_api.Trigger):
 
 
 class 추가대사_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11003533, illust='Bliche_normal', duration=5000, script='$02020062_BF__BATTLE_2__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 추가대사_3(trigger_api.Trigger):
 
 
 class 오브젝트소환_클리어(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='ObjectClear', value=1)
         self.set_user_value(triggerId=99990004, key='ObjectStart', value=2)
         self.set_user_value(triggerId=99990005, key='ObjectStart', value=2)

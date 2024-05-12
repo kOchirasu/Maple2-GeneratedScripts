@@ -46,7 +46,7 @@ class DanceGuideP2_Random(trigger_api.Trigger):
 
 # 9000ms Type1
 class DanceGuideP11_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class DanceGuideP11_01(trigger_api.Trigger):
 
 
 class DanceGuideP11_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class DanceGuideP11_02(trigger_api.Trigger):
 
 # 9000ms Type2
 class DanceGuideP12_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +74,7 @@ class DanceGuideP12_01(trigger_api.Trigger):
 
 
 class DanceGuideP12_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class DanceGuideP12_02(trigger_api.Trigger):
 
 # 12000ms Type1
 class DanceGuideP21_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class DanceGuideP21_01(trigger_api.Trigger):
 
 
 class DanceGuideP21_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class DanceGuideP21_02(trigger_api.Trigger):
 
 # 12000ms Type2
 class DanceGuideP22_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class DanceGuideP22_01(trigger_api.Trigger):
 
 
 class DanceGuideP22_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class DanceGuideP22_02(trigger_api.Trigger):
 
 # 15000ms
 class DanceGuideP3_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +131,7 @@ class DanceGuideP3_01(trigger_api.Trigger):
 
 
 class DanceGuideP3_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class DanceGuideP3_02(trigger_api.Trigger):
 
 
 class DanceGuideP3_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +150,7 @@ class DanceGuideP3_03(trigger_api.Trigger):
 
 # 7000ms+ 9000ms First
 class DanceGuideP41_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +160,7 @@ class DanceGuideP41_01(trigger_api.Trigger):
 
 # 7000ms+ 9000ms Second
 class DanceGuideP42_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -169,7 +169,7 @@ class DanceGuideP42_01(trigger_api.Trigger):
 
 
 class DanceGuideP42_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +179,7 @@ class DanceGuideP42_02(trigger_api.Trigger):
 
 # 9000ms+ 7000ms First
 class DanceGuideP51_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -188,7 +188,7 @@ class DanceGuideP51_01(trigger_api.Trigger):
 
 
 class DanceGuideP51_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,7 +198,7 @@ class DanceGuideP51_02(trigger_api.Trigger):
 
 # 9000ms+ 7000ms Second
 class DanceGuideP52_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,7 +208,7 @@ class DanceGuideP52_01(trigger_api.Trigger):
 
 # 12000ms+ 7000ms First
 class DanceGuideP61_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -217,7 +217,7 @@ class DanceGuideP61_01(trigger_api.Trigger):
 
 
 class DanceGuideP61_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -227,7 +227,7 @@ class DanceGuideP61_02(trigger_api.Trigger):
 
 # 12000ms+ 7000ms Second
 class DanceGuideP62_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,7 +237,7 @@ class DanceGuideP62_01(trigger_api.Trigger):
 
 # 7000ms+ 12000ms First
 class DanceGuideP71_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100801, textId=26100801, duration=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -247,7 +247,7 @@ class DanceGuideP71_01(trigger_api.Trigger):
 
 # 7000ms+ 12000ms Second
 class DanceGuideP72_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=28400703, textId=28400703, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -256,7 +256,7 @@ class DanceGuideP72_01(trigger_api.Trigger):
 
 
 class DanceGuideP72_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26100802, textId=26100802, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -265,7 +265,7 @@ class DanceGuideP72_02(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='DanceGuide', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

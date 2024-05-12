@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='Weddingceremonystartsready', value=0) # 초기화
         self.set_user_value(key='Weddingceremonyfail', value=0) # 초기화
 
@@ -15,26 +15,31 @@ class 초기화(trigger_api.Trigger):
 class 시작(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wedding_hall_state(hallState='weddingComplete'):
+            # 결혼 연출 끝나서 보상받고 결혼상태로 변경되는 시점부터는 자리옮김 멈춤
             return 종료(self.ctx)
         if self.user_value(key='Weddingceremonystartsready', value=1):
-            self.set_user_value(key='Weddingceremonystartsready', value=0)
+            # 결혼하시겠습니까 입력창 띄우자마자 쏘는 신호 받으면 하객옮기기 트리거 시작되도록
+            self.set_user_value(key='Weddingceremonystartsready', value=0) # 초기화
             return 새로운하객있는지감지(self.ctx)
 
 
 class 새로운하객있는지감지(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wedding_hall_state(hallState='weddingComplete'):
+            # 결혼 연출 끝나서 보상받고 결혼상태로 변경되는 시점부터는 자리옮김 멈춤
             return 종료(self.ctx)
         if self.user_value(key='Weddingceremonyfail', value=1):
-            self.set_user_value(key='Weddingceremonyfail', value=0)
+            # 결혼 실패
+            self.set_user_value(key='Weddingceremonyfail', value=0) # 초기화
             return 시작(self.ctx)
         if self.wait_tick(waitTick=1000):
             return 방금입장한하객은하객석으로위치이동(self.ctx)
 
 
 class 방금입장한하객은하객석으로위치이동(trigger_api.Trigger):
-    def on_enter(self):
-        self.wedding_move_user(entryType='Guest', mapId=84000013, portalIds=[22,23], boxId=701) # 799번 박스(입장구역)에 있는 하객들은 22,23번으로 랜덤이동
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 799번 박스(입장구역)에 있는 하객들은 22,23번으로 랜덤이동
+        self.wedding_move_user(entryType='Guest', mapId=84000013, portalIds=[22,23], boxId=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -42,8 +47,9 @@ class 방금입장한하객은하객석으로위치이동(trigger_api.Trigger):
 
 
 class 하객은버진로드밖으로위치이동(trigger_api.Trigger):
-    def on_enter(self):
-        self.wedding_move_user(entryType='Guest', mapId=84000013, portalIds=[22,23], boxId=701) # 701번 박스(버진로드)에 있는 하객들은 22,23번으로 랜덤이동
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 701번 박스(버진로드)에 있는 하객들은 22,23번으로 랜덤이동
+        self.wedding_move_user(entryType='Guest', mapId=84000013, portalIds=[22,23], boxId=701)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():

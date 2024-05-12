@@ -3,13 +3,77 @@ import trigger_api
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[700], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 연출시작체크(self.ctx)
+
+
+"""
+class 퀘스트체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100960], questStates=[3]):
+            return 마를레네생성준비(self.ctx)
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100960], questStates=[2]):
+            return 연출시작체크(self.ctx)
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100960], questStates=[1]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100950], questStates=[3]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100950], questStates=[2]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100950], questStates=[1]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100940], questStates=[3]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100940], questStates=[2]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100940], questStates=[1]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100930], questStates=[3]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100930], questStates=[2]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100930], questStates=[1]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100920], questStates=[3]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100920], questStates=[2]):
+            return None # Missing State: 퀘스트용NPC소환준비
+        if self.quest_user_detected(boxIds=[10000], questIds=[50100920], questStates=[1]):
+            return None # Missing State: 퀘스트용NPC소환
+
+"""
+
+
+"""
+class 퀘스트용NPC소환준비(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.destroy_monster(spawnIds=[-1], arg2=False)
+        self.set_effect(triggerIds=[600], visible=False)
+        self.set_effect(triggerIds=[700], visible=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return None # Missing State: 퀘스트용NPC소환
+
+"""
+
+
+"""
+class 퀘스트용NPC소환(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[1], animationEffect=False)
+        self.create_monster(spawnIds=[2], animationEffect=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 연출시작체크(self.ctx)
+
+"""
 
 
 class 연출시작체크(trigger_api.Trigger):
@@ -19,7 +83,7 @@ class 연출시작체크(trigger_api.Trigger):
 
 
 class 연출시작준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1], arg2=False)
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[700], visible=False)
@@ -31,7 +95,7 @@ class 연출시작준비(trigger_api.Trigger):
 
 
 class 연출NPC소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(mapId=52100103, portalId=3)
         self.create_monster(spawnIds=[1000], animationEffect=False)
@@ -44,7 +108,7 @@ class 연출NPC소환(trigger_api.Trigger):
 
 
 class 시작암전1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52100103, portalId=3)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -56,7 +120,7 @@ class 시작암전1(trigger_api.Trigger):
 
 
 class 클라디아대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_3sec.xml')
         self.select_camera_path(pathIds=[1000,1001], returnView=False)
         self.set_npc_emotion_loop(spawnId=2000, sequenceName='Bore_A', duration=1333)
@@ -68,7 +132,7 @@ class 클라디아대사1(trigger_api.Trigger):
 
 
 class 마를레네대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_3sec.xml')
         self.set_npc_emotion_loop(spawnId=1000, sequenceName='Talk_A', duration=1333)
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__1$', duration=3000, align='left')
@@ -79,7 +143,7 @@ class 마를레네대사1(trigger_api.Trigger):
 
 
 class 카메라흔들기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[700], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +152,7 @@ class 카메라흔들기(trigger_api.Trigger):
 
 
 class 마를레네대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[3], animationEffect=False)
         self.create_monster(spawnIds=[200], animationEffect=False)
         self.create_monster(spawnIds=[201], animationEffect=False)
@@ -107,7 +171,7 @@ class 마를레네대사2(trigger_api.Trigger):
 
 
 class 투르카대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='PatrolData_PC_01')
         self.add_cinematic_talk(npcId=11004430, msg='$52100103_QD__MAIN__4$', duration=3000, align='left')
 
@@ -117,7 +181,7 @@ class 투르카대사1(trigger_api.Trigger):
 
 
 class PC돌아보기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=200, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,7 +190,7 @@ class PC돌아보기(trigger_api.Trigger):
 
 
 class 포탈오픈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.select_camera(triggerId=1002, enable=True)
         self.create_monster(spawnIds=[300], animationEffect=False)
@@ -137,7 +201,7 @@ class 포탈오픈(trigger_api.Trigger):
 
 
 class PC대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__5$', duration=3000, align='left')
         self.move_user(mapId=52100103, portalId=2)
 
@@ -147,7 +211,7 @@ class PC대사(trigger_api.Trigger):
 
 
 class 투르카이동1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=300, patrolName='PatrolData_Turka_1')
         self.move_npc(spawnId=200, patrolName='PatrolData_200_1')
         self.move_npc(spawnId=201, patrolName='PatrolData_201_1')
@@ -161,7 +225,7 @@ class 투르카이동1(trigger_api.Trigger):
 
 
 class PC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1000], arg2=False)
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.add_cinematic_talk(npcId=11004430, msg='$52100103_QD__MAIN__6$', duration=3000, align='left')
@@ -179,7 +243,7 @@ class PC이동(trigger_api.Trigger):
 
 
 class PC말풍선대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52100103_QD__MAIN__7$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -188,7 +252,7 @@ class PC말풍선대사(trigger_api.Trigger):
 
 
 class PC공격자세(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=30000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -197,7 +261,7 @@ class PC공격자세(trigger_api.Trigger):
 
 
 class 투르카대사협박1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=202, rotation=45)
         self.set_npc_rotation(spawnId=201, rotation=-45)
         self.set_npc_rotation(spawnId=200, rotation=15)
@@ -211,7 +275,7 @@ class 투르카대사협박1(trigger_api.Trigger):
 
 
 class 마를레네협박(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__9$', duration=3000, align='left')
         self.set_npc_emotion_loop(spawnId=1001, sequenceName='Talk_A', duration=1333)
 
@@ -221,7 +285,7 @@ class 마를레네협박(trigger_api.Trigger):
 
 
 class 투르카대사협박2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004430, msg='$52100103_QD__MAIN__10$', duration=6000, align='left')
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__11$', duration=2000, align='left')
         self.add_cinematic_talk(npcId=11004430, msg='$52100103_QD__MAIN__12$', duration=3000, align='left')
@@ -235,7 +299,7 @@ class 투르카대사협박2(trigger_api.Trigger):
 
 
 class 클라디아대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2001, patrolName='PatrolData_2001_1')
         self.add_cinematic_talk(npcId=11004385, msg='$52100103_QD__MAIN__13$', duration=2000, align='left')
         self.add_cinematic_talk(npcId=11004385, msg='$52100103_QD__MAIN__14$', duration=3500, align='left')
@@ -246,7 +310,7 @@ class 클라디아대사(trigger_api.Trigger):
 
 
 class 마를레네대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__15$', duration=2000, align='left')
         self.set_npc_rotation(spawnId=1001, rotation=45)
 
@@ -256,7 +320,7 @@ class 마를레네대사(trigger_api.Trigger):
 
 
 class 클라디아마를레네바라보기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=2001, rotation=-90)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -265,7 +329,7 @@ class 클라디아마를레네바라보기(trigger_api.Trigger):
 
 
 class 클라디아대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=2001, sequenceName='Talk_A', duration=1333)
         self.add_cinematic_talk(npcId=11004385, msg='$52100103_QD__MAIN__16$', duration=4000, align='left')
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__17$', duration=3000, align='left')
@@ -276,7 +340,7 @@ class 클라디아대사2(trigger_api.Trigger):
 
 
 class 투르카대사3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004430, msg='$52100103_QD__MAIN__18$', duration=3000, align='left')
         self.set_npc_emotion_loop(spawnId=300, sequenceName='Bore_A', duration=1333)
 
@@ -286,7 +350,7 @@ class 투르카대사3(trigger_api.Trigger):
 
 
 class 클라디아퇴장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.select_camera(triggerId=1004, enable=True)
         self.move_npc(spawnId=2001, patrolName='PatrolData_2001_2')
@@ -297,7 +361,7 @@ class 클라디아퇴장(trigger_api.Trigger):
 
 
 class 부하퇴장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=200, patrolName='PatrolData_200_3')
         self.move_npc(spawnId=201, patrolName='PatrolData_201_3')
         self.move_npc(spawnId=202, patrolName='PatrolData_202_3')
@@ -309,7 +373,7 @@ class 부하퇴장(trigger_api.Trigger):
 
 
 class 투르카퇴장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=300, patrolName='PatrolData_Turka_3')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -318,7 +382,7 @@ class 투르카퇴장(trigger_api.Trigger):
 
 
 class 마를레네엔딩대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1005,1006], returnView=False)
         self.add_cinematic_talk(npcId=11004395, msg='$52100103_QD__MAIN__19$', duration=2000, align='left')
 
@@ -328,7 +392,7 @@ class 마를레네엔딩대사(trigger_api.Trigger):
 
 
 class 엔딩암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/ScreenMask/Eff_fadein_3sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -337,7 +401,7 @@ class 엔딩암전(trigger_api.Trigger):
 
 
 class 몬스터정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -346,7 +410,7 @@ class 몬스터정리(trigger_api.Trigger):
 
 
 class 상황정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52100109, portalId=2)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -359,7 +423,7 @@ class 상황정리(trigger_api.Trigger):
 
 
 class 마를레네생성준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -368,15 +432,16 @@ class 마를레네생성준비(trigger_api.Trigger):
 
 
 class 마를레네생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[700], visible=False)
         self.create_monster(spawnIds=[1], animationEffect=False)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = Ready

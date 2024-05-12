@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[905], visible=True)
         self.set_agent(triggerIds=[906], visible=True)
         self.set_agent(triggerIds=[907], visible=True)
@@ -47,7 +47,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.create_monster(spawnIds=[2002], animationEffect=False)
 
@@ -57,7 +57,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 사다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.show_guide_summary(entityId=20002903, textId=20002903)
         self.set_effect(triggerIds=[5101], visible=True) # LadderAppear
@@ -78,7 +78,7 @@ class 사다리생성(trigger_api.Trigger):
 
 
 class 트리거09시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1011], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class 트리거09시작(trigger_api.Trigger):
 
 
 class 트리거10시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[905], visible=False)
         self.set_agent(triggerIds=[906], visible=False)
         self.set_mesh(triggerIds=[3089], visible=False, arg3=0, delay=0, scale=0)
@@ -105,7 +105,7 @@ class 트리거10시작(trigger_api.Trigger):
 
 
 class 트리거11시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[907], visible=False)
         self.set_agent(triggerIds=[908], visible=False)
         self.set_mesh(triggerIds=[3108], visible=False, arg3=0, delay=0, scale=0)
@@ -122,7 +122,7 @@ class 트리거11시작(trigger_api.Trigger):
 
 
 class 트리거12시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3110, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3111], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1017], animationEffect=False)
@@ -135,7 +135,7 @@ class 트리거12시작(trigger_api.Trigger):
 
 
 class 트리거12진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3110, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3112,3113,3114,3115,3116,3117], visible=False, arg3=0, delay=200, scale=2)
 
@@ -147,7 +147,7 @@ class 트리거12진행(trigger_api.Trigger):
 
 
 class 트리거13시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3120, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3121], visible=False, arg3=0, delay=0, scale=0)
 
@@ -157,7 +157,7 @@ class 트리거13시작(trigger_api.Trigger):
 
 
 class 트리거13진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3120, visible=False, initialSequence='Opened')
         self.set_mesh(triggerIds=[3122,3123,3124,3125,3126,3127,3128,3129,3130,3131,3132], visible=False, arg3=0, delay=200, scale=2)
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
@@ -170,7 +170,7 @@ class 트리거13진행(trigger_api.Trigger):
 
 
 class 연출대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +179,7 @@ class 연출대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=801, enable=True)
@@ -193,7 +193,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[801], returnView=True)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -204,7 +204,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 공주구출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=801, enable=False)
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.show_guide_summary(entityId=20002904, textId=20002904)
@@ -217,7 +217,7 @@ class 공주구출(trigger_api.Trigger):
 
 
 class 완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=7, arg2='$02000290_BF__MAIN_2__2$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +226,7 @@ class 완료(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[910])
         self.create_monster(spawnIds=[911])
         self.create_monster(spawnIds=[912])
@@ -239,7 +239,7 @@ class 포털생성(trigger_api.Trigger):
 
 
 class NPC이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=910, patrolName='MS2PatrolData910')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -248,7 +248,7 @@ class NPC이동01(trigger_api.Trigger):
 
 
 class NPC이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=911, patrolName='MS2PatrolData911')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -257,7 +257,7 @@ class NPC이동02(trigger_api.Trigger):
 
 
 class NPC이동03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=912, patrolName='MS2PatrolData912')
         self.move_npc(spawnId=914, patrolName='MS2PatrolData914')
 
@@ -267,7 +267,7 @@ class NPC이동03(trigger_api.Trigger):
 
 
 class NPC이동04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=913, patrolName='MS2PatrolData913')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -309,7 +309,7 @@ class NPC대사04(trigger_api.Trigger):
 
 
 class 종료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -318,7 +318,7 @@ class 종료대기(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=99999, type='trigger', achieve='ClearYomiprincess') # ClearYomiprincess 퀘스트
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

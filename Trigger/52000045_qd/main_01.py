@@ -10,7 +10,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[101], animationEffect=False) # 비전
@@ -26,7 +26,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_2001')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2001')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_2001')
@@ -48,15 +48,15 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001560, script='$52000045_QD__MAIN_01__1$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=10000):
-            self.create_monster(spawnIds=[101], animationEffect=False)
+            self.create_monster(spawnIds=[101], animationEffect=False) # 비전
             self.remove_buff(boxId=701, skillId=70000105)
             self.select_camera_path(pathIds=[8004], returnView=True)
-            self.destroy_monster(spawnIds=[101])
+            self.destroy_monster(spawnIds=[101]) # 비전 사라짐
             self.destroy_monster(spawnIds=[401,402,403,404,405])
             self.set_actor(triggerId=5001, visible=False, initialSequence='Idle_A')
             self.set_actor(triggerId=5002, visible=False, initialSequence='Idle_A')
@@ -69,7 +69,7 @@ class start_04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.set_effect(triggerIds=[7001], visible=False)
-            self.add_buff(boxIds=[701], skillId=70000094, level=1)
+            self.add_buff(boxIds=[701], skillId=70000094, level=1) # 어질어질한 이펙트
             self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=4000)
             self.set_cinematic_ui(type=1)
             self.set_cinematic_ui(type=3)
@@ -87,7 +87,7 @@ class start_06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_effect(triggerIds=[7002], visible=True)
-            self.move_user_path(patrolName='MS2PatrolData_2002')
+            self.move_user_path(patrolName='MS2PatrolData_2002') # 유저를 이동시킨다
             return start_07(self.ctx)
 
 
@@ -98,7 +98,7 @@ class start_07(trigger_api.Trigger):
 
 
 class start_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.create_monster(spawnIds=[901], animationEffect=False) # 스커
         self.move_user_path(patrolName='MS2PatrolData_2004') # 유저를 이동시킨다
@@ -110,7 +110,7 @@ class start_08(trigger_api.Trigger):
 
 
 class start_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=901, script='$52000045_QD__MAIN_01__2$', arg4=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,7 +119,7 @@ class start_09(trigger_api.Trigger):
 
 
 class start_A_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=901, script='$52000045_QD__MAIN_01__11$', arg4=3)
         self.set_conversation(type=1, spawnId=0, script='$52000045_QD__MAIN_01__12$', arg4=3, arg5=0)
 
@@ -129,7 +129,7 @@ class start_A_10(trigger_api.Trigger):
 
 
 class start_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000045_QD__MAIN_01__3$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class start_10(trigger_api.Trigger):
 
 
 class start_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[801,802,803,804,805,806], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +149,7 @@ class start_11(trigger_api.Trigger):
 
 
 class start_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -158,7 +158,7 @@ class start_12(trigger_api.Trigger):
 
 
 class start_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7004], visible=True)
         self.select_camera_path(pathIds=[8004], returnView=True)
         self.create_monster(spawnIds=[809], animationEffect=False)
@@ -180,7 +180,7 @@ class start_14(trigger_api.Trigger):
 
 
 class start_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -190,7 +190,7 @@ class start_15(trigger_api.Trigger):
 
 
 class start_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[7701,7702], animationEffect=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -202,7 +202,7 @@ class start_16(trigger_api.Trigger):
 
 
 class start_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=7702, sequenceName='Talk_A', duration=3000)
         self.set_conversation(type=2, spawnId=11001545, script='$52000045_QD__MAIN_01__4$', arg4=4)
 
@@ -212,13 +212,13 @@ class start_17(trigger_api.Trigger):
 
 
 class start_18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=7701, sequenceName='Talk_A', duration=3000)
         self.set_conversation(type=2, spawnId=11001546, script='$52000045_QD__MAIN_01__5$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
-            self.move_user_path(patrolName='MS2PatrolData_2006')
+            self.move_user_path(patrolName='MS2PatrolData_2006') # 유저를 이동시킨다
             self.move_npc(spawnId=7701, patrolName='MS2PatrolData_7003')
             self.move_npc(spawnId=7702, patrolName='MS2PatrolData_7004')
             return start_19(self.ctx)
@@ -232,7 +232,7 @@ class start_19(trigger_api.Trigger):
 
 
 class start_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=7701, script='$52000045_QD__MAIN_01__6$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=7702, script='$52000045_QD__MAIN_01__7$', arg4=3, arg5=2)
 
@@ -242,7 +242,7 @@ class start_20(trigger_api.Trigger):
 
 
 class start_21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000045_QD__MAIN_01__8$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=0, script='$52000045_QD__MAIN_01__9$', arg4=3, arg5=2)
         self.set_conversation(type=1, spawnId=0, script='$52000045_QD__MAIN_01__10$', arg4=3, arg5=6)
@@ -253,12 +253,12 @@ class start_21(trigger_api.Trigger):
 
 
 class start_22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2007') # 유저를 이동시킨다
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            self.set_achievement(triggerId=701, type='trigger', achieve='MeetAgainStriker')
+            self.set_achievement(triggerId=701, type='trigger', achieve='MeetAgainStriker') # 퀘스트 목표 체크용 업적이벤트 발생
             self.move_user(mapId=2000138, portalId=103)
             return start_22(self.ctx)
 

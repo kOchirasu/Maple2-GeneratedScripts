@@ -9,9 +9,9 @@ class 시작(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cube(triggerIds=[5106], isVisible=False)
-        # <action name="몬스터를생성한다" arg1="10006" arg2="1" />
+        # self.create_monster(spawnIds=[10006], animationEffect=True)
         self.set_mesh(triggerIds=[31601,31602,31603,31604,31605,31606,31607,31608,31609,31610,31611,31612,31613,31614,31615,31616,31617,31618,31619,31620,31621,31622,31623], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[41601,41602,41603], visible=True, arg3=0, delay=0, scale=0)
 

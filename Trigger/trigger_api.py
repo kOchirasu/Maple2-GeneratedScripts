@@ -5,7 +5,7 @@ class Trigger:
     def __init__(self, ctx: ...):
         self.ctx = ctx
 
-    def on_enter(self):
+    def on_enter(self) -> 'Trigger':
         """Invoked after transitioning to this state."""
         pass
 
@@ -13,7 +13,7 @@ class Trigger:
         """Periodically invoked while in this state."""
         pass
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         """Invoked before transitioning to another state."""
         pass
 
@@ -405,12 +405,13 @@ class Trigger:
         """
         pass
 
-    def give_exp(self, boxId: int=0, amount: int=0):
+    def give_exp(self, boxId: int=0, amount: int=0, arg3: str=None):
         """GiveExp
 
         Args:
             boxId (int): _description_. Defaults to 0.
             amount (int): _description_. Defaults to 0.
+            arg3 (str): _description_. Defaults to None.
         """
         pass
 
@@ -1035,13 +1036,14 @@ class Trigger:
         """
         pass
 
-    def set_npc_emotion_loop(self, spawnId: int=0, sequenceName: str=None, duration: float=0.0):
+    def set_npc_emotion_loop(self, spawnId: int=0, sequenceName: str=None, duration: float=0.0, arg: str=None):
         """SetNpcEmotionLoop
 
         Args:
             spawnId (int): _description_. Defaults to 0.
             sequenceName (str): _description_. Defaults to None.
             duration (float): _description_. Defaults to 0.0.
+            arg (str): _description_. Defaults to None.
         """
         pass
 
@@ -1602,27 +1604,27 @@ class Trigger:
         """
         pass
 
-
-    """ Conditions """
-    def all_of(self, feature: str=None) -> bool:
-        """AllOf
+    def 공지를한다(self, arg1: str=None, arg2: str=None, arg3: str=None):
+        """공지를한다
 
         Args:
-            feature (str): _description_. Defaults to None.
-
-        Returns:
-            bool: _description_
+            arg1 (str): _description_. Defaults to None.
+            arg2 (str): _description_. Defaults to None.
+            arg3 (str): _description_. Defaults to None.
         """
-        return False
+        pass
 
-    def any_one(self) -> bool:
-        """AnyOne
+    def 전장점수를준다(self, arg1: str=None, arg2: str=None):
+        """전장점수를준다
 
-        Returns:
-            bool: _description_
+        Args:
+            arg1 (str): _description_. Defaults to None.
+            arg2 (str): _description_. Defaults to None.
         """
-        return False
+        pass
 
+
+    """ Conditions """
     def bonus_game_reward_detected(self, boxId: int=0, arg2: bool=False) -> bool:
         """보너스게임보상받은유저를감지했으면
 
@@ -1682,6 +1684,20 @@ class Trigger:
         """
         return False
 
+    def check_npc_extra_data(self, spawnPointID: str=None, extraDataKey: str=None, extraDataValue: str=None, operator: str=None) -> bool:
+        """CheckNpcExtraData
+
+        Args:
+            spawnPointID (str): _description_. Defaults to None.
+            extraDataKey (str): _description_. Defaults to None.
+            extraDataValue (str): _description_. Defaults to None.
+            operator (str): _description_. Defaults to None.
+
+        Returns:
+            bool: _description_
+        """
+        return False
+
     def check_npc_hp(self, compare: str=None, value: int=0, spawnId: int=0, isRelative: bool=False) -> bool:
         """CheckNpcHp
 
@@ -1726,11 +1742,12 @@ class Trigger:
         """
         return False
 
-    def count_users(self, boxId: int=0, operator: str='GreaterEqual', userTagId: int=0) -> bool:
+    def count_users(self, boxId: int=0, minUsers: str=None, operator: str='GreaterEqual', userTagId: int=0) -> bool:
         """여러명의유저를감지했으면
 
         Args:
             boxId (int): _description_. Defaults to 0.
+            minUsers (str): _description_. Defaults to None.
             operator (str): _description_. Defaults to 'GreaterEqual'.
             userTagId (int): _description_. Defaults to 0.
 
@@ -1935,12 +1952,24 @@ class Trigger:
         """
         return False
 
-    def object_interacted(self, interactIds: List[int]=[], stateValue: int=0) -> bool:
+    def npc_is_dead_by_string_id(self, stringID: str=None) -> bool:
+        """NpcIsDeadByStringID
+
+        Args:
+            stringID (str): _description_. Defaults to None.
+
+        Returns:
+            bool: _description_
+        """
+        return False
+
+    def object_interacted(self, interactIds: List[int]=[], stateValue: int=0, ar2: str=None) -> bool:
         """오브젝트가반응했으면
 
         Args:
             interactIds (List[int]): _description_. Defaults to [].
             stateValue (int): _description_. Defaults to 0.
+            ar2 (str): _description_. Defaults to None.
 
         Returns:
             bool: _description_

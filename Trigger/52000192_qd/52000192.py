@@ -3,7 +3,7 @@ import trigger_api
 
 
 class wait_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_effect(triggerIds=[6001], visible=False)
         self.set_effect(triggerIds=[6002], visible=False)
@@ -17,13 +17,15 @@ class wait_01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003423], questStates=[1]):
+            # 비밀 통로를 따라 퀘스트 수락
             return wait_01_02(self.ctx)
         if not self.quest_user_detected(boxIds=[2001], questIds=[10003423], questStates=[1]):
+            # 비밀 통로를 따라 퀘스트 수락 유저가 아니면
             return 이동(self.ctx)
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +34,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class wait_01_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000192, portalId=5001)
         self.select_camera_path(pathIds=[4001], returnView=False)
@@ -45,7 +47,7 @@ class wait_01_03(trigger_api.Trigger):
 
 
 class 불난통로_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -55,7 +57,7 @@ class 불난통로_01(trigger_api.Trigger):
 
 
 class 불난통로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11004785, msg='$52000192_QD__52000192__0$', align='left', illustId='Ereb_surprise', duration=4000)
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
@@ -67,7 +69,7 @@ class 불난통로_02(trigger_api.Trigger):
 
 
 class 불난통로_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=0, msg='$52000192_QD__52000192__1$', duration=3000)
@@ -78,7 +80,7 @@ class 불난통로_03(trigger_api.Trigger):
 
 
 class 불난통로_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000192_QD__52000192__2$', duration=5000)
         self.add_cinematic_talk(npcId=11004787, msg='$52000192_QD__52000192__3$', align='left', illustId='Baron_normal', duration=4000)
 
@@ -88,8 +90,9 @@ class 불난통로_04(trigger_api.Trigger):
 
 
 class 불끄기준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +101,7 @@ class 불끄기준비(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.reset_camera(interpolationTime=0)
 
@@ -108,7 +111,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 불끄기준비_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103]) # 바론
@@ -123,7 +126,7 @@ class 불끄기준비_02(trigger_api.Trigger):
 
 
 class 불꺼라불꺼(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000192_QD__52000192__4$', duration=3000)
         self.set_cinematic_ui(type=0)
@@ -135,7 +138,7 @@ class 불꺼라불꺼(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__5$', duration=4000)
         self.set_effect(triggerIds=[6021], visible=False) # 불끄기
@@ -154,7 +157,7 @@ class 불꺼라불꺼_02(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_02_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11004787, msg='$52000192_QD__52000192__6$', illust='Baron_normal', align='left', duration=4000)
 
@@ -164,7 +167,7 @@ class 불꺼라불꺼_02_02(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -174,7 +177,7 @@ class 불꺼라불꺼_02_01(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__7$', duration=4000)
         self.set_effect(triggerIds=[6001], visible=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3001')
@@ -186,7 +189,7 @@ class 불꺼라불꺼_03(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6002], visible=True) # 여제 지킴
         self.set_interact_object(triggerIds=[10001454], state=1)
 
@@ -196,7 +199,7 @@ class 불꺼라불꺼_04(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__8$', duration=4000)
         self.set_effect(triggerIds=[6022], visible=False) # 불끄기
         self.set_effect(triggerIds=[6009], visible=True)
@@ -214,7 +217,7 @@ class 불꺼라불꺼_05(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__9$', duration=4000)
         self.set_effect(triggerIds=[6002], visible=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3003')
@@ -226,7 +229,7 @@ class 불꺼라불꺼_06(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=True) # 여제 지킴
         self.set_interact_object(triggerIds=[10001455], state=1)
 
@@ -236,7 +239,7 @@ class 불꺼라불꺼_07(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__10$', duration=4000)
         self.set_effect(triggerIds=[6023], visible=False) # 불끄기
         self.set_effect(triggerIds=[6013], visible=True)
@@ -254,7 +257,7 @@ class 불꺼라불꺼_08(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3005')
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_3006')
@@ -265,7 +268,7 @@ class 불꺼라불꺼_09(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6004], visible=True) # 여제 지킴
         self.set_interact_object(triggerIds=[10001456], state=1)
 
@@ -275,7 +278,7 @@ class 불꺼라불꺼_10(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000192_QD__52000192__11$', duration=3000)
         self.set_effect(triggerIds=[6024], visible=False) # 불끄기
         self.set_effect(triggerIds=[6017], visible=True)
@@ -293,7 +296,7 @@ class 불꺼라불꺼_11(trigger_api.Trigger):
 
 
 class 불꺼라불꺼_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=104, msg='$52000192_QD__52000192__12$', duration=3000)
         self.set_effect(triggerIds=[6004], visible=False)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_3007')
@@ -305,7 +308,7 @@ class 불꺼라불꺼_12(trigger_api.Trigger):
 
 
 class 다왔다(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -319,7 +322,7 @@ class 다왔다(trigger_api.Trigger):
 
 
 class 밖으로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, achieve='EscapePrisonTower')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -327,7 +330,7 @@ class 밖으로(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000119, portalId=20)
 
 

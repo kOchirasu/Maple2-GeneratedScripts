@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class Round_check(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[421,422,423,424,425,426,427,428,429,430])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class Round_01(trigger_api.Trigger):
 
 
 class Round_01_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[296], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -45,7 +45,7 @@ class Round_01_Random_01(trigger_api.Trigger):
 
 
 class Round_01_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[297], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -59,7 +59,7 @@ class Round_01_Random_02(trigger_api.Trigger):
 
 
 class Round_01_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[298], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -73,7 +73,7 @@ class Round_01_Random_03(trigger_api.Trigger):
 
 
 class Round_01_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[299], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='9', seconds=9)
 
@@ -99,7 +99,7 @@ class Round_02(trigger_api.Trigger):
 
 
 class Round_02_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[414], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='7', seconds=7)
 
@@ -115,7 +115,7 @@ class Round_02_Random_01(trigger_api.Trigger):
 
 
 class Round_02_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[415], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='7', seconds=7)
 
@@ -131,7 +131,7 @@ class Round_02_Random_02(trigger_api.Trigger):
 
 
 class Round_02_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[416], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='7', seconds=7)
 
@@ -147,7 +147,7 @@ class Round_02_Random_03(trigger_api.Trigger):
 
 
 class Round_02_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[417], animationEffect=True, animationDelay=0)
         self.set_timer(timerId='7', seconds=7)
 
@@ -163,7 +163,9 @@ class Round_02_Random_04(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    pass
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=1, arg2='wave_projectile_05 종료', arg3='1000')
+        pass
 
 
 initial_state = Round_check

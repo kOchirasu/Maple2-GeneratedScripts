@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PatrolStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[100,200])
         self.create_monster(spawnIds=[101,201], animationEffect=False) # 스크립트 잡담을 가지고 있는 NPC
 
@@ -28,7 +28,7 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class Patrol01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
 
@@ -38,7 +38,7 @@ class Patrol01(trigger_api.Trigger):
 
 
 class Patrol02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_202')
 
@@ -48,7 +48,7 @@ class Patrol02(trigger_api.Trigger):
 
 
 class Patrol03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_103')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_203')
 
@@ -58,7 +58,7 @@ class Patrol03(trigger_api.Trigger):
 
 
 class Patrol04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_104')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_204')
 
@@ -68,7 +68,7 @@ class Patrol04(trigger_api.Trigger):
 
 
 class Patrol05Air(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$02000376_BF__10_PATROL__0$', arg4=2, arg5=0) # 준타
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_105')
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_205')
@@ -79,7 +79,7 @@ class Patrol05Air(trigger_api.Trigger):
 
 
 class NpcChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[102,202], animationEffect=False) # 연출용
         self.remove_balloon_talk(spawnId=201)
@@ -90,7 +90,7 @@ class NpcChange02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='PatrolEnd', value=1)
 
 

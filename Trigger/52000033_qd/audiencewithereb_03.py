@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_scene_skip(state=end, action='exit')
@@ -20,7 +20,7 @@ class ready(trigger_api.Trigger):
 
 
 class pcmove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1007')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class pcmove(trigger_api.Trigger):
 
 
 class ErebTalk_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[700], returnView=False) # 에레브 얼굴로 클로즈업
@@ -41,7 +41,7 @@ class ErebTalk_01(trigger_api.Trigger):
 
 
 class ErebTalk_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[901], returnView=False) # 에레브 얼굴로 클로즈업
         self.add_cinematic_talk(npcId=11001663, msg='$52000033_QD__AUDIENCEWITHEREB_03__1$', duration=3000, delayTick=0, align='left') # 에레브
 
@@ -51,7 +51,7 @@ class ErebTalk_02(trigger_api.Trigger):
 
 
 class ErebTalk_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[601], returnView=False) # 뒷 뷰
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class ErebTalk_03(trigger_api.Trigger):
 
 
 class fadeout(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.create_monster(spawnIds=[601], animationEffect=True)
 
@@ -70,7 +70,7 @@ class fadeout(trigger_api.Trigger):
 
 
 class story_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000033_QD__AUDIENCEWITHEREB_03__2$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class story_01(trigger_api.Trigger):
 
 
 class story_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000033_QD__AUDIENCEWITHEREB_03__3$', arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +88,7 @@ class story_02(trigger_api.Trigger):
 
 
 class story_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000033_QD__AUDIENCEWITHEREB_03__4$', arg3=False)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_1005')
 
@@ -98,7 +98,7 @@ class story_03(trigger_api.Trigger):
 
 
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -109,7 +109,7 @@ class fadein(trigger_api.Trigger):
 
 
 class ErebTalk_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11001663, illustId='Ereb_surprise', msg='$52000033_QD__AUDIENCEWITHEREB_03__5$', duration=3000, delayTick=0, align='left') # 에레브
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -118,7 +118,7 @@ class ErebTalk_04(trigger_api.Trigger):
 
 
 class ErebTalk_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=7001, enable=True)
         self.add_cinematic_talk(npcId=11001663, illustId='Ereb_closeEye', msg='$52000033_QD__AUDIENCEWITHEREB_03__6$', duration=3000, delayTick=0, align='left') # 에레브
         self.add_balloon_talk(spawnId=401, msg='$52000033_QD__AUDIENCEWITHEREB_03__7$', duration=3000)
@@ -129,7 +129,7 @@ class ErebTalk_05(trigger_api.Trigger):
 
 
 class ErebTalk_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11001663, illustId='Ereb_serious', msg='$52000033_QD__AUDIENCEWITHEREB_03__8$', duration=3000, delayTick=0, align='left') # 에레브
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_1006')
 
@@ -139,9 +139,10 @@ class ErebTalk_06(trigger_api.Trigger):
 
 
 class ErebTalk_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11001663, illustId='Ereb_closeEye', msg='$52000033_QD__AUDIENCEWITHEREB_03__9$', duration=3000, delayTick=0, align='left') # 에레브
         self.destroy_monster(spawnIds=[601])
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +151,7 @@ class ErebTalk_07(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.destroy_monster(spawnIds=[601])
         self.reset_camera(interpolationTime=1)

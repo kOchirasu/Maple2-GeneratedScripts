@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001101], state=0) # Greeting
         self.set_user_value(key='CustomerEnter', value=0)
         self.set_user_value(key='ItemNumber', value=0)
@@ -20,22 +20,25 @@ class CustomerEnterDelay(trigger_api.Trigger):
 
 
 class CustomerEnter(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[3123], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9130, spawnIds=[0]):
+            # 대기열에 아무도 없으면
             return Patrol03(self.ctx)
         if not self.npc_detected(boxId=9131, spawnIds=[0]):
+            # 세 번째 대기 손님이 없으면
             return Patrol01(self.ctx)
 
 
 class Patrol01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=3123, patrolName='MS2PatrolData_301')
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9132, spawnIds=[0]):
+            # 두 번째 대기 손님이 없으면
             return Patrol02Delay(self.ctx)
 
 
@@ -46,11 +49,12 @@ class Patrol02Delay(trigger_api.Trigger):
 
 
 class Patrol02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=3123, patrolName='MS2PatrolData_302')
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9133, spawnIds=[0]):
+            # 첫 번째 대기 손님이 없으면
             return Patrol03Delay(self.ctx)
 
 
@@ -61,11 +65,12 @@ class Patrol03Delay(trigger_api.Trigger):
 
 
 class Patrol03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=3123, patrolName='MS2PatrolData_303')
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.npc_detected(boxId=9133, spawnIds=[0]):
+            # 첫 번째 대기 손님이 없으면
             return PatrolEndDelay(self.ctx)
 
 
@@ -78,19 +83,21 @@ class PatrolEndDelay(trigger_api.Trigger):
 class PatrolEnd(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9133, spawnIds=[3123]):
+            # 카운터 앞에 도착했으면
             return WaitGreeting(self.ctx)
 
 
 class WaitGreeting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001101], state=1) # Greeting
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001101], stateValue=0):
             return OrderRandomPick(self.ctx)
 
-    def on_exit(self):
-        self.set_interact_object(triggerIds=[10001101], state=2) # Greeting
+    def on_exit(self) -> None:
+        self.set_interact_object(triggerIds=[10001101], state=2)
+        # Greeting
 
 
 # 고객 주문 랜덤
@@ -110,7 +117,7 @@ class OrderRandomPick(trigger_api.Trigger):
 
 # 30000623
 class PickItem_30000623(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000623)
         self.add_effect_nif(spawnId=3123, nifPath='Map/Kerningcity/Indoor/ke_in_prop_bath_B01.nif', isOutline=True, scale=1.2, rotateZ=225)
@@ -123,14 +130,16 @@ class PickItem_30000623(trigger_api.Trigger):
 class DetectItem_30000623(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9203], itemId=30000623):
+            # 정답
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9203], itemId=30000623):
+            # 오답
             return WrongItem(self.ctx)
 
 
 # 30000625
 class PickItem_30000625(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000625)
         self.add_effect_nif(spawnId=3123, nifPath='Map/Kerningcity/Indoor/ke_in_prop_shower_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
@@ -143,14 +152,16 @@ class PickItem_30000625(trigger_api.Trigger):
 class DetectItem_30000625(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9203], itemId=30000625):
+            # 정답
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9203], itemId=30000625):
+            # 오답
             return WrongItem(self.ctx)
 
 
 # 30000692
 class PickItem_30000692(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000692)
         self.add_effect_nif(spawnId=3123, nifPath='Map/Kerningcity/Indoor/ke_in_prop_dresser_A01.nif', isOutline=True, scale=1.2, rotateZ=225)
@@ -163,14 +174,16 @@ class PickItem_30000692(trigger_api.Trigger):
 class DetectItem_30000692(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9203], itemId=30000692):
+            # 정답
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9203], itemId=30000692):
+            # 오답
             return WrongItem(self.ctx)
 
 
 # 30000696
 class PickItem_30000696(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000696)
         self.add_effect_nif(spawnId=3123, nifPath='Npc/Etc/UGC_F1RacingCar/UGC_F1RacingCar_01.nif', isOutline=True, scale=1.2, rotateZ=315)
@@ -183,14 +196,16 @@ class PickItem_30000696(trigger_api.Trigger):
 class DetectItem_30000696(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9203], itemId=30000696):
+            # 정답
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9203], itemId=30000696):
+            # 오답
             return WrongItem(self.ctx)
 
 
 # 30000698
 class PickItem_30000698(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=True) # DownArrow
         self.set_user_value(key='ItemNumber', value=30000698)
         self.add_effect_nif(spawnId=3123, nifPath='Npc/Etc/UGC_FlameBike_Npc/UGC_FlameBike_03.nif', isOutline=True, scale=1.2, rotateZ=315)
@@ -203,14 +218,16 @@ class PickItem_30000698(trigger_api.Trigger):
 class DetectItem_30000698(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9203], itemId=30000698):
+            # 정답
             return RightItem(self.ctx)
         if not self.detect_liftable_object(boxIds=[9203], itemId=30000698):
+            # 오답
             return WrongItem(self.ctx)
 
 
 # 미션 성공
 class RightItem(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Right_01')
         self.remove_effect_nif(spawnId=3123)
@@ -223,7 +240,7 @@ class RightItem(trigger_api.Trigger):
 
 
 class CustomerLeave(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=3123, patrolName='MS2PatrolData_333')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -232,7 +249,7 @@ class CustomerLeave(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[3123])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +259,7 @@ class Quit(trigger_api.Trigger):
 
 # 잘못된 아이템을 내려놓으면
 class WrongItem(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5103], visible=False) # DownArrow
         self.play_system_sound_in_box(boxIds=[9900], sound='System_PartTimeJob_Wrong_01')
         self.remove_effect_nif(spawnId=3123)

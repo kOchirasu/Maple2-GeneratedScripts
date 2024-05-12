@@ -9,7 +9,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckDualKill', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

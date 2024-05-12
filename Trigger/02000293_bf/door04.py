@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1008, visible=False, initialSequence='Closed')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1008, visible=False, initialSequence='Closed')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 트리거02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1008, visible=True, initialSequence='Opened')
         self.create_monster(spawnIds=[2035], animationEffect=True)
         self.set_timer(timerId='1', seconds=5)
@@ -32,7 +32,7 @@ class 트리거02시작(trigger_api.Trigger):
 
 
 class 트리거03시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[25000])
         self.destroy_monster(spawnIds=[25001])
         self.destroy_monster(spawnIds=[25002])

@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040314, key='TimerStart', value=0)
         self.set_user_value(triggerId=2040322, key='Boss', value=0)
         self.set_user_value(triggerId=2040324, key='respawn', value=0)
@@ -39,7 +39,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=start)
@@ -54,7 +54,7 @@ class Ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1801,1802], visible=False, arg3=0, delay=0, scale=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -66,7 +66,7 @@ class start(trigger_api.Trigger):
         if self.user_value(key='InteractClear', value=1):
             return boss_scene(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[105,106,107,108,109,111,112,113,114,115,116,117,118,119])
         self.destroy_monster(spawnIds=[120,121,122,123,124,125,126,127,128,129])
         self.destroy_monster(spawnIds=[130,131,132,133,134,135,136])
@@ -74,13 +74,13 @@ class start(trigger_api.Trigger):
 
 
 class dungeonfail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_fail()
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
 
 
 class boss_scene(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=boss, action='exit')
         self.set_sound(triggerId=9900, enable=True) # 보스 등장하면 보스용 BGM으로 교체하기
         self.destroy_monster(spawnIds=[201,202,203,204,205,206])
@@ -102,7 +102,7 @@ class boss_scene(trigger_api.Trigger):
 
 
 class boss_scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[8006,8007], returnView=False)
 
@@ -122,12 +122,13 @@ class boss_scene_04(trigger_api.Trigger):
         if self.wait_tick(waitTick=2000):
             return boss(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.reset_camera(interpolationTime=0)
 
 
 class boss(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.destroy_monster(spawnIds=[311,312,313,314,315,316,2000])
         self.create_monster(spawnIds=[1999], animationEffect=False)
@@ -159,7 +160,7 @@ class boss(trigger_api.Trigger):
 
 
 class dungeonClear_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9900, enable=False)
         self.set_user_value(triggerId=2040324, key='respawn', value=2)
         self.destroy_monster(spawnIds=[301,302,303,304,305,306])
@@ -170,7 +171,7 @@ class dungeonClear_ready(trigger_api.Trigger):
 
 
 class dungeonClear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_effect(triggerIds=[7999], visible=False)

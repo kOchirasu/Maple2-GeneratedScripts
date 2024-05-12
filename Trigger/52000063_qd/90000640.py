@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3101], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004], visible=False, arg3=0, delay=0, scale=0)
@@ -26,7 +26,7 @@ class 퀘스트분기(trigger_api.Trigger):
 
 
 class 완료가능90000640(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001,1002])
         self.create_monster(spawnIds=[1003,1004], animationEffect=False)
 
@@ -37,7 +37,7 @@ class 완료가능90000640(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -50,7 +50,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class K대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1104, patrolName='MS2PatrolData_1104A')
         self.set_conversation(type=2, spawnId=11000168, script='$52000063_QD__90000640__1$', arg4=5)
 
@@ -60,7 +60,7 @@ class K대사02(trigger_api.Trigger):
 
 
 class 마칸대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1101, patrolName='MS2PatrolData_1101A')
         self.move_npc(spawnId=1102, patrolName='MS2PatrolData_1102A')
         self.move_npc(spawnId=1103, patrolName='MS2PatrolData_1103A')
@@ -73,7 +73,7 @@ class 마칸대사01(trigger_api.Trigger):
 
 
 class 마칸대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001872, script='$52000063_QD__90000640__3$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +82,7 @@ class 마칸대사02(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=302, enable=False)
@@ -100,7 +100,8 @@ class 진행중90000640(trigger_api.Trigger):
 
 
 class 차연출시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.move_user_path(patrolName='MS2PatrolData_PC01')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=303, enable=True)
@@ -112,7 +113,7 @@ class 차연출시작2(trigger_api.Trigger):
 
 
 class K대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=304, enable=True)
         self.set_conversation(type=2, spawnId=11000168, script='$52000063_QD__90000640__5$', arg4=2)
 
@@ -122,14 +123,14 @@ class K대사03(trigger_api.Trigger):
 
 
 class 카운트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3100], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3101], visible=True, arg3=0, delay=0, scale=0)
         self.destroy_monster(spawnIds=[1001,1002])
         self.select_camera(triggerId=304, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # action name="이벤트UI를설정한다" arg1="0" arg2="0,0" /
+        # self.set_event_ui(type=0, arg2='0,0')
         self.show_count_ui(text='$52000063_QD__90000640__6$', stage=1, count=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -138,7 +139,7 @@ class 카운트(trigger_api.Trigger):
 
 
 class 경기시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999102, key='gameStart', value=1)
         self.set_user_value(triggerId=99999103, key='gameStart', value=1)
         self.set_user_value(triggerId=99999104, key='gameStart', value=1)
@@ -152,7 +153,7 @@ class 경기시작(trigger_api.Trigger):
 
 
 class NPC2차이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1103, patrolName='MS2PatrolData_1103R')
         self.move_npc(spawnId=1104, patrolName='MS2PatrolData_1104R')
         self.move_npc(spawnId=1105, patrolName='MS2PatrolData_1105R')
@@ -163,7 +164,7 @@ class NPC2차이동(trigger_api.Trigger):
 
 
 class 완료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[9026,9027,9028,9029])
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3101], visible=False, arg3=0, delay=0, scale=0)
         self.create_monster(spawnIds=[1003,1004], animationEffect=False)
@@ -174,7 +175,7 @@ class 완료대기(trigger_api.Trigger):
 
 
 class 완료알림케이대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000168, script='$52000063_QD__90000640__7$', arg4=3)
@@ -185,7 +186,7 @@ class 완료알림케이대사(trigger_api.Trigger):
 
 
 class 완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[9030,9031,9032,9033,9034,9035])
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

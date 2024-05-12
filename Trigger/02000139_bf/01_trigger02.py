@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[701,702,703,704,705,706,707,708,709,710,711,712], visible=False)
         self.set_interact_object(triggerIds=[10000160], state=1)
         self.set_ladder(triggerIds=[601], visible=False, animationEffect=False)
@@ -25,7 +25,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 사다리등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[601], visible=True, animationEffect=True)
         self.set_effect(triggerIds=[701], visible=True)
         self.set_ladder(triggerIds=[602], visible=True, animationEffect=True)

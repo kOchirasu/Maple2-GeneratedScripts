@@ -61,7 +61,8 @@ class 생존체크05(trigger_api.Trigger):
 
 
 class 업적발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 트로피 / 1=타겟박스 id, 2=achieveType, 3=code에 들어갈 값 : 꼬마 5명 모두 살아 있으면 지급하는 트로피
         self.set_achievement(triggerId=99996, type='trigger', achieve='defence_child') # defence_child
 
 

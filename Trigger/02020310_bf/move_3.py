@@ -12,6 +12,7 @@ class 대기(trigger_api.Trigger):
 class Archeon_Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_any_user_additional_effect(boxId=10001, additionalEffectId=73000007, level=1):
+            # self.move_user_path(patrolName='MS2PatrolData_02')
             self.move_user_to_pos(pos=[8700,-4800,2750], rot=[0,0,0])
             return Archeon_On(self.ctx)
 

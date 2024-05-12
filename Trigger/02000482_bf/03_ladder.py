@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[501], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
         self.set_ladder(triggerIds=[502], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
         self.set_ladder(triggerIds=[503], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
@@ -18,7 +18,7 @@ class Setting(trigger_api.Trigger):
 
 
 class LeverOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002026], state=1) # LeverForLadder
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class LeverOn(trigger_api.Trigger):
 
 
 class LadderOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[501], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut
         self.set_ladder(triggerIds=[502], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut
         self.set_ladder(triggerIds=[503], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut
@@ -36,26 +36,32 @@ class LadderOn(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[601,600], returnView=True)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return FirstBattle(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        self.set_ladder(triggerIds=[510], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True) # LadderEnterance
-        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True) # LadderEnterance
-        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_Barrier
+        self.set_ladder(triggerIds=[510], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[511], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[512], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_ladder(triggerIds=[513], visible=True, animationEffect=True)
+        # LadderEnterance
+        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0)
+        # Invisible_Barrier
 
 
 class FirstBattle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3, key='CameraWalkEnd', value=1)
         self.create_monster(spawnIds=[901,902,903], animationEffect=False)
 
@@ -65,7 +71,7 @@ class FirstBattle(trigger_api.Trigger):
 
 
 class FirstBridgeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.destroy_monster(spawnIds=[901,902,903])
@@ -76,11 +82,12 @@ class FirstBridgeOn(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[504]):
+            # 두 번째 전투판 진입
             return SecondBattle(self.ctx)
 
 
 class SecondBattle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[904,905,906], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +96,7 @@ class SecondBattle(trigger_api.Trigger):
 
 
 class SecondBridgeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8002], visible=False)
         self.set_agent(triggerIds=[8003], visible=False)
         self.destroy_monster(spawnIds=[904,905,906])
@@ -103,11 +110,12 @@ class SecondBridgeOn(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[507]):
+            # 세 번째 전투판 진입
             return ThirdBattle(self.ctx)
 
 
 class ThirdBattle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[907,908,909], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +124,7 @@ class ThirdBattle(trigger_api.Trigger):
 
 
 class ThirdBridgeOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8004], visible=False)
         self.set_agent(triggerIds=[8005], visible=False)
         self.destroy_monster(spawnIds=[907,908,909])
@@ -140,7 +148,7 @@ class BossBattle01(trigger_api.Trigger):
         if self.monster_dead(boxIds=[99]):
             return Success(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[99])
 
 
@@ -151,7 +159,7 @@ class Success(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

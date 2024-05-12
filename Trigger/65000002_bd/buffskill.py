@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 초대기2(trigger_api.Trigger):
 
 
 class 스킬랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.play_system_sound_in_box(sound='BD_Buffskill_00')
         self.show_guide_summary(entityId=26500202, textId=26500202, duration=3000)
@@ -35,7 +35,7 @@ class 스킬랜덤(trigger_api.Trigger):
 
 
 class A스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -46,7 +46,7 @@ class A스킬작동(trigger_api.Trigger):
 
 
 class B스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7002], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -57,7 +57,7 @@ class B스킬작동(trigger_api.Trigger):
 
 
 class C스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7003], enable=True)
         self.set_timer(timerId='60', seconds=60)
 
@@ -68,7 +68,7 @@ class C스킬작동(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[7001], enable=False)
         self.set_skill(triggerIds=[7002], enable=False)

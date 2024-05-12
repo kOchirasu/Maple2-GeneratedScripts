@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1003], animationEffect=False)
         self.set_effect(triggerIds=[601], visible=False)
 
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -40,7 +40,7 @@ class 말풍선대사01(trigger_api.Trigger):
 
 
 class 시네마틱대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001871, script='$52000057_QD__GUIDESCENE_01__0$', arg4=2, arg5=0)
         self.set_conversation(type=2, spawnId=11001871, script='$52000057_QD__GUIDESCENE_01__1$', arg4=3, arg5=0)
 
@@ -50,7 +50,7 @@ class 시네마틱대사01(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -67,7 +67,7 @@ class 연퀘감지(trigger_api.Trigger):
 
 
 class 오필리아리젠(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class 오필리아리젠(trigger_api.Trigger):
 
 
 class 오필리아대사연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001871, script='$52000057_QD__GUIDESCENE_01__2$', arg4=2, arg5=0)
@@ -88,7 +88,7 @@ class 오필리아대사연출01(trigger_api.Trigger):
 
 # 트리거 To가이드
 class SendSignalToGuide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.guide_event(eventId=60660)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +97,7 @@ class SendSignalToGuide01(trigger_api.Trigger):
 
 
 class 오필리아리젠상시(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +106,7 @@ class 오필리아리젠상시(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

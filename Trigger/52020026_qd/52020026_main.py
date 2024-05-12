@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False)
         self.set_portal(portalId=2, visible=False, enable=False)
         self.set_mesh(triggerIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018], visible=False)
@@ -52,7 +52,7 @@ class 감지(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 층1(trigger_api.Trigger):
 
 
 class 층레버활성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='레버를 작동시켜 계단을 완성하세요.', arg3='5000')
         self.set_interact_object(triggerIds=[10001320], state=1)
 
@@ -77,7 +77,7 @@ class 층레버활성1(trigger_api.Trigger):
 
 
 class 층2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.set_mesh(triggerIds=[1001,1002,1003], visible=True, arg3=0, delay=500, scale=3)
 
@@ -87,7 +87,7 @@ class 층2(trigger_api.Trigger):
 
 
 class 층레버활성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001321], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class 층레버활성2(trigger_api.Trigger):
 
 
 class 층3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.create_monster(spawnIds=[104], animationEffect=False)
         self.set_mesh(triggerIds=[1004,1005,1006], visible=True, arg3=0, delay=500, scale=3)
@@ -107,7 +107,7 @@ class 층3(trigger_api.Trigger):
 
 
 class 층레버활성3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001322], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 층레버활성3(trigger_api.Trigger):
 
 
 class 층4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.create_monster(spawnIds=[106], animationEffect=False)
         self.set_mesh(triggerIds=[1007,1008,1009], visible=True, arg3=0, delay=500, scale=3)
@@ -127,7 +127,7 @@ class 층4(trigger_api.Trigger):
 
 
 class 층레버활성4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001323], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,7 +136,7 @@ class 층레버활성4(trigger_api.Trigger):
 
 
 class 층5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[107], animationEffect=False)
         self.set_mesh(triggerIds=[1010,1011,1012], visible=True, arg3=0, delay=500, scale=3)
 
@@ -146,7 +146,7 @@ class 층5(trigger_api.Trigger):
 
 
 class 층_벽부수기5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9001], visible=False)
         self.set_agent(triggerIds=[9002], visible=False)
         self.set_agent(triggerIds=[9003], visible=False)
@@ -172,7 +172,7 @@ class 층_벽부수기5(trigger_api.Trigger):
 
 
 class 층레버활성5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001324], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -181,7 +181,7 @@ class 층레버활성5(trigger_api.Trigger):
 
 
 class 층6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[109], animationEffect=False)
         self.create_monster(spawnIds=[110], animationEffect=False)
         self.set_mesh(triggerIds=[1013,1014,1015], visible=True, arg3=0, delay=500, scale=3)
@@ -192,7 +192,7 @@ class 층6(trigger_api.Trigger):
 
 
 class 층_벽부수기6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9017], visible=False)
         self.set_agent(triggerIds=[9018], visible=False)
         self.set_agent(triggerIds=[9019], visible=False)
@@ -218,7 +218,7 @@ class 층_벽부수기6(trigger_api.Trigger):
 
 
 class 층레버활성6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001325], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -227,7 +227,7 @@ class 층레버활성6(trigger_api.Trigger):
 
 
 class 포탈활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1016,1017,1018], visible=True, arg3=0, delay=500, scale=3)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

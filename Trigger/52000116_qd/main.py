@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_Object_Castle_Door_Open_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003163, illustId='Nelf_normal', msg='$52000116_QD__MAIN__0$', duration=4000, align='Right') # 11003163: 넬프
@@ -28,7 +28,7 @@ class ready(trigger_api.Trigger):
 
 
 class jordyspawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000116, portalId=2)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/Sound/Eff_Object_Castle_Door_Open_01.xml')
         self.create_monster(spawnIds=[102], animationEffect=True) # 102:조디
@@ -40,7 +40,7 @@ class jordyspawn(trigger_api.Trigger):
 
 
 class jordyhelp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/Sound/Eff_Object_Castle_Door_Open_01.xml')
         self.set_conversation(type=2, spawnId=11001838, script='$52000116_QD__MAIN__1$', arg4=1, arg5=0) # 조디 계단 올라가며 하는 대사
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_3002')
@@ -51,7 +51,7 @@ class jordyhelp(trigger_api.Trigger):
 
 
 class wowspawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=True) # 103:연출용 강아지
         self.set_conversation(type=1, spawnId=102, script='$52000116_QD__MAIN__2$', arg4=2, arg5=0) # 조디 뒤로 돌아서 하는 대사
 
@@ -61,7 +61,7 @@ class wowspawn(trigger_api.Trigger):
 
 
 class camera(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class camera(trigger_api.Trigger):
 
 
 class wow(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Attack_01_A')
         self.set_conversation(type=2, spawnId=11003179, script='$52000116_QD__MAIN__3$', arg4=2, arg5=0) # 강아지 짖는 대사
 
@@ -80,7 +80,7 @@ class wow(trigger_api.Trigger):
 
 
 class save(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Sit_Down_A', duration=400000)
         self.destroy_monster(spawnIds=[103])
@@ -91,7 +91,7 @@ class save(trigger_api.Trigger):
 
 
 class battleready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[104], animationEffect=True, animationDelay=500) # 멍멍이 몬스터
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class battleready(trigger_api.Trigger):
 
 
 class battle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_loop(spawnId=104, sequenceName='Attack_Idle_A', duration=10000)
@@ -116,7 +116,7 @@ class battle(trigger_api.Trigger):
 
 
 class camera_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_3005')
 
@@ -126,7 +126,7 @@ class camera_A(trigger_api.Trigger):
 
 
 class Motion(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Angry_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,7 +135,7 @@ class Motion(trigger_api.Trigger):
 
 
 class lol(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=104, sequenceName='Damg_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,8 +144,9 @@ class lol(trigger_api.Trigger):
 
 
 class run(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_3004')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -154,7 +155,7 @@ class run(trigger_api.Trigger):
 
 
 class fadeout(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102,103,104])
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -167,7 +168,7 @@ class fadeout(trigger_api.Trigger):
 
 
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000116, portalId=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +177,7 @@ class fadein(trigger_api.Trigger):
 
 
 class thank(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_sequence(spawnId=105, sequenceName='Talk_A')
@@ -190,8 +191,9 @@ class thank(trigger_api.Trigger):
 
 
 class endready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(scale=2.3, type='NameCaption', title='$52000116_QD__MAIN__8$', desc='$52000116_QD__MAIN__9$', align='centerLeft', offsetRateX=-0.15, duration=4000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,7 +202,7 @@ class endready(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, type='trigger', achieve='jordy')
         self.reset_camera(interpolationTime=0.5)
         self.set_cinematic_ui(type=0)

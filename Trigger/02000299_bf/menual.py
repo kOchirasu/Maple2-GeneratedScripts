@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=False)
         self.set_interact_object(triggerIds=[10000490], state=1)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 안내시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.select_camera(triggerId=301, enable=True)
         self.add_buff(boxIds=[104], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
@@ -26,7 +26,7 @@ class 안내시작(trigger_api.Trigger):
 
 
 class 안내01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.show_guide_summary(entityId=20003012, textId=20003012, duration=3000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -37,7 +37,7 @@ class 안내01(trigger_api.Trigger):
 
 
 class 안내02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.select_camera(triggerId=302, enable=True)
         self.show_guide_summary(entityId=20003013, textId=20003013, duration=3000)
@@ -49,7 +49,7 @@ class 안내02(trigger_api.Trigger):
 
 
 class 안내03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.select_camera(triggerId=303, enable=True)
         self.set_interact_object(triggerIds=[10000496,10000497,10000498,10000499], state=1)
@@ -62,7 +62,7 @@ class 안내03(trigger_api.Trigger):
 
 
 class 안내04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[104], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.set_interact_object(triggerIds=[10000496,10000497,10000498,10000499], state=0)
         self.set_effect(triggerIds=[604], visible=True)
@@ -76,7 +76,7 @@ class 안내04(trigger_api.Trigger):
 
 
 class 안내05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=104, skillId=70000107)
         self.set_effect(triggerIds=[604], visible=True)
         self.select_camera(triggerId=303, enable=False)

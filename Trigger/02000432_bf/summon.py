@@ -9,7 +9,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=죽음대기)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,8 @@ class 소환(trigger_api.Trigger):
 
 
 class 죽음대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +30,7 @@ class 죽음대기(trigger_api.Trigger):
 
 
 class 셀린사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2002, script='$02000432_BF__SUMMON__1$', arg4=4, arg5=0)
         self.add_buff(boxIds=[2002], skillId=40500011, level=1, isPlayer=True, isSkillSet=False)
 
@@ -42,7 +43,7 @@ class 셀린사망(trigger_api.Trigger):
 
 
 class 피리스사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
         self.set_achievement(triggerId=199, type='trigger', achieve='BigSisterFirst')
         self.set_conversation(type=1, spawnId=2001, script='$02000432_BF__SUMMON__0$', arg4=4, arg5=0)

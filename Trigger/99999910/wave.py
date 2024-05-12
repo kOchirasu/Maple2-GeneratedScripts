@@ -9,6 +9,15 @@ class idle(trigger_api.Trigger):
             return None # Missing State: ready
 
 
+"""
+class ready(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return random(self.ctx)
+
+"""
+
+
 # 몬스터 랜덤 생성
 class random(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +36,7 @@ class random(trigger_api.Trigger):
 
 
 class pattern_a_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +45,7 @@ class pattern_a_01(trigger_api.Trigger):
 
 
 class pattern_a_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +54,7 @@ class pattern_a_02(trigger_api.Trigger):
 
 
 class pattern_a_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +63,7 @@ class pattern_a_03(trigger_api.Trigger):
 
 
 class pattern_a_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +72,7 @@ class pattern_a_04(trigger_api.Trigger):
 
 
 class pattern_b_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +81,7 @@ class pattern_b_01(trigger_api.Trigger):
 
 
 class pattern_b_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +90,7 @@ class pattern_b_02(trigger_api.Trigger):
 
 
 class pattern_b_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +99,7 @@ class pattern_b_03(trigger_api.Trigger):
 
 
 class pattern_b_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +108,7 @@ class pattern_b_04(trigger_api.Trigger):
 
 
 class pattern_c_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,7 +117,7 @@ class pattern_c_01(trigger_api.Trigger):
 
 
 class pattern_c_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,7 +126,7 @@ class pattern_c_02(trigger_api.Trigger):
 
 
 class pattern_c_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -126,7 +135,7 @@ class pattern_c_03(trigger_api.Trigger):
 
 
 class pattern_c_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,7 +144,7 @@ class pattern_c_04(trigger_api.Trigger):
 
 
 class pattern_d_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,7 +153,7 @@ class pattern_d_01(trigger_api.Trigger):
 
 
 class pattern_d_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +162,7 @@ class pattern_d_02(trigger_api.Trigger):
 
 
 class pattern_d_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +171,7 @@ class pattern_d_03(trigger_api.Trigger):
 
 
 class pattern_d_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +180,7 @@ class pattern_d_04(trigger_api.Trigger):
 
 
 class pattern_e_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +189,7 @@ class pattern_e_01(trigger_api.Trigger):
 
 
 class pattern_e_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,7 +198,7 @@ class pattern_e_02(trigger_api.Trigger):
 
 
 class pattern_e_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,7 +207,7 @@ class pattern_e_03(trigger_api.Trigger):
 
 
 class pattern_e_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -207,7 +216,7 @@ class pattern_e_04(trigger_api.Trigger):
 
 
 class pattern_f_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -216,7 +225,7 @@ class pattern_f_01(trigger_api.Trigger):
 
 
 class pattern_f_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -225,7 +234,7 @@ class pattern_f_02(trigger_api.Trigger):
 
 
 class pattern_f_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -234,7 +243,7 @@ class pattern_f_03(trigger_api.Trigger):
 
 
 class pattern_f_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:

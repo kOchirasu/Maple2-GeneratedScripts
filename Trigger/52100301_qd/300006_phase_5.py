@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 패이즈_5_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_unfair', script='$52100301_QD__300006_PHASE_5__0$', duration=3176)
         self.set_effect(triggerIds=[200021,200022,200023,200024,200025,200026,200027,200028], visible=False)
         self.set_user_value(key='AI_Phase', value=0)
@@ -20,7 +20,7 @@ class 패이즈_5_시작(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3000051, key='Phase_4_Interect_01', value=0) # 페이즈4 장치 삭제
         self.set_user_value(triggerId=3000052, key='Phase_4_Interect_02', value=0)
         self.set_user_value(triggerId=3000053, key='Phase_4_Interect_03', value=0)
@@ -34,7 +34,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 아르케온_등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='AI_Phase', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class 아르케온_등장(trigger_api.Trigger):
 
 
 class 아르케온_탈것_생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3000061, key='Phase_5_Interect_01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

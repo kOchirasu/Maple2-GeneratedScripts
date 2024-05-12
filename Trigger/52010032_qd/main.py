@@ -5,7 +5,7 @@ import trigger_api
 # 치유의 숲 : 52010032
 # 들어오자마자 앉아있는 상태 연출
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True) # 퀘스트 나메드: 11000039
         self.set_effect(triggerIds=[5001], visible=False) # 나메드 치유 시전 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 붉은 늑대의 심장 치유 이펙트
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -30,7 +30,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 치유의식_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
@@ -42,7 +42,7 @@ class 치유의식_01(trigger_api.Trigger):
 
 
 class 치유의식_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
         self.move_user_path(patrolName='MS2PatrolData_3002')
@@ -54,7 +54,7 @@ class 치유의식_02(trigger_api.Trigger):
 
 
 class 치유의식_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_B')
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Cry_A'])
@@ -66,7 +66,7 @@ class 치유의식_03(trigger_api.Trigger):
 
 
 class 치유의식_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=True)
 
@@ -76,7 +76,7 @@ class 치유의식_04(trigger_api.Trigger):
 
 
 class 치유의식_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003390, msg='$52010032_QD__MAIN__3$', duration=3000, illustId='0', align='Left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class 치유의식_05(trigger_api.Trigger):
 
 
 class 의식종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class 의식종료01(trigger_api.Trigger):
 
 
 class 의식종료02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class 의식종료02(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

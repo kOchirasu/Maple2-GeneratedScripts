@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[901,902,903])
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False) # ExitTop
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False) # ExitUnder
@@ -23,7 +23,7 @@ class Wait(trigger_api.Trigger):
 
 # 오른쪽
 class Boss01SpawnDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
         self.enable_spawn_point_pc(spawnId=10001, isEnable=True)
 
@@ -33,7 +33,7 @@ class Boss01SpawnDelay(trigger_api.Trigger):
 
 
 class Boss01Spawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[901], animationEffect=False) # 23100084
         self.set_user_value(triggerId=1122330, key='AgentOff', value=1)
         self.set_cinematic_ui(type=1)
@@ -46,7 +46,7 @@ class Boss01Spawn(trigger_api.Trigger):
 
 
 class Boss01Talk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__0$', arg4=4) # 설눈이
         self.set_skip(state=Boss01Talk01Skip)
 
@@ -56,9 +56,10 @@ class Boss01Talk01(trigger_api.Trigger):
 
 
 class Boss01Talk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=502, enable=True)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +68,7 @@ class Boss01Talk01Skip(trigger_api.Trigger):
 
 
 class Boss01Talk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__1$', arg4=5) # 에르다
         self.set_skip(state=Boss01Talk02Skip)
 
@@ -77,8 +78,9 @@ class Boss01Talk02(trigger_api.Trigger):
 
 
 class Boss01Talk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -91,7 +93,7 @@ class Boss01Talk02Skip(trigger_api.Trigger):
 
 # 중앙
 class Boss02SpawnDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
         self.enable_spawn_point_pc(spawnId=10002, isEnable=True)
 
@@ -101,7 +103,7 @@ class Boss02SpawnDelay(trigger_api.Trigger):
 
 
 class Boss02Spawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[902], animationEffect=False) # 23000086
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +112,7 @@ class Boss02Spawn(trigger_api.Trigger):
 
 
 class Boss02CameraSet(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=511, enable=True)
@@ -121,7 +123,7 @@ class Boss02CameraSet(trigger_api.Trigger):
 
 
 class Boss02Talk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__2$', arg4=3) # 설눈이
         self.set_skip(state=Boss02Talk01Skip)
 
@@ -131,9 +133,10 @@ class Boss02Talk01(trigger_api.Trigger):
 
 
 class Boss02Talk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=512, enable=True)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,7 +145,7 @@ class Boss02Talk01Skip(trigger_api.Trigger):
 
 
 class Boss02Talk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__3$', arg4=4) # 에르다
         self.set_skip(state=Boss02Talk02Skip)
 
@@ -152,8 +155,9 @@ class Boss02Talk02(trigger_api.Trigger):
 
 
 class Boss02Talk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -166,7 +170,7 @@ class Boss02Talk02Skip(trigger_api.Trigger):
 
 # 왼쪽
 class Boss03SpawnDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=10000, isEnable=False) # 기본 스포너
         self.enable_spawn_point_pc(spawnId=10003, isEnable=True)
 
@@ -176,7 +180,7 @@ class Boss03SpawnDelay(trigger_api.Trigger):
 
 
 class Boss03Spawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[903], animationEffect=False) # 23000087
         self.set_user_value(triggerId=1122330, key='AgentOff', value=1)
         self.set_cinematic_ui(type=1)
@@ -189,7 +193,7 @@ class Boss03Spawn(trigger_api.Trigger):
 
 
 class Boss03Talk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003068, script='$02000382_BF__01_BOSSBATTLE__4$', arg4=4) # 설눈이
         self.set_skip(state=Boss03Talk01Skip)
 
@@ -199,9 +203,10 @@ class Boss03Talk01(trigger_api.Trigger):
 
 
 class Boss03Talk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=522, enable=True)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +215,7 @@ class Boss03Talk01Skip(trigger_api.Trigger):
 
 
 class Boss03Talk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003069, script='$02000382_BF__01_BOSSBATTLE__5$', arg4=5) # 에르다
         self.set_skip(state=Boss03Talk02Skip)
 
@@ -220,8 +225,9 @@ class Boss03Talk02(trigger_api.Trigger):
 
 
 class Boss03Talk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -234,7 +240,7 @@ class Boss03Talk02Skip(trigger_api.Trigger):
 
 # 종료
 class LeavePortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='BossKill', value=1)
         self.destroy_monster(spawnIds=[901,902,903])
 
@@ -244,7 +250,7 @@ class LeavePortalOn(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_achievement(triggerId=9900, type='trigger', achieve='ClearSnowQueen')
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True) # ExitTop

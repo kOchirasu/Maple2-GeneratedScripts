@@ -15,7 +15,7 @@ class 타임(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ai_extra_data(key='RageBuff_2', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,12 +24,12 @@ class 버프(trigger_api.Trigger):
 
 
 class 버프_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ai_extra_data(key='RageBuff_2', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None
+            pass
 
 
 initial_state = 전투시작

@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3600', seconds=3600)
         self.add_buff(boxIds=[103], skillId=70000071, level=2, isPlayer=False, isSkillSet=False)
 

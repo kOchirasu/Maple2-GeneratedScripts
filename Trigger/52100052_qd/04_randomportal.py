@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002088], state=0) # ToWall_True
         self.set_interact_object(triggerIds=[10002089], state=0) # ToRoom_True
         self.set_interact_object(triggerIds=[10002090], state=0) # ToTower_True
@@ -35,7 +35,7 @@ class PickRandomPortal(trigger_api.Trigger):
 
 # 테라스로 나가서 성 외벽으로
 class ToWall01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002088], state=1) # ToWall_True
         self.set_user_value(triggerId=6, key='ToRoomFalse', value=1) # ToRoom_False
         self.set_user_value(triggerId=7, key='ToTowerFalse', value=1) # ToTowerFalse
@@ -46,7 +46,7 @@ class ToWall01(trigger_api.Trigger):
 
 
 class ToWall02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3200], visible=False, arg3=0, delay=0, scale=0) # CurtainBarrier
         self.set_mesh(triggerIds=[3201,3202], visible=False, arg3=0, delay=0, scale=3) # CurtainOpen
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=False) # ToWall
@@ -58,7 +58,7 @@ class ToWall02(trigger_api.Trigger):
 
 
 class ToWallGuide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001563, script='$52100052_QD__04_RANDOMPORTAL__0$', arg4=5) # 이슈라
@@ -70,8 +70,9 @@ class ToWallGuide01(trigger_api.Trigger):
 
 
 class ToWallGuide01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -83,7 +84,7 @@ class ToWallGuide01Skip(trigger_api.Trigger):
 
 # 문을 통해 다른 방으로
 class ToRoom01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002089], state=1) # ToRoom_True
         self.set_user_value(triggerId=5, key='ToWallFalse', value=1) # ToWall_False
         self.set_user_value(triggerId=7, key='ToTowerFalse', value=1) # ToTowerFalse
@@ -94,7 +95,7 @@ class ToRoom01(trigger_api.Trigger):
 
 
 class ToRoom02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52100052_QD__04_RANDOMPORTAL__1$', arg3='2000', arg4='0')
         self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False) # ToRoom
 
@@ -104,7 +105,7 @@ class ToRoom02(trigger_api.Trigger):
 
 
 class ToRoomGuide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001563, script='$52100052_QD__04_RANDOMPORTAL__2$', arg4=5) # 이슈라
@@ -116,8 +117,9 @@ class ToRoomGuide01(trigger_api.Trigger):
 
 
 class ToRoomGuide01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -129,7 +131,7 @@ class ToRoomGuide01Skip(trigger_api.Trigger):
 
 # 계단을 통해 탑으로
 class ToTower01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=5, key='ToWallFalse', value=1) # ToWall_False
         self.set_user_value(triggerId=6, key='ToRoomFalse', value=1) # ToRoom_False
         self.set_interact_object(triggerIds=[10002090], state=1) # ToTower_True
@@ -140,7 +142,7 @@ class ToTower01(trigger_api.Trigger):
 
 
 class ToTower02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52100052_QD__04_RANDOMPORTAL__3$', arg3='2000', arg4='0')
         self.set_mesh(triggerIds=[3300], visible=False, arg3=0, delay=0, scale=0) # ToTowerDoorBarrier
         self.set_effect(triggerIds=[5000], visible=True) # DoorOpen
@@ -153,7 +155,7 @@ class ToTower02(trigger_api.Trigger):
 
 
 class ToTowerGuide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001563, script='$52100052_QD__04_RANDOMPORTAL__4$', arg4=5) # 이슈라
@@ -165,8 +167,9 @@ class ToTowerGuide01(trigger_api.Trigger):
 
 
 class ToTowerGuide01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -177,7 +180,7 @@ class ToTowerGuide01Skip(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='FindWay', value=1)
 
 

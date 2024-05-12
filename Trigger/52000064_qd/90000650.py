@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010], visible=True, arg3=0, delay=0, scale=0)
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -16,7 +16,7 @@ class 시작대기(trigger_api.Trigger):
 
 
 class 아이템생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[9000,9001,9002,9003,9004,9005,9006,9007,9008,9009,9010])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,7 @@ class 아이템생성(trigger_api.Trigger):
 
 
 class 완료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 완료대기(trigger_api.Trigger):
 
 
 class 완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[9011,9012,9013,9014,9015])
         self.set_event_ui(type=7, arg3='3000', arg4='0')
         self.set_achievement(triggerId=199, type='trigger', achieve='ArrivedFlyBalloon')

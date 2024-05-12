@@ -17,7 +17,7 @@ class 소환준비(trigger_api.Trigger):
 
 
 class 몬스터등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[121,122,123,124,131,132,133,134])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 몬스터등장(trigger_api.Trigger):
 
 
 class 몬스터등장_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[121,122,123,124,131,132,133,134])
 
     def on_tick(self) -> trigger_api.Trigger:

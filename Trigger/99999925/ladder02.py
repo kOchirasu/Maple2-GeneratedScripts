@@ -9,7 +9,7 @@ class ladderIdle(trigger_api.Trigger):
 
 
 class ladderWolk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[702], visible=False, arg3=1)
         self.set_ai_extra_data(key='LadderCnt', value=1, isModify=True)
 

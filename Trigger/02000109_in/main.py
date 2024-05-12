@@ -3,7 +3,7 @@ import trigger_api
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=True)
         self.set_mesh(triggerIds=[4011], visible=False)
         self.destroy_monster(spawnIds=[101,102])
@@ -58,7 +58,7 @@ class 퀘스트진행체크(trigger_api.Trigger):
 
 
 class npc스폰_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +77,7 @@ class npc스폰(trigger_api.Trigger):
 
 
 class 벽삭제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +88,7 @@ class 벽삭제(trigger_api.Trigger):
 
 
 class 일기장스폰_대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.set_mesh(triggerIds=[4011], visible=True)
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=False)
@@ -101,7 +101,7 @@ class 일기장스폰_대기(trigger_api.Trigger):
 
 
 class 일기장스폰01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4011], visible=True)
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=False)
 
@@ -117,7 +117,7 @@ class 일기장스폰01(trigger_api.Trigger):
 
 
 class 일기장스폰02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4011], visible=True)
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=False)
 
@@ -133,7 +133,7 @@ class 일기장스폰02(trigger_api.Trigger):
 
 
 class 일기장없어짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.set_mesh(triggerIds=[4011], visible=False)
         self.set_mesh(triggerIds=[4001,4002,4003,4004], visible=False)

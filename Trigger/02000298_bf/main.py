@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[11000004], state=2)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005], visible=True, arg3=0, delay=0, scale=0)
@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=암호발급)
@@ -31,7 +31,8 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=300, enable=True)
 
@@ -41,7 +42,7 @@ class 카메라이동(trigger_api.Trigger):
 
 
 class 카메라이동후UI노출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
@@ -54,7 +55,7 @@ class 카메라이동후UI노출(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2099, patrolName='MS2PatrolData_2099_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +64,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class 던전안내01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3221,3222,3223], visible=True, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10000372], state=1)
         self.show_guide_summary(entityId=20002980, textId=20002980, duration=5000)
@@ -76,7 +77,7 @@ class 던전안내01(trigger_api.Trigger):
 
 
 class 던전안내카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +86,7 @@ class 던전안내카메라이동(trigger_api.Trigger):
 
 
 class 던전안내02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20002981, textId=20002981, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -96,7 +97,7 @@ class 던전안내02(trigger_api.Trigger):
 
 
 class 암호발급(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=199, skillId=70000107)
         self.destroy_monster(spawnIds=[2099])
         self.select_camera(triggerId=302, enable=False)

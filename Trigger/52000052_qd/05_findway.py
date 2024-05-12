@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4025], visible=True, arg3=0, delay=0, scale=0) # RoundBarrier
         self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=0) # CrystalOff
         self.set_mesh(triggerIds=[3105], visible=False, arg3=0, delay=0, scale=0) # CrystalOn
@@ -19,7 +19,7 @@ class Wait(trigger_api.Trigger):
 
 # 왼쪽에서 진입
 class ReadyToWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4025], visible=False, arg3=0, delay=0, scale=0) # RoundBarrier
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_105')
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_205')
@@ -31,7 +31,7 @@ class ReadyToWalkIn01(trigger_api.Trigger):
 
 
 class ReadyToWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1305, key='RouteSelected', value=1)
         self.set_user_value(triggerId=2305, key='RouteSelected', value=1)
 
@@ -41,19 +41,19 @@ class ReadyToWalkIn02(trigger_api.Trigger):
 
 
 class ReadyToWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=104, script='$52000052_QD__04_FINDWAY__1$', arg4=2, arg5=2) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return Round05_Start(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[104,204])
 
 
 class Round05_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1005], animationEffect=False) # 수호대상 틴차이
         self.create_monster(spawnIds=[2005], animationEffect=False) # 전투용 준타
         self.set_conversation(type=1, spawnId=1005, script='$52000052_QD__04_FINDWAY__2$', arg4=3, arg5=2) # 틴차이
@@ -65,7 +65,7 @@ class Round05_Start(trigger_api.Trigger):
 
 
 class Round05_Sucess(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2005, patrolName='MS2PatrolData_2005')
         self.destroy_monster(spawnIds=[1005])
         self.create_monster(spawnIds=[105], animationEffect=False) # 연출용 틴차이
@@ -82,7 +82,7 @@ class Round05_Sucess(trigger_api.Trigger):
 
 
 class Round05_RouteSelect(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2005])
         self.create_monster(spawnIds=[205], animationEffect=False) # 연출용 준타
 
@@ -94,7 +94,7 @@ class Round05_RouteSelect(trigger_api.Trigger):
 
 
 class Round05_PickRoute_Left(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1305, key='MakeTrue', value=1)
         self.set_user_value(triggerId=2305, key='MakeFalse', value=1)
 
@@ -104,7 +104,7 @@ class Round05_PickRoute_Left(trigger_api.Trigger):
 
 
 class GoToPortal11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_11')
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_21')
         self.set_user_value(triggerId=12, key='FindWay', value=1)
@@ -115,7 +115,7 @@ class GoToPortal11(trigger_api.Trigger):
 
 
 class Round05_PickRoute_Right(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1305, key='MakeFalse', value=1)
         self.set_user_value(triggerId=2305, key='MakeTrue', value=1)
 
@@ -125,7 +125,7 @@ class Round05_PickRoute_Right(trigger_api.Trigger):
 
 
 class GoToPortal12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=12, key='FindWay', value=1)
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_12')
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_22')
@@ -136,7 +136,7 @@ class GoToPortal12(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[105,205])
 
 

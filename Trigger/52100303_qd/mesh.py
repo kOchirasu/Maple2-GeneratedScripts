@@ -16,7 +16,7 @@ class 첫번째길막(trigger_api.Trigger):
 
 
 class 이페이즈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

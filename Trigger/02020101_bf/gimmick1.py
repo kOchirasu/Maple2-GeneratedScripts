@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203,204], animationEffect=False)
         self.set_user_value(triggerId=900003, key='summon', value=2)
 
@@ -23,7 +23,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201,202,203,204], arg2=False)
         self.set_user_value(triggerId=900003, key='summon', value=2)
 

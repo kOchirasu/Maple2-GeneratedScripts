@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000], visible=False)
         self.create_monster(spawnIds=[1101], animationEffect=False)

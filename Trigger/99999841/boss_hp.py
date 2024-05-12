@@ -15,7 +15,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 프로70(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=210, value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class 프로70(trigger_api.Trigger):
 
 
 class 프로50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=220, value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 프로50(trigger_api.Trigger):
 
 
 class 프로30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=230, value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class 프로30(trigger_api.Trigger):
 
 
 class 프로10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=240, value=1)
 
     def on_tick(self) -> trigger_api.Trigger:

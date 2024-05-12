@@ -11,7 +11,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 들킴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[232,92,53])
         self.set_directional_light(diffuseColor=[41,21,18], specularColor=[130,130,130])
         self.set_effect(triggerIds=[6000], visible=True)

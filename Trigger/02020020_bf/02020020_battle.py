@@ -9,9 +9,9 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투_1라운드세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=24100101, illust='Neirin_normal', duration=5000, script='$02020020_BF__02020020_battle__0$')
-        # action name="SideNpcTalk" npcID="24100101" illust="Neirin_normal" duration="5000" script="$02020020_BF__02020020_battle__1$"/
+        # self.side_npc_talk(npcId=24100101, illust='Neirin_normal', duration=5000, script='$02020020_BF__02020020_battle__1$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -19,7 +19,7 @@ class 전투_1라운드세팅(trigger_api.Trigger):
 
 
 class 전투_1라운드시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 전투_1라운드시작(trigger_api.Trigger):
 
 
 class 전투_1라운드종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class 전투_1라운드종료(trigger_api.Trigger):
 
 
 class 전투_2라운드세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=24100101, illust='Neirin_normal', duration=5000, script='$02020020_BF__02020020_battle__2$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 전투_2라운드세팅(trigger_api.Trigger):
 
 
 class 전투_2라운드시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class 전투_2라운드시작(trigger_api.Trigger):
 
 
 class 전투_2라운드종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 전투_2라운드종료(trigger_api.Trigger):
 
 
 class 전투_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='battlesetting', value=2)
         self.side_npc_talk(npcId=24100101, illust='Neirin_normal', duration=5000, script='$02020020_BF__02020020_battle__3$')
 

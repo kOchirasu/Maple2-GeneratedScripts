@@ -7,7 +7,8 @@ class 대기(trigger_api.Trigger):
         if self.user_value(key='WaveStart', value=1):
             return 생성(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 최초 3마리
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True)
@@ -15,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2011], animationEffect=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
 
@@ -29,7 +30,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 생성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2011], animationEffect=True)
         self.spawn_npc_range(rangeIds=[2001,2002,2003,2004], isAutoTargeting=True, randomPickCount=1)
 

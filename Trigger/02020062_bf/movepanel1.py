@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 발판초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[2000,2001,2002,2003,2004,2005,2006,2007,2008], enable=False)
         self.set_visible_breakable_object(triggerIds=[2000,2001,2002,2003,2004,2005,2006,2007,2008], visible=False)
         self.set_user_value(triggerId=99990024, key='MovePanel01', value=0)
@@ -11,11 +11,12 @@ class 발판초기화(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='MovePanel01', value=1):
+            # 이동발판 삭제 후 대기
             return 레버생성(self.ctx)
 
 
 class 레버생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000115], state=1) # 이동발판트리거
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +25,7 @@ class 레버생성(trigger_api.Trigger):
 
 
 class 발판이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(triggerIds=[2000,2001,2002,2003,2004,2005,2006,2007,2008], visible=True)
         self.set_interact_object(triggerIds=[12000115], state=2) # 이동발판트리거
 

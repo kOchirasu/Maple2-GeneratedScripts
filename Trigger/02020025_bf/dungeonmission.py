@@ -21,7 +21,7 @@ class 체력90이하체크(trigger_api.Trigger):
 
 
 class 지하1층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=24092001)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 지하1층(trigger_api.Trigger):
 
 
 class 지하2층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=24092002)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class 지하2층(trigger_api.Trigger):
 
 
 class 지하3층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=24092003)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 지하3층(trigger_api.Trigger):
 
 
 class 지하4층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=24092004)
 
     def on_tick(self) -> trigger_api.Trigger:

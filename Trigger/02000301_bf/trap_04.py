@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_actor(triggerId=209, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_effect(triggerIds=[601], visible=False)
@@ -28,7 +28,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 경보(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=209, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_effect(triggerIds=[601], visible=True)

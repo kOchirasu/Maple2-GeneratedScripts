@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000585], state=0)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005], visible=False, arg3=0, delay=0, scale=0)
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,7 @@ class 연출시작딜레이(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -38,7 +38,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 트리스탄01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=2, spawnId=11000144, script='$02000300_BF__MAIN__0$', arg4=4)
         self.set_skip(state=연출종료)
@@ -49,7 +49,7 @@ class 트리스탄01(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[301], returnView=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 완료체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -69,7 +69,7 @@ class 완료체크(trigger_api.Trigger):
 
 
 class 또다른연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='1', seconds=1)
@@ -81,7 +81,7 @@ class 또다른연출시작(trigger_api.Trigger):
 
 
 class 트리스탄마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=2, spawnId=11000144, script='$02000300_BF__MAIN__1$', arg4=4)
         self.set_skip(state=또다른연출종료)
@@ -92,7 +92,7 @@ class 트리스탄마무리(trigger_api.Trigger):
 
 
 class 또다른연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -102,7 +102,7 @@ class 또다른연출종료(trigger_api.Trigger):
 
 
 class 이동대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000585], state=1)
         self.show_guide_summary(entityId=20002999, textId=20002999)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -114,7 +114,7 @@ class 이동대기(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_timer(timerId='4', seconds=4)
         self.show_count_ui(text='$02000300_BF__MAIN__3$', stage=1, count=3)
@@ -126,7 +126,7 @@ class 이동(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1800000', seconds=1800000)
 
     def on_tick(self) -> trigger_api.Trigger:

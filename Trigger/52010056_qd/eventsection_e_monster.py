@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5501], visible=False)
         self.set_effect(triggerIds=[5502], visible=False)
         self.set_effect(triggerIds=[5503], visible=False)
@@ -61,7 +61,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[601], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[602], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[603], animationEffect=True) # 크림슨 발록: 29000387
@@ -75,7 +75,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 크림슨발록_지시(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=603, msg='$52010056_QD__EventSection_E_Monster__0$', duration=2000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,7 @@ class 크림슨발록_지시(trigger_api.Trigger):
 
 
 class 크림슨스피어_대답(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=601, msg='$52010056_QD__EventSection_E_Monster__1$', duration=1500, delayTick=0)
         self.add_balloon_talk(spawnId=602, msg='$52010056_QD__EventSection_E_Monster__1$', duration=1500, delayTick=0)
         self.add_balloon_talk(spawnId=604, msg='$52010056_QD__EventSection_E_Monster__1$', duration=1500, delayTick=0)
@@ -147,7 +147,7 @@ class 크림슨스피어_대답(trigger_api.Trigger):
 
 
 class MeshOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5501], visible=False)
         self.set_effect(triggerIds=[5502], visible=False)
         self.set_effect(triggerIds=[5503], visible=False)

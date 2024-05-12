@@ -9,7 +9,7 @@ class 체력조건(trigger_api.Trigger):
 
 
 class 전투페이즈(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4000006], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 전투페이즈(trigger_api.Trigger):
 
 
 class 몬스터리젠(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4000008], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,13 +31,13 @@ class 몬스터리젠(trigger_api.Trigger):
 
 
 class 끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[4000006], arg2=False)
         self.destroy_monster(spawnIds=[4000008], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
-            return None
+            pass
 
 
 initial_state = 체력조건

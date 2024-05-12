@@ -3,7 +3,7 @@ import trigger_api
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203,204,205,206,207], animationEffect=False)
         self.create_monster(spawnIds=[211], animationEffect=False)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -20,7 +20,7 @@ class DungeonStart(trigger_api.Trigger):
         self.move_npc(spawnId=203, patrolName='MS2PatrolData5')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=402, boxId=1):
+        if self.count_users(boxId=402, minUsers='1'):
             return LoadingStart(self.ctx)
 
 
@@ -31,7 +31,7 @@ class LoadingStart(trigger_api.Trigger):
 
 
 class Dialogue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=1, script='$99999925__MAIN__0$', arg4=3)
@@ -44,7 +44,8 @@ class Dialogue01(trigger_api.Trigger):
 
 
 class Dialogue01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=500, enable=False)
 
@@ -52,7 +53,7 @@ class Dialogue01Skip(trigger_api.Trigger):
         if self.wait_tick(waitTick=1000):
             return SwitchRandom(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -86,7 +87,7 @@ class switch03(trigger_api.Trigger):
 
 
 class BrokenCheck(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ai_extra_data(key='BuffStart', value=2, isModify=True)
         self.set_actor(triggerId=601, visible=True, initialSequence='Opened')
         self.set_actor(triggerId=602, visible=True, initialSequence='Opened')
@@ -97,7 +98,7 @@ class BrokenCheck(trigger_api.Trigger):
 
 
 class BrokenWood(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[411], enable=True)
         self.set_skill(triggerIds=[412], enable=True)
 

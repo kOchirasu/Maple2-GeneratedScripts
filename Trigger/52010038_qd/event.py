@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8001], visible=True)
         self.set_agent(triggerIds=[8002], visible=True)
         self.set_agent(triggerIds=[8003], visible=True)
@@ -32,7 +32,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 이벤트조건(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6298], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +41,7 @@ class 이벤트조건(trigger_api.Trigger):
 
 
 class 이벤트시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1200], animationEffect=False)
         self.destroy_monster(spawnIds=[1201])
         self.set_conversation(type=1, spawnId=1200, script='$52010038_QD__EVENT__0$', arg4=2, arg5=0)
@@ -53,7 +53,7 @@ class 이벤트시작(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[710], enable=True)
         self.set_effect(triggerIds=[6110], visible=True)
         self.create_monster(spawnIds=[2012,2013,2014,2015], animationEffect=True)
@@ -64,7 +64,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 감지대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8005], visible=False)
         self.set_agent(triggerIds=[8006], visible=False)
         self.set_agent(triggerIds=[8007], visible=False)
@@ -82,7 +82,7 @@ class 감지대기(trigger_api.Trigger):
 
 
 class 폭발시퀀스시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=220, visible=True, initialSequence='Regen_A')
         self.set_actor(triggerId=221, visible=True, initialSequence='Regen_A')
         self.set_actor(triggerId=222, visible=True, initialSequence='Regen_A')
@@ -93,7 +93,7 @@ class 폭발시퀀스시작(trigger_api.Trigger):
 
 
 class 폭발딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=220, visible=True, initialSequence='Attack_01_A')
         self.set_actor(triggerId=221, visible=True, initialSequence='Attack_01_A')
         self.set_actor(triggerId=222, visible=True, initialSequence='Attack_01_A')
@@ -104,7 +104,7 @@ class 폭발딜레이(trigger_api.Trigger):
 
 
 class 폭발(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=220, visible=True, initialSequence='Attack_02_A')
         self.set_actor(triggerId=221, visible=True, initialSequence='Attack_02_A')
         self.set_actor(triggerId=222, visible=True, initialSequence='Attack_02_A')
@@ -118,7 +118,7 @@ class 폭발(trigger_api.Trigger):
 
 
 class 폭탄숨김(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=220, visible=False)
         self.set_actor(triggerId=221, visible=False)
         self.set_actor(triggerId=222, visible=False)
@@ -129,7 +129,7 @@ class 폭탄숨김(trigger_api.Trigger):
 
 
 class 점수(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4010], animationEffect=False)
         self.create_monster(spawnIds=[4030], animationEffect=False)
         self.side_npc_talk(npcId=11003536, illust='Neirin_normal', duration=5000, script='$52010038_QD__event__4$', voice='ko/Npc/00002105')

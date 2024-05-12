@@ -15,10 +15,12 @@ class quest_Idle(trigger_api.Trigger):
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터 스폰
         self.create_monster(spawnIds=[101,102,103,104,105], animationEffect=False)
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=False) # 1층 피직
         self.set_mesh(triggerIds=[1800,1801,1802,1803,1804,1805,1806,1807,1808,1809], visible=False) # 3층 피직
+        # 1, 2, 3층 사다리 안보이기 처리
         self.set_ladder(triggerIds=[1101], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[1102], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[1103], visible=False, animationEffect=False, animationDelay=0)
@@ -134,8 +136,9 @@ class idle(trigger_api.Trigger):
 
 
 class step_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1900,1901,1902,1903,1904,1905,1906,1907,1908,1909,1910,1911,1912,1913,1914,1915,1916,1917], visible=True) # 1층 피직
+        # 1, 2, 3층 사다리 보이기 처리
         self.set_ladder(triggerIds=[1101], visible=True, animationEffect=True, animationDelay=1)
         self.set_ladder(triggerIds=[1102], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1103], visible=True, animationEffect=True, animationDelay=3)
@@ -197,7 +200,8 @@ class step_02(trigger_api.Trigger):
 
 
 class step_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터 스폰
         self.create_monster(spawnIds=[201,202,203], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +210,8 @@ class step_03(trigger_api.Trigger):
 
 
 class step_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터 스폰
         self.set_ladder(triggerIds=[1401], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1402], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1403], visible=True, animationEffect=True, animationDelay=2)
@@ -250,7 +255,8 @@ class step_04(trigger_api.Trigger):
 
 
 class step_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터 스폰
         self.create_monster(spawnIds=[301,302,303], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -259,13 +265,17 @@ class step_05(trigger_api.Trigger):
 
 
 class step_06(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터 스폰
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LadderGoBossRoom', value=1):
             return step_07(self.ctx)
 
 
 class step_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1800,1801,1802,1803,1804,1805,1806,1807,1808,1809], visible=True) # 3층 피직
         self.set_ladder(triggerIds=[1601], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1602], visible=True, animationEffect=True, animationDelay=2)

@@ -9,7 +9,7 @@ class start(trigger_api.Trigger):
 
 
 class CameraEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 
 class CameraEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201])
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.visible_my_pc(isVisible=False) # 유저 투명 처리
@@ -31,7 +31,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 
 class CameraEffect02_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52100205_QD__52100205__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class CameraEffect02_02(trigger_api.Trigger):
 
 
 class CameraEffect03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -52,7 +52,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 
 class CameraEffect03_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class CameraEffect03_2(trigger_api.Trigger):
 
 
 class CameraEffect03_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.show_caption(type='VerticalCaption', title='$52100205_QD__52100205__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
 
@@ -71,7 +71,7 @@ class CameraEffect03_3(trigger_api.Trigger):
 
 
 class CameraEffect03_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +80,7 @@ class CameraEffect03_4(trigger_api.Trigger):
 
 
 class CameraEffect03_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.destroy_monster(spawnIds=[201])
         self.visible_my_pc(isVisible=True) # 유저 투명 처리 품
@@ -94,7 +94,7 @@ class CameraEffect03_5(trigger_api.Trigger):
 
 
 class CameraEffect03_6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class CameraEffect03_6(trigger_api.Trigger):
 
 
 class CameraEffect03_7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11004612, msg='$52100205_QD__52100205__2$', align='left', illustId='cladia_normal', duration=4000)
 
@@ -113,7 +113,7 @@ class CameraEffect03_7(trigger_api.Trigger):
 
 
 class CameraEffect03_8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -123,7 +123,7 @@ class CameraEffect03_8(trigger_api.Trigger):
 
 
 class 제시카_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -133,7 +133,7 @@ class 제시카_01(trigger_api.Trigger):
 
 
 class 제시카_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.create_monster(spawnIds=[101]) # 제시카
 
@@ -143,7 +143,7 @@ class 제시카_02(trigger_api.Trigger):
 
 
 class 제시카_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +152,7 @@ class 제시카_03(trigger_api.Trigger):
 
 
 class 제시카_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4006], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -161,7 +161,7 @@ class 제시카_04(trigger_api.Trigger):
 
 
 class 제시카_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11004575, msg='$52100205_QD__52100205__3$', align='left', illustId='Jessica_normal', duration=4000)
 
@@ -171,7 +171,7 @@ class 제시카_05(trigger_api.Trigger):
 
 
 class 제시카_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +180,7 @@ class 제시카_06(trigger_api.Trigger):
 
 
 class 제시카_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

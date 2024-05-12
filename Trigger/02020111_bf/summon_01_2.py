@@ -15,9 +15,9 @@ class 소환준비(trigger_api.Trigger):
 
 
 class 몬스터등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='Lapenta_Attack_Guide', value=1)
-        # <action name="이벤트UI를설정한다" arg1="1" arg2="$02020111_BF__SUMMON_01_2__0$" arg3="3000"/>
+        # self.set_event_ui(type=1, arg2='$02020111_BF__SUMMON_01_2__0$', arg3='3000')
         self.create_monster(spawnIds=[115,116,117,118])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +26,7 @@ class 몬스터등장(trigger_api.Trigger):
 
 
 class 몬스터등장_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[52,48,38])
         self.set_directional_light(diffuseColor=[0,0,0], specularColor=[206,174,84])
 

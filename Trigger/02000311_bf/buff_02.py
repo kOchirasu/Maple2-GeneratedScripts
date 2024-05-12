@@ -21,7 +21,7 @@ class Buff_02(trigger_api.Trigger):
 
 
 class Buff_02_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[702], skillId=50003006, level=1, isPlayer=False, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:

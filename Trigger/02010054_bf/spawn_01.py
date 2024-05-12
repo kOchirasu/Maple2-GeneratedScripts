@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000884], state=2)
         self.set_effect(triggerIds=[610], visible=False)
         self.set_mesh(triggerIds=[3127], visible=True, arg3=0, delay=0, scale=0)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[610], visible=True)
         self.create_monster(spawnIds=[2022], animationEffect=False)
         self.set_mesh(triggerIds=[3127], visible=False, arg3=0, delay=0, scale=5)

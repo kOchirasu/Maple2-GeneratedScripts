@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000047], state=1)
         self.create_monster(spawnIds=[147])
 
@@ -17,12 +17,12 @@ class 오브젝트반응(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10000047], stateValue=0):
             return NPC탈출(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[147])
 
 
 class NPC탈출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[148])
         self.set_conversation(type=1, spawnId=148, script='$02000137_BF__IA_47__0$', arg4=2)
         self.set_timer(timerId='1', seconds=5)
@@ -34,7 +34,7 @@ class NPC탈출(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:

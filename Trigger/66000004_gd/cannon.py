@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 대포등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,1003,1004], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 대포등장(trigger_api.Trigger):
 
 
 class 소환해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001,1002,1003,1004], arg2=False)
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 축하대기1(trigger_api.Trigger):
 
 
 class 축하1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 축하1(trigger_api.Trigger):
 
 
 class 축하2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=100, script='$80000003_bonus__T1_CONGRATULATION__0$')
         self.set_conversation(type=1, spawnId=101, script='$80000003_bonus__T1_CONGRATULATION__1$')
         self.set_timer(timerId='1', seconds=30)

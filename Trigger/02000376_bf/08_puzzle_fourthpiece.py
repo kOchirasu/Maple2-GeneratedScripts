@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='PickFourthPieceExceptA01', value=0)
         self.set_user_value(key='PickFourthPieceExceptA02', value=0)
         self.set_user_value(key='PickFourthPieceExceptA03', value=0)
@@ -266,7 +266,7 @@ class RandomPick_ExceptE02(trigger_api.Trigger):
 
 # 첫 번째 패턴 뽑힘
 class Pattern01_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3400], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_A01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -278,14 +278,16 @@ class Pattern01_Pick(trigger_api.Trigger):
 class Pattern01_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000565):
+            # Pattern_A01
             return Pattern01_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000565):
+            # 돌이 없거나 정답이 아니면
             return Pattern01_WrongAnswer(self.ctx)
 
 
 # 첫 번째 패턴 정답
 class Pattern01_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3410], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_A01
 
@@ -298,7 +300,7 @@ class Pattern01_CorrectAnswer(trigger_api.Trigger):
 
 # 첫 번째 패턴 오답
 class Pattern01_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -307,7 +309,7 @@ class Pattern01_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern01_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -320,7 +322,7 @@ class Pattern01_Reset01(trigger_api.Trigger):
 
 # 첫 번째 패턴 다시체크
 class Pattern01_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3410], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_A01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -330,7 +332,7 @@ class Pattern01_Reset02(trigger_api.Trigger):
 
 # 두 번째 패턴 뽑힘
 class Pattern02_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3401], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_A02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -342,14 +344,16 @@ class Pattern02_Pick(trigger_api.Trigger):
 class Pattern02_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000566):
+            # Pattern_A02
             return Pattern02_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000566):
+            # 돌이 없거나 정답이 아니면
             return Pattern02_WrongAnswer(self.ctx)
 
 
 # 두 번째 패턴 정답
 class Pattern02_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3411], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_A02
 
@@ -362,7 +366,7 @@ class Pattern02_CorrectAnswer(trigger_api.Trigger):
 
 # 두 번째 패턴 오답
 class Pattern02_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -371,7 +375,7 @@ class Pattern02_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern02_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -384,7 +388,7 @@ class Pattern02_Reset01(trigger_api.Trigger):
 
 # 두 번째 패턴 다시체크
 class Pattern02_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3411], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_A02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -394,7 +398,7 @@ class Pattern02_Reset02(trigger_api.Trigger):
 
 # 세 번째 패턴 뽑힘
 class Pattern03_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3402], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_A03
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -406,14 +410,16 @@ class Pattern03_Pick(trigger_api.Trigger):
 class Pattern03_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000567):
+            # Pattern_A03
             return Pattern03_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000567):
+            # 돌이 없거나 정답이 아니면
             return Pattern03_WrongAnswer(self.ctx)
 
 
 # 세 번째 패턴 정답
 class Pattern03_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3412], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_A03
 
@@ -426,7 +432,7 @@ class Pattern03_CorrectAnswer(trigger_api.Trigger):
 
 # 세 번째 패턴 오답
 class Pattern03_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -435,7 +441,7 @@ class Pattern03_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern03_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -448,7 +454,7 @@ class Pattern03_Reset01(trigger_api.Trigger):
 
 # 세 번째 패턴 다시체크
 class Pattern03_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3412], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_A03
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -458,7 +464,7 @@ class Pattern03_Reset02(trigger_api.Trigger):
 
 # 네 번째 패턴 뽑힘
 class Pattern04_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3403], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_B01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -470,14 +476,16 @@ class Pattern04_Pick(trigger_api.Trigger):
 class Pattern04_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000568):
+            # Pattern_B01
             return Pattern04_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000568):
+            # 돌이 없거나 정답이 아니면
             return Pattern04_WrongAnswer(self.ctx)
 
 
 # 네 번째 패턴 정답
 class Pattern04_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3413], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_B01
 
@@ -490,7 +498,7 @@ class Pattern04_CorrectAnswer(trigger_api.Trigger):
 
 # 네 번째 패턴 오답
 class Pattern04_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -499,7 +507,7 @@ class Pattern04_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern04_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -512,7 +520,7 @@ class Pattern04_Reset01(trigger_api.Trigger):
 
 # 네 번째 패턴 다시체크
 class Pattern04_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3413], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_B01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -522,7 +530,7 @@ class Pattern04_Reset02(trigger_api.Trigger):
 
 # 다섯 번째 패턴 뽑힘
 class Pattern05_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3404], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_B02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -534,14 +542,16 @@ class Pattern05_Pick(trigger_api.Trigger):
 class Pattern05_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000569):
+            # Pattern_B02
             return Pattern05_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000569):
+            # 돌이 없거나 정답이 아니면
             return Pattern05_WrongAnswer(self.ctx)
 
 
 # 다섯 번째 패턴 정답
 class Pattern05_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3414], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_B02
 
@@ -554,7 +564,7 @@ class Pattern05_CorrectAnswer(trigger_api.Trigger):
 
 # 다섯 번째 패턴 오답
 class Pattern05_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -563,7 +573,7 @@ class Pattern05_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern05_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -576,7 +586,7 @@ class Pattern05_Reset01(trigger_api.Trigger):
 
 # 다섯 번째 패턴 다시체크
 class Pattern05_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3414], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_B02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -586,7 +596,7 @@ class Pattern05_Reset02(trigger_api.Trigger):
 
 # 여섯 번째 패턴 뽑힘
 class Pattern06_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3405], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_C01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -598,14 +608,16 @@ class Pattern06_Pick(trigger_api.Trigger):
 class Pattern06_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000570):
+            # Pattern_C01
             return Pattern06_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000570):
+            # 돌이 없거나 정답이 아니면
             return Pattern06_WrongAnswer(self.ctx)
 
 
 # 여섯 번째 패턴 정답
 class Pattern06_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3415], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_C01
 
@@ -618,7 +630,7 @@ class Pattern06_CorrectAnswer(trigger_api.Trigger):
 
 # 여섯 번째 패턴 오답
 class Pattern06_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -627,7 +639,7 @@ class Pattern06_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern06_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -640,7 +652,7 @@ class Pattern06_Reset01(trigger_api.Trigger):
 
 # 여섯 번째 패턴 다시체크
 class Pattern06_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3415], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_C01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -650,7 +662,7 @@ class Pattern06_Reset02(trigger_api.Trigger):
 
 # 일곱 번째 패턴 뽑힘
 class Pattern07_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3406], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_D01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -662,14 +674,16 @@ class Pattern07_Pick(trigger_api.Trigger):
 class Pattern07_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000571):
+            # Pattern_D01
             return Pattern07_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000571):
+            # 돌이 없거나 정답이 아니면
             return Pattern07_WrongAnswer(self.ctx)
 
 
 # 일곱 번째 패턴 정답
 class Pattern07_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3416], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_D01
 
@@ -682,7 +696,7 @@ class Pattern07_CorrectAnswer(trigger_api.Trigger):
 
 # 일곱 번째 패턴 오답
 class Pattern07_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -691,7 +705,7 @@ class Pattern07_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern07_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -704,7 +718,7 @@ class Pattern07_Reset01(trigger_api.Trigger):
 
 # 일곱 번째 패턴 다시체크
 class Pattern07_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3416], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_D01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -714,7 +728,7 @@ class Pattern07_Reset02(trigger_api.Trigger):
 
 # 여덟 번째 패턴 뽑힘
 class Pattern08_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3407], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_D02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -726,14 +740,16 @@ class Pattern08_Pick(trigger_api.Trigger):
 class Pattern08_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000572):
+            # Pattern_D02
             return Pattern08_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000572):
+            # 돌이 없거나 정답이 아니면
             return Pattern08_WrongAnswer(self.ctx)
 
 
 # 여덟 번째 패턴 정답
 class Pattern08_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3417], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_D02
 
@@ -746,7 +762,7 @@ class Pattern08_CorrectAnswer(trigger_api.Trigger):
 
 # 여덟 번째 패턴 오답
 class Pattern08_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -755,7 +771,7 @@ class Pattern08_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern08_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -768,7 +784,7 @@ class Pattern08_Reset01(trigger_api.Trigger):
 
 # 여덟 번째 패턴 다시체크
 class Pattern08_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3417], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_D02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -778,7 +794,7 @@ class Pattern08_Reset02(trigger_api.Trigger):
 
 # 아홉 번째 패턴 뽑힘
 class Pattern09_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3408], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_E01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -790,14 +806,16 @@ class Pattern09_Pick(trigger_api.Trigger):
 class Pattern09_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000573):
+            # Pattern_E01
             return Pattern09_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000573):
+            # 돌이 없거나 정답이 아니면
             return Pattern09_WrongAnswer(self.ctx)
 
 
 # 아홉 번째 패턴 정답
 class Pattern09_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3418], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_E01
 
@@ -810,7 +828,7 @@ class Pattern09_CorrectAnswer(trigger_api.Trigger):
 
 # 아홉 번째 패턴 오답
 class Pattern09_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -819,7 +837,7 @@ class Pattern09_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern09_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -832,7 +850,7 @@ class Pattern09_Reset01(trigger_api.Trigger):
 
 # 아홉 번째 패턴 다시체크
 class Pattern09_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3418], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_E01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -842,7 +860,7 @@ class Pattern09_Reset02(trigger_api.Trigger):
 
 # 열 번째 패턴 뽑힘
 class Pattern10_Pick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3409], visible=True, arg3=0, delay=0, scale=0) # Pattern_Ground_E02
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -854,14 +872,16 @@ class Pattern10_Pick(trigger_api.Trigger):
 class Pattern10_Check(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[2004], itemId=30000574):
+            # Pattern_E02
             return Pattern10_CorrectAnswer(self.ctx)
         if not self.detect_liftable_object(boxIds=[2004], itemId=30000574):
+            # 돌이 없거나 정답이 아니면
             return Pattern10_WrongAnswer(self.ctx)
 
 
 # 열 번째 패턴 정답
 class Pattern10_CorrectAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=1) # 정답
         self.set_mesh(triggerIds=[3419], visible=True, arg3=100, delay=0, scale=5) # Pattern_LightOn_E02
 
@@ -874,7 +894,7 @@ class Pattern10_CorrectAnswer(trigger_api.Trigger):
 
 # 열 번째 패턴 오답
 class Pattern10_WrongAnswer(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='CorrectFourthPiece', value=2) # 오답
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -883,7 +903,7 @@ class Pattern10_WrongAnswer(trigger_api.Trigger):
 
 
 class Pattern10_Reset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheckFourthPiece', value=0)
         self.set_user_value(key='CorrectFourthPiece', value=0)
         self.set_user_value(key='ResetFourthPiece', value=0)
@@ -896,7 +916,7 @@ class Pattern10_Reset01(trigger_api.Trigger):
 
 # 열 번째 패턴 다시체크
 class Pattern10_Reset02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3419], visible=False, arg3=100, delay=0, scale=5) # Pattern_LightOn_E02
 
     def on_tick(self) -> trigger_api.Trigger:

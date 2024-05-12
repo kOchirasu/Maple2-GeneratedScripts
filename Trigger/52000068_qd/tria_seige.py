@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 퀘스트분기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=11010, visible=False, initialSequence='Dead_A')
         self.set_actor(triggerId=16000, visible=False, initialSequence='Stun_A')
         self.set_actor(triggerId=16001, visible=False, initialSequence='Stun_A')
@@ -35,6 +35,7 @@ class 퀘스트분기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[199], questIds=[20002264], questStates=[3]):
+            # 챕터6 에필로그 [20002264 진정한 트라이아의 방패] 완료 시
             return 재접속유저케어(self.ctx)
         if self.quest_user_detected(boxIds=[199], questIds=[20002263], questStates=[3]):
             return 조디사망연출(self.ctx)
@@ -43,7 +44,7 @@ class 퀘스트분기(trigger_api.Trigger):
 
 
 class 재접속유저케어(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[10000,10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016,10017,10018,10019,10020,10021,10022,10023], animationEffect=False)
         self.create_monster(spawnIds=[10024,10025,10026,10027,10028,10029,10030,10031,10032,10033,10034], animationEffect=False)
         self.set_visible_breakable_object(triggerIds=[5000,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012], visible=False)
@@ -60,7 +61,8 @@ class 트리거멈춤(trigger_api.Trigger):
 
 # 여기서부터 NPC조디 사망연출
 class 조디사망연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 모든 agent 개방
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -88,13 +90,13 @@ class 조디사망연출(trigger_api.Trigger):
 
 
 class 연출트리거로고고(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999201, key='tria_seige', value=1)
 
 
 # 여기서부터 군단 침공 이벤트
 class 침공이벤트시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[701], enable=False)
         self.set_cinematic_ui(type=1)
@@ -132,7 +134,7 @@ class 침공이벤트시작(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -142,7 +144,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -153,7 +155,7 @@ class 카메라이동(trigger_api.Trigger):
 
 
 class 카메라이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -162,7 +164,7 @@ class 카메라이동2(trigger_api.Trigger):
 
 
 class 데블린동작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=11100101, enable=True, path='BG/Common/Sound/Eff_Object_Devlin_Appear_01.xml ')
         self.set_npc_emotion_sequence(spawnId=2001, sequenceName='AttackReady_A')
 
@@ -172,7 +174,7 @@ class 데블린동작(trigger_api.Trigger):
 
 
 class 마드리아카메라(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=311, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -181,7 +183,7 @@ class 마드리아카메라(trigger_api.Trigger):
 
 
 class 마드리아백샷(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2002, script='$52000068_QD__TRIA_SEIGE__0$', arg4=3, arg5=0)
         self.set_onetime_effect(id=1990, enable=True, path='BG/Common/Sound/Eff_Madria_TriaSeige_01_00001990.xml')
         self.select_camera(triggerId=303, enable=True)
@@ -192,7 +194,7 @@ class 마드리아백샷(trigger_api.Trigger):
 
 
 class 레논대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$52000068_QD__TRIA_SEIGE__1$', arg4=4)
         self.select_camera(triggerId=304, enable=True)
 
@@ -202,7 +204,7 @@ class 레논대사01(trigger_api.Trigger):
 
 
 class 레논대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$52000068_QD__TRIA_SEIGE__2$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,7 +213,7 @@ class 레논대사02(trigger_api.Trigger):
 
 
 class 레논대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$52000068_QD__TRIA_SEIGE__3$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,7 +222,8 @@ class 레논대사03(trigger_api.Trigger):
 
 
 class 레논대사03_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -229,7 +232,8 @@ class 레논대사03_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_cinematic_ui(type=4)
         self.reset_camera(interpolationTime=0.5)
@@ -240,10 +244,10 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[199], skillId=70000109, level=1, isPlayer=False, isSkillSet=False) # 초생회
         self.select_camera(triggerId=304, enable=False)
-        # action name="카메라리셋" interpolationTime="0.0"/
+        # self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_agent(triggerIds=[8000], visible=False)
@@ -261,7 +265,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 임무01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_interact_object(triggerIds=[10001074], state=1)
@@ -278,7 +282,8 @@ class 임무01(trigger_api.Trigger):
 
 
 class 임무01반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
@@ -290,7 +295,7 @@ class 임무01반응대기(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10001074,10001075,10001076], stateValue=2):
             self.set_conversation(type=1, spawnId=1001, script='$52000068_QD__TRIA_SEIGE__6$', arg4=4, arg5=0)
             self.create_item(spawnIds=[9000,9001,9002,9003,9004,9005,9006,9007,9008,9009,9010,9011,9012])
-            self.add_buff(boxIds=[199], skillId=70000058, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(boxIds=[199], skillId=70000058, level=1, isPlayer=False, isSkillSet=False) # 이속증가
             return 임무02대기(self.ctx)
 
 
@@ -301,7 +306,7 @@ class 임무02대기(trigger_api.Trigger):
 
 
 class 임무02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_agent(triggerIds=[8005], visible=True)
@@ -335,7 +340,8 @@ class 임무02(trigger_api.Trigger):
 
 
 class 대사스킵용01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
 
@@ -345,7 +351,8 @@ class 대사스킵용01(trigger_api.Trigger):
 
 
 class 임무02_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_agent(triggerIds=[8005], visible=False)
         self.set_agent(triggerIds=[8006], visible=False)
@@ -375,7 +382,8 @@ class 임무02_2(trigger_api.Trigger):
 
 
 class 임무02종료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
@@ -392,7 +400,7 @@ class 임무02종료대기(trigger_api.Trigger):
 
 
 class 임무02종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=309, enable=True)
@@ -406,7 +414,7 @@ class 임무02종료(trigger_api.Trigger):
 
 
 class 데블린카메라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=310, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -421,7 +429,7 @@ class 벽파괴대기(trigger_api.Trigger):
 
 
 class 벽파괴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2101,2102,2103,2104], animationEffect=False, animationDelay=6000)
         self.move_npc(spawnId=2101, patrolName='MS2PatrolData_air')
         self.move_npc(spawnId=2102, patrolName='MS2PatrolData_air')
@@ -437,7 +445,7 @@ class 벽파괴(trigger_api.Trigger):
 
 
 class 조디대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_conversation(type=2, spawnId=11001838, script='$52000068_QD__TRIA_SEIGE__9$', arg4=4)
         self.set_scene_skip(state=대사스킵용02)
@@ -448,7 +456,8 @@ class 조디대화(trigger_api.Trigger):
 
 
 class 대사스킵용02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
 
@@ -458,7 +467,8 @@ class 대사스킵용02(trigger_api.Trigger):
 
 
 class 조디대화2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_conversation(type=2, spawnId=11001838, script='$52000068_QD__TRIA_SEIGE__10$', arg4=4)
         self.set_scene_skip(state=벽파괴종료)
@@ -469,7 +479,8 @@ class 조디대화2(trigger_api.Trigger):
 
 
 class 벽파괴종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.set_portal(portalId=2, visible=False, enable=True, minimapVisible=True)

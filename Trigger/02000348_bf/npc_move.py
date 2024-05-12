@@ -4,12 +4,12 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=60004, boxId=1):
+        if self.count_users(boxId=60004, minUsers='1'):
             return start(self.ctx)
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000348_BF__NPC_MOVE__0$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,7 +29,7 @@ class start_02(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
 
 

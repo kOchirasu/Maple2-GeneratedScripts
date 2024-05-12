@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=False)
         self.set_effect(triggerIds=[5004], visible=False)
         self.set_effect(triggerIds=[5005], visible=False)
@@ -21,7 +21,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True)
         self.create_monster(spawnIds=[201], animationEffect=True) # 아빠 유령
         self.create_monster(spawnIds=[202], animationEffect=True) # 엄마 유령
@@ -33,7 +33,7 @@ class Event_Start(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5004], visible=True)
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_3001')
         self.add_balloon_talk(spawnId=203, msg='와! 쾅쾅한다!', duration=2500, delayTick=0)
@@ -44,7 +44,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=202, msg='여보... 우리 어쩌면 좋아요?', duration=2800, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='일이 이렇게 되어버릴 줄은...', duration=2800, delayTick=0)
         self.add_balloon_talk(spawnId=202, msg='우리 도망 못가는거죠?', duration=2800, delayTick=1000)
 
@@ -63,7 +63,7 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5005], visible=True)
         self.add_balloon_talk(spawnId=203, msg='쾅쾅! 쾅쾅!', duration=2000, delayTick=0)
         self.add_balloon_talk(spawnId=201, msg='난 대체 무얼 위해...', duration=2800, delayTick=0)
@@ -74,7 +74,7 @@ class Event_04(trigger_api.Trigger):
 
 
 class Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=202, msg='여보!', duration=2800, delayTick=0)
         self.add_balloon_talk(spawnId=201, msg='!!!', duration=2000, delayTick=1000)
 
@@ -84,7 +84,7 @@ class Event_05(trigger_api.Trigger):
 
 
 class Event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='여보, 내 딸... 모두 미안하오...', duration=2000, delayTick=1000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class Event_06(trigger_api.Trigger):
 
 
 class Event_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5006], visible=True)
         self.add_balloon_talk(spawnId=202, msg='여보...', duration=2000, delayTick=1000)
 
@@ -103,7 +103,7 @@ class Event_07(trigger_api.Trigger):
 
 
 class Event_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=False)
         self.set_effect(triggerIds=[5004], visible=False)
         self.set_effect(triggerIds=[5005], visible=False)

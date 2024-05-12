@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 입장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8001], visible=True)
         self.set_agent(triggerIds=[8002], visible=True)
         self.set_agent(triggerIds=[8003], visible=True)
@@ -24,7 +24,7 @@ class 입장(trigger_api.Trigger):
 
 
 class 카메라_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=카메라_종료, action='exit')
         self.move_user(mapId=2020027, portalId=1)
         self.set_cinematic_ui(type=1)
@@ -36,7 +36,7 @@ class 카메라_시작(trigger_api.Trigger):
 
 
 class 카메라_캡션(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[5001,5002], returnView=False)
         self.show_caption(type='VerticalCaption', title='$02020027_BF__main__2$', desc='$02020027_BF__main__3$', align='centerLeft', offsetRateX=0, offsetRateY=0, duration=4000, scale=2)
 
@@ -46,7 +46,7 @@ class 카메라_캡션(trigger_api.Trigger):
 
 
 class 유저연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=5003, enable=True)
         self.set_conversation(type=1, spawnId=0, script='$02020027_BF__main__4$', arg4=3, arg5=0)
 
@@ -56,7 +56,7 @@ class 유저연출(trigger_api.Trigger):
 
 
 class 카메라_메이슨설명1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class 카메라_메이슨설명1(trigger_api.Trigger):
 
 
 class 유저연출_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=202, sequenceName='Talk_B', duration=18430)
         self.set_conversation(type=1, spawnId=0, script='$02020027_BF__main__5$', arg4=3, arg5=0)
         self.add_cinematic_talk(npcId=24120006, illustId='Mason_normal', msg='$02020027_BF__main__0$', duration=4000, align='left')
@@ -77,7 +77,7 @@ class 유저연출_2(trigger_api.Trigger):
 
 
 class 카메라_메이슨설명2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=5004, enable=True)
         self.add_cinematic_talk(npcId=24120006, illustId='Mason_normal', msg='$02020027_BF__main__1$', duration=4000, align='left')
 
@@ -87,8 +87,9 @@ class 카메라_메이슨설명2(trigger_api.Trigger):
 
 
 class 카메라_메이슨설명3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=24120006, illustId='Mason_normal', msg='$02020027_BF__main__6$', duration=4000, align='left')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +98,7 @@ class 카메라_메이슨설명3(trigger_api.Trigger):
 
 
 class 카메라_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0.1)
@@ -105,12 +106,12 @@ class 카메라_종료(trigger_api.Trigger):
         self.create_monster(spawnIds=[201], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if self.npc_detected(boxId=1001, spawnIds=[201]) and self.wait_tick(waitTick=2000):
             return 전투_진행(self.ctx)
 
 
 class 전투_진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
         self.set_agent(triggerIds=[8003], visible=False)
@@ -120,9 +121,9 @@ class 전투_진행(trigger_api.Trigger):
         self.set_agent(triggerIds=[8007], visible=False)
         self.set_agent(triggerIds=[8008], visible=False)
         self.set_user_value(triggerId=99990002, key='battlesetting', value=1)
-        # <action name="SetUserValue" triggerID="99990003" key="Timer" value="1"/>
-        # <action name="SetUserValue" triggerID="99990011" key="SpecialTimer" value="1"/>
-        # <action name="SetUserValue" triggerID="99990002" key="SpecialTimer" value="1"/>
+        # self.set_user_value(triggerId=99990003, key='Timer', value=1)
+        # self.set_user_value(triggerId=99990011, key='SpecialTimer', value=1)
+        # self.set_user_value(triggerId=99990002, key='SpecialTimer', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='End', value=1):
@@ -140,13 +141,13 @@ class 랭크체크대사(trigger_api.Trigger):
 
 
 class 던전종료_A랭크이상(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_clear()
 
 
 class 던전종료_A랭크미만(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_fail()
 

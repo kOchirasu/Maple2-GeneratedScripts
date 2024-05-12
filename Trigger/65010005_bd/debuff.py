@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 디버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000040, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:

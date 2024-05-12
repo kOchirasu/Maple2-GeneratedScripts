@@ -4,7 +4,7 @@ import trigger_api
 
 # 포그 이펙트
 class Round_check(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False)
         self.set_effect(triggerIds=[7002], visible=False)
         self.set_effect(triggerIds=[7003], visible=False)
@@ -54,7 +54,9 @@ class Round_06_Ready(trigger_api.Trigger):
 
 
 class Round_02_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=61000901, textId=61000901, duration=3000)
+        # 안개가 펼쳐집니다.
         self.set_effect(triggerIds=[7001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +67,9 @@ class Round_02_Start(trigger_api.Trigger):
 
 
 class Round_03_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=61000901, textId=61000901, duration=3000)
+        # 안개가 펼쳐집니다.
         self.set_effect(triggerIds=[7002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +80,9 @@ class Round_03_Start(trigger_api.Trigger):
 
 
 class Round_04_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=61000901, textId=61000901, duration=3000)
+        # 안개가 펼쳐집니다.
         self.set_effect(triggerIds=[7002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +93,9 @@ class Round_04_Start(trigger_api.Trigger):
 
 
 class Round_05_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=61000901, textId=61000901, duration=3000)
+        # 안개가 펼쳐집니다.
         self.set_effect(triggerIds=[7003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +106,9 @@ class Round_05_Start(trigger_api.Trigger):
 
 
 class Round_06_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=61000901, textId=61000901, duration=3000)
+        # 안개가 펼쳐집니다.
         self.set_effect(triggerIds=[7005], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

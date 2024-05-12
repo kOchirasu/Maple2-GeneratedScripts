@@ -9,7 +9,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000130, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 버프(trigger_api.Trigger):
 
 
 class 버프_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000130, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 버프_2(trigger_api.Trigger):
 
 
 class 버프_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000130, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 버프_3(trigger_api.Trigger):
 
 
 class 버프_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000130, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 버프_4(trigger_api.Trigger):
 
 
 class 버프_5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[101], skillId=70000131, level=1, isPlayer=False, isSkillSet=True)
 
     def on_tick(self) -> trigger_api.Trigger:

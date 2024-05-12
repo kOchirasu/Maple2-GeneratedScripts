@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[4001], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
         self.set_ladder(triggerIds=[4002], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
         self.set_ladder(triggerIds=[4003], visible=False, animationEffect=False, animationDelay=0) # Ladder_Shortcut
@@ -11,6 +11,7 @@ class Wait(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=9100, spawnIds=[101]):
+            # 설눈이 감지
             return PCComeDown(self.ctx)
 
 
@@ -21,7 +22,7 @@ class PCComeDown(trigger_api.Trigger):
 
 
 class LadderOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[4001], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut
         self.set_ladder(triggerIds=[4002], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut
         self.set_ladder(triggerIds=[4003], visible=True, animationEffect=True, animationDelay=2) # Ladder_Shortcut

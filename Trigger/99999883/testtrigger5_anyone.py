@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[901])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Wait(trigger_api.Trigger):
 
 
 class StartDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[901], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,12 +22,12 @@ class StartDelay(trigger_api.Trigger):
 
 class CheckAnyOne(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.wait_tick(waitTick=10000) or self.monster_dead(boxIds=[901]):
             return QuitDelay(self.ctx)
 
 
 class QuitDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[901])
 
     def on_tick(self) -> trigger_api.Trigger:

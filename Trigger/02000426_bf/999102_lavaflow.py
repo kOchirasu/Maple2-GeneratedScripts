@@ -9,22 +9,25 @@ class 전투체크(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='LavaflowHigh', value=1):
+            # 자쿰 팔이 제거될 때 LavaflowHigh 혹은 LavaflowLow 신호를 보내서 이 부분 작동하게 됨
             self.set_user_value(triggerId=999102, key='LavaflowHigh', value=0)
             return 칸이동3(self.ctx)
         if self.user_value(key='LavaflowLow', value=1):
+            # 자쿰 팔이 제거될 때 LavaflowHigh 혹은 LavaflowLow 신호를 보내서 이 부분 작동하게 됨
             self.set_user_value(triggerId=999102, key='LavaflowLow', value=0)
             return 칸이동2(self.ctx)
         if self.user_value(key='BattleEnd2', value=1):
+            # BattleEnd2 변수는 보스 생성쪽 트리거 설정 xml 에서 보스가 죽을 경우 BattleEnd2 = 1 설정되어서 넘어오는 것임
             return 종료(self.ctx)
 
 
 class 칸이동3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001A')
@@ -37,7 +40,7 @@ class 칸이동3(trigger_api.Trigger):
 
 
 class 칸이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001B')
@@ -50,7 +53,7 @@ class 칸이동2(trigger_api.Trigger):
 
 
 class 리턴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001C')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +63,7 @@ class 리턴(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
 
 

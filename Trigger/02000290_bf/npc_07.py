@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=False) # 요미공주음성01
         self.set_effect(triggerIds=[6002], visible=False) # 요미공주음성02
         self.set_interact_object(triggerIds=[10000464], state=1)
@@ -13,13 +13,13 @@ class 시작대기중(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10000464], stateValue=0):
             return NPC대사(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_actor(triggerId=9007, visible=False, initialSequence='Down_Idle_A')
         self.set_user_value(triggerId=9999995, key='dungeonclear', value=1)
 
 
 class NPC대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[907])
         self.set_timer(timerId='2', seconds=2)
 
@@ -31,7 +31,7 @@ class NPC대사(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=4)
         self.move_npc(spawnId=907, patrolName='MS2PatrolData907')
 
@@ -43,7 +43,9 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    pass
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.destroy_monster(spawnIds=[907])
+        pass
 
 
 initial_state = 시작대기중

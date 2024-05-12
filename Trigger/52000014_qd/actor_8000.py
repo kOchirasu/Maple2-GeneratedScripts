@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8100], visible=False) # Rage
         self.destroy_monster(spawnIds=[800,801])
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 약화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[800], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 약화01(trigger_api.Trigger):
 
 
 class 교체01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.destroy_monster(spawnIds=[800])
         self.create_monster(spawnIds=[801], animationEffect=False)
@@ -34,7 +34,7 @@ class 교체01(trigger_api.Trigger):
 
 
 class 일어남01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class 일어남01(trigger_api.Trigger):
 
 
 class 포효01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=5)
         self.set_effect(triggerIds=[8100], visible=True) # Rage
 
@@ -53,7 +53,7 @@ class 포효01(trigger_api.Trigger):
 
 
 class 종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8100], visible=False) # Rage
 
 

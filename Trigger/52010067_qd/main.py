@@ -5,7 +5,7 @@ import trigger_api
 class 연출01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
-            self.visible_my_pc(isVisible=False)
+            self.visible_my_pc(isVisible=False) # 유저 투명 처리
             self.set_cinematic_ui(type=1)
             self.set_effect(triggerIds=[9010], visible=False)
             return 연출브릿지(self.ctx)
@@ -14,14 +14,16 @@ class 연출01(trigger_api.Trigger):
 class 연출브릿지(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[2]):
+            # 몬스터 처치 수업을 다 끝내면 케이틀린 등장
             return 조준씬01(self.ctx)
         if self.quest_user_detected(boxIds=[700], questIds=[20002290], questStates=[3]):
+            # 몬스터 처치 수업을 다 끝내면 케이틀린 등장
             return 피격씬01(self.ctx)
 
 
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@포신정렬씬@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 class 조준씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[200], animationEffect=False) # 인페르녹
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +32,7 @@ class 조준씬01(trigger_api.Trigger):
 
 
 class 연출02_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +41,7 @@ class 연출02_b(trigger_api.Trigger):
 
 
 class 연출02_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000,2001,2002,2003,2004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +50,7 @@ class 연출02_c(trigger_api.Trigger):
 
 
 class 연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2005,2006,2007,2008,2009,2010,2011], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -57,7 +59,7 @@ class 연출03(trigger_api.Trigger):
 
 
 class 연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2012], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +68,7 @@ class 연출04(trigger_api.Trigger):
 
 
 class 연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,7 +77,7 @@ class 연출05(trigger_api.Trigger):
 
 
 class quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000422, portalId=3)
 
 
@@ -93,7 +95,7 @@ class 피격씬01_a(trigger_api.Trigger):
 
 
 class 피격씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[9010], visible=True)
         self.select_camera_path(pathIds=[3004,3005], returnView=False)
 
@@ -103,7 +105,7 @@ class 피격씬02(trigger_api.Trigger):
 
 
 class 피격씬03_a(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3000,3001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +114,7 @@ class 피격씬03_a(trigger_api.Trigger):
 
 
 class 피격씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3002,3003], returnView=False)
         self.set_time_scale(enable=True, startScale=0.1, endScale=0.1, duration=3.5, interpolator=1) # 2초간 느려지기 시작
 
@@ -122,7 +124,7 @@ class 피격씬03(trigger_api.Trigger):
 
 
 class 피격씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +133,7 @@ class 피격씬04(trigger_api.Trigger):
 
 
 class quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000422, portalId=3)
 
 

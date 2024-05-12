@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101])
         self.set_effect(triggerIds=[201], visible=True)
         self.set_effect(triggerIds=[202], visible=True)
@@ -22,7 +22,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 매킨생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102])
         self.set_timer(timerId='1', seconds=1)
 
@@ -32,7 +32,7 @@ class 매킨생성(trigger_api.Trigger):
 
 
 class 매킨대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000163_BF__01_TRIGGER__0$', arg4=3)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_102')
 
@@ -42,7 +42,7 @@ class 매킨대사(trigger_api.Trigger):
 
 
 class 매킨이동302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[201], triggerId=0, itemId=10000079)
         self.set_timer(timerId='1', seconds=1)
 
@@ -58,7 +58,7 @@ class 매킨이동304(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.set_timer(timerId='1', seconds=60)
 

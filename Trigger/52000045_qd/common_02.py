@@ -19,7 +19,7 @@ class idle(trigger_api.Trigger):
 
 
 class npc_exit_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[301])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class npc_exit_01(trigger_api.Trigger):
 
 
 class npc_exit_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[302])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class npc_exit_02(trigger_api.Trigger):
 
 
 class npc_exit_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[303])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class npc_exit_03(trigger_api.Trigger):
 
 
 class npc_exit_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[304])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class npc_exit_04(trigger_api.Trigger):
 
 
 class npc_exit_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[305])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class npc_exit_05(trigger_api.Trigger):
 
 
 class npc_exit_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[306])
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
         self.set_actor(triggerId=8001, visible=False, initialSequence='Attack_Idle_A')
         self.set_effect(triggerIds=[5001], visible=False)
@@ -17,7 +17,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -28,7 +28,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Set(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020011, portalId=6001)
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_actor(triggerId=8001, visible=True, initialSequence='Attack_Idle_A')
@@ -39,7 +39,7 @@ class Set(trigger_api.Trigger):
 
 
 class Go(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003599, msg='나 $npcName:11003599$의 이름으로 명한다.', duration=2800)
@@ -50,7 +50,7 @@ class Go(trigger_api.Trigger):
 
 
 class Scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003599, msg='이 땅의 모든 저주받은 존재여! 깊고 어두운 곳으로 떨어져라!', duration=2800)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class Scene_01(trigger_api.Trigger):
 
 
 class Scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.set_effect(triggerIds=[5002], visible=True)
 
@@ -69,7 +69,7 @@ class Scene_02(trigger_api.Trigger):
 
 
 class Scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True)
         self.set_effect(triggerIds=[5004], visible=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_WhiteFlash.xml')
@@ -81,7 +81,7 @@ class Scene_03(trigger_api.Trigger):
 
 
 class Scene_Exit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020020, portalId=6001)
 
 

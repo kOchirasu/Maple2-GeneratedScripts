@@ -4,7 +4,7 @@ import trigger_api
 
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        if not self.user_value(key='10002024clear', value=1) and self.user_value(key='SpawnCheck', value=1):
             return spawn(self.ctx)
 
 
@@ -15,7 +15,7 @@ class spawn(trigger_api.Trigger):
 
 
 class buff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1999], skillId=70002051, level=1, isPlayer=True, isSkillSet=False)
         self.add_buff(boxIds=[306], skillId=70002051, level=1, isPlayer=True, isSkillSet=False)
 

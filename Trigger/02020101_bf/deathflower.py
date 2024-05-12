@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 랜덤대상선정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.random_additional_effect(target='pc', boxId=1003, spawnId=0, targetCount=1, tick=3, waitTick=2, targetEffect='Additional/Etc/Eff_Target_Select_Keep.xml', additionalEffectId=62100021)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class 변수초기화(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=1004, skillId=62100021, isPlayer=True)
         self.remove_buff(boxId=1004, skillId=62100022, isPlayer=True)
         self.remove_buff(boxId=1004, skillId=62100023, isPlayer=True)

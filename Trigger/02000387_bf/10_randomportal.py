@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2011,2012,2013,2014], visible=True, arg3=0, delay=0, scale=0) # DoorMesh_AlwaysOn
         self.set_effect(triggerIds=[5001], visible=False) # FrontDoorStep
         self.set_effect(triggerIds=[5002], visible=False) # FrontDoorStep
@@ -31,7 +31,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Guide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__0$', arg3='3000', arg4='0')
         self.set_effect(triggerIds=[5001], visible=True) # FrontDoorStep
         self.set_effect(triggerIds=[5002], visible=True) # FrontDoorStep
@@ -45,42 +45,44 @@ class Guide01(trigger_api.Trigger):
 
 class CheckMember01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9001, boxId=1, operator='Equal'):
-            return CheckMember02(self.ctx)
+        if self.count_users(boxId=9001, minUsers='1', operator='Equal'):
+            # 1인용 테스트 임시
+            # 1인용 테스트 임시
+            return CheckMember02(self.ctx) # CheckMember02
 
 
 class CheckMember02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9001, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if self.count_users(boxId=9002, boxId=1, operator='Equal'):
+        if self.count_users(boxId=9002, minUsers='1', operator='Equal'):
             return CheckMember03(self.ctx)
 
 
 class CheckMember03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9001, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if not self.count_users(boxId=9002, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9002, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if self.count_users(boxId=9003, boxId=1, operator='Equal'):
+        if self.count_users(boxId=9003, minUsers='1', operator='Equal'):
             return CheckMember04(self.ctx)
 
 
 class CheckMember04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if not self.count_users(boxId=9001, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9001, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if not self.count_users(boxId=9002, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9002, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if not self.count_users(boxId=9003, boxId=1, operator='Equal'):
+        if not self.count_users(boxId=9003, minUsers='1', operator='Equal'):
             return CheckMember01(self.ctx)
-        if self.count_users(boxId=9004, boxId=1, operator='Equal'):
+        if self.count_users(boxId=9004, minUsers='1', operator='Equal'):
             return DoorActivate01(self.ctx)
 
 
 class DoorActivate01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -90,7 +92,7 @@ class DoorActivate01(trigger_api.Trigger):
 
 
 class DoorActivate02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4101, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
         self.set_actor(triggerId=4102, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
         self.set_actor(triggerId=4103, visible=True, initialSequence='ry_functobj_door_B01_on') # OfficeDoor
@@ -115,7 +117,7 @@ class PickPortalPattern(trigger_api.Trigger):
 
 
 class FirstDoorPick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=23, visible=False, enable=True, minimapVisible=False)
@@ -127,7 +129,7 @@ class FirstDoorPick(trigger_api.Trigger):
 
 
 class SecondDoorPick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=12, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=23, visible=False, enable=True, minimapVisible=False)
@@ -139,7 +141,7 @@ class SecondDoorPick(trigger_api.Trigger):
 
 
 class ThirdDoorPick(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=13, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
@@ -151,7 +153,7 @@ class ThirdDoorPick(trigger_api.Trigger):
 
 
 class rdDoorPick4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=14, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=21, visible=False, enable=True, minimapVisible=False)
         self.set_portal(portalId=22, visible=False, enable=True, minimapVisible=False)
@@ -164,9 +166,11 @@ class rdDoorPick4(trigger_api.Trigger):
 
 class GameStart00(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9800, boxId=4, operator='Equal'):
+        if self.count_users(boxId=9800, minUsers='4', operator='Equal'):
+            # InTheStore
             return GameStart01(self.ctx)
-        if self.count_users(boxId=9800, boxId=4, operator='Less'):
+        if self.count_users(boxId=9800, minUsers='4', operator='Less'):
+            # InTheStore
             return GameStartDelay01(self.ctx)
 
 
@@ -177,7 +181,7 @@ class GameStartDelay01(trigger_api.Trigger):
 
 
 class GameStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
@@ -198,17 +202,18 @@ class GameStart01(trigger_api.Trigger):
         self.set_effect(triggerIds=[5004], visible=False) # FrontDoorStep
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9005, boxId=1, operator='Equal'):
-            return GameStart02(self.ctx)
-        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+        if self.count_users(boxId=9005, minUsers='1', operator='Equal'):
+            # 카운터 1명
+            return GameStart02(self.ctx) # 1인 테스트용 임시
+        if self.count_users(boxId=9900, minUsers='4', operator='Less'):
             return EndGame01(self.ctx)
 
 
 class GameStart02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9006, boxId=3, operator='Equal'):
+        if self.count_users(boxId=9006, minUsers='3', operator='Equal'):
             return secondsWait10(self.ctx)
-        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+        if self.count_users(boxId=9900, minUsers='4', operator='Less'):
             return EndGame01(self.ctx)
 
 
@@ -217,21 +222,21 @@ class secondsWait10(trigger_api.Trigger):
         if self.user_value(key='DungeonClear', value=1):
             return Quit(self.ctx)
         if self.wait_tick(waitTick=10000):
-            return CheckMemeberAgain(self.ctx)
+            return CheckMemeberAgain(self.ctx) # 1인 테스트용 임시
 
 
 class CheckMemeberAgain(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9900, boxId=4, operator='Equal'):
+        if self.count_users(boxId=9900, minUsers='4', operator='Equal'):
             return secondsWait10(self.ctx)
-        if self.count_users(boxId=9900, boxId=4, operator='Less'):
+        if self.count_users(boxId=9900, minUsers='4', operator='Less'):
             return EndGame01(self.ctx)
         if self.user_value(key='DungeonClear', value=1):
             return Quit(self.ctx)
 
 
 class EndGame01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000387_BF__10_RANDOMPORTAL__1$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +247,7 @@ class EndGame01(trigger_api.Trigger):
 
 
 class PCMoveOut01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000387, portalId=1, boxId=9900) # 사무실로 강제 이동
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -251,7 +256,7 @@ class PCMoveOut01(trigger_api.Trigger):
 
 
 class FieredNotice01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__2$', arg4=4)
@@ -263,8 +268,9 @@ class FieredNotice01(trigger_api.Trigger):
 
 
 class FieredNotice01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -273,7 +279,7 @@ class FieredNotice01Skip(trigger_api.Trigger):
 
 
 class FieredNotice02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000491, script='$02000387_BF__10_RANDOMPORTAL__3$', arg4=4)
         self.set_skip(state=FieredNotice02Skip)
 
@@ -283,8 +289,9 @@ class FieredNotice02(trigger_api.Trigger):
 
 
 class FieredNotice02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -295,10 +302,10 @@ class FieredNotice02Skip(trigger_api.Trigger):
 
 
 class PCForceToLeave(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[100])
 
 

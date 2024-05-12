@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[7001], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[7002], visible=False, animationEffect=False)
         self.set_ladder(triggerIds=[7003], visible=False, animationEffect=False)
@@ -53,7 +53,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 하층시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[999998], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.show_guide_summary(entityId=20003285, textId=20003285, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -66,7 +66,7 @@ class 하층시작(trigger_api.Trigger):
 
 
 class 카메라줌인(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=60001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 카메라줌인(trigger_api.Trigger):
 
 
 class 웨폰오브젝트대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cube(triggerIds=[5001,5002,5003,5004], isVisible=True)
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
@@ -91,7 +91,7 @@ class 웨폰오브젝트대기(trigger_api.Trigger):
 
 
 class 하층클리어대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003286, textId=20003286, duration=5000)
 
@@ -107,7 +107,7 @@ class 상층시작딜레이(trigger_api.Trigger):
 
 
 class 상층시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[7001], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[7002], visible=True, animationEffect=True)
         self.set_ladder(triggerIds=[7003], visible=True, animationEffect=True)
@@ -141,7 +141,7 @@ class 보스소환딜레이(trigger_api.Trigger):
 
 
 class 보스소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20003282)
         self.show_guide_summary(entityId=20003283, textId=20003283, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -155,7 +155,7 @@ class 보스소환(trigger_api.Trigger):
 
 
 class 진행3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=999998, skillId=70000107)
         self.select_camera(triggerId=60003, enable=False)
 
@@ -171,7 +171,7 @@ class 진행4(trigger_api.Trigger):
 
 
 class 진행5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999996, key='clearafter', value=1)
         self.create_monster(spawnIds=[2000], animationEffect=False)
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData0')
@@ -183,7 +183,7 @@ class 진행5(trigger_api.Trigger):
 
 
 class 진행6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=60002, enable=True)
         self.set_conversation(type=1, spawnId=2000, script='$02000328_BF__MAIN__4$', arg4=2)
 
@@ -193,7 +193,7 @@ class 진행6(trigger_api.Trigger):
 
 
 class 진행7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[90000], visible=False)
         self.set_effect(triggerIds=[84000], visible=True)
         self.set_effect(triggerIds=[84001], visible=True)
@@ -260,7 +260,7 @@ class 진행8(trigger_api.Trigger):
 
 
 class 진행9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=999998, type='trigger', achieve='ClearPollutedgarden') # ClearPollutedgarden 퀘스트
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.dungeon_clear()

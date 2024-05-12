@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[901], visible=True)
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=True)
         self.set_interact_object(triggerIds=[10003144], state=0)
@@ -22,7 +22,7 @@ class idle(trigger_api.Trigger):
 
 
 class 출입문부시기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False)
         self.side_npc_talk(npcId=11004639, illust='Jay_normal', duration=3000, script='$02000533_BF__MAIN__0$')
 
@@ -32,7 +32,7 @@ class 출입문부시기(trigger_api.Trigger):
 
 
 class 출입문부시기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__MAIN__1$', arg3='3000')
         self.create_monster(spawnIds=[508], animationEffect=True)
 
@@ -42,7 +42,7 @@ class 출입문부시기2(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7000], visible=True)
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=False)
         self.create_monster(spawnIds=[501,502], animationEffect=True)
@@ -55,7 +55,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 층으로22_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[503,5503], animationEffect=True)
         self.side_npc_talk(npcId=11004639, illust='Jay_normal', duration=4000, script='$02000533_BF__MAIN__4$')
 
@@ -65,7 +65,7 @@ class 층으로22_3(trigger_api.Trigger):
 
 
 class 층으로3_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[504,5504,505,506,509], animationEffect=True)
         self.add_balloon_talk(spawnId=5504, msg='$02000533_BF__MAIN__5$', duration=3500, delayTick=2000)
         self.add_balloon_talk(spawnId=505, msg='$02000533_BF__MAIN__6$', duration=3500, delayTick=1000)
@@ -76,7 +76,7 @@ class 층으로3_3(trigger_api.Trigger):
 
 
 class 다죽이면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10003144], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -91,7 +91,7 @@ class 문열기시도(trigger_api.Trigger):
 
 
 class 문열기게임(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.side_npc_talk(npcId=11004639, illust='Jay_normal', duration=4000, script='$02000533_BF__MAIN__7$')
@@ -106,7 +106,7 @@ class 문열기게임(trigger_api.Trigger):
 
 
 class 문열기시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__MAIN__8$', arg3='4000')
         self.lock_my_pc(isLock=True)
 
@@ -137,7 +137,7 @@ class 게임로직종료및실패(trigger_api.Trigger):
 
 
 class 게임로직종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__MAIN__9$', arg3='3000')
         self.lock_my_pc(isLock=False)
 
@@ -147,7 +147,7 @@ class 게임로직종료(trigger_api.Trigger):
 
 
 class 실패게임로직종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000533_BF__MAIN__10$', arg3='3000')
         self.lock_my_pc(isLock=False)
 
@@ -157,7 +157,8 @@ class 실패게임로직종료(trigger_api.Trigger):
 
 
 class 문손으로부시기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -170,7 +171,7 @@ class 문손으로부시기(trigger_api.Trigger):
 
 
 class 문부시기안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_event_ui(type=1, arg2='$02000533_BF__MAIN__12$', arg3='5000')
@@ -181,7 +182,7 @@ class 문부시기안내(trigger_api.Trigger):
 
 
 class 문을부시고이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004639, illust='Jay_normal', duration=4000, script='$02000533_BF__MAIN__13$')
         self.create_monster(spawnIds=[507], animationEffect=True)
 
@@ -191,7 +192,7 @@ class 문을부시고이동(trigger_api.Trigger):
 
 
 class 문을부시고이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[901], visible=False, arg3=1)
         self.set_portal(portalId=2, visible=True)
         self.lock_my_pc(isLock=False)
@@ -202,7 +203,7 @@ class 문을부시고이동2(trigger_api.Trigger):
 
 
 class 이동하자(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11004639, illust='Jay_normal', duration=4000, script='$02000533_BF__MAIN__14$')
         self.set_mesh(triggerIds=[901], visible=False, arg3=1)
         self.set_portal(portalId=2, visible=True)

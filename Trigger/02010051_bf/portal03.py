@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=False) # DoorOpen vibrate
         self.set_effect(triggerIds=[6001], visible=False) # DoorOpen vibrate
         self.set_effect(triggerIds=[6002], visible=False) # DoorOpen vibrate
@@ -23,7 +23,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 입장딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.set_mesh(triggerIds=[2000,2001,2002,2003], visible=False, arg3=0, delay=0, scale=0) # invisible barrier
         self.set_mesh(triggerIds=[2100,2101,2102,2103,2104,2105], visible=False, arg3=0, delay=0, scale=0) # invisible barrier
@@ -34,7 +34,7 @@ class 입장딜레이01(trigger_api.Trigger):
 
 
 class 가이드준비01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105101, textId=20105101, duration=4000) # 길 찾기
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class 가이드준비01(trigger_api.Trigger):
 
 
 class 포털개방01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=7, key='timercheck', value=1)
         self.set_timer(timerId='10', seconds=2)
         self.set_portal(portalId=50, visible=True, enable=True, minimapVisible=True)
@@ -59,7 +59,7 @@ class 포털개방01(trigger_api.Trigger):
 
 
 class 대화연출준비01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -69,7 +69,7 @@ class 대화연출준비01(trigger_api.Trigger):
 
 
 class 연출대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=3)
         self.set_conversation(type=2, spawnId=11001319, script='$02010051_BF__PORTAL03__0$', arg4=3)
         self.set_skip(state=대화연출종료01)
@@ -80,7 +80,7 @@ class 연출대화01(trigger_api.Trigger):
 
 
 class 대화연출종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -91,7 +91,7 @@ class 대화연출종료01(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=False) # vibrate
 
 

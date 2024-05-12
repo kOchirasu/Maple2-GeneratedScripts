@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000165], state=1)
         self.set_mesh(triggerIds=[302], visible=False)
         self.set_effect(triggerIds=[402], visible=False)
@@ -14,7 +14,7 @@ class 시작대기중1(trigger_api.Trigger):
 
 
 class 시작대기중2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000165], state=1)
         self.set_mesh(triggerIds=[302], visible=False)
         self.set_effect(triggerIds=[402], visible=False)
@@ -25,7 +25,7 @@ class 시작대기중2(trigger_api.Trigger):
 
 
 class 열기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[302], visible=True)
         self.set_effect(triggerIds=[402], visible=True)
         self.set_timer(timerId='1', seconds=30)
@@ -42,7 +42,7 @@ class 열기1(trigger_api.Trigger):
 
 
 class 아이템1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[502], triggerId=0, itemId=10000165)
         self.set_mesh(triggerIds=[302], visible=False)
         self.set_interact_object(triggerIds=[10000165], state=1)
@@ -55,7 +55,7 @@ class 아이템1(trigger_api.Trigger):
 
 
 class 아이템2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[502], triggerId=0, itemId=10000165)
         self.set_mesh(triggerIds=[302], visible=False)
         self.set_interact_object(triggerIds=[10000165], state=1)
@@ -68,7 +68,7 @@ class 아이템2(trigger_api.Trigger):
 
 
 class 아이템3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[502], triggerId=0, itemId=10000165)
         self.set_mesh(triggerIds=[302], visible=False)
         self.set_interact_object(triggerIds=[10000165], state=1)

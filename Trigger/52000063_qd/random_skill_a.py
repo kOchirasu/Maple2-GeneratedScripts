@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 감지대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_effect(triggerIds=[602], visible=True)
         self.set_effect(triggerIds=[603], visible=True)
@@ -25,7 +25,7 @@ class 감지대기(trigger_api.Trigger):
 
 
 class 스킬랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)

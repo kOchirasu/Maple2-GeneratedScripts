@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class BannerCheckIn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_user_count(triggerBoxId=9021, key='BannerNumberOfBlue', userTagId=1)
         self.user_value_to_number_mesh(key='BannerNumberOfBlue', startMeshId=1500, digitCount=2)
         self.set_user_value_from_user_count(triggerBoxId=9022, key='BannerNumberOfRed', userTagId=2)
@@ -29,7 +29,7 @@ class NextWait(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value_from_user_count(triggerBoxId=9021, key='BannerNumberOfBlue', userTagId=1)
         self.user_value_to_number_mesh(key='BannerNumberOfBlue', startMeshId=1500, digitCount=2)
         self.set_user_value_from_user_count(triggerBoxId=9022, key='BannerNumberOfRed', userTagId=2)

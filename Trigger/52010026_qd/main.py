@@ -5,7 +5,7 @@ import trigger_api
 # 치유의 숲 : 52010026
 # 들어오자마자 앉아있는 상태 연출
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False)
         self.set_effect(triggerIds=[201], visible=False)
         self.set_effect(triggerIds=[221], visible=False)
@@ -24,7 +24,7 @@ class idle(trigger_api.Trigger):
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=7, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        self.set_onetime_effect(id=8, enable=False, path='BG\Common\ScreenMask\Eff_FlickEye.nif')
+        self.set_onetime_effect(id=8, enable=False, path='BG\\Common\\ScreenMask\\Eff_FlickEye.nif')
         self.set_onetime_effect(id=101, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=102, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=103, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
@@ -40,7 +40,7 @@ class idle(trigger_api.Trigger):
 
 
 class black(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -52,7 +52,7 @@ class black(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True)
         self.select_camera_path(pathIds=[4001], returnView=False) # PC 정면 샷
         self.create_monster(spawnIds=[1001], animationEffect=False, animationDelay=0) # 조디
@@ -64,7 +64,7 @@ class ready(trigger_api.Trigger):
 
 
 class 연출시작_깨어난PC(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=29000)
         self.face_emotion(spawnId=0, emotionName='Trigger_disappoint')
@@ -76,7 +76,7 @@ class 연출시작_깨어난PC(trigger_api.Trigger):
 
 
 class 연출시작_PC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='Trigger_disappoint')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__0$', duration=3000)
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__1$', duration=3000)
@@ -87,7 +87,7 @@ class 연출시작_PC대사01(trigger_api.Trigger):
 
 
 class 연출시작_조디대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.face_emotion(spawnId=1001, emotionName='Trigger_Talk_A')
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__2$', duration=3000)
@@ -100,7 +100,7 @@ class 연출시작_조디대사01(trigger_api.Trigger):
 
 
 class 첫번째연출_PC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Trigger_panic')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__5$', duration=3000)
@@ -112,7 +112,7 @@ class 첫번째연출_PC대사02(trigger_api.Trigger):
 
 
 class 첫번째연출_조디대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=1001, emotionName='Trigger_Talk03_A')
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__7$', duration=3000)
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__8$', duration=3000)
@@ -126,7 +126,7 @@ class 첫번째연출_조디대사02(trigger_api.Trigger):
 
 
 class 첫번째연출_PC대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='Trigger_serious')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__11$', duration=3000)
 
@@ -136,7 +136,7 @@ class 첫번째연출_PC대사03(trigger_api.Trigger):
 
 
 class 첫번째연출_조디대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=1001, emotionName='Trigger_Talk01_A')
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__12$', duration=3000)
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__13$', duration=3000)
@@ -147,7 +147,7 @@ class 첫번째연출_조디대사03(trigger_api.Trigger):
 
 
 class 첫번째연출_PC대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Trigger_serious')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__14$', duration=3000)
@@ -158,7 +158,7 @@ class 첫번째연출_PC대사04(trigger_api.Trigger):
 
 
 class 조디_카메라01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +167,7 @@ class 조디_카메라01(trigger_api.Trigger):
 
 
 class 첫번째연출_조디대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False)
         self.face_emotion(spawnId=1001, emotionName='Trigger_Idle02_A')
         self.set_npc_emotion_loop(spawnId=1001, sequenceName='Trigger_Idle_A', duration=10000)
@@ -179,7 +179,7 @@ class 첫번째연출_조디대사04(trigger_api.Trigger):
 
 
 class 첫번째연출_조디대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.set_onetime_effect(id=301, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.add_cinematic_talk(npcId=11003344, msg='$52010026_QD__MAIN__16$', duration=3000)
@@ -189,12 +189,12 @@ class 첫번째연출_조디대사05(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return 첫번째연출_PC대사05(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.visible_my_pc(isVisible=True)
 
 
 class 첫번째연출_PC대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Trigger_serious')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__18$', duration=3000)
@@ -206,7 +206,7 @@ class 첫번째연출_PC대사05(trigger_api.Trigger):
 
 
 class 조디_카메라02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -215,7 +215,7 @@ class 조디_카메라02(trigger_api.Trigger):
 
 
 class 첫번째연출_조디대사06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True)
         self.face_emotion(spawnId=1001, emotionName='Idle_A')
         self.set_pc_emotion_loop(sequenceName='Idle_A', duration=1000)
@@ -227,14 +227,15 @@ class 첫번째연출_조디대사06(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return 두번째연출_ready(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_sound(triggerId=7001, enable=False)
+        # Missing State: State
         self.set_scene_skip()
 
 
 class 두번째연출_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True)
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=100)
         self.reset_camera(interpolationTime=0.5)
@@ -247,7 +248,7 @@ class 두번째연출_ready(trigger_api.Trigger):
 
 
 class 두번째연출_black(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -266,7 +267,7 @@ class 두번째연출_black(trigger_api.Trigger):
 
 
 class 두번째연출_피치발견01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=201, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003343, msg='$52010026_QD__MAIN__22$', duration=1000)
@@ -277,10 +278,11 @@ class 두번째연출_피치발견01(trigger_api.Trigger):
 
 
 class 두번째연출_피치발견02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=201, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.add_balloon_talk(spawnId=0, msg='$52010026_QD__MAIN__47$', duration=1000, delayTick=0)
         self.select_camera_path(pathIds=[4501,4502], returnView=False)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -289,7 +291,7 @@ class 두번째연출_피치발견02(trigger_api.Trigger):
 
 
 class 두번째연출_피치전투01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_balloon_talk(spawnId=1000, msg='$52010026_QD__MAIN__24$', duration=1000, delayTick=0)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -301,7 +303,7 @@ class 두번째연출_피치전투01(trigger_api.Trigger):
 
 
 class 두번째연출_피치전투02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -312,7 +314,7 @@ class 두번째연출_피치전투02(trigger_api.Trigger):
 
 
 class 두번째연출_딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
         self.add_balloon_talk(spawnId=1000, msg='$52010026_QD__MAIN__26$', duration=2000, delayTick=1000)
@@ -323,7 +325,7 @@ class 두번째연출_딜레이01(trigger_api.Trigger):
 
 
 class 두번째연출_피치전투03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=1000, msg='$52010026_QD__MAIN__27$', duration=2000, delayTick=0)
         self.set_onetime_effect(id=202, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_effect(triggerIds=[5003], visible=True)
@@ -339,7 +341,7 @@ class 두번째연출_피치전투03(trigger_api.Trigger):
 
 
 class 두번째연출_딜레이02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=202, enable=False, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_effect(triggerIds=[5003], visible=False)
         self.set_effect(triggerIds=[5004], visible=False)
@@ -351,7 +353,7 @@ class 두번째연출_딜레이02(trigger_api.Trigger):
 
 
 class 두번째연출_PC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__28$', duration=3000)
@@ -363,7 +365,7 @@ class 두번째연출_PC대사01(trigger_api.Trigger):
 
 
 class Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=4)
         self.create_monster(spawnIds=[111], animationEffect=False, animationDelay=6000)
@@ -383,7 +385,7 @@ class Skip(trigger_api.Trigger):
 
 
 class 두번째연출_잠시쉬기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003343, illustId='Peach_normal', align='Left', msg='$52010026_QD__MAIN__29$', duration=2000)
         self.add_cinematic_talk(npcId=11003343, msg='$52010026_QD__MAIN__30$', duration=2000)
@@ -395,7 +397,7 @@ class 두번째연출_잠시쉬기(trigger_api.Trigger):
 
 
 class 세번째연출_포털개방(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4201], returnView=False)
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -415,7 +417,7 @@ class 세번째연출_포털개방(trigger_api.Trigger):
 
 
 class 세번째연출_포털개방02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4301], returnView=False)
         self.set_onetime_effect(id=102, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_effect(triggerIds=[211], visible=True)
@@ -424,6 +426,7 @@ class 세번째연출_포털개방02(trigger_api.Trigger):
         self.create_monster(spawnIds=[123], animationEffect=False, animationDelay=5000)
         self.create_monster(spawnIds=[124], animationEffect=False, animationDelay=5000)
         self.create_monster(spawnIds=[125], animationEffect=False, animationDelay=5000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -432,7 +435,7 @@ class 세번째연출_포털개방02(trigger_api.Trigger):
 
 
 class 세번째연출_대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -449,7 +452,7 @@ class 세번째연출_대사01(trigger_api.Trigger):
 
 
 class 피치탈출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_3002')
         self.add_balloon_talk(spawnId=1000, msg='$52010026_QD__MAIN__42$', duration=2000, delayTick=0)
         self.add_buff(boxIds=[2101], skillId=70000123, level=1, isPlayer=False, isSkillSet=False)
@@ -461,7 +464,7 @@ class 피치탈출(trigger_api.Trigger):
 
 
 class 세번째연출_대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[201], visible=False)
         self.set_effect(triggerIds=[221], visible=False)
         self.set_cinematic_ui(type=1)
@@ -474,7 +477,7 @@ class 세번째연출_대사02(trigger_api.Trigger):
 
 
 class 세번째연출_대사02_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=skip_a, action='nextState')
         self.add_cinematic_talk(npcId=0, msg='$52010026_QD__MAIN__35$', duration=2000)
         self.add_cinematic_talk(npcId=11003343, msg='$52010026_QD__MAIN__36$', duration=2000)
@@ -486,7 +489,8 @@ class 세번째연출_대사02_1(trigger_api.Trigger):
 
 
 class 다섯번째연출_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
@@ -499,7 +503,8 @@ class 다섯번째연출_ready(trigger_api.Trigger):
 
 
 class skip_a(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.create_monster(spawnIds=[131], animationEffect=True, animationDelay=0)
         self.set_cinematic_ui(type=4)
@@ -510,7 +515,7 @@ class skip_a(trigger_api.Trigger):
 
 
 class 다섯번째연출_엘리트몬스터(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=1000, sequenceName='Trigger_Hurt_A', duration=28000)
         self.select_camera_path(pathIds=[4401], returnView=False)
         self.set_onetime_effect(id=7, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -527,7 +532,7 @@ class 다섯번째연출_엘리트몬스터(trigger_api.Trigger):
 
 
 class 다섯번째연출_엘리트몬스터대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52010026_QD__MAIN__38$', arg3='2000', arg4='0')
@@ -538,7 +543,7 @@ class 다섯번째연출_엘리트몬스터대사(trigger_api.Trigger):
 
 
 class 다섯번째연출_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -550,7 +555,7 @@ class 다섯번째연출_전투(trigger_api.Trigger):
 
 
 class 다섯번째연출_마지막(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -562,7 +567,7 @@ class 다섯번째연출_마지막(trigger_api.Trigger):
 
 
 class 다섯번째연출_대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.face_emotion(spawnId=0, emotionName='Trigger_disappoint')
@@ -578,7 +583,7 @@ class 다섯번째연출_대화02(trigger_api.Trigger):
 
 
 class 다섯번째연출_암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=7, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -587,11 +592,12 @@ class 다섯번째연출_암전(trigger_api.Trigger):
 
 
 class 다섯번째연출_의문의목소리암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003145, msg='$52010026_QD__MAIN__45$', duration=3000)
         self.add_cinematic_talk(npcId=11003145, msg='$52010026_QD__MAIN__46$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -600,7 +606,7 @@ class 다섯번째연출_의문의목소리암전(trigger_api.Trigger):
 
 
 class Warp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000042, portalId=10)
 
 

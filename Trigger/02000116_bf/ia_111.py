@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000010], state=1)
         self.set_actor(triggerId=1111, visible=True, initialSequence='SOS_B')
 
@@ -11,7 +11,7 @@ class 시작대기중(trigger_api.Trigger):
         if self.true():
             return 오브젝트반응(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[307])
 
 
@@ -20,14 +20,14 @@ class 오브젝트반응(trigger_api.Trigger):
         if self.object_interacted(interactIds=[10000010], stateValue=0):
             return NPC이동(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_actor(triggerId=1111, visible=False, initialSequence='SOS_B')
         self.destroy_monster(spawnIds=[307])
         self.create_monster(spawnIds=[111])
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=111, patrolName='MS2PatrolData111')
         self.set_conversation(type=1, spawnId=111, script='$02000116_BF__IA_111__0$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=111, script='$02000116_BF__IA_111__1$', arg4=2, arg5=2)
@@ -38,7 +38,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[111])
         self.set_timer(timerId='111', seconds=3)
 

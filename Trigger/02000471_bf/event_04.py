@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1803], visible=True, arg3=0, delay=200, scale=0)
         self.set_mesh(triggerIds=[1804], visible=False, arg3=0, delay=200, scale=0)
         self.set_mesh(triggerIds=[1805], visible=False, arg3=0, delay=200, scale=0)
@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1803], visible=False, arg3=0, delay=200, scale=85)
         self.set_mesh(triggerIds=[1804], visible=True, arg3=0, delay=200, scale=85)
         self.set_mesh(triggerIds=[1805], visible=False, arg3=0, delay=200, scale=0)
@@ -26,7 +26,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Ready_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1803], visible=False, arg3=0, delay=200, scale=5)
         self.set_mesh(triggerIds=[1804], visible=True, arg3=0, delay=200, scale=5)
         self.set_mesh(triggerIds=[1806], visible=True, arg3=0, delay=200, scale=5)
@@ -38,7 +38,7 @@ class Ready_02(trigger_api.Trigger):
 
 
 class Ready_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1806], visible=False, arg3=0, delay=200, scale=5)
 
 

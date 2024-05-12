@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 패이즈_2_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='AI_Phase', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 패이즈_2_시작(trigger_api.Trigger):
 
 
 class 아르케온_탈것_생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3000031, key='Phase_2_Interect_01', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 아르케온_탈것_생성(trigger_api.Trigger):
 
 
 class 쫄몹등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3000032, key='Phase_2_Interect_02', value=1)
         self.set_user_value(triggerId=3000033, key='Phase_2_Interect_03', value=1)
         self.set_user_value(triggerId=3000034, key='Phase_2_Interect_04', value=1)
@@ -37,7 +37,7 @@ class 쫄몹등장(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None
+            pass
 
 
 initial_state = 대기

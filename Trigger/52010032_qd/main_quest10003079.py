@@ -11,7 +11,7 @@ class 무르파고스에들어오면(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.destroy_monster(spawnIds=[301])
         self.destroy_monster(spawnIds=[302])
@@ -22,7 +22,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Ready01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4004], returnView=False)
@@ -39,7 +39,7 @@ class Ready01(trigger_api.Trigger):
 
 
 class 대화시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Talk_A')
@@ -55,7 +55,7 @@ class 대화시작(trigger_api.Trigger):
 
 
 class 대화시작01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003389, msg='$52010032_QD__MAIN_QUEST10003079__4$', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52010032_QD__MAIN_QUEST10003079__5$', duration=3500)
@@ -67,7 +67,7 @@ class 대화시작01(trigger_api.Trigger):
 
 
 class 대화시작02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Focus_A'])
         self.add_cinematic_talk(npcId=0, msg='$52010032_QD__MAIN_QUEST10003079__7$', duration=3500)
@@ -78,7 +78,7 @@ class 대화시작02(trigger_api.Trigger):
 
 
 class 대화시작03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Bore_A')
         self.face_emotion(spawnId=203, emotionName='Trigger_Sad')
@@ -90,7 +90,7 @@ class 대화시작03(trigger_api.Trigger):
 
 
 class 에바고르삐짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=11003391, msg='$52010032_QD__MAIN_QUEST10003079__9$', duration=4000)
         self.add_cinematic_talk(npcId=11003391, msg='$52010032_QD__MAIN_QUEST10003079__10$', duration=3000)
@@ -101,7 +101,7 @@ class 에바고르삐짐(trigger_api.Trigger):
 
 
 class 에바고르삐짐01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Bore_B')
         self.add_cinematic_talk(npcId=11003389, msg='$52010032_QD__MAIN_QUEST10003079__11$', duration=3000)
@@ -115,7 +115,7 @@ class 에바고르삐짐01(trigger_api.Trigger):
 
 
 class 에바고르삐짐02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.set_npc_emotion_sequence(spawnId=302, sequenceName='Attack_01_A')
         self.add_cinematic_talk(npcId=11003391, msg='$52010032_QD__MAIN_QUEST10003079__15$', duration=4000)
@@ -127,7 +127,7 @@ class 에바고르삐짐02(trigger_api.Trigger):
 
 
 class 에바고르퇴장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4006], returnView=False)
         self.add_cinematic_talk(npcId=11003388, msg='$52010032_QD__MAIN_QUEST10003079__17$', duration=3000)
         self.move_npc(spawnId=302, patrolName='MS2PatrolData_3006')
@@ -139,7 +139,7 @@ class 에바고르퇴장(trigger_api.Trigger):
 
 
 class 에바고르퇴장후(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Bore_B')
         self.add_cinematic_talk(npcId=11003389, msg='$52010032_QD__MAIN_QUEST10003079__18$', duration=3500)
@@ -152,7 +152,8 @@ class 에바고르퇴장후(trigger_api.Trigger):
 
 
 class 에바고르퇴장후_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -161,7 +162,7 @@ class 에바고르퇴장후_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawnIds=[302])
         self.destroy_monster(spawnIds=[401])
@@ -175,7 +176,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 나메드에게퀘스트마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.destroy_monster(spawnIds=[302])
         self.destroy_monster(spawnIds=[401])
@@ -185,7 +186,7 @@ class 나메드에게퀘스트마무리(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = 무르파고스에들어오면

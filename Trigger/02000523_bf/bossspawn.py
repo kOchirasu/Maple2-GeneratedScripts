@@ -9,7 +9,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=12, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
@@ -28,7 +28,7 @@ class 클리어처리(trigger_api.Trigger):
 
 
 class 종료처리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=12, visible=True, enable=True, minimapVisible=True)

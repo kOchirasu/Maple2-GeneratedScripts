@@ -5,11 +5,12 @@ import trigger_api
 class 시작대기중(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.npc_detected(boxId=100, spawnIds=[900]):
-            return None
+            # <transition state="웜리젠91"/>
+            pass
 
 
 class 웜리젠91(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1,2])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +19,7 @@ class 웜리젠91(trigger_api.Trigger):
 
 
 class 웜리젠91쿨타임(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='9')
         self.set_timer(timerId='9', seconds=20)
 

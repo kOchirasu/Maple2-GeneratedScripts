@@ -3,12 +3,13 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002104], state=0) # Lever_BlockStart
         self.set_interact_object(triggerIds=[10002105], state=0) # Lever_BlockOff
         self.set_mesh(triggerIds=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=False, arg3=0, delay=0, scale=0) # GratingDown
         self.set_mesh(triggerIds=[6300,6301,6302,6303,6304,6305], visible=True, arg3=0, delay=0, scale=0) # GratingUp
-        self.set_mesh(triggerIds=[3901], visible=False, arg3=0, delay=0, scale=0) # InvisibleBarrier_TOKfalse
+        # InvisibleBarrier_TOKfalse
+        self.set_mesh(triggerIds=[3901], visible=False, arg3=0, delay=0, scale=0)
         self.set_breakable(triggerIds=[6000], enable=False) # Grating_Start
         self.set_breakable(triggerIds=[6001], enable=False) # Grating_Start
         self.set_breakable(triggerIds=[6002], enable=False) # Grating_Start
@@ -68,7 +69,7 @@ class Setting(trigger_api.Trigger):
 
 
 class BlockEnable(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002104], state=1) # Lever_BlockStart
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +78,7 @@ class BlockEnable(trigger_api.Trigger):
 
 
 class BlockStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6300,6301,6302,6303,6304,6305], visible=False, arg3=100, delay=0, scale=2) # GratingUp
         self.set_breakable(triggerIds=[6000], enable=True) # Grating_Start
         self.set_breakable(triggerIds=[6001], enable=True) # Grating_Start
@@ -110,8 +111,9 @@ class BlockStart(trigger_api.Trigger):
 
 
 class BlockIng(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_mesh(triggerIds=[3901], visible=True, arg3=0, delay=0, scale=0) # InvisibleBarrier_TOKfalse
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # InvisibleBarrier_TOKfalse
+        self.set_mesh(triggerIds=[3901], visible=True, arg3=0, delay=0, scale=0)
         self.set_agent(triggerIds=[8000], visible=True)
         self.set_agent(triggerIds=[8001], visible=True)
         self.set_agent(triggerIds=[8002], visible=True)
@@ -122,7 +124,7 @@ class BlockIng(trigger_api.Trigger):
 
 
 class BlockEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=True, arg3=0, delay=0, scale=0) # GratingDown
         self.set_breakable(triggerIds=[6000], enable=False) # Grating_Start
         self.set_breakable(triggerIds=[6001], enable=False) # Grating_Start
@@ -155,7 +157,7 @@ class BlockEnd(trigger_api.Trigger):
 
 
 class BlockDisable(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002105], state=1) # Lever_BlockOff
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -164,7 +166,7 @@ class BlockDisable(trigger_api.Trigger):
 
 
 class BlockOffStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6200,6201,6202,6203,6204,6205,6206,6207,6208,6209,6210,6211], visible=False, arg3=100, delay=0, scale=2) # GratingDown
         self.set_breakable(triggerIds=[6100], enable=True) # Grating_Off
         self.set_breakable(triggerIds=[6101], enable=True) # Grating_Off
@@ -197,8 +199,9 @@ class BlockOffStart(trigger_api.Trigger):
 
 
 class BlockOffIng(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_mesh(triggerIds=[3901], visible=False, arg3=0, delay=0, scale=0) # InvisibleBarrier_TOKfalse
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # InvisibleBarrier_TOKfalse
+        self.set_mesh(triggerIds=[3901], visible=False, arg3=0, delay=0, scale=0)
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -209,7 +212,7 @@ class BlockOffIng(trigger_api.Trigger):
 
 
 class BlockOffEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6300,6301,6302,6303,6304,6305], visible=True, arg3=0, delay=0, scale=0) # GratingUp
         self.set_breakable(triggerIds=[6100], enable=False) # Grating_Off
         self.set_breakable(triggerIds=[6101], enable=False) # Grating_Off

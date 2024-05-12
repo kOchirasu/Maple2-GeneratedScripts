@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=False, initialSequence='Dead_A') # NelfActor
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_interact_object(triggerIds=[10000175], state=0) # Bag
@@ -18,7 +18,7 @@ class Wait(trigger_api.Trigger):
 
 
 class NPC만배치(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
         self.create_monster(spawnIds=[101], animationEffect=False) # NelfDummyNPC
         self.set_interact_object(triggerIds=[10000175], state=1) # Bag
@@ -29,7 +29,7 @@ class NPC만배치(trigger_api.Trigger):
 
 
 class 연출01조건(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
         self.create_monster(spawnIds=[101], animationEffect=False) # NelfDummyNPC
         self.set_interact_object(triggerIds=[10000175], state=1) # Bag
@@ -40,7 +40,7 @@ class 연출01조건(trigger_api.Trigger):
 
 
 class 연출01시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user(mapId=52000037, portalId=10)
@@ -52,7 +52,7 @@ class 연출01시작(trigger_api.Trigger):
 
 
 class PC말풍선01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__0$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class PC말풍선01(trigger_api.Trigger):
 
 
 class PC말풍선02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__1$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class PC말풍선02(trigger_api.Trigger):
 
 
 class PC말풍선03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__2$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class PC말풍선03(trigger_api.Trigger):
 
 
 class PC말풍선04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__3$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +88,7 @@ class PC말풍선04(trigger_api.Trigger):
 
 
 class PC말풍선05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__4$', arg4=5, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,7 @@ class 강제이동02조건(trigger_api.Trigger):
 
 
 class PC말풍선07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000037_QD__LOOKINTO_SOULBINDER_12__5$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class PC말풍선07(trigger_api.Trigger):
 
 
 class 강제이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_PC1101B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 강제이동02(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

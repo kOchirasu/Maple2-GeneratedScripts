@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990020, key='TimerReset', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 타이머시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=10, startDelay=1, interval=1, vOffset=-40)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 타이머시작(trigger_api.Trigger):
 
 
 class 리셋(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='1')
         self.set_user_value(triggerId=99990020, key='TimerReset', value=1)
 
@@ -35,7 +35,7 @@ class 리셋(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='1')
         self.set_user_value(triggerId=99990020, key='TimerReset', value=0)
 

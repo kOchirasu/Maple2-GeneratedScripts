@@ -3,19 +3,19 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[705,706], visible=True)
         self.set_mesh(triggerIds=[711,712], visible=False)
         self.destroy_monster(spawnIds=[601])
         self.set_effect(triggerIds=[2004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=201, boxId=1):
+        if self.count_users(boxId=201, minUsers='1'):
             return 몹생성(self.ctx)
 
 
 class 몹생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[711,712], visible=True)
         self.create_monster(spawnIds=[601], animationEffect=False)
 
@@ -25,7 +25,7 @@ class 몹생성(trigger_api.Trigger):
 
 
 class 통과딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=999, type='trigger', achieve='GoldenTower2nd')
         self.set_achievement(triggerId=999, type='trigger', achieve='ClearGoldentowerfirst')
         self.dungeon_clear()
@@ -39,7 +39,7 @@ class 통과딜레이(trigger_api.Trigger):
 
 
 class 통과(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[2004], visible=True)
         self.set_timer(timerId='1', seconds=180)
 

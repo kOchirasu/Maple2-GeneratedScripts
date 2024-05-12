@@ -12,12 +12,13 @@ class 대기(trigger_api.Trigger):
 class 퀘스트조건02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[10002821], questStates=[2]):
+            # 2nd Quest
             return Q2_미카등장01(self.ctx)
 
 
 # 2nd Quest
 class Q2_미카등장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +27,7 @@ class Q2_미카등장01(trigger_api.Trigger):
 
 
 class Q2_딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=2)
         self.select_camera(triggerId=3001, enable=True)
         self.set_cinematic_ui(type=1)
@@ -38,7 +39,7 @@ class Q2_딜레이01(trigger_api.Trigger):
 
 
 class Q2_미카대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=3)
         self.set_conversation(type=2, spawnId=11001285, script='$52010005_QD__ACT02__0$', arg4=3)
         self.set_skip(state=Q2_미카대화02대기)
@@ -49,7 +50,7 @@ class Q2_미카대화01(trigger_api.Trigger):
 
 
 class Q2_미카대화02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +59,7 @@ class Q2_미카대화02대기(trigger_api.Trigger):
 
 
 class Q2_미카대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='13', seconds=3)
         self.set_conversation(type=2, spawnId=11001285, script='$52010005_QD__ACT02__1$', arg4=3)
         self.set_skip(state=Q2_미카대화종료)
@@ -69,7 +70,7 @@ class Q2_미카대화02(trigger_api.Trigger):
 
 
 class Q2_미카대화종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.select_camera(triggerId=3001, enable=False)
         self.set_cinematic_ui(type=0)

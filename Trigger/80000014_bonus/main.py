@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001337], state=1)
         self.set_interact_object(triggerIds=[10001338], state=2)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -13,6 +13,7 @@ class 대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[199]):
+            # self.set_timer(timerId='30', seconds=600, startDelay=1, interval=1, vOffset=80)
             return 랜덤A(self.ctx)
 
 
@@ -67,7 +68,7 @@ class 랜덤E(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$80000014_bonus__main__0$', arg3='5000')
         self.score_board_create(type='ScoreBoardTopCenter', maxScore=0)
         self.score_board_set_score(score=0)
@@ -79,7 +80,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[2001], isAutoTargeting=False, score=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -88,7 +89,7 @@ class 보스등장(trigger_api.Trigger):
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[0])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,17 +105,19 @@ class 정산(trigger_api.Trigger):
             self.debug_string(value='18000 이상')
             self.set_achievement(triggerId=199, type='trigger', achieve='HighScoreTreasureMap01')
             self.set_achievement(triggerId=199, type='trigger', achieve='TimerunTreasureMap01')
+            # self.set_event_ui(type=7, arg2='미션 성공! 참 잘했어요!', arg3='2500')
             return 반응대기(self.ctx)
         if self.score_board_compare(operator='Less', score=18000):
             self.debug_string(value='18000 미만')
             self.set_achievement(triggerId=199, type='trigger', achieve='TimerunTreasureMap01')
+            # self.set_event_ui(type=7, arg2='미션 성공!', arg3='2500')
             return 반응대기(self.ctx)
         if self.wait_tick(waitTick=500):
             return 반응대기(self.ctx)
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001338], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:

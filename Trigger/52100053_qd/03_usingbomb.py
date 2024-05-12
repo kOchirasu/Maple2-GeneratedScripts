@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5100,5101,5102,5103], visible=False) # DownArrowBomb
         self.set_effect(triggerIds=[5200,5201,5202,5203], visible=False) # TargetBoxGuide
         self.destroy_monster(spawnIds=[910,911]) # Mob
@@ -14,7 +14,7 @@ class Wait(trigger_api.Trigger):
 
 
 class LoadingDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[910,911], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,19 +23,21 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class ArrowGuideOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20039703, textId=20039703, duration=4000) # 가이드 : 폭탄을 들어서 가로막힌 벽을 향해 던지기
+        # 가이드 : 폭탄을 들어서 가로막힌 벽을 향해 던지기
+        self.show_guide_summary(entityId=20039703, textId=20039703, duration=4000)
         self.set_effect(triggerIds=[5100,5101,5102,5103], visible=True) # DownArrowBomb
         self.set_effect(triggerIds=[5200,5201,5202,5203], visible=True) # TargetBoxGuide
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9201]):
+            # 무기고 탈출
             return ArrowGuideOff(self.ctx)
 
 
 class ArrowGuideOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5100,5101,5102,5103], visible=False) # DownArrowBomb
         self.set_effect(triggerIds=[5200,5201,5202,5203], visible=False) # TargetBoxGuide
 

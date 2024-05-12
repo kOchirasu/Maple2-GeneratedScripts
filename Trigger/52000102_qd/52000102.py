@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 입장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.create_monster(spawnIds=[200], animationEffect=False)
         self.create_monster(spawnIds=[202], animationEffect=False)
@@ -22,7 +22,7 @@ class 입장01(trigger_api.Trigger):
 
 
 class 입장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4010,4011], returnView=False)
@@ -33,7 +33,7 @@ class 입장02(trigger_api.Trigger):
 
 
 class 입장03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,8 @@ class 입장03(trigger_api.Trigger):
 
 
 class 입장04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -51,7 +52,7 @@ class 입장04(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52000102, portalId=10)
 
@@ -61,7 +62,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Wait02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -69,12 +70,13 @@ class Wait02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9100], questIds=[20002292], questStates=[3]):
+            # 챕터6 에필로그 [20002292 거절할 수 없는 제안] 완료 시
             return PC화남01(self.ctx)
 
 
 # ########################씬3 케이틀린과 대화퀘스트 이후########################
 class PC화남01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=PC화남12, action='exit')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -87,7 +89,7 @@ class PC화남01(trigger_api.Trigger):
 
 
 class PC화남02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_Trun')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.add_cinematic_talk(npcId=11003148, illustId='Anos_normal', msg='$52000102_QD__52000102__0$', duration=4000, align='right')
@@ -99,7 +101,7 @@ class PC화남02(trigger_api.Trigger):
 
 
 class PC화남03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003148, illustId='Anos_normal', msg='$52000102_QD__52000102__1$', duration=2000, align='right')
         self.set_sound(triggerId=9005, enable=True) # 케이틀린 대련 브금
 
@@ -109,7 +111,7 @@ class PC화남03(trigger_api.Trigger):
 
 
 class PC화남04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000102_QD__52000102__2$', duration=2000, align='right')
         self.face_emotion(spawnId=0, emotionName='PC_OutOfMind_01')
@@ -120,7 +122,7 @@ class PC화남04(trigger_api.Trigger):
 
 
 class PC화남04B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Dead_A'])
         self.face_emotion(spawnId=0, emotionName='PC_OutOfMind_01')
 
@@ -130,7 +132,7 @@ class PC화남04B(trigger_api.Trigger):
 
 
 class PC화남05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000102_QD__52000102__3$', duration=4000, align='right')
 
@@ -140,7 +142,7 @@ class PC화남05(trigger_api.Trigger):
 
 
 class PC화남06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000102_QD__52000102__4$', duration=4000, align='right')
 
@@ -150,7 +152,7 @@ class PC화남06(trigger_api.Trigger):
 
 
 class PC화남08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=11003149, illustId='Asimov_normal', msg='$52000102_QD__52000102__5$', duration=3000, align='right')
         self.face_emotion(spawnId=0, emotionName='ChaosMod_Start')
@@ -161,7 +163,7 @@ class PC화남08(trigger_api.Trigger):
 
 
 class PC화남09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4006,4007], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000102_QD__52000102__6$', duration=3000, align='right')
 
@@ -171,7 +173,7 @@ class PC화남09(trigger_api.Trigger):
 
 
 class PC화남10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -180,7 +182,7 @@ class PC화남10(trigger_api.Trigger):
 
 
 class PC화남11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.show_caption(type='VerticalCaption', title='$52000102_QD__52000102__7$', desc='$52000102_QD__52000102__8$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=10000, scale=2.5)
@@ -191,7 +193,8 @@ class PC화남11(trigger_api.Trigger):
 
 
 class PC화남11_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,7 +203,7 @@ class PC화남11_1(trigger_api.Trigger):
 
 
 class PC화남12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000115, portalId=1)
 
 

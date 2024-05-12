@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8001,8002,8003,8004,8005,8006], visible=True)
         self.set_agent(triggerIds=[8101,8102,8103,8104,8105,8106], visible=True)
         self.set_agent(triggerIds=[8201,8202,8203,8204,8205,8206], visible=True)
@@ -34,7 +34,7 @@ class 대기(trigger_api.Trigger):
 
 # <import path="./Data/Xml/Trigger/Dungeon_Common/CheckUserCount.xml" />
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=연출종료)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -47,7 +47,8 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004], visible=False, arg3=0, delay=0, scale=5)
         self.set_cinematic_ui(type=0)
@@ -60,7 +61,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 던전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_agent(triggerIds=[8001,8002,8003,8004,8005,8006], visible=False)
         self.set_conversation(type=1, spawnId=1001, script='$52100031_QD__MADRICANSIEGE__1$', arg4=3, arg5=0)
@@ -74,7 +75,7 @@ class 던전시작(trigger_api.Trigger):
 
 
 class 차지원1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030], isAutoTargeting=False)
         self.create_monster(spawnIds=[2002,2003,2004,2005], animationEffect=False)
         self.set_user_value(triggerId=99999101, key='cannon01', value=1)
@@ -89,13 +90,13 @@ class 차지원1(trigger_api.Trigger):
 
 
 class 다리건넘(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='OpenBossGauge', maxGaugePoint=1000)
         self.set_user_value(triggerId=99999102, key='cannon02', value=1)
         self.set_user_value(triggerId=99999103, key='cannon03', value=1)
         self.set_user_value(triggerId=99999104, key='cannon04', value=1)
         self.set_user_value(triggerId=99999105, key='cannon05', value=1)
-        # action name="몬스터를생성한다" arg1="2101" arg2="0" /
+        # self.create_monster(spawnIds=[2101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.shadow_expedition_reach_point(point=300):
@@ -103,7 +104,7 @@ class 다리건넘(trigger_api.Trigger):
 
 
 class 차지원2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999098, key='faction02', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +113,7 @@ class 차지원2(trigger_api.Trigger):
 
 
 class 차지원3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2031,2032,2033,2034,2035,2036], animationEffect=False)
         self.set_user_value(triggerId=99999097, key='faction03', value=1)
 
@@ -123,7 +124,7 @@ class 차지원3(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2026,2027,2028,2029,2030], animationEffect=False)
         self.set_user_value(triggerId=99999096, key='faction04', value=1)
 
@@ -145,7 +146,7 @@ class 던전종료딜레이(trigger_api.Trigger):
 
 
 class 암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=201, visible=True, initialSequence='Dead_A')
         self.set_actor(triggerId=202, visible=True, initialSequence='Dead_A')
         self.set_actor(triggerId=203, visible=True, initialSequence='Dead_A')
@@ -174,7 +175,7 @@ class 암전(trigger_api.Trigger):
 
 
 class 던전종료연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_loop(spawnId=1922, sequenceName='Talk_A', duration=3000)
@@ -185,12 +186,12 @@ class 던전종료연출시작(trigger_api.Trigger):
         if self.wait_tick(waitTick=4000):
             return 던전종료연출01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_mesh(triggerIds=[3801,3802,3803,3804], visible=False, arg3=0, delay=0, scale=5)
 
 
 class 던전종료연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=304, enable=True)
         self.set_npc_emotion_loop(spawnId=1921, sequenceName='Talk_A', duration=3000)
         self.add_cinematic_talk(npcId=11001566, illustId='11001566', msg='$52100031_QD__MADRICANSIEGE__3$', duration=3000, align='left')
@@ -201,7 +202,7 @@ class 던전종료연출01(trigger_api.Trigger):
 
 
 class 던전종료연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=1920, rotation=180)
         self.set_npc_emotion_loop(spawnId=1920, sequenceName='Talk_A', duration=3000)
         self.add_cinematic_talk(npcId=11001568, illustId='11001568', msg='$52100031_QD__MADRICANSIEGE__4$', duration=3000, align='left')
@@ -212,7 +213,7 @@ class 던전종료연출02(trigger_api.Trigger):
 
 
 class 룬블레이더이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1920, patrolName='MS2PatrolData_1920')
         self.move_npc(spawnId=1921, patrolName='MS2PatrolData_1921')
         self.move_npc(spawnId=1922, patrolName='MS2PatrolData_1922')
@@ -223,8 +224,9 @@ class 룬블레이더이동(trigger_api.Trigger):
 
 
 class 던전종료연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1920,1921,1922], arg2=False)
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -235,8 +237,36 @@ class 던전종료연출종료(trigger_api.Trigger):
             return 퀘스트던전종료(self.ctx)
 
 
+"""
+class 룸체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.is_dungeon_room():
+            return None # Missing State: 던전종료
+        if not self.is_dungeon_room():
+            return 퀘스트던전종료(self.ctx)
+
+"""
+
+
+"""
+class 던전종료(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_achievement(triggerId=199, type='trigger', achieve='Madracan01')
+        self.set_achievement(triggerId=199, type='trigger', achieve='ClearMadracanSiege')
+        self.set_achievement(triggerId=199, type='trigger', achieve='Madracan_Q01')
+        self.dungeon_clear()
+        self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 종료(self.ctx)
+
+"""
+
+
 class 퀘스트던전종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_achievement(triggerId=199, type='trigger', achieve='Madracan_Q01')
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:

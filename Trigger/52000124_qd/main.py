@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
 
 # 준비
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -25,7 +25,7 @@ class ready(trigger_api.Trigger):
 
 
 class camera(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class camera(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -45,7 +45,7 @@ class start(trigger_api.Trigger):
 
 # 이벤트 씬 시작
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003195, msg='$52000124_QD__MAIN__0$', duration=2000, align='right')
@@ -57,7 +57,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003195, msg='$52000124_QD__MAIN__1$', duration=2000, align='right')
 
@@ -67,7 +67,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11000069, msg='$52000124_QD__MAIN__2$', duration=2000, align='left')
 
@@ -77,7 +77,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_3001')
         self.add_cinematic_talk(npcId=11003195, msg='$52000124_QD__MAIN__3$', duration=3000, align='left')
@@ -88,7 +88,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Sit_down_A', duration=1E+12)
         self.add_cinematic_talk(npcId=11000069, msg='$52000124_QD__MAIN__4$', duration=3000, align='right')
@@ -99,7 +99,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11003195, msg='$52000124_QD__MAIN__5$', duration=3000, align='left')
 
@@ -109,7 +109,8 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -119,7 +120,7 @@ class scene_07(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True) # 카트반(11003196)
         self.destroy_monster(spawnIds=[202]) # 연출용 카트반(11003195)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -133,7 +134,7 @@ class end(trigger_api.Trigger):
 
 
 class warptalk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='$52000124_QD__MAIN__6$', duration=2000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,13 +143,13 @@ class warptalk(trigger_api.Trigger):
 
 
 class warp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000073, portalId=4)
 
 
 # delnpc
 class delnpc(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201,202])
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # PlayPiano
         self.set_effect(triggerIds=[5001], visible=False) # PlayGuitar
         self.set_effect(triggerIds=[5002], visible=False) # PlayClarinet
@@ -17,8 +17,10 @@ class Wait(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000550], questStates=[1]):
+            # 퀘스트 수락한 상태
             return LodingDelay01(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[90000550], questStates=[2]):
+            # 퀘스트 수락한 상태
             return Quit(self.ctx)
 
 
@@ -29,7 +31,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class LodingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -40,7 +42,7 @@ class LodingDelay02(trigger_api.Trigger):
 
 
 class PCWalkInStage01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000061, portalId=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +51,7 @@ class PCWalkInStage01(trigger_api.Trigger):
 
 
 class PCWalkInStage02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
         self.select_camera(triggerId=600, enable=True)
 
@@ -59,7 +61,7 @@ class PCWalkInStage02(trigger_api.Trigger):
 
 
 class PCWalkInStage03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[601,602], returnView=True)
 
@@ -69,7 +71,7 @@ class PCWalkInStage03(trigger_api.Trigger):
 
 
 class PCWalkInStage04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=603, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +80,7 @@ class PCWalkInStage04(trigger_api.Trigger):
 
 
 class PCBow01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Chin_Chin_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +89,7 @@ class PCBow01(trigger_api.Trigger):
 
 
 class PCBow02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +98,7 @@ class PCBow02(trigger_api.Trigger):
 
 
 class PCBow03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.select_camera(triggerId=610, enable=True)
         self.move_user(mapId=52000061, portalId=20)
@@ -107,7 +109,7 @@ class PCBow03(trigger_api.Trigger):
 
 
 class PCReadyToPlayThePiano01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Music_Piano_Idle_A', duration=31500)
         self.set_effect(triggerIds=[5100], visible=True) # SpotLight
 
@@ -117,7 +119,7 @@ class PCReadyToPlayThePiano01(trigger_api.Trigger):
 
 
 class PCPlayMusic01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_sound(triggerId=10000, enable=True) # PlayMusic
 
@@ -127,7 +129,7 @@ class PCPlayMusic01(trigger_api.Trigger):
 
 
 class PCPlayMusic02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # PlayPiano
         self.set_effect(triggerIds=[5001], visible=True) # PlayGuitar
         self.set_effect(triggerIds=[5002], visible=True) # PlayClarinet
@@ -144,7 +146,7 @@ class PCPlayMusic02(trigger_api.Trigger):
 
 
 class PCPlayMusic03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=10000, enable=False) # PlayMusic
         self.set_effect(triggerIds=[5000], visible=False) # PlayPiano
         self.set_effect(triggerIds=[5001], visible=False) # PlayGuitar
@@ -159,7 +161,7 @@ class PCPlayMusic03(trigger_api.Trigger):
 
 
 class PCPlayQuit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(triggerIds=[5100], visible=False) # SpotLight
 
@@ -169,7 +171,7 @@ class PCPlayQuit01(trigger_api.Trigger):
 
 
 class PCPlayQuit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000061, portalId=30)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -178,7 +180,7 @@ class PCPlayQuit02(trigger_api.Trigger):
 
 
 class PCPlayQuit03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -187,6 +189,7 @@ class PCPlayQuit03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000550], questStates=[3]):
+            # 퀘스트 수락한 완료 가능 상태
             return Quit(self.ctx)
 
 

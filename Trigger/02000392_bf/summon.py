@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
 
@@ -21,7 +21,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=300, enable=True)
@@ -33,13 +33,14 @@ class 소환(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.reset_camera(interpolationTime=1)
+            # self.select_camera(triggerId=300, enable=False)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return 죽음대기(self.ctx)
 
 
 class 퀘스트소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=300, enable=True)
@@ -51,16 +52,18 @@ class 퀘스트소환(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.reset_camera(interpolationTime=1)
+            # self.select_camera(triggerId=300, enable=False)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return 퀘스트죽음대기(self.ctx)
 
 
 class 퀘스트죽음대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +74,7 @@ class 퀘스트죽음대기(trigger_api.Trigger):
 
 
 class 퀘스트셀린사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2102, script='$02000392_BF__SUMMON__1$', arg4=4, arg5=0)
         self.add_buff(boxIds=[2102], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
 
@@ -81,7 +84,7 @@ class 퀘스트셀린사망(trigger_api.Trigger):
 
 
 class 퀘스트피리스사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
         self.set_conversation(type=1, spawnId=2101, script='$02000392_BF__SUMMON__2$', arg4=4, arg5=0)
         self.add_buff(boxIds=[2101], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
@@ -92,10 +95,11 @@ class 퀘스트피리스사망(trigger_api.Trigger):
 
 
 class 죽음대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +110,7 @@ class 죽음대기(trigger_api.Trigger):
 
 
 class 셀린사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2002, script='$02000392_BF__SUMMON__1$', arg4=4, arg5=0)
         self.add_buff(boxIds=[2002], skillId=40442003, level=1, isPlayer=True, isSkillSet=False)
 
@@ -119,7 +123,7 @@ class 셀린사망(trigger_api.Trigger):
 
 
 class 피리스사망(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
         self.set_achievement(triggerId=199, type='trigger', achieve='BigSisterFirst')
         self.set_conversation(type=1, spawnId=2001, script='$02000392_BF__SUMMON__2$', arg4=4, arg5=0)

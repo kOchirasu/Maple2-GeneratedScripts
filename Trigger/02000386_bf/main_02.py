@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=901, script='$02000386_BF__MAIN_02__0$', arg4=2, arg5=0)
         self.move_npc(spawnId=901, patrolName='MS2PatrolData_2002')
 
@@ -19,7 +19,7 @@ class ready(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[901])
 
 

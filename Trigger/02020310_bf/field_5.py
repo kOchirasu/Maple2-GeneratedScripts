@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000322], state=2)
         self.set_interact_object(triggerIds=[12000400], state=0)
         self.set_interact_object(triggerIds=[12000401], state=0)
@@ -40,6 +40,7 @@ class Archeon_On(trigger_api.Trigger):
 class Archeon_Move1_0(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
+            # self.move_user_path(patrolName='MS2PatrolData_01')
             self.set_portal(portalId=10001, visible=True, enable=True, minimapVisible=True)
             self.set_portal(portalId=10002, visible=True, enable=True, minimapVisible=True)
             self.set_portal(portalId=10003, visible=False, enable=True, minimapVisible=False)
@@ -58,8 +59,9 @@ class Archeon_Move1_0(trigger_api.Trigger):
 
 
 class Archeon_Arrive(trigger_api.Trigger):
-    def on_enter(self):
-        self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$02020310_BF__FIELD_5__1$', duration=6500) # 10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016,10017,10018,10019,10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016,10017,10018,10019,10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,
+        self.side_npc_talk(type='talk', npcId=11004582, illust='Eone_serious', script='$02020310_BF__FIELD_5__1$', duration=6500)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[10001,10002,10003,10004,10005,10006,10007,10008,10009,10010,10011,10012,10013,10014,10015,10016,10017,10018,10019,10020,10021,10022,10023,10024,10025,10026,10027,10028,10029,11001,11002,11003,11004,11005,11006,11007,11008,11009,11010,11011,11012,11013,11014,11015,11016,11017,11018,11019,11020,11021,11022,11023,11024,11025,11026,11027,11028,11029]):
@@ -97,7 +99,7 @@ class Archeon_OffDelay(trigger_api.Trigger):
 
 
 class Archeon_Off(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9100], skillId=73000009, level=1, isPlayer=False, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:

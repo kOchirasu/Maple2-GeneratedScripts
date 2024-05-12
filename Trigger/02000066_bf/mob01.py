@@ -23,7 +23,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 차타이머1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 차타이머1(trigger_api.Trigger):
 
 
 class 차타이머3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='9', seconds=9)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 차타이머3(trigger_api.Trigger):
 
 
 class 차타이머4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='8', seconds=8)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -56,7 +56,7 @@ class 차타이머4(trigger_api.Trigger):
 
 
 class 차타이머6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='7', seconds=7)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 차타이머6(trigger_api.Trigger):
 
 
 class 차타이머7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class 차타이머7(trigger_api.Trigger):
 
 
 class 차타이머9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class 차타이머9(trigger_api.Trigger):
 
 
 class 차타이머10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class 차타이머10(trigger_api.Trigger):
 
 
 class 차타이머12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +131,7 @@ class 생성랜덤(trigger_api.Trigger):
 
 
 class 번생성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class 번생성1(trigger_api.Trigger):
 
 
 class 번생성2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +149,7 @@ class 번생성2(trigger_api.Trigger):
 
 
 class 번생성3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1003], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -158,7 +158,7 @@ class 번생성3(trigger_api.Trigger):
 
 
 class 번생성4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1004], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +167,7 @@ class 번생성4(trigger_api.Trigger):
 
 
 class 번생성5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1005], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +176,7 @@ class 번생성5(trigger_api.Trigger):
 
 
 class 번생성6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1006], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -185,7 +185,7 @@ class 번생성6(trigger_api.Trigger):
 
 
 class 번생성7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1007], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -194,7 +194,7 @@ class 번생성7(trigger_api.Trigger):
 
 
 class 번생성8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1008], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -203,7 +203,7 @@ class 번생성8(trigger_api.Trigger):
 
 
 class 소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
         self.destroy_monster(spawnIds=[1002])
         self.destroy_monster(spawnIds=[1003])

@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 채집가능(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[611], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 채집가능(trigger_api.Trigger):
 
 
 class 채집완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=30, startDelay=0)
 
     def on_tick(self) -> trigger_api.Trigger:

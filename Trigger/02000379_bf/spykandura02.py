@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='SpyKandura', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -65,7 +65,7 @@ class KanduraAppCenterRandom(trigger_api.Trigger):
 
 # 오른쪽
 class KanduraAppRight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[430], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class KanduraAppRight01(trigger_api.Trigger):
 
 
 class KanduraDisAppRight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[430])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +87,7 @@ class KanduraDisAppRight01(trigger_api.Trigger):
 
 
 class KanduraAppRight02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[431], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +98,7 @@ class KanduraAppRight02(trigger_api.Trigger):
 
 
 class KanduraDisAppRight02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[431])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +109,7 @@ class KanduraDisAppRight02(trigger_api.Trigger):
 
 
 class KanduraAppRight03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[432], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -120,7 +120,7 @@ class KanduraAppRight03(trigger_api.Trigger):
 
 
 class KanduraDisAppRight03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[432])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +131,7 @@ class KanduraDisAppRight03(trigger_api.Trigger):
 
 
 class KanduraAppRight04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[433], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,7 +142,7 @@ class KanduraAppRight04(trigger_api.Trigger):
 
 
 class KanduraDisAppRight04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[433])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +153,7 @@ class KanduraDisAppRight04(trigger_api.Trigger):
 
 
 class KanduraAppRight05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[434], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -164,7 +164,7 @@ class KanduraAppRight05(trigger_api.Trigger):
 
 
 class KanduraDisAppRight05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[434])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,7 +175,7 @@ class KanduraDisAppRight05(trigger_api.Trigger):
 
 
 class KanduraAppRight06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[435], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -186,7 +186,7 @@ class KanduraAppRight06(trigger_api.Trigger):
 
 
 class KanduraDisAppRight06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[435])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -198,7 +198,7 @@ class KanduraDisAppRight06(trigger_api.Trigger):
 
 # 가운데
 class KanduraAppCenter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[420], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -209,7 +209,7 @@ class KanduraAppCenter01(trigger_api.Trigger):
 
 
 class KanduraDisAppCenter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[420])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -220,7 +220,7 @@ class KanduraDisAppCenter01(trigger_api.Trigger):
 
 
 class KanduraAppCenter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[421], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -231,7 +231,7 @@ class KanduraAppCenter02(trigger_api.Trigger):
 
 
 class KanduraDisAppCenter02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[421])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +242,7 @@ class KanduraDisAppCenter02(trigger_api.Trigger):
 
 
 class KanduraAppCenter03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[422], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -253,7 +253,7 @@ class KanduraAppCenter03(trigger_api.Trigger):
 
 
 class KanduraDisAppCenter03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[422])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -264,7 +264,7 @@ class KanduraDisAppCenter03(trigger_api.Trigger):
 
 
 class KanduraAppCenter04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[423], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -275,7 +275,7 @@ class KanduraAppCenter04(trigger_api.Trigger):
 
 
 class KanduraDisAppCenter04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[423])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -287,7 +287,7 @@ class KanduraDisAppCenter04(trigger_api.Trigger):
 
 # 왼쪽
 class KanduraAppLeft01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[410], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -298,7 +298,7 @@ class KanduraAppLeft01(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[410])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -309,7 +309,7 @@ class KanduraDisAppLeft01(trigger_api.Trigger):
 
 
 class KanduraAppLeft02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[411], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -320,7 +320,7 @@ class KanduraAppLeft02(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[411])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -331,7 +331,7 @@ class KanduraDisAppLeft02(trigger_api.Trigger):
 
 
 class KanduraAppLeft03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[412], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -342,7 +342,7 @@ class KanduraAppLeft03(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[412])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -353,7 +353,7 @@ class KanduraDisAppLeft03(trigger_api.Trigger):
 
 
 class KanduraAppLeft04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[413], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -364,7 +364,7 @@ class KanduraAppLeft04(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[413])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -375,7 +375,7 @@ class KanduraDisAppLeft04(trigger_api.Trigger):
 
 
 class KanduraAppLeft05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[414], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -386,7 +386,7 @@ class KanduraAppLeft05(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[414])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -397,7 +397,7 @@ class KanduraDisAppLeft05(trigger_api.Trigger):
 
 
 class KanduraAppLeft06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[415], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -408,7 +408,7 @@ class KanduraAppLeft06(trigger_api.Trigger):
 
 
 class KanduraDisAppLeft06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[415])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -419,7 +419,7 @@ class KanduraDisAppLeft06(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[410,411,412,413,414,415,420,421,422,423,430,431,432,433,434,435])
         self.set_user_value(key='SpyKandura', value=0)
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=False) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=False) # PlayCello
         self.set_effect(triggerIds=[5102], visible=False) # PlayViolin
@@ -19,7 +19,7 @@ class wait(trigger_api.Trigger):
 
 # 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.write_log(logName='Survival', event='MushkingLand_musicPlay') # 로그
         self.set_npc_emotion_loop(spawnId=201, sequenceName='Play_A', duration=30500)
         self.set_npc_emotion_loop(spawnId=202, sequenceName='Play_A', duration=30500)
@@ -31,7 +31,7 @@ class ready(trigger_api.Trigger):
 
 
 class PCPlayMusic02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=True) # PlayCello
         self.set_effect(triggerIds=[5102], visible=True) # PlayViolin
@@ -48,7 +48,7 @@ class PCPlayMusic02(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=False) # PlayClarinet
         self.set_effect(triggerIds=[5103], visible=False) # PlayCello
         self.set_effect(triggerIds=[5102], visible=False) # PlayViolin

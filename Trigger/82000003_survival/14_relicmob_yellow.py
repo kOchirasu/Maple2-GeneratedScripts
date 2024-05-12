@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1400,1401,1402,1403,1404,1405,1406,1407,1408,1409])
         self.set_user_value(key='RelicMobSpawn', value=0)
         self.set_user_value(key='RelicMobRemove', value=0)
@@ -16,6 +16,7 @@ class Setting(trigger_api.Trigger):
 class Delay(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=30000):
+            # 30초 30000
             return MobSpawnRandom(self.ctx)
         if self.user_value(key='RelicMobRemove', value=1):
             return Quit(self.ctx)
@@ -48,7 +49,7 @@ class MobSpawnRandom(trigger_api.Trigger):
 
 
 class MobSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1400], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +60,7 @@ class MobSpawn01(trigger_api.Trigger):
 
 
 class MobSpawn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1401], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +71,7 @@ class MobSpawn02(trigger_api.Trigger):
 
 
 class MobSpawn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1402], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +82,7 @@ class MobSpawn03(trigger_api.Trigger):
 
 
 class MobSpawn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1403], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -92,7 +93,7 @@ class MobSpawn04(trigger_api.Trigger):
 
 
 class MobSpawn05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1404], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +104,7 @@ class MobSpawn05(trigger_api.Trigger):
 
 
 class MobSpawn06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1405], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +115,7 @@ class MobSpawn06(trigger_api.Trigger):
 
 
 class MobSpawn07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1406], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +126,7 @@ class MobSpawn07(trigger_api.Trigger):
 
 
 class MobSpawn08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1407], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,7 +137,7 @@ class MobSpawn08(trigger_api.Trigger):
 
 
 class MobSpawn09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1408], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -147,7 +148,7 @@ class MobSpawn09(trigger_api.Trigger):
 
 
 class MobSpawn10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1409], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -158,7 +159,7 @@ class MobSpawn10(trigger_api.Trigger):
 
 
 class Notice(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=16, key='RelicMobYellowDie', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +168,7 @@ class Notice(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1400,1401,1402,1403,1404,1405,1406,1407,1408,1409])
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6001], visible=False)
         self.set_mesh(triggerIds=[6002], visible=False)
         self.set_mesh(triggerIds=[6003], visible=False)
@@ -15,7 +15,7 @@ class ready(trigger_api.Trigger):
 
 
 class chaos_raid(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[402], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class chaos_raid(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
 

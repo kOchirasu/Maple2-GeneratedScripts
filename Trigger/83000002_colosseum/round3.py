@@ -4,7 +4,7 @@ import trigger_api
 
 # 3라운드 민트
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=11000, enable=False)
         self.set_sound(triggerId=11001, enable=False)
         self.set_sound(triggerId=12000, enable=False)
@@ -27,6 +27,7 @@ class 라운드조건체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_round_require(round=3):
             self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_normal', script='$83000002_COLOSSEUM__ROUND3__0$', duration=5000)
+            # self.set_event_ui(type=1, arg2='전투에서 승리하셨습니다. 잠시만 기다려주세요 다음전투가 기다리고 있습니다!!', arg3='3000')
             return 라운드대기(self.ctx)
         if self.true():
             self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000002_COLOSSEUM__ROUND3__1$', duration=3000)
@@ -35,7 +36,7 @@ class 라운드조건체크(trigger_api.Trigger):
 
 
 class 라운드대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=11000, enable=True)
         self.set_sound(triggerId=11001, enable=True)
 
@@ -53,7 +54,7 @@ class 몬스터스폰대기(trigger_api.Trigger):
 
 
 class 몬스터스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.add_buff(boxIds=[103], skillId=69000501, level=1, isPlayer=True)
 
@@ -63,7 +64,7 @@ class 몬스터스폰(trigger_api.Trigger):
 
 
 class 카운트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$83000002_COLOSSEUM__ROUND3__2$', count=3, soundType=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,8 +72,24 @@ class 카운트(trigger_api.Trigger):
             return 전투시작(self.ctx)
 
 
+# <state name="카운트2">
+# <onEnter>
+# <action name="이벤트UI를설정한다" arg1="1" arg2="2" arg3="1000" />
+# </onEnter>
+# <condition name="WaitTick" waitTick="1000" >
+# <transition state="카운트3"/>
+# </condition>
+# </state>
+# <state name="카운트3">
+# <onEnter>
+# <action name="이벤트UI를설정한다" arg1="1" arg2="1" arg3="1000" />
+# </onEnter>
+# <condition name="WaitTick" waitTick="2000" >
+# <transition state="전투시작"/>
+# </condition>
+# </state>
 class 전투시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.lock_my_pc(isLock=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +98,7 @@ class 전투시작(trigger_api.Trigger):
 
 
 class 스폰대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=103, msg='$83000002_COLOSSEUM__ROUND3__3$', duration=3000)
         self.set_timer(timerId='LimitTimer', seconds=60, startDelay=1)
         self.set_npc_duel_hp_bar(isOpen=True, spawnId=[103], durationTick=60000, npcHpStep=10)
@@ -92,16 +109,19 @@ class 스폰대사(trigger_api.Trigger):
             self.set_npc_duel_hp_bar(isOpen=False, spawnId=[103])
             return ClearRoundDelay(self.ctx)
         if self.time_expired(timerId='LimitTimer'):
+            # self.set_event_ui(type=1, arg2='경기시간이 경과했습니다. 도전에 실패 하였습니다. 전투를 종료합니다.', arg3='3000')
             self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000002_COLOSSEUM__ROUND3__5$', duration=3000)
             self.destroy_monster(spawnIds=[103])
             self.set_npc_duel_hp_bar(isOpen=False, spawnId=[103])
             return FailRoundDelay(self.ctx)
         if self.user_detected(boxIds=[902]):
+            # self.set_event_ui(type=1, arg2='경기장을 이탈했습니다. 전투가 종료됩니다. 다시 도전해 주세요.', arg3='3000')
             self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000002_COLOSSEUM__ROUND3__6$', duration=3000)
             self.destroy_monster(spawnIds=[103])
             self.set_npc_duel_hp_bar(isOpen=False, spawnId=[103])
             return FailRoundDelay(self.ctx)
         if not self.user_detected(boxIds=[904]):
+            # self.set_event_ui(type=1, arg2='패배했습니다. 전투가 종료됩니다.', arg3='3000')
             self.side_npc_talk(type='talk', npcId=11004288, illust='nagi_switchon', script='$83000002_COLOSSEUM__ROUND3__7$', duration=3000)
             self.destroy_monster(spawnIds=[103])
             self.set_npc_duel_hp_bar(isOpen=False, spawnId=[103])
@@ -109,7 +129,7 @@ class 스폰대사(trigger_api.Trigger):
 
 
 class ClearRoundDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.lock_my_pc(isLock=True)
         self.set_sound(triggerId=12000, enable=True)
         self.set_sound(triggerId=12001, enable=True)
@@ -122,7 +142,7 @@ class ClearRoundDelay(trigger_api.Trigger):
 
 
 class FailRoundDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=13000, enable=True)
         self.set_sound(triggerId=13001, enable=True)
 
@@ -133,9 +153,14 @@ class FailRoundDelay(trigger_api.Trigger):
 
 
 class ClearRound(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=7, arg2='SUCCESS', arg3='3000')
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             self.move_user_to_pos(pos=[300,-225,1500], rot=[0,0,270])
+            # self.add_buff(boxIds=[904], skillId=69000505, level=1, isPlayer=False, isSkillSet=False)
             self.side_npc_talk(type='talk', npcId=11004285, illust='Queencbean_Normal', script='$83000002_COLOSSEUM__ROUND3__10$', duration=3000)
             self.set_user_value(triggerId=900001, key='StartRound3', value=2)
             return 이동대기(self.ctx)

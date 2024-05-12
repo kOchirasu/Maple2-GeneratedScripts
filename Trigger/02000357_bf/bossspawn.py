@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -23,14 +23,14 @@ class 보스등장(trigger_api.Trigger):
         if self.wait_tick(waitTick=7000):
             return 종료체크(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.select_camera(triggerId=301, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 종료체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20001945, textId=20001945, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -40,7 +40,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 종료딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=102, type='trigger', achieve='ClearPP')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +49,7 @@ class 종료딜레이(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

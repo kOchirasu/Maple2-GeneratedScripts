@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5001], visible=False) # 미션 성공 사운드 이펙트
         self.set_effect(triggerIds=[5100], visible=False) # DoorOpen
@@ -35,21 +35,26 @@ class Wait(trigger_api.Trigger):
 
 
 class LoadingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[10003044], questStates=[2]):
+            # 인내의 한계 퀘스트 수락한 상태
             return Quit(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[10003044], questStates=[1]):
+            # 인내의 한계 퀘스트 수락한 상태
             return QuestOnGoing01(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[10003043], questStates=[3]):
+            # 꺾을 수 없는 의지 퀘스트 완료 상태
             return QuestOnGoing01(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[10003043], questStates=[2]):
+            # 꺾을 수 없는 의지 퀘스트 완료 가능 상태
             return QuestOnGoing01(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[10003043], questStates=[1]):
+            # 꺾을 수 없는 의지 퀘스트 수락한 상태
             return LoadingDelay02(self.ctx)
         if self.wait_tick(waitTick=5000):
             return Quit(self.ctx)
@@ -57,7 +62,7 @@ class LoadingDelay01(trigger_api.Trigger):
 
 # 첫 번째 퀘스트 완료 가능, 완료 상태
 class QuestOnGoing01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,201,530,531,532,533,534,535,536,537,538,539], animationEffect=False)
         self.move_user(mapId=52000047, portalId=3, boxId=9900)
 
@@ -67,7 +72,7 @@ class QuestOnGoing01(trigger_api.Trigger):
 
 
 class QuestOnGoing02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -78,7 +83,7 @@ class QuestOnGoing02(trigger_api.Trigger):
 
 # 최초 입장
 class LoadingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=True)
         self.create_monster(spawnIds=[500,501,502,503,504,505,506,507,508,509], animationEffect=False)
 
@@ -88,7 +93,7 @@ class LoadingDelay02(trigger_api.Trigger):
 
 
 class PCWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=501, enable=True)
@@ -100,7 +105,7 @@ class PCWalkIn01(trigger_api.Trigger):
 
 
 class PCWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=500, sequenceName='Talk_A', duration=6000)
         self.set_npc_emotion_sequence(spawnId=507, sequenceName='Bore_A')
         self.set_npc_emotion_sequence(spawnId=501, sequenceName='Bore_A')
@@ -111,7 +116,7 @@ class PCWalkIn02(trigger_api.Trigger):
 
 
 class PCWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=502, sequenceName='Talk_A', duration=6000)
         self.set_npc_emotion_loop(spawnId=509, sequenceName='Talk_A', duration=6000)
         self.set_npc_emotion_sequence(spawnId=503, sequenceName='Bore_A')
@@ -123,7 +128,7 @@ class PCWalkIn03(trigger_api.Trigger):
 
 
 class NPCNotice01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=509, patrolName='MS2PatrolData_509')
         self.set_conversation(type=1, spawnId=509, script='$52000047_QD__ACTION01__0$', arg4=3, arg5=0)
 
@@ -133,7 +138,7 @@ class NPCNotice01(trigger_api.Trigger):
 
 
 class NPCNotice02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=500, patrolName='MS2PatrolData_500')
         self.move_npc(spawnId=507, patrolName='MS2PatrolData_507')
 
@@ -143,7 +148,7 @@ class NPCNotice02(trigger_api.Trigger):
 
 
 class NPCNotice03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=504, patrolName='MS2PatrolData_504')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +157,7 @@ class NPCNotice03(trigger_api.Trigger):
 
 
 class NPCNotice04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=508, patrolName='MS2PatrolData_508')
         self.set_conversation(type=1, spawnId=504, script='$52000047_QD__ACTION01__1$', arg4=3, arg5=0)
 
@@ -162,7 +167,7 @@ class NPCNotice04(trigger_api.Trigger):
 
 
 class NPCNotice05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_501')
         self.move_npc(spawnId=506, patrolName='MS2PatrolData_506')
 
@@ -172,7 +177,7 @@ class NPCNotice05(trigger_api.Trigger):
 
 
 class NPCNotice06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=502, patrolName='MS2PatrolData_502')
         self.move_npc(spawnId=505, patrolName='MS2PatrolData_505')
 
@@ -182,7 +187,7 @@ class NPCNotice06(trigger_api.Trigger):
 
 
 class NPCNotice07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=503, patrolName='MS2PatrolData_503')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -191,7 +196,7 @@ class NPCNotice07(trigger_api.Trigger):
 
 
 class MafiaReadyToFight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=505, script='$52000047_QD__ACTION01__2$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,7 +205,7 @@ class MafiaReadyToFight01(trigger_api.Trigger):
 
 
 class MafiaReadyToFight02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=503, enable=True)
         self.set_pc_emotion_sequence(sequenceNames=['Striker_Bore_A'])
         self.set_conversation(type=1, spawnId=0, script='$52000047_QD__ACTION01__3$', arg4=2, arg5=1)
@@ -211,7 +216,7 @@ class MafiaReadyToFight02(trigger_api.Trigger):
 
 
 class MafiaReadyToFight03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=504, enable=True)
         self.change_monster(removeSpawnId=500, addSpawnId=900)
         self.change_monster(removeSpawnId=501, addSpawnId=901)
@@ -230,7 +235,7 @@ class MafiaReadyToFight03(trigger_api.Trigger):
 
 
 class MafiaReadyToFight04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=504, enable=False)
@@ -241,7 +246,7 @@ class MafiaReadyToFight04(trigger_api.Trigger):
 
 
 class MafiaFightStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=25200471, textId=25200471) # 가이드 : 흑성회 조직원들 모두 쓰러트리기
 
@@ -251,7 +256,7 @@ class MafiaFightStart01(trigger_api.Trigger):
 
 
 class MafiaFightEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # 미션 성공 사운드 이펙트
         self.hide_guide_summary(entityId=25200471)
 
@@ -262,7 +267,7 @@ class MafiaFightEnd01(trigger_api.Trigger):
 
 # 웨이홍 바사라첸 입장
 class WeihongWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[5100], visible=True) # DoorOpen
@@ -273,7 +278,7 @@ class WeihongWalkIn01(trigger_api.Trigger):
 
 
 class WeihongWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[100], animationEffect=False) # 웨이 홍
         self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
         self.select_camera(triggerId=600, enable=True)
@@ -284,7 +289,7 @@ class WeihongWalkIn02(trigger_api.Trigger):
 
 
 class WeihongWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[200], animationEffect=False) # 바사라 첸
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_200')
         self.set_effect(triggerIds=[5101], visible=True) # DoorClose
@@ -296,7 +301,7 @@ class WeihongWalkIn03(trigger_api.Trigger):
 
 
 class WeihongTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
         self.set_conversation(type=2, spawnId=11000251, script='$52000047_QD__ACTION01__4$', arg4=4) # 웨이 홍
         self.set_skip(state=WeihongTalk01Skip)
@@ -307,8 +312,9 @@ class WeihongTalk01(trigger_api.Trigger):
 
 
 class WeihongTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_user_value(triggerId=500, key='NpcRemove', value=1)
         self.set_user_value(triggerId=501, key='NpcRemove', value=1)
@@ -328,7 +334,7 @@ class WeihongTalk01Skip(trigger_api.Trigger):
 
 
 class WeihongTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$52000047_QD__ACTION01__5$', arg4=4) # 웨이 홍
         self.set_skip(state=WeihongTalk02Skip)
 
@@ -338,8 +344,9 @@ class WeihongTalk02(trigger_api.Trigger):
 
 
 class WeihongTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -351,7 +358,7 @@ class WeihongTalk02Skip(trigger_api.Trigger):
 
 
 class MeetAgainWeihong01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=520, patrolName='MS2PatrolData_520')
         self.move_npc(spawnId=521, patrolName='MS2PatrolData_521')
         self.move_npc(spawnId=522, patrolName='MS2PatrolData_522')
@@ -370,7 +377,7 @@ class MeetAgainWeihong01(trigger_api.Trigger):
 
 
 class MeetAgainWeihong02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=527, script='$52000047_QD__ACTION01__7$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=529, script='$52000047_QD__ACTION01__8$', arg4=2, arg5=1)
 
@@ -380,7 +387,7 @@ class MeetAgainWeihong02(trigger_api.Trigger):
 
 
 class MeetAgainWeihong03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1001')
         self.set_conversation(type=1, spawnId=0, script='$52000047_QD__ACTION01__9$', arg4=4, arg5=1)
 
@@ -390,7 +397,7 @@ class MeetAgainWeihong03(trigger_api.Trigger):
 
 
 class MeetAgainWeihong04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=100, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_201')
 
@@ -400,14 +407,14 @@ class MeetAgainWeihong04(trigger_api.Trigger):
 
 
 class MeetAgainWeihong05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return MeetAgainWeihong06(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[100,200,520,521,522,523,524,525,526,527,528,529])
         self.create_monster(spawnIds=[101,201,530,531,532,533,534,535,536,537,538,539], animationEffect=False)
         self.set_cinematic_ui(type=0)
@@ -415,7 +422,7 @@ class MeetAgainWeihong05(trigger_api.Trigger):
 
 
 class MeetAgainWeihong06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='MeetAgainWeihong')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -427,11 +434,12 @@ class MeetAgainWeihong06(trigger_api.Trigger):
 class NextQuestStart01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[10003044], questStates=[1]):
+            # 인내의 한계 퀘스트 수락한 상태
             return PositionArrange01(self.ctx)
 
 
 class PositionArrange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -442,7 +450,7 @@ class PositionArrange01(trigger_api.Trigger):
 
 
 class PositionArrange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=700, enable=True)
         self.move_user(mapId=52000047, portalId=3, boxId=9900)
 
@@ -452,7 +460,7 @@ class PositionArrange02(trigger_api.Trigger):
 
 
 class PositionArrange03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -462,7 +470,7 @@ class PositionArrange03(trigger_api.Trigger):
 
 
 class WeihongStepBack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$52000047_QD__ACTION01__10$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -471,7 +479,7 @@ class WeihongStepBack01(trigger_api.Trigger):
 
 
 class WeihongStepBack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=701, enable=True)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
         self.set_conversation(type=1, spawnId=101, script='$52000047_QD__ACTION01__11$', arg4=2, arg5=1)
@@ -482,7 +490,7 @@ class WeihongStepBack02(trigger_api.Trigger):
 
 
 class PCTryToAttackWeihong01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=710, enable=True)
         self.set_pc_emotion_loop(sequenceName='Knuckle_Attack_Idle_A', duration=1734)
         self.set_conversation(type=1, spawnId=0, script='$52000047_QD__ACTION01__12$', arg4=2, arg5=0)
@@ -493,7 +501,7 @@ class PCTryToAttackWeihong01(trigger_api.Trigger):
 
 
 class PCTryToAttackWeihong02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=711, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -502,7 +510,7 @@ class PCTryToAttackWeihong02(trigger_api.Trigger):
 
 
 class PCTryToAttackWeihong03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -511,7 +519,7 @@ class PCTryToAttackWeihong03(trigger_api.Trigger):
 
 
 class VasaraPush01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_202')
         self.set_conversation(type=1, spawnId=201, script='$52000047_QD__ACTION01__20$', arg4=1, arg5=0)
 
@@ -521,7 +529,7 @@ class VasaraPush01(trigger_api.Trigger):
 
 
 class VasaraPush02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Attack_01_H')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -530,7 +538,7 @@ class VasaraPush02(trigger_api.Trigger):
 
 
 class VasaraPush03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7000], enable=True) # PCKnockBack
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -539,7 +547,7 @@ class VasaraPush03(trigger_api.Trigger):
 
 
 class VasaraPush04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Push_A', duration=1500)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -548,7 +556,7 @@ class VasaraPush04(trigger_api.Trigger):
 
 
 class SceneChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -559,7 +567,7 @@ class SceneChange01(trigger_api.Trigger):
 
 
 class SceneChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=720, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -568,7 +576,7 @@ class SceneChange02(trigger_api.Trigger):
 
 
 class SceneChange03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -578,7 +586,7 @@ class SceneChange03(trigger_api.Trigger):
 
 
 class VasaraTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_203')
         self.set_conversation(type=1, spawnId=0, script='$52000047_QD__ACTION01__13$', arg4=2, arg5=0)
 
@@ -588,7 +596,7 @@ class VasaraTalk01(trigger_api.Trigger):
 
 
 class VasaraTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$52000047_QD__ACTION01__14$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -597,7 +605,7 @@ class VasaraTalk02(trigger_api.Trigger):
 
 
 class VasaraTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000047_QD__ACTION01__15$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -606,7 +614,7 @@ class VasaraTalk03(trigger_api.Trigger):
 
 
 class VasaraBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=720, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -619,7 +627,7 @@ class VasaraBattle01(trigger_api.Trigger):
 
 
 class VasaraBattle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=25200472, textId=25200472) # 가이드 : 바사라 첸 쓰러트리기
 
@@ -629,7 +637,7 @@ class VasaraBattle02(trigger_api.Trigger):
 
 
 class VasaraBattle03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # 미션 성공 사운드 이펙트
         self.hide_guide_summary(entityId=25200472)
 
@@ -639,7 +647,7 @@ class VasaraBattle03(trigger_api.Trigger):
 
 
 class VasaraTired01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -650,7 +658,7 @@ class VasaraTired01(trigger_api.Trigger):
 
 
 class VasaraTired02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=720, enable=True)
         self.move_user(mapId=52000047, portalId=4, boxId=9900)
         self.destroy_monster(spawnIds=[202])
@@ -662,7 +670,7 @@ class VasaraTired02(trigger_api.Trigger):
 
 
 class VasaraTired03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=203, sequenceName='Down_Idle_A', duration=9000)
         self.set_pc_emotion_loop(sequenceName='Knuckle_Attack_Idle_A', duration=9537)
 
@@ -672,7 +680,7 @@ class VasaraTired03(trigger_api.Trigger):
 
 
 class VasaraTired04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -682,7 +690,7 @@ class VasaraTired04(trigger_api.Trigger):
 
 
 class VasaraTired05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=203, script='$52000047_QD__ACTION01__21$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -691,7 +699,7 @@ class VasaraTired05(trigger_api.Trigger):
 
 
 class WeihongOrder01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=730, enable=True)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
 
@@ -701,7 +709,7 @@ class WeihongOrder01(trigger_api.Trigger):
 
 
 class WeihongOrder02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000251, script='$52000047_QD__ACTION01__16$', arg4=5) # 웨이 홍
         self.set_skip(state=WeihongOrder02Skip)
 
@@ -711,8 +719,9 @@ class WeihongOrder02(trigger_api.Trigger):
 
 
 class WeihongOrder02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -723,7 +732,7 @@ class WeihongOrder02Skip(trigger_api.Trigger):
 
 
 class MafiaMove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=731, enable=True)
         self.move_npc(spawnId=530, patrolName='MS2PatrolData_530')
         self.move_npc(spawnId=535, patrolName='MS2PatrolData_535')
@@ -737,7 +746,7 @@ class MafiaMove01(trigger_api.Trigger):
 
 
 class MafiaMove02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=531, patrolName='MS2PatrolData_531')
         self.move_npc(spawnId=533, patrolName='MS2PatrolData_533')
         self.move_npc(spawnId=536, patrolName='MS2PatrolData_536')
@@ -750,7 +759,7 @@ class MafiaMove02(trigger_api.Trigger):
 
 
 class VasaraTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_204')
         self.set_conversation(type=2, spawnId=11001547, script='$52000047_QD__ACTION01__17$', arg4=5) # 바사라 첸
         self.set_skip(state=VasaraTalk10Skip)
@@ -761,8 +770,9 @@ class VasaraTalk10(trigger_api.Trigger):
 
 
 class VasaraTalk10Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -777,7 +787,7 @@ class VasaraPushAgain01(trigger_api.Trigger):
 
 
 class VasaraPushAgain02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Attack_02_G,Attack_03_G')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -786,7 +796,7 @@ class VasaraPushAgain02(trigger_api.Trigger):
 
 
 class VasaraPushAgain03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True) # PCKnockBack
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -795,7 +805,7 @@ class VasaraPushAgain03(trigger_api.Trigger):
 
 
 class VasaraPushAgain04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Push_A', duration=6000)
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Attack_01_I,Attack_Idle_A,Attack_Idle_A')
 
@@ -805,7 +815,7 @@ class VasaraPushAgain04(trigger_api.Trigger):
 
 
 class VasaraLastAttack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7002], enable=True) # CubeBreak
         self.set_effect(triggerIds=[5300], visible=True) # RockFall
 
@@ -815,7 +825,7 @@ class VasaraLastAttack01(trigger_api.Trigger):
 
 
 class VasaraLastAttack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5220], visible=True) # SandFlow
         self.set_random_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021], visible=True, meshCount=22, arg4=50, delay=80) # Rock Visible  ON
         self.set_effect(triggerIds=[5200], visible=True) # Dust
@@ -836,7 +846,7 @@ class VasaraLastAttack02(trigger_api.Trigger):
 
 
 class VasaraLastAttack03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5221], visible=True) # SandFlow
         self.select_camera(triggerId=731, enable=True)
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0) # Barrier Visible OFF
@@ -845,12 +855,13 @@ class VasaraLastAttack03(trigger_api.Trigger):
         if self.wait_tick(waitTick=1500):
             return VasaraTalk20(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[5220], visible=True) # SandFlow
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[5220], visible=True)
+        # SandFlow
 
 
 class VasaraTalk20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001547, script='$52000047_QD__ACTION01__18$', arg4=5) # 바사라 첸
         self.set_skip(state=VasaraTalk20Skip)
 
@@ -860,8 +871,9 @@ class VasaraTalk20(trigger_api.Trigger):
 
 
 class VasaraTalk20Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -870,7 +882,7 @@ class VasaraTalk20Skip(trigger_api.Trigger):
 
 
 class VasaraTalk21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001547, script='$52000047_QD__ACTION01__19$', arg4=5) # 바사라 첸
         self.set_skip(state=VasaraTalk21Skip)
 
@@ -880,8 +892,9 @@ class VasaraTalk21(trigger_api.Trigger):
 
 
 class VasaraTalk21Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -894,7 +907,7 @@ class VasaraTalk21Skip(trigger_api.Trigger):
 
 
 class FriendOfVasara01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5220], visible=True) # SandFlow
         self.set_achievement(triggerId=9900, type='trigger', achieve='FriendOfVasara')
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_205')
@@ -905,7 +918,7 @@ class FriendOfVasara01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5221], visible=True) # SandFlow
         self.move_user(mapId=2000138, portalId=105, boxId=9900)
 

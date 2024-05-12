@@ -3,7 +3,7 @@ import trigger_api
 
 
 class gameset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8011, enable=False) # 카메라 옆으로 보냄, 줌인
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Fail_condition(trigger_api.Trigger):
 
 
 class Fail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_PinkBeans_Arcade_Result_01')
         self.write_log(logName='PinkBeanThreeTwoOne_log', triggerId=9001, event='char_event', subEvent='gameover')
         self.set_timer(timerId='10', seconds=10, interval=1)
@@ -31,7 +31,7 @@ class Fail(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
 

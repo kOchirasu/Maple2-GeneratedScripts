@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5100], visible=False) # CollapseBridge
@@ -40,7 +40,7 @@ class Wait(trigger_api.Trigger):
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -51,7 +51,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class LodingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,201,301], animationEffect=False)
         self.create_monster(spawnIds=[910,911,912,920,921,922], animationEffect=False)
 
@@ -61,7 +61,7 @@ class LodingDelay02(trigger_api.Trigger):
 
 
 class LodingDelay03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -71,7 +71,7 @@ class LodingDelay03(trigger_api.Trigger):
 
 
 class CameraAct01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -86,9 +86,10 @@ class CameraAct01(trigger_api.Trigger):
 
 
 class CameraAct02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,7 +98,7 @@ class CameraAct02(trigger_api.Trigger):
 
 
 class CameraAct03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -110,10 +111,11 @@ class CameraAct03(trigger_api.Trigger):
 
 
 class CameraAct04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=600, enable=False)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,19 +124,20 @@ class CameraAct04(trigger_api.Trigger):
 
 
 class KanduraTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=301, script='$02000379_BF__FAKELAOZ01__2$', arg4=3, arg5=2) # 칸두라
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Event_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9001]):
+            # 다리 위
             return CollapseBridge01(self.ctx)
         if self.wait_tick(waitTick=4000):
             return CollapseBridge01(self.ctx)
 
 
 class CollapseBridge01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2000], enable=True) # 큐브 부수기 스킬 1단계
         self.set_effect(triggerIds=[5100], visible=True) # CollapseBridge
 
@@ -144,7 +147,7 @@ class CollapseBridge01(trigger_api.Trigger):
 
 
 class CollapseBridge02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2001], enable=True) # 큐브 부수기 스킬 2단계
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +156,7 @@ class CollapseBridge02(trigger_api.Trigger):
 
 
 class CollapseBridge03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[2002], enable=True) # 큐브 부수기 스킬 3단계
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -169,7 +172,7 @@ class CollapseBridge04(trigger_api.Trigger):
 
 # 칸두라 말풍선 나와라!, 칸두라 손짓 Event_A 연출
 class CameraAct11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=601, enable=True)
@@ -181,7 +184,7 @@ class CameraAct11(trigger_api.Trigger):
 
 
 class CameraAct12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=301, script='$02000379_BF__FAKELAOZ01__3$', arg4=3, arg5=0) # 칸두라
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Event_A')
         self.set_skip(state=CameraAct13)
@@ -192,10 +195,11 @@ class CameraAct12(trigger_api.Trigger):
 
 
 class CameraAct13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=601, enable=False)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -204,7 +208,7 @@ class CameraAct13(trigger_api.Trigger):
 
 
 class FakeLaozApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=602, enable=True)
@@ -215,7 +219,7 @@ class FakeLaozApp01(trigger_api.Trigger):
 
 
 class FakeLaozApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5200], visible=True) # Summon
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -224,7 +228,7 @@ class FakeLaozApp02(trigger_api.Trigger):
 
 
 class FakeLaozApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[102,202,900], animationEffect=False) # ,901,902 토템 몬스터 스폰 제거
         self.set_skip(state=FakeLaozApp04)
@@ -235,7 +239,7 @@ class FakeLaozApp03(trigger_api.Trigger):
 
 
 class FakeLaozApp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)
@@ -251,6 +255,7 @@ class FakeLaozApp04(trigger_api.Trigger):
         self.select_camera(triggerId=602, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_301')
 
@@ -261,7 +266,7 @@ class FakeLaozApp04(trigger_api.Trigger):
 
 # 칸두라 염탐 트리거 신호 보내기
 class KanduraDisapp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2, key='SpyKandura', value=1)
         self.destroy_monster(spawnIds=[301])
 
@@ -277,7 +282,7 @@ class KanduraDisapp02(trigger_api.Trigger):
 
 
 class FakeLaozDie01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=False, arg3=200, delay=0, scale=5) # Lamp_A02_OFF
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=5) # Lamp_A03_ON
         self.set_mesh_animation(triggerIds=[3000], visible=False, arg3=0, arg4=0) # Lamp_A02_OFF
@@ -293,7 +298,7 @@ class FakeLaozDie01(trigger_api.Trigger):
 
 
 class LampLightUp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # StairsApp
         self.set_random_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323], visible=True, meshCount=24, arg4=100, delay=70) # StairsToLeave
         self.set_mesh(triggerIds=[3202,3203,3204], visible=False, arg3=0, delay=0, scale=0) # Invisibble_TotemBarrier
@@ -309,9 +314,11 @@ class LampLightUp01(trigger_api.Trigger):
 
 
 class LampLightUp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
-        self.move_user(mapId=2000379, portalId=11, boxId=9900) # 유저 위치 보정, 계단에 끼이는 문제 해결을 위한 장치
+        # 유저 위치 보정, 계단에 끼이는 문제 해결을 위한 장치
+        self.move_user(mapId=2000379, portalId=11, boxId=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -319,7 +326,7 @@ class LampLightUp02(trigger_api.Trigger):
 
 
 class LampLightUp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=103, script='$02000379_BF__FAKELAOZ01__4$', arg4=3, arg5=0) # 틴차이
         self.set_conversation(type=1, spawnId=203, script='$02000379_BF__FAKELAOZ01__5$', arg4=3, arg5=3) # 준타
         self.set_skip(state=LampLightUp04)
@@ -330,7 +337,8 @@ class LampLightUp03(trigger_api.Trigger):
 
 
 class LampLightUp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -339,7 +347,7 @@ class LampLightUp04(trigger_api.Trigger):
 
 
 class LampLightUp05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_102')
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_202')
         self.set_conversation(type=1, spawnId=103, script='$02000379_BF__FAKELAOZ01__6$', arg4=3, arg5=2) # 틴차이
@@ -352,10 +360,11 @@ class LampLightUp05(trigger_api.Trigger):
 
 
 class TimeToLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=700, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -364,7 +373,7 @@ class TimeToLeave01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=10, visible=True, enable=True, minimapVisible=True)
         self.dungeon_clear()
 

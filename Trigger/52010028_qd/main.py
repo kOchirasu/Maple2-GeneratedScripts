@@ -4,7 +4,7 @@ import trigger_api
 
 # 흘러내린 시간의 틈 : 52010028
 class 던전에들어왔으면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
 
@@ -14,7 +14,7 @@ class 던전에들어왔으면(trigger_api.Trigger):
 
 
 class black(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.visible_my_pc(isVisible=False)
         self.set_cinematic_ui(type=1)
@@ -26,7 +26,7 @@ class black(trigger_api.Trigger):
 
 
 class 떨어져서아파(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True)
         self.select_camera_path(pathIds=[4007], returnView=False)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -39,7 +39,7 @@ class 떨어져서아파(trigger_api.Trigger):
 
 
 class 웰컴문구1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_pc_emotion_loop(sequenceName='Emotion_Bloompicnic_A', duration=7000)
         self.create_monster(spawnIds=[9999], animationEffect=False, animationDelay=0) # 구르는 천둥:11003390
@@ -56,7 +56,7 @@ class 웰컴문구1(trigger_api.Trigger):
 
 
 class 웰컴문구2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.add_cinematic_talk(npcId=0, msg='$52010028_QD__MAIN__3$', duration=2000)
         self.set_onetime_effect(id=302, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
@@ -68,7 +68,7 @@ class 웰컴문구2(trigger_api.Trigger):
 
 
 class 시선이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=303, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_onetime_effect(id=403, enable=True, path='BG/sound/Eff_ShakeLand_01.xml')
         self.add_cinematic_talk(npcId=0, msg='$52010028_QD__MAIN__5$', duration=3000)
@@ -79,7 +79,7 @@ class 시선이동(trigger_api.Trigger):
 
 
 class 웰컴문구3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=11003387, msg='$52010028_QD__MAIN__6$', duration=3000)
 
@@ -89,7 +89,7 @@ class 웰컴문구3(trigger_api.Trigger):
 
 
 class 웰컴문구4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.add_cinematic_talk(npcId=0, msg='$52010028_QD__MAIN__7$', duration=3000)
         self.destroy_monster(spawnIds=[9999]) # 구르는 천둥:11003390
@@ -100,7 +100,8 @@ class 웰컴문구4(trigger_api.Trigger):
 
 
 class 웰컴문구4_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +110,7 @@ class 웰컴문구4_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_pc_emotion_loop(sequenceName='Idle_A', duration=500)
         self.destroy_monster(spawnIds=[9999]) # 구르는 천둥:11003390
@@ -120,7 +121,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 이제가자(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -133,7 +134,7 @@ class 이제가자(trigger_api.Trigger):
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52010028_QD__MAIN__35$', arg3='3000', arg4='0')
 
@@ -143,7 +144,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True) # 구르는 천둥:11003390
         self.create_monster(spawnIds=[201], animationEffect=True) # 붉은 늑대의 심장:11003387
         self.select_camera_path(pathIds=[4001], returnView=False)
@@ -161,7 +162,7 @@ class Ready(trigger_api.Trigger):
 
 
 class PC진입(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrolName='3002')
@@ -175,7 +176,7 @@ class PC진입(trigger_api.Trigger):
 
 
 class 연출_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.add_cinematic_talk(npcId=11003387, msg='$52010028_QD__MAIN__12$', duration=3000)
         self.face_emotion(spawnId=101, emotionName='Trigger_Danger')
@@ -186,7 +187,7 @@ class 연출_01(trigger_api.Trigger):
 
 
 class 연출_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4010], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +196,7 @@ class 연출_02(trigger_api.Trigger):
 
 
 class 연출_02_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Attack_02_D')
         self.set_effect(triggerIds=[5001], visible=True)
         self.add_cinematic_talk(npcId=0, msg='$52010028_QD__MAIN__13$', duration=3000)
@@ -212,7 +213,7 @@ class 연출_02_1(trigger_api.Trigger):
 
 
 class 연출_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.add_cinematic_talk(npcId=11003390, msg='$52010028_QD__MAIN__19$', duration=3000, illustId='0', align='Left')
         self.set_npc_emotion_loop(spawnId=201, sequenceName='Idle_A', duration=10000)
@@ -224,7 +225,7 @@ class 연출_03(trigger_api.Trigger):
 
 
 class 연출_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_3001')
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11003387, msg='$52010028_QD__MAIN__20$', duration=3000, illustId='0', align='Left')
@@ -236,7 +237,7 @@ class 연출_04(trigger_api.Trigger):
 
 
 class 연출_04_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Attack_02_D')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,7 +246,7 @@ class 연출_04_01(trigger_api.Trigger):
 
 
 class 연출_04_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=201, emotionName='Trigger_Fury')
         self.set_effect(triggerIds=[5002], visible=True)
         self.add_cinematic_talk(npcId=11003387, msg='$52010028_QD__MAIN__22$', duration=3000, delayTick=2000)
@@ -256,7 +257,7 @@ class 연출_04_02(trigger_api.Trigger):
 
 
 class 연출_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=201, emotionName='Trigger_Crazy')
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Dead_Idle_A', duration=9999999)
 
@@ -266,7 +267,7 @@ class 연출_05(trigger_api.Trigger):
 
 
 class 연출_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -278,7 +279,8 @@ class 연출_06(trigger_api.Trigger):
 
 
 class 연출_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -287,7 +289,7 @@ class 연출_07(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
@@ -300,7 +302,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 전투준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=201, sequenceName='Down_Idle_A', duration=3000)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_3003')
         self.destroy_monster(spawnIds=[201], arg2=True) # 붉은 늑대의 심장:11003387
@@ -312,7 +314,7 @@ class 전투준비(trigger_api.Trigger):
 
 
 class 전투메시지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0.5)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52010028_QD__MAIN__23$', arg3='3000', arg4='0')
@@ -323,7 +325,7 @@ class 전투메시지(trigger_api.Trigger):
 
 
 class 전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -333,7 +335,7 @@ class 전투(trigger_api.Trigger):
 
 
 class 전투종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -342,7 +344,7 @@ class 전투종료(trigger_api.Trigger):
 
 
 class 전투종료대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, type='trigger', achieve='Maze')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
@@ -357,7 +359,7 @@ class 전투종료대사(trigger_api.Trigger):
 
 
 class 전투종료이후연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -372,7 +374,7 @@ class 전투종료이후연출(trigger_api.Trigger):
 
 
 class 찾으러왔어01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52010028_QD__MAIN__24$', duration=3000)
         self.create_monster(spawnIds=[301], animationEffect=True)
         self.face_emotion(spawnId=301, emotionName='Trigger_Dead')
@@ -383,7 +385,7 @@ class 찾으러왔어01(trigger_api.Trigger):
 
 
 class 찾으러왔어02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_3004')
         self.add_balloon_talk(spawnId=301, msg='$52010028_QD__MAIN__25$', duration=2000, delayTick=1000)
@@ -397,7 +399,7 @@ class 찾으러왔어02(trigger_api.Trigger):
 
 
 class 찾으러왔어03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[302], animationEffect=True)
         self.create_monster(spawnIds=[303], animationEffect=True)
         self.move_npc(spawnId=302, patrolName='MS2PatrolData_3005')
@@ -412,7 +414,7 @@ class 찾으러왔어03(trigger_api.Trigger):
 
 
 class 찾으러왔어04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[304], animationEffect=True)
         self.create_monster(spawnIds=[305], animationEffect=True)
         self.move_npc(spawnId=304, patrolName='MS2PatrolData_3007')
@@ -427,7 +429,7 @@ class 찾으러왔어04(trigger_api.Trigger):
 
 
 class 어서와(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Dead_Idle_A', duration=1500000)
         self.face_emotion(spawnId=101, emotionName='Trigger_Dead')
@@ -440,7 +442,7 @@ class 어서와(trigger_api.Trigger):
 
 
 class 어서와02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_npc_emotion_sequence(spawnId=305, sequenceName='Bore_A')
         self.set_npc_emotion_sequence(spawnId=304, sequenceName='Talk_A')
@@ -454,7 +456,8 @@ class 어서와02(trigger_api.Trigger):
 
 
 class 어서와03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -463,7 +466,7 @@ class 어서와03(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52010032, portalId=1)
 
 

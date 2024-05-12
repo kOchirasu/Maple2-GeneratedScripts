@@ -3,7 +3,7 @@ import trigger_api
 
 
 class State1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='현재 State1')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class State1(trigger_api.Trigger):
 
 
 class State2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='test', value=0)
         self.debug_string(string='현재 State2')
 

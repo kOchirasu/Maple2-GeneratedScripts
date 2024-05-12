@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_user_value(triggerId=99990003, key='TimerReset', value=0)
         self.set_user_value(triggerId=99990004, key='SpecialTimerReset', value=0)
@@ -16,18 +16,21 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_reset_time(seconds=300)
         self.set_npc_duel_hp_bar(isOpen=True, spawnId=[101], durationTick=300000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of(feature='FameChallengeBuff_01'):
+        if self.dungeon_check_play_time(playSeconds=180, operator='LessEqual') and self.monster_dead(boxIds=[101]):
+            # <한국용 컨디션체크>
             self.dungeon_mission_complete(missionId=24091005)
             return 전투_종료(self.ctx)
-        if self.all_of(feature='FameChallengeBuff_02'):
+        if self.dungeon_check_play_time(playSeconds=70, operator='LessEqual') and self.monster_dead(boxIds=[101]):
+            # <중국용 컨디션체크>
             self.dungeon_mission_complete(missionId=24091006)
             return 전투_종료(self.ctx)
-        if self.all_of(feature='FameChallengeBuff_03'):
+        if self.dungeon_check_play_time(playSeconds=270, operator='LessEqual') and self.monster_dead(boxIds=[101]):
+            # <NA용 컨디션체크>
             self.dungeon_mission_complete(missionId=24091010)
             return 전투_종료(self.ctx)
         if self.monster_dead(boxIds=[101]):
@@ -39,10 +42,13 @@ class 전투_시작(trigger_api.Trigger):
 
 
 class 전투_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_set_end_time()
         self.destroy_monster(spawnIds=[-1])
-        # <action name="버프를걸어준다" arg1="901" arg2="72000050" arg3="1"/>
+        # self.add_buff(boxIds=[901], skillId=72000050, level=1)
+        # self.set_npc_emotion_loop(spawnId=101, sequenceName='Attack_Idle_A', duration=60000)
+        # self.set_user_value(triggerId=99990003, key='TimerReset', value=1)
+        # self.set_user_value(triggerId=99990004, key='SpecialTimerReset', value=1)
         self.set_npc_duel_hp_bar(isOpen=False, spawnId=[101], durationTick=300000)
         self.side_npc_talk(npcId=23200083, illust='Bliche_nomal', duration=4000, script='$02020023_BF__battle__0$', voice='ko/Npc/00002062')
 
@@ -52,7 +58,7 @@ class 전투_종료(trigger_api.Trigger):
 
 
 class 종료신호(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='End', value=1)
 
 

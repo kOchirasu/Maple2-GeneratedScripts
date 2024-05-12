@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -19,9 +19,9 @@ class Wait_02(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\Kritias_01.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\Kritias_01.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -31,7 +31,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 밝아짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

@@ -2,8 +2,15 @@
 import trigger_api
 
 
+"""
+class test(trigger_api.Trigger):
+    pass
+
+"""
+
+
 class main(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000097, portalId=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -16,7 +23,7 @@ class main(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +32,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -37,7 +44,7 @@ class start(trigger_api.Trigger):
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +53,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
         self.set_conversation(type=2, spawnId=11003084, script='$52000097_QD__MAIN__0$', arg4=5)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -57,7 +64,8 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.select_camera_path(pathIds=[8005], returnView=False)
         self.select_camera_path(pathIds=[8006], returnView=False)
         self.set_conversation(type=2, spawnId=11003085, script='$52000097_QD__MAIN__1$', arg4=5)
 
@@ -67,7 +75,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__2$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +84,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__3$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +93,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8007], returnView=False)
         self.set_pc_emotion_sequence(sequenceNames=['Talk_A'])
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__4$', arg4=3, arg5=0)
@@ -97,7 +105,7 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8008], returnView=False)
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__6$', arg4=5)
 
@@ -107,7 +115,7 @@ class scene_07(trigger_api.Trigger):
 
 
 class scene_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__7$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +124,7 @@ class scene_08(trigger_api.Trigger):
 
 
 class scene_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__8$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -125,7 +133,7 @@ class scene_09(trigger_api.Trigger):
 
 
 class scene_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__9$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +142,7 @@ class scene_10(trigger_api.Trigger):
 
 
 class scene_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Attack_01_E')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +151,7 @@ class scene_11(trigger_api.Trigger):
 
 
 class scene_12_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8009], returnView=False)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Failure_Idle_A'])
 
@@ -153,7 +161,7 @@ class scene_12_ready(trigger_api.Trigger):
 
 
 class scene_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='ProphecyofFall.swf', movieId=1)
@@ -162,12 +170,12 @@ class scene_12(trigger_api.Trigger):
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
             return scene_13(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
 
 class scene_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2002')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2001')
         self.set_conversation(type=1, spawnId=102, script='$52000097_QD__MAIN__10$', arg4=2, arg5=1)
@@ -182,7 +190,7 @@ class scene_13(trigger_api.Trigger):
 
 
 class scene_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8010], returnView=False)
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__13$', arg4=3, arg5=1)
         self.move_user_path(patrolName='MS2PatrolData_2003')
@@ -194,7 +202,7 @@ class scene_14(trigger_api.Trigger):
 
 
 class scene_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Talk_A'])
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__14$', arg4=4, arg5=0)
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__15$', arg4=4, arg5=4)
@@ -206,7 +214,7 @@ class scene_15(trigger_api.Trigger):
 
 
 class scene_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__17$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -215,7 +223,7 @@ class scene_16(trigger_api.Trigger):
 
 
 class scene_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__18$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -224,7 +232,7 @@ class scene_17(trigger_api.Trigger):
 
 
 class scene_18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003086, script='$52000097_QD__MAIN__19$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -233,7 +241,7 @@ class scene_18(trigger_api.Trigger):
 
 
 class scene_19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2005')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -242,7 +250,7 @@ class scene_19(trigger_api.Trigger):
 
 
 class scene_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8011], returnView=False)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_2006')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2007')
@@ -253,7 +261,7 @@ class scene_20(trigger_api.Trigger):
 
 
 class scene_21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
         self.set_conversation(type=2, spawnId=11003085, script='$52000097_QD__MAIN__20$', arg4=5)
 
@@ -263,7 +271,7 @@ class scene_21(trigger_api.Trigger):
 
 
 class scene_22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003084, script='$52000097_QD__MAIN__21$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -272,7 +280,7 @@ class scene_22(trigger_api.Trigger):
 
 
 class scene_23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2008')
         self.move_user_path(patrolName='MS2PatrolData_2009')
         self.set_conversation(type=2, spawnId=11003084, script='$52000097_QD__MAIN__22$', arg4=5)
@@ -283,7 +291,7 @@ class scene_23(trigger_api.Trigger):
 
 
 class scene_24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003085, script='$52000097_QD__MAIN__23$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -292,7 +300,7 @@ class scene_24(trigger_api.Trigger):
 
 
 class scene_25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000097_QD__MAIN__24$', arg4=4, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -301,9 +309,9 @@ class scene_25(trigger_api.Trigger):
 
 
 class scene_26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
-        # <action name="업적이벤트를발생시킨다" arg1="701" arg2="trigger" arg3="meetalbanos"/>
+        # self.set_achievement(triggerId=701, type='trigger', achieve='meetalbanos')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -311,8 +319,8 @@ class scene_26(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000068, portalId=1)
 
 
-initial_state = main
+initial_state = test

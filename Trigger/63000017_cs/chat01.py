@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class Chat01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$63000017_CS__CHAT01__0$', arg4=4, arg5=0)
         self.set_conversation(type=1, spawnId=102, script='$63000017_CS__CHAT01__1$', arg4=4, arg5=5)
         self.set_conversation(type=1, spawnId=101, script='$63000017_CS__CHAT01__2$', arg4=4, arg5=10)
@@ -37,7 +37,7 @@ class Delay02(trigger_api.Trigger):
 
 
 class Chat02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$63000017_CS__CHAT01__5$', arg4=4, arg5=0)
         self.set_conversation(type=1, spawnId=102, script='$63000017_CS__CHAT01__6$', arg4=4, arg5=6)
 

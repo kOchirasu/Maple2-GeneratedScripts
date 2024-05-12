@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3003,3004], visible=False)
         self.set_local_camera(cameraId=302, enable=False)
         self.set_cinematic_ui(type=1)
@@ -27,7 +27,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 타이틀(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000094, portalId=99)
         self.add_buff(boxIds=[9100], skillId=99910170, level=1, isPlayer=False, isSkillSet=False)
         self.set_cinematic_ui(type=9, script='$52000094_QD__20002280_RP__0$')
@@ -38,7 +38,7 @@ class 타이틀(trigger_api.Trigger):
 
 
 class 블랙아이대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3003,3004], visible=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -51,7 +51,7 @@ class 블랙아이대사01(trigger_api.Trigger):
 
 
 class RP시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=300, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -66,7 +66,7 @@ class RP시작(trigger_api.Trigger):
 
 
 class 데블린소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -78,7 +78,7 @@ class 데블린소환(trigger_api.Trigger):
 
 
 class 데블린사망대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=25200942, textId=25200942, duration=4000)
         self.set_cinematic_ui(type=0)
@@ -91,7 +91,7 @@ class 데블린사망대기(trigger_api.Trigger):
 
 
 class 미션완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2101,2102,2103,2104,2105,2106,2107])
         self.set_event_ui(type=7, arg2='$52000094_QD__20002280_RP__2$', arg3='3000', arg4='0')
         self.set_local_camera(cameraId=302, enable=True)
@@ -103,7 +103,7 @@ class 미션완료(trigger_api.Trigger):
 
 
 class 미션완료02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -114,7 +114,7 @@ class 미션완료02(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')

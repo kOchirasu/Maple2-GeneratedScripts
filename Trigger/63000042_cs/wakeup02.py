@@ -3,16 +3,17 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=7001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[60100005,60100006,60100007,60100008,60100009,60100010], questStates=[2]):
+            # 그 길에서 만난 것은 퀘스트 완료 가능 상태
             return ready(self.ctx)
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[102])
@@ -26,7 +27,7 @@ class ready(trigger_api.Trigger):
 
 
 class talk_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__0$', duration=3000)
         self.set_scene_skip(state=sitready, action='nextState')
 
@@ -36,7 +37,7 @@ class talk_01(trigger_api.Trigger):
 
 
 class talk_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__1$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +46,7 @@ class talk_02(trigger_api.Trigger):
 
 
 class talk_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__2$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +55,7 @@ class talk_03(trigger_api.Trigger):
 
 
 class talk_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__3$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +64,7 @@ class talk_04(trigger_api.Trigger):
 
 
 class talk_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__4$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +73,7 @@ class talk_05(trigger_api.Trigger):
 
 
 class talk_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__5$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +82,7 @@ class talk_06(trigger_api.Trigger):
 
 
 class talk_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__6$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +91,7 @@ class talk_07(trigger_api.Trigger):
 
 
 class talk_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003145, msg='$63000042_CS__WAKEUP02__7$', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,8 +100,9 @@ class talk_08(trigger_api.Trigger):
 
 
 class talk_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$63000042_CS__WAKEUP02__8$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -109,7 +111,7 @@ class talk_09(trigger_api.Trigger):
 
 
 class sitready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=13000)
         self.set_sound(triggerId=7002, enable=True)
 
@@ -119,7 +121,7 @@ class sitready(trigger_api.Trigger):
 
 
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.create_monster(spawnIds=[103], animationEffect=False) # 프레이 스폰
 
@@ -129,7 +131,7 @@ class fadein(trigger_api.Trigger):
 
 
 class praymove_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_103')
         self.add_cinematic_talk(npcId=11003165, illustId='Fray_normal', msg='$63000042_CS__WAKEUP02__9$', duration=3000, align='Left')
         self.set_scene_skip(state=end, action='exit')
@@ -140,7 +142,7 @@ class praymove_01(trigger_api.Trigger):
 
 
 class praytalk_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003165, msg='$63000042_CS__WAKEUP02__10$', duration=3000)
         self.select_camera_path(pathIds=[502], returnView=False)
 
@@ -150,9 +152,10 @@ class praytalk_02(trigger_api.Trigger):
 
 
 class pray(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(scale=2.5, type='NameCaption', title='$63000042_CS__WAKEUP02__11$', desc='$63000042_CS__WAKEUP02__12$', align='centerRight', offsetRateX=0.5, duration=4000)
         self.select_camera_path(pathIds=[502,503], returnView=False)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -161,7 +164,7 @@ class pray(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=100)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.reset_camera(interpolationTime=1)
@@ -170,11 +173,12 @@ class end(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[60100010], questStates=[1]):
+            # 여제 알현 퀘스트 진행 상태
             return warp(self.ctx)
 
 
 class warp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000033, portalId=1)
 
 

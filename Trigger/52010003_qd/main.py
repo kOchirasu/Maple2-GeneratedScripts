@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101])
         self.set_actor(triggerId=2001, visible=False, initialSequence='Sit_Down_A')
 
@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 
 class B_Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=2001, visible=True, initialSequence='Sit_Down_A')
         self.select_camera(triggerId=8001, enable=True)
         self.set_cinematic_ui(type=1)
@@ -26,13 +26,13 @@ class B_Event_01(trigger_api.Trigger):
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_1004')
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_1005')
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_1006')
-        # <action name="스킵을설정한다" arg1="Event_02_IDLE" />
+        # self.set_skip(state=Event_02_IDLE)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='4'):
             return B_Event_02_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -43,7 +43,7 @@ class B_Event_02_IDLE(trigger_api.Trigger):
 
 
 class B_Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__13$', arg4=5) # 에레브
         self.set_skip(state=B_Event_03_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -52,7 +52,7 @@ class B_Event_02(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_03_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -63,7 +63,7 @@ class B_Event_03_IDLE(trigger_api.Trigger):
 
 
 class B_Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001292, script='$52010003_QD__MAIN__14$', arg4=5) # 스타츠
         self.set_skip(state=B_Event_04_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -72,7 +72,7 @@ class B_Event_03(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_04_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -83,7 +83,7 @@ class B_Event_04_IDLE(trigger_api.Trigger):
 
 
 class B_Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__15$', arg4=5) # 에레브
         self.set_skip(state=B_Event_05_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -92,7 +92,7 @@ class B_Event_04(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_05_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -103,7 +103,7 @@ class B_Event_05_IDLE(trigger_api.Trigger):
 
 
 class B_Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001218, script='$52010003_QD__MAIN__16$', arg4=5) # 타라
         self.set_skip(state=B_Event_06_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -112,7 +112,7 @@ class B_Event_05(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_06_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -123,7 +123,7 @@ class B_Event_06_IDLE(trigger_api.Trigger):
 
 
 class B_Event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001217, script='$52010003_QD__MAIN__17$', arg4=5) # 둔바
         self.set_skip(state=B_Event_07_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -132,7 +132,7 @@ class B_Event_06(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_07_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -143,7 +143,7 @@ class B_Event_07_IDLE(trigger_api.Trigger):
 
 
 class B_Event_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__18$', arg4=5) # 에레브
         self.set_skip(state=B_Event_08_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -152,13 +152,14 @@ class B_Event_07(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return B_Event_08_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
         self.select_camera(triggerId=8001, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
-        self.set_achievement(triggerId=701, type='trigger', achieve='Hope_Lumieragon') # Hope_Lumieragon
+        self.set_achievement(triggerId=701, type='trigger', achieve='Hope_Lumieragon')
+        # Hope_Lumieragon
 
 
 class B_Event_08_IDLE(trigger_api.Trigger):
@@ -166,7 +167,7 @@ class B_Event_08_IDLE(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8001, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -180,7 +181,7 @@ class Event_01(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_02_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -191,7 +192,7 @@ class Event_02_IDLE(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__1$', arg4=5)
         self.set_skip(state=Event_03_IDLE)
         self.set_timer(timerId='5', seconds=5)
@@ -200,7 +201,7 @@ class Event_02(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return Event_03_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -211,7 +212,7 @@ class Event_03_IDLE(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__2$', arg4=4)
         self.set_skip(state=Event_04_IDLE)
         self.set_timer(timerId='4', seconds=4)
@@ -220,7 +221,7 @@ class Event_03(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_04_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -231,7 +232,7 @@ class Event_04_IDLE(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__3$', arg4=4)
         self.set_timer(timerId='4', seconds=4)
         self.set_skip(state=Event_05_IDLE)
@@ -240,7 +241,7 @@ class Event_04(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_05_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -251,7 +252,7 @@ class Event_05_IDLE(trigger_api.Trigger):
 
 
 class Event_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__4$', arg4=4)
         self.set_timer(timerId='4', seconds=4)
         self.set_skip(state=Event_06_IDLE)
@@ -260,7 +261,7 @@ class Event_05(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_06_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -271,7 +272,7 @@ class Event_06_IDLE(trigger_api.Trigger):
 
 
 class Event_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__5$', arg4=5)
         self.set_timer(timerId='5', seconds=5)
         self.set_skip(state=Event_07_IDLE)
@@ -280,7 +281,7 @@ class Event_06(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return Event_07_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -291,7 +292,7 @@ class Event_07_IDLE(trigger_api.Trigger):
 
 
 class Event_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__6$', arg4=4)
         self.set_timer(timerId='3', seconds=3)
         self.set_skip(state=Event_08_IDLE)
@@ -300,7 +301,7 @@ class Event_07(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_08_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -311,7 +312,7 @@ class Event_08_IDLE(trigger_api.Trigger):
 
 
 class Event_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__7$', arg4=4)
         self.set_timer(timerId='4', seconds=4)
         self.set_skip(state=Event_09_IDLE)
@@ -320,7 +321,7 @@ class Event_08(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_09_IDLE(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
@@ -331,7 +332,7 @@ class Event_09_IDLE(trigger_api.Trigger):
 
 
 class Event_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__8$', arg4=3)
         self.set_timer(timerId='3', seconds=3)
         self.set_skip(state=Event_10)
@@ -340,12 +341,12 @@ class Event_09(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_10(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Event_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010003_QD__MAIN__9$', arg4=4)
         self.set_timer(timerId='4', seconds=4)
         # Missing State: Event_11
@@ -355,12 +356,12 @@ class Event_10(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return PlayMovie_01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class PlayMovie_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='DestinyofMika.swf', movieId=1)
@@ -371,7 +372,7 @@ class PlayMovie_01(trigger_api.Trigger):
 
 
 class PlayMovie_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='45', seconds=4)
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__10$', arg4=4)
         self.set_skip(state=Event_12)
@@ -380,12 +381,12 @@ class PlayMovie_02(trigger_api.Trigger):
         if self.time_expired(timerId='45'):
             return Event_12(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Event_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__11$', arg4=3)
         self.set_timer(timerId='3', seconds=3)
         self.set_skip(state=Event_13)
@@ -396,7 +397,7 @@ class Event_12(trigger_api.Trigger):
 
 
 class Event_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010003_QD__MAIN__12$', arg4=4)
         self.set_timer(timerId='4', seconds=4)
         self.set_skip(state=Event_14)
@@ -405,7 +406,8 @@ class Event_13(trigger_api.Trigger):
         if self.time_expired(timerId='4'):
             return Event_14(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.select_camera(triggerId=8001, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -413,7 +415,7 @@ class Event_13(trigger_api.Trigger):
 
 
 class Event_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=701, type='trigger', achieve='MikaDestiny') # MikaDestiny
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_1003')
 
@@ -423,7 +425,7 @@ class Event_14(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
 
 

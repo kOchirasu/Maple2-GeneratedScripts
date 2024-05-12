@@ -9,7 +9,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 가이드01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105402, textId=20105402)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -26,7 +26,7 @@ class 감지대기(trigger_api.Trigger):
 
 
 class 가이드02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_skip(state=가이드02스킵)
@@ -38,7 +38,7 @@ class 가이드02(trigger_api.Trigger):
 
 
 class 카메라이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,8 @@ class 카메라이동02(trigger_api.Trigger):
 
 
 class 가이드02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
@@ -60,7 +61,7 @@ class 가이드02스킵(trigger_api.Trigger):
 
 
 class 가이드02종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entityId=20105403, textId=20105403)
@@ -79,7 +80,7 @@ class 가이드03(trigger_api.Trigger):
 
 
 class 가이드03종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105405, textId=20105405)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -96,7 +97,7 @@ class 반응대기02(trigger_api.Trigger):
 
 
 class 반응대기02종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105403, textId=20105403)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -113,7 +114,7 @@ class 가이드04(trigger_api.Trigger):
 
 
 class 가이드04종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105402, textId=20105402)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 

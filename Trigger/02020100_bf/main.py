@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
         self.enable_spawn_point_pc(spawnId=2, isEnable=False)
         self.enable_spawn_point_pc(spawnId=3, isEnable=False)
@@ -77,7 +77,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9001], visible=False)
         self.set_agent(triggerIds=[9002], visible=False)
         self.set_agent(triggerIds=[9003], visible=False)
@@ -92,7 +92,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 씨앗체험(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9006], visible=False)
         self.set_agent(triggerIds=[9007], visible=False)
         self.set_agent(triggerIds=[9008], visible=False)
@@ -106,24 +106,24 @@ class 씨앗체험(trigger_api.Trigger):
 
 
 class 씨앗체험_씨앗들기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02020100_BF__MAIN__0$', arg3='5000')
         self.set_user_value(triggerId=99990005, key='Seed0start', value=1)
-        # <action name="오브젝트반응설정한다" arg1="10002115" arg2="1" />
-        # <action name="메쉬를설정한다" arg1="1301" arg2="1" arg3="0" arg4="0" />
+        # self.set_interact_object(triggerIds=[10002115], state=1)
+        # self.set_mesh(triggerIds=[1301], visible=True, arg3=0, delay=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='Seed0interact', value=1):
+        """
+        if self.object_interacted(interactIds=[10002115], stateValue=0):
             return 씨앗체험_나무심기(self.ctx)
         """
-        <condition name="오브젝트가반응했으면" arg1="10002115" arg2="0" >
-            <transition state="씨앗체험_나무심기"/>    
-        </condition>
-        """
+        if self.user_value(key='Seed0interact', value=1):
+            return 씨앗체험_나무심기(self.ctx)
 
 
 class 씨앗체험_나무심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_mesh(triggerIds=[1301], visible=False, arg3=0, delay=0)
         self.set_interact_object(triggerIds=[10002116], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class 씨앗체험_나무심기(trigger_api.Trigger):
 
 
 class 씨앗체험_끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9010], visible=False)
         self.set_agent(triggerIds=[9011], visible=False)
         self.set_agent(triggerIds=[9012], visible=False)
@@ -148,7 +148,7 @@ class 씨앗체험_끝(trigger_api.Trigger):
 
 
 class 사다리활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[2001], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[2002], visible=True, animationEffect=True, animationDelay=4)
         self.set_ladder(triggerIds=[2003], visible=True, animationEffect=True, animationDelay=6)
@@ -164,7 +164,7 @@ class 사다리활성화(trigger_api.Trigger):
 
 
 class 씨앗1_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.enable_spawn_point_pc(spawnId=0, isEnable=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=True)
         self.set_user_value(triggerId=99990002, key='Seed1start', value=1)
@@ -175,7 +175,7 @@ class 씨앗1_활성화(trigger_api.Trigger):
 
 
 class 씨앗1_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9014], visible=False)
         self.set_agent(triggerIds=[9015], visible=False)
         self.set_agent(triggerIds=[9016], visible=False)
@@ -190,7 +190,7 @@ class 씨앗1_전투(trigger_api.Trigger):
 
 
 class 씨앗1_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9019], visible=False)
         self.set_agent(triggerIds=[9020], visible=False)
         self.set_agent(triggerIds=[9021], visible=False)
@@ -204,7 +204,7 @@ class 씨앗1_심기(trigger_api.Trigger):
 
 
 class 씨앗2_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9023], visible=False)
         self.set_agent(triggerIds=[9024], visible=False)
         self.enable_spawn_point_pc(spawnId=1, isEnable=False)
@@ -220,7 +220,7 @@ class 씨앗2_활성화(trigger_api.Trigger):
 
 
 class 씨앗2_전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9025], visible=False)
         self.set_agent(triggerIds=[9026], visible=False)
         self.set_agent(triggerIds=[9027], visible=False)
@@ -237,7 +237,7 @@ class 씨앗2_전투(trigger_api.Trigger):
 
 
 class 발판1_지역감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[9030], visible=False)
         self.set_agent(triggerIds=[9031], visible=False)
         self.set_agent(triggerIds=[9032], visible=False)
@@ -253,7 +253,7 @@ class 발판1_지역감지(trigger_api.Trigger):
 
 
 class 발판1_활성화대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[225,226], animationEffect=False)
         self.set_user_value(triggerId=99990003, key='Seed2start', value=2)
 
@@ -265,7 +265,7 @@ class 발판1_활성화대기(trigger_api.Trigger):
 
 
 class 발판1_몬스터처리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990004, key='Seed3start', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -274,7 +274,7 @@ class 발판1_몬스터처리(trigger_api.Trigger):
 
 
 class 발판1_활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002122], state=1)
         self.enable_spawn_point_pc(spawnId=2, isEnable=False)
         self.enable_spawn_point_pc(spawnId=3, isEnable=True)
@@ -288,7 +288,7 @@ class 발판1_활성화(trigger_api.Trigger):
 
 
 class 보스전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990005, key='Seed4start', value=2)
         self.destroy_monster(spawnIds=[111,112,113,114,115,116,117,118,119])
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)

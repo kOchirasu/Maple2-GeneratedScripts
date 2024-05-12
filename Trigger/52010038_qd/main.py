@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[6299], visible=False)
         self.shadow_expedition(type='CloseBossGauge')
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_buff(boxIds=[199], skillId=70000109, level=1, isPlayer=False, isSkillSet=False)
@@ -24,21 +24,22 @@ class 준비(trigger_api.Trigger):
         self.spawn_npc_range(rangeIds=[1001,1002,1003,1004,1005,1006,1007,1008], isAutoTargeting=False)
         self.spawn_npc_range(rangeIds=[1101,1102,1103,1104,1105,1106], isAutoTargeting=False)
         self.spawn_npc_range(rangeIds=[1801,1802,1803,1804], isAutoTargeting=False)
-        # <action name="SetCinematicIntro" text="&lt;font color='#ffd200' size='90'&gt;Press 'ESC' to Start&lt;/font&gt;\n\n\n\n\n\n\n\n\n\n\n\n"/>
+        # self.set_cinematic_intro(text='<font color=\'#ffd200\' size=\'90\'>Press \'ESC\' to Start</font>\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n')
         self.set_skip(state=시작)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return 시작(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.set_user_value(triggerId=999001, key='GaugeOpen', value=1)
         self.set_user_value(triggerId=992001, key='WaveStart', value=1)
@@ -50,7 +51,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 부상병발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(npcId=11003533, illust='Bliche_nomal', duration=7000, script='$52010038_QD__main__4$', voice='ko/Npc/00002057')
         self.set_user_value(triggerId=993001, key='WoundStart', value=1)
 
@@ -60,7 +61,7 @@ class 부상병발생(trigger_api.Trigger):
 
 
 class 차폭탄방어2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='99', seconds=60, startDelay=1, interval=1, vOffset=80)
         self.set_user_value(triggerId=992003, key='bombStart', value=1)
         self.set_cinematic_ui(type=1)
@@ -73,7 +74,7 @@ class 차폭탄방어2(trigger_api.Trigger):
 
 
 class 카메라304(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=304, enable=True)
         self.set_skip(state=연출02종료)
 
@@ -83,7 +84,7 @@ class 카메라304(trigger_api.Trigger):
 
 
 class 부관대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=연출02종료)
         self.add_cinematic_talk(npcId=11003536, illustId='Neirin_surprise', msg='$52010038_QD__MAIN__0$', duration=7000, align='right')
 
@@ -93,10 +94,11 @@ class 부관대사03(trigger_api.Trigger):
 
 
 class 연출02종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
+        # Missing State: State
         self.set_skip()
         self.side_npc_talk(npcId=11003537, illust='Mason_closeEye', duration=7000, script='$52010038_QD__main__5$', voice='ko/Npc/00002095')
 
@@ -124,7 +126,7 @@ class 층이벤트스킵3(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6201,6202,6203,6204], visible=False)
         self.create_monster(spawnIds=[2098], animationEffect=False)
         self.set_cinematic_ui(type=1)
@@ -137,7 +139,7 @@ class 보스등장(trigger_api.Trigger):
 
 
 class 카메라302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_skip(state=보스연출종료)
 
@@ -147,7 +149,7 @@ class 카메라302(trigger_api.Trigger):
 
 
 class 보스대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=보스연출종료)
         self.add_cinematic_talk(npcId=11003185, illustId='ShadowClaw_normal', msg='$52010038_QD__MAIN__2$', duration=5000, align='left')
 
@@ -157,7 +159,7 @@ class 보스대사01(trigger_api.Trigger):
 
 
 class 보스이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=보스연출종료)
         self.move_npc(spawnId=2098, patrolName='MS2PatrolData_2098')
 
@@ -167,7 +169,7 @@ class 보스이동(trigger_api.Trigger):
 
 
 class 카메라303(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003185, illustId='ShadowClaw_normal', msg='$52010038_QD__MAIN__3$', duration=5000, align='left')
         self.select_camera(triggerId=303, enable=True)
         self.set_skip(state=보스연출종료)
@@ -178,12 +180,13 @@ class 카메라303(trigger_api.Trigger):
 
 
 class 보스연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6299], visible=True)
         self.side_npc_talk(npcId=11003533, illust='Bliche_nomal', duration=7000, script='$52010038_QD__main__8$', voice='ko/Npc/00002058')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[2098])
         self.create_monster(spawnIds=[2099], animationEffect=True)

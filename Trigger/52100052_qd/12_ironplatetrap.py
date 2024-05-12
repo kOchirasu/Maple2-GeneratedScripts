@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3430,3431,3432,3433], visible=True, arg3=0, delay=0, scale=0) # IronPlateHold
         self.set_effect(triggerIds=[5300], visible=False) # CubeSkillNotice
         self.set_effect(triggerIds=[5301], visible=False) # CubeSkillNotice
@@ -25,7 +25,7 @@ class LeverOnDelay(trigger_api.Trigger):
 
 
 class LeverOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002082], state=1) # LeverForTrap
         self.set_effect(triggerIds=[5300], visible=True) # CubeSkillNotice
         self.set_effect(triggerIds=[5301], visible=True) # CubeSkillNotice
@@ -38,7 +38,7 @@ class LeverOn(trigger_api.Trigger):
 
 
 class TrapOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203,303], animationEffect=False)
         self.set_mesh(triggerIds=[3430,3431,3432,3433], visible=False, arg3=500, delay=0, scale=2) # IronPlateHold
         self.set_effect(triggerIds=[5300], visible=False) # CubeSkillNotice
@@ -52,7 +52,7 @@ class TrapOn(trigger_api.Trigger):
 
 
 class Remove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[203,303])
 
 

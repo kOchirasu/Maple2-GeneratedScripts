@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 연출시작_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -33,7 +33,7 @@ class 연출시작_02(trigger_api.Trigger):
 
 
 class 진리의문입장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3001')
@@ -47,7 +47,7 @@ class 진리의문입장(trigger_api.Trigger):
 
 
 class 진리의문입장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003755, msg='덕분에 정말 큰 도움 받았습니다.', duration=3000)
 
@@ -57,7 +57,7 @@ class 진리의문입장_02(trigger_api.Trigger):
 
 
 class 진리의문입장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='defaultBattle')
         self.add_cinematic_talk(npcId=0, msg='저건...', duration=3000)
 
@@ -67,7 +67,7 @@ class 진리의문입장_03(trigger_api.Trigger):
 
 
 class 진리의문유례(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11003755, msg='아아. 저 두개의 큰 화면. 저것이 바로 진리의 문입니다.', duration=3000)
         self.add_cinematic_talk(npcId=11003755, msg='듣기론 세상의 모든 정보를 찾을 수 있는 기계라더군요.', duration=3000)
@@ -79,7 +79,7 @@ class 진리의문유례(trigger_api.Trigger):
 
 
 class 감탄(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_npc_emotion_sequence(spawnId=102, sequenceName='Bore_B')
         self.add_cinematic_talk(npcId=11003717, msg='아아... 저것을 직접 만져볼 수 있다니 황홀하군!', duration=3000)
@@ -91,7 +91,7 @@ class 감탄(trigger_api.Trigger):
 
 
 class 마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -100,7 +100,7 @@ class 마무리(trigger_api.Trigger):
 
 
 class 마무리2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020029, portalId=6002)
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[102])
@@ -113,7 +113,7 @@ class 마무리2(trigger_api.Trigger):
 
 
 class 마무리3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

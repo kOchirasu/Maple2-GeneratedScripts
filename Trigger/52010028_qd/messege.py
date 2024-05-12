@@ -22,7 +22,7 @@ class idle(trigger_api.Trigger):
 
 
 class messege(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52010028_QD__MESSEGE__0$', arg3='3000', arg4='0')
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class KickMusicAudience(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.kick_music_audience(boxId=101, portalId=802)
 
     def on_tick(self) -> trigger_api.Trigger:

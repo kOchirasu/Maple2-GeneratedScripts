@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 스킬랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_event_ui(type=1, arg2='$99999905__BUFFSKILL__0$', arg3='2000', arg4='0')
 
@@ -28,7 +28,7 @@ class 스킬랜덤(trigger_api.Trigger):
 
 
 class A스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_timer(timerId='120', seconds=120)
 
@@ -39,7 +39,7 @@ class A스킬작동(trigger_api.Trigger):
 
 
 class B스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7002], enable=True)
         self.set_timer(timerId='120', seconds=120)
 
@@ -50,7 +50,7 @@ class B스킬작동(trigger_api.Trigger):
 
 
 class C스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7003], enable=True)
         self.set_timer(timerId='120', seconds=120)
 
@@ -61,7 +61,7 @@ class C스킬작동(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[7001], enable=False)
         self.set_skill(triggerIds=[7002], enable=False)

@@ -4,7 +4,7 @@ import trigger_api
 
 # 바람의 골짜기 : 52010027
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
         self.set_effect(triggerIds=[5003], visible=False)
@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301], animationEffect=True) # 습격지역 꼭대기 집
         self.create_monster(spawnIds=[302], animationEffect=True) # 습격지역 꼭대기 입구
         self.create_monster(spawnIds=[303], animationEffect=True) # 습격지역 꼭대기 주민
@@ -41,7 +41,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 카메라_전환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.show_caption(type='VerticalCaption', title='$52010027_QD__MAIN__0$', desc='$52010027_QD__MAIN__1$', align='centerLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2)
         self.set_npc_emotion_loop(spawnId=303, sequenceName='Down_Idle_A', duration=150000)
@@ -54,7 +54,7 @@ class 카메라_전환(trigger_api.Trigger):
 
 
 class 연출_습격현장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.add_balloon_talk(spawnId=301, msg='$52010027_QD__MAIN__2$', duration=3000, delayTick=0)
         self.add_balloon_talk(spawnId=403, msg='$52010027_QD__MAIN__3$', duration=3000, delayTick=0)
@@ -67,7 +67,7 @@ class 연출_습격현장(trigger_api.Trigger):
 
 
 class 연출_습격현장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class 연출_습격현장_02(trigger_api.Trigger):
 
 
 class 연출_습격현장_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=401, msg='$52010027_QD__MAIN__5$', duration=2000, delayTick=0)
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Attack_02_A')
         self.add_balloon_talk(spawnId=304, msg='$52010027_QD__MAIN__6$', duration=2000, delayTick=500)
@@ -90,7 +90,7 @@ class 연출_습격현장_02_01(trigger_api.Trigger):
 
 
 class 연출_습격현장확인_PC(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -108,7 +108,7 @@ class 연출_습격현장확인_PC(trigger_api.Trigger):
 
 
 class 연출_습격현장_보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4010], returnView=False)
@@ -125,7 +125,7 @@ class 연출_습격현장_보스등장(trigger_api.Trigger):
 
 
 class 연출_습격현장_보스이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=501, sequenceName='Attack_01_G')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +134,7 @@ class 연출_습격현장_보스이동(trigger_api.Trigger):
 
 
 class 연출_습격현장_보스소환연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[502]) # 보스NPC_1
         self.set_effect(triggerIds=[5002], visible=True)
 
@@ -144,7 +144,7 @@ class 연출_습격현장_보스소환연출(trigger_api.Trigger):
 
 
 class 연출_습격현장_보스소환연출_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4004], returnView=False)
@@ -155,7 +155,7 @@ class 연출_습격현장_보스소환연출_02(trigger_api.Trigger):
 
 
 class 연출_습격현장_보스소환연출_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__18$', duration=3000)
         self.set_npc_emotion_sequence(spawnId=501, sequenceName='Attack_01_D')
         self.move_user(mapId=52010027, portalId=6001)
@@ -175,7 +175,7 @@ class 연출_습격현장_보스소환연출_03(trigger_api.Trigger):
 
 
 class 연출_습격현장_PC연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=3500)
         self.add_cinematic_talk(npcId=0, msg='$52010027_QD__MAIN__19$', duration=2000)
@@ -186,7 +186,8 @@ class 연출_습격현장_PC연출(trigger_api.Trigger):
 
 
 class 연출_습격현장_PC연출_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +196,7 @@ class 연출_습격현장_PC연출_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_user(mapId=52010027, portalId=6001)
         self.set_effect(triggerIds=[5002], visible=True)
@@ -217,7 +218,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 연출_습격현장_전투준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[601], animationEffect=True) # 악당Mob_1
         self.create_monster(spawnIds=[602], animationEffect=True) # 악당Mob_2
         self.create_monster(spawnIds=[603], animationEffect=True) # 악당Mob_3
@@ -233,7 +234,7 @@ class 연출_습격현장_전투준비(trigger_api.Trigger):
 
 
 class 연출_습격현장_전투준비_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -244,7 +245,7 @@ class 연출_습격현장_전투준비_02(trigger_api.Trigger):
 
 
 class 차_전투1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52010027_QD__MAIN__22$', arg3='3000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -253,7 +254,7 @@ class 차_전투1(trigger_api.Trigger):
 
 
 class 연출_잠시쉬기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -263,7 +264,7 @@ class 연출_잠시쉬기(trigger_api.Trigger):
 
 
 class 차_전투_보스몬스터대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -276,7 +277,7 @@ class 차_전투_보스몬스터대사1(trigger_api.Trigger):
 
 
 class 차_전투_보스소환연출2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__24$', duration=3000)
         self.set_npc_emotion_sequence(spawnId=501, sequenceName='Attack_01_C')
 
@@ -286,7 +287,8 @@ class 차_전투_보스소환연출2(trigger_api.Trigger):
 
 
 class 차_전투_보스소환연출_1_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -295,7 +297,7 @@ class 차_전투_보스소환연출_1_2(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -304,7 +306,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 차_전투2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -324,7 +326,7 @@ class 차_전투2(trigger_api.Trigger):
 
 
 class 연출_잠시쉬기_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -334,7 +336,7 @@ class 연출_잠시쉬기_01(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, type='trigger', achieve='Windvalley')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -348,7 +350,7 @@ class 연출_페리온영웅등장(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_보스대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__28$', duration=3000)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__29$', duration=3000)
@@ -365,7 +367,7 @@ class 연출_페리온영웅등장_보스대사(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_보스대사_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004,4015], returnView=False)
         self.add_balloon_talk(spawnId=501, msg='$52010027_QD__MAIN__30$', duration=2000, delayTick=0)
         self.add_cinematic_talk(npcId=11003388, msg='$52010027_QD__MAIN__31$', duration=3000)
@@ -377,7 +379,7 @@ class 연출_페리온영웅등장_보스대사_02(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_보스대사_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.add_balloon_talk(spawnId=501, msg='$52010027_QD__MAIN__33$', duration=2000, delayTick=0)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__34$', duration=3000)
@@ -390,7 +392,7 @@ class 연출_페리온영웅등장_보스대사_03(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.select_camera_path(pathIds=[4015,4006], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -404,7 +406,7 @@ class 연출_페리온영웅등장_02(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003388, msg='$52010027_QD__MAIN__38$', duration=3000)
         self.add_cinematic_talk(npcId=11003391, msg='$52010027_QD__MAIN__39$', duration=3000)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_3002')
@@ -416,7 +418,7 @@ class 연출_페리온영웅등장_03(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__40$', duration=3000)
         self.add_cinematic_talk(npcId=11003431, msg='$52010027_QD__MAIN__41$', duration=4000)
@@ -427,7 +429,7 @@ class 연출_페리온영웅등장_04(trigger_api.Trigger):
 
 
 class 연출_페리온영웅등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
         self.destroy_monster(spawnIds=[501])
 
@@ -437,7 +439,7 @@ class 연출_페리온영웅등장_05(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Bore_B', duration=3000)
         self.set_npc_emotion_loop(spawnId=201, sequenceName='Attack_Idle_A', duration=3000)
@@ -452,7 +454,7 @@ class 연출_페리온영웅과대화(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=201, emotionName='Trigger_NotAgree')
         self.select_camera_path(pathIds=[4010], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=29000)
@@ -464,7 +466,7 @@ class 연출_페리온영웅과대화_02(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.face_emotion(spawnId=201, emotionName='Trigger_NotAgree')
         self.add_cinematic_talk(npcId=11003391, msg='$52010027_QD__MAIN__46$', duration=3000)
@@ -478,7 +480,7 @@ class 연출_페리온영웅과대화_03(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4010], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=29000)
         self.add_cinematic_talk(npcId=0, msg='$52010027_QD__MAIN__48$', duration=3000)
@@ -490,7 +492,7 @@ class 연출_페리온영웅과대화_04(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=15000)
         self.face_emotion(spawnId=201, emotionName='Trigger_Sad')
@@ -506,7 +508,8 @@ class 연출_페리온영웅과대화_05(trigger_api.Trigger):
 
 
 class 연출_페리온영웅과대화_05_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -515,7 +518,7 @@ class 연출_페리온영웅과대화_05_1(trigger_api.Trigger):
 
 
 class 페리온으로(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_portal(portalId=6003, visible=True, enable=True, minimapVisible=True)
         self.move_user(mapId=52010027, portalId=6004)
@@ -528,7 +531,7 @@ class 페리온으로(trigger_api.Trigger):
 
 
 class 페리온으로02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -539,7 +542,7 @@ class 페리온으로02(trigger_api.Trigger):
 
 
 class 페리온으로03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$52010027_QD__MAIN__55$', arg3='3000', arg4='0')
 
 

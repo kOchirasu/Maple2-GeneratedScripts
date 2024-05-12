@@ -15,7 +15,7 @@ class NPCTalkOnWait(trigger_api.Trigger):
 
 
 class NPCTalkOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=15501, msg='(뭐지... 왜 빤히 보는거지...엎드리지만 않았으면...)', duration=3000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class TalkDelay(trigger_api.Trigger):
 
 
 class PortalOff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_balloon_talk(spawnId=15501)
 
     def on_tick(self) -> trigger_api.Trigger:

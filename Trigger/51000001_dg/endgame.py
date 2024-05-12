@@ -9,10 +9,10 @@ class 대기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='0,0')
         self.select_camera(triggerId=344, enable=True)
-        # action name="이벤트UI를설정한다" arg1="5" arg2="게임 오버" arg3="2000" arg4="0" /
+        # self.set_event_ui(type=5, arg2='게임 오버', arg3='2000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -22,7 +22,7 @@ class 종료(trigger_api.Trigger):
 
 
 class 진짜끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10, startDelay=0, interval=1, vOffset=-30, type='TR')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 진짜끝(trigger_api.Trigger):
 
 
 class 퇴장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
 

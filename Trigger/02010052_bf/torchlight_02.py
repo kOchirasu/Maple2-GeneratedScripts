@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7010], visible=False) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class idle(trigger_api.Trigger):
 
 
 class burn_state(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7502], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[5001,5002,5003,5004,5005,5006,5007,5008,5009,5010,5011,5012,5013,5014,5015,5016,5017,5018,5019,5020,5021,5022,5023,5024,5025,5026], visible=False, arg3=800, delay=100, scale=0) # 벽 해제
         self.set_event_ui(type=1, arg2='$02010052_BF__TORCHLIGHT_02__0$', arg3='3000')
@@ -25,7 +25,7 @@ class burn_state(trigger_api.Trigger):
 
 
 class spawn_state(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
 
 

@@ -9,7 +9,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -20,7 +20,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class 요랑의방_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -30,7 +30,7 @@ class 요랑의방_01(trigger_api.Trigger):
 
 
 class 요랑의방_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=0, msg='$52100207_QD__52100207__0$', duration=4000)
@@ -41,7 +41,7 @@ class 요랑의방_02(trigger_api.Trigger):
 
 
 class 요랑의방_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52100207_QD__52100207__1$', duration=2500)
 
@@ -51,7 +51,7 @@ class 요랑의방_04(trigger_api.Trigger):
 
 
 class 요랑의방_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52100207_QD__52100207__2$', duration=1500)
 
@@ -61,9 +61,10 @@ class 요랑의방_05(trigger_api.Trigger):
 
 
 class 요랑의방_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52100207_QD__52100207__3$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +73,7 @@ class 요랑의방_06(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +82,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 정리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +91,7 @@ class 정리_01(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

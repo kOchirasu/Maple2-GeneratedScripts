@@ -4,12 +4,12 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=700, boxId=1):
+        if self.count_users(boxId=700, minUsers='1'):
             return Ready_Idle(self.ctx)
 
 
 class Ready_Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Ready_Idle(trigger_api.Trigger):
 
 
 class Ready_Idle_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='60', seconds=60, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class Ready_Idle_02(trigger_api.Trigger):
 
 
 class daily_quest(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=799, type='trigger', achieve='dailyquest_start')
 
 

@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1505,1506,1507,1508,1509], visible=True, arg3=0, delay=0, scale=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1505,1506,1507,1508,1509], visible=False, arg3=0, delay=0, scale=10)
 
 

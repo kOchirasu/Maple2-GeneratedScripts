@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[7000,7001,7002,7003,7004,7005,7006,7007,7008,7009], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,7 @@ class 랜덤생성01(trigger_api.Trigger):
 
 # 패턴01
 class 패턴01생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_mesh(triggerIds=[7000], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -35,7 +35,7 @@ class 패턴01생성01(trigger_api.Trigger):
 
 
 class 패턴01낙하01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=1)
         self.set_mesh(triggerIds=[7000], visible=False, arg3=0, delay=0, scale=500)
 
@@ -45,7 +45,7 @@ class 패턴01낙하01(trigger_api.Trigger):
 
 
 class 패턴01생성02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=1)
         self.set_mesh(triggerIds=[7002], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -55,7 +55,7 @@ class 패턴01생성02(trigger_api.Trigger):
 
 
 class 패턴01낙하02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=1)
         self.set_mesh(triggerIds=[7002], visible=False, arg3=0, delay=0, scale=500)
 
@@ -65,7 +65,7 @@ class 패턴01낙하02(trigger_api.Trigger):
 
 
 class 패턴01생성03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=1)
         self.set_mesh(triggerIds=[7007], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -75,7 +75,7 @@ class 패턴01생성03(trigger_api.Trigger):
 
 
 class 패턴01낙하03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='6', seconds=1)
         self.set_mesh(triggerIds=[7007], visible=False, arg3=0, delay=0, scale=500)
 
@@ -86,7 +86,7 @@ class 패턴01낙하03(trigger_api.Trigger):
 
 # 패턴02
 class 패턴02생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=1)
         self.set_mesh(triggerIds=[7002], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -96,7 +96,7 @@ class 패턴02생성01(trigger_api.Trigger):
 
 
 class 패턴02낙하01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=1)
         self.set_mesh(triggerIds=[7002], visible=False, arg3=0, delay=0, scale=500)
 
@@ -106,7 +106,7 @@ class 패턴02낙하01(trigger_api.Trigger):
 
 
 class 패턴02생성02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='13', seconds=1)
         self.set_mesh(triggerIds=[7004], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -116,7 +116,7 @@ class 패턴02생성02(trigger_api.Trigger):
 
 
 class 패턴02낙하02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='14', seconds=1)
         self.set_mesh(triggerIds=[7004], visible=False, arg3=0, delay=0, scale=500)
 
@@ -126,7 +126,7 @@ class 패턴02낙하02(trigger_api.Trigger):
 
 
 class 패턴02생성03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -136,7 +136,7 @@ class 패턴02생성03(trigger_api.Trigger):
 
 
 class 패턴02낙하03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='16', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=False, arg3=0, delay=0, scale=500)
 
@@ -147,7 +147,7 @@ class 패턴02낙하03(trigger_api.Trigger):
 
 # 패턴03
 class 패턴03생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='21', seconds=1)
         self.set_mesh(triggerIds=[7009], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -157,7 +157,7 @@ class 패턴03생성01(trigger_api.Trigger):
 
 
 class 패턴03낙하01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=1)
         self.set_mesh(triggerIds=[7009], visible=False, arg3=0, delay=0, scale=500)
 
@@ -167,7 +167,7 @@ class 패턴03낙하01(trigger_api.Trigger):
 
 
 class 패턴03생성02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='23', seconds=1)
         self.set_mesh(triggerIds=[7006], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -177,7 +177,7 @@ class 패턴03생성02(trigger_api.Trigger):
 
 
 class 패턴03낙하02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='24', seconds=1)
         self.set_mesh(triggerIds=[7006], visible=False, arg3=0, delay=0, scale=500)
 
@@ -187,7 +187,7 @@ class 패턴03낙하02(trigger_api.Trigger):
 
 
 class 패턴03생성03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='25', seconds=1)
         self.set_mesh(triggerIds=[7003], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -197,7 +197,7 @@ class 패턴03생성03(trigger_api.Trigger):
 
 
 class 패턴03낙하03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='26', seconds=1)
         self.set_mesh(triggerIds=[7003], visible=False, arg3=0, delay=0, scale=500)
 
@@ -207,7 +207,7 @@ class 패턴03낙하03(trigger_api.Trigger):
 
 
 class 패턴03생성04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='27', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -217,7 +217,7 @@ class 패턴03생성04(trigger_api.Trigger):
 
 
 class 패턴03낙하04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='28', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=False, arg3=0, delay=0, scale=500)
 
@@ -228,7 +228,7 @@ class 패턴03낙하04(trigger_api.Trigger):
 
 # 패턴04
 class 패턴04생성01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='31', seconds=1)
         self.set_mesh(triggerIds=[7001], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -238,7 +238,7 @@ class 패턴04생성01(trigger_api.Trigger):
 
 
 class 패턴04낙하01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='32', seconds=1)
         self.set_mesh(triggerIds=[7001], visible=False, arg3=0, delay=0, scale=500)
 
@@ -248,7 +248,7 @@ class 패턴04낙하01(trigger_api.Trigger):
 
 
 class 패턴04생성02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='33', seconds=1)
         self.set_mesh(triggerIds=[7005], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -258,7 +258,7 @@ class 패턴04생성02(trigger_api.Trigger):
 
 
 class 패턴04낙하02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='34', seconds=1)
         self.set_mesh(triggerIds=[7005], visible=False, arg3=0, delay=0, scale=500)
 
@@ -268,7 +268,7 @@ class 패턴04낙하02(trigger_api.Trigger):
 
 
 class 패턴04생성03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='35', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -278,7 +278,7 @@ class 패턴04생성03(trigger_api.Trigger):
 
 
 class 패턴04낙하03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='36', seconds=1)
         self.set_mesh(triggerIds=[7008], visible=False, arg3=0, delay=0, scale=500)
 
@@ -288,7 +288,7 @@ class 패턴04낙하03(trigger_api.Trigger):
 
 
 class 패턴04생성04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='37', seconds=1)
         self.set_mesh(triggerIds=[7009], visible=True, arg3=0, delay=0, scale=1000)
 
@@ -298,7 +298,7 @@ class 패턴04생성04(trigger_api.Trigger):
 
 
 class 패턴04낙하04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='38', seconds=1)
         self.set_mesh(triggerIds=[7009], visible=False, arg3=0, delay=0, scale=500)
 
@@ -320,7 +320,7 @@ class 딜레이랜덤01(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='100', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -329,7 +329,7 @@ class 딜레이01(trigger_api.Trigger):
 
 
 class 딜레이02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='101', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -338,7 +338,7 @@ class 딜레이02(trigger_api.Trigger):
 
 
 class 딜레이03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='102', seconds=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -347,7 +347,7 @@ class 딜레이03(trigger_api.Trigger):
 
 
 class 딜레이04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='103', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,7 +356,7 @@ class 딜레이04(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='200', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:

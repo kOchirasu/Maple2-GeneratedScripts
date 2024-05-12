@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_interact_object(triggerIds=[10000739], state=2)
         self.set_interact_object(triggerIds=[10000740], state=2)
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, arg3=0, delay=200, scale=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 어나운스03(trigger_api.Trigger):
 
 
 class 라운드반응체크1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000752], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 라운드카운트딜레이1(trigger_api.Trigger):
 
 
 class 라운드카운트1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_effect(triggerIds=[611], visible=True)
         self.set_effect(triggerIds=[612], visible=True)
@@ -123,7 +123,7 @@ class 라운드1(trigger_api.Trigger):
 
 
 class 소환3001(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.create_monster(spawnIds=[3001], animationEffect=False)
 
@@ -133,7 +133,7 @@ class 소환3001(trigger_api.Trigger):
 
 
 class 소환3002(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.create_monster(spawnIds=[3002], animationEffect=False)
 
@@ -143,7 +143,7 @@ class 소환3002(trigger_api.Trigger):
 
 
 class 소환3003(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2003], animationEffect=False)
         self.create_monster(spawnIds=[3003], animationEffect=False)
 
@@ -153,7 +153,7 @@ class 소환3003(trigger_api.Trigger):
 
 
 class 소환3004(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.create_monster(spawnIds=[3004], animationEffect=False)
 
@@ -163,7 +163,7 @@ class 소환3004(trigger_api.Trigger):
 
 
 class 소환3005(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2005], animationEffect=False)
         self.create_monster(spawnIds=[3005], animationEffect=False)
 
@@ -173,7 +173,7 @@ class 소환3005(trigger_api.Trigger):
 
 
 class 소환3006(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006], animationEffect=False)
         self.create_monster(spawnIds=[3006], animationEffect=False)
 
@@ -183,7 +183,7 @@ class 소환3006(trigger_api.Trigger):
 
 
 class 소환3007(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2007], animationEffect=False)
         self.create_monster(spawnIds=[3007], animationEffect=False)
 
@@ -193,7 +193,7 @@ class 소환3007(trigger_api.Trigger):
 
 
 class 소환3008(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2008], animationEffect=False)
         self.create_monster(spawnIds=[3008], animationEffect=False)
 
@@ -203,7 +203,7 @@ class 소환3008(trigger_api.Trigger):
 
 
 class 소환3009(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2009], animationEffect=False)
         self.create_monster(spawnIds=[3009], animationEffect=False)
 
@@ -213,7 +213,7 @@ class 소환3009(trigger_api.Trigger):
 
 
 class 소환3010(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2010], animationEffect=False)
         self.create_monster(spawnIds=[3010], animationEffect=False)
 
@@ -223,7 +223,7 @@ class 소환3010(trigger_api.Trigger):
 
 
 class 소환3011(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2011], animationEffect=False)
         self.create_monster(spawnIds=[3011], animationEffect=False)
 
@@ -233,7 +233,7 @@ class 소환3011(trigger_api.Trigger):
 
 
 class 소환3012(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2012], animationEffect=False)
         self.create_monster(spawnIds=[3012], animationEffect=False)
 
@@ -243,7 +243,7 @@ class 소환3012(trigger_api.Trigger):
 
 
 class 소환3013(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2013], animationEffect=False)
         self.create_monster(spawnIds=[3013], animationEffect=False)
 
@@ -253,7 +253,7 @@ class 소환3013(trigger_api.Trigger):
 
 
 class 소환3014(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2014], animationEffect=False)
         self.create_monster(spawnIds=[3014], animationEffect=False)
 
@@ -263,7 +263,7 @@ class 소환3014(trigger_api.Trigger):
 
 
 class 소환3015(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2015], animationEffect=False)
         self.create_monster(spawnIds=[3015], animationEffect=False)
 
@@ -273,7 +273,7 @@ class 소환3015(trigger_api.Trigger):
 
 
 class 소환3016(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2016], animationEffect=False)
         self.create_monster(spawnIds=[3016], animationEffect=False)
 
@@ -283,7 +283,7 @@ class 소환3016(trigger_api.Trigger):
 
 
 class 소환3017(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2017], animationEffect=False)
         self.create_monster(spawnIds=[3017], animationEffect=False)
 
@@ -293,7 +293,7 @@ class 소환3017(trigger_api.Trigger):
 
 
 class 소환3018(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2018], animationEffect=False)
         self.create_monster(spawnIds=[3018], animationEffect=False)
 
@@ -303,7 +303,7 @@ class 소환3018(trigger_api.Trigger):
 
 
 class 소환3019(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2019], animationEffect=False)
         self.create_monster(spawnIds=[3019], animationEffect=False)
 
@@ -313,7 +313,7 @@ class 소환3019(trigger_api.Trigger):
 
 
 class 소환3020(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2020], animationEffect=False)
         self.create_monster(spawnIds=[3020], animationEffect=False)
 
@@ -323,7 +323,7 @@ class 소환3020(trigger_api.Trigger):
 
 
 class 라운드대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000739], state=2)
         self.set_interact_object(triggerIds=[10000740], state=2)
         self.set_effect(triggerIds=[601], visible=False)
@@ -343,7 +343,7 @@ class 어나운스04(trigger_api.Trigger):
 
 
 class 라운드반응체크2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000752], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -353,7 +353,7 @@ class 라운드반응체크2(trigger_api.Trigger):
 
 
 class 어나운스04_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000325_BF__MAIN__5$', arg3='3500', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -362,7 +362,7 @@ class 어나운스04_2(trigger_api.Trigger):
 
 
 class 라운드카운트2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_effect(triggerIds=[612], visible=True)
         self.set_interact_object(triggerIds=[10000740], state=1)
@@ -579,7 +579,7 @@ class 소환체크3020(trigger_api.Trigger):
 
 
 class 소환2_3001(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.create_monster(spawnIds=[3001], animationEffect=False)
 
@@ -589,7 +589,7 @@ class 소환2_3001(trigger_api.Trigger):
 
 
 class 소환2_3002(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.create_monster(spawnIds=[3002], animationEffect=False)
 
@@ -599,7 +599,7 @@ class 소환2_3002(trigger_api.Trigger):
 
 
 class 소환2_3003(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2003], animationEffect=False)
         self.create_monster(spawnIds=[3003], animationEffect=False)
 
@@ -609,7 +609,7 @@ class 소환2_3003(trigger_api.Trigger):
 
 
 class 소환2_3004(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.create_monster(spawnIds=[3004], animationEffect=False)
 
@@ -619,7 +619,7 @@ class 소환2_3004(trigger_api.Trigger):
 
 
 class 소환2_3005(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2005], animationEffect=False)
         self.create_monster(spawnIds=[3005], animationEffect=False)
 
@@ -629,7 +629,7 @@ class 소환2_3005(trigger_api.Trigger):
 
 
 class 소환2_3006(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006], animationEffect=False)
         self.create_monster(spawnIds=[3006], animationEffect=False)
 
@@ -639,7 +639,7 @@ class 소환2_3006(trigger_api.Trigger):
 
 
 class 소환2_3007(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2007], animationEffect=False)
         self.create_monster(spawnIds=[3007], animationEffect=False)
 
@@ -649,7 +649,7 @@ class 소환2_3007(trigger_api.Trigger):
 
 
 class 소환2_3008(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2008], animationEffect=False)
         self.create_monster(spawnIds=[3008], animationEffect=False)
 
@@ -659,7 +659,7 @@ class 소환2_3008(trigger_api.Trigger):
 
 
 class 소환2_3009(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2009], animationEffect=False)
         self.create_monster(spawnIds=[3009], animationEffect=False)
 
@@ -669,7 +669,7 @@ class 소환2_3009(trigger_api.Trigger):
 
 
 class 소환2_3010(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2010], animationEffect=False)
         self.create_monster(spawnIds=[3010], animationEffect=False)
 
@@ -679,7 +679,7 @@ class 소환2_3010(trigger_api.Trigger):
 
 
 class 소환2_3011(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2011], animationEffect=False)
         self.create_monster(spawnIds=[3011], animationEffect=False)
 
@@ -689,7 +689,7 @@ class 소환2_3011(trigger_api.Trigger):
 
 
 class 소환2_3012(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2012], animationEffect=False)
         self.create_monster(spawnIds=[3012], animationEffect=False)
 
@@ -699,7 +699,7 @@ class 소환2_3012(trigger_api.Trigger):
 
 
 class 소환2_3013(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2013], animationEffect=False)
         self.create_monster(spawnIds=[3013], animationEffect=False)
 
@@ -709,7 +709,7 @@ class 소환2_3013(trigger_api.Trigger):
 
 
 class 소환2_3014(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2014], animationEffect=False)
         self.create_monster(spawnIds=[3014], animationEffect=False)
 
@@ -719,7 +719,7 @@ class 소환2_3014(trigger_api.Trigger):
 
 
 class 소환2_3015(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2015], animationEffect=False)
         self.create_monster(spawnIds=[3015], animationEffect=False)
 
@@ -729,7 +729,7 @@ class 소환2_3015(trigger_api.Trigger):
 
 
 class 소환2_3016(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2016], animationEffect=False)
         self.create_monster(spawnIds=[3016], animationEffect=False)
 
@@ -739,7 +739,7 @@ class 소환2_3016(trigger_api.Trigger):
 
 
 class 소환2_3017(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2017], animationEffect=False)
         self.create_monster(spawnIds=[3017], animationEffect=False)
 
@@ -749,7 +749,7 @@ class 소환2_3017(trigger_api.Trigger):
 
 
 class 소환2_3018(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2018], animationEffect=False)
         self.create_monster(spawnIds=[3018], animationEffect=False)
 
@@ -759,7 +759,7 @@ class 소환2_3018(trigger_api.Trigger):
 
 
 class 소환2_3019(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2019], animationEffect=False)
         self.create_monster(spawnIds=[3019], animationEffect=False)
 
@@ -769,7 +769,7 @@ class 소환2_3019(trigger_api.Trigger):
 
 
 class 소환2_3020(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2020], animationEffect=False)
         self.create_monster(spawnIds=[3020], animationEffect=False)
 
@@ -779,7 +779,7 @@ class 소환2_3020(trigger_api.Trigger):
 
 
 class 라운드대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[612], visible=False)
         self.set_interact_object(triggerIds=[10000740], state=2)
@@ -797,7 +797,7 @@ class 어나운스05(trigger_api.Trigger):
 
 
 class 라운드반응체크3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000752], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -806,11 +806,24 @@ class 라운드반응체크3(trigger_api.Trigger):
             return 라운드카운트3(self.ctx)
 
 
+"""
+class 어나운스05_2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_timer(timerId='4', seconds=4)
+        self.set_event_ui(type=1, arg2='$02000325_BF__MAIN__8$', arg3='3500', arg4='0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=4000):
+            return 라운드카운트3(self.ctx)
+
+"""
+
+
 class 라운드카운트3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_effect(triggerIds=[612], visible=False)
-        # action name="메쉬를설정한다" arg1="3000-3022" arg2="0" arg3="0" arg4="200" arg5="2" /
+        # self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=False, arg3=0, delay=200, scale=2)
         self.set_event_ui(type=0, arg2='3,3')
         self.show_count_ui(text='$02000325_BF__MAIN__9$', stage=3, count=3)
 
@@ -1024,7 +1037,7 @@ class 소환체크2_3020(trigger_api.Trigger):
 
 
 class 소환3_3001(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
         self.create_monster(spawnIds=[3001], animationEffect=False)
 
@@ -1034,7 +1047,7 @@ class 소환3_3001(trigger_api.Trigger):
 
 
 class 소환3_3002(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
         self.create_monster(spawnIds=[3002], animationEffect=False)
 
@@ -1044,7 +1057,7 @@ class 소환3_3002(trigger_api.Trigger):
 
 
 class 소환3_3003(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2003], animationEffect=False)
         self.create_monster(spawnIds=[3003], animationEffect=False)
 
@@ -1054,7 +1067,7 @@ class 소환3_3003(trigger_api.Trigger):
 
 
 class 소환3_3004(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.create_monster(spawnIds=[3004], animationEffect=False)
 
@@ -1064,7 +1077,7 @@ class 소환3_3004(trigger_api.Trigger):
 
 
 class 소환3_3005(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2005], animationEffect=False)
         self.create_monster(spawnIds=[3005], animationEffect=False)
 
@@ -1074,7 +1087,7 @@ class 소환3_3005(trigger_api.Trigger):
 
 
 class 소환3_3006(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006], animationEffect=False)
         self.create_monster(spawnIds=[3006], animationEffect=False)
 
@@ -1084,7 +1097,7 @@ class 소환3_3006(trigger_api.Trigger):
 
 
 class 소환3_3007(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2007], animationEffect=False)
         self.create_monster(spawnIds=[3007], animationEffect=False)
 
@@ -1094,7 +1107,7 @@ class 소환3_3007(trigger_api.Trigger):
 
 
 class 소환3_3008(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2008], animationEffect=False)
         self.create_monster(spawnIds=[3008], animationEffect=False)
 
@@ -1104,7 +1117,7 @@ class 소환3_3008(trigger_api.Trigger):
 
 
 class 소환3_3009(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2009], animationEffect=False)
         self.create_monster(spawnIds=[3009], animationEffect=False)
 
@@ -1114,7 +1127,7 @@ class 소환3_3009(trigger_api.Trigger):
 
 
 class 소환3_3010(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2010], animationEffect=False)
         self.create_monster(spawnIds=[3010], animationEffect=False)
 
@@ -1124,7 +1137,7 @@ class 소환3_3010(trigger_api.Trigger):
 
 
 class 소환3_3011(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2011], animationEffect=False)
         self.create_monster(spawnIds=[3011], animationEffect=False)
 
@@ -1134,7 +1147,7 @@ class 소환3_3011(trigger_api.Trigger):
 
 
 class 소환3_3012(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2012], animationEffect=False)
         self.create_monster(spawnIds=[3012], animationEffect=False)
 
@@ -1144,7 +1157,7 @@ class 소환3_3012(trigger_api.Trigger):
 
 
 class 소환3_3013(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2013], animationEffect=False)
         self.create_monster(spawnIds=[3013], animationEffect=False)
 
@@ -1154,7 +1167,7 @@ class 소환3_3013(trigger_api.Trigger):
 
 
 class 소환3_3014(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2014], animationEffect=False)
         self.create_monster(spawnIds=[3014], animationEffect=False)
 
@@ -1164,7 +1177,7 @@ class 소환3_3014(trigger_api.Trigger):
 
 
 class 소환3_3015(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2015], animationEffect=False)
         self.create_monster(spawnIds=[3015], animationEffect=False)
 
@@ -1174,7 +1187,7 @@ class 소환3_3015(trigger_api.Trigger):
 
 
 class 소환3_3016(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2016], animationEffect=False)
         self.create_monster(spawnIds=[3016], animationEffect=False)
 
@@ -1184,7 +1197,7 @@ class 소환3_3016(trigger_api.Trigger):
 
 
 class 소환3_3017(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2017], animationEffect=False)
         self.create_monster(spawnIds=[3017], animationEffect=False)
 
@@ -1194,7 +1207,7 @@ class 소환3_3017(trigger_api.Trigger):
 
 
 class 소환3_3018(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2018], animationEffect=False)
         self.create_monster(spawnIds=[3018], animationEffect=False)
 
@@ -1204,7 +1217,7 @@ class 소환3_3018(trigger_api.Trigger):
 
 
 class 소환3_3019(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2019], animationEffect=False)
         self.create_monster(spawnIds=[3019], animationEffect=False)
 
@@ -1214,7 +1227,7 @@ class 소환3_3019(trigger_api.Trigger):
 
 
 class 소환3_3020(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2020], animationEffect=False)
         self.create_monster(spawnIds=[3020], animationEffect=False)
 
@@ -1224,7 +1237,7 @@ class 소환3_3020(trigger_api.Trigger):
 
 
 class 미션성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=102, type='trigger', achieve='BraveRace')
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022], visible=True, arg3=0, delay=200, scale=2)
         self.set_effect(triggerIds=[601], visible=False)
@@ -1238,6 +1251,7 @@ class 미션성공(trigger_api.Trigger):
 class 라운드보상3(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
+            # self.set_interact_object(triggerIds=[13000009], state=1)
             return 포털생성(self.ctx)
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 레버당기기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000291], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 레버당기기(trigger_api.Trigger):
 
 
 class 스킬동작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_skill(triggerIds=[2005], enable=True)
         self.set_skill(triggerIds=[2006], enable=True)
@@ -25,7 +25,7 @@ class 스킬동작(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=10) # arg2는 시간 (초)
         self.set_skill(triggerIds=[2005], enable=False)
         self.set_skill(triggerIds=[2006], enable=False)

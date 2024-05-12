@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=811, value=0)
         self.dungeon_variable(varId=812, value=0)
         self.dungeon_variable(varId=813, value=0)
@@ -18,7 +18,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,8 +31,8 @@ class 시작(trigger_api.Trigger):
 
 
 class 랜덤확률(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_event_ui(type=1, arg2='디버프 몬스터가 생성되었습니다.\n몬스터를 처치하면 상대팀에 디버프를 겁니다.', arg3='5000')
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_event_ui(type=1, arg2='디버프 몬스터가 생성되었습니다.\\n몬스터를 처치하면 상대팀에 디버프를 겁니다.', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
@@ -48,7 +48,7 @@ class 랜덤확률(trigger_api.Trigger):
 
 
 class A지역(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[801], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class A지역(trigger_api.Trigger):
 
 
 class B지역(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[802], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class B지역(trigger_api.Trigger):
 
 
 class C지역(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[803], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class C지역(trigger_api.Trigger):
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=60)
 
     def on_tick(self) -> trigger_api.Trigger:

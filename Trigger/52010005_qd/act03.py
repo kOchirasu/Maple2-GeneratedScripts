@@ -3,16 +3,17 @@ import trigger_api
 
 
 class 퀘스트조건03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000872], state=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[10002822], questStates=[1]):
+            # 3rd Quest
             return Q3_딜레이01(self.ctx)
 
 
 class Q3_딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='100', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +23,7 @@ class Q3_딜레이01(trigger_api.Trigger):
 
 # 3rd Quest
 class Q3_미카등장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -38,7 +39,7 @@ class Q3_미카등장01(trigger_api.Trigger):
 
 
 class Q3_미카연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='21', seconds=5)
         self.select_camera_path(pathIds=[2001,2002], returnView=False)
 
@@ -54,7 +55,7 @@ class Q3_미카연출02(trigger_api.Trigger):
 
 
 class Q3_미카연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=4)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_6011')
         self.select_camera_path(pathIds=[2002,2001], returnView=True)
@@ -65,7 +66,7 @@ class Q3_미카연출03(trigger_api.Trigger):
 
 
 class Q3_미카연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000872], state=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -76,7 +77,7 @@ class Q3_미카연출04(trigger_api.Trigger):
 
 
 class Q3_영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='MemoryofDragon.swf', movieId=1)
@@ -87,7 +88,7 @@ class Q3_영상재생(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='25', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -100,7 +101,7 @@ class Q3_시네마틱연출01(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -111,7 +112,7 @@ class Q3_시네마틱연출02대기(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4001, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -122,7 +123,7 @@ class Q3_시네마틱연출02(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='26', seconds=3)
         self.set_conversation(type=2, spawnId=11001316, script='$52010005_QD__ACT03__1$', arg4=3)
         self.set_skip(state=Q3_시네마틱연출04)
@@ -133,7 +134,7 @@ class Q3_시네마틱연출03(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -142,7 +143,7 @@ class Q3_시네마틱연출04(trigger_api.Trigger):
 
 
 class Q3_시네마틱연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='27', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,7 +152,7 @@ class Q3_시네마틱연출05(trigger_api.Trigger):
 
 
 class Q3_미카퇴장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='30', seconds=2)
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_6013')
 
@@ -161,7 +162,7 @@ class Q3_미카퇴장01(trigger_api.Trigger):
 
 
 class Q3_미카퇴장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='31', seconds=3)
         self.set_conversation(type=2, spawnId=11001285, script='$52010005_QD__ACT03__2$', arg4=3)
         self.set_skip(state=Q3_미카퇴장03)
@@ -170,12 +171,12 @@ class Q3_미카퇴장02(trigger_api.Trigger):
         if self.time_expired(timerId='31'):
             return Q3_미카퇴장03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Q3_미카퇴장03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=601, patrolName='MS2PatrolData_6014')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -184,7 +185,7 @@ class Q3_미카퇴장03(trigger_api.Trigger):
 
 
 class Q3_미카퇴장04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[601])
         self.set_timer(timerId='40', seconds=1)
         self.select_camera(triggerId=4001, enable=False)
@@ -197,18 +198,19 @@ class Q3_미카퇴장04(trigger_api.Trigger):
 
 
 class Q3_업적발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9001, type='trigger', achieve='Intothememory')
         self.destroy_monster(spawnIds=[501])
         self.create_monster(spawnIds=[502], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[10002823], questStates=[2]):
+            # 3rd Quest
             return Q3_유저퇴장01(self.ctx)
 
 
 class Q3_유저퇴장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='41', seconds=2)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -217,12 +219,12 @@ class Q3_유저퇴장01(trigger_api.Trigger):
         if self.time_expired(timerId='41'):
             return Q3_유저퇴장02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Q3_유저퇴장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='42', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -233,12 +235,12 @@ class Q3_유저퇴장02(trigger_api.Trigger):
         if self.time_expired(timerId='42'):
             return Q3_유저퇴장03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Q3_유저퇴장03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(mapId=2010026, portalId=3, boxId=9000)

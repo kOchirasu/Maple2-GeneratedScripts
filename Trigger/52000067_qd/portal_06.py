@@ -5,12 +5,12 @@ import trigger_api
 # 포탈 파괴 연출
 class idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=702, boxId=1):
+        if self.count_users(boxId=702, minUsers='1'):
             return portal(self.ctx)
 
 
 class portal(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[806], animationEffect=True) # 포탈
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class portal(trigger_api.Trigger):
 
 
 class portal_off(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=114, script='$52000067_QD__PORTAL_06__0$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=109, script='$52000067_QD__PORTAL_06__1$', arg4=3, arg5=1)
         self.set_effect(triggerIds=[7015], visible=False) # 다크 포탈

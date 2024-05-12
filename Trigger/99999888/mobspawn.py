@@ -4,7 +4,7 @@ import trigger_api
 
 class Ready(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=911, boxId=1):
+        if self.count_users(boxId=911, minUsers='1'):
             self.create_monster(spawnIds=[101], animationEffect=True)
             return 몬스터생성(self.ctx)
 

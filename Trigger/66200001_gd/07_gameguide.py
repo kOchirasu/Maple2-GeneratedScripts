@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class GameGuide_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=19, startDelay=1, interval=0) # 20sec
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -19,7 +19,7 @@ class GameGuide_20(trigger_api.Trigger):
 
 # Normal GameGuide
 class NormalGameGuide_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26620104, textId=26620104, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class NormalGameGuide_01(trigger_api.Trigger):
 
 
 class NormalGameGuide_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26620105, textId=26620105, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class NormalGameGuide_02(trigger_api.Trigger):
 
 
 class NormalGameGuide_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26620104, textId=26620104, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class NormalGameGuide_03(trigger_api.Trigger):
 
 
 class NormalGameGuide_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26620105, textId=26620105, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -60,7 +60,7 @@ class NormalGameGuide_04(trigger_api.Trigger):
 
 # Reset
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='GameGuide', value=0)
         self.reset_timer(timerId='1')
 

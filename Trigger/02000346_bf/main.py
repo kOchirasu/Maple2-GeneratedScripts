@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[9001], visible=False, animationEffect=False, animationDelay=0) # 사다리 가려
         self.set_ladder(triggerIds=[9002], visible=False, animationEffect=False, animationDelay=0) # 사다리 가려
         self.set_ladder(triggerIds=[9003], visible=False, animationEffect=False, animationDelay=0) # 사다리 가려
@@ -14,12 +14,12 @@ class 대기(trigger_api.Trigger):
         self.set_mesh(triggerIds=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=False) # 길 차단
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=60001, boxId=1):
+        if self.count_users(boxId=60001, minUsers='1'):
             return 오브젝티브_01(self.ctx)
 
 
 class 오브젝티브_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,10 +28,12 @@ class 오브젝티브_01(trigger_api.Trigger):
 
 
 class 오브젝티브_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001,8002], returnView=True)
+        # 연출 카메라
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[101], animationEffect=True) # 보스 등장
+        # self.move_user(mapId=2000346, portalId=3)
         self.set_cinematic_ui(type=3, script='$02000346_BF__MAIN1__0$') # 오브젝티브
         self.set_timer(timerId='5', seconds=5, interval=0)
 
@@ -39,7 +41,8 @@ class 오브젝티브_02(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return 시작_01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
@@ -47,7 +50,7 @@ class 오브젝티브_02(trigger_api.Trigger):
 
 # 플레이어 감지하면 1초 대기
 class 시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$02000346_BF__MAIN1__2$', stage=0, count=3)
         self.set_timer(timerId='3', seconds=3, interval=0)
         self.set_mesh(triggerIds=[6001], visible=False) # 가림막
@@ -58,7 +61,7 @@ class 시작_01(trigger_api.Trigger):
 
 
 class 시작_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[9001], visible=True, animationEffect=True, animationDelay=0) # 사다리 보여
         self.set_ladder(triggerIds=[9002], visible=True, animationEffect=True, animationDelay=0) # 사다리 보여
         self.set_ladder(triggerIds=[9003], visible=True, animationEffect=True, animationDelay=0) # 사다리 보여
@@ -69,7 +72,7 @@ class 시작_02(trigger_api.Trigger):
 
 
 class 클리어(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True) # 보상으로 연결되는 포탈 제어 (on)
         self.set_event_ui(type=7, arg2='$02000346_BF__MAIN1__1$', arg3='3000')
         self.set_mesh(triggerIds=[6001,6002,6003,6004,6005,6006,6007,6008,6009], visible=True, delay=0, scale=10) # 길 생성
@@ -83,7 +86,7 @@ class 클리어(trigger_api.Trigger):
 
 
 class 클리어_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=110, textId=40009) # 포탈 이용하세요
 
 

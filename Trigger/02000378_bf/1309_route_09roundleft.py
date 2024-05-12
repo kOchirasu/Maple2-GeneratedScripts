@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=15, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[4015], visible=True, arg3=0, delay=0, scale=0) # PortalBarrier
         self.set_agent(triggerIds=[18091], visible=True)
@@ -16,7 +16,7 @@ class Wait(trigger_api.Trigger):
         self.set_user_value(key='MakeFalse', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9000, boxId=1):
+        if self.count_users(boxId=9000, minUsers='1'):
             return StartDazzling01(self.ctx)
 
 
@@ -28,7 +28,7 @@ class StartDazzling01(trigger_api.Trigger):
 
 # 가짜 길이 깜빡이는 연출
 class StartDazzlingRandom01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=True, meshCount=4, arg4=100, delay=500) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,12 +39,13 @@ class StartDazzlingRandom01(trigger_api.Trigger):
         if self.user_value(key='MakeFalse', value=1):
             return MakeFalse(self.ctx)
 
-    def on_exit(self):
-        self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, meshCount=12, arg4=0, delay=0) # Fake
+    def on_exit(self) -> None:
+        self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, meshCount=12, arg4=0, delay=0)
+        # Fake
 
 
 class StartDazzlingRandom02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=True, meshCount=4, arg4=100, delay=500) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,12 +56,13 @@ class StartDazzlingRandom02(trigger_api.Trigger):
         if self.user_value(key='MakeFalse', value=1):
             return MakeFalse(self.ctx)
 
-    def on_exit(self):
-        self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, meshCount=12, arg4=0, delay=0) # Fake
+    def on_exit(self) -> None:
+        self.set_random_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, meshCount=12, arg4=0, delay=0)
+        # Fake
 
 
 class MakeTrue(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5009], visible=True) # 09Round_BridgeApp
         self.set_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, arg3=0, delay=0, scale=5) # Fake
         self.set_random_mesh(triggerIds=[330900,330901,330902,330903,330904,330905,330906,330907,330908,330909,330910,330911], visible=True, meshCount=12, arg4=100, delay=50) # Real
@@ -75,7 +77,7 @@ class MakeTrue(trigger_api.Trigger):
 
 
 class MakeFalse(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[130900,130901,130902,130903,130904,130905,130906,130907,130908,130909,130910,130911], visible=False, arg3=0, delay=0, scale=5) # Fake
 
     def on_tick(self) -> trigger_api.Trigger:

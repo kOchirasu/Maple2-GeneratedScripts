@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000424], state=0)
         self.set_interact_object(triggerIds=[10000425], state=0)
         self.set_interact_object(triggerIds=[10000426], state=0)
@@ -29,7 +29,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001], animationEffect=False)
         self.create_monster(spawnIds=[1002], animationEffect=False)
         self.create_monster(spawnIds=[1003], animationEffect=False)
@@ -60,7 +60,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 번생성4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000424], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class 번생성4(trigger_api.Trigger):
 
 
 class 번몬스터4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2004], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -86,7 +86,7 @@ class 번몬스터4(trigger_api.Trigger):
 
 
 class 번생성5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000425], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class 번생성5(trigger_api.Trigger):
 
 
 class 번몬스터5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2005], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -112,7 +112,7 @@ class 번몬스터5(trigger_api.Trigger):
 
 
 class 번생성6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000426], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 번생성6(trigger_api.Trigger):
 
 
 class 번몬스터6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006], animationEffect=False)
         self.show_guide_summary(entityId=20002817, textId=20002817, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -138,7 +138,7 @@ class 번몬스터6(trigger_api.Trigger):
 
 
 class 소멸대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

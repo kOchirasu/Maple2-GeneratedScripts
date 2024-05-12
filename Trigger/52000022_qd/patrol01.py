@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[601], visible=False)
         self.create_monster(spawnIds=[111], animationEffect=False)
@@ -12,12 +12,13 @@ class 대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[60001041], questStates=[1]):
+            # 변절자의 흔적 퀘스트 진행 중 상태 연출 및 전투 개시!
             return 연출준비(self.ctx)
 
 
 # 말풍선 연출 : 이슈라와 추격대원 대화하면서 걷기
 class 연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.destroy_monster(spawnIds=[111])
         self.destroy_monster(spawnIds=[211])
@@ -30,7 +31,7 @@ class 연출준비(trigger_api.Trigger):
 
 
 class 말풍선연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__0$', arg4=4, arg5=0)
 
@@ -40,7 +41,7 @@ class 말풍선연출01(trigger_api.Trigger):
 
 
 class 말풍선연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=4)
         self.set_conversation(type=1, spawnId=201, script='$52000022_QD__PATROL01__1$', arg4=3, arg5=0)
 
@@ -50,7 +51,7 @@ class 말풍선연출02(trigger_api.Trigger):
 
 
 class 말풍선연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__2$', arg4=4, arg5=0)
 
@@ -60,7 +61,7 @@ class 말풍선연출03(trigger_api.Trigger):
 
 
 class 이슈라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
@@ -70,7 +71,7 @@ class 이슈라이동(trigger_api.Trigger):
 
 
 class 추격대원이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_conversation(type=1, spawnId=201, script='$52000022_QD__PATROL01__3$', arg4=3, arg5=0)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
@@ -81,7 +82,7 @@ class 추격대원이동(trigger_api.Trigger):
 
 
 class 말풍선연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__4$', arg4=4, arg5=0)
 
@@ -91,7 +92,7 @@ class 말풍선연출04(trigger_api.Trigger):
 
 
 class 말풍선연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__5$', arg4=2, arg5=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101_B')
@@ -102,7 +103,7 @@ class 말풍선연출05(trigger_api.Trigger):
 
 
 class 말풍선연출06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__6$', arg4=2, arg5=0)
 
@@ -112,7 +113,7 @@ class 말풍선연출06(trigger_api.Trigger):
 
 
 class 감옥이펙트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_effect(triggerIds=[601], visible=True)
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0)
@@ -123,7 +124,7 @@ class 감옥이펙트(trigger_api.Trigger):
 
 
 class 말풍선연출07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=201, script='$52000022_QD__PATROL01__7$', arg4=2, arg5=0)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201_B')
@@ -134,7 +135,7 @@ class 말풍선연출07(trigger_api.Trigger):
 
 
 class 말풍선연출08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__8$', arg4=2, arg5=0)
 
@@ -144,7 +145,7 @@ class 말풍선연출08(trigger_api.Trigger):
 
 
 class 몹소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__9$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$52000022_QD__PATROL01__10$', arg4=3, arg5=0)
         self.create_monster(spawnIds=[1001], animationEffect=True)
@@ -155,7 +156,7 @@ class 몹소환(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_timer(timerId='2', seconds=2)
         self.set_effect(triggerIds=[601], visible=False)

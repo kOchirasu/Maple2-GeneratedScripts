@@ -9,7 +9,7 @@ class 입장(trigger_api.Trigger):
 
 
 class START(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8000], visible=False)
         self.set_effect(triggerIds=[8001], visible=False)
         self.set_effect(triggerIds=[8002], visible=False)
@@ -39,7 +39,7 @@ class START(trigger_api.Trigger):
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5300], visible=False)
         self.set_effect(triggerIds=[5301], visible=False)
@@ -64,7 +64,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000111, portalId=2)
 
@@ -74,9 +74,9 @@ class 영상준비_01(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\JobIntro_Assassin.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\JobIntro_Assassin.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -86,7 +86,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 커닝시티전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.select_camera_path(pathIds=[1000,1001], returnView=False)
 
@@ -96,7 +96,7 @@ class 커닝시티전경씬01(trigger_api.Trigger):
 
 
 class 커닝시티전경씬01_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1002,1003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -105,7 +105,7 @@ class 커닝시티전경씬01_B(trigger_api.Trigger):
 
 
 class 커닝시티전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1004,1005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +114,7 @@ class 커닝시티전경씬02(trigger_api.Trigger):
 
 
 class 커닝시티전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000111_QD__52000111__0$', desc='$52000111_QD__52000111__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -123,7 +123,7 @@ class 커닝시티전경씬03(trigger_api.Trigger):
 
 
 class 커닝시티전경씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +132,7 @@ class 커닝시티전경씬04(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,7 +141,8 @@ class Quit01(trigger_api.Trigger):
 
 
 class Quit01_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +151,7 @@ class Quit01_1(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
@@ -160,7 +161,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -190,7 +191,7 @@ class Quit02(trigger_api.Trigger):
 
 # ########################씬2 쉐도우클로 등장########################
 class 쉐도우클로등장씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9000, enable=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -201,7 +202,7 @@ class 쉐도우클로등장씬01(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_pcFront')
@@ -232,7 +233,7 @@ class 쉐도우클로등장씬02(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Assassin_Bore_A'])
         self.add_balloon_talk(spawnId=0, msg='$52000111_QD__52000111__4$', duration=6000, delayTick=1000)
         self.select_camera_path(pathIds=[1012,1013], returnView=False)
@@ -243,7 +244,7 @@ class 쉐도우클로등장씬04(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8000], visible=True)
         self.set_effect(triggerIds=[8001], visible=True)
         self.set_effect(triggerIds=[8002], visible=True)
@@ -263,7 +264,7 @@ class 쉐도우클로등장씬05(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8010], visible=True)
         self.create_monster(spawnIds=[200], animationEffect=False)
         self.select_camera_path(pathIds=[1016,1017], returnView=False)
@@ -274,7 +275,7 @@ class 쉐도우클로등장씬06(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=200, sequenceName='Sit_Down_A', duration=4000)
         self.select_camera_path(pathIds=[1018,1019], returnView=False)
 
@@ -284,7 +285,7 @@ class 쉐도우클로등장씬07(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=200, sequenceName='Bore_A')
         self.select_camera_path(pathIds=[1020,1021], returnView=False)
 
@@ -294,7 +295,7 @@ class 쉐도우클로등장씬09(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1022,1023], returnView=False)
         self.show_caption(type='NameCaption', title='$52000111_QD__52000111__5$', desc='$52000111_QD__52000111__6$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
 
@@ -304,7 +305,8 @@ class 쉐도우클로등장씬11(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬11_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -313,7 +315,7 @@ class 쉐도우클로등장씬11_1(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_pcFront')
@@ -354,7 +356,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 쉐도우클로등장씬12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_effect(triggerIds=[8010], visible=True)
         self.set_cinematic_ui(type=0)
@@ -380,19 +382,20 @@ class 쉐도우클로등장씬12(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10011], questIds=[20002306], questStates=[1]):
+            # 퀘스트 20002305 완료 시
             return 쉐도우클로와떠남01(self.ctx)
 
 
 # ########################씬3 쉐도우클로와pc, 재즈바로########################
 class 쉐도우클로와떠남01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.show_guide_summary(entityId=25201113, textId=25201113, duration=5000)
 
 
 # ########################씬4 PC, 대탈출########################
 class PC대탈출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9001, enable=True)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -405,7 +408,7 @@ class PC대탈출01(trigger_api.Trigger):
 
 
 class PC대탈출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_3, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1008,1009], returnView=False)
@@ -421,7 +424,7 @@ class PC대탈출02(trigger_api.Trigger):
 
 
 class PC대탈출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_PC_GO')
         self.select_camera_path(pathIds=[1010,1011], returnView=False)
 
@@ -431,7 +434,8 @@ class PC대탈출03(trigger_api.Trigger):
 
 
 class PC대탈출03_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -440,7 +444,7 @@ class PC대탈출03_1(trigger_api.Trigger):
 
 
 class Skip_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_user_path(patrolName='MS2PatrolData_PC_GO')
@@ -452,7 +456,7 @@ class Skip_3(trigger_api.Trigger):
 
 
 class PC대탈출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -466,7 +470,7 @@ class PC대탈출04(trigger_api.Trigger):
 
 # ########################어쌔신 탈출########################
 class 어쌔신탈출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -477,7 +481,7 @@ class 어쌔신탈출01(trigger_api.Trigger):
 
 
 class 어쌔신탈출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000113, portalId=0)
 
 

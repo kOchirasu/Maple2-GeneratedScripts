@@ -3,11 +3,12 @@ import trigger_api
 
 
 class 입장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[101]):
+            # self.set_local_camera(cameraId=302, enable=True)
             return 대기(self.ctx)
 
 
@@ -20,10 +21,11 @@ class 대기(trigger_api.Trigger):
 
 
 class 어나운스0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$61000010_ME__main__0$', arg3='3000', arg4='0')
         self.set_achievement(triggerId=101, type='trigger', achieve='ShanghaiRunnersStart')
-        # <action name="SetLocalCamera" cameraId="302" enable="0"/>
+        # self.set_local_camera(cameraId=302, enable=False)
+        # self.reset_camera(interpolationTime=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -31,7 +33,7 @@ class 어나운스0(trigger_api.Trigger):
 
 
 class 어나운스1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$61000006_ME__TRIGGER_03__1$', stage=0, count=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +42,7 @@ class 어나운스1(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='99', seconds=190, startDelay=0, interval=1)
         self.set_mesh(triggerIds=[3000,3001,3002,3003], visible=False)
         self.set_user_value(triggerId=999111, key='gameStart', value=1)
@@ -56,10 +58,10 @@ class 시작(trigger_api.Trigger):
 
 
 class 경기종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=3, arg2='$61000006_ME__TRIGGER_03__2$', arg3='5000', arg4='401')
         self.set_event_ui(type=6, arg2='$61000006_ME__TRIGGER_03__3$', arg3='5000', arg4='!401')
-        # <action name="버프를걸어준다" arg1="199" arg2="70000019" arg3="1"/>
+        # self.add_buff(boxIds=[199], skillId=70000019, level=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):

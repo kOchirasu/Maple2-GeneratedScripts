@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -24,7 +24,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_A')
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003_A')
         self.move_npc(spawnId=1004, patrolName='MS2PatrolData_1004_A')
@@ -37,7 +37,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 둔바대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001217, script='$52010007_QD__MAIN__0$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class 둔바대사01(trigger_api.Trigger):
 
 
 class 에레브대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010007_QD__MAIN__1$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class 에레브대사01(trigger_api.Trigger):
 
 
 class NPC이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_B')
@@ -68,7 +68,7 @@ class NPC이동2(trigger_api.Trigger):
 
 
 class 말풍선대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1003, script='$52010007_QD__MAIN__2$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -77,7 +77,7 @@ class 말풍선대사01(trigger_api.Trigger):
 
 
 class 말풍선대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1003, script='$52010007_QD__MAIN__3$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,7 +86,7 @@ class 말풍선대사02(trigger_api.Trigger):
 
 
 class 말풍선대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1004, script='$52010007_QD__MAIN__4$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class 말풍선대사03(trigger_api.Trigger):
 
 
 class 스타츠대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001292, script='$52010007_QD__MAIN__5$', arg4=4)
@@ -106,7 +106,7 @@ class 스타츠대사01(trigger_api.Trigger):
 
 
 class 스타츠이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_C')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -115,7 +115,7 @@ class 스타츠이동(trigger_api.Trigger):
 
 
 class 타라이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawnId=1004, patrolName='MS2PatrolData_1004_C')
@@ -127,7 +127,7 @@ class 타라이동(trigger_api.Trigger):
 
 
 class 둔바이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1002])
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003_C')
         self.set_conversation(type=1, spawnId=1003, script='$52010007_QD__MAIN__7$', arg4=2, arg5=0)
@@ -138,7 +138,7 @@ class 둔바이동(trigger_api.Trigger):
 
 
 class 에레브대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[1003,1004])
@@ -150,7 +150,7 @@ class 에레브대사02(trigger_api.Trigger):
 
 
 class 에레브대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010007_QD__MAIN__9$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:

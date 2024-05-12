@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000583], state=1)
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
 
@@ -13,12 +13,13 @@ class 대기(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=5)
         self.set_portal(portalId=6, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='10'):
+            # self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
             return 대기(self.ctx)
 
 

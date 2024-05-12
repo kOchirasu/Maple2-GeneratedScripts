@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=5, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[7001], visible=False)
         self.set_effect(triggerIds=[7002], visible=False)
@@ -25,7 +25,7 @@ class idle(trigger_api.Trigger):
         self.create_monster(spawnIds=[994], animationEffect=False) # 카나의 분신 994 (Battle_04)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=701, boxId=1):
+        if self.count_users(boxId=701, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
@@ -36,7 +36,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class Start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[80010,80011], returnView=True)
@@ -46,24 +46,26 @@ class Start_03(trigger_api.Trigger):
         if self.wait_tick(waitTick=3000):
             return Start_04(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
 
 
 class Start_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02010052_BF__MAIN__6$', arg3='3000')
-        # <action name="PlaySystemSoundInBox" arg2="System_ShowGuideSummary_01"/>
+        # self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
+        # self.show_guide_summary(entityId=20105205, textId=20105205)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=703, boxId=1):
+        if self.count_users(boxId=703, minUsers='1'):
             return Event_01(self.ctx)
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=80001, enable=True)
@@ -76,12 +78,12 @@ class Event_01(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_01_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.remove_cinematic_talk()
 
 
 class Event_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=21800073, script='$02010052_BF__MAIN__2$', arg4=3) # 카나 대사
         self.move_npc(spawnId=991, patrolName='MS2PatrolData_1002') # 카나의 분신 991 (이동)
         self.set_skip(state=Event_01_03)
@@ -91,7 +93,8 @@ class Event_01_02(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_01_03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
@@ -99,18 +102,18 @@ class Event_01_02(trigger_api.Trigger):
 
 
 class Event_01_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.set_effect(triggerIds=[7901], visible=True) # 카나 사라짐
         self.destroy_monster(spawnIds=[991]) # 카나 사라짐
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=702, boxId=1):
+        if self.count_users(boxId=702, minUsers='1'):
             return Event_02(self.ctx)
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=992, script='$02010052_BF__MAIN__3$', arg4=3) # 카나 말풍선 대사
         self.set_timer(timerId='3', seconds=3)
 
@@ -120,7 +123,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_02_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.set_conversation(type=1, spawnId=992, script='$02010052_BF__MAIN__4$', arg4=3, arg5=0) # 카나 말풍선 대사
@@ -133,16 +136,16 @@ class Event_02_02(trigger_api.Trigger):
 
 
 class Event_02_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[992])
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=705, boxId=1):
+        if self.count_users(boxId=705, minUsers='1'):
             return Event_03(self.ctx)
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=80002, enable=True)
@@ -155,8 +158,9 @@ class Event_03(trigger_api.Trigger):
         if self.time_expired(timerId='3'):
             return Event_03_02(self.ctx)
 
-    def on_exit(self):
-        self.remove_cinematic_talk() # 레터박스, 플레이어 조작 불가능 해제
+    def on_exit(self) -> None:
+        self.remove_cinematic_talk()
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
@@ -164,7 +168,7 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_03_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.destroy_monster(spawnIds=[993]) # 카나 사라짐

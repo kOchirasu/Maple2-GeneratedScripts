@@ -9,7 +9,7 @@ import trigger_api
 # 112 : 틴차이 (연출)
 # 103 : 애니마르 에너지
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7011], visible=False) # 참새 조용함
         self.set_breakable(triggerIds=[9001,9002,9003,9004,9005], enable=False) # 참새들 조용히 있음
         self.set_visible_breakable_object(triggerIds=[9001,9002,9003,9004,9005], visible=False) # 참새들 조용히 있음
@@ -18,8 +18,10 @@ class ready(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[701], questIds=[10003056], questStates=[3]):
+            # 준타와 틴차이 없는 스테이트
             return quest_end(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003056], questStates=[2]):
+            # 준타와 틴차이 없는 스테이트
             return quest_end(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003055], questStates=[3]):
             return start_02_resume(self.ctx)
@@ -36,7 +38,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[101,102]) # 퀘스트용 소멸
@@ -47,12 +49,12 @@ class start(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
-            self.set_achievement(triggerId=701, type='trigger', achieve='MovetoNewHouse')
+            self.set_achievement(triggerId=701, type='trigger', achieve='MovetoNewHouse') # 퀘스트 목표 체크용 업적이벤트 발생
             return ready_02(self.ctx)
 
 
 class ready_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.destroy_monster(spawnIds=[112]) # 퀘스트용 소멸
@@ -60,21 +62,23 @@ class ready_02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[701], questIds=[10003055], questStates=[1]):
+            # 10003055 가 진행중일 때
             return start_02(self.ctx)
 
 
 class start_02_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102])
         self.create_monster(spawnIds=[111,122], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[701], questIds=[10003055], questStates=[1]):
+            # 10003055 가 진행중일 때
             return start_02(self.ctx)
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102]) # 퀘스트용 소멸
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -85,12 +89,12 @@ class start_02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
-            self.move_user_path(patrolName='MS2PatrolData_9901')
+            self.move_user_path(patrolName='MS2PatrolData_9901') # 유저를 이동시킨다
             return start_02_b(self.ctx)
 
 
 class start_02_resume(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102])
         self.create_monster(spawnIds=[111,122], animationEffect=False)
         self.set_cinematic_ui(type=1)
@@ -102,12 +106,12 @@ class start_02_resume(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
-            self.move_user_path(patrolName='MS2PatrolData_9901')
+            self.move_user_path(patrolName='MS2PatrolData_9901') # 유저를 이동시킨다
             return start_02_b(self.ctx)
 
 
 class start_02_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Talk_A', duration=3000)
         self.set_conversation(type=2, spawnId=11001557, script='$52000050_QD__MAIN_01__3$', arg4=5)
 
@@ -117,7 +121,7 @@ class start_02_b(trigger_api.Trigger):
 
 
 class start_02_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$52000050_QD__MAIN_01__4$', arg4=3)
         self.set_npc_emotion_loop(spawnId=122, sequenceName='Talk_A', duration=3000)
 
@@ -127,7 +131,7 @@ class start_02_c(trigger_api.Trigger):
 
 
 class start_02_d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_1202') # 연출용 틴차이 이동
         self.set_conversation(type=2, spawnId=11001708, script='$52000050_QD__MAIN_01__5$', arg4=5)
 
@@ -137,14 +141,14 @@ class start_02_d(trigger_api.Trigger):
 
 
 class start_02_e(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.set_breakable(triggerIds=[9001,9002,9003,9004,9005], enable=True) # 참새들 조용히 있음
         self.set_visible_breakable_object(triggerIds=[9001,9002,9003,9004,9005], visible=True) # 참새들 조용히 있음
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=7000):
-            self.set_mesh(triggerIds=[6001,6002,6003,6004,6005], visible=True)
+            self.set_mesh(triggerIds=[6001,6002,6003,6004,6005], visible=True) # 참새들 표시
             self.set_mesh_animation(triggerIds=[6001,6002,6003,6004,6005], visible=True, arg3=0, arg4=0)
             return start_02_f(self.ctx)
 
@@ -157,20 +161,20 @@ class start_02_f(trigger_api.Trigger):
 
 
 class start_02_g(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
         self.set_npc_emotion_loop(spawnId=122, sequenceName='Talk_A', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
-            self.set_breakable(triggerIds=[9001,9002,9003,9004,9005], enable=False)
-            self.set_visible_breakable_object(triggerIds=[9001,9002,9003,9004,9005], visible=False)
-            self.move_npc(spawnId=122, patrolName='MS2PatrolData_1203')
+            self.set_breakable(triggerIds=[9001,9002,9003,9004,9005], enable=False) # 참새들 조용히 있음
+            self.set_visible_breakable_object(triggerIds=[9001,9002,9003,9004,9005], visible=False) # 참새들 조용히 있음
+            self.move_npc(spawnId=122, patrolName='MS2PatrolData_1203') # 연출용 틴차이 이동
             return start_02_h(self.ctx)
 
 
 class start_02_h(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$52000050_QD__MAIN_01__6$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,18 +183,18 @@ class start_02_h(trigger_api.Trigger):
 
 
 class start_02_i(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=122, sequenceName='Talk_A', duration=3000)
         self.set_conversation(type=2, spawnId=11001708, script='$52000050_QD__MAIN_01__7$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
-            self.set_achievement(triggerId=701, type='trigger', achieve='SingingOfBirds')
+            self.set_achievement(triggerId=701, type='trigger', achieve='SingingOfBirds') # 퀘스트 목표 체크용 업적이벤트 발생
             return start_02_j(self.ctx)
 
 
 class start_02_j(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=True)
         self.destroy_monster(spawnIds=[111]) # 퀘스트용 소멸
         self.create_monster(spawnIds=[121], animationEffect=False) # 퀘스트용 리젠
@@ -203,7 +207,7 @@ class start_02_j(trigger_api.Trigger):
 
 
 class start_02_j_resume(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102])
         self.destroy_monster(spawnIds=[111]) # 퀘스트용 소멸
         self.create_monster(spawnIds=[121,122], animationEffect=False) # 퀘스트용 리젠
@@ -218,13 +222,13 @@ class start_02_j_resume(trigger_api.Trigger):
 
 
 class start_02_k(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=121, patrolName='MS2PatrolData_1204') # 연출용 준타 이동
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_1204') # 연출용 틴차이 이동
 
 
 class quest_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102]) # 퀘스트용 소멸
 
 

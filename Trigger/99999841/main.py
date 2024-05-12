@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=1, value=0)
         self.set_user_value(triggerId=99990002, key='Team2Battle', value=0)
         self.set_user_value(triggerId=99990003, key='Start', value=0)
@@ -12,12 +12,12 @@ class 대기(trigger_api.Trigger):
         self.set_user_value(triggerId=99990015, key='Start', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9001, boxId=3, operator='Equal'):
+        if self.count_users(boxId=9001, minUsers='3', operator='Equal'):
             return 세팅(self.ctx)
 
 
 class 세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='잠시 후 경기가 시작됩니다.', arg3='5000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,9 +26,9 @@ class 세팅(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=1, value=1)
-        self.set_event_ui(type=1, arg2='경기 시작!\n당신은 B팀입니다.', arg3='3000')
+        self.set_event_ui(type=1, arg2='경기 시작!\\n당신은 B팀입니다.', arg3='3000')
         self.set_user_value(triggerId=99990002, key='Team2Battle', value=1)
         self.set_user_value(triggerId=99990003, key='Start', value=1)
         self.set_user_value(triggerId=99990004, key='Start', value=1)
@@ -41,8 +41,8 @@ class 시작(trigger_api.Trigger):
 
 
 class 메시지1(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_event_ui(type=1, arg2='검은 군단을 해치우고 자원을 획득하세요.\n획득한 자원을 20개 모아서 보스를 불러내세요.\n한번에 최대 9개의 자원을 들 수 있습니다.', arg3='4000')
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_event_ui(type=1, arg2='검은 군단을 해치우고 자원을 획득하세요.\\n획득한 자원을 20개 모아서 보스를 불러내세요.\\n한번에 최대 9개의 자원을 들 수 있습니다.', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_variable(varId=2, value=1):
@@ -52,7 +52,7 @@ class 메시지1(trigger_api.Trigger):
 
 
 class A팀승리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='A팀이 승리했습니다!', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class A팀승리(trigger_api.Trigger):
 
 
 class B팀승리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='B팀이 승리했습니다!', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class B팀승리(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990002, key='Team2Battle', value=0)
         self.set_user_value(triggerId=99990003, key='Start', value=0)
         self.set_user_value(triggerId=99990004, key='Start', value=0)

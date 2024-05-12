@@ -9,7 +9,7 @@ import trigger_api
 # 112 : 틴차이 (연출)
 # 103 : 애니마르 에너지
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8099], enable=False)
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False) # 연출용 라오즈리젠
         self.set_mesh(triggerIds=[2116], visible=False, arg3=0, delay=0, scale=0)
@@ -25,7 +25,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrolName='MS2PatrolData_2001') # 유저를 이동시킨다
@@ -37,7 +37,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7012], visible=True)
         self.set_mesh(triggerIds=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=False, arg3=0, delay=100, scale=8) # 모니터 켜짐
         self.set_mesh(triggerIds=[2116], visible=True, arg3=0, delay=100, scale=3)
@@ -51,7 +51,7 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7012], visible=False)
         self.set_conversation(type=1, spawnId=0, script='$52000049_QD__MAIN_01__1$', arg4=3, arg5=0)
 
@@ -61,7 +61,7 @@ class start_03(trigger_api.Trigger):
 
 
 class start_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001761, script='$52000049_QD__MAIN_01__2$', arg4=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class start_04(trigger_api.Trigger):
 
 
 class start_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001761, script='$52000049_QD__MAIN_01__3$', arg4=4)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Event_A')
 
@@ -83,12 +83,12 @@ class start_05(trigger_api.Trigger):
 class start_06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            self.destroy_monster(spawnIds=[301,302,303,304,305,306])
+            self.destroy_monster(spawnIds=[301,302,303,304,305,306]) # 연출용 라오즈소멸
             return start_07(self.ctx)
 
 
 class start_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001,7002,7003,7004,7005,7006], visible=True)
         self.create_monster(spawnIds=[201,202,203,204,205,206], animationEffect=False) # 연출용 비전 리젠
 
@@ -98,7 +98,7 @@ class start_07(trigger_api.Trigger):
 
 
 class start_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2003') # 유저를 이동시킨다
         self.select_camera_path(pathIds=[8005,8006,8007], returnView=False)
         self.set_conversation(type=2, spawnId=11001761, script='$52000049_QD__MAIN_01__4$', arg4=4)
@@ -109,7 +109,7 @@ class start_08(trigger_api.Trigger):
 
 
 class start_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000049_QD__MAIN_01__5$', arg4=3, arg5=0)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Failure_A','Emotion_Failure_Idle_A'])
 
@@ -119,7 +119,7 @@ class start_09(trigger_api.Trigger):
 
 
 class start_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000049_QD__MAIN_01__6$', arg4=3, arg5=0)
         self.set_pc_emotion_loop(sequenceName='Emotion_Failure_Idle_A', duration=6000)
 
@@ -129,7 +129,7 @@ class start_10(trigger_api.Trigger):
 
 
 class start_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001761, script='$52000049_QD__MAIN_01__7$', arg4=4)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Event_A')
         self.select_camera_path(pathIds=[8008], returnView=False)
@@ -140,7 +140,7 @@ class start_11(trigger_api.Trigger):
 
 
 class start_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2004') # 유저를 이동시킨다
         self.select_camera_path(pathIds=[8009], returnView=False)
         self.set_conversation(type=2, spawnId=11001761, script='$52000049_QD__MAIN_01__8$', arg4=4)
@@ -152,7 +152,7 @@ class start_12(trigger_api.Trigger):
 
 
 class start_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7010], visible=True)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2011') # 비전 클론 이동
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_2012') # 비전 클론 이동
@@ -167,7 +167,7 @@ class start_13(trigger_api.Trigger):
 
 
 class start_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7011], visible=True)
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Failure_A','Emotion_Failure_Idle_A'])
 
@@ -177,7 +177,7 @@ class start_14(trigger_api.Trigger):
 
 
 class start_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Emotion_Failure_Idle_A', duration=18000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,19 +192,19 @@ class start_16(trigger_api.Trigger):
 
 
 class start_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[501], animationEffect=False) # 연출용 리젠 준타
         self.select_camera_path(pathIds=[8010,8011,8012], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=700):
             self.set_skill(triggerIds=[8099], enable=True)
-            self.move_npc(spawnId=201, patrolName='MS2PatrolData_2021')
-            self.move_npc(spawnId=202, patrolName='MS2PatrolData_2022')
-            self.move_npc(spawnId=203, patrolName='MS2PatrolData_2023')
-            self.move_npc(spawnId=204, patrolName='MS2PatrolData_2024')
-            self.move_npc(spawnId=205, patrolName='MS2PatrolData_2025')
-            self.move_npc(spawnId=206, patrolName='MS2PatrolData_2026')
+            self.move_npc(spawnId=201, patrolName='MS2PatrolData_2021') # 비전 클론 이동
+            self.move_npc(spawnId=202, patrolName='MS2PatrolData_2022') # 비전 클론 이동
+            self.move_npc(spawnId=203, patrolName='MS2PatrolData_2023') # 비전 클론 이동
+            self.move_npc(spawnId=204, patrolName='MS2PatrolData_2024') # 비전 클론 이동
+            self.move_npc(spawnId=205, patrolName='MS2PatrolData_2025') # 비전 클론 이동
+            self.move_npc(spawnId=206, patrolName='MS2PatrolData_2026') # 비전 클론 이동
             self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_B')
             self.set_npc_emotion_sequence(spawnId=202, sequenceName='Bore_B')
             self.set_npc_emotion_sequence(spawnId=203, sequenceName='Bore_B')
@@ -218,28 +218,28 @@ class start_18(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             self.set_effect(triggerIds=[7010], visible=False)
-            self.destroy_monster(spawnIds=[201,202,203,204,205,206])
+            self.destroy_monster(spawnIds=[201,202,203,204,205,206]) # 퀘스트용 소멸
             return start_19(self.ctx)
 
 
 class start_19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_2030') # 준타 이동
         self.set_conversation(type=1, spawnId=501, script='$52000049_QD__MAIN_01__9$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             self.set_conversation(type=1, spawnId=101, script='$52000049_QD__MAIN_01__10$', arg4=3, arg5=0)
-            self.move_npc(spawnId=101, patrolName='MS2PatrolData_2099')
+            self.move_npc(spawnId=101, patrolName='MS2PatrolData_2099') # 칸두라 이동
             return start_20(self.ctx)
 
 
 class start_20(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            self.set_achievement(triggerId=701, type='trigger', achieve='HeroJunta')
-            self.set_mesh(triggerIds=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=True, arg3=0, delay=100, scale=8)
-            self.destroy_monster(spawnIds=[101])
+            self.set_achievement(triggerId=701, type='trigger', achieve='HeroJunta') # 퀘스트 목표 체크용 업적이벤트 발생
+            self.set_mesh(triggerIds=[2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115], visible=True, arg3=0, delay=100, scale=8) # 모니터 꺼짐
+            self.destroy_monster(spawnIds=[101]) # 퀘스트용 소멸
             self.select_camera_path(pathIds=[8013], returnView=True)
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
@@ -249,8 +249,8 @@ class start_20(trigger_api.Trigger):
 class start_21(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[2]):
-            self.destroy_monster(spawnIds=[501])
-            self.create_monster(spawnIds=[502], animationEffect=False)
+            self.destroy_monster(spawnIds=[501]) # 연출용 준타 소멸
+            self.create_monster(spawnIds=[502], animationEffect=False) # 퀘스트용 준타 생성
             return start_22(self.ctx)
 
 
@@ -262,7 +262,7 @@ class start_22(trigger_api.Trigger):
 
 
 class start_23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[502], animationEffect=False) # 연출용 리젠 준타
 
     def on_tick(self) -> trigger_api.Trigger:

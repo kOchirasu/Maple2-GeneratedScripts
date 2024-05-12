@@ -7,20 +7,22 @@ class idle(trigger_api.Trigger):
         if self.user_detected(boxIds=[705], jobCode=1):
             return start_sound(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[9000005], visible=True) # TeleportSound EFfect On
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[9000005], visible=True)
+        # TeleportSound EFfect On
 
 
 class start_sound(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
             return idle(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[9000005], visible=False) # TeleportSound EFfect On
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[9000005], visible=False)
+        # TeleportSound EFfect On
 
 
 initial_state = idle

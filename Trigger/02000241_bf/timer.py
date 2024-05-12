@@ -6,14 +6,14 @@ from dungeon_common.checkusercount import *
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[2001], visible=False)
         self.set_effect(triggerIds=[2002], visible=False)
         self.set_effect(triggerIds=[2003], visible=False)
         self.set_mesh(triggerIds=[709,710], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=205, boxId=1):
+        if self.count_users(boxId=205, minUsers='1'):
             return CheckUserCount(self.ctx)
 
 
@@ -24,7 +24,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 어나운스0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='88', seconds=5, startDelay=0)
         self.set_effect(triggerIds=[2001], visible=True)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__0$', arg3='5000', arg4='0')
@@ -35,7 +35,7 @@ class 어나운스0(trigger_api.Trigger):
 
 
 class 어나운스1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='88', seconds=5, startDelay=0)
         self.set_effect(triggerIds=[2002], visible=True)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__1$', arg3='5000', arg4='0')
@@ -45,8 +45,37 @@ class 어나운스1(trigger_api.Trigger):
             return 초재기0(self.ctx)
 
 
+"""
+class 어나운스2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_timer(timerId='88', seconds=5, startDelay=0)
+        self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__2$', arg3='5000', arg4='0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.time_expired(timerId='88'):
+            return None # Missing State: 어나운스3
+        if self.count_users(boxId=205, minUsers='4'):
+            return 초재기0(self.ctx)
+
+"""
+
+
+"""
+class 어나운스3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_timer(timerId='88', seconds=5, startDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.count_users(boxId=205, minUsers='4'):
+            return 초재기0(self.ctx)
+        if self.time_expired(timerId='88'):
+            return None # Missing State: 어나운스2
+
+"""
+
+
 class 초재기0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='98', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +84,7 @@ class 초재기0(trigger_api.Trigger):
 
 
 class 시작0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_timer(timerId='98', seconds=1)
 
@@ -65,7 +94,7 @@ class 시작0(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_event_ui(type=1, arg2='$02000241_BF__TIMER__4$', arg3='5000', arg4='0')
         self.set_mesh(triggerIds=[709,710], visible=False)
@@ -83,7 +112,8 @@ class 초재기2(trigger_api.Trigger):
 
 
 class 유저이동음성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_effect(triggerIds=[2003], visible=True)
         self.set_timer(timerId='1', seconds=3)
 
     def on_tick(self) -> trigger_api.Trigger:

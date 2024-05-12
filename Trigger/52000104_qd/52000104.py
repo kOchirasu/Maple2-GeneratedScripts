@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.create_monster(spawnIds=[205], animationEffect=False) # 리에나플라워등장
@@ -49,7 +49,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000104, portalId=1)
 
@@ -59,9 +59,9 @@ class 영상준비_01(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\JobIntro_Berserker.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\JobIntro_Berserker.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -71,7 +71,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 리엔전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1000,1001], returnView=False)
@@ -83,7 +83,7 @@ class 리엔전경씬01(trigger_api.Trigger):
 
 
 class 리엔전경씬01_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -92,7 +92,7 @@ class 리엔전경씬01_B(trigger_api.Trigger):
 
 
 class 리엔전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1002,1003], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -103,7 +103,7 @@ class 리엔전경씬02(trigger_api.Trigger):
 
 
 class 리엔전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000104_QD__52000104__0$', desc='$52000104_QD__52000104__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class 리엔전경씬03(trigger_api.Trigger):
 
 
 class 리엔전경씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,8 +121,9 @@ class 리엔전경씬04(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +132,7 @@ class Quit01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -142,7 +143,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5301], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5302], visible=True) # 경로 안내
@@ -174,7 +175,7 @@ class Quit02(trigger_api.Trigger):
 
 # ########################씬2 리린 등장########################
 class 리린과대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -186,7 +187,7 @@ class 리린과대화01(trigger_api.Trigger):
 
 
 class 리린과대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_Ririn_Go')
@@ -198,7 +199,7 @@ class 리린과대화02(trigger_api.Trigger):
 
 
 class 리린과대화03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1006,1007], returnView=False)
         self.face_emotion(spawnId=200, emotionName='hello_Cait')
         self.show_caption(type='NameCaption', title='$52000104_QD__52000104__3$', desc='$52000104_QD__52000104__4$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
@@ -209,7 +210,8 @@ class 리린과대화03(trigger_api.Trigger):
 
 
 class 리린과대화04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -218,7 +220,7 @@ class 리린과대화04(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.reset_camera(interpolationTime=1)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
@@ -229,7 +231,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 리린과대화05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -259,17 +261,19 @@ class 리린과대화05(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[10011], questIds=[20002317], questStates=[1]):
             return 꽃섬멸퀘스트01(self.ctx)
         if self.quest_user_detected(boxIds=[10011], questIds=[20002317], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 할아버지등장씬01(self.ctx)
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[1]):
             return 할아버지등장씬01(self.ctx)
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[2]):
             return 할아버지등장씬01(self.ctx)
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 할아버지등장씬01(self.ctx)
 
 
 class 꽃가꾸기퀘스트01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25201042, textId=25201042, duration=10000)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_Ririn_Go2') # 마드리아 이동
 
@@ -280,7 +284,7 @@ class 꽃가꾸기퀘스트01(trigger_api.Trigger):
 
 # ########################씬3 꽃 섬멸 퀘스트########################
 class 꽃섬멸퀘스트01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1006,1007], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -292,7 +296,7 @@ class 꽃섬멸퀘스트01(trigger_api.Trigger):
 
 
 class 꽃섬멸퀘스트02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1006,1007], returnView=False)
 
@@ -302,7 +306,7 @@ class 꽃섬멸퀘스트02(trigger_api.Trigger):
 
 
 class 꽃섬멸퀘스트03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -313,12 +317,13 @@ class 꽃섬멸퀘스트03(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10011], questIds=[20002317], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 할아버지등장씬01(self.ctx)
 
 
 # ########################씬4 할아버지 등장########################
 class 할아버지등장씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=9000, enable=False) # 코믹한 상황 브금
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -330,7 +335,7 @@ class 할아버지등장씬01(trigger_api.Trigger):
 
 
 class 할아버지등장씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_3, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_ten_go')
@@ -344,7 +349,7 @@ class 할아버지등장씬02(trigger_api.Trigger):
 
 
 class 할아버지등장씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003175, illustId='Ten_normal', msg='$52000104_QD__52000104__6$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -353,7 +358,7 @@ class 할아버지등장씬03(trigger_api.Trigger):
 
 
 class 할아버지등장씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='NameCaption', title='$52000104_QD__52000104__7$', desc='$52000104_QD__52000104__8$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -362,7 +367,8 @@ class 할아버지등장씬04(trigger_api.Trigger):
 
 
 class 할아버지등장씬04_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -371,7 +377,7 @@ class 할아버지등장씬04_1(trigger_api.Trigger):
 
 
 class Skip_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.reset_camera(interpolationTime=1)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_ten_go')
@@ -383,7 +389,7 @@ class Skip_3(trigger_api.Trigger):
 
 
 class 할아버지등장씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -396,12 +402,13 @@ class 할아버지등장씬05(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[2]):
             return 대검바라보기01(self.ctx)
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 수련장으로이동01(self.ctx)
 
 
 # ########################씬5 대검 바라보기########################
 class 대검바라보기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_Ririn_Go3') # 리린 이동
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_ten_go2') # 텐 이동
         self.show_guide_summary(entityId=25201044, textId=25201044, duration=10000)
@@ -425,11 +432,12 @@ class 대검바라보기01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10011], questIds=[20002319], questStates=[3]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 수련장으로이동01(self.ctx)
 
 
 class 수련장으로이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5400], visible=False) # 경로 안내
         self.set_effect(triggerIds=[5401], visible=False) # 경로 안내
         self.set_effect(triggerIds=[5402], visible=False) # 경로 안내
@@ -459,7 +467,7 @@ class 수련장으로이동01(trigger_api.Trigger):
 
 
 class 수련장으로이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.destroy_monster(spawnIds=[102])
 

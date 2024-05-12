@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 차감지2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002010], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 차감지2(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
 
@@ -22,7 +22,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 카메리이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000010], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 카메리이동(trigger_api.Trigger):
 
 
 class 탈것등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[7001], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -40,7 +40,7 @@ class 탈것등장(trigger_api.Trigger):
 
 
 class 폭발_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10052], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -49,7 +49,7 @@ class 폭발_1(trigger_api.Trigger):
 
 
 class 폭발_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10053], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 폭발_2(trigger_api.Trigger):
 
 
 class 폭발_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10054], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +67,7 @@ class 폭발_3(trigger_api.Trigger):
 
 
 class 맵폭발연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[10051], visible=True)
         self.set_skill(triggerIds=[6007], enable=True)
 
@@ -77,7 +77,7 @@ class 맵폭발연출(trigger_api.Trigger):
 
 
 class 연출끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000010], returnView=True)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=0)
@@ -86,12 +86,12 @@ class 연출끝(trigger_api.Trigger):
         if self.wait_tick(waitTick=1000):
             return 오브젝트반응(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[6100004], animationEffect=False)
 
 
 class 오브젝트반응(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='좋아! 이 녀석을 타고 돌격해야겠어!!', arg4=3, arg5=0)
         self.set_interact_object(triggerIds=[10002010], state=1)
 
@@ -107,25 +107,29 @@ class 오브젝트반응_2(trigger_api.Trigger):
 
 
 class 오브젝트반응_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002010], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=100):
             return 카메라연출(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[7001], arg2=False)
 
 
 class 카메라연출(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.select_camera_path(pathIds=[2000009], returnView=False)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
             return 알림(self.ctx)
 
 
 class 알림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='출력이 부족해 크리티아스로 진입할 수 없습니다.', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,8 +138,8 @@ class 알림(trigger_api.Trigger):
 
 
 class 알림_2(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_event_ui(type=1, arg2='적들을 처치하면 에너지를 충전할 수 있습니다.\n제한시간 내에 100%충전해, 크리티아스로 진입하세요!', arg3='4000')
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_event_ui(type=1, arg2='적들을 처치하면 에너지를 충전할 수 있습니다.\\n제한시간 내에 100%충전해, 크리티아스로 진입하세요!', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -143,7 +147,7 @@ class 알림_2(trigger_api.Trigger):
 
 
 class 타이머시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='110', seconds=360, startDelay=1, interval=1, vOffset=80)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +156,7 @@ class 타이머시작(trigger_api.Trigger):
 
 
 class 몬스터생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[6000030], animationEffect=False)
         self.create_monster(spawnIds=[6000031], animationEffect=False)
         self.create_monster(spawnIds=[6000032], animationEffect=False)
@@ -169,8 +173,19 @@ class 몬스터생성(trigger_api.Trigger):
             return 실패(self.ctx)
 
 
+"""
+class 몬스터전멸(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.monster_dead(boxIds=[6000030,6000031,6000032,6000033,6000034]):
+            return 몬스터생성(self.ctx)
+        if self.time_expired(timerId='110'):
+            return 실패(self.ctx)
+
+"""
+
+
 class 실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[2000009], returnView=True)
         self.set_effect(triggerIds=[10090], visible=True)
         self.set_effect(triggerIds=[10091], visible=True)
@@ -183,7 +198,7 @@ class 실패(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=100):
-            return None
+            pass
 
 
 initial_state = 차감지2

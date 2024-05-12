@@ -28,7 +28,7 @@ class 말풍선랜덤(trigger_api.Trigger):
 
 
 class NPC대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=5003, script='$02000066_BF__OSCAL__0$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +37,7 @@ class NPC대사01(trigger_api.Trigger):
 
 
 class NPC대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=5003, script='$02000066_BF__OSCAL__1$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class NPC대사02(trigger_api.Trigger):
 
 
 class NPC대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=5003, script='$02000066_BF__OSCAL__2$', arg4=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class NPC대사03(trigger_api.Trigger):
 
 
 class NPC대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=5003, script='$02000066_BF__OSCAL__3$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:

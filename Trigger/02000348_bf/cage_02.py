@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2102], visible=False, arg3=0, delay=10)
         self.set_effect(triggerIds=[8002], visible=False)
         self.set_actor(triggerId=2202, visible=False, initialSequence='Sit_Ground_Idle_A')
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2102], visible=True, arg3=0, delay=0)
         self.set_effect(triggerIds=[8002], visible=True)
         self.set_actor(triggerId=2202, visible=True, initialSequence='Sit_Ground_Idle_A')
@@ -25,7 +25,7 @@ class ready(trigger_api.Trigger):
 
 
 class npc(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8002], visible=False)
         self.set_mesh(triggerIds=[2102], visible=False, arg3=0, delay=10)
         self.set_actor(triggerId=2202, visible=False, initialSequence='Dead_A')
@@ -37,7 +37,7 @@ class npc(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[222])
 
 

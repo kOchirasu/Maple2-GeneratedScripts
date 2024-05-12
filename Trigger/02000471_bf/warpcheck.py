@@ -3,13 +3,22 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040318, key='InteractClear', value=0)
         self.set_user_value(triggerId=2040323, key='Warp', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='Boss', value=1):
             return warp_condition(self.ctx)
+
+
+"""
+class warp(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if not self.user_value(key='10002019clear', value=1) or not self.user_value(key='10002020clear', value=1) or not self.user_value(key='10002021clear', value=1) or not self.user_value(key='10002022clear', value=1) or not self.user_value(key='10002023clear', value=1) or not self.user_value(key='10002024clear', value=1):
+            return warp_condition(self.ctx)
+
+"""
 
 
 class warp_condition(trigger_api.Trigger):
@@ -21,7 +30,7 @@ class warp_condition(trigger_api.Trigger):
 
 
 class warp_1st(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=1)
         self.set_interact_object(triggerIds=[10002107], state=1)
         self.set_mesh(triggerIds=[1207,1208], visible=True, arg3=0, delay=0, scale=0)
@@ -40,7 +49,7 @@ class warp_1st(trigger_api.Trigger):
 
 
 class warp_cancel(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=0)
         self.set_interact_object(triggerIds=[10002107], state=0)
         self.set_mesh(triggerIds=[1207,1208], visible=False, arg3=0, delay=0, scale=0)
@@ -55,7 +64,7 @@ class warp_cancel(trigger_api.Trigger):
 
 
 class warp_go(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=0)
         self.set_interact_object(triggerIds=[10002107], state=0)
         self.set_mesh(triggerIds=[1207,1208], visible=False, arg3=0, delay=0, scale=0)
@@ -70,7 +79,7 @@ class warp_go(trigger_api.Trigger):
 
 
 class warp_2nd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=1)
         self.set_interact_object(triggerIds=[10002107], state=1)
         self.set_mesh(triggerIds=[1207,1208], visible=True, arg3=0, delay=0, scale=10)
@@ -89,7 +98,7 @@ class warp_2nd(trigger_api.Trigger):
 
 
 class warp2_cancel(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=0)
         self.set_interact_object(triggerIds=[10002107], state=0)
         self.set_mesh(triggerIds=[1207,1208], visible=False, arg3=0, delay=0, scale=0)
@@ -104,7 +113,7 @@ class warp2_cancel(trigger_api.Trigger):
 
 
 class warp_go2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002106], state=0)
         self.set_interact_object(triggerIds=[10002107], state=0)
         self.set_mesh(triggerIds=[1207,1208], visible=False, arg3=0, delay=0, scale=0)

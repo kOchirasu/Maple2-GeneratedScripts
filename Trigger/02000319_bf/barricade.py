@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 카운트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=1200)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 카운트(trigger_api.Trigger):
 
 
 class 차단(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112], visible=True, arg3=0, delay=200)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 차단(trigger_api.Trigger):
 
 
 class 차단해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104,105,106,107,108,109,110,111,112], visible=False, arg3=0, delay=200)
 
     def on_tick(self) -> trigger_api.Trigger:

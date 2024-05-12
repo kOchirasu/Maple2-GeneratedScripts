@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 업적(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=102, type='trigger', achieve='WinSanghaiRunners')
 
 

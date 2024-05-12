@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[701], enable=False)
         self.set_effect(triggerIds=[601], visible=False) # 스킬 준비 효과음
         self.set_effect(triggerIds=[602], visible=False) # 스킬 발동 효과음
@@ -73,7 +73,7 @@ class 스킬발동(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002906)
 
 

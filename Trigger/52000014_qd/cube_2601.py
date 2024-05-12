@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2601], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[2602], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[2603], visible=True, arg3=0, delay=0, scale=0)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 무너짐01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
         self.set_effect(triggerIds=[12601], visible=True) # Fire Cast Sound
         self.set_mesh(triggerIds=[2601], visible=False, arg3=0, delay=0, scale=1)
@@ -28,7 +28,7 @@ class 무너짐01(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12601], visible=False) # Fire Cast Sound
 
 

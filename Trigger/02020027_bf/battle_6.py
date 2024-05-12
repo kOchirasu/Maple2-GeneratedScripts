@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 전투시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990009, key='summon_2', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 스킬사용(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=False, animationDelay=1000)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -9,7 +9,7 @@ class 오브젝트_03(trigger_api.Trigger):
 
 
 class 오브젝트_03_작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[10001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

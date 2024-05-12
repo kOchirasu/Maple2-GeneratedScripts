@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False) # 나메드 치유 시전 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 붉은 늑대의 심장 치유 이펙트
 
@@ -13,7 +13,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -32,7 +32,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 치유의식_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
@@ -45,7 +45,7 @@ class 치유의식_01(trigger_api.Trigger):
 
 
 class 치유의식_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3002')
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Bore_A')
@@ -57,7 +57,7 @@ class 치유의식_02(trigger_api.Trigger):
 
 
 class 치유의식_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_B')
         self.set_effect(triggerIds=[5001], visible=True)
@@ -71,7 +71,7 @@ class 치유의식_03(trigger_api.Trigger):
 
 
 class 치유의식_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,7 +80,7 @@ class 치유의식_04(trigger_api.Trigger):
 
 
 class 치유의식_04_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=True)
@@ -98,7 +98,7 @@ class 치유의식_04_1(trigger_api.Trigger):
 
 
 class 치유의식_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +107,7 @@ class 치유의식_05(trigger_api.Trigger):
 
 
 class 치유의식_05_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera_path(pathIds=[4003,4001], returnView=False)
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_B')
@@ -126,11 +126,12 @@ class 치유의식_05_1(trigger_api.Trigger):
 
 
 class 의식종료_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Bore_A')
         self.move_user_path(patrolName='MS2PatrolData_3007')
         self.add_cinematic_talk(npcId=0, msg='$52010032_QD__MAIN_QUEST10003095__12$', duration=3000)
         self.add_cinematic_talk(npcId=11003389, msg='$52010032_QD__MAIN_QUEST10003095__13$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,8 +140,9 @@ class 의식종료_01(trigger_api.Trigger):
 
 
 class 의식종료_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=2001, type='trigger', achieve='Namid2')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +151,7 @@ class 의식종료_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_achievement(triggerId=2001, type='trigger', achieve='Namid2')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -163,7 +165,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.create_monster(spawnIds=[202], animationEffect=True) # 나메드:
         self.destroy_monster(spawnIds=[201])
@@ -173,7 +175,7 @@ class 종료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = idle

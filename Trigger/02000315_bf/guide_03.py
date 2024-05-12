@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # UI
         self.set_user_value(key='CameraWalkEnd', value=0)
 
@@ -25,9 +25,10 @@ class LoadingDelay02(trigger_api.Trigger):
 
 
 class FirstBattleGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[502]):
@@ -35,9 +36,10 @@ class FirstBattleGuide(trigger_api.Trigger):
 
 
 class FirstBridgeGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[503]):
@@ -45,9 +47,10 @@ class FirstBridgeGuide(trigger_api.Trigger):
 
 
 class SecondBattleGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[505]):
@@ -55,9 +58,10 @@ class SecondBattleGuide(trigger_api.Trigger):
 
 
 class SecondBridgeGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[506]):
@@ -65,9 +69,10 @@ class SecondBridgeGuide(trigger_api.Trigger):
 
 
 class ThirdBattleGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000) # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        # 부상병을 치료하고 함께 몬스터를 처치하세요.
+        self.show_guide_summary(entityId=20031501, textId=20031501, duration=8000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[508]):
@@ -75,9 +80,10 @@ class ThirdBattleGuide(trigger_api.Trigger):
 
 
 class ThirdBridgeGuide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # UI
-        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000) # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        # 레버를 당기면 다음 지역으로 이동할 수 있습니다.
+        self.show_guide_summary(entityId=20031502, textId=20031502, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[402]):
@@ -85,7 +91,7 @@ class ThirdBridgeGuide(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20031502)
 
 

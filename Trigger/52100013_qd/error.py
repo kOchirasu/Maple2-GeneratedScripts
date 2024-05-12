@@ -21,7 +21,7 @@ class idle(trigger_api.Trigger):
 
 
 class error(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_random_user(mapId=52100013, portalId=2, triggerId=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class quest_idle(trigger_api.Trigger):
 
 
 class quest_error(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_random_user(mapId=52100013, portalId=2, triggerId=702, count=4)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class quest_error(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1001,1002], visible=False)
 
 

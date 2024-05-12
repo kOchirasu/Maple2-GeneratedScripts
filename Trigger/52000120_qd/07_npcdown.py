@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001171], state=2)
         self.destroy_monster(spawnIds=[233]) # NPC
         self.set_user_value(key='NpcDown', value=0)
@@ -15,16 +15,17 @@ class Wait(trigger_api.Trigger):
 
 
 class Delay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='NpcDown', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=40000):
+            # NPC 마다 다름
             return NpcDown(self.ctx)
 
 
 class NpcDown(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[223])
         self.set_interact_object(triggerIds=[10001171], state=1)
 
@@ -36,7 +37,7 @@ class NpcDown(trigger_api.Trigger):
 
 
 class NpcWakeUp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001171], state=2)
         self.create_monster(spawnIds=[233], animationEffect=False)
 
@@ -48,18 +49,19 @@ class NpcWakeUp(trigger_api.Trigger):
 
 
 class Delay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001171], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BattleEnd', value=1):
             return Quit(self.ctx)
         if self.wait_tick(waitTick=40000):
+            # NPC 마다 다름
             return NpcDown02(self.ctx)
 
 
 class NpcDown02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[222])
         self.set_interact_object(triggerIds=[10001171], state=1)
 
@@ -71,7 +73,7 @@ class NpcDown02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[222,223])
         self.set_interact_object(triggerIds=[10001171], state=0)
 

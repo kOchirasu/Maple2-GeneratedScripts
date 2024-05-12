@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 오브젝트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[10001], enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 오브젝트_01(trigger_api.Trigger):
 
 
 class 오브젝트_01_작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[10001], enable=True)
 
 

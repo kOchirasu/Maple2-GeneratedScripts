@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=False) # PortalOn
         self.set_ladder(triggerIds=[520], visible=False, animationEffect=False, animationDelay=0) # Ladder
         self.set_ladder(triggerIds=[521], visible=False, animationEffect=False, animationDelay=0) # Ladder
@@ -25,7 +25,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Opened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3202], visible=False, arg3=0, delay=0, scale=0) # Bookcase
         self.set_interact_object(triggerIds=[10002039], state=1) # Bookcase
 
@@ -35,7 +35,7 @@ class Opened(trigger_api.Trigger):
 
 
 class LadderOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3203], visible=False, arg3=0, delay=0, scale=0) # BookcaseInvisible
         self.set_ladder(triggerIds=[520], visible=True, animationEffect=True, animationDelay=2) # Ladder
@@ -48,7 +48,7 @@ class LadderOn(trigger_api.Trigger):
 
 
 class Closed(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3202], visible=False, arg3=0, delay=0, scale=0) # Bookcase
         self.set_interact_object(triggerIds=[10002039], state=1) # Bookcase
 
@@ -58,7 +58,7 @@ class Closed(trigger_api.Trigger):
 
 
 class NothingHappened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3202], visible=True, arg3=0, delay=0, scale=0) # Bookcase
 
 

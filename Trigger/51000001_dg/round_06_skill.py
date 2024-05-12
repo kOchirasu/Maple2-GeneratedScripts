@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3601], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3602], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3603], visible=False, arg3=0, delay=0, scale=0)
@@ -57,34 +57,37 @@ class D지역(trigger_api.Trigger):
 
 
 class 스킬랜덤(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=199, type='trigger', achieve='random_buff_box')
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.user_detected(boxIds=[106]):
             return 종료(self.ctx)
-        if self.random_condition(rate=40):
-            self.add_buff(boxIds=[199], skillId=49179051, level=1, isPlayer=False, isSkillSet=False)
+        """
+        if self.random_condition(rate=20): # 소형화 사용 안함
+            self.add_buff(boxIds=[199], skillId=49179081, level=1, isPlayer=False, isSkillSet=False)
             return 대기시간(self.ctx)
         """
-        <condition name="랜덤조건" arg1="20">    소형화 사용 안함
-                    <action name="버프를걸어준다" arg1="199" arg2="49179081" arg3="1" arg4="0" arg5="0"/>
-                    <transition state="대기시간" />
-                </condition>
-        """
+        if self.random_condition(rate=40):
+            # 이속증가
+            self.add_buff(boxIds=[199], skillId=49179051, level=1, isPlayer=False, isSkillSet=False)
+            return 대기시간(self.ctx)
         if self.random_condition(rate=30):
+            # 무적 20
             self.add_buff(boxIds=[199], skillId=70000085, level=1, isSkillSet=False)
             return 대기시간(self.ctx)
         if self.random_condition(rate=15):
+            # 이속감소 10
             self.add_buff(boxIds=[199], skillId=49179061, level=1, isPlayer=False, isSkillSet=False)
             return 대기시간(self.ctx)
         if self.random_condition(rate=15):
+            # 혼란 10
             self.add_buff(boxIds=[199], skillId=49179071, level=1, isPlayer=False, isSkillSet=False)
             return 대기시간(self.ctx)
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3601], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3602], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3603], visible=False, arg3=0, delay=0, scale=0)

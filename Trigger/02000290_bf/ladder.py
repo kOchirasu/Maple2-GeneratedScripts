@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], visible=True, arg3=0, delay=0, scale=0) # WaterDisApp
         self.set_ladder(triggerIds=[511], visible=False, animationEffect=False) # LadderTheFall
         self.set_ladder(triggerIds=[512], visible=False, animationEffect=False) # LadderTheFall
@@ -26,7 +26,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 폭포안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000429], state=1) # Lever
         self.set_effect(triggerIds=[5200], visible=True) # LeverArrow
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
@@ -38,7 +38,7 @@ class 폭포안내(trigger_api.Trigger):
 
 
 class 폭포갈라짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002902)
         self.set_effect(triggerIds=[5102], visible=True) # WaterDisApp
         self.set_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310], visible=False, arg3=0, delay=200, scale=2)
@@ -50,8 +50,9 @@ class 폭포갈라짐(trigger_api.Trigger):
 
 
 class 사다리생김(trigger_api.Trigger):
-    def on_enter(self):
-        self.show_guide_summary(entityId=20002907, textId=20002907, duration=5000) # 폭포 위로 올라갈 수 있는 사다리가 나타났어요.
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 폭포 위로 올라갈 수 있는 사다리가 나타났어요.
+        self.show_guide_summary(entityId=20002907, textId=20002907, duration=5000)
         self.set_effect(triggerIds=[5000], visible=True) # GuideUI
         self.set_effect(triggerIds=[5100], visible=True) # LadderAppear
         self.set_ladder(triggerIds=[511], visible=True, animationEffect=True)

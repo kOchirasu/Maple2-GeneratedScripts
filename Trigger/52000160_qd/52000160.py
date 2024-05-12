@@ -13,7 +13,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class 전직컷씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='jobChange_Assassin.swf', movieId=1)
 
@@ -25,7 +25,7 @@ class 전직컷씬01(trigger_api.Trigger):
 
 
 class 다크윈드도착_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -34,7 +34,7 @@ class 다크윈드도착_01(trigger_api.Trigger):
 
 
 class 다크윈드도착_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class 다크윈드도착_02(trigger_api.Trigger):
 
 
 class 다크윈드도착_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -53,7 +53,7 @@ class 다크윈드도착_03(trigger_api.Trigger):
 
 
 class 다크윈드도착_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3001')
 
@@ -63,7 +63,7 @@ class 다크윈드도착_04(trigger_api.Trigger):
 
 
 class 다크윈드도착_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,8 +72,9 @@ class 다크윈드도착_05(trigger_api.Trigger):
 
 
 class 다크윈드도착_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +83,7 @@ class 다크윈드도착_06(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -93,7 +94,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 다크윈드도착_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -110,7 +111,7 @@ class 전직한다(trigger_api.Trigger):
 
 
 class 전직이펙트_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,7 +120,7 @@ class 전직이펙트_01(trigger_api.Trigger):
 
 
 class 전직이펙트_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -134,7 +135,7 @@ class 떠난다_01(trigger_api.Trigger):
 
 
 class 프론티아재단으로_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -144,7 +145,7 @@ class 프론티아재단으로_01(trigger_api.Trigger):
 
 
 class 프론티아재단으로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000186, portalId=1)
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=False) # 마법진
         self.set_effect(triggerIds=[6008], visible=False) # 마법진
         self.set_effect(triggerIds=[6015], visible=False) # 마법진
@@ -12,11 +12,12 @@ class start(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003412], questStates=[1]):
+            # 영웅의 그늘 퀘스트 수락
             return CameraEffect01(self.ctx)
 
 
 class CameraEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +26,7 @@ class CameraEffect01(trigger_api.Trigger):
 
 
 class CameraEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000191, portalId=5001)
@@ -36,7 +37,7 @@ class CameraEffect02(trigger_api.Trigger):
 
 
 class CameraEffect03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -49,7 +50,7 @@ class CameraEffect03(trigger_api.Trigger):
 
 
 class CameraEffect03_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3001')
         self.show_caption(type='VerticalCaption', title='$52000191_QD__52000191__0$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
@@ -60,7 +61,7 @@ class CameraEffect03_3(trigger_api.Trigger):
 
 
 class 바론과첫만남_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__1$', duration=5000)
@@ -72,7 +73,7 @@ class 바론과첫만남_01(trigger_api.Trigger):
 
 
 class 바론과첫만남_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005,4006], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=5000)
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__3$', duration=5000)
@@ -84,7 +85,7 @@ class 바론과첫만남_02(trigger_api.Trigger):
 
 
 class 바론과첫만남_02_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=5000)
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__5$', duration=5000)
         self.add_cinematic_talk(npcId=11004787, msg='$52000191_QD__52000191__6$', align='left', illustId='Baron_normal', duration=4000)
@@ -96,7 +97,7 @@ class 바론과첫만남_02_02(trigger_api.Trigger):
 
 
 class 바론과첫만남_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Angry_A'])
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__8$', duration=4000)
         self.add_cinematic_talk(npcId=11004787, msg='$52000191_QD__52000191__9$', align='left', illustId='Baron_normal', duration=4000)
@@ -107,7 +108,7 @@ class 바론과첫만남_03(trigger_api.Trigger):
 
 
 class 전투준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False) # 유저 투명 처리
         self.move_user(mapId=52000191, portalId=5003)
         self.select_camera_path(pathIds=[4007,4008], returnView=False)
@@ -125,8 +126,9 @@ class 전투준비(trigger_api.Trigger):
 
 
 class 전투준비_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -135,7 +137,7 @@ class 전투준비_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.move_user(mapId=52000191, portalId=5003)
 
@@ -145,7 +147,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 전투준비_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[102])
         self.destroy_monster(spawnIds=[103])
@@ -157,7 +159,7 @@ class 전투준비_03(trigger_api.Trigger):
 
 
 class 페이즈1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_effect(triggerIds=[6001], visible=True) # 마법진
         self.set_effect(triggerIds=[6002], visible=True) # 리젠 이펙트
@@ -182,7 +184,7 @@ class 페이즈1(trigger_api.Trigger):
 
 
 class 페이즈2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000191_QD__52000191__11$', duration=3000)
         self.set_effect(triggerIds=[6001], visible=False) # 마법진
         self.set_effect(triggerIds=[6015], visible=True) # 마법진
@@ -205,7 +207,7 @@ class 페이즈2(trigger_api.Trigger):
 
 
 class 페이즈3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000191_QD__52000191__12$', duration=3000)
         self.set_effect(triggerIds=[6015], visible=False) # 마법진
         self.set_effect(triggerIds=[6008], visible=True) # 마법진
@@ -228,7 +230,7 @@ class 페이즈3(trigger_api.Trigger):
 
 
 class 페이즈4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000191_QD__52000191__13$', duration=3000)
         self.set_effect(triggerIds=[6008], visible=False) # 마법진
         self.set_effect(triggerIds=[6022], visible=True) # 마법진
@@ -251,7 +253,7 @@ class 페이즈4(trigger_api.Trigger):
 
 
 class 페이즈5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004787, illust='Baron_normal', script='$52000191_QD__52000191__14$', duration=3000)
         self.set_effect(triggerIds=[6022], visible=False) # 마법진
         self.set_effect(triggerIds=[6033], visible=True) # 마법진
@@ -274,7 +276,7 @@ class 페이즈5(trigger_api.Trigger):
 
 
 class 고마해(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -284,7 +286,7 @@ class 고마해(trigger_api.Trigger):
 
 
 class 고마해_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6033], visible=False) # 마법진
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.move_user(mapId=52000191, portalId=5002)
@@ -295,7 +297,7 @@ class 고마해_02(trigger_api.Trigger):
 
 
 class 고마해_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_2, action='nextState')
 
@@ -305,7 +307,7 @@ class 고마해_03(trigger_api.Trigger):
 
 
 class 고마해_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_pc_emotion_loop(sequenceName='Attack_Idle_A', duration=5000)
@@ -318,7 +320,7 @@ class 고마해_04(trigger_api.Trigger):
 
 
 class 고마해_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4011,4012], returnView=False)
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__17$', duration=5000)
         self.add_cinematic_talk(npcId=0, msg='$52000191_QD__52000191__18$', duration=5000)
@@ -329,10 +331,11 @@ class 고마해_05(trigger_api.Trigger):
 
 
 class 고마해_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4013,4014], returnView=False)
         self.add_cinematic_talk(npcId=11004787, msg='$52000191_QD__52000191__19$', duration=4000)
         self.add_cinematic_talk(npcId=11004787, msg='$52000191_QD__52000191__20$', duration=3000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -347,7 +350,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 고마해_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_achievement(triggerId=2001, achieve='BattlewithBaron')
 
@@ -357,7 +360,7 @@ class 고마해_07(trigger_api.Trigger):
 
 
 class 그만싸워(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

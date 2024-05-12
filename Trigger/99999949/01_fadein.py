@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # mask_black
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Guide(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='1번 영역에 들어가면 화면 페이드인 트리거가 시작됩니다.')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class Guide(trigger_api.Trigger):
 
 
 class fadein(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='fadein')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -33,7 +33,7 @@ class fadein(trigger_api.Trigger):
 
 
 class fadeout(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='fadeout')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -45,7 +45,7 @@ class fadeout(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='3초 후에 트리거가 리셋됩니다. 1번 영역 밖으로 나가세요.')
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class CheerUpTimer_30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0) # Round1 / 30sec
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,8 +24,9 @@ class CheerUpTimer_30(trigger_api.Trigger):
 
 
 class CheerUpTimer_20(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_timer(timerId='1', seconds=20, startDelay=1, interval=0) # Round3 or Jackpot / 20sec
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Round3 or Jackpot / 20sec
+        self.set_timer(timerId='1', seconds=20, startDelay=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=16000):
@@ -33,7 +34,7 @@ class CheerUpTimer_20(trigger_api.Trigger):
 
 
 class CheerUpTimer_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=15, startDelay=1, interval=0) # Gamble / 15sec
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,8 +43,9 @@ class CheerUpTimer_15(trigger_api.Trigger):
 
 
 class CheerUpTimer_10(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_timer(timerId='1', seconds=10, startDelay=1, interval=0) # Round4 or Round 5 / 10sec
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Round4 or Round 5 / 10sec
+        self.set_timer(timerId='1', seconds=10, startDelay=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
@@ -51,7 +53,7 @@ class CheerUpTimer_10(trigger_api.Trigger):
 
 
 class GiveCheerUp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70000086, level=1, isPlayer=False, isSkillSet=False) # 할 수 있어 버프
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +63,7 @@ class GiveCheerUp(trigger_api.Trigger):
 
 # Reset
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheerUpTimer', value=0)
         self.reset_timer(timerId='1')
 

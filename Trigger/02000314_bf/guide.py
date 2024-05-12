@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 타이어가이드(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003141, textId=20003141, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 
@@ -19,7 +19,7 @@ class 타이어가이드(trigger_api.Trigger):
 
 
 class 타이어가이드2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003141, textId=20003141, duration=5000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
 

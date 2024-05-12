@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='ChangeNpc', value=0) # 17101 몬스터 AI에서 받는 신호
         self.destroy_monster(spawnIds=[17101,17102])
 
@@ -19,18 +19,21 @@ class SettingDelay(trigger_api.Trigger):
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[17101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='ChangeNpc', value=1):
+            # 17101 몬스터 AI에서 받는 신호
             return ChatchUpNpc(self.ctx)
 
 
 class ChatchUpNpc(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0) # UI 표시 안함 / NPC AI에서 스폰시킨 InteractObject 의 LifeTime
-        self.change_monster(removeSpawnId=17101, addSpawnId=17102) # 동일 맵에 스포너가 있으면 대상 npc의 위치를 보정해서 교체되는 npc를 스폰 시켜줌
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # UI 표시 안함 / NPC AI에서 스폰시킨 InteractObject 의 LifeTime
+        self.set_timer(timerId='1', seconds=30, startDelay=1, interval=0, vOffset=0)
+        # 동일 맵에 스포너가 있으면 대상 npc의 위치를 보정해서 교체되는 npc를 스폰 시켜줌
+        self.change_monster(removeSpawnId=17101, addSpawnId=17102)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
@@ -38,7 +41,7 @@ class ChatchUpNpc(trigger_api.Trigger):
 
 
 class ChatchUpNpc_Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='1')
         self.destroy_monster(spawnIds=[17101,17102])
 

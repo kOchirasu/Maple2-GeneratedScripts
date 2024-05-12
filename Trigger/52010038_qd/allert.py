@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[131,160,209])
         self.set_directional_light(diffuseColor=[134,160,143], specularColor=[130,130,130])
         self.set_effect(triggerIds=[6000,6299], visible=False)
@@ -30,7 +30,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 이펙트시퀀스01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[701], enable=True)
         self.set_skill(triggerIds=[704], enable=True)
         self.set_effect(triggerIds=[6101,6104], visible=True)
@@ -41,7 +41,7 @@ class 이펙트시퀀스01(trigger_api.Trigger):
 
 
 class 이펙트시퀀스02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[707], enable=True)
         self.set_skill(triggerIds=[708], enable=True)
         self.set_effect(triggerIds=[6107,6108], visible=True)
@@ -52,7 +52,7 @@ class 이펙트시퀀스02(trigger_api.Trigger):
 
 
 class 이펙트시퀀스03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ambient_light(primary=[232,92,53])
         self.set_directional_light(diffuseColor=[41,21,18], specularColor=[130,130,130])
         self.set_skill(triggerIds=[702], enable=True)
@@ -65,7 +65,7 @@ class 이펙트시퀀스03(trigger_api.Trigger):
 
 
 class 경보(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[709], enable=True)
         self.set_effect(triggerIds=[6109], visible=True)
         self.side_npc_talk(npcId=11003536, illust='Neirin_normal', duration=8000, script='$52010038_QD__allert__0$', voice='ko/Npc/00002104')
@@ -91,7 +91,7 @@ class 경보(trigger_api.Trigger):
 
 
 class 이펙트시퀀스04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[703], enable=True)
         self.set_skill(triggerIds=[705], enable=True)
         self.set_effect(triggerIds=[6103,6105], visible=True)

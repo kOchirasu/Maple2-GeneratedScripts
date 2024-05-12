@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8010,8011,8012,8013,8014,8015,8016,8017], visible=False)
         self.create_monster(spawnIds=[101,201], animationEffect=False) # 레이먼, 경비병
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -25,13 +25,13 @@ class Wait(trigger_api.Trigger):
 
 # 40002668 퀘스트 완료 상태
 class RemoveNpc01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
 
 
 # 40002667 퀘스트 진행중 상태
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000,8001,8002,8003,8004,8005,8006,8007,8008,8009,8010,8011,8012,8013,8014,8015,8016,8017], visible=True)
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[202,900,901,902], animationEffect=False)
@@ -42,7 +42,7 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class MobChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -53,7 +53,7 @@ class MobChange01(trigger_api.Trigger):
 
 
 class MobChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000075, portalId=10)
         self.create_monster(spawnIds=[301], animationEffect=False) # 어둠의 졸개
 
@@ -69,7 +69,7 @@ class MobChange03(trigger_api.Trigger):
 
 
 class MobChange04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera(triggerId=600, enable=True)
 
@@ -79,7 +79,7 @@ class MobChange04(trigger_api.Trigger):
 
 
 class MobTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=2, spawnId=11001960, script='$52000075_QD__QUESTNPCSPAWN01__0$', arg4=4) # 어둠의 졸개
@@ -91,8 +91,9 @@ class MobTalk01(trigger_api.Trigger):
 
 
 class MobTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -103,7 +104,7 @@ class MobTalk02(trigger_api.Trigger):
 
 
 class MobTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=False)
         self.destroy_monster(spawnIds=[301])
 
@@ -113,13 +114,13 @@ class MobTalk03(trigger_api.Trigger):
 
 
 class QuestComplete01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='abductedRamon')
 
 
 # 40002667 퀘스트 완료 가능 상태
 class GuardDown01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[202], animationEffect=False)
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=1003, skillId=70002151, isPlayer=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 보스전_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=23501001, illust='Turned_Yuperia_normal', script='$02020101_BF__MAIN__0$', duration=5670, voice='ko/Npc/00002206')
         self.create_monster(spawnIds=[101])
 
@@ -37,7 +37,7 @@ class 조건추가(trigger_api.Trigger):
 
 
 class 보스전_성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(type='trigger', achieve='ClearGreenLapenta_Quest')
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
         self.side_npc_talk(type='talk', npcId=23501001, illust='Turned_Yuperia_normal', script='$02020101_BF__MAIN__1$', duration=7940, voice='ko/Npc/00002207')
@@ -48,9 +48,11 @@ class 보스전_성공(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
-        # <action name="업적이벤트를발생시킨다" arg2="trigger" arg3="ClearGreenLapenta"/>
+        # self.set_achievement(type='trigger', achieve='ClearGreenLapenta')
+        # self.remove_buff(boxId=1003, skillId=70002151, isPlayer=True)
+        # self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
 
 
 initial_state = 대기

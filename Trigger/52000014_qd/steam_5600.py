@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 딜레이01(trigger_api.Trigger):
 
 
 class 발사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=1)
         self.create_monster(spawnIds=[560], animationEffect=False)
 
@@ -28,7 +28,7 @@ class 발사01(trigger_api.Trigger):
 
 
 class 발사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.create_monster(spawnIds=[561], animationEffect=False)
 
@@ -38,7 +38,7 @@ class 발사02(trigger_api.Trigger):
 
 
 class 딜레이02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=1)
         self.destroy_monster(spawnIds=[560])
 
@@ -48,7 +48,7 @@ class 딜레이02(trigger_api.Trigger):
 
 
 class 발사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=2)
         self.create_monster(spawnIds=[561], animationEffect=False)
 
@@ -58,7 +58,7 @@ class 발사03(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[561])
 
     def on_tick(self) -> trigger_api.Trigger:

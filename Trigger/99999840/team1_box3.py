@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=903, value=0)
         self.set_interact_object(triggerIds=[10002177], state=0, arg3=False)
 
@@ -19,7 +19,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002175], state=1, arg3=False)
         self.set_interact_object(triggerIds=[10002176], state=1, arg3=False)
         self.set_interact_object(triggerIds=[10002177], state=1, arg3=False)
@@ -37,7 +37,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 애디셔널_중첩1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_variable(varId=903, value=1)
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
@@ -53,7 +53,7 @@ class 애디셔널_중첩1(trigger_api.Trigger):
 
 
 class 애디셔널_중첩2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class 애디셔널_중첩2(trigger_api.Trigger):
 
 
 class 애디셔널_중첩3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +83,7 @@ class 애디셔널_중첩3(trigger_api.Trigger):
 
 
 class 애디셔널_중첩4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +98,7 @@ class 애디셔널_중첩4(trigger_api.Trigger):
 
 
 class 애디셔널_중첩5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class 애디셔널_중첩5(trigger_api.Trigger):
 
 
 class 애디셔널_중첩6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -128,7 +128,7 @@ class 애디셔널_중첩6(trigger_api.Trigger):
 
 
 class 애디셔널_중첩7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -143,7 +143,7 @@ class 애디셔널_중첩7(trigger_api.Trigger):
 
 
 class 애디셔널_중첩8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -158,7 +158,7 @@ class 애디셔널_중첩8(trigger_api.Trigger):
 
 
 class 애디셔널_중첩9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70002511, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -173,7 +173,7 @@ class 애디셔널_중첩9(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002177], state=0, arg3=False)
 
     def on_tick(self) -> trigger_api.Trigger:

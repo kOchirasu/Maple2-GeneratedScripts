@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[401], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[402], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[403], visible=False, animationEffect=False, animationDelay=0)
@@ -29,7 +29,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 카메라연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -40,7 +40,7 @@ class 카메라연출01(trigger_api.Trigger):
 
 
 class 미카대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
         self.create_monster(spawnIds=[1005], animationEffect=False)
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005')
@@ -57,7 +57,7 @@ class 미카대사01(trigger_api.Trigger):
 
 
 class 체크포인트01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -69,7 +69,7 @@ class 체크포인트01(trigger_api.Trigger):
 
 
 class 카메라연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=302, enable=True)
@@ -80,7 +80,7 @@ class 카메라연출02(trigger_api.Trigger):
 
 
 class 미카대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010017_QD__MAIN__1$', arg4=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +90,7 @@ class 미카대사02(trigger_api.Trigger):
 
 
 class 체크포인트02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_A')
@@ -104,7 +104,7 @@ class 체크포인트02(trigger_api.Trigger):
 
 
 class 미키이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_A2')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 오브젝트01(trigger_api.Trigger):
 
 
 class 카메라연출03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -131,7 +131,7 @@ class 카메라연출03(trigger_api.Trigger):
 
 
 class 타라대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001218, script='$52010017_QD__MAIN__2$', arg4=2)
         self.select_camera(triggerId=303, enable=True)
         self.create_monster(spawnIds=[2003], animationEffect=True)
@@ -142,7 +142,7 @@ class 타라대사01(trigger_api.Trigger):
 
 
 class 체크포인트03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=303, enable=False)
@@ -157,7 +157,7 @@ class 체크포인트03(trigger_api.Trigger):
 
 
 class 미키이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_B2')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -174,7 +174,7 @@ class 오브젝트02(trigger_api.Trigger):
 
 
 class 카메라연출04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -184,7 +184,7 @@ class 카메라연출04(trigger_api.Trigger):
 
 
 class 둔바대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=304, enable=True)
         self.set_conversation(type=2, spawnId=11001217, script='$52010017_QD__MAIN__3$', arg4=2)
         self.create_monster(spawnIds=[2004], animationEffect=True)
@@ -195,7 +195,7 @@ class 둔바대사01(trigger_api.Trigger):
 
 
 class 체크포인트04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=304, enable=False)
@@ -210,7 +210,7 @@ class 체크포인트04(trigger_api.Trigger):
 
 
 class 미키이동03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_C2')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -227,7 +227,7 @@ class 오브젝트03(trigger_api.Trigger):
 
 
 class 카메라연출05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -237,7 +237,7 @@ class 카메라연출05(trigger_api.Trigger):
 
 
 class 스타츠대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.set_conversation(type=2, spawnId=11001292, script='$52010017_QD__MAIN__4$', arg4=2)
         self.create_monster(spawnIds=[2005], animationEffect=True)
@@ -248,7 +248,7 @@ class 스타츠대사01(trigger_api.Trigger):
 
 
 class 체크포인트05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=305, enable=False)
@@ -263,7 +263,7 @@ class 체크포인트05(trigger_api.Trigger):
 
 
 class 미키이동04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_D2')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -280,7 +280,7 @@ class 오브젝트04(trigger_api.Trigger):
 
 
 class 카메라연출06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_D3')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -291,7 +291,7 @@ class 카메라연출06(trigger_api.Trigger):
 
 
 class 미카대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010017_QD__MAIN__5$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -300,7 +300,7 @@ class 미카대사03(trigger_api.Trigger):
 
 
 class 미카대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010017_QD__MAIN__6$', arg4=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -309,7 +309,7 @@ class 미카대사04(trigger_api.Trigger):
 
 
 class 이동대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_achievement(triggerId=110, type='trigger', achieve='Getalllamestone')

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=9901, visible=True, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9902, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9903, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[916], skillId=70002104, level=1, isSkillSet=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 작동(trigger_api.Trigger):
 
 
 class 감지_1층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8001], visible=False)
         self.set_effect(triggerIds=[8002], visible=True)
         self.set_effect(triggerIds=[8003], visible=True)
@@ -56,7 +56,7 @@ class 감지_1층(trigger_api.Trigger):
 
 
 class 감지_2층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8002], visible=False)
         self.set_user_value(triggerId=99990016, key='respawn', value=1)
         self.add_buff(boxIds=[916], skillId=70002103, level=1, isSkillSet=False)
@@ -70,7 +70,7 @@ class 감지_2층(trigger_api.Trigger):
 
 
 class 감지_3층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8003], visible=False)
         self.add_buff(boxIds=[916], skillId=70002103, level=1, isSkillSet=False)
         self.set_actor(triggerId=9903, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
@@ -83,16 +83,18 @@ class 감지_3층(trigger_api.Trigger):
 
 
 class 감지_4층(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[8004], visible=False)
         self.set_actor(triggerId=9904, visible=True, initialSequence='Interaction_Lapentafoothold_A01_On')
         self.add_buff(boxIds=[916], skillId=70002105, level=1, isSkillSet=False)
         self.set_gravity(gravity=-32)
         self.set_event_ui(type=1, arg2='$02020112_BF__BUTTONCHECK__0$', arg3='5000')
-        self.set_user_value(triggerId=99990016, key='respawn', value=2) # <1층 스폰 중지>
+        self.set_user_value(triggerId=99990016, key='respawn', value=2)
+        # <1층 스폰 중지>
         self.set_user_value(triggerId=99990003, key='Timer', value=2)
         self.set_user_value(triggerId=99990001, key='GravityRoom', value=2)
-        self.set_user_value(triggerId=99990021, key='Reconnect', value=1) # <재접속 유저를 위해 버프 지속적으로 쏴주기>
+        self.set_user_value(triggerId=99990021, key='Reconnect', value=1)
+        # <재접속 유저를 위해 버프 지속적으로 쏴주기>
         self.set_actor(triggerId=9901, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9902, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')
         self.set_actor(triggerId=9903, visible=False, initialSequence='Interaction_Lapentafoothold_A01_Off')

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=201, visible=False, initialSequence='Closed_A')
         self.set_actor(triggerId=202, visible=False, initialSequence='Closed_A')
         self.set_actor(triggerId=203, visible=True, initialSequence='sf_functobj_monitor_C01_On')
@@ -20,7 +20,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -30,7 +30,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 카메라이동대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class 카메라이동대기(trigger_api.Trigger):
 
 
 class 전투시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20003041, textId=20003041, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_cinematic_ui(type=0)
@@ -52,7 +52,7 @@ class 전투시작대기(trigger_api.Trigger):
 
 
 class 전투시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2001, script='$02000304_BF__MAIN__1$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 전투시작(trigger_api.Trigger):
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
         self.show_guide_summary(entityId=20003003, textId=20003003)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -78,7 +78,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 미션성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_timer(timerId='5', seconds=5)
 
@@ -88,7 +88,8 @@ class 미션성공(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.show_guide_summary(entityId=20003004, textId=20003004)
         self.set_actor(triggerId=201, visible=True, initialSequence='Closed_A')
         self.set_actor(triggerId=202, visible=True, initialSequence='Closed_A')
         self.set_portal(portalId=99, visible=False, enable=True, minimapVisible=True)
@@ -97,6 +98,7 @@ class 종료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='5'):
+            # self.hide_guide_summary(entityId=20003004)
             return 종료2(self.ctx)
 
 

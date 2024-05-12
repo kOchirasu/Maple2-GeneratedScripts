@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301,302,303,304], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 힌트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02020101_BF__GIMMICK2__0$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 알림(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[301,302,303,304], arg2=False)
         self.set_user_value(triggerId=900004, key='Plant', value=0)
         self.set_user_value(triggerId=900009, key='Seed', value=0)

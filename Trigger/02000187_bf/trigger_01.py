@@ -9,7 +9,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 몹리젠(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203,204,205,206])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 몹리젠(trigger_api.Trigger):
 
 
 class 쿨타임(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:

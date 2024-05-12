@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[1000], enable=False)
         self.set_skill(triggerIds=[1002], enable=False)
         self.set_skill(triggerIds=[1004], enable=False)
@@ -17,7 +17,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 낙하01시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[1001], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +26,7 @@ class 낙하01시작(trigger_api.Trigger):
 
 
 class 낙하01완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[1000], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 낙하01완료(trigger_api.Trigger):
 
 
 class 낙하02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[1003], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 낙하02시작(trigger_api.Trigger):
 
 
 class 낙하02완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=2)
         self.set_skill(triggerIds=[1002], enable=True)
 
@@ -54,7 +54,7 @@ class 낙하02완료(trigger_api.Trigger):
 
 
 class 낙하03시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[1005], visible=True) # RockDrop
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 낙하03시작(trigger_api.Trigger):
 
 
 class 낙하03완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=1)
         self.set_skill(triggerIds=[1004], enable=True)
 
@@ -73,7 +73,7 @@ class 낙하03완료(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=2)
         self.set_skill(triggerIds=[1000], enable=False)
         self.set_skill(triggerIds=[1002], enable=False)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기0(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[1000], visible=False)
         self.set_effect(triggerIds=[1001], visible=False)
         self.set_interact_object(triggerIds=[10000360], state=1)
@@ -20,7 +20,7 @@ class 대기0(trigger_api.Trigger):
 
 
 class 대기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=3)
         self.set_effect(triggerIds=[1000], visible=True)
         self.set_interact_object(triggerIds=[10000360], state=1)
@@ -33,7 +33,7 @@ class 대기1(trigger_api.Trigger):
 
 
 class 대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=7)
         self.set_effect(triggerIds=[1000], visible=True)
         self.set_effect(triggerIds=[1001], visible=True)
@@ -47,7 +47,7 @@ class 대기2(trigger_api.Trigger):
 
 
 class 대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=1)
         self.set_effect(triggerIds=[1000], visible=True)
         self.set_effect(triggerIds=[1001], visible=True)
@@ -61,7 +61,7 @@ class 대기3(trigger_api.Trigger):
 
 
 class 이펙트1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=1)
         self.set_effect(triggerIds=[1000], visible=True)
         self.set_effect(triggerIds=[1001], visible=True)
@@ -82,7 +82,7 @@ class 이펙트1(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[1000], visible=False)
         self.set_effect(triggerIds=[1001], visible=False)
         self.set_effect(triggerIds=[2000], visible=False)

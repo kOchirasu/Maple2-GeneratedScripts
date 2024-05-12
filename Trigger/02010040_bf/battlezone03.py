@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=6, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[4301], visible=False)
         self.set_effect(triggerIds=[4302], visible=False)
@@ -33,7 +33,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[501,502,601,602,701,702], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class 전투시작(trigger_api.Trigger):
 
 
 class 문열기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1300], visible=False, arg3=0, delay=0, scale=0) # barrier
         self.set_mesh(triggerIds=[1301], visible=False, arg3=0, delay=0, scale=0) # barrier
         self.set_mesh(triggerIds=[1302], visible=False, arg3=0, delay=0, scale=0) # barrier

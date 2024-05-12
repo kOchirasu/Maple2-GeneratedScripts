@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000301], state=2)
         self.set_interact_object(triggerIds=[12000302], state=2)
         self.set_interact_object(triggerIds=[12000303], state=2)
@@ -52,11 +52,13 @@ class 대기(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[900]):
+            # self.create_monster(spawnIds=[1001], animationEffect=False)
+            # self.create_monster(spawnIds=[1002], animationEffect=False)
             return LineStart(self.ctx)
 
 
 class LineStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1101], animationEffect=False)
         self.create_monster(spawnIds=[1102], animationEffect=False)
         self.create_monster(spawnIds=[1103], animationEffect=False)
@@ -102,18 +104,40 @@ class CableOn_01(trigger_api.Trigger):
             self.set_interact_object(triggerIds=[12000302], state=2)
             self.set_interact_object(triggerIds=[12000303], state=2)
             self.move_user_to_pos(pos=[-15571.11,75.2856445,3600], rot=[0,0,0])
+            # self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2001], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2002], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2003], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2004], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2005], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2006], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2007], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2008], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[2009], visible=True, arg3=0, delay=0, scale=0)
             return CableDelay_01_1(self.ctx)
         if self.object_interacted(interactIds=[12000303], stateValue=0):
             self.set_interact_object(triggerIds=[12000301], state=2)
             self.set_interact_object(triggerIds=[12000302], state=2)
             self.set_interact_object(triggerIds=[12000303], state=2)
             self.move_user_to_pos(pos=[-15571.11,-1561.813,3600], rot=[0,0,0])
+            # self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[3003], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[3004], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[3006], visible=True, arg3=0, delay=0, scale=0)
             return CableDelay_01_2(self.ctx)
         if self.object_interacted(interactIds=[12000301], stateValue=0):
             self.set_interact_object(triggerIds=[12000301], state=2)
             self.set_interact_object(triggerIds=[12000302], state=2)
             self.set_interact_object(triggerIds=[12000303], state=2)
             self.move_user_to_pos(pos=[-15571.11,1730.293,3600], rot=[0,0,0])
+            # self.set_mesh(triggerIds=[1001], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[1002], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[1003], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[1004], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[1005], visible=True, arg3=0, delay=0, scale=0)
+            # self.set_mesh(triggerIds=[1006], visible=True, arg3=0, delay=0, scale=0)
             return CableDelay_01_3(self.ctx)
 
 
@@ -141,6 +165,7 @@ class CableDelay_01_3(trigger_api.Trigger):
 class CableOff_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-13125,75,2550], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=1)
             return End_01(self.ctx)
 
@@ -148,6 +173,7 @@ class CableOff_01(trigger_api.Trigger):
 class CableOff_02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-13275,-5025,1650], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=2)
             return End_01(self.ctx)
 
@@ -155,6 +181,7 @@ class CableOff_02(trigger_api.Trigger):
 class CableOff_03(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=6000):
+            # self.move_user_to_pos(pos=[-12925,5025,550], rot=[0,0,0])
             self.set_user_value(triggerId=900002, key='Block', value=3)
             return End_01(self.ctx)
 
@@ -162,7 +189,11 @@ class CableOff_03(trigger_api.Trigger):
 class End_01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
-            return None
+            # self.set_visible_breakable_object(triggerIds=[1001], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1002], visible=False)
+            # self.set_visible_breakable_object(triggerIds=[1003], visible=False)
+            # <transition state="대기"/>
+            pass
 
 
 initial_state = 대기

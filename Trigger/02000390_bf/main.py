@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False)
         self.enable_spawn_point_pc(spawnId=11001, isEnable=True)
         self.enable_spawn_point_pc(spawnId=11002, isEnable=False)
@@ -29,7 +29,7 @@ class ready(trigger_api.Trigger):
 
 
 class dungeonReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_local_camera(cameraId=8001, enable=True) # LocalTargetCamera
         self.set_gravity(gravity=-25)
@@ -43,7 +43,7 @@ class dungeonReady(trigger_api.Trigger):
 
 
 class questReady(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_local_camera(cameraId=8001, enable=True) # LocalTargetCamera
         self.set_gravity(gravity=-25)
@@ -61,12 +61,12 @@ class questReady(trigger_api.Trigger):
 
 
 class QuestEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[210,501,502,503,504,505,506,507,508,509,510]) # 수중 위 몬스터 제거
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000390_BF__MAIN__0$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=101, script='$02000390_BF__MAIN__1$', arg4=2, arg5=0)
 
@@ -76,7 +76,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$02000390_BF__MAIN__2$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=101, script='$02000390_BF__MAIN__3$', arg4=2, arg5=0)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2005')

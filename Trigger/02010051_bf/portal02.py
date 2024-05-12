@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=30, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=31, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[836], visible=False) # light
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 입장딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +30,7 @@ class 입장딜레이01(trigger_api.Trigger):
 
 
 class 가이드준비01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105101, textId=20105101, duration=4000) # 길 찾기
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -39,7 +39,7 @@ class 가이드준비01(trigger_api.Trigger):
 
 
 class 포털개방01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=1)
         self.set_effect(triggerIds=[836], visible=True) # light
         self.set_effect(triggerIds=[6002], visible=True) # vibrate
@@ -52,7 +52,7 @@ class 포털개방01(trigger_api.Trigger):
 
 
 class 포털개방02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=30, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=31, visible=True, enable=False, minimapVisible=False)
 
@@ -62,7 +62,7 @@ class 포털개방02(trigger_api.Trigger):
 
 
 class 포털폐쇄(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=30, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=31, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[1201,1202,1203,1204,1205,1206], visible=True, arg3=0, delay=0, scale=2) # grating

@@ -28,9 +28,9 @@ class 대기(trigger_api.Trigger):
 
 
 class 스테이지1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="101" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[101], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -48,9 +48,9 @@ class 타이머체크1(trigger_api.Trigger):
 
 
 class 스테이지2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer2', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="102" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[102], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -68,9 +68,9 @@ class 타이머체크2(trigger_api.Trigger):
 
 
 class 스테이지3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer3', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="103" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[103], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -88,9 +88,9 @@ class 타이머체크3(trigger_api.Trigger):
 
 
 class 스테이지4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer4', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="104" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[104], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -107,9 +107,9 @@ class 타이머체크4(trigger_api.Trigger):
 
 
 class 스테이지5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer5', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="105" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[105], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -126,9 +126,9 @@ class 타이머체크5(trigger_api.Trigger):
 
 
 class 스테이지6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer6', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="106" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[106], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -145,9 +145,9 @@ class 타이머체크6(trigger_api.Trigger):
 
 
 class 스테이지7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer7', seconds=180, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="107" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[107], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -164,9 +164,9 @@ class 타이머체크7(trigger_api.Trigger):
 
 
 class 스테이지8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer8', seconds=300, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="108" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[108], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -183,9 +183,9 @@ class 타이머체크8(trigger_api.Trigger):
 
 
 class 스테이지9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer9', seconds=300, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="109" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[109], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -202,9 +202,9 @@ class 타이머체크9(trigger_api.Trigger):
 
 
 class 스테이지10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='LimitTimer10', seconds=300, startDelay=1)
-        # <action name="SetNpcDuelHpBar" isOpen="true" spawnPointID="110" durationTick="180000" npcHpStep="100" />
+        # self.set_npc_duel_hp_bar(isOpen=True, spawnId=[110], durationTick=180000, npcHpStep=100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
@@ -221,7 +221,7 @@ class 타이머체크10(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='LimitTimer')
         self.reset_timer(timerId='LimitTimer2')
         self.reset_timer(timerId='LimitTimer3')

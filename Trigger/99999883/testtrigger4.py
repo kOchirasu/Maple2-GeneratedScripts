@@ -9,7 +9,7 @@ class START(trigger_api.Trigger):
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
 
 

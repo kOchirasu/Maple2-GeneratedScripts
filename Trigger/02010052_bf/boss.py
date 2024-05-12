@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[6801,6802,6803,6804,6805,6806,6807,6808,6809,6810,6811,6812,6813,6814,6815,6816,6817,6818,6819,6820,6821,6822,6823,6824,6825,6826,6827,6828,6829,6830,6831,6832,6833,6834,6835,6836,6837,6838,6839,6840,6841,6842,6843,6844,6845,6846,6847,6848,6849,6850,6851,6852,6853,6854,6855,6856,6857,6858,6859,6860,6861,6862,6863,6864,6865,6866,6867,6868,6869,6870,6871,6872,6873,6874,6875,6876,6877,6878,6879,6880,6881,6882,6883,6884,6885,6886,6887,6888,6889,6890,6891,6892,6893,6894,6895,6896,6897,6898,6899,6900], visible=False, arg3=0, delay=0, scale=0) # 블록 없음
         self.set_effect(triggerIds=[7031], visible=False) # 횃불에 불이 붙는 이펙트
@@ -18,24 +18,24 @@ class Idle(trigger_api.Trigger):
         self.set_timer(timerId='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=750, boxId=1):
+        if self.count_users(boxId=750, minUsers='1'):
             return Echo(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_portal(portalId=5, visible=True, enable=True, minimapVisible=True)
 
 
 class Echo(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7800], visible=True) # 카나 메아리
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=720, boxId=1):
+        if self.count_users(boxId=720, minUsers='1'):
             return Boss_01(self.ctx)
 
 
 class Boss_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7531], visible=True) # 얼어붙는 소리
         self.set_mesh(triggerIds=[6801,6802,6803,6804,6805,6806,6807,6808,6809,6810], visible=True, arg3=80, delay=70, scale=8) # 얼음!
         self.set_timer(timerId='1', seconds=1)
@@ -46,7 +46,7 @@ class Boss_01(trigger_api.Trigger):
 
 
 class Boss_01b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7910], visible=True) # 카나 텔레포트
         self.create_monster(spawnIds=[995], animationEffect=False) # 카나 (995)
         self.set_timer(timerId='1', seconds=1)
@@ -57,7 +57,7 @@ class Boss_01b(trigger_api.Trigger):
 
 
 class Boss_01c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.set_conversation(type=1, spawnId=995, script='$02010052_BF__BOSS__0$', arg4=3, arg5=0) # 카나 말풍선 대사
         self.create_monster(spawnIds=[120], animationEffect=False) # 화로 (107)
@@ -69,7 +69,7 @@ class Boss_01c(trigger_api.Trigger):
 
 
 class burn_state_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
         self.set_effect(triggerIds=[7507], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[6801,6802,6803,6804,6805,6806,6807,6808,6809,6810], visible=False, arg3=800, delay=100, scale=0) # 벽 해제
@@ -87,12 +87,12 @@ class burn_state_01(trigger_api.Trigger):
 
 class Boss_02_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=721, boxId=1):
+        if self.count_users(boxId=721, minUsers='1'):
             return Boss_02(self.ctx)
 
 
 class Boss_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7532], visible=True) # 얼어붙는 소리
         self.set_mesh(triggerIds=[6821,6822,6823,6824,6825,6826,6827,6828,6829,6830], visible=True, arg3=80, delay=70, scale=8) # 얼음!
         self.set_timer(timerId='1', seconds=1)
@@ -103,7 +103,7 @@ class Boss_02(trigger_api.Trigger):
 
 
 class Boss_02b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7911], visible=True) # 카나 텔레포트
         self.create_monster(spawnIds=[996], animationEffect=False) # 카나 (995)
         self.set_timer(timerId='1', seconds=1)
@@ -114,7 +114,7 @@ class Boss_02b(trigger_api.Trigger):
 
 
 class Boss_02c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.set_conversation(type=1, spawnId=996, script='$02010052_BF__BOSS__2$', arg4=3, arg5=0) # 카나 말풍선 대사
         self.create_monster(spawnIds=[121], animationEffect=False) # 화로 (107)
@@ -126,7 +126,7 @@ class Boss_02c(trigger_api.Trigger):
 
 
 class burn_state_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
         self.set_effect(triggerIds=[7508], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[6821,6822,6823,6824,6825,6826,6827,6828,6829,6830], visible=False, arg3=800, delay=100, scale=0) # 벽 해제
@@ -144,12 +144,12 @@ class burn_state_02(trigger_api.Trigger):
 
 class Boss_03_idle(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=722, boxId=1):
+        if self.count_users(boxId=722, minUsers='1'):
             return Boss_03(self.ctx)
 
 
 class Boss_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7533], visible=True) # 얼어붙는 소리
         self.set_mesh(triggerIds=[6830,6831,6832,6833,6834,6835,6836,6837,6838,6839,6840], visible=True, arg3=80, delay=70, scale=8) # 얼음!
         self.set_timer(timerId='1', seconds=1)
@@ -160,7 +160,7 @@ class Boss_03(trigger_api.Trigger):
 
 
 class Boss_03b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7912], visible=True) # 카나 텔레포트
         self.create_monster(spawnIds=[997], animationEffect=False) # 카나 (995)
         self.set_timer(timerId='1', seconds=1)
@@ -171,7 +171,7 @@ class Boss_03b(trigger_api.Trigger):
 
 
 class Boss_03c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
         self.set_conversation(type=1, spawnId=997, script='$02010052_BF__BOSS__4$', arg4=3, arg5=0) # 카나 말풍선 대사
         self.create_monster(spawnIds=[641,642,643,644,645], animationEffect=True) # 몬스터 웨이브
@@ -183,7 +183,7 @@ class Boss_03c(trigger_api.Trigger):
 
 
 class burn_state_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
         self.set_effect(triggerIds=[7509], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[6830,6831,6832,6833,6834,6835,6836,6837,6838,6839,6840], visible=False, arg3=800, delay=100, scale=0) # 벽 해제
@@ -195,20 +195,20 @@ class burn_state_03(trigger_api.Trigger):
         self.set_timer(timerId='1', seconds=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=724, boxId=1):
+        """
+        if self.time_expired(timerId='1'):
             return Boss_04_idle(self.ctx)
         """
-        <condition name="시간이경과했으면" arg1="1">
-        <transition state="Boss_04_idle"/> 
-        </condition>
-        """
+        if self.count_users(boxId=724, minUsers='1'):
+            return Boss_04_idle(self.ctx)
 
-    def on_exit(self):
-        self.create_monster(spawnIds=[123,124], animationEffect=False) # 마지막 두 화로
+    def on_exit(self) -> None:
+        self.create_monster(spawnIds=[123,124], animationEffect=False)
+        # 마지막 두 화로
 
 
 class Boss_04_idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=200, textId=20105201) # 화로를 공격하여 불을 붙이세요
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,31 +219,33 @@ class Boss_04_idle(trigger_api.Trigger):
 
 
 class Boss_04_idle_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7034], visible=True) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[124]):
             return burn_state_04(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[7035], visible=True) # 횃불에 불이 붙는 이펙트
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[7035], visible=True)
+        # 횃불에 불이 붙는 이펙트
 
 
 class Boss_04_idle_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7035], visible=True) # 횃불에 불이 붙는 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[123]):
             return burn_state_04(self.ctx)
 
-    def on_exit(self):
-        self.set_effect(triggerIds=[7034], visible=True) # 횃불에 불이 붙는 이펙트
+    def on_exit(self) -> None:
+        self.set_effect(triggerIds=[7034], visible=True)
+        # 횃불에 불이 붙는 이펙트
 
 
 class burn_state_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=200)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -261,25 +263,27 @@ class burn_state_04(trigger_api.Trigger):
         if self.time_expired(timerId='6'):
             return Boss_battle_01(self.ctx)
 
-    def on_exit(self):
-        self.set_mesh(triggerIds=[6890,6891,6892,6893,6894,6895], visible=True, arg3=50, delay=70, scale=0) # 벽 생성
+    def on_exit(self) -> None:
+        self.set_mesh(triggerIds=[6890,6891,6892,6893,6894,6895], visible=True, arg3=50, delay=70, scale=0)
+        # 벽 생성
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
 
 
 class Boss_battle_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6701,6702,6703,6704,6705,6706,6707,6708,6709,6710,6711,6712,6713,6714,6715,6716,6717,6718,6719,6720,6721,6722,6723,6724,6725,6726,6727,6728,6729,6730,6731,6732,6733,6734,6735,6736,6737,6738,6739,6740,6741,6742,6743,6744,6745,6746,6747,6748,6749,6750,6751,6752,6753,6754,6755,6756,6757,6758,6759,6760,6761,6762,6763,6764,6765,6766,6767,6768,6769,6770,6771,6772,6773,6774,6775,6776,6777,6778,6779,6780,6781,6782,6783,6784,6785,6786,6787,6788,6789,6790,6791,6792,6793,6794,6795,6796,6797,6798,6799], visible=False, arg3=80, delay=50, scale=0) # 벽 해제
         self.set_event_ui(type=1, arg2='$02010052_BF__BOSS__7$', arg3='3000')
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=723, boxId=1):
+        if self.count_users(boxId=723, minUsers='1'):
             return Boss_Spawn_01(self.ctx)
 
 
 class Boss_Spawn_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[998]) # 카나 사라짐 (998)
         self.create_monster(spawnIds=[999], animationEffect=False) # 보스 카나 등장
 
@@ -289,7 +293,7 @@ class Boss_Spawn_01(trigger_api.Trigger):
 
 
 class Clear_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=80006, enable=True)
@@ -303,23 +307,32 @@ class Clear_01(trigger_api.Trigger):
         if self.time_expired(timerId='5'):
             return Clear(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
+        # 레터박스, 플레이어 조작 불가능 해제
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=7)
-        self.set_effect(triggerIds=[7998], visible=True) # 텔레포트
-        self.destroy_monster(spawnIds=[9998]) # 카나 사라짐 (998)
+        self.set_effect(triggerIds=[7998], visible=True)
+        # 텔레포트
+        self.destroy_monster(spawnIds=[9998])
+        # 카나 사라짐 (998)
         self.select_camera(triggerId=80006, enable=False)
 
 
 class Clear(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=7, arg2='미션 성공!', arg3='3000', arg4='0')
+        # self.show_guide_summary(entityId=112, textId=40009)
+        # 포탈을 타세요
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
             return end(self.ctx)
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6890,6891,6892,6893,6894,6895], visible=False, arg3=80, delay=10, scale=0) # 벽 해제
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)
         self.dungeon_clear()

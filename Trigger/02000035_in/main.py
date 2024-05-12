@@ -37,7 +37,7 @@ class 기본(trigger_api.Trigger):
 
 
 class npc스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -76,7 +76,7 @@ class NPC스폰조건02(trigger_api.Trigger):
 
 
 class 탈주이후(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102,103], animationEffect=False)
 
@@ -86,7 +86,7 @@ class 탈주이후(trigger_api.Trigger):
 
 
 class 연출준비00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103], animationEffect=False)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -98,7 +98,7 @@ class 연출준비00(trigger_api.Trigger):
 
 
 class 연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000035, portalId=10)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -110,10 +110,12 @@ class 연출준비(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8000], returnView=False)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_scene_skip(state=케이틀린슬픔_스킵완료, action='nextState') # setsceneskip set
+        # setsceneskip set
+        # setsceneskip set
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -121,7 +123,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 언쟁시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.set_conversation(type=2, spawnId=11003264, script='$02000035_IN__MAIN__0$', arg4=4, arg5=0)
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=3000)
@@ -132,7 +134,7 @@ class 언쟁시작(trigger_api.Trigger):
 
 
 class 케이틀린대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003262, script='$02000035_IN__MAIN__1$', arg4=4, arg5=0)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=3000)
         self.set_skip(state=케이틀린대사01_skip)
@@ -143,8 +145,9 @@ class 케이틀린대사01(trigger_api.Trigger):
 
 
 class 케이틀린대사01_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +156,7 @@ class 케이틀린대사01_skip(trigger_api.Trigger):
 
 
 class 앤대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003264, script='$02000035_IN__MAIN__2$', arg4=5, arg5=0)
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=4000)
         self.set_skip(state=앤대사01_skip)
@@ -164,8 +167,9 @@ class 앤대사01(trigger_api.Trigger):
 
 
 class 앤대사01_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -174,7 +178,7 @@ class 앤대사01_skip(trigger_api.Trigger):
 
 
 class 케이틀린대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
         self.set_conversation(type=2, spawnId=11003262, script='$02000035_IN__MAIN__3$', arg4=3, arg5=0)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=3000)
@@ -186,8 +190,9 @@ class 케이틀린대사02(trigger_api.Trigger):
 
 
 class 케이틀린대사02_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -196,7 +201,7 @@ class 케이틀린대사02_skip(trigger_api.Trigger):
 
 
 class 호르헤대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006], returnView=False)
         self.set_conversation(type=2, spawnId=11003263, script='$02000035_IN__MAIN__4$', arg4=4, arg5=0)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=3000)
@@ -208,8 +213,9 @@ class 호르헤대사01(trigger_api.Trigger):
 
 
 class 호르헤대사01_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -218,7 +224,7 @@ class 호르헤대사01_skip(trigger_api.Trigger):
 
 
 class 케이틀린대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
         self.set_conversation(type=2, spawnId=11003262, script='$02000035_IN__MAIN__5$', arg4=5, arg5=0)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=4000)
@@ -230,8 +236,9 @@ class 케이틀린대사03(trigger_api.Trigger):
 
 
 class 케이틀린대사03_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -240,7 +247,7 @@ class 케이틀린대사03_skip(trigger_api.Trigger):
 
 
 class 앤대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.set_conversation(type=2, spawnId=11003264, script='$02000035_IN__MAIN__9$', arg4=3, arg5=0)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='ChatUp_A', duration=2000)
@@ -252,8 +259,9 @@ class 앤대사02(trigger_api.Trigger):
 
 
 class 앤대사02_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -262,7 +270,7 @@ class 앤대사02_skip(trigger_api.Trigger):
 
 
 class 호르헤대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8006], returnView=False)
         self.set_conversation(type=2, spawnId=11003263, script='$02000035_IN__MAIN__10$', arg4=2, arg5=0)
         self.set_npc_emotion_loop(spawnId=102, sequenceName='ChatUp_A', duration=2000)
@@ -274,8 +282,9 @@ class 호르헤대사02(trigger_api.Trigger):
 
 
 class 호르헤대사02_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -284,7 +293,7 @@ class 호르헤대사02_skip(trigger_api.Trigger):
 
 
 class 케이틀린대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
         self.set_conversation(type=2, spawnId=11003262, script='$02000035_IN__MAIN__6$', arg4=4, arg5=0)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=4000)
@@ -296,8 +305,9 @@ class 케이틀린대사04(trigger_api.Trigger):
 
 
 class 케이틀린대사04_skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -306,7 +316,7 @@ class 케이틀린대사04_skip(trigger_api.Trigger):
 
 
 class 케이틀린탈주01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_100_wayout')
         self.move_user_path(patrolName='MS2PatrolData_PC01')
@@ -317,7 +327,7 @@ class 케이틀린탈주01(trigger_api.Trigger):
 
 
 class 케이틀린탈주02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11003262, script='$02000035_IN__MAIN__7$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -326,7 +336,7 @@ class 케이틀린탈주02(trigger_api.Trigger):
 
 
 class 케이틀린탈주03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101_wayout')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -335,9 +345,9 @@ class 케이틀린탈주03(trigger_api.Trigger):
 
 
 class PC멈칫(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$02000035_IN__MAIN__11$', arg4=2, arg5=0)
-        # <action name="SetPcEmotionLoop" arg1="Talk_A" arg2="1000"/>
+        # self.set_pc_emotion_loop(sequenceName='Talk_A', duration=1000)
         self.destroy_monster(spawnIds=[101])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -346,10 +356,10 @@ class PC멈칫(trigger_api.Trigger):
 
 
 class 앤대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.set_conversation(type=2, spawnId=11003264, script='$02000035_IN__MAIN__8$', arg4=3, arg5=0)
-        # <action name="SetNpcEmotionLoop" arg1="103" arg2="ChatUp_A" arg="3000"/>
+        # self.set_npc_emotion_loop(spawnId=103, sequenceName='ChatUp_A', arg='3000')
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='ChatUp_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -358,7 +368,7 @@ class 앤대사03(trigger_api.Trigger):
 
 
 class 케이틀린슬픔_스킵완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
         self.destroy_monster(spawnIds=[101])
@@ -370,7 +380,7 @@ class 케이틀린슬픔_스킵완료(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9000, type='trigger', achieve='KatelyninGrief')
         self.reset_camera(interpolationTime=2)
         self.set_cinematic_ui(type=0)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2000], visible=True, arg3=0, delay=0, scale=0) # Invisible
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.create_widget(type='Guide')
@@ -20,7 +20,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 환영(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_quest_accept(questId=90000008)
         self.side_npc_talk(npcId=29000403, illust='Mushking_normal', duration=4000, script='$52000187_QD__TUTORIAL__0$')
 
@@ -32,7 +32,7 @@ class 환영(trigger_api.Trigger):
 
 
 class 머쉬킹대화1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2000], visible=False, arg3=0, delay=0, scale=0) # Invisible
         self.create_monster(spawnIds=[103], animationEffect=False)
 
@@ -46,7 +46,7 @@ class 머쉬킹대화1(trigger_api.Trigger):
 
 
 class 머쉬킹대화2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2001], visible=False, arg3=0, delay=0, scale=0) # Invisible
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +70,7 @@ class 머쉬킹대화4(trigger_api.Trigger):
 
 
 class 모쿰소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.add_balloon_talk(spawnId=102, msg='$52000187_QD__TUTORIAL__4$')
 
@@ -80,7 +80,7 @@ class 모쿰소환(trigger_api.Trigger):
 
 
 class 모쿰이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_mokum_0')
         self.add_balloon_talk(spawnId=102, msg='$52000187_QD__TUTORIAL__5$')
         self.side_npc_talk(npcId=29000403, illust='Mushking_normal', duration=4000, script='$52000187_QD__TUTORIAL__6$')
@@ -88,12 +88,13 @@ class 모쿰이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='Guide', name='IsTriggerEvent', condition='551'):
+            # 가이드 To 트리거 -: 몬스터생성신호
             self.create_monster(spawnIds=[101], animationEffect=False)
             return 모쿰대사1(self.ctx)
 
 
 class 모쿰대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_mokum_1')
         self.add_balloon_talk(spawnId=102, msg='$52000187_QD__TUTORIAL__7$')
         self.destroy_monster(spawnIds=[103])
@@ -106,7 +107,7 @@ class 모쿰대사1(trigger_api.Trigger):
 
 
 class 모쿰대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=102, msg='$52000187_QD__TUTORIAL__8$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,14 +118,13 @@ class 모쿰대사2(trigger_api.Trigger):
 
 
 class 해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_mokum_2')
         self.guide_event(eventId=560)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[99999], questIds=[90000007], questStates=[3]):
             self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
-            return None
 
 
 class 종료(trigger_api.Trigger):

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3123,3124,3125,3126,3127,3128,3129], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3121], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3122], visible=True, arg3=0, delay=0, scale=0)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1200], animationEffect=False)
         self.set_mesh(triggerIds=[3122], visible=False, arg3=500, delay=0, scale=0)
         self.add_buff(boxIds=[1200], skillId=60170051, level=1, isPlayer=True, isSkillSet=True)
@@ -26,7 +26,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 삼(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3703], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 삼(trigger_api.Trigger):
 
 
 class 이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3703], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3702], visible=True, arg3=0, delay=0, scale=0)
 
@@ -45,7 +45,7 @@ class 이(trigger_api.Trigger):
 
 
 class 일(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3702], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3701], visible=True, arg3=0, delay=0, scale=0)
 
@@ -55,7 +55,7 @@ class 일(trigger_api.Trigger):
 
 
 class 출발(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3701], visible=False, arg3=0, delay=0, scale=0)
         self.move_npc(spawnId=1200, patrolName='MS2PatrolData1200A')
         self.create_item(spawnIds=[9020,9021,9022,9023,9024,9025], arg5=10)

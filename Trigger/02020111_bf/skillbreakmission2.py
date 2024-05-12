@@ -15,11 +15,12 @@ class 던전미션_체크1(trigger_api.Trigger):
 
 
 class 던전미션_스킬브레이크저지_성공1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=23039005)
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.check_npc_additional_effect(spawnId=101, additionalEffectId=62100016, level=1):
+            # <보스가 스킬 브레이크 발동 상태인지를 체크해서 루프시킴>
             return 대기2(self.ctx)
 
 
@@ -36,7 +37,7 @@ class 던전미션_체크2(trigger_api.Trigger):
 
 
 class 던전미션_스킬브레이크저지_성공2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_mission_complete(missionId=23039005)
 
     def on_tick(self) -> trigger_api.Trigger:

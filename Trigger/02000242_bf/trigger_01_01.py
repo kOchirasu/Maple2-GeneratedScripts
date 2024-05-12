@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[701,702], visible=False)
         self.destroy_monster(spawnIds=[631,632,633,634,635,636,637,638,639])
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몹생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[631,632,633,634,635,636,637,638,639], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 몹생성(trigger_api.Trigger):
 
 
 class 통과(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_item(spawnIds=[501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520])
 
 

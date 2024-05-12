@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000138], state=1)
         self.set_effect(triggerIds=[201], visible=False)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터리젠(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[201], visible=False)
         self.create_monster(spawnIds=[101], animationEffect=True)
         self.set_timer(timerId='1', seconds=2)
@@ -24,7 +24,7 @@ class 몬스터리젠(trigger_api.Trigger):
 
 
 class 대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=90)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 대화(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.destroy_monster(spawnIds=[101])
 

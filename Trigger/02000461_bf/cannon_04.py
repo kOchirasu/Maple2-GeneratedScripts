@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[694], visible=False)
         self.set_effect(triggerIds=[794], visible=False)
         self.set_mesh(triggerIds=[3904], visible=True, arg3=0, delay=0, scale=0)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2904], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 보스전_대기(trigger_api.Trigger):
 
 
 class 보스전용_생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[694], visible=False)
         self.set_effect(triggerIds=[794], visible=True)
         self.set_mesh(triggerIds=[3904], visible=True, arg3=0, delay=0, scale=0)
@@ -59,7 +59,7 @@ class 보스전용_재생성대기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[694], visible=False)
         self.set_effect(triggerIds=[794], visible=False)
         self.set_mesh(triggerIds=[3904], visible=True, arg3=0, delay=0, scale=0)

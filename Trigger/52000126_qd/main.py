@@ -4,8 +4,9 @@ import trigger_api
 
 # 이름 없는 부랑자 (11000213) 퀘스트 / 이름 없는 부랑자(11003209) 연출
 class idle(trigger_api.Trigger):
-    def on_enter(self):
-        self.create_monster(spawnIds=[101], animationEffect=True) # 이름 없는 부랑자 퀘스트 (11000213)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 이름 없는 부랑자 퀘스트 (11000213)
+        self.create_monster(spawnIds=[101], animationEffect=True)
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
         self.set_effect(triggerIds=[5003], visible=False)
@@ -18,7 +19,7 @@ class idle(trigger_api.Trigger):
 
 # 준비
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -36,7 +37,7 @@ class ready(trigger_api.Trigger):
 
 # 이름 없는 부랑자 대사
 class talk_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003209, msg='$52000126_QD__MAIN__0$', duration=2000, align='Left')
@@ -50,7 +51,7 @@ class talk_01(trigger_api.Trigger):
 
 
 class talk_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=7001, enable=True)
         self.set_npc_emotion_sequence(spawnId=202, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003209, msg='$52000126_QD__MAIN__1$', duration=2000, align='Left')
@@ -65,7 +66,7 @@ class talk_02(trigger_api.Trigger):
 
 # 마스크단 등장씬
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
         self.add_cinematic_talk(npcId=11003214, msg='$52000126_QD__MAIN__2$', duration=3000, align='Left')
 
@@ -75,7 +76,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003214, msg='$52000126_QD__MAIN__3$', duration=3000, align='Left')
@@ -86,7 +87,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.add_cinematic_talk(npcId=11003214, msg='$52000126_QD__MAIN__4$', duration=4000, align='Left')
 
@@ -96,7 +97,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005,4006,4007], returnView=False)
         self.add_cinematic_talk(npcId=11003214, msg='$52000126_QD__MAIN__5$', duration=3000, align='Left')
         self.set_effect(triggerIds=[5001], visible=True)
@@ -111,7 +112,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4008], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3005')
         self.set_npc_emotion_loop(spawnId=302, sequenceName='Attack_Idle_A', duration=7000)
@@ -124,10 +125,11 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4009], returnView=False)
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Attack_01_A')
         self.add_cinematic_talk(npcId=11003214, msg='$52000126_QD__MAIN__7$', duration=3000, align='Left')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -137,7 +139,7 @@ class scene_06(trigger_api.Trigger):
 
 # 전투 씬
 class battle_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -146,7 +148,7 @@ class battle_ready(trigger_api.Trigger):
 
 
 class battle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -160,7 +162,7 @@ class battle(trigger_api.Trigger):
 
 
 class battleMsg(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$52000126_QD__MAIN__8$', arg3='3000', arg4='0')
 
@@ -170,7 +172,7 @@ class battleMsg(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_sound(triggerId=7001, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

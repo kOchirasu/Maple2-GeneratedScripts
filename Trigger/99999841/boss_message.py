@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 메시지1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='A팀의 보스가 등장했습니다!', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:

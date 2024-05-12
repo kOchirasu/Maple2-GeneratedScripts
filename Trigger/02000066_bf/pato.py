@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[103], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.select_camera(triggerId=301, enable=True)
         self.set_cinematic_ui(type=1)
@@ -26,7 +26,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 연출진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000068, script='$02000066_BF__PATO__0$', arg4=2)
         self.set_skip(state=연출종료)
 
@@ -36,7 +36,7 @@ class 연출진행(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=103, skillId=70000107)
         self.select_camera(triggerId=301, enable=False)
         self.set_cinematic_ui(type=0)

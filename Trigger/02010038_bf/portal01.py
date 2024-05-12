@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=50, visible=False, enable=False, minimapVisible=False)
         self.set_actor(triggerId=1000, visible=True, initialSequence='co_functobj_sensor_A01_Off')
         self.set_interact_object(triggerIds=[10000881], state=1)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=50, visible=False, enable=True, minimapVisible=False)
         self.set_actor(triggerId=1000, visible=True, initialSequence='co_functobj_sensor_A01_On')
         self.set_timer(timerId='2', seconds=2)
@@ -26,7 +26,7 @@ class 이동(trigger_api.Trigger):
 
 
 class 재사용대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5010,50101,50102])
         self.set_interact_object(triggerIds=[10000502], state=1)
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class NpcSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[5010,50101,50102])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class NpcSpawn01(trigger_api.Trigger):
 
 
 class NpcMove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=5010, script='$02000296_BF__NPC3__0$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=50101, script='$02000296_BF__NPC9__0$', arg4=2, arg5=1)
         self.set_conversation(type=1, spawnId=50102, script='$02000296_BF__NPC10__0$', arg4=2, arg5=2)
@@ -36,7 +36,7 @@ class NpcMove01(trigger_api.Trigger):
 
 
 class NpcRemove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5010,50101,50102])
 
 

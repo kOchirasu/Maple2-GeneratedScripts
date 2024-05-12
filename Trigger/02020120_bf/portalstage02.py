@@ -3,9 +3,12 @@ import trigger_api
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_user_value(key='DungeonReset', value=0) # 스킬브레이크 실패하여 보스의 신호를 받아서 던전 리셋할때 사용하는 변수
-        self.set_user_value(key='Stage02', value=0) # 어느지점 포탈을 활성화 시킬지 결정하는데 사용하는 변수
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 순간이동 포탈 처음에 감추기
+        # 스킬브레이크 실패하여 보스의 신호를 받아서 던전 리셋할때 사용하는 변수
+        self.set_user_value(key='DungeonReset', value=0)
+        # 어느지점 포탈을 활성화 시킬지 결정하는데 사용하는 변수
+        self.set_user_value(key='Stage02', value=0)
         self.set_portal(portalId=2101, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2201, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2301, visible=False, enable=False, minimapVisible=False)
@@ -64,7 +67,7 @@ class 스테이지2_시작(trigger_api.Trigger):
 
 
 class 스테이지2_왼쪽진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2101, visible=True, enable=True, minimapVisible=True) # 2스테이지로 가는 포탈 생성
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -73,7 +76,7 @@ class 스테이지2_왼쪽진행(trigger_api.Trigger):
 
 
 class 스테이지2_가운데진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2201, visible=True, enable=True, minimapVisible=True) # 2스테이지로 가는 포탈 생성
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +85,7 @@ class 스테이지2_가운데진행(trigger_api.Trigger):
 
 
 class 스테이지2_오른쪽진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2301, visible=True, enable=True, minimapVisible=True) # 2스테이지로 가는 포탈 생성
 
     def on_tick(self) -> trigger_api.Trigger:

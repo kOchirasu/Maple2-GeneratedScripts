@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5910], visible=False) # RumbleSound
         self.set_effect(triggerIds=[5810], visible=False) # SandFlowdown
         self.set_effect(triggerIds=[5811], visible=False) # SandFlowdown
@@ -24,7 +24,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Delay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3600,3601,3602,3603,3604,3605,3606,3607,3608,3609,3610,3611,3612,3613,3614,3615], visible=True, arg3=0, delay=0, scale=0) # EarthquakeDebris
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class Collapse00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5910], visible=True) # RumbleSound
         self.set_effect(triggerIds=[5802], visible=True) # EarthquakeVibrateLong
         self.set_effect(triggerIds=[5810], visible=True) # SandFlowdown
@@ -48,7 +48,7 @@ class Collapse00(trigger_api.Trigger):
 
 
 class Collapse01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5817], visible=True) # SandFlowdown
         self.set_effect(triggerIds=[5818], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3604], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
@@ -60,7 +60,7 @@ class Collapse01(trigger_api.Trigger):
 
 
 class Collapse02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5814], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3606], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
         self.set_mesh(triggerIds=[3607], visible=False, arg3=100, delay=0, scale=0) # EarthquakeDebris
@@ -71,7 +71,7 @@ class Collapse02(trigger_api.Trigger):
 
 
 class Collapse03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5816], visible=True) # SandFlowdown
         self.set_effect(triggerIds=[5810], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3608], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
@@ -87,7 +87,7 @@ class Collapse03(trigger_api.Trigger):
 
 
 class Collapse04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5910], visible=True) # RumbleSound
         self.set_effect(triggerIds=[5811], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3600], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
@@ -101,7 +101,7 @@ class Collapse04(trigger_api.Trigger):
 
 
 class Collapse05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3610], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
         self.set_mesh(triggerIds=[3611], visible=False, arg3=500, delay=0, scale=0) # EarthquakeDebris
         self.set_effect(triggerIds=[5815], visible=True) # SandFlowdown
@@ -112,7 +112,7 @@ class Collapse05(trigger_api.Trigger):
 
 
 class Collapse06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5818], visible=True) # SandFlowdown
         self.set_effect(triggerIds=[5812], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3612], visible=False, arg3=500, delay=0, scale=0) # EarthquakeDebris
@@ -123,7 +123,7 @@ class Collapse06(trigger_api.Trigger):
 
 
 class Collapse07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5910], visible=True) # RumbleSound
         self.set_effect(triggerIds=[5813], visible=True) # SandFlowdown
         self.set_mesh(triggerIds=[3613], visible=False, arg3=0, delay=0, scale=0) # EarthquakeDebris
@@ -144,7 +144,7 @@ class Collapse08(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5802], visible=False) # EarthquakeVibrateLong
         self.set_effect(triggerIds=[5810], visible=False) # SandFlowdown
         self.set_effect(triggerIds=[5811], visible=False) # SandFlowdown

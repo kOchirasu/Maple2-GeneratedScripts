@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
@@ -29,7 +29,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6010], visible=True)
         self.set_effect(triggerIds=[6011], visible=True)
         self.set_effect(triggerIds=[6012], visible=True)
@@ -44,7 +44,7 @@ class 시작대기(trigger_api.Trigger):
 
 
 class 안내02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000350_BF__MAIN__1$', arg3='3000', arg4='0')
         self.set_timer(timerId='3', seconds=3)
 
@@ -54,7 +54,7 @@ class 안내02(trigger_api.Trigger):
 
 
 class 안내03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000350_BF__MAIN__2$', arg3='4000', arg4='0')
         self.set_timer(timerId='2', seconds=2)
 
@@ -64,7 +64,7 @@ class 안내03(trigger_api.Trigger):
 
 
 class 진동대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_timer(timerId='3', seconds=3)
 
@@ -74,7 +74,7 @@ class 진동대기(trigger_api.Trigger):
 
 
 class 유저감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='StartGame', round=30)
         self.set_effect(triggerIds=[601], visible=True)
         self.set_skill(triggerIds=[701], enable=True)
@@ -90,7 +90,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 라운드대기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6110], visible=True)
         self.set_effect(triggerIds=[6111], visible=True)
         self.set_effect(triggerIds=[6112], visible=True)
@@ -105,7 +105,7 @@ class 라운드대기1(trigger_api.Trigger):
 
 
 class 라운드1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='SpawnMonster', spawnIds=[101001], score=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -116,7 +116,7 @@ class 라운드1(trigger_api.Trigger):
 
 
 class 라운드대기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='StartRound', round=2, uiDuration=3000, damagePenalty=5)
         self.set_timer(timerId='3', seconds=3)
         self.set_event_ui(type=0, arg2='2,5,1')
@@ -127,7 +127,7 @@ class 라운드대기2(trigger_api.Trigger):
 
 
 class 라운드2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='SpawnMonster', spawnIds=[102001], score=6000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -138,7 +138,7 @@ class 라운드2(trigger_api.Trigger):
 
 
 class 라운드대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='3,5,1')
         self.dark_stream(type='StartRound', round=3, uiDuration=3000, damagePenalty=5)
         self.set_timer(timerId='3', seconds=3)
@@ -149,7 +149,7 @@ class 라운드대기3(trigger_api.Trigger):
 
 
 class 라운드3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='SpawnMonster', spawnIds=[103001], score=16000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +160,7 @@ class 라운드3(trigger_api.Trigger):
 
 
 class 라운드대기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='4,5,1')
         self.set_timer(timerId='3', seconds=3)
         self.dark_stream(type='StartRound', round=4, uiDuration=3000, damagePenalty=5)
@@ -173,7 +173,7 @@ class 라운드대기4(trigger_api.Trigger):
 
 
 class 라운드4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='30', seconds=30, startDelay=1, interval=1, vOffset=80)
         self.create_monster(spawnIds=[104099], animationEffect=False)
 
@@ -187,7 +187,7 @@ class 라운드4(trigger_api.Trigger):
 
 
 class 라운드대기5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='5,5,1')
         self.set_effect(triggerIds=[6101], visible=True)
         self.dark_stream(type='StartRound', round=5, uiDuration=3000, damagePenalty=5)
@@ -199,7 +199,7 @@ class 라운드대기5(trigger_api.Trigger):
 
 
 class 라운드5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='SpawnMonster', spawnIds=[105001], score=135000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +210,7 @@ class 라운드5(trigger_api.Trigger):
 
 
 class 바닥부심(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_effect(triggerIds=[600], visible=True)
 

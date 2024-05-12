@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 
 class NpcSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[105], animationEffect=True) # 상처입은 추격대원
         self.create_monster(spawnIds=[106], animationEffect=True) # 상처입은 추격대원
         self.create_monster(spawnIds=[107], animationEffect=True) # 상처입은 추격대원

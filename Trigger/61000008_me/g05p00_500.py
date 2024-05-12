@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[110,111,112,113,114,115], visible=False, arg3=0, delay=0, scale=0) # 1,1 / Number 0 to 5
         self.set_mesh(triggerIds=[120,121,122,123,124,125], visible=False, arg3=0, delay=0, scale=0) # 1,2 / Number 0 to 5
         self.set_mesh(triggerIds=[130,131,132,133,134,135], visible=False, arg3=0, delay=0, scale=0) # 1,3 / Number 0 to 5
@@ -123,28 +123,44 @@ class Wait(trigger_api.Trigger):
         if self.user_value(key='G05P50Set', value=1):
             return NumberOnP50(self.ctx)
 
-    def on_exit(self):
-        self.set_user_value(triggerId=7110, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7120, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7130, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7140, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7210, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7220, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7230, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7240, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7310, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7320, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7330, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7340, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7410, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7420, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7430, key='ColorStart', value=1) # start
-        self.set_user_value(triggerId=7440, key='ColorStart', value=1) # start
+    def on_exit(self) -> None:
+        self.set_user_value(triggerId=7110, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7120, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7130, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7140, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7210, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7220, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7230, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7240, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7310, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7320, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7330, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7340, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7410, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7420, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7430, key='ColorStart', value=1)
+        # start
+        self.set_user_value(triggerId=7440, key='ColorStart', value=1)
+        # start
 
 
 # G05 P01
 class NumberOnP01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -185,7 +201,7 @@ class NumberOnP01(trigger_api.Trigger):
 
 
 class CheckP01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -209,7 +225,7 @@ class CheckP01(trigger_api.Trigger):
 
 
 class NumberOffP01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -233,7 +249,7 @@ class NumberOffP01(trigger_api.Trigger):
 
 
 class ResetP01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P01End', value=1)
         self.set_user_value(key='G05P01Set', value=0)
         self.set_user_value(key='G05P01TimeLimit', value=0)
@@ -245,7 +261,7 @@ class ResetP01(trigger_api.Trigger):
 
 # G05 P02
 class NumberOnP02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -286,7 +302,7 @@ class NumberOnP02(trigger_api.Trigger):
 
 
 class CheckP02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -310,7 +326,7 @@ class CheckP02(trigger_api.Trigger):
 
 
 class NumberOffP02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -334,7 +350,7 @@ class NumberOffP02(trigger_api.Trigger):
 
 
 class ResetP02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P02End', value=1)
         self.set_user_value(key='G05P02Set', value=0)
         self.set_user_value(key='G05P02TimeLimit', value=0)
@@ -346,7 +362,7 @@ class ResetP02(trigger_api.Trigger):
 
 # G05 P03
 class NumberOnP03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -387,7 +403,7 @@ class NumberOnP03(trigger_api.Trigger):
 
 
 class CheckP03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -411,7 +427,7 @@ class CheckP03(trigger_api.Trigger):
 
 
 class NumberOffP03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -435,7 +451,7 @@ class NumberOffP03(trigger_api.Trigger):
 
 
 class ResetP03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P03End', value=1)
         self.set_user_value(key='G05P03Set', value=0)
         self.set_user_value(key='G05P03TimeLimit', value=0)
@@ -447,7 +463,7 @@ class ResetP03(trigger_api.Trigger):
 
 # G05 P04
 class NumberOnP04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -488,7 +504,7 @@ class NumberOnP04(trigger_api.Trigger):
 
 
 class CheckP04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -512,7 +528,7 @@ class CheckP04(trigger_api.Trigger):
 
 
 class NumberOffP04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -536,7 +552,7 @@ class NumberOffP04(trigger_api.Trigger):
 
 
 class ResetP04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P04End', value=1)
         self.set_user_value(key='G05P04Set', value=0)
         self.set_user_value(key='G05P04TimeLimit', value=0)
@@ -548,7 +564,7 @@ class ResetP04(trigger_api.Trigger):
 
 # G05 P05
 class NumberOnP05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -589,7 +605,7 @@ class NumberOnP05(trigger_api.Trigger):
 
 
 class CheckP05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -613,7 +629,7 @@ class CheckP05(trigger_api.Trigger):
 
 
 class NumberOffP05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -637,7 +653,7 @@ class NumberOffP05(trigger_api.Trigger):
 
 
 class ResetP05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P05End', value=1)
         self.set_user_value(key='G05P05Set', value=0)
         self.set_user_value(key='G05P05TimeLimit', value=0)
@@ -649,7 +665,7 @@ class ResetP05(trigger_api.Trigger):
 
 # G05 P06
 class NumberOnP06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -690,7 +706,7 @@ class NumberOnP06(trigger_api.Trigger):
 
 
 class CheckP06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -714,7 +730,7 @@ class CheckP06(trigger_api.Trigger):
 
 
 class NumberOffP06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -738,7 +754,7 @@ class NumberOffP06(trigger_api.Trigger):
 
 
 class ResetP06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P06End', value=1)
         self.set_user_value(key='G05P06Set', value=0)
         self.set_user_value(key='G05P06TimeLimit', value=0)
@@ -750,7 +766,7 @@ class ResetP06(trigger_api.Trigger):
 
 # G05 P07
 class NumberOnP07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[120], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 0
@@ -791,7 +807,7 @@ class NumberOnP07(trigger_api.Trigger):
 
 
 class CheckP07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=0)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -815,7 +831,7 @@ class CheckP07(trigger_api.Trigger):
 
 
 class NumberOffP07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[120], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 0
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -839,7 +855,7 @@ class NumberOffP07(trigger_api.Trigger):
 
 
 class ResetP07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P07End', value=1)
         self.set_user_value(key='G05P07Set', value=0)
         self.set_user_value(key='G05P07TimeLimit', value=0)
@@ -851,7 +867,7 @@ class ResetP07(trigger_api.Trigger):
 
 # G05 P08
 class NumberOnP08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -892,7 +908,7 @@ class NumberOnP08(trigger_api.Trigger):
 
 
 class CheckP08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -916,7 +932,7 @@ class CheckP08(trigger_api.Trigger):
 
 
 class NumberOffP08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -940,7 +956,7 @@ class NumberOffP08(trigger_api.Trigger):
 
 
 class ResetP08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P08End', value=1)
         self.set_user_value(key='G05P08Set', value=0)
         self.set_user_value(key='G05P08TimeLimit', value=0)
@@ -952,7 +968,7 @@ class ResetP08(trigger_api.Trigger):
 
 # G05 P09
 class NumberOnP09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -993,7 +1009,7 @@ class NumberOnP09(trigger_api.Trigger):
 
 
 class CheckP09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -1017,7 +1033,7 @@ class CheckP09(trigger_api.Trigger):
 
 
 class NumberOffP09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -1041,7 +1057,7 @@ class NumberOffP09(trigger_api.Trigger):
 
 
 class ResetP09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P09End', value=1)
         self.set_user_value(key='G05P09Set', value=0)
         self.set_user_value(key='G05P09TimeLimit', value=0)
@@ -1053,7 +1069,7 @@ class ResetP09(trigger_api.Trigger):
 
 # G05 P10
 class NumberOnP10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -1094,7 +1110,7 @@ class NumberOnP10(trigger_api.Trigger):
 
 
 class CheckP10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -1118,7 +1134,7 @@ class CheckP10(trigger_api.Trigger):
 
 
 class NumberOffP10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -1142,7 +1158,7 @@ class NumberOffP10(trigger_api.Trigger):
 
 
 class ResetP10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P10End', value=1)
         self.set_user_value(key='G05P10Set', value=0)
         self.set_user_value(key='G05P10TimeLimit', value=0)
@@ -1154,7 +1170,7 @@ class ResetP10(trigger_api.Trigger):
 
 # G05 P11
 class NumberOnP11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -1195,7 +1211,7 @@ class NumberOnP11(trigger_api.Trigger):
 
 
 class CheckP11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -1219,7 +1235,7 @@ class CheckP11(trigger_api.Trigger):
 
 
 class NumberOffP11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -1243,7 +1259,7 @@ class NumberOffP11(trigger_api.Trigger):
 
 
 class ResetP11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P11End', value=1)
         self.set_user_value(key='G05P11Set', value=0)
         self.set_user_value(key='G05P11TimeLimit', value=0)
@@ -1255,7 +1271,7 @@ class ResetP11(trigger_api.Trigger):
 
 # G05 P12
 class NumberOnP12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -1296,7 +1312,7 @@ class NumberOnP12(trigger_api.Trigger):
 
 
 class CheckP12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -1320,7 +1336,7 @@ class CheckP12(trigger_api.Trigger):
 
 
 class NumberOffP12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -1344,7 +1360,7 @@ class NumberOffP12(trigger_api.Trigger):
 
 
 class ResetP12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P12End', value=1)
         self.set_user_value(key='G05P12Set', value=0)
         self.set_user_value(key='G05P12TimeLimit', value=0)
@@ -1356,7 +1372,7 @@ class ResetP12(trigger_api.Trigger):
 
 # G05 P13
 class NumberOnP13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -1397,7 +1413,7 @@ class NumberOnP13(trigger_api.Trigger):
 
 
 class CheckP13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -1421,7 +1437,7 @@ class CheckP13(trigger_api.Trigger):
 
 
 class NumberOffP13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -1445,7 +1461,7 @@ class NumberOffP13(trigger_api.Trigger):
 
 
 class ResetP13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P13End', value=1)
         self.set_user_value(key='G05P13Set', value=0)
         self.set_user_value(key='G05P13TimeLimit', value=0)
@@ -1457,7 +1473,7 @@ class ResetP13(trigger_api.Trigger):
 
 # G05 P14
 class NumberOnP14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -1498,7 +1514,7 @@ class NumberOnP14(trigger_api.Trigger):
 
 
 class CheckP14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1522,7 +1538,7 @@ class CheckP14(trigger_api.Trigger):
 
 
 class NumberOffP14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1546,7 +1562,7 @@ class NumberOffP14(trigger_api.Trigger):
 
 
 class ResetP14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P14End', value=1)
         self.set_user_value(key='G05P14Set', value=0)
         self.set_user_value(key='G05P14TimeLimit', value=0)
@@ -1558,7 +1574,7 @@ class ResetP14(trigger_api.Trigger):
 
 # G05 P15
 class NumberOnP15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -1599,7 +1615,7 @@ class NumberOnP15(trigger_api.Trigger):
 
 
 class CheckP15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -1623,7 +1639,7 @@ class CheckP15(trigger_api.Trigger):
 
 
 class NumberOffP15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -1647,7 +1663,7 @@ class NumberOffP15(trigger_api.Trigger):
 
 
 class ResetP15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P15End', value=1)
         self.set_user_value(key='G05P15Set', value=0)
         self.set_user_value(key='G05P15TimeLimit', value=0)
@@ -1659,7 +1675,7 @@ class ResetP15(trigger_api.Trigger):
 
 # G05 P16
 class NumberOnP16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -1700,7 +1716,7 @@ class NumberOnP16(trigger_api.Trigger):
 
 
 class CheckP16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -1724,7 +1740,7 @@ class CheckP16(trigger_api.Trigger):
 
 
 class NumberOffP16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -1748,7 +1764,7 @@ class NumberOffP16(trigger_api.Trigger):
 
 
 class ResetP16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P16End', value=1)
         self.set_user_value(key='G05P16Set', value=0)
         self.set_user_value(key='G05P16TimeLimit', value=0)
@@ -1760,7 +1776,7 @@ class ResetP16(trigger_api.Trigger):
 
 # G05 P17
 class NumberOnP17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -1801,7 +1817,7 @@ class NumberOnP17(trigger_api.Trigger):
 
 
 class CheckP17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -1825,7 +1841,7 @@ class CheckP17(trigger_api.Trigger):
 
 
 class NumberOffP17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -1849,7 +1865,7 @@ class NumberOffP17(trigger_api.Trigger):
 
 
 class ResetP17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P17End', value=1)
         self.set_user_value(key='G05P17Set', value=0)
         self.set_user_value(key='G05P17TimeLimit', value=0)
@@ -1861,7 +1877,7 @@ class ResetP17(trigger_api.Trigger):
 
 # G05 P18
 class NumberOnP18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -1902,7 +1918,7 @@ class NumberOnP18(trigger_api.Trigger):
 
 
 class CheckP18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -1926,7 +1942,7 @@ class CheckP18(trigger_api.Trigger):
 
 
 class NumberOffP18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -1950,7 +1966,7 @@ class NumberOffP18(trigger_api.Trigger):
 
 
 class ResetP18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P18End', value=1)
         self.set_user_value(key='G05P18Set', value=0)
         self.set_user_value(key='G05P18TimeLimit', value=0)
@@ -1962,7 +1978,7 @@ class ResetP18(trigger_api.Trigger):
 
 # G05 P19
 class NumberOnP19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2003,7 +2019,7 @@ class NumberOnP19(trigger_api.Trigger):
 
 
 class CheckP19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2027,7 +2043,7 @@ class CheckP19(trigger_api.Trigger):
 
 
 class NumberOffP19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2051,7 +2067,7 @@ class NumberOffP19(trigger_api.Trigger):
 
 
 class ResetP19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P19End', value=1)
         self.set_user_value(key='G05P19Set', value=0)
         self.set_user_value(key='G05P19TimeLimit', value=0)
@@ -2063,7 +2079,7 @@ class ResetP19(trigger_api.Trigger):
 
 # G05 P20
 class NumberOnP20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -2104,7 +2120,7 @@ class NumberOnP20(trigger_api.Trigger):
 
 
 class CheckP20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -2128,7 +2144,7 @@ class CheckP20(trigger_api.Trigger):
 
 
 class NumberOffP20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -2152,7 +2168,7 @@ class NumberOffP20(trigger_api.Trigger):
 
 
 class ResetP20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P20End', value=1)
         self.set_user_value(key='G05P20Set', value=0)
         self.set_user_value(key='G05P20TimeLimit', value=0)
@@ -2164,7 +2180,7 @@ class ResetP20(trigger_api.Trigger):
 
 # G05 P21
 class NumberOnP21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -2205,7 +2221,7 @@ class NumberOnP21(trigger_api.Trigger):
 
 
 class CheckP21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2229,7 +2245,7 @@ class CheckP21(trigger_api.Trigger):
 
 
 class NumberOffP21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2253,7 +2269,7 @@ class NumberOffP21(trigger_api.Trigger):
 
 
 class ResetP21(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P21End', value=1)
         self.set_user_value(key='G05P21Set', value=0)
         self.set_user_value(key='G05P21TimeLimit', value=0)
@@ -2265,7 +2281,7 @@ class ResetP21(trigger_api.Trigger):
 
 # G05 P22
 class NumberOnP22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -2306,7 +2322,7 @@ class NumberOnP22(trigger_api.Trigger):
 
 
 class CheckP22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -2330,7 +2346,7 @@ class CheckP22(trigger_api.Trigger):
 
 
 class NumberOffP22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -2354,7 +2370,7 @@ class NumberOffP22(trigger_api.Trigger):
 
 
 class ResetP22(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P22End', value=1)
         self.set_user_value(key='G05P22Set', value=0)
         self.set_user_value(key='G05P22TimeLimit', value=0)
@@ -2366,7 +2382,7 @@ class ResetP22(trigger_api.Trigger):
 
 # G05 P23
 class NumberOnP23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -2407,7 +2423,7 @@ class NumberOnP23(trigger_api.Trigger):
 
 
 class CheckP23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -2431,7 +2447,7 @@ class CheckP23(trigger_api.Trigger):
 
 
 class NumberOffP23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -2455,7 +2471,7 @@ class NumberOffP23(trigger_api.Trigger):
 
 
 class ResetP23(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P23End', value=1)
         self.set_user_value(key='G05P23Set', value=0)
         self.set_user_value(key='G05P23TimeLimit', value=0)
@@ -2467,7 +2483,7 @@ class ResetP23(trigger_api.Trigger):
 
 # G05 P24
 class NumberOnP24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -2508,7 +2524,7 @@ class NumberOnP24(trigger_api.Trigger):
 
 
 class CheckP24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -2532,7 +2548,7 @@ class CheckP24(trigger_api.Trigger):
 
 
 class NumberOffP24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -2556,7 +2572,7 @@ class NumberOffP24(trigger_api.Trigger):
 
 
 class ResetP24(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P24End', value=1)
         self.set_user_value(key='G05P24Set', value=0)
         self.set_user_value(key='G05P24TimeLimit', value=0)
@@ -2568,7 +2584,7 @@ class ResetP24(trigger_api.Trigger):
 
 # G05 P25
 class NumberOnP25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[111], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -2609,7 +2625,7 @@ class NumberOnP25(trigger_api.Trigger):
 
 
 class CheckP25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=1)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2633,7 +2649,7 @@ class CheckP25(trigger_api.Trigger):
 
 
 class NumberOffP25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[111], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 1
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2657,7 +2673,7 @@ class NumberOffP25(trigger_api.Trigger):
 
 
 class ResetP25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P25End', value=1)
         self.set_user_value(key='G05P25Set', value=0)
         self.set_user_value(key='G05P25TimeLimit', value=0)
@@ -2669,7 +2685,7 @@ class ResetP25(trigger_api.Trigger):
 
 # G05 P26
 class NumberOnP26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -2710,7 +2726,7 @@ class NumberOnP26(trigger_api.Trigger):
 
 
 class CheckP26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -2734,7 +2750,7 @@ class CheckP26(trigger_api.Trigger):
 
 
 class NumberOffP26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -2758,7 +2774,7 @@ class NumberOffP26(trigger_api.Trigger):
 
 
 class ResetP26(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P26End', value=1)
         self.set_user_value(key='G05P26Set', value=0)
         self.set_user_value(key='G05P26TimeLimit', value=0)
@@ -2770,7 +2786,7 @@ class ResetP26(trigger_api.Trigger):
 
 # G05 P27
 class NumberOnP27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -2811,7 +2827,7 @@ class NumberOnP27(trigger_api.Trigger):
 
 
 class CheckP27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -2835,7 +2851,7 @@ class CheckP27(trigger_api.Trigger):
 
 
 class NumberOffP27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -2859,7 +2875,7 @@ class NumberOffP27(trigger_api.Trigger):
 
 
 class ResetP27(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P27End', value=1)
         self.set_user_value(key='G05P27Set', value=0)
         self.set_user_value(key='G05P27TimeLimit', value=0)
@@ -2871,7 +2887,7 @@ class ResetP27(trigger_api.Trigger):
 
 # G05 P28
 class NumberOnP28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -2912,7 +2928,7 @@ class NumberOnP28(trigger_api.Trigger):
 
 
 class CheckP28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -2936,7 +2952,7 @@ class CheckP28(trigger_api.Trigger):
 
 
 class NumberOffP28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -2960,7 +2976,7 @@ class NumberOffP28(trigger_api.Trigger):
 
 
 class ResetP28(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P28End', value=1)
         self.set_user_value(key='G05P28Set', value=0)
         self.set_user_value(key='G05P28TimeLimit', value=0)
@@ -2972,7 +2988,7 @@ class ResetP28(trigger_api.Trigger):
 
 # G05 P29
 class NumberOnP29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3013,7 +3029,7 @@ class NumberOnP29(trigger_api.Trigger):
 
 
 class CheckP29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -3037,7 +3053,7 @@ class CheckP29(trigger_api.Trigger):
 
 
 class NumberOffP29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -3061,7 +3077,7 @@ class NumberOffP29(trigger_api.Trigger):
 
 
 class ResetP29(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P29End', value=1)
         self.set_user_value(key='G05P29Set', value=0)
         self.set_user_value(key='G05P29TimeLimit', value=0)
@@ -3073,7 +3089,7 @@ class ResetP29(trigger_api.Trigger):
 
 # G05 P30
 class NumberOnP30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -3114,7 +3130,7 @@ class NumberOnP30(trigger_api.Trigger):
 
 
 class CheckP30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -3138,7 +3154,7 @@ class CheckP30(trigger_api.Trigger):
 
 
 class NumberOffP30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -3162,7 +3178,7 @@ class NumberOffP30(trigger_api.Trigger):
 
 
 class ResetP30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P30End', value=1)
         self.set_user_value(key='G05P30Set', value=0)
         self.set_user_value(key='G05P30TimeLimit', value=0)
@@ -3174,7 +3190,7 @@ class ResetP30(trigger_api.Trigger):
 
 # G05 P31
 class NumberOnP31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -3215,7 +3231,7 @@ class NumberOnP31(trigger_api.Trigger):
 
 
 class CheckP31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -3239,7 +3255,7 @@ class CheckP31(trigger_api.Trigger):
 
 
 class NumberOffP31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -3263,7 +3279,7 @@ class NumberOffP31(trigger_api.Trigger):
 
 
 class ResetP31(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P31End', value=1)
         self.set_user_value(key='G05P31Set', value=0)
         self.set_user_value(key='G05P31TimeLimit', value=0)
@@ -3275,7 +3291,7 @@ class ResetP31(trigger_api.Trigger):
 
 # G05 P32
 class NumberOnP32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -3316,7 +3332,7 @@ class NumberOnP32(trigger_api.Trigger):
 
 
 class CheckP32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3340,7 +3356,7 @@ class CheckP32(trigger_api.Trigger):
 
 
 class NumberOffP32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3364,7 +3380,7 @@ class NumberOffP32(trigger_api.Trigger):
 
 
 class ResetP32(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P32End', value=1)
         self.set_user_value(key='G05P32Set', value=0)
         self.set_user_value(key='G05P32TimeLimit', value=0)
@@ -3376,7 +3392,7 @@ class ResetP32(trigger_api.Trigger):
 
 # G05 P33
 class NumberOnP33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -3417,7 +3433,7 @@ class NumberOnP33(trigger_api.Trigger):
 
 
 class CheckP33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -3441,7 +3457,7 @@ class CheckP33(trigger_api.Trigger):
 
 
 class NumberOffP33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -3465,7 +3481,7 @@ class NumberOffP33(trigger_api.Trigger):
 
 
 class ResetP33(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P33End', value=1)
         self.set_user_value(key='G05P33Set', value=0)
         self.set_user_value(key='G05P33TimeLimit', value=0)
@@ -3477,7 +3493,7 @@ class ResetP33(trigger_api.Trigger):
 
 # G05 P34
 class NumberOnP34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -3518,7 +3534,7 @@ class NumberOnP34(trigger_api.Trigger):
 
 
 class CheckP34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -3542,7 +3558,7 @@ class CheckP34(trigger_api.Trigger):
 
 
 class NumberOffP34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -3566,7 +3582,7 @@ class NumberOffP34(trigger_api.Trigger):
 
 
 class ResetP34(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P34End', value=1)
         self.set_user_value(key='G05P34Set', value=0)
         self.set_user_value(key='G05P34TimeLimit', value=0)
@@ -3578,7 +3594,7 @@ class ResetP34(trigger_api.Trigger):
 
 # G05 P35
 class NumberOnP35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -3619,7 +3635,7 @@ class NumberOnP35(trigger_api.Trigger):
 
 
 class CheckP35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3643,7 +3659,7 @@ class CheckP35(trigger_api.Trigger):
 
 
 class NumberOffP35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3667,7 +3683,7 @@ class NumberOffP35(trigger_api.Trigger):
 
 
 class ResetP35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P35End', value=1)
         self.set_user_value(key='G05P35Set', value=0)
         self.set_user_value(key='G05P35TimeLimit', value=0)
@@ -3679,7 +3695,7 @@ class ResetP35(trigger_api.Trigger):
 
 # G05 P36
 class NumberOnP36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -3720,7 +3736,7 @@ class NumberOnP36(trigger_api.Trigger):
 
 
 class CheckP36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=1)
@@ -3744,7 +3760,7 @@ class CheckP36(trigger_api.Trigger):
 
 
 class NumberOffP36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[131], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 1
@@ -3768,7 +3784,7 @@ class NumberOffP36(trigger_api.Trigger):
 
 
 class ResetP36(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P36End', value=1)
         self.set_user_value(key='G05P36Set', value=0)
         self.set_user_value(key='G05P36TimeLimit', value=0)
@@ -3780,7 +3796,7 @@ class ResetP36(trigger_api.Trigger):
 
 # G05 P37
 class NumberOnP37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -3821,7 +3837,7 @@ class NumberOnP37(trigger_api.Trigger):
 
 
 class CheckP37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -3845,7 +3861,7 @@ class CheckP37(trigger_api.Trigger):
 
 
 class NumberOffP37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -3869,7 +3885,7 @@ class NumberOffP37(trigger_api.Trigger):
 
 
 class ResetP37(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P37End', value=1)
         self.set_user_value(key='G05P37Set', value=0)
         self.set_user_value(key='G05P37TimeLimit', value=0)
@@ -3881,7 +3897,7 @@ class ResetP37(trigger_api.Trigger):
 
 # G05 P38
 class NumberOnP38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -3922,7 +3938,7 @@ class NumberOnP38(trigger_api.Trigger):
 
 
 class CheckP38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -3946,7 +3962,7 @@ class CheckP38(trigger_api.Trigger):
 
 
 class NumberOffP38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -3970,7 +3986,7 @@ class NumberOffP38(trigger_api.Trigger):
 
 
 class ResetP38(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P38End', value=1)
         self.set_user_value(key='G05P38Set', value=0)
         self.set_user_value(key='G05P38TimeLimit', value=0)
@@ -3982,7 +3998,7 @@ class ResetP38(trigger_api.Trigger):
 
 # G05 P39
 class NumberOnP39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4023,7 +4039,7 @@ class NumberOnP39(trigger_api.Trigger):
 
 
 class CheckP39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -4047,7 +4063,7 @@ class CheckP39(trigger_api.Trigger):
 
 
 class NumberOffP39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -4071,7 +4087,7 @@ class NumberOffP39(trigger_api.Trigger):
 
 
 class ResetP39(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P39End', value=1)
         self.set_user_value(key='G05P39Set', value=0)
         self.set_user_value(key='G05P39TimeLimit', value=0)
@@ -4083,7 +4099,7 @@ class ResetP39(trigger_api.Trigger):
 
 # G05 P40
 class NumberOnP40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 1
@@ -4124,7 +4140,7 @@ class NumberOnP40(trigger_api.Trigger):
 
 
 class CheckP40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=1)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4148,7 +4164,7 @@ class CheckP40(trigger_api.Trigger):
 
 
 class NumberOffP40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[121], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 1
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4172,7 +4188,7 @@ class NumberOffP40(trigger_api.Trigger):
 
 
 class ResetP40(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P40End', value=1)
         self.set_user_value(key='G05P40Set', value=0)
         self.set_user_value(key='G05P40TimeLimit', value=0)
@@ -4184,7 +4200,7 @@ class ResetP40(trigger_api.Trigger):
 
 # G05 P41
 class NumberOnP41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -4225,7 +4241,7 @@ class NumberOnP41(trigger_api.Trigger):
 
 
 class CheckP41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4249,7 +4265,7 @@ class CheckP41(trigger_api.Trigger):
 
 
 class NumberOffP41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4273,7 +4289,7 @@ class NumberOffP41(trigger_api.Trigger):
 
 
 class ResetP41(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P41End', value=1)
         self.set_user_value(key='G05P41Set', value=0)
         self.set_user_value(key='G05P41TimeLimit', value=0)
@@ -4285,7 +4301,7 @@ class ResetP41(trigger_api.Trigger):
 
 # G05 P42
 class NumberOnP42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -4326,7 +4342,7 @@ class NumberOnP42(trigger_api.Trigger):
 
 
 class CheckP42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4350,7 +4366,7 @@ class CheckP42(trigger_api.Trigger):
 
 
 class NumberOffP42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4374,7 +4390,7 @@ class NumberOffP42(trigger_api.Trigger):
 
 
 class ResetP42(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P42End', value=1)
         self.set_user_value(key='G05P42Set', value=0)
         self.set_user_value(key='G05P42TimeLimit', value=0)
@@ -4386,7 +4402,7 @@ class ResetP42(trigger_api.Trigger):
 
 # G05 P43
 class NumberOnP43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -4427,7 +4443,7 @@ class NumberOnP43(trigger_api.Trigger):
 
 
 class CheckP43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4451,7 +4467,7 @@ class CheckP43(trigger_api.Trigger):
 
 
 class NumberOffP43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4475,7 +4491,7 @@ class NumberOffP43(trigger_api.Trigger):
 
 
 class ResetP43(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P43End', value=1)
         self.set_user_value(key='G05P43Set', value=0)
         self.set_user_value(key='G05P43TimeLimit', value=0)
@@ -4487,7 +4503,7 @@ class ResetP43(trigger_api.Trigger):
 
 # G05 P44
 class NumberOnP44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -4528,7 +4544,7 @@ class NumberOnP44(trigger_api.Trigger):
 
 
 class CheckP44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4552,7 +4568,7 @@ class CheckP44(trigger_api.Trigger):
 
 
 class NumberOffP44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4576,7 +4592,7 @@ class NumberOffP44(trigger_api.Trigger):
 
 
 class ResetP44(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P44End', value=1)
         self.set_user_value(key='G05P44Set', value=0)
         self.set_user_value(key='G05P44TimeLimit', value=0)
@@ -4588,7 +4604,7 @@ class ResetP44(trigger_api.Trigger):
 
 # G05 P45
 class NumberOnP45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -4629,7 +4645,7 @@ class NumberOnP45(trigger_api.Trigger):
 
 
 class CheckP45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -4653,7 +4669,7 @@ class CheckP45(trigger_api.Trigger):
 
 
 class NumberOffP45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -4677,7 +4693,7 @@ class NumberOffP45(trigger_api.Trigger):
 
 
 class ResetP45(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P45End', value=1)
         self.set_user_value(key='G05P45Set', value=0)
         self.set_user_value(key='G05P45TimeLimit', value=0)
@@ -4689,7 +4705,7 @@ class ResetP45(trigger_api.Trigger):
 
 # G05 P46
 class NumberOnP46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -4730,7 +4746,7 @@ class NumberOnP46(trigger_api.Trigger):
 
 
 class CheckP46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4754,7 +4770,7 @@ class CheckP46(trigger_api.Trigger):
 
 
 class NumberOffP46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4778,7 +4794,7 @@ class NumberOffP46(trigger_api.Trigger):
 
 
 class ResetP46(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P46End', value=1)
         self.set_user_value(key='G05P46Set', value=0)
         self.set_user_value(key='G05P46TimeLimit', value=0)
@@ -4790,7 +4806,7 @@ class ResetP46(trigger_api.Trigger):
 
 # G05 P47
 class NumberOnP47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[115], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 2
@@ -4831,7 +4847,7 @@ class NumberOnP47(trigger_api.Trigger):
 
 
 class CheckP47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=5)
         self.set_user_value(triggerId=9120, key='Box12Check', value=2)
         self.set_user_value(triggerId=9130, key='Box13Check', value=5)
@@ -4855,7 +4871,7 @@ class CheckP47(trigger_api.Trigger):
 
 
 class NumberOffP47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[115], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 5
         self.set_mesh(triggerIds=[122], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 2
         self.set_mesh(triggerIds=[135], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 5
@@ -4879,7 +4895,7 @@ class NumberOffP47(trigger_api.Trigger):
 
 
 class ResetP47(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P47End', value=1)
         self.set_user_value(key='G05P47Set', value=0)
         self.set_user_value(key='G05P47TimeLimit', value=0)
@@ -4891,7 +4907,7 @@ class ResetP47(trigger_api.Trigger):
 
 # G05 P48
 class NumberOnP48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[112], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 5
@@ -4932,7 +4948,7 @@ class NumberOnP48(trigger_api.Trigger):
 
 
 class CheckP48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=2)
         self.set_user_value(triggerId=9120, key='Box12Check', value=5)
         self.set_user_value(triggerId=9130, key='Box13Check', value=3)
@@ -4956,7 +4972,7 @@ class CheckP48(trigger_api.Trigger):
 
 
 class NumberOffP48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[112], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 2
         self.set_mesh(triggerIds=[125], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 5
         self.set_mesh(triggerIds=[133], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 3
@@ -4980,7 +4996,7 @@ class NumberOffP48(trigger_api.Trigger):
 
 
 class ResetP48(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P48End', value=1)
         self.set_user_value(key='G05P48Set', value=0)
         self.set_user_value(key='G05P48TimeLimit', value=0)
@@ -4992,7 +5008,7 @@ class ResetP48(trigger_api.Trigger):
 
 # G05 P49
 class NumberOnP49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[113], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 4
@@ -5033,7 +5049,7 @@ class NumberOnP49(trigger_api.Trigger):
 
 
 class CheckP49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=3)
         self.set_user_value(triggerId=9120, key='Box12Check', value=4)
         self.set_user_value(triggerId=9130, key='Box13Check', value=4)
@@ -5057,7 +5073,7 @@ class CheckP49(trigger_api.Trigger):
 
 
 class NumberOffP49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[113], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 3
         self.set_mesh(triggerIds=[124], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 4
         self.set_mesh(triggerIds=[134], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 4
@@ -5081,7 +5097,7 @@ class NumberOffP49(trigger_api.Trigger):
 
 
 class ResetP49(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P49End', value=1)
         self.set_user_value(key='G05P49Set', value=0)
         self.set_user_value(key='G05P49TimeLimit', value=0)
@@ -5093,7 +5109,7 @@ class ResetP49(trigger_api.Trigger):
 
 # G05 P50
 class NumberOnP50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='DDStop_Stage_Number_01') # 사운드 / 맵 전체 / 숫자 나타날 때
         self.set_mesh(triggerIds=[114], visible=True, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=True, arg3=0, delay=0, scale=2) # 1,2 / 3
@@ -5134,7 +5150,7 @@ class NumberOnP50(trigger_api.Trigger):
 
 
 class CheckP50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9110, key='Box11Check', value=4)
         self.set_user_value(triggerId=9120, key='Box12Check', value=3)
         self.set_user_value(triggerId=9130, key='Box13Check', value=2)
@@ -5158,7 +5174,7 @@ class CheckP50(trigger_api.Trigger):
 
 
 class NumberOffP50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[114], visible=False, arg3=0, delay=0, scale=2) # 1,1 / 4
         self.set_mesh(triggerIds=[123], visible=False, arg3=0, delay=0, scale=2) # 1,2 / 3
         self.set_mesh(triggerIds=[132], visible=False, arg3=0, delay=0, scale=2) # 1,3 / 2
@@ -5182,7 +5198,7 @@ class NumberOffP50(trigger_api.Trigger):
 
 
 class ResetP50(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='G05P50End', value=1)
         self.set_user_value(key='G05P50Set', value=0)
         self.set_user_value(key='G05P50TimeLimit', value=0)

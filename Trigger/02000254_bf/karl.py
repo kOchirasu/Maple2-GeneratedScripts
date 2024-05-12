@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[450], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 말풍선(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='8', seconds=8)
         self.set_effect(triggerIds=[450], visible=True)
         self.set_conversation(type=1, spawnId=107, script='$02000254_BF__KARL__0$', arg4=5)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[608], visible=False)
         self.set_actor(triggerId=208, visible=True, initialSequence='Damg_B')
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[608], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 몬스터소환대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2008], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 더미해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=False, initialSequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 리젠준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=208, visible=True, initialSequence='Regen_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class 리젠준비(trigger_api.Trigger):
 
 
 class 소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2008])
 
 

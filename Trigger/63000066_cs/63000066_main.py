@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
         self.create_monster(spawnIds=[102], animationEffect=True)
         self.create_monster(spawnIds=[103], animationEffect=True)
@@ -29,7 +29,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 서랍장안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26300661, textId=26300661)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -38,7 +38,7 @@ class 서랍장안내(trigger_api.Trigger):
 
 
 class 사다리안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=26300661)
         self.show_guide_summary(entityId=26300662, textId=26300662)
         self.set_effect(triggerIds=[5001,5002], visible=True)
@@ -49,7 +49,7 @@ class 사다리안내(trigger_api.Trigger):
 
 
 class 암전_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=26300662)
         self.set_effect(triggerIds=[5001,5002], visible=False)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -62,7 +62,7 @@ class 암전_01(trigger_api.Trigger):
 
 
 class 암전_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_2001')
 
@@ -72,7 +72,7 @@ class 암전_02(trigger_api.Trigger):
 
 
 class 마리엔등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.add_cinematic_talk(npcId=11004293, msg='$63000066_CS__63000066_MAIN__0$', duration=2500, align='right')
         self.set_scene_skip(state=스킵종료, action='exit')
@@ -83,7 +83,7 @@ class 마리엔등장_01(trigger_api.Trigger):
 
 
 class 마리엔등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -92,7 +92,7 @@ class 마리엔등장_02(trigger_api.Trigger):
 
 
 class 마리엔등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Suprise_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +101,7 @@ class 마리엔등장_03(trigger_api.Trigger):
 
 
 class 마리엔등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +110,7 @@ class 마리엔등장_04(trigger_api.Trigger):
 
 
 class 마리엔등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004293, msg='$63000066_CS__63000066_MAIN__1$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,7 +119,7 @@ class 마리엔등장_05(trigger_api.Trigger):
 
 
 class 마리엔등장_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -128,7 +128,7 @@ class 마리엔등장_06(trigger_api.Trigger):
 
 
 class 마리엔등장_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004293, msg='$63000066_CS__63000066_MAIN__2$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -137,7 +137,7 @@ class 마리엔등장_07(trigger_api.Trigger):
 
 
 class 마리엔등장_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -146,7 +146,7 @@ class 마리엔등장_08(trigger_api.Trigger):
 
 
 class 마리엔등장_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0, emotionName='Think_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -155,7 +155,7 @@ class 마리엔등장_09(trigger_api.Trigger):
 
 
 class 마리엔등장_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -164,7 +164,7 @@ class 마리엔등장_10(trigger_api.Trigger):
 
 
 class 마리엔등장_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004293, msg='$63000066_CS__63000066_MAIN__3$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -173,7 +173,8 @@ class 마리엔등장_11(trigger_api.Trigger):
 
 
 class 마리엔퇴장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.destroy_monster(spawnIds=[201])
         self.set_effect(triggerIds=[5003], visible=True)
@@ -184,7 +185,7 @@ class 마리엔퇴장_01(trigger_api.Trigger):
 
 
 class 마리엔퇴장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -196,7 +197,8 @@ class 마리엔퇴장_02(trigger_api.Trigger):
 
 
 class 스킵종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.face_emotion(spawnId=0)
@@ -211,7 +213,8 @@ class 스킵종료(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_effect(triggerIds=[5003], visible=False)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200001,200002,200003,200004,200005,200011,200012,200013,200014,200015,200021,200022,200023,200024,200025,200031,200032,200033,200034,200035], visible=False)
         self.set_ambient_light(primary=[183,189,201])
         self.set_directional_light(diffuseColor=[192,210,211], specularColor=[170,170,170])
@@ -14,7 +14,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 어둠효과_페이드아웃(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_buff(boxIds=[1001], skillId=75000001, level=1)
 
@@ -26,7 +26,7 @@ class 어둠효과_페이드아웃(trigger_api.Trigger):
 
 
 class 가이드발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200001,200002,200003,200004,200005,200011,200012,200013,200014,200015,200021,200022,200023,200024,200025,200031,200032,200033,200034,200035], visible=True)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_buff(boxIds=[1001], skillId=75000001, level=1)
@@ -37,7 +37,7 @@ class 가이드발동(trigger_api.Trigger):
 
 
 class 가이드종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200001,200002,200003,200004,200005,200011,200012,200013,200014,200015,200021,200022,200023,200024,200025,200031,200032,200033,200034,200035], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:

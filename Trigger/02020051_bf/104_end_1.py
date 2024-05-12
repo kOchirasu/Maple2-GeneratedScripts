@@ -9,7 +9,7 @@ class 사망조건(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=103, key='Main', value=2)
         self.set_user_value(triggerId=107, key='Text', value=1)
 
@@ -19,7 +19,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 준비_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11003536, illust='Neirin_surprise', script='$02020051_BF__104_END_1__0$', duration=5684, voice='ko/Npc/00002201')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -29,12 +29,12 @@ class 준비_2(trigger_api.Trigger):
 
 class 몬스터사망_1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.any_one():
+        if self.npc_is_dead_by_string_id(stringID='Gigantika_01') or self.user_value(key='End', value=3):
             return 종료(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=102, key='Timmer', value=3)
         self.destroy_monster(spawnIds=[-1])
 
@@ -44,7 +44,7 @@ class 종료(trigger_api.Trigger):
 
 
 class 종료_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=103, key='Main', value=2)
         self.set_user_value(triggerId=102, key='Timmer', value=2)
         self.set_user_value(triggerId=102, key='Timmer', value=3)

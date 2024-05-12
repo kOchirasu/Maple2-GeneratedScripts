@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.set_mesh(triggerIds=[4003,4004,4005,4006], visible=True)
@@ -14,7 +14,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잠시대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -27,7 +27,7 @@ class 잠시대기(trigger_api.Trigger):
 
 
 class 한번더대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 한번더대기(trigger_api.Trigger):
 
 
 class 로베와대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=로베와전투_01, action='nextState')
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__0$', duration=3000, align='left')
 
@@ -46,7 +46,7 @@ class 로베와대화_01(trigger_api.Trigger):
 
 
 class 로베와대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__1$', duration=3500, illustId='Robe_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class 로베와대화_02(trigger_api.Trigger):
 
 
 class 로베와대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__2$', duration=3000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 로베와대화_03(trigger_api.Trigger):
 
 
 class 로베와대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__3$', duration=2500, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__4$', duration=3000, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__5$', duration=2500, illustId='Robe_normal', align='right')
@@ -76,7 +76,7 @@ class 로베와대화_04(trigger_api.Trigger):
 
 
 class 로베와대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__7$', duration=3500, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class 로베와대화_05(trigger_api.Trigger):
 
 
 class 로베와대화_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__8$', duration=1000, illustId='Robe_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -94,7 +94,7 @@ class 로베와대화_06(trigger_api.Trigger):
 
 
 class 로베와대화_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Bore_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -103,7 +103,8 @@ class 로베와대화_07(trigger_api.Trigger):
 
 
 class 로베와전투_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -113,7 +114,7 @@ class 로베와전투_01(trigger_api.Trigger):
 
 
 class 로베와전투_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102], animationEffect=True)
@@ -124,7 +125,7 @@ class 로베와전투_02(trigger_api.Trigger):
 
 
 class 로베와전투_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -136,7 +137,7 @@ class 로베와전투_03(trigger_api.Trigger):
 
 
 class 로베와전투_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.hide_guide_summary(entityId=25201431)
         self.set_cinematic_ui(type=1)
@@ -148,7 +149,7 @@ class 로베와전투_04(trigger_api.Trigger):
 
 
 class 로베와전투_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.create_monster(spawnIds=[104], animationEffect=False)
@@ -165,7 +166,7 @@ class 로베와전투_05(trigger_api.Trigger):
 
 
 class 알론등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -174,7 +175,7 @@ class 알론등장_01(trigger_api.Trigger):
 
 
 class 알론등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2001')
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_2002')
         self.move_npc(spawnId=106, patrolName='MS2PatrolData_2003')
@@ -186,7 +187,7 @@ class 알론등장_02(trigger_api.Trigger):
 
 
 class 자대화_03_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002,8003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +196,7 @@ class 자대화_03_3(trigger_api.Trigger):
 
 
 class 자대화_04_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=마무리_01, action='nextState')
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__10$', duration=2500, illustId='Robe_normal', align='right')
 
@@ -205,7 +206,7 @@ class 자대화_04_3(trigger_api.Trigger):
 
 
 class 자대화_05_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__11$', duration=3000, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__12$', duration=2500, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__13$', duration=3000, illustId='Alon_normal', align='center')
@@ -216,7 +217,7 @@ class 자대화_05_3(trigger_api.Trigger):
 
 
 class 자대화_06_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__14$', duration=3500, illustId='Robe_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -225,7 +226,7 @@ class 자대화_06_3(trigger_api.Trigger):
 
 
 class 자대화_07_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__15$', duration=3000, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__16$', duration=3000, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__17$', duration=3000, illustId='Alon_normal', align='center')
@@ -236,7 +237,7 @@ class 자대화_07_3(trigger_api.Trigger):
 
 
 class 자대화_08_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000143_QD__52000143_MAIN__18$', duration=2500, illustId='Robe_normal', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,7 +246,7 @@ class 자대화_08_3(trigger_api.Trigger):
 
 
 class 자대화_09_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__19$', duration=2500, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +255,7 @@ class 자대화_09_3(trigger_api.Trigger):
 
 
 class 자대화_10_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__20$', duration=3000, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__21$', duration=2500, illustId='Alon_normal', align='center')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__22$', duration=3000, illustId='Alon_normal', align='center')
@@ -265,7 +266,7 @@ class 자대화_10_3(trigger_api.Trigger):
 
 
 class 자대화_10_1_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -274,7 +275,7 @@ class 자대화_10_1_3(trigger_api.Trigger):
 
 
 class 자대화_10_2_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__23$', duration=2500, align='left')
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_2006')
 
@@ -284,7 +285,7 @@ class 자대화_10_2_3(trigger_api.Trigger):
 
 
 class 자대화_11_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_2005')
 
@@ -294,7 +295,7 @@ class 자대화_11_3(trigger_api.Trigger):
 
 
 class 자대화_11_1_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000143_QD__52000143_MAIN__28$', duration=3000, align='left')
         self.set_pc_emotion_sequence(sequenceNames=['Knight_Bore_A'])
 
@@ -304,7 +305,7 @@ class 자대화_11_1_3(trigger_api.Trigger):
 
 
 class 자대화_12_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__24$', duration=5500, illustId='Alon_normal', align='right')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__25$', duration=5500, illustId='Alon_normal', align='right')
         self.add_cinematic_talk(npcId=11003404, msg='$52000143_QD__52000143_MAIN__26$', duration=5000, illustId='Alon_normal', align='right')
@@ -315,7 +316,8 @@ class 자대화_12_3(trigger_api.Trigger):
 
 
 class 마무리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -325,7 +327,7 @@ class 마무리_01(trigger_api.Trigger):
 
 
 class 마무리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000143_QD__52000143_MAIN__27$')
         self.remove_buff(boxId=701, skillId=70000124)
 
@@ -335,7 +337,7 @@ class 마무리_02(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000144, portalId=1)
 
 

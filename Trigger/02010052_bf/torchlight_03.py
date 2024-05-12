@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=20499, visible=False, initialSequence='Closed')
         self.set_actor(triggerId=20501, visible=True, initialSequence='Closed') # 얼어붙은 문
         self.set_mesh(triggerIds=[20500], visible=True, arg3=1, delay=1, scale=1) # 철문
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
         if self.monster_dead(boxIds=[103]):
             return burn_state_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_effect(triggerIds=[71001], visible=True)
         self.set_effect(triggerIds=[71002], visible=True)
         self.set_effect(triggerIds=[71003], visible=True)
@@ -27,36 +27,38 @@ class idle(trigger_api.Trigger):
         self.set_actor(triggerId=8003, visible=False, initialSequence='Dmg_A')
         self.set_actor(triggerId=8004, visible=False, initialSequence='Dmg_A')
         self.set_actor(triggerId=8005, visible=False, initialSequence='Dmg_A')
-        self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=False) # 기본 배치 될 몬스터 등장
-        self.set_conversation(type=1, spawnId=993, script='$02010052_BF__TORCHLIGHT_03__0$', arg4=3) # 카나 말풍선 대사
+        self.create_monster(spawnIds=[301,302,303,304,305], animationEffect=False)
+        # 기본 배치 될 몬스터 등장
+        self.set_conversation(type=1, spawnId=993, script='$02010052_BF__TORCHLIGHT_03__0$', arg4=3)
+        # 카나 말풍선 대사
 
 
 class burn_state_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[103]):
             return burn_state_complete(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_effect(triggerIds=[7003], visible=True)
 
 
 class burn_state_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7003], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[102]):
             return burn_state_complete(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_effect(triggerIds=[7002], visible=True)
 
 
 class burn_state_complete(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7503], visible=True) # 얼음 녹는 소리
         self.set_mesh(triggerIds=[6021,6022,6023,6024,6025,6026,6027,6028,6029,6030,6031,6032], visible=False, arg3=800, delay=100, scale=8) # 벽 해제
         self.set_conversation(type=1, spawnId=9999, script='$02010052_BF__TORCHLIGHT_03__1$', arg4=3) # 카나 말풍선 대사
@@ -70,7 +72,7 @@ class burn_state_complete(trigger_api.Trigger):
 
 
 class spawn_state(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=299, textId=20105203) # 거대 다크 슬링을 처치하세요
         self.set_mesh(triggerIds=[5100,5101,5102,5103,5104,5105,5106,5107,5108,5109,5110], visible=False, arg3=800, delay=100, scale=8) # 카나 위에 있는 벽 해제
         self.set_effect(triggerIds=[7902], visible=True) # 카나 사라짐
@@ -88,12 +90,12 @@ class spawn_state(trigger_api.Trigger):
         if self.monster_dead(boxIds=[199]):
             return monsterkill(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=299)
 
 
 class monsterkill(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=20499, visible=True, initialSequence='Opening')
         self.set_actor(triggerId=20501, visible=False, initialSequence='Closed') # 얼어붙은 문
         self.set_mesh(triggerIds=[20500], visible=False, arg3=0, delay=0, scale=0) # 철문

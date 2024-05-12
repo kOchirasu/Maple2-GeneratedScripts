@@ -9,7 +9,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Talk(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=101, msg='무엄하군요! 저리 가세요!', duration=3000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:

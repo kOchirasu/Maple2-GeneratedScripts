@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=False) # PortalOn
         self.set_ladder(triggerIds=[530], visible=False, animationEffect=False, animationDelay=0) # Ladder
         self.set_ladder(triggerIds=[531], visible=False, animationEffect=False, animationDelay=0) # Ladder
@@ -26,7 +26,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Opened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3602], visible=False, arg3=100, delay=0, scale=2) # WoodBox
         self.set_interact_object(triggerIds=[10002043], state=1) # WoodBox
 
@@ -36,7 +36,7 @@ class Opened(trigger_api.Trigger):
 
 
 class LadderOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5003], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3600], visible=False, arg3=0, delay=0, scale=3) # Wall_BehindWoodBox
         self.set_mesh(triggerIds=[3601], visible=False, arg3=0, delay=0, scale=3) # BehindWoodBoxCover
@@ -50,7 +50,7 @@ class LadderOn(trigger_api.Trigger):
 
 
 class Closed(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3602], visible=False, arg3=100, delay=0, scale=2) # WoodBox
         self.set_interact_object(triggerIds=[10002043], state=1) # WoodBox
 
@@ -60,7 +60,7 @@ class Closed(trigger_api.Trigger):
 
 
 class NothingHappened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3602], visible=True, arg3=0, delay=0, scale=0) # WoodBox
 
 

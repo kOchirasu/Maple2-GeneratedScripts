@@ -4,7 +4,7 @@ import trigger_api
 
 # 플레이어 감지
 class Round_check(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,298,299])
         self.destroy_monster(spawnIds=[401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417])
 
@@ -42,7 +42,7 @@ class Round_01(trigger_api.Trigger):
 
 
 class Round_01_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.set_timer(timerId='5', seconds=5)
 
@@ -56,7 +56,7 @@ class Round_01_Random_01(trigger_api.Trigger):
 
 
 class Round_01_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.set_timer(timerId='5', seconds=5)
 
@@ -70,7 +70,7 @@ class Round_01_Random_02(trigger_api.Trigger):
 
 
 class Round_01_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True)
         self.set_timer(timerId='5', seconds=5)
 
@@ -84,7 +84,7 @@ class Round_01_Random_03(trigger_api.Trigger):
 
 
 class Round_01_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=True)
         self.set_timer(timerId='5', seconds=5)
 
@@ -118,7 +118,7 @@ class Round_02(trigger_api.Trigger):
 
 
 class Round_02_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='4', seconds=4)
@@ -133,7 +133,7 @@ class Round_02_Random_01(trigger_api.Trigger):
 
 
 class Round_02_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='4', seconds=4)
@@ -148,7 +148,7 @@ class Round_02_Random_02(trigger_api.Trigger):
 
 
 class Round_02_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[203], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='4', seconds=4)
@@ -163,7 +163,7 @@ class Round_02_Random_03(trigger_api.Trigger):
 
 
 class Round_02_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='4', seconds=4)
@@ -178,7 +178,7 @@ class Round_02_Random_04(trigger_api.Trigger):
 
 
 class Round_02_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[204], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='4', seconds=4)
@@ -193,7 +193,7 @@ class Round_02_Random_05(trigger_api.Trigger):
 
 
 class Round_02_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[403], animationEffect=True, animationDelay=1000)
         self.set_timer(timerId='3', seconds=3)
@@ -228,7 +228,7 @@ class Round_03(trigger_api.Trigger):
 
 
 class Round_03_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=4000)
@@ -244,7 +244,7 @@ class Round_03_Random_01(trigger_api.Trigger):
 
 
 class Round_03_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=4000)
@@ -260,7 +260,7 @@ class Round_03_Random_02(trigger_api.Trigger):
 
 
 class Round_03_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=4000)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=0)
@@ -276,7 +276,7 @@ class Round_03_Random_03(trigger_api.Trigger):
 
 
 class Round_03_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=4000)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=0)
@@ -292,7 +292,7 @@ class Round_03_Random_04(trigger_api.Trigger):
 
 
 class Round_03_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[411], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=4000)
@@ -308,7 +308,7 @@ class Round_03_Random_05(trigger_api.Trigger):
 
 
 class Round_03_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[413], animationEffect=True, animationDelay=2000)
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=4000)
@@ -324,7 +324,7 @@ class Round_03_Random_06(trigger_api.Trigger):
 
 
 class Round_03_Random_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[298], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[215], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[211], animationEffect=True, animationDelay=2000)
@@ -343,7 +343,7 @@ class Round_03_Random_07(trigger_api.Trigger):
 
 
 class Round_03_Random_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[299], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[216], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[217], animationEffect=True, animationDelay=2000)
@@ -382,7 +382,7 @@ class Round_04(trigger_api.Trigger):
 
 
 class Round_04_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=3000)
@@ -399,7 +399,7 @@ class Round_04_Random_01(trigger_api.Trigger):
 
 
 class Round_04_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=3000)
@@ -416,7 +416,7 @@ class Round_04_Random_02(trigger_api.Trigger):
 
 
 class Round_04_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=3000)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=0)
@@ -433,7 +433,7 @@ class Round_04_Random_03(trigger_api.Trigger):
 
 
 class Round_04_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=3000)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=0)
@@ -450,7 +450,7 @@ class Round_04_Random_04(trigger_api.Trigger):
 
 
 class Round_04_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[411], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=3000)
@@ -467,7 +467,7 @@ class Round_04_Random_05(trigger_api.Trigger):
 
 
 class Round_04_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[413], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=3000)
@@ -484,7 +484,7 @@ class Round_04_Random_06(trigger_api.Trigger):
 
 
 class Round_04_Random_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[298], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[215], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[211], animationEffect=True, animationDelay=2000)
@@ -503,7 +503,7 @@ class Round_04_Random_07(trigger_api.Trigger):
 
 
 class Round_04_Random_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[299], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[216], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[217], animationEffect=True, animationDelay=2000)
@@ -542,7 +542,7 @@ class Round_05(trigger_api.Trigger):
 
 
 class Round_05_Random_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=3000)
@@ -559,7 +559,7 @@ class Round_05_Random_01(trigger_api.Trigger):
 
 
 class Round_05_Random_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=3000)
@@ -576,7 +576,7 @@ class Round_05_Random_02(trigger_api.Trigger):
 
 
 class Round_05_Random_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[205], animationEffect=True, animationDelay=3000)
         self.create_monster(spawnIds=[206], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[207], animationEffect=True, animationDelay=0)
@@ -593,7 +593,7 @@ class Round_05_Random_03(trigger_api.Trigger):
 
 
 class Round_05_Random_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[208], animationEffect=True, animationDelay=3000)
         self.create_monster(spawnIds=[209], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[210], animationEffect=True, animationDelay=0)
@@ -610,7 +610,7 @@ class Round_05_Random_04(trigger_api.Trigger):
 
 
 class Round_05_Random_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[411], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[410], animationEffect=True, animationDelay=3000)
@@ -627,7 +627,7 @@ class Round_05_Random_05(trigger_api.Trigger):
 
 
 class Round_05_Random_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[413], animationEffect=True, animationDelay=1500)
         self.create_monster(spawnIds=[412], animationEffect=True, animationDelay=3000)
@@ -644,7 +644,7 @@ class Round_05_Random_06(trigger_api.Trigger):
 
 
 class Round_05_Random_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[298], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[215], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[211], animationEffect=True, animationDelay=2000)
@@ -663,7 +663,7 @@ class Round_05_Random_07(trigger_api.Trigger):
 
 
 class Round_05_Random_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[299], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[216], animationEffect=True, animationDelay=0)
         self.create_monster(spawnIds=[217], animationEffect=True, animationDelay=2000)
@@ -682,7 +682,9 @@ class Round_05_Random_08(trigger_api.Trigger):
 
 
 class End(trigger_api.Trigger):
-    pass
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_event_ui(type=1, arg2='wave_projectile 종료', arg3='1000')
+        pass
 
 
 initial_state = Round_check

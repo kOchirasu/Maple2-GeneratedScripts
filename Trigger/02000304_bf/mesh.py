@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316], visible=True, arg3=0, delay=0, scale=0)
@@ -19,7 +19,7 @@ class 시작대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 패턴01랜덤(trigger_api.Trigger):
 
 
 class 패턴01_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4204], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4313], visible=True, arg3=0, delay=0, scale=2)
@@ -67,7 +67,7 @@ class 패턴01_A(trigger_api.Trigger):
 
 
 class 패턴01_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4115], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4214], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4303], visible=True, arg3=0, delay=0, scale=2)
@@ -90,7 +90,7 @@ class 패턴01_B(trigger_api.Trigger):
 
 
 class 패턴01_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4110], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4211], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4307], visible=True, arg3=0, delay=0, scale=2)
@@ -113,7 +113,7 @@ class 패턴01_C(trigger_api.Trigger):
 
 
 class 패턴01_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4213], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304], visible=True, arg3=0, delay=0, scale=2)
@@ -136,7 +136,7 @@ class 패턴01_D(trigger_api.Trigger):
 
 
 class 패턴01종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,7 +151,7 @@ class 패턴01종료(trigger_api.Trigger):
 
 
 class 패턴02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +176,7 @@ class 패턴02랜덤(trigger_api.Trigger):
 
 
 class 패턴02_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4113], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4301], visible=True, arg3=0, delay=0, scale=2)
@@ -199,7 +199,7 @@ class 패턴02_A(trigger_api.Trigger):
 
 
 class 패턴02_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4112], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4212], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4312], visible=True, arg3=0, delay=0, scale=2)
@@ -222,7 +222,7 @@ class 패턴02_B(trigger_api.Trigger):
 
 
 class 패턴02_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304], visible=True, arg3=0, delay=0, scale=2)
@@ -245,7 +245,7 @@ class 패턴02_C(trigger_api.Trigger):
 
 
 class 패턴02_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4107], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4206], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4307], visible=True, arg3=0, delay=0, scale=2)
@@ -268,7 +268,7 @@ class 패턴02_D(trigger_api.Trigger):
 
 
 class 패턴02종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -283,7 +283,7 @@ class 패턴02종료(trigger_api.Trigger):
 
 
 class 패턴03시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,7 +308,7 @@ class 패턴03랜덤(trigger_api.Trigger):
 
 
 class 패턴03_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4204,4213], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304,4313], visible=True, arg3=0, delay=0, scale=2)
@@ -331,7 +331,7 @@ class 패턴03_A(trigger_api.Trigger):
 
 
 class 패턴03_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4106,4111], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4207,4210], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4307,4310], visible=True, arg3=0, delay=0, scale=2)
@@ -354,7 +354,7 @@ class 패턴03_B(trigger_api.Trigger):
 
 
 class 패턴03_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4103,4114], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4202,4215], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4302,4315], visible=True, arg3=0, delay=0, scale=2)
@@ -377,7 +377,7 @@ class 패턴03_C(trigger_api.Trigger):
 
 
 class 패턴03_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4108,4110], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4205,4211], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4306,4312], visible=True, arg3=0, delay=0, scale=2)
@@ -400,7 +400,7 @@ class 패턴03_D(trigger_api.Trigger):
 
 
 class 패턴03종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -415,7 +415,7 @@ class 패턴03종료(trigger_api.Trigger):
 
 
 class 패턴04시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -440,7 +440,7 @@ class 패턴04랜덤(trigger_api.Trigger):
 
 
 class 패턴04_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4112,4115], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4209,4214], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4303,4308], visible=True, arg3=0, delay=0, scale=2)
@@ -463,7 +463,7 @@ class 패턴04_A(trigger_api.Trigger):
 
 
 class 패턴04_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104,4113], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4301,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -486,7 +486,7 @@ class 패턴04_B(trigger_api.Trigger):
 
 
 class 패턴04_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4102,4114], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4203,4215], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4302,4314], visible=True, arg3=0, delay=0, scale=2)
@@ -509,7 +509,7 @@ class 패턴04_C(trigger_api.Trigger):
 
 
 class 패턴04_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4112,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4209,4213], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304,4308], visible=True, arg3=0, delay=0, scale=2)
@@ -532,7 +532,7 @@ class 패턴04_D(trigger_api.Trigger):
 
 
 class 패턴04종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -547,7 +547,7 @@ class 패턴04종료(trigger_api.Trigger):
 
 
 class 패턴05시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -572,7 +572,7 @@ class 패턴05랜덤(trigger_api.Trigger):
 
 
 class 패턴05_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4106,4111], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4204,4207,4210], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4307,4310,4313], visible=True, arg3=0, delay=0, scale=2)
@@ -595,7 +595,7 @@ class 패턴05_A(trigger_api.Trigger):
 
 
 class 패턴05_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104,4107,4110], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4206,4211], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4306,4311,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -618,7 +618,7 @@ class 패턴05_B(trigger_api.Trigger):
 
 
 class 패턴05_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4104,4113], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4204,4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4301,4313,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -641,7 +641,7 @@ class 패턴05_C(trigger_api.Trigger):
 
 
 class 패턴05_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4103,4106,4108], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4202,4205,4207], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4310,4312,4315], visible=True, arg3=0, delay=0, scale=2)
@@ -664,7 +664,7 @@ class 패턴05_D(trigger_api.Trigger):
 
 
 class 패턴05종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -679,7 +679,7 @@ class 패턴05종료(trigger_api.Trigger):
 
 
 class 패턴06시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -704,7 +704,7 @@ class 패턴06랜덤(trigger_api.Trigger):
 
 
 class 패턴06_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104,4107,4112], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4206,4209], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4308,4311,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -727,7 +727,7 @@ class 패턴06_A(trigger_api.Trigger):
 
 
 class 패턴06_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4112,4115,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4209,4213,4214], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4303,4304,4308], visible=True, arg3=0, delay=0, scale=2)
@@ -750,7 +750,7 @@ class 패턴06_B(trigger_api.Trigger):
 
 
 class 패턴06_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4102,4105], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4203,4204,4208], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4309,4313,4314], visible=True, arg3=0, delay=0, scale=2)
@@ -773,7 +773,7 @@ class 패턴06_C(trigger_api.Trigger):
 
 
 class 패턴06_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4107,4109,4115], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4206,4212,4214], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4308,4310,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -796,7 +796,7 @@ class 패턴06_D(trigger_api.Trigger):
 
 
 class 패턴06종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -811,7 +811,7 @@ class 패턴06종료(trigger_api.Trigger):
 
 
 class 패턴07시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -848,7 +848,7 @@ class 패턴07랜덤(trigger_api.Trigger):
 
 
 class 패턴07_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4106,4111,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4204,4207,4210,4213], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304,4307,4310,4313], visible=True, arg3=0, delay=0, scale=2)
@@ -871,7 +871,7 @@ class 패턴07_A(trigger_api.Trigger):
 
 
 class 패턴07_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104,4107,4110,4113], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4206,4211,4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4301,4306,4311,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -894,7 +894,7 @@ class 패턴07_B(trigger_api.Trigger):
 
 
 class 패턴07_C(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4102,4105,4107,4110], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4203,4206,4208,4211], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4302,4305,4307,4310], visible=True, arg3=0, delay=0, scale=2)
@@ -917,7 +917,7 @@ class 패턴07_C(trigger_api.Trigger):
 
 
 class 패턴07_D(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4109,4111,4114,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4209,4211,4214,4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4309,4311,4314,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -940,7 +940,7 @@ class 패턴07_D(trigger_api.Trigger):
 
 
 class 패턴07_E(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4101,4104,4113,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4204,4213,4216], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4301,4304,4313,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -963,7 +963,7 @@ class 패턴07_E(trigger_api.Trigger):
 
 
 class 패턴07_F(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4106,4107,4110,4111], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4206,4207,4210,4211], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4306,4307,4310,4311], visible=True, arg3=0, delay=0, scale=2)
@@ -986,7 +986,7 @@ class 패턴07_F(trigger_api.Trigger):
 
 
 class 패턴07_G(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4111,4112,4115,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4209,4210,4213,4214], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4303,4304,4307,4308], visible=True, arg3=0, delay=0, scale=2)
@@ -1009,7 +1009,7 @@ class 패턴07_G(trigger_api.Trigger):
 
 
 class 패턴07_H(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4102,4103,4114,4115], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4202,4203,4214,4215], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4302,4303,4314,4315], visible=True, arg3=0, delay=0, scale=2)
@@ -1032,7 +1032,7 @@ class 패턴07_H(trigger_api.Trigger):
 
 
 class 패턴07_I(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4104,4108,4112,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4201,4205,4209,4213], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4304,4308,4312,4316], visible=True, arg3=0, delay=0, scale=2)
@@ -1055,7 +1055,7 @@ class 패턴07_I(trigger_api.Trigger):
 
 
 class 패턴07_J(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[4108,4111,4114,4116], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4205,4210,4213,4215], visible=True, arg3=0, delay=0, scale=2)
         self.set_mesh(triggerIds=[4302,4304,4307,4312], visible=True, arg3=0, delay=0, scale=2)
@@ -1078,7 +1078,7 @@ class 패턴07_J(trigger_api.Trigger):
 
 
 class 패턴07종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1093,7 +1093,7 @@ class 패턴07종료(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3201,3202,3203,3204,3205,3206,3207,3208,3209,3210,3211,3212,3213,3214,3215,3216], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316], visible=True, arg3=0, delay=0, scale=0)

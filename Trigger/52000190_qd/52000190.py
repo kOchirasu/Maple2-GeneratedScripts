@@ -5,11 +5,12 @@ import trigger_api
 class Wait(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[2001], questIds=[10003420], questStates=[2]):
+            # 예기치 못한 만남 퀘스트 수락
             return Wait_02(self.ctx)
 
 
 class Wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000190, portalId=5001)
@@ -20,7 +21,7 @@ class Wait_02(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='the_empress_of_a_dungeon.swf', movieId=1)
 
@@ -32,7 +33,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 영상재생_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +42,7 @@ class 영상재생_end(trigger_api.Trigger):
 
 
 class 영상재생_end02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

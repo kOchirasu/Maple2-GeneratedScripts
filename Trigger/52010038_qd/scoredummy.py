@@ -23,7 +23,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 점수(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[4030], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

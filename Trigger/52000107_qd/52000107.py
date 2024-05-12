@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5304], visible=False) # 가이드 서머리 사운드 이펙트
@@ -36,7 +36,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 영상준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000107, portalId=2)
 
@@ -46,9 +46,9 @@ class 영상준비_01(trigger_api.Trigger):
 
 
 class 영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
-        self.play_scene_movie(fileName='common\JobIntro_HeavyGunner.usm', movieId=1)
+        self.play_scene_movie(fileName='common\\JobIntro_HeavyGunner.usm', movieId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.widget_condition(type='SceneMovie', name='IsStop', condition='1'):
@@ -58,7 +58,7 @@ class 영상재생(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1000,1001], returnView=False)
@@ -70,7 +70,7 @@ class 에델슈타인전경씬01(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬01_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 에델슈타인전경씬01_B(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1002,1003,1004,1005], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -90,7 +90,7 @@ class 에델슈타인전경씬02(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000107_QD__52000107__0$', desc='$52000107_QD__52000107__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=7000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +99,7 @@ class 에델슈타인전경씬03(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,8 +108,9 @@ class 에델슈타인전경씬04(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -118,7 +119,7 @@ class Quit01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -129,7 +130,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)
@@ -166,7 +167,7 @@ class Quit02(trigger_api.Trigger):
 
 # ########################씬2 아이샤 등장########################
 class 아이샤등장씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[2000], animationEffect=False) # 아이샤등장
@@ -177,7 +178,7 @@ class 아이샤등장씬01(trigger_api.Trigger):
 
 
 class 아이샤등장씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_Ayesha_go')
@@ -189,7 +190,7 @@ class 아이샤등장씬02(trigger_api.Trigger):
 
 
 class 아이샤등장씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003291, illustId='Ayesha_normal', msg='$52000107_QD__52000107__3$', duration=4000, align='right')
         self.set_onetime_effect(id=3000970, enable=True, path='BG/Common/Sound/Eff_Ayesha_IntroMovie_03000970.xml')
@@ -200,9 +201,10 @@ class 아이샤등장씬04(trigger_api.Trigger):
 
 
 class 아이샤등장씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=200, emotionName='hello_Cait')
         self.show_caption(type='NameCaption', title='$52000107_QD__52000107__4$', desc='$52000107_QD__52000107__5$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,7 +213,7 @@ class 아이샤등장씬05(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
@@ -221,7 +223,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 아이샤등장씬06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -253,12 +255,13 @@ class 아이샤등장씬06(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[10011], questIds=[20002296], questStates=[2]):
+            # 챕터6 에필로그 [10002353 허락되지 않은 일] 미완료 시
             return 아이샤와떠남01(self.ctx)
 
 
 # ########################씬3 아이샤와pc, 퓨전코어 연구실로########################
 class 아이샤와떠남01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=2000, msg='$52000107_QD__52000107__6$', duration=6000, delayTick=1000)
         self.set_onetime_effect(id=3000971, enable=True, path='BG/Common/Sound/Eff_Ayesha_IntroMovie_03000971.xml')
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_Ayesga_out')
@@ -270,7 +273,7 @@ class 아이샤와떠남01(trigger_api.Trigger):
 
 
 class 아이샤와떠남02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.destroy_monster(spawnIds=[2000])
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7000], enable=False)
         self.destroy_monster(spawnIds=[101,102,103,104,105,201,202,203,301,900,910,920])
         self.set_effect(triggerIds=[5100], visible=False) # AsimovShield
@@ -22,11 +22,12 @@ class Wait(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[9000], questIds=[50001604], questStates=[1]):
             return LodingDelay01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[50001604], questStates=[2]):
+            # 맵 튕기고 완료가능 상태일 때 대비 위한 스테이트
             return Quit02(self.ctx)
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,201,910,920], animationEffect=True)
         self.set_effect(triggerIds=[5100], visible=True) # AsimovShield
         self.set_effect(triggerIds=[5101], visible=True) # RuneShieldThunder
@@ -41,7 +42,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class SetMaskEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.select_camera(triggerId=600, enable=True)
 
@@ -51,7 +52,7 @@ class SetMaskEffect01(trigger_api.Trigger):
 
 
 class SetMaskEffect02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -62,7 +63,7 @@ class SetMaskEffect02(trigger_api.Trigger):
 
 
 class ImprisonDarkAnos01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -71,7 +72,7 @@ class ImprisonDarkAnos01(trigger_api.Trigger):
 
 
 class ImprisonDarkAnos02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,8 +81,10 @@ class ImprisonDarkAnos02(trigger_api.Trigger):
 
 
 class AsimovTalk01(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__0$', duration=5000, align='center', illustId='0') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__0$', duration=5000, align='center', illustId='0')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=DarkAnosTalk01CSkip, action='nextState')
         self.set_skip(state=AsimovTalk01Skip)
 
@@ -91,8 +94,9 @@ class AsimovTalk01(trigger_api.Trigger):
 
 
 class AsimovTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -101,7 +105,7 @@ class AsimovTalk01Skip(trigger_api.Trigger):
 
 
 class ZoominAnos01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=602, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +114,7 @@ class ZoominAnos01(trigger_api.Trigger):
 
 
 class AnosTruning01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5500], visible=True) # DarkAura01
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,7 +123,7 @@ class AnosTruning01(trigger_api.Trigger):
 
 
 class AnosTruning02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102], animationEffect=True)
 
@@ -129,8 +133,10 @@ class AnosTruning02(trigger_api.Trigger):
 
 
 class AnosTalk01(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003289, msg='$52000137_QD__ACT01__1$', duration=4000, align='center', illustId='0') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003289, msg='$52000137_QD__ACT01__1$', duration=4000, align='center', illustId='0')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=AnosTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,8 +145,9 @@ class AnosTalk01(trigger_api.Trigger):
 
 
 class AnosTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +156,7 @@ class AnosTalk01Skip(trigger_api.Trigger):
 
 
 class CameraChange00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=603, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -158,7 +165,7 @@ class CameraChange00(trigger_api.Trigger):
 
 
 class CameraChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -167,7 +174,7 @@ class CameraChange01(trigger_api.Trigger):
 
 
 class PCTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000137_QD__ACT01__2$', duration=4000, align='center', illustId='0')
         self.set_skip(state=PCTalk01Skip)
@@ -178,9 +185,10 @@ class PCTalk01(trigger_api.Trigger):
 
 
 class PCTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -189,8 +197,10 @@ class PCTalk01Skip(trigger_api.Trigger):
 
 
 class AsimovTalk02(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__3$', duration=4000, align='center', illustId='Asimov_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__3$', duration=4000, align='center', illustId='Asimov_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.set_skip(state=AsimovTalk02Skip)
@@ -201,8 +211,9 @@ class AsimovTalk02(trigger_api.Trigger):
 
 
 class AsimovTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -211,8 +222,10 @@ class AsimovTalk02Skip(trigger_api.Trigger):
 
 
 class AsimovTalk03(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__4$', duration=5000, align='center', illustId='Asimov_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__4$', duration=5000, align='center', illustId='Asimov_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=AsimovTalk03Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -221,8 +234,9 @@ class AsimovTalk03(trigger_api.Trigger):
 
 
 class AsimovTalk03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -231,7 +245,7 @@ class AsimovTalk03Skip(trigger_api.Trigger):
 
 
 class CameraChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -240,7 +254,7 @@ class CameraChange02(trigger_api.Trigger):
 
 
 class CameraChange03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=604, enable=True) # PC 어깨에 걸고
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -249,7 +263,7 @@ class CameraChange03(trigger_api.Trigger):
 
 
 class PCTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000137_QD__ACT01__5$', duration=5000, align='center', illustId='0')
         self.set_skip(state=PCTalk02Skip)
 
@@ -259,8 +273,9 @@ class PCTalk02(trigger_api.Trigger):
 
 
 class PCTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -269,7 +284,7 @@ class PCTalk02Skip(trigger_api.Trigger):
 
 
 class CameraChange04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
         self.create_monster(spawnIds=[104], animationEffect=False)
         self.select_camera(triggerId=605, enable=True)
@@ -280,9 +295,11 @@ class CameraChange04(trigger_api.Trigger):
 
 
 class DarkAnosTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=104, sequenceName='Attack_Idle_A,Attack_Idle_A') # 1533
-        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__6$', duration=3000, align='center', illustId='Patos_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__6$', duration=3000, align='center', illustId='Patos_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=DarkAnosTalk01Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -291,7 +308,7 @@ class DarkAnosTalk01(trigger_api.Trigger):
 
 
 class DarkAnosTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -300,7 +317,7 @@ class DarkAnosTalk01Skip(trigger_api.Trigger):
 
 
 class DarkAnosAttackAsimov01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=610, enable=True)
         self.set_npc_emotion_sequence(spawnId=104, sequenceName='Attack_01_A,Attack_Idle_A') # 3200
 
@@ -310,7 +327,7 @@ class DarkAnosAttackAsimov01(trigger_api.Trigger):
 
 
 class DarkAnosAttackAsimov02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5200], visible=True) # ShieldExplosion
         self.destroy_monster(spawnIds=[201,910,920])
         self.create_monster(spawnIds=[202], animationEffect=False)
@@ -322,7 +339,7 @@ class DarkAnosAttackAsimov02(trigger_api.Trigger):
 
 
 class DarkAnosAttackAsimov03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5500], visible=False) # DarkAura01
         self.set_effect(triggerIds=[5101], visible=False) # RuneShieldThunder
         self.set_effect(triggerIds=[5100], visible=False) # AsimovShield
@@ -333,7 +350,7 @@ class DarkAnosAttackAsimov03(trigger_api.Trigger):
 
 
 class CameraChange05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=611, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_1003')
         self.add_balloon_talk(spawnId=0, msg='$52000137_QD__ACT01__7$', duration=2000, delayTick=1000)
@@ -344,7 +361,7 @@ class CameraChange05(trigger_api.Trigger):
 
 
 class CameraChange06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -356,7 +373,7 @@ class CameraChange06(trigger_api.Trigger):
 
 
 class CameraChange07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=612, enable=True) # PC 어깨에 걸고
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
@@ -366,8 +383,10 @@ class CameraChange07(trigger_api.Trigger):
 
 
 class AsimovTalk04(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__8$', duration=5000, align='center', illustId='Asimov_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003283, msg='$52000137_QD__ACT01__8$', duration=5000, align='center', illustId='Asimov_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=AsimovTalk04Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -376,10 +395,12 @@ class AsimovTalk04(trigger_api.Trigger):
 
 
 class AsimovTalk04Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
-        self.set_npc_emotion_sequence(spawnId=202, sequenceName='Event_02_A,Down_Idle_A,Down_Idle_A,Down_Idle_A,Down_Idle_A') # 임시 - 기절하는 동작 제작되면 타이밍 맞추기
+        # 임시 - 기절하는 동작 제작되면 타이밍 맞추기
+        self.set_npc_emotion_sequence(spawnId=202, sequenceName='Event_02_A,Down_Idle_A,Down_Idle_A,Down_Idle_A,Down_Idle_A')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -387,7 +408,7 @@ class AsimovTalk04Skip(trigger_api.Trigger):
 
 
 class AsimovFaint01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -396,7 +417,7 @@ class AsimovFaint01(trigger_api.Trigger):
 
 
 class AsimovFaint02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.create_monster(spawnIds=[203], animationEffect=False)
         self.select_camera(triggerId=613, enable=True)
@@ -407,7 +428,7 @@ class AsimovFaint02(trigger_api.Trigger):
 
 
 class AsimovFaint03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -416,7 +437,7 @@ class AsimovFaint03(trigger_api.Trigger):
 
 
 class DarkAnosApproach01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_104')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -425,7 +446,7 @@ class DarkAnosApproach01(trigger_api.Trigger):
 
 
 class DarkAnosApproach02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1004')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -434,8 +455,10 @@ class DarkAnosApproach02(trigger_api.Trigger):
 
 
 class DarkAnosTalk02(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__9$', duration=5000, align='center', illustId='Patos_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__9$', duration=5000, align='center', illustId='Patos_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=DarkAnosTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -444,8 +467,9 @@ class DarkAnosTalk02(trigger_api.Trigger):
 
 
 class DarkAnosTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -454,9 +478,10 @@ class DarkAnosTalk02Skip(trigger_api.Trigger):
 
 
 class PCTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Talk_A', duration=4000)
         self.add_cinematic_talk(npcId=0, msg='$52000137_QD__ACT01__10$', duration=5000, align='center', illustId='0')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -465,9 +490,10 @@ class PCTalk03(trigger_api.Trigger):
 
 
 class PCTalk03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Idle_A'])
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -476,8 +502,10 @@ class PCTalk03Skip(trigger_api.Trigger):
 
 
 class DarkAnosTalk03(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__11$', duration=4000, align='center', illustId='Patos_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003285, msg='$52000137_QD__ACT01__11$', duration=4000, align='center', illustId='Patos_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -485,7 +513,7 @@ class DarkAnosTalk03(trigger_api.Trigger):
 
 
 class DarkAnosTalk01CSkip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -506,12 +534,14 @@ class DarkAnosTalk01CSkip(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
+            # transition state="PCTalk03Skip"/
             return DarkAnosTalk03Skip(self.ctx)
 
 
 class DarkAnosTalk03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -520,7 +550,7 @@ class DarkAnosTalk03Skip(trigger_api.Trigger):
 
 
 class DarkAnosBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
@@ -531,7 +561,7 @@ class DarkAnosBattle01(trigger_api.Trigger):
 
 
 class DarkAnosBattle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[104])
         self.create_monster(spawnIds=[900], animationEffect=False)
 
@@ -539,11 +569,12 @@ class DarkAnosBattle02(trigger_api.Trigger):
         if self.user_value(key='PatosTired', value=1):
             return DarkAnosDown01(self.ctx)
         if self.monster_dead(boxIds=[900]):
+            # 임시 -  파토스 체력 조건으로 연출 넘어가도록 수정하기
             return DarkAnosDown01(self.ctx)
 
 
 class DarkAnosDown01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -554,7 +585,7 @@ class DarkAnosDown01(trigger_api.Trigger):
 
 
 class PositionArrange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[900])
         self.create_monster(spawnIds=[105], animationEffect=False)
         self.move_user(mapId=52000137, portalId=10, boxId=9900)
@@ -566,7 +597,7 @@ class PositionArrange01(trigger_api.Trigger):
 
 
 class PositionArrange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -575,7 +606,7 @@ class PositionArrange02(trigger_api.Trigger):
 
 
 class PCBalloonTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2000')
         self.add_balloon_talk(spawnId=0, msg='$52000137_QD__ACT01__12$', duration=2000, delayTick=500)
 
@@ -585,7 +616,7 @@ class PCBalloonTalk01(trigger_api.Trigger):
 
 
 class PCBalloonTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=0, msg='$52000137_QD__ACT01__13$', duration=3000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -594,7 +625,7 @@ class PCBalloonTalk02(trigger_api.Trigger):
 
 
 class PCBalloonTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=621, enable=True)
         self.move_user_path(patrolName='MS2PatrolData_2001')
 
@@ -604,7 +635,7 @@ class PCBalloonTalk03(trigger_api.Trigger):
 
 
 class KanduraApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=622, enable=True)
         self.create_monster(spawnIds=[301], animationEffect=False)
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_301')
@@ -615,7 +646,7 @@ class KanduraApp01(trigger_api.Trigger):
 
 
 class KanduraApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=0, msg='$52000137_QD__ACT01__14$', duration=2000, delayTick=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -624,7 +655,7 @@ class KanduraApp02(trigger_api.Trigger):
 
 
 class KanduraApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2002')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -633,7 +664,7 @@ class KanduraApp03(trigger_api.Trigger):
 
 
 class KanduraAttack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=623, enable=True)
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Event_01_A')
 
@@ -643,7 +674,7 @@ class KanduraAttack01(trigger_api.Trigger):
 
 
 class KanduraAttack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7000], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -652,7 +683,7 @@ class KanduraAttack02(trigger_api.Trigger):
 
 
 class CameraChange10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -663,7 +694,7 @@ class CameraChange10(trigger_api.Trigger):
 
 
 class CameraChange11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=630, enable=True) # PC 등뒤에서
         self.set_pc_emotion_loop(sequenceName='Push_A', duration=30000)
 
@@ -673,7 +704,7 @@ class CameraChange11(trigger_api.Trigger):
 
 
 class CameraChange12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -682,9 +713,11 @@ class CameraChange12(trigger_api.Trigger):
 
 
 class KanduraTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_302')
-        self.add_cinematic_talk(npcId=11003287, msg='$52000137_QD__ACT01__15$', duration=4000, align='center', illustId='Kandura_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003287, msg='$52000137_QD__ACT01__15$', duration=4000, align='center', illustId='Kandura_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_scene_skip(state=ShowCaption04Skip, action='exit')
         self.set_skip(state=KanduraTalk01Skip)
 
@@ -694,8 +727,9 @@ class KanduraTalk01(trigger_api.Trigger):
 
 
 class KanduraTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -704,7 +738,7 @@ class KanduraTalk01Skip(trigger_api.Trigger):
 
 
 class PCTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000137_QD__ACT01__16$', duration=4000, align='center', illustId='0')
         self.set_skip(state=PCTalk04Skip)
 
@@ -714,8 +748,9 @@ class PCTalk04(trigger_api.Trigger):
 
 
 class PCTalk04Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -724,7 +759,7 @@ class PCTalk04Skip(trigger_api.Trigger):
 
 
 class KanduraMoveToDarkAnos01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=631, enable=True)
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_303')
 
@@ -734,8 +769,10 @@ class KanduraMoveToDarkAnos01(trigger_api.Trigger):
 
 
 class KanduraTalk02(trigger_api.Trigger):
-    def on_enter(self):
-        self.add_cinematic_talk(npcId=11003287, msg='$52000137_QD__ACT01__17$', duration=4000, align='center', illustId='Kandura_normal') # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # align = 일러스트 위치 : (left/ center/ right) 3가지 지원 (생략 시 center)
+        self.add_cinematic_talk(npcId=11003287, msg='$52000137_QD__ACT01__17$', duration=4000, align='center', illustId='Kandura_normal')
+        # illustID = 표시할 일러스트의 npc id, 일러스트를 표시하기 싫으면 0으로 기입
         self.set_skip(state=KanduraTalk02Skip)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -744,8 +781,9 @@ class KanduraTalk02(trigger_api.Trigger):
 
 
 class KanduraTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -755,7 +793,7 @@ class KanduraTalk02Skip(trigger_api.Trigger):
 
 # 칸두라가 흑화된 아노스를 데리고 함께 사라지는 연출
 class KanduraReadyToDisapp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=632, enable=True)
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Event_02_A')
 
@@ -765,7 +803,7 @@ class KanduraReadyToDisapp01(trigger_api.Trigger):
 
 
 class KanduraReadyToDisapp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=True) # Vibrate
         self.set_effect(triggerIds=[5400], visible=True) # DarkStrom01
 
@@ -775,7 +813,7 @@ class KanduraReadyToDisapp02(trigger_api.Trigger):
 
 
 class KanduraReadyToDisapp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5400], visible=False) # DarkStrom01
         self.set_effect(triggerIds=[5401], visible=True) # DarkStrom02
         self.destroy_monster(spawnIds=[105,301])
@@ -793,7 +831,7 @@ class KanduraReadyToDisapp04(trigger_api.Trigger):
 
 # 설명문 출력
 class ShowCaption01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
@@ -804,7 +842,7 @@ class ShowCaption01(trigger_api.Trigger):
 
 
 class ShowCaption02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000137_QD__ACT01__18$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -813,7 +851,8 @@ class ShowCaption02(trigger_api.Trigger):
 
 
 class ShowCaption02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -822,7 +861,7 @@ class ShowCaption02Skip(trigger_api.Trigger):
 
 
 class ShowCaption03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000137_QD__ACT01__19$')
         self.set_skip(state=ShowCaption03Skip)
 
@@ -832,7 +871,8 @@ class ShowCaption03(trigger_api.Trigger):
 
 
 class ShowCaption03Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -841,7 +881,7 @@ class ShowCaption03Skip(trigger_api.Trigger):
 
 
 class ShowCaption04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000137_QD__ACT01__20$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -850,7 +890,8 @@ class ShowCaption04(trigger_api.Trigger):
 
 
 class ShowCaption04Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -859,7 +900,7 @@ class ShowCaption04Skip(trigger_api.Trigger):
 
 
 class Quit01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9900, type='trigger', achieve='AsimovRetire')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -871,13 +912,14 @@ class Quit01(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.reset_camera(interpolationTime=1)
         self.move_user(mapId=2000035, portalId=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
+            # 맵 튕기고 이동 명령 못 받을 상태를 대비한 안전장치
             return Quit02(self.ctx)
 
 

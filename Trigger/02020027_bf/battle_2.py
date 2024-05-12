@@ -15,7 +15,7 @@ class 전투시작_2(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[301,302,303,304,305,306])
         self.set_conversation(type=1, spawnId=301, script='$02020027_BF__battle_1__1$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=303, script='$02020027_BF__battle_1__2$', arg4=3, arg5=0)
@@ -27,13 +27,13 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 버프(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[201], skillId=62000002, level=1, isPlayer=True)
         self.add_buff(boxIds=[201], skillId=51200002, level=1, isPlayer=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
-            return None
+            pass
 
 
 initial_state = 전투시작

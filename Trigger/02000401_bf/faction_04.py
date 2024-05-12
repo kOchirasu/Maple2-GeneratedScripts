@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.remove_buff(boxId=199, skillId=99910160)
         self.set_interact_object(triggerIds=[12000029], state=2)
@@ -15,13 +15,13 @@ class 대기(trigger_api.Trigger):
 
 
 class 인원수체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=반응대기)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[2902])
-        # action name="연출UI를설정한다" arg1="1"/>
-        # <action name="연출UI를설정한다" arg1="3"/
+        # self.set_cinematic_ui(type=1)
+        # self.set_cinematic_ui(type=3)
         self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.select_camera(triggerId=303, enable=True)
         self.create_monster(spawnIds=[1300], animationEffect=True)
@@ -34,7 +34,8 @@ class 인원수체크(trigger_api.Trigger):
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -59,7 +60,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 던전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000029], state=1)
         self.set_effect(triggerIds=[601], visible=True)
 
@@ -69,7 +70,7 @@ class 던전(trigger_api.Trigger):
 
 
 class 퀘스트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000040], state=1)
         self.set_effect(triggerIds=[601], visible=True)
 
@@ -79,7 +80,7 @@ class 퀘스트(trigger_api.Trigger):
 
 
 class 보스소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040107, textId=20040107, duration=3000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.create_monster(spawnIds=[2099], animationEffect=False)

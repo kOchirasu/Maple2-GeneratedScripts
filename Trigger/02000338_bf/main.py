@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[120], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[121], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[122], visible=False, animationEffect=False, animationDelay=0)
@@ -86,7 +86,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[5100], animationEffect=False)
@@ -100,7 +100,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[74512], visible=True)
@@ -113,7 +113,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class CameraWalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=30201, enable=True)
         self.set_skip(state=CameraWalk05)
 
@@ -123,7 +123,7 @@ class CameraWalk03(trigger_api.Trigger):
 
 
 class CameraWalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_effect(triggerIds=[74500], visible=True)
         self.set_skip(state=CameraWalk05)
@@ -134,9 +134,10 @@ class CameraWalk04(trigger_api.Trigger):
 
 
 class CameraWalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[5000], animationEffect=False)
         self.move_npc(spawnId=5000, patrolName='MS2PatrolData5000')
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,7 +146,7 @@ class CameraWalk05(trigger_api.Trigger):
 
 
 class GroundFall01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[32000], visible=True)
         self.set_effect(triggerIds=[32001], visible=True)
         self.set_mesh(triggerIds=[20000,20001,20002,20003,20004,20005,20006,20007,20008,20009,20010,20011,20012,20013,20014,20015,20016,20017,20018,20019,20020], visible=False, arg3=100, delay=0, scale=0)
@@ -182,7 +183,8 @@ class GroundFall01(trigger_api.Trigger):
 
 
 class 차어나운스3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.reset_camera(interpolationTime=1)
 
@@ -192,7 +194,7 @@ class 차어나운스3(trigger_api.Trigger):
 
 
 class Ready01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_mesh(triggerIds=[70001,70002,70003,70004,70005,70006,70007,70008,70009,70010], visible=False, arg3=0, delay=0, scale=0)
@@ -236,7 +238,7 @@ class Ready01(trigger_api.Trigger):
 
 
 class FirstBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.create_monster(spawnIds=[5001,5002,5003], animationEffect=False)
@@ -249,7 +251,7 @@ class FirstBattle01(trigger_api.Trigger):
 
 
 class FirstBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[75000], visible=False) # GuideArrow
         self.set_effect(triggerIds=[75001], visible=False) # GuideArrow
         self.set_effect(triggerIds=[75002], visible=False) # GuideArrow
@@ -270,7 +272,7 @@ class FirstBridgeOn01(trigger_api.Trigger):
 
 
 class SecondBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000778], state=1)
@@ -282,7 +284,7 @@ class SecondBattle01(trigger_api.Trigger):
 
 
 class SecondBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8003], visible=False)
         self.set_agent(triggerIds=[8004], visible=False)
         self.set_agent(triggerIds=[8005], visible=False)
@@ -298,7 +300,7 @@ class SecondBridgeOn01(trigger_api.Trigger):
 
 
 class ThirdBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[76000], visible=True) # GuideArrow
         self.set_effect(triggerIds=[76001], visible=True) # GuideArrow
         self.set_effect(triggerIds=[76002], visible=True) # GuideArrow
@@ -317,7 +319,7 @@ class ThirdBattle01(trigger_api.Trigger):
 
 
 class ThirdBrigeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[76000], visible=False) # GuideArrow
         self.set_effect(triggerIds=[76001], visible=False) # GuideArrow
         self.set_effect(triggerIds=[76002], visible=False) # GuideArrow
@@ -328,7 +330,7 @@ class ThirdBrigeOn01(trigger_api.Trigger):
 
 
 class FourthBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000779], state=1)
@@ -340,7 +342,7 @@ class FourthBattle01(trigger_api.Trigger):
 
 
 class FourthBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20003382)
         self.set_effect(triggerIds=[73004], visible=False)
         self.set_mesh(triggerIds=[33,34,35,36,37,38,39,40,41], visible=True, arg3=100, delay=50, scale=2)
@@ -352,7 +354,7 @@ class FourthBridgeOn01(trigger_api.Trigger):
 
 
 class FifthBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000780], state=1)
@@ -364,7 +366,7 @@ class FifthBattle01(trigger_api.Trigger):
 
 
 class FifthBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8006], visible=False)
         self.set_agent(triggerIds=[8007], visible=False)
         self.set_agent(triggerIds=[8008], visible=False)
@@ -378,7 +380,7 @@ class FifthBridgeOn01(trigger_api.Trigger):
 
 
 class SixthBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000781], state=1)
@@ -390,7 +392,7 @@ class SixthBattle01(trigger_api.Trigger):
 
 
 class SixthBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8009], visible=False)
         self.set_agent(triggerIds=[8010], visible=False)
         self.hide_guide_summary(entityId=20003382)
@@ -403,7 +405,7 @@ class SixthBridgeOn01(trigger_api.Trigger):
 
 
 class SeventhBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20003382, textId=20003382)
         self.set_interact_object(triggerIds=[10000782], state=1)
@@ -416,7 +418,7 @@ class SeventhBattle01(trigger_api.Trigger):
 
 # 보스 전투 돌입
 class SeventhBridgeOn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8011], visible=False)
         self.set_agent(triggerIds=[8012], visible=False)
         self.set_agent(triggerIds=[8013], visible=False)
@@ -440,7 +442,7 @@ class BossBattle01(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_mesh(triggerIds=[70001,70002,70003,70004,70005,70006,70007,70008,70009], visible=True, arg3=200, delay=50, scale=2)
         self.set_mesh(triggerIds=[70010], visible=True, arg3=250, delay=50, scale=2)
@@ -452,7 +454,7 @@ class Quit(trigger_api.Trigger):
 
 
 class PCGetOut01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -461,7 +463,7 @@ class PCGetOut01(trigger_api.Trigger):
 
 
 class PCGetOut02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -470,7 +472,7 @@ class PCGetOut02(trigger_api.Trigger):
 
 
 class PCGetOut03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -479,7 +481,7 @@ class PCGetOut03(trigger_api.Trigger):
 
 
 class PCGetOut04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=0, portalId=0)
 
 

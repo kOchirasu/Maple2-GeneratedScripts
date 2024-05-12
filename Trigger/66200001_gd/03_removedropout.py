@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Remove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_to_portal(boxId=9002, userTagId=1, portalId=21) # Tag1=Blue
         self.move_to_portal(boxId=9002, userTagId=2, portalId=22) # Tag2=Red
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=False)
         self.set_actor(triggerId=203, visible=True, initialSequence='Damg_B')
 
@@ -17,7 +17,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -26,7 +26,7 @@ class 몬스터소환대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2003], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 더미해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=203, visible=False, initialSequence='Damg_B')
 
     def on_tick(self) -> trigger_api.Trigger:

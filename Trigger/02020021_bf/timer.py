@@ -10,7 +10,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 타이머시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='BattleTimer', seconds=300, startDelay=1, interval=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class 타이머체크(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='BattleTimer')
         self.set_user_value(triggerId=99990002, key='Timer', value=2)
 

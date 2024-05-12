@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,1003,1004], animationEffect=False)
         self.destroy_monster(spawnIds=[1005])
         self.destroy_monster(spawnIds=[1006])
@@ -24,7 +24,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[107], visible=True, arg3=0, delay=0, scale=0) # InvisibleBarrier
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -38,7 +38,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 레논01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$02000297_BF__MAIN2__0$', arg4=2)
         self.set_skip(state=연출종료)
 
@@ -48,7 +48,7 @@ class 레논01(trigger_api.Trigger):
 
 
 class 벨라01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000057, script='$02000297_BF__MAIN2__1$', arg4=3)
         self.set_conversation(type=2, spawnId=11000057, script='$02000297_BF__MAIN2__2$', arg4=3)
         self.set_skip(state=연출종료)
@@ -59,7 +59,7 @@ class 벨라01(trigger_api.Trigger):
 
 
 class 벨라02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData3')
         self.set_skip(state=연출종료)
 
@@ -69,7 +69,7 @@ class 벨라02(trigger_api.Trigger):
 
 
 class 레논02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000064, script='$02000297_BF__MAIN2__3$', arg4=2)
         self.set_skip(state=연출종료)
 
@@ -77,12 +77,12 @@ class 레논02(trigger_api.Trigger):
         if self.wait_tick(waitTick=1500):
             return 레논03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=4)
 
 
 class 레논03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1004])
         self.destroy_monster(spawnIds=[1001])
         self.create_monster(spawnIds=[1005], animationEffect=False)
@@ -94,7 +94,7 @@ class 레논03(trigger_api.Trigger):
 
 
 class 블랙01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData0')
@@ -109,7 +109,7 @@ class 블랙01(trigger_api.Trigger):
 
 
 class 카메라복귀(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1002])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -118,7 +118,8 @@ class 카메라복귀(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -141,7 +142,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 엔딩연출1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[31000,31001,31002,31003,31004,31005], visible=True, arg3=0, delay=0, scale=0) # Stairs
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +151,7 @@ class 엔딩연출1(trigger_api.Trigger):
 
 
 class 엔딩연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=888888, enable=True)
@@ -165,7 +166,7 @@ class 엔딩연출(trigger_api.Trigger):
 
 
 class 블랙03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000006, script='$02000297_BF__MAIN2__7$', arg4=3)
         self.set_conversation(type=2, spawnId=11000064, script='$02000297_BF__MAIN2__8$', arg4=3)
         self.set_conversation(type=2, spawnId=11000006, script='$02000297_BF__MAIN2__9$', arg4=3)
@@ -177,9 +178,10 @@ class 블랙03(trigger_api.Trigger):
 
 
 class 연출종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=888888, enable=False)
         self.destroy_monster(spawnIds=[1005])
@@ -193,7 +195,7 @@ class 연출종료2(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=False, initialSequence='Dead_A') # NelfActor
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
@@ -16,19 +16,24 @@ class Wait(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[60100070], questStates=[3], jobCode=70):
+            # 초보자 넬프의 죽음 퀘스트 완료
             return Quit(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[2], jobCode=70):
+            # 초보자 넬프의 죽음 퀘스트 완료 가능
             return Quit(self.ctx)
         if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1], jobCode=70):
+            # 초보자 넬프의 죽음 퀘스트 수락
             return LoadingDelay02(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[3], jobCode=70):
+            # 초보자 랄프의 정보 퀘스트 완료
             return DefaultSetting02(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[60100065], questStates=[2], jobCode=70):
+            # 초보자 랄프의 정보 퀘스트 완료 가능
             return LoadingDelay01(self.ctx)
 
 
 class LoadingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -40,7 +45,7 @@ class LoadingDelay01(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.select_camera(triggerId=800, enable=True)
 
@@ -50,7 +55,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class CameraWalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
@@ -61,7 +66,7 @@ class CameraWalk02(trigger_api.Trigger):
 
 
 class CameraWalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=801, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -70,7 +75,7 @@ class CameraWalk03(trigger_api.Trigger):
 
 
 class CameraWalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/Sound/Eff_System_Dark_Ending_Chord_01.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +84,7 @@ class CameraWalk04(trigger_api.Trigger):
 
 
 class CameraShot01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=802, enable=True)
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
@@ -89,7 +94,7 @@ class CameraShot01(trigger_api.Trigger):
 
 
 class CameraShot02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=803, enable=True)
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
@@ -99,7 +104,7 @@ class CameraShot02(trigger_api.Trigger):
 
 
 class CameraShot03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=804, enable=True)
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/Sound/Eff_System_Dark_Intro_Chord_01.xml')
 
@@ -109,7 +114,7 @@ class CameraShot03(trigger_api.Trigger):
 
 
 class CameraShot04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=804, enable=False)
@@ -120,17 +125,18 @@ class CameraShot04(trigger_api.Trigger):
 
 
 class DefaultSetting02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='Dead_A') # NelfActor
         self.create_monster(spawnIds=[101], animationEffect=False) # NelfDummyNPC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[60100070], questStates=[1]):
+            # 초보자 넬프의 죽음 퀘스트 수락
             return LoadingDelay02(self.ctx)
 
 
 class LoadingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -143,7 +149,7 @@ class LoadingDelay02(trigger_api.Trigger):
 
 
 class LoadingDelay03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000037, portalId=11)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -152,7 +158,7 @@ class LoadingDelay03(trigger_api.Trigger):
 
 
 class FindDoor01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrolName='MS2PatrolData_1200')
@@ -164,7 +170,7 @@ class FindDoor01(trigger_api.Trigger):
 
 
 class FindDoor02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=13, visible=True, enable=True, minimapVisible=True)
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_500') # 의문의남자
 
@@ -174,7 +180,7 @@ class FindDoor02(trigger_api.Trigger):
 
 
 class FindDoor03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=811, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -183,7 +189,7 @@ class FindDoor03(trigger_api.Trigger):
 
 
 class Chase01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=100, delay=200, scale=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,7 +198,7 @@ class Chase01(trigger_api.Trigger):
 
 
 class Chase02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=501, patrolName='MS2PatrolData_501') # 의문의남자
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +207,7 @@ class Chase02(trigger_api.Trigger):
 
 
 class Chase03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[501])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +216,7 @@ class Chase03(trigger_api.Trigger):
 
 
 class Quit02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=811, enable=False)
@@ -219,7 +225,7 @@ class Quit02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 

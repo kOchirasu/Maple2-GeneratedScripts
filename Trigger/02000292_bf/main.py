@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=101, visible=True, initialSequence='Closed') # Door
         self.set_mesh(triggerIds=[102,103,104], visible=True, arg3=0, delay=0, scale=0) # InvisibleBarrier
         self.set_mesh(triggerIds=[105,106,107,108], visible=True, arg3=0, delay=0, scale=0) # EnterBarrierCube
@@ -23,7 +23,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -35,7 +35,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class CameraWalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1110], animationEffect=False)
         self.move_npc(spawnId=1110, patrolName='MS2PatrolData_1110')
         self.select_camera(triggerId=601, enable=True)
@@ -47,7 +47,7 @@ class CameraWalk01(trigger_api.Trigger):
 
 
 class CameraWalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1110, script='$02000292_BF__MAIN__0$', arg4=3, arg5=0)
         self.set_skip(state=CameraWalk03)
 
@@ -57,7 +57,8 @@ class CameraWalk02(trigger_api.Trigger):
 
 
 class CameraWalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=601, enable=False)
         self.select_camera(triggerId=600, enable=False)
@@ -68,12 +69,12 @@ class CameraWalk03(trigger_api.Trigger):
         if self.wait_tick(waitTick=1000):
             return DungeonOpen(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[1110])
 
 
 class DungeonOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=101, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[102,103,104], visible=False, arg3=100, delay=100, scale=2) # InvisibleBarrier
 
@@ -83,7 +84,7 @@ class DungeonOpen(trigger_api.Trigger):
 
 
 class DungeonPlay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002922, textId=20002922, duration=5000)
         self.set_actor(triggerId=101, visible=False, initialSequence='Opened')
@@ -95,7 +96,7 @@ class DungeonPlay01(trigger_api.Trigger):
 
 
 class DungeonPlay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9001], sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002924, textId=20002924)
 
@@ -105,7 +106,7 @@ class DungeonPlay02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002924)
 
 

@@ -10,7 +10,9 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    pass
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.select_camera_path(pathIds=[8002], returnView=False)
+        pass
 
 
 initial_state = idle

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[710], visible=True, arg3=0, delay=0, scale=2) # Banner10
         self.set_mesh(triggerIds=[700], visible=True, arg3=0, delay=0, scale=2) # Banner1
         self.set_mesh(triggerIds=[711,712,713,714,715,716,717], visible=False, arg3=0, delay=0, scale=0) # Banner10
@@ -13,12 +13,12 @@ class Wait(trigger_api.Trigger):
         if self.true():
             return NextWait(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(key='SetBanner', value=0)
 
 
 class SetBanner(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[700,701,702,703,704,705,706,707,708,709,710,711,712,713,714,715], visible=False, arg3=0, delay=0, scale=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -307,7 +307,7 @@ class SetBanner(trigger_api.Trigger):
             self.set_mesh(triggerIds=[700], visible=True, arg3=0, delay=0, scale=2)
             return NextWait(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(key='SetBanner', value=0)
 
 

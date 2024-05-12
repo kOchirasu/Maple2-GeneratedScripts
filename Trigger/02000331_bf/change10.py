@@ -52,7 +52,7 @@ class 교체딜레이(trigger_api.Trigger):
 
 
 class 교체쓰러짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[611])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,7 +61,7 @@ class 교체쓰러짐(trigger_api.Trigger):
 
 
 class 교체일어남(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=611, addSpawnId=110)
 
 

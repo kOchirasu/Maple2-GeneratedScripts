@@ -3,7 +3,8 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 메인 트리거에서 받는 신호
         self.set_user_value(key='ActivateHolder', value=0) # 메인 트리거에서 받는 신호
         self.set_user_value(key='DungeonQuit', value=0) # ON
         self.set_interact_object(triggerIds=[10001256], state=2) # OFF
@@ -21,7 +22,8 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class SpawnStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # OFF
         self.set_interact_object(triggerIds=[10001257], state=1) # ON
         self.set_interact_object(triggerIds=[10001256], state=2)
 
@@ -33,7 +35,8 @@ class SpawnStart(trigger_api.Trigger):
 
 
 class StopDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 홀드 값이 1이면 스폰 중지
         self.set_user_value(triggerId=105, key='SpawnHold', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +47,8 @@ class StopDelay(trigger_api.Trigger):
 
 
 class SpawnStop(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # OFF
         self.set_interact_object(triggerIds=[10001257], state=2) # ON
         self.set_interact_object(triggerIds=[10001256], state=1)
 
@@ -56,7 +60,8 @@ class SpawnStop(trigger_api.Trigger):
 
 
 class StartDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 홀드 값이 0이면 개시
         self.set_user_value(triggerId=105, key='SpawnHold', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +72,8 @@ class StartDelay(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # ON
         self.set_interact_object(triggerIds=[10001256], state=2) # OFF
         self.set_interact_object(triggerIds=[10001257], state=0)
 

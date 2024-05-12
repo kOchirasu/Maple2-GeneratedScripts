@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002527)
         self.hide_guide_summary(entityId=20002528)
         self.hide_guide_summary(entityId=20002529)
@@ -18,12 +18,12 @@ class 대기(trigger_api.Trigger):
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=906, boxId=1):
+        if self.count_users(boxId=906, minUsers='1'):
             return 딜레이(self.ctx)
 
 
 class 딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=8)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,12 +32,18 @@ class 딜레이(trigger_api.Trigger):
 
 
 class 몹1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002527, textId=20002527)
         self.set_timer(timerId='1', seconds=15)
-        # <action name="몬스터를생성한다" arg1="4001" arg2="1"/>
-        # <action name="몬스터를생성한다" arg1="4002" arg2="1"/>
+        # self.create_monster(spawnIds=[4001], animationEffect=True)
+        # self.create_monster(spawnIds=[4002], animationEffect=True)
+        # self.create_monster(spawnIds=[4003], animationEffect=True)
+        # self.create_monster(spawnIds=[4004], animationEffect=True)
+        # self.create_monster(spawnIds=[4005], animationEffect=True)
+        # self.create_monster(spawnIds=[4006], animationEffect=True)
+        # self.create_monster(spawnIds=[4007], animationEffect=True)
+        # self.create_monster(spawnIds=[4008], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.time_expired(timerId='1'):
@@ -48,25 +54,26 @@ class 몹1(trigger_api.Trigger):
             return 몹2(self.ctx)
         if self.object_interacted(interactIds=[10001052], stateValue=0):
             return 몹2(self.ctx)
-        if self.object_interacted(interactIds=[10001053], stateValue=0):
+        """
+        if self.monster_dead(boxIds=[4001,4003,4005,4007]):
             return 몹2(self.ctx)
         """
-        <condition name="몬스터가죽어있으면" arg1="4001,4003,4005,4007">
-            <transition state="몹2" />
-        </condition>
-        """
+        if self.object_interacted(interactIds=[10001053], stateValue=0):
+            return 몹2(self.ctx)
 
 
 class 몹2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002528, textId=20002528)
         self.set_timer(timerId='1', seconds=20)
-        # <action name="몬스터를생성한다" arg1="4001" arg2="1"/>
+        # self.create_monster(spawnIds=[4001], animationEffect=True)
         self.create_monster(spawnIds=[4002], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4003" arg2="1"/>
+        # self.create_monster(spawnIds=[4003], animationEffect=True)
         self.create_monster(spawnIds=[4004], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4005" arg2="1"/>
+        # self.create_monster(spawnIds=[4005], animationEffect=True)
+        # self.create_monster(spawnIds=[4006], animationEffect=True)
+        # self.create_monster(spawnIds=[4007], animationEffect=True)
         self.create_monster(spawnIds=[4008], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -75,16 +82,18 @@ class 몹2(trigger_api.Trigger):
 
 
 class 몹3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002529, textId=20002529)
         self.set_timer(timerId='1', seconds=20)
         self.create_monster(spawnIds=[4001], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4002" arg2="1"/>
+        # self.create_monster(spawnIds=[4002], animationEffect=True)
         self.create_monster(spawnIds=[4003], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4004" arg2="1"/>
+        # self.create_monster(spawnIds=[4004], animationEffect=True)
+        # self.create_monster(spawnIds=[4005], animationEffect=True)
+        # self.create_monster(spawnIds=[4006], animationEffect=True)
         self.create_monster(spawnIds=[4007], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4008" arg2="1"/>
+        # self.create_monster(spawnIds=[4008], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[4001,4003,4005,4007]):
@@ -92,7 +101,7 @@ class 몹3(trigger_api.Trigger):
 
 
 class 몹4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002530, textId=20002530)
         self.set_timer(timerId='1', seconds=20)
@@ -100,8 +109,10 @@ class 몹4(trigger_api.Trigger):
         self.create_monster(spawnIds=[4002], animationEffect=True)
         self.create_monster(spawnIds=[4003], animationEffect=True)
         self.create_monster(spawnIds=[4004], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4005" arg2="1"/>
-        # <action name="몬스터를생성한다" arg1="4006" arg2="1"/>
+        # self.create_monster(spawnIds=[4005], animationEffect=True)
+        # self.create_monster(spawnIds=[4006], animationEffect=True)
+        # self.create_monster(spawnIds=[4007], animationEffect=True)
+        # self.create_monster(spawnIds=[4008], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[4001,4002,4003,4005,4006]):
@@ -109,11 +120,14 @@ class 몹4(trigger_api.Trigger):
 
 
 class 몹5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002531, textId=20002531)
         self.set_timer(timerId='1', seconds=20)
-        # <action name="몬스터를생성한다" arg1="4001" arg2="1"/>
+        # self.create_monster(spawnIds=[4001], animationEffect=True)
+        # self.create_monster(spawnIds=[4002], animationEffect=True)
+        # self.create_monster(spawnIds=[4003], animationEffect=True)
+        # self.create_monster(spawnIds=[4004], animationEffect=True)
         self.create_monster(spawnIds=[4005], animationEffect=True)
         self.create_monster(spawnIds=[4006], animationEffect=True)
         self.create_monster(spawnIds=[4007], animationEffect=True)
@@ -125,7 +139,7 @@ class 몹5(trigger_api.Trigger):
 
 
 class 몹6(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002532, textId=20002532)
         self.set_timer(timerId='1', seconds=20)
@@ -134,7 +148,9 @@ class 몹6(trigger_api.Trigger):
         self.create_monster(spawnIds=[4003], animationEffect=True)
         self.create_monster(spawnIds=[4004], animationEffect=True)
         self.create_monster(spawnIds=[4005], animationEffect=True)
-        # <action name="몬스터를생성한다" arg1="4006" arg2="1"/>
+        # self.create_monster(spawnIds=[4006], animationEffect=True)
+        # self.create_monster(spawnIds=[4007], animationEffect=True)
+        # self.create_monster(spawnIds=[4008], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[4001,4002,4003,4004,4005,4006]):
@@ -142,7 +158,7 @@ class 몹6(trigger_api.Trigger):
 
 
 class 몹7(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002533, textId=20002533)
         self.set_timer(timerId='1', seconds=20)
@@ -161,7 +177,7 @@ class 몹7(trigger_api.Trigger):
 
 
 class 몹8(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=20)
         self.create_monster(spawnIds=[4001], animationEffect=True)
         self.create_monster(spawnIds=[4002], animationEffect=True)
@@ -178,7 +194,7 @@ class 몹8(trigger_api.Trigger):
 
 
 class 몹9(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=20)
         self.create_monster(spawnIds=[4001], animationEffect=True)
         self.create_monster(spawnIds=[4002], animationEffect=True)
@@ -195,7 +211,7 @@ class 몹9(trigger_api.Trigger):
 
 
 class 몹10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002533, textId=20002533)
         self.set_timer(timerId='1', seconds=20)
@@ -214,12 +230,12 @@ class 몹10(trigger_api.Trigger):
 
 
 class 열려(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20002524, textId=20002524)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
-        # <action name="오브젝트반응설정한다" arg1="13000005" arg2="1" />
-        # <action name="아이템을생성한다" arg1="9001" arg2="999" />
+        # self.set_interact_object(triggerIds=[13000005], state=1)
+        # self.create_item(spawnIds=[9001], triggerId=999)
         self.set_ladder(triggerIds=[1701], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1702], visible=True, animationEffect=True, animationDelay=2)
         self.set_ladder(triggerIds=[1703], visible=True, animationEffect=True, animationDelay=2)
@@ -232,7 +248,7 @@ class 열려(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20002524)
 
 

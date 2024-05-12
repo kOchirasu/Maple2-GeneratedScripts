@@ -4,7 +4,7 @@ import trigger_api
 
 # 출연진 : 라오즈(401 : 11001760)
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=4, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=3, visible=False, enable=False, minimapVisible=False)
 
@@ -26,7 +26,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -36,7 +36,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__0$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,13 +45,13 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__1$', arg4=2, arg5=0)
         self.set_conversation(type=1, spawnId=401, script='$52000040_QD__MAIN_02__2$', arg4=2, arg5=3)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
-            self.move_npc(spawnId=401, patrolName='MS2PatrolData_4001')
+            self.move_npc(spawnId=401, patrolName='MS2PatrolData_4001') # 연출용 라오즈 이동
             self.set_cinematic_ui(type=0)
             self.set_cinematic_ui(type=2)
             return start_04(self.ctx)
@@ -64,7 +64,7 @@ class start_04(trigger_api.Trigger):
 
 
 class npc_exit_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=True)
         self.destroy_monster(spawnIds=[401])
 
@@ -74,7 +74,7 @@ class npc_exit_01(trigger_api.Trigger):
 
 
 class start_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=701, type='trigger', achieve='FollowingLaoz') # 퀘스트 목표 체크용 업적이벤트 발생
         self.create_monster(spawnIds=[501], animationEffect=False)
 
@@ -84,7 +84,7 @@ class start_05(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[501])
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=4, visible=True, enable=False, minimapVisible=False)

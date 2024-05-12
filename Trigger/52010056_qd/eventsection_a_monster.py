@@ -9,7 +9,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_balloon_talk(spawnId=201, msg='$52010056_QD__EventSection_A_Monster__0$', duration=2800, delayTick=0)
         self.create_monster(spawnIds=[201], animationEffect=True) # 크림슨 스피어: 29000386
         self.create_monster(spawnIds=[202], animationEffect=True) # 브라운 크림슨: 29000384

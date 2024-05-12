@@ -17,7 +17,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Actor_On(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class Actor_On(trigger_api.Trigger):
 
 
 class Actor_Off(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=8001, visible=True, initialSequence='Event_01_A')
 
     def on_tick(self) -> trigger_api.Trigger:

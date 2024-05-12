@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000013], state=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000013], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,13 +25,13 @@ class 반응대기(trigger_api.Trigger):
 class 랜덤버프(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.random_condition(rate=30):
-            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False) # 무적 /  임시 데이터
             return 종료(self.ctx)
         if self.random_condition(rate=30):
-            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False) # 공격 /  임시 데이터
             return 종료(self.ctx)
         if self.random_condition(rate=40):
-            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False)
+            self.add_buff(boxIds=[199], skillId=70000008, level=1, isPlayer=False, isSkillSet=False) # 속도 /  임시 데이터
             return 종료(self.ctx)
 
 

@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 전투01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,111], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 전투01(trigger_api.Trigger):
 
 
 class 전투02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

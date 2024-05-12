@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010])
         self.destroy_monster(spawnIds=[2099])
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 던전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +35,7 @@ class 던전시작(trigger_api.Trigger):
 
 
 class 차목표1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$52000002_QD__MAIN__0$')
         self.set_timer(timerId='5', seconds=5)
@@ -47,13 +47,13 @@ class 차목표1(trigger_api.Trigger):
         if not self.user_detected(boxIds=[101]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 오브젝트생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000607,10000608,10000609,10000610,10000611], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +64,7 @@ class 오브젝트생성(trigger_api.Trigger):
 
 
 class 단계준비2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.show_guide_summary(entityId=25200202, textId=25200202)
 
@@ -76,7 +76,7 @@ class 단계준비2(trigger_api.Trigger):
 
 
 class 레버대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25200202)
         self.set_interact_object(triggerIds=[10000606], state=1)
 
@@ -88,7 +88,7 @@ class 레버대기(trigger_api.Trigger):
 
 
 class 다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006], visible=True, arg3=0, delay=300, scale=3)
 
@@ -100,7 +100,7 @@ class 다리생성(trigger_api.Trigger):
 
 
 class 단계시작2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$52000002_QD__MAIN__2$')
         self.set_timer(timerId='5', seconds=5)
@@ -112,13 +112,13 @@ class 단계시작2(trigger_api.Trigger):
         if not self.user_detected(boxIds=[101]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 양생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000612,10000613,10000614,10000615,10000616], state=1)
         self.create_monster(spawnIds=[2001,2002,2003,2004,2005], animationEffect=False)
 
@@ -130,7 +130,7 @@ class 양생성(trigger_api.Trigger):
 
 
 class 단계준비3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.show_guide_summary(entityId=25200202, textId=25200202)
 
@@ -142,7 +142,7 @@ class 단계준비3(trigger_api.Trigger):
 
 
 class 단계대기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25200202)
         self.set_mesh(triggerIds=[3007,3008,3009,3010,3011,3012,3013], visible=False, arg3=0, delay=200, scale=2)
 
@@ -154,7 +154,7 @@ class 단계대기3(trigger_api.Trigger):
 
 
 class 단계시작3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3, script='$52000002_QD__MAIN__4$')
         self.set_timer(timerId='5', seconds=5)
@@ -166,13 +166,13 @@ class 단계시작3(trigger_api.Trigger):
         if not self.user_detected(boxIds=[101]):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 늑대생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2006,2007,2008,2009,2010], animationEffect=False)
         self.create_monster(spawnIds=[2099], animationEffect=False)
 
@@ -184,7 +184,7 @@ class 늑대생성(trigger_api.Trigger):
 
 
 class 성공대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -195,7 +195,7 @@ class 성공대기(trigger_api.Trigger):
 
 
 class 미션성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1102], animationEffect=False)
         self.move_npc(spawnId=1102, patrolName='MS2PatrolData_1102')
         self.set_event_ui(type=7, arg2='$52000002_QD__MAIN__5$', arg3='3000', arg4='0')
@@ -209,7 +209,7 @@ class 미션성공(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1102, script='$52000002_QD__MAIN__6$', arg4=6)
         self.set_timer(timerId='30', seconds=30)
         self.show_guide_summary(entityId=25200203, textId=25200203)
@@ -224,7 +224,7 @@ class 포털생성(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=25200203)
         self.hide_guide_summary(entityId=25200202)
         self.destroy_monster(spawnIds=[2001,2002,2003,2004,2005,2006,2007,2008,2009,2010])

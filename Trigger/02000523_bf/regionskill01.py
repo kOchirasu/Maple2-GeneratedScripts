@@ -9,7 +9,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 스킬작동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[302], enable=True)
         self.set_skill(triggerIds=[303], enable=True)
 
@@ -19,7 +19,7 @@ class 스킬작동(trigger_api.Trigger):
 
 
 class 트리거초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[302], enable=False)
         self.set_skill(triggerIds=[303], enable=False)
         self.set_timer(timerId='1', seconds=1)

@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -21,7 +21,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_A')
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003_A')
         self.move_npc(spawnId=1004, patrolName='MS2PatrolData_1004_A')
@@ -35,7 +35,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 둔바대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001217, script='$52010018_QD__MAIN__0$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 둔바대사01(trigger_api.Trigger):
 
 
 class 에레브대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11000075, script='$52010018_QD__MAIN__1$', arg4=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -53,7 +53,7 @@ class 에레브대사01(trigger_api.Trigger):
 
 
 class 미카대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001285, script='$52010018_QD__MAIN__2$', arg4=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +62,7 @@ class 미카대사01(trigger_api.Trigger):
 
 
 class 미카이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=301, enable=False)
@@ -80,7 +80,7 @@ class 동영상재생대기(trigger_api.Trigger):
 
 
 class 동영상재생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='awaken.swf', movieId=1)
@@ -97,7 +97,7 @@ class 동영상종료대기(trigger_api.Trigger):
 
 
 class 업적발생(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=100, type='trigger', achieve='ChangeMika')
         self.destroy_monster(spawnIds=[1006])
         self.create_monster(spawnIds=[1005], animationEffect=False)

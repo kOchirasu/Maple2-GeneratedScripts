@@ -3,71 +3,89 @@ import trigger_api
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.hide_guide_summary(entityId=20020030)
         self.hide_guide_summary(entityId=20020031)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[3]):
+            # 다시 돌아오다 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[2]):
+            # 다시 돌아오다 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003054], questStates=[1]):
+            # 다시 돌아오다 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[3]):
+            # 스승의 발자취 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[2]):
+            # 스승의 발자취 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003053], questStates=[1]):
+            # 스승의 발자취 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[3]):
+            # 멈출 수 없어 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[2]):
+            # 멈출 수 없어 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003052], questStates=[1]):
+            # 멈출 수 없어 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[3]):
+            # 진심어린 충고 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[2]):
+            # 진심어린 충고 퀘스트
             return NextMapPortalOpen(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[10003051], questStates=[1]):
+            # 진심어린 충고 퀘스트 수락한 상태
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return PCPatrol01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[3]):
+            # 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_c_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
+            # 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_c_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
+            # 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_c_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[3]):
+            # 완료 가능상태
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_b_07(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[2]):
+            # 완료 가능상태
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_b_07(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[1]):
+            # 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
@@ -76,23 +94,28 @@ class ready(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[1]):
             return ready_02(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[2]):
+            # 비욘드로이드 3명 처치 후 완료 가능 상태
             self.create_monster(spawnIds=[101], animationEffect=True)
             return scene_b_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002633], questStates=[3]):
+            # 비욘드로이드 3명 처치 후 완료 상태
             self.create_monster(spawnIds=[101], animationEffect=True)
             return scene_b_01(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002634], questStates=[1]):
+            # 자베스 뛰어감
             self.create_monster(spawnIds=[101], animationEffect=True)
             self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
             self.create_monster(spawnIds=[122], animationEffect=True)
             return scene_b_02(self.ctx)
         if self.quest_user_detected(boxIds=[701], questIds=[40002635], questStates=[2]):
+            # 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
             self.set_actor(triggerId=3010, visible=False, initialSequence='Idle_A')
             return scene_c_01(self.ctx)
         if self.user_detected(boxIds=[701], jobCode=110):
+            # 소울 바인더가 입장시에는 포탈 생성 되어있음
             self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
             self.set_mesh(triggerIds=[6001], visible=False)
             self.set_mesh(triggerIds=[6010], visible=False)
@@ -101,7 +124,7 @@ class ready(trigger_api.Trigger):
 
 
 class ready_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201,202,203], animationEffect=False)
         self.create_monster(spawnIds=[101,102], animationEffect=True)
 
@@ -111,7 +134,7 @@ class ready_02(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=7001, enable=True)
@@ -124,7 +147,7 @@ class start(trigger_api.Trigger):
 
 
 class start_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='5', seconds=5)
         self.set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__0$', arg4=5)
 
@@ -137,7 +160,7 @@ class start_02(trigger_api.Trigger):
 
 
 class start_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20020030, textId=20020030)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +171,7 @@ class start_03(trigger_api.Trigger):
 
 
 class scene_b_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=701, type='trigger', achieve='beyondroid2')
         self.create_monster(spawnIds=[112], animationEffect=True)
 
@@ -160,7 +183,7 @@ class scene_b_01(trigger_api.Trigger):
 
 
 class scene_b_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_2004')
         self.set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__1$', arg4=3, arg5=0)
         self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
@@ -177,7 +200,7 @@ class scene_b_02(trigger_api.Trigger):
 
 
 class scene_b_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_2006')
         self.set_conversation(type=2, spawnId=11001546, script='$52000039_QD__MAIN__2$', arg4=3)
         self.set_actor(triggerId=3010, visible=True, initialSequence='Idle_A')
@@ -188,7 +211,7 @@ class scene_b_03(trigger_api.Trigger):
 
 
 class scene_b_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=7003, enable=True)
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_2008')
         self.set_conversation(type=1, spawnId=122, script='$52000039_QD__MAIN__3$', arg4=3)
@@ -200,7 +223,7 @@ class scene_b_04(trigger_api.Trigger):
 
 
 class scene_b_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3010, visible=True, initialSequence='Attack_01_D')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -209,7 +232,7 @@ class scene_b_05(trigger_api.Trigger):
 
 
 class scene_b_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=4)
         self.move_npc(spawnId=122, patrolName='MS2PatrolData_2010')
@@ -222,7 +245,7 @@ class scene_b_06(trigger_api.Trigger):
 
 
 class scene_b_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20020031, textId=20020031)
         self.select_camera(triggerId=7003, enable=False)
         self.set_cinematic_ui(type=0)
@@ -237,7 +260,7 @@ class scene_b_07(trigger_api.Trigger):
 
 
 class scene_b_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[111,132], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -246,7 +269,7 @@ class scene_b_08(trigger_api.Trigger):
 
 
 class scene_b_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__4$', arg4=3)
         self.set_npc_emotion_loop(spawnId=132, sequenceName='Sit_Down_A', duration=3000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Sit_Down_A', duration=3000)
@@ -257,7 +280,7 @@ class scene_b_09(trigger_api.Trigger):
 
 
 class scene_b_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__5$', arg4=3)
         self.set_npc_emotion_loop(spawnId=132, sequenceName='Stun_A', duration=3000)
         self.set_npc_emotion_loop(spawnId=111, sequenceName='Stun_A', duration=3000)
@@ -268,7 +291,7 @@ class scene_b_10(trigger_api.Trigger):
 
 
 class scene_c_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=132, script='$52000039_QD__MAIN__6$', arg4=3)
         self.move_npc(spawnId=132, patrolName='MS2PatrolData_2012')
         self.move_npc(spawnId=111, patrolName='MS2PatrolData_2011')
@@ -279,14 +302,14 @@ class scene_c_01(trigger_api.Trigger):
 
 
 class scene_c_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.destroy_monster(spawnIds=[132,111])
 
 
 # 비욘드 링크 중앙 컴퓨터실 포탈 열림
 class NextMapPortalOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=3001, visible=True, initialSequence='sf_fi_funct_door_A01_Opened')
         self.set_mesh(triggerIds=[6001], visible=False)
         self.set_mesh(triggerIds=[6010], visible=False)
@@ -296,7 +319,7 @@ class NextMapPortalOpen(trigger_api.Trigger):
 
 # 흑성회 본부 지하 밀실 이동
 class PCPatrol01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -307,7 +330,7 @@ class PCPatrol01(trigger_api.Trigger):
 
 
 class PCPatrol02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -316,7 +339,7 @@ class PCPatrol02(trigger_api.Trigger):
 
 
 class PCPatrol03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrolName='MS2PatrolData_1000')
@@ -327,7 +350,7 @@ class PCPatrol03(trigger_api.Trigger):
 
 
 class LookAround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Bore_C'])
         self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__7$', arg4=2, arg5=0)
 
@@ -337,7 +360,7 @@ class LookAround01(trigger_api.Trigger):
 
 
 class LookAround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=501, enable=True)
         self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__8$', arg4=2, arg5=0)
         self.move_user_path(patrolName='MS2PatrolData_1001')
@@ -348,7 +371,7 @@ class LookAround02(trigger_api.Trigger):
 
 
 class LookAround03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1002')
         self.set_conversation(type=1, spawnId=0, script='$52000039_QD__MAIN__9$', arg4=2, arg5=0)
 
@@ -358,7 +381,7 @@ class LookAround03(trigger_api.Trigger):
 
 
 class PCFainted01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=502, enable=True)
         self.set_pc_emotion_sequence(sequenceNames=['Down2_A','Down_Idle_A'])
 
@@ -368,7 +391,7 @@ class PCFainted01(trigger_api.Trigger):
 
 
 class PCTeleport01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=10000)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -380,11 +403,11 @@ class PCTeleport01(trigger_api.Trigger):
 
 
 class PCTeleport02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000045, portalId=2, boxId=701)
         self.select_camera(triggerId=502, enable=False)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

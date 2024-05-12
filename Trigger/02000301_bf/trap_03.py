@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=206, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_actor(triggerId=207, visible=True, initialSequence='sf_quest_light_A01_Off')
         self.set_interact_object(triggerIds=[10000512], state=1)
@@ -32,7 +32,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 경보(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=206, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_actor(triggerId=207, visible=True, initialSequence='sf_quest_light_A01_On')
         self.set_interact_object(triggerIds=[10000512], state=0)
@@ -56,7 +56,7 @@ class 경보(trigger_api.Trigger):
 
 
 class 해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2004])
         self.set_mesh(triggerIds=[3031,3032,3033,3034,3035,3036], visible=False, arg3=0, delay=0, scale=5)
         self.set_mesh(triggerIds=[4301,4302,4303,4304,4305,4306], visible=False, arg3=0, delay=0, scale=5)

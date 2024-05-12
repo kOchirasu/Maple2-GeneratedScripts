@@ -10,7 +10,7 @@ class idle(trigger_api.Trigger):
 
 
 class 유저감지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -23,7 +23,7 @@ class 유저감지(trigger_api.Trigger):
 
 
 class 티나감사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=나메드들어옴02, action='exit')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -38,7 +38,7 @@ class 티나감사(trigger_api.Trigger):
 
 
 class 나메드들어옴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[201], animationEffect=True) # 나메드:
@@ -58,7 +58,8 @@ class 나메드들어옴(trigger_api.Trigger):
 
 
 class 나메드들어옴_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,7 +68,7 @@ class 나메드들어옴_1(trigger_api.Trigger):
 
 
 class 나메드들어옴02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52010032, portalId=1)
 
 

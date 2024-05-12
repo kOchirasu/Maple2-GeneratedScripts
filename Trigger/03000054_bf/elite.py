@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[11000008], state=2)
         self.set_interact_object(triggerIds=[11000009], state=2)
 
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 엘리트등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=23000002, textId=23000002, duration=5000)
 
     def on_tick(self) -> trigger_api.Trigger:

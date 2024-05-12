@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False) # DoorOpen
         self.set_effect(triggerIds=[5002], visible=False) # DoorOpen
         self.set_effect(triggerIds=[5003], visible=False) # DoorOpen
@@ -23,7 +23,7 @@ class Setting(trigger_api.Trigger):
 
 
 class MobSpawn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[910,911], animationEffect=False) # Mob01
         self.create_monster(spawnIds=[920,921], animationEffect=False) # Mob01
         self.create_monster(spawnIds=[930,931], animationEffect=False) # Mob01
@@ -40,7 +40,7 @@ class MobAttackDelay(trigger_api.Trigger):
 
 
 class MobAttack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000,8001], visible=False)
         self.set_actor(triggerId=4001, visible=True, initialSequence='Opened')
         self.set_effect(triggerIds=[5001], visible=True) # DoorOpen
@@ -51,7 +51,7 @@ class MobAttack01(trigger_api.Trigger):
 
 
 class MobAttack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8002,8003], visible=False)
         self.set_actor(triggerId=4002, visible=True, initialSequence='Opened')
         self.set_effect(triggerIds=[5002], visible=True) # DoorOpen
@@ -62,7 +62,7 @@ class MobAttack02(trigger_api.Trigger):
 
 
 class MobAttack03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8004,8005], visible=False)
         self.set_actor(triggerId=4003, visible=True, initialSequence='Opened')
         self.set_effect(triggerIds=[5003], visible=True) # DoorOpen
@@ -73,7 +73,7 @@ class MobAttack03(trigger_api.Trigger):
 
 
 class MobClear(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=1, key='MobClear', value=1)
 
 

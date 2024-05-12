@@ -9,7 +9,7 @@ class special_1_1(trigger_api.Trigger):
 
 
 class special_1_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class special_1_2(trigger_api.Trigger):
 
 
 class special_2_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class special_2_1(trigger_api.Trigger):
 
 
 class special_2_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class special_2_2(trigger_api.Trigger):
 
 
 class special_3_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class special_3_1(trigger_api.Trigger):
 
 
 class special_3_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class special_3_2(trigger_api.Trigger):
 
 
 class special_4_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class special_4_1(trigger_api.Trigger):
 
 
 class special_4_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -72,7 +72,7 @@ class special_4_2(trigger_api.Trigger):
 
 
 class special_5_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +81,7 @@ class special_5_1(trigger_api.Trigger):
 
 
 class special_5_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,12 +90,12 @@ class special_5_2(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_local_camera(cameraId=8001, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
-            return None
+            pass
 
 
 initial_state = special_1_1

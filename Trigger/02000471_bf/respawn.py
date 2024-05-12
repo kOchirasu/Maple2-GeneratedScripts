@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class respawn_timer1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='respawntimer1', seconds=120, startDelay=1, interval=0, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class respawn_timer1(trigger_api.Trigger):
 
 
 class respawn1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='respawntimer1')
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
 
@@ -32,7 +32,7 @@ class respawn1(trigger_api.Trigger):
 
 
 class respawn_timer2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='respawntimer2', seconds=120, startDelay=1, interval=0, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -43,7 +43,7 @@ class respawn_timer2(trigger_api.Trigger):
 
 
 class respawn2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='respawntimer2')
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
 
@@ -55,7 +55,7 @@ class respawn2(trigger_api.Trigger):
 
 
 class respawn_timer3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='respawntimer3', seconds=120, startDelay=1, interval=0, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -66,7 +66,7 @@ class respawn_timer3(trigger_api.Trigger):
 
 
 class respawn3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='respawntimer3')
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
 
@@ -78,7 +78,7 @@ class respawn3(trigger_api.Trigger):
 
 
 class respawn_timer4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='respawntimer4', seconds=120, startDelay=1, interval=0, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -89,7 +89,7 @@ class respawn_timer4(trigger_api.Trigger):
 
 
 class respawn4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='respawntimer4')
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
 
@@ -101,7 +101,7 @@ class respawn4(trigger_api.Trigger):
 
 
 class respawn_timer5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='respawntimer5', seconds=120, startDelay=1, interval=0, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -112,7 +112,7 @@ class respawn_timer5(trigger_api.Trigger):
 
 
 class respawn5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='respawntimer5')
         self.create_monster(spawnIds=[301,302,303,304,305,306], animationEffect=False)
 

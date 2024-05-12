@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[169,170], visible=True)
         self.set_effect(triggerIds=[8031], visible=True)
         self.set_effect(triggerIds=[8032], visible=True)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 열기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.set_effect(triggerIds=[8031], visible=False)
         self.set_effect(triggerIds=[8032], visible=False)
@@ -30,7 +30,7 @@ class 열기(trigger_api.Trigger):
 
 
 class 삭제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1012])
 
 

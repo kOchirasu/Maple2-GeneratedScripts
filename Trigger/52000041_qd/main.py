@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 완료조건체크50001392(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
@@ -121,7 +121,7 @@ class 상태08조건(trigger_api.Trigger):
 
 
 class 상태01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -130,7 +130,7 @@ class 상태01(trigger_api.Trigger):
 
 
 class 상태02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002,2002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -139,7 +139,7 @@ class 상태02(trigger_api.Trigger):
 
 
 class 상태03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -148,7 +148,7 @@ class 상태03(trigger_api.Trigger):
 
 
 class 상태04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2004], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +157,7 @@ class 상태04(trigger_api.Trigger):
 
 
 class 상태05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1005], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -166,7 +166,7 @@ class 상태05(trigger_api.Trigger):
 
 
 class 상태06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1006,2006], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -181,7 +181,7 @@ class 상태07(trigger_api.Trigger):
 
 
 class 상태08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1008], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -190,7 +190,7 @@ class 상태08(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -204,7 +204,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class NPC이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.move_npc(spawnId=2000, patrolName='MS2PatrolData_2000')
 
@@ -214,7 +214,7 @@ class NPC이동01(trigger_api.Trigger):
 
 
 class NPC이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_1000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -223,7 +223,7 @@ class NPC이동02(trigger_api.Trigger):
 
 
 class PC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_9000')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -232,7 +232,7 @@ class PC이동(trigger_api.Trigger):
 
 
 class 어흥이대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_conversation(type=2, spawnId=11001729, script='$52000041_QD__MAIN__0$', arg4=3)
         self.set_skip(state=어흥이대사01스킵)
@@ -243,9 +243,10 @@ class 어흥이대사01(trigger_api.Trigger):
 
 
 class 어흥이대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +255,7 @@ class 어흥이대사01스킵(trigger_api.Trigger):
 
 
 class 틴차이대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_conversation(type=2, spawnId=11001708, script='$52000041_QD__MAIN__1$', arg4=3)
         self.set_skip(state=틴차이대사01스킵)
@@ -265,9 +266,10 @@ class 틴차이대사01(trigger_api.Trigger):
 
 
 class 틴차이대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -276,7 +278,7 @@ class 틴차이대사01스킵(trigger_api.Trigger):
 
 
 class 준타대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=True)
         self.set_conversation(type=2, spawnId=11001557, script='$52000041_QD__MAIN__2$', arg4=6)
         self.set_skip(state=준타대사01스킵)
@@ -287,9 +289,10 @@ class 준타대사01(trigger_api.Trigger):
 
 
 class 준타대사01스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[603], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -298,7 +301,7 @@ class 준타대사01스킵(trigger_api.Trigger):
 
 
 class 어흥이대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001729, script='$52000041_QD__MAIN__3$', arg4=4)
         self.set_skip(state=어흥이대사02스킵)
 
@@ -308,8 +311,9 @@ class 어흥이대사02(trigger_api.Trigger):
 
 
 class 어흥이대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -318,7 +322,7 @@ class 어흥이대사02스킵(trigger_api.Trigger):
 
 
 class 준타대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001557, script='$52000041_QD__MAIN__4$', arg4=5)
         self.set_skip(state=준타대사02스킵)
 
@@ -328,8 +332,9 @@ class 준타대사02(trigger_api.Trigger):
 
 
 class 준타대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -338,7 +343,7 @@ class 준타대사02스킵(trigger_api.Trigger):
 
 
 class 준타대사02_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001557, script='$52000041_QD__MAIN__5$', arg4=3)
         self.set_skip(state=준타대사02_2스킵)
 
@@ -348,8 +353,9 @@ class 준타대사02_2(trigger_api.Trigger):
 
 
 class 준타대사02_2스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -358,7 +364,7 @@ class 준타대사02_2스킵(trigger_api.Trigger):
 
 
 class 어흥이대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.set_conversation(type=2, spawnId=11001729, script='$52000041_QD__MAIN__6$', arg4=3)
         self.set_skip(state=어흥이대사03스킵)
@@ -369,9 +375,10 @@ class 어흥이대사03(trigger_api.Trigger):
 
 
 class 어흥이대사03스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -380,7 +387,7 @@ class 어흥이대사03스킵(trigger_api.Trigger):
 
 
 class NPC이동03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=303, enable=True)
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_1000B')
 
@@ -390,7 +397,7 @@ class NPC이동03(trigger_api.Trigger):
 
 
 class 틴차이대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$52000041_QD__MAIN__7$', arg4=3)
         self.set_skip(state=틴차이대사02스킵)
 
@@ -400,8 +407,9 @@ class 틴차이대사02(trigger_api.Trigger):
 
 
 class 틴차이대사02스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -410,7 +418,7 @@ class 틴차이대사02스킵(trigger_api.Trigger):
 
 
 class 틴차이대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$52000041_QD__MAIN__8$', arg4=3)
         self.set_skip(state=틴차이대사03스킵)
 
@@ -420,8 +428,9 @@ class 틴차이대사03(trigger_api.Trigger):
 
 
 class 틴차이대사03스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -430,7 +439,7 @@ class 틴차이대사03스킵(trigger_api.Trigger):
 
 
 class 틴차이대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$52000041_QD__MAIN__9$', arg4=3)
         self.set_skip(state=틴차이대사04스킵)
 
@@ -440,8 +449,9 @@ class 틴차이대사04(trigger_api.Trigger):
 
 
 class 틴차이대사04스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -450,7 +460,7 @@ class 틴차이대사04스킵(trigger_api.Trigger):
 
 
 class 말풍선대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1000, script='$52000041_QD__MAIN__10$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=3000, script='$52000041_QD__MAIN__11$', arg4=3, arg5=0)
 
@@ -460,7 +470,7 @@ class 말풍선대사01(trigger_api.Trigger):
 
 
 class 말풍선대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=2000, script='$52000041_QD__MAIN__15$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -469,7 +479,7 @@ class 말풍선대사02(trigger_api.Trigger):
 
 
 class 말풍선대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=3000, script='$52000041_QD__MAIN__16$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -478,7 +488,7 @@ class 말풍선대사03(trigger_api.Trigger):
 
 
 class 말풍선대사04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1000, script='$52000041_QD__MAIN__17$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -487,7 +497,7 @@ class 말풍선대사04(trigger_api.Trigger):
 
 
 class 말풍선대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$52000041_QD__MAIN__18$', arg4=2, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -496,7 +506,7 @@ class 말풍선대사05(trigger_api.Trigger):
 
 
 class 준타대사03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[605], visible=True)
         self.set_conversation(type=2, spawnId=11001557, script='$52000041_QD__MAIN__12$', arg4=5)
         self.set_skip(state=준타대사03스킵)
@@ -507,9 +517,10 @@ class 준타대사03(trigger_api.Trigger):
 
 
 class 준타대사03스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[605], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -518,7 +529,7 @@ class 준타대사03스킵(trigger_api.Trigger):
 
 
 class 어흥이대사05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[606], visible=True)
         self.set_conversation(type=2, spawnId=11001729, script='$52000041_QD__MAIN__13$', arg4=4)
         self.set_skip(state=어흥이대사05스킵)
@@ -529,9 +540,10 @@ class 어흥이대사05(trigger_api.Trigger):
 
 
 class 어흥이대사05스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[606], visible=False)
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -540,7 +552,7 @@ class 어흥이대사05스킵(trigger_api.Trigger):
 
 
 class 어흥이대사06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001729, script='$52000041_QD__MAIN__14$', arg4=1)
         self.set_skip(state=어흥이대사06스킵)
 
@@ -550,8 +562,9 @@ class 어흥이대사06(trigger_api.Trigger):
 
 
 class 어흥이대사06스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -560,7 +573,7 @@ class 어흥이대사06스킵(trigger_api.Trigger):
 
 
 class NPC이동04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.move_npc(spawnId=3000, patrolName='MS2PatrolData_3000')
 
@@ -571,7 +584,7 @@ class NPC이동04(trigger_api.Trigger):
 
 
 class NPC이동05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=False)
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_1000C')
 
@@ -583,7 +596,7 @@ class NPC이동05(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=199, type='trigger', achieve='gdreunion')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

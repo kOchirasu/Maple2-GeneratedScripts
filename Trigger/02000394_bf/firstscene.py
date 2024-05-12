@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 카메라연출01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=3000, enable=False)
@@ -20,14 +20,14 @@ class 카메라연출01(trigger_api.Trigger):
 
 
 class 카메라연출02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3000,3001,3002,3003], returnView=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=15000):
             return 종료(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0.6)

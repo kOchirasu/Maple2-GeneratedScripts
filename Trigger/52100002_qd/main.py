@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[3000], visible=False, arg3=0, delay=0, scale=0)
@@ -16,10 +16,13 @@ class 대기(trigger_api.Trigger):
 class 퀘스트체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[199], questIds=[50100060], questStates=[1]):
+            # 50100060 퀘스트 진행 중 상태!
             return 룸체크(self.ctx)
         if self.quest_user_detected(boxIds=[199], questIds=[50100060], questStates=[2]):
+            # 50100060 퀘스트 완료 가능 상태!
             return 퀘스트완료가능이거나완료1(self.ctx)
         if self.quest_user_detected(boxIds=[199], questIds=[50100060], questStates=[3]):
+            # 50100060 퀘스트 완료 상태!
             return 퀘스트완료가능이거나완료1(self.ctx)
 
 
@@ -32,7 +35,7 @@ class 룸체크(trigger_api.Trigger):
 
 
 class 던전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -62,7 +65,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 퀘스트던전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,2101], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -98,7 +101,7 @@ class 암전대기(trigger_api.Trigger):
 
 
 class 암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +110,7 @@ class 암전(trigger_api.Trigger):
 
 
 class 종료연출대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
         self.move_user(mapId=52100002, portalId=2)
         self.destroy_monster(spawnIds=[1001,1002,2001,2002,2101,2102])
@@ -124,7 +127,7 @@ class 종료연출대기(trigger_api.Trigger):
 
 
 class 종료연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=연출종료)
         self.add_cinematic_talk(npcId=11003889, illustId='Firis_normal', msg='$02000392_BF__MAIN__0$', align='left', duration=4000)
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__1$', align='right', duration=3000)
@@ -135,7 +138,7 @@ class 종료연출(trigger_api.Trigger):
 
 
 class PC대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$02000392_BF__MAIN__2$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -144,7 +147,7 @@ class PC대사(trigger_api.Trigger):
 
 
 class PC대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$02000392_BF__MAIN__10$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +156,7 @@ class PC대사2(trigger_api.Trigger):
 
 
 class 자매교체(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1098,1099])
         self.create_monster(spawnIds=[1096,1097], animationEffect=False)
 
@@ -163,7 +166,7 @@ class 자매교체(trigger_api.Trigger):
 
 
 class 자매대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -172,7 +175,7 @@ class 자매대화(trigger_api.Trigger):
 
 
 class 자매대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003889, illustId='Firis_normal', msg='$02000392_BF__MAIN__3$', align='left', duration=4000)
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__4$', align='right', duration=4000)
 
@@ -182,7 +185,7 @@ class 자매대화01(trigger_api.Trigger):
 
 
 class 자매대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003889, illustId='Firis_normal', msg='$02000392_BF__MAIN__5$', align='left', duration=5000)
         self.set_conversation(type=1, spawnId=1097, script='$02000392_BF__MAIN__6$', arg4=2, arg5=2)
 
@@ -192,7 +195,7 @@ class 자매대화02(trigger_api.Trigger):
 
 
 class 자매대화03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__11$', align='left', duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +204,7 @@ class 자매대화03(trigger_api.Trigger):
 
 
 class PC대사3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=0, script='$02000392_BF__MAIN__12$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +213,7 @@ class PC대사3(trigger_api.Trigger):
 
 
 class 자매대화04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__7$', align='left', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,7 +222,7 @@ class 자매대화04(trigger_api.Trigger):
 
 
 class 자매대화05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__8$', align='left', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -228,7 +231,7 @@ class 자매대화05(trigger_api.Trigger):
 
 
 class 자매대화06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003888, illustId='Celine_normal', msg='$02000392_BF__MAIN__9$', align='left', duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,14 +240,15 @@ class 자매대화06(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[1098,1099])
         self.destroy_monster(spawnIds=[1096,1097])
         self.create_monster(spawnIds=[1096,1097], animationEffect=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
-        # action name="카메라를선택한다" arg1="302" arg2="0"/
+        # self.select_camera(triggerId=302, enable=False)
         self.reset_camera(interpolationTime=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -253,7 +257,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 퀘스트완료가능이거나완료1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1096,1097], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,7 +275,7 @@ class 룸체크2(trigger_api.Trigger):
 
 
 class 던전완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_achievement(triggerId=199, type='trigger', achieve='ClearSirenSisters')
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)

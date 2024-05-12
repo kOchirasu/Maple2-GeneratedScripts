@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1000, visible=True, initialSequence='Closed')
         self.set_breakable(triggerIds=[2000], enable=False)
         self.set_visible_breakable_object(triggerIds=[2000], visible=True)
@@ -20,7 +20,7 @@ class OpenDelay(trigger_api.Trigger):
 
 
 class Open(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1000, visible=True, initialSequence='Opened')
         self.set_breakable(triggerIds=[2000], enable=True)
         self.set_visible_breakable_object(triggerIds=[2000], visible=True)
@@ -37,7 +37,7 @@ class OffDelay(trigger_api.Trigger):
 
 
 class Off(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1000, visible=False, initialSequence='Opened')
         self.set_breakable(triggerIds=[2000], enable=False)
         self.set_visible_breakable_object(triggerIds=[2000], visible=False)

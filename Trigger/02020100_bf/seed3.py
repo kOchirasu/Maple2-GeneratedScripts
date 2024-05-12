@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='EliteClear', value=0)
         self.set_user_value(triggerId=99990001, key='Seed3interact', value=0)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[229])
         self.set_mesh(triggerIds=[1304], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002111], state=1, arg3=True)
@@ -26,7 +26,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 씨앗3_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='Seed3interact', value=1)
         self.set_mesh(triggerIds=[1304], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[10002122], state=1, arg3=True)
@@ -41,7 +41,7 @@ class 씨앗3_심기(trigger_api.Trigger):
 
 
 class 씨앗3_중보(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=1404, visible=True, initialSequence='Interaction_lapentatree_A01_On')
         self.destroy_monster(spawnIds=[121,122,123,124])
         self.create_monster(spawnIds=[229], animationEffect=False)
@@ -52,7 +52,7 @@ class 씨앗3_중보(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990001, key='EliteClear', value=1)
         self.set_interact_object(triggerIds=[10002111], state=0)
 

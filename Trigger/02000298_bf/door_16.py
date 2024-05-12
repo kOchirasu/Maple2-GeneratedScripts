@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=216, visible=True, initialSequence='Closed')
         self.set_mesh(triggerIds=[3161], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3162], visible=True, arg3=0, delay=0, scale=0)
@@ -17,7 +17,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 문열림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=216, visible=True, initialSequence='Opened')
         self.set_mesh(triggerIds=[3161], visible=False, arg3=0, delay=0, scale=5)
         self.set_mesh(triggerIds=[3162], visible=False, arg3=0, delay=0, scale=5)

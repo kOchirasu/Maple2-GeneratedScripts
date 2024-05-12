@@ -3,7 +3,7 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040315, key='10002022clear', value=0)
         self.set_user_value(triggerId=2040319, key='10002022clear', value=0)
         self.set_user_value(triggerId=2040322, key='10002022clear', value=0)
@@ -14,7 +14,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7004], visible=False)
         self.set_mesh(triggerIds=[1104], visible=False, arg3=0, delay=200, scale=15)
         self.set_mesh(triggerIds=[1204], visible=True, arg3=0, delay=200, scale=15)
@@ -27,7 +27,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=2040315, key='10002022clear', value=1)
         self.set_user_value(triggerId=2040319, key='10002022clear', value=1)
         self.set_user_value(triggerId=2040322, key='10002022clear', value=1)
@@ -40,7 +40,7 @@ class Event_04(trigger_api.Trigger):
 
 
 class Event_04_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=144, script='$02000471_BF__MAGIC_04__0$', arg4=2, arg5=2)
         self.set_conversation(type=1, spawnId=144, script='$02000471_BF__MAGIC_04__1$', arg4=4, arg5=5)
         self.move_npc(spawnId=144, patrolName='MS2PatrolData_2134')
@@ -51,7 +51,7 @@ class Event_04_b(trigger_api.Trigger):
 
 
 class Event_04_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=144, script='$02000471_BF__MAGIC_04__2$', arg4=3, arg5=1)
         self.set_conversation(type=1, spawnId=144, script='$02000471_BF__MAGIC_04__3$', arg4=3, arg5=4)
         self.move_npc(spawnId=144, patrolName='MS2PatrolData_2135')
@@ -62,7 +62,7 @@ class Event_04_c(trigger_api.Trigger):
 
 
 class Event_04_d(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[144])
 
 

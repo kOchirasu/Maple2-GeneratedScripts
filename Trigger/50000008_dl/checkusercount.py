@@ -3,19 +3,21 @@ import trigger_api
 
 
 class CheckUserCount(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon01(self.ctx)
 
 
 # 던전 최대 인원수가 충족되면
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.show_guide_summary(entityId=25100203, textId=25100203, duration=3000)
 
@@ -25,7 +27,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class DungeonStart02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100203, textId=25100203, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -35,7 +37,7 @@ class DungeonStart02(trigger_api.Trigger):
 
 # 던전 로비에서 생성할 던전 인원수가 부족하면 대기
 class WaitDungeon01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100201, textId=25100201, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,13 +48,15 @@ class WaitDungeon01(trigger_api.Trigger):
 class WaitDungeon02(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon03(self.ctx)
 
 
 class WaitDungeon03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100202, textId=25100202, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,13 +67,15 @@ class WaitDungeon03(trigger_api.Trigger):
 class WaitDungeon04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon05(self.ctx)
 
 
 class WaitDungeon05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100201, textId=25100201, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -80,13 +86,15 @@ class WaitDungeon05(trigger_api.Trigger):
 class WaitDungeon06(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon07(self.ctx)
 
 
 class WaitDungeon07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100202, textId=25100202, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -97,13 +105,15 @@ class WaitDungeon07(trigger_api.Trigger):
 class WaitDungeon08(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon09(self.ctx)
 
 
 class WaitDungeon09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100201, textId=25100201, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,13 +124,15 @@ class WaitDungeon09(trigger_api.Trigger):
 class WaitDungeon10(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 충족되면
             return DungeonStart(self.ctx)
         if not self.check_dungeon_lobby_user_count():
+            # 던전 로비에서 생성할 던전 인원수가 부족하면
             return WaitDungeon11(self.ctx)
 
 
 class WaitDungeon11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25100202, textId=25100202, duration=3000)
 
     def on_tick(self) -> trigger_api.Trigger:

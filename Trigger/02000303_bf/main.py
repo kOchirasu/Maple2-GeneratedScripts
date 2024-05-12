@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3005], visible=False, arg3=0, delay=0, scale=0)
         self.set_interact_object(triggerIds=[13000008], state=2)
         self.set_effect(triggerIds=[601], visible=False)
@@ -24,7 +24,7 @@ class 연출시작딜레이(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='5', seconds=5)
@@ -37,7 +37,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007], animationEffect=False)
@@ -50,7 +50,7 @@ class 연출종료(trigger_api.Trigger):
 
 
 class 또다른연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -62,7 +62,7 @@ class 또다른연출시작(trigger_api.Trigger):
 
 
 class 연출이펙트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=2)
         self.set_effect(triggerIds=[602], visible=True)
         self.set_skip(state=또다른연출종료)
@@ -73,7 +73,7 @@ class 연출이펙트(trigger_api.Trigger):
 
 
 class 카메라이동2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_skip(state=또다른연출종료)
 
@@ -83,7 +83,7 @@ class 카메라이동2(trigger_api.Trigger):
 
 
 class NPC대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2001, patrolName='MS2PatrolData_2001_A')
         self.set_conversation(type=2, spawnId=11000145, script='$02000303_BF__MAIN__1$', arg4=4)
         self.set_skip(state=또다른연출종료)
@@ -94,7 +94,7 @@ class NPC대사(trigger_api.Trigger):
 
 
 class 또다른연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2001])
         self.select_camera(triggerId=302, enable=False)
         self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=0)
@@ -103,11 +103,13 @@ class 또다른연출종료(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.true():
+            # self.create_item(spawnIds=[9001], triggerId=101)
+            # action name="오브젝트반응설정한다" arg1="13000008" arg2="1" /
             return 이동대기(self.ctx)
 
 
 class 이동대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000585], state=1)
         self.show_guide_summary(entityId=20002999, textId=20002999)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -119,7 +121,7 @@ class 이동대기(trigger_api.Trigger):
 
 
 class 이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=True)
         self.set_timer(timerId='4', seconds=4)
         self.show_count_ui(text='$02000303_BF__MAIN__3$', stage=1, count=3)

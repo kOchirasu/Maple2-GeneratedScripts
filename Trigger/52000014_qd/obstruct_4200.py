@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[4200], enable=False)
         self.set_effect(triggerIds=[420], visible=True)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발동준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 발동준비(trigger_api.Trigger):
 
 
 class 발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=3)
         self.set_skill(triggerIds=[4200], enable=True)
 
@@ -32,7 +32,7 @@ class 발동(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=1)
         self.set_skill(triggerIds=[4200], enable=False)
 

@@ -11,7 +11,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 가이드출력(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=26300383, textId=26300383)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -4,7 +4,7 @@ import trigger_api
 
 # 변신 탈것 riding battle
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False)
         self.set_user_value(key='BattleRidingOnCount', value=0)
         self.set_user_value(key='BattleRidingOff', value=0)
@@ -57,6 +57,8 @@ class DelayRandom(trigger_api.Trigger):
 class Delay_5min00sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=300000):
+            # 5분 300초 300000 ms
+            # test용 10배 빠름 100000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -65,6 +67,8 @@ class Delay_5min00sec(trigger_api.Trigger):
 class Delay_5min20sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=320000):
+            # 320초 320000 ms
+            # test용 10배 빠름 106000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -73,6 +77,8 @@ class Delay_5min20sec(trigger_api.Trigger):
 class Delay_5min40sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=340000):
+            # 340초 340000 ms
+            # test용 10배 빠름 113000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -81,6 +87,8 @@ class Delay_5min40sec(trigger_api.Trigger):
 class Delay_6min00sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=360000):
+            # 6분 360초 360000 ms
+            # test용 10배 빠름 120000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -89,6 +97,8 @@ class Delay_6min00sec(trigger_api.Trigger):
 class Delay_6min20sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=380000):
+            # 380초 380000 ms
+            # test용 10배 빠름 126000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -97,6 +107,8 @@ class Delay_6min20sec(trigger_api.Trigger):
 class Delay_6min40sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=400000):
+            # 400초 400000 ms
+            # test용 10배 빠름 133000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
@@ -105,13 +117,15 @@ class Delay_6min40sec(trigger_api.Trigger):
 class Delay_7min00sec(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=420000):
+            # 7분 420초 420000 ms
+            # test용 10배 빠름 140000
             return RidingSpawn(self.ctx)
         if self.user_value(key='BattleRidingOff', value=1):
             return Quit(self.ctx)
 
 
 class RidingSpawn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337], isStart=True) # riding battle test
         self.side_npc_talk(npcId=23000110, illust='Mushking_normal', duration=5000, script='$82000000_survival__10_RIDINGBATTLE__0$')
 
@@ -147,7 +161,7 @@ class RidingSpawn_Extra_none(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_north(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000338], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -156,7 +170,7 @@ class RidingSpawn_Extra_north(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_south(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000340], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -165,7 +179,7 @@ class RidingSpawn_Extra_south(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_east(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000339], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -174,7 +188,7 @@ class RidingSpawn_Extra_east(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_west(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000341], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -183,7 +197,7 @@ class RidingSpawn_Extra_west(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_northsouth(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000338,10000340], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -192,7 +206,7 @@ class RidingSpawn_Extra_northsouth(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_northeast(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000338,10000339], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -201,7 +215,7 @@ class RidingSpawn_Extra_northeast(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_northwest(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000338,10000341], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -210,7 +224,7 @@ class RidingSpawn_Extra_northwest(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_eastwest(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000339,10000341], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -219,7 +233,7 @@ class RidingSpawn_Extra_eastwest(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_southeast(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000339,10000340], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -228,7 +242,7 @@ class RidingSpawn_Extra_southeast(trigger_api.Trigger):
 
 
 class RidingSpawn_Extra_southwest(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000341,10000340], isStart=True) # riding battle test
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -237,7 +251,7 @@ class RidingSpawn_Extra_southwest(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.start_combine_spawn(groupId=[10000330,10000331,10000332,10000333,10000334,10000335,10000336,10000337,10000338,10000339,10000340,10000341], isStart=False) # riding battle test
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000084], state=1)
         self.set_interact_object(triggerIds=[10000085], state=1)
         self.set_interact_object(triggerIds=[10000086], state=1)
@@ -15,7 +15,7 @@ class 반응대기(trigger_api.Trigger):
 
 
 class 몬스터리젠(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101])
         self.set_timer(timerId='1', seconds=1)
 
@@ -25,7 +25,7 @@ class 몬스터리젠(trigger_api.Trigger):
 
 
 class 카단대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=101, script='$02000046_AD__01_MOB__0$', arg4=2)
         self.set_conversation(type=1, spawnId=101, script='$02000046_AD__01_MOB__1$', arg4=2)
         self.set_conversation(type=1, spawnId=101, script='$02000046_AD__01_MOB__2$', arg4=2)
@@ -36,12 +36,12 @@ class 카단대사(trigger_api.Trigger):
             self.destroy_monster(spawnIds=[101])
             return 휴지(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[102], animationEffect=True)
 
 
 class 휴지(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,13 +58,12 @@ class 몬스터와전투(trigger_api.Trigger):
 
 
 class 카단소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(boxIds=[102]):
             self.reset_timer(timerId='1')
-            return None
         if self.monster_dead(boxIds=[102]):
             return 소멸대기(self.ctx)
         if self.time_expired(timerId='1'):
@@ -72,7 +71,7 @@ class 카단소멸(trigger_api.Trigger):
 
 
 class 소멸대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:

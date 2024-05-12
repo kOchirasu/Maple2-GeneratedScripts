@@ -9,7 +9,7 @@ class 엔터대기중(trigger_api.Trigger):
 
 
 class 연출세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -20,7 +20,7 @@ class 연출세팅(trigger_api.Trigger):
 
 
 class PC대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.set_cinematic_ui(type=3, script='$52000006_QD__TUTORIAL_06_1__0$')
 
@@ -30,7 +30,7 @@ class PC대사1(trigger_api.Trigger):
 
 
 class 양등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
         self.select_camera(triggerId=301, enable=True)
         self.create_monster(spawnIds=[201], animationEffect=False)
@@ -42,7 +42,7 @@ class 양등장(trigger_api.Trigger):
 
 
 class 양이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=4)
         self.move_npc(spawnId=201, patrolName='PatrolData_Sheep_01')
         self.set_cinematic_ui(type=3, script='$52000006_QD__TUTORIAL_06_1__2$')
@@ -53,7 +53,7 @@ class 양이동(trigger_api.Trigger):
 
 
 class 연출끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
         self.select_camera(triggerId=302, enable=False)
         self.set_cinematic_ui(type=0)

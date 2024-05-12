@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 다리흔들기준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[910], enable=False)
         self.set_skill(triggerIds=[911], enable=False)
         self.set_skill(triggerIds=[912], enable=False)
@@ -21,7 +21,7 @@ class 다리흔들기준비(trigger_api.Trigger):
 
 
 class 스킬발동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=42)
         self.set_skill(triggerIds=[910], enable=True)
         self.set_skill(triggerIds=[911], enable=True)
@@ -36,7 +36,7 @@ class 스킬발동01(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[910], enable=False)
         self.set_skill(triggerIds=[911], enable=False)
         self.set_skill(triggerIds=[912], enable=False)

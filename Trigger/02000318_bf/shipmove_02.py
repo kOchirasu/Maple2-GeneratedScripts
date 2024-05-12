@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001046], state=0) # Wheel
         self.set_skill(triggerIds=[7000], enable=False)
         self.set_effect(triggerIds=[6000], visible=False)
@@ -248,7 +248,7 @@ class Setting(trigger_api.Trigger):
 
 
 class MoveShip01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4001], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4002], visible=True) # Move_Ship
@@ -367,7 +367,8 @@ class MoveShip01(trigger_api.Trigger):
         self.set_visible_breakable_object(triggerIds=[4115], visible=True) # Move_Ship
         self.set_interact_object(triggerIds=[10001046], state=1) # Wheel
         self.play_system_sound_in_box(boxIds=[102], sound='System_ShowGuideSummary_01')
-        self.show_guide_summary(entityId=20031803, textId=20031803) # 키를 작동시켜 배를 움직이면 다음 지역으로 넘어갈 수 있습니다
+        # 키를 작동시켜 배를 움직이면 다음 지역으로 넘어갈 수 있습니다
+        self.show_guide_summary(entityId=20031803, textId=20031803)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10001046], stateValue=0):
@@ -375,7 +376,7 @@ class MoveShip01(trigger_api.Trigger):
 
 
 class ShipMove02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=True)
         self.hide_guide_summary(entityId=20031803)
         self.set_user_value(triggerId=1, key='ShipMove', value=1)
@@ -502,7 +503,7 @@ class ShipMove02(trigger_api.Trigger):
 
 
 class ShipMove03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6001], visible=False)
         self.set_skill(triggerIds=[7000], enable=True)
         self.set_effect(triggerIds=[6000], visible=True)
@@ -513,7 +514,7 @@ class ShipMove03(trigger_api.Trigger):
 
 
 class ResetShip00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001046], state=0) # Wheel
         self.set_breakable(triggerIds=[4000], enable=False) # Move_Ship
         self.set_breakable(triggerIds=[4001], enable=False) # Move_Ship
@@ -754,7 +755,7 @@ class ResetShip00(trigger_api.Trigger):
 
 
 class ResetShip01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(triggerIds=[4000], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4001], visible=True) # Move_Ship
         self.set_visible_breakable_object(triggerIds=[4002], visible=True) # Move_Ship
@@ -879,7 +880,7 @@ class ResetShip01(trigger_api.Trigger):
 
 
 class ResetShip02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=True) # Move_Ship
         self.set_breakable(triggerIds=[4001], enable=True) # Move_Ship
         self.set_breakable(triggerIds=[4002], enable=True) # Move_Ship

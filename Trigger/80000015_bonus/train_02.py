@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3201,3202,3203,3204,3205,3206,3207,3208,3209], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3200,3210], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3704,3705,3706], visible=False, arg3=0, delay=0, scale=0)
@@ -24,7 +24,7 @@ class 아이템체크(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1201], animationEffect=False)
         self.set_mesh(triggerIds=[3200], visible=False, arg3=500, delay=0, scale=0)
         self.add_buff(boxIds=[1201], skillId=60170051, level=1, isPlayer=True, isSkillSet=True)
@@ -35,7 +35,7 @@ class 생성(trigger_api.Trigger):
 
 
 class 삼(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3706], visible=True, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 삼(trigger_api.Trigger):
 
 
 class 이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3706], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3705], visible=True, arg3=0, delay=0, scale=0)
 
@@ -54,7 +54,7 @@ class 이(trigger_api.Trigger):
 
 
 class 일(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3705], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3704], visible=True, arg3=0, delay=0, scale=0)
 
@@ -64,7 +64,7 @@ class 일(trigger_api.Trigger):
 
 
 class 출발(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3704], visible=False, arg3=0, delay=0, scale=0)
         self.move_npc(spawnId=1201, patrolName='MS2PatrolData1201A')
 

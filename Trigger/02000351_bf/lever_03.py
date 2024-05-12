@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 닫힘상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000820], state=0)
         self.set_mesh(triggerIds=[6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162], visible=True, delay=0, scale=0) # 빨간 선 보이게
         self.set_mesh(triggerIds=[6181,6182,6183,6184,6185,6186,6187,6188,6189,6190,6191,6192], visible=False, delay=0, scale=0) # 파란 선 안보이게
@@ -20,7 +20,7 @@ class 작동(trigger_api.Trigger):
 
 
 class 열림상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=3)
         self.set_effect(triggerIds=[9000004], visible=True) # Object_Electricity_On_01
         self.set_mesh(triggerIds=[6151,6152,6153,6154,6155,6156,6157,6158,6159,6160,6161,6162], visible=False, delay=200, scale=15) # 빨간선 사라지게

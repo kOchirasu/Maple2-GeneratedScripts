@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8000], enable=False)
         self.set_skill(triggerIds=[8001], enable=False)
         self.set_skill(triggerIds=[8002], enable=False)
@@ -41,15 +41,18 @@ class Setting(trigger_api.Trigger):
 class Questcheck(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[199], questIds=[50100280], questStates=[1]):
+            # 50100060 퀘스트 진행 중 상태!
             return DungeonStart(self.ctx)
         if self.quest_user_detected(boxIds=[199], questIds=[50100280], questStates=[2]):
+            # 50100060 퀘스트 완료 가능 상태!
             return teleport52100085(self.ctx)
         if self.quest_user_detected(boxIds=[199], questIds=[50100280], questStates=[3]):
+            # 50100060 퀘스트 완료 상태!
             return teleport52100085(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=True)
         self.create_monster(spawnIds=[201], animationEffect=False) # 연출용설눈이
 
@@ -59,7 +62,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=501, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -70,7 +73,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class NpcTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003068, illustId='Seolnunyi_normal', msg='$52000084_QD__1122330_FINDWAY__0$', align='right', duration=4000)
         self.set_skip(state=NpcTalk01Skip)
 
@@ -80,8 +83,9 @@ class NpcTalk01(trigger_api.Trigger):
 
 
 class NpcTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +94,7 @@ class NpcTalk01Skip(trigger_api.Trigger):
 
 
 class NpcTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003068, illustId='Seolnunyi_normal', msg='$52000084_QD__1122330_FINDWAY__1$', align='right', duration=5000)
         self.set_skip(state=NpcTalk02Skip)
 
@@ -100,8 +104,9 @@ class NpcTalk02(trigger_api.Trigger):
 
 
 class NpcTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +115,7 @@ class NpcTalk02Skip(trigger_api.Trigger):
 
 
 class DoorOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='ic_fi_funct_icedoor_A01_on') # IceDoor
         self.set_mesh(triggerIds=[3000,3001,3002], visible=False, arg3=0, delay=0, scale=0) # InvisibleBarrier
 
@@ -120,8 +125,9 @@ class DoorOpen01(trigger_api.Trigger):
 
 
 class CameraReset01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
         self.set_cinematic_ui(type=0)
@@ -134,7 +140,7 @@ class CameraReset01(trigger_api.Trigger):
 
 
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
         self.create_monster(spawnIds=[101,102], animationEffect=False) # 설눈이
 
@@ -144,22 +150,24 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class Guide01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20038101, textId=20038101, duration=4000) # 설눈이와 함께 이동하세요
         self.set_actor(triggerId=4000, visible=False, initialSequence='ic_fi_funct_icedoor_A01_on') # IceDoor
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121,3122,3123,3124,3125,3126,3127,3128,3129], visible=False, arg3=2000, delay=70, scale=2) # WallMesh
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.user_value(key='BossRoomPortal01', value=1): # 21810048 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal02" param3="1"/>
+        # 21810048 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal02" param3="1"/>
+        if self.user_value(key='BossRoomPortal01', value=1):
             return BossRoomPortal01(self.ctx)
-        if self.user_value(key='BossRoomPortal02', value=1): # 21810049 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal03" param3="1"/>
+        # 21810049 설눈이 신호 받기  <event eventName="TriggerEvent" target="SetUserValue" param1="1122330" param2="BossRoomPortal03" param3="1"/>
+        if self.user_value(key='BossRoomPortal02', value=1):
             return BossRoomPortal02(self.ctx)
         if self.user_value(key='BossRoomPortal03', value=1):
             return BossRoomPortal03(self.ctx)
 
 
 class BossRoomPortal01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -168,7 +176,7 @@ class BossRoomPortal01(trigger_api.Trigger):
 
 
 class BossRoomPortal02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=12, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -177,7 +185,7 @@ class BossRoomPortal02(trigger_api.Trigger):
 
 
 class BossRoomPortal03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=13, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -186,7 +194,7 @@ class BossRoomPortal03(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[8000], enable=True)
         self.set_skill(triggerIds=[8001], enable=True)
         self.set_skill(triggerIds=[8002], enable=True)
@@ -205,11 +213,11 @@ class Quit(trigger_api.Trigger):
         self.set_skill(triggerIds=[8015], enable=True)
         self.set_skill(triggerIds=[8016], enable=True)
         self.set_skill(triggerIds=[8017], enable=True)
-        # action name="몬스터소멸시킨다" arg1="101"/
+        # self.destroy_monster(spawnIds=[101])
 
 
 class teleport52100085(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000085, portalId=1)
 
 

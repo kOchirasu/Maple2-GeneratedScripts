@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000295], state=1)
         self.set_actor(triggerId=203, visible=True, initialSequence='Dead_A')
 
@@ -13,7 +13,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 오브젝트반응(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=203, visible=False, initialSequence='Dead_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 오브젝트반응(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[303], animationEffect=False)
         self.move_npc(spawnId=303, patrolName='MS2PatrolData_203')
         self.set_conversation(type=1, spawnId=303, script='$02000046_AD__EAGLE_03__0$', arg4=2)
@@ -34,7 +34,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[303])
 
     def on_tick(self) -> trigger_api.Trigger:

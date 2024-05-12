@@ -15,7 +15,7 @@ class idle(trigger_api.Trigger):
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=706, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[1110,1111,1112,1113], animationEffect=False)
 
@@ -25,7 +25,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=1110, script='$02000471_BF__EVENT_05__0$', arg4=3, arg5=4)
         self.set_conversation(type=1, spawnId=1111, script='$02000471_BF__EVENT_05__1$', arg4=3, arg5=5)
         self.set_conversation(type=1, spawnId=1112, script='$02000471_BF__EVENT_05__2$', arg4=3, arg5=1)
@@ -37,7 +37,7 @@ class start(trigger_api.Trigger):
 
 
 class exit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1110,1111,1112,1113])
 
 

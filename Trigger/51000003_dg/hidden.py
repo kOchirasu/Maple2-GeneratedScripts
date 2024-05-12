@@ -8,7 +8,7 @@ class Start(trigger_api.Trigger):
 
 
 class Hidden_ready_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=99, visible=False, enable=False, minimapVisible=False) # 임시 히든포탈
         self.set_event_ui(type=1, arg2='$51000003_DG__HIDDEN__0$', arg3='4000', arg4='0')
 
@@ -18,7 +18,7 @@ class Hidden_ready_01(trigger_api.Trigger):
 
 
 class Hidden_ready_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$51000003_DG__HIDDEN__1$', arg3='4000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class Hidden_ready_02(trigger_api.Trigger):
 
 
 class Hidden_ready_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=0, arg2='6,6', arg3='0', arg4='0')
         self.select_camera(triggerId=8002, enable=True)
 
@@ -37,7 +37,7 @@ class Hidden_ready_03(trigger_api.Trigger):
 
 
 class Hidden_ready_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_count_ui(text='$61000004_ME__TRIGGER_01__1$', stage=0, count=5)
         self.set_achievement(triggerId=710, type='trigger', achieve='boomboombeach_hidden_start')
 
@@ -47,7 +47,7 @@ class Hidden_ready_04(trigger_api.Trigger):
 
 
 class Hidden_Start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=991104, key='Round_06', value=1)
         self.set_user_value(triggerId=991105, key='Round_06', value=1)
         self.set_user_value(triggerId=991106, key='Round_06', value=1)

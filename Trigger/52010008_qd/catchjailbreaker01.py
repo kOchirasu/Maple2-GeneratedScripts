@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[901,902,903,904,905,906], animationEffect=False)
         self.set_interact_object(triggerIds=[10000851], state=0)
         self.set_mesh(triggerIds=[6000], visible=True, arg3=0, delay=0, scale=0)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 딜레이01(trigger_api.Trigger):
 
 
 class 전투안내01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_Space_PopUp_01')
         self.show_guide_summary(entityId=100, textId=40010) # 적을 모두 처치하세요
 
@@ -33,7 +33,7 @@ class 전투안내01(trigger_api.Trigger):
 
 
 class 죄수찾기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=100)
         self.set_interact_object(triggerIds=[10000851], state=1)
 
@@ -43,7 +43,7 @@ class 죄수찾기01(trigger_api.Trigger):
 
 
 class 죄수등장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[6000], visible=False, arg3=0, delay=0, scale=0)
         self.set_timer(timerId='11', seconds=1)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -55,7 +55,7 @@ class 죄수등장01(trigger_api.Trigger):
 
 
 class 죄수등장02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=2)
         self.create_monster(spawnIds=[201], animationEffect=False)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2010')
@@ -66,7 +66,7 @@ class 죄수등장02(trigger_api.Trigger):
 
 
 class 벨마등장01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=1)
         self.create_monster(spawnIds=[301], animationEffect=False)
         self.select_camera(triggerId=601, enable=True)
@@ -79,7 +79,7 @@ class 벨마등장01(trigger_api.Trigger):
 
 
 class 벨마대화01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='21', seconds=3)
         self.set_conversation(type=2, spawnId=11000521, script='$52010008_QD__CATCHJAILBREAKER01__0$', arg4=3)
         self.set_skip(state=벨마대화02대기)
@@ -90,7 +90,7 @@ class 벨마대화01(trigger_api.Trigger):
 
 
 class 벨마대화02대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +99,7 @@ class 벨마대화02대기(trigger_api.Trigger):
 
 
 class 벨마대화02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=3)
         self.set_conversation(type=2, spawnId=11000521, script='$52010008_QD__CATCHJAILBREAKER01__1$', arg4=3)
         self.set_skip(state=벨마대화03대기)
@@ -110,7 +110,7 @@ class 벨마대화02(trigger_api.Trigger):
 
 
 class 벨마대화03대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -119,7 +119,7 @@ class 벨마대화03대기(trigger_api.Trigger):
 
 
 class 벨마대화03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='23', seconds=3)
         self.set_conversation(type=2, spawnId=11000521, script='$52010008_QD__CATCHJAILBREAKER01__2$', arg4=3)
         self.set_skip(state=벨마연출종료01)
@@ -130,7 +130,7 @@ class 벨마대화03(trigger_api.Trigger):
 
 
 class 벨마연출종료01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_timer(timerId='30', seconds=1)
         self.select_camera(triggerId=601, enable=False)
@@ -144,7 +144,7 @@ class 벨마연출종료01(trigger_api.Trigger):
 
 
 class 유저이동준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='31', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -153,7 +153,7 @@ class 유저이동준비(trigger_api.Trigger):
 
 
 class 유저이동시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2010019, portalId=2, boxId=9000)
         self.destroy_monster(spawnIds=[101,201,301])
         self.destroy_monster(spawnIds=[901,902,903,904,905,906])

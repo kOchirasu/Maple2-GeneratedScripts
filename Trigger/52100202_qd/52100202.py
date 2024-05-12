@@ -9,7 +9,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4001], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -22,7 +22,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class 티마이온(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +31,7 @@ class 티마이온(trigger_api.Trigger):
 
 
 class 티마이온_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005], returnView=False)
         self.set_cinematic_ui(type=3)
         self.move_user_path(patrolName='MS2PatrolData_3001')
@@ -44,7 +44,7 @@ class 티마이온_02(trigger_api.Trigger):
 
 
 class 티마이온_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002], returnView=False)
         self.create_monster(spawnIds=[101], animationEffect=False)
 
@@ -54,7 +54,7 @@ class 티마이온_03(trigger_api.Trigger):
 
 
 class 티마이온_03_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Attack_Idle', duration=3000)
 
@@ -64,7 +64,7 @@ class 티마이온_03_01(trigger_api.Trigger):
 
 
 class 티마이온_03_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Attack_01_J')
 
@@ -74,11 +74,12 @@ class 티마이온_03_02(trigger_api.Trigger):
 
 
 class 티마이온_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004,4006], returnView=False)
         self.face_emotion(spawnId=0, emotionName='Trigger_serious')
         self.add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__1$', duration=4500)
         self.add_cinematic_talk(npcId=0, msg='$52100202_QD__52100202__2$', duration=4500)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +88,7 @@ class 티마이온_04(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +97,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -105,7 +106,7 @@ class 정리_02(trigger_api.Trigger):
 
 
 class 정리_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2020036, portalId=6001)
 
 

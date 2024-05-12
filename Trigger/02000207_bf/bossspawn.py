@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
@@ -16,7 +16,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,17 +25,23 @@ class 소환(trigger_api.Trigger):
         if self.dungeon_time_out():
             return 던전실패(self.ctx)
         if self.dungeon_check_state(checkState='Fail'):
+            # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
 
 class 종료딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=999103, key='BattleEnd', value=1)
-        self.set_user_value(triggerId=999102, key='BattleEnd2', value=1) # 자쿰 팔 제거때 용암 올라오게 하는 트리거 xml 담당, 999102_Lavaflow.xml
-        self.set_user_value(triggerId=999108, key='BattleEnd2', value=1) # 계약의 토템에 의해 왼쪽 용암 올라오게 하는 트리거 xml 담당, 999108_Lavaflow.xm
-        self.set_user_value(triggerId=999109, key='BattleEnd2', value=1) # 계약의 토템에 의해 오른쪽 용암 올라오게 하는 트리거 xml 담당, 999109_Lavaflow.xml
-        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0) # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(triggerIds=[3003], visible=False, arg3=0, delay=0, scale=0) # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        # 자쿰 팔 제거때 용암 올라오게 하는 트리거 xml 담당, 999102_Lavaflow.xml
+        self.set_user_value(triggerId=999102, key='BattleEnd2', value=1)
+        # 계약의 토템에 의해 왼쪽 용암 올라오게 하는 트리거 xml 담당, 999108_Lavaflow.xm
+        self.set_user_value(triggerId=999108, key='BattleEnd2', value=1)
+        # 계약의 토템에 의해 오른쪽 용암 올라오게 하는 트리거 xml 담당, 999109_Lavaflow.xml
+        self.set_user_value(triggerId=999109, key='BattleEnd2', value=1)
+        # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0)
+        # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        self.set_mesh(triggerIds=[3003], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -45,11 +51,13 @@ class 종료딜레이(trigger_api.Trigger):
 
 
 class 던전실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_user_value(triggerId=999103, key='BattleEnd', value=1)
-        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0) # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
-        self.set_mesh(triggerIds=[3003], visible=False, arg3=0, delay=0, scale=0) # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        # 자쿰 몸통 아래쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0)
+        # 자쿰 몸통 위쪽 부위를 둘러싸고 있는 트리거 박스 제거하기
+        self.set_mesh(triggerIds=[3003], visible=False, arg3=0, delay=0, scale=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
@@ -59,7 +67,7 @@ class 던전실패(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_enable_give_up(isEnable='0')
 
 

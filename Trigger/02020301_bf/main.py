@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=300002, key='Phase_1', value=0) # 페이즈별 트리거 실행 대기
         self.set_user_value(triggerId=300003, key='Phase_2', value=0)
         self.set_user_value(triggerId=300004, key='Phase_3', value=0)
@@ -48,7 +48,8 @@ class 대기(trigger_api.Trigger):
         self.set_agent(triggerIds=[1800000,1800001,1800002,1800003,1800004,1800005,1800006,1800007,1800008,1800009,1800010,1800011], visible=True)
         self.set_agent(triggerIds=[1810000,1810001,1810002,1810003,1810004,1810005,1810006,1810007,1810008,1810009,1810010,1810011], visible=True)
         self.add_buff(boxIds=[1003], skillId=62100168, level=1) # 포탑 기절 이뮨
-        self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False) # 페이즈 시작전에 올라오지 엘리베이터에 플레이어가 도달할 경우, 전투 지역으로 돌려보냄
+        # 페이즈 시작전에 올라오지 엘리베이터에 플레이어가 도달할 경우, 전투 지역으로 돌려보냄
+        self.set_portal(portalId=13, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=14, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=15, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=16, visible=False, enable=False, minimapVisible=False)
@@ -59,7 +60,8 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.dungeon_reset_time(seconds=420)
         self.set_mesh(triggerIds=[5241,5242,5243,5244], visible=True)
         self.side_npc_talk(type='talk', npcId=23503003, illust='ArcheonBlack_Normal', script='$02020301_BF__MAIN__0$', duration=5684)
         self.create_monster(spawnIds=[101], animationEffect=False) # 아르케온 등장
@@ -83,17 +85,39 @@ class 시작(trigger_api.Trigger):
 
 class 조건추가(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        """
+        if self.dungeon_check_play_time(playSeconds=420, operator='Equal'):
+            return None # Missing State: 보스전_타임어택실패
+        """
+        # all_of: 	<condition name="DungeonCheckPlayTime" playSeconds="420" operator="Less" />
+        if self.monster_dead(boxIds=[101]):
             return 보스전_성공(self.ctx)
-        """
-        <condition name="DungeonCheckPlayTime" playSeconds="420" operator="Equal" > 
-            <transition state="보스전_타임어택실패"/>
-        </condition>
-        """
+
+
+"""
+class 보스전_타임어택실패(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.add_buff(boxIds=[1003], skillId=62100169, level=1)
+        self.destroy_monster(spawnIds=[-1])
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 보스전_타임어택실패세팅
+
+"""
+
+
+"""
+class 보스전_타임어택실패세팅(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.dungeon_set_end_time()
+        self.dungeon_close_timer()
+
+"""
 
 
 class 보스전_성공(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=62100169, level=1)
         self.dungeon_mission_complete(missionId=23039005) # 포탑 기절 이뮨 제거
         self.dungeon_set_end_time()
@@ -105,7 +129,7 @@ class 보스전_성공(trigger_api.Trigger):
 
 
 class 추가대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004205, illust='ArcaneBlader_normal', script='$02020301_BF__MAIN__2$', duration=3176)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -114,7 +138,7 @@ class 추가대화(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.dungeon_clear()
         self.set_portal(portalId=4, visible=True, enable=True, minimapVisible=True)

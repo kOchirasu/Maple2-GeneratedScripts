@@ -7,7 +7,7 @@ from dungeon_common.checkuser10_guildraid import *
 
 # 아프렐라 오지
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='10000') # Red
         self.set_interact_object(triggerIds=[10001234], state=1) # Blue
         self.set_interact_object(triggerIds=[10001235], state=1) # Grey
@@ -25,16 +25,17 @@ class Wait(trigger_api.Trigger):
 
 
 class LoadingDelay(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101,102,103,104,105,106,107,108], animationEffect=False) # 주민NPC
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
+            # 임시 테스트용 데이터 세팅 가능 지점 CheckUser10_GuildRaid / DungeonStart / DoorOpen / TimmerStart
             return CheckUser10_GuildRaid(self.ctx)
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=903, enable=True)
         self.set_cinematic_intro()
 
@@ -45,7 +46,7 @@ class DungeonStart(trigger_api.Trigger):
 
 # 설명문 출력
 class ShowCaption01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_intro(text='$02100001_BF__01_MAINMISSION__0$')
         self.set_skip(state=ShowCaption01Skip)
 
@@ -55,7 +56,8 @@ class ShowCaption01(trigger_api.Trigger):
 
 
 class ShowCaption01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +66,7 @@ class ShowCaption01Skip(trigger_api.Trigger):
 
 
 class ShowCaption02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_intro(text='$02100001_BF__01_MAINMISSION__1$')
         self.set_skip(state=ShowCaption02Skip)
 
@@ -74,7 +76,8 @@ class ShowCaption02(trigger_api.Trigger):
 
 
 class ShowCaption02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -83,7 +86,7 @@ class ShowCaption02Skip(trigger_api.Trigger):
 
 
 class CloseCaptionSetting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.close_cinematic()
         self.select_camera(triggerId=903, enable=False)
 
@@ -93,7 +96,7 @@ class CloseCaptionSetting(trigger_api.Trigger):
 
 
 class DoorOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99, key='CageDoorOpen', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -102,7 +105,7 @@ class DoorOpen(trigger_api.Trigger):
 
 
 class TalkStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=900, enable=True)
@@ -113,7 +116,7 @@ class TalkStart(trigger_api.Trigger):
 
 
 class CinematicTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003512, msg='$02100001_BF__01_MAINMISSION__2$', duration=5000, align='center', illustId='0')
         self.set_skip(state=CinematicTalk01Skip)
 
@@ -123,7 +126,8 @@ class CinematicTalk01(trigger_api.Trigger):
 
 
 class CinematicTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -133,7 +137,7 @@ class CinematicTalk01Skip(trigger_api.Trigger):
 
 
 class CinematicTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003512, msg='$02100001_BF__01_MAINMISSION__3$', duration=5000, align='center', illustId='0')
         self.set_skip(state=CinematicTalk02Skip)
 
@@ -143,7 +147,8 @@ class CinematicTalk02(trigger_api.Trigger):
 
 
 class CinematicTalk02Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -153,7 +158,7 @@ class CinematicTalk02Skip(trigger_api.Trigger):
 
 
 class TalkEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=900, enable=False)
@@ -164,23 +169,28 @@ class TalkEnd(trigger_api.Trigger):
 
 
 class TimmerStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99, key='MissionStart', value=1)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01') # 제한 시간 5분
         self.set_timer(timerId='10000', seconds=300, startDelay=1, interval=1, vOffset=0)
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.all_of():
+        # all_of:  Red
+        # all_of:  Blue
+        # all_of:  Grey
+        # all_of:  Green
+        # all_of:  Yellow
+        if self.object_interacted(interactIds=[10001234], stateValue=0) and self.object_interacted(interactIds=[10001235], stateValue=0) and self.object_interacted(interactIds=[10001236], stateValue=0) and self.object_interacted(interactIds=[10001237], stateValue=0) and self.object_interacted(interactIds=[10001238], stateValue=0):
             return MissionComplete(self.ctx)
         if self.time_expired(timerId='10000'):
             return MissionFail(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_user_value(triggerId=5, key='GiveBuffSlowly', value=2)
 
 
 class MissionFail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='10000')
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False) # 입구 포탈
         self.set_event_ui(type=5, arg2='$02100001_BF__01_MAINMISSION__4$', arg3='3000')
@@ -196,7 +206,7 @@ class MissionFail(trigger_api.Trigger):
 
 
 class MoveToCage(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2100001, portalId=10)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +216,7 @@ class MoveToCage(trigger_api.Trigger):
 
 # BadEnding 연출
 class BadEndingStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=901, enable=True)
@@ -217,7 +227,7 @@ class BadEndingStart(trigger_api.Trigger):
 
 
 class BadEndingTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003517, msg='$02100001_BF__01_MAINMISSION__5$', duration=5000, align='center', illustId='0')
         self.set_skip(state=BadEndingTalk01Skip)
 
@@ -227,7 +237,8 @@ class BadEndingTalk01(trigger_api.Trigger):
 
 
 class BadEndingTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -237,7 +248,7 @@ class BadEndingTalk01Skip(trigger_api.Trigger):
 
 
 class BadEndingEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=901, enable=False)
@@ -249,7 +260,7 @@ class BadEndingEnd(trigger_api.Trigger):
 
 # 던전 실패 선언
 class DungeonFail(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_fail()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -258,7 +269,7 @@ class DungeonFail(trigger_api.Trigger):
 
 
 class BadEndingPortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True) # 출구 포탈 Cage
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -267,7 +278,7 @@ class BadEndingPortalOn(trigger_api.Trigger):
 
 
 class MissionComplete(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='10000')
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False) # 입구 포탈
         self.set_achievement(triggerId=9902, type='trigger', achieve='Find02100001')
@@ -282,7 +293,7 @@ class MissionComplete(trigger_api.Trigger):
 
 # HappyEnding 연출
 class HappyEndingStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=902, enable=True)
@@ -293,7 +304,7 @@ class HappyEndingStart(trigger_api.Trigger):
 
 
 class HappyEndingTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003512, msg='$02100001_BF__01_MAINMISSION__7$', duration=5000, align='center', illustId='0')
         self.set_skip(state=HappyEndingTalk01Skip)
 
@@ -303,7 +314,8 @@ class HappyEndingTalk01(trigger_api.Trigger):
 
 
 class HappyEndingTalk01Skip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_cinematic_talk()
 
@@ -313,7 +325,7 @@ class HappyEndingTalk01Skip(trigger_api.Trigger):
 
 
 class HappyEndingEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=902, enable=False)
@@ -325,7 +337,7 @@ class HappyEndingEnd(trigger_api.Trigger):
 
 # 던전 클리어 선언
 class DungeonSuccess(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -334,7 +346,7 @@ class DungeonSuccess(trigger_api.Trigger):
 
 
 class HappyEndingPortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True) # 출구 포탈
 
     def on_tick(self) -> trigger_api.Trigger:

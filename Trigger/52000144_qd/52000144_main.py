@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -15,7 +15,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잠시대기_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -27,7 +27,7 @@ class 잠시대기_01(trigger_api.Trigger):
 
 
 class 잠시대기_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 잠시대기_02(trigger_api.Trigger):
 
 
 class 입장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 입장_01(trigger_api.Trigger):
 
 
 class 입장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -54,7 +54,7 @@ class 입장_02(trigger_api.Trigger):
 
 
 class 로베와대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Knight_Bore_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -63,7 +63,7 @@ class 로베와대화_01(trigger_api.Trigger):
 
 
 class 로베와대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=스킵도착_01, action='exit')
         self.add_cinematic_talk(npcId=0, msg='$52000144_QD__52000144_MAIN__0$', duration=3000, align='right')
 
@@ -73,7 +73,7 @@ class 로베와대화_02(trigger_api.Trigger):
 
 
 class 로베와대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__1$', duration=3000, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__2$', duration=3500, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__3$', duration=3500, illustId='Robe_normal', align='right')
@@ -84,7 +84,7 @@ class 로베와대화_03(trigger_api.Trigger):
 
 
 class 로베와대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000144_QD__52000144_MAIN__4$', duration=4179, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class 로베와대화_04(trigger_api.Trigger):
 
 
 class 로베와대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__5$', duration=3000, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__6$', duration=3500, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__7$', duration=4000, illustId='Robe_normal', align='right')
@@ -104,7 +104,7 @@ class 로베와대화_05(trigger_api.Trigger):
 
 
 class 로베와대화_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000144_QD__52000144_MAIN__8$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class 로베와대화_06(trigger_api.Trigger):
 
 
 class 로베와대화_06_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class 로베와대화_06_1(trigger_api.Trigger):
 
 
 class 로베와대화_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__9$', duration=3000, illustId='Robe_normal', align='right')
         self.add_cinematic_talk(npcId=11003401, msg='$52000144_QD__52000144_MAIN__10$', duration=2500, illustId='Robe_normal', align='right')
 
@@ -132,7 +132,7 @@ class 로베와대화_07(trigger_api.Trigger):
 
 
 class 로베와대화_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Knight_Bore_A'])
         self.add_cinematic_talk(npcId=0, msg='$52000144_QD__52000144_MAIN__11$', duration=3000, align='right')
 
@@ -142,7 +142,7 @@ class 로베와대화_08(trigger_api.Trigger):
 
 
 class 로베와대화_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -151,7 +151,8 @@ class 로베와대화_09(trigger_api.Trigger):
 
 
 class 스킵도착_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.remove_cinematic_talk()
         self.select_camera_path(pathIds=[8003], returnView=False)
@@ -162,7 +163,7 @@ class 스킵도착_01(trigger_api.Trigger):
 
 
 class 마무리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -171,7 +172,7 @@ class 마무리(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000062, portalId=13)
 
 

@@ -7,12 +7,12 @@ class 시작대기중(trigger_api.Trigger):
         if self.quest_user_detected(boxIds=[101], questIds=[10002180], questStates=[1]):
             return NPC이동(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.create_monster(spawnIds=[1001])
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='Patrol_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1001])
         self.set_timer(timerId='1', seconds=20)
 

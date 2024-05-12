@@ -3,14 +3,16 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5001], visible=False) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5003], visible=False) # BlockApp 사운드 이펙트
-        self.set_effect(triggerIds=[5004], visible=False) # EnteranceExplosion Vibrate 사운드 이펙트
-        self.set_effect(triggerIds=[5005], visible=False) # GroundSplit Vibrate 사운드 이펙트
+        # EnteranceExplosion Vibrate 사운드 이펙트
+        self.set_effect(triggerIds=[5004], visible=False)
+        # GroundSplit Vibrate 사운드 이펙트
+        self.set_effect(triggerIds=[5005], visible=False)
         self.set_effect(triggerIds=[5100], visible=False) # LiftableTargetBox
         self.set_effect(triggerIds=[5200], visible=False) # LiftableTargetGuide
         self.set_effect(triggerIds=[5201], visible=False) # LiftableTargetGuide
@@ -36,18 +38,26 @@ class Wait(trigger_api.Trigger):
         self.set_effect(triggerIds=[5707], visible=False) # Dust_Split
         self.set_effect(triggerIds=[5708], visible=False) # Dust_Split
         self.set_effect(triggerIds=[5709], visible=False) # Dust_Split
-        self.set_effect(triggerIds=[5600], visible=False) # SandStormSmall_GroundCollapse
+        # SandStormSmall_GroundCollapse
+        self.set_effect(triggerIds=[5600], visible=False)
         self.set_effect(triggerIds=[5800], visible=False) # Rumble
         self.set_effect(triggerIds=[5801], visible=False) # Earthquake
-        self.set_effect(triggerIds=[5820], visible=False) # LaozVsKandura_FightBlending
-        self.set_effect(triggerIds=[5821], visible=False) # LaozVsKandura_FightExplosion
+        # LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5820], visible=False)
+        # LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5821], visible=False)
         self.set_effect(triggerIds=[5900], visible=False) # StoneGate
         self.set_effect(triggerIds=[5901], visible=False) # ShadowApp
-        self.set_effect(triggerIds=[5920], visible=False) # Sound_LaozExplosionRumble
-        self.set_effect(triggerIds=[5921], visible=False) # Voice_LaozBattle_Attack_00001875
-        self.set_effect(triggerIds=[5922], visible=False) # Voice_LaozBattle_Attack_00001874
-        self.set_effect(triggerIds=[5930], visible=False) # Sound_LaozVsKandura_FightBlending
-        self.set_effect(triggerIds=[5931], visible=False) # Sound_LaozVsKandura_FightExplosion
+        # Sound_LaozExplosionRumble
+        self.set_effect(triggerIds=[5920], visible=False)
+        # Voice_LaozBattle_Attack_00001875
+        self.set_effect(triggerIds=[5921], visible=False)
+        # Voice_LaozBattle_Attack_00001874
+        self.set_effect(triggerIds=[5922], visible=False)
+        # Sound_LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5930], visible=False)
+        # Sound_LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5931], visible=False)
         self.set_effect(triggerIds=[6000], visible=False) # Voice_Laoz_00001847
         self.set_effect(triggerIds=[6001], visible=False) # Voice_Laoz_00001822
         self.set_effect(triggerIds=[6002], visible=False) # Voice_Laoz_00001823
@@ -71,8 +81,10 @@ class Wait(trigger_api.Trigger):
         self.set_effect(triggerIds=[6201], visible=False) # Voice_Junta_00001770
         self.set_effect(triggerIds=[6300], visible=False) # Voice_Tinchai_00001688
         self.set_effect(triggerIds=[6301], visible=False) # Voice_Tinchai_00001717
-        self.set_effect(triggerIds=[6400], visible=False) # Voice_JuntaNTinchai_00001873
-        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_EnteranceBlock
+        # Voice_JuntaNTinchai_00001873
+        self.set_effect(triggerIds=[6400], visible=False)
+        # Invisible_EnteranceBlock
+        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3002,3003,3004], visible=False, arg3=0, delay=0, scale=0) # Invisible_SplitBlock
         self.set_mesh(triggerIds=[3005], visible=True, arg3=0, delay=0, scale=0) # Invisible_StoneGate
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108], visible=False, arg3=0, delay=0, scale=0) # MeshGroup01_Block
@@ -136,20 +148,25 @@ class Wait(trigger_api.Trigger):
 class Enter01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[90000453], questStates=[3]):
+            # 무나크라의 계시 퀘스트 완료 상태
             return QuestOnGiong11(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000453], questStates=[2]):
+            # 무나크라의 계시 퀘스트 완료 가능 상태
             return QuestOnGiong01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000453], questStates=[1]):
+            # 무나크라의 계시 퀘스트 수락한 상태
             return LiftRock01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000452], questStates=[3]):
+            # 그림자의 파도 퀘스트 완료 상태
             return SecondQuestStart01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000452], questStates=[2]):
+            # 그림자의 파도 퀘스트 완료 가능 상태
             return FirstQuestEnd01(self.ctx)
 
 
 # 무나크라의 계시 퀘스트 완료 상태
 class QuestOnGiong11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -160,11 +177,12 @@ class QuestOnGiong11(trigger_api.Trigger):
 
 
 class QuestOnGiong12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000029, portalId=30, boxId=9900)
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[110,210,302], animationEffect=False)
-        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0) # Invisible_EnteranceBlock
+        # Invisible_EnteranceBlock
+        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0)
         self.set_random_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108], visible=True, meshCount=9, arg4=0, delay=0) # MeshGroup01_Block
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -173,7 +191,7 @@ class QuestOnGiong12(trigger_api.Trigger):
 
 
 class QuestOnGiong13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -184,7 +202,7 @@ class QuestOnGiong13(trigger_api.Trigger):
 
 # 무나크라의 계시 퀘스트 완료 가능 상태
 class QuestOnGiong01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -195,11 +213,12 @@ class QuestOnGiong01(trigger_api.Trigger):
 
 
 class QuestOnGiong02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000029, portalId=20, boxId=9900)
         self.destroy_monster(spawnIds=[101,201])
         self.create_monster(spawnIds=[102,202], animationEffect=False)
-        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0) # Invisible_EnteranceBlock
+        # Invisible_EnteranceBlock
+        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0)
         self.set_random_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108], visible=True, meshCount=9, arg4=0, delay=0) # MeshGroup01_Block
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -208,7 +227,7 @@ class QuestOnGiong02(trigger_api.Trigger):
 
 
 class QuestOnGiong03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_conversation(type=1, spawnId=102, script='$63000029_CS__CAVE01__0$', arg4=3, arg5=1)
@@ -219,7 +238,7 @@ class QuestOnGiong03(trigger_api.Trigger):
 
 
 class QuestOnGiong04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_201')
 
@@ -230,34 +249,38 @@ class QuestOnGiong04(trigger_api.Trigger):
 
 # 최초 입장
 class FirstQuestEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10030100, textId=10030100) # 가이드 : [[icon:questcomplete]] 틴차이와 대화하기
+        # 가이드 : [[icon:questcomplete]] 틴차이와 대화하기
+        self.show_guide_summary(entityId=10030100, textId=10030100)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000452], questStates=[3]):
+            # 그림자의 파도 퀘스트 완료 상태
             return SecondQuestStart01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10030100)
 
 
 class SecondQuestStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10031020, textId=10031020) # 가이드 : [[icon:questaccept]] 준타와 대화하기
+        # 가이드 : [[icon:questaccept]] 준타와 대화하기
+        self.show_guide_summary(entityId=10031020, textId=10031020)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000453], questStates=[1]):
+            # 무나크라의 계시 퀘스트 수락한 상태
             return LiftRock01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10031020)
 
 
 # 바위로 동굴 입구 막기
 class LiftRock01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 알림 사운드
         self.show_guide_summary(entityId=10036010, textId=10036010) # 가이드 : 스페이스 키를 눌러 바위덩이 들기
         self.set_effect(triggerIds=[5300], visible=True) # DownArrow
@@ -265,17 +288,19 @@ class LiftRock01(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if not self.detect_liftable_object(boxIds=[9001], itemId=30000441):
+            # 돌이 없어지면
             return LiftRock02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10036010)
 
 
 class LiftRock02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5300], visible=False) # DownArrow
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 알림 사운드
-        self.show_guide_summary(entityId=10036011, textId=10036011) # 가이드 : 스페이스 키로 방위덩이 내려놔 동굴 입구 막기
+        # 가이드 : 스페이스 키로 방위덩이 내려놔 동굴 입구 막기
+        self.show_guide_summary(entityId=10036011, textId=10036011)
         self.set_effect(triggerIds=[5100], visible=True) # LiftableTargetBox
         self.set_effect(triggerIds=[5200], visible=True) # LiftableTargetGuide
         self.set_effect(triggerIds=[5201], visible=True) # LiftableTargetGuide
@@ -284,14 +309,15 @@ class LiftRock02(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.detect_liftable_object(boxIds=[9002], itemId=30000441):
+            # 돌을 타겟 박스에 놓으면
             return LiftRock03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10036011)
 
 
 class LiftRock03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5001], visible=False) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5100], visible=False) # LiftableTargetBox
@@ -306,7 +332,7 @@ class LiftRock03(trigger_api.Trigger):
 
 
 class EnteranceBlock01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -317,7 +343,7 @@ class EnteranceBlock01(trigger_api.Trigger):
 
 
 class EnteranceBlock02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000029, portalId=10, boxId=9900)
         self.select_camera(triggerId=500, enable=True)
         self.destroy_monster(spawnIds=[101,201])
@@ -329,12 +355,13 @@ class EnteranceBlock02(trigger_api.Trigger):
 
 
 class EnteranceBlock03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=LaozApp05_CSkip, action='nextState')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[5003], visible=True) # BlockApp 사운드 이펙트
-        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0) # Invisible_EnteranceBlock
+        # Invisible_EnteranceBlock
+        self.set_mesh(triggerIds=[3000,3001], visible=True, arg3=0, delay=0, scale=0)
         self.set_random_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108], visible=True, meshCount=9, arg4=100, delay=100) # MeshGroup01_Block
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -343,7 +370,7 @@ class EnteranceBlock03(trigger_api.Trigger):
 
 
 class TimeToMoveIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=False)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -354,7 +381,7 @@ class TimeToMoveIn01(trigger_api.Trigger):
 
 
 class TimeToMoveIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$63000029_CS__CAVE01__1$', arg4=3, arg5=0)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -363,7 +390,7 @@ class TimeToMoveIn02(trigger_api.Trigger):
 
 
 class TimeToMoveIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=102, script='$63000029_CS__CAVE01__2$', arg4=2, arg5=0)
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_101')
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_201')
@@ -374,14 +401,16 @@ class TimeToMoveIn03(trigger_api.Trigger):
 
 
 class LaozApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.create_monster(spawnIds=[301], animationEffect=False)
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_301')
-        self.set_effect(triggerIds=[6400], visible=True) # Voice_JuntaNTinchai_00001873
+        # Voice_JuntaNTinchai_00001873
+        self.set_effect(triggerIds=[6400], visible=True)
         self.set_conversation(type=1, spawnId=202, script='$63000029_CS__CAVE01__3$', arg4=2, arg5=0) # Voice 둘이 함께 00001873
         self.set_conversation(type=1, spawnId=102, script='$63000029_CS__CAVE01__4$', arg4=2, arg5=0)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -390,7 +419,7 @@ class LaozApp01(trigger_api.Trigger):
 
 
 class LaozApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -399,7 +428,7 @@ class LaozApp02(trigger_api.Trigger):
 
 
 class LaozApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=601, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -408,7 +437,7 @@ class LaozApp03(trigger_api.Trigger):
 
 
 class LaozApp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$63000029_CS__CAVE01__5$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=102, script='$63000029_CS__CAVE01__6$', arg4=3, arg5=2)
 
@@ -418,7 +447,7 @@ class LaozApp04(trigger_api.Trigger):
 
 
 class LaozApp05_CSkip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000029, portalId=10, boxId=9900)
         self.destroy_monster(spawnIds=[101,201])
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_101')
@@ -438,7 +467,7 @@ class LaozApp05(trigger_api.Trigger):
 
 
 class LaozTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # Voice_Laoz_00001847
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__7$', arg4=5) # 라오즈 00001847
         self.set_skip(state=LaozTalk04)
@@ -449,7 +478,7 @@ class LaozTalk01(trigger_api.Trigger):
 
 
 class LaozTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -458,7 +487,7 @@ class LaozTalk02(trigger_api.Trigger):
 
 
 class LaozTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__8$', arg4=4) # 라오즈
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -467,7 +496,7 @@ class LaozTalk03(trigger_api.Trigger):
 
 
 class LaozTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.destroy_monster(spawnIds=[301])
         self.create_monster(spawnIds=[302], animationEffect=False)
@@ -481,7 +510,7 @@ class LaozTalk04(trigger_api.Trigger):
 
 
 class MeetLaoz01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10036020, textId=10036020) # 가이드 : 라오즈에게 가까이 가기
 
@@ -489,26 +518,28 @@ class MeetLaoz01(trigger_api.Trigger):
         if self.user_detected(boxIds=[9003]):
             return SecondQuestEnd01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10036020)
 
 
 class SecondQuestEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10036030, textId=10036030) # 가이드 : [[icon:questcomplete]] 라오즈와 대화하기
+        # 가이드 : [[icon:questcomplete]] 라오즈와 대화하기
+        self.show_guide_summary(entityId=10036030, textId=10036030)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000453], questStates=[3]):
+            # 무나크라의 계시 퀘스트 완료 상태
             return Delay01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10036030)
 
 
 class Delay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=3, key='SafetyStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -517,8 +548,9 @@ class Delay01(trigger_api.Trigger):
 
 
 class Delay02(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5004], visible=True) # EnteranceExplosion 사운드 이펙트
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # EnteranceExplosion 사운드 이펙트
+        self.set_effect(triggerIds=[5004], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
@@ -526,7 +558,7 @@ class Delay02(trigger_api.Trigger):
 
 
 class EnteranceBlockExplosion01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -538,7 +570,7 @@ class EnteranceBlockExplosion01(trigger_api.Trigger):
 
 
 class EnteranceBlockExplosion02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000029, portalId=11, boxId=9900)
         self.select_camera(triggerId=610, enable=True)
         self.destroy_monster(spawnIds=[102,202,302,110,210])
@@ -551,11 +583,12 @@ class EnteranceBlockExplosion02(trigger_api.Trigger):
 
 
 class EnteranceBlockExplosion03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_effect(triggerIds=[5400], visible=True) # RockDeris_Enterance
-        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0) # Invisible_EnteranceBlock
+        # Invisible_EnteranceBlock
+        self.set_mesh(triggerIds=[3000,3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7001], enable=True) # 입구 큐브 부수기 스킬
         self.create_monster(spawnIds=[401], animationEffect=False)
         self.move_npc(spawnId=401, patrolName='MS2PatrolData_401')
@@ -574,7 +607,7 @@ class EnteranceBlockExplosion03(trigger_api.Trigger):
 
 
 class KahnWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5901], visible=True) # ShadowApp
         self.set_effect(triggerIds=[6100], visible=True) # Voice_Kandura_00001855
         self.set_conversation(type=1, spawnId=401, script='$63000029_CS__CAVE01__9$', arg4=3, arg5=0) # 칸두라 00001855
@@ -590,7 +623,7 @@ class KahnWalkIn01(trigger_api.Trigger):
 
 
 class KahnWalkIn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[904,905,906], animationEffect=False)
         self.move_npc(spawnId=904, patrolName='MS2PatrolData_904')
         self.move_npc(spawnId=905, patrolName='MS2PatrolData_905')
@@ -602,7 +635,7 @@ class KahnWalkIn02(trigger_api.Trigger):
 
 
 class KahnWalkIn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[907,908,909], animationEffect=False)
         self.move_npc(spawnId=907, patrolName='MS2PatrolData_907')
         self.move_npc(spawnId=908, patrolName='MS2PatrolData_908')
@@ -614,7 +647,7 @@ class KahnWalkIn03(trigger_api.Trigger):
 
 
 class KahnWalkIn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[940,941,942,943], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -623,7 +656,7 @@ class KahnWalkIn04(trigger_api.Trigger):
 
 
 class KahnWalkIn05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[920,921,922,923,924,925,926,927,928,929,930,931], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -632,7 +665,7 @@ class KahnWalkIn05(trigger_api.Trigger):
 
 
 class KahnWalkIn06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=611, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -641,7 +674,7 @@ class KahnWalkIn06(trigger_api.Trigger):
 
 
 class KahnWalkIn07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=303, patrolName='MS2PatrolData_302')
         self.set_effect(triggerIds=[6001], visible=True) # Voice_Laoz_00001822
         self.set_conversation(type=1, spawnId=303, script='$63000029_CS__CAVE01__10$', arg4=3, arg5=0) # 라오즈 00001822
@@ -652,7 +685,7 @@ class KahnWalkIn07(trigger_api.Trigger):
 
 
 class ReadyToFight01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=203, patrolName='MS2PatrolData_202')
         self.set_conversation(type=1, spawnId=203, script='$63000029_CS__CAVE01__11$', arg4=2, arg5=0)
 
@@ -662,7 +695,7 @@ class ReadyToFight01(trigger_api.Trigger):
 
 
 class ReadyToFight02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_102')
         self.set_conversation(type=1, spawnId=103, script='$63000029_CS__CAVE01__12$', arg4=2, arg5=0)
 
@@ -672,7 +705,7 @@ class ReadyToFight02(trigger_api.Trigger):
 
 
 class ReadyToFight03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=203, sequenceName='Attack_Idle_A', duration=90000)
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Attack_Idle_A', duration=90000)
 
@@ -682,7 +715,7 @@ class ReadyToFight03(trigger_api.Trigger):
 
 
 class MeetKahn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6101], visible=True) # Voice_Kandura_00001856
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__13$', arg4=9) # 칸두라 00001856
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
@@ -693,7 +726,7 @@ class MeetKahn01(trigger_api.Trigger):
 
 
 class MeetKahn02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -703,7 +736,7 @@ class MeetKahn02(trigger_api.Trigger):
 
 
 class MeetKahn03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6002], visible=True) # Voice_Laoz_00001823
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__14$', arg4=4) # 라오즈 00001823
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
@@ -714,9 +747,10 @@ class MeetKahn03(trigger_api.Trigger):
 
 
 class MeetKahn04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=620, enable=True)
 
@@ -726,7 +760,7 @@ class MeetKahn04(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6003], visible=True) # Voice_Laoz_00001824
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__15$', arg4=8) # 라오즈 00001824
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
@@ -737,7 +771,7 @@ class LaozTalkToJuntaNTinChai01(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -747,7 +781,7 @@ class LaozTalkToJuntaNTinChai02(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001557, script='$63000029_CS__CAVE01__16$', arg4=4) # 준타
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Talk_A')
 
@@ -757,7 +791,7 @@ class LaozTalkToJuntaNTinChai03(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=203, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -767,7 +801,7 @@ class LaozTalkToJuntaNTinChai04(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001708, script='$63000029_CS__CAVE01__17$', arg4=4) # 틴차이
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Talk_A')
 
@@ -777,7 +811,7 @@ class LaozTalkToJuntaNTinChai05(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=103, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -787,7 +821,7 @@ class LaozTalkToJuntaNTinChai06(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # Voice_Laoz_00001847
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__18$', arg4=4) # 라오즈 00001847
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
@@ -798,9 +832,10 @@ class LaozTalkToJuntaNTinChai07(trigger_api.Trigger):
 
 
 class LaozTalkToJuntaNTinChai08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=611, enable=True)
         self.create_monster(spawnIds=[945,946], animationEffect=False)
@@ -838,7 +873,7 @@ class LaozTalkToJuntaNTinChai08(trigger_api.Trigger):
 
 
 class LaozNKahnTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[947,948,949], animationEffect=False)
         self.move_npc(spawnId=945, patrolName='MS2PatrolData_945')
         self.move_npc(spawnId=946, patrolName='MS2PatrolData_946')
@@ -865,9 +900,10 @@ class LaozNKahnTalk01(trigger_api.Trigger):
 
 
 class LaozNKahnTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -876,7 +912,7 @@ class LaozNKahnTalk02(trigger_api.Trigger):
 
 
 class LaozNKahnTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
         self.set_effect(triggerIds=[6102], visible=True) # Voice_Kandura_00001857
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__20$', arg4=9) # 칸두라 00001857
@@ -887,7 +923,7 @@ class LaozNKahnTalk03(trigger_api.Trigger):
 
 
 class LaozNKahnTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -897,7 +933,7 @@ class LaozNKahnTalk04(trigger_api.Trigger):
 
 
 class LaozNKahnTalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
         self.set_effect(triggerIds=[6103], visible=True) # Voice_Kandura_00001858
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__21$', arg4=6) # 칸두라 00001858
@@ -909,9 +945,10 @@ class LaozNKahnTalk05(trigger_api.Trigger):
 
 
 class LaozNKahnTalk06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -920,7 +957,7 @@ class LaozNKahnTalk06(trigger_api.Trigger):
 
 
 class LaozNKahnTalk07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6005], visible=True) # Voice_Laoz_00001826
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__22$', arg4=7) # 라오즈 00001826
@@ -931,7 +968,7 @@ class LaozNKahnTalk07(trigger_api.Trigger):
 
 
 class LaozNKahnTalk08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -941,7 +978,7 @@ class LaozNKahnTalk08(trigger_api.Trigger):
 
 
 class LaozNKahnTalk09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6006], visible=True) # Voice_Laoz_00001827
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__23$', arg4=7) # 라오즈 00001827
@@ -952,7 +989,7 @@ class LaozNKahnTalk09(trigger_api.Trigger):
 
 
 class LaozNKahnTalk10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -962,7 +999,7 @@ class LaozNKahnTalk10(trigger_api.Trigger):
 
 
 class LaozNKahnTalk11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
         self.set_effect(triggerIds=[6104], visible=True) # Voice_Kandura_00001859
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__24$', arg4=7) # 칸두라 00001859
@@ -973,7 +1010,7 @@ class LaozNKahnTalk11(trigger_api.Trigger):
 
 
 class LaozNKahnTalk12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -983,7 +1020,7 @@ class LaozNKahnTalk12(trigger_api.Trigger):
 
 
 class LaozNKahnTalk13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6007], visible=True) # Voice_Laoz_00001828
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__25$', arg4=8) # 라오즈 00001828
@@ -994,7 +1031,7 @@ class LaozNKahnTalk13(trigger_api.Trigger):
 
 
 class LaozNKahnTalk14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1004,7 +1041,7 @@ class LaozNKahnTalk14(trigger_api.Trigger):
 
 
 class LaozNKahnTalk15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6105], visible=True) # Voice_Kandura_00001860
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__26$', arg4=7) # 칸두라 00001860
         self.select_camera(triggerId=621, enable=True)
@@ -1015,8 +1052,9 @@ class LaozNKahnTalk15(trigger_api.Trigger):
 
 
 class LaozNKahnTalk16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1025,7 +1063,7 @@ class LaozNKahnTalk16(trigger_api.Trigger):
 
 
 class LaozNKahnTalk17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6106], visible=True) # Voice_Kandura_00001861
         self.set_conversation(type=2, spawnId=11001559, script='$63000029_CS__CAVE01__27$', arg4=4) # 칸두라 00001861
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
@@ -1036,7 +1074,7 @@ class LaozNKahnTalk17(trigger_api.Trigger):
 
 
 class LaozNKahnTalk18_CSkip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102,202,302,110,210])
         self.create_monster(spawnIds=[103,203,303], animationEffect=False)
         self.move_user(mapId=63000029, portalId=12, boxId=9900)
@@ -1051,7 +1089,7 @@ class LaozNKahnTalk18_CSkip(trigger_api.Trigger):
 
 
 class LaozNKahnTalk18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -1063,7 +1101,7 @@ class LaozNKahnTalk18(trigger_api.Trigger):
 
 
 class BattleReady01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=630, enable=True)
         self.move_user(mapId=63000029, portalId=12, boxId=9900)
         self.destroy_monster(spawnIds=[103,203,303,401])
@@ -1075,7 +1113,7 @@ class BattleReady01(trigger_api.Trigger):
         if self.wait_tick(waitTick=500):
             return BattleReady02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_loop(spawnId=105, sequenceName='Attack_Idle_A', duration=15000)
         self.set_npc_emotion_loop(spawnId=205, sequenceName='Attack_Idle_A', duration=15000)
         self.set_npc_emotion_loop(spawnId=305, sequenceName='Attack_Idle_A', duration=15000)
@@ -1083,7 +1121,7 @@ class BattleReady01(trigger_api.Trigger):
 
 
 class BattleReady02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=631, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -1094,7 +1132,7 @@ class BattleReady02(trigger_api.Trigger):
 
 
 class LaozKillAll01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=305, patrolName='MS2PatrolData_303')
         self.set_conversation(type=1, spawnId=305, script='$63000029_CS__CAVE01__28$', arg4=3, arg5=0)
 
@@ -1104,8 +1142,9 @@ class LaozKillAll01(trigger_api.Trigger):
 
 
 class LaozKillAll02(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5921], visible=True) # Voice_LaozBattle_Attack_00001875
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice_LaozBattle_Attack_00001875
+        self.set_effect(triggerIds=[5921], visible=True)
         self.set_npc_emotion_sequence(spawnId=305, sequenceName='Attack_01_D') # 임시
         self.select_camera(triggerId=632, enable=True)
 
@@ -1115,10 +1154,12 @@ class LaozKillAll02(trigger_api.Trigger):
 
 
 class LaozKillAll03(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5005], visible=True) # GroundSplit Vibrate 사운드 이펙트
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # GroundSplit Vibrate 사운드 이펙트
+        self.set_effect(triggerIds=[5005], visible=True)
         self.set_skill(triggerIds=[7002], enable=True) # 그림자 소멸 스킬
-        self.set_effect(triggerIds=[5920], visible=True) # Sound_LaozExplosionRumble
+        # Sound_LaozExplosionRumble
+        self.set_effect(triggerIds=[5920], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=400):
@@ -1126,7 +1167,7 @@ class LaozKillAll03(trigger_api.Trigger):
 
 
 class LaozSplitGround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=305, sequenceName='Attack_01_B') # 임시
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1135,8 +1176,9 @@ class LaozSplitGround01(trigger_api.Trigger):
 
 
 class LaozSplitGround02(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5922], visible=True) # Voice_LaozBattle_Attack_00001874
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice_LaozBattle_Attack_00001874
+        self.set_effect(triggerIds=[5922], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
@@ -1144,9 +1186,10 @@ class LaozSplitGround02(trigger_api.Trigger):
 
 
 class LaozSplitGround03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5901], visible=False) # ShadowApp
-        self.set_effect(triggerIds=[5005], visible=True) # GroundSplit Vibrate 사운드 이펙트
+        # GroundSplit Vibrate 사운드 이펙트
+        self.set_effect(triggerIds=[5005], visible=True)
         self.set_mesh(triggerIds=[3002,3003,3004], visible=True, arg3=0, delay=0, scale=0) # Invisible_SplitBlock
         self.set_random_mesh(triggerIds=[3300,3301,3302,3303,3304,3305,3306,3307,3308,3309,3310,3311,3312,3313,3314,3315,3316,3317,3318,3319,3320,3321,3322,3323,3324,3325,3326,3327,3328,3329,3330,3331,3332,3333,3334,3335], visible=False, meshCount=36, arg4=0, delay=25) # MeshGroup03_SplitTop
         self.set_random_mesh(triggerIds=[3400,3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416], visible=False, meshCount=17, arg4=0, delay=25) # MeshGroup04_SplitSide
@@ -1157,7 +1200,7 @@ class LaozSplitGround03(trigger_api.Trigger):
 
 
 class LaozSplitGround04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5700], visible=True) # Dust_Split
         self.set_effect(triggerIds=[5701], visible=True) # Dust_Split
         self.set_effect(triggerIds=[5702], visible=True) # Dust_Split
@@ -1175,7 +1218,7 @@ class LaozSplitGround04(trigger_api.Trigger):
 
 
 class LeftBehind00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=633, enable=True)
         self.set_scene_skip(state=Earthquake_CSkip, action='nextState')
 
@@ -1185,7 +1228,7 @@ class LeftBehind00(trigger_api.Trigger):
 
 
 class LeftBehind01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6008], visible=True) # Voice_Laoz_00001829
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__29$', arg4=8) # 라오즈 00001829
@@ -1224,7 +1267,7 @@ class LeftBehind01(trigger_api.Trigger):
 
 
 class LeftBehind02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1234,7 +1277,7 @@ class LeftBehind02(trigger_api.Trigger):
 
 
 class LeftBehind03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=205, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6200], visible=True) # Voice_Junta_00001779
         self.set_conversation(type=2, spawnId=11001557, script='$63000029_CS__CAVE01__30$', arg4=6) # 준타 00001779
@@ -1245,7 +1288,7 @@ class LeftBehind03(trigger_api.Trigger):
 
 
 class LeftBehind04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=205, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1255,7 +1298,7 @@ class LeftBehind04(trigger_api.Trigger):
 
 
 class LeftBehind05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Talk_A')
         self.set_effect(triggerIds=[6009], visible=True) # Voice_Laoz_00001831
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__31$', arg4=7) # 라오즈 00001831
@@ -1266,7 +1309,7 @@ class LeftBehind05(trigger_api.Trigger):
 
 
 class LeftBehind06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=303, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1276,7 +1319,7 @@ class LeftBehind06(trigger_api.Trigger):
 
 
 class LeftBehind07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6300], visible=True) # Voice_Tinchai_00001688
         self.set_conversation(type=2, spawnId=11001708, script='$63000029_CS__CAVE01__32$', arg4=4) # 틴차이 00001688
 
@@ -1286,7 +1329,7 @@ class LeftBehind07(trigger_api.Trigger):
 
 
 class LeftBehind08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1295,7 +1338,7 @@ class LeftBehind08(trigger_api.Trigger):
 
 
 class LeftBehind09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=634, enable=True)
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Event_A')
         self.set_effect(triggerIds=[6107], visible=True) # Voice_Kandura_00001862
@@ -1307,7 +1350,7 @@ class LeftBehind09(trigger_api.Trigger):
 
 
 class LeftBehind10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=401, sequenceName='Idle_A')
         self.remove_cinematic_talk()
 
@@ -1317,7 +1360,7 @@ class LeftBehind10(trigger_api.Trigger):
 
 
 class LeftBehind11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=635, enable=True)
         self.set_effect(triggerIds=[6010], visible=True) # Voice_Laoz_00001834
         self.set_conversation(type=2, spawnId=11001556, script='$63000029_CS__CAVE01__34$', arg4=5) # 라오즈 00001834
@@ -1328,7 +1371,7 @@ class LeftBehind11(trigger_api.Trigger):
 
 
 class LeftBehind12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1338,7 +1381,7 @@ class LeftBehind12(trigger_api.Trigger):
 
 # 전투 연출 교전
 class LaozVersusKahnAttack01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=305, patrolName='MS2PatrolData_304')
         self.move_npc(spawnId=403, patrolName='MS2PatrolData_403')
 
@@ -1349,7 +1392,7 @@ class LaozVersusKahnAttack01(trigger_api.Trigger):
 
 # 전투 연출 대치
 class LaozVersusKahnAttack02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -1360,12 +1403,14 @@ class LaozVersusKahnAttack02(trigger_api.Trigger):
 
 
 class LaozVersusKahnAttack03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=651, enable=True) # zoomin
-        self.set_effect(triggerIds=[5820], visible=True) # LaozVsKandura_FightBlending
+        # LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5820], visible=True)
         self.set_npc_emotion_loop(spawnId=305, sequenceName='Bore_B', duration=15000) # 라오즈
         self.set_npc_emotion_loop(spawnId=403, sequenceName='Attack_02_F', duration=15000) # 칸두라
-        self.set_effect(triggerIds=[5930], visible=True) # Sound_LaozVsKandura_FightBlending
+        # Sound_LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5930], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=300):
@@ -1373,10 +1418,11 @@ class LaozVersusKahnAttack03(trigger_api.Trigger):
 
 
 class LaozVersusKahnCrash01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.set_effect(triggerIds=[5600], visible=True) # SandStormSmall_GroundCollapse
+        # SandStormSmall_GroundCollapse
+        self.set_effect(triggerIds=[5600], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -1384,7 +1430,7 @@ class LaozVersusKahnCrash01(trigger_api.Trigger):
 
 
 class LaozVersusKahnCrash02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=650, enable=True) # zoomout
         self.set_mesh(triggerIds=[3500,3501,3502,3503,3504,3505,3506,3507,3508,3509], visible=True, arg3=0, delay=0, scale=0) # CollapseStart
 
@@ -1395,7 +1441,7 @@ class LaozVersusKahnCrash02(trigger_api.Trigger):
 
 # 전투 연출 격돌
 class CollapaseStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5800], visible=True) # Rumble
         self.set_mesh(triggerIds=[3505], visible=False, arg3=0, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3509], visible=False, arg3=100, delay=0, scale=0) # CollapseStart
@@ -1406,11 +1452,12 @@ class CollapaseStart01(trigger_api.Trigger):
 
 
 class CollapaseStart02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3504], visible=False, arg3=0, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3501], visible=False, arg3=50, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3507], visible=False, arg3=100, delay=0, scale=0) # CollapseStart
-        self.set_effect(triggerIds=[5931], visible=True) # Sound_LaozVsKandura_FightExplosion
+        # Sound_LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5931], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=500):
@@ -1418,8 +1465,9 @@ class CollapaseStart02(trigger_api.Trigger):
 
 
 class CollapaseStart03(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[5821], visible=True) # LaozVsKandura_FightExplosion
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5821], visible=True)
         self.set_mesh(triggerIds=[3502], visible=False, arg3=0, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3508], visible=False, arg3=50, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3506], visible=False, arg3=100, delay=0, scale=0) # CollapseStart
@@ -1430,7 +1478,7 @@ class CollapaseStart03(trigger_api.Trigger):
 
 
 class CollapaseStart04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3503], visible=False, arg3=0, delay=0, scale=0) # CollapseStart
         self.set_mesh(triggerIds=[3500], visible=False, arg3=100, delay=0, scale=0) # CollapseStart
 
@@ -1440,7 +1488,7 @@ class CollapaseStart04(trigger_api.Trigger):
 
 
 class CollapaseAbove01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7003], enable=True) # 천장 부수기 스킬
         self.set_effect(triggerIds=[5801], visible=True) # Earthquake
 
@@ -1450,7 +1498,7 @@ class CollapaseAbove01(trigger_api.Trigger):
 
 
 class CollapaseGround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[305,403])
         self.set_breakable(triggerIds=[4000], enable=True)
         self.set_breakable(triggerIds=[4001], enable=True)
@@ -1463,10 +1511,13 @@ class CollapaseGround01(trigger_api.Trigger):
 
 
 class CollapaseGround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
-        self.set_effect(triggerIds=[5820], visible=False) # LaozVsKandura_FightBlending
-        self.set_effect(triggerIds=[5821], visible=False) # LaozVsKandura_FightExplosion
+        # LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5820], visible=False)
+        # LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5821], visible=False)
         self.set_skill(triggerIds=[7000], enable=True) # 바닥 큐브 부수기 스킬
         self.set_effect(triggerIds=[6300], visible=True) # Voice_Tinchai_00001688
         self.set_conversation(type=1, spawnId=105, script='$63000029_CS__CAVE01__35$', arg4=3, arg5=0) # 틴차이 00001688
@@ -1477,7 +1528,7 @@ class CollapaseGround02(trigger_api.Trigger):
 
 
 class CollapaseGround03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False)
         self.set_breakable(triggerIds=[4001], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000], visible=False)
@@ -1490,13 +1541,15 @@ class CollapaseGround03(trigger_api.Trigger):
 
 # 동굴이 무너질 것 같은 연출
 class Earthquake_CSkip(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7003], enable=True) # 천장 부수기 스킬
         self.set_effect(triggerIds=[5801], visible=True) # Earthquake
         self.set_breakable(triggerIds=[4000], enable=True)
         self.set_breakable(triggerIds=[4001], enable=True)
-        self.set_effect(triggerIds=[5820], visible=False) # LaozVsKandura_FightBlending
-        self.set_effect(triggerIds=[5821], visible=False) # LaozVsKandura_FightExplosion
+        # LaozVsKandura_FightBlending
+        self.set_effect(triggerIds=[5820], visible=False)
+        # LaozVsKandura_FightExplosion
+        self.set_effect(triggerIds=[5821], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -1504,7 +1557,7 @@ class Earthquake_CSkip(trigger_api.Trigger):
 
 
 class Earthquake_CSkip2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7000], enable=True) # 바닥 큐브 부수기 스킬
         self.set_effect(triggerIds=[6300], visible=True) # Voice_Tinchai_00001688
         self.set_visible_breakable_object(triggerIds=[4000], visible=True)
@@ -1522,7 +1575,7 @@ class Earthquake_CSkip2(trigger_api.Trigger):
 
 
 class Earthquake01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=660, enable=True) # zoomout
         self.set_user_value(triggerId=2, key='EarthquakeStart', value=1)
         self.set_conversation(type=1, spawnId=105, script='$63000029_CS__CAVE01__39$', arg4=4, arg5=2) # 틴차이
@@ -1534,7 +1587,7 @@ class Earthquake01(trigger_api.Trigger):
 
 
 class Earthquake02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=640, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1543,7 +1596,7 @@ class Earthquake02(trigger_api.Trigger):
 
 
 class Earthquake03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_105')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1552,7 +1605,7 @@ class Earthquake03(trigger_api.Trigger):
 
 
 class Earthquake04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_205')
         self.set_effect(triggerIds=[6301], visible=True) # Voice_Tinchai_00001717
         self.set_conversation(type=1, spawnId=105, script='$63000029_CS__CAVE01__36$', arg4=3, arg5=0) # 틴차이 00001717
@@ -1564,7 +1617,7 @@ class Earthquake04(trigger_api.Trigger):
 
 
 class Earthquake05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=105, sequenceName='Idle_A')
         self.set_effect(triggerIds=[6201], visible=True) # Voice_Junta_00001770
         self.set_conversation(type=1, spawnId=205, script='$63000029_CS__CAVE01__37$', arg4=4, arg5=0) # 준타 00001770
@@ -1574,12 +1627,12 @@ class Earthquake05(trigger_api.Trigger):
         if self.wait_tick(waitTick=3000):
             return TimeToLeave01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_npc_emotion_sequence(spawnId=205, sequenceName='Idle_A')
 
 
 class TimeToLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=641, enable=True)
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_203')
 
@@ -1589,7 +1642,7 @@ class TimeToLeave01(trigger_api.Trigger):
 
 
 class TimeToLeave02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_103')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1598,7 +1651,7 @@ class TimeToLeave02(trigger_api.Trigger):
 
 
 class TimeToLeave03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.select_camera(triggerId=641, enable=False)
@@ -1609,9 +1662,10 @@ class TimeToLeave03(trigger_api.Trigger):
 
 
 class GuideNextMap01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10036040, textId=10036040) # 가이드 : 준타, 틴차이를 따라 동굴에서 빠져나가기
+        # 가이드 : 준타, 틴차이를 따라 동굴에서 빠져나가기
+        self.show_guide_summary(entityId=10036040, textId=10036040)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[9004]):
@@ -1619,7 +1673,7 @@ class GuideNextMap01(trigger_api.Trigger):
 
 
 class GuideNextMap02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5900], visible=True) # StoneGate
         self.set_conversation(type=1, spawnId=205, script='$63000029_CS__CAVE01__38$', arg4=3)
         self.hide_guide_summary(entityId=10036040)
@@ -1630,7 +1684,7 @@ class GuideNextMap02(trigger_api.Trigger):
 
 
 class OpenTheStoneGate01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4500, visible=True, initialSequence='or_fi_struc_stonegate_A01_on') # StoneGate
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1639,7 +1693,7 @@ class OpenTheStoneGate01(trigger_api.Trigger):
 
 
 class OpenTheStoneGate02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=1060, textId=1060) # 가이드 : 포털 위치에서 스페이스 키 누르기
@@ -1650,7 +1704,7 @@ class OpenTheStoneGate02(trigger_api.Trigger):
 
 
 class MoveToNextMap01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=205, patrolName='MS2PatrolData_204')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1659,7 +1713,7 @@ class MoveToNextMap01(trigger_api.Trigger):
 
 
 class MoveToNextMap02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_104')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1668,7 +1722,7 @@ class MoveToNextMap02(trigger_api.Trigger):
 
 
 class MoveToNextMap03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[105])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1677,7 +1731,7 @@ class MoveToNextMap03(trigger_api.Trigger):
 
 
 class MoveToNextMap04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[205])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -1686,7 +1740,7 @@ class MoveToNextMap04(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=1060)
 
 

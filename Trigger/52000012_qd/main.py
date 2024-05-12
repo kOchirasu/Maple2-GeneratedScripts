@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 초기상태(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[6000], visible=True)
         self.set_agent(triggerIds=[6001], visible=True)
         self.set_agent(triggerIds=[6002], visible=True)
@@ -25,7 +25,7 @@ class 초기상태(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_actor(triggerId=5001, visible=False, initialSequence='DownIdle_B')
         self.set_effect(triggerIds=[5002], visible=False)
@@ -59,7 +59,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 레논연출1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='9', seconds=2)
         self.create_monster(spawnIds=[1000], animationEffect=False)
         self.set_agent(triggerIds=[7000], visible=False)
@@ -74,7 +74,7 @@ class 레논연출1(trigger_api.Trigger):
 
 
 class 레논연출2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -86,7 +86,7 @@ class 레논연출2(trigger_api.Trigger):
 
 
 class 전투1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -96,7 +96,7 @@ class 전투1(trigger_api.Trigger):
 
 
 class 벨라연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='8', seconds=3)
@@ -108,7 +108,7 @@ class 벨라연출시작(trigger_api.Trigger):
 
 
 class 벨라연출중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='11', seconds=7)
         self.set_conversation(type=2, spawnId=11000844, script='$52000012_QD__MAIN__1$', arg4=2)
         self.set_conversation(type=2, spawnId=11000064, script='$52000012_QD__MAIN__2$', arg4=2)
@@ -120,7 +120,7 @@ class 벨라연출중(trigger_api.Trigger):
 
 
 class 벨라연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='14', seconds=1)
         self.select_camera_path(pathIds=[906], returnView=True)
         self.set_cinematic_ui(type=0)
@@ -132,7 +132,7 @@ class 벨라연출종료(trigger_api.Trigger):
 
 
 class 문열림1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='19', seconds=1)
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
@@ -151,7 +151,7 @@ class 문열림1(trigger_api.Trigger):
 
 
 class 전투2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_1001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +160,7 @@ class 전투2(trigger_api.Trigger):
 
 
 class 문열림2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=2)
         self.set_agent(triggerIds=[8006], visible=False)
         self.set_agent(triggerIds=[8007], visible=False)
@@ -176,7 +176,7 @@ class 문열림2(trigger_api.Trigger):
 
 
 class 악령연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_timer(timerId='13', seconds=6)
@@ -190,7 +190,7 @@ class 악령연출시작(trigger_api.Trigger):
 
 
 class 화면끄기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='22', seconds=1)
         self.set_cinematic_ui(type=4)
 
@@ -200,7 +200,7 @@ class 화면끄기(trigger_api.Trigger):
 
 
 class 영혼연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='23', seconds=2)
         self.destroy_monster(spawnIds=[301])
         self.destroy_monster(spawnIds=[5000])
@@ -215,7 +215,7 @@ class 영혼연출(trigger_api.Trigger):
 
 
 class 화면켜기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -227,7 +227,7 @@ class 화면켜기(trigger_api.Trigger):
 
 
 class 영혼연출중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='15', seconds=4)
         self.set_conversation(type=2, spawnId=11000064, script='$52000012_QD__MAIN__4$', arg4=3)
         self.select_camera_path(pathIds=[905,903], returnView=False)
@@ -238,7 +238,7 @@ class 영혼연출중(trigger_api.Trigger):
 
 
 class 영혼연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1000, patrolName='MS2PatrolData_1002')
         self.select_camera(triggerId=903, enable=False)
         self.set_cinematic_ui(type=0)
@@ -250,7 +250,7 @@ class 영혼연출종료(trigger_api.Trigger):
 
 
 class 전투3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=5001, visible=False, initialSequence='DownIdle_B')
         self.set_effect(triggerIds=[5002], visible=False)
         self.create_monster(spawnIds=[302], animationEffect=False)
@@ -261,7 +261,7 @@ class 전투3(trigger_api.Trigger):
 
 
 class 레논교체(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1000])
         self.create_monster(spawnIds=[2000], animationEffect=False)
 
@@ -271,7 +271,7 @@ class 레논교체(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -280,7 +280,7 @@ class 포털생성(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[1000,2000,101,102,103,201,202,203,301,302])
 
     def on_tick(self) -> trigger_api.Trigger:

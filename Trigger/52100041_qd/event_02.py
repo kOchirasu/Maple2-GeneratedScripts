@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1001], visible=False, arg3=0, delay=200, scale=15)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Ready(trigger_api.Trigger):
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[101,102,103,104])
@@ -30,7 +30,7 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=scene_06_ready)
         self.set_conversation(type=2, spawnId=11001956, script='$52100041_QD__EVENT_02__0$', arg4=5)
         self.move_npc(spawnId=199, patrolName='MS2PatrolData_2001')
@@ -41,7 +41,7 @@ class scene_02(trigger_api.Trigger):
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=scene_06_ready)
         self.set_conversation(type=2, spawnId=11001956, script='$52100041_QD__EVENT_02__1$', arg4=5)
 
@@ -51,7 +51,7 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=scene_06_ready)
         self.select_camera_path(pathIds=[8003,8004], returnView=False)
         self.set_mesh(triggerIds=[1002], visible=True, arg3=0, delay=200, scale=35)
@@ -64,7 +64,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class scene_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=scene_06_ready)
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.set_npc_emotion_sequence(spawnId=199, sequenceName='Bore_B')
@@ -76,7 +76,7 @@ class scene_05(trigger_api.Trigger):
 
 
 class scene_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[199])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,7 +85,7 @@ class scene_06(trigger_api.Trigger):
 
 
 class scene_06_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002072], state=1)
         self.set_interact_object(triggerIds=[10002073], state=1)
         self.set_interact_object(triggerIds=[10002074], state=1)
@@ -93,6 +93,7 @@ class scene_06_ready(trigger_api.Trigger):
         self.set_interact_object(triggerIds=[10002076], state=1)
         self.set_interact_object(triggerIds=[10002077], state=1)
         self.destroy_monster(spawnIds=[199])
+        # Missing State: State
         self.set_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_mesh(triggerIds=[1002], visible=True, arg3=0, delay=200, scale=35)
@@ -104,7 +105,7 @@ class scene_06_ready(trigger_api.Trigger):
 
 
 class scene_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='OpenBossGauge', title='$52100041_QD__EVENT_02__4$', maxGaugePoint=1000) # 진행 바 표기
         self.destroy_monster(spawnIds=[199])
         self.create_monster(spawnIds=[105,106,107,108,109,111,112,113,114,115,116,117,118,119], animationEffect=False)
@@ -116,6 +117,7 @@ class scene_07(trigger_api.Trigger):
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -124,7 +126,8 @@ class scene_07(trigger_api.Trigger):
 
 
 class scene_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_achievement(triggerId=720, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[181,182,183,184], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -133,7 +136,7 @@ class scene_08(trigger_api.Trigger):
 
 
 class scene_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=181, script='$52100041_QD__EVENT_02__5$', arg4=3, arg5=2)
         self.set_conversation(type=1, spawnId=182, script='$52100041_QD__EVENT_02__6$', arg4=3, arg5=4)
         self.set_conversation(type=1, spawnId=183, script='$52100041_QD__EVENT_02__7$', arg4=3, arg5=8)
@@ -145,7 +148,7 @@ class scene_09(trigger_api.Trigger):
 
 
 class scene_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[181,182,183,184])
 
 

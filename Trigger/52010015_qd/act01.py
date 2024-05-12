@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[201], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='100', seconds=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -22,7 +22,7 @@ class 딜레이01(trigger_api.Trigger):
 
 # 1st Quest
 class 미카교체01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=1)
         self.destroy_monster(spawnIds=[201])
         self.create_monster(spawnIds=[202], animationEffect=False)
@@ -33,7 +33,7 @@ class 미카교체01(trigger_api.Trigger):
 
 
 class 미카이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_2020')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class 미카이동01(trigger_api.Trigger):
 
 
 class 미카소멸01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
 
 

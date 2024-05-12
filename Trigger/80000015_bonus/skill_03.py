@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[703], enable=False)
         self.set_visible_breakable_object(triggerIds=[7301,7302,7303], visible=False)
         self.set_breakable(triggerIds=[7301,7302,7303], enable=False)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_visible_breakable_object(triggerIds=[7301,7302,7303], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[7301,7302,7303], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 스킬발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[703], enable=True)
         self.set_breakable(triggerIds=[7301,7302,7303], enable=False)
 

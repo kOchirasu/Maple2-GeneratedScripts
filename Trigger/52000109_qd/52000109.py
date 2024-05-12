@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -16,7 +16,7 @@ class Wait01(trigger_api.Trigger):
 
 
 class Wait02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -28,7 +28,7 @@ class Wait02(trigger_api.Trigger):
 
 
 class Wait03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000109_QD__52000109__0$', desc='$52000109_QD__52000109__1$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=6000, scale=2.5)
         self.set_onetime_effect(id=40, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
         self.move_user(mapId=52000109, portalId=10)
@@ -39,7 +39,7 @@ class Wait03(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[1000], returnView=False)
         self.set_onetime_effect(id=40, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
@@ -53,7 +53,7 @@ class 에델슈타인전경씬01(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003292, illustId='Ayesha_normal', msg='$52000109_QD__52000109__4$', duration=4000, align='right')
         self.set_onetime_effect(id=3000982, enable=True, path='BG/Common/Sound/Eff_Ayesha_IntroMovie_03000982.xml')
         self.set_onetime_effect(id=50, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
@@ -64,7 +64,7 @@ class 에델슈타인전경씬02(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__5$', duration=4000, align='right')
         self.set_onetime_effect(id=60, enable=True, path='BG/Common/Eff_Com_Vibrate_Short.xml')
 
@@ -74,7 +74,7 @@ class 에델슈타인전경씬03(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003292, illustId='Ayesha_normal', msg='$52000109_QD__52000109__6$', duration=4000, align='right')
         self.set_onetime_effect(id=3000983, enable=True, path='BG/Common/Sound/Eff_Ayesha_IntroMovie_03000983.xml')
 
@@ -84,7 +84,7 @@ class 에델슈타인전경씬04(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__7$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -93,7 +93,7 @@ class 에델슈타인전경씬05(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__8$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -102,7 +102,7 @@ class 에델슈타인전경씬06(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003292, illustId='Ayesha_normal', msg='$52000109_QD__52000109__9$', duration=4000, align='right')
         self.set_onetime_effect(id=3000984, enable=True, path='BG/Common/Sound/Eff_Ayesha_IntroMovie_03000984.xml')
 
@@ -112,7 +112,7 @@ class 에델슈타인전경씬07(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__10$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +121,7 @@ class 에델슈타인전경씬08(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1001], returnView=False)
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_Isha')
         self.move_user_path(patrolName='MS2PatrolData_PC')
@@ -132,7 +132,7 @@ class 에델슈타인전경씬10(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__11$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -141,7 +141,7 @@ class 에델슈타인전경씬11(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, illustId='0', msg='$52000109_QD__52000109__12$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -150,7 +150,7 @@ class 에델슈타인전경씬12(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[1002,1003], returnView=False)
         self.add_balloon_talk(spawnId=0, msg='$52000109_QD__52000109__13$', duration=5000, delayTick=1000)
         self.add_balloon_talk(spawnId=200, msg='$52000109_QD__52000109__14$', duration=6000, delayTick=4000)
@@ -161,7 +161,8 @@ class 에델슈타인전경씬13(trigger_api.Trigger):
 
 
 class 에델슈타인전경씬14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -170,7 +171,7 @@ class 에델슈타인전경씬14(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=200, patrolName='MS2PatrolData_Isha')
@@ -182,7 +183,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 퀘스트대기01_20002302(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -201,7 +202,7 @@ class 퀘스트대기01_20002302(trigger_api.Trigger):
 
 # ########################20002302, 라딘 등장########################
 class 라딘등장씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[2002], animationEffect=False) # 라딘등장
@@ -212,7 +213,7 @@ class 라딘등장씬01(trigger_api.Trigger):
 
 
 class 라딘등장씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=Skip_2, action='nextState')
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData_radin')
@@ -224,7 +225,7 @@ class 라딘등장씬02(trigger_api.Trigger):
 
 
 class 라딘등장씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=11003295, illustId='Radin_normal', msg='$52000109_QD__52000109__15$', duration=4000, align='right')
@@ -235,7 +236,7 @@ class 라딘등장씬03(trigger_api.Trigger):
 
 
 class 라딘등장씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.face_emotion(spawnId=200, emotionName='hello_Cait')
         self.show_caption(type='NameCaption', title='$52000109_QD__52000109__16$', desc='$52000109_QD__52000109__17$', align='center', offsetRateX=-0.15, offsetRateY=0.15, duration=10000, scale=2)
 
@@ -245,7 +246,8 @@ class 라딘등장씬04(trigger_api.Trigger):
 
 
 class 라딘등장씬04_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +256,7 @@ class 라딘등장씬04_1(trigger_api.Trigger):
 
 
 class Skip_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.move_npc(spawnId=2002, patrolName='MS2PatrolData_radin')
 
@@ -264,7 +266,7 @@ class Skip_2(trigger_api.Trigger):
 
 
 class 라딘등장씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -276,7 +278,7 @@ class 라딘등장씬05(trigger_api.Trigger):
 
 # ########################20002302, 라딘 등장########################
 class 라딘대화씬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[2004,302], animationEffect=False) # 라딘등장
@@ -289,7 +291,7 @@ class 라딘대화씬01(trigger_api.Trigger):
 
 
 class 라딘대화씬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.reset_camera(interpolationTime=1)
         self.set_cinematic_ui(type=0)
@@ -301,7 +303,7 @@ class 라딘대화씬02(trigger_api.Trigger):
 
 
 class 라딘대화씬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=라딘대화씬05, action='exit')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
@@ -313,7 +315,7 @@ class 라딘대화씬03(trigger_api.Trigger):
 
 
 class 라딘대화씬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000109_QD__52000109__18$', desc='$52000109_QD__52000109__19$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=10000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -322,7 +324,8 @@ class 라딘대화씬04(trigger_api.Trigger):
 
 
 class 라딘대화씬04_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -331,7 +334,7 @@ class 라딘대화씬04_1(trigger_api.Trigger):
 
 
 class 라딘대화씬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000062, portalId=13)
 
 

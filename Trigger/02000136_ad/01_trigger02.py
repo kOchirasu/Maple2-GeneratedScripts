@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[801,802,803], visible=False)
         self.set_interact_object(triggerIds=[10000067], state=1)
         self.set_mesh(triggerIds=[14,17,16], visible=False)
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발판등장1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[14], visible=True)
         self.set_effect(triggerIds=[801], visible=True)
         self.set_timer(timerId='2', seconds=1)
@@ -25,7 +25,7 @@ class 발판등장1(trigger_api.Trigger):
 
 
 class 발판등장2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[17], visible=True)
         self.set_effect(triggerIds=[802], visible=True)
         self.set_timer(timerId='3', seconds=1)
@@ -36,7 +36,7 @@ class 발판등장2(trigger_api.Trigger):
 
 
 class 발판등장3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[16], visible=True)
         self.set_effect(triggerIds=[803], visible=True)
         self.set_timer(timerId='4', seconds=2)

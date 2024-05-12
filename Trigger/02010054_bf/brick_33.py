@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[34033], visible=True, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7033], enable=False)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 발판(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7033], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

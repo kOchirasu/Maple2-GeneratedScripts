@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3003,3004], visible=False)
         self.destroy_monster(spawnIds=[1000,1001,1002,1003,1004,1005,1006,1007,1008])
 
@@ -15,7 +15,8 @@ class 대기(trigger_api.Trigger):
 
 
 class 진행중일때20002274(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 몬스터들이 소환된다
         self.create_monster(spawnIds=[1000,1001,1002,1003,1004,1005,1006,1007,1008], animationEffect=False) # ,90537,90539
 
     def on_tick(self) -> trigger_api.Trigger:

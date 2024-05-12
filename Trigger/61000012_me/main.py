@@ -9,7 +9,7 @@ class 입장(trigger_api.Trigger):
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200015,200016,200017,200018], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=62100168, level=1) # 포탑 기절 이뮨
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -21,7 +21,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 인터렉트_설정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200015,200016,200017,200018], visible=True)
         self.set_interact_object(triggerIds=[10003122], state=1)
 
@@ -33,7 +33,7 @@ class 인터렉트_설정(trigger_api.Trigger):
 
 
 class 인터렉트_동작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[200015,200016,200017,200018], visible=False)
         self.set_ai_extra_data(key='Shoot_Cannon_1', value=1, isModify=False)
 
@@ -45,7 +45,7 @@ class 인터렉트_동작(trigger_api.Trigger):
 
 
 class 인터렉트_리셋(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ai_extra_data(key='Shoot_Cannon_1', value=0, isModify=False)
 
     def on_tick(self) -> trigger_api.Trigger:

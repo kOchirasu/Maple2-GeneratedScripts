@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='BridgeOpen', value=0)
         self.set_interact_object(triggerIds=[10001037], state=1)
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class WakeUp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001037], state=2)
         self.create_monster(spawnIds=[102], animationEffect=False)
 
@@ -27,7 +27,7 @@ class WakeUp(trigger_api.Trigger):
 
 
 class Patrol01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_1021')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class Patrol01(trigger_api.Trigger):
 
 
 class Patrol02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_1022')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class Patrol02(trigger_api.Trigger):
 
 
 class Patrol03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_1023')
 
 

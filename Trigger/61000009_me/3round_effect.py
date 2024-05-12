@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Spawn_Start_Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7999], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class Spawn_Start_Ready(trigger_api.Trigger):
 
 
 class Skill_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[5021], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -27,7 +27,7 @@ class Skill_01(trigger_api.Trigger):
 
 
 class Skill_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[5022], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class Skill_02(trigger_api.Trigger):
 
 
 class Skill_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[5023], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class Skill_03(trigger_api.Trigger):
 
 
 class Skill_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[5024], enable=True)
 
 

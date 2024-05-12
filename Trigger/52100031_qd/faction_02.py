@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_buff(boxId=199, skillId=99910140)
         self.set_interact_object(triggerIds=[10002060], state=2)
         self.set_interact_object(triggerIds=[10002061], state=2)
@@ -17,7 +17,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 말준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skip(state=퀘스트)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -32,11 +32,41 @@ class 말준비(trigger_api.Trigger):
             return 퀘스트(self.ctx)
 
 
+"""
+class 룸체크(trigger_api.Trigger):
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.is_dungeon_room():
+            return None # Missing State: 던전
+        if not self.is_dungeon_room():
+            return 퀘스트(self.ctx)
+
+"""
+
+
+"""
+class 던전(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_skip(state=종료체크)
+        self.set_cinematic_ui(type=1)
+        self.set_cinematic_ui(type=3)
+        self.set_interact_object(triggerIds=[10002060], state=1)
+        self.set_interact_object(triggerIds=[10002061], state=1)
+        self.set_interact_object(triggerIds=[10002062], state=1)
+        self.set_interact_object(triggerIds=[10002063], state=1)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=3500):
+            return 종료체크(self.ctx)
+
+"""
+
+
 class 퀘스트(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +75,7 @@ class 퀘스트(trigger_api.Trigger):
 
 
 class 종료체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040102, textId=20040102, duration=3000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.remove_buff(boxId=199, skillId=70000107)
@@ -56,7 +86,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 차안내2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20040105, textId=20040105, duration=3500)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.remove_buff(boxId=199, skillId=70000107)

@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_portal(portalId=10, visible=False, enable=False, minimapVisible=False)
@@ -60,7 +60,7 @@ class 준비(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.add_buff(boxIds=[199], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
@@ -73,7 +73,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 연출해제(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -84,7 +84,8 @@ class 연출해제(trigger_api.Trigger):
 
 
 class 인트로연출스킵(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
@@ -97,7 +98,8 @@ class 인트로연출스킵(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_skip()
         self.remove_buff(boxId=199, skillId=70000107)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -117,7 +119,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 반응대기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20105401, textId=20105401)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_interact_object(triggerIds=[10000856], state=1)
@@ -158,6 +160,7 @@ class 반응대기03(trigger_api.Trigger):
 class 인원체크(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count(value=1):
+            # 던전 최대 인원수가 1이면
             return 반응둘중하나만(self.ctx)
         if self.wait_tick(waitTick=100):
             return 반응둘다01(self.ctx)
@@ -178,7 +181,7 @@ class 반응둘중하나만(trigger_api.Trigger):
 
 
 class 반응대기05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000857], state=1)
         self.set_interact_object(triggerIds=[10000859], state=1)
         self.show_guide_summary(entityId=20105401, textId=20105401)
@@ -192,7 +195,7 @@ class 반응대기05(trigger_api.Trigger):
 
 
 class 별생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3315,3316,3317,3318,3319,3320,3321], visible=True, arg3=0, delay=500, scale=3)
         self.set_timer(timerId='3', seconds=3)
 
@@ -212,7 +215,7 @@ class 반응대기06(trigger_api.Trigger):
 
 
 class 중간보스소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2098], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -222,7 +225,7 @@ class 중간보스소환(trigger_api.Trigger):
 
 
 class 골렘소환대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[612], visible=False)
         self.set_effect(triggerIds=[613], visible=False)
         self.set_effect(triggerIds=[614], visible=False)
@@ -236,7 +239,7 @@ class 골렘소환대기(trigger_api.Trigger):
 
 
 class 골렘소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[620], visible=True)
         self.create_monster(spawnIds=[2024], animationEffect=False)
 
@@ -246,7 +249,7 @@ class 골렘소환(trigger_api.Trigger):
 
 
 class 골렘소환2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[621], visible=True)
         self.create_monster(spawnIds=[2025], animationEffect=False)
 
@@ -256,7 +259,7 @@ class 골렘소환2(trigger_api.Trigger):
 
 
 class 골렘소환3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[622], visible=True)
         self.create_monster(spawnIds=[2026], animationEffect=False)
 
@@ -266,7 +269,7 @@ class 골렘소환3(trigger_api.Trigger):
 
 
 class 그라즈나전투(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[625], visible=False)
         self.set_effect(triggerIds=[626], visible=False)
         self.set_effect(triggerIds=[627], visible=False)
@@ -287,7 +290,7 @@ class 종료딜레이(trigger_api.Trigger):
 
 
 class 포털생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3130,3131,3132,3133,3134,3135,3136], visible=True, arg3=0, delay=0, scale=0)
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_timer(timerId='4', seconds=4)

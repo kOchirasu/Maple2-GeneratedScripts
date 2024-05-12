@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=20, visible=False, enable=False, minimapVisible=False) # Emergency
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # ElevatorHallRoof
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # ElevatorHallGround
@@ -86,7 +86,7 @@ class Wait(trigger_api.Trigger):
 
 
 class BoardApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=20038102, textId=20038102) # 스위치를 작동시켜보세요
         self.set_interact_object(triggerIds=[10001107], state=1) # IceSwitch
 
@@ -96,7 +96,7 @@ class BoardApp01(trigger_api.Trigger):
 
 
 class BoardGoUp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=20038102)
         self.set_interact_object(triggerIds=[10001107], state=2) # Lever
         self.set_breakable(triggerIds=[4000], enable=True) # Move_GoUp
@@ -154,7 +154,7 @@ class BoardGoUp01(trigger_api.Trigger):
 
 
 class BoardGoUp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=True, arg3=100, delay=0, scale=0) # ElevatorHallRoof
         self.set_mesh(triggerIds=[3100,3101,3102,3103,3104,3105,3106,3107,3108,3109,3110,3111,3112,3113,3114,3115,3116,3117,3118,3119,3120,3121], visible=True, arg3=100, delay=0, scale=2) # VisibleRoof
 
@@ -164,7 +164,7 @@ class BoardGoUp02(trigger_api.Trigger):
 
 
 class BoardGoUp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False) # Move_GoUp
         self.set_breakable(triggerIds=[4001], enable=False) # Move_GoUp
         self.set_breakable(triggerIds=[4002], enable=False) # Move_GoUp
@@ -236,13 +236,13 @@ class BoardGoUp03(trigger_api.Trigger):
 
 
 class EmergencyPortalOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=20, visible=True, enable=True, minimapVisible=False) # Emergency
 
 
 # 좌우 상단 입장 시
 class AgentOff01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_agent(triggerIds=[8000], visible=False)
         self.set_agent(triggerIds=[8001], visible=False)
         self.set_agent(triggerIds=[8002], visible=False)

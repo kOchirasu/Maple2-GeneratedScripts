@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='DungeonStart', value=0)
         self.set_effect(triggerIds=[5100], visible=False) # 화살표
         self.set_effect(triggerIds=[5101], visible=False) # 화살표
@@ -23,7 +23,7 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class GuideOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.set_event_ui(type=1, arg2='$02000376_BF__11_INNERLIGHTGUIDE__0$', arg3='4000', arg4='0')
         self.set_effect(triggerIds=[5100], visible=True) # 화살표
@@ -38,7 +38,7 @@ class GuideOn(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5100], visible=False) # 화살표
         self.set_effect(triggerIds=[5101], visible=False) # 화살표
         self.set_effect(triggerIds=[5102], visible=False) # 화살표

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 레버(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[510,511,512,513,514,515,516], visible=True)
         self.set_effect(triggerIds=[701], visible=False)
         self.set_effect(triggerIds=[702], visible=False)
@@ -14,7 +14,7 @@ class 레버(trigger_api.Trigger):
 
 
 class 끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[510,511,512,513,514,515,516], visible=False)
         self.set_effect(triggerIds=[701], visible=True)
         self.set_effect(triggerIds=[702], visible=True)
@@ -26,7 +26,7 @@ class 끝(trigger_api.Trigger):
 
 
 class 폭죽끄기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='12', seconds=120)
         self.set_effect(triggerIds=[701], visible=False)
         self.set_effect(triggerIds=[702], visible=False)

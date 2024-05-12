@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -15,7 +15,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잠시대기_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -26,7 +26,7 @@ class 잠시대기_01(trigger_api.Trigger):
 
 
 class 잠시대기_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.move_user(mapId=52000148, portalId=99)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -37,7 +37,7 @@ class 잠시대기_02(trigger_api.Trigger):
 
 
 class 잠시대기_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=130000)
         self.face_emotion(spawnId=0, emotionName='Think_A')
 
@@ -47,20 +47,20 @@ class 잠시대기_03(trigger_api.Trigger):
 
 
 class 시작_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000148_QD__52000148_MAIN__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
             return 시작_02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class 시작_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -70,7 +70,7 @@ class 시작_02(trigger_api.Trigger):
 
 
 class 시작_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +79,7 @@ class 시작_03(trigger_api.Trigger):
 
 
 class 오스카와대화_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__1$', duration=2500, align='right')
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2001')
         self.set_scene_skip(state=오스카퇴장_02, action='nextState')
@@ -90,7 +90,7 @@ class 오스카와대화_01(trigger_api.Trigger):
 
 
 class 오스카와대화_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__2$', duration=3000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +99,7 @@ class 오스카와대화_02(trigger_api.Trigger):
 
 
 class 오스카와대화_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__3$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -108,7 +108,7 @@ class 오스카와대화_03(trigger_api.Trigger):
 
 
 class 오스카와대화_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__4$', duration=3000, align='left')
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
 
@@ -118,7 +118,7 @@ class 오스카와대화_04(trigger_api.Trigger):
 
 
 class 오스카와대화_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__5$', duration=4000, align='left')
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
 
@@ -128,7 +128,7 @@ class 오스카와대화_05(trigger_api.Trigger):
 
 
 class 오스카와대화_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__6$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -137,7 +137,7 @@ class 오스카와대화_06(trigger_api.Trigger):
 
 
 class 오스카와대화_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__7$', duration=3000, align='left')
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__8$', duration=4000, align='left')
@@ -148,7 +148,7 @@ class 오스카와대화_07(trigger_api.Trigger):
 
 
 class 오스카와대화_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -157,7 +157,7 @@ class 오스카와대화_08(trigger_api.Trigger):
 
 
 class 오스카와대화_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__9$', duration=3000, align='right')
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__10$', duration=3000, align='right')
 
@@ -167,7 +167,7 @@ class 오스카와대화_09(trigger_api.Trigger):
 
 
 class 오스카와대화_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -176,7 +176,7 @@ class 오스카와대화_10(trigger_api.Trigger):
 
 
 class 오스카와대화_11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__11$', duration=2500, illustId='Oskhal_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -185,7 +185,7 @@ class 오스카와대화_11(trigger_api.Trigger):
 
 
 class 오스카와대화_12(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__12$', duration=3000, align='right')
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__13$', duration=3000, align='right')
 
@@ -195,7 +195,7 @@ class 오스카와대화_12(trigger_api.Trigger):
 
 
 class 오스카와대화_13(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__14$', duration=3500, illustId='Oskhal_normal', align='left')
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__15$', duration=3500, illustId='Oskhal_normal', align='left')
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__16$', duration=2500, illustId='Oskhal_normal', align='left')
@@ -206,7 +206,7 @@ class 오스카와대화_13(trigger_api.Trigger):
 
 
 class 오스카와대화_14(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__17$', duration=2500, align='right')
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__18$', duration=4000, align='right')
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__19$', duration=3000, align='right')
@@ -217,7 +217,7 @@ class 오스카와대화_14(trigger_api.Trigger):
 
 
 class 오스카와대화_15(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__20$', duration=3000, illustId='Oskhal_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +226,7 @@ class 오스카와대화_15(trigger_api.Trigger):
 
 
 class 오스카와대화_16(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__21$', duration=4000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -235,7 +235,7 @@ class 오스카와대화_16(trigger_api.Trigger):
 
 
 class 오스카와대화_17(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__22$', duration=3000, illustId='Oskhal_normal', align='left')
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__23$', duration=3000, illustId='Oskhal_normal', align='left')
 
@@ -245,7 +245,7 @@ class 오스카와대화_17(trigger_api.Trigger):
 
 
 class 오스카와대화_18(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__24$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -254,7 +254,7 @@ class 오스카와대화_18(trigger_api.Trigger):
 
 
 class 오스카와대화_19(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003380, msg='$52000148_QD__52000148_MAIN__25$', duration=3000, illustId='Oskhal_normal', align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -263,7 +263,7 @@ class 오스카와대화_19(trigger_api.Trigger):
 
 
 class 오스카퇴장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -272,7 +272,8 @@ class 오스카퇴장_01(trigger_api.Trigger):
 
 
 class 오스카퇴장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_2002')
 
@@ -282,7 +283,7 @@ class 오스카퇴장_02(trigger_api.Trigger):
 
 
 class 독백_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -291,7 +292,7 @@ class 독백_01(trigger_api.Trigger):
 
 
 class 독백_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__26$', duration=2500, align='right')
         self.set_scene_skip(state=마무리_01, action='nextState')
 
@@ -301,7 +302,7 @@ class 독백_02(trigger_api.Trigger):
 
 
 class 독백_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
         self.set_effect(triggerIds=[5001], visible=True)
 
@@ -311,7 +312,7 @@ class 독백_03(trigger_api.Trigger):
 
 
 class 독백_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__27$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -320,7 +321,7 @@ class 독백_04(trigger_api.Trigger):
 
 
 class 독백_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -329,7 +330,7 @@ class 독백_05(trigger_api.Trigger):
 
 
 class 독백_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=0, msg='$52000148_QD__52000148_MAIN__28$', duration=3500, align='right')
         self.face_emotion(spawnId=0)
 
@@ -339,7 +340,8 @@ class 독백_06(trigger_api.Trigger):
 
 
 class 마무리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -349,7 +351,7 @@ class 마무리_01(trigger_api.Trigger):
 
 
 class 마무리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=9, script='$52000148_QD__52000148_MAIN__29$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -358,7 +360,7 @@ class 마무리_02(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000062, portalId=13)
 
 

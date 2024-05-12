@@ -13,7 +13,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.move_user(mapId=52000188, portalId=1)
@@ -24,7 +24,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class 동굴도착_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class 동굴도착_01(trigger_api.Trigger):
 
 
 class 동굴도착_01_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_3001')
         self.set_scene_skip(state=Skip_1, action='nextState')
@@ -44,7 +44,7 @@ class 동굴도착_01_2(trigger_api.Trigger):
 
 
 class 동굴도착_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.add_cinematic_talk(npcId=0, msg='$52000188_QD__52000188__0$', duration=3000)
 
@@ -54,8 +54,9 @@ class 동굴도착_02(trigger_api.Trigger):
 
 
 class 정리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,7 +65,7 @@ class 정리_01(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
@@ -74,7 +75,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -85,7 +86,7 @@ class 정리_02(trigger_api.Trigger):
 
 
 class 밝아짐(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +96,7 @@ class 밝아짐(trigger_api.Trigger):
 
 # 직업별 컷씬 출력
 class 컷씬준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
         self.set_cinematic_ui(type=1)
 
@@ -131,7 +132,7 @@ class 컷씬준비_02(trigger_api.Trigger):
 
 
 class 나이트컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_knight.swf', movieId=1)
 
@@ -143,7 +144,7 @@ class 나이트컷씬(trigger_api.Trigger):
 
 
 class 버서커컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_berserker.swf', movieId=2)
 
@@ -155,7 +156,7 @@ class 버서커컷씬(trigger_api.Trigger):
 
 
 class 위자드컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_wizard.swf', movieId=3)
 
@@ -167,7 +168,7 @@ class 위자드컷씬(trigger_api.Trigger):
 
 
 class 프리스트컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_priest.swf', movieId=4)
 
@@ -179,7 +180,7 @@ class 프리스트컷씬(trigger_api.Trigger):
 
 
 class 레인저컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_ranger.swf', movieId=5)
 
@@ -191,7 +192,7 @@ class 레인저컷씬(trigger_api.Trigger):
 
 
 class 헤비거너컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_heavy.swf', movieId=6)
 
@@ -203,7 +204,7 @@ class 헤비거너컷씬(trigger_api.Trigger):
 
 
 class 시프컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_thief.swf', movieId=7)
 
@@ -215,7 +216,7 @@ class 시프컷씬(trigger_api.Trigger):
 
 
 class 어쌔신컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_Assassin.swf', movieId=8)
 
@@ -227,7 +228,7 @@ class 어쌔신컷씬(trigger_api.Trigger):
 
 
 class 룬블컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_RBlader.swf', movieId=9)
 
@@ -239,7 +240,7 @@ class 룬블컷씬(trigger_api.Trigger):
 
 
 class 스커컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_striker.swf', movieId=10)
 
@@ -251,7 +252,7 @@ class 스커컷씬(trigger_api.Trigger):
 
 
 class 소바컷씬(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='MasterSkill_soul.swf', movieId=11)
 
@@ -263,7 +264,7 @@ class 소바컷씬(trigger_api.Trigger):
 
 
 class 영상재생_end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=30, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOutFast.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -272,7 +273,7 @@ class 영상재생_end(trigger_api.Trigger):
 
 
 class 영상재생_end02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -282,7 +283,7 @@ class 영상재생_end02(trigger_api.Trigger):
 
 
 class 바베니로_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -292,7 +293,7 @@ class 바베니로_01(trigger_api.Trigger):
 
 
 class 바베니로_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2020041, portalId=1)
 
 

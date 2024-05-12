@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2700,2701,2702,2703,2704,2705,2706], visible=True, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[12700], visible=False) # Vibrate Short
         self.set_effect(triggerIds=[22700], visible=False) # Vibrate Sound
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 무너짐01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=10)
         self.set_effect(triggerIds=[12700], visible=True) # Vibrate Short
         self.set_effect(triggerIds=[22700], visible=True) # Vibrate Sound
@@ -26,7 +26,7 @@ class 무너짐01(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12700], visible=False) # Vibrate Short
         self.set_effect(triggerIds=[22700], visible=False) # Vibrate Sound
 

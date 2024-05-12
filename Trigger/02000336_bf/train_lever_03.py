@@ -3,19 +3,19 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8161,8162,8163,8164], visible=False) # 안보이는 상태
         self.set_interact_object(triggerIds=[10000898], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.object_interacted(interactIds=[10000898], stateValue=0):
             return 작동_01(self.ctx)
-        if self.count_users(boxId=709, boxId=1):
+        if self.count_users(boxId=709, minUsers='1'):
             return 시작(self.ctx)
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=113, textId=20003363, duration=3000)
 
@@ -25,7 +25,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 작동_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[8161,8162,8163,8164], visible=True, delay=300, scale=10) # 파란 선으로
         self.set_mesh(triggerIds=[8261,8262,8263,8264], visible=False, delay=300, scale=10) # 빨간 선이
         self.set_effect(triggerIds=[7012], visible=True)
@@ -37,7 +37,7 @@ class 작동_01(trigger_api.Trigger):
 
 
 class 작동_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=106, textId=20003362, duration=3000) # 다음 구역으로 이동할 수 있습니다.
         self.set_mesh(triggerIds=[8064,8065,8066,8067,8068], visible=False, delay=0, scale=10) # 벽은 사라지고

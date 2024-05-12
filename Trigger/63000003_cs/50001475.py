@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -12,7 +12,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 말풍선01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_conversation(type=1, spawnId=1001, script='$63000003_CS__50001475__0$', arg4=4, arg5=0)
@@ -23,7 +23,7 @@ class 말풍선01(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_A')
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_A')
 
@@ -33,7 +33,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class PC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -42,7 +42,7 @@ class PC이동(trigger_api.Trigger):
 
 
 class 강제이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=2000062, portalId=0)
 
     def on_tick(self) -> trigger_api.Trigger:

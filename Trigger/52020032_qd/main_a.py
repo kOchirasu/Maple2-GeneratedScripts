@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=8001, visible=False, initialSequence='Damg_Idle_B')
         self.set_interact_object(triggerIds=[10001281], state=0)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
@@ -24,7 +24,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=8001, visible=True, initialSequence='Damg_Idle_B')
         self.create_monster(spawnIds=[102], animationEffect=True) # 미카엘
         self.create_monster(spawnIds=[201], animationEffect=True)
@@ -42,7 +42,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Battle_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=201, addSpawnId=601)
         self.change_monster(removeSpawnId=202, addSpawnId=602)
         self.change_monster(removeSpawnId=203, addSpawnId=603)
@@ -57,7 +57,7 @@ class Battle_A(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4001], returnView=False)
@@ -69,7 +69,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4002,4003], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +78,7 @@ class Event_02(trigger_api.Trigger):
 
 
 class Event_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_3001')
         self.select_camera_path(pathIds=[4004], returnView=False)
 
@@ -88,9 +88,10 @@ class Event_03(trigger_api.Trigger):
 
 
 class Event_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Attack_01_B')
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +100,7 @@ class Event_04(trigger_api.Trigger):
 
 
 class Battle_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastWhiteOut.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -112,7 +113,7 @@ class Battle_B(trigger_api.Trigger):
 
 
 class Event_End(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.set_interact_object(triggerIds=[10001281], state=1)
 
@@ -122,13 +123,13 @@ class Event_End(trigger_api.Trigger):
 
 
 class Exit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True) # 미카엘
         self.set_actor(triggerId=8001, visible=False, initialSequence='Damg_Idle_B')
 
 
 class Del_Npc(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.set_actor(triggerId=8001, visible=False, initialSequence='Damg_Idle_B')
 

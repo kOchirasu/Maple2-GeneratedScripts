@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -14,15 +14,18 @@ class 대기(trigger_api.Trigger):
 class 난이도별보스등장(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_id(dungeonId=23048003):
+            # 현재 입장한 던전ID가 23048003  이라면 , <transition state="일반난이도_보스등장" /> 실행
             return 일반난이도_보스등장(self.ctx)
         if self.dungeon_id(dungeonId=23049003):
+            # 현재 입장한 던전ID가 23049003  이라면 ,<transition state="어려움난이도_보스등장" /> 실행
             return 어려움난이도_보스등장(self.ctx)
         if self.wait_tick(waitTick=1100):
+            # 던전 로직을 통해 입장하지 않고, 걍 디버그 모드 맵툴로 들어오면 이 부분 실행됨
             return 일반난이도_보스등장(self.ctx)
 
 
 class 일반난이도_보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +34,7 @@ class 일반난이도_보스등장(trigger_api.Trigger):
 
 
 class 어려움난이도_보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +50,7 @@ class 클리어처리(trigger_api.Trigger):
 
 
 class 종료처리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_portal(portalId=11, visible=True, enable=True, minimapVisible=True)
 

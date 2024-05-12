@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3101,3102,3103,3104,3105,3106], visible=True, arg3=0, delay=0, scale=0)
@@ -19,7 +19,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20000991, textId=20000991, duration=5000)
         self.select_camera(triggerId=301, enable=True)
@@ -30,13 +30,13 @@ class DungeonStart(trigger_api.Trigger):
         if self.wait_tick(waitTick=5000):
             return 시작(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.select_camera(triggerId=301, enable=False)
         self.remove_buff(boxId=199, skillId=70000107)
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.show_guide_summary(entityId=20000992, textId=20000992, duration=3000)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006], visible=False, arg3=0, delay=0, scale=0)
@@ -53,7 +53,7 @@ class 시작가이드2(trigger_api.Trigger):
 
 
 class 차등장1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2001], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class 차등장대기2(trigger_api.Trigger):
 
 
 class 차등장2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2002], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:

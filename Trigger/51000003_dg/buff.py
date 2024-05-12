@@ -17,7 +17,7 @@ class Tutorial_buff(trigger_api.Trigger):
 
 
 class buff(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[701], skillId=70000085, level=1, isSkillSet=False) # 무적
 
     def on_tick(self) -> trigger_api.Trigger:

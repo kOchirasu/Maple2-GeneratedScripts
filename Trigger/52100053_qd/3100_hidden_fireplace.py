@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False) # PortalOn
         self.set_actor(triggerId=4000, visible=True, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_ladder(triggerIds=[510], visible=False, animationEffect=False, animationDelay=0) # Ladder
@@ -26,7 +26,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Opened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=False, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(triggerIds=[10002091], state=1) # Fireplace
 
@@ -36,7 +36,7 @@ class Opened(trigger_api.Trigger):
 
 
 class LadderOn(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # PortalOn
         self.set_mesh(triggerIds=[3102], visible=False, arg3=0, delay=0, scale=0) # FireplaceInvisible
         self.set_ladder(triggerIds=[510], visible=True, animationEffect=True, animationDelay=2) # Ladder
@@ -50,7 +50,7 @@ class LadderOn(trigger_api.Trigger):
 
 
 class Closed(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=False, initialSequence='he_in_prop_fireplace_A01_Closed') # FireplaceActor
         self.set_interact_object(triggerIds=[10002091], state=1) # Fireplace
 
@@ -60,7 +60,7 @@ class Closed(trigger_api.Trigger):
 
 
 class NothingHappened(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4000, visible=True, initialSequence='he_in_prop_fireplace_A01_Opened') # FireplaceActor
 
 

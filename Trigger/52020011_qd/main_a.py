@@ -9,7 +9,7 @@ class Idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -20,7 +20,7 @@ class Ready(trigger_api.Trigger):
 
 
 class Setting(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -34,7 +34,7 @@ class Setting(trigger_api.Trigger):
 
 
 class scene_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera_path(pathIds=[4002], returnView=False)
@@ -46,19 +46,19 @@ class scene_01(trigger_api.Trigger):
 
 
 class scene_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003,4004,4005,4006], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4500):
             return scene_03(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Chin_Chin_A'])
 
 
 class scene_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4007,4008], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -67,9 +67,10 @@ class scene_03(trigger_api.Trigger):
 
 
 class scene_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='NameCaption', title='$NpcName:11003599$', desc='크리티아스 왕녀', align='centerLeft', offsetRateX=0.05, offsetRateY=0.15, duration=3000, scale=2)
         self.add_cinematic_talk(npcId=11003599, msg='그래, 반갑구나.', duration=2800)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -78,7 +79,7 @@ class scene_04(trigger_api.Trigger):
 
 
 class Exit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=0)

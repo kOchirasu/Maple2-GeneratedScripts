@@ -19,7 +19,7 @@ class 퀘스트체크(trigger_api.Trigger):
 
 
 class NPC소환(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=False) # 유저 투명 처리
         self.set_effect(triggerIds=[600], visible=False)
         self.set_effect(triggerIds=[601], visible=False)
@@ -48,7 +48,7 @@ class NPC소환(trigger_api.Trigger):
 
 
 class narration01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.set_cinematic_ui(type=1)
@@ -62,7 +62,7 @@ class narration01(trigger_api.Trigger):
 
 
 class narration02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -75,7 +75,7 @@ class narration02(trigger_api.Trigger):
 
 
 class 암전1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
@@ -85,7 +85,7 @@ class 암전1(trigger_api.Trigger):
 
 
 class 카메라무브1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[3,4], returnView=False)
         self.move_npc(spawnId=202, patrolName='PatrolData_01')
 
@@ -95,7 +95,7 @@ class 카메라무브1(trigger_api.Trigger):
 
 
 class 위협1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=8, enable=True)
         self.add_cinematic_talk(npcId=11004429, msg='$52100102_QD__MAIN__3$', duration=3000, align='left')
         self.add_cinematic_talk(npcId=11004429, msg='$52100102_QD__MAIN__4$', duration=4000, align='left')
@@ -107,7 +107,7 @@ class 위협1(trigger_api.Trigger):
 
 
 class 위협2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Bore_B', duration=3667)
         self.add_cinematic_talk(npcId=11004426, msg='$52100102_QD__MAIN__5$', duration=4000, align='left')
 
@@ -117,7 +117,7 @@ class 위협2(trigger_api.Trigger):
 
 
 class 투르카등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[6,7,9], returnView=False)
         self.set_effect(triggerIds=[600], visible=True)
         self.create_monster(spawnIds=[300], animationEffect=False)
@@ -130,7 +130,7 @@ class 투르카등장(trigger_api.Trigger):
 
 
 class 투르카대사소개(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.show_caption(type='VerticalCaption', title='$52100102_QD__MAIN__7$', desc='$52100102_QD__MAIN__8$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
 
@@ -140,7 +140,7 @@ class 투르카대사소개(trigger_api.Trigger):
 
 
 class 투르카대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=300, sequenceName='Bore_A', duration=5400)
         self.add_cinematic_talk(npcId=11004430, msg='$52100102_QD__MAIN__9$', duration=5000, align='left')
 
@@ -150,7 +150,7 @@ class 투르카대사1(trigger_api.Trigger):
 
 
 class 검은군단물러서기_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=False)
         self.select_camera(triggerId=10, enable=True)
         self.set_npc_rotation(spawnId=202, rotation=180)
@@ -165,7 +165,7 @@ class 검은군단물러서기_1(trigger_api.Trigger):
 
 
 class 검은군단돌아보기_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=203, rotation=180)
         self.set_npc_rotation(spawnId=204, rotation=135)
         self.set_npc_rotation(spawnId=206, rotation=135)
@@ -177,7 +177,7 @@ class 검은군단돌아보기_1(trigger_api.Trigger):
 
 
 class 검은군단물러서기_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=300, patrolName='PatrolData_Turka_2')
         self.move_npc(spawnId=201, patrolName='PatrolData_back_201')
         self.move_npc(spawnId=202, patrolName='PatrolData_back_202')
@@ -189,7 +189,7 @@ class 검은군단물러서기_2(trigger_api.Trigger):
 
 
 class 검은군단물러서기_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=200, patrolName='PatrolData_back_200')
         self.move_npc(spawnId=204, patrolName='PatrolData_Back_204')
         self.move_npc(spawnId=206, patrolName='PatrolData_back_206')
@@ -201,7 +201,7 @@ class 검은군단물러서기_3(trigger_api.Trigger):
 
 
 class 검은군단소멸시키기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[200])
         self.destroy_monster(spawnIds=[201])
         self.destroy_monster(spawnIds=[202])
@@ -216,7 +216,7 @@ class 검은군단소멸시키기(trigger_api.Trigger):
 
 
 class 카메라전환_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[300])
         self.create_monster(spawnIds=[301], animationEffect=False)
         self.select_camera(triggerId=11, enable=True)
@@ -227,7 +227,7 @@ class 카메라전환_1(trigger_api.Trigger):
 
 
 class 투르카이동_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='PatrolData_Turka_2')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -236,7 +236,7 @@ class 투르카이동_1(trigger_api.Trigger):
 
 
 class 게오르크장교대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004426, msg='$52100102_QD__MAIN__12$', duration=5000, align='left')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -245,7 +245,7 @@ class 게오르크장교대사(trigger_api.Trigger):
 
 
 class 투르카공격1To1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004430, msg='$52100102_QD__MAIN__13$', duration=3000, align='left')
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Bore_B', duration=3667)
 
@@ -255,7 +255,7 @@ class 투르카공격1To1(trigger_api.Trigger):
 
 
 class 투르카공격1To2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='PatrolData_Turka_Attack')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -264,7 +264,7 @@ class 투르카공격1To2(trigger_api.Trigger):
 
 
 class 투르카공격1To3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Attack_01_B', duration=600)
         self.set_effect(triggerIds=[601], visible=True)
 
@@ -274,7 +274,7 @@ class 투르카공격1To3(trigger_api.Trigger):
 
 
 class 투르카공격1To4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[11,12], returnView=False)
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Attack_02_B', duration=1400)
         self.set_effect(triggerIds=[602], visible=True)
@@ -288,7 +288,7 @@ class 투르카공격1To4(trigger_api.Trigger):
 
 
 class 투르카공격카메라(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[103])
         self.add_cinematic_talk(npcId=11004425, msg='$52100102_QD__MAIN__14$', duration=1000, align='left')
@@ -299,7 +299,7 @@ class 투르카공격카메라(trigger_api.Trigger):
 
 
 class 투르카질문_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[107])
         self.create_monster(spawnIds=[108])
         self.select_camera(triggerId=13, enable=True)
@@ -311,7 +311,7 @@ class 투르카질문_1(trigger_api.Trigger):
 
 
 class 투르카질문_2To1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Bore_B', duration=3667)
         self.add_cinematic_talk(npcId=11004430, msg='$52100102_QD__MAIN__16$', duration=5000, align='left')
         self.add_cinematic_talk(npcId=11004426, msg='$52100102_QD__MAIN__17$', duration=3000, align='left')
@@ -323,7 +323,7 @@ class 투르카질문_2To1(trigger_api.Trigger):
 
 
 class 투르카공격2To1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=301, sequenceName='Attack_01_B', duration=600)
         self.set_effect(triggerIds=[601], visible=True)
 
@@ -333,7 +333,7 @@ class 투르카공격2To1(trigger_api.Trigger):
 
 
 class 투르카공격2To2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=100, enable=True, path='BG/Common/ScreenMask/Eff_fadein_3sec.xml')
         self.select_camera(triggerId=14, enable=True)
         self.set_time_scale(enable=True, startScale=0.3, endScale=1, duration=30, interpolator=1)
@@ -347,7 +347,7 @@ class 투르카공격2To2(trigger_api.Trigger):
 
 
 class 상황정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_time_scale(enable=False, startScale=0.3, endScale=1, duration=50, interpolator=1)
         self.destroy_monster(spawnIds=[102])
         self.destroy_monster(spawnIds=[103])
@@ -363,7 +363,7 @@ class 상황정리(trigger_api.Trigger):
 
 
 class 엔딩카메라1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[301])
         self.create_monster(spawnIds=[302])
         self.set_onetime_effect(id=100, enable=False, path='BG/Common/ScreenMask/Eff_fadein_3sec.xml')
@@ -375,7 +375,7 @@ class 엔딩카메라1(trigger_api.Trigger):
 
 
 class 투르카엔딩대사_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=17, enable=True)
         self.move_npc(spawnId=302, patrolName='PatrolData_Turka_End_Move')
         self.set_effect(triggerIds=[604], visible=True)
@@ -387,7 +387,7 @@ class 투르카엔딩대사_1(trigger_api.Trigger):
 
 
 class 엔딩암전(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=101, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -396,8 +396,9 @@ class 엔딩암전(trigger_api.Trigger):
 
 
 class 연출끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1], arg2=False)
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -408,7 +409,7 @@ class 연출끝(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = Ready

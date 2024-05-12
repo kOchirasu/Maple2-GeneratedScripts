@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2097], animationEffect=False)
         self.spawn_npc_range(rangeIds=[2008,2009,2010], isAutoTargeting=True)
         self.spawn_npc_range(rangeIds=[2101,2102,2103,2104,2105,2106,2107], isAutoTargeting=True)

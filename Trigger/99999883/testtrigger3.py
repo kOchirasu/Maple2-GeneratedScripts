@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001010], state=0) # FlyingCloud
         self.set_breakable(triggerIds=[4000], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000], visible=False)
@@ -14,7 +14,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Enter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001010], state=1) # FlyingCloud
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class Enter01(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -37,7 +37,7 @@ class TakeOffFlyingCloud01(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=99999883, portalId=100, boxId=9900)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +46,7 @@ class TakeOffFlyingCloud02(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -56,7 +56,7 @@ class TakeOffFlyingCloud03(trigger_api.Trigger):
 
 
 class TakeOffFlyingCloud04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(mapId=99999883, portalId=101, boxId=9900)
@@ -67,7 +67,7 @@ class TakeOffFlyingCloud04(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4000], enable=False)
         self.set_visible_breakable_object(triggerIds=[4000], visible=False)
 

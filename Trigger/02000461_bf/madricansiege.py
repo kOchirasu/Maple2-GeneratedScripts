@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99999102, key='cannon02', value=0)
         self.set_user_value(triggerId=99999103, key='cannon03', value=0)
         self.set_user_value(triggerId=99999104, key='cannon04', value=0)
@@ -60,7 +60,7 @@ class 대기(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004], visible=False, arg3=0, delay=0, scale=5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -69,7 +69,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 던전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
         self.set_agent(triggerIds=[8001,8002,8003,8004,8005,8006], visible=False)
 
@@ -81,7 +81,7 @@ class 던전시작(trigger_api.Trigger):
 
 
 class 차지원1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020], isAutoTargeting=False)
         self.create_monster(spawnIds=[2002,2003,2004,2005], animationEffect=False)
         self.set_user_value(triggerId=99999101, key='cannon01', value=1)
@@ -95,7 +95,7 @@ class 차지원1(trigger_api.Trigger):
 
 
 class 다리건넘(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.shadow_expedition(type='OpenBossGauge', maxGaugePoint=1400)
         self.set_user_value(triggerId=99999102, key='cannon02', value=1)
         self.set_user_value(triggerId=99999103, key='cannon03', value=1)
@@ -108,7 +108,7 @@ class 다리건넘(trigger_api.Trigger):
 
 
 class 차지원2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.spawn_npc_range(rangeIds=[2021,2022,2023,2024,2025,2026,2027,2028,2029,2030], isAutoTargeting=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -117,7 +117,7 @@ class 차지원2(trigger_api.Trigger):
 
 
 class 차지원3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2031,2032,2033,2034,2035,2036], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -127,7 +127,7 @@ class 차지원3(trigger_api.Trigger):
 
 
 class 보스등장_딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2901,2902,2903,2904,2905], arg2=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -136,7 +136,7 @@ class 보스등장_딜레이(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[2099], animationEffect=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -145,7 +145,7 @@ class 보스등장(trigger_api.Trigger):
 
 
 class 보스_버프패턴(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000461_BF__MADRICANSIEGE__0$', arg3='5000')
         self.set_user_value(triggerId=99999102, key='Bosscannon02', value=1)
         self.set_user_value(triggerId=99999103, key='Bosscannon03', value=1)
@@ -158,7 +158,7 @@ class 보스_버프패턴(trigger_api.Trigger):
 
 
 class 던전종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=199, type='trigger', achieve='Madracan01')
         self.set_achievement(triggerId=199, type='trigger', achieve='ClearMadracanSiege')
         self.dungeon_clear()

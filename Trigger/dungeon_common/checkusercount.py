@@ -5,14 +5,19 @@ import trigger_api
 class CheckUserCount(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.dungeon_max_user_count(value=4):
+            # 던전 최대 인원수가 4이면
             return MaxCount04_Wait01(self.ctx)
         if self.dungeon_max_user_count(value=3):
+            # 던전 최대 인원수가 3이면
             return MaxCount03_Wait01(self.ctx)
         if self.dungeon_max_user_count(value=2):
+            # 던전 최대 인원수가 2이면
             return MaxCount02_Wait01(self.ctx)
         if self.dungeon_max_user_count(value=1):
+            # 던전 최대 인원수가 1이면
             return MaxCount01_Wait01(self.ctx)
         if not self.is_dungeon_room():
+            # 룸던전이 아니면 바로 시작
             return DungeonStart(self.ctx)
 
 
@@ -26,7 +31,7 @@ class MaxCount04_Wait01(trigger_api.Trigger):
 
 
 class MaxCount04_Wait02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -37,7 +42,7 @@ class MaxCount04_Wait02(trigger_api.Trigger):
 
 
 class MaxCount04_Wait03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +53,7 @@ class MaxCount04_Wait03(trigger_api.Trigger):
 
 
 class MaxCount04_Wait04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +73,7 @@ class MaxCount03_Wait01(trigger_api.Trigger):
 
 
 class MaxCount03_Wait02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -79,7 +84,7 @@ class MaxCount03_Wait02(trigger_api.Trigger):
 
 
 class MaxCount03_Wait03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -90,7 +95,7 @@ class MaxCount03_Wait03(trigger_api.Trigger):
 
 
 class MaxCount03_Wait04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -110,7 +115,7 @@ class MaxCount02_Wait01(trigger_api.Trigger):
 
 
 class MaxCount02_Wait02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -121,7 +126,7 @@ class MaxCount02_Wait02(trigger_api.Trigger):
 
 
 class MaxCount02_Wait03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -132,7 +137,7 @@ class MaxCount02_Wait03(trigger_api.Trigger):
 
 
 class MaxCount02_Wait04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=40012, textId=40012, duration=4000)
 
     def on_tick(self) -> trigger_api.Trigger:

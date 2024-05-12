@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=False)
         self.set_user_value(triggerId=99990023, key='MonsterSpawn', value=0)
         self.destroy_monster(spawnIds=[712,722])
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 레버2_체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[722], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,45 +23,45 @@ class 레버2_체크(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.monster_dead(boxIds=[712]):
             return 레버2_발동(self.ctx)
-        if self.all_of():
+        if self.monster_dead(boxIds=[921]) and self.monster_dead(boxIds=[922]) and self.monster_dead(boxIds=[923]) and self.monster_dead(boxIds=[924]) and self.monster_dead(boxIds=[925]) and self.monster_dead(boxIds=[926]):
             return 종료(self.ctx)
 
 
 class 레버2_발동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=True)
         self.set_interact_object(triggerIds=[12000095], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossObjectStart', value=2):
             return 대기(self.ctx)
-        if self.all_of():
+        if self.monster_dead(boxIds=[921]) and self.monster_dead(boxIds=[922]) and self.monster_dead(boxIds=[923]) and self.monster_dead(boxIds=[924]) and self.monster_dead(boxIds=[925]) and self.monster_dead(boxIds=[926]):
             return 종료(self.ctx)
         if self.object_interacted(interactIds=[12000095], stateValue=0):
             return 레버2_안내(self.ctx)
 
 
 class 레버2_안내(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=99990023, key='MonsterSpawn', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossObjectStart', value=2):
             return 종료(self.ctx)
-        if self.all_of():
+        if self.monster_dead(boxIds=[921]) and self.monster_dead(boxIds=[922]) and self.monster_dead(boxIds=[923]) and self.monster_dead(boxIds=[924]) and self.monster_dead(boxIds=[925]) and self.monster_dead(boxIds=[926]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=10000):
             return 레버2_재활성(self.ctx)
 
 
 class 레버2_재활성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[12000095], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossObjectStart', value=2):
             return 종료(self.ctx)
-        if self.all_of():
+        if self.monster_dead(boxIds=[921]) and self.monster_dead(boxIds=[922]) and self.monster_dead(boxIds=[923]) and self.monster_dead(boxIds=[924]) and self.monster_dead(boxIds=[925]) and self.monster_dead(boxIds=[926]):
             return 종료(self.ctx)
         if self.object_interacted(interactIds=[12000095], stateValue=0):
             return 레버2_재활성_대기(self.ctx)
@@ -71,14 +71,14 @@ class 레버2_재활성_대기(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='BossObjectStart', value=2):
             return 종료(self.ctx)
-        if self.all_of():
+        if self.monster_dead(boxIds=[921]) and self.monster_dead(boxIds=[922]) and self.monster_dead(boxIds=[923]) and self.monster_dead(boxIds=[924]) and self.monster_dead(boxIds=[925]) and self.monster_dead(boxIds=[926]):
             return 종료(self.ctx)
         if self.wait_tick(waitTick=10000):
             return 레버2_재활성(self.ctx)
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5101], visible=False)
         self.set_user_value(triggerId=99990023, key='MonsterSpawn', value=0)
         self.destroy_monster(spawnIds=[712,722])

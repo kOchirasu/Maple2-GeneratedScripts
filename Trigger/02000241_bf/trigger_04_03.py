@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[306], visible=True, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[707,708], visible=True)
         self.set_mesh(triggerIds=[309,310,311,312,313,314,315,316,317,318,319,320,321,322,323,324], visible=False)
@@ -21,7 +21,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 버튼눌림(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[306], visible=False, arg3=0, delay=0, scale=0)
         self.set_actor(triggerId=509, visible=True, initialSequence='Opened')
         self.set_actor(triggerId=510, visible=True, initialSequence='Opened')

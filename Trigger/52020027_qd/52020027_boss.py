@@ -11,6 +11,7 @@ class 감지(trigger_api.Trigger):
 class 페이즈1(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='SerihaAI', value=1):
+            # <AI에서 신호 쏴줌(AI_Seriha.xml)>
             return 도약(self.ctx)
 
 
@@ -21,7 +22,7 @@ class 도약(trigger_api.Trigger):
 
 
 class 페이즈2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=111, script='조심하는 게 좋을걸?', arg4=4)
         self.create_monster(spawnIds=[112], animationEffect=True)
         self.create_monster(spawnIds=[113], animationEffect=True)
@@ -34,7 +35,7 @@ class 페이즈2(trigger_api.Trigger):
 
 
 class NPC애니세팅(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=114, sequenceName='Attack_01_A', duration=2000)
         self.set_npc_emotion_loop(spawnId=115, sequenceName='Attack_01_A', duration=2000)
 

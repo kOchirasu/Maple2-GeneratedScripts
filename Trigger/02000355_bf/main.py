@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=299, visible=True, initialSequence='Dead_Idle_A')
         self.create_monster(spawnIds=[2101,2102,2103,2104,2105,2106,2107,2108], animationEffect=False)
         self.set_effect(triggerIds=[600], visible=False)
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=301, enable=True)
@@ -36,7 +36,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 카드반교체(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=299, visible=False, initialSequence='Dead_Idle_A')
         self.create_monster(spawnIds=[2097], animationEffect=False)
 
@@ -46,7 +46,7 @@ class 카드반교체(trigger_api.Trigger):
 
 
 class 카드반대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_conversation(type=2, spawnId=24001705, script='$02000355_BF__MAIN__0$', arg4=4)
 
@@ -56,7 +56,7 @@ class 카드반대사01(trigger_api.Trigger):
 
 
 class 카트반이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_mesh(triggerIds=[3701,3702,3703,3704,3705,3706,3707,3708,3709,3710,3711,3712,3713,3714,3715,3716], visible=False, arg3=0, delay=0, scale=0)
         self.select_camera_path(pathIds=[301], returnView=True)
@@ -67,7 +67,7 @@ class 카트반이동(trigger_api.Trigger):
 
 
 class 연출종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=2097, patrolName='MS2PatrolData2097_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class 종료체크(trigger_api.Trigger):
 
 
 class 종료연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -106,7 +106,7 @@ class 종료연출시작(trigger_api.Trigger):
 
 
 class 카드반대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[600], visible=True)
         self.set_conversation(type=2, spawnId=24001705, script='$02000355_BF__MAIN__1$', arg4=4)
         self.set_skip(state=연출종료2)
@@ -117,7 +117,7 @@ class 카드반대사02(trigger_api.Trigger):
 
 
 class 연출종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

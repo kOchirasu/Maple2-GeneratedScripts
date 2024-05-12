@@ -9,7 +9,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 웜리젠91(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1,2,3])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class 웜리젠91(trigger_api.Trigger):
 
 
 class 웜리젠91쿨타임(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_timer(timerId='9')
         self.set_timer(timerId='9', seconds=30)
 

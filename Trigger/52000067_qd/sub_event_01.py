@@ -3,16 +3,16 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[751], animationEffect=True) # 골두스
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=703, boxId=1):
+        if self.count_users(boxId=703, minUsers='1'):
             return ready(self.ctx)
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=751, script='$52000067_QD__SUB_EVENT_01__0$', arg4=3, arg5=0)
         self.set_conversation(type=1, spawnId=751, script='$52000067_QD__SUB_EVENT_01__1$', arg4=3, arg5=3)
         self.set_conversation(type=1, spawnId=751, script='$52000067_QD__SUB_EVENT_01__2$', arg4=3, arg5=6)
@@ -30,7 +30,7 @@ class ready(trigger_api.Trigger):
 
 
 class start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[757,758,761,762], animationEffect=True) # 시민
         self.set_conversation(type=1, spawnId=757, script='$52000067_QD__SUB_EVENT_01__10$', arg4=3, arg5=2)
         self.set_conversation(type=1, spawnId=758, script='$52000067_QD__SUB_EVENT_01__11$', arg4=3, arg5=3)

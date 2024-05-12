@@ -3,16 +3,16 @@ import trigger_api
 
 
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[591,592], animationEffect=True) # 시민
 
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=705, boxId=1):
+        if self.count_users(boxId=705, minUsers='1'):
             return ready(self.ctx)
 
 
 class ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[537,538,539], animationEffect=True) # 몬스터
         self.set_npc_emotion_loop(spawnId=591, sequenceName='Emotion_Failure_Idle_A', duration=600000)
         self.set_npc_emotion_loop(spawnId=592, sequenceName='Emotion_Failure_Idle_A', duration=600000)
@@ -25,7 +25,7 @@ class ready(trigger_api.Trigger):
 
 
 class end(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=591, sequenceName='Talk_A')
         self.set_npc_emotion_sequence(spawnId=592, sequenceName='Idle_A')
         self.set_conversation(type=1, spawnId=591, script='$52000067_QD__SUB_EVENT_03__2$', arg4=3, arg5=0)
@@ -36,7 +36,7 @@ class end(trigger_api.Trigger):
 
 
 class ending(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=591, patrolName='MS2PatrolData_5010')
         self.move_npc(spawnId=592, patrolName='MS2PatrolData_5010')
 

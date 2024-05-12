@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[601], visible=False)
         self.set_effect(triggerIds=[602], visible=False)
         self.set_effect(triggerIds=[603], visible=False)
@@ -24,7 +24,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=301, enable=True)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -35,7 +35,7 @@ class 연출시작(trigger_api.Trigger):
 
 
 class 아시모프이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001_A')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -44,7 +44,7 @@ class 아시모프이동(trigger_api.Trigger):
 
 
 class 책장변경(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0)
         self.set_mesh(triggerIds=[3002], visible=True, arg3=0, delay=0, scale=0)
 
@@ -54,7 +54,7 @@ class 책장변경(trigger_api.Trigger):
 
 
 class 동영상재상(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.widget_action(type='SceneMovie', func='Clear')
         self.play_scene_movie(fileName='Starlight_expedition.swf', movieId=1)
@@ -65,7 +65,7 @@ class 동영상재상(trigger_api.Trigger):
 
 
 class 이슈라대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=302, enable=True)
         self.set_effect(triggerIds=[601], visible=True)
         self.set_conversation(type=2, spawnId=11001244, script='$52000028_QD__MAIN__0$', arg4=5, arg5=0) # 음성 코드 00001294
@@ -76,7 +76,7 @@ class 이슈라대사01(trigger_api.Trigger):
 
 
 class 이슈라대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[602], visible=True)
         self.set_conversation(type=2, spawnId=11001244, script='$52000028_QD__MAIN__1$', arg4=6, arg5=0) # 음성 코드 00001295
 
@@ -86,7 +86,7 @@ class 이슈라대사02(trigger_api.Trigger):
 
 
 class 아시모프대사01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1001, patrolName='MS2PatrolData_1001_B')
         self.set_effect(triggerIds=[603], visible=True)
         self.set_conversation(type=2, spawnId=11000031, script='$52000028_QD__MAIN__2$', arg4=3, arg5=0) # 음성 코드 00001343
@@ -97,7 +97,7 @@ class 아시모프대사01(trigger_api.Trigger):
 
 
 class 아시모프대사02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[604], visible=True)
         self.set_conversation(type=2, spawnId=11000031, script='$52000028_QD__MAIN__3$', arg4=6, arg5=0) # 음성 코드 00001344
 
@@ -105,7 +105,7 @@ class 아시모프대사02(trigger_api.Trigger):
         if self.wait_tick(waitTick=6000):
             return 퀘스트수락대기(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_achievement(triggerId=101, type='trigger', achieve='BackstoryOfRune')
         self.select_camera(triggerId=301, enable=False)
         self.set_cinematic_ui(type=0)
@@ -121,7 +121,7 @@ class 퀘스트수락대기(trigger_api.Trigger):
 
 
 class NPC이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1002, patrolName='MS2PatrolData_1002_A')
         self.move_npc(spawnId=1003, patrolName='MS2PatrolData_1003_A')
         self.move_npc(spawnId=1005, patrolName='MS2PatrolData_1005_A')
@@ -132,7 +132,7 @@ class NPC이동01(trigger_api.Trigger):
 
 
 class NPC이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=1008, patrolName='MS2PatrolData_1008_A')
         self.move_npc(spawnId=1013, patrolName='MS2PatrolData_1013_A')
         self.move_npc(spawnId=1014, patrolName='MS2PatrolData_1014_A')

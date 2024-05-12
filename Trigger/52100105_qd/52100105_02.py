@@ -11,7 +11,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class wait_03(trigger_api.Trigger):
 
 
 class 연출보러(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52100105, portalId=4)
 
 

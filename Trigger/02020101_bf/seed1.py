@@ -3,9 +3,10 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
-        # <action name="SetUserValue" triggerID="900005" key="TimerStart" value="0" />
+        # self.set_user_value(triggerId=900005, key='TimerStart', value=0)
+        # self.set_user_value(triggerId=900005, key='TimerReset', value=0)
         self.set_actor(triggerId=1401, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
         self.set_actor(triggerId=1402, visible=True, initialSequence='Interaction_lapentatree_A01_Off')
         self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=False, arg3=0, delay=0, scale=0)
@@ -24,13 +25,17 @@ class 시작(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_user_value(triggerId=900009, key='Seed', value=0)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
             return 활성화(self.ctx)
 
 
 class 활성화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9001,9002,9003,9004], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002124], state=1)
         self.set_interact_object(triggerIds=[10002125], state=1)
@@ -74,63 +79,63 @@ class 활성화(trigger_api.Trigger):
 
 
 class 씨앗심기1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 나무생성1(self.ctx)
         if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
             return 종료(self.ctx)
 
 
 class 씨앗심기2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 나무생성1(self.ctx)
         if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
             return 종료(self.ctx)
 
 
 class 씨앗심기3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 나무생성1(self.ctx)
         if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
             return 종료(self.ctx)
 
 
 class 씨앗심기4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[101]):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 나무생성1(self.ctx)
         if not self.check_any_user_additional_effect(boxId=1004, additionalEffectId=70002109, level=1):
             return 종료(self.ctx)
 
 
 class 나무생성1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[901], enable=True)
         self.set_skill(triggerIds=[902], enable=True)
         self.set_interact_object(triggerIds=[10002128], state=2)
@@ -153,7 +158,7 @@ class 나무생성1(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900009, key='Seed', value=0)
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         self.set_skill(triggerIds=[901], enable=False)

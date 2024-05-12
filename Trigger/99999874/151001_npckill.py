@@ -15,7 +15,7 @@ class NPCKillWait(trigger_api.Trigger):
 
 
 class NPCKill(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[15401,15402,15501,15502])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class NPCKill(trigger_api.Trigger):
 
 
 class KillEnd(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=151001, key='NPCKill', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:

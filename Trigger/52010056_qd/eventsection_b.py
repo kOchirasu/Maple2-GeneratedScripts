@@ -15,7 +15,7 @@ class Ready(trigger_api.Trigger):
 
 
 class 연출준비_A(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -28,7 +28,7 @@ class 연출준비_A(trigger_api.Trigger):
 
 
 class 연출준비_B(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[999], animationEffect=False) # 크림슨 스피어: 29000386
         self.select_camera_path(pathIds=[4004], returnView=False)
 
@@ -38,7 +38,7 @@ class 연출준비_B(trigger_api.Trigger):
 
 
 class 경비병_스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_sequence(spawnId=121, sequenceName='Attack_01_B')
@@ -50,7 +50,7 @@ class 경비병_스폰(trigger_api.Trigger):
 
 
 class 경비병_이동시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=999, patrolName='MS2PatrolData_3008')
         self.select_camera_path(pathIds=[4005], returnView=False)
 
@@ -60,14 +60,14 @@ class 경비병_이동시작(trigger_api.Trigger):
 
 
 class 조작_시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.reset_camera(interpolationTime=1)
         self.remove_buff(boxId=2001, skillId=70000107)
         self.set_event_ui(type=1, arg2='$52010056_QD__EventSection_B__1$', arg3='3000', arg4='0')
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_sound(triggerId=7001, enable=False)
 

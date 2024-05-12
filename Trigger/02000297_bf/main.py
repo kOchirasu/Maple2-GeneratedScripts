@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[6100])
         self.destroy_monster(spawnIds=[6200])
         self.set_agent(triggerIds=[101], visible=False)
@@ -40,7 +40,7 @@ class LoadingDelay02(trigger_api.Trigger):
 
 
 class BossBattle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(boxIds=[9000], sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02000297_BF__MAIN__0$', arg3='5000', arg4='0')
         self.set_agent(triggerIds=[101], visible=True)
@@ -64,7 +64,7 @@ class BossBattle01(trigger_api.Trigger):
 
 
 class BossBattle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[6100])
 
     def on_tick(self) -> trigger_api.Trigger:

@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MakeInvincible(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9000], skillId=71000049, level=1, isPlayer=False, isSkillSet=False) # 대기공간 무적
 
     def on_tick(self) -> trigger_api.Trigger:

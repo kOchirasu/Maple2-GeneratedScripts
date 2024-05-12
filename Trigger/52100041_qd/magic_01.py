@@ -9,7 +9,7 @@ class idle(trigger_api.Trigger):
 
 
 class Ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False)
         self.set_mesh(triggerIds=[1101], visible=False, arg3=0, delay=200, scale=15)
         self.set_mesh(triggerIds=[1201], visible=True, arg3=0, delay=200, scale=15)
@@ -21,7 +21,8 @@ class Ready(trigger_api.Trigger):
 
 
 class Event_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_achievement(triggerId=711, type='trigger', achieve='Hauntedmansion')
         self.create_monster(spawnIds=[161,162,163], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -30,7 +31,7 @@ class Event_01(trigger_api.Trigger):
 
 
 class Event_01_b(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=161, sequenceName='Bore_A')
         self.set_npc_emotion_sequence(spawnId=162, sequenceName='Bore_A')
         self.set_npc_emotion_sequence(spawnId=163, sequenceName='Bore_A')
@@ -44,7 +45,7 @@ class Event_01_b(trigger_api.Trigger):
 
 
 class Event_01_c(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[161,162,163])
 
 

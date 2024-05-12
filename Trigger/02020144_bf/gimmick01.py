@@ -11,8 +11,9 @@ class 대기(trigger_api.Trigger):
 
 
 class 몬스터소환(trigger_api.Trigger):
-    def on_enter(self):
-        self.create_monster(spawnIds=[201,202,203,204], animationEffect=False) # 21430007 라펜턴드 블레이더, 21430008 라펜턴드 매지션
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 21430007 라펜턴드 블레이더, 21430008 라펜턴드 매지션
+        self.create_monster(spawnIds=[201,202,203,204], animationEffect=False)
         self.set_user_value(triggerId=900003, key='summon', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +24,7 @@ class 몬스터소환(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201,202,203,204], arg2=False)
         self.set_user_value(triggerId=900003, key='summon', value=2)
 

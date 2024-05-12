@@ -9,7 +9,7 @@ class wait_01(trigger_api.Trigger):
 
 
 class wait_01_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.create_monster(spawnIds=[101], animationEffect=False)
@@ -23,7 +23,7 @@ class wait_01_02(trigger_api.Trigger):
 
 
 class wait_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_widget(type='SceneMovie')
         self.play_scene_movie(fileName='jobChangeStory.swf', movieId=1)
 
@@ -35,7 +35,7 @@ class wait_02(trigger_api.Trigger):
 
 
 class 숲전경_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
@@ -46,7 +46,7 @@ class 숲전경_01(trigger_api.Trigger):
 
 
 class 숲전경_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_caption(type='VerticalCaption', title='$52000179_QD__52000179__0$', desc='$52000179_QD__52000179__2$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=3000, scale=2.5)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -55,7 +55,7 @@ class 숲전경_02(trigger_api.Trigger):
 
 
 class 정리_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -64,8 +64,9 @@ class 정리_01(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -74,7 +75,7 @@ class 정리_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=4)
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_SlowFade.xml')
@@ -85,7 +86,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 정리_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -98,7 +99,7 @@ class 정리_03(trigger_api.Trigger):
 
 
 class 퀘스트가이드_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.show_guide_summary(entityId=25201791, textId=25201791, duration=10000)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -107,7 +108,7 @@ class 퀘스트가이드_01(trigger_api.Trigger):
 
 
 class 케이틀린걱정(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_3001')
         self.add_balloon_talk(spawnId=101, msg='$52000179_QD__52000179__1$', duration=3000, delayTick=0)
 
@@ -117,7 +118,7 @@ class 케이틀린걱정(trigger_api.Trigger):
 
 
 class 이동_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=3, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
 
@@ -127,7 +128,7 @@ class 이동_01(trigger_api.Trigger):
 
 
 class 이동_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52000180, portalId=1)
 
 

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[801], visible=True, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7001], enable=True)
         self.set_skill(triggerIds=[7002], enable=True)
@@ -52,7 +52,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 단계1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[801], visible=False, arg3=0, delay=0, scale=0)
         self.set_skill(triggerIds=[7001], enable=False)
         self.set_skill(triggerIds=[7002], enable=False)

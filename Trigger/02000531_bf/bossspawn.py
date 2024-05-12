@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[1,2,3,4,5], visible=True, arg3=0, delay=0, scale=0)
         self.set_portal(portalId=1, visible=True, enable=True, minimapVisible=True)
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
@@ -14,7 +14,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[999], animationEffect=False) # 이벤트
         self.create_monster(spawnIds=[99], animationEffect=False) # 핑크빈
         self.create_monster(spawnIds=[90], animationEffect=False)
@@ -29,11 +29,12 @@ class 보스등장(trigger_api.Trigger):
         if self.dungeon_time_out():
             return 던전실패(self.ctx)
         if self.dungeon_check_state(checkState='Fail'):
+            # 던전을 포기해서 실패한 경우
             return 던전실패(self.ctx)
 
 
 class 종료딜레이(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=9999998, key='BattleEnd', value=1)
         self.set_mesh(triggerIds=[3002], visible=False, arg3=0, delay=0, scale=0)
 
@@ -45,7 +46,7 @@ class 종료딜레이(trigger_api.Trigger):
 
 
 class 던전실패(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
         self.set_user_value(triggerId=9999998, key='BattleEnd', value=1)
 
@@ -57,7 +58,7 @@ class 던전실패(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_enable_give_up(isEnable='0')
 
 

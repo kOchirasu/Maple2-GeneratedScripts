@@ -7,7 +7,7 @@ import trigger_api
 # 한순간의 방심 하렌(11003749) - spawnpoint : 2
 # 연출용 하렌(11003756) - spawnpoint : 101
 class idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -16,7 +16,7 @@ class idle(trigger_api.Trigger):
 
 
 class 두번째연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -25,7 +25,7 @@ class 두번째연출준비(trigger_api.Trigger):
 
 
 class 두번째연출준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.destroy_monster(spawnIds=[102]) # 퀘스트용 하렌
@@ -38,7 +38,7 @@ class 두번째연출준비_01(trigger_api.Trigger):
 
 
 class 두번째연출준비_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=52020031, portalId=6001)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 두번째연출준비_02(trigger_api.Trigger):
 
 
 class 두번째연출(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=0, msg='천공의 심장을 돌려줘.', duration=3000)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_3003')
@@ -58,7 +58,7 @@ class 두번째연출(trigger_api.Trigger):
 
 
 class 두번째연출_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4010], returnView=False)
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
 
@@ -68,7 +68,7 @@ class 두번째연출_01(trigger_api.Trigger):
 
 
 class 두번째연출_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003756, msg='곱게 가져갈 수 있을 거라고 생각해?', duration=3000)
         self.add_cinematic_talk(npcId=11003756, msg='꿈도 야무지다니까... 호호호', duration=2000)
 
@@ -78,7 +78,7 @@ class 두번째연출_02(trigger_api.Trigger):
 
 
 class 두번째연출_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4012], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -87,7 +87,7 @@ class 두번째연출_03(trigger_api.Trigger):
 
 
 class 두번째연출전투준비_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -96,7 +96,7 @@ class 두번째연출전투준비_01(trigger_api.Trigger):
 
 
 class 두번째연출전투준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.reset_camera(interpolationTime=2)
         self.set_cinematic_ui(type=2) # UI 숨기기 초기화
@@ -108,7 +108,7 @@ class 두번째연출전투준비(trigger_api.Trigger):
 
 
 class 두번째연출전투준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.create_monster(spawnIds=[601], animationEffect=False) # 몬스터 하렌
         self.set_event_ui(type=1, arg2='하렌을 처치하세요!', arg3='2000', arg4='0')
@@ -120,7 +120,7 @@ class 두번째연출전투준비1(trigger_api.Trigger):
 
 
 class 두번째연출전투종료1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0.5)
         self.move_user(mapId=52020031, portalId=6001)
@@ -132,7 +132,7 @@ class 두번째연출전투종료1(trigger_api.Trigger):
 
 
 class 두번째연출전투종료2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.set_interact_object(triggerIds=[10000288], state=1)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 반항(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.set_conversation(type=1, spawnId=202, script='$02000049_BF__TRIGGER_03__0$', arg4=2)
 
@@ -23,7 +23,7 @@ class 반항(trigger_api.Trigger):
 
 
 class 반항2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=30, startDelay=0)
         self.set_interact_object(triggerIds=[10000288], state=2)
 

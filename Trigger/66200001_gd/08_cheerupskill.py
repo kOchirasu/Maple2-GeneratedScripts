@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class CheerUpTimer_20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=20, startDelay=1, interval=0) # 20sec
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -18,7 +18,7 @@ class CheerUpTimer_20(trigger_api.Trigger):
 
 
 class GiveCheerUp(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9001], skillId=70000086, level=1, isPlayer=False, isSkillSet=False) # 할 수 있어 버프
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -28,7 +28,7 @@ class GiveCheerUp(trigger_api.Trigger):
 
 # Reset
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CheerUpTimer', value=0)
         self.reset_timer(timerId='1')
 

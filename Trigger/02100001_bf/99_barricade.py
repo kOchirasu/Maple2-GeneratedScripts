@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(key='CageDoorOpen', value=0)
         self.set_user_value(key='MissionStart', value=0)
         self.set_user_value(key='MissionComplete', value=0)
@@ -25,7 +25,7 @@ class CageDoorOpenDelay(trigger_api.Trigger):
 
 
 class CageDoorOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # MetalDoorOpen 사운드 이펙트
         self.set_actor(triggerId=4000, visible=True, initialSequence='Open') # Cage
         self.set_mesh(triggerIds=[3100], visible=False, arg3=300, delay=0, scale=0) # Cage Door
@@ -36,7 +36,7 @@ class CageDoorOpen(trigger_api.Trigger):
 
 
 class CountDown(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
         self.set_event_ui(type=1, arg2='$02100001_BF__99_BARRICADE__0$', arg3='3000')
 
@@ -46,7 +46,7 @@ class CountDown(trigger_api.Trigger):
 
 
 class ShutDown(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True) # MetalDoorClose 사운드 이펙트
         self.set_user_value(triggerId=5, key='GiveBuffSlowly', value=1)
         self.set_actor(triggerId=4000, visible=True, initialSequence='Closed') # Cage
@@ -58,7 +58,7 @@ class ShutDown(trigger_api.Trigger):
 
 
 class Release(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # MetalDoorOpen 사운드 이펙트
         self.set_actor(triggerId=4000, visible=True, initialSequence='Open') # Cage
         self.set_mesh(triggerIds=[3100], visible=False, arg3=300, delay=0, scale=0) # Cage Door

@@ -9,7 +9,7 @@ class Wait(trigger_api.Trigger):
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_scene_skip(state=Skip_1, action='nextState')
         self.set_cinematic_ui(type=1)
@@ -26,7 +26,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.move_npc(spawnId=102, patrolName='MS2PatrolData_3001')
 
@@ -36,7 +36,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 삼자대면(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4005,4002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -45,7 +45,7 @@ class 삼자대면(trigger_api.Trigger):
 
 
 class 삼자대면_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__0$', align='left', illustId='Eone_normal', duration=5000)
@@ -56,7 +56,7 @@ class 삼자대면_02(trigger_api.Trigger):
 
 
 class 삼자대면_02_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=8500)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__1$', align='right', illustId='Bliche_closeEye', duration=4500)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__2$', align='right', illustId='Bliche_normal', duration=4000)
@@ -67,7 +67,7 @@ class 삼자대면_02_01(trigger_api.Trigger):
 
 
 class 삼자대면_02_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=9000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__3$', align='left', illustId='Eone_normal', duration=4000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__4$', align='left', illustId='Eone_serious', duration=5000)
@@ -78,7 +78,7 @@ class 삼자대면_02_02(trigger_api.Trigger):
 
 
 class 삼자대면_02_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=5200)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__5$', align='right', illustId='Bliche_normal', duration=2000)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__6$', align='right', illustId='Bliche_normal', duration=3200)
@@ -89,7 +89,7 @@ class 삼자대면_02_03(trigger_api.Trigger):
 
 
 class 삼자대면_02_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=3200)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__7$', align='left', illustId='Eone_closeEye', duration=3200)
 
@@ -99,7 +99,7 @@ class 삼자대면_02_04(trigger_api.Trigger):
 
 
 class 삼자대면_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=103, sequenceName='Talk_A', duration=19000)
         self.select_camera_path(pathIds=[4003], returnView=False)
         self.add_cinematic_talk(npcId=11004615, msg='$52100109_QD__MAIN__8$', align='left', illustId='siman_normal', duration=4000)
@@ -110,7 +110,7 @@ class 삼자대면_03(trigger_api.Trigger):
 
 
 class 삼자대면_03_00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4004], returnView=False)
         self.add_cinematic_talk(npcId=11004615, msg='$52100109_QD__MAIN__9$', align='left', illustId='siman_normal', duration=5000)
         self.add_cinematic_talk(npcId=11004615, msg='$52100109_QD__MAIN__10$', align='left', illustId='siman_normal', duration=5000)
@@ -122,7 +122,7 @@ class 삼자대면_03_00(trigger_api.Trigger):
 
 
 class 삼자대면_03_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=5000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__12$', align='left', illustId='Eone_serious', duration=5000)
 
@@ -132,7 +132,7 @@ class 삼자대면_03_01(trigger_api.Trigger):
 
 
 class 삼자대면_03_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=4500)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__13$', align='right', illustId='Bliche_closeEye', duration=4500)
 
@@ -142,7 +142,7 @@ class 삼자대면_03_02(trigger_api.Trigger):
 
 
 class 삼자대면_03_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=8500)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__14$', align='left', illustId='Eone_normal', duration=4000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__15$', align='left', illustId='Eone_closeEye', duration=4500)
@@ -154,7 +154,7 @@ class 삼자대면_03_03(trigger_api.Trigger):
 
 
 class 삼자대면_03_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=4500)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__17$', align='right', illustId='Bliche_normal', duration=4500)
 
@@ -164,7 +164,7 @@ class 삼자대면_03_04(trigger_api.Trigger):
 
 
 class 삼자대면_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=3200)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__18$', align='left', illustId='Eone_normal', duration=3200)
 
@@ -174,7 +174,7 @@ class 삼자대면_04(trigger_api.Trigger):
 
 
 class 삼자대면_04_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=102, sequenceName='Talk_A', duration=4500)
         self.add_cinematic_talk(npcId=11004616, msg='$52100109_QD__MAIN__19$', align='right', illustId='Bliche_normal', duration=4500)
         self.add_cinematic_talk(npcId=11004615, msg='$52100109_QD__MAIN__20$', align='left', illustId='siman_normal', duration=2000)
@@ -185,10 +185,11 @@ class 삼자대면_04_01(trigger_api.Trigger):
 
 
 class 삼자대면_04_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_loop(spawnId=101, sequenceName='Talk_A', duration=8000)
         self.add_cinematic_talk(npcId=11004614, msg='$52100109_QD__MAIN__21$', align='left', illustId='Eone_smile', duration=4000)
         self.add_cinematic_talk(npcId=11004615, msg='$52100109_QD__MAIN__22$', align='right', illustId='siman_normal', duration=4000)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -197,7 +198,7 @@ class 삼자대면_04_02(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -206,7 +207,7 @@ class Skip_1(trigger_api.Trigger):
 
 
 class 삼자대면끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -215,7 +216,7 @@ class 삼자대면끝(trigger_api.Trigger):
 
 
 class 정리(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.destroy_monster(spawnIds=[102])
         self.destroy_monster(spawnIds=[103])
@@ -227,7 +228,7 @@ class 정리(trigger_api.Trigger):
 
 
 class 정리_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)

@@ -2,14 +2,25 @@
 import trigger_api
 
 
+# <state name="대기">
+# <onEnter>
+# </onEnter>
+# <condition name="UserValue" key="CameraStart" value="1">
+# <transition state="유저감지"/>
+# </condition>
+# </state>
 class 유저감지(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_user_value(triggerId=1001, key='CameraStart', value=0)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[2001], jobCode=0):
             return 연출준비(self.ctx)
 
 
 class 연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_cinematic_ui(type=1)
         self.destroy_monster(spawnIds=[202])
@@ -22,7 +33,7 @@ class 연출준비(trigger_api.Trigger):
 
 
 class 연출_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -31,7 +42,7 @@ class 연출_01(trigger_api.Trigger):
 
 
 class 연출_01_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4001,4002], returnView=False)
         self.set_scene_skip(state=Skip_1, action='nextState')
 
@@ -41,7 +52,7 @@ class 연출_01_01(trigger_api.Trigger):
 
 
 class 연출_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4003,4004], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +61,7 @@ class 연출_02(trigger_api.Trigger):
 
 
 class 연출_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +70,7 @@ class 연출_03(trigger_api.Trigger):
 
 
 class 연출_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4005,4006], returnView=False)
 
@@ -69,9 +80,10 @@ class 연출_05(trigger_api.Trigger):
 
 
 class 연출_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4007,4008], returnView=False)
         self.show_caption(type='VerticalCaption', title='$83000002_COLOSSEUM__START__0$', align='bottomLeft', offsetRateX=0, offsetRateY=0, duration=5000, scale=2.5)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -82,7 +94,7 @@ class 연출_07(trigger_api.Trigger):
 
 
 class Skip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.select_camera_path(pathIds=[4009], returnView=False)
@@ -101,11 +113,12 @@ class 대화딜레이(trigger_api.Trigger):
 
 
 class 연출끝_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # NPC에게 자동으로 대화걸기 NPCID: 11004288/나기
         self.talk_npc(spawnId=203)
-        # <action name="DebugString" string="라운드 클리어 테스트 합니다. 현재 5라운드 클리어로 설정됩니다." />
-        # <action name="DungeonClearRound" round="5" />
-        # <action name="DungeonClear" />
+        # self.debug_string(string='라운드 클리어 테스트 합니다. 현재 5라운드 클리어로 설정됩니다.')
+        # self.dungeon_clear_round(round=5)
+        # self.dungeon_clear()
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_detected(boxIds=[902]):
@@ -118,13 +131,13 @@ class 연출끝_01(trigger_api.Trigger):
 
 
 class NewGame(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='새로 시작하기를 설정했습니다.')
         self.set_user_value(triggerId=900001, key='MainStart', value=1)
 
 
 class ContinueGame(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.debug_string(string='이어하기를 설정했습니다.')
         self.dungeon_disable_ranking()
         self.set_user_value(triggerId=900001, key='MainStart', value=2)

@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=11, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013], visible=True, arg3=0, delay=0, scale=0)
 
@@ -16,7 +16,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030], animationEffect=False)
         self.set_interact_object(triggerIds=[10000259,10000260,10000261], state=1)
 
@@ -26,7 +26,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class 카메라이동01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013], visible=False, arg3=0, delay=0, scale=0)
         self.add_buff(boxIds=[102], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)
         self.show_guide_summary(entityId=20003563, textId=20003563, duration=4000)
@@ -39,7 +39,7 @@ class 카메라이동01(trigger_api.Trigger):
 
 
 class 카메라이동02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=304, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -48,7 +48,7 @@ class 카메라이동02(trigger_api.Trigger):
 
 
 class 카메라이동03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=True)
         self.show_guide_summary(entityId=20003562, textId=20003562, duration=4000)
         self.play_system_sound_in_box(sound='System_ShowGuideSummary_01')
@@ -59,7 +59,7 @@ class 카메라이동03(trigger_api.Trigger):
 
 
 class 오브젝트반응대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=305, enable=False)
         self.remove_buff(boxId=102, skillId=70000107)
 
@@ -69,7 +69,7 @@ class 오브젝트반응대기(trigger_api.Trigger):
 
 
 class 보스등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1099])
         self.select_camera(triggerId=306, enable=True)
         self.add_buff(boxIds=[102], skillId=70000107, level=1, isPlayer=False, isSkillSet=False)

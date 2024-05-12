@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         self.set_user_value(triggerId=900005, key='TimerStart', value=0)
         self.set_user_value(triggerId=900005, key='TimerReset', value=0)
@@ -39,7 +39,7 @@ class 보스체력체크1(trigger_api.Trigger):
 
 
 class 씨앗패턴1_확률체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='TimerStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 씨앗패턴1_확률체크(trigger_api.Trigger):
 
 
 class 씨앗패턴1_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9001], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002124], state=1)
 
@@ -73,7 +73,7 @@ class 씨앗패턴1_1(trigger_api.Trigger):
 
 
 class 씨앗패턴1_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9002], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002125], state=1)
 
@@ -88,7 +88,7 @@ class 씨앗패턴1_2(trigger_api.Trigger):
 
 
 class 씨앗패턴1_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9003], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002126], state=1)
 
@@ -103,7 +103,7 @@ class 씨앗패턴1_3(trigger_api.Trigger):
 
 
 class 씨앗패턴1_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9004], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002127], state=1)
 
@@ -118,7 +118,7 @@ class 씨앗패턴1_4(trigger_api.Trigger):
 
 
 class 씨앗패턴1_1_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -127,12 +127,12 @@ class 씨앗패턴1_1_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=1):
             return 보스체력체크2(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴1_종료(self.ctx)
 
 
 class 씨앗패턴1_2_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -141,12 +141,12 @@ class 씨앗패턴1_2_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=1):
             return 보스체력체크2(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴1_종료(self.ctx)
 
 
 class 씨앗패턴1_3_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -155,12 +155,12 @@ class 씨앗패턴1_3_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=1):
             return 보스체력체크2(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴1_종료(self.ctx)
 
 
 class 씨앗패턴1_4_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -169,12 +169,12 @@ class 씨앗패턴1_4_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=1):
             return 보스체력체크2(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴1_종료(self.ctx)
 
 
 class 씨앗패턴1_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='TimerStart', value=0)
         self.set_skill(triggerIds=[901], enable=True)
         self.set_skill(triggerIds=[902], enable=True)
@@ -193,7 +193,7 @@ class 씨앗패턴1_종료(trigger_api.Trigger):
 
 
 class 보스체력체크2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         self.set_skill(triggerIds=[901], enable=False)
         self.set_skill(triggerIds=[902], enable=False)
@@ -215,7 +215,7 @@ class 보스체력체크2(trigger_api.Trigger):
 
 
 class 씨앗패턴2_확률체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='TimerStart', value=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -234,7 +234,7 @@ class 씨앗패턴2_확률체크(trigger_api.Trigger):
 
 
 class 씨앗패턴2_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9001], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002124], state=1)
 
@@ -249,7 +249,7 @@ class 씨앗패턴2_1(trigger_api.Trigger):
 
 
 class 씨앗패턴2_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9002], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002125], state=1)
 
@@ -264,7 +264,7 @@ class 씨앗패턴2_2(trigger_api.Trigger):
 
 
 class 씨앗패턴2_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9003], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002126], state=1)
 
@@ -279,7 +279,7 @@ class 씨앗패턴2_3(trigger_api.Trigger):
 
 
 class 씨앗패턴2_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9004], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002127], state=1)
 
@@ -294,7 +294,7 @@ class 씨앗패턴2_4(trigger_api.Trigger):
 
 
 class 씨앗패턴2_1_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -303,12 +303,12 @@ class 씨앗패턴2_1_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=2):
             return 보스체력체크3(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴2_종료(self.ctx)
 
 
 class 씨앗패턴2_2_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -317,12 +317,12 @@ class 씨앗패턴2_2_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=2):
             return 보스체력체크3(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴2_종료(self.ctx)
 
 
 class 씨앗패턴2_3_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -331,12 +331,12 @@ class 씨앗패턴2_3_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=2):
             return 보스체력체크3(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴2_종료(self.ctx)
 
 
 class 씨앗패턴2_4_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -345,12 +345,12 @@ class 씨앗패턴2_4_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=2):
             return 보스체력체크3(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴2_종료(self.ctx)
 
 
 class 씨앗패턴2_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='TimerStart', value=0)
         self.set_skill(triggerIds=[901], enable=True)
         self.set_skill(triggerIds=[902], enable=True)
@@ -369,7 +369,7 @@ class 씨앗패턴2_종료(trigger_api.Trigger):
 
 
 class 보스체력체크3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         self.set_skill(triggerIds=[901], enable=False)
         self.set_skill(triggerIds=[902], enable=False)
@@ -391,7 +391,7 @@ class 보스체력체크3(trigger_api.Trigger):
 
 
 class 씨앗패턴3_확률체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=900005, key='TimerStart', value=3)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -410,7 +410,7 @@ class 씨앗패턴3_확률체크(trigger_api.Trigger):
 
 
 class 씨앗패턴3_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9001], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002124], state=1)
 
@@ -425,7 +425,7 @@ class 씨앗패턴3_1(trigger_api.Trigger):
 
 
 class 씨앗패턴3_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9002], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002125], state=1)
 
@@ -440,7 +440,7 @@ class 씨앗패턴3_2(trigger_api.Trigger):
 
 
 class 씨앗패턴3_3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9003], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002126], state=1)
 
@@ -455,7 +455,7 @@ class 씨앗패턴3_3(trigger_api.Trigger):
 
 
 class 씨앗패턴3_4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[9004], visible=True, arg3=0, delay=0, scale=2)
         self.set_interact_object(triggerIds=[10002127], state=1)
 
@@ -470,7 +470,7 @@ class 씨앗패턴3_4(trigger_api.Trigger):
 
 
 class 씨앗패턴3_1_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -479,12 +479,12 @@ class 씨앗패턴3_1_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=3):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴3_종료(self.ctx)
 
 
 class 씨앗패턴3_2_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -493,12 +493,12 @@ class 씨앗패턴3_2_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=3):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴3_종료(self.ctx)
 
 
 class 씨앗패턴3_3_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -507,12 +507,12 @@ class 씨앗패턴3_3_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=3):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴3_종료(self.ctx)
 
 
 class 씨앗패턴3_4_심기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10002128], state=1)
         self.set_interact_object(triggerIds=[10002129], state=1)
 
@@ -521,12 +521,12 @@ class 씨앗패턴3_4_심기(trigger_api.Trigger):
             return 종료(self.ctx)
         if self.user_value(key='TimerReset', value=3):
             return 종료(self.ctx)
-        if self.any_one():
+        if self.object_interacted(interactIds=[10002128], stateValue=0) or self.object_interacted(interactIds=[10002129], stateValue=0):
             return 씨앗패턴3_종료(self.ctx)
 
 
 class 씨앗패턴3_종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[901], enable=True)
         self.set_skill(triggerIds=[902], enable=True)
         self.set_interact_object(triggerIds=[10002128], state=2)
@@ -544,7 +544,7 @@ class 씨앗패턴3_종료(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[1003], skillId=70002110, level=1, isSkillSet=False)
         self.set_user_value(triggerId=900005, key='TimerStart', value=9)
         self.set_skill(triggerIds=[901], enable=False)

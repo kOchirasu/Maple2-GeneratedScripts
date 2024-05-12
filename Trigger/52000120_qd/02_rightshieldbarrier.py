@@ -3,10 +3,11 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3200], visible=True, arg3=0, delay=0, scale=0) # Invisible_Barrier
         self.destroy_monster(spawnIds=[980,981,982,983,984,985])
         self.set_skill(triggerIds=[7000], enable=False) # Push
+        # self.set_user_value(key='PushStart', value=0)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.check_user():
@@ -14,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class ActivateShiled01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[980,981,982,983,984,985], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +24,7 @@ class ActivateShiled01(trigger_api.Trigger):
 
 
 class Push01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=980, sequenceName='Attack_01_A')
         self.set_npc_emotion_sequence(spawnId=981, sequenceName='Attack_01_A')
         self.set_npc_emotion_sequence(spawnId=982, sequenceName='Attack_01_A')

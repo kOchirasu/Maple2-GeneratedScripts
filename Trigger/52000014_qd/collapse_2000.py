@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[2000,2001,2002,2003,2004], visible=True, arg3=0, delay=0, scale=0)
         self.set_effect(triggerIds=[12000], visible=False) # Vibrate Short
         self.set_effect(triggerIds=[22000], visible=False) # Vibrate Sound
@@ -14,7 +14,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 딜레이01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -23,7 +23,7 @@ class 딜레이01(trigger_api.Trigger):
 
 
 class 무너짐01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='3', seconds=2)
         self.set_event_ui(type=1, arg2='$52000014_QD__COLLAPSE_2000__0$', arg3='4000', arg4='0')
 
@@ -33,7 +33,7 @@ class 무너짐01(trigger_api.Trigger):
 
 
 class 무너짐02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='4', seconds=8)
         self.set_effect(triggerIds=[12000], visible=True) # Vibrate Short
         self.set_effect(triggerIds=[22000], visible=True) # Vibrate Sound
@@ -45,7 +45,7 @@ class 무너짐02(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[12000], visible=False) # Vibrate Short
         self.set_effect(triggerIds=[22000], visible=False) # Vibrate Sound
 

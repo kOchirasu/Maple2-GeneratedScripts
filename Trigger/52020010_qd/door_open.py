@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Idle(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5016], visible=False) # 우르르 쾅쾅
         self.set_effect(triggerIds=[5017], visible=False) # 먼지
         self.set_breakable(triggerIds=[10001], enable=False)
@@ -23,7 +23,7 @@ class Check(trigger_api.Trigger):
 
 
 class DoorOpen(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5016], visible=True) # 우르르 쾅쾅
         self.set_effect(triggerIds=[5017], visible=True) # 먼지
         self.set_breakable(triggerIds=[10001], enable=True)

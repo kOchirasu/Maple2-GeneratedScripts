@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001031], state=1)
         self.set_mesh(triggerIds=[1060,1061,1062], visible=True, arg3=0, delay=0, scale=0) # 덩굴
 
@@ -13,7 +13,7 @@ class Wait(trigger_api.Trigger):
 
 
 class Remove(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001031], state=0)
         self.set_random_mesh(triggerIds=[1060,1061,1062], visible=False, meshCount=3, arg4=500, delay=100) # 덩굴
         self.set_user_value(triggerId=10, key='6thTreeRemove', value=1)

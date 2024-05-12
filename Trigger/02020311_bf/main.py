@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=1, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024,3025,3026,3027,3028,3029,3030,3031,3032,3033,3034,3035,3036,3037,3038,3039,3040,3041,3042,3043,3044,3045,3046,3047,3048,3049,3050,3051,3052,3053,3054,3055,3056,3057,3058,3059,3060,3061,3062,3063,3064,3065,3066], visible=False)
         self.set_mesh(triggerIds=[4002,4003,4004], visible=False)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 티마이온등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.side_npc_talk(type='talk', npcId=11004715, illust='Eone_serious', script='$02020311_BF__MAIN__0$', duration=3000)
         self.create_monster(spawnIds=[101], animationEffect=False)
 
@@ -26,7 +26,7 @@ class 티마이온등장(trigger_api.Trigger):
 
 
 class 종료대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_set_end_time()
         self.dungeon_close_timer()
         self.side_npc_talk(type='talk', npcId=11004715, illust='Eone_normal', script='$02020311_BF__MAIN__1$', duration=3000)
@@ -37,7 +37,7 @@ class 종료대기(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dungeon_clear()
         self.set_portal(portalId=3, visible=True, enable=True, minimapVisible=True)
 

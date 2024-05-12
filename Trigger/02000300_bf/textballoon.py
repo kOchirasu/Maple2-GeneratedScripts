@@ -25,7 +25,7 @@ class 랜덤대화(trigger_api.Trigger):
 
 
 class 초20(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='20', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -36,7 +36,7 @@ class 초20(trigger_api.Trigger):
 
 
 class 초25(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='25', seconds=25)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -47,7 +47,7 @@ class 초25(trigger_api.Trigger):
 
 
 class 초30(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='30', seconds=30)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -58,7 +58,7 @@ class 초30(trigger_api.Trigger):
 
 
 class 초35(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='35', seconds=35)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -81,7 +81,7 @@ class 대화(trigger_api.Trigger):
 
 
 class 대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=1002, script='$02000300_BF__TEXTBALLOON__0$', arg4=2, arg5=0)
 
@@ -91,7 +91,7 @@ class 대사1(trigger_api.Trigger):
 
 
 class 대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=1003, script='$02000300_BF__TEXTBALLOON__1$', arg4=2)
 
@@ -101,7 +101,7 @@ class 대사2(trigger_api.Trigger):
 
 
 class 대사3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=1003, script='$02000300_BF__TEXTBALLOON__2$', arg4=2)
 
@@ -111,7 +111,7 @@ class 대사3(trigger_api.Trigger):
 
 
 class 대사4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='2', seconds=2)
         self.set_conversation(type=1, spawnId=1004, script='$02000300_BF__TEXTBALLOON__3$', arg4=2)
 
@@ -121,7 +121,7 @@ class 대사4(trigger_api.Trigger):
 
 
 class 종료대화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='10', seconds=10)
 
     def on_tick(self) -> trigger_api.Trigger:

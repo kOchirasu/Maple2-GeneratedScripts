@@ -3,22 +3,23 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101])
         self.set_mesh(triggerIds=[4001], visible=True, arg3=0, delay=0, scale=0) # 루돌프켜기
         self.set_mesh(triggerIds=[4002], visible=True, arg3=0, delay=0, scale=0) # 화분켜기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[30000370], questStates=[2]):
+            # 해피빌리지(63000072)로 유저 강제이동
             return moveto63000072(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[30000370], questStates=[1]):
-            return Diary_ready(self.ctx)
+            return Diary_ready(self.ctx) # 프롤로그 연출
         if not self.quest_user_detected(boxIds=[9000], questIds=[30000370], questStates=[1]):
-            return scene_fin(self.ctx)
+            return scene_fin(self.ctx) # 연출 종료
 
 
 class Diary_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불끄기
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -29,7 +30,7 @@ class Diary_ready(trigger_api.Trigger):
 
 
 class Diary_set(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.set_mesh(triggerIds=[4001], visible=False, arg3=0, delay=0, scale=0) # 루돌프끄기
         self.set_mesh(triggerIds=[4002], visible=False, arg3=0, delay=0, scale=0) # 화분끄기
@@ -42,8 +43,10 @@ class Diary_set(trigger_api.Trigger):
 
 
 class Diary_start(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_scene_skip(state=sceneskip_1, action='exit') # setsceneskip 1 set
+        # setsceneskip 1 set
+        # setsceneskip 1 set
         self.set_cinematic_ui(type=9, script='$63000074_CS__63000074_MAIN__0$')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -52,7 +55,7 @@ class Diary_start(trigger_api.Trigger):
 
 
 class Evelyn_monologue_00(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=2)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -61,10 +64,11 @@ class Evelyn_monologue_00(trigger_api.Trigger):
 
 
 class Evelyn_monologue_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
-        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__1$', duration=4000, illustId='Evelyn_normal', align='center') # 아~ 정말. 맘에 드는 게 하나도 없어.\n어릴 때가 편했는데… 그렇지, 보?
+        # 아~ 정말. 맘에 드는 게 하나도 없어.\n어릴 때가 편했는데… 그렇지, 보?
+        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__1$', duration=4000, illustId='Evelyn_normal', align='center')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -72,10 +76,11 @@ class Evelyn_monologue_01(trigger_api.Trigger):
 
 
 class Evelyn_monologue_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml') # 불켜기
         self.select_camera_path(pathIds=[8000], returnView=False)
-        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__2$', duration=4000, illustId='Evelyn_sad', align='right') # …휴. 내가 이상해졌나 봐.\n어린애일 때 찾던 요정 이름이나 부르고.
+        # …휴. 내가 이상해졌나 봐.\n어린애일 때 찾던 요정 이름이나 부르고.
+        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__2$', duration=4000, illustId='Evelyn_sad', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=4000):
@@ -83,9 +88,10 @@ class Evelyn_monologue_02(trigger_api.Trigger):
 
 
 class Evelyn_monologue_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
-        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__3$', duration=5000, illustId='Evelyn_sad', align='right') # 하지만… 쓸쓸한걸.\n너라도 있으면, 크리스마스가 슬프진 않을 텐데.
+        # 하지만… 쓸쓸한걸.\n너라도 있으면, 크리스마스가 슬프진 않을 텐데.
+        self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__3$', duration=5000, illustId='Evelyn_sad', align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
@@ -93,7 +99,7 @@ class Evelyn_monologue_03(trigger_api.Trigger):
 
 
 class Evelyn_monologue_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8005], returnView=False)
         self.add_cinematic_talk(npcId=11004354, msg='$63000074_CS__63000074_MAIN__4$', duration=3500) # …그만 자야겠다.
         self.move_npc(spawnId=101, patrolName='MS2PatrolData')
@@ -104,7 +110,7 @@ class Evelyn_monologue_04(trigger_api.Trigger):
 
 
 class bobos_ready(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,8 +119,9 @@ class bobos_ready(trigger_api.Trigger):
 
 
 class bobos_01(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_cinematic_ui(type=9, script='$63000074_CS__63000074_MAIN__5$') # 슬프면 안 돼, $npcName:11004345$…\n그런 건 싫어.
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # 슬프면 안 돼, $npcName:11004345$…\n그런 건 싫어.
+        self.set_cinematic_ui(type=9, script='$63000074_CS__63000074_MAIN__5$')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=3000):
@@ -122,8 +129,9 @@ class bobos_01(trigger_api.Trigger):
 
 
 class bobos_02(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_cinematic_ui(type=9, script='$63000074_CS__63000074_MAIN__6$') # $npcName:11004345$ &lt;FONT color='#ffd200'&gt;소원…&lt;/FONT&gt; 들어줄게.\n\n그럼 $npcName:11004345$, 행복해지고\n나는… &lt;FONT color='#ffd200'&gt;루돌프&lt;/FONT&gt;가 될 수 있다.
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # $npcName:11004345$ &lt;FONT color='#ffd200'&gt;소원…&lt;/FONT&gt; 들어줄게.\n\n그럼 $npcName:11004345$, 행복해지고\n나는… &lt;FONT color='#ffd200'&gt;루돌프&lt;/FONT&gt;가 될 수 있다.
+        self.set_cinematic_ui(type=9, script='$63000074_CS__63000074_MAIN__6$')
         self.set_mesh(triggerIds=[4001], visible=True, arg3=0, delay=0, scale=0) # 루돌프켜기
         self.select_camera_path(pathIds=[8002], returnView=False)
 
@@ -133,7 +141,7 @@ class bobos_02(trigger_api.Trigger):
 
 
 class rednose_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불켜기
         self.select_camera_path(pathIds=[8003], returnView=False)
         self.set_cinematic_ui(type=1)
@@ -145,9 +153,12 @@ class rednose_01(trigger_api.Trigger):
 
 
 class rednose_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml') # 불끄기
+        # Missing State: State
         self.set_scene_skip() # setsceneskip 1 close
+        # setsceneskip 1 close
+        # setsceneskip 1 close
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1500):
@@ -155,7 +166,7 @@ class rednose_02(trigger_api.Trigger):
 
 
 class sceneskip_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=4)
@@ -166,7 +177,7 @@ class sceneskip_1(trigger_api.Trigger):
 
 
 class rednose_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_achievement(triggerId=9000, type='trigger', achieve='LonelyEvelyn')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -175,17 +186,25 @@ class rednose_03(trigger_api.Trigger):
 
 
 class moveto63000072(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000072, portalId=11)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return moveto63000072_2(self.ctx)
 
 
 class moveto63000072_2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000072, portalId=11)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return moveto63000072(self.ctx)
 
 
 class scene_fin(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000436], state=1)
         self.set_mesh(triggerIds=[321,322,323,324], visible=False, arg3=0, delay=0, scale=0)
 
@@ -13,7 +13,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 사다리생성(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000436], state=0)
         self.set_mesh(triggerIds=[321,322,323,324], visible=True, arg3=0, delay=500, scale=0)
         self.set_timer(timerId='1500', seconds=1500, startDelay=0, interval=0)

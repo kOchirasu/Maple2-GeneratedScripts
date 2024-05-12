@@ -6,7 +6,7 @@ from dungeon_common.checkusercount import *
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3500,3501], visible=True, arg3=0, delay=0, scale=0) # Invisible_IronDoor
         self.set_mesh(triggerIds=[3010,3011,3012,3013], visible=True, arg3=0, delay=0, scale=0) # Barrier
         self.set_mesh(triggerIds=[3030], visible=True, arg3=0, delay=0, scale=0) # GatePortal
@@ -40,7 +40,7 @@ class LoadingDelay(trigger_api.Trigger):
 
 
 class DungeonStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[100,200], animationEffect=False)
         self.create_monster(spawnIds=[800,801,802,803,804,805,806,807,808,809,810,811,812,813,814,815,816,817,818,819,820,821,822,823,824,825,826], animationEffect=False) # 연출용 검은 그림자
         self.create_monster(spawnIds=[950,951,952,953,954,955,956,958,959,961,963,964,965,966,969,970,973,974,976,977,978,979,981], animationEffect=False) # 미혹의 령
@@ -51,7 +51,7 @@ class DungeonStart(trigger_api.Trigger):
 
 
 class NpcMonologue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=11, key='DungeonStart', value=1)
         self.set_actor(triggerId=4003, visible=True, initialSequence='Opened') # EnterIronDoor
         self.set_mesh(triggerIds=[3506,3507], visible=False, arg3=0, delay=0, scale=0) # EnterInvisibleBarrier
@@ -63,7 +63,7 @@ class NpcMonologue01(trigger_api.Trigger):
 
 
 class NpcMonologue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_actor(triggerId=4003, visible=False, initialSequence='Opened') # EnterIronDoor
         self.set_mesh(triggerIds=[3502,3503,3504,3505], visible=False, arg3=0, delay=100, scale=5) # EnterPillarBarrier
         self.move_npc(spawnId=100, patrolName='MS2PatrolData_100')
@@ -76,7 +76,7 @@ class NpcMonologue02(trigger_api.Trigger):
 
 
 class NpcPatrol01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=10, key='PatrolStart', value=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -85,13 +85,14 @@ class NpcPatrol01(trigger_api.Trigger):
 
 
 class NpcPatrol02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02000376_BF__01_MAIN__2$', arg3='5000', arg4='0')
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.user_value(key='PatrolEnd', value=1):
             return NpcPatrol03(self.ctx)
         if self.monster_dead(boxIds=[900]):
+            # 토템 제거
             return NpcChange01(self.ctx)
 
 
@@ -100,20 +101,22 @@ class NpcPatrol03(trigger_api.Trigger):
         if self.npc_detected(boxId=9400, spawnIds=[202]):
             return NpcPatrol04(self.ctx)
         if self.monster_dead(boxIds=[900]):
+            # 토템 제거
             return NpcChange01(self.ctx)
 
 
 class NpcPatrol04(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
-        if self.count_users(boxId=9400, boxId=1):
+        if self.count_users(boxId=9400, minUsers='1'):
             return FoundTotem01(self.ctx)
         if self.monster_dead(boxIds=[900]):
+            # 토템 제거
             return NpcChange01(self.ctx)
 
 
 # 20170223 업데이트 던전 개편 단축
 class NpcChange01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.destroy_monster(spawnIds=[102,202])
         self.create_monster(spawnIds=[105,205], animationEffect=False) # 연출용
@@ -124,7 +127,7 @@ class NpcChange01(trigger_api.Trigger):
 
 
 class NpcChange02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.destroy_monster(spawnIds=[102,202])
         self.destroy_monster(spawnIds=[103,203]) # 전투
@@ -138,7 +141,7 @@ class NpcChange02(trigger_api.Trigger):
 
 
 class FoundTotem01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.destroy_monster(spawnIds=[102,202])
         self.create_monster(spawnIds=[103,203], animationEffect=False) # 전투
@@ -149,25 +152,28 @@ class FoundTotem01(trigger_api.Trigger):
         if self.wait_tick(waitTick=3000):
             return RemoveTotem01(self.ctx)
         if self.monster_dead(boxIds=[900]):
+            # 토템 제거
             return NpcChange02(self.ctx)
 
 
 class RemoveTotem01(trigger_api.Trigger):
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[900]):
+            # 토템 제거
             return RemoveTotem02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[101,201])
         self.destroy_monster(spawnIds=[102,202])
-        self.destroy_monster(spawnIds=[103,203]) # 전투
+        self.destroy_monster(spawnIds=[103,203])
+        # 전투
         self.create_monster(spawnIds=[105,205], animationEffect=False)
         self.remove_balloon_talk(spawnId=203)
         self.remove_balloon_talk(spawnId=103)
 
 
 class RemoveTotem02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,201])
         self.destroy_monster(spawnIds=[102,202])
         self.move_npc(spawnId=950, patrolName='MS2PatrolData_850')
@@ -201,7 +207,7 @@ class RemoveTotem02(trigger_api.Trigger):
 
 # NPC 말풍선 어둠이 걷혔어
 class RemoveTotem03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102,202])
         self.change_monster(removeSpawnId=950, addSpawnId=850)
         self.change_monster(removeSpawnId=951, addSpawnId=851)
@@ -235,7 +241,7 @@ class RemoveTotem03(trigger_api.Trigger):
 
 
 class RemoveTotem04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102,202])
         self.set_conversation(type=1, spawnId=205, script='$02000376_BF__01_MAIN__6$', arg4=3, arg5=2) # 준타
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_106')
@@ -255,7 +261,7 @@ class RemoveTotem04(trigger_api.Trigger):
 
 
 class FoundGate01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102,202])
         self.set_conversation(type=1, spawnId=205, script='$02000376_BF__01_MAIN__7$', arg4=2, arg5=0) # 준타
         self.move_npc(spawnId=105, patrolName='MS2PatrolData_107')
@@ -267,7 +273,7 @@ class FoundGate01(trigger_api.Trigger):
 
 
 class FoundGate02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=105, script='$02000376_BF__01_MAIN__8$', arg4=2, arg5=0) # 틴차이
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -276,7 +282,7 @@ class FoundGate02(trigger_api.Trigger):
 
 
 class ShadowApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=205, script='$02000376_BF__01_MAIN__9$', arg4=2, arg5=0) # 준타
         self.create_monster(spawnIds=[901,902,903,904,905,906,907,908], animationEffect=False)
 
@@ -286,7 +292,7 @@ class ShadowApp01(trigger_api.Trigger):
 
 
 class ShadowApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[105,205]) # 전투
         self.create_monster(spawnIds=[106,206], animationEffect=False)
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
@@ -299,7 +305,7 @@ class ShadowApp02(trigger_api.Trigger):
 
 
 class ShadowApp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[921,922,923,924,925,926,927,928], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,20 +314,21 @@ class ShadowApp03(trigger_api.Trigger):
 
 
 class ShadowApp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[931,932,933,934,935,936,937,938], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_dead(boxIds=[901,902,903,904,905,906,907,908,911,912,913,914,915,916,917,918,921,922,923,924,925,926,927,928,931,932,933,934,935,936,937,938]):
             return StartPuzzle01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.destroy_monster(spawnIds=[106,206])
-        self.create_monster(spawnIds=[104,204], animationEffect=False) # 연출용 NPC
+        self.create_monster(spawnIds=[104,204], animationEffect=False)
+        # 연출용 NPC
 
 
 class StartPuzzle01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_user_value(triggerId=4, key='PuzzleStart', value=1)
         self.set_conversation(type=1, spawnId=104, script='$02000376_BF__01_MAIN__11$', arg4=2, arg5=0) # 틴차이
 
@@ -331,7 +338,7 @@ class StartPuzzle01(trigger_api.Trigger):
 
 
 class StartPuzzle02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.set_event_ui(type=1, arg2='$02000376_BF__01_MAIN__12$', arg3='5000', arg4='0')
 
@@ -348,7 +355,7 @@ class EndPuzzle01(trigger_api.Trigger):
 
 
 class GateOpen01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True) # StoneGate 사운드 이펙트
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -357,7 +364,7 @@ class GateOpen01(trigger_api.Trigger):
 
 
 class GateOpen02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_108')
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_208')
         self.set_conversation(type=1, spawnId=104, script='$02000376_BF__01_MAIN__13$', arg4=2, arg5=0) # 틴차이
@@ -372,7 +379,7 @@ class GateOpen02(trigger_api.Trigger):
 
 
 class GateOpen03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=104, patrolName='MS2PatrolData_109')
         self.move_npc(spawnId=204, patrolName='MS2PatrolData_209')
 
@@ -382,7 +389,7 @@ class GateOpen03(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[104,204])
 
 

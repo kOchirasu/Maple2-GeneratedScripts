@@ -4,7 +4,7 @@ import trigger_api
 
 # 아프렐라 오지 : 선인장 쪽에서 올라올 수 있는 발판
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001242], state=1) # CrowMove
         self.set_breakable(triggerIds=[4501], enable=False) # Move
         self.set_visible_breakable_object(triggerIds=[4501], visible=True) # Move
@@ -15,7 +15,7 @@ class Wait(trigger_api.Trigger):
 
 
 class MoveStart(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4501], enable=True) # Move
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -24,7 +24,7 @@ class MoveStart(trigger_api.Trigger):
 
 
 class MoveStop(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_breakable(triggerIds=[4501], enable=False) # Move
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -33,7 +33,7 @@ class MoveStop(trigger_api.Trigger):
 
 
 class Reset(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10001242], state=1) # CrowMove
 
     def on_tick(self) -> trigger_api.Trigger:

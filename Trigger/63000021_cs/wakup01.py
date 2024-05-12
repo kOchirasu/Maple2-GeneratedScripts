@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=False, enable=False, minimapVisible=False)
         self.set_mesh(triggerIds=[3000], visible=True, arg3=0, delay=0, scale=0) # monitor off
         self.set_mesh(triggerIds=[3001], visible=False, arg3=0, delay=0, scale=0) # monitor on
@@ -31,13 +31,17 @@ class Wait(trigger_api.Trigger):
         self.set_effect(triggerIds=[7000], visible=False) # Voice Jabeth 00001545
         self.set_effect(triggerIds=[7001], visible=False) # Voice Jabeth 00001546
         self.set_effect(triggerIds=[7002], visible=False) # Voice Jabeth 00001547
-        self.set_effect(triggerIds=[7003], visible=False) # Voice Jabeth 00001596 monologue
-        self.set_effect(triggerIds=[7004], visible=False) # Voice Jabeth 00001597 monologue
+        # Voice Jabeth 00001596 monologue
+        self.set_effect(triggerIds=[7003], visible=False)
+        # Voice Jabeth 00001597 monologue
+        self.set_effect(triggerIds=[7004], visible=False)
         self.set_effect(triggerIds=[7100], visible=False) # Voice Bravo 00001457
         self.set_effect(triggerIds=[7101], visible=False) # Voice Bravo 00001458
         self.set_effect(triggerIds=[7102], visible=False) # Voice Bravo 00001459
-        self.set_effect(triggerIds=[7103], visible=False) # Voice Bravo 00001525 monologue
-        self.set_effect(triggerIds=[7104], visible=False) # Voice Bravo 00001526 monologue
+        # Voice Bravo 00001525 monologue
+        self.set_effect(triggerIds=[7103], visible=False)
+        # Voice Bravo 00001526 monologue
+        self.set_effect(triggerIds=[7104], visible=False)
         self.set_effect(triggerIds=[6000], visible=False) # RadioInterference
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -46,7 +50,7 @@ class Wait(trigger_api.Trigger):
 
 
 class LodingDelay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -58,11 +62,12 @@ class LodingDelay01(trigger_api.Trigger):
 
 
 class LodingDelay02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Down_Idle_D', duration=6600)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000439], questStates=[1]):
+            # 퀘스트 진행중 상태
             return QuestOngoing01(self.ctx)
         if self.wait_tick(waitTick=2000):
             return WakeUp01(self.ctx)
@@ -70,7 +75,7 @@ class LodingDelay02(trigger_api.Trigger):
 
 # 이미 퀘스트 수락한 상태
 class QuestOngoing01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
 
@@ -80,7 +85,7 @@ class QuestOngoing01(trigger_api.Trigger):
 
 
 class QuestOngoing02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.move_user(mapId=63000021, portalId=10, boxId=9002)
@@ -93,7 +98,7 @@ class QuestOngoing02(trigger_api.Trigger):
 
 # 최초 입장
 class WakeUp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -103,7 +108,7 @@ class WakeUp01(trigger_api.Trigger):
 
 
 class WakeUp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -114,7 +119,7 @@ class WakeUp02(trigger_api.Trigger):
 
 
 class WakeUp03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Sit_Ground_Idle_A', duration=60000)
         self.create_monster(spawnIds=[101,201,301], animationEffect=False)
 
@@ -124,7 +129,7 @@ class WakeUp03(trigger_api.Trigger):
 
 
 class WakeUp04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=599, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -133,7 +138,7 @@ class WakeUp04(trigger_api.Trigger):
 
 
 class WakeUp05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=600, enable=True)
@@ -144,9 +149,10 @@ class WakeUp05(trigger_api.Trigger):
 
 
 class Dialogue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001546, script='$63000021_CS__WAKUP01__0$', arg4=4) # 자베스
+        # Voice 00001545
         self.set_effect(triggerIds=[7000], visible=True) # Voice Jabeth 00001545
         self.set_skip(state=Dialogue02)
 
@@ -156,10 +162,11 @@ class Dialogue01(trigger_api.Trigger):
 
 
 class Dialogue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Idle_A')
         self.set_effect(triggerIds=[7000], visible=False) # Voice Jabeth 00001545
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -168,9 +175,10 @@ class Dialogue02(trigger_api.Trigger):
 
 
 class Dialogue03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_200')
         self.set_conversation(type=2, spawnId=11001545, script='$63000021_CS__WAKUP01__1$', arg4=4) # 브라보
+        # Voice 00001457
         self.set_effect(triggerIds=[7100], visible=True) # Voice Bravo 00001457
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -179,7 +187,7 @@ class Dialogue03(trigger_api.Trigger):
 
 
 class Dialogue04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_300')
         self.set_skip(state=Dialogue05)
 
@@ -189,9 +197,10 @@ class Dialogue04(trigger_api.Trigger):
 
 
 class Dialogue05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7100], visible=False) # Voice Bravo 00001457
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -200,8 +209,9 @@ class Dialogue05(trigger_api.Trigger):
 
 
 class Dialogue06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001546, script='$63000021_CS__WAKUP01__2$', arg4=4) # 자베스
+        # Voice 00001546
         self.set_effect(triggerIds=[7001], visible=True) # Voice Jabeth 00001546
         self.set_skip(state=Dialogue07)
 
@@ -211,9 +221,10 @@ class Dialogue06(trigger_api.Trigger):
 
 
 class Dialogue07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7001], visible=False) # Voice Jabeth 00001546
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -222,7 +233,7 @@ class Dialogue07(trigger_api.Trigger):
 
 
 class JaceyWalkIn01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=601, enable=True)
@@ -240,7 +251,7 @@ class JaceyWalkIn02(trigger_api.Trigger):
 
 
 class Trialogue01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__3$', arg4=4) # 제이시
         self.set_skip(state=Trialogue02)
@@ -251,8 +262,9 @@ class Trialogue01(trigger_api.Trigger):
 
 
 class Trialogue02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.select_camera(triggerId=602, enable=True)
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_201')
@@ -264,9 +276,10 @@ class Trialogue02(trigger_api.Trigger):
 
 
 class Trialogue03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001545, script='$63000021_CS__WAKUP01__4$', arg4=4) # 브라보
+        # Voice 00001458
         self.set_effect(triggerIds=[7101], visible=True) # Voice Bravo 00001458
         self.set_skip(state=Trialogue04)
 
@@ -276,10 +289,11 @@ class Trialogue03(trigger_api.Trigger):
 
 
 class Trialogue04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7101], visible=False) # Voice Bravo 00001458
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -288,9 +302,10 @@ class Trialogue04(trigger_api.Trigger):
 
 
 class Trialogue05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001546, script='$63000021_CS__WAKUP01__5$', arg4=4) # 자베스
+        # Voice 00001547
         self.set_effect(triggerIds=[7002], visible=True) # Voice Jabeth 00001547
         self.set_skip(state=Trialogue06)
 
@@ -300,10 +315,11 @@ class Trialogue05(trigger_api.Trigger):
 
 
 class Trialogue06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7002], visible=False) # Voice Jabeth 00001547
         self.set_npc_emotion_sequence(spawnId=301, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -312,9 +328,10 @@ class Trialogue06(trigger_api.Trigger):
 
 
 class Trialogue07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001545, script='$63000021_CS__WAKUP01__6$', arg4=4) # 브라보
+        # Voice 00001459
         self.set_effect(triggerIds=[7102], visible=True) # Voice Bravo 00001459
         self.set_skip(state=Trialogue08)
 
@@ -324,10 +341,11 @@ class Trialogue07(trigger_api.Trigger):
 
 
 class Trialogue08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[7102], visible=False) # Voice Bravo 00001459
         self.set_npc_emotion_sequence(spawnId=201, sequenceName='Idle_A')
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -336,7 +354,7 @@ class Trialogue08(trigger_api.Trigger):
 
 
 class Trialogue09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=101, sequenceName='Talk_A')
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__7$', arg4=4) # 제이시
         self.set_skip(state=Trialogue10)
@@ -347,8 +365,9 @@ class Trialogue09(trigger_api.Trigger):
 
 
 class Trialogue10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -357,7 +376,7 @@ class Trialogue10(trigger_api.Trigger):
 
 
 class TwoMenWalkOut01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=700, enable=True)
@@ -368,9 +387,10 @@ class TwoMenWalkOut01(trigger_api.Trigger):
 
 
 class TwoMenWalkOut02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=201, script='$63000021_CS__WAKUP01__8$', arg4=3, arg5=0) # Voice 00001525
-        self.set_effect(triggerIds=[7103], visible=True) # Voice Bravo 00001525 monologue
+        # Voice Bravo 00001525 monologue
+        self.set_effect(triggerIds=[7103], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
@@ -378,7 +398,7 @@ class TwoMenWalkOut02(trigger_api.Trigger):
 
 
 class TwoMenWalkOut03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_202')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -387,7 +407,7 @@ class TwoMenWalkOut03(trigger_api.Trigger):
 
 
 class TwoMenWalkOut04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=301, patrolName='MS2PatrolData_302')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -396,9 +416,11 @@ class TwoMenWalkOut04(trigger_api.Trigger):
 
 
 class TwoMenWalkOut05(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[7103], visible=False) # Voice Bravo 00001525 monologue
-        self.set_effect(triggerIds=[7003], visible=True) # Voice Jabeth 00001596 monologue
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice Bravo 00001525 monologue
+        self.set_effect(triggerIds=[7103], visible=False)
+        # Voice Jabeth 00001596 monologue
+        self.set_effect(triggerIds=[7003], visible=True)
         self.set_conversation(type=1, spawnId=301, script='$63000021_CS__WAKUP01__9$', arg4=3, arg5=0) # Voice 00001596
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -407,8 +429,9 @@ class TwoMenWalkOut05(trigger_api.Trigger):
 
 
 class TwoMenWalkOut06(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[7003], visible=False) # Voice Jabeth 00001596 monologue
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice Jabeth 00001596 monologue
+        self.set_effect(triggerIds=[7003], visible=False)
         self.select_camera_path(pathIds=[701,702], returnView=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_102')
 
@@ -418,8 +441,9 @@ class TwoMenWalkOut06(trigger_api.Trigger):
 
 
 class TwoMenWalkOut07(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[7104], visible=True) # Voice Bravo 00001526 monologue
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice Bravo 00001526 monologue
+        self.set_effect(triggerIds=[7104], visible=True)
         self.set_conversation(type=1, spawnId=201, script='$63000021_CS__WAKUP01__10$', arg4=4, arg5=0) # Voice 00001526
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -428,9 +452,11 @@ class TwoMenWalkOut07(trigger_api.Trigger):
 
 
 class TwoMenWalkOut08(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[7104], visible=False) # Voice Bravo 00001526 monologue
-        self.set_effect(triggerIds=[7004], visible=True) # Voice Jabeth 00001597 monologue
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice Bravo 00001526 monologue
+        self.set_effect(triggerIds=[7104], visible=False)
+        # Voice Jabeth 00001597 monologue
+        self.set_effect(triggerIds=[7004], visible=True)
         self.set_conversation(type=1, spawnId=301, script='$63000021_CS__WAKUP01__11$', arg4=4, arg5=0) # Voice 00001597
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -439,7 +465,7 @@ class TwoMenWalkOut08(trigger_api.Trigger):
 
 
 class StandUp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000021, portalId=10, boxId=9900)
         self.set_pc_emotion_loop(sequenceName='Idle_A', duration=2000)
         self.destroy_monster(spawnIds=[101])
@@ -454,8 +480,9 @@ class StandUp01(trigger_api.Trigger):
 
 
 class JaceyTalk01(trigger_api.Trigger):
-    def on_enter(self):
-        self.set_effect(triggerIds=[7004], visible=False) # Voice Jabeth 00001597 monologue
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Voice Jabeth 00001597 monologue
+        self.set_effect(triggerIds=[7004], visible=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
@@ -463,7 +490,7 @@ class JaceyTalk01(trigger_api.Trigger):
 
 
 class JaceyTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__12$', arg4=3) # 제이시
         self.set_skip(state=JaceyTalk03)
 
@@ -473,8 +500,9 @@ class JaceyTalk02(trigger_api.Trigger):
 
 
 class JaceyTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -483,7 +511,7 @@ class JaceyTalk03(trigger_api.Trigger):
 
 
 class JaceyTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__13$', arg4=5) # 제이시
         self.set_skip(state=JaceyTalk05)
 
@@ -493,9 +521,10 @@ class JaceyTalk04(trigger_api.Trigger):
 
 
 class JaceyTalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201,301])
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -507,17 +536,18 @@ class JaceyTalk05(trigger_api.Trigger):
 
 
 class JaceyQuest01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10021030, textId=10021030) # 가이드 : 제이시와 대화하기
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000439], questStates=[1]):
+            # 퀘스트 진행중 상태
             return JaceyQuest02(self.ctx)
 
 
 class JaceyQuest02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10021030)
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -530,7 +560,7 @@ class JaceyQuest02(trigger_api.Trigger):
 
 
 class CallNextRoom01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_103')
@@ -541,7 +571,7 @@ class CallNextRoom01(trigger_api.Trigger):
 
 
 class CallNextRoom02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[3000], visible=False, arg3=100, delay=0, scale=0) # MonitorOff
         self.set_mesh(triggerIds=[3001], visible=True, arg3=0, delay=0, scale=0) # MonitorOn
         self.set_effect(triggerIds=[6000], visible=True) # RadioInterference
@@ -552,7 +582,7 @@ class CallNextRoom02(trigger_api.Trigger):
 
 
 class CallNextRoom03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # RadioInterference
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__14$', arg4=4) # 제이시
         self.set_skip(state=CallNextRoom04)
@@ -563,8 +593,9 @@ class CallNextRoom03(trigger_api.Trigger):
 
 
 class CallNextRoom04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -573,7 +604,7 @@ class CallNextRoom04(trigger_api.Trigger):
 
 
 class CallNextRoom05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[6000], visible=True) # RadioInterference
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__15$', arg4=3) # 제이시
         self.set_skip(state=CallNextRoom06)
@@ -584,8 +615,9 @@ class CallNextRoom05(trigger_api.Trigger):
 
 
 class CallNextRoom06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -594,7 +626,7 @@ class CallNextRoom06(trigger_api.Trigger):
 
 
 class SayGoodBye01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_104')
@@ -606,7 +638,7 @@ class SayGoodBye01(trigger_api.Trigger):
 
 
 class SayGoodBye02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001620, script='$63000021_CS__WAKUP01__16$', arg4=5) # 제이시
         self.set_skip(state=SayGoodBye03)
 
@@ -616,8 +648,9 @@ class SayGoodBye02(trigger_api.Trigger):
 
 
 class SayGoodBye03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[103])
         self.create_monster(spawnIds=[104], animationEffect=False)
@@ -630,9 +663,10 @@ class SayGoodBye03(trigger_api.Trigger):
 
 
 class GuideNextMap01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10026010, textId=10026010) # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        # 가이드 : 방향키를 이용해 화살표가 가리키는 곳으로 이동하기
+        self.show_guide_summary(entityId=10026010, textId=10026010)
         self.set_effect(triggerIds=[5001], visible=True) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5200], visible=True) # 경로 안내
         self.set_effect(triggerIds=[5201], visible=True) # 경로 안내
@@ -659,7 +693,7 @@ class GuideNextMap01(trigger_api.Trigger):
 
 
 class GuideNextMap02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
         self.set_effect(triggerIds=[5002], visible=True) # 미션 완료 사운드 이펙트
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
@@ -670,7 +704,7 @@ class GuideNextMap02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=10026010)
         self.set_effect(triggerIds=[5001], visible=False) # 화살표 안내 사운드 이펙트
         self.set_effect(triggerIds=[5002], visible=False) # 미션 완료 사운드 이펙트

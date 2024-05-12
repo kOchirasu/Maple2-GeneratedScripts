@@ -3,7 +3,7 @@ import trigger_api
 
 
 class IsLadderComplete(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[311], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[312], visible=False, animationEffect=False, animationDelay=0)
         self.set_ladder(triggerIds=[313], visible=False, animationEffect=False, animationDelay=0)
@@ -17,7 +17,7 @@ class IsLadderComplete(trigger_api.Trigger):
 
 
 class ladderComplete(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_ladder(triggerIds=[311], visible=True, animationEffect=True, animationDelay=0)
         self.set_ladder(triggerIds=[312], visible=True, animationEffect=True, animationDelay=0)
         self.set_ladder(triggerIds=[313], visible=True, animationEffect=True, animationDelay=0)

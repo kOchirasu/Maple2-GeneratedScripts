@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cube(triggerIds=[500,501,502,503,504,505,506,507,508,509], randomCount=10, isVisible=False)
         self.create_monster(spawnIds=[1001,1002,1003,1004,1005,1006], animationEffect=False)
         self.select_camera(triggerId=301, enable=True)
@@ -14,6 +14,10 @@ class 대기(trigger_api.Trigger):
 
 
 class 시작대기(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # self.set_cube(triggerIds=[500,501,502,503,504,505,506,507,508,509], randomCount=3, isVisible=True)
+        pass
+
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=5000):
             return 종료(self.ctx)

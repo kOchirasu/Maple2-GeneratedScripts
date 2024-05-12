@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[500], visible=False)
         self.set_effect(triggerIds=[501], visible=False)
         self.set_effect(triggerIds=[502], visible=False)
@@ -17,7 +17,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_mesh(triggerIds=[10000], visible=True) # 스폰 발판 생성
         self.set_mesh(triggerIds=[10001], visible=True) # 공습용발판 생성
@@ -66,7 +66,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 크림슨발록비춤1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml')
         self.set_mesh(triggerIds=[10000], visible=False) # 스폰 발판 지움
         self.set_mesh(triggerIds=[10001], visible=False) # 공습용발판 지움
@@ -81,7 +81,7 @@ class 크림슨발록비춤1(trigger_api.Trigger):
 
 
 class 크림슨이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=29000378, msg='$52010055_QD__52010055__2$', duration=3000, align='right')
         self.move_npc(spawnId=101, patrolName='PatrolDataBalrog_Open_101')
         self.move_npc(spawnId=102, patrolName='PatrolDataBalrog_Open_102')
@@ -113,7 +113,7 @@ class 크림슨이동(trigger_api.Trigger):
 
 
 class 함교비춤1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123])
         self.visible_my_pc(isVisible=True) # 캐릭터 보임
         self.move_user(mapId=52010055, portalId=2)
@@ -128,7 +128,7 @@ class 함교비춤1(trigger_api.Trigger):
 
 
 class 함교비춤2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=1, rotation=180)
         self.set_npc_emotion_sequence(spawnId=1, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__5$', duration=3000, align='right')
@@ -139,7 +139,7 @@ class 함교비춤2(trigger_api.Trigger):
 
 
 class 콘대르대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=3, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003776, illustId='Conder_normal', msg='$52010055_QD__52010055__6$', duration=2000, align='left')
 
@@ -149,7 +149,7 @@ class 콘대르대사(trigger_api.Trigger):
 
 
 class 콘대르이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=3, patrolName='PatrolDataOpenConder0')
         self.set_npc_emotion_sequence(spawnId=5, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003584, illustId='Schatten_normal', msg='$52010055_QD__52010055__7$', duration=2000, align='Reft')
@@ -160,7 +160,7 @@ class 콘대르이동(trigger_api.Trigger):
 
 
 class 샤텐이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=5, patrolName='PatrolDataOpenSchatten0')
         self.set_npc_emotion_sequence(spawnId=4, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003586, illustId='Mason_closeEye', msg='$52010055_QD__52010055__8$', duration=3000, align='Left')
@@ -172,7 +172,7 @@ class 샤텐이동(trigger_api.Trigger):
 
 
 class 메이슨이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5])
         self.move_npc(spawnId=4, patrolName='PatrolDataOpenMason0')
 
@@ -182,7 +182,7 @@ class 메이슨이동(trigger_api.Trigger):
 
 
 class 함교비춤3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=1, rotation=270)
         self.set_npc_emotion_sequence(spawnId=1, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__9$', duration=3000, align='right')
@@ -194,7 +194,7 @@ class 함교비춤3(trigger_api.Trigger):
 
 
 class 함교비춤4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=2, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003536, illustId='Neirin_surprise', msg='$52010055_QD__52010055__10$', duration=2000, align='left')
         self.set_npc_emotion_sequence(spawnId=1, sequenceName='Talk_A')
@@ -207,7 +207,7 @@ class 함교비춤4(trigger_api.Trigger):
 
 
 class 함교비춤5(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Calm_A'])
         self.init_npc_rotation(spawnIds=[1])
         self.set_npc_emotion_sequence(spawnId=1, sequenceName='Talk_A')
@@ -218,6 +218,7 @@ class 함교비춤5(trigger_api.Trigger):
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__14$', duration=2000, align='right')
         self.add_cinematic_talk(npcId=11003682, illustId='Bliche_closeEye', msg='$52010055_QD__52010055__15$', duration=2000, align='right')
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__16$', duration=2000, align='right')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -226,7 +227,7 @@ class 함교비춤5(trigger_api.Trigger):
 
 
 class 게임시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[10002,10003,10004,10005], visible=True) # 1차 전투 링
         self.select_camera_path(pathIds=[4003,4019], returnView=False)
         self.visible_my_pc(isVisible=True) # 캐릭터 보임
@@ -245,7 +246,7 @@ class 게임시작(trigger_api.Trigger):
 
 
 class 차발록스피어스폰1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4019, enable=True)
         self.set_mesh(triggerIds=[10000], visible=False) # 스폰 발판 제거
         self.create_monster(spawnIds=[1], animationEffect=False) # 함교 연출용 블리체
@@ -265,7 +266,7 @@ class 차발록스피어스폰1(trigger_api.Trigger):
 
 
 class 차발록스피어스폰2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1005], animationEffect=False)
         self.create_monster(spawnIds=[1006], animationEffect=False)
         self.create_monster(spawnIds=[1007], animationEffect=False)
@@ -278,7 +279,7 @@ class 차발록스피어스폰2(trigger_api.Trigger):
 
 
 class 차발록스피어스폰3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1010], animationEffect=False)
         self.create_monster(spawnIds=[1011], animationEffect=False)
         self.create_monster(spawnIds=[1012], animationEffect=False)
@@ -291,7 +292,7 @@ class 차발록스피어스폰3(trigger_api.Trigger):
 
 
 class 차크림슨스폰1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[200], animationEffect=False)
         self.create_monster(spawnIds=[201], animationEffect=False)
         self.create_monster(spawnIds=[202], animationEffect=False)
@@ -303,7 +304,7 @@ class 차크림슨스폰1(trigger_api.Trigger):
 
 
 class 차크림슨스폰2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[204], animationEffect=False)
         self.create_monster(spawnIds=[205], animationEffect=False)
         self.create_monster(spawnIds=[206], animationEffect=False)
@@ -315,7 +316,7 @@ class 차크림슨스폰2(trigger_api.Trigger):
 
 
 class 차크림슨스폰3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1005], animationEffect=False)
         self.create_monster(spawnIds=[1006], animationEffect=False)
         self.create_monster(spawnIds=[1007], animationEffect=False)
@@ -332,7 +333,7 @@ class 차크림슨스폰3(trigger_api.Trigger):
 
 
 class 차크림슨스폰4(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[1010], animationEffect=False)
         self.create_monster(spawnIds=[1011], animationEffect=False)
         self.create_monster(spawnIds=[1012], animationEffect=False)
@@ -348,8 +349,276 @@ class 차크림슨스폰4(trigger_api.Trigger):
             return 보스전연출준비(self.ctx)
 
 
+"""
+class 공습준비대사1(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.destroy_monster(spawnIds=[-1])
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.side_npc_talk(npcId=11003536, illust='Neirin_surprise', duration=4000, script='$52010055_QD__52010055__18$')
+        self.side_npc_talk(npcId=11003536, illust='Neirin_surprise', duration=3000, script='$52010055_QD__52010055__19$')
+        self.side_npc_talk(npcId=11003536, illust='Neirin_surprise', duration=3000, script='$52010055_QD__52010055__20$')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=10000):
+            return None # Missing State: 공습준비연출2
+
+"""
+
+
+"""
+class 공습준비연출1(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.visible_my_pc(isVisible=True)
+        self.destroy_monster(spawnIds=[-1])
+        self.set_mesh(triggerIds=[10002,10003,10004,10005], visible=True)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return None # Missing State: 공습준비연출2
+
+"""
+
+
+"""
+class 공습준비연출2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_cinematic_ui(type=3)
+        self.set_cinematic_ui(type=1)
+        self.create_monster(spawnIds=[999], animationEffect=False)
+        self.select_camera_path(pathIds=[4020,4021,4022], returnView=False)
+        self.move_user(mapId=52010055, portalId=6)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return None # Missing State: 공습준비연출3
+
+"""
+
+
+"""
+class 공습준비연출3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_user_path(patrolName='PatrolDataCannon')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습준비연출4
+
+"""
+
+
+"""
+class 공습준비연출4(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_user(mapId=52010055, portalId=7)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return None # Missing State: 공습준비
+
+"""
+
+
+"""
+class 공습준비(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_mesh(triggerIds=[30000], visible=False)
+        self.add_buff(boxIds=[9002], skillId=99910311, level=1, isPlayer=False, isSkillSet=False)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return None # Missing State: 공습1
+
+"""
+
+
+"""
+class 공습1(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.set_cinematic_ui(type=0)
+        self.set_cinematic_ui(type=2)
+        self.create_monster(spawnIds=[600], animationEffect=False, animationDelay=0)
+        self.create_monster(spawnIds=[601], animationEffect=False, animationDelay=0)
+        self.create_monster(spawnIds=[602], animationEffect=False, animationDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습1이동
+
+"""
+
+
+"""
+class 공습1이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_npc(spawnId=600, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=601, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=602, patrolName='PatrolDataBridge0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습2
+
+"""
+
+
+"""
+class 공습2(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[500], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[501], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[502], animationEffect=True, animationDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습2이동
+
+"""
+
+
+"""
+class 공습2이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_npc(spawnId=500, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=501, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=502, patrolName='PatrolDataBridge0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습3
+
+"""
+
+
+"""
+class 공습3(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[400], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습3이동
+
+"""
+
+
+"""
+class 공습3이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_npc(spawnId=400, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=401, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=402, patrolName='PatrolDataBridge0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.monster_dead(boxIds=[999]):
+            return None # Missing State: 실패선언
+        if self.monster_dead(boxIds=[600,601,602,500,501,502,400,401,402]):
+            return None # Missing State: 공습4
+
+"""
+
+
+"""
+class 공습4(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[400], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[500], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[501], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[502], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[600], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[601], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[602], animationEffect=True, animationDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습4이동
+
+"""
+
+
+"""
+class 공습4이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_npc(spawnId=400, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=401, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=402, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=500, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=501, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=502, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=600, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=601, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=602, patrolName='PatrolDataBridge0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.monster_dead(boxIds=[999]):
+            return 준비(self.ctx)
+        if self.monster_dead(boxIds=[600,601,602,500,501,502,400,401,402]):
+            return None # Missing State: 공습5
+
+"""
+
+
+"""
+class 공습5(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.create_monster(spawnIds=[500], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[501], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[502], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[600], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[601], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[602], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[400], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[401], animationEffect=True, animationDelay=0)
+        self.create_monster(spawnIds=[402], animationEffect=True, animationDelay=0)
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=2000):
+            return None # Missing State: 공습5이동
+
+"""
+
+
+"""
+class 공습5이동(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.move_npc(spawnId=400, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=401, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=402, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=500, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=501, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=502, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=600, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=601, patrolName='PatrolDataBridge0')
+        self.move_npc(spawnId=602, patrolName='PatrolDataBridge0')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.monster_dead(boxIds=[999]):
+            return None # Missing State: 실패선언
+        if self.monster_dead(boxIds=[600,601,602,500,501,502,400,401,402]):
+            return None # Missing State: 공습종료
+
+"""
+
+
+"""
+class 공습종료(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.destroy_monster(spawnIds=[-1])
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=1000):
+            return 보스전연출준비(self.ctx)
+
+"""
+
+
 class 보스전연출준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.visible_my_pc(isVisible=True) # 캐릭터 보임
         self.move_user(mapId=52010055, portalId=4)
@@ -365,7 +634,7 @@ class 보스전연출준비(trigger_api.Trigger):
 
 
 class 보스전연출시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=4, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.select_camera(triggerId=4006, enable=True)
         self.create_monster(spawnIds=[1], animationEffect=False) # 함교 연출용 블리체
@@ -378,7 +647,7 @@ class 보스전연출시작(trigger_api.Trigger):
 
 
 class 보스전연출1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=2000, sequenceName='Attack_01_A')
         self.add_cinematic_talk(npcId=29000382, msg='$52010055_QD__52010055__21$', duration=3000, align='right')
         self.set_pc_emotion_sequence(sequenceNames=['Emotion_Suprise_A'])
@@ -389,7 +658,7 @@ class 보스전연출1(trigger_api.Trigger):
 
 
 class 보스전시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4019, enable=True)
         self.destroy_monster(spawnIds=[2000])
         self.create_monster(spawnIds=[2001], animationEffect=True) # 전투용 보스 소환
@@ -402,7 +671,7 @@ class 보스전시작(trigger_api.Trigger):
 
 
 class 보스사망체크(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.visible_my_pc(isVisible=True) # 캐릭터 보임
         self.set_onetime_effect(id=5, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.destroy_monster(spawnIds=[-1])
@@ -413,7 +682,7 @@ class 보스사망체크(trigger_api.Trigger):
 
 
 class 보스전끝크림슨발록대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=5, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.set_mesh(triggerIds=[10002,10003,10004,10005], visible=False) # 1차 전투 링 해제
         self.set_cinematic_ui(type=1)
@@ -432,7 +701,7 @@ class 보스전끝크림슨발록대사1(trigger_api.Trigger):
 
 
 class 엔딩연출크림슨발록보스1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=14, rotation=-10)
         self.set_npc_rotation(spawnId=15, rotation=10)
         self.select_camera(triggerId=4006, enable=True)
@@ -446,7 +715,7 @@ class 엔딩연출크림슨발록보스1(trigger_api.Trigger):
 
 
 class 엔딩연출크림슨발록보스2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.change_monster(removeSpawnId=2002, addSpawnId=2003) # 함교 연출용 블리체
         self.set_npc_emotion_sequence(spawnId=2003, sequenceName='Dead_01_A')
         self.set_scene_skip(state=맵이동, action='nextState')
@@ -463,7 +732,7 @@ class 엔딩연출크림슨발록보스2(trigger_api.Trigger):
 
 
 class 엔딩연출샤텐1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[2002])
         self.set_npc_emotion_sequence(spawnId=13, sequenceName='Attack_Idle_A')
         self.set_npc_emotion_sequence(spawnId=14, sequenceName='Attack_Idle_A')
@@ -479,7 +748,7 @@ class 엔딩연출샤텐1(trigger_api.Trigger):
 
 
 class 엔딩연출메이슨1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11003586, illustId='Mason_closeEye', msg='$52010055_QD__52010055__25$', duration=1500, align='Reft')
         self.select_camera(triggerId=4014, enable=True)
         self.select_camera_path(pathIds=[4014,4015], returnView=False)
@@ -492,7 +761,7 @@ class 엔딩연출메이슨1(trigger_api.Trigger):
 
 
 class 엔딩연출콘대르1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[500], visible=True)
         self.set_effect(triggerIds=[501], visible=True)
         self.add_cinematic_talk(npcId=11003776, illustId='Conder_normal', msg='$52010055_QD__52010055__26$', duration=3000, align='Reft')
@@ -505,7 +774,7 @@ class 엔딩연출콘대르1(trigger_api.Trigger):
 
 
 class 엔딩연출콘대르2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4006, enable=True)
         self.set_effect(triggerIds=[5000], visible=True)
         self.set_effect(triggerIds=[5000], visible=True)
@@ -519,7 +788,7 @@ class 엔딩연출콘대르2(trigger_api.Trigger):
 
 
 class 엔딩연출클림슨발록사망1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=2003, sequenceName='Dead_01_A')
         self.add_cinematic_talk(npcId=29000382, msg='$52010055_QD__52010055__27$', duration=3000, align='right') # 크아악
 
@@ -529,7 +798,7 @@ class 엔딩연출클림슨발록사망1(trigger_api.Trigger):
 
 
 class 엔딩연출준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=True, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.destroy_monster(spawnIds=[2003], arg2=False) # 엔딩연출용크림슨발록
         self.destroy_monster(spawnIds=[13]) # 엔딩 연출용 콘대르
@@ -548,8 +817,22 @@ class 엔딩연출준비2(trigger_api.Trigger):
             return 크림슨대사준비1(self.ctx)
 
 
+"""
+class 엔딩연출크림슨발록대사1(trigger_api.Trigger):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        self.visible_my_pc(isVisible=True)
+        self.select_camera(triggerId=4006, enable=True)
+        self.add_cinematic_talk(npcId=29000382, msg='$52010055_QD__52010055__28$', duration=3000, align='right')
+
+    def on_tick(self) -> trigger_api.Trigger:
+        if self.wait_tick(waitTick=3000):
+            return 크림슨대사준비1(self.ctx)
+
+"""
+
+
 class 크림슨대사준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[700], animationEffect=False)
         self.create_monster(spawnIds=[701], animationEffect=False)
         self.create_monster(spawnIds=[702], animationEffect=False)
@@ -567,7 +850,7 @@ class 크림슨대사준비1(trigger_api.Trigger):
 
 
 class 엔딩연출크림슨카메라1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=6, enable=False, path='BG/Common/ScreenMask/Eff_CameraMasking_FastFadeIn.xml') # 암전
         self.select_camera(triggerId=4023, enable=True)
 
@@ -577,7 +860,7 @@ class 엔딩연출크림슨카메라1(trigger_api.Trigger):
 
 
 class 엔딩연출크림슨대사1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=29000378, msg='$52010055_QD__52010055__29$', duration=3000, align='right')
         self.move_npc(spawnId=700, patrolName='PatrolData700') # 엔딩 연출용 크림슨도망
         self.move_npc(spawnId=701, patrolName='PatrolData701') # 엔딩 연출용 크림슨도망
@@ -594,7 +877,7 @@ class 엔딩연출크림슨대사1(trigger_api.Trigger):
 
 
 class 엔딩이동준비1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=1)
         self.destroy_monster(spawnIds=[-1])
@@ -607,7 +890,7 @@ class 엔딩이동준비1(trigger_api.Trigger):
 
 
 class 엔딩이동준비2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4024, enable=True)
         self.create_monster(spawnIds=[1], animationEffect=False) # 함교 연출용 블리체
         self.create_monster(spawnIds=[2], animationEffect=False) # 함교 연출용 네이린
@@ -623,7 +906,7 @@ class 엔딩이동준비2(trigger_api.Trigger):
 
 
 class 엔딩NPC이동1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='PatrolDataEndPC2') # 엔딩 연출용 유저 이동
         self.move_npc(spawnId=13, patrolName='PatrolDataEndCondor1') # 엔딩 연출용 콘대르 이동
         self.move_npc(spawnId=14, patrolName='PatrolDataEndMason1') # 엔딩 연출용 메이슨 이동
@@ -635,7 +918,7 @@ class 엔딩NPC이동1(trigger_api.Trigger):
 
 
 class 엔딩대사콘대르1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_rotation(spawnId=15, rotation=60)
         self.set_npc_rotation(spawnId=14, rotation=330)
         self.set_npc_emotion_sequence(spawnId=13, sequenceName='Talk_A')
@@ -647,7 +930,7 @@ class 엔딩대사콘대르1(trigger_api.Trigger):
 
 
 class 엔딩대사샤텐1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=15, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003584, illustId='Schatten_normal', msg='$52010055_QD__52010055__31$', duration=3000, align='Left')
 
@@ -657,7 +940,7 @@ class 엔딩대사샤텐1(trigger_api.Trigger):
 
 
 class 엔딩대사메이슨1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[10000], visible=False)
         self.set_mesh(triggerIds=[10001], visible=False)
         self.set_mesh(triggerIds=[10002], visible=False)
@@ -672,7 +955,7 @@ class 엔딩대사메이슨1(trigger_api.Trigger):
 
 
 class 함교로카메라전환1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=4025, enable=True)
         self.visible_my_pc(isVisible=False) # 캐릭터 숨김
         self.move_user(mapId=52010055, portalId=2) # 함교 내부로 텔레포트
@@ -684,7 +967,7 @@ class 함교로카메라전환1(trigger_api.Trigger):
 
 
 class 엔딩대사네이린1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=22, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003536, illustId='Neirin_normal', msg='$52010055_QD__52010055__33$', duration=4000, align='right')
         self.add_cinematic_talk(npcId=11003536, illustId='Neirin_normal', msg='$52010055_QD__52010055__34$', duration=4000, align='right')
@@ -695,7 +978,7 @@ class 엔딩대사네이린1(trigger_api.Trigger):
 
 
 class 엔딩대사블리체1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_npc_emotion_sequence(spawnId=21, sequenceName='Talk_A')
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__35$', duration=3000, align='right')
         self.add_cinematic_talk(npcId=11003533, illustId='Bliche_normal', msg='$52010055_QD__52010055__36$', duration=5000, align='right')
@@ -706,8 +989,9 @@ class 엔딩대사블리체1(trigger_api.Trigger):
 
 
 class 엔딩연출종료1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[-1])
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -716,7 +1000,7 @@ class 엔딩연출종료1(trigger_api.Trigger):
 
 
 class 맵이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=0)
         self.visible_my_pc(isVisible=True) # 캐릭터 보임
         self.set_cinematic_ui(type=0)
@@ -727,7 +1011,7 @@ class 맵이동(trigger_api.Trigger):
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=1000):
-            return None # Missing State: 
+            return None # Missing State: State
 
 
 initial_state = 준비

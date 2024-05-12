@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[10001])
         self.destroy_monster(spawnIds=[10002])
         self.destroy_monster(spawnIds=[10003])
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 트리거01진행(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[10001], animationEffect=False)
         self.create_monster(spawnIds=[10002], animationEffect=False)
         self.create_monster(spawnIds=[10003], animationEffect=False)
@@ -27,7 +27,7 @@ class 트리거01진행(trigger_api.Trigger):
 
 
 class 트리거02시작(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=10001, patrolName='MS2PatrolData0')
         self.move_npc(spawnId=10002, patrolName='MS2PatrolData1')
         self.move_npc(spawnId=10003, patrolName='MS2PatrolData2')

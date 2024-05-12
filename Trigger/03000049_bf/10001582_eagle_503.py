@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000331], state=1)
         self.set_actor(triggerId=503, visible=True, initialSequence='Idle_A')
 
@@ -17,13 +17,13 @@ class 오브젝트반응(trigger_api.Trigger):
         if self.true():
             return NPC이동(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_actor(triggerId=503, visible=False, initialSequence='Idle_A')
         self.create_monster(spawnIds=[5003], animationEffect=False)
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=5003, patrolName='MS2PatrolData_503')
         self.set_timer(timerId='1', seconds=10)
 
@@ -33,7 +33,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[5003])
         self.set_timer(timerId='2', seconds=50)
 

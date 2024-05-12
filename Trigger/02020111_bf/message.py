@@ -9,7 +9,7 @@ class 시작(trigger_api.Trigger):
 
 
 class 메세지출력(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_event_ui(type=1, arg2='$02020111_BF__MESSAGE__0$', arg3='4000')
 
     def on_tick(self) -> trigger_api.Trigger:

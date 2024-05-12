@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 대기시간(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[720], enable=False)
         self.set_skill(triggerIds=[721], enable=False)
         self.set_skill(triggerIds=[722], enable=False)
@@ -23,7 +23,7 @@ class 대기시간(trigger_api.Trigger):
 
 
 class 스킬01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[720], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -32,7 +32,7 @@ class 스킬01(trigger_api.Trigger):
 
 
 class 스킬02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[721], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -41,7 +41,7 @@ class 스킬02(trigger_api.Trigger):
 
 
 class 스킬03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[722], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -50,7 +50,7 @@ class 스킬03(trigger_api.Trigger):
 
 
 class 스킬04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[723], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -59,7 +59,7 @@ class 스킬04(trigger_api.Trigger):
 
 
 class 스킬05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[724], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -68,7 +68,7 @@ class 스킬05(trigger_api.Trigger):
 
 
 class 스킬06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_skill(triggerIds=[725], enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:

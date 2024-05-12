@@ -3,7 +3,7 @@ import trigger_api
 
 
 class Wait(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=False) # 가이드 서머리 사운드 이펙트
         self.set_effect(triggerIds=[5200], visible=False) # VibrateLong
         self.set_effect(triggerIds=[5300], visible=False) # Sound_SpaceDestroy
@@ -25,17 +25,20 @@ class Wait(trigger_api.Trigger):
 
 # 최초 입장
 class Enter01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9000], questIds=[90000451], questStates=[1]):
+            # 별, 수정, 그리고 퀘스트 수락한 상태
             return QuestOnGoing01(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000450], questStates=[3]):
+            # 기묘한 조짐 퀘스트 완료 상태
             return QuestOnGoing11(self.ctx)
         if self.quest_user_detected(boxIds=[9000], questIds=[90000450], questStates=[2]):
+            # 기묘한 조짐 퀘스트 완료 가능 상태
             return Delay01(self.ctx)
         if self.wait_tick(waitTick=3000):
             return Quit(self.ctx)
@@ -43,34 +46,34 @@ class Enter01(trigger_api.Trigger):
 
 # 별, 수정, 그리고 퀘스트 수락한 상태
 class QuestOnGoing01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return TimeToLeave01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 # 기묘한 조짐 퀘스트 완료 상태
 class QuestOnGoing11(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[102], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.wait_tick(waitTick=2000):
             return SecondQuestStart01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
 
 class Delay01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=500, enable=True)
         self.set_scene_skip(state=VisionApp02, action='nextState')
 
@@ -80,7 +83,7 @@ class Delay01(trigger_api.Trigger):
 
 
 class LookAround01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
 
@@ -90,7 +93,7 @@ class LookAround01(trigger_api.Trigger):
 
 
 class LookAround02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=501, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -99,7 +102,7 @@ class LookAround02(trigger_api.Trigger):
 
 
 class LookAround03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user_path(patrolName='MS2PatrolData_1000')
         self.set_conversation(type=1, spawnId=0, script='$63000027_CS__MISTERY01__0$', arg4=3, arg5=0)
 
@@ -109,7 +112,7 @@ class LookAround03(trigger_api.Trigger):
 
 
 class LookAround04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=502, enable=True)
         self.set_pc_emotion_sequence(sequenceNames=['Bore_C'])
 
@@ -119,8 +122,9 @@ class LookAround04(trigger_api.Trigger):
 
 
 class VisionApp01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=600, enable=True)
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -129,7 +133,7 @@ class VisionApp01(trigger_api.Trigger):
 
 
 class VisionApp02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.move_npc(spawnId=101, patrolName='MS2PatrolData_101')
 
@@ -139,7 +143,7 @@ class VisionApp02(trigger_api.Trigger):
 
 
 class VisionTalk01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5400], visible=True) # Voice_Vision_00001725
         self.set_conversation(type=2, spawnId=11001560, script='$63000027_CS__MISTERY01__1$', arg4=5) # Voice 00001725
         self.set_skip(state=VisionTalk04)
@@ -150,8 +154,9 @@ class VisionTalk01(trigger_api.Trigger):
 
 
 class VisionTalk02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -160,7 +165,7 @@ class VisionTalk02(trigger_api.Trigger):
 
 
 class VisionTalk03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=2, spawnId=11001560, script='$63000027_CS__MISTERY01__2$', arg4=5)
         self.set_skip(state=VisionTalk04)
 
@@ -170,8 +175,9 @@ class VisionTalk03(trigger_api.Trigger):
 
 
 class VisionTalk04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.remove_cinematic_talk()
+        # Missing State: State
         self.set_skip()
         self.destroy_monster(spawnIds=[101])
         self.create_monster(spawnIds=[102], animationEffect=False)
@@ -183,7 +189,7 @@ class VisionTalk04(trigger_api.Trigger):
 
 
 class VisionTalk05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 
@@ -193,7 +199,7 @@ class VisionTalk05(trigger_api.Trigger):
 
 
 class FirstQuestEnd01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
         self.show_guide_summary(entityId=10034010, textId=10034010) # 가이드 : 비전을 향해 이동하기
 
@@ -201,38 +207,42 @@ class FirstQuestEnd01(trigger_api.Trigger):
         if self.user_detected(boxIds=[9100]):
             return FirstQuestEnd02(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10034010)
 
 
 class FirstQuestEnd02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10034020, textId=10034020) # 가이드 : [[icon:questcomplete]] 비전과 대화하기
+        # 가이드 : [[icon:questcomplete]] 비전과 대화하기
+        self.show_guide_summary(entityId=10034020, textId=10034020)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000450], questStates=[3]):
+            # 기묘한 조짐 퀘스트 완료 상태
             return SecondQuestStart01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10034020)
 
 
 class SecondQuestStart01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5000], visible=True) # 가이드 서머리 사운드 이펙트
-        self.show_guide_summary(entityId=10034030, textId=10034030) # 가이드 : [[icon:questaccept]] 비전과 대화하기
+        # 가이드 : [[icon:questaccept]] 비전과 대화하기
+        self.show_guide_summary(entityId=10034030, textId=10034030)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.quest_user_detected(boxIds=[9900], questIds=[90000451], questStates=[1]):
+            # 별, 수정, 그리고 퀘스트 수락한 상태
             return TimeToLeave01(self.ctx)
 
-    def on_exit(self):
+    def on_exit(self) -> None:
         self.hide_guide_summary(entityId=10034030)
 
 
 class TimeToLeave01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.set_cinematic_ui(type=4)
@@ -244,7 +254,7 @@ class TimeToLeave01(trigger_api.Trigger):
 
 
 class TimeToLeave02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[102])
         self.create_monster(spawnIds=[103], animationEffect=False)
         self.move_user(mapId=63000027, portalId=10, boxId=9900)
@@ -256,7 +266,7 @@ class TimeToLeave02(trigger_api.Trigger):
 
 
 class TimeToLeave03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.select_camera(triggerId=701, enable=True)
@@ -267,7 +277,7 @@ class TimeToLeave03(trigger_api.Trigger):
 
 
 class PCGetEffect01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_buff(boxIds=[9900], skillId=70000097, level=1) # 신비로운 힘
         self.set_effect(triggerIds=[5500], visible=True) # Sound_VisionBuff
 
@@ -277,7 +287,7 @@ class PCGetEffect01(trigger_api.Trigger):
 
 
 class VisionSayGoodbye01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5402], visible=True) # Voice_Vision_00001872
         self.set_conversation(type=1, spawnId=103, script='$63000027_CS__MISTERY01__3$', arg4=4, arg5=0) # Voice 00001872
 
@@ -287,7 +297,7 @@ class VisionSayGoodbye01(trigger_api.Trigger):
 
 
 class VisionSayGoodbye02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5401], visible=True) # Voice_Vision_00001741
         self.set_conversation(type=1, spawnId=103, script='$63000027_CS__MISTERY01__4$', arg4=4, arg5=0) # Voice 00001741
         self.set_conversation(type=1, spawnId=103, script='$63000027_CS__MISTERY01__5$', arg4=3, arg5=4)
@@ -298,8 +308,9 @@ class VisionSayGoodbye02(trigger_api.Trigger):
 
 
 class VisionSayGoodbye03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=103, patrolName='MS2PatrolData_102')
+        # Missing State: State
         self.set_scene_skip()
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -308,7 +319,7 @@ class VisionSayGoodbye03(trigger_api.Trigger):
 
 
 class VisionSayGoodbye04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[103])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -317,7 +328,7 @@ class VisionSayGoodbye04(trigger_api.Trigger):
 
 
 class Collapse01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5200], visible=True) # VibrateLong
         self.select_camera(triggerId=710, enable=True)
         self.set_mesh(triggerIds=[3100], visible=True, arg3=0, delay=0, scale=0) # barrier
@@ -333,7 +344,7 @@ class Collapse01(trigger_api.Trigger):
 
 
 class Collapse02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera(triggerId=711, enable=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -342,7 +353,7 @@ class Collapse02(trigger_api.Trigger):
 
 
 class PCFainted01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_sequence(sequenceNames=['Down2_A','Down_Idle_A'])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -351,7 +362,7 @@ class PCFainted01(trigger_api.Trigger):
 
 
 class PCTeleport01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_pc_emotion_loop(sequenceName='Down_Idle_A', duration=10000)
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -363,7 +374,7 @@ class PCTeleport01(trigger_api.Trigger):
 
 
 class PCTeleport02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_user(mapId=63000028, portalId=1, boxId=9900)
         self.select_camera(triggerId=711, enable=False)
 
@@ -373,7 +384,7 @@ class PCTeleport02(trigger_api.Trigger):
 
 
 class Quit(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
 

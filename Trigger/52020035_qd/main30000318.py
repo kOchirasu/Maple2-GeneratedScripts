@@ -11,7 +11,7 @@ class idle3(trigger_api.Trigger):
 
 # 라딘과 대화 시작
 class 연출시작3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=8, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -20,7 +20,7 @@ class 연출시작3(trigger_api.Trigger):
 
 
 class 연출시작3_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
         self.visible_my_pc(isVisible=False)
@@ -43,7 +43,7 @@ class 연출시작3_1(trigger_api.Trigger):
 
 
 class 뒷이야기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=8, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.add_cinematic_talk(npcId=11003754, msg='크크큭... 착한 연기 잘 하는군. 라딘.', duration=3000)
         self.set_scene_skip(state=끝, action='exit')
@@ -54,7 +54,7 @@ class 뒷이야기(trigger_api.Trigger):
 
 
 class 뒷이야기_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4028], returnView=False)
         self.add_cinematic_talk(npcId=11003753, msg='...', duration=3000)
 
@@ -64,7 +64,7 @@ class 뒷이야기_02(trigger_api.Trigger):
 
 
 class 뒷이야기01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4030], returnView=False)
         self.set_npc_emotion_sequence(spawnId=119, sequenceName='Bore_A')
         self.add_cinematic_talk(npcId=11003756, msg='훗. 생각보다 잘 넘어간 것 같군요.', duration=3000)
@@ -76,7 +76,7 @@ class 뒷이야기01(trigger_api.Trigger):
 
 
 class 뒷이야기02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4026], returnView=False)
         self.add_cinematic_talk(npcId=11003754, msg='하렌. 그럼 우리도 다음 작전을 이야기 해 볼까.', duration=3000)
 
@@ -86,7 +86,7 @@ class 뒷이야기02(trigger_api.Trigger):
 
 
 class 뒷이야기02_1(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[4031], returnView=False)
         self.move_npc(spawnId=119, patrolName='MS2PatrolData_3008')
         self.add_cinematic_talk(npcId=11003756, msg='...후훗.', duration=3000)
@@ -97,7 +97,7 @@ class 뒷이야기02_1(trigger_api.Trigger):
 
 
 class 끝(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=9, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -106,7 +106,7 @@ class 끝(trigger_api.Trigger):
 
 
 class 초기화(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=9, enable=False, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)

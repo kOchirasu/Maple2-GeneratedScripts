@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 준비(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_effect(triggerIds=[5001], visible=False)
         self.set_effect(triggerIds=[5002], visible=False)
@@ -46,7 +46,7 @@ class 준비(trigger_api.Trigger):
 
 
 class 잠시대기_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=True, path='BG/Common/ScreenMask/Eff_fadein_1sec.xml')
         self.set_cinematic_ui(type=1)
         self.set_cinematic_ui(type=3)
@@ -57,7 +57,7 @@ class 잠시대기_01(trigger_api.Trigger):
 
 
 class 잠시대기_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
         self.create_monster(spawnIds=[201], animationEffect=False)
 
@@ -67,7 +67,7 @@ class 잠시대기_02(trigger_api.Trigger):
 
 
 class 마리엔등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=1, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_scene_skip(state=마리엔등장_10, action='nextState')
 
@@ -77,7 +77,7 @@ class 마리엔등장_01(trigger_api.Trigger):
 
 
 class 마리엔등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__0$', duration=2000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -86,7 +86,7 @@ class 마리엔등장_02(trigger_api.Trigger):
 
 
 class 마리엔등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__1$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -95,7 +95,7 @@ class 마리엔등장_03(trigger_api.Trigger):
 
 
 class 마리엔등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__2$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -104,7 +104,7 @@ class 마리엔등장_04(trigger_api.Trigger):
 
 
 class 마리엔등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8002], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -113,7 +113,7 @@ class 마리엔등장_05(trigger_api.Trigger):
 
 
 class 마리엔등장_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8001], returnView=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -122,7 +122,7 @@ class 마리엔등장_06(trigger_api.Trigger):
 
 
 class 마리엔등장_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__3$', duration=2500, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -131,7 +131,7 @@ class 마리엔등장_07(trigger_api.Trigger):
 
 
 class 마리엔등장_08(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__4$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -140,7 +140,7 @@ class 마리엔등장_08(trigger_api.Trigger):
 
 
 class 마리엔등장_09(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.move_npc(spawnId=201, patrolName='MS2PatrolData_2001')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -149,7 +149,8 @@ class 마리엔등장_09(trigger_api.Trigger):
 
 
 class 마리엔등장_10(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.select_camera_path(pathIds=[8003], returnView=False)
 
@@ -159,7 +160,7 @@ class 마리엔등장_10(trigger_api.Trigger):
 
 
 class 몬스터등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -180,7 +181,7 @@ class 몬스터등장_01(trigger_api.Trigger):
 
 
 class 몬스터등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -201,7 +202,7 @@ class 몬스터등장_02(trigger_api.Trigger):
 
 
 class 몬스터등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -222,7 +223,7 @@ class 몬스터등장_03(trigger_api.Trigger):
 
 
 class 몬스터등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[101], animationEffect=False)
         self.create_monster(spawnIds=[102], animationEffect=False)
         self.create_monster(spawnIds=[103], animationEffect=False)
@@ -243,7 +244,7 @@ class 몬스터등장_04(trigger_api.Trigger):
 
 
 class 마리엔퇴장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.reset_camera(interpolationTime=1)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -252,7 +253,7 @@ class 마리엔퇴장_01(trigger_api.Trigger):
 
 
 class 마리엔퇴장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__5$', duration=2000, align='right')
         self.set_effect(triggerIds=[5003], visible=True)
 
@@ -262,7 +263,7 @@ class 마리엔퇴장_02(trigger_api.Trigger):
 
 
 class 마리엔퇴장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[201])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -271,7 +272,7 @@ class 마리엔퇴장_03(trigger_api.Trigger):
 
 
 class 마리엔퇴장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
         self.show_guide_summary(entityId=26300681, textId=26300681)
@@ -288,7 +289,7 @@ class 재입장시(trigger_api.Trigger):
 
 
 class 암전_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.hide_guide_summary(entityId=26300681)
         self.set_onetime_effect(id=2, enable=True, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_cinematic_ui(type=1)
@@ -300,7 +301,7 @@ class 암전_01(trigger_api.Trigger):
 
 
 class 암전_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.select_camera_path(pathIds=[8004], returnView=False)
         self.move_user_path(patrolName='MS2PatrolData_2002')
 
@@ -310,7 +311,7 @@ class 암전_02(trigger_api.Trigger):
 
 
 class 마리엔재등장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_onetime_effect(id=2, enable=False, path='BG/Common/ScreenMask/Eff_fadein_halfsec.xml')
         self.set_scene_skip(state=재등장연출완료, action='exit')
 
@@ -320,7 +321,7 @@ class 마리엔재등장_01(trigger_api.Trigger):
 
 
 class 마리엔재등장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5001], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -329,7 +330,7 @@ class 마리엔재등장_02(trigger_api.Trigger):
 
 
 class 마리엔재등장_03(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=False)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -338,7 +339,7 @@ class 마리엔재등장_03(trigger_api.Trigger):
 
 
 class 마리엔재등장_04(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__6$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -347,7 +348,7 @@ class 마리엔재등장_04(trigger_api.Trigger):
 
 
 class 마리엔재등장_05(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__7$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -356,7 +357,7 @@ class 마리엔재등장_05(trigger_api.Trigger):
 
 
 class 마리엔재등장_06(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__8$', duration=3000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -365,7 +366,7 @@ class 마리엔재등장_06(trigger_api.Trigger):
 
 
 class 마리엔재등장_07(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.add_cinematic_talk(npcId=11004294, msg='$63000068_CS__63000068_MAIN__9$', duration=2000, align='right')
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -374,7 +375,8 @@ class 마리엔재등장_07(trigger_api.Trigger):
 
 
 class 재등장연출완료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
+        # Missing State: State
         self.set_scene_skip()
         self.set_cinematic_ui(type=0)
         self.set_cinematic_ui(type=2)
@@ -386,7 +388,7 @@ class 재등장연출완료(trigger_api.Trigger):
 
 
 class 퀘스트마리엔등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.create_monster(spawnIds=[203], animationEffect=False)
 
@@ -398,7 +400,7 @@ class 퀘스트마리엔등장(trigger_api.Trigger):
 
 
 class 퀘스트마리엔퇴장_01(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_effect(triggerIds=[5002], visible=True)
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -407,7 +409,7 @@ class 퀘스트마리엔퇴장_01(trigger_api.Trigger):
 
 
 class 퀘스트마리엔퇴장_02(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[203])
 
     def on_tick(self) -> trigger_api.Trigger:
@@ -416,7 +418,7 @@ class 퀘스트마리엔퇴장_02(trigger_api.Trigger):
 
 
 class 종료(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_portal(portalId=2, visible=True, enable=True, minimapVisible=True)
 
 

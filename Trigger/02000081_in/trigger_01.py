@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000384], state=1)
         self.destroy_monster(spawnIds=[201])
         self.set_mesh(triggerIds=[101,102,103,104], visible=False)
@@ -15,7 +15,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 닫히기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_mesh(triggerIds=[101,102,103,104], visible=True)
         self.set_actor(triggerId=501, visible=True, initialSequence='Closed')
         self.set_timer(timerId='1', seconds=2)
@@ -26,7 +26,7 @@ class 닫히기(trigger_api.Trigger):
 
 
 class 토무등장(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.create_monster(spawnIds=[202], animationEffect=True)
         self.move_npc(spawnId=202, patrolName='MS2PatrolData_202')
 
@@ -36,7 +36,7 @@ class 토무등장(trigger_api.Trigger):
 
 
 class 토무대사(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$02000081_IN__TRIGGER_01__0$', arg4=4)
         self.set_timer(timerId='1', seconds=4)
 
@@ -46,7 +46,7 @@ class 토무대사(trigger_api.Trigger):
 
 
 class 토무대사2(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$02000081_IN__TRIGGER_01__1$', arg4=4)
         self.set_timer(timerId='1', seconds=4)
 
@@ -56,7 +56,7 @@ class 토무대사2(trigger_api.Trigger):
 
 
 class 토무대사3(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_conversation(type=1, spawnId=202, script='$02000081_IN__TRIGGER_01__2$', arg4=2)
         self.set_timer(timerId='1', seconds=1)
 
@@ -66,7 +66,7 @@ class 토무대사3(trigger_api.Trigger):
 
 
 class 변신(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[202])
         self.create_monster(spawnIds=[201], animationEffect=True)
         self.set_actor(triggerId=501, visible=True, initialSequence='Opened')
@@ -86,13 +86,12 @@ class 몬스터와전투(trigger_api.Trigger):
 
 
 class 토무소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=20)
 
     def on_tick(self) -> trigger_api.Trigger:
         if self.monster_in_combat(boxIds=[201]):
             self.reset_timer(timerId='1')
-            return None
         if self.monster_dead(boxIds=[201]):
             return 대기(self.ctx)
         if self.time_expired(timerId='1'):
@@ -100,7 +99,7 @@ class 토무소멸(trigger_api.Trigger):
 
 
 class 소멸대기(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=5)
 
     def on_tick(self) -> trigger_api.Trigger:

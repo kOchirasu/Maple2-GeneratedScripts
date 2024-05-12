@@ -3,7 +3,7 @@ import trigger_api
 
 
 class 시작대기중(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_interact_object(triggerIds=[10000237], state=1)
         self.create_monster(spawnIds=[105], animationEffect=True)
 
@@ -13,7 +13,7 @@ class 시작대기중(trigger_api.Trigger):
 
 
 class NPC이동(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.set_timer(timerId='1', seconds=8)
         self.destroy_monster(spawnIds=[105])
         self.create_monster(spawnIds=[205], animationEffect=True)
@@ -26,7 +26,7 @@ class NPC이동(trigger_api.Trigger):
 
 
 class NPC소멸(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.destroy_monster(spawnIds=[205])
         self.set_timer(timerId='1', seconds=10)
 

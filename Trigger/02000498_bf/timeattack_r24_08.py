@@ -9,7 +9,7 @@ class 대기(trigger_api.Trigger):
 
 
 class 몹스폰(trigger_api.Trigger):
-    def on_enter(self):
+    def on_enter(self) -> 'trigger_api.Trigger':
         self.dark_stream(type='SpawnMonster', spawnIds=[124008], score=32000)
 
     def on_tick(self) -> trigger_api.Trigger:
